@@ -1,154 +1,154 @@
 1
 00:00:00,140 --> 00:00:06,500
-In this video we are going to register and configure Martin DocumentDB library into Program.cs.
+Trong video này, chúng ta sẽ đăng ký và cấu hình thư viện Marten DocumentDB vào Program.cs.
 
 2
 00:00:06,650 --> 00:00:12,890
-As you can see that we use Martin documentation in here, but we need to register and connect PostgreSQL
+Như bạn có thể thấy, chúng ta sử dụng tài liệu Marten ở đây, nhưng chúng ta cần đăng ký và kết nối PostgreSQL
 
 3
 00:00:12,890 --> 00:00:16,700
-database in order to use I document session for that purpose.
+cơ sở dữ liệu để sử dụng I document session cho mục đích đó.
 
 4
 00:00:16,730 --> 00:00:18,260
-Please open the Program.cs.
+Vui lòng mở Program.cs.
 
 5
 00:00:18,290 --> 00:00:23,870
-In here we can add Martin related packages into ASP.Net built in dependency injection.
+Ở đây chúng ta có thể thêm các package liên quan đến Marten vào dependency injection tích hợp của ASP.NET.
 
 6
 00:00:23,870 --> 00:00:30,260
-Before building the application you can come here and write builder dot services dot add monitor and
+Trước khi xây dựng ứng dụng, bạn có thể đến đây và viết builder dot services dot add Marten và
 
 7
 00:00:30,260 --> 00:00:32,000
-we will configure with two options.
+chúng ta sẽ cấu hình với hai tùy chọn.
 
 8
 00:00:32,000 --> 00:00:34,700
-The first option is connection string.
+Tùy chọn đầu tiên là connection string.
 
 9
 00:00:34,700 --> 00:00:40,250
-So we will provide connection string as we have already did before in the catalog microservices.
+Vậy chúng ta sẽ cung cấp connection string như chúng ta đã làm trước đó trong catalog microservices.
 
 10
 00:00:40,250 --> 00:00:44,000
-We will use connection string to connect to PostgreSQL database.
+Chúng ta sẽ sử dụng connection string để kết nối đến cơ sở dữ liệu PostgreSQL.
 
 11
 00:00:44,000 --> 00:00:46,640
-And Martin will be used as a ORM system.
+Và Marten sẽ được sử dụng như một hệ thống ORM.
 
 12
 00:00:46,970 --> 00:00:50,480
-After registering to Martin we have some considerations.
+Sau khi đăng ký Marten, chúng ta có một số lưu ý.
 
 13
 00:00:50,480 --> 00:00:53,360
-The first consideration is lightweight session.
+Lưu ý đầu tiên là lightweight session.
 
 14
 00:00:53,360 --> 00:00:59,120
-Most of the use cases Martin should use default lightweight sessions for better performance.
+Trong hầu hết các trường hợp sử dụng, Marten nên sử dụng các lightweight sessions mặc định để hiệu suất tốt hơn.
 
 15
 00:00:59,120 --> 00:01:02,960
-For that purpose I am going to add additional configuration.
+Để mục đích đó, tôi sẽ thêm cấu hình bổ sung.
 
 16
 00:01:02,960 --> 00:01:07,820
-After making Ed Martin we can use lightweight session.
+Sau khi cấu hình Marten, chúng ta có thể sử dụng lightweight session.
 
 17
 00:01:07,820 --> 00:01:14,660
-Here you can see the different session types, but we will use Martin lightweight session to getting
+Ở đây bạn có thể thấy các loại session khác nhau, nhưng chúng ta sẽ sử dụng Marten lightweight session để có hiệu suất tốt hơn
 
 18
 00:01:14,660 --> 00:01:19,550
-batting performance and make sure that you have also configured these lightweight sessions.
+và đảm bảo rằng bạn cũng đã cấu hình các lightweight sessions này.
 
 19
 00:01:19,730 --> 00:01:28,190
-And the second consideration is Martin schema auto creation Martin has auto create schema object property
+Và lưu ý thứ hai là tự động tạo schema Marten. Marten có thuộc tính auto create schema object
 
 20
 00:01:28,190 --> 00:01:30,410
-that we can set in the configurations.
+mà chúng ta có thể đặt trong các cấu hình.
 
 21
 00:01:30,410 --> 00:01:38,210
-If you come here and set the options that auto create schema object and right click go to definition.
+Nếu bạn vào đây và đặt các tùy chọn tự động tạo đối tượng schema, sau đó nhấp chuột phải để xem định nghĩa.
 
 22
 00:01:38,210 --> 00:01:41,000
-You can see the default value is auto created.
+Bạn có thể thấy giá trị mặc định được tự động tạo.
 
 23
 00:01:41,000 --> 00:01:42,410
-Create or update.
+Tạo hoặc cập nhật.
 
 24
 00:01:42,410 --> 00:01:46,100
-So Martin can automatically create database schema objects.
+Vậy Marten có thể tự động tạo các đối tượng schema cơ sở dữ liệu.
 
 25
 00:01:46,100 --> 00:01:50,060
-And this feature is extremely useful during the development phase.
+Và tính năng này cực kỳ hữu ích trong giai đoạn phát triển.
 
 26
 00:01:50,060 --> 00:01:55,070
-So we will follow these configuration and leaving as it is for this configuration.
+Vậy chúng ta sẽ tuân theo cấu hình này và để nguyên nó như vậy.
 
 27
 00:01:55,070 --> 00:01:57,170
-And this was the second consideration.
+Và đó là lần xem xét thứ hai.
 
 28
 00:01:57,170 --> 00:02:01,160
-And the third consideration is document identity.
+Và lần xem xét thứ ba là document identity.
 
 29
 00:02:01,160 --> 00:02:07,970
-So as you remember that if we open the models for basket API or main entity is shopping cart and shopping
+Vậy như bạn nhớ rằng nếu chúng ta mở các model cho basket API thì thực thể chính của chúng ta là shopping cart và shopping cart item trong shopping cart, chúng ta không có bất kỳ thuộc tính ID nào ở đây.
 
 30
 00:02:07,970 --> 00:02:12,800
-cart item in the shopping cart, we don't have any ID property in here.
+Thay vào đó, chúng ta sử dụng username để xác định đối tượng shopping cart.
 
 31
 00:02:12,800 --> 00:02:18,980
-Instead of that, we use username to identify for shopping cart object.
+Để sử dụng username như một định danh trong cơ sở dữ liệu document, chúng ta cần đánh dấu username này là identity của bảng document shopping cart.
 
 32
 00:02:18,980 --> 00:02:26,120
-In order to use username as a identifier in the document database, we need to mark these username as
+Để mục đích đó.
 
 33
 00:02:26,120 --> 00:02:28,970
-identity of shopping cart document table.
+Marten có tính năng tuyệt vời mà chúng ta có thể sử dụng, nếu bạn vào bài viết này về document identity từ Marten.
 
 34
 00:02:28,970 --> 00:02:29,990
-For that purpose.
+Nếu bạn cuộn xuống, bạn có thể thấy rằng chúng ta về cơ bản có thể ghi đè lựa chọn của thuộc tính ID
 
 35
 00:02:29,990 --> 00:02:36,290
-Martin has great feature that we can use if you go to this article document identity from the Martin.
+bằng cách cung cấp thuộc tính identity ở đầu class thực thể hoặc class.
 
 36
 00:02:36,290 --> 00:02:42,800
-If you scroll down, you can see that we can basically overriding the choice of the ID property field
+Hoặc chúng ta có thể cấu hình bằng cách đưa ra schema và tên bảng dữ liệu, và cung cấp hàm identity với
 
 37
 00:02:42,800 --> 00:02:48,470
-with providing the identity attribute in the beginning of the Or class entity class.
+một hàm inline mà chúng ta có thể sử dụng thuộc tính identity ở đây.
 
 38
 00:02:48,470 --> 00:02:57,140
-Or we can configure by giving the schema and data table name and providing the identity function with
+Vậy chúng ta sẽ chọn tùy chọn thứ hai.
 
 39
 00:02:57,140 --> 00:03:01,790
@@ -160,35 +160,35 @@ So we will choose the second option.
 
 41
 00:03:03,740 --> 00:03:10,400
-When we are configuring the Martin into Program.cs, please open the Program.cs and go to the Program.cs.
+Khi chúng ta đang cấu hình Marten vào Program.cs, vui lòng mở Program.cs và đi tới Program.cs.
 
 42
 00:03:10,400 --> 00:03:16,250
-In here I'm going to configure my Martin options again using the options.
+Ở đây tôi sẽ cấu hình các tùy chọn Marten của tôi một lần nữa bằng cách sử dụng các options.
 
 43
 00:03:16,250 --> 00:03:23,990
-And this time we will configure schema and we will configure for the shopping cart model.
+Và lần này chúng ta sẽ cấu hình schema và chúng ta sẽ cấu hình cho mô hình shopping cart.
 
 44
 00:03:23,990 --> 00:03:28,040
-And in the shopping cart model we basically change the identity.
+Và trong mô hình shopping cart, chúng ta cơ bản thay đổi identity.
 
 45
 00:03:28,370 --> 00:03:37,790
-And in here we can use function expression to identify and set our identity field should be username.
+Và ở đây chúng ta có thể sử dụng lambda expression để xác định và đặt trường identity của chúng ta nên là username.
 
 46
 00:03:40,450 --> 00:03:46,480
-So within this code, we basically configure Martin with our PostgreSQL connection string.
+Vậy trong đoạn mã này, chúng ta cơ bản cấu hình Marten với chuỗi kết nối PostgreSQL của chúng ta.
 
 47
 00:03:46,480 --> 00:03:53,500
-And we specify the shopping cart entity will use the username property as its identity field.
+Và chúng ta chỉ định rằng thực thể shopping cart sẽ sử dụng thuộc tính username làm trường identity của nó.
 
 48
 00:03:53,500 --> 00:03:59,830
-And lastly, we will use lightweight sessions to optimize performance by utilizing Martin's lightweight
+Và cuối cùng, chúng ta sẽ sử dụng lightweight sessions để tối ưu hóa hiệu suất bằng cách sử dụng chế độ lightweight session của Marten.
 
 49
 00:03:59,830 --> 00:04:00,580
@@ -196,23 +196,23 @@ session mode.
 
 50
 00:04:01,030 --> 00:04:06,490
-So now we should provide the connection string in the application settings Json file to connect with
+Vậy bây giờ chúng ta nên cung cấp chuỗi kết nối trong tệp Application settings Json để kết nối với Marten.
 
 51
 00:04:06,490 --> 00:04:06,970
-Martin.
+Marten.
 
 52
 00:04:06,970 --> 00:04:12,610
-For that purpose, please open the Application settings Json file and in the beginning of this file
+Để làm điều đó, vui lòng mở tệp Application settings Json và ở đầu tệp này, hãy tạo một chuỗi kết nối và dưới connection strings, hãy tạo một chuỗi database và cái này sẽ
 
 53
 00:04:12,610 --> 00:04:19,000
-create a connection string and under the connection strings, create a database string and this will
+chỉ định cơ sở dữ liệu PostgreSQL của chúng ta cho basket API.
 
 54
 00:04:19,000 --> 00:04:23,410
-be indicating our PostgreSQL database for basket API.
+Chúng ta có thể thấy rằng server là localhost, số cổng là số cổng mặc định, database là basket db, username và password là Postgres và chúng ta nên đưa include error details thành true.
 
 55
 00:04:23,410 --> 00:04:29,650
