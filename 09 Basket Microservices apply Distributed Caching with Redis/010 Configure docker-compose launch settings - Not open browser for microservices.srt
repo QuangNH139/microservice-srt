@@ -1,172 +1,172 @@
 1
 00:00:00,140 --> 00:00:03,410
-In this video I am going to show you a quick tip.
+Trong video này tôi sẽ cho bạn thấy một mẹo nhanh.
 
 2
 00:00:03,410 --> 00:00:09,560
-We will configure docker compose, launch settings and not open the browser for microservices.
+Chúng ta sẽ cấu hình Docker Compose, launch settings và không mở trình duyệt cho các microservices.
 
 3
 00:00:09,680 --> 00:00:15,110
-As you can see the docker compose Yaml file we have one microservices, which is the Catholic API.
+Như bạn có thể thấy, file Docker Compose Yaml, chúng ta có một microservice, đó là Catholic API.
 
 4
 00:00:15,110 --> 00:00:22,280
-And whenever I run the Docker compose profile on Visual Studio, this will be open a blank web page
+Và bất cứ khi nào tôi chạy Docker Compose profile trên Visual Studio, nó sẽ mở một trang web trắng
 
 5
 00:00:22,280 --> 00:00:23,750
-on the browser.
+trên trình duyệt.
 
 6
 00:00:23,750 --> 00:00:27,500
-And this is try to hit localhost and 6060.
+Và nó cố gắng truy cập localhost port 6060.
 
 7
 00:00:27,530 --> 00:00:30,890
-This is the base endpoint for the Catholic microservices.
+Đây là endpoint cơ bản cho microservice Catholic.
 
 8
 00:00:30,890 --> 00:00:32,870
-But we never use this browser.
+Nhưng chúng ta không bao giờ sử dụng trình duyệt này.
 
 9
 00:00:32,870 --> 00:00:39,680
-We always using our postman collection when we are sending Http methods to our microservices.
+Chúng ta luôn sử dụng bộ sưu tập Postman của chúng ta khi gửi các HTTP methods tới microservices của chúng ta.
 
 10
 00:00:39,680 --> 00:00:45,290
-So that means we don't want to open browser for each running in Visual Studio.
+Vậy điều đó có nghĩa là chúng ta không muốn mở trình duyệt cho mỗi lần chạy trong Visual Studio.
 
 11
 00:00:45,290 --> 00:00:46,700
-How we can do that?
+Làm thế nào để chúng ta có thể làm điều đó?
 
 12
 00:00:46,700 --> 00:00:48,470
-Of course we should do that.
+Tất nhiên chúng ta nên làm điều đó.
 
 13
 00:00:48,470 --> 00:00:52,970
-This setting by launch settings Json file for microservices.
+Cài đặt này nằm trong file launch settings Json cho microservices.
 
 14
 00:00:52,970 --> 00:00:59,630
-If you open the Visual Studio, we can come to Docker Compose and right click the Docker compose and
+Nếu bạn mở Visual Studio, chúng ta có thể đi tới Docker Compose và nhấp chuột phải vào Docker Compose
 
 15
 00:00:59,630 --> 00:01:01,130
-open the properties.
+và mở properties.
 
 16
 00:01:01,130 --> 00:01:05,780
-You can see the general we have launch action for the Catholic API.
+Bạn có thể thấy trong phần general, chúng ta có launch action cho Catholic API.
 
 17
 00:01:05,810 --> 00:01:12,590
-Since we have one microservices into our Docker compose, we can one Catholic API, and that we can
+Vì chúng ta có một microservice trong Docker Compose của chúng ta, chúng ta có một Catholic API, và từ đó chúng ta có thể
 
 18
 00:01:12,590 --> 00:01:16,460
-change the launch settings and launch action in here.
+thay đổi launch settings và launch action ở đây.
 
 19
 00:01:16,460 --> 00:01:17,960
-This is launching the browser.
+Đây là cách khởi chạy trình duyệt.
 
 20
 00:01:17,960 --> 00:01:23,090
-And if you expand the dropdown you can see that we don't want to do nothing.
+Và nếu bạn mở rộng dropdown, bạn có thể thấy rằng chúng ta không muốn làm gì cả.
 
 21
 00:01:23,090 --> 00:01:26,510
-We will just want to start these API microservices.
+Chúng ta sẽ chỉ muốn khởi động các API microservices này.
 
 22
 00:01:26,510 --> 00:01:31,160
-And we will send the Http request using the Our postman collection.
+Và chúng ta sẽ gửi HTTP request bằng postman collection của chúng ta.
 
 23
 00:01:31,250 --> 00:01:36,740
-Please set the launch action as a do nothing and apply this change and click the okay button.
+Vui lòng đặt launch action thành do nothing và áp dụng thay đổi này rồi nhấp nút okay.
 
 24
 00:01:36,740 --> 00:01:42,800
-You can also see that under Docker Compose, we have additional launch settings to configure our launch
+Bạn cũng có thể thấy rằng dưới Docker Compose, chúng ta có các cài đặt khởi chạy bổ sung để cấu hình khởi chạy của chúng ta
 
 25
 00:01:42,800 --> 00:01:44,750
-options under the Core Compose.
+các tùy chọn dưới Core Compose.
 
 26
 00:01:44,780 --> 00:01:47,480
-Okay, now let's come to Docker Compose Yaml file.
+Được rồi, bây giờ hãy đến file Docker Compose Yaml.
 
 27
 00:01:47,480 --> 00:01:51,470
-And now I'm going to restart our Docker compose running profile.
+Và bây giờ tôi sẽ khởi động lại profile Docker compose đang chạy của chúng ta.
 
 28
 00:01:51,470 --> 00:01:58,970
-If you stop this docker compose operation and restart this docker compose without debugging, this time
+Nếu bạn dừng hoạt động docker compose này và khởi động lại docker compose mà không debug, lần này
 
 29
 00:01:58,970 --> 00:02:01,580
-I would not expect to open browser.
+tôi sẽ không muốn mở trình duyệt.
 
 30
 00:02:01,760 --> 00:02:06,800
-We will see only containers up and running from the output and container window.
+Chúng ta sẽ chỉ thấy các container chạy và hoạt động từ output và container window.
 
 31
 00:02:06,830 --> 00:02:12,800
-We can see that catalog has started successfully and containers are activated for Catholic API.
+Chúng ta có thể thấy rằng catalog đã khởi động thành công và các container được kích hoạt cho Catholic API.
 
 32
 00:02:12,800 --> 00:02:17,360
-And this time we don't see any opening browser for catalog microservices.
+Và lần này chúng ta không thấy bất kỳ trình duyệt nào mở cho catalog microservices.
 
 33
 00:02:17,360 --> 00:02:20,660
-So this was the quick tip for the launch settings.
+Vậy đó là mẹo nhanh về launch settings.
 
 34
 00:02:20,660 --> 00:02:24,230
-And we will follow the launch settings under the each microservices.
+Và chúng ta sẽ tuân theo launch settings dưới mỗi microservices.
 
 35
 00:02:24,230 --> 00:02:30,290
-For example, under basket API, if you go to properties and open the launch settings, you can come
+Ví dụ, dưới basket API, nếu bạn vào properties và mở launch settings, bạn có thể đến
 
 36
 00:02:30,290 --> 00:02:32,330
-here and change the launch browsers.
+đây và thay đổi launch browsers.
 
 37
 00:02:32,330 --> 00:02:35,000
-False for each running profile.
+False cho mỗi running profile.
 
 38
 00:02:35,000 --> 00:02:43,430
-For example, let's change the Http launch browser as a false and also https launch browser as a false.
+Ví dụ, hãy thay đổi Http launch browser thành false và cũng thay đổi https launch browser thành false.
 
 39
 00:02:43,430 --> 00:02:50,750
-Because we have used http and https profiles when running our microservices, and I'm opening the catalog
+Bởi vì chúng ta đã sử dụng Http và https profiles khi chạy microservices của chúng ta, và tôi đang mở catalog
 
 40
 00:02:50,750 --> 00:02:56,480
-API and go to the properties, launch settings and change the Http running profile.
+API và vào properties, launch settings và thay đổi Http running profile.
 
 41
 00:02:56,480 --> 00:03:02,600
-Launch browser property as a false and Https launch browser property as a false.
+Đặt thuộc tính Launch browser thành false và thuộc tính Https launch browser thành false.
 
 42
 00:03:03,110 --> 00:03:09,950
-As you can see that we have successfully changed the launch browser and we will provide to not opening
+Như bạn có thể thấy, chúng ta đã thay đổi launch browser thành công và chúng ta sẽ không mở
 
 43
 00:03:09,950 --> 00:03:15,260
-browser for microservices due to interaction with our postman collection.
+browser cho microservices vì chúng ta sẽ tương tác với Postman collection của chúng ta.
 
