@@ -160,25 +160,25 @@ Implements.
 
 41
 00:03:10,290 --> 00:03:11,760
-Gateway routing pattern.
+Gateway Routing Pattern.
 
 42
 00:03:11,940 --> 00:03:18,390
-Our shopping web application will consume these APIs using the Refit library combined with a generated
+Ứng dụng web shopping của chúng ta sẽ tiêu thụ các API này bằng cách sử dụng thư viện Refit kết hợp với một
 
 43
 00:03:18,390 --> 00:03:25,890
-Http client factory for efficient network operations and finally containerization and orchestration.
+Http client factory được tạo ra để thực hiện các hoạt động mạng hiệu quả và cuối cùng là containerization và orchestration.
 
 44
 00:03:25,890 --> 00:03:32,070
-We will implement Docker files and Docker compose Yaml files in order to containerize and orchestrate
+Chúng ta sẽ triển khai Docker files và Docker compose Yaml files để containerize và orchestrate
 
 45
 00:03:32,070 --> 00:03:38,730
-our microservices and their backing services ensures that they can be easily managed, scale and deploy
+các microservices của chúng ta và các backing services của chúng đảm bảo rằng chúng có thể được quản lý, mở rộng quy mô và triển khai
 
 46
 00:03:38,730 --> 00:03:39,690
-independently.
+một cách độc lập.
 

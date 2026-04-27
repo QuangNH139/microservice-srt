@@ -1,0 +1,159 @@
+1
+00:00:00,140 --> 00:00:05,510
+Trong video này chúng ta sẽ học về các mẫu kiến trúc đa nền tảng của microservices.
+
+2
+00:00:05,540 --> 00:00:12,650
+Hãy bắt đầu bằng cách phân biệt giữa kiến trúc bên ngoài và bên trong của mỗi microservice.
+
+3
+00:00:12,680 --> 00:00:14,990
+Ở đây bạn có thể thấy kiến trúc bên ngoài.
+
+4
+00:00:14,990 --> 00:00:22,130
+Vì vậy, bên ngoài các microservice hoạt động cùng nhau trong một hệ sinh thái rộng hơn bao gồm các ứng dụng khách tiêu thụ API gateways.
+
+5
+00:00:22,130 --> 00:00:23,750
+Đó là hướng tới các microservice backend bên trong sử dụng các cơ sở dữ liệu riêng của chúng.
+
+6
+00:00:23,750 --> 00:00:29,510
+Tuy nhiên, bên trong, mỗi microservice có thể có các mẫu kiến trúc độc đáo riêng của nó và thậm chí ngăn xếp công nghệ được điều chỉnh cho các trách nhiệm cụ thể mà bạn có thể thấy trong hình ảnh trên slide.
+
+7
+00:00:29,990 --> 00:00:37,190
+Đây là.
+
+8
+00:00:37,190 --> 00:00:44,030
+Kiến trúc layered, vertical slice và clean architecture có thể được áp dụng cho mỗi microservice.
+
+9
+00:00:44,030 --> 00:00:44,660
+Chúng ta có thể gọi những cái này là polyglot microservices.
+
+10
+00:00:44,660 --> 00:00:50,900
+Vậy tại sao chúng ta cần sự đa dạng này.
+
+11
+00:00:51,020 --> 00:00:54,350
+Một microservice đơn giản trên cloud như Catalog và basket microservices có thể không cần cùng một mức độ phức tạp kiến trúc như ordering microservices cần quản lý các quy tắc kinh doanh phức tạp.
+
+12
+00:00:54,350 --> 00:00:56,450
+Vì vậy đó là lý do tại sao nó là về việc chọn đúng công cụ cho công việc.
+
+13
+00:00:57,050 --> 00:01:03,530
+Và nó đảm bảo rằng mỗi microservice đơn giản hoặc phức tạp như yêu cầu độ phức tạp domain của nó.
+
+14
+00:01:03,530 --> 00:01:09,350
+Ví dụ, hãy xem kiến trúc bên trong của catalog và basket microservice của chúng ta.
+
+15
+00:01:09,350 --> 00:01:13,430
+Chúng tận dụng các kiến trúc vertical slice, chia chức năng thành các tính năng độc lập có thể quản lý được.
+
+16
+00:01:13,430 --> 00:01:21,560
+Bạn có thể thấy kiến trúc vertical slice, và mỗi tính năng là một slice tự chứa đựng có thể được phát triển và kiểm tra cách ly và tối ưu hóa cho sự linh hoạt và khả năng bảo trì.
+
+17
+00:01:22,310 --> 00:01:27,170
+Mặt khác, nếu bạn có thể thấy kiến trúc bên trong của discount microservice, discount microservice sử dụng cho kiến trúc layered truyền thống hơn, đây là phương pháp kiến trúc layered.
+
+18
+00:01:27,170 --> 00:01:33,680
+Tổ chức mã thành các lớp với các vai trò cụ thể như presentation, business logic và data access, và thúc đẩy sự tách biệt các mối quan tâm trong một domain ít phức tạp hơn.
+
+19
+00:01:33,680 --> 00:01:34,370
+Vì vậy nếu chúng ta tiếp tục cho ordering microservices, authentic microservices sử dụng clean architecture để quản lý các quy tắc kinh doanh phức tạp.
+
+20
+00:01:34,370 --> 00:01:41,300
+Vì vậy clean architecture, các lớp được phân tách, ví dụ domain layer, application layer, infrastructure và presentation web API layer.
+
+21
+00:01:41,300 --> 00:01:46,760
+Vì vậy kiến trúc này chia các dịch vụ thành các lớp rõ ràng, mỗi cái có trách nhiệm riêng của nó từ các domain entities đến application logic và infrastructure, và cho phép quản lý độ phức tạp một cách hiệu quả và phát triển hệ thống một cách thanh lịch và vượt ra ngoài tất cả các kiến trúc.
+
+22
+00:01:47,960 --> 00:01:54,080
+Chúng tôi áp dụng một phương pháp polyglot có nghĩa là tùy thuộc vào bản chất của microservices, chúng tôi có thể chọn các ngôn ngữ, frameworks hoặc cơ sở dữ liệu khác nhau.
+
+23
+00:01:54,080 --> 00:01:59,960
+Điều đó có nghĩa là bạn có thể thấy rằng trong các microservices này sử dụng F sharp cho nhu cầu lập trình hàm, hoặc Python cho các tác vụ machine learning.
+
+24
+00:01:59,960 --> 00:02:05,690
+Hoặc bạn có thể thấy Java, DotNet, Node.js và nhiều hơn nữa.
+
+25
+00:02:05,690 --> 00:02:10,880
+Vì vậy không có giải pháp một kích cỡ phù hợp cho tất cả trong kiến trúc microservice.
+
+26
+00:02:11,690 --> 00:02:18,140
+Mỗi dịch vụ là một diễn viên độc đáo trong hệ sinh thái của chúng tôi, và chúng tôi sẽ chọn các mẫu kiến trúc phù hợp nhất với các yêu cầu riêng lẻ và bản chất của công việc nó thực hiện.
+
+27
+00:02:18,140 --> 00:02:21,080
+in order to manage complex business rules.
+
+28
+00:02:21,080 --> 00:02:28,130
+So clean architecture, segregated layers, for example domain layer, application layer infrastructure
+
+29
+00:02:28,130 --> 00:02:30,350
+and presentation web API layer.
+
+30
+00:02:30,350 --> 00:02:37,370
+So this architecture divides into services, into clear layers, and each with its own responsibility
+
+31
+00:02:37,370 --> 00:02:44,150
+from domain entities to application logic and the infrastructure, and enabling to manage complexity
+
+32
+00:02:44,150 --> 00:02:49,880
+effectively and evolving the system gracefully and beyond all architectures.
+
+33
+00:02:49,880 --> 00:02:55,850
+We embrace a polyglot approach that means, depending on the nature of the microservices, we might
+
+34
+00:02:55,850 --> 00:02:59,480
+choose different languages, frameworks, or databases.
+
+35
+00:02:59,480 --> 00:03:05,840
+That means you can see that in these microservices using F sharp for functional programming needs,
+
+36
+00:03:05,840 --> 00:03:08,690
+or Python for machine learning tasks.
+
+37
+00:03:08,690 --> 00:03:13,490
+Or you can see Java DotNet, Node.js and so on.
+
+38
+00:03:13,490 --> 00:03:17,780
+So there is no one size fit all in microservice architecture.
+
+39
+00:03:17,780 --> 00:03:23,660
+Each service is a unique actor in our ecosystem, and we will select the architecture patterns that
+
+40
+00:03:23,660 --> 00:03:28,520
+best fits in individual requirements and the nature of the task it performs.

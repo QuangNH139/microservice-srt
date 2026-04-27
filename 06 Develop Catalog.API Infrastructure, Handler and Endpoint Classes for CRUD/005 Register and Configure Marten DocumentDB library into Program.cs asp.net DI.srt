@@ -160,21 +160,21 @@ But for now let's copy and paste this database connection string and we will con
 
 41
 00:03:23,120 --> 00:03:26,030
-PostgreSQL container on our Docker environment.
+Container PostgreSQL trên môi trường Docker của chúng ta.
 
 42
 00:03:26,030 --> 00:03:28,280
-So we have specified the connection string.
+Vậy chúng ta đã chỉ định chuỗi kết nối.
 
 43
 00:03:28,280 --> 00:03:35,060
-And this will be retrieving from our Program.cs when configuring the Martin as a connection string.
+Và cái này sẽ được lấy từ Program.cs của chúng ta khi cấu hình Marten như một chuỗi kết nối.
 
 44
 00:03:35,060 --> 00:03:41,930
-So we have successfully registered and configured Martin Library into our catalog microservices to interact
+Vậy chúng ta đã đăng ký và cấu hình thành công Marten Library vào catalog microservice của chúng ta để tương tác
 
 45
 00:03:41,930 --> 00:03:47,240
-with the PostgreSQL database as a document database and leveraging the Martin's capabilities.
+với cơ sở dữ liệu PostgreSQL như một document database và tận dụng các khả năng của Marten.
 

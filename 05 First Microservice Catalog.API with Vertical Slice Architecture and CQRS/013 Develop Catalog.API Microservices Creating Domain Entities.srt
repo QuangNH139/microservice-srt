@@ -1,178 +1,178 @@
 1
 00:00:00,200 --> 00:00:07,250
-In this video, we are going to start to develop catalog API microservices with creating domain entities
+Trong video này, chúng ta sẽ bắt đầu phát triển catalog API microservices bằng cách tạo domain entities
 
 2
 00:00:07,250 --> 00:00:08,540
-in modules folder.
+trong modules folder.
 
 3
 00:00:08,930 --> 00:00:14,000
-So we are in here developing catalog microservices and we will focus on the domain entities.
+Vậy chúng ta đang phát triển catalog microservices và chúng ta sẽ tập trung vào domain entities.
 
 4
 00:00:14,000 --> 00:00:17,090
-We will create domain entities under the modules folder.
+Chúng ta sẽ tạo domain entities dưới modules folder.
 
 5
 00:00:17,090 --> 00:00:22,790
-So far we have finished the domain and technical analyze and understand the pattern and principles that
+Cho đến nay chúng ta đã hoàn thành phân tích domain và kỹ thuật và hiểu được các mẫu và nguyên tắc mà
 
 6
 00:00:22,790 --> 00:00:24,200
-we use during the course.
+chúng ta sẽ sử dụng trong khóa học này.
 
 7
 00:00:24,200 --> 00:00:30,800
-So now it is time to develop our catalog microservices and we will focus on creating product entity
+Vậy bây giờ là lúc phát triển catalog microservices của chúng ta và chúng ta sẽ tập trung vào việc tạo product entity
 
 8
 00:00:30,800 --> 00:00:32,540
-for our catalog microservices.
+cho catalog microservices của chúng ta.
 
 9
 00:00:32,540 --> 00:00:35,900
-Here you can see the our catalog microservices domain model.
+Ở đây bạn có thể thấy domain model của catalog microservices của chúng ta.
 
 10
 00:00:35,900 --> 00:00:40,700
-We will create product entity and this will be one to end relation with category.
+Chúng ta sẽ tạo product entity và đây sẽ là mối quan hệ một-nhiều với category.
 
 11
 00:00:40,880 --> 00:00:42,590
-So let's take an action.
+Vậy hãy bắt đầu thực hiện.
 
 12
 00:00:42,590 --> 00:00:45,830
-Please open the Visual Studio 2022.
+Vui lòng mở Visual Studio 2022.
 
 13
 00:00:45,830 --> 00:00:52,250
-And we are going to start by adding modules folder into our project folder structure.
+Và chúng ta sẽ bắt đầu bằng cách thêm modules folder vào cấu trúc thư mục dự án của chúng ta.
 
 14
 00:00:52,250 --> 00:01:00,080
-So if you come to catalog API and right click Add New folder which name is modules.
+Vậy nếu bạn vào catalog API và nhấp chuột phải Add New folder có tên là modules.
 
 15
 00:01:00,080 --> 00:01:03,800
-And after that I'm going to add a new class under the modules folder.
+Và sau đó tôi sẽ thêm một class mới dưới modules folder.
 
 16
 00:01:03,800 --> 00:01:06,950
-Right click Add New Item.
+Nhấp chuột phải Add New Item.
 
 17
 00:01:07,040 --> 00:01:11,150
-And we are going to create a product C-sharp class.
+Và chúng ta sẽ tạo một class C# product.
 
 18
 00:01:12,750 --> 00:01:19,530
-Here you can see that we will create a models folder under the Catholic API, and under the models we
+Ở đây bạn có thể thấy rằng chúng ta sẽ tạo một models folder dưới catalog API, và dưới models chúng ta
 
 19
 00:01:19,530 --> 00:01:22,770
-will add a product key domain entity class.
+sẽ thêm class product domain entity.
 
 20
 00:01:22,800 --> 00:01:27,240
-Now we are going to implement this product entity class product domain.
+Bây giờ chúng ta sẽ triển khai class product entity này - class product domain.
 
 21
 00:01:27,240 --> 00:01:32,280
-Entity class will include ID name category description and so on.
+Entity class sẽ bao gồm ID, name, category, description và những thứ khác.
 
 22
 00:01:32,280 --> 00:01:35,400
-So we will start to implement this kind of properties.
+Vậy chúng ta sẽ bắt đầu triển khai các properties này.
 
 23
 00:01:35,430 --> 00:01:37,920
-The ID property should be guided.
+Property ID phải là Guid.
 
 24
 00:01:39,640 --> 00:01:45,610
-And after that we will set the name and I'm going to give the default value.
+Và sau đó chúng ta sẽ đặt name và tôi sẽ cung cấp giá trị mặc định.
 
 25
 00:01:47,290 --> 00:01:54,340
-And after that we will define list string category.
+Và sau đó chúng ta sẽ định nghĩa list string category.
 
 26
 00:01:54,370 --> 00:01:57,580
-This will be one to end relationships.
+Đây sẽ là mối quan hệ một-nhiều.
 
 27
 00:01:59,320 --> 00:02:00,820
-Here you can see the category.
+Ở đây bạn có thể thấy category.
 
 28
 00:02:00,820 --> 00:02:09,430
-And we will create a new category list when the product is initializing.
+Và chúng ta sẽ tạo một danh sách category mới khi product được khởi tạo.
 
 29
 00:02:09,430 --> 00:02:12,250
-And after that I'm going to add a description.
+Và sau đó tôi sẽ thêm description.
 
 30
 00:02:12,250 --> 00:02:20,860
-Again I'm going to provide a default value after description property I'm going to define image file
+Lại một lần nữa tôi sẽ cung cấp giá trị mặc định. Sau property description tôi sẽ định nghĩa property image file
 
 31
 00:02:20,860 --> 00:02:21,670
-property.
+.
 
 32
 00:02:22,180 --> 00:02:26,830
-Again it will be string and the name of the property will be image file.
+Lại một lần nữa nó sẽ là string và tên của property sẽ là image file.
 
 33
 00:02:26,830 --> 00:02:31,570
-So we can again give the default value of the image file property.
+Vậy chúng ta có thể lại cung cấp giá trị mặc định cho property image file.
 
 34
 00:02:31,570 --> 00:02:34,690
-And lastly we will define.
+Và cuối cùng chúng ta sẽ định nghĩa
 
 35
 00:02:36,610 --> 00:02:39,970
-Decimal property, which will be the price.
+property Decimal, đó sẽ là price.
 
 36
 00:02:40,090 --> 00:02:41,890
-This will be the product price.
+Đây sẽ là giá sản phẩm.
 
 37
 00:02:43,030 --> 00:02:43,840
-Okay.
+Được rồi.
 
 38
 00:02:43,870 --> 00:02:48,010
-As you can see that we have finished the implementation of product domain.
+Như bạn có thể thấy, chúng ta đã hoàn thành việc triển khai class product domain.
 
 39
 00:02:48,010 --> 00:02:54,130
-Entity class and product class includes properties like ID, name, category and others.
+Entity class và product class bao gồm các properties như ID, name, category và những cái khác.
 
 40
 00:02:54,130 --> 00:03:01,960
-Product and category has one to many relationships and this class will be our document table on the
+Product và category có mối quan hệ một-nhiều và class này sẽ là document table của chúng ta trên
 
 41
 00:03:01,960 --> 00:03:03,250
-document database.
+cơ sở dữ liệu tài liệu.
 
 42
 00:03:03,250 --> 00:03:10,450
-These ID property will act as a our document ID identified in the document database.
+Thuộc tính ID này sẽ hoạt động như là ID tài liệu của chúng ta được xác định trong cơ sở dữ liệu tài liệu.
 
 43
 00:03:10,450 --> 00:03:15,550
-That means this ID will be document ID that we will manage by database.
+Điều đó có nghĩa là ID này sẽ là ID tài liệu mà chúng ta sẽ quản lý bởi cơ sở dữ liệu.
 
 44
 00:03:15,550 --> 00:03:21,220
-And remember that we will use PostgreSQL with Martin Library for this catalog.
+Và hãy nhớ rằng chúng ta sẽ sử dụng PostgreSQL với thư viện Marten cho catalog này.
 
 45
 00:03:21,220 --> 00:03:22,240
@@ -180,11 +180,11 @@ Microservices.
 
 46
 00:03:22,240 --> 00:03:30,100
-So in the PostgreSQL database we should be transform this PostgreSQL database as a document database
+Vậy trong cơ sở dữ liệu PostgreSQL, chúng ta nên chuyển đổi cơ sở dữ liệu PostgreSQL này thành một cơ sở dữ liệu tài liệu
 
 47
 00:03:30,100 --> 00:03:36,310
-that will provide by the Martin converting this PostgreSQL database to the dotnet transactional document
+được cung cấp bởi Marten, chuyển đổi cơ sở dữ liệu PostgreSQL này thành .NET transactional document
 
 48
 00:03:36,310 --> 00:03:36,670
@@ -192,25 +192,25 @@ DB.
 
 49
 00:03:36,820 --> 00:03:44,860
-So PostgreSQL has Json column features that allowing us to store and query our data as a Json document.
+PostgreSQL có các tính năng cột Json cho phép chúng ta lưu trữ và truy vấn dữ liệu của chúng ta dưới dạng Json document.
 
 50
 00:03:44,860 --> 00:03:50,890
-So it combines the flexibility of document database with the reliability of the relational PostgreSQL
+Vì vậy, nó kết hợp tính linh hoạt của cơ sở dữ liệu tài liệu với độ tin cậy của cơ sở dữ liệu PostgreSQL quan hệ
 
 51
 00:03:50,890 --> 00:03:51,670
-database.
+.
 
 52
 00:03:51,670 --> 00:03:58,090
-So this setup is ideal for handling complex data structures like our product entity, which includes
+Vì vậy, cấu hình này là lý tưởng để xử lý các cấu trúc dữ liệu phức tạp như thực thể sản phẩm của chúng ta, bao gồm
 
 53
 00:03:58,090 --> 00:04:03,910
-a list of the categories and other varied data types into document entity object.
+một danh sách các danh mục và các loại dữ liệu khác vào đối tượng thực thể tài liệu.
 
 54
 00:04:03,910 --> 00:04:10,120
-As you can see that we have finished the development of product document entity for our catalog microservices.
+Như bạn có thể thấy, chúng ta đã hoàn thành việc phát triển thực thể tài liệu sản phẩm cho catalog microservices của chúng ta.
 

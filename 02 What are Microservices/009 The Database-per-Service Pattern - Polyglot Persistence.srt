@@ -1,34 +1,34 @@
 1
 00:00:00,170 --> 00:00:06,830
-In this video, we are going to learn one of two fundamental design patterns of microservice architecture,
+Trong video này, chúng ta sẽ học về một trong hai mẫu thiết kế cơ bản của kiến trúc microservice,
 
 2
 00:00:06,830 --> 00:00:09,950
-which is the database per service pattern.
+đó là mẫu database per service.
 
 3
 00:00:11,240 --> 00:00:16,490
-One of the core characteristic of the microservice architecture is the loosely coupling services.
+Một trong những đặc điểm cốt lõi của kiến trúc microservice là các service được liên kết lỏng lẻo với nhau.
 
 4
 00:00:16,520 --> 00:00:20,930
-For that reason, every service should have its own database.
+Vì lý do đó, mỗi service nên có cơ sở dữ liệu riêng của nó.
 
 5
 00:00:20,960 --> 00:00:24,830
-It can be a polyglot persistence among the microservices.
+Nó có thể là polyglot persistence giữa các microservices.
 
 6
 00:00:26,870 --> 00:00:29,630
-Let's think about our e-commerce application.
+Hãy suy nghĩ về ứng dụng e-commerce của chúng ta.
 
 7
 00:00:29,630 --> 00:00:37,460
-We will have product shopping cart and ordering microservices that each services data in their own database.
+Chúng ta sẽ có các microservice về sản phẩm, giỏ hàng và đơn hàng, mỗi service lưu trữ dữ liệu của mình trong cơ sở dữ liệu riêng.
 
 8
 00:00:37,460 --> 00:00:41,300
-And any changes to one database don't impact the other.
+Và bất kỳ thay đổi nào trên một cơ sở dữ liệu không ảnh hưởng đến cơ sở dữ liệu khác.
 
 9
 00:00:41,300 --> 00:00:42,320
@@ -36,43 +36,43 @@ Microservices.
 
 10
 00:00:45,650 --> 00:00:50,240
-The services database can't be accessed directly by other microservices.
+Cơ sở dữ liệu của mỗi service không thể được truy cập trực tiếp bởi các microservices khác.
 
 11
 00:00:50,270 --> 00:00:55,820
-Each services persistent data can only be accessed via Rest APIs.
+Dữ liệu persistent của mỗi service chỉ có thể được truy cập thông qua REST APIs.
 
 12
 00:00:57,960 --> 00:00:59,820
-So database per service.
+Vậy đó là database per service.
 
 13
 00:00:59,820 --> 00:01:07,020
-Microservice provides many benefits, especially for evolve rapidly and support massive scale systems.
+Microservice mang lại nhiều lợi ích, đặc biệt là để phát triển nhanh chóng và hỗ trợ các hệ thống quy mô lớn.
 
 14
 00:01:07,050 --> 00:01:10,770
-Let's talk about the benefits of database per service pattern.
+Hãy nói về các lợi ích của mẫu database per service.
 
 15
 00:01:11,610 --> 00:01:18,780
-The first benefit is data schema changes made easy without impacting other microservices, and each
+Lợi ích đầu tiên là những thay đổi về schema dữ liệu trở nên dễ dàng mà không ảnh hưởng đến các microservices khác, và mỗi
 
 16
 00:01:18,780 --> 00:01:21,390
-database can scale independently.
+cơ sở dữ liệu có thể scale một cách độc lập.
 
 17
 00:01:21,960 --> 00:01:27,090
-Microservices domain data is encapsulated within the microservices itself.
+Dữ liệu domain của microservice được đóng gói trong chính microservice đó.
 
 18
 00:01:28,080 --> 00:01:33,420
-If one of the database server is down, this will not affect the other services.
+Nếu một trong những máy chủ cơ sở dữ liệu bị down, điều này sẽ không ảnh hưởng đến các service khác.
 
 19
 00:01:34,140 --> 00:01:41,220
-Also, polyglot data persistence gives ability to select the best optimized storage needs as per the
+Ngoài ra, polyglot data persistence mang lại khả năng lựa chọn bộ lưu trữ được tối ưu hóa tốt nhất phù hợp với nhu cầu của
 
 20
 00:01:41,220 --> 00:01:42,210
@@ -80,45 +80,45 @@ microservices.
 
 21
 00:01:44,460 --> 00:01:49,650
-So if you see the image on the slide, that is the example of microservice architecture of e-commerce
+Vậy nếu bạn thấy hình ảnh trên slide, đó là ví dụ về kiến trúc microservice của ứng dụng
 
 22
 00:01:49,650 --> 00:01:50,490
-application.
+e-commerce.
 
 23
 00:01:50,490 --> 00:01:58,620
-We will have product shopping cart and ordering microservices that each services data in their own database.
+Chúng ta sẽ có các microservice về sản phẩm, giỏ hàng và đơn hàng, mỗi service lưu trữ dữ liệu của mình trong cơ sở dữ liệu riêng.
 
 24
 00:01:59,280 --> 00:02:06,240
-The first microservice is product microservices, the product microservice using NoSQL document database
+Microservice đầu tiên là product microservice, product microservice sử dụng cơ sở dữ liệu tài liệu NoSQL
 
 25
 00:02:06,240 --> 00:02:12,990
-for storing catalog related data, which is storing Json objects to accommodate high volume of read
+để lưu trữ dữ liệu liên quan đến catalog, nó lưu trữ các đối tượng Json để hỗ trợ khối lượng lớn các
 
 26
 00:02:12,990 --> 00:02:13,920
-operations.
+hoạt động đọc.
 
 27
 00:02:15,680 --> 00:02:18,200
-And the second microservice is shopping cart.
+Và microservice thứ hai là shopping cart.
 
 28
 00:02:18,230 --> 00:02:25,100
-The shopping cart microservice using a distributed cache that supports it is simple key value data store.
+Shopping cart microservice sử dụng distributed cache hỗ trợ bộ lưu trữ dữ liệu key value đơn giản.
 
 29
 00:02:25,970 --> 00:02:28,850
-And the last microservice is ordering microservices.
+Và microservice cuối cùng là ordering microservice.
 
 30
 00:02:28,880 --> 00:02:35,270
-The ordering microservice using a relational database to accommodate to reach relational structure of
+Ordering microservice sử dụng cơ sở dữ liệu quan hệ để hỗ trợ cấu trúc quan hệ phức tạp của
 
 31
 00:02:35,270 --> 00:02:36,740
-its underlying data.
+dữ liệu cơ bản của nó.
 

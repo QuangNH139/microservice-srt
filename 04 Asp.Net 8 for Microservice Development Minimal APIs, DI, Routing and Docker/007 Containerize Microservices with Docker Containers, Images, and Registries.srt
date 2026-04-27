@@ -1,82 +1,82 @@
 1
 00:00:00,200 --> 00:00:06,920
-In this video, we are going to learn how containerize and orchestrate microservices using the Docker
+Trong video này, chúng ta sẽ học cách containerize và orchestrate microservices bằng cách sử dụng Docker
 
 2
 00:00:06,920 --> 00:00:08,119
-and Docker compose.
+và Docker compose.
 
 3
 00:00:08,690 --> 00:00:10,550
-Let's start with what is Docker?
+Hãy bắt đầu với câu hỏi Docker là gì?
 
 4
 00:00:10,580 --> 00:00:16,100
-Docker is an open source platform for developing, shipping and running the applications.
+Docker là một nền tảng mã nguồn mở để phát triển, vận chuyển và chạy các ứng dụng.
 
 5
 00:00:16,550 --> 00:00:21,950
-We can separate your application from your infrastructure so you can deliver software quickly.
+Chúng ta có thể tách biệt ứng dụng của bạn khỏi cơ sở hạ tầng của bạn để bạn có thể cung cấp phần mềm nhanh chóng.
 
 6
 00:00:22,460 --> 00:00:27,440
-The advantage of Docker for shipping, testing and deploying code quickly.
+Lợi thế của Docker là vận chuyển, kiểm tra và triển khai mã nhanh chóng.
 
 7
 00:00:28,070 --> 00:00:33,920
-It is significantly reduced the delay between writing code and running it on production.
+Nó đã giảm đáng kể thời gian chờ đợi giữa việc viết mã và chạy nó trên production.
 
 8
 00:00:34,580 --> 00:00:40,850
-Automating the deployment of applications as portable, self-sufficient containers that can run on the
+Tự động hóa việc triển khai các ứng dụng dưới dạng các container portable, tự cung cấp có thể chạy trên
 
 9
 00:00:40,850 --> 00:00:42,740
-cloud or on premises.
+cloud hoặc on premises.
 
 10
 00:00:43,040 --> 00:00:48,080
-Docker containers can run anywhere in your local computer to the cloud systems.
+Docker containers có thể chạy ở bất kỳ nơi nào từ máy tính cục bộ của bạn đến các hệ thống cloud.
 
 11
 00:00:48,080 --> 00:00:53,060
-Docker image containers can run natively on Linux and Windows machines.
+Docker image containers có thể chạy natively trên các máy Linux và Windows.
 
 12
 00:00:53,060 --> 00:00:57,440
-Docker is de facto standard for containerization of microservices.
+Docker là tiêu chuẩn de facto cho containerization của microservices.
 
 13
 00:00:57,920 --> 00:01:04,640
-So what are the Docker components and how it can use the Docker components are Docker containers, images
+Vậy các Docker components là gì và cách sử dụng Docker components bao gồm Docker containers, images
 
 14
 00:01:04,640 --> 00:01:05,960
-and registries.
+và registries.
 
 15
 00:01:06,320 --> 00:01:13,460
-Developers, developers and packages application with its dependencies into a container image that is
+Các developers đóng gói ứng dụng với các dependencies của nó vào một container image, đó là
 
 16
 00:01:13,490 --> 00:01:18,920
-a static representation of the application with its configuration and dependencies.
+một biểu diễn tĩnh của ứng dụng cùng với cấu hình và dependencies của nó.
 
 17
 00:01:19,880 --> 00:01:26,570
-In order to run the application, the application's image is instantiated to create a container which
+Để chạy ứng dụng, image của ứng dụng được khởi tạo để tạo ra một container sẽ
 
 18
 00:01:26,570 --> 00:01:28,550
-will be running on the Docker host.
+chạy trên Docker host.
 
 19
 00:01:28,580 --> 00:01:35,420
-We should always store the images into Docker registries, so that means we should store the image in
+Chúng ta nên luôn lưu trữ các images vào Docker registries, điều đó có nghĩa là chúng ta nên lưu trữ image vào
 
 20
 00:01:35,420 --> 00:01:41,390
-registry, which is a library of images, and it is needed when deploying application to the production
+registry, là một thư viện của các images, và nó là cần thiết khi triển khai ứng dụng tới production
 
 21
 00:01:41,390 --> 00:01:42,500
@@ -84,47 +84,47 @@ orchestrators.
 
 22
 00:01:43,070 --> 00:01:48,800
-Docker image stores a public registry like Docker Hub or Azure Container Registry.
+Docker image được lưu trữ trong public registry như Docker Hub hoặc Azure Container Registry.
 
 23
 00:01:48,830 --> 00:01:54,230
-Developer create container in local and push the image to the Docker registry.
+Developer tạo container cục bộ và đẩy image lên Docker registry.
 
 24
 00:01:54,590 --> 00:02:01,430
-Developer download existing image from the registry and create container from the image in local environment.
+Developer tải xuống existing image từ registry và tạo container từ image trong môi trường cục bộ.
 
 25
 00:02:02,450 --> 00:02:08,030
-So here you can see the application containerization with Docker and orchestration with Docker compose.
+Vậy ở đây bạn có thể thấy containerization ứng dụng với Docker và orchestration với Docker compose.
 
 26
 00:02:08,060 --> 00:02:13,240
-The first step is we should always write docker file for our application.
+Bước đầu tiên là chúng ta nên luôn viết docker file cho ứng dụng của chúng ta.
 
 27
 00:02:13,240 --> 00:02:17,290
-It is a configuration file is representing a Docker configurations.
+Nó là một file cấu hình đại diện cho Docker configurations.
 
 28
 00:02:17,320 --> 00:02:23,260
-And the second step is build the application with this docker file and create the Docker image.
+Và bước thứ hai là build ứng dụng với docker file này và tạo Docker image.
 
 29
 00:02:23,570 --> 00:02:29,660
-And after that, we can run this image on any machine and create running container, which is the Docker
+Và sau đó, chúng ta có thể chạy image này trên bất kỳ máy nào và tạo running container, đó là Docker
 
 30
 00:02:29,660 --> 00:02:31,700
-containers from the Docker image.
+containers từ Docker image.
 
 31
 00:02:32,030 --> 00:02:38,780
-So lastly, we can orchestrate the whole microservice application with using Docker and Kubernetes.
+Vậy cuối cùng, chúng ta có thể orchestrate toàn bộ ứng dụng microservice bằng cách sử dụng Docker và Kubernetes.
 
 32
 00:02:38,810 --> 00:02:44,510
-This kind of orchestration, the idea is that the orchestrating the container environment and container
+Loại orchestration này, ý tưởng là orchestrating container environment và container
 
 33
 00:02:44,510 --> 00:02:45,170
@@ -132,19 +132,19 @@ images.
 
 34
 00:02:45,170 --> 00:02:47,360
-Here you can see the steps on the slide.
+Ở đây bạn có thể thấy các bước trên slide.
 
 35
 00:02:47,390 --> 00:02:52,580
-The first step is creating a Docker file which including configuration about the application.
+Bước đầu tiên là tạo Docker file bao gồm cấu hình về ứng dụng.
 
 36
 00:02:52,580 --> 00:02:58,010
-And after that we can build the application and create the Docker image from the Docker files.
+Và sau đó chúng ta có thể build ứng dụng và tạo Docker image từ Docker files.
 
 37
 00:02:58,010 --> 00:03:04,520
-And after that, we can run this image on any machine and create running Docker containers from the
+Và sau đó, chúng ta có thể chạy image này trên bất kỳ máy nào và tạo running Docker containers từ
 
 38
 00:03:04,520 --> 00:03:05,450
@@ -152,29 +152,29 @@ Docker image.
 
 39
 00:03:05,450 --> 00:03:07,850
-So this is the containerization step.
+Vậy đây là bước containerization.
 
 40
 00:03:07,850 --> 00:03:12,260
-And after that we can orchestration step using the Docker compose.
+Và sau đó chúng ta có thể thực hiện bước orchestration bằng cách sử dụng Docker compose.
 
 41
 00:03:12,290 --> 00:03:17,690
-Docker compose is a tool for defining and running multi-container Docker applications.
+Docker Compose là một công cụ để định nghĩa và chạy các ứng dụng Docker multi-container.
 
 42
 00:03:17,690 --> 00:03:24,770
-With using Docker Compose, we can use a YAML file in order to configure our application services for
+Bằng cách sử dụng Docker Compose, chúng ta có thể sử dụng một tệp YAML để cấu hình các dịch vụ ứng dụng của chúng ta cho
 
 43
 00:03:24,770 --> 00:03:26,300
-multi-container environments.
+các môi trường multi-container.
 
 44
 00:03:26,330 --> 00:03:32,330
-After that, with a single docker command which is the docker compose up command, we can create and
+Sau đó, với một lệnh docker duy nhất đó là lệnh docker compose up, chúng ta có thể tạo và
 
 45
 00:03:32,330 --> 00:03:35,570
-start all the microservices from our configurations.
+khởi động tất cả các microservices từ các cấu hình của chúng ta.
 

@@ -1,68 +1,68 @@
 1
 00:00:00,110 --> 00:00:03,800
-In this video we are going to learn what are microservices?
+Trong video này chúng ta sẽ tìm hiểu microservices là gì?
 
 2
 00:00:04,070 --> 00:00:08,510
-Microservices are small, independent and loosely coupled services.
+Microservices là những dịch vụ nhỏ, độc lập và được kết nối lỏng lẻo với nhau.
 
 3
 00:00:08,510 --> 00:00:15,230
-So microservices are small business services that can work together and can be deployed independently
+Vậy microservices là những dịch vụ kinh doanh nhỏ có thể hoạt động cùng nhau và có thể được triển khai độc lập
 
 4
 00:00:15,230 --> 00:00:16,400
-and autonomously.
+và tự chủ.
 
 5
 00:00:17,540 --> 00:00:23,030
-Each service has a separate code base, which can be managed by a small development team.
+Mỗi dịch vụ có một codebase riêng biệt, có thể được quản lý bởi một nhóm phát triển nhỏ.
 
 6
 00:00:23,630 --> 00:00:28,760
-A single small team of developers can write and maintain a particular microservices.
+Một nhóm phát triển nhỏ có thể viết và duy trì một microservice cụ thể.
 
 7
 00:00:29,950 --> 00:00:33,490
-Microservices communicates with each other over the network.
+Microservices giao tiếp với nhau thông qua mạng.
 
 8
 00:00:33,490 --> 00:00:34,180
-Protocols.
+Giao thức.
 
 9
 00:00:34,180 --> 00:00:38,680
-Services communicate with each other by using well defined APIs.
+Các dịch vụ giao tiếp với nhau bằng cách sử dụng các API được định nghĩa rõ ràng.
 
 10
 00:00:38,950 --> 00:00:43,720
-Internal implementation details of each service are hidden from the other services.
+Chi tiết triển khai nội bộ của mỗi dịch vụ được ẩn khỏi các dịch vụ khác.
 
 11
 00:00:44,950 --> 00:00:49,870
-One of the biggest advantages is that they can be deployed independently.
+Một trong những lợi thế lớn nhất là chúng có thể được triển khai độc lập.
 
 12
 00:00:49,900 --> 00:00:52,630
-Microservices can be deployed independently.
+Microservices có thể được triển khai độc lập.
 
 13
 00:00:52,840 --> 00:00:59,350
-A team can update an existing microservice without rebuilding and redeploying the entire application.
+Một nhóm có thể cập nhật một microservice hiện tại mà không cần xây dựng lại và triển khai lại toàn bộ ứng dụng.
 
 14
 00:01:00,640 --> 00:01:05,440
-Microservices do not need to share the same technology stack libraries or frameworks.
+Microservices không cần chia sẻ cùng một technology stack, thư viện hay framework.
 
 15
 00:01:05,470 --> 00:01:11,170
-Microservice can work with many different technology stacks, which is technology agnostic.
+Microservice có thể hoạt động với nhiều technology stack khác nhau, không phụ thuộc vào công nghệ.
 
 16
 00:01:12,310 --> 00:01:18,820
-Microservices has its own database or persistence layer that is not shared with other services.
+Microservices có database hoặc persistence layer riêng của nó không được chia sẻ với các dịch vụ khác.
 
 17
 00:01:18,850 --> 00:01:25,420
-This is different from the traditional model where a separate data layer handles data persistence.
+Điều này khác với mô hình truyền thống nơi một data layer riêng biệt xử lý việc lưu trữ dữ liệu.
 

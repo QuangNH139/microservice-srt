@@ -1,14 +1,14 @@
 1
 00:00:00,140 --> 00:00:05,420
-In this video we are going to do technical analysis of the catalog microservices.
+Trong video này chúng ta sẽ thực hiện phân tích kỹ thuật của catalog microservices.
 
 2
 00:00:05,510 --> 00:00:09,800
-So we will explore the technical analysis in four key areas.
+Vậy chúng ta sẽ khám phá phân tích kỹ thuật trong bốn lĩnh vực chính.
 
 3
 00:00:09,800 --> 00:00:16,730
-These are the application architecture, style, pattern and principles libraries, NuGet packages and
+Đó là application architecture, style, pattern và principles libraries, NuGet packages và
 
 4
 00:00:16,730 --> 00:00:18,230
@@ -16,115 +16,115 @@ project folder structure.
 
 5
 00:00:18,880 --> 00:00:24,430
-So we will explore the architecture, pattern, libraries and folder structure in the technical analysis
+Vậy chúng ta sẽ khám phá architecture, pattern, libraries và folder structure trong phân tích kỹ thuật
 
 6
 00:00:24,430 --> 00:00:26,110
-of the catalog microservices.
+của catalog microservices.
 
 7
 00:00:26,410 --> 00:00:30,430
-Let's start with the first one which is the application architecture style.
+Hãy bắt đầu với cái đầu tiên đó là application architecture style.
 
 8
 00:00:30,640 --> 00:00:36,490
-As the application architecture style of catalog microservices, we will use vertical slice architecture.
+Với tư cách là application architecture style của catalog microservices, chúng ta sẽ sử dụng vertical slice architecture.
 
 9
 00:00:36,910 --> 00:00:39,580
-So we are implementing a vertical slice architecture.
+Vậy chúng ta đang triển khai vertical slice architecture.
 
 10
 00:00:39,580 --> 00:00:46,210
-This approach organizes our code into feature folders, with each feature encapsulated in a single C
+Phương pháp này tổ chức code của chúng ta thành feature folders, với mỗi feature được đóng gói trong một C
 
 11
 00:00:46,240 --> 00:00:49,510
-sharp file and containing all necessary classes.
+sharp file duy nhất và chứa tất cả các class cần thiết.
 
 12
 00:00:49,510 --> 00:00:52,690
-So you can see the traditional layered architecture.
+Vậy bạn có thể thấy traditional layered architecture.
 
 13
 00:00:52,690 --> 00:01:00,040
-In vertical slice architecture, we can encapsulate the features with including different layer perspectives.
+Trong vertical slice architecture, chúng ta có thể đóng gói các features bao gồm các tầng khác nhau.
 
 14
 00:01:00,960 --> 00:01:07,770
-So in the second analyze is pattern and principles that we will use catalog microservices.
+Vậy ở bước phân tích thứ hai là pattern và principles mà chúng ta sẽ sử dụng trong catalog microservices.
 
 15
 00:01:07,770 --> 00:01:14,220
-Let me shortly explain these pattern principles that we used in our catalog microservices.
+Hãy để tôi giải thích ngắn gọn những pattern principles mà chúng ta đã sử dụng trong catalog microservices của chúng ta.
 
 16
 00:01:14,220 --> 00:01:21,360
-The first one is six design pattern command query responsibility segregation divides the operation into
+Cái đầu tiên là CQRS pattern, Command Query Responsibility Segregation chia các operation thành
 
 17
 00:01:21,360 --> 00:01:22,470
-commands and queries.
+commands và queries.
 
 18
 00:01:22,470 --> 00:01:27,570
-Or we can say write and read operations promoting the flexibility and scalability.
+Hoặc chúng ta có thể nói write và read operations, thúc đẩy tính linh hoạt và khả năng mở rộng.
 
 19
 00:01:27,930 --> 00:01:30,660
-And the second pattern is mediator pattern.
+Và pattern thứ hai là Mediator Pattern.
 
 20
 00:01:30,660 --> 00:01:37,920
-It facilitates object interaction through the mediator, reducing the direct dependencies and simplifying
+Nó tạo điều kiện cho sự tương tác của các object thông qua mediator, giảm các dependency trực tiếp và đơn giản hóa
 
 21
 00:01:37,920 --> 00:01:41,310
-communications, especially in complex workloads.
+communications, đặc biệt là trong các workloads phức tạp.
 
 22
 00:01:41,670 --> 00:01:45,720
-And we will also use dependency injection in ASP.Net core.
+Và chúng ta cũng sẽ sử dụng dependency injection trong ASP.NET Core.
 
 23
 00:01:45,720 --> 00:01:52,800
-Dependency injection is a core feature allowing to inject dependencies rather than hard coding them.
+Dependency injection là một tính năng cốt lõi cho phép inject dependencies thay vì hard coding chúng.
 
 24
 00:01:52,920 --> 00:01:59,430
-This will increase the maintainability and testability, and another pattern is minimal.
+Điều này sẽ tăng tính khả bảo trì và testability, và một pattern khác là Minimal APIs.
 
 25
 00:01:59,430 --> 00:02:02,460
-APIs and routing in ASP.Net eight.
+APIs và routing trong ASP.NET 8.
 
 26
 00:02:02,460 --> 00:02:10,020
-So ASP.Net eight minimal APIs simplify endpoint definition, providing lightweight syntax for routing
+Vậy ASP.NET 8 Minimal APIs đơn giản hóa định nghĩa endpoint, cung cấp cú pháp nhẹ cho routing
 
 27
 00:02:10,020 --> 00:02:12,090
-and handling Http requests.
+và xử lý Http requests.
 
 28
 00:02:12,510 --> 00:02:19,230
-And lastly, we can say that all patterns, which is the object relational mapping patterns object relational
+Và cuối cùng, chúng ta có thể nói rằng tất cả các patterns, đó là ORM pattern, Object Relational Mapping pattern, object relational
 
 29
 00:02:19,230 --> 00:02:25,620
-mapping abstracts the database interactions, enabling to work with the database object using the high
+mapping trừu tượng hóa các database interactions, cho phép làm việc với các object database sử dụng
 
 30
 00:02:25,620 --> 00:02:29,340
-level programming constructs and simplifying the data manipulations.
+high level programming constructs và đơn giản hóa data manipulations.
 
 31
 00:02:29,340 --> 00:02:32,910
-So we will use also object relational mapping patterns.
+Vậy chúng ta cũng sẽ sử dụng ORM patterns.
 
 32
 00:02:32,910 --> 00:02:39,510
-And in the third step we will examine the libraries and NuGet packages that we are going to use in the
+Và ở bước thứ ba chúng ta sẽ kiểm tra các libraries và NuGet packages mà chúng ta sẽ sử dụng trong
 
 33
 00:02:39,510 --> 00:02:40,860
@@ -132,133 +132,133 @@ catalog microservices.
 
 34
 00:02:40,860 --> 00:02:46,830
-So now let's explore the key libraries and NuGet packages that power our microservices.
+Vậy bây giờ hãy khám phá các key libraries và NuGet packages mà cung cấp năng lượng cho microservices của chúng ta.
 
 35
 00:02:46,830 --> 00:02:49,860
-The first one is mediator four six.
+Cái đầu tiên là MediatR.
 
 36
 00:02:49,860 --> 00:02:57,390
-So Mediator Library simplifies the implementation of the six design pattern by acting as an in-process
+Vậy MediatR Library đơn giản hóa việc triển khai CQRS design pattern bằng cách hoạt động như một in-process
 
 37
 00:02:57,390 --> 00:03:03,060
-messaging mechanism, helping to send commands and queries to their respective handlers.
+messaging mechanism, giúp gửi commands và queries tới các handlers tương ứng của chúng.
 
 38
 00:03:03,630 --> 00:03:08,010
-Another library is Carter Carter for API endpoints.
+Một library khác là Carter, Carter cho API endpoints.
 
 39
 00:03:08,010 --> 00:03:15,510
-Carter offers a lightweight library for routing and handling Http requests, making it easier to define
+Carter cung cấp một lightweight library cho routing và xử lý Http requests, giúp dễ dàng hơn để định nghĩa
 
 40
 00:03:15,510 --> 00:03:18,690
-API endpoints with clean and concise code.
+API endpoints với code sạch và ngắn gọn.
 
 41
 00:03:19,230 --> 00:03:23,670
-Another library is Martin for PostgreSQL interactions.
+Một thư viện khác là Marten để tương tác với PostgreSQL.
 
 42
 00:03:23,790 --> 00:03:29,580
-Martin Library provides a way to use PostgreSQL as a document database.
+Thư viện Marten cung cấp một cách để sử dụng PostgreSQL như một document database.
 
 43
 00:03:29,580 --> 00:03:37,230
-It leverages the PostgreSQL Json capabilities for storing, querying and managing documents, and another
+Nó tận dụng các khả năng JSON của PostgreSQL để lưu trữ, truy vấn và quản lý tài liệu, và một
 
 44
 00:03:37,230 --> 00:03:40,710
-library is mobster mobster for object mapping.
+thư viện khác là Mapster cho object mapping.
 
 45
 00:03:40,710 --> 00:03:47,130
-Mobster is a fast, configurable object mapper that simplifies the task of the mapping operations from
+Mapster là một object mapper nhanh chóng, có thể cấu hình giúp đơn giản hóa tác vụ ánh xạ dữ liệu từ
 
 46
 00:03:47,130 --> 00:03:51,750
-one type to another, and it is also streamlining the data transformation process.
+một loại này sang loại khác, và nó cũng hợp lý hóa quá trình chuyển đổi dữ liệu.
 
 47
 00:03:52,200 --> 00:03:56,430
-And another library is fluent validation for input validations.
+Và một thư viện khác là Fluent Validation để xác thực đầu vào.
 
 48
 00:03:56,430 --> 00:04:03,300
-Fluent validation is a popular library for building strongly typed validation rules, ensuring our inputs
+Fluent Validation là một thư viện phổ biến để xây dựng các quy tắc xác thực được nhập mạnh, đảm bảo đầu vào của chúng ta
 
 49
 00:04:03,300 --> 00:04:06,420
-are correct before they are processed by the application.
+là chính xác trước khi chúng được xử lý bởi ứng dụng.
 
 50
 00:04:07,110 --> 00:04:13,260
-So in the fourth step, we can examine the project folder structure so you can see the project folder
+Vậy ở bước thứ tư, chúng ta có thể xem xét cấu trúc thư mục dự án để bạn có thể thấy cấu trúc thư mục dự án
 
 51
 00:04:13,260 --> 00:04:16,380
-structure for the Catholic API on the slide.
+cho Catalog API trên slide.
 
 52
 00:04:16,470 --> 00:04:23,130
-So the project is organized into modal features data and abstraction folders.
+Vậy dự án được tổ chức thành các thư mục modal features, data và abstraction.
 
 53
 00:04:23,430 --> 00:04:29,940
-So feature folders like create product and Get product have dedicated handler and endpoint definitions.
+Vậy các feature folders như create product và get product có định nghĩa handler và endpoint riêng.
 
 54
 00:04:30,240 --> 00:04:37,080
-Feature folder will be the products and data folder and context objects managed database interactions.
+Feature folder sẽ là products và data folder và context objects quản lý tương tác cơ sở dữ liệu.
 
 55
 00:04:37,080 --> 00:04:39,420
-So you can see the picture on the slide.
+Vậy bạn có thể thấy hình ảnh trên slide.
 
 56
 00:04:39,420 --> 00:04:46,830
-These are the data folder model folder products as a feature folder and under the products feature folder
+Đây là data folder, model folder, products như một feature folder và bên dưới feature folder products
 
 57
 00:04:46,830 --> 00:04:48,420
-you can see the use cases.
+bạn có thể thấy các use cases.
 
 58
 00:04:48,420 --> 00:04:54,030
-These are the vertical slices, create product, delete product and get products.
+Đây là các vertical slices, create product, delete product và get products.
 
 59
 00:04:54,030 --> 00:05:00,180
-These implementing Crud operations and under the one of the use case folder which is the create product,
+Những cái này triển khai các CRUD operations và bên dưới một trong các thư mục use case là create product,
 
 60
 00:05:00,180 --> 00:05:04,470
-you can see the handle and endpoint to see classes.
+bạn có thể thấy các lớp handler và endpoint.
 
 61
 00:05:05,820 --> 00:05:10,260
-So lastly we can examine the deployment of the catalog microservices.
+Vậy cuối cùng chúng ta có thể xem xét triển khai của catalog microservice.
 
 62
 00:05:10,290 --> 00:05:16,680
-Finally, we will containerize our microservice with Docker and ensuring the seamless deployment and
+Cuối cùng, chúng ta sẽ containerize microservice của mình với Docker và đảm bảo triển khai và
 
 63
 00:05:16,680 --> 00:05:19,230
-integration with the PostgreSQL database.
+tích hợp liền mạch với cơ sở dữ liệu PostgreSQL.
 
 64
 00:05:19,230 --> 00:05:25,200
-So we will implement Docker file and docker compose file for running the catalog microservices and the
+Vậy chúng ta sẽ triển khai Docker file và docker compose file để chạy catalog microservice và
 
 65
 00:05:25,200 --> 00:05:28,020
-PostgreSQL database in Docker environment.
+cơ sở dữ liệu PostgreSQL trong môi trường Docker.
 
 66
 00:05:28,230 --> 00:05:33,480
-As you can see that we have finished the domain and technical analysis for our catalog microservices.
+Như bạn có thể thấy, chúng ta đã hoàn thành phân tích domain và kỹ thuật cho catalog microservice của chúng ta.
 

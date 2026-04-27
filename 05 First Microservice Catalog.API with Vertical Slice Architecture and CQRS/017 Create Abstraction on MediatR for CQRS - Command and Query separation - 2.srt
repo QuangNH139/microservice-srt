@@ -1,298 +1,298 @@
 1
 00:00:00,200 --> 00:00:06,050
-In this video, we are going to continue to create abstractions on mediator for sequence.
+Trong video này, chúng ta sẽ tiếp tục tạo các abstractions trên mediator cho sequence.
 
 2
 00:00:06,050 --> 00:00:11,630
-So we will continue building upon our sequence abstractions with the mediator framework.
+Vậy chúng ta sẽ tiếp tục xây dựng các abstractions sequence của chúng ta với mediator framework.
 
 3
 00:00:11,660 --> 00:00:14,930
-As you can see that we have created a query and a command.
+Như bạn có thể thấy, chúng ta đã tạo một query và một command.
 
 4
 00:00:14,960 --> 00:00:19,130
-Now it is time to create a query handler and a command handler.
+Bây giờ đã đến lúc tạo một query handler và một command handler.
 
 5
 00:00:19,160 --> 00:00:22,790
-Firstly, let's define the command handler interface.
+Đầu tiên, hãy định nghĩa command handler interface.
 
 6
 00:00:22,790 --> 00:00:25,670
-This interface will extend the mediators.
+Interface này sẽ extend mediators.
 
 7
 00:00:25,670 --> 00:00:32,000
-I request handler interface, but will be specific for the handling command request.
+I request handler interface, nhưng sẽ cụ thể cho việc xử lý command request.
 
 8
 00:00:32,000 --> 00:00:38,150
-So please open the Visual Studio and go to the Building Blocks and C queries folder.
+Vậy vui lòng mở Visual Studio và đi tới Building Blocks và C queries folder.
 
 9
 00:00:38,150 --> 00:00:41,750
-You can right click and create new interface.
+Bạn có thể right click và tạo new interface.
 
 10
 00:00:41,750 --> 00:00:43,640
-Which name is a command handler.
+Tên của nó là command handler.
 
 11
 00:00:47,810 --> 00:00:51,710
-Okay, now we can develop our AI command handler interface.
+Được rồi, bây giờ chúng ta có thể phát triển AI command handler interface của chúng ta.
 
 12
 00:00:51,710 --> 00:00:58,490
-First of all, I would like to create this command handler with getting the generic responses.
+Đầu tiên, tôi muốn tạo command handler này bằng cách nhận generic responses.
 
 13
 00:00:59,120 --> 00:01:05,690
-This will be the command and response I'm going to passing the int command and t response.
+Đây sẽ là command và response mà tôi sẽ truyền int command và t response.
 
 14
 00:01:05,960 --> 00:01:08,480
-This will be represented by command handler.
+Điều này sẽ được đại diện bởi command handler.
 
 15
 00:01:08,480 --> 00:01:09,680
-And this is the command.
+Và đây là command.
 
 16
 00:01:09,680 --> 00:01:11,390
-And this will be the command response.
+Và điều này sẽ là command response.
 
 17
 00:01:11,390 --> 00:01:15,440
-So we will inherit from the I request handler.
+Vậy chúng ta sẽ inherit từ I request handler.
 
 18
 00:01:16,100 --> 00:01:18,290
-This comes from the mediator.
+Điều này đến từ mediator.
 
 19
 00:01:18,290 --> 00:01:23,480
-And this makes this interface as a handler interface for command operations.
+Và điều này làm cho interface này trở thành một handler interface cho các command operations.
 
 20
 00:01:23,480 --> 00:01:28,100
-So you can continue the passing generic types.
+Vậy bạn có thể tiếp tục truyền generic types.
 
 21
 00:01:28,430 --> 00:01:31,850
-Here you can see that we have defined our command handler.
+Ở đây bạn có thể thấy rằng chúng ta đã định nghĩa command handler của chúng ta.
 
 22
 00:01:31,850 --> 00:01:34,130
-Of course this should be public.
+Tất nhiên điều này phải là public.
 
 23
 00:01:34,970 --> 00:01:39,980
-And after defining this command handler you can see that there is an exception.
+Và sau khi định nghĩa command handler này bạn có thể thấy rằng có một exception.
 
 24
 00:01:39,980 --> 00:01:46,490
-If you hover this exception, you can see that these three command type cannot be used as a T request
+Nếu bạn hover exception này, bạn có thể thấy rằng ba command type này không thể được sử dụng như một T request
 
 25
 00:01:46,490 --> 00:01:50,150
-that means these t commands comes from the request object.
+điều đó có nghĩa là t commands này đến từ request object.
 
 26
 00:01:50,150 --> 00:01:54,020
-That's why we should put some of the parameters in var keyword.
+Đó là lý do tại sao chúng ta nên đặt một số parameters vào var keyword.
 
 27
 00:01:54,020 --> 00:02:00,170
-So the t command should be a command and returning the t response.
+Vậy t command nên là một command và trả về t response.
 
 28
 00:02:00,170 --> 00:02:05,600
-If you go to the I command, you can see the I command comes from the I request t response.
+Nếu bạn đi tới I command, bạn có thể thấy I command đến từ I request t response.
 
 29
 00:02:05,600 --> 00:02:09,740
-When we have defined this filter, the exception is gone.
+Khi chúng ta đã định nghĩa filter này, exception đã biến mất.
 
 30
 00:02:09,740 --> 00:02:14,630
-Okay, now we have completed the command handler for the first interface.
+Được rồi, bây giờ chúng ta đã hoàn thành command handler cho interface đầu tiên.
 
 31
 00:02:14,630 --> 00:02:17,510
-We will also create one more interface as the same name.
+Chúng ta cũng sẽ tạo một interface khác với cùng tên.
 
 32
 00:02:17,510 --> 00:02:20,480
-But this time the response will not be coming.
+Nhưng lần này response sẽ không xuất hiện.
 
 33
 00:02:20,480 --> 00:02:24,500
-So we will prepare additional interface as the same name.
+Vậy chúng ta sẽ chuẩn bị additional interface với cùng tên.
 
 34
 00:02:24,500 --> 00:02:31,520
-But this time if there is no any response, we will only accommodate the command object.
+Nhưng lần này nếu không có bất kỳ response nào, chúng ta sẽ chỉ accommodate command object.
 
 35
 00:02:32,090 --> 00:02:41,450
-So I'm going to make it a command handler inherit from the below interface and as you can see that it
+Vậy tôi sẽ làm nó là một command handler inherit từ interface dưới đây và như bạn có thể thấy rằng nó
 
 36
 00:02:41,450 --> 00:02:44,870
-is expecting command and response as a command.
+đang mong đợi command và response như một command.
 
 37
 00:02:44,870 --> 00:02:47,570
-We will passing the T command.
+Chúng ta sẽ truyền T command.
 
 38
 00:02:47,570 --> 00:02:51,500
-And as a response we can define the unit.
+Và như một response chúng ta có thể định nghĩa unit.
 
 39
 00:02:51,500 --> 00:02:55,040
-As you remember that unit is a void type as mediator.
+Như bạn nhớ rằng unit là một void type như mediator.
 
 40
 00:02:55,040 --> 00:03:00,170
-So that's why we have defined additional interface in order to accommodate.
+Vậy đó là lý do tại sao chúng ta đã định nghĩa additional interface để accommodate.
 
 41
 00:03:00,170 --> 00:03:04,970
-If there is no response from the command object, we will use this kind of interfaces.
+Nếu không có phản hồi từ command object, chúng ta sẽ sử dụng loại interfaces này.
 
 42
 00:03:04,970 --> 00:03:08,930
-So again I'm going to put a var keyword which is the filtering.
+Vậy một lần nữa tôi sẽ sử dụng từ khóa var đó là filtering.
 
 43
 00:03:08,930 --> 00:03:11,420
-The command should be a command.
+Command phải là một command.
 
 44
 00:03:11,420 --> 00:03:15,620
-And as you remember that we have also a command passing the unit object.
+Và như bạn nhớ rằng chúng ta cũng có một command truyền đối tượng unit.
 
 45
 00:03:17,600 --> 00:03:25,850
-So in here we have defined two interfaces one for the command handler and do not return any response.
+Vậy ở đây chúng ta đã định nghĩa hai interfaces một cho command handler và không trả về bất kỳ phản hồi nào.
 
 46
 00:03:25,850 --> 00:03:32,270
-We can see the unit type and one for the I command handler getting the response object.
+Chúng ta có thể thấy unit type và một cho I command handler nhận được response object.
 
 47
 00:03:32,270 --> 00:03:34,670
-And this response object should not be null.
+Và response object này không được phép null.
 
 48
 00:03:34,670 --> 00:03:39,500
-By this way, we can use a command handler according to our type.
+Bằng cách này, chúng ta có thể sử dụng một command handler theo loại của chúng ta.
 
 49
 00:03:39,500 --> 00:03:42,860
-If we return any response, we will use this command handler.
+Nếu chúng ta trả về bất kỳ phản hồi nào, chúng ta sẽ sử dụng command handler này.
 
 50
 00:03:42,860 --> 00:03:48,380
-If we don't any return response, we will use these interface which is the I command handler.
+Nếu chúng ta không trả về bất kỳ phản hồi nào, chúng ta sẽ sử dụng interface này đó là I command handler.
 
 51
 00:03:48,380 --> 00:03:53,900
-After defining the I command handler now we should define the I query handler.
+Sau khi định nghĩa I command handler bây giờ chúng ta nên định nghĩa I query handler.
 
 52
 00:03:53,900 --> 00:03:58,220
-It is similar to I command handler and it specialized mediator.
+Nó tương tự như I command handler và nó là một mediator chuyên biệt.
 
 53
 00:03:58,220 --> 00:04:01,400
-I request handler for handling the query request.
+I request handler để xử lý query request.
 
 54
 00:04:01,400 --> 00:04:06,710
-So please open the Visual Studio and go to the secrets folder under the building blocks.
+Vậy hãy mở Visual Studio và đi tới folder secrets bên dưới building blocks.
 
 55
 00:04:06,710 --> 00:04:09,380
-And you can right click and add new interface.
+Và bạn có thể nhấp chuột phải và thêm một interface mới.
 
 56
 00:04:09,380 --> 00:04:11,300
-Which name is AI query handler.
+Tên của nó là AI query handler.
 
 57
 00:04:13,470 --> 00:04:16,260
-So this should be public interface.
+Vậy đây phải là public interface.
 
 58
 00:04:16,260 --> 00:04:23,940
-And again I'm going to get a query object and returning the response type.
+Và một lần nữa tôi sẽ lấy một query object và trả về response type.
 
 59
 00:04:23,940 --> 00:04:25,320
-These are the generics.
+Đây là những generics.
 
 60
 00:04:25,320 --> 00:04:28,500
-And we will inherit from the I request sender.
+Và chúng ta sẽ kế thừa từ I request sender.
 
 61
 00:04:33,090 --> 00:04:38,280
-From the mediator and desist accepting the decree and returning to teh response.
+Từ mediator và chấp nhận decree và trả về response.
 
 62
 00:04:41,530 --> 00:04:48,700
-And also we should define the word keywords in here in order to specify the query should be the I query
+Và cũng chúng ta nên định nghĩa từ khóa where ở đây để chỉ định query phải là I query
 
 63
 00:04:48,700 --> 00:04:51,640
-object and returning the t response.
+object và trả về t response.
 
 64
 00:04:52,710 --> 00:04:59,370
-And again we should additional where filter for the response should not be null.
+Và một lần nữa chúng ta nên thêm bộ lọc where để response không được phép null.
 
 65
 00:05:04,370 --> 00:05:04,760
-Okay.
+Được rồi.
 
 66
 00:05:04,760 --> 00:05:08,690
-As you can see that we have defined our query handler in one interface.
+Như bạn có thể thấy rằng chúng ta đã định nghĩa query handler của chúng ta trong một interface.
 
 67
 00:05:08,690 --> 00:05:15,920
-This interface will handle our query request and providing that each query is matched with a corresponding
+Interface này sẽ xử lý query request của chúng ta và đảm bảo rằng mỗi query khớp với một response
 
 68
 00:05:15,920 --> 00:05:16,850
-response type.
+type tương ứng.
 
 69
 00:05:16,850 --> 00:05:20,120
-By this way, we can separate the query and commands.
+Bằng cách này, chúng ta có thể tách biệt query và commands.
 
 70
 00:05:20,120 --> 00:05:24,290
-You can see in here the query should be inherited from the query object.
+Bạn có thể thấy ở đây query phải kế thừa từ query object.
 
 71
 00:05:24,290 --> 00:05:30,860
-But if you go to the command handler, this command should be comes from the I command.
+Nhưng nếu bạn đi tới command handler, command này phải đến từ I command.
 
 72
 00:05:30,860 --> 00:05:36,050
-So that means we have separate query and command handler according to our abstraction.
+Vậy điều đó có nghĩa là chúng ta có command handler và query handler riêng biệt theo abstraction của chúng ta.
 
 73
 00:05:36,050 --> 00:05:40,010
-Now it is time to get in reference to our microservices.
+Bây giờ là lúc để tham chiếu tới microservices của chúng ta.
 
 74
 00:05:40,010 --> 00:05:46,130
-If you go back to our main architecture, you can see that all microservices are referencing building
+Nếu bạn quay lại kiến trúc chính của chúng ta, bạn có thể thấy rằng tất cả microservices đang tham chiếu building
 
 75
 00:05:46,130 --> 00:05:46,580
@@ -300,131 +300,131 @@ blocks.
 
 76
 00:05:46,580 --> 00:05:51,950
-So now let's referencing these interfaces into our catalog microservices.
+Vậy bây giờ hãy tham chiếu những interfaces này vào catalog microservices của chúng ta.
 
 77
 00:05:51,950 --> 00:05:59,150
-First we need to remove the direct installation of the mediator package from the catalog API, because
+Đầu tiên chúng ta cần loại bỏ việc cài đặt trực tiếp gói MediatR từ catalog API, vì
 
 78
 00:05:59,150 --> 00:06:02,330
-it will now come through our building blocks library.
+nó sẽ đến từ building blocks library của chúng ta.
 
 79
 00:06:02,600 --> 00:06:07,910
-As you remember that when we are developing the catalog microservices, we install Mediator library.
+Như bạn nhớ rằng khi chúng ta đang phát triển catalog microservices, chúng ta cài đặt thư viện MediatR.
 
 80
 00:06:07,940 --> 00:06:09,740
-Now we should remove this library.
+Bây giờ chúng ta nên loại bỏ thư viện này.
 
 81
 00:06:09,740 --> 00:06:15,440
-And this library comes from the building blocks because we will install all common packages under the
+Và library này đến từ building blocks vì chúng ta sẽ cài đặt tất cả các packages phổ biến dưới
 
 82
 00:06:15,440 --> 00:06:17,930
-building blocks for each microservices.
+building blocks cho mỗi microservices.
 
 83
 00:06:17,930 --> 00:06:19,400
-Let's get started.
+Hãy bắt đầu.
 
 84
 00:06:19,400 --> 00:06:23,750
-Please open the Visual Studio Code and go to the catalog microservices.
+Vui lòng mở Visual Studio Code và đi tới catalog microservices.
 
 85
 00:06:23,750 --> 00:06:30,800
-If you double click the catalog API project file, you can see that we have installed the mediator library.
+Nếu bạn double click vào file project của catalog API, bạn có thể thấy rằng chúng ta đã cài đặt thư viện mediator.
 
 86
 00:06:30,800 --> 00:06:35,450
-In order to remove these package from our catalog API microservices.
+Để xóa những package này khỏi catalog API microservices của chúng ta.
 
 87
 00:06:35,450 --> 00:06:41,930
-You can remove these line of code or you can remove from the NuGet package window I am going to remove
+Bạn có thể xóa những dòng code này hoặc bạn có thể xóa từ cửa sổ NuGet package. Tôi sẽ xóa
 
 88
 00:06:41,930 --> 00:06:42,860
-from in here.
+từ đây.
 
 89
 00:06:42,860 --> 00:06:48,290
-And you can see that there is no mediator package in the item group in the project C-sharp file.
+Và bạn có thể thấy rằng không có mediator package trong item group trong file C-sharp project.
 
 90
 00:06:48,290 --> 00:06:55,130
-So we removed the mediator package from our catalog API in order to avoid conflicts and ensure that
+Vậy chúng ta đã xóa mediator package khỏi catalog API để tránh xung đột và đảm bảo rằng
 
 91
 00:06:55,130 --> 00:06:59,240
-all mediator related packages comes from the building blocks.
+tất cả các packages liên quan đến mediator đều đến từ building blocks.
 
 92
 00:06:59,330 --> 00:07:03,500
-Next, we will add a project reference to our Building Blocks library.
+Tiếp theo, chúng ta sẽ thêm một project reference tới thư viện Building Blocks của chúng ta.
 
 93
 00:07:03,500 --> 00:07:04,940
-In our catalog project.
+Trong project catalog của chúng ta.
 
 94
 00:07:04,940 --> 00:07:07,850
-So let me right click dependencies.
+Vậy hãy để tôi right click vào dependencies.
 
 95
 00:07:07,850 --> 00:07:11,300
-Here you can see the dependencies add project reference.
+Ở đây bạn có thể thấy dependencies add project reference.
 
 96
 00:07:11,300 --> 00:07:13,100
-This time we will add a project reference.
+Lần này chúng ta sẽ thêm một project reference.
 
 97
 00:07:13,100 --> 00:07:17,810
-And here you can see that there is only one project listed which is the building blocks.
+Và ở đây bạn có thể thấy rằng chỉ có một project được liệt kê, đó là building blocks.
 
 98
 00:07:17,810 --> 00:07:21,020
-Check this checkbox and click the okay button.
+Kiểm tra checkbox này và click nút okay.
 
 99
 00:07:21,020 --> 00:07:27,890
-So once we add a project reference, you can double click the catalog API and you can see new item Group
+Vậy một khi chúng ta thêm project reference, bạn có thể double click vào catalog API và bạn có thể thấy item Group mới
 
 100
 00:07:27,890 --> 00:07:32,360
-edit which is the project reference and indicating the are building blocks.
+edit, đó là project reference và chỉ ra rằng đó là building blocks.
 
 101
 00:07:32,360 --> 00:07:34,940
-C-sharp project which is the class library.
+C-sharp project, đó là class library.
 
 102
 00:07:34,940 --> 00:07:40,100
-Save this file and you can now right click and build the catalog API.
+Lưu file này và bạn có thể right click và build catalog API.
 
 103
 00:07:40,370 --> 00:07:45,830
-So after adding the reference, we build the project in order to verify that everything is correctly
+Vậy sau khi thêm reference, chúng ta build project để xác minh rằng mọi thứ được thiết lập
 
 104
 00:07:45,830 --> 00:07:46,280
-set up.
+đúng cách.
 
 105
 00:07:46,280 --> 00:07:48,470
-And there is no any compilation error.
+Và không có bất kỳ compilation error nào.
 
 106
 00:07:48,470 --> 00:07:52,340
-Yes, there is no any compilation error and we will complete it successfully.
+Đúng, không có bất kỳ compilation error nào và chúng ta sẽ hoàn thành nó thành công.
 
 107
 00:07:52,340 --> 00:07:59,000
-Now we can go to the our actual business logic which is a feature folder products and go to the create
+Bây giờ chúng ta có thể đi tới business logic thực tế của chúng ta, đó là feature folder products và đi tới create
 
 108
 00:07:59,000 --> 00:08:00,110
@@ -432,25 +432,25 @@ product feature.
 
 109
 00:08:00,110 --> 00:08:05,630
-And if you go to the create product handler, now we can implement the actual logic which is the business
+Và nếu bạn đi tới create product handler, bây giờ chúng ta có thể triển khai logic thực tế, đó là business
 
 110
 00:08:05,630 --> 00:08:09,200
-logic, to create a product using the mediator libraries.
+logic, để tạo một product sử dụng các thư viện mediator.
 
 111
 00:08:09,200 --> 00:08:15,770
-Since we are getting reference from the building blocks now, we can use these abstractions into our
+Vì chúng ta đang nhận reference từ building blocks bây giờ, chúng ta có thể sử dụng những abstractions này vào
 
 112
 00:08:15,770 --> 00:08:16,670
-handle class.
+handle class của chúng ta.
 
 113
 00:08:16,670 --> 00:08:23,000
-Now we will refactor our existing handler in the catalog microservices and we will replace mediators
+Bây giờ chúng ta sẽ refactor handler hiện tại của chúng ta trong catalog microservices và chúng ta sẽ thay thế mediator
 
 114
 00:08:23,000 --> 00:08:26,420
-eraqus with our I command and Iquery interfaces.
+requests bằng I command và Iquery interfaces của chúng ta.
 

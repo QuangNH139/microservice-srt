@@ -1,30 +1,30 @@
 1
 00:00:00,170 --> 00:00:06,560
-In this video we are going to develop feature handler class with six and mediator.
+Trong video này chúng ta sẽ phát triển feature handler class với sáu và mediator.
 
 2
 00:00:06,560 --> 00:00:12,650
-So we are in here create product feature folder and we will be develop create product handler class
+Vậy chúng ta đang ở đây tạo create product feature folder và chúng ta sẽ phát triển create product handler class
 
 3
 00:00:12,650 --> 00:00:14,930
-using the six and mediator.
+sử dụng sáu và mediator.
 
 4
 00:00:15,110 --> 00:00:18,800
-According to our main architecture we will follow the vertical slice architecture.
+Theo kiến trúc chính của chúng ta, chúng ta sẽ tuân theo vertical slice architecture.
 
 5
 00:00:18,800 --> 00:00:25,310
-But when implementing the handler class we will use six and mediator library in six.
+Nhưng khi triển khai handler class, chúng ta sẽ sử dụng sáu và mediator library trong sáu.
 
 6
 00:00:25,340 --> 00:00:33,200
-The handler is responsible for executing the command logic with using the mediator library, the handler
+Handler chịu trách nhiệm thực thi logic của command bằng cách sử dụng mediator library, handler
 
 7
 00:00:33,200 --> 00:00:39,290
-receives a command and process it, encapsulating the business logic for specific operations under the
+nhận một command và xử lý nó, đóng gói logic business cho các hoạt động cụ thể dưới
 
 8
 00:00:39,290 --> 00:00:40,190
@@ -32,111 +32,111 @@ handler class.
 
 9
 00:00:40,280 --> 00:00:46,220
-So in this video we will delve into implementing create product feature using the securities and mediator
+Vậy trong video này chúng ta sẽ đi sâu vào việc triển khai create product feature sử dụng securities và mediator
 
 10
 00:00:46,220 --> 00:00:48,500
-in ASP.Net core Web application.
+trong ASP.NET Core Web application.
 
 11
 00:00:48,500 --> 00:00:56,810
-So now before that, let's start understanding the life cycle of a request in a system that use mediator
+Vậy bây giờ trước tiên, hãy bắt đầu hiểu vòng đời của một request trong một hệ thống sử dụng mediator
 
 12
 00:00:56,810 --> 00:00:58,940
-and six design pattern.
+và sáu design pattern.
 
 13
 00:00:59,180 --> 00:01:04,849
-And here you can see the illustration of the six and mediator request life cycle.
+Và ở đây bạn có thể thấy minh họa của vòng đời request sáu và mediator.
 
 14
 00:01:04,849 --> 00:01:06,980
-This is request comes from the client.
+Đây là request đến từ client.
 
 15
 00:01:06,980 --> 00:01:12,110
-And this will be process or catalog web API application and respond back.
+Và điều này sẽ được xử lý hoặc catalog Web API application và phản hồi lại.
 
 16
 00:01:12,110 --> 00:01:18,350
-So you can see the illustration how API request flows through our application.
+Vậy bạn có thể thấy minh họa cách API request chảy qua ứng dụng của chúng ta.
 
 17
 00:01:18,350 --> 00:01:22,310
-The request first of all hits the our presentation layer.
+Request đầu tiên chạm vào presentation layer của chúng ta.
 
 18
 00:01:22,310 --> 00:01:28,970
-This is typically Carter library Carter endpoint which is the minimal API endpoint in our case.
+Đây là Carter library Carter endpoint, đó là minimal API endpoint trong trường hợp của chúng ta.
 
 19
 00:01:28,970 --> 00:01:32,840
-And after that it sends a command to the mediator.
+Và sau đó nó gửi một command đến mediator.
 
 20
 00:01:32,840 --> 00:01:37,460
-And mediator redirect this command to the corresponding handler class.
+Và mediator chuyển hướng command này tới handler class tương ứng.
 
 21
 00:01:37,460 --> 00:01:44,180
-And this class will process this command and perform business logic with using the DB operations, and
+Và class này sẽ xử lý command này và thực hiện logic business bằng cách sử dụng DB operations, và
 
 22
 00:01:44,180 --> 00:01:45,920
-after that return the result.
+sau đó trả về kết quả.
 
 23
 00:01:45,920 --> 00:01:48,770
-And this will be responding to the client application.
+Và điều này sẽ phản hồi cho client application.
 
 24
 00:01:49,010 --> 00:01:55,730
-So according to this flow, the mediator will be triggered by command or query object that will inherit
+Vậy theo flow này, mediator sẽ được kích hoạt bởi command hoặc query object sẽ kế thừa
 
 25
 00:01:55,730 --> 00:01:58,610
-from the mediator I request interface.
+từ mediator I request interface.
 
 26
 00:01:58,610 --> 00:02:01,310
-And this is the first point to trigger the mediator.
+Và đây là điểm đầu tiên để kích hoạt mediator.
 
 27
 00:02:01,310 --> 00:02:08,210
-So according to this command or query request object mediator will be redirect to corresponding command
+Vậy theo command hoặc query request object này mediator sẽ chuyển hướng tới corresponding command
 
 28
 00:02:08,210 --> 00:02:12,170
-handler class which should be inherit from the I request handler.
+handler class mà nên kế thừa từ I request handler.
 
 29
 00:02:12,170 --> 00:02:16,370
-And in the command handler, we can perform business logic and return back the result.
+Và trong command handler, chúng ta có thể thực hiện logic business và trả về kết quả.
 
 30
 00:02:16,370 --> 00:02:22,730
-So that means to trigger our handler class we need command query and result objects.
+Vậy điều đó có nghĩa là để kích hoạt handler class của chúng ta, chúng ta cần command query và result objects.
 
 31
 00:02:22,730 --> 00:02:24,530
-And after that we will define command.
+Và sau đó chúng ta sẽ định nghĩa command.
 
 32
 00:02:24,530 --> 00:02:30,050
-Under this command query should be inherited from the I request and this command handler should be inherited
+Dưới command này query nên được kế thừa từ I request và command handler này nên được kế thừa
 
 33
 00:02:30,050 --> 00:02:31,550
-from the I request handler.
+từ I request handler.
 
 34
 00:02:31,550 --> 00:02:33,260
-So let's get started.
+Vậy hãy bắt đầu.
 
 35
 00:02:33,260 --> 00:02:40,040
-If you open the Visual Studio, our first step is to define the command and result class for the create
+Nếu bạn mở Visual Studio, bước đầu tiên của chúng ta là định nghĩa command và result class cho create
 
 36
 00:02:40,040 --> 00:02:41,090
@@ -144,11 +144,11 @@ product feature.
 
 37
 00:02:41,090 --> 00:02:45,380
-So for that purpose open the Create Product feature and go to handler class.
+Vậy cho mục đích đó hãy mở Create Product feature và đi tới handler class.
 
 38
 00:02:45,380 --> 00:02:52,310
-So in the handler class we are going to create our command and result classes inside of the command
+Vậy trong handler class chúng ta sẽ tạo command và result classes của chúng ta bên trong command
 
 39
 00:02:52,310 --> 00:02:53,210
@@ -156,35 +156,35 @@ Csharp file.
 
 40
 00:02:53,210 --> 00:02:56,960
-So we are going to create two type inside of the handler class.
+Vậy chúng ta sẽ tạo hai type bên trong handler class.
 
 41
 00:02:56,960 --> 00:03:04,220
-These are the create product command and create product result and we will create two record type inside
+Đây là create product command và create product result và chúng ta sẽ tạo hai record type bên trong
 
 42
 00:03:04,220 --> 00:03:05,150
-of the handler.
+của handler.
 
 43
 00:03:05,420 --> 00:03:15,230
-Let me create first record type which is the public record create product command and we will specify
+Hãy để tôi tạo record type đầu tiên, đó là public record create product command và chúng ta sẽ chỉ định
 
 44
 00:03:15,230 --> 00:03:15,890
-the.
+các.
 
 45
 00:03:16,670 --> 00:03:21,080
-Parameters which are the members from the product entity.
+Tham số đó là các thành viên từ product entity.
 
 46
 00:03:21,110 --> 00:03:27,800
-Here you can see that I have added the name, category, description, image, file and price.
+Ở đây bạn có thể thấy tôi đã thêm name, category, description, image, file và price.
 
 47
 00:03:27,800 --> 00:03:34,760
-This comes from the AR product model and you can see these parameters are passing into the AR create
+Điều này đến từ AR product model và bạn có thể thấy các tham số này được truyền vào AR create
 
 48
 00:03:34,760 --> 00:03:36,890
@@ -192,63 +192,63 @@ product command record object.
 
 49
 00:03:36,890 --> 00:03:43,700
-And as a result we will need an additional record type which is the public record.
+Và kết quả là chúng ta sẽ cần một record type bổ sung đó là public record.
 
 50
 00:03:44,150 --> 00:03:49,490
-And this will be the create product result record type.
+Và đây sẽ là create product result record type.
 
 51
 00:03:49,490 --> 00:03:54,200
-And as a return type we will return only ID information.
+Và như một kiểu trả về chúng ta sẽ chỉ trả về thông tin ID.
 
 52
 00:03:54,650 --> 00:03:55,310
-Okay.
+Được rồi.
 
 53
 00:03:55,310 --> 00:03:57,980
-Here you can see the two type in this code.
+Ở đây bạn có thể thấy hai type trong code này.
 
 54
 00:03:57,980 --> 00:04:03,530
-The create product command represents the data that we need to create a new product.
+create product command đại diện cho dữ liệu mà chúng ta cần để tạo một sản phẩm mới.
 
 55
 00:04:03,530 --> 00:04:10,520
-And these create the product result representing the response object return object, which in this case
+Và create product result đại diện cho response object, return object, trong trường hợp này
 
 56
 00:04:10,520 --> 00:04:12,320
-we just return the product id.
+chúng ta chỉ trả về product id.
 
 57
 00:04:12,620 --> 00:04:16,760
-So we have completed the command and result object.
+Vậy chúng ta đã hoàn thành command và result object.
 
 58
 00:04:16,760 --> 00:04:22,850
-And if you go back to our architecture you can see that we have developed this command and result object.
+Và nếu bạn quay lại architecture của chúng ta, bạn có thể thấy rằng chúng ta đã phát triển command và result object này.
 
 59
 00:04:22,850 --> 00:04:25,970
-Now it is time to develop command handler object.
+Bây giờ là lúc để phát triển command handler object.
 
 60
 00:04:25,970 --> 00:04:28,880
-Now let's create our handler class.
+Bây giờ hãy tạo class handler của chúng ta.
 
 61
 00:04:28,880 --> 00:04:33,230
-This class will contain the business logic to handle create product command.
+Class này sẽ chứa business logic để xử lý create product command.
 
 62
 00:04:33,230 --> 00:04:43,250
-So in here I'm going to change the public as a internal because I would like to be in internal class
+Vậy ở đây tôi sẽ thay đổi public thành internal vì tôi muốn nó là một internal class
 
 63
 00:04:43,250 --> 00:04:45,080
-and the class name will be changed.
+và tên class sẽ được thay đổi.
 
 64
 00:04:45,080 --> 00:04:47,150
@@ -256,39 +256,39 @@ Create product command handler.
 
 65
 00:04:47,150 --> 00:04:49,970
-So I'm going to emphasize that this is the command handler.
+Vậy tôi sẽ nhấn mạnh rằng đây là command handler.
 
 66
 00:04:49,970 --> 00:04:52,550
-And we will expecting a command okay.
+Và chúng ta sẽ mong đợi một command được rồi.
 
 67
 00:04:52,550 --> 00:04:54,530
-Now we have finished the our command handler.
+Bây giờ chúng ta đã hoàn thành command handler của chúng ta.
 
 68
 00:04:54,530 --> 00:04:57,590
-And we will implement the business logic inside of this class.
+Và chúng ta sẽ triển khai business logic bên trong class này.
 
 69
 00:04:57,860 --> 00:05:03,950
-But before that let's understand how to trigger this handler class with this command object.
+Nhưng trước đó hãy hiểu cách kích hoạt class handler này với command object này.
 
 70
 00:05:03,950 --> 00:05:10,220
-So if you go back to our architecture you can see that in order to trigger our command handler we need
+Vậy nếu bạn quay lại architecture của chúng ta, bạn có thể thấy rằng để kích hoạt command handler của chúng ta chúng ta cần
 
 71
 00:05:10,220 --> 00:05:11,120
-a mediator.
+một mediator.
 
 72
 00:05:11,120 --> 00:05:17,270
-So mediator provides to trigger command and queries and abstractions with the mediator pattern.
+Vậy mediator cung cấp để kích hoạt command và queries và abstractions với mediator pattern.
 
 73
 00:05:17,270 --> 00:05:24,080
-In order to trigger handler class, we should derive a command or query classes with the I request result
+Để kích hoạt handler class, chúng ta nên kế thừa command hoặc query classes với I request result
 
 74
 00:05:24,080 --> 00:05:24,860
@@ -296,75 +296,75 @@ interface.
 
 75
 00:05:24,860 --> 00:05:30,800
-This comes from the mediator library, and after that the handler class will implement the I request
+Điều này đến từ mediator library, và sau đó handler class sẽ triển khai I request
 
 76
 00:05:30,800 --> 00:05:33,500
-handler command and result interface.
+handler command và result interface.
 
 77
 00:05:33,500 --> 00:05:41,930
-So that means before we start, we need to install mediator NuGet package to benefit from mediator pattern.
+Vậy điều đó có nghĩa là trước khi chúng ta bắt đầu, chúng ta cần cài đặt mediator NuGet package để hưởng lợi từ mediator pattern.
 
 78
 00:05:41,930 --> 00:05:48,500
-So if you go back to our Visual Studio, if you can right click and manage NuGet packages, you can
+Vậy nếu bạn quay lại Visual Studio của chúng ta, nếu bạn có thể right click và manage NuGet packages, bạn có thể
 
 79
 00:05:48,500 --> 00:05:50,630
-go to the NuGet package window.
+đi đến NuGet package window.
 
 80
 00:05:50,630 --> 00:05:58,040
-And if you browse and write the mediator package, you can see that we will download the mediator library
+Và nếu bạn browse và gõ mediator package, bạn có thể thấy rằng chúng ta sẽ tải xuống mediator library
 
 81
 00:05:58,040 --> 00:06:00,620
-into our catalog microservices.
+vào catalog microservices của chúng ta.
 
 82
 00:06:00,620 --> 00:06:06,710
-And if you double click the project file, you can see that we have successfully installed Mediator
+Và nếu bạn double click vào file project, bạn có thể thấy rằng chúng ta đã cài đặt thành công MediatR
 
 83
 00:06:06,710 --> 00:06:09,140
-Library into our catalog microservices.
+vào catalog microservices của chúng ta.
 
 84
 00:06:09,140 --> 00:06:14,480
-Now it is time to implementing these mediator into our great product handler class.
+Bây giờ là lúc triển khai MediatR vào class product handler tuyệt vời của chúng ta.
 
 85
 00:06:14,480 --> 00:06:21,890
-If you go back the handler class, the first thing we should do that we will inherit our command object
+Nếu bạn quay lại class handler, điều đầu tiên chúng ta nên làm là kế thừa command object của chúng ta
 
 86
 00:06:21,890 --> 00:06:23,120
-from the request.
+từ request.
 
 87
 00:06:23,120 --> 00:06:30,950
-So if you come here and write the request, you can see that our request comes from the mediator library.
+Vậy nếu bạn đến đây và viết request, bạn có thể thấy rằng request của chúng ta đến từ thư viện mediator.
 
 88
 00:06:30,950 --> 00:06:33,290
-So we can provide the request.
+Vậy chúng ta có thể cung cấp request.
 
 89
 00:06:33,290 --> 00:06:36,470
-And you can give the response as a generic.
+Và bạn có thể cung cấp response như một generic.
 
 90
 00:06:36,470 --> 00:06:41,210
-In our case our response is create product result.
+Trong trường hợp của chúng ta, response là create product result.
 
 91
 00:06:42,590 --> 00:06:48,860
-And now we are ready to using this command object for mediator trigger operations.
+Và bây giờ chúng ta đã sẵn sàng sử dụng command object này cho các hoạt động kích hoạt mediator.
 
 92
 00:06:48,860 --> 00:06:56,000
-We are indicating that this product command inherited from the request which is the mediator and one
+Chúng ta đang chỉ ra rằng product command này kế thừa từ request, đó là mediator và một
 
 93
 00:06:56,000 --> 00:06:56,690
@@ -372,15 +372,15 @@ mediator.
 
 94
 00:06:56,690 --> 00:06:59,720
-See this request comes from the API request.
+Xem request này đến từ API request.
 
 95
 00:06:59,720 --> 00:07:02,900
-This will be triggered or create product command handler.
+Điều này sẽ được kích hoạt hoặc create product command handler.
 
 96
 00:07:02,900 --> 00:07:10,010
-So in order to trigger this product command handler this is also required to inherit from the request
+Vậy để kích hoạt product command handler này, điều này cũng yêu cầu kế thừa từ request
 
 97
 00:07:10,010 --> 00:07:11,090
@@ -388,31 +388,31 @@ handler object.
 
 98
 00:07:11,600 --> 00:07:15,500
-And in here we will provide request and response.
+Và ở đây chúng ta sẽ cung cấp request và response.
 
 99
 00:07:15,500 --> 00:07:20,540
-That means we can provide the create product command as a command.
+Điều đó có nghĩa là chúng ta có thể cung cấp create product command như một command.
 
 100
 00:07:21,080 --> 00:07:24,710
-This will be the our command object.
+Đây sẽ là command object của chúng ta.
 
 101
 00:07:24,710 --> 00:07:33,110
-And after that I'm going to provide create product result this object okay.
+Và sau đó tôi sẽ cung cấp create product result, object này được rồi.
 
 102
 00:07:33,110 --> 00:07:37,370
-Now we have defined that we are a request handler interface.
+Bây giờ chúng ta đã xác định rằng chúng ta là một request handler interface.
 
 103
 00:07:37,370 --> 00:07:41,930
-And this will be accepting command and returning the command result object.
+Và nó sẽ chấp nhận command và trả về command result object.
 
 104
 00:07:41,930 --> 00:07:47,930
-If you click the alt enter you can see that we will implement these interface members which is the handle
+Nếu bạn nhấn alt enter, bạn có thể thấy rằng chúng ta sẽ triển khai các thành viên interface này, đó là handle
 
 105
 00:07:47,930 --> 00:07:48,440
@@ -420,59 +420,59 @@ method.
 
 106
 00:07:48,440 --> 00:07:54,200
-So in this handle method we basically perform the business logic to create a product.
+Vậy trong handle method này, về cơ bản chúng ta thực hiện business logic để tạo một product.
 
 107
 00:07:54,200 --> 00:07:56,030
-So you can put a command.
+Vậy bạn có thể đặt command.
 
 108
 00:07:56,030 --> 00:07:59,240
-We will put our business logic in order to create a new product.
+Chúng ta sẽ đặt business logic của chúng ta để tạo một product mới.
 
 109
 00:07:59,240 --> 00:08:05,930
-But for now let's throw an exception before we implementation we should understand how this trigger.
+Nhưng hiện tại hãy throw một exception trước khi chúng ta triển khai, chúng ta nên hiểu cách thức hoạt động này.
 
 110
 00:08:05,930 --> 00:08:13,280
-So basically with this setup we can use mediator send method in order to trigger this command.
+Vậy về cơ bản với setup này, chúng ta có thể sử dụng mediator send method để kích hoạt command này.
 
 111
 00:08:13,280 --> 00:08:15,920
-And this command will be redirecting to.
+Và command này sẽ được chuyển hướng đến.
 
 112
 00:08:16,210 --> 00:08:17,350
-Command handle class.
+Command handler class.
 
 113
 00:08:17,350 --> 00:08:20,890
-This will be work very well with using the mediator package.
+Điều này sẽ hoạt động rất tốt khi sử dụng mediator package.
 
 114
 00:08:20,950 --> 00:08:26,500
-But before proceeding the implementation, I would like to emphasize that we should separate the command
+Nhưng trước khi tiếp tục triển khai, tôi muốn nhấn mạnh rằng chúng ta nên tách command
 
 115
 00:08:26,500 --> 00:08:32,320
-and queries in sequence because according to security design pattern, the commands and queries should
+và queries theo trình tự vì theo CQRS design pattern, các commands và queries nên
 
 116
 00:08:32,320 --> 00:08:33,460
-be separated.
+được tách biệt.
 
 117
 00:08:33,460 --> 00:08:40,570
-But if you look at the mediator library, mediator will use both these operations as a I request interface.
+Nhưng nếu bạn nhìn vào thư viện mediator, mediator sẽ sử dụng cả hai hoạt động này như một I request interface.
 
 118
 00:08:40,570 --> 00:08:46,150
-In order to implement security design pattern, we should separate the command and query object.
+Để triển khai CQRS design pattern, chúng ta nên tách command và query object.
 
 119
 00:08:46,150 --> 00:08:52,660
-That means in a true queries implementation, we will separate the command and queries at the request
+Điều đó có nghĩa là trong một triển khai true queries, chúng ta sẽ tách command và queries ở request
 
 120
 00:08:52,660 --> 00:08:53,170
@@ -480,13 +480,13 @@ level.
 
 121
 00:08:53,170 --> 00:08:57,910
-This means we will create distinct abstractions over the mediators.
+Điều này có nghĩa là chúng ta sẽ tạo các abstraction riêng biệt trên các mediator.
 
 122
 00:08:57,910 --> 00:09:04,300
-I request interface object in order to differentiate commands, which is the rights and queries which
+Tôi yêu cầu interface object để phân biệt các command, đó là các hoạt động ghi, và các query, đó là
 
 123
 00:09:04,300 --> 00:09:05,650
-will read operations.
+các hoạt động đọc.
 

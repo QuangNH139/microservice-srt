@@ -149,4 +149,3 @@ Nếu ứng dụng của bạn cần mở rộng quy mô một phần của ứn
 38
 00:03:08,510 --> 00:03:12,350
 là một lựa chọn tuyệt vời cho loại hoạt động và ứng dụng này.
-

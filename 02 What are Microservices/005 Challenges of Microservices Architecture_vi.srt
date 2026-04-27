@@ -137,4 +137,3 @@ Phần lớn chúng ta nên tuân theo eventual consistency khi có thể, nhưn
 35
 00:02:44,060 --> 00:02:45,800
 luôn sẽ là một thách thức.
-

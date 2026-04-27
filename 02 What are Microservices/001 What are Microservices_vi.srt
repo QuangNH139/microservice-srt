@@ -1,0 +1,67 @@
+1
+00:00:00,110 --> 00:00:03,800
+Trong video này chúng ta sẽ tìm hiểu microservices là gì?
+
+2
+00:00:04,070 --> 00:00:08,510
+Microservices là những dịch vụ nhỏ, độc lập và lỏng lẻo.
+
+3
+00:00:08,510 --> 00:00:15,230
+Vì vậy microservices là những dịch vụ kinh doanh nhỏ có thể làm việc cùng nhau và có thể được triển khai độc lập
+
+4
+00:00:15,230 --> 00:00:16,400
+và tự chủ.
+
+5
+00:00:17,540 --> 00:00:23,030
+Mỗi dịch vụ có một cơ sở mã riêng biệt, có thể được quản lý bởi một nhóm phát triển nhỏ.
+
+6
+00:00:23,630 --> 00:00:28,760
+Một nhóm nhỏ các nhà phát triển có thể viết và bảo trì một microservice cụ thể.
+
+7
+00:00:29,950 --> 00:00:33,490
+Microservices giao tiếp với nhau qua mạng.
+
+8
+00:00:33,490 --> 00:00:34,180
+Các giao thức.
+
+9
+00:00:34,180 --> 00:00:38,680
+Các dịch vụ giao tiếp với nhau bằng cách sử dụng các APIs được xác định rõ ràng.
+
+10
+00:00:38,950 --> 00:00:43,720
+Chi tiết triển khai nội bộ của mỗi dịch vụ được ẩn khỏi các dịch vụ khác.
+
+11
+00:00:44,950 --> 00:00:49,870
+Một trong những ưu điểm lớn nhất là chúng có thể được triển khai độc lập.
+
+12
+00:00:49,900 --> 00:00:52,630
+Microservices có thể được triển khai độc lập.
+
+13
+00:00:52,840 --> 00:00:59,350
+Một nhóm có thể cập nhật một microservice hiện có mà không cần phải xây dựng lại và triển khai lại toàn bộ ứng dụng.
+
+14
+00:01:00,640 --> 00:01:05,440
+Microservices không cần phải chia sẻ cùng một stack công nghệ, thư viện hoặc framework.
+
+15
+00:01:05,470 --> 00:01:11,170
+Microservice có thể hoạt động với nhiều stack công nghệ khác nhau, điều này không phụ thuộc vào công nghệ.
+
+16
+00:01:12,310 --> 00:01:18,820
+Microservices có cơ sở dữ liệu riêng hoặc lớp persistence của nó không được chia sẻ với các dịch vụ khác.
+
+17
+00:01:18,850 --> 00:01:25,420
+Điều này khác với mô hình truyền thống nơi một lớp dữ liệu riêng biệt xử lý sự lưu trữ dữ liệu.

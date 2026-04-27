@@ -1,38 +1,38 @@
 1
 00:00:00,200 --> 00:00:05,210
-In this video we are going to do domain analysis of catalog microservices.
+Trong video này chúng ta sẽ thực hiện phân tích domain của catalog microservices.
 
 2
 00:00:05,360 --> 00:00:10,040
-But before that let's remember the way of learning methodology of the course.
+Nhưng trước tiên hãy nhớ lại phương pháp học tập của khóa học.
 
 3
 00:00:10,400 --> 00:00:14,750
-According to the way of learning methodology we have four key steps.
+Theo phương pháp học tập này, chúng ta có bốn bước chính.
 
 4
 00:00:14,750 --> 00:00:19,130
-These are the analyze, learn, develop and test and deploy.
+Đó là analyze, learn, develop và test and deploy.
 
 5
 00:00:19,280 --> 00:00:21,530
-So we will start the analyze phase.
+Vậy chúng ta sẽ bắt đầu giai đoạn analyze.
 
 6
 00:00:21,800 --> 00:00:26,990
-That means we will perform domain and technical analysis of the particular microservices.
+Điều đó có nghĩa là chúng ta sẽ thực hiện phân tích domain và kỹ thuật của microservices cụ thể.
 
 7
 00:00:27,440 --> 00:00:31,310
-So let's start with the domain analysis of catalog microservices.
+Vậy hãy bắt đầu với phân tích domain của catalog microservices.
 
 8
 00:00:31,310 --> 00:00:36,530
-When we are performing domain analysis we will also explore in four key areas.
+Khi thực hiện phân tích domain, chúng ta cũng sẽ khám phá bốn lĩnh vực chính.
 
 9
 00:00:36,530 --> 00:00:44,060
-These are the domain model analysis, application use cases, Rest API endpoints and underlying data
+Đó là domain model analysis, application use cases, REST API endpoints và underlying data
 
 10
 00:00:44,060 --> 00:00:44,870
@@ -40,67 +40,67 @@ structures.
 
 11
 00:00:45,170 --> 00:00:51,620
-So let's start with the first key area which is the domain model and entity analysis of catalog microservices.
+Vậy hãy bắt đầu với lĩnh vực chính đầu tiên đó là domain model và entity analysis của catalog microservices.
 
 12
 00:00:52,610 --> 00:00:59,540
-Here you can see the domain models of catalog microservices are primary domain is product which is associated
+Ở đây bạn có thể thấy domain models của catalog microservices, domain chính là product, được liên kết
 
 13
 00:00:59,540 --> 00:01:00,830
-with the category.
+với category.
 
 14
 00:01:00,950 --> 00:01:06,980
-So a product has attributes like id, name, category, description, image, file and price.
+Vậy một product có các thuộc tính như id, name, category, description, image, file và price.
 
 15
 00:01:06,980 --> 00:01:11,870
-And also product has a relation 1 to 1 relation with the category.
+Và cũng product có mối quan hệ 1 đến 1 với category.
 
 16
 00:01:11,900 --> 00:01:15,800
-Here you can see the domain model analyze picture in here.
+Ở đây bạn có thể thấy hình ảnh phân tích domain model.
 
 17
 00:01:15,800 --> 00:01:20,090
-So basically product has attributes including in this class.
+Về cơ bản product có các thuộc tính bao gồm trong class này.
 
 18
 00:01:20,090 --> 00:01:23,420
-And product has one to many relation with the category.
+Và product có mối quan hệ one to many với category.
 
 19
 00:01:23,540 --> 00:01:29,630
-So we will also consider a domain event for price change and leading to integration events in the upcoming
+Vậy chúng ta cũng sẽ cân nhắc một domain event cho thay đổi giá và dẫn đến integration events trong các
 
 20
 00:01:29,630 --> 00:01:30,260
-videos.
+video sắp tới.
 
 21
 00:01:31,140 --> 00:01:36,060
-In the next step we will analyze use cases of the catalog microservices.
+Ở bước tiếp theo chúng ta sẽ phân tích use cases của catalog microservices.
 
 22
 00:01:36,060 --> 00:01:39,420
-So we should define our catalog use case analysis.
+Vậy chúng ta nên định nghĩa phân tích use case của catalog.
 
 23
 00:01:39,450 --> 00:01:44,670
-Our main use case is listing products and categories and able to search products.
+Use case chính của chúng ta là liệt kê products và categories, và có khả năng tìm kiếm products.
 
 24
 00:01:44,820 --> 00:01:48,030
-And also we will perform Crud operations on product entity.
+Và cũng chúng ta sẽ thực hiện các operations CRUD trên entity product.
 
 25
 00:01:48,030 --> 00:01:52,110
-So that means our main use case are listing product and categories.
+Vậy điều đó có nghĩa là use cases chính của chúng ta là liệt kê product và categories.
 
 26
 00:01:52,110 --> 00:01:58,530
-Get product with product ID, get products with category, create new product, update product and delete
+Lấy product theo product ID, lấy products theo category, tạo product mới, cập nhật product và xóa
 
 27
 00:01:58,530 --> 00:01:59,310
@@ -108,169 +108,169 @@ product.
 
 28
 00:01:59,310 --> 00:02:04,260
-And along with this, we should design our APIs according to Rest perspective.
+Và cùng với điều này, chúng ta nên thiết kế APIs của chúng ta theo góc nhìn REST.
 
 29
 00:02:04,740 --> 00:02:09,990
-So in the third step, we will analyze Rest API endpoints of the catalog microservices.
+Vậy ở bước thứ ba, chúng ta sẽ phân tích REST API endpoints của catalog microservices.
 
 30
 00:02:09,990 --> 00:02:14,490
-That means we will develop a set of RESTful APIs for catalog microservices.
+Điều đó có nghĩa là chúng ta sẽ phát triển một bộ RESTful APIs cho catalog microservices.
 
 31
 00:02:14,490 --> 00:02:20,610
-Here you can see the table about the RESTful APIs that will expose from the catalog microservices.
+Ở đây bạn có thể thấy bảng về các RESTful APIs sẽ expose từ catalog microservices.
 
 32
 00:02:20,610 --> 00:02:26,640
-According to this table, you can see the Http get methods, post, put and delete methods, and in
+Theo bảng này, bạn có thể thấy các Http GET methods, POST, PUT và DELETE methods, và ở
 
 33
 00:02:26,640 --> 00:02:33,300
-the first row we will get all products that mean list all products with these request Uri which is the
+hàng đầu tiên chúng ta sẽ lấy tất cả products, tức là liệt kê tất cả products với request Uri này là
 
 34
 00:02:33,300 --> 00:02:36,510
-slash products, and this is the http get method.
+slash products, và đây là http GET method.
 
 35
 00:02:36,510 --> 00:02:38,520
-In the second row you can see the.
+Ở hàng thứ hai bạn có thể thấy.
 
 36
 00:02:38,520 --> 00:02:46,020
-We can add a specific product with getting ID information from the request query parameters.
+Chúng ta có thể thêm một product cụ thể bằng cách lấy thông tin ID từ request query parameters.
 
 37
 00:02:46,020 --> 00:02:48,750
-So in the third row it is again http get.
+Vậy ở hàng thứ ba nó lại là http GET.
 
 38
 00:02:48,750 --> 00:02:51,360
-But this time we will get products by category.
+Nhưng lần này chúng ta sẽ lấy products theo category.
 
 39
 00:02:51,360 --> 00:02:54,960
-Again category name will be retrieved from the query parameters.
+Lại lấy tên category từ query parameters.
 
 40
 00:02:54,960 --> 00:02:57,390
-And in here you can see the post method.
+Và ở đây bạn có thể thấy POST method.
 
 41
 00:02:57,390 --> 00:02:59,460
-This will be create any product.
+Điều này sẽ tạo bất kỳ sản phẩm nào.
 
 42
 00:02:59,490 --> 00:03:07,410
-Again it is slash products endpoint and Http put will be update specific product which is the ID getting
+Lại là endpoint /products và HTTP PUT sẽ cập nhật sản phẩm cụ thể có ID được lấy
 
 43
 00:03:07,410 --> 00:03:08,820
-from the request parameters.
+từ các tham số của yêu cầu.
 
 44
 00:03:08,820 --> 00:03:14,100
-And here you can see that we can remove the A product which id comes from the request parameter.
+Và ở đây bạn có thể thấy rằng chúng ta có thể xóa một sản phẩm có ID đến từ tham số yêu cầu.
 
 45
 00:03:14,100 --> 00:03:16,230
-So these are the rest endpoints.
+Vậy đây là các REST endpoints.
 
 46
 00:03:16,230 --> 00:03:23,310
-And the last domain analyze item is underlying data structures of catalog microservices.
+Và mục phân tích domain cuối cùng là cấu trúc dữ liệu cơ bản của catalog microservices.
 
 47
 00:03:23,310 --> 00:03:30,360
-So underlying data structure of the catalog microservices will be document database in order to store
+Cấu trúc dữ liệu cơ bản của catalog microservices sẽ là document database để lưu trữ
 
 48
 00:03:30,360 --> 00:03:34,800
-catalog Json data catalog data will be available for the Json.
+dữ liệu catalog Json, dữ liệu catalog sẽ có sẵn cho Json.
 
 49
 00:03:34,800 --> 00:03:37,650
-And it is very good to store in the document database.
+Và rất tốt để lưu trữ trong document database.
 
 50
 00:03:37,650 --> 00:03:43,920
-So after we have decided to be a document database for data storage, we have two main options.
+Vậy sau khi chúng ta đã quyết định sử dụng document database để lưu trữ dữ liệu, chúng ta có hai tùy chọn chính.
 
 51
 00:03:43,920 --> 00:03:47,670
-These are the use MongoDB as a NoSQL database.
+Đây là việc sử dụng MongoDB như một cơ sở dữ liệu NoSQL.
 
 52
 00:03:47,670 --> 00:03:55,110
-Or we can use PostgreSQL database Json column feature with using Martin library that provide the.
+Hoặc chúng ta có thể sử dụng PostgreSQL với tính năng JSON column bằng cách sử dụng thư viện Marten cung cấp
 
 53
 00:03:55,260 --> 00:03:56,910
-Net transactional DocumentDB.
+.NET transactional DocumentDB.
 
 54
 00:03:57,210 --> 00:04:02,880
-So each offers a robust way to store our catalog in a Json format as a document database.
+Vậy mỗi cái đều cung cấp một cách mạnh mẽ để lưu trữ catalog của chúng ta ở định dạng Json như một document database.
 
 55
 00:04:02,880 --> 00:04:09,330
-But for our catalog microservices, we will utilize PostgreSQL with using the Martin library.
+Nhưng đối với catalog microservices của chúng ta, chúng ta sẽ sử dụng PostgreSQL với thư viện Marten.
 
 56
 00:04:09,360 --> 00:04:11,190
-So what is Martin Library?
+Vậy Marten Library là gì?
 
 57
 00:04:11,190 --> 00:04:18,060
-Martin is a powerful library that transforms PostgreSQL into a dotnet transactional DocumentDB.
+Marten là một thư viện mạnh mẽ chuyển đổi PostgreSQL thành một .NET transactional DocumentDB.
 
 58
 00:04:18,420 --> 00:04:26,010
-It leverages the PostgreSQL Json column features and allowing us to store and query our data as a Json
+Nó tận dụng các tính năng JSON column của PostgreSQL và cho phép chúng ta lưu trữ và truy vấn dữ liệu của chúng ta như những Json
 
 59
 00:04:26,010 --> 00:04:28,110
-documents, like a document table.
+documents, giống như một document table.
 
 60
 00:04:28,560 --> 00:04:34,650
-So this approach combines the flexibility of document database with the reliability and robustness of
+Vậy phương pháp này kết hợp tính linh hoạt của document database với độ tin cậy và tính mạnh mẽ của
 
 61
 00:04:34,650 --> 00:04:36,870
-the relational PostgreSQL database.
+cơ sở dữ liệu relational PostgreSQL.
 
 62
 00:04:37,530 --> 00:04:45,390
-We can query an index Json data efficiently, making it a great fit for modern agile microservices that
+Chúng ta có thể truy vấn và indexing dữ liệu Json một cách hiệu quả, làm cho nó rất phù hợp với các microservices hiện đại yêu cầu
 
 63
 00:04:45,390 --> 00:04:48,540
-require quick iteration and flexible data models.
+sự lặp lại nhanh chóng và các mô hình dữ liệu linh hoạt.
 
 64
 00:04:49,290 --> 00:04:55,410
-So we can say that catalog API microservices will be the simple Crud implementation on product data
+Vậy chúng ta có thể nói rằng catalog API microservices sẽ là một triển khai CRUD đơn giản trên dữ liệu sản phẩm
 
 65
 00:04:55,410 --> 00:04:56,790
-and document database.
+và document database.
 
 66
 00:04:56,790 --> 00:04:59,700
-You can see the external and internal architecture.
+Bạn có thể thấy kiến trúc bên ngoài và bên trong.
 
 67
 00:04:59,700 --> 00:05:06,150
-We will apply internal architecture design patterns and we will use different kind of libraries.
+Chúng ta sẽ áp dụng các design patterns kiến trúc nội bộ và chúng ta sẽ sử dụng các loại thư viện khác nhau.
 
 68
 00:05:06,150 --> 00:05:10,740
-So as you can see that we have finished the domain analysis of the catalog microservices.
+Vậy như bạn có thể thấy rằng chúng ta đã hoàn thành phân tích domain của catalog microservices.
 
 69
 00:05:10,740 --> 00:05:13,320
-Now it is time to do technical analysis.
+Bây giờ là lúc để thực hiện phân tích kỹ thuật.
 

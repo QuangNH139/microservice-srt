@@ -160,19 +160,19 @@ You can see the image on the slide.
 
 41
 00:03:08,270 --> 00:03:16,880
-They wrap around the request handling allowing you to execute the logic before and after actual handler
+Chúng bao quanh quá trình xử lý request cho phép bạn thực thi logic trước và sau khi handler thực tế
 
 42
 00:03:16,880 --> 00:03:17,600
-is called.
+được gọi.
 
 43
 00:03:17,600 --> 00:03:25,280
-So this is the mediator pipeline process before handle the actual operation mediator allowing to preprocessor
+Vậy đây là quá trình pipeline mediator trước khi xử lý hoạt động thực tế, mediator cho phép preprocessor
 
 44
 00:03:25,280 --> 00:03:32,090
-behavior or post-processor behaviors that you can use these behavior as a implementing cross-cutting
+hành vi hoặc post-processor hành vi mà bạn có thể sử dụng những hành vi này để triển khai cross-cutting
 
 45
 00:03:32,090 --> 00:03:32,840
@@ -180,49 +180,49 @@ concerns.
 
 46
 00:03:34,250 --> 00:03:37,430
-Here you can see the issue of microservices.
+Ở đây bạn có thể thấy vấn đề của microservices.
 
 47
 00:03:37,430 --> 00:03:41,990
-It is also used for the implementing various cross-cutting concerns.
+Nó cũng được sử dụng để triển khai các cross-cutting concerns khác nhau.
 
 48
 00:03:41,990 --> 00:03:44,240
-The first one is log behavior.
+Cái đầu tiên là log behavior.
 
 49
 00:03:44,570 --> 00:03:48,290
-A behavior that logs details about the handling request.
+Một hành vi ghi lại chi tiết về request xử lý.
 
 50
 00:03:48,290 --> 00:03:50,690
-And the second one is the validation behavior.
+Và cái thứ hai là validation behavior.
 
 51
 00:03:50,690 --> 00:03:55,370
-This is the behavior that validates incoming requests before they reach the handler.
+Đây là hành vi xác thực các request đến trước khi chúng đến handler.
 
 52
 00:03:55,370 --> 00:04:00,050
-So we will use these two behaviors when implementing our issue of microservices.
+Vậy chúng ta sẽ sử dụng hai hành vi này khi triển khai issue của microservices.
 
 53
 00:04:00,050 --> 00:04:06,530
-And these behaviors ensures every request processed by the mediator in the application is logged and
+Và những hành vi này đảm bảo rằng mỗi request được xử lý bởi mediator trong ứng dụng được ghi lại và
 
 54
 00:04:06,530 --> 00:04:12,710
-validated consistently, and it demonstrates how the cross-cutting concerns can be efficiently managed
+xác thực một cách nhất quán, và nó chứng minh cách các cross-cutting concerns có thể được quản lý hiệu quả
 
 55
 00:04:12,710 --> 00:04:17,000
-using the mediator pattern and mediator library pipeline behaviors.
+sử dụng mẫu mediator và các pipeline behaviors của mediator library.
 
 56
 00:04:17,000 --> 00:04:24,380
-So we can say that using mediator in ASP.Net applications provides a structured and clean way to handle
+Vậy chúng ta có thể nói rằng sử dụng mediator trong các ứng dụng ASP.NET cung cấp một cách có cấu trúc và sạch sẽ để xử lý
 
 57
 00:04:24,380 --> 00:04:25,970
-complex request processing.
+xử lý request phức tạp.
 

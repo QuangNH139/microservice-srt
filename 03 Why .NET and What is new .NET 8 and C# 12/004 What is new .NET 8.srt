@@ -1,34 +1,34 @@
 1
 00:00:00,170 --> 00:00:04,730
-In this video we are going to learn what is new in Net eight.
+Trong video này, chúng ta sẽ tìm hiểu những gì mới trong .NET 8.
 
 2
 00:00:05,210 --> 00:00:07,460
-The first one is dotnet aspire.
+Cái đầu tiên là dotnet aspire.
 
 3
 00:00:07,490 --> 00:00:14,450
-DotNet aspire is a naive, opinionated, cloud ready stack designed for building observable, production
+DotNet aspire là một stack cloud ready được thiết kế một cách có ý định, được xây dựng để có thể quan sát, production
 
 4
 00:00:14,450 --> 00:00:16,460
-ready, distributed applications.
+ready, các ứng dụng phân tán.
 
 5
 00:00:16,490 --> 00:00:22,100
-It is delivered through a collection of NuGet packages targeting specific cloud native concerns.
+Nó được cung cấp thông qua một bộ sưu tập các gói NuGet hướng tới các mối quan tâm cloud native cụ thể.
 
 6
 00:00:22,100 --> 00:00:24,140
-Now available in preview for.
+Hiện có sẵn dưới dạng bản xem trước cho.
 
 7
 00:00:24,320 --> 00:00:27,710
-Net and another new feature is called.
+.NET và một tính năng mới khác được gọi là.
 
 8
 00:00:27,710 --> 00:00:28,640
-Net libraries.
+.NET libraries.
 
 9
 00:00:28,670 --> 00:00:29,180
@@ -36,109 +36,109 @@ Core.
 
 10
 00:00:29,300 --> 00:00:36,620
-Net libraries have seen significant improvements, including the serialization enhancements, time abstractions,
+.NET libraries đã có những cải tiến đáng kể, bao gồm các cải tiến serialization, time abstractions,
 
 11
 00:00:36,620 --> 00:00:43,070
-UTF eight improvements, and methods for working with the randomness and performance focused types like
+các cải tiến UTF 8, và các phương thức để làm việc với randomness và các loại focused on performance như
 
 12
 00:00:43,070 --> 00:00:46,130
-the system numerics and system runtime intrinsics.
+system numerics và system runtime intrinsics.
 
 13
 00:00:46,430 --> 00:00:49,070
-And another new feature is metrics.
+Và một tính năng mới khác là metrics.
 
 14
 00:00:49,460 --> 00:00:56,660
-Net eight introduces new capabilities to attach key value pair tags to meter and instrument objects,
+.NET 8 giới thiệu các khả năng mới để gắn thẻ key value pair tới các đối tượng meter và instrument,
 
 15
 00:00:56,660 --> 00:01:02,990
-and allowing for more nuanced differentiation in aggregated metrics measurement in your applications.
+và cho phép phân biệt nuanced hơn trong phép đo metrics tổng hợp trong các ứng dụng của bạn.
 
 16
 00:01:03,020 --> 00:01:05,840
-And another new feature is networking.
+Và một tính năng mới khác là networking.
 
 17
 00:01:05,840 --> 00:01:06,860
-Networking in.
+Networking trong.
 
 18
 00:01:07,040 --> 00:01:15,170
-Net eight includes support for Https proxy, ensuring encrypted communication even in the proxy scenarios,
+.NET 8 bao gồm hỗ trợ cho Https proxy, đảm bảo encrypted communication ngay cả trong các kịch bản proxy,
 
 19
 00:01:15,170 --> 00:01:18,050
-thus enhancing the privacy and security.
+do đó nâng cao quyền riêng tư và bảo mật.
 
 20
 00:01:18,650 --> 00:01:23,870
-And if you continue for newest features, which is the extension libraries.
+Và nếu bạn tiếp tục với những tính năng mới nhất, đó là extension libraries.
 
 21
 00:01:24,020 --> 00:01:30,380
-Extension libraries have been updated with the new functionalities like the options validation logger,
+Extension libraries đã được cập nhật với các chức năng mới như options validation logger,
 
 22
 00:01:30,380 --> 00:01:37,160
-message attribute constructs, extended metrics, hosted lifecycle services, kite dependency injection
+message attribute constructs, extended metrics, hosted lifecycle services, dependency injection
 
 23
 00:01:37,160 --> 00:01:41,330
-services and system numeric tensor tensor primitives, and so on.
+services và system numeric tensor primitives, v.v.
 
 24
 00:01:41,360 --> 00:01:44,180
-And another new feature is garbage collection.
+Và một tính năng mới khác là garbage collection.
 
 25
 00:01:44,210 --> 00:01:49,670
-The garbage collection mechanism now allows on the fly adjustment of memory limits.
+Cơ chế garbage collection hiện cho phép điều chỉnh giới hạn bộ nhớ on the fly.
 
 26
 00:01:49,700 --> 00:01:54,530
-A crucial feature for the cloud service scenarios where dynamic scaling is mandatory.
+Một tính năng quan trọng cho các kịch bản cloud service nơi mà dynamic scaling là bắt buộc.
 
 27
 00:01:54,740 --> 00:01:58,010
-And another improvement is reflection improvements.
+Và một cải tiến khác là reflection improvements.
 
 28
 00:01:58,010 --> 00:02:03,800
-Reflection capabilities have been enhanced for better performance and more efficient memory usage.
+Các khả năng reflection đã được nâng cao để có hiệu suất tốt hơn và sử dụng bộ nhớ hiệu quả hơn.
 
 29
 00:02:03,830 --> 00:02:10,550
-Function pointers also added reflection capabilities, and another new feature is native to support
+Function pointers cũng thêm các khả năng reflection, và một tính năng mới khác là native support
 
 30
 00:02:10,550 --> 00:02:12,350
-that we have already explained.
+mà chúng ta đã giải thích rồi.
 
 31
 00:02:12,380 --> 00:02:18,680
-These are significant additions allowing for more efficient compilation and execution, particularly
+Đây là những bổ sung đáng kể cho phép compilation và execution hiệu quả hơn, đặc biệt
 
 32
 00:02:18,680 --> 00:02:21,260
-beneficial for cloud native applications.
+có lợi cho các ứng dụng cloud native.
 
 33
 00:02:21,320 --> 00:02:25,280
-And lastly, we can say that dotnet SDK improvements the.
+Và cuối cùng, chúng ta có thể nói rằng .NET SDK improvements.
 
 34
 00:02:25,460 --> 00:02:32,390
-Net SDK itself has seen updates making it more robust and feature rich, aligning with the evolving
+.NET SDK chính nó đã có những cập nhật làm cho nó trở nên mạnh mẽ hơn và giàu tính năng hơn, phù hợp với nhu cầu
 
 35
 00:02:32,390 --> 00:02:34,460
-needs of modern net development.
+phát triển của .NET hiện đại.
 
 36
 00:02:34,460 --> 00:02:39,470
-So enhanced net published and Jetpack Commandos is coming with new net eight.
+Vậy enhanced .NET published và Jetpack Commands đang đến với .NET 8 mới.
 

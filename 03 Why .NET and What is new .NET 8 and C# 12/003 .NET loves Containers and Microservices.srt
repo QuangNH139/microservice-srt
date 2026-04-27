@@ -1,6 +1,6 @@
 1
 00:00:00,230 --> 00:00:06,350
-In this video, we are going to learn new enhancement of containerization and Docker images in dotnet
+Trong video này, chúng ta sẽ tìm hiểu những cải tiến mới về containerization và Docker images trong dotnet
 
 2
 00:00:06,350 --> 00:00:06,800
@@ -8,7 +8,7 @@ eight.
 
 3
 00:00:07,310 --> 00:00:13,100
-Let's start with a significant advancement in dotnet eight, which is the introduction of chiselled
+Hãy bắt đầu với một tiến bộ đáng kể trong dotnet eight, đó là giới thiệu chiselled
 
 4
 00:00:13,100 --> 00:00:14,150
@@ -16,91 +16,91 @@ containers.
 
 5
 00:00:14,510 --> 00:00:21,560
-These chiselled containers are lean version of ubuntu and stripped down to only the essential packages
+Những chiselled containers này là phiên bản ubuntu gọn nhẹ và được loại bỏ xuống chỉ còn các gói packages cần thiết
 
 6
 00:00:21,560 --> 00:00:23,900
-needed to run your net applications.
+để chạy các ứng dụng net của bạn.
 
 7
 00:00:24,350 --> 00:00:31,160
-This approach results in images that are not only smaller but also have a reduced attack surface, enhancing
+Phương pháp này dẫn đến các images không chỉ nhỏ hơn mà còn có diện tích tấn công giảm, tăng cường
 
 8
 00:00:31,160 --> 00:00:33,320
-both performance and security.
+cả hiệu năng và bảo mật.
 
 9
 00:00:33,680 --> 00:00:37,010
-So what are the benefits of these smaller, chiseled images?
+Vậy những lợi ích của những images nhỏ, chiselled này là gì?
 
 10
 00:00:37,040 --> 00:00:44,180
-These small images are a game changer because they mean faster pull times, reduce storage requirements,
+Những images nhỏ này là một bước ngoặt vì chúng có nghĩa là thời gian pull nhanh hơn, giảm yêu cầu lưu trữ,
 
 11
 00:00:44,180 --> 00:00:45,740
-and quicker deployments.
+và deployments nhanh hơn.
 
 12
 00:00:45,770 --> 00:00:51,410
-This is especially crucial in environments where the bandwidth and storage are at a premium.
+Điều này đặc biệt quan trọng trong những môi trường mà bandwidth và lưu trữ rất quý giá.
 
 13
 00:00:51,650 --> 00:00:55,580
-So another benefit is composite ASP.Net core Docker images.
+Vậy một lợi ích khác là composite ASP.Net core Docker images.
 
 14
 00:00:55,670 --> 00:00:59,450
-We delve into composite ASP.Net core Docker image.
+Chúng ta sẽ đi sâu vào composite ASP.Net core Docker image.
 
 15
 00:00:59,450 --> 00:01:06,020
-These images represent a more customizable form of ahead of time compilation, which does mean that
+Những images này đại diện cho một dạng ahead of time compilation có thể tùy chỉnh hơn, có nghĩa là
 
 16
 00:01:06,020 --> 00:01:10,040
-Aot based images for coreclr based images.
+Aot based images cho coreclr based images.
 
 17
 00:01:10,040 --> 00:01:16,610
-So this innovation allows developers to tailor their container images for optimal performance in their
+Vậy điều này cho phép các developers tùy chỉnh container images của họ để có hiệu năng tối ưu trong
 
 18
 00:01:16,610 --> 00:01:17,900
-specific use case.
+trường hợp sử dụng cụ thể của họ.
 
 19
 00:01:17,900 --> 00:01:22,520
-And another benefit is running containers as a non-root users.
+Và một lợi ích khác là chạy containers với những non-root users.
 
 20
 00:01:22,520 --> 00:01:26,510
-This is one of the important thing is using the Non-root.
+Đây là một điều quan trọng là sử dụng Non-root.
 
 21
 00:01:26,510 --> 00:01:33,860
-By default, a major shift in dotnet eight is supports for running container images with Non-root users.
+Theo mặc định, một sự thay đổi lớn trong dotnet eight là hỗ trợ chạy container images với Non-root users.
 
 22
 00:01:34,130 --> 00:01:40,310
-This is not just a requirement for chiselled containers, but also best practice in container security.
+Đây không chỉ là yêu cầu cho chiselled containers, mà còn là best practice trong container security.
 
 23
 00:01:40,310 --> 00:01:47,420
-Running as a non-root user minimizes the potential impact of any security vulnerabilities in the container.
+Chạy với non-root user giảm thiểu tác động tiềm ẩn của bất kỳ lỗ hổng bảo mật nào trong container.
 
 24
 00:01:47,930 --> 00:01:52,850
-And another improvement of ASP.Net core and Port 80 over 80.
+Và một cải tiến khác của ASP.Net core và Port 80 over 80.
 
 25
 00:01:52,880 --> 00:01:56,480
-You can see in here default port is now 8080.
+Bạn có thể thấy ở đây port mặc định bây giờ là 8080.
 
 26
 00:01:56,510 --> 00:02:03,170
-With the move to Non-root, users come a change in the default port for ASP.Net core applications in
+Với sự chuyển sang Non-root users, có một thay đổi trong port mặc định cho các ứng dụng ASP.Net core trong
 
 27
 00:02:03,170 --> 00:02:03,830
@@ -108,85 +108,85 @@ dotnet eight.
 
 28
 00:02:03,830 --> 00:02:06,620
-The standard port is now 8080.
+Port chuẩn bây giờ là 8080.
 
 29
 00:02:06,740 --> 00:02:13,460
-This change aligned with the container best practices and enables easier integration with many container
+Thay đổi này phù hợp với các container best practices và cho phép tích hợp dễ dàng hơn với nhiều nền tảng container
 
 30
 00:02:13,460 --> 00:02:16,190
-orchestration platforms like Kubernetes.
+orchestration như Kubernetes.
 
 31
 00:02:16,760 --> 00:02:18,710
-So you can see that these are the.
+Vậy bạn có thể thấy đây là những
 
 32
 00:02:18,890 --> 00:02:24,620
-Net container enhancements that we can use for deploying cloud native applications with dotnet eight.
+Net container enhancements mà chúng ta có thể sử dụng để triển khai các ứng dụng cloud native với dotnet eight.
 
 33
 00:02:25,280 --> 00:02:32,540
-You can see in here how dotnet eight has achieved remarkable improvements in container size, both container
+Bạn có thể thấy ở đây cách dotnet eight đã đạt được những cải tiến đáng chú ý trong kích thước container, cả container
 
 34
 00:02:32,540 --> 00:02:34,160
-size and runtime size.
+size và runtime size.
 
 35
 00:02:34,160 --> 00:02:35,420
-You can see the picture.
+Bạn có thể thấy hình ảnh.
 
 36
 00:02:35,420 --> 00:02:40,430
-This is the container size is reduced and the runtime size also reduced dramatically.
+Đây là container size đã giảm và runtime size cũng giảm đáng kể.
 
 37
 00:02:40,430 --> 00:02:45,560
-And another big improvement in dotnet eight is compiling with native Aot.
+Và một cải tiến lớn khác trong dotnet eight là compiling với native Aot.
 
 38
 00:02:45,830 --> 00:02:50,990
-So native Aot or ahead of time compilation is a technique where the.
+Vậy native Aot hoặc ahead of time compilation là một kỹ thuật mà các
 
 39
 00:02:50,990 --> 00:02:54,170
-Net applications are precompiled into native code.
+Net applications được precompiled thành native code.
 
 40
 00:02:54,170 --> 00:03:00,950
-This process significantly reduces the runtime size and improves the startup performance of the application.
+Quá trình này giảm đáng kể runtime size và cải thiện hiệu năng khởi động của ứng dụng.
 
 41
 00:03:00,950 --> 00:03:06,920
-So in a containerized environment, this means leaner image and faster deployment times.
+Vậy trong một môi trường containerized, điều này có nghĩa là image nhẹ hơn và thời gian triển khai nhanh hơn.
 
 42
 00:03:06,920 --> 00:03:13,580
-So the use of the native Aot in dotnet eight has a direct impact on reducing container size.
+Vậy việc sử dụng native Aot trong dotnet eight có tác động trực tiếp đến việc giảm kích thước container.
 
 43
 00:03:13,580 --> 00:03:21,110
-You can see the image on the slide half significantly reduced the runtime size when we use native Aot.
+Bạn có thể thấy image trên slide giảm đáng kể kích thước runtime khi chúng ta sử dụng native Aot.
 
 44
 00:03:21,470 --> 00:03:25,610
-So you can see the reducing the runtime size in here.
+Vậy bạn có thể thấy việc giảm kích thước runtime ở đây.
 
 45
 00:03:25,610 --> 00:03:31,970
-This provides faster pool and startup times and lower bandwidth consumption, which is very vital in
+Điều này cung cấp thời gian khởi động và pull nhanh hơn và mức tiêu thụ băng thông thấp hơn, điều này rất quan trọng trong
 
 46
 00:03:31,970 --> 00:03:33,500
-the cloud native environments.
+các môi trường cloud native.
 
 47
 00:03:33,620 --> 00:03:39,470
-So as a result, we can say that these enhancements in dotnet eight proves that Microsoft commitment
+Vậy như một kết quả, chúng ta có thể nói rằng những cải tiến này trong dotnet eight chứng tỏ cam kết của Microsoft
 
 48
 00:03:39,470 --> 00:03:43,670
-to making dotnet leading platform for containerized applications.
+trong việc làm cho dotnet trở thành nền tảng hàng đầu cho các ứng dụng containerized.
 

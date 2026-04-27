@@ -1,46 +1,46 @@
 1
 00:00:00,170 --> 00:00:06,200
-In this video, we are going to clear our project for the single microservices, and we will setting
+Trong video này, chúng ta sẽ làm sạch dự án của chúng ta cho single microservices, và chúng ta sẽ thiết lập
 
 2
 00:00:06,200 --> 00:00:09,770
-up a minimal ASP.Net core web API for minimal code.
+một ASP.Net core web API tối thiểu với code tối giản.
 
 3
 00:00:09,770 --> 00:00:16,190
-So that means we will streamline our project by removing the boilerplate code, which provided from
+Điều đó có nghĩa là chúng ta sẽ hợp lý hóa dự án của chúng ta bằng cách loại bỏ boilerplate code, được cung cấp từ
 
 4
 00:00:16,190 --> 00:00:20,840
-the ASP.Net core Web API and focusing on the essential elements.
+ASP.Net core Web API và tập trung vào các yếu tố cơ bản.
 
 5
 00:00:20,870 --> 00:00:23,480
-Here you can see the items on our program.
+Ở đây bạn có thể thấy các mục trên chương trình của chúng ta.
 
 6
 00:00:23,480 --> 00:00:30,500
-Since we are divided by five steps and especially we will divide by two the before building the application
+Vì chúng ta chia thành năm bước và đặc biệt chúng ta sẽ chia làm hai phần là trước khi xây dựng ứng dụng
 
 7
 00:00:30,500 --> 00:00:32,299
-and after building the application.
+và sau khi xây dựng ứng dụng.
 
 8
 00:00:32,299 --> 00:00:39,500
-So now let me explain these codes and these items from our program says please open the our minimal
+Vậy bây giờ hãy để tôi giải thích những đoạn code này và những mục từ chương trình của chúng ta, vui lòng mở dự án minimal
 
 9
 00:00:39,500 --> 00:00:41,840
-API project and open the programs.
+API của chúng ta và mở programs.
 
 10
 00:00:41,840 --> 00:00:42,230
-Yes.
+Vâng.
 
 11
 00:00:42,230 --> 00:00:48,860
-So now I am going to remove the unnecessary and boilerplate code and which is regarding the weather
+Vậy bây giờ tôi sắp loại bỏ code không cần thiết và boilerplate code liên quan đến weather
 
 12
 00:00:48,860 --> 00:00:49,490
@@ -48,91 +48,91 @@ forecast.
 
 13
 00:00:49,490 --> 00:00:56,990
-So I'm going to removing these application use https direction and summaries and map get function.
+Vậy tôi sắp loại bỏ những lệnh app use https direction và summaries cũng như hàm map get.
 
 14
 00:00:56,990 --> 00:01:02,510
-Remove these line of codes and after that removing these helper class.
+Xóa các dòng code này và sau đó xóa helper class này.
 
 15
 00:01:02,510 --> 00:01:11,540
-And here we can see the our minimal code under the program CSS that we can spin up our single microservices.
+Và ở đây chúng ta có thể thấy code tối thiểu của chúng ta dưới program CSS mà chúng ta có thể khởi chạy single microservices của chúng ta.
 
 16
 00:01:11,540 --> 00:01:15,920
-And these steps is reflected five main steps on our slide.
+Và những bước này được phản ánh trong năm bước chính trên slide của chúng ta.
 
 17
 00:01:15,920 --> 00:01:23,180
-If you open the slide you can see that we have divided five main step in order to run this web API application.
+Nếu bạn mở slide, bạn có thể thấy rằng chúng ta đã chia thành năm bước chính để chạy ứng dụng web API này.
 
 18
 00:01:23,180 --> 00:01:26,330
-And these steps are reflected on our program CSS.
+Và những bước này được phản ánh trong program CSS của chúng ta.
 
 19
 00:01:26,330 --> 00:01:30,920
-And let's start with explaining the first step which is to create Web Application Builder.
+Và hãy bắt đầu với việc giải thích bước đầu tiên, đó là tạo Web Application Builder.
 
 20
 00:01:30,920 --> 00:01:37,100
-If you open the Visual Studio and go to the first line of code, this is basically initialize the application
+Nếu bạn mở Visual Studio và đi đến dòng code đầu tiên, cơ bản đây là khởi tạo ứng dụng
 
 21
 00:01:37,100 --> 00:01:39,140
-with default setting and configuration.
+với cài đặt và cấu hình mặc định.
 
 22
 00:01:39,140 --> 00:01:43,430
-That means this line create a builder object for a web application.
+Điều đó có nghĩa là dòng này tạo một đối tượng builder cho một web application.
 
 23
 00:01:43,430 --> 00:01:49,460
-So the create builder method initialize any instance of the Web application builder class and using
+Vậy phương thức create builder khởi tạo một instance của lớp Web Application Builder và sử dụng
 
 24
 00:01:49,460 --> 00:01:51,380
-the provided command line arguments.
+các đối số dòng lệnh được cung cấp.
 
 25
 00:01:51,380 --> 00:01:56,240
-And this is where the configuration, logging and service dependencies are set up.
+Và đây là nơi cấu hình, logging và service dependencies được thiết lập.
 
 26
 00:01:56,240 --> 00:02:00,590
-And the second step is adding services into container.
+Và bước thứ hai là thêm services vào container.
 
 27
 00:02:00,590 --> 00:02:07,520
-In here we can add the ASP.Net built in services and any custom services using the dependency injection.
+Ở đây chúng ta có thể thêm các service built-in của ASP.Net và bất kỳ custom services nào bằng cách sử dụng dependency injection.
 
 28
 00:02:07,520 --> 00:02:13,880
-So basically this command indicates that you can add services to the applications dependency injection
+Vậy cơ bản lệnh này cho biết rằng bạn có thể thêm services vào dependency injection container của ứng dụng,
 
 29
 00:02:13,880 --> 00:02:20,390
-container services like database context Configuration services or any custom services required by our
+các services như database context, Configuration services hoặc bất kỳ custom services nào được yêu cầu bởi ứng dụng của chúng ta
 
 30
 00:02:20,390 --> 00:02:23,180
-application should be registered in here.
+phải được đăng ký ở đây.
 
 31
 00:02:23,390 --> 00:02:26,450
-And the third step is building the application.
+Và bước thứ ba là xây dựng ứng dụng.
 
 32
 00:02:26,450 --> 00:02:32,450
-This line builder web application based on the configurations and services defined in the builder,
+Dòng này builder web application dựa trên cấu hình và services được định nghĩa trong builder,
 
 33
 00:02:32,450 --> 00:02:37,520
-and it prepares the application to start accepting the Http request.
+và nó chuẩn bị ứng dụng để bắt đầu chấp nhận Http request.
 
 34
 00:02:37,520 --> 00:02:43,700
-After building the application, we can go to the next step, which is the configure the Http request
+Sau khi xây dựng ứng dụng, chúng ta có thể đi đến bước tiếp theo, đó là cấu hình Http request
 
 35
 00:02:43,700 --> 00:02:44,390
@@ -140,101 +140,101 @@ pipeline.
 
 36
 00:02:44,390 --> 00:02:51,320
-In here we can configure the middleware for the applications Http request pipeline and middleware components
+Ở đây chúng ta có thể cấu hình middleware cho Http request pipeline của ứng dụng và các thành phần middleware
 
 37
 00:02:51,320 --> 00:02:53,360
-handle the requests and responses.
+xử lý các request và response.
 
 38
 00:02:53,360 --> 00:03:00,110
-The common examples including the configuring, routing, authentication, authorization, and serving
+Các ví dụ phổ biến bao gồm cấu hình routing, authentication, authorization, và phục vụ
 
 39
 00:03:00,110 --> 00:03:00,920
-the static files.
+các static files.
 
 40
 00:03:00,920 --> 00:03:01,850
-And so on.
+Và cứ thế tiếp tục.
 
 41
 00:03:02,300 --> 00:03:06,230
-And the last step is App.run which is to run the application.
+Và bước cuối cùng là App.run, đó là để chạy ứng dụng.
 
 42
 00:03:06,230 --> 00:03:09,590
-This line basically starts the web application.
+Dòng này về cơ bản bắt đầu ứng dụng web.
 
 43
 00:03:09,590 --> 00:03:16,580
-It is listening for the incoming Http requests and routes them to the appropriate endpoints or handlers
+Nó lắng nghe các yêu cầu Http đến và định tuyến chúng đến các endpoint hoặc handler thích hợp
 
 44
 00:03:16,580 --> 00:03:19,490
-as configured in the application in the previous step.
+như đã cấu hình trong ứng dụng ở bước trước.
 
 45
 00:03:19,640 --> 00:03:24,350
-So we can basically divide by two main step in.
+Vậy chúng ta có thể chia thành hai bước chính.
 
 46
 00:03:24,350 --> 00:03:26,480
-Generally we use two main step.
+Nói chung, chúng ta sử dụng hai bước chính.
 
 47
 00:03:26,480 --> 00:03:32,270
-That means we will setting up ASP.Net core web API involving the main two step.
+Điều đó có nghĩa là chúng ta sẽ thiết lập ASP.Net Core Web API liên quan đến hai bước chính.
 
 48
 00:03:32,270 --> 00:03:38,390
-These are the before building the application and after the building the application.
+Đó là trước khi xây dựng ứng dụng và sau khi xây dựng ứng dụng.
 
 49
 00:03:38,390 --> 00:03:42,230
-So before building the application you can see these two lines of code.
+Vậy trước khi xây dựng ứng dụng, bạn có thể thấy hai dòng mã này.
 
 50
 00:03:42,230 --> 00:03:47,150
-Here we use various add service method for setting up the dependency injection.
+Ở đây chúng ta sử dụng các phương thức add service khác nhau để thiết lập dependency injection.
 
 51
 00:03:47,150 --> 00:03:54,620
-And after building the web application, we generally utilize the use function methods for configuring
+Và sau khi xây dựng ứng dụng web, chúng ta thường sử dụng các phương thức use function để cấu hình
 
 52
 00:03:54,620 --> 00:03:57,680
-the Http request lifecycles and pipelines.
+lifecycle và pipeline của Http request.
 
 53
 00:03:58,010 --> 00:04:03,860
-So as you can see that this is the minimum boilerplate code for the ASP.Net web API project.
+Vậy như bạn có thể thấy, đây là mã boilerplate tối thiểu cho dự án ASP.Net Web API.
 
 54
 00:04:03,860 --> 00:04:10,190
-So in the next time we will use ASP.Net empty project, because this time we will use web API template
+Vậy lần tới chúng ta sẽ sử dụng ASP.Net empty project, vì lần này chúng ta sử dụng Web API template
 
 55
 00:04:10,190 --> 00:04:14,750
-and have to remove some weather forecast operations in our code.
+và phải loại bỏ một số thao tác weather forecast trong mã của chúng ta.
 
 56
 00:04:14,750 --> 00:04:21,019
-For that reason, next time we will use ASP.Net empty project that we can directly configure our microservices.
+Vì lý do đó, lần tới chúng ta sẽ sử dụng ASP.Net empty project để chúng ta có thể cấu hình trực tiếp microservices của mình.
 
 57
 00:04:21,019 --> 00:04:27,530
-Also, these minimal setup gives us flexible base and ready to be customized for our specific microservice
+Ngoài ra, thiết lập tối thiểu này cung cấp cho chúng ta cơ sở linh hoạt và sẵn sàng được tùy chỉnh cho microservice
 
 58
 00:04:27,530 --> 00:04:28,370
-requirements.
+yêu cầu cụ thể của chúng ta.
 
 59
 00:04:28,370 --> 00:04:34,460
-So that means during the whole course we are going to developing our microservices with using the minimal
+Điều đó có nghĩa là trong suốt khóa học này, chúng ta sẽ phát triển microservices của mình bằng cách sử dụng Minimal
 
 60
 00:04:34,460 --> 00:04:37,970
-APIs and ASP.Net core Empty project template.
+APIs và ASP.Net Core Empty project template.
 

@@ -1,68 +1,68 @@
 1
 00:00:00,200 --> 00:00:06,320
-In this video, we are going to create a naive GitHub repository for our microservices project.
+Trong video này, chúng ta sẽ tạo một GitHub repository cho dự án microservices của mình.
 
 2
 00:00:06,590 --> 00:00:12,740
-This is not a mandatory step, but I would like to see your progress of developing microservices and
+Đây không phải là một bước bắt buộc, nhưng tôi muốn xem tiến độ phát triển microservices của bạn.
 
 3
 00:00:12,740 --> 00:00:16,790
-if you encounter any problem, it is very easy to check your GitHub repository.
+Và nếu bạn gặp phải vấn đề gì, sẽ rất dễ dàng để kiểm tra GitHub repository của bạn.
 
 4
 00:00:17,150 --> 00:00:18,830
-So let's take an action.
+Vậy hãy hành động nào.
 
 5
 00:00:18,920 --> 00:00:23,930
-First of all, you should ensure that you have a GitHub account and login your GitHub account.
+Đầu tiên, bạn cần đảm bảo rằng bạn có tài khoản GitHub và đăng nhập vào tài khoản GitHub của mình.
 
 6
 00:00:23,930 --> 00:00:27,020
-And after that navigate to repository section.
+Và sau đó hãy điều hướng đến phần repositories.
 
 7
 00:00:27,020 --> 00:00:34,100
-Click the repositories and after that you can click the new button in order to create any repository.
+Nhấp vào repositories và sau đó bạn có thể nhấp nút new để tạo một repository.
 
 8
 00:00:34,100 --> 00:00:38,720
-So as a repository name we will give each of microservices.
+Vậy tên repository sẽ là tên của từng microservice.
 
 9
 00:00:38,720 --> 00:00:45,080
-And if you scroll down you can select the public repository and add a Readme file.
+Và nếu bạn cuộn xuống, bạn có thể chọn repository public và thêm file Readme.
 
 10
 00:00:45,110 --> 00:00:52,130
-We should add a git ignore as a Visual Studio, since we will use Visual Studio either for our development,
+Chúng ta nên thêm git ignore cho Visual Studio, vì chúng ta sẽ sử dụng Visual Studio để phát triển.
 
 11
 00:00:52,130 --> 00:00:58,970
-the git ignore should be Visual Studio, and you can choose any license for your repository, and after
+Git ignore nên là Visual Studio, và bạn có thể chọn bất kỳ license nào cho repository của bạn, và sau đó
 
 12
 00:00:58,970 --> 00:01:02,690
-that you can create repository by clicking this button.
+bạn có thể tạo repository bằng cách nhấp nút này.
 
 13
 00:01:04,950 --> 00:01:07,470
-Yes, our repository is created.
+Vâng, repository của chúng ta đã được tạo.
 
 14
 00:01:07,470 --> 00:01:13,110
-Once we create the repository, you can see the link is generated from the GitHub.
+Khi chúng ta tạo repository, bạn có thể thấy link được tạo từ GitHub.
 
 15
 00:01:13,110 --> 00:01:19,740
-By this way we can follow your progress on this repository and I can easily check your repositories
+Bằng cách này, chúng ta có thể theo dõi tiến độ của bạn trên repository này và tôi có thể dễ dàng kiểm tra repositories của bạn.
 
 16
 00:01:19,740 --> 00:01:25,530
-when you stuck at some point of this course, you can share the repository address and I will check
+Khi bạn gặp khó khăn tại một điểm nào đó trong khóa học này, bạn có thể chia sẻ địa chỉ repository và tôi sẽ kiểm tra
 
 17
 00:01:25,530 --> 00:01:27,360
-your problem on that location.
+vấn đề của bạn tại vị trí đó.
 
