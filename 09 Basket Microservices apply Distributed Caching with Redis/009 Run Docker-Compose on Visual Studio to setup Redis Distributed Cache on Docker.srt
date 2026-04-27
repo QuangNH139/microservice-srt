@@ -1,62 +1,62 @@
 1
 00:00:00,110 --> 00:00:07,010
-In this video, we are going to run Docker Compose in Visual Studio in order to set up Redis as a distributed
+Trong video này, chúng ta sẽ chạy Docker Compose trong Visual Studio để thiết lập Redis như một distributed cache trong môi trường Docker.
 
 2
 00:00:07,010 --> 00:00:08,660
-cache in Docker environment.
+Để làm được điều đó, hãy đảm bảo rằng Docker desktop của bạn đã được khởi động, và sau đó hãy quay lại Visual Studio.
 
 3
 00:00:08,660 --> 00:00:15,080
-For that purpose, make sure that your Docker desktop is started, and after that come to our Visual
+Nhấp chuột phải vào Docker compose và đặt nó làm startup project.
 
 4
 00:00:15,080 --> 00:00:15,530
-Studio.
+Và sau đó bạn có thể thấy Docker Compose running profile.
 
 5
 00:00:15,530 --> 00:00:19,490
-Right click the Docker compose and set a startup project.
+Hãy đến đây.
 
 6
 00:00:19,490 --> 00:00:23,090
-And after that you can see Docker Compose running profile.
+Và tôi sẽ chạy mà không debug để chỉ kích hoạt các backing services.
 
 7
 00:00:23,090 --> 00:00:23,840
-Come here.
+Đó là các cơ sở dữ liệu PostgreSQL và distributed cache Redis.
 
 8
 00:00:23,840 --> 00:00:29,840
-And I am going to run without debugging in order to only activate the backing services.
+Ở đây bạn có thể thấy cửa sổ output.
 
 9
 00:00:29,840 --> 00:00:33,920
-These are the PostgreSQL databases and the Redis distributed cache.
+Nó sẽ chạy lệnh docker compose up.
 
 10
 00:00:33,920 --> 00:00:36,140
-Here you can see the output window.
+Và điều đầu tiên là nó đang tải xuống redis image từ Docker hub và kích hoạt Redis image trong môi trường docker compose của chúng ta lần đầu tiên.
 
 11
 00:00:36,140 --> 00:00:38,780
-This is going to run docker compose up command.
+Và bạn có thể thấy rằng các microservices của chúng ta cũng đã khởi động.
 
 12
 00:00:38,780 --> 00:00:45,320
-And the first thing it is downloading the redis image from the Docker hub and activating the Redis image
+Nếu bạn quay lại Visual Studio, bạn có thể thấy cửa sổ output.
 
 13
 00:00:45,320 --> 00:00:48,350
-in our docker compose environment for the first time.
+Nó đã khởi động catalog và basket microservices của chúng ta và nếu bạn mở containers, bạn có thể thấy rằng lần này chúng ta có bốn containers dưới Docker Compose bao gồm cả distributed cache.
 
 14
 00:00:48,350 --> 00:00:53,300
-And you can see that our microservices also has started.
+Và nếu bạn nhấp vào distributed cache, bạn có thể thấy tất cả chi tiết, environments, ports, volumes và những thứ tương tự.
 
 15
 00:00:53,300 --> 00:00:56,900
-If you go back to Visual Studio, you can see the output window.
+Và đó là cách tương tự mà chúng ta có thể mở Docker desktop.
 
 16
 00:00:56,900 --> 00:01:02,390
@@ -80,67 +80,67 @@ And it's the same way we can open the Docker desktop.
 
 21
 00:01:16,280 --> 00:01:20,960
-And here you can see that our Docker compose environment, including the distributed cache.
+Và ở đây bạn có thể thấy môi trường Docker Compose của chúng ta, bao gồm distributed cache.
 
 22
 00:01:20,960 --> 00:01:25,910
-And if you come here you can see the port number is exposing default port number.
+Và nếu bạn tới đây, bạn có thể thấy số cổng đang expose port mặc định.
 
 23
 00:01:25,910 --> 00:01:30,620
-So that means we have successfully activated Redis as a distributed cache.
+Vậy điều đó có nghĩa là chúng ta đã kích hoạt Redis thành công như một distributed cache.
 
 24
 00:01:30,620 --> 00:01:32,630
-In our Docker compose environment.
+Trong môi trường Docker Compose của chúng ta.
 
 25
 00:01:32,630 --> 00:01:37,520
-We can click the radius docker container and you can see the logs in here.
+Chúng ta có thể click vào Redis Docker container và bạn có thể xem logs ở đây.
 
 26
 00:01:37,520 --> 00:01:40,940
-So now it is time to connect this Redis cache.
+Vậy bây giờ là lúc để kết nối Redis cache này.
 
 27
 00:01:40,940 --> 00:01:45,770
-And we can run Redis CLI commands into Docker environment for that purpose.
+Và chúng ta có thể chạy các lệnh Redis CLI vào môi trường Docker cho mục đích đó.
 
 28
 00:01:45,770 --> 00:01:50,630
-First of all we should connect to interactive terminal of these redis docker image.
+Đầu tiên, chúng ta nên kết nối tới interactive terminal của Redis Docker image này.
 
 29
 00:01:50,630 --> 00:01:52,850
-How we can open interactive terminal.
+Làm cách nào chúng ta có thể mở interactive terminal.
 
 30
 00:01:52,850 --> 00:01:54,290
-We have several options.
+Chúng ta có nhiều tùy chọn.
 
 31
 00:01:54,290 --> 00:02:01,220
-We can run docker exec command and dash it command to open the interactive terminal for this Docker
+Chúng ta có thể chạy lệnh docker exec và dash i command để mở interactive terminal cho Docker
 
 32
 00:02:01,220 --> 00:02:01,850
-container.
+container này.
 
 33
 00:02:01,850 --> 00:02:06,170
-But I am following the easy way to connect the container.
+Nhưng tôi đang theo cách dễ dàng để kết nối container.
 
 34
 00:02:06,170 --> 00:02:13,610
-If you click this Docker image, and if you go to the exec section, you can see that this is going
+Nếu bạn click vào Docker image này, và nếu bạn đi tới phần exec, bạn có thể thấy rằng việc này sẽ
 
 35
 00:02:13,610 --> 00:02:17,240
-to open interactive terminal for the radius container.
+mở interactive terminal cho Redis container.
 
 36
 00:02:17,240 --> 00:02:23,840
-And we can directly run the Redis CLI command in order to interact with the radius container in Docker
+Và chúng ta có thể chạy trực tiếp lệnh Redis CLI để tương tác với Redis container trong Docker
 
 37
 00:02:23,840 --> 00:02:24,680
@@ -148,67 +148,67 @@ environment.
 
 38
 00:02:24,680 --> 00:02:32,690
-For that purpose, I'm going to run Redis cli command to start our redis into our docker environment
+Để làm việc đó, tôi sẽ chạy lệnh Redis cli để khởi động Redis trong Docker environment của chúng ta
 
 39
 00:02:32,690 --> 00:02:35,840
-and test the connection with sending the ping request.
+và kiểm tra kết nối bằng cách gửi yêu cầu ping.
 
 40
 00:02:35,840 --> 00:02:41,630
-So first of all, I'm going to run redis cli and hit the enter.
+Vậy đầu tiên, tôi sẽ chạy redis cli và nhấn enter.
 
 41
 00:02:41,660 --> 00:02:44,870
-As you can see that we have started the Redis CLI.
+Như bạn có thể thấy, chúng ta đã khởi động Redis CLI.
 
 42
 00:02:44,870 --> 00:02:52,880
-And I'm going to try basic commands like get and set key value and ensure that Redis is functioning
+Và tôi sẽ thử các lệnh cơ bản như get và set key value và đảm bảo rằng Redis đang hoạt động
 
 43
 00:02:52,880 --> 00:02:53,750
-correctly.
+chính xác.
 
 44
 00:02:53,750 --> 00:03:00,080
-For that purpose we can write the ping command and this will be returned as the prompt.
+Để làm điều đó, chúng ta có thể viết lệnh ping và nó sẽ được trả về dưới dạng prompt.
 
 45
 00:03:00,110 --> 00:03:03,260
-That means redis is working successfully.
+Điều đó có nghĩa là redis đang hoạt động thành công.
 
 46
 00:03:03,260 --> 00:03:08,540
-And also I'm going to set key value.
+Và cũng là tôi sẽ set key value.
 
 47
 00:03:09,530 --> 00:03:14,000
-And after that we can get the key information.
+Và sau đó chúng ta có thể get thông tin của key.
 
 48
 00:03:14,000 --> 00:03:17,660
-In the previous line we have set the key as a value.
+Trong dòng trước đó, chúng ta đã set key là một value.
 
 49
 00:03:17,660 --> 00:03:22,400
-If we get the key from the redis, you can see the value comes as a value.
+Nếu chúng ta get key từ redis, bạn có thể thấy value xuất hiện là một value.
 
 50
 00:03:22,400 --> 00:03:27,380
-And you can also understand by setting the name as a met.
+Và bạn cũng có thể hiểu bằng cách set name là một met.
 
 51
 00:03:27,380 --> 00:03:33,020
-And you can also get the name key information, the value of the met.
+Và bạn cũng có thể get thông tin key name, value của met.
 
 52
 00:03:33,020 --> 00:03:37,580
-So as you can see that we have run several commands into Redis container terminal.
+Vậy như bạn có thể thấy, chúng ta đã chạy nhiều lệnh vào Redis container terminal.
 
 53
 00:03:37,580 --> 00:03:41,450
-So now we are ready to connect radius from our basket API.
+Vậy bây giờ chúng ta sẵn sàng để kết nối Redis từ basket API của chúng ta.
 
 54
 00:03:41,450 --> 00:03:42,320
