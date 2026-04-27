@@ -1,34 +1,34 @@
 1
 00:00:00,110 --> 00:00:06,050
-In this video, we are going to develop store, basket and print with using minimal API's and Carter
+Trong video này, chúng ta sẽ phát triển store, basket và print bằng cách sử dụng Minimal APIs và Carter
 
 2
 00:00:06,050 --> 00:00:11,330
-for exposing HTTP post operation to perform store basket use cases.
+để expose HTTP post operation để thực hiện các use cases store basket.
 
 3
 00:00:11,360 --> 00:00:17,030
-Please open the Visual Studio and go to the store basket and open the store basket endpoint.
+Vui lòng mở Visual Studio và đi đến store basket, sau đó mở store basket endpoint.
 
 4
 00:00:17,270 --> 00:00:22,730
-So as always, we should start with defining Request and response object as a request.
+Vậy như mọi lần, chúng ta nên bắt đầu với việc định nghĩa Request và response object như một request.
 
 5
 00:00:22,760 --> 00:00:26,390
-We will have store basket request record type.
+Chúng ta sẽ có store basket request record type.
 
 6
 00:00:26,390 --> 00:00:30,740
-And this will be getting shopping cart information at the same way with the handler class.
+Và đây sẽ nhận shopping cart information theo cách tương tự với handler class.
 
 7
 00:00:30,740 --> 00:00:35,150
-Here you can see the command object getting the shopping cart as a parameter.
+Ở đây bạn có thể thấy command object đang nhận shopping cart như một parameter.
 
 8
 00:00:35,240 --> 00:00:44,210
-After that we can define our response object, which is also following the same record type from the
+Sau đó chúng ta có thể định nghĩa response object của chúng ta, nó cũng tuân theo cùng record type từ
 
 9
 00:00:44,210 --> 00:00:45,440
@@ -36,39 +36,39 @@ command class.
 
 10
 00:00:45,440 --> 00:00:48,380
-And here you can see that store basket response.
+Và ở đây bạn có thể thấy store basket response.
 
 11
 00:00:48,380 --> 00:00:51,050
-And this will be getting username as a parameter.
+Và đây sẽ nhận username như một parameter.
 
 12
 00:00:51,080 --> 00:00:55,460
-Same as the handler class which is the store basket result and string username.
+Giống như handler class, đó là store basket result và string username.
 
 13
 00:00:55,460 --> 00:00:58,400
-Make sure that these parameter names are also same.
+Hãy chắc chắn rằng những tên parameter này cũng giống nhau.
 
 14
 00:00:58,400 --> 00:01:04,430
-In order to mapping easily using the master, and these are the request and response object.
+Để có thể mapping dễ dàng sử dụng Mapster, và đây là những request và response object.
 
 15
 00:01:04,430 --> 00:01:10,280
-So now we can define our http post request into store basket endpoint.
+Vậy bây giờ chúng ta có thể định nghĩa HTTP post request vào store basket endpoint.
 
 16
 00:01:10,280 --> 00:01:11,810
-So how we can do that.
+Vậy làm cách nào chúng ta có thể làm điều đó.
 
 17
 00:01:11,810 --> 00:01:18,020
-Of course we should inherit from the I Carter module and implement this I Carter module interfaces.
+Tất nhiên chúng ta nên inherit từ I Carter module và implement các I Carter module interfaces.
 
 18
 00:01:18,020 --> 00:01:25,990
-And inside of the add route method we will expose http post request with running the app dot map post
+Và bên trong add route method chúng ta sẽ expose HTTP post request bằng cách chạy app dot map post
 
 19
 00:01:25,990 --> 00:01:26,530
@@ -76,27 +76,27 @@ method.
 
 20
 00:01:26,530 --> 00:01:29,170
-Here you can see the method definition in here.
+Ở đây bạn có thể thấy định nghĩa method trong này.
 
 21
 00:01:29,170 --> 00:01:34,150
-And after that we will define actual delegate handler class.
+Và sau đó chúng ta sẽ định nghĩa lớp delegate handler thực tế.
 
 22
 00:01:34,150 --> 00:01:38,290
-So basically we will expose post operation in this endpoint.
+Vậy về cơ bản chúng ta sẽ expose operation post trong endpoint này.
 
 23
 00:01:38,290 --> 00:01:44,650
-And we will expecting store basket request object to incoming JSON body operation in the request parameter.
+Và chúng ta sẽ mong đợi nhận được đối tượng store basket request trong JSON body của request parameter.
 
 24
 00:01:44,650 --> 00:01:48,250
-And also we have inject the Isander which is a mediator.
+Và cũng chúng ta phải inject Isander, đó là một mediator.
 
 25
 00:01:48,250 --> 00:01:55,030
-So the first line of code in the delegate handler we basically adapting the incoming request to our
+Vậy dòng code đầu tiên trong delegate handler về cơ bản chúng ta đang adapt incoming request thành
 
 26
 00:01:55,030 --> 00:01:55,990
@@ -104,35 +104,35 @@ command object.
 
 27
 00:01:55,990 --> 00:02:00,160
-And after that we can send this command object to the mediator.
+Và sau đó chúng ta có thể gửi command object này đến mediator.
 
 28
 00:02:00,160 --> 00:02:05,890
-For that purpose we can use await dot Sandsend method and passing the command object.
+Để làm được điều đó chúng ta có thể sử dụng await dot Sandsend method và truyền command object.
 
 29
 00:02:05,890 --> 00:02:10,000
-This will be run the command handler method and return back to us result.
+Cái này sẽ chạy command handler method và trả về cho chúng ta kết quả.
 
 30
 00:02:10,000 --> 00:02:15,820
-And after that we can again adopting this result object to our response object.
+Và sau đó chúng ta lại adapt object kết quả này thành response object.
 
 31
 00:02:15,820 --> 00:02:19,630
-And the last line of code we will basically return to the client.
+Và dòng code cuối cùng chúng ta sẽ trả về cho client.
 
 32
 00:02:19,630 --> 00:02:27,910
-As a result, state created response, which is returning 201 HTTP status code, returning the created
+Kết quả là, created response, trả về HTTP status code 201, trả về response đã được tạo.
 
 33
 00:02:27,910 --> 00:02:28,690
-response.
+Sau đó, chúng ta có thể configure các cấu hình thông thường bao gồm name, produce, summary và description.
 
 34
 00:02:29,230 --> 00:02:36,730
-After that, we can configure as usual configurations including name, produce, summary and description.
+Vậy đây là lớp Store basket endpoint của chúng ta dùng để định nghĩa HTTP post endpoint nhằm lưu trữ shopping cart.
 
 35
 00:02:37,450 --> 00:02:45,880
