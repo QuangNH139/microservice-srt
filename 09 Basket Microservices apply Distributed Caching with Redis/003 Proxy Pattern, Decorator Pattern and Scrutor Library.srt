@@ -1,18 +1,18 @@
 1
 00:00:00,140 --> 00:00:05,990
-In this video we are going to learn proxy pattern, decorator pattern and security library.
+Trong video này chúng ta sẽ học về Proxy Pattern, Decorator Pattern và security library.
 
 2
 00:00:06,170 --> 00:00:09,020
-Let me start with the what is proxy pattern?
+Hãy bắt đầu với câu hỏi Proxy Pattern là gì?
 
 3
 00:00:09,050 --> 00:00:15,350
-The proxy pattern provides a placeholder for another object in order to control access to it.
+Proxy Pattern cung cấp một placeholder cho một object khác để kiểm soát truy cập vào nó.
 
 4
 00:00:15,380 --> 00:00:22,400
-This pattern creates a proxy object that serves as an intermediary for requests intended for the original
+Pattern này tạo ra một proxy object hoạt động như một trung gian cho các yêu cầu được dự định cho object gốc
 
 5
 00:00:22,400 --> 00:00:23,030
@@ -20,165 +20,165 @@ object.
 
 6
 00:00:23,870 --> 00:00:29,780
-A common use case is like lazy loading, controlling access, logging, and so on.
+Một use case phổ biến giống như lazy loading, kiểm soát truy cập, logging, và nhiều hơn nữa.
 
 7
 00:00:29,810 --> 00:00:37,040
-It is like having a gatekeeper who can add extra behavior or checks before accessing the actual object.
+Nó giống như có một người gác cổng có thể thêm hành vi hoặc kiểm tra bổ sung trước khi truy cập object thực tế.
 
 8
 00:00:37,810 --> 00:00:40,270
-The next pattern is decorator pattern.
+Pattern tiếp theo là Decorator Pattern.
 
 9
 00:00:40,300 --> 00:00:45,850
-The decorator pattern dynamically adds behavior to an object without altering its structure.
+Decorator Pattern động thêm hành vi vào một object mà không thay đổi cấu trúc của nó.
 
 10
 00:00:45,880 --> 00:00:52,360
-It involves a set of decorator classes that are used to extend the functionality of the original class
+Nó liên quan đến một bộ các lớp decorator được sử dụng để mở rộng chức năng của lớp gốc
 
 11
 00:00:52,360 --> 00:00:59,500
-without changing its code, and decorator pattern is useful for adding functionalities to objects at
+mà không thay đổi code của nó, và Decorator Pattern rất hữu ích để thêm các tính năng vào các object
 
 12
 00:00:59,500 --> 00:01:06,550
-runtime, for example, enhancing a window object with additional features like borders scrollbars dynamically.
+tại runtime, ví dụ, nâng cao một window object với các tính năng bổ sung như borders, scrollbars một cách động.
 
 13
 00:01:07,120 --> 00:01:11,200
-So how can we use decorator pattern and how we can implement it?
+Vậy chúng ta có thể sử dụng Decorator Pattern như thế nào và chúng ta có thể triển khai nó như thế nào?
 
 14
 00:01:11,230 --> 00:01:17,080
-The first step is we can create abstract decorators that implement the same interface as the object.
+Bước đầu tiên là chúng ta có thể tạo các abstract decorators mà triển khai cùng interface với object.
 
 15
 00:01:17,080 --> 00:01:22,210
-They will extend and then concrete decorator classes add additional behavior.
+Chúng sẽ mở rộng và sau đó các lớp concrete decorator thêm hành vi bổ sung.
 
 16
 00:01:22,210 --> 00:01:28,750
-For example, if you have a basket repository class for database operation, you can create a cased
+Ví dụ, nếu bạn có một lớp basket repository cho các hoạt động database, bạn có thể tạo một cached
 
 17
 00:01:28,750 --> 00:01:33,550
-basket repository that extends the basket repository with caching capabilities.
+basket repository mà mở rộng basket repository với khả năng caching.
 
 18
 00:01:34,800 --> 00:01:37,830
-So what is security library and why we use it?
+Vậy security library là gì và tại sao chúng ta sử dụng nó?
 
 19
 00:01:37,860 --> 00:01:39,570
-Security library is a.
+Security library là một
 
 20
 00:01:39,720 --> 00:01:44,310
-Net library that extends the built in IOC container of ASP.Net core.
+.NET library mà mở rộng built-in IOC container của ASP.NET Core.
 
 21
 00:01:44,340 --> 00:01:50,100
-It provides additional capabilities to scan and register services in more flexible ways.
+Nó cung cấp các khả năng bổ sung để quét và đăng ký dịch vụ theo những cách linh hoạt hơn.
 
 22
 00:01:50,160 --> 00:01:57,330
-Security library also particularly useful for implementing patterns like decorator in a clean and manageable
+Thư viện Security cũng đặc biệt hữu ích để triển khai các mẫu như Decorator Pattern theo cách sạch sẽ và dễ quản lý
 
 23
 00:01:57,330 --> 00:01:57,780
-way.
+.
 
 24
 00:01:57,810 --> 00:02:04,110
-It simplifies the process of service registration and decoration in ASP.Net core applications.
+Nó đơn giản hóa quá trình đăng ký dịch vụ và trang trí trong các ứng dụng ASP.NET Core.
 
 25
 00:02:04,530 --> 00:02:08,880
-So how can we implement these decorator pattern using the security library?
+Vậy chúng ta có thể triển khai Decorator Pattern như thế nào bằng cách sử dụng thư viện Security?
 
 26
 00:02:08,910 --> 00:02:11,009
-I'm going to explain step by step.
+Tôi sẽ giải thích từng bước một.
 
 27
 00:02:11,009 --> 00:02:14,850
-The first step is define interface and base implementation.
+Bước đầu tiên là định nghĩa interface và triển khai cơ bản.
 
 28
 00:02:14,850 --> 00:02:16,950
-We can start with an interface.
+Chúng ta có thể bắt đầu với một interface.
 
 29
 00:02:16,950 --> 00:02:23,460
-For example I basket repository and a base implementation which is the basket repository that communicate
+Ví dụ, tôi có basket repository và một triển khai cơ bản là basket repository giao tiếp
 
 30
 00:02:23,460 --> 00:02:24,510
-with the database.
+với database.
 
 31
 00:02:25,020 --> 00:02:27,420
-And after that we can create decorator class.
+Và sau đó chúng ta có thể tạo một lớp decorator.
 
 32
 00:02:27,420 --> 00:02:34,440
-So in the second step we can create a decorator class like cased basket repository that also implements
+Vậy ở bước thứ hai, chúng ta có thể tạo một lớp decorator như cased basket repository cũng triển khai
 
 33
 00:02:34,440 --> 00:02:35,730
-a basket repository.
+basket repository.
 
 34
 00:02:35,730 --> 00:02:39,390
-But adding the caching logic and business inside of this class.
+Nhưng thêm logic caching và business logic bên trong lớp này.
 
 35
 00:02:40,210 --> 00:02:44,050
-And the last step is register services with Secretor.
+Và bước cuối cùng là đăng ký dịch vụ với Secretor.
 
 36
 00:02:44,470 --> 00:02:51,580
-We can use Secretor library in Program.cs to first register the Base Services basket repository, and
+Chúng ta có thể sử dụng thư viện Secretor trong Program.cs để đầu tiên đăng ký dịch vụ cơ bản basket repository, và
 
 37
 00:02:51,580 --> 00:02:54,940
-then they apply the decorator one, which is the cache basket repository.
+sau đó áp dụng decorator, đó là cache basket repository.
 
 38
 00:02:54,970 --> 00:02:57,160
-You can see the code on the slide.
+Bạn có thể thấy đoạn code trên slide.
 
 39
 00:02:57,190 --> 00:02:58,510
-The first line of code.
+Dòng code đầu tiên.
 
 40
 00:02:58,510 --> 00:03:02,530
-We can register a basket repository with the actual basket repository.
+Chúng ta có thể đăng ký basket repository với basket repository thực tế.
 
 41
 00:03:02,710 --> 00:03:07,720
-But after that we can decorate these basket repository with using the Secretor library.
+Nhưng sau đó chúng ta có thể trang trí repository basket này bằng cách sử dụng thư viện Scrutor.
 
 42
 00:03:07,720 --> 00:03:13,150
-In the decorate method, we can decorate the basket repository with the case basket repository, including
+Trong phương thức decorate, chúng ta có thể trang trí basket repository với cache basket repository, bao gồm
 
 43
 00:03:13,150 --> 00:03:14,470
-the cache capabilities.
+các khả năng cache.
 
 44
 00:03:14,680 --> 00:03:21,730
-That means we can say that the decorator pattern and Secretor library offers a robust approach to extending
+Điều đó có nghĩa là chúng ta có thể nói rằng Decorator Pattern và thư viện Scrutor cung cấp một cách tiếp cận mạnh mẽ để mở rộng
 
 45
 00:03:21,730 --> 00:03:25,180
-the functionality of services in ASP.Net core applications.
+chức năng của các service trong các ứng dụng ASP.NET Core.
 
 46
 00:03:25,180 --> 00:03:31,780
-So now we will develop cased basket repository with proxy decorator patterns and security library.
+Vậy bây giờ chúng ta sẽ phát triển cached basket repository với proxy decorator patterns và thư viện Scrutor.
 
