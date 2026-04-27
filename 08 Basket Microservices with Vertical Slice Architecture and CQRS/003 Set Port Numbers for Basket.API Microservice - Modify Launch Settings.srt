@@ -1,78 +1,78 @@
 1
 00:00:00,140 --> 00:00:05,510
-In this video we are going to configure port numbers for basket API microservices.
+Trong video này chúng ta sẽ cấu hình các số cổng cho basket API microservices.
 
 2
 00:00:05,510 --> 00:00:11,030
-Here you can see the R port mapping strategy for different microservices in our architecture.
+Ở đây bạn có thể thấy chiến lược ánh xạ cổng R cho các microservices khác nhau trong kiến trúc của chúng ta.
 
 3
 00:00:11,030 --> 00:00:14,300
-As you can see that we have completed the catalog microservices.
+Như bạn có thể thấy rằng chúng ta đã hoàn thành các catalog microservices.
 
 4
 00:00:14,300 --> 00:00:16,940
-And now we are developing basket microservices.
+Và bây giờ chúng ta đang phát triển basket microservices.
 
 5
 00:00:16,940 --> 00:00:26,270
-And in local environment basket microservices will expose Http port in 5001 and Https for 50 over 51.
+Và trong môi trường địa phương basket microservices sẽ expose cổng Http ở 5001 và Https ở 5051.
 
 6
 00:00:26,270 --> 00:00:30,380
-So we are going to follow these steps and configure our launch settings.
+Vậy chúng ta sẽ làm theo các bước này và cấu hình launch settings của chúng ta.
 
 7
 00:00:30,380 --> 00:00:36,650
-If you open the URL Visual Studio, you can see that we will configure our port numbers in the launch
+Nếu bạn mở URL trong Visual Studio, bạn có thể thấy rằng chúng ta sẽ cấu hình các số cổng của chúng ta trong tệp launch settings Json.
 
 8
 00:00:36,650 --> 00:00:38,120
-settings Json file.
+Tệp launch settings Json.
 
 9
 00:00:38,120 --> 00:00:45,020
-Launch settings Json file in our project is crucial for defining how our application runs during the
+Tệp launch settings Json trong dự án của chúng ta rất quan trọng vì nó định nghĩa cách ứng dụng của chúng ta chạy trong quá trình phát triển, và chúng ta sẽ đặt các cổng Http và Https theo kế hoạch kiến trúc của chúng ta.
 
 10
 00:00:45,020 --> 00:00:51,230
-development, and we will set the Http and Https ports according to our architecture plan.
+Vậy hãy sửa đổi launch settings để đặt các số cổng một cách chính xác.
 
 11
 00:00:51,230 --> 00:00:55,850
-So let's modify the launch settings in order to set the port numbers correctly.
+Vậy nếu bạn mở tệp launch settings Json, bạn có thể thấy các profile chạy khác nhau.
 
 12
 00:00:55,850 --> 00:01:00,380
-So if you open the line settings Json, you can see different running profiles.
+Tôi sẽ thay đổi Https thành 5001.
 
 13
 00:01:00,380 --> 00:01:04,730
-I'm going to change for the Https 5001.
+Và nếu bạn đi đến profile chạy Https, bạn có thể thấy rằng chúng ta có URL http sẽ là 5001.
 
 14
 00:01:04,730 --> 00:01:12,950
-And if you go to the Https running profile, you can see that we have http URL should be 5001.
+Và chúng ta sẽ thay đổi số cổng https thành 5051.
 
 15
 00:01:12,950 --> 00:01:18,200
-And we will change the https port number as a 5051.
+Được rồi, chúng ta đã cấu hình basket API của chúng ta theo chiến lược ánh xạ cổng.
 
 16
 00:01:18,200 --> 00:01:23,000
-Okay, we have configured our basket API according to port mapping strategy.
+Bây giờ chúng ta có thể chạy ứng dụng.
 
 17
 00:01:23,000 --> 00:01:25,040
-Now we can run the application.
+Vui lòng đặt startup project cho basket API.
 
 18
 00:01:25,040 --> 00:01:28,190
-Please set a startup project for basket API.
+Đến đây.
 
 19
 00:01:28,190 --> 00:01:29,060
-Come here.
+Nhấp chuột phải và đặt startup project.
 
 20
 00:01:29,060 --> 00:01:32,240
@@ -80,49 +80,49 @@ Right click set a startup project.
 
 21
 00:01:32,240 --> 00:01:37,310
-After setting a startup project you can see that our running profiles comes in here.
+Sau khi thiết lập dự án startup, bạn có thể thấy các profile chạy của chúng ta ở đây.
 
 22
 00:01:37,310 --> 00:01:40,460
-So this profiles is matching our launch setting Json.
+Vậy profile này khớp với launchSettings.json của chúng ta.
 
 23
 00:01:40,460 --> 00:01:45,440
-And this time I'm going to select Https running profile and click this button.
+Và lần này tôi sẽ chọn profile chạy Https và nhấp vào nút này.
 
 24
 00:01:45,440 --> 00:01:47,300
-In order to run this application.
+Để chạy ứng dụng này.
 
 25
 00:01:47,300 --> 00:01:52,100
-This will be exposed our basket API to the 5051 port.
+Cái này sẽ expose basket API của chúng ta ra cổng 5051.
 
 26
 00:01:52,100 --> 00:01:57,440
-And we have configured from the this URL and also in the project console.
+Và chúng ta đã cấu hình từ URL này và cũng trong dòng lệnh dự án.
 
 27
 00:01:57,440 --> 00:02:04,640
-Here you can see that our application is listening these https port and these Http port.
+Ở đây bạn có thể thấy ứng dụng của chúng ta đang lắng nghe cổng https này và cổng Http này.
 
 28
 00:02:04,640 --> 00:02:10,820
-So we have configured our port numbers according to local environment for basket API microservices.
+Vậy chúng ta đã cấu hình số cổng của chúng ta theo môi trường cục bộ cho basket API microservices.
 
 29
 00:02:10,820 --> 00:02:17,000
-And if you look at the our deployment strategy we can start with the deployment one which is the developing
+Và nếu bạn xem chiến lược triển khai của chúng ta, chúng ta có thể bắt đầu với triển khai số một, đó là phát triển
 
 30
 00:02:17,000 --> 00:02:23,600
-our basket API microservices in our local environment that connect to backing services from Docker environment.
+basket API microservices của chúng ta trong môi trường cục bộ mà kết nối với các dịch vụ backing từ môi trường Docker.
 
 31
 00:02:23,600 --> 00:02:26,000
-And after that we will go to the deployment tool.
+Và sau đó chúng ta sẽ đi đến công cụ triển khai.
 
 32
 00:02:26,000 --> 00:02:30,020
-But for now let's focus on developing basket API microservices.
+Nhưng bây giờ hãy tập trung vào phát triển basket API microservices.
 

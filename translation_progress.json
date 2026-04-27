@@ -116,5 +116,6 @@
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/020 Orchestrate Catalog.API microservices with Docker-compose file.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/021 TEST - Docker-compose Catalog.API microservices with PostgresDB.srt": "done",
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/001 Introduction - Basket Microservices with Vertical Slice Architecture and CQRS.srt": "done",
-  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/002 Create Asp.Net Web API for Basket.API Microservice in Microservices Solution.srt": "done"
+  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/002 Create Asp.Net Web API for Basket.API Microservice in Microservices Solution.srt": "done",
+  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/003 Set Port Numbers for Basket.API Microservice - Modify Launch Settings.srt": "done"
 }
