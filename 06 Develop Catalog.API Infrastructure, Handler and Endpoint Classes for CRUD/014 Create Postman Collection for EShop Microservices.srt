@@ -1,238 +1,238 @@
 1
 00:00:00,110 --> 00:00:05,600
-In this video we are going to create postman collections for each of microservices.
+Trong video này chúng ta sẽ tạo các postman collections cho từng microservices.
 
 2
 00:00:05,600 --> 00:00:12,320
-So we will create a comprehensive postman collection for interacting with and testing our microservices
+Vậy chúng ta sẽ tạo một postman collection toàn diện để tương tác và kiểm tra các microservices của chúng ta
 
 3
 00:00:12,440 --> 00:00:18,650
-or Itiel project consists of several microservices, including catalog basket, discount and ordering
+Dự án Itiel của chúng ta bao gồm nhiều microservices, bao gồm catalog, basket, discount và ordering
 
 4
 00:00:18,650 --> 00:00:24,740
-microservices that we will develop during the course, and each service has its own set of use case
+các microservices mà chúng ta sẽ phát triển trong khóa học này, và mỗi service có tập hợp use case riêng
 
 5
 00:00:24,740 --> 00:00:26,900
-and exposing specific endpoints.
+và expose các endpoint cụ thể.
 
 6
 00:00:26,900 --> 00:00:32,990
-For example, if you look at the catalog microservices here, you can see the Http get, post, put
+Ví dụ, nếu bạn nhìn vào microservices catalog ở đây, bạn có thể thấy các endpoint Http get, post, put
 
 7
 00:00:32,990 --> 00:00:36,680
-and delete endpoints for performing these use cases.
+và delete để thực hiện các use case này.
 
 8
 00:00:36,680 --> 00:00:44,210
-So if you go back to our port numbers, each microservice is representing and exposing their APIs in
+Vậy nếu bạn quay lại các port numbers của chúng ta, mỗi microservice đang represent và expose APIs của chúng trong
 
 9
 00:00:44,210 --> 00:00:45,410
-different port numbers.
+các port numbers khác nhau.
 
 10
 00:00:45,410 --> 00:00:50,810
-So that means we have assigned different port numbers for each microservices.
+Điều đó có nghĩa là chúng ta đã gán các port numbers khác nhau cho mỗi microservices.
 
 11
 00:00:50,810 --> 00:00:56,030
-And these port numbers differs between the local environment and the Docker environment.
+Và các port numbers này khác nhau giữa local environment và Docker environment.
 
 12
 00:00:56,420 --> 00:01:03,110
-And if you look at the our deployment strategy, this will be aligned our port numbers we have divided
+Và nếu bạn nhìn vào chiến lược deployment của chúng ta, điều này sẽ align với các port numbers mà chúng ta đã chia
 
 13
 00:01:03,110 --> 00:01:03,650
-by two.
+thành hai.
 
 14
 00:01:03,680 --> 00:01:10,880
-The first deployment strategy is local environment where microservices run locally and connect to containerized
+Chiến lược deployment đầu tiên là local environment nơi các microservices chạy locally và kết nối với các backing services được containerized
 
 15
 00:01:10,880 --> 00:01:13,160
-backing services with Docker containers.
+với Docker containers.
 
 16
 00:01:13,160 --> 00:01:19,700
-And in the deployment tool strategy, both microservices and backing services are orchestrated using
+Và trong chiến lược deployment tool, cả microservices và backing services đều được orchestrate bằng cách sử dụng
 
 17
 00:01:19,730 --> 00:01:20,750
-the Docker compose.
+Docker compose.
 
 18
 00:01:20,750 --> 00:01:29,960
-So we will simulate these environments into our postman collection and exposing our API endpoint port
+Vậy chúng ta sẽ mô phỏng các environments này vào postman collection của chúng ta và expose các API endpoint port
 
 19
 00:01:29,960 --> 00:01:32,660
-numbers according to environment variables.
+numbers theo environment variables.
 
 20
 00:01:32,660 --> 00:01:40,220
-So for that purpose, postman has collection feature that is very great fit for this kind of implementation
+Vì vậy, postman có collection feature rất phù hợp cho loại implementation này
 
 21
 00:01:40,220 --> 00:01:41,660
-and API definition.
+và định nghĩa API.
 
 22
 00:01:41,660 --> 00:01:48,980
-If you open the postman, you can see that we have created an additional Http port and guest endpoints,
+Nếu bạn mở Postman, bạn có thể thấy rằng chúng ta đã tạo một cổng Http bổ sung và các endpoint guest,
 
 23
 00:01:48,980 --> 00:01:52,850
-and we will specify the whole http uri.
+và chúng ta sẽ chỉ định toàn bộ HTTP URI.
 
 24
 00:01:52,850 --> 00:01:59,150
-And once we deploy this catalog microservice to Docker environment, we have to change this port number
+Và khi chúng ta triển khai catalog microservice này vào môi trường Docker, chúng ta phải thay đổi số cổng này
 
 25
 00:01:59,150 --> 00:01:59,660
-manually.
+một cách thủ công.
 
 26
 00:01:59,660 --> 00:02:02,000
-And adapting into Docker environment.
+Và thích ứng vào môi trường Docker.
 
 27
 00:02:02,060 --> 00:02:08,690
-Instead of that we will use postman great features which is the postman collections and environments.
+Thay vào đó, chúng ta sẽ sử dụng các tính năng tuyệt vời của Postman đó là Postman collections và environments.
 
 28
 00:02:08,690 --> 00:02:11,600
-So we will create collections and environments.
+Vậy chúng ta sẽ tạo collections và environments.
 
 29
 00:02:11,600 --> 00:02:14,540
-In order to manage our microservice requests.
+Để quản lý các yêu cầu microservice của chúng ta.
 
 30
 00:02:14,570 --> 00:02:21,920
-We can set the port numbers as a variables and allowing us to switch between the local and Docker environment
+Chúng ta có thể đặt các số cổng làm biến và cho phép chúng ta chuyển đổi giữa môi trường local và Docker
 
 31
 00:02:21,920 --> 00:02:23,630
-seamlessly in here.
+một cách liền mạch ở đây.
 
 32
 00:02:23,630 --> 00:02:29,240
-Now we are going to start by defining and setting up our environment in postman.
+Bây giờ chúng ta sẽ bắt đầu bằng cách định nghĩa và thiết lập environment của chúng ta trong Postman.
 
 33
 00:02:29,240 --> 00:02:36,290
-Go to the environments and if you expand these environments, you can see that we can put these plus
+Đi đến environments và nếu bạn mở rộng các environments này, bạn có thể thấy rằng chúng ta có thể nhấn nút plus
 
 34
 00:02:36,290 --> 00:02:38,600
-button in order to create new environment.
+để tạo environment mới.
 
 35
 00:02:38,600 --> 00:02:43,460
-In this window, we will change the environment name as a localhost.
+Trong cửa sổ này, chúng ta sẽ thay đổi tên environment thành localhost.
 
 36
 00:02:45,350 --> 00:02:50,090
-And we will also create a new environment which name is Docker.
+Và chúng ta cũng sẽ tạo một environment mới có tên là Docker.
 
 37
 00:02:50,690 --> 00:02:58,160
-So by this way we can represent and aligning with deployment strategy and select the localhost environment.
+Bằng cách này, chúng ta có thể đại diện và căn chỉnh với chiến lược triển khai và chọn environment localhost.
 
 38
 00:02:58,160 --> 00:03:01,640
-And under the localhost environments we can define variables.
+Và trong các environments localhost, chúng ta có thể định nghĩa các biến.
 
 39
 00:03:01,640 --> 00:03:03,950
-So which variables we will define.
+Vậy chúng ta sẽ định nghĩa những biến nào.
 
 40
 00:03:03,950 --> 00:03:07,460
-We will define microservice URL variables in here.
+Chúng ta sẽ định nghĩa các biến microservice URL ở đây.
 
 41
 00:03:07,460 --> 00:03:11,090
-For example let me start with catalog URL.
+Ví dụ hãy bắt đầu với catalog URL.
 
 42
 00:03:11,810 --> 00:03:20,030
-And we can give the value for according to our microservice local environment endpoints and the port
+Và chúng ta có thể cung cấp giá trị tương ứng với các endpoint của microservice ở môi trường cục bộ và các port
 
 43
 00:03:20,030 --> 00:03:20,630
-numbers.
+số.
 
 44
 00:03:20,630 --> 00:03:23,540
-So after that we will set the Docker environments.
+Vậy sau đó chúng ta sẽ thiết lập Docker environments.
 
 45
 00:03:23,540 --> 00:03:29,690
-So for the catalog microservices in local environment we should give the 50 over 50 for that purpose.
+Vậy cho catalog microservices ở môi trường cục bộ chúng ta nên cung cấp 5050 cho mục đích đó.
 
 46
 00:03:29,690 --> 00:03:36,380
-I'm going to write localhost 5050 in here and the current value should be the same.
+Tôi sẽ viết localhost 5050 ở đây và giá trị hiện tại sẽ giống nhau.
 
 47
 00:03:36,380 --> 00:03:43,520
-And if you continue with the next microservices which is the basket URL and basket URL should be the
+Và nếu bạn tiếp tục với microservice tiếp theo đó là basket URL và basket URL sẽ là
 
 48
 00:03:43,520 --> 00:03:47,300
-5051 and the current value should be 5051.
+5051 và giá trị hiện tại sẽ là 5051.
 
 49
 00:03:47,300 --> 00:03:53,720
-And if you continue the next microservices, we will see keeping the discount microservices.
+Và nếu bạn tiếp tục microservice tiếp theo, chúng ta sẽ thấy discount microservices.
 
 50
 00:03:53,720 --> 00:04:01,790
-Since discount will be exposing APIs in gRPC protocol, we will set these discount gRPC endpoints with
+Vì discount sẽ expose APIs trong gRPC protocol, chúng ta sẽ thiết lập các discount gRPC endpoints với
 
 51
 00:04:01,790 --> 00:04:02,540
-differently.
+cách khác.
 
 52
 00:04:02,540 --> 00:04:10,550
-So let's continue with the ordering microservices that exposing our local environment 5053 and 6063
+Vậy hãy tiếp tục với ordering microservices mà expose môi trường cục bộ 5053 và 6063
 
 53
 00:04:10,550 --> 00:04:11,240
-for Docker.
+cho Docker.
 
 54
 00:04:11,240 --> 00:04:15,320
-So come here and write for the ordering URL.
+Vậy hãy đến đây và viết cho ordering URL.
 
 55
 00:04:15,980 --> 00:04:22,970
-And in here I'm going to give the name as a value should be localhost 5053.
+Và ở đây tôi sẽ cung cấp tên là giá trị nên là localhost 5053.
 
 56
 00:04:22,970 --> 00:04:25,100
-And the current value should be the same.
+Và giá trị hiện tại sẽ giống nhau.
 
 57
 00:04:25,430 --> 00:04:26,420
-At this stage.
+Ở bước này.
 
 58
 00:04:26,420 --> 00:04:32,540
-Please don't forget to save this file, because without saving this file, this will not reflecting.
+Vui lòng không quên lưu tệp này, vì nếu không lưu tệp này, nó sẽ không được phản ánh.
 
 59
 00:04:32,540 --> 00:04:36,920
-Save this file and remove this orange box and save this file.
+Lưu tệp này và xóa hộp cam này và lưu tệp này.
 
 60
 00:04:36,920 --> 00:04:37,400
@@ -240,257 +240,257 @@ Okay.
 
 61
 00:04:37,400 --> 00:04:41,480
-So we have successfully saved our localhost environment and variables.
+Vậy chúng ta đã lưu thành công môi trường localhost và các biến của chúng ta.
 
 62
 00:04:41,480 --> 00:04:44,000
-And please go to the Docker environment.
+Và vui lòng đi đến môi trường Docker.
 
 63
 00:04:44,000 --> 00:04:46,970
-And we will follow the same steps for the Docker environment.
+Và chúng ta sẽ làm theo các bước tương tự cho môi trường Docker.
 
 64
 00:04:46,970 --> 00:04:51,200
-Set the variable name as a catalog URL in the environment.
+Đặt tên biến là catalog URL trong môi trường.
 
 65
 00:04:51,200 --> 00:04:54,290
-We will follow the 6060 port.
+Chúng ta sẽ sử dụng cổng 6060.
 
 66
 00:04:54,290 --> 00:04:55,430
-For that purpose.
+Cho mục đích đó.
 
 67
 00:04:55,430 --> 00:04:59,540
-I'm going to write https 66 port and the current value should be.
+Tôi sẽ viết cổng https 66 và giá trị hiện tại phải là.
 
 68
 00:04:59,690 --> 00:05:07,820
-The same, and after that we will be basket Earl and the initial value should be 6061 and the current
+Như nhau, và sau đó chúng ta sẽ có basket URL và giá trị ban đầu phải là 6061 và hiện tại
 
 69
 00:05:07,820 --> 00:05:09,260
-value will be the same.
+giá trị sẽ là như nhau.
 
 70
 00:05:09,260 --> 00:05:10,250
-And ordering.
+Và ordering.
 
 71
 00:05:10,250 --> 00:05:10,940
-Earl.
+URL.
 
 72
 00:05:13,540 --> 00:05:17,230
-Will be 6063 and the current value will be the same.
+Sẽ là 6063 và giá trị hiện tại sẽ là như nhau.
 
 73
 00:05:17,230 --> 00:05:19,660
-And make sure that you also save this file.
+Và hãy chắc chắn rằng bạn cũng lưu tệp này.
 
 74
 00:05:19,690 --> 00:05:26,470
-Okay, now we have two environments that we can use when we are dynamically change the port number by
+Được rồi, bây giờ chúng ta có hai môi trường mà chúng ta có thể sử dụng khi chúng ta thay đổi động số cổng bằng cách
 
 75
 00:05:26,470 --> 00:05:28,450
-changing the postman environments.
+thay đổi các môi trường Postman.
 
 76
 00:05:28,450 --> 00:05:31,330
-So you can see that environments are listing in here.
+Vậy bạn có thể thấy các môi trường được liệt kê ở đây.
 
 77
 00:05:31,330 --> 00:05:35,350
-And you can select the environment and select this button.
+Và bạn có thể chọn môi trường và nhấn nút này.
 
 78
 00:05:35,350 --> 00:05:37,990
-And you can see the variables also set in here.
+Và bạn có thể thấy các biến cũng được đặt ở đây.
 
 79
 00:05:38,080 --> 00:05:42,850
-Now we will create a new postman collection for our microservices.
+Bây giờ chúng ta sẽ tạo một bộ sưu tập Postman mới cho microservices của chúng ta.
 
 80
 00:05:42,850 --> 00:05:47,440
-Within this collection we will add sub collections for each microservices.
+Trong bộ sưu tập này, chúng ta sẽ thêm các bộ sưu tập con cho mỗi microservices.
 
 81
 00:05:47,440 --> 00:05:53,680
-So for that purpose please open the collections by clicking this button and click this plus button in
+Vậy để mục đích đó, vui lòng mở collections bằng cách nhấp vào nút này và nhấp vào nút plus này
 
 82
 00:05:53,680 --> 00:05:58,270
-order to create new collection and give the name as a microservices.
+để tạo một collection mới và đặt tên nó là microservices.
 
 83
 00:05:59,560 --> 00:06:03,010
-This will be the our microservices root collection.
+Đây sẽ là collection gốc microservices của chúng ta.
 
 84
 00:06:03,010 --> 00:06:08,410
-And under this collection we will create separate folders for each microservices.
+Và dưới collection này, chúng ta sẽ tạo các folder riêng biệt cho mỗi microservices.
 
 85
 00:06:08,410 --> 00:06:15,430
-Because if you look at the our microservices, each microservices can be exposed different Http methods
+Vì nếu bạn nhìn vào microservices của chúng ta, mỗi microservices có thể expose các Http methods khác nhau
 
 86
 00:06:15,430 --> 00:06:17,560
-to perform their business cases.
+để thực hiện các use cases của họ.
 
 87
 00:06:17,560 --> 00:06:22,960
-Here you can see that catalog microservices will be exposed three Http get method.
+Ở đây bạn có thể thấy rằng catalog microservices sẽ expose ba Http get method.
 
 88
 00:06:22,960 --> 00:06:30,310
-In order to perform these use cases and some Http post, put and delete methods to perform Crud operations,
+Để thực hiện các use cases này và một số Http post, put và delete methods để thực hiện CRUD operations,
 
 89
 00:06:30,310 --> 00:06:36,040
-I am going to create a new sub collections with clicking this button and adding folder.
+tôi sẽ tạo một sub collections mới bằng cách nhấp vào nút này và thêm folder.
 
 90
 00:06:36,040 --> 00:06:39,310
-And this folder name should be the our microservices.
+Và tên folder này sẽ là microservices của chúng ta.
 
 91
 00:06:39,310 --> 00:06:40,840
-This will be the catalog.
+Đây sẽ là catalog.
 
 92
 00:06:40,840 --> 00:06:44,830
-And if I'm going to add a new folder, this will be the basket.
+Và nếu tôi sẽ thêm một folder mới, đây sẽ là basket.
 
 93
 00:06:45,430 --> 00:06:49,960
-And let me add a new folder for the discount.
+Và hãy để tôi thêm một folder mới cho discount.
 
 94
 00:06:50,320 --> 00:06:54,940
-And I'm going to add a new folder for the ordering.
+Và tôi sẽ thêm một folder mới cho ordering.
 
 95
 00:06:58,410 --> 00:06:58,980
-Okay.
+Được rồi.
 
 96
 00:06:58,980 --> 00:07:04,770
-These folders will be represent our microservices and include microservice exposing APIs.
+Các folder này sẽ đại diện cho microservices của chúng ta và bao gồm các APIs mà microservice expose.
 
 97
 00:07:04,800 --> 00:07:07,470
-Now we will focus on the catalog microservices.
+Bây giờ chúng ta sẽ tập trung vào catalog microservices.
 
 98
 00:07:07,470 --> 00:07:11,250
-And I am going to add a new request under this folder.
+Và tôi sẽ thêm một request mới dưới folder này.
 
 99
 00:07:11,250 --> 00:07:16,140
-And this will be representing our Get catalog operation.
+Và đây sẽ là đại diện cho Get catalog operation của chúng ta.
 
 100
 00:07:16,170 --> 00:07:22,140
-As you remember that in the Get catalog operation we will use https localhost 5050 and products.
+Như bạn còn nhớ rằng trong Get catalog operation, chúng ta sẽ sử dụng https localhost 5050 và products.
 
 101
 00:07:22,140 --> 00:07:28,230
-So for now I am going to use environment variable names instead of these request URL.
+Vậy bây giờ tôi sẽ sử dụng tên biến môi trường thay vì các URL yêu cầu này.
 
 102
 00:07:28,230 --> 00:07:33,810
-For that purpose I'm going to put a double curly bracket.
+Để làm điều đó, tôi sẽ đặt dấu ngoặc nhọn kép.
 
 103
 00:07:33,810 --> 00:07:39,780
-And here you can see that our variables already come in here and select these catalog URL.
+Và ở đây bạn có thể thấy rằng các biến của chúng ta đã xuất hiện ở đây và chọn catalog URL này.
 
 104
 00:07:39,780 --> 00:07:46,410
-And if you hover this URL you can see the initial and current value will be set localhost 5050.
+Và nếu bạn di chuột qua URL này, bạn có thể thấy giá trị ban đầu và giá trị hiện tại sẽ được đặt là localhost 5050.
 
 105
 00:07:46,410 --> 00:07:50,130
-Because we can see that the current environment is localhost.
+Vì chúng ta có thể thấy rằng môi trường hiện tại là localhost.
 
 106
 00:07:50,130 --> 00:07:56,430
-If we change the environment as a docker, and if you go to the catalog URL, you can see that the initial
+Nếu chúng ta thay đổi môi trường thành docker, và nếu bạn vào catalog URL, bạn có thể thấy rằng giá trị ban đầu
 
 107
 00:07:56,430 --> 00:07:59,310
-and current value has changed as a 6060.
+và giá trị hiện tại đã thay đổi thành 6060.
 
 108
 00:07:59,340 --> 00:08:07,020
-So by this way we can easily switch the environments and change the environment request Uri according
+Vậy bằng cách này chúng ta có thể dễ dàng chuyển đổi các môi trường và thay đổi URI yêu cầu môi trường theo
 
 109
 00:08:07,050 --> 00:08:08,730
-to our deployment strategy.
+chiến lược triển khai của chúng ta.
 
 110
 00:08:08,730 --> 00:08:15,510
-So let me set the environment as a localhost and prepare our http get method and save this method.
+Vậy hãy để tôi đặt môi trường thành localhost và chuẩn bị phương thức HTTP get của chúng ta và lưu phương thức này.
 
 111
 00:08:15,510 --> 00:08:18,750
-And this will be represent our get catalog operation.
+Và đây sẽ đại diện cho hoạt động get catalog của chúng ta.
 
 112
 00:08:18,750 --> 00:08:22,380
-Let's test this Http get method for that purpose.
+Hãy kiểm tra phương thức Http get này, để làm điều đó.
 
 113
 00:08:22,380 --> 00:08:29,340
-Open the Visual Studio and run our application as a catalog API, https and run without debugging.
+Mở Visual Studio và chạy ứng dụng catalog API của chúng ta, https và chạy mà không cần gỡ lỗi.
 
 114
 00:08:29,580 --> 00:08:37,320
-Because we only test our endpoint from the postman, open the postman and send the http get request.
+Vì chúng ta chỉ kiểm tra endpoint của chúng ta từ postman, hãy mở postman và gửi yêu cầu http get.
 
 115
 00:08:37,320 --> 00:08:41,250
-And here you can see that we have listed the products successfully.
+Và ở đây bạn có thể thấy rằng chúng ta đã liệt kê các sản phẩm thành công.
 
 116
 00:08:41,250 --> 00:08:45,030
-So our http get method is successfully prepared.
+Vậy phương thức http get của chúng ta đã được chuẩn bị thành công.
 
 117
 00:08:45,030 --> 00:08:51,210
-And during the whole course we will be adding new endpoints as we develop microservices one by one.
+Và trong suốt khóa học này, chúng ta sẽ thêm các endpoint mới khi chúng ta phát triển microservices từng cái một.
 
 118
 00:08:51,360 --> 00:08:55,650
-By the way, you don't have to develop postman collection like me in here.
+Nhân tiện, bạn không phải phát triển postman collection giống như tôi ở đây.
 
 119
 00:08:55,650 --> 00:08:59,820
-We will also put these postman collection into our GitHub repository.
+Chúng ta cũng sẽ đưa postman collection này vào GitHub repository của chúng ta.
 
 120
 00:08:59,820 --> 00:09:05,610
-If you go to this GitHub repository, the full postman collection will be stored into our repository
+Nếu bạn vào GitHub repository này, postman collection đầy đủ sẽ được lưu trữ vào repository của chúng ta.
 
 121
 00:09:05,610 --> 00:09:07,140
-and available on GitHub.
+và có sẵn trên GitHub.
 
 122
 00:09:07,140 --> 00:09:14,820
-And also I will add these postman collection into downloadable resources of the Udemy lecture resources.
+Và tôi cũng sẽ thêm các Postman collection này vào các tài nguyên có thể tải xuống của các tài nguyên bài giảng Udemy.
 
 123
 00:09:14,820 --> 00:09:20,730
-So once you get these postman collection, you can click the import button and drag and drop these file,
+Vậy khi bạn có các Postman collection này, bạn có thể nhấp vào nút import và kéo thả tệp này,
 
 124
 00:09:20,730 --> 00:09:25,800
-and you will reach the latest endpoints for each microservices in here.
+và bạn sẽ tìm thấy các endpoint mới nhất cho từng microservices ở đây.
 

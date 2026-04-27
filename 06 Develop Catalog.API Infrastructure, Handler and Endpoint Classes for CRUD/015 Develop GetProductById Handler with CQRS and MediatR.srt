@@ -1,30 +1,30 @@
 1
 00:00:00,260 --> 00:00:07,130
-In this video, we are going to develop Getproduct by ID feature in our catalog microservices using
+Trong video này, chúng ta sẽ phát triển tính năng Getproduct by ID trong catalog microservices của chúng ta sử dụng
 
 2
 00:00:07,130 --> 00:00:09,560
-this access pattern and mediator library.
+mẫu truy cập này và thư viện mediator.
 
 3
 00:00:09,650 --> 00:00:14,600
-So we will create a new folder as a vertical slice, which is the getproduct by ID.
+Vậy chúng ta sẽ tạo một folder mới như một vertical slice, đó là getproduct by ID.
 
 4
 00:00:14,600 --> 00:00:21,830
-And in this vertical folder we will create two classes, one for the handler and another for the endpoint
+Và trong folder vertical này chúng ta sẽ tạo hai classes, một cho handler và một cho endpoint
 
 5
 00:00:21,830 --> 00:00:28,610
-that we will define these request lifecycle using the mediator library and following this pattern,
+mà chúng ta sẽ định nghĩa vòng đời request này sử dụng thư viện mediator và tuân theo mẫu này,
 
 6
 00:00:28,610 --> 00:00:33,080
-please open the Visual Studio and go to the Products feature folder.
+vui lòng mở Visual Studio và go to Products feature folder.
 
 7
 00:00:33,080 --> 00:00:40,370
-And you can right click and add new subfolder which will be the Our Vertical Slice architecture get
+Và bạn có thể right click và add new subfolder đó sẽ là kiến trúc Vertical Slice của chúng ta get
 
 8
 00:00:40,370 --> 00:00:41,870
@@ -32,263 +32,263 @@ product by ID feature.
 
 9
 00:00:41,870 --> 00:00:48,830
-So under this folder we will create two classes one for the handler, another for the endpoint.
+Vậy dưới folder này chúng ta sẽ tạo hai classes một cho handler, một khác cho endpoint.
 
 10
 00:00:48,830 --> 00:00:54,050
-So let's right click and add new class which name is get product by ID handler.
+Vậy hãy right click và add new class với tên là get product by ID handler.
 
 11
 00:00:54,050 --> 00:00:59,120
-And another class will be the get product by id and point.
+Và class khác sẽ là get product by id endpoint.
 
 12
 00:00:59,660 --> 00:01:04,849
-So basically this folder will contain all necessary classes for our feature.
+Vậy cơ bản folder này sẽ chứa tất cả các classes cần thiết cho feature của chúng ta.
 
 13
 00:01:04,849 --> 00:01:07,880
-And we have followed the vertical slice architecture.
+Và chúng ta đã tuân theo vertical slice architecture.
 
 14
 00:01:07,910 --> 00:01:11,810
-Let me start to develop our query and result record types.
+Hãy bắt đầu phát triển query và result record types của chúng ta.
 
 15
 00:01:11,810 --> 00:01:17,540
-For that purpose I'm going to define public record and get products by ID query.
+Với mục đích đó, tôi sẽ định nghĩa public record và get products by ID query.
 
 16
 00:01:17,540 --> 00:01:28,580
-And this query this time get we get a parameter which name is with id and inherit from the I query interface,
+Và query này lần này get chúng ta nhận một parameter với tên là with id và inherit từ I query interface,
 
 17
 00:01:28,580 --> 00:01:33,440
-which will be the A result object returning the get product by ID result.
+đó sẽ là A result object returning the get product by ID result.
 
 18
 00:01:34,160 --> 00:01:41,480
-And if we continue with the public record, get product by ID result, this will be returned a specific
+Và nếu chúng ta tiếp tục với public record, get product by ID result, cái này sẽ trả về một specific
 
 19
 00:01:41,480 --> 00:01:44,270
-product with a given ID information.
+product với thông tin ID được cung cấp.
 
 20
 00:01:46,990 --> 00:01:52,240
-So we have finished the development of the query and result record types.
+Vậy chúng ta đã hoàn thành việc phát triển query và result record types.
 
 21
 00:01:52,240 --> 00:01:56,740
-So now we will implement Getproduct by id query handler class.
+Vậy bây giờ chúng ta sẽ triển khai Getproduct by id query handler class.
 
 22
 00:01:56,740 --> 00:02:03,700
-This class is responsible for handling the query object and interacting with the database and returning
+Class này chịu trách nhiệm xử lý query object và tương tác với cơ sở dữ liệu và trả về
 
 23
 00:02:03,700 --> 00:02:04,870
-the result object.
+result object.
 
 24
 00:02:05,020 --> 00:02:10,570
-So if you open the Visual Studio and this time we will create an actual handler class.
+Vậy nếu bạn mở Visual Studio và lần này chúng ta sẽ tạo một actual handler class.
 
 25
 00:02:10,570 --> 00:02:16,900
-First of all, I'm going to change the name as a Getproduct by ID query handler that we can separate
+Đầu tiên, tôi sẽ thay đổi tên thành Getproduct by ID query handler để chúng ta có thể phân tách
 
 26
 00:02:16,900 --> 00:02:19,900
-the commands and queries by the class names.
+commands và queries bằng tên class.
 
 27
 00:02:20,080 --> 00:02:28,840
-And I'm going to make this class as a internal, and this class will be inherit from the I query handler.
+Và tôi sẽ làm class này thành internal, và class này sẽ kế thừa từ I query handler.
 
 28
 00:02:30,730 --> 00:02:39,010
-And as a request this will be get product by ID query.
+Và như một request này sẽ là get product by ID query.
 
 29
 00:02:39,010 --> 00:02:40,630
-This will be the request.
+Đây sẽ là request.
 
 30
 00:02:40,630 --> 00:02:44,710
-And as a result we can return getproduct by I result.
+Và như một result chúng ta có thể trả về getproduct by I result.
 
 31
 00:02:44,710 --> 00:02:46,330
-So this is the query handler.
+Vậy đây là query handler.
 
 32
 00:02:46,330 --> 00:02:53,230
-And if I implement this interface members we can see that this will be comes with the handle method.
+Và nếu tôi implement các interface members này chúng ta có thể thấy rằng nó sẽ đi kèm với handle method.
 
 33
 00:02:53,230 --> 00:02:58,450
-And this handle method gets a request parameter as a getproduct by id query.
+Và handle method này nhận một request parameter là getproduct by id query.
 
 34
 00:02:58,450 --> 00:03:03,430
-So I'm going to change the name as a query this parameter name okay.
+Vậy tôi sẽ thay đổi tên parameter này thành query được không.
 
 35
 00:03:03,430 --> 00:03:06,610
-So we have basically created a structure of this class.
+Vậy chúng ta đã tạo ra cơ bản cấu trúc của class này.
 
 36
 00:03:06,610 --> 00:03:09,520
-Now I'm going to inject required services.
+Bây giờ tôi sẽ inject những services cần thiết.
 
 37
 00:03:09,520 --> 00:03:11,740
-This will be the I document session.
+Đây sẽ là I document session.
 
 38
 00:03:15,120 --> 00:03:18,540
-And the next one is the Ilogger.
+Và cái tiếp theo là Ilogger.
 
 39
 00:03:23,500 --> 00:03:24,010
-Okay.
+Được rồi.
 
 40
 00:03:24,010 --> 00:03:27,490
-We have injected these services to perform our actual logic.
+Chúng ta đã inject những services này để thực hiện logic thực tế của chúng ta.
 
 41
 00:03:27,490 --> 00:03:31,930
-So in order to do that, I'm going to start the actual implementation here.
+Vậy để làm được điều đó, tôi sẽ bắt đầu triển khai thực tế ở đây.
 
 42
 00:03:31,930 --> 00:03:34,360
-You can see that this will be a handle method.
+Bạn có thể thấy rằng đây sẽ là một phương thức handle.
 
 43
 00:03:34,360 --> 00:03:37,750
-At the beginning of the handle method I am adding a log information.
+Ở đầu phương thức handle, tôi đang thêm thông tin log.
 
 44
 00:03:37,750 --> 00:03:48,460
-And after that I'm going to get the product information from sending await session load async method.
+Và sau đó, tôi sẽ lấy thông tin sản phẩm từ phương thức session load async được gửi.
 
 45
 00:03:48,460 --> 00:03:58,120
-And I'm expecting a single product and passing the id information, which is the incoming query.id and
+Và tôi đang chờ một sản phẩm duy nhất và truyền thông tin id, đó là query.id của incoming và
 
 46
 00:03:58,120 --> 00:03:59,710
-passing the cancellation token.
+truyền cancellation token.
 
 47
 00:04:01,510 --> 00:04:06,250
-After that, if the product is null, we should perform some actions.
+Sau đó, nếu sản phẩm là null, chúng ta nên thực hiện một số hành động.
 
 48
 00:04:06,250 --> 00:04:11,170
-So for that purpose I'm going to check product is null.
+Vì vậy, để mục đích đó, tôi sẽ kiểm tra xem product có phải là null hay không.
 
 49
 00:04:11,950 --> 00:04:17,649
-I'm going to throw an exception which is the product not found exception that we will define in this
+Tôi sẽ throw một exception, đó là product not found exception mà chúng ta sẽ định nghĩa trong
 
 50
 00:04:17,649 --> 00:04:18,190
-video.
+video này.
 
 51
 00:04:18,190 --> 00:04:26,860
-But if the product is not null, we basically return new result object by passing the product value
+Nhưng nếu sản phẩm không phải là null, về cơ bản chúng ta trả về một đối tượng result mới bằng cách truyền giá trị sản phẩm
 
 52
 00:04:26,860 --> 00:04:30,460
-that comes from the session that load async method.
+mà đến từ session load async method.
 
 53
 00:04:30,460 --> 00:04:37,630
-In this handle method, we basically fetch a product by its id information, which comes from the query
+Trong phương thức handle này, về cơ bản chúng ta lấy một sản phẩm theo thông tin id của nó, đến từ đối tượng query
 
 54
 00:04:37,630 --> 00:04:41,110
-object, and we use Martin's session.
+và chúng ta sử dụng session của Marten.
 
 55
 00:04:41,110 --> 00:04:48,310
-I document session object and we use load async method in order to retrieve a specific product information
+Tôi tài liệu đối tượng session và chúng ta sử dụng phương thức load async để truy xuất thông tin sản phẩm cụ thể
 
 56
 00:04:48,310 --> 00:04:48,970
-by id.
+theo id.
 
 57
 00:04:49,420 --> 00:04:55,720
-If the product is null, we basically throw a new product, not found exception, but if the product
+Nếu sản phẩm là null, về cơ bản chúng ta throw một product not found exception mới, nhưng nếu sản phẩm
 
 58
 00:04:55,720 --> 00:05:00,790
-is not null, we basically return a result which including this product information.
+không phải là null, về cơ bản chúng ta trả về một result mà bao gồm thông tin sản phẩm này.
 
 59
 00:05:00,790 --> 00:05:06,160
-If you look at these, if you look where the product is null, we are throwing an exception.
+Nếu bạn nhìn vào những điều này, nếu bạn nhìn vào chỗ sản phẩm là null, chúng ta đang throw một exception.
 
 60
 00:05:06,160 --> 00:05:08,740
-But we didn't define this custom exception.
+Nhưng chúng ta chưa định nghĩa custom exception này.
 
 61
 00:05:08,740 --> 00:05:12,820
-So we should create a custom exception class to handle these product.
+Vậy chúng ta nên tạo một custom exception class để xử lý những product này.
 
 62
 00:05:12,820 --> 00:05:13,720
-Not found case.
+Trường hợp không tìm thấy.
 
 63
 00:05:13,720 --> 00:05:16,960
-For that purpose, I'm going to create an exceptions folder.
+Vì mục đích đó, tôi sẽ tạo một exceptions folder.
 
 64
 00:05:16,960 --> 00:05:18,160
-Under the catalog.
+Dưới catalog.
 
 65
 00:05:18,160 --> 00:05:24,850
-I'm going to right click and create a new folder and for the name is a exceptions.
+Tôi sẽ nhấp chuột phải và tạo một folder mới và tên của nó là exceptions.
 
 66
 00:05:26,230 --> 00:05:29,380
-And after that I'm going to create a product Notfoundexception.
+Và sau đó tôi sẽ tạo product Notfoundexception.
 
 67
 00:05:29,380 --> 00:05:30,670
-Under this folder.
+Dưới folder này.
 
 68
 00:05:30,670 --> 00:05:36,220
-And in this folder we will define a new class which is the product not found exception.
+Và trong folder này chúng ta sẽ định nghĩa một class mới đó là product not found exception.
 
 69
 00:05:36,220 --> 00:05:40,390
-And this exception will be inherited from the exception class.
+Và exception này sẽ được kế thừa từ exception class.
 
 70
 00:05:40,390 --> 00:05:46,900
-And in constructor we can basically perform operation inheriting from the base class.
+Và trong constructor chúng ta có thể thực hiện các hoạt động kế thừa từ base class.
 
 71
 00:05:46,900 --> 00:05:55,660
-And in the base class we can paste the our product not found error message in here.
+Và trong base class chúng ta có thể dán error message product not found của chúng ta vào đây.
 
 72
 00:05:56,290 --> 00:06:02,770
-So this is typical a custom exception class that we use into our handle method.
+Vậy đây là một custom exception class điển hình mà chúng ta sử dụng trong handle method của chúng ta.
 
 73
 00:06:02,770 --> 00:06:08,980
-And in this handle method we basically returning product not found exception under the get product by
+Và trong handle method này chúng ta cơ bản là trả về product not found exception dưới get product by
 
 74
 00:06:08,980 --> 00:06:10,450
@@ -296,21 +296,21 @@ id handle class.
 
 75
 00:06:10,450 --> 00:06:15,070
-In here you can see that we need to using statement API exceptions.
+Ở đây bạn có thể thấy rằng chúng ta cần using statement API exceptions.
 
 76
 00:06:15,070 --> 00:06:20,500
-And I'm going to move these using statement into our global handle global using class.
+Và tôi sẽ di chuyển using statement này vào global handle global using class của chúng ta.
 
 77
 00:06:20,500 --> 00:06:25,150
-And here you can see that I'm going to add a global using statement in here.
+Và ở đây bạn có thể thấy rằng tôi sẽ thêm một global using statement ở đây.
 
 78
 00:06:25,480 --> 00:06:32,110
-As you can see that we have completed the get product by ID query handle class with following six pattern
+Như bạn có thể thấy rằng chúng ta đã hoàn thành get product by ID query handle class với following six pattern
 
 79
 00:06:32,110 --> 00:06:33,130
-and handle method.
+và handle method.
 

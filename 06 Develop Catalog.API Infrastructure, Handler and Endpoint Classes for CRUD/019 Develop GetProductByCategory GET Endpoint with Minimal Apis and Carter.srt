@@ -1,158 +1,158 @@
 1
 00:00:00,200 --> 00:00:06,800
-In this video we are going to develop get product by category and point class with using minimal APIs
+Trong video này chúng ta sẽ phát triển get product by category và point class bằng cách sử dụng Minimal APIs
 
 2
 00:00:06,800 --> 00:00:07,730
-and Carter.
+và Carter.
 
 3
 00:00:08,029 --> 00:00:12,350
-So we will start with defining request and response object.
+Vậy chúng ta sẽ bắt đầu bằng cách định nghĩa request và response object.
 
 4
 00:00:12,350 --> 00:00:18,380
-And we don't have any request object because we will get the category information from the request parameter.
+Và chúng ta không có bất kỳ request object nào vì chúng ta sẽ lấy thông tin category từ request parameter.
 
 5
 00:00:18,380 --> 00:00:23,990
-But I am putting a request object as commented to following the best practices.
+Nhưng tôi đang đặt một request object dưới dạng comment để tuân theo best practices.
 
 6
 00:00:23,990 --> 00:00:31,640
-And after that we will create a response object which will be the including I enumerable product object.
+Và sau đó chúng ta sẽ tạo một response object mà sẽ bao gồm I enumerable product object.
 
 7
 00:00:31,640 --> 00:00:35,030
-So this will be the our request and response object.
+Vậy đây sẽ là request và response object của chúng ta.
 
 8
 00:00:35,030 --> 00:00:41,000
-Now we can implement actual endpoint class and this will be implement I Carter model.
+Bây giờ chúng ta có thể triển khai lớp endpoint thực tế và nó sẽ triển khai I Carter model.
 
 9
 00:00:41,000 --> 00:00:46,670
-And this class will define our Get endpoint for fetching products by a specific category.
+Và lớp này sẽ định nghĩa Get endpoint của chúng ta để lấy products từ một category cụ thể.
 
 10
 00:00:46,670 --> 00:00:51,260
-So let me inherit from the I Carter model and implement the members.
+Vậy hãy để tôi kế thừa từ I Carter model và triển khai các members.
 
 11
 00:00:51,260 --> 00:00:56,630
-So now I am going to exposing map get method.
+Vậy bây giờ tôi sẽ exposing map get method.
 
 12
 00:00:56,630 --> 00:01:00,950
-And this time the URL should be different.
+Và lần này URL nên khác.
 
 13
 00:01:00,950 --> 00:01:11,150
-We can give products and slash category slash curly breaker category.
+Chúng ta có thể cho products và slash category slash curly braker category.
 
 14
 00:01:13,700 --> 00:01:21,950
-We have to put additional category in here because we have already using the id request parameter under
+Chúng ta phải đặt thêm category ở đây vì chúng ta đã sử dụng id request parameter dưới
 
 15
 00:01:21,950 --> 00:01:22,670
-the products.
+products.
 
 16
 00:01:22,670 --> 00:01:28,340
-So in order to get category information we have to define additional layer in here.
+Vậy để lấy thông tin category chúng ta phải định nghĩa thêm một layer ở đây.
 
 17
 00:01:28,340 --> 00:01:33,680
-That's why we have added products category and category name getting from the request parameter.
+Đó là lý do tại sao chúng ta đã thêm products category và category name được lấy từ request parameter.
 
 18
 00:01:33,680 --> 00:01:38,660
-To implement these handler method we can use asynchronous function.
+Để triển khai phương thức handler này chúng ta có thể sử dụng asynchronous function.
 
 19
 00:01:38,660 --> 00:01:46,040
-And I'm going to get the category name from the request parameters.
+Và tôi sẽ lấy tên category từ request parameters.
 
 20
 00:01:46,430 --> 00:01:52,700
-And after that I will use Isander method which is the mediator sender.
+Và sau đó tôi sẽ sử dụng Isander method đó là mediator sender.
 
 21
 00:01:53,660 --> 00:01:58,370
-And after that we will implement actual implementation.
+Và sau đó chúng ta sẽ triển khai implementation thực tế.
 
 22
 00:01:58,370 --> 00:02:01,100
-So here you can see that asynchronous function.
+Vậy ở đây bạn có thể thấy hàm asynchronous.
 
 23
 00:02:01,100 --> 00:02:06,470
-And we will implement asynchronous function in order to accommodate these requests.
+Và chúng ta sẽ triển khai hàm asynchronous để xử lý các request này.
 
 24
 00:02:06,470 --> 00:02:10,340
-So first of all I'm going to get the result object from the mediator.
+Vậy đầu tiên tôi sẽ lấy result object từ mediator.
 
 25
 00:02:10,340 --> 00:02:12,530
-For that purpose we are passing the.
+Với mục đích đó chúng ta đang truyền.
 
 26
 00:02:14,720 --> 00:02:18,800
-Query object to the standard dot send method.
+Query object tới phương thức standard dot send.
 
 27
 00:02:18,800 --> 00:02:26,750
-So now we will use naive get products by category query object.
+Vậy bây giờ chúng ta sẽ sử dụng naive get products by category query object.
 
 28
 00:02:26,750 --> 00:02:30,590
-And we will passing the category name where this category name comes.
+Và chúng ta sẽ truyền tên category, nơi tên category này đến từ.
 
 29
 00:02:30,590 --> 00:02:32,570
-This comes from the request parameters.
+Nó đến từ các request parameters.
 
 30
 00:02:32,570 --> 00:02:35,510
-And this mediator will be returned a result object.
+Và mediator này sẽ trả về một result object.
 
 31
 00:02:35,510 --> 00:02:41,690
-And after that we basically adapting result object to our response object.
+Và sau đó chúng ta về cơ bản đang chuyển đổi result object thành response object của chúng ta.
 
 32
 00:02:41,690 --> 00:02:46,370
-And we will return results dot okay.
+Và chúng ta sẽ return results dot okay.
 
 33
 00:02:46,370 --> 00:02:48,830
-And passing the this response object.
+Và truyền response object này.
 
 34
 00:02:51,170 --> 00:02:57,590
-And of course, as always, we have configured the API endpoint definition with using Carter extension
+Và tất nhiên, như luôn luôn, chúng ta đã cấu hình định nghĩa API endpoint bằng cách sử dụng phương thức Carter extension.
 
 35
 00:02:57,590 --> 00:02:58,100
-method.
+phương thức.
 
 36
 00:02:58,100 --> 00:03:05,240
-So here you can see the definition of name summary description and produces Http endpoints.
+Vậy ở đây bạn có thể thấy định nghĩa của tên, tóm tắt, mô tả và produces Http endpoints.
 
 37
 00:03:05,240 --> 00:03:13,220
-In this endpoint definition we basically map Http get method with these URL products category and category
+Trong định nghĩa endpoint này, chúng ta về cơ bản map phương thức Http get với URL products category và category name.
 
 38
 00:03:13,250 --> 00:03:13,730
-name.
+Và endpoint này sử dụng mediator để gửi get products by category query.
 
 39
 00:03:13,730 --> 00:03:19,160
-And this endpoint uses mediator to send the get products by category query.
+Và sau đó điều này sẽ kích hoạt phương thức handler và sau đó chuyển đổi thành response object của chúng ta mà sẽ được
 
 40
 00:03:19,160 --> 00:03:25,580
@@ -160,5 +160,5 @@ And then this will be trigger the handler method and then adapts to our response
 
 41
 00:03:25,580 --> 00:03:26,540
-returned to the client.
+được trả về cho client.
 

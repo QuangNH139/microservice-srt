@@ -1,86 +1,86 @@
 1
 00:00:00,230 --> 00:00:06,770
-In this video we are going to do developing delayed product handler class with secrets and mediator.
+Trong video này chúng ta sẽ phát triển lớp xử lý sản phẩm trì hoãn với secrets và mediator.
 
 2
 00:00:06,770 --> 00:00:12,440
-So we are at this point and we will perform remove a product use cases for that purpose.
+Vậy chúng ta đang ở điểm này và chúng ta sẽ thực hiện xóa các trường hợp sử dụng sản phẩm cho mục đích đó.
 
 3
 00:00:12,440 --> 00:00:19,040
-Please open the Visual Studio and under the products feature folder you can see that we will create
+Vui lòng mở Visual Studio và dưới thư mục tính năng Products bạn có thể thấy chúng ta sẽ tạo
 
 4
 00:00:19,040 --> 00:00:21,170
-our vertical slice use cases.
+các use cases vertical slice của chúng ta.
 
 5
 00:00:21,170 --> 00:00:26,150
-And this time I'm going to create a new folder which name is Delete product.
+Và lần này tôi sẽ tạo một thư mục mới có tên là Delete product.
 
 6
 00:00:26,150 --> 00:00:31,910
-So right click Products Add new folder and this will be delete product.
+Vậy nhấp chuột phải vào Products, chọn Add new folder và đây sẽ là delete product.
 
 7
 00:00:31,910 --> 00:00:38,900
-And inside of the delete product folder we will create two classes one for the handler class which is
+Và bên trong thư mục delete product chúng ta sẽ tạo hai lớp, một cho lớp handler
 
 8
 00:00:38,900 --> 00:00:43,670
-the delete product handler, and another for the delete product endpoint class.
+là delete product handler, và cái khác cho lớp endpoint delete product.
 
 9
 00:00:43,670 --> 00:00:47,360
-And we will perform our actual logic.
+Và chúng ta sẽ thực hiện logic thực tế của chúng ta.
 
 10
 00:00:47,360 --> 00:00:53,450
-In order to delete product with following the vertical slice architecture, we will start to developing
+Để xóa sản phẩm theo theo vertical slice architecture, chúng ta sẽ bắt đầu phát triển
 
 11
 00:00:53,450 --> 00:00:55,580
-delete product handler class.
+lớp delete product handler.
 
 12
 00:00:55,580 --> 00:01:00,080
-This will be responsible for processing the command to delete a product.
+Điều này sẽ chịu trách nhiệm xử lý lệnh để xóa một sản phẩm.
 
 13
 00:01:00,080 --> 00:01:04,340
-So please open the delete product handler and we will start our developing.
+Vậy vui lòng mở delete product handler và chúng ta sẽ bắt đầu phát triển.
 
 14
 00:01:04,340 --> 00:01:10,610
-First of all, as you remember that we always start with developing command and result record types.
+Đầu tiên, như bạn nhớ rằng chúng ta luôn bắt đầu với việc phát triển các loại record command và result.
 
 15
 00:01:10,610 --> 00:01:14,540
-And after that we will develop actual logic in the command handler class.
+Và sau đó chúng ta sẽ phát triển logic thực tế trong lớp command handler.
 
 16
 00:01:14,540 --> 00:01:25,760
-So let's get started I'm going to write the public record and delete product command object and passing
+Vậy hãy bắt đầu, tôi sẽ viết public record và đối tượng delete product command và truyền
 
 17
 00:01:25,760 --> 00:01:31,520
-the gid id information because we will delete the product by ID.
+thông tin id gid vì chúng ta sẽ xóa sản phẩm theo ID.
 
 18
 00:01:31,940 --> 00:01:40,430
-So after that I have to implement this interface which is the I command, and passing the our result
+Vậy sau đó tôi phải triển khai interface này là I command, và truyền đối tượng result của chúng ta
 
 19
 00:01:40,430 --> 00:01:44,210
-object which is the delete product result object.
+là đối tượng delete product result.
 
 20
 00:01:46,400 --> 00:01:50,360
-And just after that I'm going to define delete product result.
+Và ngay sau đó tôi sẽ định nghĩa delete product result.
 
 21
 00:01:50,360 --> 00:01:54,980
-And as a result we only store is success.
+Và do đó chúng ta chỉ lưu trữ là success.
 
 22
 00:01:57,090 --> 00:01:57,870
@@ -88,87 +88,87 @@ Property.
 
 23
 00:01:58,800 --> 00:02:02,040
-As you can see that we have defined the command and result object.
+Như bạn có thể thấy, chúng ta đã định nghĩa command và result object.
 
 24
 00:02:02,070 --> 00:02:05,760
-Now we can start to developing actual command handler class.
+Bây giờ chúng ta có thể bắt đầu phát triển actual command handler class.
 
 25
 00:02:05,790 --> 00:02:12,630
-The first thing we should do that change the class name as a delete product command handler to identify
+Điều đầu tiên chúng ta nên làm là thay đổi tên class thành delete product command handler để nhận diện
 
 26
 00:02:12,630 --> 00:02:14,190
-command and query handlers.
+command và query handlers.
 
 27
 00:02:14,190 --> 00:02:17,970
-So after that I'm going to change the modifier as a internal.
+Vậy sau đó tôi sẽ thay đổi modifier thành internal.
 
 28
 00:02:20,520 --> 00:02:27,690
-And after that we will inherit this command handler from the I command handler interface.
+Và sau đó chúng ta sẽ kế thừa command handler này từ I command handler interface.
 
 29
 00:02:27,690 --> 00:02:35,520
-And passing the delete product command and result object in the interface members.
+Và truyền delete product command và result object vào các members của interface.
 
 30
 00:02:35,520 --> 00:02:41,550
-So after that we will implement this interface and see that the handle method is created, comes from
+Vậy sau đó chúng ta sẽ triển khai interface này và thấy rằng handle method được tạo ra, đến từ
 
 31
 00:02:41,550 --> 00:02:42,540
-the interface.
+interface.
 
 32
 00:02:42,540 --> 00:02:46,830
-And we will change the first parameter name which will be the command.
+Và chúng ta sẽ thay đổi tên parameter đầu tiên sẽ là command.
 
 33
 00:02:48,150 --> 00:02:50,430
-Now we can start to implement our actual logic.
+Bây giờ chúng ta có thể bắt đầu triển khai logic thực tế của chúng ta.
 
 34
 00:02:50,430 --> 00:02:52,620
-But how we can interact with database.
+Nhưng làm sao chúng ta có thể tương tác với database.
 
 35
 00:02:52,620 --> 00:02:59,310
-Of course we should inject required services into the R class with using the primary constructor.
+Tất nhiên chúng ta nên inject các services cần thiết vào class này bằng cách sử dụng primary constructor.
 
 36
 00:02:59,310 --> 00:03:04,260
-I'm going to inject documentation and ilogger to perform actual logic.
+Tôi sẽ inject documentation và ilogger để thực hiện logic thực tế.
 
 37
 00:03:04,260 --> 00:03:10,260
-After injecting these services with using the primary constructor, we can implement our handle method.
+Sau khi inject các services này bằng cách sử dụng primary constructor, chúng ta có thể triển khai handle method.
 
 38
 00:03:10,260 --> 00:03:17,400
-In the first line of code, we will logging the information about the incoming command object, and
+Ở dòng code đầu tiên, chúng ta sẽ logging thông tin về command object đến, và
 
 39
 00:03:17,400 --> 00:03:20,340
-after that we will perform our actual logic.
+sau đó chúng ta sẽ thực hiện logic thực tế của chúng ta.
 
 40
 00:03:20,340 --> 00:03:23,400
-We will delete the product with incoming command id.
+Chúng ta sẽ xóa product với id từ incoming command.
 
 41
 00:03:23,430 --> 00:03:31,650
-So I'm going to use session dot delete method and passing the product as a document table.
+Vậy tôi sẽ sử dụng phương thức session dot delete và truyền product như một document table.
 
 42
 00:03:31,920 --> 00:03:37,950
-And we are passing commanded information to delete these ID product.
+Và chúng ta đang truyền thông tin command để xóa ID product này.
 
 43
 00:03:37,950 --> 00:03:46,710
-So after delete operation we always need to call save changes async method and passed the cancellation
+Vậy sau thao tác delete, chúng ta luôn cần gọi phương thức save changes async và truyền cancellation
 
 44
 00:03:46,710 --> 00:03:47,190
@@ -176,25 +176,25 @@ token.
 
 45
 00:03:48,870 --> 00:03:55,320
-After that we are returning the new delete product result and I'm going to pass it.
+Sau đó chúng ta trả về kết quả delete product mới và tôi sẽ truyền nó.
 
 46
 00:03:55,320 --> 00:03:57,960
-Success is true.
+Success là true.
 
 47
 00:03:57,960 --> 00:04:04,860
-In this handler class, we basically use Martin's I documentation in order to delete the product by
+Trong handler class này, chúng ta cơ bản sử dụng I documentation của Marten để xóa product theo
 
 48
 00:04:04,860 --> 00:04:05,730
-its id.
+id của nó.
 
 49
 00:04:05,820 --> 00:04:11,490
-After performing the delete command, we save the changes to the database and ensuring the product is
+Sau khi thực hiện delete command, chúng ta lưu các thay đổi vào database và đảm bảo rằng product được
 
 50
 00:04:11,490 --> 00:04:12,000
-removed.
+xóa.
 

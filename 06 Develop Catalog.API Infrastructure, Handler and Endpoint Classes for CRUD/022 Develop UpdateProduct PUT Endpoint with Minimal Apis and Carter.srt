@@ -1,74 +1,74 @@
 1
 00:00:00,170 --> 00:00:06,770
-In this video, we are going to develop update product and pointclass with using minimal APIs and Carter
+Trong video này, chúng ta sẽ phát triển update product và pointclass bằng cách sử dụng minimal APIs và Carter
 
 2
 00:00:06,770 --> 00:00:10,610
-to automate Http put request in this URL.
+để tự động hóa Http put request trong URL này.
 
 3
 00:00:11,420 --> 00:00:16,550
-So as you can see that we have already implemented actual handle class.
+Vậy như bạn có thể thấy rằng chúng ta đã triển khai actual handle class.
 
 4
 00:00:16,550 --> 00:00:19,460
-And now we are going to implement endpoint class.
+Và bây giờ chúng ta sẽ triển khai endpoint class.
 
 5
 00:00:19,460 --> 00:00:23,300
-First of all we will develop request and response record type.
+Đầu tiên chúng ta sẽ phát triển request và response record type.
 
 6
 00:00:23,300 --> 00:00:28,550
-And after that we will handle the incoming requests and redirect to the mediator sender.
+Và sau đó chúng ta sẽ xử lý các incoming requests và chuyển hướng đến mediator sender.
 
 7
 00:00:28,550 --> 00:00:29,960
-So let's get started.
+Vậy hãy bắt đầu.
 
 8
 00:00:29,960 --> 00:00:35,030
-Please open the Visual Studio and locate the update product and point class.
+Vui lòng mở Visual Studio và định vị update product và point class.
 
 9
 00:00:35,030 --> 00:00:39,560
-First of all we will create Request and response record type.
+Đầu tiên chúng ta sẽ tạo Request và response record type.
 
 10
 00:00:39,560 --> 00:00:40,460
-For that purpose.
+Cho mục đích đó.
 
 11
 00:00:40,460 --> 00:00:47,060
-I'm going to write Public record and this time we will require a request object which is the update
+Tôi sẽ viết Public record và lần này chúng ta sẽ yêu cầu một request object, đó là update product request.
 
 12
 00:00:47,060 --> 00:00:48,170
-product request.
+Và chúng ta nên truyền tất cả các items vào product model như một parameter.
 
 13
 00:00:48,170 --> 00:00:55,280
-And we should passing all the items into product model as a parameter.
+Bạn có thể thấy rằng tôi sẽ truyền ID name category description.
 
 14
 00:00:55,280 --> 00:00:59,480
-You can see that I'm going to pass ID name category description.
+Và cứ tiếp tục như vậy.
 
 15
 00:00:59,480 --> 00:01:00,230
-And so on.
+Nhân tiện, những tên parameter này phải chính xác với các tên trong command object trong update product handler.
 
 16
 00:01:00,230 --> 00:01:07,370
-By the way, these parameter names should be exactly name with the command object in the update product
+Bởi vì những maps này sẽ map những objects này tìm kiếm parameter type và parameter name.
 
 17
 00:01:07,370 --> 00:01:07,970
-handler.
+Vì vậy hãy chắc chắn rằng bạn đã tạo update product request một cách chính xác.
 
 18
 00:01:07,970 --> 00:01:15,200
-Because these maps will be mapped these objects looking for the parameter type and the parameter name.
+Và cái này sẽ đến từ Http body vào http put request.
 
 19
 00:01:15,200 --> 00:01:19,490
@@ -80,165 +80,165 @@ And this will be comes from the Http body into http put request.
 
 21
 00:01:24,920 --> 00:01:29,750
-And after defining the request object we will also response object.
+Và sau khi định nghĩa request object chúng ta cũng sẽ định nghĩa response object.
 
 22
 00:01:29,750 --> 00:01:35,720
-Again we will write the public record and this type I'm going to write update product response object
+Một lần nữa chúng ta sẽ viết public record và loại này tôi sẽ viết update product response object
 
 23
 00:01:35,720 --> 00:01:40,190
-with getting the boolean is success property.
+với việc lấy boolean is success property.
 
 24
 00:01:40,430 --> 00:01:45,650
-So these are the requests and response object when we accommodating http post request.
+Vậy đây là các request và response object khi chúng ta xử lý http post request.
 
 25
 00:01:45,650 --> 00:01:51,290
-And now we can implement actual endpoint class with inherit from the equator model.
+Và bây giờ chúng ta có thể triển khai actual endpoint class bằng cách kế thừa từ Carter model.
 
 26
 00:01:51,290 --> 00:01:57,800
-And if you implement this interface you can see that we will define what's inside of the add method.
+Và nếu bạn triển khai interface này bạn có thể thấy rằng chúng ta sẽ định nghĩa những gì bên trong method Add.
 
 27
 00:01:57,800 --> 00:02:04,550
-So in here basically I'm going to use app dot map put because this is the http put operation.
+Vậy ở đây về cơ bản tôi sẽ sử dụng app dot map put vì đây là http put operation.
 
 28
 00:02:04,550 --> 00:02:08,870
-We should map the put operation inside of the map put method.
+Chúng ta nên map put operation bên trong map put method.
 
 29
 00:02:08,870 --> 00:02:13,940
-And in here we are going to use products endpoint again.
+Và ở đây chúng ta sẽ sử dụng products endpoint một lần nữa.
 
 30
 00:02:13,940 --> 00:02:21,500
-And when we are implementing this Http put operation I have two parameters.
+Và khi chúng ta triển khai http put operation này tôi có hai parameters.
 
 31
 00:02:21,500 --> 00:02:25,220
-The first one is update product request.
+Parameter đầu tiên là update product request.
 
 32
 00:02:25,220 --> 00:02:32,900
-And we will get this request from the Http put body information as a Json format.
+Và chúng ta sẽ lấy request này từ Http put body information dưới dạng JSON format.
 
 33
 00:02:32,900 --> 00:02:39,530
-And after that the second parameter is I sender interface, which is the mediator interface that we
+Và sau đó parameter thứ hai là I sender interface, đây là mediator interface mà chúng ta
 
 34
 00:02:39,530 --> 00:02:43,460
-are going to inject with using the delegate handler function.
+sẽ inject bằng cách sử dụng delegate handler function.
 
 35
 00:02:43,460 --> 00:02:50,870
-And in this function we are going to implement accommodating request with getting the command value
+Và trong function này chúng ta sẽ triển khai xử lý request bằng việc lấy command value
 
 36
 00:02:51,620 --> 00:02:53,750
-from the request object.
+từ request object.
 
 37
 00:02:53,750 --> 00:02:54,590
-The first row.
+Dòng đầu tiên.
 
 38
 00:02:54,620 --> 00:03:01,640
-We are going to adapting incoming requests and converting these requests to the update product command.
+Chúng ta sẽ chuyển đổi incoming requests và converting các requests này thành update product command.
 
 39
 00:03:01,640 --> 00:03:05,090
-Because the mediator is requiring command and query.
+Vì mediator yêu cầu command và query.
 
 40
 00:03:05,090 --> 00:03:10,970
-That's why we should define a command object in here with mapping from the incoming request object.
+Đó là lý do tại sao chúng ta nên định nghĩa một command object ở đây bằng cách mapping từ incoming request object.
 
 41
 00:03:10,970 --> 00:03:20,000
-And the second thing we will perform getting result information from the mediator with sending using
+Và điều thứ hai chúng ta sẽ thực hiện là lấy thông tin kết quả từ mediator bằng cách gửi sử dụng
 
 42
 00:03:20,000 --> 00:03:21,890
-the sender dot send method.
+phương thức sender dot send.
 
 43
 00:03:21,890 --> 00:03:27,110
-And this time, as you can see that we are passing the command object okay.
+Và lần này, như bạn có thể thấy rằng chúng ta đang truyền đối tượng command được rồi.
 
 44
 00:03:27,110 --> 00:03:32,600
-After sending the command object, mediator will be trigger command handler and return back to the result
+Sau khi gửi đối tượng command, mediator sẽ kích hoạt command handler và trả lại kết quả
 
 45
 00:03:32,600 --> 00:03:33,200
-object.
+đối tượng.
 
 46
 00:03:33,200 --> 00:03:41,960
-And after that again we are going to use map star to converting result object to the response object.
+Và sau đó chúng ta sẽ sử dụng map star để chuyển đổi đối tượng result thành đối tượng response.
 
 47
 00:03:41,960 --> 00:03:47,840
-So I'm going to use adapt method and passing this update product response object.
+Vì vậy tôi sẽ sử dụng phương thức adapt và truyền đối tượng update product response này.
 
 48
 00:03:47,840 --> 00:03:50,360
-And this will be perform convert operation.
+Và điều này sẽ thực hiện thao tác chuyển đổi.
 
 49
 00:03:50,600 --> 00:03:55,040
-At last point we can use return results.
+Cuối cùng chúng ta có thể sử dụng return results.
 
 50
 00:03:56,550 --> 00:04:01,620
-That okay to respond back to client with passing these response object?
+Như vậy là được để phản hồi lại client bằng cách truyền đối tượng response này được không?
 
 51
 00:04:02,730 --> 00:04:06,780
-As always, we will configure with using the extension method.
+Như mọi lúc, chúng ta sẽ cấu hình bằng cách sử dụng extension method.
 
 52
 00:04:06,780 --> 00:04:13,740
-And here you can see that extension methods about update product providing the name description summary.
+Và ở đây bạn có thể thấy rằng extension methods về update product cung cấp name description summary.
 
 53
 00:04:13,740 --> 00:04:17,100
-And we can return back to the 200 okay.
+Và chúng ta có thể trả lại 200 okay.
 
 54
 00:04:17,100 --> 00:04:23,370
-And if there is any problem we can return 400 bad request or 404 not found exception.
+Và nếu có vấn đề gì chúng ta có thể trả lại 400 bad request hoặc 404 not found exception.
 
 55
 00:04:23,370 --> 00:04:30,690
-In this endpoint class we basically define a put request for slash products endpoint and the endpoint
+Trong endpoint class này về cơ bản chúng ta định nghĩa một put request cho endpoint slash products và endpoint
 
 56
 00:04:30,690 --> 00:04:36,930
-receive an update product request object, and it adapts it to do an update product command using the
+nhận một đối tượng update product request, và nó chuyển đổi nó để tạo một update product command sử dụng
 
 57
 00:04:36,930 --> 00:04:37,710
-master.
+Mapster.
 
 58
 00:04:37,710 --> 00:04:41,430
-And we basically send this command through the mediator.
+Và về cơ bản chúng ta gửi command này qua mediator.
 
 59
 00:04:41,430 --> 00:04:46,110
-And mediator will be triggered the command handler and respond back the result object.
+Và mediator sẽ kích hoạt command handler và phản hồi lại đối tượng result.
 
 60
 00:04:46,110 --> 00:04:46,620
-Again.
+Lại nữa.
 
 61
 00:04:46,620 --> 00:04:51,240
-We will adapt the result object to the response object and send back to the client.
+Chúng ta sẽ chuyển đổi result object thành response object và gửi lại cho client.
 

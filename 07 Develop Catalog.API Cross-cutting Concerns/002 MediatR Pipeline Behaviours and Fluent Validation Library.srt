@@ -1,98 +1,98 @@
 1
 00:00:00,200 --> 00:00:06,560
-In this video we are going to learn mediator pipeline behavior and fluent validation library.
+Trong video này chúng ta sẽ học về mediator pipeline behavior và thư viện Fluent Validation.
 
 2
 00:00:07,130 --> 00:00:12,920
-Mediator is a popular library in dotnet used for implementing the mediator pattern.
+Mediator là một thư viện phổ biến trong dotnet được sử dụng để triển khai mẫu mediator.
 
 3
 00:00:13,580 --> 00:00:20,990
-One of its powerful feature is pipeline behaviors, which allows us to introduce additional logic into
+Một trong những tính năng mạnh mẽ của nó là pipeline behaviors, cho phép chúng ta thêm logic bổ sung vào
 
 4
 00:00:20,990 --> 00:00:27,650
-the request handling process such as validation, logging, exception handling, and performance tracking.
+quá trình xử lý request như validation, logging, exception handling, và performance tracking.
 
 5
 00:00:28,610 --> 00:00:32,840
-Pipeline behaviors act as a middleware in the mediator library.
+Pipeline behaviors hoạt động như một middleware trong thư viện mediator.
 
 6
 00:00:32,900 --> 00:00:39,920
-They wrap around the request handling process, enabling us to implement cross-cutting concerns without
+Chúng wrap xung quanh quá trình xử lý request, cho phép chúng ta triển khai cross-cutting concerns mà không
 
 7
 00:00:39,920 --> 00:00:42,200
-cluttering the handlers themselves.
+làm rối các handlers.
 
 8
 00:00:43,070 --> 00:00:49,850
-A pipeline behavior is essentially a class that implements I pipeline behavior interface with t request
+Một pipeline behavior về cơ bản là một class triển khai interface I pipeline behavior với t request
 
 9
 00:00:49,850 --> 00:00:50,900
-and t response.
+và t response.
 
 10
 00:00:50,930 --> 00:00:58,700
-It provides the handle method where you can execute the code before and after the next delegate is invoked.
+Nó cung cấp phương thức handle nơi bạn có thể thực thi code trước và sau khi next delegate được gọi.
 
 11
 00:00:59,570 --> 00:01:03,800
-Here you can see that how mediator pipeline behaviors works.
+Ở đây bạn có thể thấy cách mediator pipeline behaviors hoạt động.
 
 12
 00:01:03,800 --> 00:01:07,490
-You can see that mediator will be trigger the handle method.
+Bạn có thể thấy rằng mediator sẽ trigger phương thức handle.
 
 13
 00:01:07,490 --> 00:01:11,960
-But before that we can invoke the preprocessor behavior.
+Nhưng trước đó chúng ta có thể gọi preprocessor behavior.
 
 14
 00:01:11,960 --> 00:01:16,160
-And after that you can invoke the post-processor behavior.
+Và sau đó bạn có thể gọi post-processor behavior.
 
 15
 00:01:16,160 --> 00:01:18,350
-So you can see an example of that.
+Vậy bạn có thể thấy một ví dụ về điều đó.
 
 16
 00:01:18,350 --> 00:01:22,640
-The request comes into the first middleware and perform the first logic.
+Request đi vào middleware đầu tiên và thực hiện logic đầu tiên.
 
 17
 00:01:22,640 --> 00:01:28,760
-And after that invoke the next method in order to pass the middleware to and middleware two.
+Và sau đó gọi phương thức next để truyền middleware tới middleware hai.
 
 18
 00:01:28,760 --> 00:01:36,350
-Also implement the actual logic and invoke the next middleware with next method, and after that, and
+Cũng triển khai logic thực tế và gọi middleware tiếp theo với phương thức next, và sau đó,
 
 19
 00:01:36,350 --> 00:01:42,710
-middleware three is the last middleware that performs the actual logic and response back to the middleware
+middleware ba là middleware cuối cùng thực hiện logic thực tế và trả response lại cho middleware
 
 20
 00:01:42,710 --> 00:01:43,880
-two and one.
+hai và một.
 
 21
 00:01:43,880 --> 00:01:49,130
-That means this will be invoke post-process behaviors and return back to the response.
+Điều đó có nghĩa là điều này sẽ gọi các post-process behaviors và trả về response.
 
 22
 00:01:49,130 --> 00:01:52,970
-So here you can see another example which is the tracing behavior.
+Vậy ở đây bạn có thể thấy một ví dụ khác đó là tracing behavior.
 
 23
 00:01:52,970 --> 00:01:57,500
-So in the pipeline behavior this is tracing the logic.
+Vậy trong pipeline behavior này là tracing logic.
 
 24
 00:01:57,500 --> 00:01:59,690
-And after that invoking await.
+Và sau đó gọi await.
 
 25
 00:01:59,690 --> 00:02:00,560
@@ -100,63 +100,63 @@ Next method.
 
 26
 00:02:00,560 --> 00:02:03,710
-And this will be handled actual handler method.
+Và điều này sẽ xử lý actual handler method.
 
 27
 00:02:03,710 --> 00:02:07,280
-And after that this will goes to post pipeline behavior.
+Và sau đó điều này sẽ đi đến post pipeline behavior.
 
 28
 00:02:07,280 --> 00:02:12,080
-And this will be traced after operation under the post processor behavior.
+Và điều này sẽ được traced sau operation dưới post processor behavior.
 
 29
 00:02:12,080 --> 00:02:15,350
-And here you can see basic code example.
+Và ở đây bạn có thể thấy ví dụ code cơ bản.
 
 30
 00:02:15,350 --> 00:02:20,180
-That is a pipeline behavior that locks the execution time of the request.
+Đó là một pipeline behavior để đo thời gian thực thi của request.
 
 31
 00:02:20,180 --> 00:02:22,160
-This is the logging behavior.
+Đây là logging behavior.
 
 32
 00:02:22,160 --> 00:02:27,350
-And in the handle method this will be basically logging the execution time.
+Và trong handle method này về cơ bản sẽ logging thời gian thực thi.
 
 33
 00:02:27,350 --> 00:02:30,800
-And after that handle the actual handle logic.
+Và sau đó xử lý actual handle logic.
 
 34
 00:02:31,370 --> 00:02:34,490
-So this was the mediator pipeline behaviors.
+Vậy đó là mediator pipeline behaviors.
 
 35
 00:02:34,490 --> 00:02:41,630
-And now we will focus on the fluent validation library and how mediator pipelines work with the fluent
+Và bây giờ chúng ta sẽ tập trung vào thư viện Fluent Validation và cách mediator pipelines hoạt động với thư viện Fluent
 
 36
 00:02:41,630 --> 00:02:42,800
-validation libraries.
+Validation.
 
 37
 00:02:42,830 --> 00:02:44,480
-What is fluent validation?
+Fluent Validation là gì?
 
 38
 00:02:44,510 --> 00:02:49,970
-Fluent validation is a dotnet library for building strongly typed validation rules.
+Fluent Validation là một dotnet library để xây dựng strongly typed validation rules.
 
 39
 00:02:49,970 --> 00:02:57,770
-It is known for its clean syntax and ease of use, making validation logics more readable and maintainable,
+Nó được biết đến nhờ syntax sạch sẽ và dễ sử dụng, giúp validation logics trở nên dễ đọc và dễ bảo trì,
 
 40
 00:02:58,580 --> 00:03:05,270
-so we can integrate fluent validation and with mediator to validate requests before they reach the actual
+vì vậy chúng ta có thể tích hợp Fluent Validation với mediator để validate requests trước khi chúng đến handler thực tế.
 
 41
 00:03:05,300 --> 00:03:05,900
@@ -164,49 +164,49 @@ handler.
 
 42
 00:03:05,900 --> 00:03:11,360
-This integration happens within a pipeline behavior, especially the pipeline behaviors.
+Sự tích hợp này xảy ra trong một pipeline behavior, đặc biệt là các pipeline behaviors.
 
 43
 00:03:12,200 --> 00:03:19,370
-So fluent validation allows you to define validation rules in a separate classes, using a fluent interface
+Vậy Fluent Validation cho phép bạn định nghĩa các quy tắc validation trong các lớp riêng biệt, sử dụng một fluent interface
 
 44
 00:03:19,370 --> 00:03:24,530
-to specify conditions that each property of your models must satisfy.
+để chỉ định các điều kiện mà mỗi thuộc tính của các models của bạn phải thỏa mãn.
 
 45
 00:03:24,530 --> 00:03:27,260
-You can see the image on the slide.
+Bạn có thể thấy hình ảnh trên slide.
 
 46
 00:03:27,260 --> 00:03:33,050
-This is an example of validation class for a request model specifying various validation rules.
+Đây là một ví dụ về lớp validation cho một request model chỉ định các quy tắc validation khác nhau.
 
 47
 00:03:34,190 --> 00:03:37,280
-So combining mediator with fluent validation.
+Vậy kết hợp mediator với Fluent Validation.
 
 48
 00:03:37,280 --> 00:03:44,240
-Centralized or cross-cutting concerns like validation making our code cleaner and more maintainable.
+Các mối quan tâm tập trung hoặc cross-cutting như validation làm cho mã của chúng ta sạch sẽ hơn và dễ bảo trì hơn.
 
 49
 00:03:44,240 --> 00:03:48,680
-It is also ensures that our business logic only process valid data.
+Nó cũng đảm bảo rằng logic kinh doanh của chúng ta chỉ xử lý dữ liệu hợp lệ.
 
 50
 00:03:48,770 --> 00:03:50,690
-So this will be an example.
+Vậy đây sẽ là một ví dụ.
 
 51
 00:03:50,690 --> 00:03:58,100
-This is working Pre-processor that is validating the create product command and checking the members
+Đây là Pre-processor đang hoạt động mà đang xác thực create product command và kiểm tra các thành viên
 
 52
 00:03:58,100 --> 00:04:00,530
-name, category, image file price.
+name, category, image file, price.
 
 53
 00:04:00,530 --> 00:04:04,310
-And these should not be empty and the price should be greater than zero.
+Và những cái này không nên trống và giá phải lớn hơn không.
 
