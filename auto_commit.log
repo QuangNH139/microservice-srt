@@ -1,9 +1,0 @@
-[auto_commit] Translation process ended. Final commit...
-error: Committing is not possible because you have unmerged files.
-hint: Fix them up in the work tree, and then use 'git add/rm <file>'
-hint: as appropriate to mark resolution and make a commit.
-fatal: Exiting because of an unresolved conflict.
-U	translate.py
-To http://127.0.0.1:41689/git/QuangNH139/microservice-srt
-   bd25e4f..e3d90f1  claude/translate-vietnamese-auto-retry-cBckl -> claude/translate-vietnamese-auto-retry-cBckl
-[auto_commit] Done.

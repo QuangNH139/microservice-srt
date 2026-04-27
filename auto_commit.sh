@@ -1,22 +1,31 @@
 #!/bin/bash
-# Auto-commit and push translated _vi.srt files every 20 newly translated files
+# Auto-commit and push translated SRT files every BATCH_COUNT files
 REPO="/home/user/microservice-srt"
-BATCH=20
-LAST_COMMITTED=0
+BRANCH="claude/translate-vietnamese-auto-retry-cBckl"
+BATCH_COUNT=15
+
+log() { echo "[$(date '+%H:%M:%S')] $*"; }
 
 while ps aux | grep "[t]ranslate.py" > /dev/null; do
-    NEW_FILES=$(git -C "$REPO" ls-files --others --exclude-standard -- '**/*_vi.srt' | wc -l)
+    CHANGED=$(git -C "$REPO" diff --name-only -- '*.srt' | wc -l)
 
-    if [ "$NEW_FILES" -ge "$BATCH" ]; then
-        echo "[auto_commit] $(date): Committing $NEW_FILES new translated files..."
-        git -C "$REPO" add -- '**/*_vi.srt' translation_progress.json 2>/dev/null
-        git -C "$REPO" add -- '*_vi.srt' translation_progress.json 2>/dev/null
-        COUNT=$(git -C "$REPO" diff --cached --name-only | grep '_vi\.srt' | wc -l)
+    if [ "$CHANGED" -ge "$BATCH_COUNT" ]; then
+        log "Committing $CHANGED translated SRT files..."
+        git -C "$REPO" add -- '*.srt' translation_progress.json 2>/dev/null
+        COUNT=$(git -C "$REPO" diff --cached --name-only | grep '\.srt$' | wc -l)
         if [ "$COUNT" -gt 0 ]; then
-            git -C "$REPO" commit -m "Add $COUNT Vietnamese translated SRT files (auto-batch)
+            DONE=$(git -C "$REPO" diff --cached --name-only | grep -c '\.srt$' || echo 0)
+            git -C "$REPO" commit -m "Translate $COUNT SRT files to Vietnamese (in-place)
 
 https://claude.ai/code/session_01KrZ5QHyC1i87HuE4MDrwaP"
-            git -C "$REPO" push origin claude/translate-vietnamese-auto-retry-cBckl 2>&1
+
+            attempt=0
+            while [ $attempt -lt 4 ]; do
+                git -C "$REPO" push -u origin "$BRANCH" >> /tmp/auto_commit_push.log 2>&1 && log "Pushed OK" && break
+                attempt=$((attempt + 1))
+                sleep $((2 ** attempt))
+                log "Push retry $attempt..."
+            done
         fi
     fi
 
@@ -24,13 +33,19 @@ https://claude.ai/code/session_01KrZ5QHyC1i87HuE4MDrwaP"
 done
 
 # Final commit after translation finishes
-echo "[auto_commit] Translation process ended. Final commit..."
-git -C "$REPO" add -- '**/*_vi.srt' '*_vi.srt' translation_progress.json 2>/dev/null
-COUNT=$(git -C "$REPO" diff --cached --name-only | grep '_vi\.srt' | wc -l)
+log "Translation done. Final commit..."
+git -C "$REPO" add -- '*.srt' translation_progress.json 2>/dev/null
+COUNT=$(git -C "$REPO" diff --cached --name-only | grep '\.srt$' | wc -l)
 if [ "$COUNT" -gt 0 ]; then
-    git -C "$REPO" commit -m "Add $COUNT Vietnamese translated SRT files (final batch)
+    git -C "$REPO" commit -m "Final batch: $COUNT SRT files translated to Vietnamese
 
 https://claude.ai/code/session_01KrZ5QHyC1i87HuE4MDrwaP"
-    git -C "$REPO" push origin claude/translate-vietnamese-auto-retry-cBckl 2>&1
+    attempt=0
+    while [ $attempt -lt 4 ]; do
+        git -C "$REPO" push -u origin "$BRANCH" >> /tmp/auto_commit_push.log 2>&1 && log "Final push OK" && break
+        attempt=$((attempt + 1))
+        sleep $((2 ** attempt))
+        log "Push retry $attempt..."
+    done
 fi
-echo "[auto_commit] Done."
+log "=== AUTO-COMMIT COMPLETE ==="
