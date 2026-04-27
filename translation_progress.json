@@ -97,5 +97,7 @@
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/001 Introduction - Develop Catalog.API Cross-cutting Concerns.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/002 MediatR Pipeline Behaviours and Fluent Validation Library.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/003 Add Cross-cutting Concerns into BuildingBlocks Class Library for all services.srt": "done",
-  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/004 Cross-cutting Concerns Validate with AbstractValidator using Fluent Validation.srt": "done"
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/004 Cross-cutting Concerns Validate with AbstractValidator using Fluent Validation.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/005 Validation Pipeline Behaviour with MediatR using Fluent Validation Library.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/006 Remove Manual Validator and Test Validation Pipeline Behaviour with MediatR.srt": "done"
 }
