@@ -1,90 +1,90 @@
 1
 00:00:00,080 --> 00:00:05,360
-In this video, we are going to do health checks for catalog microservices with PostgreSQL.
+Trong video này, chúng ta sẽ thực hiện health checks cho catalog microservice với PostgreSQL.
 
 2
 00:00:05,360 --> 00:00:12,890
-Database health checks in ASP.Net core provide a way to monitor the status of your application and its
+Health checks trong ASP.Net Core cung cấp một cách để theo dõi trạng thái của ứng dụng và các
 
 3
 00:00:12,890 --> 00:00:13,970
-dependencies.
+dependencies của nó.
 
 4
 00:00:14,030 --> 00:00:20,060
-We will focus on adding health checks to our catalog microservices, specifically checking the health
+Chúng ta sẽ tập trung vào việc thêm health checks vào catalog microservice của chúng ta, đặc biệt là kiểm tra trạng thái
 
 5
 00:00:20,060 --> 00:00:22,580
-check of our PostgreSQL database.
+của database PostgreSQL.
 
 6
 00:00:23,420 --> 00:00:27,800
-Health checks are exposed by an application as Http endpoints.
+Health checks được ứng dụng expose dưới dạng HTTP endpoints.
 
 7
 00:00:27,980 --> 00:00:34,160
-Health checks endpoints can be configured for various real time monitoring scenarios, so that means
+Health checks endpoints có thể được cấu hình cho các kịch bản monitoring thời gian thực khác nhau, điều đó có nghĩa
 
 8
 00:00:34,160 --> 00:00:37,550
-health checks and health probes can be used by a container.
+health checks và health probes có thể được sử dụng bởi một container.
 
 9
 00:00:37,550 --> 00:00:39,530
-Orchestrators and load balancers.
+Orchestrators và load balancers.
 
 10
 00:00:39,530 --> 00:00:41,870
-In order to check an application status.
+Để kiểm tra trạng thái của ứng dụng.
 
 11
 00:00:41,870 --> 00:00:48,830
-For example, a container orchestrator may respond to a failing health check by halting a rolling deployment
+Ví dụ, một container orchestrator có thể phản ứng với health check thất bại bằng cách dừng một rolling deployment
 
 12
 00:00:48,830 --> 00:00:50,990
-or restarting a container.
+hoặc khởi động lại một container.
 
 13
 00:00:50,990 --> 00:00:51,770
-Or.
+Hoặc.
 
 14
 00:00:51,770 --> 00:00:58,340
-Another example is a load balancer might react to unhealthy application by routing traffic away from
+Một ví dụ khác là một load balancer có thể phản ứng với ứng dụng không khỏe mạnh bằng cách định tuyến traffic đi xa từ
 
 15
 00:00:58,340 --> 00:01:00,740
-the failing instance to health instances.
+các instance bị lỗi đến các instance khỏe mạnh.
 
 16
 00:01:00,740 --> 00:01:05,000
-Let's start by setting up basic health checks in our application.
+Hãy bắt đầu bằng cách thiết lập health checks cơ bản trong ứng dụng của chúng ta.
 
 17
 00:01:05,000 --> 00:01:09,200
-For that purpose, please go to catalog API and open the Program.cs.
+Để làm việc đó, vui lòng vào catalog API và mở Program.cs.
 
 18
 00:01:09,200 --> 00:01:14,180
-And I am going to start with registering dependency injection health checks for that purpose.
+Và tôi sẽ bắt đầu bằng cách đăng ký dependency injection cho health checks.
 
 19
 00:01:14,180 --> 00:01:21,050
-Before building the application, I am going to add a builder services and add health checks.
+Trước khi build ứng dụng, tôi sẽ thêm builder services và add health checks.
 
 20
 00:01:22,530 --> 00:01:25,110
-And we don't have any configuration for now.
+Và hiện tại chúng ta chưa có cấu hình nào.
 
 21
 00:01:25,110 --> 00:01:28,650
-And this is the first point adding the dependency injection.
+Và đây là điểm đầu tiên thêm dependency injection.
 
 22
 00:01:28,650 --> 00:01:37,290
-And the second point is configure the or Http request lifecycle, which means that I can use app dot
+Và điểm thứ hai là cấu hình Http request lifecycle, có nghĩa là tôi có thể sử dụng app dot
 
 23
 00:01:37,410 --> 00:01:40,320
@@ -92,43 +92,43 @@ use health checks method.
 
 24
 00:01:40,320 --> 00:01:46,260
-And we can provide the health check path which we will use on the health.
+Và chúng ta có thể cung cấp health check path mà chúng ta sẽ sử dụng trên health.
 
 25
 00:01:48,210 --> 00:01:51,960
-So this is the minimum implementation of the health checks.
+Vậy đây là triển khai tối thiểu của health checks.
 
 26
 00:01:52,230 --> 00:01:58,530
-Added the I and added the our configuring pipeline and run these application in a Https mode.
+Thêm I và thêm cấu hình pipeline của chúng ta và chạy ứng dụng này ở chế độ Https.
 
 27
 00:01:58,530 --> 00:02:05,700
-And we will check the health status of these catalog microservices with running the health endpoint.
+Và chúng ta sẽ kiểm tra health status của catalog microservices bằng cách chạy health endpoint.
 
 28
 00:02:05,700 --> 00:02:07,740
-So application run successfully.
+Vậy ứng dụng đã chạy thành công.
 
 29
 00:02:07,740 --> 00:02:13,140
-And if you open the postman I have added new Http get request under the catalog.
+Và nếu bạn mở Postman, tôi đã thêm Http get request mới dưới catalog.
 
 30
 00:02:13,140 --> 00:02:19,140
-And this is requesting catalog which is a localhost 5050 and health end point.
+Và đây là yêu cầu catalog, đó là localhost 5050 và health endpoint.
 
 31
 00:02:19,140 --> 00:02:25,080
-If you send http get method, you can see the health response from the application.
+Nếu bạn gửi http get method, bạn có thể thấy health response từ ứng dụng.
 
 32
 00:02:25,080 --> 00:02:28,680
-But this is not sufficient for the catalog microservices.
+Nhưng điều này không đủ cho catalog microservices.
 
 33
 00:02:28,680 --> 00:02:35,310
-Because if you look at our big picture, you can see that catalog microservices relying on the PostgreSQL
+Vì nếu bạn nhìn vào big picture của chúng ta, bạn có thể thấy rằng catalog microservices dựa trên PostgreSQL
 
 34
 00:02:35,310 --> 00:02:35,940
@@ -136,23 +136,23 @@ database.
 
 35
 00:02:35,940 --> 00:02:42,990
-So that means it is crucial to include health checks for our database as part of the our overall health
+Vậy điều đó có nghĩa là điều quan trọng là bao gồm health checks cho database của chúng ta như một phần của chiến lược health monitoring tổng thể cho catalog microservices.
 
 36
 00:02:42,990 --> 00:02:45,840
-monitoring strategy for catalog microservices.
+Để mục đích đó, chúng ta cũng sẽ kiểm tra PostgreSQL database health trong catalog microservices của chúng ta.
 
 37
 00:02:45,840 --> 00:02:51,810
-For that purpose, we will also check the PostgreSQL database health in our catalog microservices.
+Vậy làm thế nào chúng ta có thể kiểm tra PostgreSQL hoặc các backing services liên quan khác.
 
 38
 00:02:51,810 --> 00:02:56,640
-So how we can check PostgreSQL or other related backing services.
+Health check trong ASP.Net.
 
 39
 00:02:56,640 --> 00:02:58,470
-Health check in the ASP.Net.
+Vậy có một dự án GitHub rất tuyệt vời mà tôi sẽ mở ở đây.
 
 40
 00:02:58,470 --> 00:03:03,060
@@ -160,115 +160,115 @@ So there is a very great GitHub project that I am going to open in here.
 
 41
 00:03:03,060 --> 00:03:07,770
-This is the ASP.Net Core Diagnostics and Health checks package.
+Đây là gói ASP.Net Core Diagnostics and Health checks.
 
 42
 00:03:07,770 --> 00:03:14,160
-And if you scroll down, you can see that this repository offers a wide collection of the ASP.Net core
+Và nếu bạn cuộn xuống, bạn có thể thấy rằng repository này cung cấp một bộ sưu tập rộng lớn các gói
 
 43
 00:03:14,160 --> 00:03:18,330
-health check packages for widely used services and platforms.
+health check của ASP.Net Core cho các dịch vụ và nền tảng được sử dụng rộng rãi.
 
 44
 00:03:18,330 --> 00:03:21,420
-That means I am calling these backing services.
+Điều đó có nghĩa là tôi đang gọi các backing services này.
 
 45
 00:03:21,420 --> 00:03:25,110
-So our microservices relying on some backing services.
+Vậy microservices của chúng ta phụ thuộc vào một số backing services.
 
 46
 00:03:25,110 --> 00:03:30,270
-And these backing services also perform the health checks into our microservices.
+Và các backing services này cũng thực hiện health checks vào microservices của chúng ta.
 
 47
 00:03:30,270 --> 00:03:34,650
-And we can use these NuGet packages in this GitHub repository.
+Và chúng ta có thể sử dụng các gói NuGet này trong repository GitHub này.
 
 48
 00:03:34,650 --> 00:03:41,910
-If you scroll down, you can see how many packages are including as a backing services for microservices
+Nếu bạn cuộn xuống, bạn có thể thấy có bao nhiêu gói được bao gồm như một backing services cho microservices
 
 49
 00:03:41,910 --> 00:03:49,350
-including Amazon SQS, SNS, Azure Event Hubs, and if you scroll down, you can see the cosmos DB event
+bao gồm Amazon SQS, SNS, Azure Event Hubs, và nếu bạn cuộn xuống, bạn có thể thấy cosmos DB event
 
 50
 00:03:49,350 --> 00:03:56,100
-store and different database and message brokers Kafka, Kubernetes, MongoDB, MySQL, Redis and so
+store và các database và message brokers khác nhau như Kafka, Kubernetes, MongoDB, MySQL, Redis và nhiều hơn nữa
 
 51
 00:03:56,100 --> 00:03:56,430
-on.
+...
 
 52
 00:03:56,430 --> 00:03:59,580
-So we will looking for the PostgreSQL in here.
+Vậy chúng ta sẽ tìm kiếm PostgreSQL ở đây.
 
 53
 00:03:59,580 --> 00:04:05,520
-So if you go to the NuGet package you can see that that means we will install this package in order
+Vậy nếu bạn vào gói NuGet, bạn có thể thấy rằng chúng ta sẽ cài đặt gói này để
 
 54
 00:04:05,520 --> 00:04:08,850
-to get the health information about the PostgreSQL database.
+lấy thông tin health về cơ sở dữ liệu PostgreSQL.
 
 55
 00:04:08,850 --> 00:04:11,640
-So please copy this package name.
+Vậy vui lòng sao chép tên gói này.
 
 56
 00:04:11,640 --> 00:04:19,019
-And after that open the Visual Studio and right click the catalog API and manage NuGet packages.
+Và sau đó mở Visual Studio và nhấp chuột phải vào catalog API và quản lý gói NuGet.
 
 57
 00:04:20,019 --> 00:04:26,500
-Of course it is running and I'm going to stop this project and right click again and manage NuGet packages
+Tất nhiên nó đang chạy và tôi sẽ dừng project này và nhấp chuột phải lại và quản lý gói NuGet
 
 58
 00:04:26,830 --> 00:04:34,990
-and search for the ASP.Net Core Health checks and Pgsql and install this package for checking the health
+và tìm kiếm ASP.Net Core Health checks và Pgsql và cài đặt gói này để kiểm tra health
 
 59
 00:04:34,990 --> 00:04:36,640
-PostgreSQL database.
+của cơ sở dữ liệu PostgreSQL.
 
 60
 00:04:40,740 --> 00:04:43,950
-And confirm that this package are installed successfully.
+Và xác nhận rằng gói này đã được cài đặt thành công.
 
 61
 00:04:43,950 --> 00:04:45,810
-Save this Catholic API.
+Lưu API Catholic này.
 
 62
 00:04:45,840 --> 00:04:49,920
-Now we can apply these packages into our programs.
+Bây giờ chúng ta có thể áp dụng những packages này vào các chương trình của chúng ta.
 
 63
 00:04:49,920 --> 00:04:51,480
-Yes, in the programs, yes.
+Đúng, trong các chương trình, đúng vậy.
 
 64
 00:04:51,480 --> 00:04:57,000
-You can see that we are added health checks into the dependency injection in here.
+Bạn có thể thấy rằng chúng ta đã thêm health checks vào dependency injection ở đây.
 
 65
 00:04:57,000 --> 00:05:01,530
-So basically this method is adding health check for catalog microservices.
+Vậy cơ bản thì method này đang thêm health check cho catalog microservices.
 
 66
 00:05:01,530 --> 00:05:06,240
-But now we have additional services which is the PostgreSQL.
+Nhưng bây giờ chúng ta có các dịch vụ bổ sung đó là PostgreSQL.
 
 67
 00:05:06,240 --> 00:05:10,230
-For that purpose I'm going to use add and Pgsql.
+Với mục đích đó, tôi sẽ sử dụng add và Pgsql.
 
 68
 00:05:10,230 --> 00:05:17,700
-And I'm going to paste the connection string in here to checking the health checks for the PostgreSQL
+Và tôi sẽ dán connection string ở đây để kiểm tra health checks cho PostgreSQL
 
 69
 00:05:17,700 --> 00:05:18,570
@@ -276,7 +276,7 @@ database.
 
 70
 00:05:18,570 --> 00:05:24,360
-So this line of code will be performed the health check for the PostgreSQL database within the catalog
+Vậy dòng code này sẽ thực hiện health check cho PostgreSQL database trong catalog
 
 71
 00:05:24,360 --> 00:05:25,380
@@ -284,109 +284,109 @@ microservices.
 
 72
 00:05:25,620 --> 00:05:29,670
-Also we can configure the response of the request pipeline.
+Cũng thế, chúng ta có thể cấu hình response của request pipeline.
 
 73
 00:05:29,670 --> 00:05:35,490
-Here you can see that we can configure the health endpoint but the response is coming raw message.
+Ở đây bạn có thể thấy rằng chúng ta có thể cấu hình health endpoint nhưng response đang là raw message.
 
 74
 00:05:35,490 --> 00:05:39,060
-But I would like to return back a response in a Json format.
+Nhưng tôi muốn trả về một response ở định dạng Json.
 
 75
 00:05:39,060 --> 00:05:45,810
-So in order to visualize the health check result more clearly we can add UI client package from the
+Vậy để có thể hiển thị kết quả health check một cách rõ ràng hơn, chúng ta có thể thêm UI client package từ
 
 76
 00:05:45,810 --> 00:05:47,070
-our GitHub repository.
+GitHub repository của chúng ta.
 
 77
 00:05:47,070 --> 00:05:49,380
-So please open the GitHub repository.
+Vậy hãy mở GitHub repository.
 
 78
 00:05:49,380 --> 00:05:55,110
-And you can see that there is some additional packages for enhancing the UI operations.
+Và bạn có thể thấy rằng có một số packages bổ sung để nâng cao các hoạt động UI.
 
 79
 00:05:55,110 --> 00:05:57,300
-So I'm going to use UI client.
+Vậy tôi sẽ sử dụng UI client.
 
 80
 00:05:57,300 --> 00:06:01,410
-So you can go to the NuGet package and see the package name in here.
+Vậy bạn có thể đến NuGet package và xem tên package ở đây.
 
 81
 00:06:01,410 --> 00:06:07,680
-So we will copy this package name and we will install this package into Catholic API.
+Vậy chúng ta sẽ sao chép tên package này và cài đặt package này vào Catholic API.
 
 82
 00:06:07,680 --> 00:06:10,050
-Right click manage NuGet packages.
+Nhấp chuột phải vào manage NuGet packages.
 
 83
 00:06:10,050 --> 00:06:18,600
-And I'm going to install UI that client in order to make it response as a Json format and clearly readable.
+Và tôi sẽ cài đặt UI client để tạo response dưới dạng Json format và dễ đọc.
 
 84
 00:06:18,600 --> 00:06:24,030
-So if you double click and save this file, you can see that we have installed two packages regarding
+Vậy nếu bạn double click và lưu file này, bạn có thể thấy rằng chúng ta đã cài đặt hai packages liên quan
 
 85
 00:06:24,060 --> 00:06:24,840
-to health checks.
+đến health checks.
 
 86
 00:06:24,840 --> 00:06:31,650
-So after that if you go to the program says I'm going to configure these health endpoint with adding
+Vậy sau đó nếu bạn vào program.cs, tôi sẽ cấu hình health endpoint này bằng cách thêm
 
 87
 00:06:31,650 --> 00:06:36,810
-the new health check options and response right to do in a Json format.
+những tùy chọn health check mới và trả về response dưới dạng Json format.
 
 88
 00:06:36,810 --> 00:06:43,650
-So with this line of code we will perform these operation responded to as a Json and clear format.
+Vậy với dòng code này chúng ta sẽ thực hiện operation này trả về response dưới dạng Json và format rõ ràng.
 
 89
 00:06:43,650 --> 00:06:49,500
-Now we can start to test our enhanced health checks with PostgreSQL integration.
+Bây giờ chúng ta có thể bắt đầu kiểm tra health checks nâng cao của chúng ta với tích hợp PostgreSQL.
 
 90
 00:06:49,500 --> 00:06:52,560
-Please run this catalog API microservices.
+Vui lòng chạy catalog API microservice này.
 
 91
 00:06:52,560 --> 00:07:00,450
-And after that we will navigate to our postman to send Http get method to the health endpoint and we
+Và sau đó chúng ta sẽ điều hướng đến Postman để gửi Http GET method tới health endpoint và chúng ta
 
 92
 00:07:00,450 --> 00:07:02,730
-will see how this will be affected.
+sẽ thấy cách nó hoạt động như thế nào.
 
 93
 00:07:02,730 --> 00:07:07,440
-So please open the postman after starting the application.
+Vui lòng mở Postman sau khi khởi động ứng dụng.
 
 94
 00:07:07,440 --> 00:07:12,420
-And now I'm going to send again the same http get method to health endpoint.
+Và bây giờ tôi sẽ gửi lại Http GET method tương tự đến health endpoint.
 
 95
 00:07:12,420 --> 00:07:18,990
-And this time this will be returned back to more readable as a Json format and including the PostgreSQL.
+Và lần này nó sẽ trả về dưới dạng Json format dễ đọc hơn và bao gồm thông tin PostgreSQL.
 
 96
 00:07:18,990 --> 00:07:24,960
-Yes, here we can see the status is healthy and if you scroll down you can see additional entries.
+Đúng rồi, ở đây chúng ta có thể thấy status là healthy và nếu bạn cuộn xuống bạn có thể thấy các entries bổ sung.
 
 97
 00:07:24,960 --> 00:07:29,430
-And this time we will have a one backing services which is the PostgreSQL database.
+Và lần này chúng ta sẽ có một backing service đó là PostgreSQL database.
 
 98
 00:07:29,430 --> 00:07:31,020
-And this is also healthy.
+Và nó cũng healthy.
 
