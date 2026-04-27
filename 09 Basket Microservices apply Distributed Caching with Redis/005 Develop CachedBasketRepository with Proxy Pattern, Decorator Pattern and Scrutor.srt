@@ -1,206 +1,206 @@
 1
 00:00:00,140 --> 00:00:06,620
-In this video, we are going to focus on enhancing the cash basket repository by integrating the Radius
+Trong video này, chúng ta sẽ tập trung vào việc nâng cao basket repository bằng cách tích hợp Redis
 
 2
 00:00:06,620 --> 00:00:07,850
-distributed cash.
+distributed cache.
 
 3
 00:00:07,850 --> 00:00:12,950
-This approach will significantly improve the performance of the basket microservices.
+Phương pháp này sẽ cải thiện đáng kể hiệu suất của basket microservices.
 
 4
 00:00:12,950 --> 00:00:16,100
-By reducing the frequency of database access.
+Bằng cách giảm tần suất truy cập cơ sở dữ liệu.
 
 5
 00:00:16,309 --> 00:00:22,880
-You can think every repository call will be access to database, and we will reduce these database access
+Bạn có thể tưởng tượng mỗi lần gọi repository sẽ truy cập vào cơ sở dữ liệu, và chúng ta sẽ giảm những lần truy cập cơ sở dữ liệu này
 
 6
 00:00:22,880 --> 00:00:25,880
-calls by implementing the Radius distributed cache.
+bằng cách triển khai Redis distributed cache.
 
 7
 00:00:25,880 --> 00:00:29,420
-So how can we integrate Radius in the caching layer.
+Vậy làm thế nào chúng ta có thể tích hợp Redis trong caching layer.
 
 8
 00:00:29,420 --> 00:00:35,390
-Basically we will adding k radius related dependencies into our basket API project.
+Về cơ bản chúng ta sẽ thêm các dependencies liên quan đến Redis vào basket API project của chúng ta.
 
 9
 00:00:35,390 --> 00:00:40,640
-And we will implementing caching logic within each method and reduce the database calls.
+Và chúng ta sẽ triển khai caching logic trong mỗi method và giảm các lần truy cập cơ sở dữ liệu.
 
 10
 00:00:40,760 --> 00:00:46,190
-So we will leverage the radius connection through the distributed cache interface provided by.
+Vậy chúng ta sẽ sử dụng Redis connection thông qua distributed cache interface được cung cấp bởi.
 
 11
 00:00:46,370 --> 00:00:46,820
-Net.
+.NET.
 
 12
 00:00:46,820 --> 00:00:53,930
-If you open the documentation, you can see that dotnet provided distributed cache interface that can
+Nếu bạn mở tài liệu, bạn có thể thấy rằng dotnet cung cấp distributed cache interface mà có thể
 
 13
 00:00:53,930 --> 00:01:01,220
-be using get async set async refresh async and remove async methods to perform distributed cache into
+sử dụng các phương thức get async, set async, refresh async và remove async để thực hiện distributed cache vào
 
 14
 00:01:01,250 --> 00:01:02,690
-ASP.Net applications.
+ASP.NET applications.
 
 15
 00:01:02,690 --> 00:01:09,380
-So if you go to the distributed cache interface, you can see that these distributed cache is under
+Vậy nếu bạn vào distributed cache interface, bạn có thể thấy rằng distributed cache này nằm dưới
 
 16
 00:01:09,380 --> 00:01:12,170
-the Microsoft Extensions caching library.
+thư viện Microsoft Extensions caching.
 
 17
 00:01:12,230 --> 00:01:18,800
-In order to use distributed cache and inject into our application, we should install this package that
+Để sử dụng distributed cache và inject vào ứng dụng của chúng ta, chúng ta nên cài đặt package này mà
 
 18
 00:01:18,800 --> 00:01:21,410
-I am going to install to Visual Studio.
+tôi sắp cài đặt vào Visual Studio.
 
 19
 00:01:21,410 --> 00:01:26,330
-Please open the Visual Studio and right click the basket API manage NuGet packages.
+Hãy mở Visual Studio và nhấp chuột phải vào basket API, chọn Manage NuGet packages.
 
 20
 00:01:26,330 --> 00:01:33,860
-So now we are going to install Microsoft Extensions caching, dot stack exchange, Redis.
+Vậy bây giờ chúng ta sẽ cài đặt Microsoft Extensions caching StackExchange Redis.
 
 21
 00:01:33,860 --> 00:01:38,240
-So please download this package into your basket API.
+Vậy hãy tải package này vào basket API của bạn.
 
 22
 00:01:40,010 --> 00:01:44,510
-And if you double click the project file, you can verify that we have installed successfully.
+Và nếu bạn double click vào file project, bạn có thể xác minh rằng chúng ta đã cài đặt thành công.
 
 23
 00:01:44,510 --> 00:01:49,010
-Save this basket API and go back to our Quest Basket repository.
+Lưu basket API này và quay lại Quest Basket repository của chúng ta.
 
 24
 00:01:49,040 --> 00:01:54,080
-Now we can inject distributed cache into our class for that purpose.
+Bây giờ chúng ta có thể inject distributed cache vào class của chúng ta.
 
 25
 00:01:54,080 --> 00:02:00,800
-After the repository injection I'm going to use I distributed cache from the extensions.
+Sau khi inject repository, tôi sẽ sử dụng I distributed cache từ extensions.
 
 26
 00:02:00,800 --> 00:02:04,760
-Dot caching and parameter name can be cache.
+Dot caching và parameter name có thể là cache.
 
 27
 00:02:06,200 --> 00:02:13,250
-And if you put in here you can see that we have injected two services repository and case service.
+Và nếu bạn đặt vào đây, bạn có thể thấy rằng chúng ta đã inject hai services là repository và cache service.
 
 28
 00:02:13,250 --> 00:02:15,680
-So let's implement the get basket.
+Vậy hãy triển khai get basket.
 
 29
 00:02:15,680 --> 00:02:18,200
-So running with distributed cache.
+Vậy chạy với distributed cache.
 
 30
 00:02:18,200 --> 00:02:28,040
-So basically before calling the database operation I'm going to create a cache basket variable and retrieve
+Về cơ bản, trước khi gọi database operation, tôi sẽ tạo một cache basket variable và truy xuất
 
 31
 00:02:28,040 --> 00:02:29,630
-this basket information.
+thông tin basket này.
 
 32
 00:02:29,930 --> 00:02:31,940
-Try to get from the distributed cache.
+Cố gắng lấy từ distributed cache.
 
 33
 00:02:31,940 --> 00:02:38,720
-If you come to cache and put dot notation you can see that we can use get getString and asynchronous
+Nếu bạn đến cache và put dot notation, bạn có thể thấy rằng chúng ta có thể sử dụng get getString và các hàm asynchronous
 
 34
 00:02:38,720 --> 00:02:43,940
-functions in order to get and set value from the Redis distributed cache.
+để lấy và đặt giá trị từ Redis distributed cache.
 
 35
 00:02:43,940 --> 00:02:46,820
-And I'm going to use get string async method.
+Và tôi sẽ sử dụng phương thức get string async.
 
 36
 00:02:46,820 --> 00:02:53,120
-And we will retrieve these cache value from the username and passing the cancellation token.
+Và chúng ta sẽ truy xuất giá trị cache này từ username và truyền cancellation token.
 
 37
 00:02:53,120 --> 00:02:59,900
-Within this code, we basically call getString async method with passing the username as a key information
+Trong đoạn code này, chúng ta về cơ bản gọi phương thức getString async với việc truyền username làm thông tin khóa
 
 38
 00:02:59,900 --> 00:03:00,650
-of the cache.
+của cache.
 
 39
 00:03:00,650 --> 00:03:07,220
-So here you can see that this is the cache key, and we expect to return back our cache basket string
+Vậy ở đây bạn có thể thấy rằng đây là cache key, và chúng ta mong đợi lấy lại giá trị cache basket string
 
 40
 00:03:07,220 --> 00:03:11,900
-Json value that we can convert before sending the database operation.
+Json của chúng ta mà chúng ta có thể chuyển đổi trước khi gọi database operation.
 
 41
 00:03:11,900 --> 00:03:18,890
-That's why we should check this cache basket value as a string is null or empty condition.
+Đó là lý do tại sao chúng ta nên kiểm tra giá trị cache basket này là một chuỗi null hoặc empty.
 
 42
 00:03:19,040 --> 00:03:23,420
-If not null, we can perform the Json deserialize operation.
+Nếu không null, chúng ta có thể thực hiện hoạt động Json deserialize.
 
 43
 00:03:23,420 --> 00:03:33,110
-I'm going to use Json serializer from the system.text dot json namespace, and then serialize to shopping
+Tôi sẽ sử dụng Json serializer từ không gian tên system.text dot json, và sau đó serialize thành shopping
 
 44
 00:03:33,110 --> 00:03:37,700
-cart object and passing our cache basket to this function.
+cart object và truyền cache basket của chúng ta vào hàm này.
 
 45
 00:03:37,700 --> 00:03:43,130
-So this will be deserialize the incoming text object from the distributed cache.
+Vậy điều này sẽ deserialize đối tượng text đến từ distributed cache.
 
 46
 00:03:43,130 --> 00:03:46,820
-So if null that means there is no item in the cache.
+Vì vậy nếu null có nghĩa là không có item nào trong cache.
 
 47
 00:03:46,820 --> 00:03:50,390
-Now we can perform the actual operation from the database.
+Bây giờ chúng ta có thể thực hiện hoạt động thực tế từ database.
 
 48
 00:03:50,390 --> 00:03:58,820
-For that purpose I'm going to get a basket definition and this time we can use await repository dot
+Cho mục đích đó, tôi sẽ lấy một basket definition và lần này chúng ta có thể sử dụng await repository dot
 
 49
 00:03:58,820 --> 00:04:01,190
-get basket I'm going to cut in here.
+get basket tôi sẽ cắt vào đây.
 
 50
 00:04:01,190 --> 00:04:05,600
-And in this line of code we basically perform the database call.
+Và trong dòng code này chúng ta về cơ bản thực hiện lệnh gọi database.
 
 51
 00:04:05,600 --> 00:04:13,940
-And after performing the database call it is good to feed the cache with using the cache dot set string
+Và sau khi thực hiện lệnh gọi database, tốt là cấp dữ liệu cho cache bằng cách sử dụng cache dot set string
 
 52
 00:04:13,970 --> 00:04:14,900
@@ -208,155 +208,155 @@ async method.
 
 53
 00:04:14,900 --> 00:04:18,440
-And we will pass cache key as a username.
+Và chúng ta sẽ truyền cache key là một username.
 
 54
 00:04:18,440 --> 00:04:22,670
-And the cache value is again Json serializer and serialize.
+Và cache value lại là Json serializer và serialize.
 
 55
 00:04:22,670 --> 00:04:25,010
-And this time we will serialize the basket object.
+Và lần này chúng ta sẽ serialize đối tượng basket.
 
 56
 00:04:25,010 --> 00:04:27,800
-And also I'm going to paste the cancellation token.
+Và cũng tôi sẽ dán cancellation token.
 
 57
 00:04:29,300 --> 00:04:32,390
-And now we can return the basket object to this function.
+Và bây giờ chúng ta có thể trả về đối tượng basket cho hàm này.
 
 58
 00:04:33,080 --> 00:04:36,380
-So this is the implementation of the get basket.
+Vậy đây là triển khai của get basket.
 
 59
 00:04:36,380 --> 00:04:40,190
-And after that we can implement the store basket operation.
+Và sau đó chúng ta có thể triển khai hoạt động store basket.
 
 60
 00:04:40,190 --> 00:04:41,810
-Following the same approach.
+Theo cùng cách tiếp cận.
 
 61
 00:04:41,810 --> 00:04:47,240
-So first of all I'm going to store this basket from the database.
+Vậy đầu tiên, tôi sẽ lưu trữ basket này từ cơ sở dữ liệu.
 
 62
 00:04:47,240 --> 00:04:49,640
-I'm removing the return object.
+Tôi đang loại bỏ đối tượng trả về.
 
 63
 00:04:49,640 --> 00:04:51,710
-After storing the basket operation.
+Sau khi thực hiện phép lưu trữ basket.
 
 64
 00:04:51,710 --> 00:04:55,700
-We can also store these information into our cache.
+Chúng ta cũng có thể lưu trữ những thông tin này vào cache của chúng ta.
 
 65
 00:04:56,150 --> 00:05:00,290
-For that purpose I'm going to use case dot set string async method.
+Cho mục đích đó, tôi sẽ sử dụng phương thức cache dot set string async.
 
 66
 00:05:00,290 --> 00:05:04,250
-And the key is a basket dot username.
+Và khóa là basket dot username.
 
 67
 00:05:04,580 --> 00:05:08,720
-And now we will follow the Json serializer that serialize.
+Và bây giờ chúng ta sẽ sử dụng Json serializer để serialize.
 
 68
 00:05:09,170 --> 00:05:16,250
-And I'm going to pass basket object and paste the cancellation token.
+Và tôi sẽ truyền đối tượng basket và dán cancellation token.
 
 69
 00:05:20,090 --> 00:05:24,560
-And we can return the basket in the stored basket operation.
+Và chúng ta có thể trả về basket trong phép lưu trữ basket.
 
 70
 00:05:24,860 --> 00:05:29,270
-And lastly, we will perform the delete basket operation for that purpose.
+Và cuối cùng, chúng ta sẽ thực hiện phép xóa basket cho mục đích đó.
 
 71
 00:05:29,300 --> 00:05:34,400
-First of all, we will delete the basket from the database with using the repository object.
+Đầu tiên, chúng ta sẽ xóa basket từ cơ sở dữ liệu bằng cách sử dụng đối tượng repository.
 
 72
 00:05:34,400 --> 00:05:38,720
-And after that we should delete this object into the cache cache dot.
+Và sau đó chúng ta nên xóa đối tượng này trong cache bằng cache dot.
 
 73
 00:05:38,930 --> 00:05:41,030
-Remove async function.
+Hàm Remove async.
 
 74
 00:05:41,030 --> 00:05:47,930
-And we can give the username as a key and cancellationtoken and we can return true as a response of
+Và chúng ta có thể cung cấp username làm khóa và cancellationtoken, đồng thời chúng ta có thể trả về true như một phản hồi của
 
 75
 00:05:47,930 --> 00:05:49,010
-the delete basket.
+phép xóa basket.
 
 76
 00:05:49,130 --> 00:05:53,240
-If you go on top of this page, you can see that we have two using statement.
+Nếu bạn cuộn lên đầu trang này, bạn có thể thấy rằng chúng ta có hai using statement.
 
 77
 00:05:53,240 --> 00:06:00,140
-I'm not moving these using statement to global using because these are only using in the case basket
+Tôi không di chuyển những using statement này sang global using vì những statement này chỉ được sử dụng trong basket repository
 
 78
 00:06:00,140 --> 00:06:04,190
-repository that would not be using the other classes.
+mà các lớp khác sẽ không sử dụng.
 
 79
 00:06:04,190 --> 00:06:08,540
-This will be encapsulate the cache operations in the cache basket repository.
+Điều này sẽ đóng gói các phép toán cache trong cache basket repository.
 
 80
 00:06:08,840 --> 00:06:15,170
-So in this code you can see that we have performed get basket store basket and delete basket operations
+Vậy trong đoạn mã này bạn có thể thấy rằng chúng ta đã thực hiện các phép toán get basket, store basket và delete basket
 
 81
 00:06:15,380 --> 00:06:16,880
-in the get basket method.
+trong phương thức get basket.
 
 82
 00:06:16,880 --> 00:06:24,140
-Before calling the database, we basically check the value from the cache with a given username username
+Trước khi gọi cơ sở dữ liệu, chúng ta cơ bản kiểm tra giá trị từ cache với một username nhất định
 
 83
 00:06:24,140 --> 00:06:31,280
-in here cache key, and we will use getString async method in order to access cache basket value.
+ở đây là cache key, và chúng ta sẽ sử dụng phương thức getString async để truy cập giá trị giỏ hàng từ cache.
 
 84
 00:06:31,280 --> 00:06:38,840
-And if this value if not null, we can deserialize object to the shopping cart and return this object.
+Và nếu giá trị này không null, chúng ta có thể deserialization object thành shopping cart và trả về object này.
 
 85
 00:06:38,840 --> 00:06:43,190
-So in here we forgot the returning this deserialize object.
+Vậy ở đây chúng ta quên việc trả về object đã được deserialization.
 
 86
 00:06:43,190 --> 00:06:45,710
-Please fix this code as me.
+Vui lòng sửa code này giống như tôi.
 
 87
 00:06:45,740 --> 00:06:51,800
-Return this deserialize object and I'm going to use null for given operator at the end of this line.
+Trả về object đã deserialization này và tôi sẽ sử dụng null coalescing operator ở cuối dòng này.
 
 88
 00:06:51,800 --> 00:06:57,950
-So make sure that if cached basket is not null, we are going to deserialize object to the shopping
+Vậy hãy chắc chắn rằng nếu cached basket không null, chúng ta sẽ deserialization object thành shopping
 
 89
 00:06:57,950 --> 00:07:01,310
-cart and we should return back to the get basket method.
+cart và chúng ta nên trả về phương thức get basket.
 
 90
 00:07:01,580 --> 00:07:08,510
-So if the cache key and cache value is null, we basically perform the database operation using the
+Vậy nếu cache key và cache value là null, chúng ta cơ bản sẽ thực hiện hoạt động cơ sở dữ liệu bằng
 
 91
 00:07:08,510 --> 00:07:10,220
@@ -364,7 +364,7 @@ repository dot get basket.
 
 92
 00:07:10,220 --> 00:07:18,080
-And after getting the basket information before returning this basket, we will use cache dot set string
+Và sau khi lấy thông tin basket trước khi trả về basket này, chúng ta sẽ sử dụng cache dot set string
 
 93
 00:07:18,110 --> 00:07:18,980
@@ -372,75 +372,75 @@ async method.
 
 94
 00:07:18,980 --> 00:07:24,890
-In order to set this basket object into the distributed cache with a given username.
+Để đặt object basket này vào distributed cache với một username nhất định.
 
 95
 00:07:24,890 --> 00:07:27,500
-So we will pass username as a cache key.
+Vậy chúng ta sẽ truyền username làm cache key.
 
 96
 00:07:27,500 --> 00:07:35,690
-And after that we will serialize the incoming basket object and we will reach the Json serialized string
+Và sau đó chúng ta sẽ serialization incoming basket object và chúng ta sẽ nhận Json serialized string
 
 97
 00:07:35,690 --> 00:07:39,920
-in order to cache these username into distributed cache.
+để lưu username này vào distributed cache.
 
 98
 00:07:39,920 --> 00:07:42,380
-And after that we will return back to basket object.
+Và sau đó chúng ta sẽ trả về object basket.
 
 99
 00:07:42,380 --> 00:07:44,600
-This is what the get basket operation.
+Đây là hoạt động get basket.
 
 100
 00:07:44,600 --> 00:07:47,600
-And make sure that you have returning these if statement.
+Và hãy chắc chắn rằng bạn đã trả về if statement này.
 
 101
 00:07:47,600 --> 00:07:50,900
-And after that we will perform the store basket operation.
+Và sau đó chúng ta sẽ thực hiện hoạt động lưu trữ giỏ hàng.
 
 102
 00:07:50,900 --> 00:07:59,360
-So after storing and updating these basket to the database we will update the cache information within
+Vậy sau khi lưu trữ và cập nhật các giỏ hàng này vào cơ sở dữ liệu, chúng ta sẽ cập nhật thông tin cache trong
 
 103
 00:07:59,360 --> 00:08:00,590
-the new data.
+dữ liệu mới.
 
 104
 00:08:00,590 --> 00:08:07,640
-So when we are updating and storing new basket information we should also update the distributed cache.
+Vậy khi chúng ta cập nhật và lưu trữ thông tin giỏ hàng mới, chúng ta cũng nên cập nhật distributed cache.
 
 105
 00:08:07,640 --> 00:08:14,540
-For that purpose we will call distributed cache in here and in the delete basket we will basically remove
+Với mục đích đó, chúng ta sẽ gọi distributed cache ở đây và trong xóa giỏ hàng, chúng ta về cơ bản sẽ xóa
 
 106
 00:08:14,540 --> 00:08:19,160
-the basket information both database and the cache operations.
+thông tin giỏ hàng cả trong cơ sở dữ liệu và các hoạt động cache.
 
 107
 00:08:19,160 --> 00:08:23,870
-So in here this is the implementation of the cache basket repository.
+Vậy đây là triển khai của cache basket repository.
 
 108
 00:08:23,870 --> 00:08:26,750
-And make sure that you have also developed at the same way.
+Và hãy chắc chắn rằng bạn cũng đã phát triển theo cách tương tự.
 
 109
 00:08:26,750 --> 00:08:33,770
-In the Cache Basket repository class we have integrated Redis cache using the proxy and decorator patterns
+Trong lớp Cache Basket repository, chúng ta đã tích hợp Redis cache sử dụng các mẫu proxy và decorator
 
 110
 00:08:33,770 --> 00:08:35,659
-and cache basket repository.
+và cache basket repository.
 
 111
 00:08:35,659 --> 00:08:38,419
-Now provide efficient data handling for the basket.
+Bây giờ cung cấp xử lý dữ liệu hiệu quả cho giỏ hàng.
 
 112
 00:08:38,419 --> 00:08:39,230
