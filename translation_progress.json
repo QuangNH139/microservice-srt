@@ -114,5 +114,6 @@
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/018 Health Check for Catalog Microservices with PostgresDB.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/019 Containerize Catalog.API microservices with Docker.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/020 Orchestrate Catalog.API microservices with Docker-compose file.srt": "done",
-  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/021 TEST - Docker-compose Catalog.API microservices with PostgresDB.srt": "done"
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/021 TEST - Docker-compose Catalog.API microservices with PostgresDB.srt": "done",
+  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/001 Introduction - Basket Microservices with Vertical Slice Architecture and CQRS.srt": "done"
 }
