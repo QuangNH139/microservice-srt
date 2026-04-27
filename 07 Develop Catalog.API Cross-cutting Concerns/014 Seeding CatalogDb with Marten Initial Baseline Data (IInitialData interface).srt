@@ -1,66 +1,66 @@
 1
 00:00:00,170 --> 00:00:06,260
-In this video, we are going to learn how we can seeding catalog database with using Martin.
+Trong video này, chúng ta sẽ học cách seeding catalog database bằng cách sử dụng Marten.
 
 2
 00:00:06,260 --> 00:00:14,450
-Initial baseline data seeding is essential for initializing the database with baseline data, and Martin
+Seeding dữ liệu baseline ban đầu là rất quan trọng để khởi tạo database với dữ liệu baseline, và Marten
 
 3
 00:00:14,450 --> 00:00:19,430
-provides a feature which called I initial data interface for this purpose.
+cung cấp một tính năng được gọi là I Initial Data interface cho mục đích này.
 
 4
 00:00:20,040 --> 00:00:27,390
-So we will implement I initial data interface in order to see our catalog database with predefined product
+Vậy chúng ta sẽ triển khai I Initial Data interface để seeding catalog database của chúng ta với thông tin sản phẩm được xác định trước.
 
 5
 00:00:27,390 --> 00:00:28,440
-information.
+Và interface này cho phép Marten tự động điền dữ liệu vào database khi nó được khởi tạo lần đầu tiên.
 
 6
 00:00:28,440 --> 00:00:35,280
-And this interface allows Martin to automatically populate the database when it's first initialized.
+Nếu bạn truy cập vào tài liệu chính thức bằng cách nhấp vào liên kết này, bạn có thể tìm thấy triển khai I Initial Data interface trên tài liệu Marten.
 
 7
 00:00:35,280 --> 00:00:42,360
-If you go to the official documentation by clicking this link, you can reach the I initial data interface
+Vậy ở đây bạn có thể thấy đây là triển khai interface này.
 
 8
 00:00:42,360 --> 00:00:44,700
-implementation on the Martin documentation.
+Tên class là Initial Data.
 
 9
 00:00:44,700 --> 00:00:48,540
-So here you can see that this is implement this interface.
+Và trong class này chúng ta có một constructor chấp nhận một object array.
 
 10
 00:00:48,540 --> 00:00:50,460
-The class name is initial data.
+Array này sẽ chèn vào database bằng cách sử dụng phương thức Upsert.
 
 11
 00:00:50,460 --> 00:00:55,950
-And in this class we have a constructor accepting the object array.
+Vậy có nghĩa là sử dụng session dot store method và truyền vào object array Initial Data này, và sau đó lưu các thay đổi vào hệ thống Marten ORM.
 
 12
 00:00:55,950 --> 00:01:00,660
-This array will be inserting the database with using the Upsert method.
+Điều này sẽ lưu các thay đổi vào database PostgreSQL.
 
 13
 00:01:00,660 --> 00:01:07,560
-So that means using the session dot store method and passing the this initial data object array, and
+Vậy Marten có hàm Upsert, được đặt tên là store sẽ chèn nếu không tồn tại và cập nhật nếu tồn tại.
 
 14
 00:01:07,560 --> 00:01:11,100
-after that save changes onto the Martin Oram system.
+Vậy nếu bạn cuộn xuống, bạn có thể thấy rằng chúng ta cũng có thể tạo một static class được đặt tên là Initial Data Set.
 
 15
 00:01:11,100 --> 00:01:14,940
-This will be save the changes into the PostgreSQL database.
+Và trong class này chúng ta sẽ tạo các static read only arrays cho mỗi entry của các bảng database của bạn.
 
 16
 00:01:14,940 --> 00:01:23,130
-So Martin has Upsert function, which is name is store that will insert if not exist and update if exists.
+Vậy ở đây bạn có thể thấy các companies và users.
 
 17
 00:01:23,130 --> 00:01:29,250
@@ -80,71 +80,71 @@ So here you can see that companies and users.
 
 21
 00:01:40,620 --> 00:01:47,070
-And after that if you scroll down in the Program.cs when configuring our Martin, we can see that we
+Và sau đó nếu bạn cuộn xuống trong Program.cs khi cấu hình Marten của chúng ta, chúng ta có thể thấy rằng chúng ta
 
 22
 00:01:47,070 --> 00:01:49,860
-can use initialize with method.
+có thể sử dụng phương thức initialize with.
 
 23
 00:01:49,860 --> 00:01:52,620
-And we will passing the naive initial data class.
+Và chúng ta sẽ truyền lớp dữ liệu khởi tạo naive.
 
 24
 00:01:52,620 --> 00:01:59,490
-And we will passing our arrays, which is the entry arrays into the parameters of this class.
+Và chúng ta sẽ truyền mảng của chúng ta, đó là mảng entry vào các tham số của lớp này.
 
 25
 00:01:59,490 --> 00:02:02,220
-In this case it is passing the companies.
+Trong trường hợp này nó đang truyền các companies.
 
 26
 00:02:02,220 --> 00:02:09,060
-So we will follow the same steps when we are seeding our product data into the PostgreSQL database.
+Vậy chúng ta sẽ làm theo các bước tương tự khi chúng ta seed dữ liệu sản phẩm của chúng ta vào cơ sở dữ liệu PostgreSQL.
 
 27
 00:02:09,060 --> 00:02:10,229
-Using the Martin.
+Sử dụng Marten.
 
 28
 00:02:10,229 --> 00:02:15,900
-For that purpose, please open the Visual Studio and locate the catalog API.
+Để mục đích đó, vui lòng mở Visual Studio và định vị Catalog API.
 
 29
 00:02:15,900 --> 00:02:21,870
-And under the catalog API we will create catalog initial data class in the data folder.
+Và dưới Catalog API chúng ta sẽ tạo lớp catalog initial data trong thư mục data.
 
 30
 00:02:21,870 --> 00:02:25,770
-So for that purpose I am going to right click and create new folder.
+Vậy để mục đích đó tôi sẽ nhấp chuột phải và tạo thư mục mới.
 
 31
 00:02:25,770 --> 00:02:32,370
-And this will be our data folder and include data related operations under this folder.
+Và đây sẽ là thư mục data của chúng ta và bao gồm các hoạt động liên quan đến dữ liệu dưới thư mục này.
 
 32
 00:02:32,370 --> 00:02:37,650
-And the first thing I am going to create a new class which name is catalog initial data.
+Và điều đầu tiên tôi sẽ tạo một lớp mới có tên là catalog initial data.
 
 33
 00:02:37,650 --> 00:02:42,210
-So if you come here and see that we have created data folder.
+Vậy nếu bạn đến đây và thấy rằng chúng ta đã tạo thư mục data.
 
 34
 00:02:42,210 --> 00:02:46,920
-And inside of this folder we have created Catalog Initial Data class.
+Và bên trong thư mục này chúng ta đã tạo lớp Catalog Initial Data.
 
 35
 00:02:47,220 --> 00:02:49,530
-So now we can implement this class.
+Vậy bây giờ chúng ta có thể triển khai lớp này.
 
 36
 00:02:49,530 --> 00:02:56,220
-The first thing we should do that we will implement this interface which name is I initial data.
+Điều đầu tiên chúng ta nên làm là chúng ta sẽ triển khai interface này có tên là I initial data.
 
 37
 00:02:56,220 --> 00:03:02,700
-And if you implement this interface members you can see that the populate method is generated from the
+Và nếu bạn triển khai các thành viên của interface này bạn có thể thấy rằng phương thức populate được tạo từ
 
 38
 00:03:02,700 --> 00:03:03,360
@@ -152,11 +152,11 @@ interface.
 
 39
 00:03:03,360 --> 00:03:06,390
-And this method getting these two parameters.
+Và phương thức này nhận hai tham số.
 
 40
 00:03:06,390 --> 00:03:13,410
-The first one is I document store in order to store the information to the database and the cancellation
+Cái đầu tiên là I document store để lưu trữ thông tin vào cơ sở dữ liệu và cancellation
 
 41
 00:03:13,410 --> 00:03:14,040
@@ -164,281 +164,281 @@ token.
 
 42
 00:03:14,040 --> 00:03:16,710
-So let's start the implementation the populate.
+Vậy hãy bắt đầu triển khai lớp populate.
 
 43
 00:03:16,710 --> 00:03:21,150
-So in the populate class in the first thing we should create a new session.
+Vậy trong lớp populate, điều đầu tiên chúng ta nên tạo là một session mới.
 
 44
 00:03:21,150 --> 00:03:27,720
-And this will be a lightweight session in order to store our incoming initial data.
+Và đây sẽ là một session nhẹ để lưu trữ dữ liệu ban đầu đến của chúng ta.
 
 45
 00:03:27,720 --> 00:03:34,050
-And after creating the session we can use that if there is any product in the database or not.
+Và sau khi tạo session, chúng ta có thể kiểm tra xem có sản phẩm nào trong cơ sở dữ liệu hay không.
 
 46
 00:03:34,050 --> 00:03:40,650
-So if there is any product on database, that means we have already seeding before and this will be
+Vậy nếu có sản phẩm nào trên cơ sở dữ liệu, điều đó có nghĩa là chúng ta đã seed dữ liệu trước đó và đây sẽ là
 
 47
 00:03:40,650 --> 00:03:42,180
-the available function.
+hàm khả dụng.
 
 48
 00:03:42,180 --> 00:03:44,820
-That's why I'm going to make it async function.
+Đó là lý do tại sao tôi sẽ làm cho nó là một async function.
 
 49
 00:03:44,820 --> 00:03:50,940
-And here you can see that we check the database if there is any product exist or not.
+Và ở đây bạn có thể thấy rằng chúng ta kiểm tra cơ sở dữ liệu xem có sản phẩm nào tồn tại hay không.
 
 50
 00:03:50,940 --> 00:03:54,180
-If not exist we will continue to our seed operation.
+Nếu không tồn tại, chúng ta sẽ tiếp tục với hoạt động seed của chúng ta.
 
 51
 00:03:54,180 --> 00:03:59,610
-If exists, we can return the function and not implement any seed operation.
+Nếu tồn tại, chúng ta có thể trả về hàm và không triển khai bất kỳ hoạt động seed nào.
 
 52
 00:03:59,760 --> 00:04:05,970
-At this point we can perform actual operation, which is absurd with using the store method.
+Tại điểm này, chúng ta có thể thực hiện hoạt động thực tế, đó là sử dụng phương thức store.
 
 53
 00:04:05,970 --> 00:04:12,360
-So here you can see that we will use session dot store and using the product as a generic and passing
+Vậy ở đây bạn có thể thấy rằng chúng ta sẽ sử dụng session dot store và sử dụng product làm generic, và truyền
 
 54
 00:04:12,360 --> 00:04:17,399
-the our object array in the newly created get Pre-configured products method.
+mảng đối tượng của chúng ta vào phương thức get Pre-configured products mới được tạo.
 
 55
 00:04:17,399 --> 00:04:24,990
-And after that we will use Session.save change exec in order to update or insert all records into the
+Và sau đó chúng ta sẽ sử dụng Session.save change exec để cập nhật hoặc chèn tất cả các bản ghi vào
 
 56
 00:04:24,990 --> 00:04:26,430
-PostgreSQL database.
+cơ sở dữ liệu PostgreSQL.
 
 57
 00:04:26,430 --> 00:04:32,430
-So we have completed this populate method, and after that I am going to create these get configured
+Vậy chúng ta đã hoàn thành phương thức populate này, và sau đó tôi sẽ tạo phương thức get configured
 
 58
 00:04:32,430 --> 00:04:34,110
-products method.
+products.
 
 59
 00:04:34,110 --> 00:04:36,120
-And this will be a static method.
+Và đây sẽ là một phương thức static.
 
 60
 00:04:36,120 --> 00:04:41,100
-And returning us new product list that will be seeding our database.
+Và trả về cho chúng ta một danh sách product mới sẽ được seed vào cơ sở dữ liệu của chúng ta.
 
 61
 00:04:41,100 --> 00:04:45,000
-I'm going to copy paste this code in here and I will explain.
+Tôi sẽ copy paste code này vào đây và tôi sẽ giải thích.
 
 62
 00:04:45,000 --> 00:04:50,550
-After that you can see that we basically create several products into our database.
+Sau đó bạn có thể thấy rằng chúng ta cơ bản tạo ra nhiều sản phẩm vào cơ sở dữ liệu của chúng ta.
 
 63
 00:04:50,550 --> 00:04:57,780
-And this is the I enumerable product returnable static method which name is get pre-configured products
+Và đây là phương thức static returnable I enumerable product có tên là get pre-configured products
 
 64
 00:04:57,780 --> 00:05:00,690
-that you can copy from our GitHub repository.
+mà bạn có thể copy từ GitHub repository của chúng ta.
 
 65
 00:05:00,690 --> 00:05:07,500
-Because this is a seeding data and information including the products name, description, image, file
+Vì đây là dữ liệu seeding và thông tin bao gồm tên sản phẩm, mô tả, hình ảnh, tệp
 
 66
 00:05:07,500 --> 00:05:09,780
-price for different types of products.
+giá cho các loại sản phẩm khác nhau.
 
 67
 00:05:09,780 --> 00:05:16,620
-And as you can see that we have also set the ID numbers as a guide that we can define and use these
+Và như bạn có thể thấy rằng chúng ta cũng đã đặt các số ID làm hướng dẫn để chúng ta có thể định nghĩa và sử dụng những
 
 68
 00:05:16,620 --> 00:05:18,900
-IDs in the upcoming videos.
+ID này trong các video sắp tới.
 
 69
 00:05:19,570 --> 00:05:22,780
-This was the seeding database and seeding class.
+Đây là lớp seeding database và seeding.
 
 70
 00:05:22,780 --> 00:05:30,190
-Basically, in this class we check that if database already has data, we return from the method, but
+Cơ bản, trong lớp này chúng ta kiểm tra xem nếu cơ sở dữ liệu đã có dữ liệu, chúng ta trả về từ phương thức, nhưng
 
 71
 00:05:30,190 --> 00:05:35,320
-if not any data, it basically sits with the predefined product entries.
+nếu không có dữ liệu nào, nó cơ bản sẽ khởi tạo với các mục sản phẩm được xác định trước.
 
 72
 00:05:35,590 --> 00:05:39,130
-And we use Martin's upstart feature in here.
+Và chúng ta sử dụng tính năng upstart của Marten ở đây.
 
 73
 00:05:39,130 --> 00:05:45,820
-So this Upsert operation, which is a stored method, ensure that existing records are not duplicated
+Vậy thì hoạt động Upsert này, đó là một phương thức lưu trữ, đảm bảo rằng các bản ghi hiện có không bị trùng lặp
 
 74
 00:05:45,820 --> 00:05:46,960
-on database.
+trên cơ sở dữ liệu.
 
 75
 00:05:47,260 --> 00:05:51,460
-So of course we have some considerations about these seed operation.
+Vậy tất nhiên chúng ta có một số cân nhắc về hoạt động seeding này.
 
 76
 00:05:51,460 --> 00:05:55,390
-These seed operation should work on the development environment.
+Hoạt động seeding này nên hoạt động trên môi trường development.
 
 77
 00:05:55,390 --> 00:06:00,760
-We can also check before if is there any item in the document in the development environment.
+Chúng ta cũng có thể kiểm tra trước xem có mục nào trong tài liệu trong môi trường development hay không.
 
 78
 00:06:00,760 --> 00:06:05,650
-But in the production environment we should not recommend this kind of seed operations.
+Nhưng trong môi trường production chúng ta không nên khuyến nghị loại hoạt động seeding này.
 
 79
 00:06:05,650 --> 00:06:11,980
-So now it's time to register our catalog initial data into the Program.cs.
+Vậy bây giờ đã đến lúc để đăng ký dữ liệu catalog ban đầu của chúng ta vào Program.cs.
 
 80
 00:06:12,190 --> 00:06:18,610
-But for that purpose, please open the Program.cs and go to the location of where we are configuring
+Nhưng để làm điều đó, vui lòng mở Program.cs và đi đến vị trí nơi chúng ta đang cấu hình
 
 81
 00:06:18,610 --> 00:06:20,410
-Martin database.
+Cơ sở dữ liệu Marten.
 
 82
 00:06:20,410 --> 00:06:26,530
-In this configuration, Martin provides some of the extension method that we can use for seeding.
+Trong cấu hình này, Marten cung cấp một số extension method mà chúng ta có thể sử dụng để seeding.
 
 83
 00:06:26,530 --> 00:06:32,800
-For example, if you put dot notation in here, you can see that we have to initialize with extension
+Ví dụ, nếu bạn sử dụng dot notation ở đây, bạn sẽ thấy rằng chúng ta phải khởi tạo với extension
 
 84
 00:06:32,800 --> 00:06:38,380
-method that we can initialize these Martin van startup of the application.
+method mà chúng ta có thể khởi tạo Marten van lúc startup của ứng dụng.
 
 85
 00:06:38,380 --> 00:06:45,850
-But I would like to use an if statement because we will seeding database if the environment is development.
+Nhưng tôi muốn sử dụng một if statement vì chúng ta sẽ seeding database nếu environment là development.
 
 86
 00:06:45,850 --> 00:06:50,980
-So after this registration I'm going to put an if keyword in here.
+Vậy sau khi đăng ký này, tôi sẽ thêm một if keyword ở đây.
 
 87
 00:06:50,980 --> 00:06:57,490
-And in here we can use that builder environment is development.
+Và ở đây chúng ta có thể sử dụng builder environment is development.
 
 88
 00:06:58,150 --> 00:07:01,990
-So I would like to check that if the environment is development.
+Vậy tôi muốn kiểm tra xem environment có phải là development không.
 
 89
 00:07:01,990 --> 00:07:09,670
-After that we can seeding our Martin and PostgreSQL database with using building services and initialize
+Sau đó, chúng ta có thể seeding Marten và PostgreSQL database của chúng ta bằng cách sử dụng building services và khởi tạo
 
 90
 00:07:09,670 --> 00:07:11,110
-Martin with method.
+Marten với method.
 
 91
 00:07:11,110 --> 00:07:21,400
-And in here we can test our initialize class as a generic, which is the catalog initial data and so
+Và ở đây chúng ta có thể test lớp initialize của chúng ta như một generic, đó là catalog initial data và vì vậy
 
 92
 00:07:21,400 --> 00:07:26,230
-we have added the catalog initial data as a generic of this method.
+chúng ta đã thêm catalog initial data như một generic của method này.
 
 93
 00:07:26,230 --> 00:07:33,430
-This will be provided to our seeding operation when the application start up please save the Program.cs.
+Điều này sẽ được cung cấp cho hoạt động seeding của chúng ta khi ứng dụng khởi động, hãy lưu Program.cs.
 
 94
 00:07:33,430 --> 00:07:37,690
-And also I'm going to move these using statement into our global using.
+Và cũng vậy, tôi sẽ chuyển các using statement này vào global using của chúng ta.
 
 95
 00:07:37,690 --> 00:07:43,990
-So go to global using and make this as a global and go back to Program.cs.
+Vậy hãy đi đến global using và đặt nó như là global, rồi quay lại Program.cs.
 
 96
 00:07:43,990 --> 00:07:44,710
-Okay.
+Được rồi.
 
 97
 00:07:44,710 --> 00:07:49,030
-Now we have clear our using statement and this is the our Program.cs.
+Bây giờ chúng ta đã xóa using statement của chúng ta và đây là Program.cs của chúng ta.
 
 98
 00:07:49,060 --> 00:07:56,830
-This code is basically register or catalog initial data class for seeding database and initialization.
+Đoạn mã này về cơ bản là đăng ký lớp catalog initial data để seeding database và khởi tạo.
 
 99
 00:07:56,830 --> 00:08:01,780
-And note that we are performing this operation only in the development environment.
+Và lưu ý rằng chúng ta đang thực hiện hoạt động này chỉ trong môi trường development.
 
 100
 00:08:02,260 --> 00:08:05,770
-So there are some main considerations in seeding operation.
+Vậy có một số cân nhắc chính trong hoạt động seeding.
 
 101
 00:08:05,770 --> 00:08:10,600
-One critical aspect to consider is the database is ready or not.
+Một khía cạnh quan trọng cần xem xét là cơ sở dữ liệu đã sẵn sàng hay chưa.
 
 102
 00:08:10,600 --> 00:08:15,760
-So what if our PostgreSQL database isn't ready when this code runs?
+Vậy nếu PostgreSQL database của chúng ta chưa sẵn sàng khi code này chạy thì sao?
 
 103
 00:08:15,760 --> 00:08:21,730
-If you open the our architecture, you can see that we put the seed operation in the beginning of the
+Nếu bạn mở kiến trúc của chúng ta, bạn có thể thấy rằng chúng ta đặt seed operation ở đầu của
 
 104
 00:08:21,730 --> 00:08:22,420
-program says.
+program.
 
 105
 00:08:22,420 --> 00:08:28,570
-That means when this catalog API microservices is starting, the seed operation will be work and try
+Điều đó có nghĩa là khi catalog API microservice này khởi động, seed operation sẽ được thực hiện và cố gắng
 
 106
 00:08:28,570 --> 00:08:31,390
-to seed data into PostgreSQL database.
+seed dữ liệu vào PostgreSQL database.
 
 107
 00:08:31,390 --> 00:08:36,760
-So what if PostgreSQL database is not ready and not running on the code environment?
+Vậy nếu PostgreSQL database không sẵn sàng và không chạy trong môi trường code thì sao?
 
 108
 00:08:36,760 --> 00:08:43,809
-So in order to handle this we should use retry mechanism while Martins initialize Martin with method
+Vì vậy để xử lý điều này, chúng ta nên sử dụng retry mechanism trong khi khởi tạo. Nếu phương pháp khởi tạo
 
 109
 00:08:43,809 --> 00:08:50,860
-doesn't handle the retries, we can use poly library or ensure our Docker setup is restart the database
+không xử lý các retries, chúng ta có thể sử dụng thư viện Polly hoặc đảm bảo setup Docker của chúng ta restart database
 
 110
 00:08:50,860 --> 00:08:52,030
-until it's ready.
+cho đến khi nó sẵn sàng.
 
 111
 00:08:52,420 --> 00:08:57,610
-So for now I am skipping this kind of problems and continue to our seed operation.
+Vậy bây giờ tôi sẽ bỏ qua vấn đề này và tiếp tục đến seed operation của chúng ta.
 

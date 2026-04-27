@@ -106,5 +106,9 @@
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/010 Global Exception Handling with IExceptionHandler interface in Asp.net Core.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/011 Register Custom Exception Handling into Asp.net with AddExceptionHandler method.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/012 Logging Behavior in MediatR Pipeline for Cross-cutting concerns.srt": "done",
-  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/013 Test Logging Behaviour for all MediatR Requests on Catalog.API microservices.srt": "done"
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/013 Test Logging Behaviour for all MediatR Requests on Catalog.API microservices.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/014 Seeding CatalogDb with Marten Initial Baseline Data (IInitialData interface).srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/015 Test Seeding Initial Data with Marten on PostgresDB for Catalog.API microservice.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/016 Develop Pagination for GetProducts Query with ToPagedListAsync extention method.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/017 Test Pagination for GetProducts Query with ToPagedListAsync extention method.srt": "done"
 }
