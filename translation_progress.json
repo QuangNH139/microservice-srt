@@ -134,5 +134,6 @@
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/017 Develop BasketRepository Class using Marten Library.srt": "done",
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/018 Implement IBasketRepository Class using Marten IDocumentSession interface.srt": "done",
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/019 Register and Configure Marten DocumentDB library into Program.cs asp.net DI.srt": "done",
-  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/020 Setup PostgreSQL DB for Basket ms using Docker-compose file for Multi-container.srt": "done"
+  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/020 Setup PostgreSQL DB for Basket ms using Docker-compose file for Multi-container.srt": "done",
+  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/021 Run Docker-Compose on Visual Studio to setup PostgreSQL DB on Docker.srt": "done"
 }
