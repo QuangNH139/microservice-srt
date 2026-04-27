@@ -1,26 +1,26 @@
 1
 00:00:00,170 --> 00:00:06,980
-In this video we are going to test catalog API with sending to create product http post request.
+Trong video này, chúng ta sẽ kiểm tra catalog API bằng cách gửi một HTTP post request để tạo sản phẩm.
 
 2
 00:00:06,980 --> 00:00:12,680
-So that means we will send an http post request to our API endpoint.
+Điều đó có nghĩa là chúng ta sẽ gửi một HTTP post request đến endpoint API của chúng ta.
 
 3
 00:00:12,680 --> 00:00:17,810
-And Carter will handle the routing and redirecting to mediator.
+Và Carter sẽ xử lý routing và chuyển hướng đến mediator.
 
 4
 00:00:17,810 --> 00:00:23,660
-And mediator send operation will process the request through the appropriate handler and the handler
+Và mediator send operation sẽ xử lý request thông qua handler thích hợp và handler
 
 5
 00:00:23,660 --> 00:00:27,200
-operation, perform the actual logic and returning the response.
+operation sẽ thực hiện logic thực tế và trả về response.
 
 6
 00:00:27,200 --> 00:00:31,100
-So we will test and debug the create product endpoint in our catalog.
+Vậy chúng ta sẽ kiểm tra và debug endpoint tạo sản phẩm trong catalog microservices của chúng ta.
 
 7
 00:00:31,100 --> 00:00:32,090
@@ -28,95 +28,95 @@ Microservices.
 
 8
 00:00:32,090 --> 00:00:38,660
-In order to understand these request lifecycle in ASP.Net core with using the Carter and Mediator.
+Để hiểu rõ vòng đời request này trong ASP.Net core với sử dụng Carter và Mediator.
 
 9
 00:00:38,900 --> 00:00:42,560
-So our first step is running the catalog microservices.
+Vậy bước đầu tiên của chúng ta là chạy catalog microservices.
 
 10
 00:00:42,560 --> 00:00:48,920
-If you open the Visual Studio and select the catalog API, right click Set Startup Project.
+Nếu bạn mở Visual Studio và chọn catalog API, nhấp chuột phải vào Set Startup Project.
 
 11
 00:00:48,920 --> 00:00:56,360
-And if you open the properties and check the line settings, we will already change the these application
+Và nếu bạn mở properties và kiểm tra line settings, chúng ta đã thay đổi URL ứng dụng này
 
 12
 00:00:56,360 --> 00:01:02,420
-URL and port numbers in here, which is the 5050 50 for Https.
+và số cổng ở đây, đó là 5050 50 cho Https.
 
 13
 00:01:02,420 --> 00:01:06,590
-And we will run these microservices in the Https running profile.
+Và chúng ta sẽ chạy microservices này trong Https running profile.
 
 14
 00:01:06,590 --> 00:01:07,760
-For that purpose.
+Cho mục đích đó.
 
 15
 00:01:07,760 --> 00:01:13,640
-Please come here and select the Https and run this application with clicking this button.
+Vui lòng đến đây và chọn Https rồi chạy ứng dụng này bằng cách nhấp nút này.
 
 16
 00:01:13,880 --> 00:01:16,790
-As you can see, that application started successfully.
+Như bạn có thể thấy, ứng dụng đã khởi động thành công.
 
 17
 00:01:16,790 --> 00:01:20,330
-We can see the localhost 5050 for https.
+Chúng ta có thể thấy localhost 5050 cho https.
 
 18
 00:01:20,330 --> 00:01:26,390
-And also you can check the project console window and verify from this here application are listening
+Và bạn cũng có thể kiểm tra cửa sổ console của project và xác minh từ đây ứng dụng đang lắng nghe
 
 19
 00:01:26,390 --> 00:01:28,610
-on https 5050 port.
+trên cổng https 5050.
 
 20
 00:01:28,610 --> 00:01:31,250
-So now it is ready for the Sendrequest.
+Vậy bây giờ nó đã sẵn sàng để gửi request.
 
 21
 00:01:31,250 --> 00:01:35,090
-But before testing, let's set our breakpoints in our code.
+Nhưng trước khi kiểm tra, hãy đặt các breakpoint của chúng ta trong code.
 
 22
 00:01:35,090 --> 00:01:41,600
-If you open the Visual Studio, we should place one breakpoint on the minimal API endpoint, which is
+Nếu bạn mở Visual Studio, chúng ta nên đặt một breakpoint trên minimal API endpoint, đó là
 
 23
 00:01:41,600 --> 00:01:48,350
-the create product endpoint and put the breakpoint in here to understand and catch the incoming request.
+endpoint tạo sản phẩm và đặt breakpoint ở đây để hiểu và bắt request đến.
 
 24
 00:01:48,350 --> 00:01:54,440
-And after that, we should put another breakpoint in the create product handle method, which will be
+Và sau đó, chúng ta nên đặt một breakpoint khác trong phương thức create product handle, điều này sẽ
 
 25
 00:01:54,440 --> 00:01:58,490
-provide actual business logic in mediator handler operation.
+cung cấp logic business thực tế trong mediator handler operation.
 
 26
 00:01:58,490 --> 00:02:03,200
-So this will allow us to observe the flow of the request through the application.
+Vậy điều này sẽ cho phép chúng ta quan sát luồng request qua ứng dụng.
 
 27
 00:02:03,200 --> 00:02:08,479
-So we put our debuggers and now we will send the http post request.
+Vậy chúng ta đã đặt debugger và bây giờ chúng ta sẽ gửi HTTP post request.
 
 28
 00:02:08,509 --> 00:02:13,520
-In order to send http post request we will use postman.
+Để gửi HTTP post request, chúng ta sẽ sử dụng Postman.
 
 29
 00:02:13,520 --> 00:02:22,100
-If you open the postman and create any Http method, the Http method should be post and the URL should
+Nếu bạn mở Postman và tạo bất kỳ Http method nào, Http method nên là post và URL nên
 
 30
 00:02:22,100 --> 00:02:25,670
-be the our application, which is the.
+là ứng dụng của chúng ta, đó là.
 
 31
 00:02:26,720 --> 00:02:28,280
@@ -124,75 +124,75 @@ Localhost 5050.
 
 32
 00:02:28,310 --> 00:02:29,750
-You can copy from here.
+Bạn có thể sao chép từ đây.
 
 33
 00:02:30,230 --> 00:02:34,010
-And now we should also add product suffix in here.
+Và bây giờ chúng ta cũng nên thêm product suffix ở đây.
 
 34
 00:02:34,010 --> 00:02:42,440
-Because if you look at the R code you can see that we are exposing our microservice application as a
+Bởi vì nếu bạn xem code R của chúng ta, bạn có thể thấy rằng chúng ta đang expose ứng dụng microservice của chúng ta như một
 
 35
 00:02:42,440 --> 00:02:45,140
-Http post slash products endpoint.
+HTTP post slash products endpoint.
 
 36
 00:02:45,140 --> 00:02:51,080
-So that's why we should add this endpoint at the end of the localhost 5050.
+Đó là lý do tại sao chúng ta nên thêm endpoint này ở cuối localhost 5050.
 
 37
 00:02:51,200 --> 00:02:59,240
-And after that we should define our body operation which will be the our row body and Json file.
+Và sau đó chúng ta nên định nghĩa body operation của chúng ta, đó sẽ là row body và Json file của chúng ta.
 
 38
 00:02:59,240 --> 00:03:02,180
-And this will be the our request object.
+Và đây sẽ là request object của chúng ta.
 
 39
 00:03:02,180 --> 00:03:08,420
-I'm going to copy paste our body operation which including the name, category, description, image,
+Tôi sẽ copy paste body operation của chúng ta, bao gồm name, category, description, image,
 
 40
 00:03:08,420 --> 00:03:09,410
-file and price.
+file và price.
 
 41
 00:03:09,410 --> 00:03:12,860
-These are the members of the product entity.
+Đây là các thành viên của product entity.
 
 42
 00:03:12,860 --> 00:03:15,500
-And we will send these Http request.
+Và chúng ta sẽ gửi các HTTP request này.
 
 43
 00:03:15,500 --> 00:03:20,210
-And this will be also members our record type of the our request object.
+Và những thành viên này sẽ cũng là các thành viên của record type của request object của chúng ta.
 
 44
 00:03:20,210 --> 00:03:26,810
-If you go to the Our Visual Studio and open the create product endpoint at the first point, this will
+Nếu bạn mở Visual Studio và mở create product endpoint lên, đầu tiên điều này sẽ
 
 45
 00:03:26,810 --> 00:03:31,340
-be expecting a body information as a great product request.
+mong đợi thông tin body như một great product request.
 
 46
 00:03:31,340 --> 00:03:36,620
-And in this request object you can see the members are name, category, description and so on.
+Và trong request object này bạn có thể thấy các thành viên là name, category, description và nhiều hơn nữa.
 
 47
 00:03:36,620 --> 00:03:43,760
-So we will send these Json format in the body operations with sending http post request with this URL.
+Vậy chúng ta sẽ gửi Json format này trong body operations bằng cách gửi HTTP post request với URL này.
 
 48
 00:03:43,760 --> 00:03:52,130
-Let's click the Http send button and observe how the execution happens for this request and see that
+Hãy click nút Http send và quan sát cách thực thi diễn ra cho request này và xem
 
 49
 00:03:52,130 --> 00:03:53,060
-it responds.
+nó phản hồi như thế nào.
 
 50
 00:03:53,060 --> 00:03:55,400
@@ -200,43 +200,43 @@ it responds.
 
 51
 00:03:55,400 --> 00:03:58,400
-So what is mean 404 not found response.
+Vậy 404 not found response có nghĩa là gì.
 
 52
 00:03:58,400 --> 00:04:07,160
-That means there is no endpoint on this http url, which is the localhost 5050 products endpoint.
+Điều đó có nghĩa là không có endpoint trên HTTP url này, đó là localhost 5050 products endpoint.
 
 53
 00:04:07,160 --> 00:04:09,020
-But how it can be happen.
+Nhưng làm sao điều này lại có thể xảy ra.
 
 54
 00:04:09,020 --> 00:04:13,520
-We already expose http post endpoint using the Carter.
+Chúng ta đã expose HTTP post endpoint bằng cách sử dụng Carter.
 
 55
 00:04:13,520 --> 00:04:19,640
-If you open the Visual Studio and go to the create product endpoint, you can see that this class is
+Nếu bạn mở Visual Studio và đi tới create product endpoint, bạn có thể thấy rằng class này
 
 56
 00:04:19,640 --> 00:04:21,860
-inherited from the Eye Carter model.
+kế thừa từ ICarterModule.
 
 57
 00:04:21,860 --> 00:04:27,080
-And we already mapping the post operation with using the Eye Carter model.
+Và chúng ta đã mapping post operation bằng cách sử dụng ICarterModule.
 
 58
 00:04:27,080 --> 00:04:33,230
-And if you look at the program says we have already registered the Carter into our catalog API.
+Và nếu bạn nhìn vào Program.cs chúng ta đã registered Carter vào catalog API của chúng ta.
 
 59
 00:04:33,230 --> 00:04:35,060
-So how it can be happen.
+Vậy làm sao điều này lại có thể xảy ra.
 
 60
 00:04:35,060 --> 00:04:41,900
-We set that Carter will second the Eye Carter module interface implementation and expose the minimal
+Chúng ta đặt rằng Carter sẽ scan ICarterModule interface implementation và expose Minimal
 
 61
 00:04:41,900 --> 00:04:42,500
@@ -244,151 +244,151 @@ APIs.
 
 62
 00:04:42,500 --> 00:04:46,820
-So if Carter will scan our project this will be found.
+Vậy nếu Carter scan project của chúng ta nó sẽ tìm thấy.
 
 63
 00:04:46,820 --> 00:04:50,180
-Create product endpoint that inherits from the Eye Carter model.
+Create product endpoint kế thừa từ ICarterModule.
 
 64
 00:04:50,180 --> 00:04:54,890
-So why Carter is not scan or catalog API assembly?
+Vậy tại sao Carter không scan catalog API assembly?
 
 65
 00:04:55,070 --> 00:05:03,050
-After investigating the issue, I found that when we have installed our Carter into building blocks,
+Sau khi điều tra vấn đề, tôi thấy rằng khi chúng ta đã cài đặt Carter vào building blocks,
 
 66
 00:05:03,050 --> 00:05:05,450
-you can see the picture on the slide.
+bạn có thể thấy hình ảnh trên slide.
 
 67
 00:05:05,450 --> 00:05:11,540
-We have installed the Carter in the Building Blocks class library so it is sickening.
+Chúng ta đã cài đặt Carter trong Building Blocks class library vì vậy nó đang scan.
 
 68
 00:05:11,540 --> 00:05:17,660
-Eye Carter module interfaces in the building blocks class library due to installation happened in this
+ICarterModule interfaces trong building blocks class library do installation xảy ra trong
 
 69
 00:05:17,660 --> 00:05:22,370
-assembly, but we define endpoints in the catalog microservices.
+assembly này, nhưng chúng ta định nghĩa endpoints trong catalog microservices.
 
 70
 00:05:22,370 --> 00:05:27,170
-That's why the Carter cannot be scanned or catalog API.
+Đó là lý do tại sao Carter không thể scan catalog API.
 
 71
 00:05:27,170 --> 00:05:31,910
-Microservice and cannot be find eye catalog interface modules.
+Microservice và không thể tìm thấy ICarterModule interfaces.
 
 72
 00:05:32,480 --> 00:05:38,000
-So after that I go back to our program.cs and check the Carter configuration.
+Vậy sau đó tôi quay lại Program.cs của chúng ta và kiểm tra cấu hình Carter.
 
 73
 00:05:38,000 --> 00:05:44,750
-You can see that mediator has also in the same station, mediator installed in the building blocks and
+Bạn có thể thấy rằng mediator cũng trong cùng trạm, mediator được cài đặt trong building blocks và
 
 74
 00:05:44,750 --> 00:05:46,490
-using in the catalog API.
+sử dụng trong catalog API.
 
 75
 00:05:46,490 --> 00:05:53,240
-But we have configured the mediator with using the register services from the assembly and passing Program.cs
+Nhưng chúng ta đã cấu hình mediator bằng cách sử dụng register services từ assembly và passing Program.cs
 
 76
 00:05:53,240 --> 00:05:55,610
-assembly for catalog microservices.
+assembly cho catalog microservices.
 
 77
 00:05:55,610 --> 00:05:57,680
-So is it possible for the Carter?
+Vậy có thể làm điều tương tự cho Carter không?
 
 78
 00:05:57,680 --> 00:06:02,810
-For that reason, please open the Our Carter GitHub repository.
+Vì lý do đó, vui lòng mở Carter GitHub repository của chúng ta.
 
 79
 00:06:02,810 --> 00:06:07,520
-And if you scroll down you can see the configurations and the current configurations.
+Và nếu bạn cuộn xuống bạn có thể thấy các configurations và current configurations.
 
 80
 00:06:07,520 --> 00:06:13,580
-We don't have any configuration for setting or giving assembly from outside.
+Chúng ta không có bất kỳ configuration nào để setting hoặc giving assembly từ bên ngoài.
 
 81
 00:06:13,580 --> 00:06:15,620
-The only configurations are these.
+Cấu hình duy nhất là những cái này.
 
 82
 00:06:15,650 --> 00:06:18,980
-We can only specify the modules and passing the modules.
+Chúng ta chỉ có thể chỉ định các modules và truyền các modules.
 
 83
 00:06:18,980 --> 00:06:24,290
-That means the class endpoint names, but we cannot pass the assembly name.
+Điều đó có nghĩa là tên lớp endpoint, nhưng chúng ta không thể truyền tên assembly.
 
 84
 00:06:24,290 --> 00:06:33,350
-If you go back to Program.cs and try to configure these, Carter, you can see the config operations
+Nếu bạn quay lại Program.cs và cố gắng cấu hình những cái này, Carter, bạn có thể thấy các phép toán cấu hình
 
 85
 00:06:33,350 --> 00:06:34,580
-and see the methods.
+và xem các phương thức.
 
 86
 00:06:34,580 --> 00:06:37,070
-There is no SMD definition.
+Không có định nghĩa SMD.
 
 87
 00:06:37,070 --> 00:06:40,640
-We only define the module configuration.
+Chúng ta chỉ định nghĩa cấu hình module.
 
 88
 00:06:40,640 --> 00:06:46,460
-That means we can specify the direct class name, but we would like to passing the assembly that is
+Điều đó có nghĩa là chúng ta có thể chỉ định tên lớp trực tiếp, nhưng chúng ta muốn truyền assembly mà là
 
 89
 00:06:46,460 --> 00:06:47,780
-not available for now.
+chưa có sẵn cho bây giờ.
 
 90
 00:06:48,050 --> 00:06:53,300
-When you are watching this, if the Carter developed this kind of assembly config method, please use
+Khi bạn xem cái này, nếu Carter phát triển phương thức cấu hình assembly kiểu này, vui lòng sử dụng
 
 91
 00:06:53,300 --> 00:06:55,370
-it like similar with the mediator.
+nó tương tự như mediator.
 
 92
 00:06:55,370 --> 00:07:02,420
-But for now we should remove the Carter from the building blocks and install for catalog microservices.
+Nhưng hiện tại chúng ta nên loại bỏ Carter khỏi building blocks và cài đặt cho catalog microservices.
 
 93
 00:07:02,420 --> 00:07:05,120
-For that purpose, please go to Building Blocks.
+Với mục đích đó, vui lòng vào Building Blocks.
 
 94
 00:07:05,120 --> 00:07:11,690
-Double click the C-sharp project and remove the Carter from the building blocks and save this file and
+Nhấp đôi vào dự án C-sharp và loại bỏ Carter khỏi building blocks và lưu tệp này và
 
 95
 00:07:11,690 --> 00:07:13,130
-go back to catalog API.
+quay lại catalog API.
 
 96
 00:07:13,130 --> 00:07:15,590
-Right click and manage NuGet packages.
+Nhấp chuột phải và quản lý gói NuGet.
 
 97
 00:07:15,590 --> 00:07:22,580
-Of course we should stop the project, and after that right click and manage NuGet packages and search
+Tất nhiên chúng ta nên dừng dự án, và sau đó nhấp chuột phải và quản lý gói NuGet và tìm kiếm
 
 98
 00:07:22,580 --> 00:07:26,150
-for the Carter and install Carter into catalog.
+Carter và cài đặt Carter vào catalog.
 
 99
 00:07:26,370 --> 00:07:27,360
@@ -396,15 +396,15 @@ Microservices.
 
 100
 00:07:27,360 --> 00:07:34,110
-For that purpose, I'm going to right click and manage NuGet packages and search again for the Carter.
+Với mục đích đó, tôi sẽ nhấp chuột phải và quản lý gói NuGet và tìm kiếm lại Carter.
 
 101
 00:07:34,870 --> 00:07:38,230
-And install Carter into catalog microservices.
+Và cài đặt Carter vào catalog microservices.
 
 102
 00:07:38,230 --> 00:07:43,870
-If you double check, you can see the Carter is located under Catholic API and removed from the building
+Nếu bạn kiểm tra kỹ, bạn có thể thấy Carter được đặt trong Catholic API và được loại bỏ khỏi building
 
 103
 00:07:43,870 --> 00:07:44,350
@@ -412,11 +412,11 @@ blocks.
 
 104
 00:07:44,350 --> 00:07:51,940
-So now if we review our codes, look at the endpoint class we have already using the Eye Carter module.
+Vậy bây giờ nếu chúng ta xem lại mã của chúng ta, hãy xem lớp endpoint mà chúng ta đã sử dụng Carter module.
 
 105
 00:07:51,940 --> 00:07:58,030
-And since we are using the global using statement, this will be correct itself inside of the Catholic
+Và vì chúng ta đang sử dụng global using statement, điều này sẽ tự sửa chữa bên trong Catholic
 
 106
 00:07:58,030 --> 00:07:58,660
@@ -424,11 +424,11 @@ API.
 
 107
 00:07:58,660 --> 00:08:05,200
-And now when the program is running and adding the Carter, this will be scanning the current assembly
+Và bây giờ khi chương trình đang chạy và thêm Carter, điều này sẽ quét assembly hiện tại
 
 108
 00:08:05,200 --> 00:08:10,930
-which is the Catholic API, and this will be find Catholic API endpoint which is the create product
+đó là Catholic API, và điều này sẽ tìm thấy Catholic API endpoint đó là create product
 
 109
 00:08:10,930 --> 00:08:11,470
@@ -436,79 +436,79 @@ endpoint.
 
 110
 00:08:11,470 --> 00:08:19,120
-So if we run the application in Https mode again, and this time we will see that our endpoints will
+Vậy nếu chúng ta chạy lại ứng dụng ở chế độ Https, và lần này chúng ta sẽ thấy rằng các endpoints của chúng ta sẽ
 
 111
 00:08:19,120 --> 00:08:23,260
-be hit the breakpoint and we will debug the whole request lifecycle.
+bị ảnh hưởng bởi breakpoint và chúng ta sẽ debug toàn bộ vòng đời request.
 
 112
 00:08:23,410 --> 00:08:26,110
-See that the application is start successfully.
+Xem thấy rằng ứng dụng đã khởi động thành công.
 
 113
 00:08:26,110 --> 00:08:34,299
-If you open the our postman and send the same Json payload to the http post request here.
+Nếu bạn mở Postman của chúng ta và gửi cùng một payload Json đến yêu cầu http post ở đây.
 
 114
 00:08:34,299 --> 00:08:41,289
-This time you can see that our map post method is triggered and we can debug our incoming request.
+Lần này bạn có thể thấy rằng phương thức map post của chúng ta được kích hoạt và chúng ta có thể debug request đến của chúng ta.
 
 115
 00:08:41,289 --> 00:08:43,510
-We can see the request details in here.
+Chúng ta có thể xem chi tiết request ở đây.
 
 116
 00:08:43,510 --> 00:08:49,630
-If you expand the request, you can see the request values comes in here that we send as a Json payload.
+Nếu bạn mở rộng request, bạn có thể thấy các giá trị request đến ở đây mà chúng ta gửi dưới dạng payload Json.
 
 117
 00:08:49,630 --> 00:08:55,090
-So in this line of code we convert these request object to the command object.
+Vậy trong dòng mã này chúng ta chuyển đổi request object này thành command object.
 
 118
 00:08:55,090 --> 00:08:59,980
-And after that mediator will send the command to the internal handler class.
+Và sau đó mediator sẽ gửi command đến lớp handler bên trong.
 
 119
 00:08:59,980 --> 00:09:03,940
-And here you can see that our internal handle class is triggered.
+Và ở đây bạn có thể thấy rằng lớp handle bên trong của chúng ta được kích hoạt.
 
 120
 00:09:03,940 --> 00:09:10,240
-And in this code we perform business logic with creating new product and passing and skipping the database
+Và trong mã này chúng ta thực hiện logic kinh doanh với việc tạo sản phẩm mới và truyền và bỏ qua database
 
 121
 00:09:10,240 --> 00:09:10,690
-operation.
+hoạt động.
 
 122
 00:09:10,690 --> 00:09:11,320
-For now.
+Hiện tại.
 
 123
 00:09:11,320 --> 00:09:16,090
-And we are returning the result object which including newly created our.
+Và chúng ta đang trả về đối tượng kết quả bao gồm Product object mới được tạo của chúng ta.
 
 124
 00:09:16,860 --> 00:09:19,980
-Product object that comes from the mediator handler.
+Product object đó đến từ mediator handler.
 
 125
 00:09:19,980 --> 00:09:23,430
-You can see the result and see the id is newly created product.
+Bạn có thể thấy kết quả và thấy id là product mới được tạo.
 
 126
 00:09:23,430 --> 00:09:30,660
-And in this line of code, we will use master to adapting the result object to the create product response,
+Và trong dòng code này, chúng ta sẽ sử dụng Mapster để chuyển đổi đối tượng kết quả thành create product response,
 
 127
 00:09:30,660 --> 00:09:33,780
-and we will return the response to the Http client.
+và chúng ta sẽ trả về response cho Http client.
 
 128
 00:09:33,780 --> 00:09:40,410
-If you click the F5, you will see the response is coming in here and you can see the Http status is
+Nếu bạn nhấn F5, bạn sẽ thấy response xuất hiện ở đây và bạn có thể thấy Http status là
 
 129
 00:09:40,410 --> 00:09:41,610
@@ -516,13 +516,13 @@ If you click the F5, you will see the response is coming in here and you can see
 
 130
 00:09:41,610 --> 00:09:44,100
-That means it is created successfully.
+Điều đó có nghĩa là nó đã được tạo thành công.
 
 131
 00:09:44,190 --> 00:09:51,480
-As you can see that we have successfully seen ASP.Net request lifecycle using with Carter minimal APIs
+Như bạn có thể thấy, chúng ta đã thành công trong việc thấy chu kỳ sống của ASP.NET request sử dụng Carter minimal APIs
 
 132
 00:09:51,480 --> 00:09:53,910
-and mediator command and command handlers.
+và mediator command và command handlers.
 

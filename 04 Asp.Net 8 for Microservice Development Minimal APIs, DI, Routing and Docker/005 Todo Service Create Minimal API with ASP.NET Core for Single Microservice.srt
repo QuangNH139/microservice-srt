@@ -1,126 +1,126 @@
 1
 00:00:00,140 --> 00:00:06,890
-In this video, we are going to create a simple Todo application using the ASP.Net core minimal APIs.
+Trong video này, chúng ta sẽ tạo một ứng dụng Todo đơn giản sử dụng ASP.Net Core minimal APIs.
 
 2
 00:00:06,890 --> 00:00:09,470
-So this will be step by step process.
+Vậy đây sẽ là một quá trình từng bước một.
 
 3
 00:00:09,470 --> 00:00:13,430
-Here you can see the image on the slide for the todo web API.
+Ở đây bạn có thể thấy hình ảnh trên slide cho todo web API.
 
 4
 00:00:13,460 --> 00:00:19,910
-This will be the typical web application architecture including the client server and database.
+Đây sẽ là kiến trúc ứng dụng web điển hình bao gồm client, server và database.
 
 5
 00:00:19,910 --> 00:00:27,050
-Basically, client send Http requests to the server, which will be our todo web API, and this will
+Về cơ bản, client gửi các yêu cầu Http đến server, đó sẽ là todo web API của chúng ta, và điều này sẽ
 
 6
 00:00:27,050 --> 00:00:33,380
-be accodomate from the web API project and perform Crud operations using the in-memory database.
+được xử lý từ dự án web API và thực hiện các hoạt động CRUD sử dụng database trong bộ nhớ.
 
 7
 00:00:33,800 --> 00:00:38,540
-And here you can see the Crud endpoints that we will expose for Todo model.
+Và ở đây bạn có thể thấy các endpoint CRUD mà chúng ta sẽ expose cho mô hình Todo.
 
 8
 00:00:38,540 --> 00:00:46,190
-These are including the get todo items, get todo items by ID, post, put and delete operations.
+Chúng bao gồm các hoạt động get todo items, get todo items by ID, post, put và delete.
 
 9
 00:00:46,190 --> 00:00:52,790
-And finally we will use Entity Framework Core in-memory database to perform these Crud operations and
+Và cuối cùng, chúng ta sẽ sử dụng Entity Framework Core in-memory database để thực hiện các hoạt động CRUD này và
 
 10
 00:00:52,790 --> 00:00:54,890
-accodomate these Http requests.
+xử lý các yêu cầu Http.
 
 11
 00:00:55,070 --> 00:00:56,960
-So now let's get started.
+Vậy bây giờ chúng ta hãy bắt đầu.
 
 12
 00:00:56,960 --> 00:01:01,760
-Please open the Visual Studio 2022 and create new project.
+Vui lòng mở Visual Studio 2022 và tạo dự án mới.
 
 13
 00:01:02,030 --> 00:01:08,690
-This time we will use ASP.Net Core Empty Project template as you remember that in the last video, we
+Lần này chúng ta sẽ sử dụng mẫu ASP.Net Core Empty Project, như bạn nhớ rằng trong video trước, chúng ta
 
 14
 00:01:08,690 --> 00:01:15,620
-have used ASP.Net Core Web API project template that including some of the boilerplate code about the
+đã sử dụng mẫu dự án ASP.Net Core Web API mà bao gồm một số mã boilerplate về
 
 15
 00:01:15,620 --> 00:01:18,560
-weather forecast, and we have to remove that code.
+weather forecast, và chúng ta phải xóa mã đó.
 
 16
 00:01:18,620 --> 00:01:25,640
-In order to avoid this kind of remove operation, we can use ASP.Net Core Empty project template that
+Để tránh loại hoạt động xóa này, chúng ta có thể sử dụng mẫu dự án ASP.Net Core Empty mà
 
 17
 00:01:25,640 --> 00:01:33,140
-you can search for the empty and go to the ASP.Net Core Empty Project template and click the next button.
+bạn có thể tìm kiếm empty và đi tới mẫu ASP.Net Core Empty Project và nhấp nút next.
 
 18
 00:01:33,140 --> 00:01:39,710
-And we will give the name as a todo API for our application and click the next button.
+Và chúng ta sẽ đặt tên là todo API cho ứng dụng của chúng ta và nhấp nút next.
 
 19
 00:01:39,710 --> 00:01:45,890
-And here you can see the configuration we are leaving as it is for the default configuration for using
+Và ở đây bạn có thể thấy cấu hình mà chúng ta để nguyên như các cấu hình mặc định để sử dụng
 
 20
 00:01:45,890 --> 00:01:48,800
-the minimal APIs and click the create button.
+minimal APIs và nhấp nút create.
 
 21
 00:01:51,270 --> 00:01:55,230
-This will create ASP.Net empty project template.
+Điều này sẽ tạo mẫu dự án ASP.Net empty.
 
 22
 00:01:55,230 --> 00:02:02,100
-If you zoom into the this solution window, you can see that there is very clear and only Program.cs.
+Nếu bạn phóng to cửa sổ giải pháp này, bạn có thể thấy rằng có rất rõ ràng và chỉ có Program.cs.
 
 23
 00:02:02,100 --> 00:02:06,660
-Docker file and app settings are listed on our todo API project.
+Docker file và app settings được liệt kê trong dự án todo API của chúng ta.
 
 24
 00:02:06,660 --> 00:02:13,890
-So if you expand the program says and you can see that this is very limited code and arranged by the
+Vậy nếu bạn mở rộng Program.cs, bạn có thể thấy rằng đây là mã rất hạn chế và được sắp xếp bởi
 
 25
 00:02:13,890 --> 00:02:20,940
-empty project template, that we can very fast removing the unnecessary code and locating for our microservice
+mẫu dự án empty, mà chúng ta có thể rất nhanh loại bỏ mã không cần thiết và chuẩn bị cho các
 
 26
 00:02:20,940 --> 00:02:21,690
-requirements.
+yêu cầu microservice của chúng ta.
 
 27
 00:02:21,690 --> 00:02:26,250
-If you look at the Program.cs for the empty project template, this is typical.
+Nếu bạn xem Program.cs cho mẫu dự án empty, đây là điển hình.
 
 28
 00:02:26,250 --> 00:02:32,850
-Start with creating a web application builder and a web application with preconfigured default configurations.
+Bắt đầu bằng cách tạo một web application builder và một web application với các cấu hình mặc định được cấu hình sẵn.
 
 29
 00:02:32,850 --> 00:02:40,980
-And after that you can see in here it is creates an Http get endpoint and that returns hello world message.
+Và sau đó bạn có thể thấy ở đây nó tạo một endpoint Http get và trả về thông báo hello world.
 
 30
 00:02:40,980 --> 00:02:45,810
-So this is typical empty project that we can arrange for microservices.
+Vậy đây là dự án empty điển hình mà chúng ta có thể sắp xếp cho microservices.
 
 31
 00:02:45,810 --> 00:02:49,170
-Basically we will have a one command in here.
+Về cơ bản chúng ta sẽ có một lệnh ở đây.
 
 32
 00:02:49,200 --> 00:02:50,850
@@ -128,11 +128,11 @@ Add dependency injection.
 
 33
 00:02:50,850 --> 00:02:56,850
-In here we can put the add methods into dependency injection for example.
+Ở đây chúng ta có thể đặt các phương thức add vào dependency injection, chẳng hạn.
 
 34
 00:02:56,850 --> 00:03:04,980
-Mostly we will use add service method names when we are registering our services into ASP.Net within
+Chúng ta sẽ chủ yếu sử dụng tên phương thức add service khi chúng ta đăng ký các service của mình vào ASP.Net trong
 
 35
 00:03:04,980 --> 00:03:06,270
@@ -140,23 +140,23 @@ dependency injection.
 
 36
 00:03:06,270 --> 00:03:12,810
-So as the same way, after building the web application, we are going to configure ASP.Net request
+Vậy theo cách tương tự, sau khi xây dựng web application, chúng ta sẽ cấu hình
 
 37
 00:03:12,810 --> 00:03:13,410
-pipeline.
+pipeline yêu cầu ASP.Net.
 
 38
 00:03:13,410 --> 00:03:23,220
-So in here we can configure pipeline and we can regularly and mainly use methods.
+Vậy ở đây chúng ta có thể cấu hình pipeline và chúng ta có thể thường xuyên và chủ yếu sử dụng các phương thức.
 
 39
 00:03:23,220 --> 00:03:27,630
-For example use method and use authentication use authorization and so on.
+Chẳng hạn như use method và use authentication, use authorization và nhiều hơn nữa.
 
 40
 00:03:27,630 --> 00:03:31,830
-So this is typical best practice when registering to die.
+Vậy đây là best practice điển hình khi đăng ký dependency injection.
 
 41
 00:03:31,830 --> 00:03:33,420
@@ -320,161 +320,161 @@ So here you can see that we are adding the db set property under the todo db con
 
 81
 00:06:38,760 --> 00:06:43,680
-And if you save this class now we are ready to interact entity framework, core, NuGet package and
+Và nếu bạn lưu class này bây giờ chúng ta đã sẵn sàng để tương tác với Entity Framework Core, NuGet package và
 
 82
 00:06:43,680 --> 00:06:44,970
-in-memory databases.
+các in-memory databases.
 
 83
 00:06:44,970 --> 00:06:50,370
-But of course before that we have to register dependency injection if you open the program.
+Nhưng tất nhiên trước đó chúng ta phải đăng ký dependency injection nếu bạn mở Program.cs.
 
 84
 00:06:50,540 --> 00:06:50,990
-Says.
+Nó sẽ hiển thị.
 
 85
 00:06:51,140 --> 00:06:59,360
-Here you can see the R program says we are going to adding service registry into this command section.
+Ở đây bạn có thể thấy trong Program.cs chúng ta sẽ thêm service registry vào phần lệnh này.
 
 86
 00:06:59,360 --> 00:07:08,120
-We can register Dbcontext object in this place by writing the builder services dot add Dbcontext method
+Chúng ta có thể đăng ký Dbcontext object ở chỗ này bằng cách viết builder.services.AddDbContext method
 
 87
 00:07:08,120 --> 00:07:11,840
-and passing the r to the db db context object.
+và truyền r vào db context object.
 
 88
 00:07:11,840 --> 00:07:18,050
-And in here we are basically configuring use in-memory database and giving the database name as a to
+Và ở đây chúng ta cơ bản là đang cấu hình sử dụng in-memory database và đặt tên cơ sở dữ liệu là
 
 89
 00:07:18,050 --> 00:07:18,740
-do list.
+todo list.
 
 90
 00:07:18,740 --> 00:07:26,420
-So these provide the dependency injection container, access to database context and other services.
+Vì vậy những cái này cung cấp cho dependency injection container quyền truy cập vào database context và các services khác.
 
 91
 00:07:26,420 --> 00:07:32,870
-And we can use these in-memory database by registering Dbcontext which is the to do db.
+Và chúng ta có thể sử dụng in-memory database này bằng cách đăng ký Dbcontext đó là todo db.
 
 92
 00:07:33,290 --> 00:07:39,020
-And after that we basically add the Crud endpoints that we seen in the slide.
+Và sau đó chúng ta cơ bản là thêm các Crud endpoints mà chúng ta đã thấy trong slide.
 
 93
 00:07:39,020 --> 00:07:46,340
-Here you can see that we will exposing these get post put and delete Crud operations into our Program.cs.
+Ở đây bạn có thể thấy rằng chúng ta sẽ expose các GET, POST, PUT và DELETE Crud operations vào Program.cs của chúng ta.
 
 94
 00:07:46,340 --> 00:07:48,770
-And we can configure these kind of requests.
+Và chúng ta có thể cấu hình những loại requests này.
 
 95
 00:07:48,770 --> 00:07:54,500
-Pipeline operations in the after building the web application in the this command section.
+Các Pipeline operations sau khi xây dựng web application trong phần lệnh này.
 
 96
 00:07:54,500 --> 00:07:57,590
-So now I am going to copy paste one by one.
+Vậy bây giờ tôi sẽ copy paste từng cái một.
 
 97
 00:07:57,590 --> 00:08:01,370
-By the way only for this video I am copy paste the codes.
+Nhân tiện chỉ trong video này tôi sẽ copy paste các code.
 
 98
 00:08:01,370 --> 00:08:04,160
-Because of reaching the microservice development.
+Vì để đạt tới microservice development.
 
 99
 00:08:04,160 --> 00:08:09,170
-When we are developing our microservices, we will be develop and write step by step together.
+Khi chúng ta đang phát triển microservices của chúng ta, chúng ta sẽ phát triển và viết từng bước một cùng nhau.
 
 100
 00:08:09,170 --> 00:08:15,740
-But for this video, let me copy paste these operations and after that we will see how it is affecting
+Nhưng đối với video này, hãy để tôi copy paste những hoạt động này và sau đó chúng ta sẽ xem nó ảnh hưởng như thế nào
 
 101
 00:08:15,740 --> 00:08:17,000
-our to the application.
+tới ứng dụng todo của chúng ta.
 
 102
 00:08:17,000 --> 00:08:23,360
-So here you can see that I'm going to copy paste for the map, get post put and delete operation to
+Vì vậy ở đây bạn có thể thấy rằng tôi sẽ copy paste cho các map GET, POST, PUT và DELETE operation để
 
 103
 00:08:23,360 --> 00:08:28,400
-perform Crud application and Crud operation into our to do web API project.
+thực hiện Crud application và Crud operation vào dự án todo Web API của chúng ta.
 
 104
 00:08:28,400 --> 00:08:36,169
-So basically you can see in this code in here we are retrieving all Todo items from the database with
+Vì vậy cơ bản bạn có thể thấy trong code này chúng ta đang lấy tất cả todo items từ cơ sở dữ liệu bằng
 
 105
 00:08:36,169 --> 00:08:37,730
-using the map get method.
+cách sử dụng map get method.
 
 106
 00:08:37,730 --> 00:08:43,820
-And inside of this method we are defining the endpoint definition with slash todo items.
+Và bên trong method này chúng ta đang định nghĩa endpoint definition với /todo-items.
 
 107
 00:08:43,820 --> 00:08:51,110
-And in here we are retrieving all todo items using the todo db data context object, which provided
+Và ở đây chúng ta đang lấy tất cả todo items bằng cách sử dụng todo db data context object, được cung cấp
 
 108
 00:08:51,110 --> 00:08:58,820
-by the Entity Framework core as the same way we are fetching a single todo item based on the id, and
+bởi Entity Framework Core cũng như cách chúng ta đang lấy một todo item duy nhất dựa trên id, và
 
 109
 00:08:58,820 --> 00:09:06,830
-also we are going to post a new item, which means create a new todo item in the database and we have
+cũng chúng ta sẽ POST một item mới, có nghĩa là tạo một todo item mới trong cơ sở dữ liệu và chúng ta có
 
 110
 00:09:06,830 --> 00:09:07,700
-put method.
+PUT method.
 
 111
 00:09:07,700 --> 00:09:12,170
-We basically update an existing todo item based on the id.
+Chúng ta cơ bản là cập nhật một todo item hiện có dựa trên id.
 
 112
 00:09:12,170 --> 00:09:15,380
-And lastly we have map delete operation.
+Và cuối cùng chúng ta có map delete operation.
 
 113
 00:09:15,380 --> 00:09:18,530
-Delete a todo item based on its id.
+Xóa một todo item dựa trên id của nó.
 
 114
 00:09:18,710 --> 00:09:24,110
-So each of these operation is defined using the application dot map method.
+Vì vậy mỗi một trong những operation này được định nghĩa bằng cách sử dụng application.map method.
 
 115
 00:09:24,110 --> 00:09:32,390
-And after that we are http verb which means map, get, post, put and delete and these verb operation
+Và sau đó chúng ta sử dụng HTTP verb có nghĩa là map GET, POST, PUT và DELETE và các verb operation này
 
 116
 00:09:32,390 --> 00:09:34,550
-corresponding to Http methods.
+tương ứng với HTTP methods.
 
 117
 00:09:34,550 --> 00:09:41,390
-The methods are mapped to specific endpoints and include the logic and interact with the database using
+Các methods được ánh xạ tới các endpoints cụ thể và bao gồm logic và tương tác với cơ sở dữ liệu bằng cách sử dụng
 
 118
 00:09:41,390 --> 00:09:44,570
-the Entity Framework core inside of these code blocks.
+Entity Framework Core bên trong các code blocks này.
 
 119
 00:09:44,570 --> 00:09:52,040
-So basically we have completed development of this picture and exposing the Crud operations for Todo
+Vì vậy cơ bản chúng ta đã hoàn thành phát triển của phần này và expose các Crud operations cho todo
 
 120
 00:09:52,040 --> 00:09:52,970
-web API.
+Web API.
 

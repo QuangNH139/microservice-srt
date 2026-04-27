@@ -160,61 +160,61 @@ rapid development and updates to individual aspects of the product catalog witho
 
 41
 00:03:22,070 --> 00:03:26,180
-On the other hand, ordering microservices using the clean architecture.
+Mặt khác, ordering microservices sử dụng clean architecture.
 
 42
 00:03:26,180 --> 00:03:32,180
-So the ordering microservices handle the order processing logic, including the cart management, order
+Vậy ordering microservices xử lý logic xử lý đơn hàng, bao gồm quản lý giỏ hàng, đặt hàng
 
 43
 00:03:32,180 --> 00:03:34,190
-placement and payment processing.
+và xử lý thanh toán.
 
 44
 00:03:34,190 --> 00:03:41,120
-With clean architecture, the core business rules and use cases of order processing are central and
+Với clean architecture, các quy tắc kinh doanh cốt lõi và các trường hợp sử dụng của xử lý đơn hàng là trung tâm và
 
 45
 00:03:41,120 --> 00:03:45,680
-isolated from the external concerns like database or UI operations.
+được cách ly khỏi các mối quan tâm bên ngoài như các hoạt động cơ sở dữ liệu hoặc UI.
 
 46
 00:03:45,980 --> 00:03:53,000
-This separation ensures that critical business rules remain stable and unaffected by changes in external
+Sự tách biệt này đảm bảo rằng các quy tắc kinh doanh quan trọng vẫn ổn định và không bị ảnh hưởng bởi các thay đổi trong các hệ thống bên ngoài,
 
 47
 00:03:53,000 --> 00:03:56,480
-systems, like payment gateways or database schemas.
+như cổng thanh toán hoặc schema cơ sở dữ liệu.
 
 48
 00:03:56,990 --> 00:04:02,870
-So the choice between the vertical slice architecture and clean architecture depends on the specific
+Vậy lựa chọn giữa vertical slice architecture và clean architecture phụ thuộc vào các yêu cầu cụ thể
 
 49
 00:04:02,870 --> 00:04:04,400
-requirement of the project.
+của dự án.
 
 50
 00:04:04,400 --> 00:04:11,270
-Vertical slice is more feature focused and agile, and it is ideal for rapid feature development and
+Vertical slice tập trung hơn vào tính năng và nhanh nhẹn, và nó lý tưởng cho phát triển tính năng nhanh chóng và
 
 51
 00:04:11,270 --> 00:04:12,170
-deployment.
+triển khai.
 
 52
 00:04:12,530 --> 00:04:18,980
-Clean architecture is better suited for large scale, long lived applications, where the business rules
+Clean architecture phù hợp hơn cho các ứng dụng quy mô lớn, tồn tại lâu dài, nơi các quy tắc kinh doanh
 
 53
 00:04:18,980 --> 00:04:22,250
-must remain insulated from the external changes.
+phải được cách ly khỏi các thay đổi bên ngoài.
 
 54
 00:04:22,610 --> 00:04:28,970
-We will use both architectures in different microservices that can leverage their strengths according
+Chúng ta sẽ sử dụng cả hai kiến trúc trong các microservices khác nhau có thể tận dụng các điểm mạnh của chúng theo
 
 55
 00:04:28,970 --> 00:04:31,250
-to the requirement of each microservice.
+yêu cầu của từng microservice.
 

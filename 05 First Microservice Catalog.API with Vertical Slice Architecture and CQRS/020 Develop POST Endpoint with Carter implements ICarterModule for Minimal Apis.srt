@@ -1,216 +1,216 @@
 1
 00:00:00,140 --> 00:00:07,939
-In this video we are going to developing http post endpoint with using the Carter with implementing
+Trong video này chúng ta sẽ phát triển HTTP post endpoint bằng cách sử dụng Carter và triển khai
 
 2
 00:00:07,939 --> 00:00:11,240
-the I Carter module for building minimal APIs.
+I Carter module để xây dựng Minimal APIs.
 
 3
 00:00:11,480 --> 00:00:16,340
-So let's begin by implementing I Carter module interface into our code.
+Vậy hãy bắt đầu bằng cách triển khai I Carter module interface vào code của chúng ta.
 
 4
 00:00:16,520 --> 00:00:23,030
-Open the Visual Studio and go to Create Product Endpoint and locate the Create Product Endpoint class.
+Mở Visual Studio và đi tới Create Product Endpoint rồi định vị lớp Create Product Endpoint.
 
 5
 00:00:23,030 --> 00:00:27,290
-And now I'm going to inherit from the I Carter module.
+Và bây giờ tôi sẽ kế thừa từ I Carter module.
 
 6
 00:00:28,610 --> 00:00:32,180
-So this should come from the building blocks Carter Library.
+Vậy nó phải đến từ Carter Library trong building blocks.
 
 7
 00:00:32,180 --> 00:00:34,580
-And we can adding the using statement.
+Và chúng ta có thể thêm using statement.
 
 8
 00:00:34,580 --> 00:00:42,260
-So once we adding the I Carter module and implementing to our endpoint class, it is required to implement
+Vậy khi chúng ta thêm I Carter module và triển khai vào lớp endpoint của chúng ta, nó yêu cầu triển khai
 
 9
 00:00:42,260 --> 00:00:43,190
-some of the methods.
+một số phương thức.
 
 10
 00:00:43,190 --> 00:00:45,950
-These are the add route methods.
+Đó là các phương thức add route.
 
 11
 00:00:45,950 --> 00:00:52,760
-So as you remember that in the add methods we can define exposing APIs from our minimal API.
+Vậy như bạn nhớ rằng trong các phương thức add chúng ta có thể định nghĩa việc expose các APIs từ Minimal API của chúng ta.
 
 12
 00:00:52,760 --> 00:01:00,110
-So that means these create product endpoint class will be responsible for setting up our post endpoint.
+Điều đó có nghĩa là lớp create product endpoint này sẽ chịu trách nhiệm thiết lập post endpoint của chúng ta.
 
 13
 00:01:00,110 --> 00:01:05,930
-We will exposing post endpoint in here using the minimal API and Carter.
+Chúng ta sẽ expose post endpoint ở đây bằng cách sử dụng Minimal API và Carter.
 
 14
 00:01:05,930 --> 00:01:08,960
-But before that let's understand our requirement.
+Nhưng trước đó hãy hiểu yêu cầu của chúng ta.
 
 15
 00:01:08,960 --> 00:01:14,690
-We should passing the objects to the create product request to do command handler.
+Chúng ta nên truyền các đối tượng tới create product request để thực hiện command handler.
 
 16
 00:01:14,690 --> 00:01:21,440
-The idea is that in here we will use the mediator library and trigger the mediator command under class.
+Ý tưởng là ở đây chúng ta sẽ sử dụng mediator library và kích hoạt mediator command class.
 
 17
 00:01:21,440 --> 00:01:27,350
-So that means we should pass the values from the request object to the handler command object.
+Điều đó có nghĩa là chúng ta nên truyền các giá trị từ request object tới command object của handler.
 
 18
 00:01:27,350 --> 00:01:33,440
-In order to pass values from request to command object, we need a mapping object and mapping library.
+Để truyền các giá trị từ request tới command object, chúng ta cần một mapping object và mapping library.
 
 19
 00:01:33,440 --> 00:01:40,700
-So if you open the our request lifecycle, you can see that once we get the request object, we should
+Vậy nếu bạn mở request lifecycle của chúng ta, bạn có thể thấy rằng khi chúng ta nhận request object, chúng ta nên
 
 20
 00:01:40,700 --> 00:01:45,140
-convert this request object as a command object in order to trigger command handler.
+chuyển đổi request object này thành command object để kích hoạt command handler.
 
 21
 00:01:45,140 --> 00:01:48,230
-So how we can convert request to command object.
+Vậy chúng ta có thể chuyển đổi request thành command object như thế nào.
 
 22
 00:01:48,230 --> 00:01:50,810
-Of course we need a mapping library.
+Tất nhiên chúng ta cần một mapping library.
 
 23
 00:01:50,810 --> 00:01:54,770
-Here you can see the a mapping library which name is master.
+Ở đây bạn có thể thấy một mapping library mang tên Mapster.
 
 24
 00:01:54,770 --> 00:01:57,980
-Master is a high performance object mapper.
+Mapster là một high performance object mapper.
 
 25
 00:01:57,980 --> 00:02:02,510
-And it is very straightforward and flexible and perfect for mapping objects.
+Và nó rất đơn giản và linh hoạt và hoàn hảo cho việc mapping các đối tượng.
 
 26
 00:02:02,510 --> 00:02:04,670
-In ASP.Net core applications.
+Trong các ứng dụng ASP.NET Core.
 
 27
 00:02:04,670 --> 00:02:11,510
-We will use master in order to convert our request module to the mediator command object and vice versa.
+Chúng ta sẽ sử dụng Mapster để chuyển đổi request module của chúng ta thành mediator command object và ngược lại.
 
 28
 00:02:11,780 --> 00:02:16,340
-So if you go to the GitHub project, you can see the details on the Readme file.
+Vậy nếu bạn đi tới dự án GitHub, bạn có thể thấy các chi tiết trong tệp Readme.
 
 29
 00:02:16,340 --> 00:02:23,120
-You can see the master writing mapping methods is a machine job and do not waste your time and let master
+Bạn có thể thấy các phương thức viết mapping của Mapster là một việc máy móc và đừng lãng phí thời gian của bạn, hãy để Mapster
 
 30
 00:02:23,150 --> 00:02:23,690
-do it.
+thực hiện nó.
 
 31
 00:02:23,690 --> 00:02:26,330
-This is very typical installation.
+Đây là một cài đặt rất điển hình.
 
 32
 00:02:26,330 --> 00:02:31,880
-We will install Mapsto nuget package and if you scroll down you can see the basic usage.
+Chúng ta sẽ cài đặt gói Mapster NuGet và nếu bạn cuộn xuống bạn có thể thấy cách sử dụng cơ bản.
 
 33
 00:02:31,880 --> 00:02:37,640
-We can just using the adapt method in order to convert target and destination object.
+Chúng ta chỉ có thể sử dụng phương thức adapt để chuyển đổi đối tượng target và destination.
 
 34
 00:02:37,640 --> 00:02:45,170
-And you can see additional configuration in order to activate master into an ASP.Net core application.
+Và bạn có thể thấy cấu hình bổ sung để kích hoạt Mapster vào một ứng dụng ASP.NET Core.
 
 35
 00:02:45,170 --> 00:02:50,090
-So now let's install the master NuGet package into our application.
+Vậy bây giờ chúng ta hãy cài đặt gói Mapster NuGet vào ứng dụng của chúng ta.
 
 36
 00:02:50,090 --> 00:02:55,880
-So where should we install Master library in catalog microservices or building blocks.
+Vậy chúng ta nên cài đặt Mapster library ở đâu trong catalog microservice hoặc building blocks.
 
 37
 00:02:55,880 --> 00:03:03,110
-If you open the R class library project diagram, as you know that we have created the Building Blocks
+Nếu bạn mở sơ đồ lớp thư viện R của chúng ta, như bạn biết rằng chúng ta đã tạo lớp thư viện Building Blocks
 
 38
 00:03:03,110 --> 00:03:10,160
-class library in order to storing all common operations and all common NuGet packages for any microservice
+để lưu trữ tất cả các hoạt động chung và tất cả các gói NuGet chung cho bất kỳ microservice
 
 39
 00:03:10,160 --> 00:03:10,760
-development.
+nào trong quá trình phát triển.
 
 40
 00:03:10,760 --> 00:03:13,070
-In our issue of microservice solution.
+Trong vấn đề microservice solution của chúng ta.
 
 41
 00:03:13,070 --> 00:03:20,090
-For that purpose, it is best practice to move master class library into building blocks class library
+Để đạt được điều đó, best practice là di chuyển master class library vào building blocks class library
 
 42
 00:03:20,090 --> 00:03:26,420
-in order to manage common libraries into one place for each microservices, and it could be also easy
+để quản lý các common libraries ở một nơi cho mỗi microservices, và nó cũng sẽ dễ dàng hơn
 
 43
 00:03:26,420 --> 00:03:30,140
-for the version management of these kind of NuGet packages.
+cho việc quản lý phiên bản của những NuGet packages như vậy.
 
 44
 00:03:30,530 --> 00:03:37,160
-Whenever any microservices added into our picture, it will very easy to start development with referencing
+Bất cứ khi nào có microservices mới được thêm vào, sẽ rất dễ dàng để bắt đầu phát triển bằng cách tham chiếu
 
 45
 00:03:37,160 --> 00:03:38,900
-the Building Blocks class library.
+đến Building Blocks class library.
 
 46
 00:03:39,110 --> 00:03:42,980
-So please open the Visual Studio and go to the Building blocks.
+Vậy hãy mở Visual Studio và đi đến Building blocks.
 
 47
 00:03:42,980 --> 00:03:45,620
-Right click and manage NuGet packages.
+Nhấp chuột phải và quản lý NuGet packages.
 
 48
 00:03:46,070 --> 00:03:54,380
-So in here we are going to install Master Search for the master library and select and install this
+Vậy ở đây chúng ta sẽ cài đặt Master Search cho master library và chọn và cài đặt
 
 49
 00:03:54,380 --> 00:03:55,100
-library.
+library này.
 
 50
 00:03:55,520 --> 00:04:02,300
-And if you double click the building blocks you can see that this time master comes into our command
+Và nếu bạn double click vào building blocks, bạn có thể thấy rằng lần này master đã vào command
 
 51
 00:04:02,300 --> 00:04:03,140
-class library.
+class library của chúng ta.
 
 52
 00:04:03,140 --> 00:04:07,970
-And you can see that we have three common library for each microservices.
+Và bạn có thể thấy rằng chúng ta có ba common library cho mỗi microservices.
 
 53
 00:04:07,970 --> 00:04:09,830
-Please save these building blocks.
+Hãy lưu những building blocks này.
 
 54
 00:04:09,830 --> 00:04:14,420
-Now we are ready for the development or actual endpoint definitions.
+Bây giờ chúng ta đã sẵn sàng để phát triển hoặc định nghĩa các endpoint thực tế.
 

@@ -160,75 +160,75 @@ The first step is we should create a product entity from our command object.
 
 41
 00:02:50,910 --> 00:02:53,520
-So this is the first step command object.
+Vậy đây là bước đầu tiên - command object.
 
 42
 00:02:53,520 --> 00:02:59,490
-As you can see that comes from the mediator and it including the name category description and so on.
+Như bạn có thể thấy, nó đến từ mediator và bao gồm tên, category, description và những thứ khác.
 
 43
 00:02:59,490 --> 00:03:02,550
-These are the members from the R module which is the product.
+Đây là những thành viên từ R module, đó là product.
 
 44
 00:03:02,550 --> 00:03:06,870
-So we should create a product entity from incoming command object.
+Vậy chúng ta nên tạo một product entity từ command object đến.
 
 45
 00:03:06,870 --> 00:03:10,170
-The second step is we will save the database.
+Bước thứ hai là chúng ta sẽ lưu vào database.
 
 46
 00:03:10,170 --> 00:03:15,060
-So with incoming and creating this product entity we will save the database.
+Vậy với command đến và tạo product entity này, chúng ta sẽ lưu vào database.
 
 47
 00:03:15,060 --> 00:03:17,820
-And lastly we will return the result.
+Và cuối cùng chúng ta sẽ trả về kết quả.
 
 48
 00:03:17,820 --> 00:03:21,540
-So we will return a create product result.
+Vậy chúng ta sẽ trả về create product result.
 
 49
 00:03:21,540 --> 00:03:26,010
-In here you can see that we will return the create product result object.
+Ở đây bạn có thể thấy rằng chúng ta sẽ trả về create product result object.
 
 50
 00:03:26,010 --> 00:03:28,890
-And we will perform the create operation.
+Và chúng ta sẽ thực hiện thao tác tạo.
 
 51
 00:03:28,890 --> 00:03:35,040
-When we are returning a result, we will sending a newly created gid id as a placeholder.
+Khi chúng ta trả về một kết quả, chúng ta sẽ gửi một newly created guid id như một placeholder.
 
 52
 00:03:35,040 --> 00:03:35,880
-Okay.
+Được rồi.
 
 53
 00:03:35,880 --> 00:03:40,020
-After defining our steps, we will start to develop one by one.
+Sau khi xác định các bước của chúng ta, chúng ta sẽ bắt đầu phát triển từng bước một.
 
 54
 00:03:40,020 --> 00:03:45,480
-Let me start with the first task, which is the create product entity and this will be the our document
+Hãy bắt đầu với nhiệm vụ đầu tiên, đó là tạo product entity và đây sẽ là document object của chúng ta
 
 55
 00:03:45,480 --> 00:03:47,220
-object in the handle method.
+trong handle method.
 
 56
 00:03:47,220 --> 00:03:57,030
-So I'm going to create a product variable and create a new product object.
+Vậy tôi sẽ tạo một biến product và tạo một new product object.
 
 57
 00:03:57,030 --> 00:04:00,330
-And this will be comes from the our API models.
+Và điều này sẽ đến từ API models của chúng ta.
 
 58
 00:04:00,510 --> 00:04:06,480
-And in here I'm going to passing the array member from incoming command object.
+Và ở đây tôi sẽ truyền các thành viên từ incoming command object.
 
 59
 00:04:13,150 --> 00:04:14,170
@@ -240,55 +240,55 @@ Image file.
 
 61
 00:04:23,380 --> 00:04:28,510
-And lastly we will pacing the price from the command price value.
+Và cuối cùng chúng ta sẽ truyền giá từ command price value.
 
 62
 00:04:28,540 --> 00:04:32,770
-So here we have finished the first task which is the create product entity.
+Vậy ở đây chúng ta đã hoàn thành nhiệm vụ đầu tiên, đó là tạo product entity.
 
 63
 00:04:32,770 --> 00:04:34,390
-This will be the document object.
+Đây sẽ là document object.
 
 64
 00:04:34,390 --> 00:04:37,660
-So in the second task we will save the database.
+Vậy trong nhiệm vụ thứ hai chúng ta sẽ lưu vào database.
 
 65
 00:04:37,660 --> 00:04:40,330
-So how can we save the database.
+Vậy chúng ta có thể lưu vào database như thế nào.
 
 66
 00:04:40,330 --> 00:04:44,980
-Where is the our database and where is the our database communication classes.
+Database của chúng ta ở đâu và các lớp communication với database của chúng ta ở đâu.
 
 67
 00:04:44,980 --> 00:04:51,520
-So now let's keep this data and infrastructure related task and continue to fully implement request
+Vậy bây giờ hãy giữ lại dữ liệu này và các tác vụ liên quan đến infrastructure, và tiếp tục triển khai hoàn chỉnh request
 
 68
 00:04:51,520 --> 00:04:58,480
-lifecycle in ASP.Net core and using Secrets and Mediator pipeline, you can see the request lifecycle.
+lifecycle trong ASP.NET Core và sử dụng Secrets và Mediator pipeline, bạn có thể thấy request lifecycle.
 
 69
 00:04:58,480 --> 00:05:02,950
-We will handle the incoming command object and trigger the command handler.
+Chúng ta sẽ xử lý incoming command object và kích hoạt command handler.
 
 70
 00:05:02,950 --> 00:05:10,000
-But for now we will skip the database operations and focus on the completing these request lifecycle.
+Nhưng hiện tại chúng ta sẽ bỏ qua các database operations và tập trung vào hoàn thành request lifecycle này.
 
 71
 00:05:10,000 --> 00:05:12,670
-For that purpose we will return a result.
+Để thực hiện điều đó, chúng ta sẽ trả về một result.
 
 72
 00:05:12,670 --> 00:05:15,820
-And after that we will see how it progress.
+Và sau đó chúng ta sẽ xem nó tiến hành như thế nào.
 
 73
 00:05:15,820 --> 00:05:26,260
-So I'm skipping this point and I'm going to returning and result which is the return Neve create product.
+Vậy tôi đang bỏ qua điểm này và tôi sẽ trả về một result, đó là return new create product.
 
 74
 00:05:28,320 --> 00:05:28,920
@@ -296,43 +296,43 @@ Result.
 
 75
 00:05:28,920 --> 00:05:31,440
-This will be result and pacing a grid operation.
+Đây sẽ là result và truyền một guid operation.
 
 76
 00:05:31,440 --> 00:05:40,140
-For now, I'm going to returning a random new grid and remove this throw operations.
+Hiện tại, tôi sẽ trả về một random new guid và loại bỏ các throw operations này.
 
 77
 00:05:41,010 --> 00:05:46,230
-If you see the exception, it is expecting a task response for that purpose.
+Nếu bạn thấy exception, nó đang mong đợi một task response, vì vậy tôi sẽ tạo hàm này async.
 
 78
 00:05:46,230 --> 00:05:52,380
-I'm making a async this function and after that we will return the correct product result.
+Và sau đó chúng ta sẽ trả về product result chính xác.
 
 79
 00:05:52,380 --> 00:05:57,600
-So as you can see that we didn't implement actual operation which is a saved database.
+Vậy như bạn có thể thấy, chúng ta không triển khai thao tác thực tế đó là lưu database.
 
 80
 00:05:57,600 --> 00:06:04,860
-So before implementing the data considerations we will focus on how to trigger this handle method with
+Vậy trước khi triển khai data considerations, chúng ta sẽ tập trung vào cách kích hoạt handle method này với
 
 81
 00:06:04,860 --> 00:06:06,180
-using the mediator.
+sử dụng mediator.
 
 82
 00:06:06,180 --> 00:06:14,730
-That means we should expose an http post endpoint API from our catalog API microservices using the minimal
+Điều đó có nghĩa là chúng ta nên expose một HTTP POST endpoint API từ catalog API microservices của chúng ta bằng cách sử dụng Minimal
 
 83
 00:06:14,730 --> 00:06:16,830
-API endpoints and Castle library.
+API endpoints và thư viện Castle.
 
 84
 00:06:16,830 --> 00:06:23,490
-In order to understand how mediator is using command and trigger handler class and return back a some
+Để hiểu cách mediator sử dụng command và kích hoạt handler class rồi trả về một số
 
 85
 00:06:23,490 --> 00:06:24,120
@@ -340,29 +340,29 @@ response.
 
 86
 00:06:24,120 --> 00:06:30,960
-So that means, as you can see, that this is our main architecture which is our catalog microservices.
+Vậy điều đó có nghĩa là, như bạn có thể thấy, đây là kiến trúc chính của chúng ta, đó là catalog microservices.
 
 87
 00:06:30,960 --> 00:06:32,670
-So you can think like that.
+Bạn có thể nghĩ như vậy.
 
 88
 00:06:32,670 --> 00:06:39,360
-We are developed a vertical slice architecture with following the application layer and domain layer
+Chúng ta đã phát triển một vertical slice architecture bằng cách theo dõi application layer và domain layer
 
 89
 00:06:39,360 --> 00:06:40,800
-and the infrastructure layer.
+và infrastructure layer.
 
 90
 00:06:40,800 --> 00:06:44,850
-We will skip this now to implement the database related operations.
+Chúng ta sẽ bỏ qua phần này để triển khai các hoạt động liên quan đến database.
 
 91
 00:06:44,850 --> 00:06:52,170
-And with following the application and domain layer we will go to UI application API Endpoint layer
+Và theo dõi application và domain layer, chúng ta sẽ chuyển đến UI application API Endpoint layer
 
 92
 00:06:52,170 --> 00:06:56,040
-in order to see the whole request lifecycle of the mediator.
+để xem toàn bộ request lifecycle của mediator.
 

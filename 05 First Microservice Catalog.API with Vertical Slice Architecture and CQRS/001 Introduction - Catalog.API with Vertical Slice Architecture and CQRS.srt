@@ -1,70 +1,70 @@
 1
 00:00:00,200 --> 00:00:06,800
-In this section, we are going to develop our very first microservices, which is Catholic API with
+Trong phần này, chúng ta sẽ phát triển microservices đầu tiên của chúng ta, đó là Catholic API với
 
 2
 00:00:06,800 --> 00:00:09,320
-vertical slice architecture and six.
+vertical slice architecture và six.
 
 3
 00:00:09,950 --> 00:00:14,930
-So now let's check our big picture and see what we are going to build one by one.
+Vậy bây giờ hãy kiểm tra bức tranh toàn cảnh của chúng ta và xem chúng ta sẽ xây dựng cái gì từng bước một.
 
 4
 00:00:15,200 --> 00:00:22,100
-As you can see, the image we are in here and start to developing catalog API microservices and catalog
+Như bạn có thể thấy, hình ảnh chúng ta đang ở đây và bắt đầu phát triển catalog API microservices và catalog
 
 5
 00:00:22,100 --> 00:00:25,490
-API microservices will be used PostgreSQL database.
+API microservices sẽ sử dụng cơ sở dữ liệu PostgreSQL.
 
 6
 00:00:25,490 --> 00:00:31,670
-And here you can see the NuGet package that we are going to use when developing our catalog microservices.
+Và ở đây bạn có thể thấy NuGet package mà chúng ta sẽ sử dụng khi phát triển catalog microservices của chúng ta.
 
 7
 00:00:31,670 --> 00:00:37,820
-So we can say that in catalog microservices we will use minimal APIs and latest features of dotnet eight
+Vậy chúng ta có thể nói rằng trong catalog microservices chúng ta sẽ sử dụng Minimal APIs và các tính năng mới nhất của .NET 8
 
 8
 00:00:37,820 --> 00:00:39,050
-and C 12.
+và C# 12.
 
 9
 00:00:39,050 --> 00:00:42,230
-And we will implement vertical slice architecture.
+Và chúng ta sẽ triển khai vertical slice architecture.
 
 10
 00:00:42,230 --> 00:00:45,020
-And we will implement six design pattern.
+Và chúng ta sẽ triển khai mẫu six design pattern.
 
 11
 00:00:45,020 --> 00:00:49,460
-And we will use Martin Library for dotnet transactional DocumentDB.
+Và chúng ta sẽ sử dụng Marten Library cho .NET transactional DocumentDB.
 
 12
 00:00:50,000 --> 00:00:55,910
-So now let's see what we will develop for catalog microservices internal architecture.
+Vậy bây giờ hãy xem chúng ta sẽ phát triển gì cho kiến trúc nội bộ của catalog microservices.
 
 13
 00:00:55,910 --> 00:01:00,710
-So for internal architecture you can see that we will start at this point.
+Vậy để tìm hiểu kiến trúc nội bộ, bạn có thể thấy rằng chúng ta sẽ bắt đầu từ điểm này.
 
 14
 00:01:00,710 --> 00:01:04,940
-And we will create an ASP.Net core web API project.
+Và chúng ta sẽ tạo một dự án ASP.NET Core Web API.
 
 15
 00:01:04,940 --> 00:01:12,860
-And we will use minimal APIs for building fast Http APIs, fully functioning Rest endpoints and top
+Và chúng ta sẽ sử dụng Minimal APIs để xây dựng các HTTP APIs nhanh chóng, các endpoint REST đầy đủ chức năng và mức độ cao
 
 16
 00:01:12,860 --> 00:01:14,270
-level program.cs.
+program.cs.
 
 17
 00:01:14,660 --> 00:01:22,400
-So if you look at the database part, the catalog database will be PostgreSQL, but we will use Martin
+Vậy nếu bạn nhìn vào phần cơ sở dữ liệu, cơ sở dữ liệu catalog sẽ là PostgreSQL, nhưng chúng ta sẽ sử dụng Marten
 
 18
 00:01:22,400 --> 00:01:22,880
@@ -72,15 +72,15 @@ Library.
 
 19
 00:01:22,880 --> 00:01:29,180
-You can see in here Martin NuGet package for dotnet transactional DocumentDB on PostgreSQL.
+Bạn có thể thấy ở đây gói NuGet Marten cho .NET transactional DocumentDB trên PostgreSQL.
 
 20
 00:01:29,180 --> 00:01:34,670
-So that means Martin will be convert this PostgreSQL as a dotnet transactional DocumentDB.
+Điều đó có nghĩa là Marten sẽ chuyển đổi PostgreSQL này thành một .NET transactional DocumentDB.
 
 21
 00:01:34,760 --> 00:01:42,440
-So our product microservices database will be PostgreSQL, but acting as a DocumentDB using the Martin
+Vậy cơ sở dữ liệu product microservices của chúng ta sẽ là PostgreSQL, nhưng hoạt động như một DocumentDB bằng cách sử dụng Marten
 
 22
 00:01:42,440 --> 00:01:43,130
@@ -88,157 +88,157 @@ library.
 
 23
 00:01:43,280 --> 00:01:48,620
-If we look at the internal architecture you can see the internal of the our microservices.
+Nếu chúng ta nhìn vào kiến trúc nội bộ, bạn có thể thấy bên trong microservices của chúng ta.
 
 24
 00:01:48,620 --> 00:01:56,150
-We will use vertical slice architecture implementation with the features folders and single C-sharp
+Chúng ta sẽ sử dụng triển khai vertical slice architecture với các feature folders và tệp C# duy nhất
 
 25
 00:01:56,150 --> 00:01:59,390
-file including different classes in one file.
+bao gồm các lớp khác nhau trong một tệp.
 
 26
 00:01:59,480 --> 00:02:03,740
-So we will implement vertical slice in the catalog microservices.
+Vậy chúng ta sẽ triển khai vertical slice trong catalog microservices.
 
 27
 00:02:03,740 --> 00:02:12,620
-And also we will implement six design pattern with using the mediator library and also we will use Carter
+Và cũng chúng ta sẽ triển khai mẫu six design pattern bằng cách sử dụng thư viện mediator và cũng chúng ta sẽ sử dụng Carter
 
 28
 00:02:12,740 --> 00:02:18,680
-for implementing minimal API endpoint definition into our catalog microservices.
+để triển khai định nghĩa Minimal API endpoint vào catalog microservices của chúng ta.
 
 29
 00:02:18,770 --> 00:02:23,870
-And also we will use master when it possible for mapping DTO classes.
+Và cũng chúng ta sẽ sử dụng Mapster khi có thể để ánh xạ các lớp DTO.
 
 30
 00:02:23,870 --> 00:02:31,460
-And also we will use fluent validation in order to validate inputs and add the mediator validation pipeline.
+Và cũng chúng ta sẽ sử dụng Fluent Validation để xác thực đầu vào và thêm pipeline xác thực mediator.
 
 31
 00:02:31,460 --> 00:02:37,700
-And we will also implement login and exception handling mechanism with mediator pipeline behaviors for
+Và chúng ta cũng sẽ triển khai cơ chế login và exception handling với các mediator pipeline behaviors để
 
 32
 00:02:37,700 --> 00:02:39,530
-implementing cross-cutting concerns.
+triển khai các cross-cutting concerns.
 
 33
 00:02:39,530 --> 00:02:46,130
-And lastly, we will implement a Docker file and Docker compose Yaml file for running the product.
+Và cuối cùng, chúng ta sẽ triển khai một Docker file và Docker Compose YAML file để chạy sản phẩm.
 
 34
 00:02:46,130 --> 00:02:50,000
-Microservices and PostgreSQL database in Multi-container.
+Microservices và cơ sở dữ liệu PostgreSQL trong môi trường Multi-container
 
 35
 00:02:50,000 --> 00:02:53,480
-Docker environment for containerization and orchestration.
+Docker cho containerization và orchestration.
 
 36
 00:02:54,790 --> 00:02:57,760
-So let's remember our course development flow.
+Vậy hãy nhớ lại luồng phát triển khóa học của chúng ta.
 
 37
 00:02:57,790 --> 00:03:00,310
-Here you can see the course development flow.
+Ở đây bạn có thể thấy luồng phát triển khóa học.
 
 38
 00:03:00,340 --> 00:03:07,180
-Our journey begins with the development of the microservices and starting with the catalog API microservices.
+Hành trình của chúng ta bắt đầu với sự phát triển của microservices và bắt đầu với catalog API microservices.
 
 39
 00:03:07,180 --> 00:03:12,070
-Here we will embrace the vertical slice architecture and implement the secure design pattern.
+Ở đây chúng ta sẽ áp dụng vertical slice architecture và triển khai mẫu six design pattern.
 
 40
 00:03:12,100 --> 00:03:17,470
-This is the foundational step we will stage for the rest of the R microservices.
+Đây là bước nền tảng mà chúng ta sẽ xây dựng cho phần còn lại của các microservices của chúng ta.
 
 41
 00:03:18,150 --> 00:03:24,660
-So if we remember our way of learning methodology throughout the each section, we will follow this
+Vậy nếu chúng ta nhớ lại phương pháp học tập của mình trong suốt mỗi phần, chúng ta sẽ tuân theo cách này
 
 42
 00:03:24,660 --> 00:03:28,440
-way of learning methodology which consists of the four key steps.
+phương pháp học tập bao gồm bốn bước chính.
 
 43
 00:03:28,470 --> 00:03:32,520
-These are the analyze, learn, develop and test and deploy.
+Đó là analyze, learn, develop và test and deploy.
 
 44
 00:03:32,520 --> 00:03:36,240
-So we will start with the domain and technical analysis.
+Vậy chúng ta sẽ bắt đầu với phân tích domain và technical.
 
 45
 00:03:36,330 --> 00:03:39,870
-After that we will delve into pattern and principles.
+Sau đó chúng ta sẽ đi sâu vào các pattern và principles.
 
 46
 00:03:39,870 --> 00:03:45,570
-And after that we will develop our microservice codes and test these microservice project in our local
+Và sau đó chúng ta sẽ phát triển code microservice và test các dự án microservice trên máy tính local của chúng ta
 
 47
 00:03:45,570 --> 00:03:46,290
-computer.
+.
 
 48
 00:03:46,290 --> 00:03:52,140
-And lastly we will containerize and orchestrate these microservices using the databases.
+Và cuối cùng chúng ta sẽ containerize và orchestrate các microservices này sử dụng các database.
 
 49
 00:03:52,140 --> 00:03:57,930
-For example, catalog microservices with PostgreSQL database using the Docker compose, and debugging
+Ví dụ, catalog microservices với PostgreSQL database sử dụng Docker compose, và debugging
 
 50
 00:03:57,930 --> 00:04:01,920
-the Docker compose on Visual Studio for particular microservices.
+Docker compose trên Visual Studio cho các microservices cụ thể.
 
 51
 00:04:02,790 --> 00:04:08,460
-So that means we will follow these learning methodology when developing our catalog API microservices,
+Vậy điều đó có nghĩa là chúng ta sẽ tuân theo phương pháp học này khi phát triển catalog API microservices của chúng ta,
 
 52
 00:04:08,460 --> 00:04:16,500
-including the ASP.Net core, minimal APIs for building fast Http APIs and fully functioning Rest endpoint.
+bao gồm ASP.NET Core, Minimal APIs để xây dựng các Http APIs nhanh và Rest endpoint hoạt động đầy đủ.
 
 53
 00:04:16,500 --> 00:04:22,860
-And we will use top level Program.cs and we will implement vertical slice architecture with the feature
+Và chúng ta sẽ sử dụng top level Program.cs và chúng ta sẽ triển khai vertical slice architecture với các feature
 
 54
 00:04:22,860 --> 00:04:27,270
-folders and single C-sharp file, including the different classes in one file.
+folders và single C# file, bao gồm các class khác nhau trong một file.
 
 55
 00:04:27,270 --> 00:04:31,530
-And we will implement six design pattern using the mediator library.
+Và chúng ta sẽ triển khai sáu design pattern sử dụng mediator library.
 
 56
 00:04:31,800 --> 00:04:37,500
-And we will use Martin Library for dotnet transactional DocumentDB on PostgreSQL.
+Và chúng ta sẽ sử dụng Marten library cho dotnet transactional DocumentDB trên PostgreSQL.
 
 57
 00:04:37,590 --> 00:04:41,280
-And we will use Carter for minimal API endpoint definition.
+Và chúng ta sẽ sử dụng Carter cho minimal API endpoint definition.
 
 58
 00:04:41,280 --> 00:04:44,400
-We will use Mapserver for mapping operation.
+Chúng ta sẽ sử dụng Mapster cho mapping operation.
 
 59
 00:04:44,400 --> 00:04:50,580
-And we will use fluent validation to validate inputs and add a mediator validation pipeline behavior.
+Và chúng ta sẽ sử dụng Fluent Validation để validate inputs và thêm mediator validation pipeline behavior.
 
 60
 00:04:50,580 --> 00:04:56,610
-And lastly we will implement Docker file and docker compose file for running the catalog microservices
+Và cuối cùng chúng ta sẽ triển khai Docker file và docker compose file để chạy catalog microservices
 
 61
 00:04:56,610 --> 00:04:59,520
-and PostgreSQL database in Docker environment.
+và PostgreSQL database trong Docker environment.
 

@@ -1,162 +1,162 @@
 1
 00:00:00,300 --> 00:00:05,939
-In this video, we are going to set port numbers for catalog API microservices.
+Trong video này, chúng ta sẽ thiết lập các số cổng cho microservices catalog API.
 
 2
 00:00:05,939 --> 00:00:12,780
-That means we will configuring port numbers for our catalog microservices by modifying the launch settings.
+Điều đó có nghĩa là chúng ta sẽ cấu hình các số cổng cho microservices catalog của mình bằng cách sửa đổi cài đặt khởi chạy.
 
 3
 00:00:13,110 --> 00:00:15,300
-Here you can see the table on the slide.
+Ở đây bạn có thể thấy bảng trên slide.
 
 4
 00:00:15,330 --> 00:00:18,930
-This table includes port numbers for each microservices.
+Bảng này bao gồm các số cổng cho mỗi microservices.
 
 5
 00:00:18,960 --> 00:00:24,630
-Here you can see the microservices and we have three dimensions to exposing the port numbers.
+Ở đây bạn có thể thấy các microservices và chúng ta có ba chiều để exposed các số cổng.
 
 6
 00:00:24,630 --> 00:00:29,040
-These are the local environment Docker environment and Docker inside.
+Đó là môi trường cục bộ, môi trường Docker và Docker bên trong.
 
 7
 00:00:29,040 --> 00:00:32,940
-So for each value you can see two port numbers.
+Vì vậy với mỗi giá trị bạn có thể thấy hai số cổng.
 
 8
 00:00:32,940 --> 00:00:39,000
-Because the ASP.Net ports listed http and https for running the application.
+Vì các cổng ASP.NET được liệt kê http và https để chạy ứng dụng.
 
 9
 00:00:39,000 --> 00:00:46,200
-So you can see that for example in catalog microservices in local environment, we will exposing services
+Vì vậy bạn có thể thấy rằng ví dụ trong microservices catalog ở môi trường cục bộ, chúng ta sẽ exposed các dịch vụ
 
 10
 00:00:46,200 --> 00:00:51,240
-in 5000 for Http and 5050 for Https.
+ở cổng 5000 cho Http và 5050 cho Https.
 
 11
 00:00:51,330 --> 00:00:57,360
-After finish the local development we will shifting the docker environment and we will exposing the
+Sau khi hoàn thành phát triển cục bộ, chúng ta sẽ chuyển sang môi trường docker và chúng ta sẽ exposed cổng
 
 12
 00:00:57,360 --> 00:01:01,560
-Http port from the Docker environment as a 6000.
+Http từ môi trường Docker là 6000.
 
 13
 00:01:01,560 --> 00:01:07,890
-And for Https we will expose the 6060 in docker inside the port numbers.
+Và cho Https chúng ta sẽ exposed cổng 6060 bên trong docker với các số cổng.
 
 14
 00:01:07,890 --> 00:01:13,650
-Always the same for each microservices, because these are the environment variables in the Docker file
+Luôn giống nhau cho mỗi microservices, vì đây là các biến môi trường trong Docker file
 
 15
 00:01:13,650 --> 00:01:15,840
-for any ASP.Net application.
+cho bất kỳ ứng dụng ASP.NET nào.
 
 16
 00:01:15,840 --> 00:01:18,270
-You can see in the illustration in here.
+Bạn có thể thấy trong hình minh họa ở đây.
 
 17
 00:01:18,270 --> 00:01:22,260
-This is the Docker environment for internal IP port numbers.
+Đây là môi trường Docker cho các số cổng IP nội bộ.
 
 18
 00:01:22,260 --> 00:01:30,660
-This will be invoking the 80, 80 and 8081 ports for the Http and Https, but external IP ports from
+Điều này sẽ gọi các cổng 80, 80 và 8081 cho Http và Https, nhưng các cổng IP bên ngoài từ
 
 19
 00:01:30,660 --> 00:01:38,700
-the Docker environment, we can expose 60,000 port numbers in order to reach for internal Docker microservices.
+môi trường Docker, chúng ta có thể exposed các số cổng 60.000 để có thể tiếp cận các microservices Docker bên trong.
 
 20
 00:01:38,700 --> 00:01:42,960
-But now we will start with the local environment and set the microservices.
+Nhưng bây giờ chúng ta sẽ bắt đầu với môi trường cục bộ và thiết lập các microservices.
 
 21
 00:01:42,960 --> 00:01:44,610
-With starting to 5000.
+Bắt đầu từ 5000.
 
 22
 00:01:44,610 --> 00:01:48,600
-For catalog microservices, we will set 5050 50.
+Cho microservices catalog, chúng ta sẽ thiết lập 5050.
 
 23
 00:01:48,750 --> 00:01:50,580
-So let's get started.
+Vì vậy hãy bắt đầu nào.
 
 24
 00:01:51,180 --> 00:01:55,320
-In order to do that, let me remember the launch setting Json.
+Để làm điều đó, hãy để tôi nhắc nhở về launch settings Json.
 
 25
 00:01:55,320 --> 00:02:01,170
-We will modify the launch setting Json in order to set these port numbers correctly from our big picture
+Chúng ta sẽ sửa đổi launch settings Json để thiết lập các số cổng này một cách chính xác từ bức tranh lớn
 
 26
 00:02:01,170 --> 00:02:02,250
-of the architecture.
+về kiến trúc.
 
 27
 00:02:02,250 --> 00:02:04,200
-But before that, let me explain.
+Nhưng trước đó, hãy để tôi giải thích.
 
 28
 00:02:04,200 --> 00:02:05,760
-What is the launch settings?
+Launch settings là gì?
 
 29
 00:02:05,790 --> 00:02:11,760
-Launch settings is located under the properties for each ASP.Net project, and if you open the launch
+Launch settings được đặt trong phần properties của mỗi dự án ASP.NET, và nếu bạn mở launch settings,
 
 30
 00:02:11,760 --> 00:02:14,250
-settings, you can see different running profiles.
+bạn có thể thấy các profile chạy khác nhau.
 
 31
 00:02:14,250 --> 00:02:20,220
-It determines how our application runs in the development environment, specifically things like the
+Nó xác định cách ứng dụng của chúng ta chạy trong môi trường phát triển, cụ thể là những thứ như
 
 32
 00:02:20,220 --> 00:02:22,830
-URL, port numbers and environment variables.
+URL, số cổng và các biến môi trường.
 
 33
 00:02:22,830 --> 00:02:26,520
-Here you can see the Http, https and docker environment.
+Ở đây bạn có thể thấy Http, https và môi trường docker.
 
 34
 00:02:26,520 --> 00:02:30,120
-These will be aligned with our running profile in this window.
+Những điều này sẽ được căn chỉnh với profile chạy của chúng ta trong cửa sổ này.
 
 35
 00:02:30,120 --> 00:02:33,360
-So basically we will already know that launch setting.
+Vì vậy về cơ bản chúng ta sẽ đã biết về launch settings.
 
 36
 00:02:33,360 --> 00:02:38,010
-And now we are going to modify the launch settings according to our port numbers.
+Và bây giờ chúng ta sẽ sửa đổi launch settings theo các số cổng của chúng ta.
 
 37
 00:02:38,010 --> 00:02:41,580
-So we have two options to modify the launch settings.
+Vì vậy chúng ta có hai tùy chọn để sửa đổi launch settings.
 
 38
 00:02:41,580 --> 00:02:47,430
-You can right click the catalog API, go to properties and go to debug section.
+Bạn có thể nhấp chuột phải vào catalog API, đi tới properties và đi tới phần debug.
 
 39
 00:02:47,430 --> 00:02:53,820
-And after that you can open Debug Launch Settings Profile and you can set the launch setting configurations
+Và sau đó bạn có thể mở Debug Launch Settings Profile và bạn có thể thiết lập các cấu hình launch settings
 
 40
 00:02:53,820 --> 00:02:55,410
-with using these window.
+bằng cách sử dụng cửa sổ này.
 
 41
 00:02:55,440 --> 00:02:58,950

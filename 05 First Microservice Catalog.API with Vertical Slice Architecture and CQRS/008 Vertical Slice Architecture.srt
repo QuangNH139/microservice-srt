@@ -1,190 +1,190 @@
 1
 00:00:00,200 --> 00:00:04,430
-In this video we are going to learn vertical slice architecture.
+Trong video này, chúng ta sẽ học về vertical slice architecture.
 
 2
 00:00:04,790 --> 00:00:08,480
-Vertical slice architecture introduced by Jaime Bogaerts.
+Vertical Slice Architecture được giới thiệu bởi Jaime Bogaerts.
 
 3
 00:00:08,480 --> 00:00:15,560
-And it offers this architecture against two traditional layered onion clean architecture approaches.
+Và nó cung cấp kiến trúc này để đối chiếu với hai phương pháp kiến trúc layered onion clean architecture truyền thống.
 
 4
 00:00:16,070 --> 00:00:22,790
-Vertical Slice Architecture aims to organize code around specific features or use cases, rather than
+Vertical Slice Architecture nhằm mục đích tổ chức code xung quanh các tính năng hoặc use cases cụ thể, thay vì
 
 5
 00:00:22,790 --> 00:00:26,630
-the technical concerns in a vertical slice architecture.
+các mối quan tâm kỹ thuật trong vertical slice architecture.
 
 6
 00:00:26,660 --> 00:00:33,260
-A feature is implemented across all layers of the software, from the user interface to the database.
+Một feature được triển khai trên tất cả các layers của phần mềm, từ giao diện người dùng đến cơ sở dữ liệu.
 
 7
 00:00:34,100 --> 00:00:40,910
-This approach is often used in the development of complex, feature rich applications, particularly
+Phương pháp này thường được sử dụng trong phát triển các ứng dụng phức tạp, giàu tính năng, đặc biệt
 
 8
 00:00:40,910 --> 00:00:43,070
-those that are delivered over the web.
+những ứng dụng được phân phối trên web.
 
 9
 00:00:43,760 --> 00:00:50,120
-Vertical slice architecture is dividing an application into distinct features or functionalities, and
+Vertical slice architecture là chia một ứng dụng thành các features hoặc chức năng riêng biệt, và
 
 10
 00:00:50,120 --> 00:00:54,050
-each of them cuts through all of the layers of the application.
+mỗi cái cắt ngang qua tất cả các layers của ứng dụng.
 
 11
 00:00:54,680 --> 00:01:01,880
-This approach is in contrast to the traditional n-tier or layered architectures, where the application
+Phương pháp này trái ngược với các kiến trúc n-tier hoặc layered truyền thống, nơi ứng dụng
 
 12
 00:01:01,880 --> 00:01:03,410
-is divided horizontally.
+được chia theo chiều ngang.
 
 13
 00:01:03,920 --> 00:01:10,580
-So that means, unlike the traditional n-tier or layered architectures where the application is divided
+Điều đó có nghĩa là, không giống như các kiến trúc n-tier hoặc layered truyền thống nơi ứng dụng được chia
 
 14
 00:01:10,580 --> 00:01:11,480
-horizontally.
+theo chiều ngang.
 
 15
 00:01:11,480 --> 00:01:17,090
-As you can see, the image, presentation, application and data layers, the vertical slice architectures
+Như bạn có thể thấy trong hình ảnh, presentation, application và data layers, vertical slice architectures
 
 16
 00:01:17,090 --> 00:01:21,950
-divide an application vertically based on the features or functionalities.
+chia một ứng dụng theo chiều dọc dựa trên các features hoặc chức năng.
 
 17
 00:01:22,760 --> 00:01:26,450
-So let's see the characteristics of the vertical slice architecture.
+Vậy hãy xem các đặc điểm của vertical slice architecture.
 
 18
 00:01:26,450 --> 00:01:28,640
-Of course, the first characteristic is.
+Tất nhiên, đặc điểm đầu tiên là.
 
 19
 00:01:28,640 --> 00:01:32,510
-The application is divided into feature based slices.
+Ứng dụng được chia thành các feature-based slices.
 
 20
 00:01:32,510 --> 00:01:37,730
-So the application is divided into slices based on the features or use cases.
+Vậy ứng dụng được chia thành các slices dựa trên các features hoặc use cases.
 
 21
 00:01:37,790 --> 00:01:44,120
-Each slice represents a complete vertical pathway through the application stack, including the user
+Mỗi slice đại diện cho một con đường dọc hoàn chỉnh thông qua application stack, bao gồm giao diện người dùng,
 
 22
 00:01:44,120 --> 00:01:51,440
-interface, business logic, and data access layers, and each slice is self-contained and independent.
+business logic, và data access layers, và mỗi slice là độc lập và tự chứa.
 
 23
 00:01:51,800 --> 00:01:58,670
-That means each vertical slice is intended to be self-contained and independent from other slices.
+Điều đó có nghĩa là mỗi vertical slice dự định được tự chứa và độc lập với các slices khác.
 
 24
 00:01:58,670 --> 00:02:05,090
-This means that a single feature can be developed, tested, and deployed without impacting other parts
+Điều này có nghĩa là một single feature có thể được phát triển, kiểm tra và triển khai mà không ảnh hưởng đến các phần khác
 
 25
 00:02:05,090 --> 00:02:06,140
-of the application.
+của ứng dụng.
 
 26
 00:02:07,250 --> 00:02:12,860
-There are reduced dependencies between different parts of the application by focusing on the vertical
+Có các dependencies giảm giữa các phần khác nhau của ứng dụng bằng cách tập trung vào các vertical
 
 27
 00:02:12,860 --> 00:02:17,960
-slices, dependencies between different areas of the application are minimized.
+slices, dependencies giữa các khu vực khác nhau của ứng dụng được giảm thiểu.
 
 28
 00:02:17,960 --> 00:02:24,680
-Each slice can be seen as a mini application with its own distinct functionality and dependencies.
+Mỗi slice có thể được xem như một mini application với chức năng và dependencies riêng biệt.
 
 29
 00:02:25,920 --> 00:02:29,250
-It promotes the use of the cross-functional teams.
+Nó thúc đẩy việc sử dụng các cross-functional teams.
 
 30
 00:02:29,250 --> 00:02:35,880
-Development teams working with the vertical slice architecture are often cross functional, containing
+Các development teams làm việc với vertical slice architecture thường là cross-functional, chứa
 
 31
 00:02:35,880 --> 00:02:41,880
-all the skills necessary to develop a feature from start to finish, which promotes a more holistic
+tất cả các kỹ năng cần thiết để phát triển một feature từ đầu đến cuối, điều này thúc đẩy một
 
 32
 00:02:41,880 --> 00:02:47,520
-view of the development and the architecture supports scalability and maintainability.
+cái nhìn toàn diện hơn về phát triển và kiến trúc hỗ trợ khả năng mở rộng và khả năng bảo trì.
 
 33
 00:02:47,550 --> 00:02:51,810
-This architecture allows for better scalability and maintainability.
+Kiến trúc này cho phép khả năng mở rộng tốt hơn và dễ bảo trì hơn.
 
 34
 00:02:51,870 --> 00:02:58,530
-As the application grows, new features can be added as a Neve slices without significantly impacting
+Khi ứng dụng phát triển, các features mới có thể được thêm vào như các slices mới mà không ảnh hưởng đáng kể
 
 35
 00:02:58,530 --> 00:03:03,780
-the existing code, and also it allows for improved testing and deployment process.
+đến code hiện có, và cũng cho phép cải thiện quy trình kiểm tra và triển khai.
 
 36
 00:03:03,810 --> 00:03:10,080
-Vertical slices can be individually tested and deployed, which simplifies the testing process, and
+Vertical slices có thể được kiểm tra và triển khai riêng lẻ, điều này đơn giản hóa quá trình kiểm tra, và
 
 37
 00:03:10,080 --> 00:03:13,320
-it can lead to more reliable and faster deployments.
+nó có thể dẫn đến các deployments đáng tin cậy hơn và nhanh hơn.
 
 38
 00:03:14,130 --> 00:03:20,160
-Vertical slice is an internal application architecture pattern that every microservices can follow.
+Vertical slice là một internal application architecture pattern mà mỗi microservice có thể tuân theo.
 
 39
 00:03:20,190 --> 00:03:22,590
-This architecture in their internal code.
+Kiến trúc này trong code nội bộ của họ.
 
 40
 00:03:22,590 --> 00:03:24,990
-Organizations in the microservices.
+Các tổ chức trong các microservices.
 
 41
 00:03:25,020 --> 00:03:31,290
-Every microservice handle a specific piece of the functionality and communicate with other services
+Mỗi microservice xử lý một phần chức năng cụ thể và giao tiếp với các dịch vụ khác
 
 42
 00:03:31,290 --> 00:03:33,270
-through well defined interfaces.
+thông qua các interface được xác định rõ ràng.
 
 43
 00:03:34,110 --> 00:03:37,440
-So let's see the advantages of the vertical slice architecture.
+Vậy hãy xem các lợi ích của vertical slice architecture.
 
 44
 00:03:37,470 --> 00:03:41,220
-Vertical slice architecture offers several benefits.
+Vertical slice architecture mang lại nhiều lợi ích.
 
 45
 00:03:41,250 --> 00:03:47,400
-It allows for focused development where the teams can concentrate on one feature at a time.
+Nó cho phép phát triển tập trung nơi các đội có thể tập trung vào một tính năng cùng một lúc.
 
 46
 00:03:47,430 --> 00:03:54,030
-It simplifies refactoring and upgrades, since changes in one slice usually don't affect others.
+Nó đơn giản hóa việc tái cấu trúc và nâng cấp, vì những thay đổi trong một slice thường không ảnh hưởng đến những cái khác.
 
 47
 00:03:54,060 --> 00:04:00,480
-It aligns well with the agile and DevOps practices, supporting incremental development and continuous
+Nó phù hợp tốt với các thực hành agile và DevOps, hỗ trợ phát triển từng bước và continuous
 
 48
 00:04:00,480 --> 00:04:01,110
@@ -192,29 +192,29 @@ delivery.
 
 49
 00:04:01,410 --> 00:04:05,520
-However, there are also challenges with using the vertical slice.
+Tuy nhiên, cũng có những thách thức khi sử dụng vertical slice.
 
 50
 00:04:05,520 --> 00:04:11,760
-You might encounter duplication of code across slices, particularly for common functionalities.
+Bạn có thể gặp phải sự trùng lặp code trong các slice, đặc biệt là đối với các chức năng chung.
 
 51
 00:04:11,760 --> 00:04:18,120
-There is a learning curve involved, especially for teams opposed to the traditional architectures.
+Có một đường cong học tập liên quan, đặc biệt là đối với các đội phản đối các kiến trúc truyền thống.
 
 52
 00:04:18,120 --> 00:04:24,990
-The design of the each slice requires careful consideration in order to ensure independence and maintainability.
+Thiết kế của mỗi slice yêu cầu xem xét cẩn thận để đảm bảo tính độc lập và khả năng bảo trì.
 
 53
 00:04:25,350 --> 00:04:32,040
-So vertical slice architecture is a powerful approach for developing complex applications where modularity
+Vậy vertical slice architecture là một phương pháp mạnh mẽ để phát triển các ứng dụng phức tạp nơi tính modular
 
 54
 00:04:32,040 --> 00:04:34,020
-and rapid development are crucial.
+và phát triển nhanh chóng là rất quan trọng.
 
 55
 00:04:34,020 --> 00:04:39,240
-So we will also use vertical slice architecture into our catalog and basket microservices.
+Vậy chúng ta cũng sẽ sử dụng vertical slice architecture cho catalog và basket microservices của chúng ta.
 

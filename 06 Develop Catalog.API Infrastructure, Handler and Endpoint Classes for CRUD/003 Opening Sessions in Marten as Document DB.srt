@@ -160,13 +160,13 @@ for effective data handling in your applications.
 
 41
 00:03:04,520 --> 00:03:11,420
-Always aim to use the lightest session that meets your needs and ensure proper disposal of the sessions
+Luôn cố gắng sử dụng session nhẹ nhất phù hợp với nhu cầu của bạn và đảm bảo giải phóng các session đó
 
 42
 00:03:11,420 --> 00:03:13,460
-in order to maintain the performance.
+để duy trì hiệu suất.
 
 43
 00:03:13,460 --> 00:03:20,300
-So we will use mostly lightweight session which is optimized for reading and writing operations.
+Vậy chúng ta sẽ sử dụng chủ yếu lightweight session được tối ưu hóa cho các hoạt động đọc và ghi.
 
