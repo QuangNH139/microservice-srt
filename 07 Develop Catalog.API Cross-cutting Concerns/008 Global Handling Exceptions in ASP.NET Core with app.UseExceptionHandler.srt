@@ -1,6 +1,6 @@
 1
 00:00:00,140 --> 00:00:07,580
-In this video, we are going to learn global exception handling in ASP.Net core with using the App.use
+Trong video này, chúng ta sẽ học về global exception handling trong ASP.Net core bằng cách sử dụng App.use
 
 2
 00:00:07,580 --> 00:00:09,020
@@ -8,55 +8,55 @@ exception handling method.
 
 3
 00:00:09,470 --> 00:00:15,800
-As you can see that when we are sending invalid requests to our Http put operations without including
+Như bạn có thể thấy, khi chúng ta gửi các request không hợp lệ đến các HTTP put operations của chúng ta mà không bao gồm
 
 4
 00:00:15,800 --> 00:00:18,350
-the name information, this is the response.
+thông tin name, đây là response.
 
 5
 00:00:18,350 --> 00:00:23,720
-And as seen in the response, this is the raw exception message from our application.
+Và như thấy trong response, đây là raw exception message từ ứng dụng của chúng ta.
 
 6
 00:00:23,720 --> 00:00:28,850
-And it can be very hard to read and very hard to maintainable and understandable.
+Và nó có thể rất khó đọc và rất khó để duy trì và hiểu được.
 
 7
 00:00:28,850 --> 00:00:32,840
-So we should format these errors in a more user friendly way.
+Vì vậy chúng ta nên định dạng những lỗi này theo một cách thân thiện với người dùng hơn.
 
 8
 00:00:33,170 --> 00:00:40,310
-In order to make this message more accurate way, we will use ASP.Net global Exception Handling mechanism
+Để làm cho message này chính xác hơn, chúng ta sẽ sử dụng ASP.Net global Exception Handling mechanism
 
 9
 00:00:40,310 --> 00:00:41,840
-in ASP.Net core.
+trong ASP.Net core.
 
 10
 00:00:41,870 --> 00:00:47,060
-Handling exceptions globally is crucial for a consistent error response format.
+Xử lý exceptions một cách global là rất quan trọng để đảm bảo định dạng error response nhất quán.
 
 11
 00:00:47,180 --> 00:00:52,550
-It helps to debugging and provides clear feedback to the consumer of our API.
+Nó giúp debugging và cung cấp phản hồi rõ ràng cho những người sử dụng API của chúng ta.
 
 12
 00:00:52,550 --> 00:00:59,690
-So we should refer to Microsoft official documentation so you can go to the Microsoft ASP.Net core documentation
+Vì vậy chúng ta nên tham khảo tài liệu chính thức của Microsoft, vì vậy bạn có thể truy cập vào tài liệu ASP.Net core của Microsoft
 
 13
 00:00:59,690 --> 00:01:00,980
-and handle errors.
+và xử lý các lỗi.
 
 14
 00:01:00,980 --> 00:01:06,170
-In here you can see that we can handle the errors in ASP.Net core in different ways.
+Ở đây bạn có thể thấy rằng chúng ta có thể xử lý các lỗi trong ASP.Net core theo những cách khác nhau.
 
 15
 00:01:06,170 --> 00:01:12,770
-So we can you can see that we can handle with developing exception page and using the exception handle
+Vì vậy chúng ta có thể thấy rằng chúng ta có thể xử lý với developing exception page và sử dụng exception handle
 
 16
 00:01:12,770 --> 00:01:13,310
@@ -64,55 +64,55 @@ page.
 
 17
 00:01:13,310 --> 00:01:15,770
-And we can use exception handle Lambda.
+Và chúng ta có thể sử dụng exception handle Lambda.
 
 18
 00:01:15,770 --> 00:01:21,290
-And we can use AI exception handler to perform global exception handling.
+Và chúng ta có thể sử dụng AI exception handler để thực hiện global exception handling.
 
 19
 00:01:21,290 --> 00:01:23,270
-So we will follow these steps.
+Vì vậy chúng ta sẽ làm theo những bước này.
 
 20
 00:01:23,270 --> 00:01:29,750
-And I am going to explain to how we can handle the exception in a handle lambda function.
+Và tôi sẽ giải thích cách chúng ta có thể xử lý exception trong một hàm handle lambda.
 
 21
 00:01:29,750 --> 00:01:35,750
-If you go to the exception handler lambda part of this article, you can see that this is an alternative
+Nếu bạn đi tới phần lambda của exception handler trong bài viết này, bạn có thể thấy đây là một cách thay thế
 
 22
 00:01:35,750 --> 00:01:42,830
-way to custom exception handle page and provide a lambda function to handle the exceptions globally.
+để custom exception handle page và cung cấp một lambda function để xử lý các exceptions toàn cục.
 
 23
 00:01:42,830 --> 00:01:46,250
-So we can use the use exception handle method.
+Vậy chúng ta có thể sử dụng phương thức use exception handle.
 
 24
 00:01:46,250 --> 00:01:48,410
-And we can provide the lambda function.
+Và chúng ta có thể cung cấp lambda function.
 
 25
 00:01:48,410 --> 00:01:52,520
-And this lambda allows to access error before returning the response.
+Và lambda này cho phép truy cập error trước khi trả về response.
 
 26
 00:01:52,520 --> 00:01:56,900
-So you can see an example implementation that we will follow the same steps.
+Vậy bạn có thể thấy một ví dụ triển khai mà chúng ta sẽ làm theo các bước tương tự.
 
 27
 00:01:56,900 --> 00:02:03,020
-So we will implement a custom exception handler in our Program.cs with the similar approach.
+Vậy chúng ta sẽ triển khai một custom exception handler trong Program.cs của chúng ta với cách tiếp cận tương tự.
 
 28
 00:02:03,020 --> 00:02:08,030
-In order to catch the exceptions and return a standardized error message.
+Để catch các exceptions và trả về một error message được tiêu chuẩn hóa.
 
 29
 00:02:08,030 --> 00:02:13,670
-So please go to the Visual Studio and open the program.cs of the Catholic API.
+Vậy hãy mở Visual Studio và mở program.cs của Catalog API Microservices.
 
 30
 00:02:13,670 --> 00:02:14,750
@@ -120,47 +120,47 @@ Microservices.
 
 31
 00:02:14,750 --> 00:02:22,730
-In Program.cs, you can scroll down and locate the or configure Http request pipeline part, and after
+Trong Program.cs, bạn có thể cuộn xuống và tìm phần configure Http request pipeline, và sau
 
 32
 00:02:22,730 --> 00:02:28,280
-the map cutter operation, we can configure our application according to our global exception handling.
+phần map cutter operation, chúng ta có thể cấu hình ứng dụng của chúng ta theo global exception handling.
 
 33
 00:02:28,280 --> 00:02:35,750
-So we will use the same step which is the app dot use exception handler function.
+Vậy chúng ta sẽ sử dụng cùng một bước đó là hàm app dot use exception handler.
 
 34
 00:02:35,750 --> 00:02:39,680
-So in this function we can configure our exceptions in globally.
+Vậy trong hàm này chúng ta có thể cấu hình exceptions của chúng ta toàn cục.
 
 35
 00:02:39,680 --> 00:02:42,920
-So we can use this function and configure this function.
+Vậy chúng ta có thể sử dụng hàm này và cấu hình hàm này.
 
 36
 00:02:42,920 --> 00:02:47,390
-You can see the method parameters in here we will use an action configuration.
+Bạn có thể thấy các tham số của phương thức ở đây, chúng ta sẽ sử dụng một action configuration.
 
 37
 00:02:47,390 --> 00:02:55,010
-And as you can see that we can use action configuration to configure these middleware as exception handling.
+Và như bạn có thể thấy rằng chúng ta có thể sử dụng action configuration để cấu hình middleware này như exception handling.
 
 38
 00:02:55,010 --> 00:02:56,630
-So now let me copy paste.
+Vậy bây giờ hãy để tôi copy paste.
 
 39
 00:02:56,630 --> 00:02:59,030
-And after that I will explain one by one.
+Và sau đó tôi sẽ giải thích từng cái một.
 
 40
 00:02:59,030 --> 00:03:02,540
-Here you can see the whole use exception handler method.
+Ở đây bạn có thể thấy toàn bộ phương thức use exception handler.
 
 41
 00:03:02,540 --> 00:03:09,410
-So basically we configure the application to use a custom exception handler that captures all unhandled
+Về cơ bản, chúng ta cấu hình ứng dụng để sử dụng một exception handler tùy chỉnh để bắt tất cả các unhandled
 
 42
 00:03:09,410 --> 00:03:10,400
@@ -168,89 +168,89 @@ exceptions.
 
 43
 00:03:10,490 --> 00:03:17,360
-Our main goal is to return a structured Json response containing the error details, which is more readable
+Mục tiêu chính của chúng ta là trả về một structured Json response chứa chi tiết lỗi, điều này dễ đọc hơn
 
 44
 00:03:17,360 --> 00:03:18,590
-and informative.
+và có nhiều thông tin hơn.
 
 45
 00:03:18,590 --> 00:03:25,160
-So you can see that in the exception handler application we basically run this code and inside of this
+Vậy bạn có thể thấy rằng trong exception handler application, về cơ bản chúng ta chạy code này và bên trong code này
 
 46
 00:03:25,160 --> 00:03:27,860
-code, first of all we will get the exception.
+code, đầu tiên chúng ta sẽ lấy exception.
 
 47
 00:03:27,860 --> 00:03:32,780
-So once the we get the exception we can prepare the problem details.
+Vậy khi chúng ta lấy exception, chúng ta có thể chuẩn bị problem details.
 
 48
 00:03:32,780 --> 00:03:36,620
-The problem details object is used to format the error response.
+Problem details object được sử dụng để định dạng error response.
 
 49
 00:03:36,620 --> 00:03:39,980
-It includes the exception message and the stacktrace.
+Nó bao gồm exception message và stacktrace.
 
 50
 00:03:39,980 --> 00:03:47,060
-And after that, besides returning the error response, it is important to log the exception for further
+Và sau đó, bên cạnh việc trả về error response, điều quan trọng là logging exception để phân tích
 
 51
 00:03:47,060 --> 00:03:48,500
-analysis and debugging.
+và debugging thêm.
 
 52
 00:03:48,500 --> 00:03:52,310
-That's why we will put a logging operations the exception.
+Đó là lý do tại sao chúng ta sẽ đặt các logging operations cho exception.
 
 53
 00:03:52,310 --> 00:03:58,460
-So after that we will write all details into our response object as a Json format.
+Vậy sau đó chúng ta sẽ ghi tất cả chi tiết vào response object của chúng ta dưới dạng Json format.
 
 54
 00:03:58,460 --> 00:04:06,350
-So this is the our use exception handle method in order to handle the ASP.Net exceptions globally.
+Vậy đây là phương thức use exception handle của chúng ta để xử lý ASP.Net exceptions globally.
 
 55
 00:04:06,350 --> 00:04:10,160
-So now we can test our application save this file.
+Vậy bây giờ chúng ta có thể test ứng dụng của mình, save file này.
 
 56
 00:04:10,160 --> 00:04:14,540
-Last time you can see that we have Get response as a raw message.
+Lần trước bạn có thể thấy rằng chúng ta nhận được Get response như một raw message.
 
 57
 00:04:14,540 --> 00:04:22,070
-Now I am going to run this again without debugging and see that how these exception will be handled
+Bây giờ tôi sẽ chạy lại mà không debugging và xem cách exception này sẽ được xử lý
 
 58
 00:04:22,400 --> 00:04:23,480
-with this method.
+với phương thức này.
 
 59
 00:04:23,480 --> 00:04:25,760
-So application is started.
+Vậy ứng dụng đã khởi động.
 
 60
 00:04:25,760 --> 00:04:32,210
-If I send again this http put request, you can see that we get the response as a Json format and it
+Nếu tôi gửi lại http put request này, bạn có thể thấy rằng chúng ta nhận được response dưới dạng Json format và nó
 
 61
 00:04:32,210 --> 00:04:33,260
-is also structured.
+cũng được cấu trúc.
 
 62
 00:04:33,260 --> 00:04:36,530
-You can come to Raw and go back to purity.
+Bạn có thể đến Raw và quay lại dạng purity.
 
 63
 00:04:36,560 --> 00:04:43,070
-You can see that this is the title, information, status and details which including the Stacktrace.
+Bạn có thể thấy đây là tiêu đề, thông tin, trạng thái và chi tiết bao gồm Stacktrace.
 
 64
 00:04:43,070 --> 00:04:49,430
-This is more structural and more easy to read as a formatted Json error response.
+Đây là dạng cấu trúc hơn và dễ đọc hơn như một Json error response được định dạng.
 

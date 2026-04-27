@@ -1,94 +1,94 @@
 1
 00:00:00,140 --> 00:00:07,250
-In this video, we are going to test logging behavior for all mediator requests on catalog API microservices.
+Trong video này, chúng ta sẽ kiểm tra logging behavior cho tất cả mediator requests trên catalog API microservices.
 
 2
 00:00:07,250 --> 00:00:12,860
-So that means we will see how our newly implemented logging behavior works in action.
+Điều đó có nghĩa là chúng ta sẽ thấy cách logging behavior mới được triển khai hoạt động trong thực tế.
 
 3
 00:00:12,860 --> 00:00:19,850
-So first of all, we will clean up our code by removing manual logging from all mediator handlers in
+Vậy đầu tiên, chúng ta sẽ dọn dẹp code bằng cách loại bỏ manual logging từ tất cả mediator handlers trong
 
 4
 00:00:19,850 --> 00:00:21,170
-our catalog API.
+catalog API của chúng ta.
 
 5
 00:00:21,200 --> 00:00:27,230
-That means if you go to the create product handle method, you can see that we have manually log in
+Điều đó có nghĩa là nếu bạn đi đến create product handle method, bạn có thể thấy rằng chúng ta có manually log ở
 
 6
 00:00:27,230 --> 00:00:28,610
-the incoming handle method.
+incoming handle method.
 
 7
 00:00:28,610 --> 00:00:35,450
-For that purpose, we will clean up these logger injections and log operations for each handle method
+Để mục đích đó, chúng ta sẽ dọn dẹp những logger injections và log operations cho mỗi handle method
 
 8
 00:00:35,450 --> 00:00:36,740
-and each use cases.
+và mỗi use cases.
 
 9
 00:00:36,740 --> 00:00:39,380
-So let me start with the create product command.
+Vậy hãy để tôi bắt đầu với create product command.
 
 10
 00:00:39,860 --> 00:00:45,290
-I have removed the logger and remove the log operation in the beginning of the handle method.
+Tôi đã loại bỏ logger và xóa log operation ở đầu handle method.
 
 11
 00:00:45,290 --> 00:00:50,930
-And if you go to the next one, which is the delete product handler, and you can go to the command
+Và nếu bạn đi đến cái tiếp theo, đó là delete product handler, và bạn có thể đi đến command
 
 12
 00:00:50,930 --> 00:00:57,170
-handler class and remove the logger injection and remove the log information in the beginning of the
+handler class và loại bỏ logger injection và xóa log information ở đầu
 
 13
 00:00:57,170 --> 00:01:03,650
-handle method and go to the next one, which is the update product handler.
+handle method và đi đến cái tiếp theo, đó là update product handler.
 
 14
 00:01:03,650 --> 00:01:11,660
-So in here also, I'm going to scroll down and remove the logger and remove the log operation in the
+Vậy ở đây cũng vậy, tôi sẽ cuộn xuống và loại bỏ logger và xóa log operation ở
 
 15
 00:01:11,660 --> 00:01:13,100
-beginning of the handle method.
+đầu handle method.
 
 16
 00:01:14,720 --> 00:01:20,720
-But also we have log operations in the Http get methods, not only Crud operations.
+Nhưng chúng ta cũng có log operations trong Http get methods, không chỉ trong Crud operations.
 
 17
 00:01:20,720 --> 00:01:26,150
-If you open the get products and get product handler, you can see the log information comes in here.
+Nếu bạn mở get products và get product handler, bạn có thể thấy log information ở đây.
 
 18
 00:01:26,150 --> 00:01:29,180
-And also I have to remove these log operation.
+Và tôi cũng phải loại bỏ những log operation này.
 
 19
 00:01:29,180 --> 00:01:36,230
-And I have rely on the these logging behavior for each endpoint and for each use cases.
+Và tôi dựa vào logging behavior này cho mỗi endpoint và cho mỗi use cases.
 
 20
 00:01:36,230 --> 00:01:42,500
-So if you look at the validation behavior and logging behavior in the validation behavior we have a
+Vậy nếu bạn xem validation behavior và logging behavior trong validation behavior, chúng ta có một
 
 21
 00:01:42,500 --> 00:01:44,810
-filter about tracks should be command.
+bộ lọc về tracks nên là command.
 
 22
 00:01:44,810 --> 00:01:50,870
-So that means this behavior only applies for Crud operation which is create delete and update product.
+Điều đó có nghĩa là hành vi này chỉ áp dụng cho hoạt động Crud mà là create, delete và update product.
 
 23
 00:01:50,870 --> 00:01:58,250
-But if you look at the logging behavior this filter is becomes tracks and inherit from the I request
+Nhưng nếu bạn nhìn vào logging behavior, bộ lọc này trở thành tracks và kế thừa từ I request
 
 24
 00:01:58,250 --> 00:01:58,610
@@ -96,55 +96,55 @@ object.
 
 25
 00:01:58,610 --> 00:02:05,030
-And this comes from the mediator and this will be combined both query and command operation.
+Và điều này đến từ mediator và nó sẽ kết hợp cả hoạt động query và command.
 
 26
 00:02:05,030 --> 00:02:11,510
-That means logging behavior will reflect both Http get and other Crud operations together.
+Điều đó có nghĩa là logging behavior sẽ phản ánh cả HTTP get và các hoạt động Crud khác cùng nhau.
 
 27
 00:02:11,510 --> 00:02:19,040
-So for that purpose I am going to open the get products handler and remove the logger injection and
+Vậy nên tôi sẽ mở get products handler và loại bỏ injection logger và
 
 28
 00:02:19,040 --> 00:02:25,760
-remove the log operation at the beginning of the handle method and continue to other get methods.
+loại bỏ hoạt động log ở đầu của handle method và tiếp tục với các get method khác.
 
 29
 00:02:25,760 --> 00:02:34,100
-Get product by ID, go to handle method and remove the I logger and remove the log operation.
+Get product by ID, đi tới handle method và loại bỏ I logger và loại bỏ hoạt động log.
 
 30
 00:02:35,450 --> 00:02:40,550
-So these manual logging are now redundant due to our global logging behavior.
+Vậy nên những logging thủ công này giờ đã trở thành thừa do global logging behavior của chúng ta.
 
 31
 00:02:40,550 --> 00:02:47,780
-And the last item is get product by category and go to handler class and remove these injection and
+Và mục cuối cùng là get product by category và đi tới handler class và loại bỏ những injection này và
 
 32
 00:02:47,780 --> 00:02:49,760
-remove the logger operation.
+loại bỏ hoạt động logger.
 
 33
 00:02:51,440 --> 00:02:58,490
-So as you can see that now these handler methods are more cleaner and only focusing on their actual
+Vậy như bạn có thể thấy, bây giờ những handler method này sạch sẽ hơn và chỉ tập trung vào các logic thực tế
 
 34
 00:02:58,490 --> 00:03:00,170
-logic and core functionality.
+và chức năng cốt lõi của chúng.
 
 35
 00:03:00,470 --> 00:03:07,790
-So after removing these manual injections, now it is time to test various mediator requests to see
+Vậy sau khi loại bỏ những injection thủ công này, bây giờ là lúc để kiểm tra các mediator request khác nhau để xem
 
 36
 00:03:07,790 --> 00:03:11,870
-our logging behavior is log the request and response as expected.
+logging behavior của chúng ta có log request và response như mong đợi hay không.
 
 37
 00:03:11,870 --> 00:03:17,570
-For that purpose, please go to the logging behavior and put a breakpoint at the beginning of the handle
+Vì vậy, hãy đi tới logging behavior và đặt một breakpoint ở đầu của handle
 
 38
 00:03:17,570 --> 00:03:18,170
@@ -152,193 +152,193 @@ method.
 
 39
 00:03:18,170 --> 00:03:23,660
-And after that we can say that put a breakpoint at the end of these log information.
+Và sau đó chúng ta có thể nói rằng đặt một breakpoint ở cuối của những log information này.
 
 40
 00:03:23,660 --> 00:03:27,590
-So now I am going to run this application in a https mode.
+Vậy bây giờ tôi sẽ chạy ứng dụng này ở chế độ https.
 
 41
 00:03:27,590 --> 00:03:35,780
-And I will send different Http requests and see how centralized logging handled into our pipeline behavior.
+Và tôi sẽ gửi các Http request khác nhau và xem cách logging tập trung được xử lý trong pipeline behavior của chúng ta.
 
 42
 00:03:37,070 --> 00:03:38,630
-And the application has started.
+Và ứng dụng đã khởi động.
 
 43
 00:03:38,630 --> 00:03:43,400
-Please open the our postman and I'm going to send an http get request.
+Vui lòng mở Postman của chúng ta và tôi sẽ gửi một http get request.
 
 44
 00:03:43,400 --> 00:03:47,000
-And in here this will be coming to Getproducts endpoint.
+Và ở đây điều này sẽ đến endpoint Getproducts.
 
 45
 00:03:47,000 --> 00:03:53,180
-If I continue with the step over you can see that before handling the actual operation, it has come
+Nếu tôi tiếp tục với step over, bạn có thể thấy rằng trước khi xử lý hoạt động thực tế, nó đã đến
 
 46
 00:03:53,180 --> 00:03:57,290
-to the logging behavior and it is logging the incoming request and response.
+logging behavior và nó đang ghi lại incoming request và response.
 
 47
 00:03:57,290 --> 00:04:02,270
-And after that it starts with timer, and after that this will be triggered to our next method which
+Và sau đó nó bắt đầu với timer, và sau đó cái này sẽ được kích hoạt cho phương thức tiếp theo của chúng ta, đó là
 
 48
 00:04:02,270 --> 00:04:04,070
-is the our actual handle method.
+phương thức handle thực tế của chúng ta.
 
 49
 00:04:04,070 --> 00:04:10,850
-See that actual handle method is triggering and getting all products from the database, and it is returning
+Hãy xem phương thức handle thực tế đang được kích hoạt và lấy tất cả các sản phẩm từ database, và nó đang trả về
 
 50
 00:04:10,850 --> 00:04:14,480
-the response to our result object that will lead us for the.
+response cho result object của chúng ta, điều này sẽ dẫn chúng ta đến.
 
 51
 00:04:15,390 --> 00:04:21,060
-Products, but after that, we can realize that at the end of the actual operation, we can come to
+Products, nhưng sau đó, chúng ta có thể nhận ra rằng ở cuối hoạt động thực tế, chúng ta có thể quay lại
 
 52
 00:04:21,060 --> 00:04:28,440
-the again logging behavior in order to log the finished operation with indicating this is the end of
+logging behavior một lần nữa để ghi lại hoạt động đã hoàn thành với chỉ ra rằng đây là cuối cùng của
 
 53
 00:04:28,440 --> 00:04:31,080
-the handle method and continue the response.
+phương thức handle và tiếp tục response.
 
 54
 00:04:32,510 --> 00:04:34,490
-So now we don't have any products.
+Vậy bây giờ chúng ta không có bất kỳ sản phẩm nào.
 
 55
 00:04:34,490 --> 00:04:41,060
-But if we check the logs in the project console window, you can see that this time we will handle the
+Nhưng nếu chúng ta kiểm tra logs trong cửa sổ console của dự án, bạn có thể thấy rằng lần này chúng ta sẽ xử lý các
 
 56
 00:04:41,060 --> 00:04:43,190
-log operations with logging behavior.
+hoạt động log với logging behavior.
 
 57
 00:04:43,220 --> 00:04:46,700
-This is the start which is the beginning of the handle method.
+Đây là điểm bắt đầu, đó là lúc bắt đầu của phương thức handle.
 
 58
 00:04:46,700 --> 00:04:51,650
-And here you can see the warning message because I'm debugging the code.
+Và ở đây bạn có thể thấy warning message vì tôi đang debug code.
 
 59
 00:04:51,650 --> 00:04:54,860
-And when I was debugging that passed the three seconds.
+Và khi tôi đang debug, đã trôi qua ba giây.
 
 60
 00:04:54,860 --> 00:05:01,580
-And it is adding a performance log and indicate that this operation is took 16 seconds.
+Và nó đang thêm một performance log và chỉ ra rằng hoạt động này mất 16 giây.
 
 61
 00:05:01,610 --> 00:05:04,400
-After that it is putting and logging.
+Sau đó là putting và logging.
 
 62
 00:05:04,400 --> 00:05:08,120
-That means the operation is ended with this behavior.
+Điều đó có nghĩa là operation kết thúc với behavior này.
 
 63
 00:05:08,120 --> 00:05:14,060
-And you can see the handle method name as a get query and the result with name Getproduct result.
+Và bạn có thể thấy tên phương thức handle là get query và kết quả với tên Getproduct result.
 
 64
 00:05:14,060 --> 00:05:21,410
-So if you send another request, for example http post request, you can follow the same request lifecycle.
+Vậy nếu bạn gửi một request khác, ví dụ như http post request, bạn có thể theo dõi cùng request lifecycle.
 
 65
 00:05:21,410 --> 00:05:23,330
-We will start with mediator dot send.
+Chúng ta sẽ bắt đầu với mediator dot send.
 
 66
 00:05:23,330 --> 00:05:27,350
-But the first thing that we should put the validation logic.
+Nhưng điều đầu tiên mà chúng ta nên làm là đặt logic validation.
 
 67
 00:05:27,350 --> 00:05:32,930
-And in here you can remember that the first behavior is validation behavior in the program says that's
+Và ở đây bạn có thể nhớ rằng behavior đầu tiên là validation behavior trong program nói rằng đó là
 
 68
 00:05:32,930 --> 00:05:35,540
-why it is executing validation behavior.
+lý do tại sao nó đang thực thi validation behavior.
 
 69
 00:05:35,540 --> 00:05:41,360
-And after that this validation behavior we have executing the next pipeline behavior, which is the
+Và sau đó validation behavior này chúng ta có thực thi pipeline behavior tiếp theo, đó là
 
 70
 00:05:41,360 --> 00:05:43,340
-logging behavior for that purpose.
+logging behavior cho mục đích đó.
 
 71
 00:05:43,340 --> 00:05:46,220
-It is a adding start log information.
+Nó là adding start log information.
 
 72
 00:05:46,220 --> 00:05:53,030
-And again it is executing actual logic in the command create product command handler method.
+Và lại nó đang thực thi logic thực tế trong phương thức create product command handler.
 
 73
 00:05:53,030 --> 00:05:58,130
-And inside of this method this will be perform actual logic which is create a new product.
+Và bên trong phương thức này nó sẽ thực hiện logic thực tế đó là tạo một product mới.
 
 74
 00:05:58,130 --> 00:06:04,490
-And after that this will again come back to our logging behavior and adding last log information which
+Và sau đó nó sẽ lại quay trở lại logging behavior của chúng ta và adding last log information đó là
 
 75
 00:06:04,490 --> 00:06:06,140
-is end log information.
+end log information.
 
 76
 00:06:06,140 --> 00:06:12,320
-And if you hit F5 and you can see that new product is created, if you open the Project Console window
+Và nếu bạn nhấn F5 và bạn có thể thấy rằng product mới được tạo, nếu bạn mở cửa sổ Project Console
 
 77
 00:06:12,320 --> 00:06:19,520
-and click the right hand side your mouse, you can see that this logs has generated which is starting
+và click chuột ở phía bên phải, bạn có thể thấy rằng logs này được tạo ra bắt đầu
 
 78
 00:06:19,520 --> 00:06:22,700
-from the our Create product command.
+từ Create product command của chúng ta.
 
 79
 00:06:22,700 --> 00:06:23,960
-This is the start command.
+Đây là start command.
 
 80
 00:06:23,960 --> 00:06:29,420
-And with this command object this is the incoming command object that you can see the properties.
+Và với command object này đây là incoming command object mà bạn có thể thấy các properties.
 
 81
 00:06:29,420 --> 00:06:37,140
-And after that again it is adding a performance indicator log to explain that this operation took 11
+Và sau đó nó lại thêm một log chỉ báo hiệu suất để giải thích rằng thao tác này mất 11
 
 82
 00:06:37,140 --> 00:06:37,700
-seconds.
+giây.
 
 83
 00:06:37,700 --> 00:06:39,680
-And lastly this is the end logs.
+Và cuối cùng đây là các log kết thúc.
 
 84
 00:06:39,680 --> 00:06:42,020
-This is generated from the logging behavior.
+Cái này được tạo ra từ logging behavior.
 
 85
 00:06:42,020 --> 00:06:48,140
-So by testing these various requests, we have demonstrated that our logging behavior successfully logs
+Vì vậy bằng cách kiểm tra các yêu cầu khác nhau này, chúng ta đã chứng minh rằng logging behavior của chúng ta thành công trong việc log
 
 86
 00:06:48,140 --> 00:06:51,770
-every mediator request in a consistent and centralized manner.
+mọi mediator request một cách nhất quán và tập trung.
 

@@ -99,5 +99,12 @@
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/003 Add Cross-cutting Concerns into BuildingBlocks Class Library for all services.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/004 Cross-cutting Concerns Validate with AbstractValidator using Fluent Validation.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/005 Validation Pipeline Behaviour with MediatR using Fluent Validation Library.srt": "done",
-  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/006 Remove Manual Validator and Test Validation Pipeline Behaviour with MediatR.srt": "done"
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/006 Remove Manual Validator and Test Validation Pipeline Behaviour with MediatR.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/007 Develop CRUD Command Validators with Fluent Validation Pipeline Behaviour.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/008 Global Handling Exceptions in ASP.NET Core with app.UseExceptionHandler.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/009 BuildingBlocks Handling Exceptions Generic Way w app.UseExceptionHandler.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/010 Global Exception Handling with IExceptionHandler interface in Asp.net Core.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/011 Register Custom Exception Handling into Asp.net with AddExceptionHandler method.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/012 Logging Behavior in MediatR Pipeline for Cross-cutting concerns.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/013 Test Logging Behaviour for all MediatR Requests on Catalog.API microservices.srt": "done"
 }

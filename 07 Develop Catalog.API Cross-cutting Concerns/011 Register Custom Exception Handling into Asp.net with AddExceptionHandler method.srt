@@ -1,30 +1,30 @@
 1
 00:00:00,140 --> 00:00:06,560
-In this video, we are going to register Custom Exception handling class into the ASP.Net with using
+Trong video này, chúng ta sẽ đăng ký lớp Custom Exception handling vào ASP.Net bằng cách sử dụng
 
 2
 00:00:06,560 --> 00:00:09,320
-add exception handler method and remove the old codes.
+phương thức add exception handler và loại bỏ các đoạn code cũ.
 
 3
 00:00:09,320 --> 00:00:13,310
-So here you can see that we have developed custom exception handler.
+Vậy ở đây bạn có thể thấy rằng chúng ta đã phát triển custom exception handler.
 
 4
 00:00:13,310 --> 00:00:17,810
-In order to register this class we should go to the Catholic API Program.cs.
+Để đăng ký lớp này, chúng ta nên đi tới Catholic API Program.cs.
 
 5
 00:00:17,810 --> 00:00:26,030
-But in here, as you can see that we previously used inline code in Program.cs for handling the exceptions.
+Nhưng ở đây, như bạn có thể thấy rằng chúng ta trước đó đã sử dụng code inline trong Program.cs để xử lý các exception.
 
 6
 00:00:26,030 --> 00:00:32,810
-So while this works, it is not the most useful approach, especially for larger microservice applications.
+Vậy mặc dù cách này hoạt động, nhưng nó không phải là cách tiếp cận hữu ích nhất, đặc biệt là đối với các ứng dụng microservice lớn hơn.
 
 7
 00:00:32,810 --> 00:00:38,960
-For that purpose, I am going to remove this part so you can select the all code block and remove these
+Vì mục đích đó, tôi sẽ xóa phần này để bạn có thể chọn toàn bộ khối code và loại bỏ chúng
 
 8
 00:00:38,960 --> 00:00:40,640
@@ -32,7 +32,7 @@ use exception handler.
 
 9
 00:00:40,760 --> 00:00:48,020
-So now we will inject actual custom exception handler class which is a more modular approach using a
+Vậy bây giờ chúng ta sẽ inject lớp custom exception handler thực tế, đây là một cách tiếp cận mô-đun hơn bằng cách sử dụng
 
 10
 00:00:48,020 --> 00:00:49,460
@@ -40,83 +40,83 @@ custom exception handler.
 
 11
 00:00:49,460 --> 00:00:55,880
-So for that purpose you can go on top of these programs JS and remove these using statements.
+Vì vậy, vì mục đích đó, bạn có thể đi tới đầu programs JS này và loại bỏ các using statements này.
 
 12
 00:00:56,000 --> 00:01:00,110
-And in here we can also move these as a global handling.
+Và ở đây chúng ta cũng có thể di chuyển chúng như một global handling.
 
 13
 00:01:00,110 --> 00:01:05,390
-Please go to the global using and make this as a global using block.
+Vui lòng đi tới global using và tạo đây là một global using block.
 
 14
 00:01:06,500 --> 00:01:10,100
-Now we are ready to register our custom exception handler.
+Bây giờ chúng ta đã sẵn sàng để đăng ký custom exception handler của chúng ta.
 
 15
 00:01:10,100 --> 00:01:15,590
-In order to utilize our custom exception handler, we need to register it in our application services
+Để sử dụng custom exception handler của chúng ta, chúng ta cần đăng ký nó trong các application services của chúng ta
 
 16
 00:01:15,590 --> 00:01:17,780
-and configure it in the request pipelines.
+và cấu hình nó trong request pipelines.
 
 17
 00:01:17,780 --> 00:01:19,670
-So we should add two places.
+Vậy chúng ta cần thêm vào hai nơi.
 
 18
 00:01:19,670 --> 00:01:22,190
-The first one is in the container side.
+Nơi đầu tiên là ở phía container.
 
 19
 00:01:22,190 --> 00:01:24,800
-So let me go to the container side.
+Vậy để tôi đi tới phía container.
 
 20
 00:01:24,800 --> 00:01:31,940
-And at the end of this line of code before building the application we can add a exception handler with
+Và ở cuối dòng code này trước khi build ứng dụng, chúng ta có thể thêm một exception handler với
 
 21
 00:01:31,940 --> 00:01:37,730
-using builder services and add exception handler extension method.
+sử dụng builder services và thêm extension method add exception handler.
 
 22
 00:01:37,730 --> 00:01:44,300
-And we can configure with the custom exception which name is custom exception handler class, which
+Và chúng ta có thể cấu hình với custom exception có tên là custom exception handler class, cái mà
 
 23
 00:01:44,300 --> 00:01:50,300
-comes from the our building blocks, which is the using building blocks custom exception handler.
+đến từ building blocks của chúng ta, đó là sử dụng building blocks custom exception handler.
 
 24
 00:01:50,300 --> 00:01:56,060
-So in here we basically add required services into ASP.Net routine dependency injection.
+Vậy ở đây chúng ta cơ bản đang thêm các services cần thiết vào ASP.NET Core dependency injection.
 
 25
 00:01:56,060 --> 00:01:57,950
-And here you can see the using statement.
+Và ở đây bạn có thể thấy using statement.
 
 26
 00:01:57,950 --> 00:02:04,160
-I'm going to also move these using statement to the global using and make this clear our program case.
+Tôi cũng sẽ chuyển các using statement này sang global using và làm cho Program.cs của chúng ta rõ ràng.
 
 27
 00:02:04,160 --> 00:02:09,350
-And if you go back to Program.cs we have completed the registration side.
+Và nếu bạn quay lại Program.cs, chúng ta đã hoàn thành phần đăng ký.
 
 28
 00:02:09,500 --> 00:02:17,000
-But this time we need also add a required pipeline in order to configure our Http pipeline for that
+Nhưng lần này chúng ta cũng cần thêm pipeline cần thiết để cấu hình Http pipeline của chúng ta cho
 
 29
 00:02:17,000 --> 00:02:17,420
-purpose.
+mục đích đó.
 
 30
 00:02:17,420 --> 00:02:28,040
-After the mapping Carter you can use app dot, use exception handler method and you can pass empty option
+Sau khi mapping Carter, bạn có thể sử dụng app dot, phương thức use exception handler và bạn có thể truyền empty option
 
 31
 00:02:28,040 --> 00:02:28,580
@@ -124,79 +124,79 @@ value.
 
 32
 00:02:29,360 --> 00:02:36,410
-So as you can see that in this line of code, we basically add our custom exception handler as a service
+Vậy như bạn có thể thấy trong dòng code này, chúng ta cơ bản đang thêm custom exception handler của chúng ta như một service
 
 33
 00:02:36,410 --> 00:02:38,510
-into built in dependency injection.
+vào built-in dependency injection.
 
 34
 00:02:38,510 --> 00:02:44,510
-And after that, in this line of code we configure the application to use our custom exception handler.
+Và sau đó, trong dòng code này chúng ta cấu hình application để sử dụng custom exception handler của chúng ta.
 
 35
 00:02:44,510 --> 00:02:50,060
-So the empty option parameter indicates that we are relying on custom configured handler.
+Vậy empty option parameter chỉ ra rằng chúng ta đang dựa vào custom configured handler.
 
 36
 00:02:50,060 --> 00:02:54,710
-Now we can test our new setup by triggering different type of exceptions.
+Bây giờ chúng ta có thể test setup mới của chúng ta bằng cách kích hoạt các loại exception khác nhau.
 
 37
 00:02:54,710 --> 00:03:00,800
-But before that I'm going to go to the custom exception handler and put a breakpoint in the try handle
+Nhưng trước đó tôi sẽ đi đến custom exception handler và đặt một breakpoint trong phương thức try handle
 
 38
 00:03:00,800 --> 00:03:04,340
-async method and run this application in an https mode.
+async và chạy ứng dụng này ở chế độ https.
 
 39
 00:03:04,760 --> 00:03:08,000
-So this will be running our catalog microservices.
+Vậy điều này sẽ chạy catalog microservices của chúng ta.
 
 40
 00:03:08,000 --> 00:03:09,020
-And after that.
+Và sau đó.
 
 41
 00:03:10,160 --> 00:03:12,380
-We will open the postman.
+Chúng ta sẽ mở Postman.
 
 42
 00:03:12,380 --> 00:03:19,580
-And in here again I am going to send an http put request and will expected to this kind of structured
+Và ở đây tôi sẽ gửi một HTTP PUT request và dự kiến sẽ nhận được phản hồi có cấu trúc như thế này.
 
 43
 00:03:19,580 --> 00:03:20,420
-response.
+phản hồi.
 
 44
 00:03:20,420 --> 00:03:25,460
-Please send http put request without giving the name information and click the send.
+Vui lòng gửi HTTP PUT request mà không cung cấp thông tin tên và nhấp vào send.
 
 45
 00:03:25,490 --> 00:03:29,390
-Here you can see that this is triggering our update product endpoint.
+Ở đây bạn có thể thấy rằng điều này đang kích hoạt update product endpoint của chúng ta.
 
 46
 00:03:29,390 --> 00:03:36,170
-And once we are validating this request, we don't send a name information.
+Và một khi chúng ta đang xác thực yêu cầu này, chúng ta không gửi thông tin tên.
 
 47
 00:03:36,170 --> 00:03:41,660
-And after these rule definitions you can see that our global exceptions will be triggering.
+Và sau những định nghĩa quy tắc này bạn có thể thấy rằng global exceptions của chúng ta sẽ được kích hoạt.
 
 48
 00:03:41,660 --> 00:03:46,670
-So if I hit the F5 this will be go to the validation exception.
+Vậy nếu tôi nhấn F5 điều này sẽ đi tới validation exception.
 
 49
 00:03:46,670 --> 00:03:52,370
-When we throw the validation exception it is go to the these custom exception handler class.
+Khi chúng ta throw validation exception, nó sẽ đi tới custom exception handler class này.
 
 50
 00:03:52,370 --> 00:03:58,790
-So in here you can see that we are trying handle async method and start with logging the error in the
+Vậy ở đây bạn có thể thấy rằng chúng ta đang cố gắng xử lý async method và bắt đầu bằng cách ghi log lỗi trong
 
 51
 00:03:58,790 --> 00:03:59,810
@@ -204,35 +204,35 @@ exception message.
 
 52
 00:03:59,810 --> 00:04:03,740
-So after that we are switching the incoming exception type.
+Vậy sau đó chúng ta đang chuyển đổi loại exception đến.
 
 53
 00:04:03,740 --> 00:04:08,720
-And accordingly these exception we are defining the detail title and status code.
+Và tương ứng với exception này chúng ta đang định nghĩa detail, title và status code.
 
 54
 00:04:08,720 --> 00:04:11,510
-And here you can see that this is the validation exception.
+Và ở đây bạn có thể thấy rằng đây là validation exception.
 
 55
 00:04:11,510 --> 00:04:16,550
-And after that with these detail information we have prepared our problem details.
+Và sau đó với thông tin detail này chúng ta đã chuẩn bị problem details của chúng ta.
 
 56
 00:04:16,550 --> 00:04:20,990
-And in the problem details we add some extensions which is the trace ID.
+Và trong problem details chúng ta thêm một số extensions đó là trace ID.
 
 57
 00:04:20,990 --> 00:04:26,570
-And also since this is the validation exception we will add validation errors from the these exception
+Và cũng vì đây là validation exception chúng ta sẽ thêm validation errors từ exception class này vào errors message.
 
 58
 00:04:26,570 --> 00:04:28,790
-class in the errors message.
+Vậy sau đó chúng ta có thể trả về dưới dạng Json message như mong đợi.
 
 59
 00:04:28,790 --> 00:04:33,680
-So after that we can return as a Json message as expected.
+Và điều này dễ đọc hơn và dễ quản lý hơn từ phản hồi của chúng ta đến client.
 
 60
 00:04:33,680 --> 00:04:38,000
@@ -240,27 +240,27 @@ And this is more readable and manageable from our response to the client.
 
 61
 00:04:38,000 --> 00:04:40,700
-Here you can see the title as a validation exception.
+Ở đây bạn có thể thấy tiêu đề như một validation exception.
 
 62
 00:04:40,700 --> 00:04:46,940
-And following that you can see the status 400 and details comes from the validation failed name is required
+Và sau đó bạn có thể thấy trạng thái 400 và chi tiết xuất phát từ validation failed, name is required
 
 63
 00:04:46,940 --> 00:04:49,280
-which is the inline exception message.
+đó là inline exception message.
 
 64
 00:04:49,280 --> 00:04:51,920
-And here you can see the instance and trace ID.
+Và ở đây bạn có thể thấy instance và trace ID.
 
 65
 00:04:52,070 --> 00:04:57,230
-And lastly we solve the validation errors which we can add the extension for the problem details.
+Và cuối cùng chúng ta giải quyết validation errors mà chúng ta có thể thêm extension cho problem details.
 
 66
 00:04:57,230 --> 00:05:03,020
-In the validation errors, you can see the whole information about the validation rule into the full
+Trong validation errors, bạn có thể thấy toàn bộ thông tin về validation rule vào full
 
 67
 00:05:03,020 --> 00:05:03,710
