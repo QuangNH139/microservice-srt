@@ -1,178 +1,178 @@
 1
 00:00:00,140 --> 00:00:06,440
-In this video, we are going to explore the code structure of our microservice solution in Visual Studio.
+Trong video này, chúng ta sẽ khám phá cấu trúc code của giải pháp microservice trong Visual Studio.
 
 2
 00:00:06,920 --> 00:00:13,040
-Understanding how our solution is organized is crucial for navigating and maintaining our code base
+Hiểu cách giải pháp của chúng ta được tổ chức là rất quan trọng để điều hướng và duy trì code base của chúng ta
 
 3
 00:00:13,040 --> 00:00:13,850
-effectively.
+một cách hiệu quả.
 
 4
 00:00:13,940 --> 00:00:16,280
-So let me start with the services folder.
+Vậy hãy bắt đầu với thư mục services.
 
 5
 00:00:16,280 --> 00:00:19,010
-If you open the solution, you can see the services folder.
+Nếu bạn mở giải pháp, bạn có thể thấy thư mục services.
 
 6
 00:00:19,010 --> 00:00:23,780
-Services folders include all microservices under the folder structure.
+Thư mục services bao gồm tất cả các microservices dưới cấu trúc thư mục.
 
 7
 00:00:23,780 --> 00:00:30,470
-And here you can see the Catalog Basket discount and ordering microservices located under the services
+Và tại đây bạn có thể thấy các microservices Catalog, Basket, Discount và Ordering được đặt trong thư mục services.
 
 8
 00:00:30,470 --> 00:00:31,070
-folder.
+thư mục.
 
 9
 00:00:31,070 --> 00:00:35,090
-And all these services are ASP.Net web API project.
+Và tất cả những dịch vụ này đều là dự án ASP.NET Web API.
 
 10
 00:00:35,090 --> 00:00:39,800
-And they are structured to encapsulate their own domain logic and dependencies.
+Và chúng được cấu trúc để đóng gói logic domain và dependencies của riêng chúng.
 
 11
 00:00:40,070 --> 00:00:43,070
-And after that we can check the API gateways folder.
+Và sau đó chúng ta có thể kiểm tra thư mục API gateways.
 
 12
 00:00:43,070 --> 00:00:48,560
-And if you open the API gateways folder you can see the API gateway is located in here.
+Và nếu bạn mở thư mục API gateways, bạn có thể thấy API gateway nằm ở đây.
 
 13
 00:00:48,800 --> 00:00:55,130
-API gateways are a pivotal component in our architecture, acting as an entry point for clients in order
+API gateways là một thành phần quan trọng trong kiến trúc của chúng ta, hoạt động như điểm vào cho clients để
 
 14
 00:00:55,130 --> 00:00:57,260
-to communicate with our microservices.
+giao tiếp với các microservices của chúng ta.
 
 15
 00:00:57,350 --> 00:01:03,050
-So after that, you can see the web applications folder inside of the web application folder.
+Vậy sau đó, bạn có thể thấy thư mục web applications ở bên trong thư mục web applications.
 
 16
 00:01:03,050 --> 00:01:05,960
-You can see the Shopping web ASP.Net application.
+Bạn có thể thấy ứng dụng Shopping Web ASP.NET.
 
 17
 00:01:05,960 --> 00:01:08,450
-So there is a shopping web client application.
+Vậy có một ứng dụng shopping web client.
 
 18
 00:01:08,450 --> 00:01:14,270
-And this is the front end application that interacts with our back end services using the API gateways.
+Và đây là ứng dụng front end tương tác với các dịch vụ back end của chúng ta thông qua API gateways.
 
 19
 00:01:14,270 --> 00:01:16,970
-Also we have a building blocks folder.
+Chúng ta cũng có một thư mục building blocks.
 
 20
 00:01:16,970 --> 00:01:22,730
-If you open the building blocks, you can see that the common code that is shared across microservices
+Nếu bạn mở building blocks, bạn có thể thấy rằng code chung được chia sẻ giữa các microservices
 
 21
 00:01:22,730 --> 00:01:25,280
-is placed within the building blocks folder.
+được đặt trong thư mục building blocks.
 
 22
 00:01:25,280 --> 00:01:31,820
-For example, six abstraction classes, cross-cutting concerns, and common NuGet packages stored in
+Ví dụ, các abstract classes, cross-cutting concerns, và các NuGet packages chung được lưu trữ trong
 
 23
 00:01:31,820 --> 00:01:33,650
-the Building Blocks class library.
+thư viện class Building Blocks.
 
 24
 00:01:33,650 --> 00:01:39,500
-Also, we have a Building Blocks messaging class library that include libraries for messaging, event
+Ngoài ra, chúng ta có một thư viện class Building Blocks messaging bao gồm các libraries để gửi tin nhắn, xử lý sự kiện,
 
 25
 00:01:39,500 --> 00:01:41,570
-handling, and other shared utilities.
+và các tiện ích dùng chung khác.
 
 26
 00:01:41,810 --> 00:01:48,050
-So lastly, you can see that we have Docker compose environment and these are the Docker compose files.
+Cuối cùng, bạn có thể thấy rằng chúng ta có Docker Compose environment và đây là các Docker Compose files.
 
 27
 00:01:48,050 --> 00:01:52,730
-You will also notice that the compose files is located at the root.
+Bạn cũng sẽ nhận thấy rằng các compose files nằm ở root.
 
 28
 00:01:52,730 --> 00:01:58,730
-And they are pivotal for orchestrating all microservices in Docker environment and ensuring that they
+Và chúng rất quan trọng để orchestrating tất cả các microservices trong Docker environment và đảm bảo rằng chúng
 
 29
 00:01:58,730 --> 00:02:00,950
-can be deployed and scaled together.
+có thể được triển khai và mở rộng cùng nhau.
 
 30
 00:02:00,950 --> 00:02:07,370
-So if we dive into our microservices under the services folder, you can see that we have a catalog
+Vậy nếu chúng ta đi sâu vào các microservices của chúng ta dưới thư mục services, bạn có thể thấy rằng chúng ta có catalog
 
 31
 00:02:07,370 --> 00:02:14,360
-and basket microservices and both utilize ASP.Net core minimal APIs and which is approach for building
+và basket microservices và cả hai đều sử dụng ASP.NET Core Minimal APIs và đây là một phương pháp để xây dựng
 
 32
 00:02:14,360 --> 00:02:16,370
-high performance Http APIs.
+các HTTP APIs có hiệu suất cao.
 
 33
 00:02:16,370 --> 00:02:20,390
-And each microservice is structured vertical slice architecture.
+Và mỗi microservice được cấu trúc theo vertical slice architecture.
 
 34
 00:02:20,390 --> 00:02:26,060
-If you open the basket and catalog microservices, you can see that this will be follow the vertical
+Nếu bạn mở các basket và catalog microservices, bạn có thể thấy rằng cái này sẽ tuân theo vertical
 
 35
 00:02:26,060 --> 00:02:29,210
-slice architecture in the products and basket folder.
+slice architecture trong các thư mục products và basket.
 
 36
 00:02:29,210 --> 00:02:34,730
-And here you can see the use case are separating the folders according to vertical slice architecture
+Và tại đây bạn có thể thấy các use case được phân tách thành các thư mục theo vertical slice architecture
 
 37
 00:02:34,730 --> 00:02:41,240
-within the feature folders, this means that each feature or slice encapsulates its own logic, routes
+trong các feature folders, điều này có nghĩa là mỗi feature hoặc slice đóng gói logic, routes
 
 38
 00:02:41,240 --> 00:02:45,140
-and dependencies, resulting in isolated and maintainable code.
+và dependencies của riêng nó, dẫn đến code cô lập và dễ bảo trì.
 
 39
 00:02:45,140 --> 00:02:50,630
-Also, with following these folders, these implement sequences using the mediators.
+Ngoài ra, khi tuân theo các thư mục này, những điều này triển khai các sequences bằng cách sử dụng mediators.
 
 40
 00:02:50,630 --> 00:02:56,750
-If you open one of the folder, you can see that the handler method following the mediator and securities
+Nếu bạn mở một trong các thư mục, bạn có thể thấy rằng handler method tuân theo mediator và securities
 
 41
 00:02:56,750 --> 00:02:59,660
-implementation when interacting to database.
+triển khai khi tương tác với cơ sở dữ liệu.
 
 42
 00:02:59,840 --> 00:03:06,110
-So if we look at the ordering microservices under the catalog and discount and basket, you can see
+Vậy nếu chúng ta xem ordering microservices dưới catalog và discount và basket, bạn có thể thấy
 
 43
 00:03:06,110 --> 00:03:07,430
-the ordering microservices.
+ordering microservices.
 
 44
 00:03:07,430 --> 00:03:13,880
-That is where we are implementing more complex patterns using the domain driven design cycles and clean
+Đó là nơi chúng ta triển khai các mẫu phức tạp hơn sử dụng domain driven design cycles và clean
 
 45
 00:03:13,880 --> 00:03:14,570
@@ -180,7 +180,7 @@ architecture.
 
 46
 00:03:14,570 --> 00:03:20,090
-And here you can see the clean architecture splitting into the four distinct layers in ordering domain
+Và ở đây bạn có thể thấy clean architecture chia thành bốn lớp riêng biệt trong ordering domain
 
 47
 00:03:20,090 --> 00:03:20,600
@@ -188,33 +188,33 @@ layer.
 
 48
 00:03:20,600 --> 00:03:23,570
-This is the core business logic and domain entities.
+Đây là logic kinh doanh cốt lõi và các domain entities.
 
 49
 00:03:23,570 --> 00:03:28,820
-In ordering application layer, we will use domain entities to perform the use case and task.
+Trong ordering application layer, chúng ta sẽ sử dụng domain entities để thực hiện use case và task.
 
 50
 00:03:28,820 --> 00:03:34,550
-And here you can see ordering infrastructure that supports the other layers by providing capabilities
+Và ở đây bạn có thể thấy ordering infrastructure hỗ trợ các lớp khác bằng cách cung cấp các khả năng
 
 51
 00:03:34,550 --> 00:03:37,700
-such as the database access and external service classes.
+như database access và external service classes.
 
 52
 00:03:37,700 --> 00:03:39,830
-And here you can see the ordering API.
+Và ở đây bạn có thể thấy ordering API.
 
 53
 00:03:39,860 --> 00:03:47,060
-This is the outermost layer that exposes our microservice to the external world via http API endpoints.
+Đây là lớp ngoài cùng công khai microservice của chúng ta ra thế giới bên ngoài thông qua các HTTP API endpoints.
 
 54
 00:03:47,060 --> 00:03:52,880
-So during the course we will develop each of the microservices and components with together and step
+Vậy trong suốt khóa học chúng ta sẽ phát triển từng microservices và components cùng nhau và từng bước một.
 
 55
 00:03:52,880 --> 00:03:53,420
-by step.
+từng bước một.
 

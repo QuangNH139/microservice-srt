@@ -1,132 +1,132 @@
 1
 00:00:00,080 --> 00:00:04,730
-In this video we are going to learn the benefits of microservices.
+Trong video này chúng ta sẽ tìm hiểu những lợi ích của microservices.
 
 2
 00:00:05,060 --> 00:00:10,460
-As we already talked on previous video, but let's elaborate these benefits one by one.
+Như chúng ta đã nói trong video trước, nhưng hãy chi tiết hóa những lợi ích này từng cái một.
 
 3
 00:00:10,490 --> 00:00:15,050
-The first benefit is agility, innovation and time to market.
+Lợi ích đầu tiên là agility, innovation và time to market.
 
 4
 00:00:15,410 --> 00:00:21,890
-Microservice architecture make applications easier to scale and faster to develop, enabling innovation
+Kiến trúc microservices làm cho các ứng dụng dễ dàng mở rộng quy mô hơn và phát triển nhanh hơn, tạo ra innovation
 
 5
 00:00:21,890 --> 00:00:24,680
-and accelerating time to market for new features.
+và tăng tốc độ time to market cho các tính năng mới.
 
 6
 00:00:24,710 --> 00:00:31,190
-Since microservices are smaller and independently deployable, it is easier to manage bug fixes and
+Vì các microservices nhỏ hơn và có thể triển khai độc lập, nên dễ dàng hơn để quản lý các bản sửa lỗi và
 
 7
 00:00:31,190 --> 00:00:32,479
-feature releases.
+các phiên bản phát hành tính năng.
 
 8
 00:00:32,960 --> 00:00:38,750
-You can update a service without redeploying the entire application and rollback an update if something
+Bạn có thể cập nhật một service mà không cần triển khai lại toàn bộ ứng dụng và có thể rollback một cập nhật nếu có điều gì
 
 9
 00:00:38,750 --> 00:00:39,680
-goes wrong.
+đó không ổn.
 
 10
 00:00:39,890 --> 00:00:46,010
-In monolithic applications, if a bug is found in one part of the application, it can block the entire
+Trong các ứng dụng monolithic, nếu phát hiện ra một lỗi trong một phần của ứng dụng, nó có thể chặn toàn bộ
 
 11
 00:00:46,010 --> 00:00:47,240
-release process.
+quá trình phát hành.
 
 12
 00:00:47,240 --> 00:00:53,510
-So new features was waiting for a bug fix to be integrated, tested and published in microservices.
+Vì vậy các tính năng mới đang chờ để một bản sửa lỗi được tích hợp, kiểm tra và xuất bản trong microservices.
 
 13
 00:00:55,110 --> 00:00:58,200
-Second benefit is flexible scalability.
+Lợi ích thứ hai là flexible scalability.
 
 14
 00:00:58,320 --> 00:01:06,000
-Microservices can be scaled independently so you can scale out sub services that require less resources
+Các microservices có thể được mở rộng độc lập nên bạn có thể mở rộng quy mô các sub services yêu cầu ít tài nguyên hơn
 
 15
 00:01:06,000 --> 00:01:08,850
-without scaling out the entire application.
+mà không cần mở rộng quy mô toàn bộ ứng dụng.
 
 16
 00:01:08,850 --> 00:01:15,480
-So we can say that microservices require less infrastructure than monolithic applications because they
+Vì vậy chúng ta có thể nói rằng microservices yêu cầu ít cơ sở hạ tầng hơn so với các ứng dụng monolithic vì chúng
 
 17
 00:01:15,480 --> 00:01:21,870
-enable precise scaling of only the required services instead of scaling the entire application.
+cho phép mở rộng quy mô chính xác chỉ các services cần thiết thay vì mở rộng quy mô toàn bộ ứng dụng.
 
 18
 00:01:21,870 --> 00:01:29,550
-Also, scaling is very easy with using an container orchestration tool like Kubernetes, we can pack
+Ngoài ra, việc mở rộng quy mô rất dễ dàng khi sử dụng một công cụ container orchestration như Kubernetes, chúng ta có thể đóng gói
 
 19
 00:01:29,550 --> 00:01:35,730
-a higher volume of the services onto a single host, which allows for more efficient utilization of
+một khối lượng cao hơn của các services vào một máy chủ duy nhất, điều này cho phép sử dụng tài nguyên
 
 20
 00:01:35,730 --> 00:01:37,230
-hardware resources.
+phần cứng hiệu quả hơn.
 
 21
 00:01:38,640 --> 00:01:41,580
-Another benefit is small focused teams.
+Một lợi ích khác là small focused teams.
 
 22
 00:01:41,580 --> 00:01:47,850
-Microservices should be small enough that a single featured team can build, test, and deploy it.
+Các microservices phải đủ nhỏ để một featured team duy nhất có thể xây dựng, kiểm tra và triển khai nó.
 
 23
 00:01:47,850 --> 00:01:54,510
-The microservice model enables an organization to create small cross-functional teams around one service
+Mô hình microservice cho phép một tổ chức tạo các small cross-functional teams xung quanh một service
 
 24
 00:01:54,510 --> 00:01:59,670
-or a collection of microservices, and have them operate in agile fashion.
+hoặc một tập hợp các microservices, và để chúng hoạt động theo cách agile.
 
 25
 00:01:59,670 --> 00:02:02,460
-Small team size increases the agility.
+Kích thước team nhỏ làm tăng agility.
 
 26
 00:02:02,460 --> 00:02:09,509
-Large teams tend to be less productive due to communication is slower and management overhead goes up.
+Các team lớn có xu hướng kém năng suất hơn vì giao tiếp chậm hơn và overhead quản lý tăng lên.
 
 27
 00:02:09,509 --> 00:02:16,410
-So that occurs the agility diminishing, so small teams and focused teams provided by microservices.
+Vì vậy agility bị giảm đi, nên các small teams và focused teams được cung cấp bởi microservices.
 
 28
 00:02:16,530 --> 00:02:19,920
-Another benefit is small and separated codebase.
+Một lợi ích khác là small và separated codebase.
 
 29
 00:02:19,920 --> 00:02:24,540
-In monolithic application, the codebase is going to be so bigger over time.
+Trong ứng dụng monolithic, codebase sẽ lớn hơn theo thời gian.
 
 30
 00:02:24,540 --> 00:02:28,110
-For code dependencies to become tangled, try to.
+Để các code dependencies trở nên rối tấu, hãy thử.
 
 31
 00:02:28,110 --> 00:02:32,340
-Adding any feature requires lots of refactoring on existing code base.
+Thêm bất kỳ tính năng nào cũng yêu cầu rất nhiều refactoring trên codebase hiện có.
 
 32
 00:02:32,340 --> 00:02:39,600
-Since microservices are not sharing code or data stores with other services, it minimizes dependencies
+Vì các microservices không chia sẻ code hoặc data stores với các services khác, nó giảm thiểu dependencies
 
 33
 00:02:39,600 --> 00:02:42,450
-and that makes it easier to adding new features.
+và điều đó làm cho việc thêm các tính năng mới dễ dàng hơn.
 

@@ -1,108 +1,108 @@
 1
 00:00:00,200 --> 00:00:04,939
-In this video we are going to explain microservices characteristics.
+Trong video này, chúng ta sẽ giải thích các đặc điểm của microservices.
 
 2
 00:00:06,150 --> 00:00:09,180
-Again, we will refer to Martin Fowler article.
+Một lần nữa, chúng ta sẽ tham khảo bài viết của Martin Fowler.
 
 3
 00:00:09,180 --> 00:00:15,000
-There are some common characteristics for microservice architecture that explain in the Martin Fowler
+Có một số đặc điểm chung cho kiến trúc microservice được giải thích trong bài viết của Martin Fowler
 
 4
 00:00:15,000 --> 00:00:20,670
-article, and Martin Fowler explained these characteristics in these captions.
+và Martin Fowler đã giải thích những đặc điểm này trong các tiêu đề này.
 
 5
 00:00:20,670 --> 00:00:24,810
-You can see the first one is Componentization via services.
+Bạn có thể thấy cái đầu tiên là Componentization via services.
 
 6
 00:00:24,810 --> 00:00:31,710
-Component is a unit of software that is independently replaceable and upgradable, and the second characteristic
+Component là một đơn vị phần mềm có thể thay thế và nâng cấp độc lập, và đặc điểm thứ hai
 
 7
 00:00:31,710 --> 00:00:34,980
-is organized around business capabilities.
+là organized around business capabilities.
 
 8
 00:00:35,220 --> 00:00:41,790
-The microservice approach to division is splitting up into services organized by business capabilities,
+Cách tiếp cận microservice trong việc chia nhỏ là tách thành các services được tổ chức theo business capabilities,
 
 9
 00:00:42,390 --> 00:00:46,080
-and another characteristic is products, not projects.
+và một đặc điểm khác là products, not projects.
 
 10
 00:00:46,080 --> 00:00:52,560
-This is Amazon's notion of you built, you run it, where a developer team takes full responsibility
+Đây là khái niệm của Amazon rằng bạn xây dựng nó, bạn chạy nó, nơi mà một nhóm developer chịu trách nhiệm hoàn toàn
 
 11
 00:00:52,560 --> 00:00:54,330
-for the software in production.
+cho phần mềm trong production.
 
 12
 00:00:55,890 --> 00:00:59,880
-And another characteristic is smart endpoints and dumb pipes.
+Và một đặc điểm khác là smart endpoints and dumb pipes.
 
 13
 00:00:59,880 --> 00:01:05,340
-Microservices aim to be decoupled and cohesive as possible.
+Microservices nhằm mục đích được decoupled và cohesive nhất có thể.
 
 14
 00:01:05,340 --> 00:01:12,090
-So they own their own domain logic and receiving a request, applying logic and producing a response
+Vì vậy chúng sở hữu domain logic của riêng mình, nhận một request, áp dụng logic và tạo ra response
 
 15
 00:01:12,090 --> 00:01:13,980
-with using RESTful APIs.
+bằng cách sử dụng RESTful APIs.
 
 16
 00:01:15,610 --> 00:01:19,180
-And another characteristic is decentralized governance.
+Và một đặc điểm khác là decentralized governance.
 
 17
 00:01:19,690 --> 00:01:25,060
-For example, Netflix is a good example of an organization that follows this philosophy.
+Ví dụ, Netflix là một ví dụ tốt về một tổ chức tuân theo triết lý này.
 
 18
 00:01:25,090 --> 00:01:32,440
-Sharing useful and all tested code as libraries encourage other developers to solve similar problems
+Chia sẻ code hữu ích và đã được kiểm thử dưới dạng libraries khuyến khích các developer khác giải quyết các vấn đề tương tự
 
 19
 00:01:32,440 --> 00:01:33,730
-in similar ways.
+theo những cách tương tự.
 
 20
 00:01:35,760 --> 00:01:42,900
-And also decentralized data management, microservices, also decentralized data storage decisions.
+Và cũng là decentralized data management, microservices cũng có decentralized data storage decisions.
 
 21
 00:01:42,900 --> 00:01:47,670
-We can say this approach as a polyglot, persistence or polyglot databases.
+Chúng ta có thể gọi cách tiếp cận này là polyglot persistence hoặc polyglot databases.
 
 22
 00:01:47,670 --> 00:01:54,480
-That means microservices prefer letting each service manage its own database, either different instance
+Điều đó có nghĩa là microservices ưu tiên để cho phép từng service quản lý cơ sở dữ liệu riêng của nó, có thể là các instance khác nhau
 
 23
 00:01:54,480 --> 00:01:58,650
-of the same database technologies or entirely different database systems.
+của cùng một công nghệ cơ sở dữ liệu hoặc các hệ thống cơ sở dữ liệu hoàn toàn khác nhau.
 
 24
 00:02:00,180 --> 00:02:03,570
-And another characteristic is infrastructure automation.
+Và một đặc điểm khác là infrastructure automation.
 
 25
 00:02:03,570 --> 00:02:09,870
-That means automate deployment to each new environment and for every microservices with separately.
+Điều đó có nghĩa là tự động hóa deployment cho mỗi môi trường mới và cho mỗi microservices riêng biệt.
 
 26
 00:02:10,740 --> 00:02:17,670
-And we can say that design for failure, microservices design by dealing failures and try to manage
+Và chúng ta có thể nói rằng design for failure, microservices được thiết kế bằng cách xử lý failures và cố gắng quản lý
 
 27
 00:02:17,670 --> 00:02:22,350
-failures with managing errors with proper actions and self-healing mechanisms.
+failures bằng cách xử lý errors với các hành động thích hợp và các cơ chế self-healing.
 

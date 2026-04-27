@@ -160,23 +160,23 @@ This allows for the creation and semantic alias for the complex types like tuple
 
 41
 00:03:07,110 --> 00:03:07,620
-types.
+các kiểu dữ liệu.
 
 42
 00:03:07,620 --> 00:03:09,090
-You can see an example.
+Bạn có thể thấy một ví dụ.
 
 43
 00:03:09,090 --> 00:03:16,650
-We can use coordinate alias for the tuple, and we will use coordinate for defining the location parameter.
+Chúng ta có thể sử dụng coordinate alias cho tuple, và chúng ta sẽ sử dụng coordinate để định nghĩa tham số location.
 
 44
 00:03:17,070 --> 00:03:22,470
-So we will use some of these new C 12 features into our microservice applications.
+Vậy chúng ta sẽ sử dụng một số tính năng mới của C# 12 trong các ứng dụng microservice của chúng ta.
 
 45
 00:03:22,470 --> 00:03:28,620
-But especially we will use primary constructs collection expression inline arrays and default lambda
+Nhưng đặc biệt chúng ta sẽ sử dụng primary constructs, collection expression, inline arrays và default lambda
 
 46
 00:03:28,620 --> 00:03:29,460

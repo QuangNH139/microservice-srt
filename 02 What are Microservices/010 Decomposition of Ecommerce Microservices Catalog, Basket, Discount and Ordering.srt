@@ -160,35 +160,35 @@ and so on.
 
 41
 00:03:00,800 --> 00:03:05,420
-Now I am going to extract the nouns and verbs from the user stories.
+Bây giờ tôi sẽ trích xuất các danh từ và động từ từ các user stories.
 
 42
 00:03:05,450 --> 00:03:11,180
-Now I am looking for the nouns that will become the main objects and not attributes.
+Bây giờ tôi đang tìm kiếm các danh từ sẽ trở thành các đối tượng chính chứ không phải các thuộc tính.
 
 43
 00:03:11,210 --> 00:03:17,690
-So here you can see that we have extracted the nouns from the user stories and our nouns.
+Vậy ở đây bạn có thể thấy rằng chúng ta đã trích xuất các danh từ từ các user stories và các danh từ của chúng ta.
 
 44
 00:03:17,690 --> 00:03:23,870
-That means domains are customer order, order details, product, shopping cart, shopping cart, item,
+Điều đó có nghĩa là các domains là customer order, order details, product, shopping cart, shopping cart, item,
 
 45
 00:03:23,870 --> 00:03:27,020
-supplier, user address, brand and category.
+supplier, user address, brand và category.
 
 46
 00:03:27,080 --> 00:03:34,070
-These nouns will help us to find subdomains and bonded contexts, and we have also.
+Các danh từ này sẽ giúp chúng ta tìm ra các subdomains và bounded contexts, và chúng ta cũng đã.
 
 47
 00:03:34,070 --> 00:03:41,000
-Verbs also can be extracted from the verb for understanding the communication between domains.
+Các động từ cũng có thể được trích xuất từ động từ để hiểu rõ hơn về giao tiếp giữa các domains.
 
 48
 00:03:41,060 --> 00:03:48,230
-Our verbs are in here listing products, applying paging filter products by brand, category and supplier.
+Các động từ của chúng ta ở đây là listing products, applying paging filter products by brand, category và supplier.
 
 49
 00:03:48,230 --> 00:03:50,390
@@ -208,67 +208,67 @@ See total cost for each item.
 
 53
 00:03:55,610 --> 00:04:01,970
-Checkout order purchase step specify delivery address and pay for the items.
+Checkout order purchase step specify delivery address và pay for the items.
 
 54
 00:04:01,970 --> 00:04:08,630
-See how many stocks in our application receive order, confirmation list, order and history, and so
+See how many stocks trong ứng dụng của chúng ta receive order, confirmation list, order và history, và v.v.
 
 55
 00:04:08,630 --> 00:04:09,020
-on.
+Và tiếp tục.
 
 56
 00:04:10,370 --> 00:04:14,900
-By using the nouns and verbs we can put together in a diagram.
+Bằng cách sử dụng các danh từ và động từ chúng ta có thể kết hợp lại trong một sơ đồ.
 
 57
 00:04:14,900 --> 00:04:20,510
-For example, you can see in here an example diagram for our e-commerce application.
+Ví dụ, bạn có thể thấy ở đây một sơ đồ ví dụ cho ứng dụng e-commerce của chúng ta.
 
 58
 00:04:20,510 --> 00:04:27,320
-Once we have object interaction diagram, we can start thinking about object responsibilities.
+Khi chúng ta có sơ đồ tương tác các đối tượng, chúng ta có thể bắt đầu suy nghĩ về các trách nhiệm của đối tượng.
 
 59
 00:04:27,320 --> 00:04:33,980
-One of the most common mistake is to push responsibilities on the actor object.
+Một trong những sai lầm phổ biến nhất là đẩy các trách nhiệm lên các đối tượng actor.
 
 60
 00:04:33,980 --> 00:04:35,570
-For example customer.
+Ví dụ như customer.
 
 61
 00:04:35,570 --> 00:04:42,620
-We need to remember that objects must take care of themselves, and objects need to be closed for direct
+Chúng ta cần nhớ rằng các đối tượng phải chăm sóc bản thân chúng, và các đối tượng cần được đóng lại để tránh giao tiếp trực tiếp,
 
 62
 00:04:42,620 --> 00:04:47,840
-communication, and that you need to go through the functions to communicate with them.
+và bạn cần phải đi qua các hàm để giao tiếp với chúng.
 
 63
 00:04:47,840 --> 00:04:52,310
-So let's follow the approach and assign the responsibilities.
+Vậy hãy theo cách tiếp cận này và gán các trách nhiệm.
 
 64
 00:04:52,310 --> 00:04:57,140
-For example, we have a customer and customer has a shopping cart.
+Ví dụ, chúng ta có một customer và customer có một shopping cart.
 
 65
 00:04:57,140 --> 00:05:03,470
-And now we can add items into shopping cart and get total price and so on.
+Và bây giờ chúng ta có thể thêm items vào shopping cart và lấy tổng giá và v.v.
 
 66
 00:05:03,620 --> 00:05:13,370
-Same way customer has an order that we can place an order and get order summary that and we can specify
+Tương tự như vậy customer có một order mà chúng ta có thể place an order và get order summary và chúng ta có thể specify
 
 67
 00:05:13,370 --> 00:05:15,080
-credit card and so on.
+credit card và v.v.
 
 68
 00:05:15,380 --> 00:05:22,880
-Now we have object interactions and responsibility diagrams that we can start thinking about microservice
+Bây giờ chúng ta có object interactions và responsibility diagrams mà chúng ta có thể bắt đầu suy nghĩ về microservice
 
 69
 00:05:22,880 --> 00:05:23,900
@@ -276,43 +276,43 @@ decomposition.
 
 70
 00:05:23,900 --> 00:05:28,190
-Here you can see the example offering the microservices.
+Ở đây bạn có thể thấy ví dụ về các microservices.
 
 71
 00:05:28,190 --> 00:05:34,970
-If you follow the same steps that we applied in the previous video, that means following the nouns
+Nếu bạn làm theo các bước giống như chúng ta đã áp dụng trong video trước, điều đó có nghĩa là theo dõi các danh từ
 
 72
 00:05:34,970 --> 00:05:41,900
-and verbs and creating the domain and bounded context and identifying the sub domains, we can see that
+và động từ và tạo domain và bounded context và xác định các sub domains, chúng ta có thể thấy rằng
 
 73
 00:05:41,900 --> 00:05:45,110
-we will have reached out this kind of microservices.
+chúng ta sẽ đạt được loại microservices này.
 
 74
 00:05:45,110 --> 00:05:52,670
-First of all, I grouped them as a main microservices that include the customers or users, product,
+Đầu tiên, tôi nhóm chúng làm các microservices chính bao gồm customers hoặc users, product,
 
 75
 00:05:52,700 --> 00:05:55,490
-shopping cart, discount and orders.
+shopping cart, discount và orders.
 
 76
 00:05:55,490 --> 00:05:59,240
-These are the main microservices for our e-commerce application.
+Đây là các microservices chính cho ứng dụng e-commerce của chúng ta.
 
 77
 00:05:59,240 --> 00:06:06,890
-And I have also separate for the order fulfillment or transactional microservices that we can define
+Và tôi cũng tách riêng order fulfillment hoặc transactional microservices mà chúng ta có thể xác định
 
 78
 00:06:06,890 --> 00:06:12,320
-order, payment, inventory, shipment, billing, notify, and so on.
+order, payment, inventory, shipment, billing, notify, và v.v.
 
 79
 00:06:12,320 --> 00:06:18,200
-These can be used for the order fulfillment process when we are applying Saga pattern and distributed
+Các microservices này có thể được sử dụng cho quá trình order fulfillment khi chúng ta áp dụng Saga pattern và distributed
 
 80
 00:06:18,200 --> 00:06:19,430
@@ -320,33 +320,33 @@ transactions.
 
 81
 00:06:19,430 --> 00:06:21,920
-This is the order fulfillment asynchronous use case.
+Đây là use case bất đồng bộ của order fulfillment.
 
 82
 00:06:21,920 --> 00:06:23,840
-And these are the main microservices.
+Và đây là các microservices chính.
 
 83
 00:06:23,840 --> 00:06:29,180
-And we have additional microservices like identity marketing and location.
+Và chúng ta có các microservices bổ sung như identity, marketing và location.
 
 84
 00:06:29,180 --> 00:06:36,590
-And as the same way we have intelligence microservices for example, rating reviews, search products,
+Và theo cách tương tự, chúng ta cũng có các microservices thông minh, ví dụ như rating, reviews, search products,
 
 85
 00:06:36,590 --> 00:06:39,740
-recommendation engine or finance and so on.
+recommendation engine hoặc finance và những microservices khác.
 
 86
 00:06:39,740 --> 00:06:45,260
-So these are the potential microservices that we can apply our design afterwards.
+Vậy đây là các microservices tiềm năng mà chúng ta có thể áp dụng thiết kế của mình sau này.
 
 87
 00:06:45,260 --> 00:06:51,830
-As you can see that we have understand how to identify and decompose microservices for our e-commerce
+Như bạn có thể thấy, chúng ta đã hiểu cách để xác định và phân tách các microservices cho e-commerce
 
 88
 00:06:51,830 --> 00:06:54,860
-domain and create our final microservices.
+domain của chúng ta và tạo ra các microservices cuối cùng.
 

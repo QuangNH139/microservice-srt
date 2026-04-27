@@ -1,152 +1,152 @@
 1
 00:00:00,140 --> 00:00:06,740
-In this video, we are going to learn when to use microservice architecture and what is the best practices
+Trong video này, chúng ta sẽ học khi nào nên sử dụng microservice architecture và best practices là gì
 
 2
 00:00:06,740 --> 00:00:08,150
-of microservice architecture.
+của microservice architecture.
 
 3
 00:00:09,170 --> 00:00:16,280
-The first reason is make sure you have a really good reason for implementing microservices before starting
+Lý do đầu tiên là đảm bảo bạn có một lý do thực sự tốt để triển khai microservices trước khi bắt đầu
 
 4
 00:00:16,280 --> 00:00:17,390
-with microservices.
+với microservices.
 
 5
 00:00:17,420 --> 00:00:21,350
-You should check if your application can do without microservices.
+Bạn nên kiểm tra xem ứng dụng của bạn có thể hoạt động mà không cần microservices hay không.
 
 6
 00:00:21,890 --> 00:00:28,370
-When your application requires a high level of independent scalability and requires agility to time
+Khi ứng dụng của bạn yêu cầu khả năng mở rộng độc lập ở mức cao và cần sự nhanh nhạy để rút ngắn thời gian
 
 7
 00:00:28,370 --> 00:00:34,880
-to market with zero downtime deployments and updated independently, that needs to more flexibility,
+đưa ra thị trường với zero downtime deployments và cập nhật độc lập, điều đó cần sự linh hoạt hơn,
 
 8
 00:00:34,880 --> 00:00:38,000
-then you should embrace the microservice architecture.
+thì bạn nên áp dụng microservice architecture.
 
 9
 00:00:38,120 --> 00:00:44,930
-But the idea is that you have to make sure you have a really good reason for implementing microservices.
+Nhưng ý tưởng là bạn phải đảm bảo rằng bạn có một lý do thực sự tốt để triển khai microservices.
 
 10
 00:00:46,100 --> 00:00:52,310
-Developers tend to focus too much on the latest technology tools, for example, microservices.
+Các nhà phát triển có xu hướng tập trung quá nhiều vào công cụ công nghệ mới nhất, ví dụ như microservices.
 
 11
 00:00:52,520 --> 00:00:59,120
-Instead of that, developers and architects should consider the reasons why for implementation, and
+Thay vào đó, các nhà phát triển và kiến trúc sư nên xem xét những lý do tại sao cần triển khai, và
 
 12
 00:00:59,120 --> 00:01:05,030
-they should also focus on the result that the technology tools drive to achieve that results.
+họ cũng nên tập trung vào kết quả mà công cụ công nghệ mang lại để đạt được những kết quả đó.
 
 13
 00:01:06,080 --> 00:01:12,410
-Another reason is iterate with small changes and keep the single process monolithic as your default.
+Lý do khác là thực hiện lặp lại với những thay đổi nhỏ và giữ single process monolithic làm mặc định của bạn.
 
 14
 00:01:12,500 --> 00:01:19,370
-When we talk about modular monolithic architecture, we saw that Sam Nunn and Martin Fowler offers monolithic
+Khi chúng ta nói về modular monolithic architecture, chúng ta thấy rằng Sam Newman và Martin Fowler đề xuất phương pháp monolithic
 
 15
 00:01:19,370 --> 00:01:26,750
-first approaches, because modular architecture also covers a lot of benefits of microservices, with
+trước tiên, bởi vì modular architecture cũng mang lại nhiều lợi ích của microservices, đồng thời
 
 16
 00:01:26,750 --> 00:01:29,510
-avoiding lots of complexity of microservices.
+tránh được rất nhiều độ phức tạp của microservices.
 
 17
 00:01:29,930 --> 00:01:34,790
-Because a single process, monolithic application comes with a simple deployment topology.
+Bởi vì một single process monolithic application đi kèm với một topology triển khai đơn giản.
 
 18
 00:01:34,940 --> 00:01:41,600
-Sam Newman and Martin Fowler offers start with small changes and keep the single process monolithic
+Sam Newman và Martin Fowler đề xuất bắt đầu với những thay đổi nhỏ và giữ single process monolithic
 
 19
 00:01:41,600 --> 00:01:42,740
-as your default.
+làm mặc định của bạn.
 
 20
 00:01:43,490 --> 00:01:49,190
-They recommend that even they go to microservices, they should start with modular monolithic architecture
+Họ khuyên rằng ngay cả khi chuyển sang microservices, họ nên bắt đầu với modular monolithic architecture
 
 21
 00:01:49,190 --> 00:01:55,730
-and simply refactor with turning a single module from the monolithic into the microservices one by one,
+và đơn giản là refactor bằng cách chuyển một module từ monolithic sang microservices từng cái một,
 
 22
 00:01:55,730 --> 00:01:57,230
-and see how it works.
+và xem nó hoạt động như thế nào.
 
 23
 00:01:58,170 --> 00:01:59,430
-After all these things.
+Sau tất cả những điều này.
 
 24
 00:01:59,430 --> 00:02:05,970
-If your application required to independently deploy new functionality with zero downtime, then microservices
+Nếu ứng dụng của bạn cần triển khai chức năng mới một cách độc lập với zero downtime, thì microservices
 
 25
 00:02:05,970 --> 00:02:07,380
-are extremely useful.
+cực kỳ hữu ích.
 
 26
 00:02:07,380 --> 00:02:14,160
-When organization need to make a change to functionality and deploy that functionality without affecting
+Khi tổ chức cần thay đổi chức năng và triển khai chức năng đó mà không ảnh hưởng đến
 
 27
 00:02:14,160 --> 00:02:15,270
-the rest of the system.
+phần còn lại của hệ thống.
 
 28
 00:02:16,470 --> 00:02:23,070
-This is the power of the microservices, and it is allows to deploy new functionality without any downtime.
+Đây là sức mạnh của microservices, và nó cho phép triển khai chức năng mới mà không có downtime.
 
 29
 00:02:23,310 --> 00:02:26,460
-That means independent microservices.
+Điều đó có nghĩa là microservices độc lập.
 
 30
 00:02:26,460 --> 00:02:31,080
-Each service can be deployed and updated independently, providing more flexibility.
+Mỗi service có thể được triển khai và cập nhật độc lập, cung cấp sự linh hoạt hơn.
 
 31
 00:02:31,750 --> 00:02:39,580
-An error in a microservices only has effect on one specific service that doesn't affect the entire application.
+Một lỗi trong microservices chỉ ảnh hưởng đến một service cụ thể mà không ảnh hưởng đến toàn bộ ứng dụng.
 
 32
 00:02:39,610 --> 00:02:45,520
-Also, adding new features to microservice application is easier than a monolithic application, whether
+Ngoài ra, thêm các tính năng mới vào ứng dụng microservice dễ dàng hơn một ứng dụng monolithic, dù
 
 33
 00:02:45,520 --> 00:02:48,100
-the application is very large or very small.
+ứng dụng rất lớn hay rất nhỏ.
 
 34
 00:02:48,130 --> 00:02:53,830
-Adding new features and maintaining existing code is easy, because it is sufficient to make changes
+Thêm các tính năng mới và duy trì mã hiện có là dễ dàng, bởi vì chỉ cần thực hiện những thay đổi
 
 35
 00:02:53,830 --> 00:02:56,080
-only within relevant microservices.
+trong các microservices liên quan.
 
 36
 00:02:56,870 --> 00:03:02,120
-Another good reason is required to independently scale a portion of application.
+Một lý do tốt khác là cần mở rộng quy mô một phần của ứng dụng một cách độc lập.
 
 37
 00:03:02,480 --> 00:03:08,510
-If your application required to independently scale a portion of the application, then microservices
+Nếu ứng dụng của bạn cần mở rộng quy mô một phần của ứng dụng một cách độc lập, thì microservices
 
 38
 00:03:08,510 --> 00:03:12,350
-are an excellent choice for this kind of operations and applications.
+là một lựa chọn tuyệt vời cho loại hoạt động và ứng dụng này.
 
