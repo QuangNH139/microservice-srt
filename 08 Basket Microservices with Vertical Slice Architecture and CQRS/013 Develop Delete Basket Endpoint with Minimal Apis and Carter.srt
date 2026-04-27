@@ -1,86 +1,86 @@
 1
 00:00:00,110 --> 00:00:06,560
-In this video we are going to develop delete basket endpoint with using minimal API and Carter.
+Trong video này, chúng ta sẽ phát triển delete basket endpoint bằng cách sử dụng Minimal API và Carter.
 
 2
 00:00:06,560 --> 00:00:10,700
-For that purpose, please open the Visual Studio and go to Delete basket.
+Để làm điều đó, vui lòng mở Visual Studio và đi tới Delete basket.
 
 3
 00:00:10,700 --> 00:00:13,580
-Use case folder and open the delete basket and print.
+Mở Use case folder và mở delete basket và print.
 
 4
 00:00:13,610 --> 00:00:17,420
-The first thing we should do that define request and response object.
+Điều đầu tiên chúng ta nên làm là định nghĩa request và response object.
 
 5
 00:00:17,420 --> 00:00:23,180
-So as a request object I put command to delete basket request because we will get username from the
+Vậy là một request object, tôi đặt command để delete basket request vì chúng ta sẽ lấy username từ
 
 6
 00:00:23,180 --> 00:00:30,110
-request parameters and as a response object we will develop the delete basket response object, including
+request parameters và là một response object, chúng ta sẽ phát triển delete basket response object, bao gồm
 
 7
 00:00:30,110 --> 00:00:35,840
-the Issuccess same as the r handler class delete basket command operation.
+Issuccess giống như lớp r handler delete basket command operation.
 
 8
 00:00:35,870 --> 00:00:42,470
-After that, we can expose http delete operation into our delete basket endpoint with inheriting from
+Sau đó, chúng ta có thể expose http delete operation vào delete basket endpoint của chúng ta bằng cách kế thừa từ
 
 9
 00:00:42,470 --> 00:00:48,110
-the I Carter module, which comes from the Carter library and implement the members and this will be
+I Carter module, nó đến từ thư viện Carter và triển khai các members, và điều này sẽ
 
 10
 00:00:48,110 --> 00:00:54,170
-create add routes method that we can expose HTTP delete operations inside of this method.
+tạo phương thức add routes mà chúng ta có thể expose HTTP delete operations bên trong phương thức này.
 
 11
 00:00:54,170 --> 00:01:01,280
-So basically I'm going to exposing delete operation using the app dot map delete method.
+Về cơ bản, tôi sẽ expose delete operation bằng cách sử dụng phương thức app dot map delete.
 
 12
 00:01:01,280 --> 00:01:05,269
-And these are the endpoint of our delete operation.
+Và đây là endpoint của delete operation của chúng ta.
 
 13
 00:01:05,269 --> 00:01:08,540
-This username specifying in the request parameters.
+Username này được chỉ định trong request parameters.
 
 14
 00:01:08,540 --> 00:01:11,990
-That's why we will get the username in the asynchronous delegate handler.
+Đó là lý do tại sao chúng ta sẽ lấy username trong asynchronous delegate handler.
 
 15
 00:01:11,990 --> 00:01:13,790
-And injecting the I sender.
+Và inject I sender.
 
 16
 00:01:13,820 --> 00:01:15,050
-The first line of code.
+Dòng code đầu tiên.
 
 17
 00:01:15,050 --> 00:01:18,170
-We basically sending the mediator send operation.
+Về cơ bản, chúng ta đang gửi mediator send operation.
 
 18
 00:01:18,170 --> 00:01:21,560
-And we will passing the command object with incoming username.
+Và chúng ta sẽ truyền command object với incoming username.
 
 19
 00:01:21,560 --> 00:01:26,390
-And this will be run the our delete basket command handler and return back the result.
+Và điều này sẽ chạy delete basket command handler của chúng ta và trả lại result.
 
 20
 00:01:26,390 --> 00:01:31,610
-And we will convert the result object to the response with using the master and the last line of code,
+Và chúng ta sẽ chuyển đổi result object thành response bằng cách sử dụng Mapster, và dòng code cuối cùng,
 
 21
 00:01:31,610 --> 00:01:33,620
-we basically return to the client okay.
+chúng ta cơ bản trả về cho client okay.
 
 22
 00:01:33,650 --> 00:01:34,190
@@ -88,17 +88,17 @@ Response.
 
 23
 00:01:34,190 --> 00:01:37,970
-And these are the configurations of the HTTP delete operation.
+Và đây là các cấu hình của HTTP delete operation.
 
 24
 00:01:38,030 --> 00:01:40,430
-Please develop these codes into your computer.
+Vui lòng phát triển những đoạn code này trên máy tính của bạn.
 
 25
 00:01:40,430 --> 00:01:42,410
-And we don't have any using statement.
+Và chúng ta không có bất kỳ using statement nào.
 
 26
 00:01:42,410 --> 00:01:45,590
-And this is the our delete basket endpoint definition.
+Và đây là định nghĩa delete basket endpoint của chúng ta.
 
