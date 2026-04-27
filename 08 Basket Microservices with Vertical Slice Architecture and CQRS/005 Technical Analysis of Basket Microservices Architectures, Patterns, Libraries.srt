@@ -1,90 +1,90 @@
 1
 00:00:00,170 --> 00:00:05,330
-In this video we are going to do technical analysis of basket microservices.
+Trong video này chúng ta sẽ tiến hành phân tích kỹ thuật của basket microservices.
 
 2
 00:00:05,510 --> 00:00:10,040
-This technical analysis includes application architecture analysis.
+Phân tích kỹ thuật này bao gồm phân tích kiến trúc ứng dụng.
 
 3
 00:00:10,040 --> 00:00:12,500
-And we will see patterns and principles.
+Và chúng ta sẽ xem các patterns và principles.
 
 4
 00:00:12,500 --> 00:00:16,940
-And we will learn libraries and NuGet packages that we are going to use.
+Và chúng ta sẽ học các libraries và NuGet packages mà chúng ta sẽ sử dụng.
 
 5
 00:00:16,970 --> 00:00:22,490
-And lastly we will see project folder structure of our current basket microservices.
+Và cuối cùng chúng ta sẽ xem cấu trúc thư mục dự án của basket microservices hiện tại của chúng ta.
 
 6
 00:00:22,490 --> 00:00:29,360
-And we always say that each microservices can be follow different application architecture styles for
+Và chúng ta luôn nói rằng mỗi microservices có thể theo các kiểu kiến trúc ứng dụng khác nhau cho
 
 7
 00:00:29,360 --> 00:00:30,830
-internal architectures.
+kiến trúc nội bộ.
 
 8
 00:00:30,830 --> 00:00:36,440
-If you look at the application architecture style for basket microservices, we can see that we will
+Nếu bạn nhìn vào kiểu kiến trúc ứng dụng cho basket microservices, chúng ta có thể thấy rằng chúng ta sẽ
 
 9
 00:00:36,440 --> 00:00:41,510
-follow vertical slice architecture that organize our code into feature folders.
+theo vertical slice architecture mà tổ chức mã của chúng ta vào các feature folders.
 
 10
 00:00:41,510 --> 00:00:45,440
-And each feature folder is encapsulated in a single C sharp file.
+Và mỗi feature folder được đóng gói trong một tệp C# duy nhất.
 
 11
 00:00:45,440 --> 00:00:49,460
-So we will follow the same architecture style with Catholic microservices.
+Vậy chúng ta sẽ theo cùng kiểu kiến trúc với Catholic microservices.
 
 12
 00:00:49,460 --> 00:00:54,260
-But in the upcoming microservices we will follow different application architecture styles.
+Nhưng trong các microservices sắp tới chúng ta sẽ theo các kiểu kiến trúc ứng dụng khác nhau.
 
 13
 00:00:55,430 --> 00:01:01,010
-If you look at the pattern and principles that we are going to follow in basket microservices, we will
+Nếu bạn nhìn vào patterns và principles mà chúng ta sẽ theo trong basket microservices, chúng ta sẽ
 
 14
 00:01:01,010 --> 00:01:07,220
-implement different patterns like circles, mediator and principles like dependency injection, minimal
+triển khai các patterns khác nhau như circles, mediator và principles như dependency injection, minimal
 
 15
 00:01:07,220 --> 00:01:08,510
-APIs and so on.
+APIs và nhiều hơn nữa.
 
 16
 00:01:08,510 --> 00:01:11,810
-These are the same as the Catholic API microservices.
+Đây là những cái tương tự như Catholic API microservices.
 
 17
 00:01:11,810 --> 00:01:15,950
-But additionally we will learn and implement repository pattern.
+Nhưng ngoài ra chúng ta sẽ học và triển khai Repository Pattern.
 
 18
 00:01:15,950 --> 00:01:22,640
-So repository pattern is a domain driven design pattern intended to keep persistence concerns outside
+Vậy Repository Pattern là một mẫu thiết kế domain driven design nhằm giữ các mối quan tâm về persistence ngoài
 
 19
 00:01:22,640 --> 00:01:24,350
-of the systems domain model.
+domain model của hệ thống.
 
 20
 00:01:24,740 --> 00:01:26,990
-It provides an abstraction of data.
+Nó cung cấp một abstraction của dữ liệu.
 
 21
 00:01:26,990 --> 00:01:31,250
-That application can work with a simple abstraction interfaces.
+Ứng dụng đó có thể hoạt động với các interface trừu tượng đơn giản.
 
 22
 00:01:31,340 --> 00:01:38,270
-So we will use this pattern that achieved the loosely coupling and we can keep domain objects persistence
+Vậy chúng ta sẽ sử dụng mẫu này đạt được sự loosely coupling và chúng ta có thể giữ các domain objects persistence
 
 23
 00:01:38,270 --> 00:01:39,080
@@ -92,11 +92,11 @@ ignorant.
 
 24
 00:01:39,650 --> 00:01:46,100
-Also, we can follow other patterns including the securities pattern, mediator pattern, dependency
+Cũng như vậy, chúng ta có thể theo các mẫu khác bao gồm securities pattern, mediator pattern, dependency
 
 25
 00:01:46,100 --> 00:01:52,070
-injection in ASP.Net core, and minimal APIs and routing patterns that we have already learned in the
+injection trong ASP.Net core, và minimal APIs cùng routing patterns mà chúng ta đã học trong
 
 26
 00:01:52,070 --> 00:01:52,460
@@ -108,113 +108,113 @@ Microservices.
 
 28
 00:01:53,750 --> 00:02:00,320
-If you look at the libraries and NuGet packages of basket microservices, we can say that we will use
+Nếu bạn xem các thư viện và NuGet packages của basket microservices, chúng ta có thể nói rằng chúng ta sẽ sử dụng
 
 29
 00:02:00,320 --> 00:02:07,280
-mediator for securities, Carter for API endpoints, Martin for interacting with the PostgreSQL as a
+mediator cho securities, Carter cho API endpoints, Marten để tương tác với PostgreSQL như một
 
 30
 00:02:07,280 --> 00:02:13,250
-document database, Napster for object mapping, and fluent validation for input validation.
+database tài liệu, Mapster cho object mapping, và fluent validation cho input validation.
 
 31
 00:02:13,490 --> 00:02:18,260
-Most of these packages will already comes from the building Blocks class library.
+Hầu hết các packages này sẽ đã có từ building blocks class library.
 
 32
 00:02:18,260 --> 00:02:24,410
-That basket will getting reference building blocks into the basket API project in order to implement
+Basket sẽ nhận tham chiếu building blocks vào basket API project để triển khai
 
 33
 00:02:24,410 --> 00:02:29,330
-common operations into basket microservices, similar to catalog microservices.
+các hoạt động chung trong basket microservices, tương tự như catalog microservices.
 
 34
 00:02:29,870 --> 00:02:35,780
-After developing the this section, we will continue to develop basket microservices with new pattern
+Sau khi phát triển phần này, chúng ta sẽ tiếp tục phát triển basket microservices với mẫu mới
 
 35
 00:02:35,780 --> 00:02:41,810
-and principles and libraries that you can see that we will use security library to implement decorator
+và các nguyên tắc cùng thư viện mà bạn có thể thấy rằng chúng ta sẽ sử dụng security library để triển khai decorator
 
 36
 00:02:41,810 --> 00:02:48,650
-pattern gRPC for inter service communication, Redis for developing distributed case and Masstransit
+pattern, gRPC cho inter service communication, Redis để phát triển distributed cache và Masstransit
 
 37
 00:02:48,650 --> 00:02:50,720
-library for RabbitMQ operations.
+library cho RabbitMQ operations.
 
 38
 00:02:51,020 --> 00:02:55,550
-So now let's see the project folder structure of the basket microservices.
+Vậy bây giờ hãy xem cấu trúc thư mục dự án của basket microservices.
 
 39
 00:02:55,550 --> 00:03:01,610
-You can see the folder structure in here we will follow the these vertical slice architecture.
+Bạn có thể thấy cấu trúc thư mục tại đây chúng ta sẽ theo vertical slice architecture.
 
 40
 00:03:01,610 --> 00:03:06,620
-And this project is organized into model features data and abstractions.
+Và dự án này được tổ chức thành các model, features, data và abstractions.
 
 41
 00:03:06,620 --> 00:03:13,970
-Folder feature folders like Get Basket and Store Basket have dedicated handler and endpoint definitions.
+Các thư mục feature folders như Get Basket và Store Basket có các định nghĩa handler và endpoint riêng biệt.
 
 42
 00:03:13,970 --> 00:03:16,850
-Feature folder will be basket in our case.
+Feature folder sẽ là basket trong trường hợp của chúng ta.
 
 43
 00:03:16,850 --> 00:03:21,230
-And we will have also data folder and repository objects.
+Và chúng ta cũng sẽ có thư mục data và các repository objects.
 
 44
 00:03:21,230 --> 00:03:25,280
-Manage the database and cache interaction in the repository objects.
+Quản lý tương tác với cơ sở dữ liệu và cache trong các repository objects.
 
 45
 00:03:25,490 --> 00:03:28,880
-So you can see that we have a feature folder which name is basket.
+Vậy bạn có thể thấy rằng chúng ta có một feature folder với tên là basket.
 
 46
 00:03:28,880 --> 00:03:35,000
-And under this feature folder we have use cases including get basket, delete basket checkout basket
+Và trong feature folder này chúng ta có các use cases bao gồm get basket, delete basket, checkout basket
 
 47
 00:03:35,000 --> 00:03:36,260
-and store basket.
+và store basket.
 
 48
 00:03:36,260 --> 00:03:41,810
-And also we have a data folder in order to implement the repository pattern and to connect with the
+Và cũng có một thư mục data để triển khai Repository Pattern và kết nối với
 
 49
 00:03:41,810 --> 00:03:45,440
-Martin PostgreSQL database and also Redis cache.
+Marten PostgreSQL database và cũng Redis cache.
 
 50
 00:03:45,440 --> 00:03:50,810
-That's why we have implemented the repository pattern to connect to different resources.
+Đó là lý do tại sao chúng ta đã triển khai Repository Pattern để kết nối với các tài nguyên khác nhau.
 
 51
 00:03:51,500 --> 00:03:56,180
-So lastly we will implement deployment of the basket microservices.
+Vậy cuối cùng chúng ta sẽ triển khai triển khai các basket microservices.
 
 52
 00:03:56,180 --> 00:04:02,450
-We will containerize our services with Docker ensuring seamless deployment and integration with PostgreSQL
+Chúng ta sẽ đóng gói các services của mình với Docker đảm bảo triển khai và tích hợp liền mạch với PostgreSQL
 
 53
 00:04:02,480 --> 00:04:03,530
-and Redis cache.
+và Redis cache.
 
 54
 00:04:03,530 --> 00:04:09,560
-And after that we will implement docker file and docker compose file for running the basket microservices
+Và sau đó chúng ta sẽ triển khai docker file và docker compose file để chạy các basket microservices
 
 55
 00:04:09,560 --> 00:04:13,280
-on PostgreSQL database and Redis cache in the environment.
+trên PostgreSQL database và Redis cache trong môi trường.
 
