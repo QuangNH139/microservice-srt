@@ -1,70 +1,70 @@
 1
 00:00:00,200 --> 00:00:05,750
-In this video we are going to develop basket repository classes using Martin Library.
+Trong video này chúng ta sẽ phát triển các lớp basket repository sử dụng Martin Library.
 
 2
 00:00:05,750 --> 00:00:11,900
-So we will use primary constructs in order to inject repository classes into our handler class.
+Vậy chúng ta sẽ sử dụng primary constructs để inject các lớp repository vào handler class của chúng ta.
 
 3
 00:00:12,350 --> 00:00:14,930
-So we will focus on three main components.
+Vậy chúng ta sẽ tập trung vào ba thành phần chính.
 
 4
 00:00:14,930 --> 00:00:20,150
-These are the eye basket repository basket repository and cache basket repository.
+Đó là IBasketRepository, BasketRepository và CacheBasketRepository.
 
 5
 00:00:20,420 --> 00:00:26,870
-So these classes form of the core of our repository pattern for the basket microservices.
+Vậy những lớp này tạo thành lõi của Repository Pattern cho basket microservices.
 
 6
 00:00:27,200 --> 00:00:34,760
-First of all we will create a basket repository interface that defines our contract for repository classes.
+Đầu tiên chúng ta sẽ tạo một interface IBasketRepository định nghĩa contract cho các lớp repository.
 
 7
 00:00:35,060 --> 00:00:39,920
-So for that purpose please open the Visual Studio and go to the basket API project.
+Vậy với mục đích đó vui lòng mở Visual Studio và đi đến basket API project.
 
 8
 00:00:39,920 --> 00:00:43,370
-And I'm going to start by right click Add New Folder.
+Và tôi sẽ bắt đầu bằng cách right click Add New Folder.
 
 9
 00:00:44,160 --> 00:00:51,180
-Which is the data folder at the same level of the models, and the basket vertical slice folder.
+Đó là data folder ở cùng mức với models folder và basket vertical slice folder.
 
 10
 00:00:51,360 --> 00:00:58,920
-And now I'm going to add a new class and actually interface which name is AI basket repository interface.
+Và bây giờ tôi sẽ thêm một lớp mới và thực tế là một interface có tên là IBasketRepository interface.
 
 11
 00:00:58,920 --> 00:01:05,580
-And in here we will define our contracts and method bodies in order to perform our business logic in
+Và ở đây chúng ta sẽ định nghĩa các contracts và method bodies của chúng ta để thực hiện business logic
 
 12
 00:01:05,580 --> 00:01:06,750
-the handle classes.
+trong các handler classes.
 
 13
 00:01:06,900 --> 00:01:12,060
-So what are the use cases that we are going to implement these repository objects.
+Vậy những use cases nào mà chúng ta sẽ triển khai các repository objects này.
 
 14
 00:01:12,060 --> 00:01:19,080
-So if you count the basket vertical slice folder you can see that our use cases are get store and delete
+Vậy nếu bạn xem basket vertical slice folder bạn có thể thấy rằng các use cases của chúng ta là GetBasket, StoreBasket và DeleteBasket.
 
 15
 00:01:19,080 --> 00:01:19,680
-basket.
+Ví dụ, nếu tôi mở GetBasket và đi đến GetBasketHandler trong handler class này, chúng ta nên inject IBasketRepository để thực hiện các hoạt động get.
 
 16
 00:01:19,680 --> 00:01:25,530
-For example, if I open the gate basket and go to the get basket handler in this handle class, we should
+Vậy để làm điều đó GetBasket yêu cầu username.
 
 17
 00:01:25,530 --> 00:01:29,580
-inject these AI basket repository to perform get operations.
+Bạn có thể thấy rằng nó đang chấp nhận username và trả về một result bao gồm toàn bộ shopping cart.
 
 18
 00:01:29,580 --> 00:01:33,270
@@ -80,107 +80,107 @@ cart.
 
 21
 00:01:39,480 --> 00:01:43,920
-And at the same way if you go to store basket you can go to store basket handle.
+Và theo cách tương tự, nếu bạn truy cập store basket thì bạn có thể truy cập store basket handle.
 
 22
 00:01:43,920 --> 00:01:47,190
-We are accepting the shopping cart and return back a result.
+Chúng ta sẽ chấp nhận shopping cart và trả về một kết quả.
 
 23
 00:01:47,190 --> 00:01:52,590
-And you can see that we will inject a basket repository in here to store basket in database.
+Và bạn có thể thấy rằng chúng ta sẽ inject một basket repository ở đây để lưu trữ basket trong database.
 
 24
 00:01:52,590 --> 00:01:54,720
-So this is the same as the delete basket.
+Vậy điều này giống với delete basket.
 
 25
 00:01:54,720 --> 00:01:58,710
-And we will perform the same operations to accepting username.
+Và chúng ta sẽ thực hiện các thao tác tương tự với username.
 
 26
 00:01:58,710 --> 00:02:03,330
-And we will perform the delete operation from database using the repository classes.
+Và chúng ta sẽ thực hiện thao tác delete từ database bằng cách sử dụng các repository classes.
 
 27
 00:02:03,330 --> 00:02:04,410
-For that purpose.
+Để mục đích đó.
 
 28
 00:02:04,410 --> 00:02:10,440
-Open the AI basket repository and define our first contract which is the get basket.
+Mở AI basket repository và định nghĩa contract đầu tiên của chúng ta, đó là get basket.
 
 29
 00:02:10,440 --> 00:02:15,090
-And get basket will be return task shopping cart response.
+Và get basket sẽ trả về task shopping cart response.
 
 30
 00:02:15,090 --> 00:02:18,060
-And the method name should be the get basket.
+Và tên method phải là get basket.
 
 31
 00:02:18,060 --> 00:02:23,910
-And this will be get username as a parameter in order to retrieve a specific shopping cart.
+Và nó sẽ nhận username làm tham số để lấy một shopping cart cụ thể.
 
 32
 00:02:23,910 --> 00:02:29,970
-And after that I'm going to pass cancellation token and give the cancellation token with default value.
+Và sau đó tôi sẽ truyền cancellation token và đặt cancellation token với giá trị mặc định.
 
 33
 00:02:32,240 --> 00:02:36,140
-This is the first contract and the second contract is same.
+Đây là contract đầu tiên và contract thứ hai là giống nhau.
 
 34
 00:02:37,550 --> 00:02:43,820
-We will return shopping cart, but this time I'm going to perform store basket operation.
+Chúng ta sẽ trả về shopping cart, nhưng lần này tôi sẽ thực hiện thao tác store basket.
 
 35
 00:02:45,530 --> 00:02:49,400
-And this is accepting the whole shopping cart object.
+Và nó sẽ chấp nhận toàn bộ object shopping cart.
 
 36
 00:02:50,210 --> 00:02:55,610
-And as a parameter name, I'm giving the basket and the rest of the operations is same.
+Và làm tên tham số, tôi sẽ đặt tên là basket và phần còn lại của các thao tác là như nhau.
 
 37
 00:02:55,610 --> 00:03:03,140
-We will give the cancellation token with default value, and the last contract will be the task, and
+Chúng ta sẽ đặt cancellation token với giá trị mặc định, và contract cuối cùng sẽ là task, và
 
 38
 00:03:03,140 --> 00:03:05,300
-we will return boolean response.
+chúng ta sẽ trả về boolean response.
 
 39
 00:03:05,300 --> 00:03:08,930
-And the name of the contract is delete basket.
+Và tên của contract là delete basket.
 
 40
 00:03:09,470 --> 00:03:12,740
-I'm going to accept username again.
+Tôi sẽ chấp nhận username một lần nữa.
 
 41
 00:03:13,550 --> 00:03:20,300
-And I'm going to paste the same cancellation token as we use in the previous methods.
+Và tôi sẽ dán cùng một cancellation token như chúng ta sử dụng trong các phương thức trước đó.
 
 42
 00:03:25,310 --> 00:03:32,180
-In this code, the eye basket repository interface declares three methods get basket, store basket,
+Trong đoạn mã này, giao diện basket repository khai báo ba phương thức get basket, store basket,
 
 43
 00:03:32,180 --> 00:03:33,470
-and delete basket.
+và delete basket.
 
 44
 00:03:33,500 --> 00:03:39,650
-These methods correspond to the retrieval, storage, and delete operations on the shopping cart and
+Các phương thức này tương ứng với các hoạt động lấy dữ liệu, lưu trữ và xóa trên giỏ hàng và
 
 45
 00:03:39,650 --> 00:03:42,110
-identified uniquely by the username.
+được xác định duy nhất bằng username.
 
 46
 00:03:42,350 --> 00:03:48,530
-So now let's implement the basket repository class which will fulfill all these contract defined by
+Vậy bây giờ chúng ta hãy triển khai lớp basket repository sẽ thực hiện tất cả các hợp đồng được định nghĩa bởi
 
 47
 00:03:48,560 --> 00:03:49,640
@@ -188,37 +188,37 @@ basket repository.
 
 48
 00:03:49,670 --> 00:03:55,730
-For that purpose, I'm going to create a new class under the data folder which name is Basket Repository.
+Để mục đích đó, tôi sẽ tạo một lớp mới trong thư mục data có tên là Basket Repository.
 
 49
 00:03:58,370 --> 00:04:02,630
-In this class we will implement a basket repository members.
+Trong lớp này chúng ta sẽ triển khai các thành viên của basket repository.
 
 50
 00:04:02,630 --> 00:04:07,880
-And if you implement this interface, you can see that our methods come here.
+Và nếu bạn triển khai giao diện này, bạn có thể thấy rằng các phương thức của chúng ta xuất hiện ở đây.
 
 51
 00:04:07,880 --> 00:04:11,720
-And I'm going to order methods as we defined in the contracts.
+Và tôi sẽ sắp xếp các phương thức theo cách chúng ta đã định nghĩa trong các hợp đồng.
 
 52
 00:04:11,720 --> 00:04:13,430
-The first one is get basket.
+Cái đầu tiên là get basket.
 
 53
 00:04:13,430 --> 00:04:17,089
-The second one is store basket and the last one is delete basket.
+Cái thứ hai là store basket và cái cuối cùng là delete basket.
 
 54
 00:04:17,390 --> 00:04:23,750
-So the basket repository class initially throws not implemented exceptions for each method.
+Vậy lớp basket repository ban đầu ném các ngoại lệ not implemented cho mỗi phương thức.
 
 55
 00:04:23,750 --> 00:04:30,110
-But this is a placeholder until we integrate with the Martin in order to perform actual database operations.
+Nhưng đây chỉ là một placeholder cho đến khi chúng ta tích hợp với Marten để thực hiện các hoạt động cơ sở dữ liệu thực tế.
 
 56
 00:04:30,110 --> 00:04:35,090
-So our next step is inject the Martin's documentation into basket repository.
+Vậy bước tiếp theo của chúng ta là inject Marten's documentation vào basket repository.
 
