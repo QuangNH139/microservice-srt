@@ -127,5 +127,6 @@
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/010 Develop StoreBasket Feature Handler class with CQRS and MediatR.srt": "done",
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/011 Develop Store Basket Endpoint with Minimal Apis and Carter.srt": "done",
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/012 Develop DeleteBasket Feature Handler class with CQRS and MediatR.srt": "done",
-  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/013 Develop Delete Basket Endpoint with Minimal Apis and Carter.srt": "done"
+  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/013 Develop Delete Basket Endpoint with Minimal Apis and Carter.srt": "done",
+  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/014 Register MediatR and Carter libraries into Asp.Net Dependency Injection Service.srt": "done"
 }
