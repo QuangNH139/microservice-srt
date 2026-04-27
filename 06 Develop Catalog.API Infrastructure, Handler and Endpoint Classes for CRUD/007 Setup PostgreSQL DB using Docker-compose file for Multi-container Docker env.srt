@@ -1,186 +1,186 @@
 1
 00:00:00,260 --> 00:00:07,460
-In this video we are going to set up PostgreSQL database using the docker compose file for multi-container
+Trong video này, chúng ta sẽ thiết lập cơ sở dữ liệu PostgreSQL sử dụng docker compose file cho môi trường multi-container
 
 2
 00:00:07,460 --> 00:00:08,480
-Docker environment.
+Docker.
 
 3
 00:00:09,090 --> 00:00:14,700
-So now we will download and run the PostgreSQL Docker image into Docker environment.
+Vậy bây giờ chúng ta sẽ tải xuống và chạy image Docker PostgreSQL vào môi trường Docker.
 
 4
 00:00:14,790 --> 00:00:21,270
-As you can see the image, we will expose the ports into our local microservices and connect this port
+Như bạn có thể thấy trong hình, chúng ta sẽ mở các ports ra cho các microservices cục bộ và kết nối port này
 
 5
 00:00:21,270 --> 00:00:23,700
-from our local Catholic microservices.
+từ các microservices Catholic cục bộ của chúng ta.
 
 6
 00:00:23,940 --> 00:00:28,830
-So first of all, let's examine the official PostgreSQL Docker image on the crop.
+Vậy đầu tiên, hãy xem xét image Docker PostgreSQL chính thức trên DockerHub.
 
 7
 00:00:28,860 --> 00:00:36,900
-If you go to the PostgreSQL Docker image from the opticom, you can reach the this page and you will
+Nếu bạn đi đến image Docker PostgreSQL từ DockerHub, bạn có thể truy cập trang này và sẽ
 
 8
 00:00:36,900 --> 00:00:41,850
-find the information on how to pull and how to run the PostgreSQL Docker image.
+tìm thấy thông tin về cách pull và cách chạy image Docker PostgreSQL.
 
 9
 00:00:41,970 --> 00:00:45,030
-If you scroll down, you will see that.
+Nếu bạn kéo xuống, bạn sẽ thấy rằng.
 
 10
 00:00:45,600 --> 00:00:50,940
-There are two options that we can download and run these PostgreSQL Docker images.
+Có hai tùy chọn mà chúng ta có thể tải xuống và chạy các image Docker PostgreSQL.
 
 11
 00:00:50,970 --> 00:00:57,210
-The first option is directly using the Docker commands with running the docker run command, and the
+Tùy chọn đầu tiên là sử dụng trực tiếp các lệnh Docker với lệnh docker run, và
 
 12
 00:00:57,210 --> 00:01:02,850
-second option is using the docker compose, which is our preferred method for this course.
+tùy chọn thứ hai là sử dụng docker compose, đó là phương pháp ưa thích của chúng ta trong khóa học này.
 
 13
 00:01:02,850 --> 00:01:09,600
-Because docker compose allows us to define and run multi-container Docker applications, and it is ideal
+Bởi vì docker compose cho phép chúng ta định nghĩa và chạy các ứng dụng Docker multi-container, và nó là lý tưởng
 
 14
 00:01:09,600 --> 00:01:15,420
-for setting up the environments like ours, where the microservices interact with backing services like
+để thiết lập các môi trường như của chúng ta, nơi các microservices tương tác với backing services như
 
 15
 00:01:15,420 --> 00:01:16,290
-databases.
+cơ sở dữ liệu.
 
 16
 00:01:16,290 --> 00:01:23,340
-So you can see an example Docker-compose.yml file for setting up the PostgreSQL that we can use this
+Vậy bạn có thể thấy một file Docker-compose.yml ví dụ để thiết lập PostgreSQL mà chúng ta có thể sử dụng thông tin
 
 17
 00:01:23,340 --> 00:01:26,760
-kind of information into our Docker compose file.
+loại này vào file Docker compose của chúng ta.
 
 18
 00:01:26,760 --> 00:01:33,360
-You can see that this is the configuration of database providing the image restart and environment configurations.
+Bạn có thể thấy rằng đây là cấu hình cơ sở dữ liệu cung cấp image, restart và các cấu hình môi trường.
 
 19
 00:01:33,360 --> 00:01:38,070
-And we will use these kind of configurations into our docker-compose.yml file.
+Và chúng ta sẽ sử dụng các loại cấu hình này vào file docker-compose.yml của chúng ta.
 
 20
 00:01:38,070 --> 00:01:41,490
-So please open the Visual Studio and locate the.
+Vậy vui lòng mở Visual Studio và định vị
 
 21
 00:01:41,490 --> 00:01:47,070
-Our project DotNet has great support for Docker and Docker Compose on Visual Studio.
+.NET có hỗ trợ tuyệt vời cho Docker và Docker Compose trên Visual Studio.
 
 22
 00:01:47,070 --> 00:01:51,990
-So you can see the Docker file already created for our catalog API.
+Vậy bạn có thể thấy file Docker đã được tạo cho Catalog API của chúng ta.
 
 23
 00:01:51,990 --> 00:01:58,410
-If you zoom into our project, you can see that Docker file is already generated when we are creating
+Nếu bạn phóng to vào dự án của chúng ta, bạn có thể thấy rằng file Docker đã được tạo khi chúng ta tạo
 
 24
 00:01:58,410 --> 00:02:00,540
-catalog microservice web API project.
+dự án catalog microservice Web API.
 
 25
 00:02:00,540 --> 00:02:05,250
-If you double click the docker file, you can see the configuration on Docker.
+Nếu bạn double click vào file docker, bạn có thể thấy cấu hình trên Docker.
 
 26
 00:02:05,250 --> 00:02:12,330
-So that means our ASP.Net web API project, already containerized from the beginning of the project.
+Vậy điều đó có nghĩa là dự án ASP.NET Web API của chúng ta đã được containerized từ đầu dự án.
 
 27
 00:02:12,330 --> 00:02:19,200
-For now, skip the microservice point and focus on the backing services, which is the PostgreSQL database.
+Hiện tại, hãy bỏ qua điểm microservice và tập trung vào backing services, đó là cơ sở dữ liệu PostgreSQL.
 
 28
 00:02:19,200 --> 00:02:23,010
-For that purpose, locate the catalog API project file.
+Với mục đích đó, định vị file dự án Catalog API.
 
 29
 00:02:23,010 --> 00:02:27,300
-Right click Add container orchestration support.
+Nhấp chuột phải Add container orchestration support.
 
 30
 00:02:27,300 --> 00:02:33,060
-As you can see that we have two support one for the Docker support to create the Docker file, which
+Như bạn có thể thấy, chúng ta có hai hỗ trợ, một là Docker support để tạo file Docker, cái mà
 
 31
 00:02:33,060 --> 00:02:36,300
-is already created when we are creating these web API.
+đã được tạo khi chúng ta tạo Web API này.
 
 32
 00:02:36,300 --> 00:02:41,940
-And another support is container orchestration support that we are going to create the docker compose
+Và hỗ trợ khác là container orchestration support mà chúng ta sẽ tạo các file
 
 33
 00:02:41,940 --> 00:02:42,750
-Yaml files.
+docker compose Yaml.
 
 34
 00:02:42,750 --> 00:02:48,780
-Click these Docker container orchestration support and you can see that container orchestrator is Docker
+Nhấp vào Docker container orchestration support này và bạn có thể thấy rằng container orchestrator là Docker
 
 35
 00:02:48,780 --> 00:02:50,850
-compose and click the okay button.
+compose và nhấp nút okay.
 
 36
 00:02:50,850 --> 00:02:55,080
-Target operating system should be Linux and click the okay.
+Hệ điều hành mục tiêu nên là Linux và nhấp okay.
 
 37
 00:02:55,080 --> 00:02:59,310
-And see that Docker compose files generated by the Visual Studio.
+Và thấy rằng các file Docker compose được tạo bởi Visual Studio.
 
 38
 00:02:59,460 --> 00:03:05,610
-You can also create these files manually, but if we create with using the Visual Studio, we can run
+Bạn cũng có thể tạo các file này theo cách thủ công, nhưng nếu chúng ta tạo bằng cách sử dụng Visual Studio, chúng ta có thể chạy
 
 39
 00:03:05,610 --> 00:03:09,960
-the whole application on Docker environment and on Docker compose files.
+toàn bộ ứng dụng trên môi trường Docker và trên các file Docker compose.
 
 40
 00:03:09,960 --> 00:03:15,570
-You can see that in here we have a new running profile comes which is the Docker compose.
+Bạn có thể thấy rằng ở đây chúng ta có một profile chạy mới đó là Docker compose.
 
 41
 00:03:15,600 --> 00:03:22,560
-That is very powerful feature that we can debug the microservices inside of the docker compose multi-container
+Đó là một tính năng rất mạnh mẽ mà chúng ta có thể debug các microservices bên trong môi trường Docker Compose multi-container
 
 42
 00:03:22,560 --> 00:03:24,300
-environment in the network.
+trong network.
 
 43
 00:03:24,300 --> 00:03:27,420
-So this is one of the powerful features of the.
+Vậy đây là một trong những tính năng mạnh mẽ của.
 
 44
 00:03:27,750 --> 00:03:29,220
-Net and Visual Studio.
+.NET và Visual Studio.
 
 45
 00:03:29,220 --> 00:03:32,850
-And now let's examine these Docker compose Yaml files.
+Và bây giờ hãy xem xét các Docker Compose Yaml files.
 
 46
 00:03:32,850 --> 00:03:38,790
-If you expand this Docker compose operation, you can see the docker compose Yaml file and override
+Nếu bạn mở rộng Docker Compose operation này, bạn có thể thấy Docker Compose Yaml file và override
 
 47
 00:03:38,790 --> 00:03:39,510
@@ -188,29 +188,29 @@ Yaml file.
 
 48
 00:03:39,510 --> 00:03:45,900
-If you double click the docker-compose.yml file, you can see that our Catholic API microservices already
+Nếu bạn double click trên docker-compose.yml file, bạn có thể thấy rằng Catalog API microservice của chúng ta đã
 
 49
 00:03:45,900 --> 00:03:48,300
-stored into our Docker compose file.
+được lưu vào Docker Compose file của chúng ta.
 
 50
 00:03:48,300 --> 00:03:56,280
-And if you open the override file, you can see that catalog API overriding configurations in the listing
+Và nếu bạn mở override file, bạn có thể thấy rằng Catalog API đang override các cấu hình trong listing
 
 51
 00:03:56,280 --> 00:04:01,170
-in here, which is including the environment variables, port numbers, and volumes.
+ở đây, bao gồm các environment variables, port numbers, và volumes.
 
 52
 00:04:01,170 --> 00:04:07,920
-So if you open the our PowerPoint, you can see that we can use multi Docker compose files in order
+Vậy nếu bạn mở PowerPoint của chúng ta, bạn có thể thấy rằng chúng ta có thể sử dụng multi Docker Compose files để
 
 53
 00:04:07,920 --> 00:04:12,960
-to configure different environments including the production, staging and testing environments.
+cấu hình các môi trường khác nhau bao gồm production, staging và testing environments.
 
 54
 00:04:12,960 --> 00:04:19,500
-So now it is time to add PostgreSQL database container into our Docker compose Yaml files.
+Vậy bây giờ là lúc để thêm PostgreSQL database container vào Docker Compose Yaml files của chúng ta.
 
