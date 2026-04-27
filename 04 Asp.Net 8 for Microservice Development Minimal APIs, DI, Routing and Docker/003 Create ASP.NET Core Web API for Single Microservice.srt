@@ -1,174 +1,174 @@
 1
 00:00:00,200 --> 00:00:05,990
-In this video we are going to create ASP.Net web API for single microservices.
+Trong video này chúng ta sẽ tạo ASP.Net web API cho một microservices duy nhất.
 
 2
 00:00:05,990 --> 00:00:07,730
-You can see the image on the slide.
+Bạn có thể thấy hình ảnh trên slide.
 
 3
 00:00:07,730 --> 00:00:09,830
-There is a client server architecture.
+Có một kiến trúc client server.
 
 4
 00:00:09,830 --> 00:00:14,930
-So we are going to create ASP.Net web API project for a single microservices.
+Vậy chúng ta sẽ tạo dự án ASP.Net web API cho một microservices duy nhất.
 
 5
 00:00:14,930 --> 00:00:16,940
-So here you can see the steps.
+Vậy ở đây bạn có thể thấy các bước.
 
 6
 00:00:16,940 --> 00:00:22,820
-We will setting up our project and exploring the Program.cs and running the application.
+Chúng ta sẽ thiết lập dự án của chúng ta và khám phá Program.cs và chạy ứng dụng.
 
 7
 00:00:22,820 --> 00:00:27,770
-So now let's start by opening Visual Studio 2022.
+Vậy bây giờ hãy bắt đầu bằng cách mở Visual Studio 2022.
 
 8
 00:00:28,130 --> 00:00:35,390
-During the course we will use Visual Studio 2022 and come here click the create a new project.
+Trong suốt khóa học này chúng ta sẽ sử dụng Visual Studio 2022 và đến đây nhấp vào tạo dự án mới.
 
 9
 00:00:35,960 --> 00:00:40,130
-So I'm going to create ASP.Net Core Web API project.
+Vậy tôi sẽ tạo dự án ASP.Net Core Web API.
 
 10
 00:00:40,130 --> 00:00:47,480
-If you search from the templates or come here, we will follow the ASP.Net Core Web API for exposing
+Nếu bạn tìm kiếm từ các template hoặc đến đây, chúng ta sẽ theo ASP.Net Core Web API để public
 
 11
 00:00:47,480 --> 00:00:49,220
-and creating RESTful APIs.
+và tạo RESTful APIs.
 
 12
 00:00:49,220 --> 00:00:50,390
-Click the next button.
+Nhấp nút next.
 
 13
 00:00:50,390 --> 00:00:53,540
-And now we are going to give the project name.
+Và bây giờ chúng ta sẽ đặt tên cho dự án.
 
 14
 00:00:53,660 --> 00:00:57,170
-This will be the example minimal project name.
+Đây sẽ là tên dự án minimal ví dụ.
 
 15
 00:00:57,170 --> 00:01:01,520
-And if you click the next button here you can see the configuration.
+Và nếu bạn nhấp nút next ở đây bạn có thể thấy cấu hình.
 
 16
 00:01:01,520 --> 00:01:05,990
-The configuration is started with the framework which is the dotnet eight.
+Cấu hình bắt đầu với framework đó là dotnet eight.
 
 17
 00:01:05,990 --> 00:01:12,080
-During the whole course we will follow the dotnet eight framework and authentication type is none and
+Trong suốt khóa học này chúng ta sẽ theo framework dotnet eight và loại authentication là none và
 
 18
 00:01:12,080 --> 00:01:14,690
-we have configured for Https and enable.
+chúng ta đã cấu hình cho Https và enable.
 
 19
 00:01:14,690 --> 00:01:21,080
-Docker is checked and Docker operating system is Linux and we are leaving as it is for default configuration.
+Docker được kiểm tra và hệ điều hành Docker là Linux và chúng ta để nguyên cấu hình mặc định.
 
 20
 00:01:21,080 --> 00:01:27,080
-But notice that there is three checkbox is not checked during the the default configuration.
+Nhưng lưu ý rằng có ba checkbox không được kiểm tra trong cấu hình mặc định.
 
 21
 00:01:27,080 --> 00:01:33,830
-So because of the minimal APIs, the default configuration is arranged by the minimal API and C-sharp
+Vì vậy vì các minimal APIs, cấu hình mặc định được sắp xếp bởi minimal API và C#
 
 22
 00:01:33,830 --> 00:01:39,800
-12 features, which is the top level statement if you would like to go a previous version, the style,
+12 features, đó là top level statement nếu bạn muốn quay lại phiên bản trước, style,
 
 23
 00:01:39,800 --> 00:01:42,800
-which is the controller and the top level statement removing.
+đó là controller và loại bỏ top level statement.
 
 24
 00:01:42,800 --> 00:01:49,100
-You can check these checkbox to make it the previous versions, but in default we will follow with the
+Bạn có thể kiểm tra các checkbox này để làm cho nó ở các phiên bản trước, nhưng theo mặc định chúng ta sẽ theo với
 
 25
 00:01:49,100 --> 00:01:50,870
-minimal API's for that purpose.
+minimal APIs cho mục đích đó.
 
 26
 00:01:50,870 --> 00:01:54,920
-Leave as it is for the current configuration and click the create button.
+Để nguyên cấu hình hiện tại và nhấp nút create.
 
 27
 00:01:55,190 --> 00:01:59,570
-So this is going to create an ASP.Net Core Web API default project.
+Vậy điều này sẽ tạo dự án ASP.Net Core Web API mặc định.
 
 28
 00:01:59,570 --> 00:02:04,400
-And here you can see the default template for the ASP.Net web API.
+Và ở đây bạn có thể thấy template mặc định cho ASP.Net web API.
 
 29
 00:02:04,400 --> 00:02:10,160
-It is including the app settings file, Docker file Program.cs, which is the top level statement for
+Nó bao gồm tệp app settings, Docker file, Program.cs, đó là top level statement để
 
 30
 00:02:10,160 --> 00:02:12,620
-setting up and configuring our web API.
+thiết lập và cấu hình web API của chúng ta.
 
 31
 00:02:12,620 --> 00:02:20,330
-So if you open the program says now, we will explain the codes in the program says that has generated
+Vậy nếu bạn mở program.cs bây giờ, chúng ta sẽ giải thích các code trong program.cs mà đã được tạo
 
 32
 00:02:20,330 --> 00:02:23,390
-from the default ASP.Net web API template.
+từ template ASP.Net web API mặc định.
 
 33
 00:02:23,390 --> 00:02:28,250
-Here you can see that the Program.cs is developed with the top level statement.
+Ở đây bạn có thể thấy Program.cs được phát triển với top level statement.
 
 34
 00:02:28,250 --> 00:02:33,680
-So that means it is directly starting from the codes, not using statement and brackets.
+Vậy điều đó có nghĩa là nó trực tiếp bắt đầu từ các code, không sử dụng using statement và dấu ngoặc.
 
 35
 00:02:33,680 --> 00:02:40,040
-In Program.cs, we basically create a web application and building the web application, and after that
+Trong Program.cs, chúng ta cơ bản tạo một web application builder và xây dựng web application, và sau đó
 
 36
 00:02:40,040 --> 00:02:46,490
-we will run the web application and between them we will exposing the Http methods according to our
+chúng ta sẽ chạy web application và giữa chúng chúng ta sẽ public các Http methods theo
 
 37
 00:02:46,490 --> 00:02:47,330
-business logic.
+business logic của chúng ta.
 
 38
 00:02:47,330 --> 00:02:50,900
-And here you can see the some helper class for the weather forecast.
+Và ở đây bạn có thể thấy một số helper class cho weather forecast.
 
 39
 00:02:50,900 --> 00:02:53,810
-So now let me explain these codes one by one.
+Vậy bây giờ hãy để tôi giải thích các code này từng cái một.
 
 40
 00:02:53,810 --> 00:02:58,130
-The first line of code is basically create a web application builder.
+Dòng code đầu tiên cơ bản tạo một web application builder.
 
 41
 00:02:58,130 --> 00:03:02,330
-Initialize our application with the default settings and the configurations.
+Khởi tạo ứng dụng của chúng ta với các cài đặt mặc định và các cấu hình.
 
 42
 00:03:02,330 --> 00:03:07,670
-And after that you can see a commented part in here which is the add services to the container.
+Và sau đó bạn có thể thấy một phần được comment trong đây là add services to the container.
 
 43
 00:03:07,670 --> 00:03:14,930
-That means in here we can add ASP.Net built in services and any custom services using the dependency
+Điều đó có nghĩa là ở đây chúng ta có thể thêm các dịch vụ built in của ASP.Net và bất kỳ dịch vụ tùy chỉnh nào bằng cách sử dụng dependency
 
 44
 00:03:14,930 --> 00:03:15,770
@@ -176,125 +176,125 @@ injection.
 
 45
 00:03:15,770 --> 00:03:20,390
-And after that we are building these Web Application builder.
+Và sau đó chúng ta đang xây dựng Web Application builder này.
 
 46
 00:03:20,390 --> 00:03:26,690
-In this step, basically we will compile the application with all provided services and configurations.
+Trong bước này, về cơ bản chúng ta sẽ biên dịch ứng dụng với tất cả các dịch vụ và cấu hình được cung cấp.
 
 47
 00:03:26,690 --> 00:03:32,930
-And after that you can see another commented part which is the configure the Http request pipeline.
+Và sau đó bạn có thể thấy một phần được comment khác là configure the Http request pipeline.
 
 48
 00:03:32,930 --> 00:03:39,830
-That means in this step, we basically define how our application handle the incoming Http requests,
+Điều đó có nghĩa là trong bước này, chúng ta về cơ bản xác định cách ứng dụng của chúng ta xử lý các Http requests đến,
 
 49
 00:03:39,830 --> 00:03:45,320
-and we can customize our custom Http request pipeline in this commented section.
+và chúng ta có thể tùy chỉnh Http request pipeline tùy chỉnh của chúng ta trong phần được comment này.
 
 50
 00:03:45,320 --> 00:03:51,830
-So if you scroll down and skip this section, you can see that in this line of code in the App.run we
+Vậy nếu bạn cuộn xuống và bỏ qua phần này, bạn có thể thấy rằng trong dòng code này trong App.run chúng ta
 
 51
 00:03:51,830 --> 00:03:53,840
-finally run the application.
+cuối cùng chạy ứng dụng.
 
 52
 00:03:53,840 --> 00:04:00,020
-So this command is start the application and begins the listening for incoming requests for these web
+Vậy câu lệnh này là khởi động ứng dụng và bắt đầu lắng nghe các requests đến cho dự án web
 
 53
 00:04:00,020 --> 00:04:01,010
-API project.
+API này.
 
 54
 00:04:01,010 --> 00:04:04,460
-I'll explain all these steps in more detail in the next videos.
+Tôi sẽ giải thích tất cả các bước này chi tiết hơn trong các video tiếp theo.
 
 55
 00:04:04,460 --> 00:04:07,610
-Let's continue with the Http endpoints for now.
+Hãy tiếp tục với các Http endpoints bây giờ.
 
 56
 00:04:07,610 --> 00:04:14,780
-So in this step you can see that here we are configuring the services, setting up the Http request
+Vậy trong bước này bạn có thể thấy rằng ở đây chúng ta đang cấu hình các dịch vụ, thiết lập Http request
 
 57
 00:04:14,780 --> 00:04:21,709
-pipeline, and defining the Http get endpoint for the slash weather forecast exposing services.
+pipeline, và định nghĩa Http get endpoint cho slash weather forecast exposing services.
 
 58
 00:04:21,709 --> 00:04:26,960
-So basically the weather forecast endpoint is a simple example of the minimal API.
+Vậy về cơ bản endpoint weather forecast là một ví dụ đơn giản về Minimal API.
 
 59
 00:04:26,960 --> 00:04:32,150
-It generates a weather forecast using an array of summaries and random temperatures.
+Nó tạo một dự báo thời tiết bằng cách sử dụng một mảng các tóm tắt và nhiệt độ ngẫu nhiên.
 
 60
 00:04:32,150 --> 00:04:37,430
-You can see in here this is the summaries and the random temperatures are generated.
+Bạn có thể thấy ở đây đây là các tóm tắt và các nhiệt độ ngẫu nhiên được tạo ra.
 
 61
 00:04:37,430 --> 00:04:45,680
-So basically the logic is returning the weather forecast with handling the Http get method in the slash
+Vậy về cơ bản logic là trả về dự báo thời tiết với xử lý phương thức Http get trong slash
 
 62
 00:04:45,680 --> 00:04:48,410
-weather forecast http endpoint URL.
+weather forecast Http endpoint URL.
 
 63
 00:04:48,410 --> 00:04:51,680
-So this is the an example of the minimal API's.
+Vậy đây là một ví dụ về các Minimal APIs.
 
 64
 00:04:51,680 --> 00:04:55,430
-And it is defined an API endpoint in ASP.Net core.
+Và nó định nghĩa một API endpoint trong ASP.Net Core.
 
 65
 00:04:55,580 --> 00:04:58,010
-So now let's run the application.
+Vậy bây giờ hãy chạy ứng dụng.
 
 66
 00:04:58,010 --> 00:04:59,720
-If you come here you can see the running.
+Nếu bạn đến đây bạn có thể thấy nó đang chạy.
 
 67
 00:05:00,050 --> 00:05:06,320
-While I'm going to select the Https and click this button in order to run this web API.
+Trong khi tôi sẽ chọn Https và nhấp vào nút này để chạy web API này.
 
 68
 00:05:06,320 --> 00:05:11,810
-So the application is started successfully, you can verify from the project console logs.
+Vậy ứng dụng đã khởi động thành công, bạn có thể xác minh từ các console logs của dự án.
 
 69
 00:05:11,810 --> 00:05:18,230
-Here you can see that the application is started and listening on these http and https ports.
+Ở đây bạn có thể thấy rằng ứng dụng đã khởi động và lắng nghe trên các Http và https ports này.
 
 70
 00:05:18,230 --> 00:05:22,580
-And this is automatically started a Chrome window in a browser.
+Và điều này đã tự động mở một cửa sổ Chrome trong trình duyệt.
 
 71
 00:05:22,580 --> 00:05:26,660
-And you can see that it is hitting the localhost and the https port.
+Và bạn có thể thấy rằng nó đang hit localhost và https port.
 
 72
 00:05:26,660 --> 00:05:32,870
-And here you can see the slash weather forecast in order to retrieve the weather information from our
+Và ở đây bạn có thể thấy slash weather forecast để truy xuất thông tin thời tiết từ
 
 73
 00:05:32,870 --> 00:05:36,110
-API, API is returning this Json response.
+API của chúng ta, API đang trả về Json response này.
 
 74
 00:05:36,110 --> 00:05:43,160
-That means we have successfully creating an API with ASP.Net core Web API and getting the weather forecast
+Điều đó có nghĩa là chúng ta đã tạo thành công một API với ASP.Net Core Web API và nhận được dự báo thời tiết
 
 75
 00:05:43,160 --> 00:05:46,400
-response which data generated from our API.
+response với dữ liệu được tạo từ API của chúng ta.
 

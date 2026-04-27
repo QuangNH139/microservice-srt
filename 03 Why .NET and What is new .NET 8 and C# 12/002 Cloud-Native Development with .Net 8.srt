@@ -160,9 +160,9 @@ that we can see in the next videos.
 
 41
 00:03:21,890 --> 00:03:27,920
-So that means all these enhancements provide our application fully cloud native using the.
+Vậy điều đó có nghĩa là tất cả những cải tiến này cung cấp cho ứng dụng của chúng ta hoàn toàn cloud native bằng cách sử dụng.
 
 42
 00:03:28,130 --> 00:03:28,790
-Net eight.
+.NET 8.
 

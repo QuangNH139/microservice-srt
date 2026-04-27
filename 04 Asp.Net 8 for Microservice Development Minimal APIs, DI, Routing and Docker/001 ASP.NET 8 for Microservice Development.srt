@@ -1,150 +1,150 @@
 1
 00:00:00,200 --> 00:00:05,720
-In this section we are going to learn ASP.Net eight for microservices development.
+Trong phần này chúng ta sẽ học ASP.Net 8 để phát triển microservices.
 
 2
 00:00:05,720 --> 00:00:12,440
-So we will explore the capabilities of ASP.Net eight in building robust and scalable microservices.
+Vậy chúng ta sẽ khám phá các khả năng của ASP.Net 8 trong việc xây dựng microservices mạnh mẽ và có thể mở rộng.
 
 3
 00:00:12,440 --> 00:00:17,480
-It will provide to build web APIs and web UI using the ASP.Net core.
+Nó sẽ cung cấp để xây dựng Web APIs và Web UI sử dụng ASP.Net Core.
 
 4
 00:00:17,480 --> 00:00:25,760
-And we will see ASP.Net eight minimal APIs built in dependency Injection, create ASP.Net core web API
+Và chúng ta sẽ thấy ASP.Net 8 Minimal APIs với built-in dependency injection, tạo Web API ASP.Net Core
 
 5
 00:00:25,760 --> 00:00:27,470
-for single microservices.
+cho từng microservice riêng lẻ.
 
 6
 00:00:27,470 --> 00:00:32,810
-And lastly, we will containerize and orchestrate services with Docker and Docker Compose.
+Và cuối cùng, chúng ta sẽ đóng gói và sắp xếp các services với Docker và Docker Compose.
 
 7
 00:00:33,110 --> 00:00:36,380
-So let's start with what is ASP.Net?
+Vậy hãy bắt đầu với ASP.Net là gì?
 
 8
 00:00:36,740 --> 00:00:43,730
-ASP.Net core is a cross-platform, high performance open source framework for building modern, cloud
+ASP.Net Core là một framework cross-platform, hiệu suất cao, mã nguồn mở để xây dựng các ứng dụng hiện đại, được bật cloud,
 
 9
 00:00:43,730 --> 00:00:46,550
-enabled, internet connected applications.
+kết nối internet.
 
 10
 00:00:46,910 --> 00:00:54,020
-With ASP.Net core, we can build web applications and services, Internet of things and mobile backends,
+Với ASP.Net Core, chúng ta có thể xây dựng các ứng dụng web và dịch vụ, Internet of Things và mobile backends,
 
 11
 00:00:54,020 --> 00:00:59,090
-and we can also deploy to the cloud or on premises and we can run on.
+và chúng ta cũng có thể triển khai lên cloud hoặc on premises và chúng ta có thể chạy trên
 
 12
 00:00:59,240 --> 00:01:01,070
-Net core and net eight.
+.NET Core và .NET 8.
 
 13
 00:01:01,730 --> 00:01:04,489
-So why choose ASP.Net core?
+Vậy tại sao chọn ASP.Net Core?
 
 14
 00:01:04,489 --> 00:01:11,810
-Millions of developers use or have used ASP.Net to create web applications and building microservices.
+Hàng triệu lập trình viên đã sử dụng hoặc từng sử dụng ASP.Net để tạo các ứng dụng web và xây dựng microservices.
 
 15
 00:01:12,140 --> 00:01:18,920
-ASP.Net core provides some of the benefits, including a unified story for building web UI and web APIs,
+ASP.Net Core cung cấp một số lợi ích, bao gồm một giải pháp thống nhất để xây dựng Web UI và Web APIs,
 
 16
 00:01:18,920 --> 00:01:21,140
-and architected for testability.
+và được thiết kế cho khả năng kiểm tra.
 
 17
 00:01:21,290 --> 00:01:26,390
-Razor page makes coding page focus scenarios easier and more productive.
+Razor Page giúp việc code các kịch bản tập trung vào trang dễ dàng hơn và hiệu quả hơn.
 
 18
 00:01:26,390 --> 00:01:33,110
-Blazor lets you use the C sharp in the browser alongside with the JavaScript, and it provides ability
+Blazor cho phép bạn sử dụng C# trong trình duyệt cùng với JavaScript, và nó cung cấp khả năng
 
 19
 00:01:33,110 --> 00:01:41,270
-to develop and run on windows, macOS, and Linux, and it is also open source and community focused.
+phát triển và chạy trên Windows, macOS và Linux, và nó cũng là mã nguồn mở và tập trung vào cộng đồng.
 
 20
 00:01:41,270 --> 00:01:48,080
-We can also add that integration of the modern client side frameworks and development workflows it supports
+Chúng ta cũng có thể thêm rằng tích hợp của các framework phía client hiện đại và các quy trình phát triển nó hỗ trợ
 
 21
 00:01:48,080 --> 00:01:54,830
-for hosting remote procedure calls, which is the gRPC, and it is also cloud ready environment based
+để hosting các remote procedure calls, đó là gRPC, và nó cũng là một môi trường sẵn sàng cho cloud với
 
 22
 00:01:54,830 --> 00:01:56,780
-configuration system included.
+hệ thống cấu hình được bao gồm.
 
 23
 00:01:56,780 --> 00:02:04,070
-It also included built in dependency injection, and it is a lightweight, high performance and modular
+Nó cũng bao gồm built-in dependency injection, và nó là một Http request pipeline nhẹ, hiệu suất cao và mô-đun hóa
 
 24
 00:02:04,070 --> 00:02:13,130
-Http request pipeline included, so it is ability to host on the kestrel IIs, nginx, Apache and Docker.
+được bao gồm, vì vậy nó có khả năng hosting trên Kestrel, IIS, Nginx, Apache và Docker.
 
 25
 00:02:13,130 --> 00:02:18,140
-These two link that simplifies the modern web development and microservice development.
+Hai điều này đơn giản hóa phát triển web hiện đại và phát triển microservice.
 
 26
 00:02:18,140 --> 00:02:26,000
-So now let's see the ASP.Net eight for microservice development, ASP.Net eight introduced enhanced
+Vậy bây giờ hãy xem ASP.Net 8 để phát triển microservice, ASP.Net 8 đã giới thiệu những tính năng nâng cao
 
 27
 00:02:26,000 --> 00:02:31,460
-features that align perfectly with the cloud native microservice architecture and developments.
+phù hợp hoàn hảo với cloud native microservice architecture và phát triển.
 
 28
 00:02:31,460 --> 00:02:38,690
-It supports building high performance web APIs and services, which are key components in a microservice
+Nó hỗ trợ xây dựng Web APIs và dịch vụ hiệu suất cao, đó là các thành phần chính trong một
 
 29
 00:02:38,690 --> 00:02:39,530
-ecosystem.
+hệ sinh thái microservice.
 
 30
 00:02:39,530 --> 00:02:46,880
-We will also creating web APIs using ASP.Net core, leveraging its power to build both service endpoints
+Chúng ta cũng sẽ tạo Web APIs sử dụng ASP.Net Core, tận dụng sức mạnh của nó để xây dựng cả service endpoints
 
 31
 00:02:46,880 --> 00:02:48,470
-and user interfaces.
+và giao diện người dùng.
 
 32
 00:02:48,470 --> 00:02:53,000
-It offers best performance, scalability, and flexibility.
+Nó cung cấp best performance, khả năng mở rộng và tính linh hoạt.
 
 33
 00:02:53,270 --> 00:02:59,780
-ASP.Net core is lightweight, supports cross-platform development, and provides a vast ecosystem of
+ASP.Net Core nhẹ, hỗ trợ phát triển cross-platform, và cung cấp một hệ sinh thái rộng lớn của
 
 34
 00:02:59,780 --> 00:03:01,220
-libraries and tools.
+thư viện và công cụ.
 
 35
 00:03:01,220 --> 00:03:08,600
-It is optimized for cloud deployment and supports modern architecture patterns like SQS and event driven
+Nó được tối ưu hóa cho cloud deployment và hỗ trợ các mẫu kiến trúc hiện đại như CQRS và event-driven
 
 36
 00:03:08,600 --> 00:03:13,100
-design, making it ideal for building sophisticated microservices.
+design, làm cho nó lý tưởng để xây dựng các microservices phức tạp.
 
 37
 00:03:13,100 --> 00:03:19,730
-So ASP.Net eight is a great choice to building modern, efficient, and scalable microservices on the
+Vậy ASP.Net 8 là một lựa chọn tuyệt vời để xây dựng microservices hiện đại, hiệu quả và có thể mở rộng trên
 
 38
 00:03:19,730 --> 00:03:20,210

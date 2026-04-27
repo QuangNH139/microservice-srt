@@ -1,240 +1,240 @@
 1
 00:00:00,200 --> 00:00:08,180
-In this video, we are going to test our Todo web API project with incoming Http requests for accommodating
+Trong video này, chúng ta sẽ test Todo web API project của chúng ta với các incoming Http requests để hỗ trợ
 
 2
 00:00:08,180 --> 00:00:09,470
-Crud endpoints.
+các Crud endpoints.
 
 3
 00:00:09,470 --> 00:00:10,970
-So let's get started.
+Vậy hãy bắt đầu.
 
 4
 00:00:10,970 --> 00:00:15,860
-For that purpose, open our Visual Studio for todo API project.
+Để làm điều đó, hãy mở Visual Studio của chúng ta cho todo API project.
 
 5
 00:00:15,860 --> 00:00:23,120
-And now I'm going to run this project with changing to run profile as a Https and click the run button.
+Và bây giờ tôi sẽ chạy project này bằng cách thay đổi run profile thành Https và nhấp nút run.
 
 6
 00:00:23,780 --> 00:00:26,360
-So this will start our application.
+Điều này sẽ khởi động ứng dụng của chúng ta.
 
 7
 00:00:26,360 --> 00:00:33,680
-We can confirm from the project window we can see that it is exposing and listening to these port numbers.
+Chúng ta có thể xác nhận từ cửa sổ project rằng nó đang expose và lắng nghe các port numbers này.
 
 8
 00:00:33,680 --> 00:00:39,980
-And you can see in here there is no response coming from the r localhost and port number because we
+Và bạn có thể thấy ở đây không có response nào từ localhost và port number vì chúng ta
 
 9
 00:00:39,980 --> 00:00:46,670
-are exposing all the services with the endpoint name, you can come to our endpoints and see that we
+đang expose tất cả các services với endpoint name, bạn có thể xem endpoints của chúng ta và thấy rằng chúng ta
 
 10
 00:00:46,670 --> 00:00:48,800
-should add slash todo items.
+nên thêm /todo items.
 
 11
 00:00:48,800 --> 00:00:56,630
-If you go back to our browser and hit the enter with adding the todo items, you can see that we don't
+Nếu bạn quay lại browser của chúng ta và nhấp enter với việc thêm todo items, bạn có thể thấy rằng chúng ta không
 
 12
 00:00:56,630 --> 00:00:59,660
-have any todo item into our application yet.
+có bất kỳ todo item nào trong ứng dụng của chúng ta.
 
 13
 00:00:59,660 --> 00:01:03,500
-How we can add new todo item according to our architecture.
+Làm thế nào chúng ta có thể thêm todo item mới theo architecture của chúng ta.
 
 14
 00:01:03,500 --> 00:01:10,910
-You can see that we have already exposed post http api that we can create new item into our to do list.
+Bạn có thể thấy rằng chúng ta đã expose POST HTTP API mà chúng ta có thể tạo item mới vào todo list của chúng ta.
 
 15
 00:01:10,910 --> 00:01:18,500
-For that purpose, I'm going to use postman to sending the post request to our todo web API project.
+Để làm điều đó, tôi sẽ sử dụng Postman để gửi POST request đến Todo web API project của chúng ta.
 
 16
 00:01:18,500 --> 00:01:23,390
-Please open the postman and create a new Http request.
+Vui lòng mở Postman và tạo một Http request mới.
 
 17
 00:01:23,390 --> 00:01:26,720
-And now we can verify from the Get request.
+Và bây giờ chúng ta có thể xác nhận từ Get request.
 
 18
 00:01:26,720 --> 00:01:35,360
-If you copy from the URL into the browser and paste into your postman and send the http get request,
+Nếu bạn sao chép URL từ browser và dán vào Postman của bạn và gửi HTTP GET request,
 
 19
 00:01:35,360 --> 00:01:38,060
-you can see that we don't have any todo item.
+bạn có thể thấy rằng chúng ta không có todo item nào.
 
 20
 00:01:38,060 --> 00:01:41,780
-I'm going to create new http post request.
+Tôi sẽ tạo HTTP POST request mới.
 
 21
 00:01:41,780 --> 00:01:50,030
-This time I'm going to change the Http method as a post and paste to do our http url localhost and the
+Lần này tôi sẽ thay đổi Http method thành POST và dán URL localhost của chúng ta với
 
 22
 00:01:50,030 --> 00:01:52,490
-port number, and adding the todo items.
+port number, và thêm todo items.
 
 23
 00:01:52,490 --> 00:02:00,380
-So that means we are arranging our http post endpoint according to our development of this app dot map
+Điều đó có nghĩa là chúng ta đang sắp xếp HTTP POST endpoint của chúng ta theo development của app dot map
 
 24
 00:02:00,380 --> 00:02:01,400
-post method.
+POST method.
 
 25
 00:02:01,400 --> 00:02:05,150
-So after that we are going to provide some Json input.
+Vậy sau đó chúng ta sẽ cung cấp một số Json input.
 
 26
 00:02:05,150 --> 00:02:08,300
-You can see that it is expecting todo item model.
+Bạn có thể thấy rằng nó đang mong đợi todo item model.
 
 27
 00:02:08,300 --> 00:02:13,460
-So we should provide todo item model with the properties of the name and is complete.
+Vì vậy chúng ta nên cung cấp todo item model với các properties của name và is complete.
 
 28
 00:02:13,460 --> 00:02:18,860
-So if you can go to the todo item you can see the todo item properties in here.
+Vì vậy nếu bạn có thể xem todo item, bạn có thể thấy các properties của todo item ở đây.
 
 29
 00:02:18,860 --> 00:02:22,100
-If you go back now, we will send http post request.
+Nếu bạn quay lại bây giờ, chúng ta sẽ gửi HTTP POST request.
 
 30
 00:02:22,220 --> 00:02:31,130
-Open the postman and this time we can set the body parameters as a row and Json and paste in here.
+Mở Postman và lần này chúng ta có thể đặt body parameters như raw và Json và dán vào đây.
 
 31
 00:02:31,130 --> 00:02:37,880
-Basically I'm going to adding the name and is complete attributes into Json format.
+Cơ bản tôi sẽ thêm name và is complete attributes vào Json format.
 
 32
 00:02:37,880 --> 00:02:44,240
-And now I'm going to send the http post request and it is created successfully.
+Và bây giờ tôi sẽ gửi HTTP POST request và nó đã được tạo thành công.
 
 33
 00:02:44,240 --> 00:02:50,300
-We understood that the id is newly generated item into our in-memory database.
+Chúng ta hiểu rằng ID là item mới được tạo vào in-memory database của chúng ta.
 
 34
 00:02:50,300 --> 00:02:58,130
-We can verify from the http get method, sending the get all todo items and see our one todo item into
+Chúng ta có thể xác nhận từ HTTP GET method, gửi get all todo items và xem todo item đầu tiên của chúng ta vào
 
 35
 00:02:58,130 --> 00:02:59,480
-the in-memory database.
+in-memory database.
 
 36
 00:02:59,480 --> 00:03:02,930
-We can also create new todo item into our list.
+Chúng ta cũng có thể tạo todo item mới vào list của chúng ta.
 
 37
 00:03:02,930 --> 00:03:10,790
-I'm going to change the name and send additional http post request and see there is new ID created,
+Tôi sẽ thay đổi name và gửi HTTP POST request bổ sung và thấy rằng có một ID mới được tạo,
 
 38
 00:03:10,790 --> 00:03:18,200
-and if you go back to get all todo items and send request, we can see two todo items into our list.
+và nếu bạn quay lại get all todo items và gửi request, chúng ta có thể thấy hai todo items trong list của chúng ta.
 
 39
 00:03:18,200 --> 00:03:24,500
-In order to get by id method, we can add slash and give the id in here.
+Để get by id method, chúng ta có thể thêm dấu gạch chéo và đưa id vào đây.
 
 40
 00:03:24,500 --> 00:03:25,910
-When the query parameters.
+Khi là query parameters.
 
 41
 00:03:25,910 --> 00:03:33,860
-If I send this get method, this will be get only specific todo item with providing the ID information
+Nếu tôi gửi phương thức get này, nó sẽ chỉ lấy một item todo cụ thể bằng cách cung cấp thông tin ID
 
 42
 00:03:33,860 --> 00:03:35,090
-into the query list.
+vào danh sách truy vấn.
 
 43
 00:03:35,090 --> 00:03:38,750
-So now we can create the update method for that purpose.
+Vậy bây giờ chúng ta có thể tạo phương thức update cho mục đích này.
 
 44
 00:03:38,750 --> 00:03:42,890
-I'm going to duplicate this get method with the right click and duplicate the top.
+Tôi sẽ nhân đôi phương thức get này bằng cách nhấp chuột phải và nhân đôi ở trên cùng.
 
 45
 00:03:42,890 --> 00:03:47,120
-So the end point should be the same, but Http method should be the put.
+Vậy endpoint sẽ giống nhau, nhưng HTTP method sẽ là put.
 
 46
 00:03:47,120 --> 00:03:51,410
-And I'm going to create a body and raw json file.
+Và tôi sẽ tạo một body và tệp json thô.
 
 47
 00:03:51,410 --> 00:03:57,260
-So we will get this Json from the response of the get method and put in here.
+Vậy chúng ta sẽ lấy Json này từ phản hồi của phương thức get và đặt vào đây.
 
 48
 00:03:57,260 --> 00:04:03,560
-So basically I'm going to name of the todo item is changed.
+Vậy về cơ bản tôi sẽ thay đổi tên của item todo.
 
 49
 00:04:03,560 --> 00:04:10,460
-And after that I'm going to send the http put request and see that the response is not coming.
+Và sau đó tôi sẽ gửi HTTP put request và xem rằng phản hồi không đến.
 
 50
 00:04:10,460 --> 00:04:12,380
-And the status is 204.
+Và trạng thái là 204.
 
 51
 00:04:12,410 --> 00:04:14,870
-That means it is successfully updated.
+Điều đó có nghĩa là nó đã được cập nhật thành công.
 
 52
 00:04:14,870 --> 00:04:17,570
-We can confirm from in the Get method.
+Chúng ta có thể xác nhận từ phương thức Get.
 
 53
 00:04:17,570 --> 00:04:25,370
-If you remove the this query parameter and get all Todo items, you can see the first item is updated
+Nếu bạn loại bỏ tham số truy vấn này và lấy tất cả các item Todo, bạn có thể thấy item đầu tiên đã được cập nhật
 
 54
 00:04:25,370 --> 00:04:28,700
-so now the only thing left is http get method.
+vậy bây giờ điều duy nhất còn lại là HTTP get method.
 
 55
 00:04:28,700 --> 00:04:35,060
-Again, I am going to duplicate this http get method, and now I am going to remove the second item
+Một lần nữa, tôi sẽ nhân đôi HTTP get method này, và bây giờ tôi sẽ xóa item thứ hai
 
 56
 00:04:35,060 --> 00:04:43,190
-and change the Http method as a delete and send this http delete method, and the status is 204.
+và thay đổi HTTP method thành delete và gửi HTTP delete method này, và trạng thái là 204.
 
 57
 00:04:43,220 --> 00:04:45,080
-That means successfully deleted.
+Điều đó có nghĩa là đã xóa thành công.
 
 58
 00:04:45,080 --> 00:04:51,980
-If you go back to our Get method, we can successfully see that only one item left on our to do list.
+Nếu bạn quay lại phương thức Get của chúng ta, chúng ta có thể thấy rõ ràng rằng chỉ còn một item trên danh sách todo của chúng ta.
 
 59
 00:04:51,980 --> 00:04:58,160
-So as you can see that we have created and implemented Todo web API project.
+Vậy như bạn có thể thấy, chúng ta đã tạo và triển khai Todo Web API project.
 
 60
 00:04:58,160 --> 00:05:03,830
-That means we will create minimal API using the ASP.Net core for a single microservices.
+Điều đó có nghĩa là chúng ta sẽ tạo Minimal API sử dụng ASP.NET Core cho một microservice duy nhất.
 

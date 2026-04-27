@@ -1,122 +1,122 @@
 1
 00:00:00,170 --> 00:00:06,440
-In this video, we are going to create abstraction on mediator for securities design pattern.
+Trong video này, chúng ta sẽ tạo abstraction trên mediator cho mẫu design pattern Mediator.
 
 2
 00:00:06,440 --> 00:00:13,130
-We will create a clear separation between commands and queries using the mediator, enhancing the clarity
+Chúng ta sẽ tạo một sự tách biệt rõ ràng giữa commands và queries bằng cách sử dụng mediator, nâng cao tính rõ ràng
 
 3
 00:00:13,130 --> 00:00:15,290
-and maintainability of our code.
+và khả năng bảo trì của code của chúng ta.
 
 4
 00:00:15,290 --> 00:00:21,260
-In order to implement securities design pattern effectively, we will create specialized interfaces
+Để triển khai mẫu Mediator một cách hiệu quả, chúng ta sẽ tạo các interfaces chuyên biệt
 
 5
 00:00:21,260 --> 00:00:22,910
-for commands and queries.
+cho commands và queries.
 
 6
 00:00:22,910 --> 00:00:25,250
-So you can see the picture on the slide.
+Vậy bạn có thể thấy hình ảnh trên slide.
 
 7
 00:00:25,250 --> 00:00:31,640
-We will create the specific interfaces for query and command operation and we will inherit from the
+Chúng ta sẽ tạo các interfaces cụ thể cho các hoạt động query và command và chúng ta sẽ kế thừa từ
 
 8
 00:00:31,640 --> 00:00:33,080
-mediator I request.
+I request của mediator.
 
 9
 00:00:33,080 --> 00:00:40,670
-You can see in this picture we will create a query interface which inherited I request and again inherited
+Bạn có thể thấy trong hình ảnh này chúng ta sẽ tạo một query interface kế thừa I request và lại kế thừa
 
 10
 00:00:40,670 --> 00:00:41,450
-from I request.
+từ I request.
 
 11
 00:00:41,450 --> 00:00:44,240
-And this time we will create a command interface.
+Và lần này chúng ta sẽ tạo một command interface.
 
 12
 00:00:44,540 --> 00:00:51,980
-And at the same way we will create request handler classes for I query handler and I command handler.
+Và theo cách tương tự chúng ta sẽ tạo các lớp request handler cho I query handler và I command handler.
 
 13
 00:00:52,040 --> 00:00:58,220
-So these are the generic and normal methods with inherited from I request mediator.
+Vậy đây là các phương thức generic và bình thường kế thừa từ I request mediator.
 
 14
 00:00:58,220 --> 00:01:05,269
-By this way we can separate the responsibilities and apply the cross-cutting concerns with different
+Bằng cách này chúng ta có thể tách biệt các trách nhiệm và áp dụng các cross-cutting concerns theo những cách khác nhau
 
 15
 00:01:05,269 --> 00:01:07,070
-ways into commands and queries.
+vào commands và queries.
 
 16
 00:01:07,070 --> 00:01:13,340
-For example, you can think that we will implement a validation only run for the command objects and
+Ví dụ, bạn có thể nghĩ rằng chúng ta sẽ triển khai validation chỉ chạy cho các đối tượng command và
 
 17
 00:01:13,340 --> 00:01:15,920
-we don't want to run validations query objects.
+chúng ta không muốn chạy validations cho các đối tượng query.
 
 18
 00:01:15,920 --> 00:01:21,290
-With separating these interfaces, we will apply validations only our command.
+Bằng cách tách biệt các interfaces này, chúng ta sẽ áp dụng validations chỉ cho command của chúng ta.
 
 19
 00:01:21,590 --> 00:01:27,770
-But before that there is very important thing before abstractions on the mediator and queries.
+Nhưng trước đó có một điều rất quan trọng trước abstractions trên mediator và queries.
 
 20
 00:01:27,770 --> 00:01:33,650
-Here you can see the Icap microservices using the building blocks libraries.
+Ở đây bạn có thể thấy các microservices Icap đang sử dụng thư viện building blocks.
 
 21
 00:01:33,650 --> 00:01:37,250
-These are the microservices that we are going to develop during the course.
+Đây là những microservices mà chúng ta sẽ phát triển trong khóa học.
 
 22
 00:01:37,250 --> 00:01:42,050
-And all these microservices are using building blocks class library.
+Và tất cả các microservices này đều sử dụng thư viện lớp building blocks.
 
 23
 00:01:42,050 --> 00:01:47,540
-So that means building blocks encapsulate our common operation for each microservices.
+Vậy điều đó có nghĩa là building blocks đóng gói các hoạt động chung cho mỗi microservices.
 
 24
 00:01:47,540 --> 00:01:55,010
-For example, we will use these six design pattern abstractions and mediator library almost for all
+Ví dụ, chúng ta sẽ sử dụng sáu mẫu design pattern abstractions này và thư viện mediator cho hầu hết
 
 25
 00:01:55,010 --> 00:01:55,940
-microservices.
+các microservices.
 
 26
 00:01:55,940 --> 00:02:03,290
-So why we should develop each microservices to implement these six implementation and mediator library.
+Vậy tại sao chúng ta nên phát triển mỗi microservices để triển khai sáu triển khai này và thư viện mediator.
 
 27
 00:02:03,290 --> 00:02:10,370
-For that purpose I am going to create Building Blocks class library that can use every microservices
+Vì mục đích đó tôi sẽ tạo thư viện lớp Building Blocks có thể được sử dụng bởi mỗi microservices
 
 28
 00:02:10,370 --> 00:02:14,570
-with referencing this class library and perform these common operations.
+bằng cách tham chiếu đến thư viện lớp này và thực hiện các hoạt động chung này.
 
 29
 00:02:14,570 --> 00:02:21,200
-Also, we will install all common NuGet packages and codes into Building blocks class library that you
+Ngoài ra, chúng ta sẽ cài đặt tất cả các gói NuGet chung và các mã vào thư viện lớp Building Blocks mà bạn
 
 30
 00:02:21,200 --> 00:02:27,350
-can see list of the NuGet packages, and these are the common NuGet packages that can be used for each
+có thể thấy danh sách các gói NuGet, và đây là những gói NuGet chung có thể được sử dụng cho mỗi
 
 31
 00:02:27,350 --> 00:02:28,190
@@ -124,135 +124,135 @@ microservices.
 
 32
 00:02:28,190 --> 00:02:31,310
-We will encapsulate in the Building Blocks class library.
+Chúng ta sẽ đóng gói trong thư viện lớp Building Blocks.
 
 33
 00:02:31,520 --> 00:02:38,450
-That means in order to ensure reusability and maintainability across for each microservices, we will
+Điều đó có nghĩa là để đảm bảo khả năng tái sử dụng và khả năng bảo trì trên mỗi microservices, chúng ta sẽ
 
 34
 00:02:38,450 --> 00:02:40,790
-create a Building Blocks class library.
+tạo một thư viện lớp Building Blocks.
 
 35
 00:02:40,790 --> 00:02:48,020
-This library will contain our secrets, abstractions and these interfaces, and can be referenced by
+Thư viện này sẽ chứa các secrets, abstractions và các interfaces của chúng ta, và có thể được tham chiếu bởi
 
 36
 00:02:48,020 --> 00:02:54,260
-any microservices in our system that can implement the secrets design pattern and using the mediator.
+bất kỳ microservices nào trong hệ thống của chúng ta để có thể triển khai mẫu design pattern secrets và sử dụng mediator.
 
 37
 00:02:54,560 --> 00:02:58,820
-So let's start with the setting up the Building Blocks project.
+Vậy hãy bắt đầu với việc thiết lập dự án Building Blocks.
 
 38
 00:02:58,820 --> 00:03:04,580
-For that purpose, open the Visual Studio and we are going to create Building Blocks project.
+Vì mục đích đó, hãy mở Visual Studio và chúng ta sẽ tạo dự án Building Blocks.
 
 39
 00:03:04,580 --> 00:03:12,080
-But before that let's create a folder which is a solution folder which is same as the services folder
+Nhưng trước đó hãy tạo một thư mục đó là thư mục giải pháp có cùng cấu trúc thư mục dịch vụ
 
 40
 00:03:12,080 --> 00:03:13,220
-structure directory.
+thư mục directory.
 
 41
 00:03:13,220 --> 00:03:17,060
-We can right click the solution and add a new solution folder.
+Chúng ta có thể nhấp chuột phải vào solution và thêm một solution folder mới.
 
 42
 00:03:17,060 --> 00:03:19,310
-Which name is building blocks.
+Cái tên là building blocks.
 
 43
 00:03:19,310 --> 00:03:23,210
-Because this is the existing from the microservices.
+Vì đây là cái có sẵn từ microservices.
 
 44
 00:03:23,210 --> 00:03:25,670
-That could be different folder location.
+Đó có thể là một vị trí folder khác.
 
 45
 00:03:25,670 --> 00:03:30,590
-And we are adding the building blocks at the top of the our solution perspective.
+Và chúng ta đang thêm building blocks ở đầu của solution perspective của chúng ta.
 
 46
 00:03:30,590 --> 00:03:34,850
-So under the building blocks I'm going to create a new class library.
+Vậy dưới building blocks tôi sẽ tạo một class library mới.
 
 47
 00:03:34,850 --> 00:03:38,960
-And this class library will be include our common operations.
+Và class library này sẽ bao gồm các common operations của chúng ta.
 
 48
 00:03:38,960 --> 00:03:46,670
-For that purpose right click the Building Blocks solution folder add new project and this time we will
+Để làm việc đó, nhấp chuột phải vào thư mục solution Building Blocks, thêm project mới và lần này chúng ta sẽ
 
 49
 00:03:46,670 --> 00:03:48,050
-use Class library.
+sử dụng Class library.
 
 50
 00:03:48,170 --> 00:03:54,020
-I have already pinned the class library before in my recent project templates, and select the class
+Tôi đã ghim class library trước đây trong các recent project templates của tôi, và chọn class
 
 51
 00:03:54,020 --> 00:03:56,030
-library and click the next button.
+library rồi nhấp nút next.
 
 52
 00:03:56,030 --> 00:04:00,680
-So project name will be the building blocks you can see in here.
+Vậy project name sẽ là building blocks như bạn có thể thấy ở đây.
 
 53
 00:04:00,680 --> 00:04:02,780
-The project name will be the building blocks.
+Tên project sẽ là building blocks.
 
 54
 00:04:02,780 --> 00:04:09,470
-And the location is very important because we should add the location name according to our building
+Và vị trí rất quan trọng vì chúng ta nên thêm tên vị trí theo building
 
 55
 00:04:09,470 --> 00:04:10,010
-blocks.
+blocks của chúng ta.
 
 56
 00:04:10,010 --> 00:04:15,830
-So as you can see the Our solution window we will have a building blocks folder.
+Vậy như bạn có thể thấy trong cửa sổ solution của chúng ta, chúng ta sẽ có một building blocks folder.
 
 57
 00:04:15,830 --> 00:04:22,040
-And under the these building blocks folder we will create a class library which name is building blocks
+Và dưới building blocks folder này chúng ta sẽ tạo một class library có tên là building blocks
 
 58
 00:04:22,040 --> 00:04:23,270
-which is the same name.
+cái tên giống nhau.
 
 59
 00:04:23,270 --> 00:04:31,160
-For that purpose I'm going to add additional slash and building blocks in here in order to create our
+Để làm việc đó tôi sẽ thêm một dấu gạch chéo và building blocks ở đây để tạo
 
 60
 00:04:31,850 --> 00:04:35,120
-building blocks project under the source folder.
+building blocks project của chúng ta dưới source folder.
 
 61
 00:04:35,120 --> 00:04:41,510
-So under the source folder we should have a building blocks folder physical folder.
+Vậy dưới source folder chúng ta nên có một building blocks physical folder.
 
 62
 00:04:41,510 --> 00:04:46,280
-And under these physical folder we will create Building Blocks class library.
+Và dưới physical folder này chúng ta sẽ tạo Building Blocks class library.
 
 63
 00:04:46,280 --> 00:04:49,820
-So make sure that your location and the project name is correct.
+Vậy hãy chắc chắn rằng vị trí và tên project của bạn là đúng.
 
 64
 00:04:49,820 --> 00:04:56,060
-And after setting up these location you can see that project will be created under this source building
+Và sau khi thiết lập vị trí này bạn có thể thấy project sẽ được tạo dưới source building
 
 65
 00:04:56,060 --> 00:04:56,510
@@ -260,95 +260,95 @@ block.
 
 66
 00:04:56,510 --> 00:04:59,540
-Slash again the second building blocks and click.
+Dấu gạch chéo một lần nữa building blocks thứ hai và nhấp.
 
 67
 00:04:59,860 --> 00:05:00,700
-Next button.
+Nút next.
 
 68
 00:05:01,330 --> 00:05:03,280
-And of course framework will be.
+Và tất nhiên framework sẽ là.
 
 69
 00:05:03,490 --> 00:05:05,530
-Net eight and click the create button.
+.NET 8 và nhấp nút create.
 
 70
 00:05:06,500 --> 00:05:12,530
-Yes, this will be great building blocks under our solution and the correct folder path.
+Vâng, đây sẽ là building blocks tuyệt vời dưới solution của chúng ta và đường dẫn folder đúng.
 
 71
 00:05:12,560 --> 00:05:18,050
-You can verify from the solution window and make sure that you have created the correct building blocks
+Bạn có thể xác minh từ cửa sổ solution và đảm bảo rằng bạn đã tạo building blocks
 
 72
 00:05:18,050 --> 00:05:19,100
-class library.
+class library chính xác.
 
 73
 00:05:19,100 --> 00:05:22,250
-And the first thing we should do is delete the class one.
+Và điều đầu tiên chúng ta nên làm là xóa class one.
 
 74
 00:05:22,250 --> 00:05:25,280
-We will create our own class for common operations.
+Chúng ta sẽ tạo class riêng của chúng ta cho common operations.
 
 75
 00:05:25,280 --> 00:05:27,740
-So that's why I'm going to remove these class one.
+Vậy đó là lý do tôi sẽ xóa class one này.
 
 76
 00:05:27,740 --> 00:05:30,680
-And after that you can save the solution.
+Và sau đó bạn có thể lưu solution.
 
 77
 00:05:30,680 --> 00:05:34,640
-And now we are ready for the perform our common operations.
+Và bây giờ chúng ta đã sẵn sàng để thực hiện common operations của chúng ta.
 
 78
 00:05:34,640 --> 00:05:41,390
-If you look at the slide the common operations is implementing the six abstractions and mediator library.
+Nếu bạn nhìn vào slide, common operations là triển khai six abstractions và mediator library.
 
 79
 00:05:41,390 --> 00:05:45,140
-So let's start with the installing the mediator library.
+Vậy hãy bắt đầu với việc cài đặt mediator library.
 
 80
 00:05:45,140 --> 00:05:52,760
-Mediator is essential for implementing the mediator pattern and which is also central of our six implementation.
+Mediator là thiết yếu để triển khai mediator pattern và nó cũng là trung tâm của six implementation của chúng ta.
 
 81
 00:05:52,910 --> 00:05:59,720
-Actually we will also install all common NuGet packages for each microservices into building blocks.
+Thực tế chúng ta cũng sẽ cài đặt tất cả các NuGet packages phổ biến cho mỗi microservice vào building blocks.
 
 82
 00:05:59,720 --> 00:06:06,350
-By this way, whenever a new microservice comes into the picture, we will just reference to the building
+Bằng cách này, bất cứ khi nào một microservice mới xuất hiện, chúng ta sẽ chỉ cần tham chiếu đến building
 
 83
 00:06:06,350 --> 00:06:10,160
-blocks and start writing the code with all common NuGet packages.
+blocks và bắt đầu viết mã với tất cả các NuGet packages phổ biến.
 
 84
 00:06:10,160 --> 00:06:15,560
-This also provide version management of NuGet packages make easier in one class library.
+Điều này cũng cung cấp quản lý phiên bản của NuGet packages dễ dàng hơn trong một class library.
 
 85
 00:06:15,560 --> 00:06:22,220
-Instead of installing the mediator for different microservices, we will only install in one place and
+Thay vì cài đặt mediator cho các microservice khác nhau, chúng ta sẽ chỉ cài đặt ở một nơi duy nhất và
 
 86
 00:06:22,220 --> 00:06:25,280
-it will be easy to managing versions.
+nó sẽ dễ dàng để quản lý các phiên bản.
 
 87
 00:06:25,280 --> 00:06:31,790
-So please open the Visual Studio and right click the building blocks and manage NuGet packages.
+Vậy hãy mở Visual Studio và nhấp chuột phải vào building blocks và quản lý NuGet packages.
 
 88
 00:06:32,820 --> 00:06:39,750
-So again in here you can browse for the mediator and install the mediator NuGet package under the Building
+Vậy lại ở đây bạn có thể tìm kiếm mediator và cài đặt NuGet package mediator dưới Building
 
 89
 00:06:39,750 --> 00:06:41,070
@@ -356,79 +356,79 @@ Blocks class library.
 
 90
 00:06:41,100 --> 00:06:46,140
-We can double click the class library and verify from in here and save these building blocks.
+Chúng ta có thể nhấp đôi vào class library và xác minh từ đây và lưu lại những building blocks này.
 
 91
 00:06:46,170 --> 00:06:48,960
-So inside of our building blocks library.
+Vậy bên trong building blocks library của chúng ta.
 
 92
 00:06:48,960 --> 00:06:52,440
-Now we are ready to create our six abstractions.
+Bây giờ chúng ta đã sẵn sàng để tạo sáu abstractions của chúng ta.
 
 93
 00:06:52,440 --> 00:06:58,350
-For that purpose, I'm going to create a new folder under this class library, which will be the Our
+Để có được điều đó, tôi sẽ tạo một folder mới dưới class library này, đó sẽ là Our
 
 94
 00:06:58,350 --> 00:07:02,940
-Abstractions add new folder and give the name as a six.
+Abstractions thêm folder mới và đặt tên là six.
 
 95
 00:07:03,060 --> 00:07:09,750
-So under the six we will define our interfaces that we have designed in the block blocks in here.
+Vậy dưới six chúng ta sẽ định nghĩa các interfaces mà chúng ta đã thiết kế trong block blocks ở đây.
 
 96
 00:07:09,750 --> 00:07:16,470
-So we will create these interfaces to abstract our six operations in six folder.
+Vậy chúng ta sẽ tạo các interfaces này để trừu tượng hóa các hoạt động six của chúng ta trong folder six.
 
 97
 00:07:16,470 --> 00:07:19,530
-Let's start with defining a command interface.
+Hãy bắt đầu với định nghĩa một command interface.
 
 98
 00:07:19,530 --> 00:07:25,800
-And this command interface will be inherited from the mediator I request interface.
+Và command interface này sẽ kế thừa từ mediator I request interface.
 
 99
 00:07:25,800 --> 00:07:35,850
-So please go back to Visual Studio and open the our folder and add new class under the six folder.
+Vậy hãy quay lại Visual Studio và mở folder our và thêm class mới dưới folder six.
 
 100
 00:07:35,850 --> 00:07:37,380
-Which name is L command.
+Cái tên là L command.
 
 101
 00:07:37,380 --> 00:07:44,940
-In here I'm going to create an interface which will be the public and this will be inherit from the
+Ở đây tôi sẽ tạo một interface sẽ là public và nó sẽ kế thừa từ
 
 102
 00:07:45,690 --> 00:07:48,510
-I request object which comes from the mediator.
+I request object mà đến từ mediator.
 
 103
 00:07:48,510 --> 00:07:51,450
-So we can remove unnecessary using statement.
+Vậy chúng ta có thể xóa unnecessary using statement.
 
 104
 00:07:51,450 --> 00:07:54,900
-And first of all I would like to implement for the generic one.
+Và đầu tiên tôi muốn triển khai cho generic.
 
 105
 00:07:54,900 --> 00:08:01,350
-For that purpose we will also make generic our I command, which will be the returning response.
+Để có được điều đó chúng ta cũng sẽ tạo generic cho I command của chúng ta, đó sẽ là returning response.
 
 106
 00:08:01,350 --> 00:08:08,190
-That means this command will be returning this response type that we can pass these I request generics.
+Điều đó có nghĩa là command này sẽ returning response type mà chúng ta có thể truyền vào các I request generics.
 
 107
 00:08:08,190 --> 00:08:10,770
-So this is the first abstraction.
+Vậy đây là abstraction đầu tiên.
 
 108
 00:08:10,770 --> 00:08:18,930
-And the second abstraction we can define our regular interface which will be again public interface
+Và abstraction thứ hai chúng ta có thể định nghĩa interface thông thường của chúng ta sẽ lại là public interface
 
 109
 00:08:18,930 --> 00:08:19,920
@@ -436,129 +436,129 @@ I command.
 
 110
 00:08:20,550 --> 00:08:22,560
-But this time we don't have any generics.
+Nhưng lần này chúng ta không có bất kỳ generics nào.
 
 111
 00:08:22,560 --> 00:08:27,180
-So we can inherit from the I command in here.
+Vậy chúng ta có thể kế thừa từ I command ở đây.
 
 112
 00:08:27,180 --> 00:08:30,660
-And as a generic we can give the unit.
+Và như một generic chúng ta có thể cho unit.
 
 113
 00:08:30,660 --> 00:08:34,650
-Unit is a representing weight type for the mediator.
+Unit là biểu thị kiểu weight cho mediator.
 
 114
 00:08:34,650 --> 00:08:39,720
-So that's why we can define an empty or no generic type of the I command.
+Vậy đó là lý do tại sao chúng ta có thể định nghĩa một empty hoặc no generic type của I command.
 
 115
 00:08:39,720 --> 00:08:42,150
-So this is also an empty interface.
+Vậy đây cũng là một empty interface.
 
 116
 00:08:42,150 --> 00:08:44,070
-We don't have any additional members.
+Chúng ta không có bất kỳ additional members nào.
 
 117
 00:08:44,070 --> 00:08:45,870
-So here we can implement it.
+Vậy ở đây chúng ta có thể triển khai nó.
 
 118
 00:08:45,870 --> 00:08:51,420
-The I command part in this code I command defines a contract for all command types.
+Phần I command trong code này I command định nghĩa một contract cho tất cả các command types.
 
 119
 00:08:51,420 --> 00:08:55,230
-And the generic version allows for commands that produce a response.
+Và phiên bản generic cho phép các commands tạo ra một response.
 
 120
 00:08:55,230 --> 00:08:57,180
-So this is producing a response.
+Vậy đây là tạo ra một response.
 
 121
 00:08:57,180 --> 00:09:01,500
-This is an empty I command that doesn't return any response.
+Đây là một I command trống không trả về bất kỳ phản hồi nào.
 
 122
 00:09:01,500 --> 00:09:03,360
-So now at the same way.
+Vậy bây giờ theo cùng một cách.
 
 123
 00:09:03,360 --> 00:09:07,830
-Similarly we can define I query interface for our queries.
+Tương tự chúng ta có thể định nghĩa I query interface cho các queries của chúng ta.
 
 124
 00:09:07,830 --> 00:09:09,120
-For that purpose.
+Với mục đích đó.
 
 125
 00:09:09,120 --> 00:09:15,780
-In the queries location we can add new item which is the I query interface.
+Trong vị trí queries chúng ta có thể thêm một item mới đó là I query interface.
 
 126
 00:09:15,780 --> 00:09:19,350
-So this is the interface that we are going to abstract.
+Vậy đây là interface mà chúng ta sẽ abstract hóa.
 
 127
 00:09:19,350 --> 00:09:27,270
-So again this will be the follow the same steps I query will be returned as a response again.
+Vậy lại một lần nữa điều này sẽ làm theo các bước tương tự, I query sẽ được trả về dưới dạng một phản hồi một lần nữa.
 
 128
 00:09:27,270 --> 00:09:31,890
-And we are going to inherit from the I request which comes from the mediator.
+Và chúng ta sẽ kế thừa từ I request được cung cấp từ mediator.
 
 129
 00:09:31,890 --> 00:09:36,060
-And I'm going to give the response in here okay.
+Và tôi sẽ đưa phản hồi vào đây được không.
 
 130
 00:09:36,060 --> 00:09:41,430
-We will make this interface as a public due to using from the other microservices.
+Chúng ta sẽ tạo interface này thành public để sử dụng từ các microservices khác.
 
 131
 00:09:41,430 --> 00:09:47,940
-And also we can add a generic filter which response could not be null.
+Và cũng chúng ta có thể thêm một generic filter mà phản hồi không thể rỗng.
 
 132
 00:09:49,050 --> 00:09:52,290
-We can add a not null filter in here okay.
+Chúng ta có thể thêm một not null filter ở đây được không.
 
 133
 00:09:52,290 --> 00:09:59,070
-The query also completed the I query interface inherit from the I request and it is designed to return
+Query cũng hoàn thành interface I query kế thừa từ I request và nó được thiết kế để trả về
 
 134
 00:09:59,070 --> 00:09:59,730
-a result.
+một kết quả.
 
 135
 00:09:59,730 --> 00:10:02,040
-This is used for the read operations.
+Điều này được sử dụng cho các read operations.
 
 136
 00:10:02,040 --> 00:10:07,950
-By creating these abstractions, we can separate the responsibilities and manage the cross-cutting concerns
+Bằng cách tạo ra các abstractions này, chúng ta có thể phân tách các responsibilities và quản lý các cross-cutting concerns
 
 137
 00:10:07,950 --> 00:10:10,110
-like validations more effectively.
+như validations một cách hiệu quả hơn.
 
 138
 00:10:10,110 --> 00:10:14,280
-Commands can have their own validations and distinct from the queries.
+Commands có thể có validations riêng của chúng và riêng biệt từ queries.
 
 139
 00:10:14,280 --> 00:10:22,830
-And also you can see in here these six abstraction will be used across for each microservices by referencing
+Và cũng bạn có thể thấy ở đây các six abstraction này sẽ được sử dụng trên tất cả các microservices bằng cách tham chiếu
 
 140
 00:10:22,830 --> 00:10:28,590
-the Building Blocks class library, by adding all common stuff in the Building Blocks class library,
+đến Building Blocks class library, bằng cách thêm tất cả những thứ chung trong Building Blocks class library,
 
 141
 00:10:28,590 --> 00:10:34,050
-we ensure consistency and reduce the code duplication across other microservices.
+chúng ta đảm bảo tính nhất quán và giảm thiểu sự trùng lặp mã trên các microservices khác.
 

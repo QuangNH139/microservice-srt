@@ -1,6 +1,6 @@
 1
 00:00:00,140 --> 00:00:06,830
-In this video we are going to create our first microservices, which is the catalog API, ASP.Net web
+Trong video này chúng ta sẽ tạo microservices đầu tiên của mình, đó là catalog API, một ASP.NET web
 
 2
 00:00:06,830 --> 00:00:07,880
@@ -8,155 +8,155 @@ API project.
 
 3
 00:00:08,000 --> 00:00:11,660
-But before that we will setting up the project folder structure.
+Nhưng trước đó chúng ta sẽ thiết lập cấu trúc thư mục của project.
 
 4
 00:00:11,660 --> 00:00:15,890
-Here you can see the folder structure that we are going to build one by one.
+Ở đây bạn có thể thấy cấu trúc thư mục mà chúng ta sẽ xây dựng từng bước một.
 
 5
 00:00:15,890 --> 00:00:22,790
-So first of all we are going to start with Creating Services folder which will be including for each
+Vậy đầu tiên chúng ta sẽ bắt đầu bằng cách tạo folder Services, nó sẽ chứa từng
 
 6
 00:00:22,790 --> 00:00:24,830
-microservices under the services.
+microservices dưới folder services.
 
 7
 00:00:24,830 --> 00:00:28,580
-So we will be create a service folder in our solution.
+Vì vậy chúng ta sẽ tạo một folder service trong solution của mình.
 
 8
 00:00:28,580 --> 00:00:36,170
-And after that under the service folder we will be create additional sub folders for each microservices.
+Và sau đó trong folder service chúng ta sẽ tạo các sub folder bổ sung cho từng microservices.
 
 9
 00:00:36,170 --> 00:00:42,530
-Since we are developing catalog we will be creating a catalog sub folder under the services folder.
+Vì chúng ta đang phát triển catalog nên chúng ta sẽ tạo một sub folder catalog dưới folder services.
 
 10
 00:00:42,530 --> 00:00:44,360
-So let's get started.
+Vậy hãy bắt đầu nào.
 
 11
 00:00:44,360 --> 00:00:51,050
-Please open the Visual Studio environment and we are going to open our blank solution.
+Vui lòng mở môi trường Visual Studio và chúng ta sẽ mở solution trống của mình.
 
 12
 00:00:51,050 --> 00:00:56,660
-And after that you can right click this solution add Naive solution folder.
+Và sau đó bạn có thể click chuột phải vào solution này và thêm một solution folder.
 
 13
 00:00:56,660 --> 00:01:01,370
-So in this solution folder we will give the name as a services.
+Vì vậy trong solution folder này chúng ta sẽ đặt tên là services.
 
 14
 00:01:01,910 --> 00:01:07,670
-And after that I'm going to create an additional sub folder which name is catalog.
+Và sau đó tôi sẽ tạo một sub folder bổ sung có tên là catalog.
 
 15
 00:01:07,820 --> 00:01:13,160
-Again we are going to create a new solution folder and give the name as a catalog.
+Một lần nữa chúng ta sẽ tạo một solution folder mới và đặt tên là catalog.
 
 16
 00:01:14,090 --> 00:01:18,140
-So here you can see the our latest solution folder structure.
+Vì vậy ở đây bạn có thể thấy cấu trúc solution folder mới nhất của chúng ta.
 
 17
 00:01:18,140 --> 00:01:19,520
-We have a services folder.
+Chúng ta có một folder services.
 
 18
 00:01:19,520 --> 00:01:21,680
-And under that we have a catalog folder.
+Và dưới đó chúng ta có một folder catalog.
 
 19
 00:01:21,770 --> 00:01:26,840
-So now we can create ASP.Net web API project for catalog microservices.
+Vậy bây giờ chúng ta có thể tạo ASP.NET web API project cho catalog microservices.
 
 20
 00:01:26,840 --> 00:01:29,690
-For that purpose select the catalog sub folder.
+Với mục đích đó, hãy chọn sub folder catalog.
 
 21
 00:01:29,690 --> 00:01:32,300
-Right click Add New Project.
+Click chuột phải Add New Project.
 
 22
 00:01:32,300 --> 00:01:35,690
-In this window we can select the ASP.Net templates.
+Trong cửa sổ này chúng ta có thể chọn các template ASP.NET.
 
 23
 00:01:35,690 --> 00:01:42,560
-We will choose ASP.Net Core Empty Project template because when we are selecting with the web API and
+Chúng ta sẽ chọn ASP.NET Core Empty Project template bởi vì khi chúng ta chọn web API thì
 
 24
 00:01:42,560 --> 00:01:47,420
-empty web API has lots of boilerplate code, and we have to remove that code.
+empty web API có rất nhiều boilerplate code, và chúng ta phải xóa mã đó.
 
 25
 00:01:47,420 --> 00:01:53,480
-Instead of that, we will choose empty project template for all microservices and arrange our code very
+Thay vào đó, chúng ta sẽ chọn empty project template cho tất cả microservices và sắp xếp mã của chúng ta rất
 
 26
 00:01:53,480 --> 00:01:53,930
-fast.
+nhanh chóng.
 
 27
 00:01:53,930 --> 00:02:00,440
-So for that purpose, you can search for the empty solution in here and select the ASP.Net core project
+Vì vậy với mục đích đó, bạn có thể tìm kiếm empty solution ở đây và chọn ASP.NET Core project
 
 28
 00:02:00,440 --> 00:02:05,210
-and you can also pin these project in here in order to use frequently.
+và bạn cũng có thể ghim project này ở đây để sử dụng thường xuyên.
 
 29
 00:02:05,210 --> 00:02:08,479
-So I'm going to select in this recent project templates.
+Vì vậy tôi sẽ chọn trong recent project templates này.
 
 30
 00:02:08,479 --> 00:02:14,480
-And I have pinned this kind of project and select the ASP.Net Core Empty and click the next button.
+Và tôi đã ghim loại project này và chọn ASP.NET Core Empty và click nút next.
 
 31
 00:02:14,480 --> 00:02:17,570
-So we will give the name as a catalog API.
+Vì vậy chúng ta sẽ đặt tên là catalog API.
 
 32
 00:02:17,570 --> 00:02:23,450
-Since we will develop our catalog microservices, the project name should be catalog API.
+Vì chúng ta sẽ phát triển catalog microservices của mình nên tên project phải là catalog API.
 
 33
 00:02:23,450 --> 00:02:29,090
-And the location is very, very important because we will create this project under the source folder.
+Và vị trí rất, rất quan trọng vì chúng ta sẽ tạo project này dưới folder source.
 
 34
 00:02:29,090 --> 00:02:34,370
-But we have an additional folders created in here which is the services catalog.
+Nhưng chúng ta có các folder bổ sung được tạo ở đây đó là services catalog.
 
 35
 00:02:34,370 --> 00:02:39,020
-These are the solution folders that will not create a physical folder.
+Đây là những solution folder sẽ không tạo một physical folder.
 
 36
 00:02:39,020 --> 00:02:46,070
-In order to create physical folder as the same as our project, we should add the these folder path.
+Để tạo physical folder giống như project của chúng ta, chúng ta nên thêm đường dẫn folder này.
 
 37
 00:02:46,070 --> 00:02:53,690
-In here I'm going to add a slash and services and add again slash and give the name catalog.
+Ở đây tôi sẽ thêm một slash và services và thêm lại slash và đặt tên catalog.
 
 38
 00:02:53,690 --> 00:03:02,660
-So that means we will create a catalog API project under the Source Services and Catalog folder.
+Điều đó có nghĩa là chúng ta sẽ tạo một catalog API project dưới folder Source Services và Catalog.
 
 39
 00:03:02,660 --> 00:03:06,920
-So you should verify the location name is correct on your computer.
+Vì vậy bạn nên xác minh rằng tên vị trí của bạn là chính xác trên máy tính của mình.
 
 40
 00:03:06,920 --> 00:03:14,660
-And after that we will continue to create our very first microservices with clicking the next button.
+Và sau đó chúng ta sẽ tiếp tục tạo microservices đầu tiên rất của chúng ta bằng cách click nút next.
 
 41
 00:03:14,660 --> 00:03:18,770
@@ -320,7 +320,7 @@ With these steps we have set up the foundation for the Catholic API microservice
 
 81
 00:05:55,520 --> 00:06:01,820
-As we progress, we will delve into deeper developing the Catholic API functionality using the vertical
+Khi chúng ta tiến bộ, chúng ta sẽ đi sâu vào phát triển chức năng Catalog API bằng cách sử dụng vertical
 
 82
 00:06:01,820 --> 00:06:02,720

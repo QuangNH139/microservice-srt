@@ -1,174 +1,174 @@
 1
 00:00:00,170 --> 00:00:06,320
-In this video we are going to develop command handler class save to database operations with using the
+Trong video này chúng ta sẽ phát triển lớp command handler để lưu các thao tác vào cơ sở dữ liệu bằng cách sử dụng
 
 2
 00:00:06,320 --> 00:00:07,340
-Martin library.
+thư viện Marten.
 
 3
 00:00:07,340 --> 00:00:13,910
-So that means we will explore how to implement data persistence and infrastructure related operations
+Điều đó có nghĩa là chúng ta sẽ khám phá cách triển khai data persistence và các thao tác liên quan đến infrastructure
 
 4
 00:00:13,910 --> 00:00:19,250
-in our catalog microservices handler class using the Martin's documentation.
+trong lớp handler của catalog microservices chúng ta bằng cách sử dụng tài liệu của Marten.
 
 5
 00:00:19,250 --> 00:00:25,790
-So we will use primary constructs in order to inject Martin classes into our handler class.
+Vậy chúng ta sẽ sử dụng primary constructs để inject các lớp Marten vào lớp handler của chúng ta.
 
 6
 00:00:26,270 --> 00:00:29,810
-Martin managed the data using Trudu sessions.
+Marten quản lý dữ liệu bằng cách sử dụng Marten sessions.
 
 7
 00:00:29,810 --> 00:00:31,040
-You can see the image.
+Bạn có thể xem hình ảnh.
 
 8
 00:00:31,040 --> 00:00:37,010
-You can think that a session is a transactional unit of work that interacts with the database.
+Bạn có thể coi một session là một transactional unit of work tương tác với cơ sở dữ liệu.
 
 9
 00:00:37,010 --> 00:00:44,450
-So that means we should use one of the session when interacting the PostgreSQL database using the Martin.
+Điều đó có nghĩa là chúng ta nên sử dụng một session khi tương tác với cơ sở dữ liệu PostgreSQL bằng cách sử dụng Marten.
 
 10
 00:00:44,450 --> 00:00:49,760
-For that purpose, we will focus on the I document session performing the Crud operations.
+Để mục đích đó, chúng ta sẽ tập trung vào I document session thực hiện các thao tác CRUD.
 
 11
 00:00:49,760 --> 00:00:55,190
-We will directly inject these document session object to perform Crud operations.
+Chúng ta sẽ trực tiếp inject đối tượng document session này để thực hiện các thao tác CRUD.
 
 12
 00:00:55,190 --> 00:00:59,120
-And specifically we will use lightweight documentation.
+Và đặc biệt chúng ta sẽ sử dụng lightweight documentation.
 
 13
 00:00:59,570 --> 00:01:01,130
-So let's get started.
+Vậy hãy bắt đầu.
 
 14
 00:01:01,130 --> 00:01:02,810
-Please open the Visual Studio.
+Vui lòng mở Visual Studio.
 
 15
 00:01:02,810 --> 00:01:08,540
-And first of all we need to install Martin NuGet package in our project.
+Và đầu tiên chúng ta cần cài đặt gói NuGet Marten trong dự án của chúng ta.
 
 16
 00:01:08,540 --> 00:01:12,110
-But before installing the new project, we should think about that.
+Nhưng trước khi cài đặt dự án mới, chúng ta nên suy nghĩ về điều này.
 
 17
 00:01:12,110 --> 00:01:15,740
-This package is common for all microservices or not.
+Gói này có phổ biến cho tất cả các microservices không.
 
 18
 00:01:16,100 --> 00:01:21,530
-As you remember that when we are installing any packages, we are asking these questions ourselves.
+Như bạn nhớ rằng khi chúng ta cài đặt bất kỳ gói nào, chúng ta đặt ra những câu hỏi này cho chính mình.
 
 19
 00:01:21,530 --> 00:01:28,130
-If the package is common for all microservices, we will install this package into building Blocks class
+Nếu gói phổ biến cho tất cả các microservices, chúng ta sẽ cài đặt gói này vào dự án lớp Building Blocks
 
 20
 00:01:28,130 --> 00:01:29,210
-library project.
+library.
 
 21
 00:01:29,210 --> 00:01:35,300
-If not, we will install the specific microservices that required the that library package.
+Nếu không, chúng ta sẽ cài đặt các microservices cụ thể mà cần thư viện gói đó.
 
 22
 00:01:35,300 --> 00:01:41,090
-So Martin is an ORM package that works on the PostgreSQL database.
+Vậy Marten là một gói ORM hoạt động trên cơ sở dữ liệu PostgreSQL.
 
 23
 00:01:41,090 --> 00:01:48,560
-And if we look at the our issue of microservices, you can see that only catalog and basket microservices
+Và nếu chúng ta xem các microservices của chúng ta, bạn có thể thấy rằng chỉ catalog và basket microservices
 
 24
 00:01:48,560 --> 00:01:55,220
-using the PostgreSQL database and discount and ordering microservices using different kind of microservices.
+sử dụng cơ sở dữ liệu PostgreSQL và discount và ordering microservices sử dụng các loại microservices khác nhau.
 
 25
 00:01:55,220 --> 00:02:02,090
-For example, ordering will be use Entity Framework core as a ORM, and SQLite can be used entity framework
+Ví dụ, ordering sẽ sử dụng Entity Framework Core làm ORM, và SQLite có thể được sử dụng Entity Framework
 
 26
 00:02:02,090 --> 00:02:04,160
-code for the SQLite adapter.
+Code cho adapter SQLite.
 
 27
 00:02:04,490 --> 00:02:10,910
-So that means other microservices are not using Martin library and we should install Martin only required
+Điều đó có nghĩa là các microservices khác không sử dụng thư viện Marten và chúng ta chỉ nên cài đặt Marten ở các
 
 28
 00:02:10,910 --> 00:02:14,420
-microservices which are the catalog and basket microservices.
+microservices cần thiết đó là catalog và basket microservices.
 
 29
 00:02:14,420 --> 00:02:20,840
-So go back to our Visual Studio and right click the Catholic API, manage NuGet packages and search
+Vậy quay lại Visual Studio của chúng ta và nhấp chuột phải vào Catalog API, quản lý gói NuGet và tìm kiếm
 
 30
 00:02:20,840 --> 00:02:22,790
-for the Martin.
+Marten.
 
 31
 00:02:24,740 --> 00:02:27,740
-Select Martin and install this package.
+Chọn Marten và cài đặt gói này.
 
 32
 00:02:35,130 --> 00:02:35,640
-Okay.
+Được rồi.
 
 33
 00:02:35,640 --> 00:02:42,780
-If you double click the catalog API, you can verify that these Martin library is installed successfully
+Nếu bạn nhấp đúp vào Catalog API, bạn có thể xác minh rằng thư viện Marten này được cài đặt thành công
 
 34
 00:02:42,780 --> 00:02:45,540
-under our catalog API project.
+trong dự án Catalog API của chúng ta.
 
 35
 00:02:45,600 --> 00:02:54,060
-So now it is time to injecting Martin AI documentation into our handler class to interact with the database
+Vậy bây giờ là lúc inject Marten IDocumentSession vào lớp handler của chúng ta để tương tác với các
 
 36
 00:02:54,060 --> 00:02:54,840
-operation.
+thao tác cơ sở dữ liệu.
 
 37
 00:02:54,840 --> 00:02:59,370
-And for that reason we should go back to create product handler class.
+Và vì lý do đó chúng ta nên quay lại lớp create product handler.
 
 38
 00:02:59,370 --> 00:03:06,090
-And we will inject AI documentation directly into our command handler using the C sharp tools.
+Và chúng ta sẽ inject IDocumentSession trực tiếp vào command handler của chúng ta bằng cách sử dụng C# primary
 
 39
 00:03:06,090 --> 00:03:08,010
-Primary constructor features.
+constructor feature.
 
 40
 00:03:08,010 --> 00:03:13,590
-This approach will be provide a clean way and direct way to interact with the database.
+Cách tiếp cận này sẽ cung cấp một cách sạch sẽ và trực tiếp để tương tác với cơ sở dữ liệu.
 
 41
 00:03:13,590 --> 00:03:22,170
-So now I'm going to injecting Martin AI documentation with adding in here open bracket and writing the
+Vậy bây giờ tôi sẽ inject Marten AI documentation bằng cách thêm vào đây dấu ngoặc mở và viết
 
 42
 00:03:22,170 --> 00:03:27,810
-AI document session and give the parameter name as a session.
+AI document session và đặt tên tham số là session.
 
 43
 00:03:27,810 --> 00:03:34,830
-If you come here and click the add enter, we will using the Martin Library in order to inject the AI
+Nếu bạn đến đây và nhấp vào add enter, chúng ta sẽ sử dụng thư viện Marten để inject AI
 
 44
 00:03:34,830 --> 00:03:36,000
@@ -176,59 +176,59 @@ document session.
 
 45
 00:03:36,000 --> 00:03:44,010
-So why we are directly injecting AI document session in here, and why we don't cover this session in
+Vậy tại sao chúng ta trực tiếp inject AI document session ở đây, và tại sao chúng ta không bao quanh session này trong
 
 46
 00:03:44,010 --> 00:03:46,740
-the repository folder or any data folder?
+thư mục repository hoặc bất kỳ data folder nào?
 
 47
 00:03:47,040 --> 00:03:52,650
-Because AI document session object is already an abstraction of the database operations.
+Vì AI document session object đã là một abstraction của các hoạt động cơ sở dữ liệu.
 
 48
 00:03:52,650 --> 00:03:58,890
-So we don't need any additional abstractions or unnecessary code like repository patterns.
+Vì vậy chúng ta không cần bất kỳ abstractions bổ sung nào hoặc code không cần thiết như repository patterns.
 
 49
 00:03:58,890 --> 00:04:03,660
-If you right click and go to definition, you can see that this is an interface.
+Nếu bạn nhấp chuột phải và đi đến definition, bạn có thể thấy rằng đây là một interface.
 
 50
 00:04:03,660 --> 00:04:09,300
-And using an abstraction of the database operations with exposing these services.
+Và sử dụng một abstraction của các hoạt động cơ sở dữ liệu với việc expose các services này.
 
 51
 00:04:09,510 --> 00:04:16,110
-So that means we will direct the injecting AI document session to perform database operations without
+Vậy điều đó có nghĩa là chúng ta sẽ trực tiếp inject AI document session để thực hiện các hoạt động cơ sở dữ liệu mà không
 
 52
 00:04:16,110 --> 00:04:20,010
-need for additional abstraction layer like repository patterns.
+cần một lớp abstraction bổ sung như repository patterns.
 
 53
 00:04:20,010 --> 00:04:26,790
-And also, personally, I don't like to use repository pattern if not necessary because it is very rare
+Và cũng là, cá nhân tôi không thích sử dụng repository pattern nếu không cần thiết vì rất hiếm khi
 
 54
 00:04:26,790 --> 00:04:31,080
-to change the database or ORM system for any particular project.
+thay đổi cơ sở dữ liệu hoặc hệ thống ORM cho bất kỳ dự án cụ thể nào.
 
 55
 00:04:31,080 --> 00:04:33,300
-So now let's perform our operation.
+Vậy bây giờ hãy thực hiện hoạt động của chúng ta.
 
 56
 00:04:33,300 --> 00:04:41,490
-If you scroll down and come to this todo place, we basically using the session object and session has
+Nếu bạn cuộn xuống và đến vị trí todo này, chúng ta cơ bản sử dụng đối tượng session và session có
 
 57
 00:04:41,490 --> 00:04:46,620
-store method in order to store our product information as a document database.
+phương thức store để lưu trữ thông tin sản phẩm của chúng ta như một document database.
 
 58
 00:04:46,620 --> 00:04:54,810
-And after that of course we will use session dot save, change async method and passing the cancellation
+Và sau đó tất nhiên chúng ta sẽ sử dụng session dot save, change async method và truyền cancellation
 
 59
 00:04:54,810 --> 00:04:55,350
@@ -236,81 +236,81 @@ token.
 
 60
 00:04:56,190 --> 00:04:59,460
-And of course we should paste the newly created product.
+Và tất nhiên chúng ta nên trả về sản phẩm mới được tạo.
 
 61
 00:04:59,460 --> 00:05:01,890
-So this will be create a new product.
+Vì vậy điều này sẽ tạo một sản phẩm mới.
 
 62
 00:05:01,890 --> 00:05:08,130
-And in the result we will send a newly created product instead of the new grid operation.
+Và trong kết quả chúng ta sẽ gửi sản phẩm mới được tạo thay vì hoạt động new grid.
 
 63
 00:05:08,130 --> 00:05:15,840
-If you right the product and go to id property, this ID will be generated from the document database.
+Nếu bạn nhấp chuột phải vào product và đi đến property id, ID này sẽ được tạo từ document database.
 
 64
 00:05:16,110 --> 00:05:16,860
-Okay.
+Được rồi.
 
 65
 00:05:16,860 --> 00:05:19,290
-As you can see that we perform the handle method.
+Như bạn có thể thấy rằng chúng ta thực hiện phương thức handle.
 
 66
 00:05:19,290 --> 00:05:24,090
-In this implementation, we basically create a product entity from the command.
+Trong triển khai này, chúng ta cơ bản tạo một product entity từ command.
 
 67
 00:05:24,090 --> 00:05:28,110
-And after that we will store this product into session.
+Và sau đó chúng ta sẽ lưu trữ sản phẩm này vào session.
 
 68
 00:05:28,110 --> 00:05:35,310
-And then we will perform asynchronously save operations into PostgreSQL database as a document object.
+Và sau đó chúng ta sẽ thực hiện các hoạt động save không đồng bộ vào PostgreSQL database như một document object.
 
 69
 00:05:35,310 --> 00:05:41,460
-And this will be result in the product being persisted in our PostgreSQL database and returning the
+Và điều này sẽ dẫn đến sản phẩm được persist trong PostgreSQL database của chúng ta và trả về
 
 70
 00:05:41,460 --> 00:05:43,350
-ID information to the client.
+thông tin ID cho client.
 
 71
 00:05:43,350 --> 00:05:49,740
-So if you go on top of this implementation, you can see that we have different using statements.
+Vậy nếu bạn đi lên đầu triển khai này, bạn có thể thấy rằng chúng ta có các using statements khác nhau.
 
 72
 00:05:49,740 --> 00:05:54,660
-And in order to organize these using statements we have already create global using.
+Và để tổ chức các using statements này, chúng ta đã tạo global using.
 
 73
 00:05:54,660 --> 00:06:00,900
-So I'm going to adding these using statement including the Martin moving to global using statements
+Vì vậy tôi sẽ thêm using statement này bao gồm Marten chuyển sang global using statements
 
 74
 00:06:00,900 --> 00:06:02,430
-and passing in here.
+và truyền vào đây.
 
 75
 00:06:02,430 --> 00:06:09,390
-And if we put the global on top of these statements and making it more readable.
+Và nếu chúng ta đặt global trên đầu các statements này và làm cho nó dễ đọc hơn.
 
 76
 00:06:09,390 --> 00:06:14,040
-So see that these are the packages that we are using in the catalog microservices.
+Vì vậy hãy xem các packages mà chúng ta đang sử dụng trong catalog microservices.
 
 77
 00:06:14,040 --> 00:06:20,850
-If you go back to our handler class and remove all using statements, you can see that this code is
+Nếu bạn quay lại class handler của chúng ta và loại bỏ tất cả using statements, bạn có thể thấy rằng code này
 
 78
 00:06:20,850 --> 00:06:21,570
-more cleaner.
+sạch sẽ hơn.
 
 79
 00:06:21,570 --> 00:06:24,510
-And this is the are handler implementation.
+Và đây là triển khai handler.
 

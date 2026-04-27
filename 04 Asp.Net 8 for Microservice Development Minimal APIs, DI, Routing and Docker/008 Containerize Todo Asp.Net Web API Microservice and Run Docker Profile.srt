@@ -160,71 +160,71 @@ This will be go to the todo items when the application start up using these port
 
 41
 00:03:19,160 --> 00:03:20,510
-So save this file.
+Lưu file này.
 
 42
 00:03:20,510 --> 00:03:26,540
-And if you go back to launch setting, you can verify that this time the launch URL is setting the todo
+Và nếu bạn quay lại launch settings, bạn có thể xác minh rằng lần này URL launch đang được thiết lập cho todo
 
 43
 00:03:26,540 --> 00:03:33,080
-items so you can run the Https port and verify that this will be redirected to the items and using the
+items, vì vậy bạn có thể chạy Https port và xác minh rằng nó sẽ được chuyển hướng tới items và sử dụng
 
 44
 00:03:33,080 --> 00:03:34,520
-port number 5050.
+port số 5050.
 
 45
 00:03:34,520 --> 00:03:39,800
-See that the 5050 port numbers is using but double slash is using.
+Hãy xem rằng port số 5050 đang được sử dụng nhưng double slash cũng đang được sử dụng.
 
 46
 00:03:39,800 --> 00:03:43,280
-In here we have to remove one of them for that purpose.
+Ở đây chúng ta phải xóa một trong số chúng, để làm việc đó.
 
 47
 00:03:43,280 --> 00:03:49,760
-I'm going to remove this slash and save this file again and run this Https port.
+Tôi sẽ xóa slash này và lưu file lại, sau đó chạy Https port.
 
 48
 00:03:49,760 --> 00:03:53,000
-And this time you will see the todo items in here.
+Và lần này bạn sẽ thấy todo items ở đây.
 
 49
 00:03:53,000 --> 00:03:58,700
-Since we are using the in-memory database, we didn't see any items in here when the application start
+Vì chúng ta đang sử dụng in-memory database, chúng ta không thấy có items nào khi ứng dụng khởi động
 
 50
 00:03:58,700 --> 00:04:00,650
-up, but you understand the idea.
+lên, nhưng bạn hiểu ý tưởng.
 
 51
 00:04:00,650 --> 00:04:04,100
-We will use launch settings during the microservice development.
+Chúng ta sẽ sử dụng launch settings trong quá trình phát triển microservice.
 
 52
 00:04:04,100 --> 00:04:10,910
-So much so if you come back to our main problem, which is the containerized todo application, the
+Vậy nên nếu bạn quay lại vấn đề chính của chúng ta, đó là containerized todo application, điều
 
 53
 00:04:10,910 --> 00:04:13,730
-first thing we should do to create Docker file.
+đầu tiên chúng ta nên làm là tạo Docker file.
 
 54
 00:04:13,940 --> 00:04:20,630
-So in order to add a Docker support to our todo web API, we should go to Visual Studio and right click
+Vậy để thêm Docker support vào todo web API của chúng ta, chúng ta nên vào Visual Studio và nhấp chuột phải
 
 55
 00:04:20,630 --> 00:04:21,769
-the project file.
+vào file project.
 
 56
 00:04:21,950 --> 00:04:24,080
-And you can click the add button.
+Và bạn có thể nhấp vào nút add.
 
 57
 00:04:24,080 --> 00:04:30,380
-And here you can see the container related operations which is the adding Docker support or adding container
+Và ở đây bạn có thể thấy các thao tác liên quan đến container, đó là thêm Docker support hoặc thêm container
 
 58
 00:04:30,380 --> 00:04:31,790
@@ -232,79 +232,79 @@ orchestration support.
 
 59
 00:04:31,790 --> 00:04:37,130
-Since we are containerizing our API project, we should add the CR support first.
+Vì chúng ta đang containerizing API project của mình, chúng ta nên thêm CR support trước.
 
 60
 00:04:37,130 --> 00:04:44,390
-So please click this Docker support and choose the target operating system as a Linux and click the
+Vậy hãy nhấp vào Docker support này và chọn target operating system là Linux, sau đó nhấp vào
 
 61
 00:04:44,390 --> 00:04:45,410
-okay button.
+nút okay.
 
 62
 00:04:45,590 --> 00:04:50,300
-As you can see that Visual Studio generate a Docker file for our project.
+Như bạn có thể thấy, Visual Studio đã tạo ra một Docker file cho project của chúng ta.
 
 63
 00:04:50,300 --> 00:04:52,880
-So now let's understand this Docker file.
+Vậy bây giờ hãy hiểu Docker file này.
 
 64
 00:04:52,880 --> 00:04:59,510
-Basically the Docker file is a script containing the instructions to build a Docker image, including
+Về cơ bản, Docker file là một script chứa các hướng dẫn để xây dựng một Docker image, bao gồm
 
 65
 00:04:59,510 --> 00:04:59,840
-setting.
+thiết lập.
 
 66
 00:04:59,980 --> 00:05:04,990
-Of the environment, copying our application and defining how to run the application.
+Của môi trường, sao chép ứng dụng của chúng ta và định nghĩa cách chạy ứng dụng.
 
 67
 00:05:04,990 --> 00:05:11,470
-So this is the Docker file that generates from the Visual Studio and containerize our to do web API
+Vậy đây là Docker file được tạo ra từ Visual Studio và containerize todo web API
 
 68
 00:05:11,470 --> 00:05:12,190
-project.
+project của chúng ta.
 
 69
 00:05:12,190 --> 00:05:16,150
-And it includes four different stages in the Docker file.
+Và nó bao gồm bốn giai đoạn khác nhau trong Docker file.
 
 70
 00:05:16,150 --> 00:05:18,160
-You can see this stage in here.
+Bạn có thể thấy giai đoạn này ở đây.
 
 71
 00:05:18,160 --> 00:05:23,620
-Basically it is typically start from a base image which is the ASP.Net eight.
+Về cơ bản, nó thường bắt đầu từ một base image, đó là ASP.NET 8.
 
 72
 00:05:23,620 --> 00:05:27,070
-And after that it is copies our application.
+Và sau đó nó sao chép ứng dụng của chúng ta.
 
 73
 00:05:27,070 --> 00:05:29,410
-And after that publish this application.
+Và sau đó publish ứng dụng này.
 
 74
 00:05:29,410 --> 00:05:37,630
-And lastly it will be create a final stage and this will be Entrypoint in order to run our application
+Và cuối cùng nó sẽ tạo một giai đoạn cuối cùng và đây sẽ là Entrypoint để chạy ứng dụng của chúng ta
 
 75
 00:05:37,630 --> 00:05:38,800
-in the Docker environment.
+trong Docker environment.
 
 76
 00:05:38,800 --> 00:05:43,000
-So we will examine these kind of Docker files when developing our microservices.
+Vậy chúng ta sẽ kiểm tra những loại Docker files như thế này khi phát triển microservices của chúng ta.
 
 77
 00:05:43,000 --> 00:05:48,910
-Basically this file defines a multi-stage build process for a typical.
+Về cơ bản, file này định nghĩa một quá trình xây dựng nhiều giai đoạn cho một điển hình.
 
 78
 00:05:49,060 --> 00:05:50,170
@@ -312,19 +312,19 @@ Net application.
 
 79
 00:05:50,170 --> 00:05:54,190
-So now let's run the Docker profile with our Docker file.
+Vậy bây giờ hãy chạy Docker profile với Docker file của chúng ta.
 
 80
 00:05:54,190 --> 00:05:58,420
-Now we can run our application in a Docker container in Docker environment.
+Bây giờ chúng ta có thể chạy ứng dụng của chúng ta trong một Docker container trong Docker environment.
 
 81
 00:05:58,420 --> 00:06:03,220
-In Visual Studio we can choose the running profiles in here.
+Trong Visual Studio, chúng ta có thể chọn các running profiles ở đây.
 
 82
 00:06:03,220 --> 00:06:10,390
-So if you expand this dropdown and see the Docker running profile listed in here, we can select the
+Vậy nếu bạn mở rộng dropdown này và thấy Docker running profile được liệt kê ở đây, chúng ta có thể chọn
 
 83
 00:06:10,390 --> 00:06:11,650
@@ -332,107 +332,107 @@ Docker running profile.
 
 84
 00:06:11,650 --> 00:06:15,790
-And just after that you can check the our output window.
+Và ngay sau đó bạn có thể kiểm tra output window của chúng ta.
 
 85
 00:06:15,790 --> 00:06:23,080
-This will be retrieved the ASP.Net eight base image and prepare our application to the Docker environment.
+Điều này sẽ lấy ASP.NET 8 base image và chuẩn bị ứng dụng của chúng ta cho môi trường Docker.
 
 86
 00:06:23,080 --> 00:06:30,070
-But of course you should open and start your Docker desktop on your local computer and make sure that
+Nhưng tất nhiên bạn nên mở và khởi động Docker desktop trên máy tính cục bộ của bạn và đảm bảo rằng
 
 87
 00:06:30,070 --> 00:06:31,630
-the green box comes in here.
+hộp xanh lá cây xuất hiện ở đây.
 
 88
 00:06:31,630 --> 00:06:35,890
-So after that, set the these running profile as a docker.
+Vậy sau đó, đặt running profile này thành Docker.
 
 89
 00:06:35,890 --> 00:06:42,640
-By this way we this video will build the Docker image and run a container instance of our application.
+Bằng cách này, video này sẽ build Docker image và chạy một container instance của ứng dụng của chúng ta.
 
 90
 00:06:42,640 --> 00:06:51,880
-So after start your Docker and set your running profile, you can click the Run Docker button and wait
+Vậy sau khi khởi động Docker và đặt running profile của bạn, bạn có thể nhấp vào nút Run Docker và chờ
 
 91
 00:06:51,880 --> 00:06:58,210
-for the Visual Studio building this Docker image and run a container in the Docker host environment.
+Visual Studio build Docker image này và chạy một container trong môi trường Docker host.
 
 92
 00:06:58,210 --> 00:07:01,660
-And you can follow the logs in the project window.
+Và bạn có thể theo dõi logs trong project window.
 
 93
 00:07:01,660 --> 00:07:04,840
-And also you can check the Docker desktop.
+Và cũng bạn có thể kiểm tra Docker desktop.
 
 94
 00:07:04,840 --> 00:07:10,420
-If I open the Docker desktop, you can see the to do API is listed as a containers.
+Nếu tôi mở Docker desktop, bạn có thể thấy to do API được liệt kê như một containers.
 
 95
 00:07:10,420 --> 00:07:12,760
-That means it is running perfectly.
+Điều đó có nghĩa là nó đang chạy hoàn hảo.
 
 96
 00:07:12,760 --> 00:07:17,440
-And you can see the port number is starting with the 32.
+Và bạn có thể thấy số cổng bắt đầu với 32.
 
 97
 00:07:17,470 --> 00:07:22,540
-That means Docker is assigning any port number for our application.
+Điều đó có nghĩa là Docker đang gán bất kỳ số cổng nào cho ứng dụng của chúng ta.
 
 98
 00:07:22,540 --> 00:07:27,400
-So this is the 8080 port redirecting for the internal Docker environment.
+Vậy đây là cổng 8080 chuyển hướng cho môi trường Docker bên trong.
 
 99
 00:07:27,400 --> 00:07:36,730
-So if we expand this as a todo items we can reach the our internal todo items from the web API project.
+Vậy nếu chúng ta mở rộng này thành todo items, chúng ta có thể truy cập todo items bên trong của chúng ta từ Web API project.
 
 100
 00:07:36,730 --> 00:07:41,470
-So that means we have successfully send http get method for our application.
+Vậy điều đó có nghĩa là chúng ta đã thành công gửi http get method cho ứng dụng của chúng ta.
 
 101
 00:07:41,470 --> 00:07:46,690
-Once we confirm the application is running correctly, we can test our application.
+Sau khi chúng ta xác nhận ứng dụng đang chạy chính xác, chúng ta có thể kiểm tra ứng dụng của chúng ta.
 
 102
 00:07:46,690 --> 00:07:53,920
-That means we can test these web API project from inside the Docker container in Docker environment.
+Điều đó có nghĩa là chúng ta có thể kiểm tra Web API project này từ bên trong Docker container trong môi trường Docker.
 
 103
 00:07:53,920 --> 00:08:02,110
-So this process packages are to do API microservices into a Docker container and allowing it to be run
+Vậy quá trình này đóng gói to do API microservices vào Docker container và cho phép nó chạy
 
 104
 00:08:02,110 --> 00:08:06,670
-any environment and accommodating the incoming requests in from Docker environment.
+ở bất kỳ môi trường nào và tiếp ứng các yêu cầu từ môi trường Docker.
 
 105
 00:08:06,670 --> 00:08:09,760
-So now we can open our postman.
+Vậy bây giờ chúng ta có thể mở Postman của chúng ta.
 
 106
 00:08:09,760 --> 00:08:14,680
-As you can see that we have already prepared our test and the port number has changed.
+Như bạn có thể thấy, chúng ta đã chuẩn bị test của chúng ta và số cổng đã thay đổi.
 
 107
 00:08:14,680 --> 00:08:19,870
-If you open the Docker desktop, you can see the port numbers in listed in here.
+Nếu bạn mở Docker desktop, bạn có thể thấy các số cổng được liệt kê ở đây.
 
 108
 00:08:19,870 --> 00:08:24,880
-So we are going to change port number as a 32 768.
+Vậy chúng ta sẽ thay đổi số cổng thành 32 768.
 
 109
 00:08:24,880 --> 00:08:32,200
-So if you copy this port number you can come to the postman and change the port number and send the
+Vậy nếu bạn sao chép số cổng này, bạn có thể đến Postman và thay đổi số cổng và gửi
 
 110
 00:08:32,200 --> 00:08:33,429
@@ -440,83 +440,83 @@ http get method.
 
 111
 00:08:33,429 --> 00:08:36,070
-We have no any todo items.
+Chúng ta không có bất kỳ todo items nào.
 
 112
 00:08:36,070 --> 00:08:42,520
-In order to add a new todo items, we can change the port number and send http post request.
+Để thêm todo items mới, chúng ta có thể thay đổi số cổng và gửi http post request.
 
 113
 00:08:42,520 --> 00:08:46,270
-And here you can see that we have added the first item.
+Và ở đây bạn có thể thấy rằng chúng ta đã thêm item đầu tiên.
 
 114
 00:08:46,270 --> 00:08:52,450
-And if you go back to the http get method and send again here you can see that our Http get and post
+Và nếu bạn quay lại http get method và gửi lại, ở đây bạn có thể thấy rằng Http get và post
 
 115
 00:08:52,450 --> 00:08:56,320
-methods are running perfectly into our Docker environment.
+methods của chúng ta đang chạy hoàn hảo trong môi trường Docker của chúng ta.
 
 116
 00:08:56,320 --> 00:09:02,650
-So we have already finished our containerization of web API project with Docker.
+Vậy chúng ta đã hoàn thành containerization của Web API project với Docker.
 
 117
 00:09:02,650 --> 00:09:09,370
-But the best part of using the Visual Studio for Containerizing this kind of application is debugging.
+Nhưng phần hay nhất khi sử dụng Visual Studio để Containerizing loại ứng dụng này là debugging.
 
 118
 00:09:09,370 --> 00:09:16,030
-So that means Visual Studio allowing us to debugging a Docker container from our local computer.
+Vậy điều đó có nghĩa là Visual Studio cho phép chúng ta debug một Docker container từ máy tính cục bộ của chúng ta.
 
 119
 00:09:16,030 --> 00:09:23,020
-So that means when we send a Http request, we can able to debug these codes into the Docker environment.
+Vậy điều đó có nghĩa là khi chúng ta gửi Http request, chúng ta có thể debug các codes này trong môi trường Docker.
 
 120
 00:09:23,020 --> 00:09:25,030
-So let's try this operation.
+Vậy hãy thử hoạt động này.
 
 121
 00:09:25,030 --> 00:09:33,790
-If you open the Program.cs in the our Visual Studio in the program case you can go to the Http get method
+Nếu bạn mở Program.cs trong Visual Studio, bạn có thể đi đến HTTP get method
 
 122
 00:09:33,790 --> 00:09:34,330
-in here.
+ở đây.
 
 123
 00:09:34,330 --> 00:09:37,270
-And also we can send the http post request.
+Và chúng ta cũng có thể gửi HTTP post request.
 
 124
 00:09:37,270 --> 00:09:45,910
-So now if I send the http post request from the postman, you can see that we can able to debug incoming
+Vậy bây giờ nếu tôi gửi HTTP post request từ Postman, bạn có thể thấy rằng chúng ta có thể debug các incoming
 
 125
 00:09:45,910 --> 00:09:48,400
-requests from Docker environment.
+requests từ Docker environment.
 
 126
 00:09:48,400 --> 00:09:50,800
-And this will be allowing from Visual Studio.
+Và điều này sẽ được cho phép từ Visual Studio.
 
 127
 00:09:50,800 --> 00:09:53,860
-And this is one of the powerful features in Visual Studio.
+Và đây là một trong những tính năng mạnh mẽ của Visual Studio.
 
 128
 00:09:53,860 --> 00:09:59,770
-So during the course we will also debug our Docker containers for microservices with using.
+Vậy nên trong suốt khóa học này, chúng ta cũng sẽ debug Docker containers cho microservices bằng cách sử dụng
 
 129
 00:09:59,940 --> 00:10:01,020
-The same methodology.
+cùng một phương pháp.
 
 130
 00:10:01,020 --> 00:10:07,860
-As you can see that containerization and Docker is very natural in ASP.Net web API project using the
+Như bạn có thể thấy, containerization và Docker rất tự nhiên trong dự án ASP.NET Web API khi sử dụng
 
 131
 00:10:07,860 --> 00:10:08,670
@@ -524,9 +524,9 @@ Visual Studio.
 
 132
 00:10:08,670 --> 00:10:14,970
-During the whole course, I will use Visual Studio Docker tooling in order to containerize and orchestrate
+Trong suốt khóa học này, tôi sẽ sử dụng Visual Studio Docker tooling để containerize và orchestrate
 
 133
 00:10:14,970 --> 00:10:16,050
-our microservices.
+các microservices của chúng ta.
 

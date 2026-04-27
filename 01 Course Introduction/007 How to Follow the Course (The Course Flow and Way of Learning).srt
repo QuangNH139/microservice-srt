@@ -1,180 +1,180 @@
 1
 00:00:00,330 --> 00:00:06,330
-In this video, we are going to learn how to follow the course, including the course flow and the way
+Trong video này, chúng ta sẽ học cách theo dõi khóa học, bao gồm luồng khóa học và cách học tập.
 
 2
 00:00:06,330 --> 00:00:07,320
-of learning.
+của chúng tôi.
 
 3
 00:00:07,800 --> 00:00:11,520
-Our journey begins with the development of the microservices.
+Hành trình của chúng ta bắt đầu với việc phát triển các microservices.
 
 4
 00:00:11,520 --> 00:00:16,590
-You can see in here and we will starting with the catalog API microservices.
+Bạn có thể thấy ở đây và chúng ta sẽ bắt đầu với catalog API microservices.
 
 5
 00:00:16,650 --> 00:00:22,590
-Here we will embrace the vertical slice architecture and implements synchronous pattern.
+Ở đây chúng ta sẽ áp dụng vertical slice architecture và triển khai mẫu đồng bộ.
 
 6
 00:00:22,590 --> 00:00:28,500
-And this will be a foundational step and sets the stage for the rest of our microservices.
+Và đây sẽ là bước nền tảng và tạo tiền đề cho các microservices còn lại của chúng ta.
 
 7
 00:00:29,290 --> 00:00:35,920
-Next we will shift our focus to the basket microservices, where we will apply the distributed caching
+Tiếp theo, chúng ta sẽ chuyển trọng tâm sang basket microservices, nơi chúng ta sẽ áp dụng distributed caching
 
 8
 00:00:35,920 --> 00:00:41,260
-using Redis, and this will enhance the performance and scalability of our microservices.
+sử dụng Redis, và điều này sẽ nâng cao hiệu suất và khả năng mở rộng của các microservices của chúng ta.
 
 9
 00:00:41,890 --> 00:00:46,210
-Following that we will create discount gRPC microservices.
+Sau đó, chúng ta sẽ tạo discount gRPC microservices.
 
 10
 00:00:46,240 --> 00:00:53,110
-This service will demonstrate efficient microservice communications using gRPC, providing us with a
+Dịch vụ này sẽ trình bày giao tiếp microservice hiệu quả bằng gRPC, cung cấp cho chúng ta một
 
 11
 00:00:53,110 --> 00:00:55,840
-performant inter-service communication channel.
+kênh giao tiếp giữa các dịch vụ có hiệu suất cao.
 
 12
 00:00:55,870 --> 00:00:59,350
-Here you can see the basket and discount communication as a gRPC.
+Ở đây bạn có thể thấy giao tiếp giữa basket và discount dưới dạng gRPC.
 
 13
 00:01:00,400 --> 00:01:07,060
-And after that the development of the ordering microservices comes next, where we will apply a clean
+Và sau đó, việc phát triển ordering microservices sẽ diễn ra tiếp theo, nơi chúng ta sẽ áp dụng clean
 
 14
 00:01:07,060 --> 00:01:11,260
-architecture coupled with a six design pattern implementation.
+architecture kết hợp với triển khai mẫu thiết kế six.
 
 15
 00:01:11,290 --> 00:01:16,120
-This will ensure our microservices is well structured and maintainable.
+Điều này sẽ đảm bảo microservices của chúng ta có cấu trúc tốt và dễ bảo trì.
 
 16
 00:01:17,110 --> 00:01:23,230
-And as we progress with this way, we will implement asynchronous communication patterns with RabbitMQ
+Và khi chúng ta tiến bộ theo cách này, chúng ta sẽ triển khai các mẫu giao tiếp không đồng bộ với RabbitMQ
 
 17
 00:01:23,230 --> 00:01:24,970
-and Masstransit library.
+và thư viện MassTransit.
 
 18
 00:01:25,210 --> 00:01:33,640
-This will facilitate the checkout basket process between the basket and ordering microservices in asynchronously.
+Điều này sẽ hỗ trợ quá trình thanh toán giỏ hàng giữa basket và ordering microservices một cách không đồng bộ.
 
 19
 00:01:35,360 --> 00:01:41,930
-And after that, the integral part of our architecture is the API gateway, and we will build an API
+Và sau đó, một phần không thể thiếu của kiến trúc của chúng ta là API gateway, và chúng ta sẽ xây dựng một API
 
 20
 00:01:41,930 --> 00:01:44,390
-gateway using the Erb reverse proxy.
+gateway sử dụng YARP reverse proxy.
 
 21
 00:01:44,600 --> 00:01:51,500
-Applying the gateway routing pattern in order to effectively redirecting the request to the appropriate
+Áp dụng Gateway Routing Pattern để có thể chuyển hướng các yêu cầu đến các
 
 22
 00:01:51,500 --> 00:01:53,000
-internal microservices.
+microservices nội bộ thích hợp.
 
 23
 00:01:53,820 --> 00:01:56,370
-And lastly, we will develop shopping map.
+Và cuối cùng, chúng ta sẽ phát triển shopping map.
 
 24
 00:01:56,370 --> 00:02:01,380
-In order to tie everything together, we will build the shopping web client application.
+Để gắn kết mọi thứ lại với nhau, chúng ta sẽ xây dựng ứng dụng web client shopping.
 
 25
 00:02:01,380 --> 00:02:02,610
-This is frontend.
+Đây là frontend.
 
 26
 00:02:02,610 --> 00:02:09,780
-Application will consume our microservices using the API gateway providing tangible user focused interface
+Ứng dụng sẽ tiêu thụ các microservices của chúng ta thông qua API gateway cung cấp một giao diện hướng đến người dùng hữu hình
 
 27
 00:02:09,780 --> 00:02:11,460
-for our entire system.
+cho toàn bộ hệ thống của chúng ta.
 
 28
 00:02:12,530 --> 00:02:15,950
-And here you can see the way of learning methodology.
+Và ở đây bạn có thể thấy phương pháp học tập của chúng tôi.
 
 29
 00:02:15,980 --> 00:02:22,610
-During the whole course for each section, we will adhere to our Way of learning methodology, which
+Trong suốt khóa học, đối với mỗi phần, chúng ta sẽ tuân theo phương pháp học tập của chúng ta, bao gồm
 
 30
 00:02:22,610 --> 00:02:25,430
-is consist of the four key steps.
+bốn bước chính.
 
 31
 00:02:25,430 --> 00:02:29,930
-These are the analyze, learn, develop and test and deploy.
+Đó là phân tích, học, phát triển và kiểm thử cũng như triển khai.
 
 32
 00:02:30,110 --> 00:02:38,000
-So we will start analyzing both domain and technical analysis for each microservices, ensuring we understand
+Vì vậy, chúng ta sẽ bắt đầu bằng cách phân tích cả miền và phân tích kỹ thuật cho mỗi microservices, đảm bảo chúng ta hiểu
 
 33
 00:02:38,000 --> 00:02:42,680
-the business requirement and the technical landscape for particular microservices.
+yêu cầu kinh doanh và cảnh quan kỹ thuật cho một microservices cụ thể.
 
 34
 00:02:43,100 --> 00:02:49,820
-After that, we will delve into learning patterns and principles relevant to our current microservices,
+Sau đó, chúng ta sẽ đi sâu vào việc học các mẫu và nguyên tắc liên quan đến microservices hiện tại của chúng ta,
 
 35
 00:02:49,820 --> 00:02:53,480
-ensuring we are equipped with the necessary knowledge to proceed.
+đảm bảo rằng chúng ta được trang bị kiến thức cần thiết để tiếp tục.
 
 36
 00:02:54,140 --> 00:03:01,190
-And after that, with our analyze complete and knowledge in our hand, we will move to development,
+Và sau khi phân tích của chúng ta hoàn tất và kiến thức trong tay, chúng ta sẽ chuyển sang phát triển,
 
 37
 00:03:01,190 --> 00:03:03,320
-putting our learnings into practice.
+đưa những gì chúng ta đã học vào thực tế.
 
 38
 00:03:03,320 --> 00:03:05,930
-So that means we will develop our microservices with.
+Điều đó có nghĩa là chúng ta sẽ phát triển các microservices của chúng ta với
 
 39
 00:03:06,080 --> 00:03:07,280
-Net and C sharp.
+.NET và C#.
 
 40
 00:03:07,280 --> 00:03:10,790
-And of course no development is complete without testing.
+Và tất nhiên, không có quá trình phát triển nào hoàn tất mà không có kiểm thử.
 
 41
 00:03:10,790 --> 00:03:16,730
-We will ensure our microservice are robust and ready for production after performing the testing.
+Chúng ta sẽ đảm bảo rằng các microservices của chúng ta mạnh mẽ và sẵn sàng cho production sau khi thực hiện kiểm thử.
 
 42
 00:03:16,820 --> 00:03:24,470
-And lastly, and finally, we will containerize and orchestrate our microservices, deploying them into
+Và cuối cùng, chúng ta sẽ container hóa và orchestrate các microservices của chúng ta, triển khai chúng vào
 
 43
 00:03:24,470 --> 00:03:27,200
-a Docker environment for real world use case.
+một môi trường Docker cho các trường hợp sử dụng thực tế.
 
 44
 00:03:27,200 --> 00:03:33,560
-By following these steps, we will have a holistic understanding of our e-commerce microservices, both
+Bằng cách tuân theo các bước này, chúng ta sẽ có một sự hiểu biết toàn diện về các microservices e-commerce của chúng ta, cả về
 
 45
 00:03:33,560 --> 00:03:35,600
-design and implementation steps.
+các bước thiết kế và triển khai.
 

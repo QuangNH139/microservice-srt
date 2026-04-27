@@ -1,6 +1,6 @@
 1
 00:00:00,140 --> 00:00:08,029
-In this video we are going to learn six design pattern which is the command query responsibility segregation
+Trong video này, chúng ta sẽ học về sáu mẫu thiết kế, đó là Command Query Responsibility Segregation
 
 2
 00:00:08,029 --> 00:00:08,660
@@ -8,137 +8,137 @@ pattern.
 
 3
 00:00:09,800 --> 00:00:14,570
-Six is one of the important pattern when querying between microservices.
+CQRS là một trong những mẫu quan trọng khi truy vấn giữa các microservices.
 
 4
 00:00:14,600 --> 00:00:21,890
-We can use six design pattern in order to avoid complex queries to get rid of the inefficient joins.
+Chúng ta có thể sử dụng mẫu CQRS để tránh các truy vấn phức tạp và loại bỏ các join không hiệu quả.
 
 5
 00:00:23,400 --> 00:00:28,380
-Seacrest stands for the Command and Query Responsibility segregation pattern.
+CQRS viết tắt của Command and Query Responsibility Segregation pattern.
 
 6
 00:00:28,410 --> 00:00:34,530
-Basically, this pattern separates read and write operations with separating databases.
+Cơ bản, mẫu này tách các hoạt động đọc và ghi bằng cách tách các cơ sở dữ liệu.
 
 7
 00:00:36,490 --> 00:00:41,950
-The main idea is that we can divide the application operation into two separate categories.
+Ý tưởng chính là chúng ta có thể chia các hoạt động của ứng dụng thành hai danh mục riêng biệt.
 
 8
 00:00:41,980 --> 00:00:43,780
-The first one is commands.
+Cái đầu tiên là các command.
 
 9
 00:00:43,810 --> 00:00:47,620
-These commands are changing the state of data into application.
+Các command này thay đổi trạng thái của dữ liệu trong ứng dụng.
 
 10
 00:00:48,040 --> 00:00:49,900
-And the second one is the queries.
+Và cái thứ hai là các query.
 
 11
 00:00:49,930 --> 00:00:56,290
-These queries are handling complex join operations are returning a result, and don't change the state
+Các query này xử lý các hoạt động join phức tạp và trả về kết quả, không thay đổi trạng thái
 
 12
 00:00:56,290 --> 00:00:58,090
-of the data into the application.
+của dữ liệu trong ứng dụng.
 
 13
 00:00:59,710 --> 00:01:06,880
-In large scale microservice architectures, it needs to manage high volume data requirements for this
+Trong các kiến trúc microservice quy mô lớn, cần phải quản lý các yêu cầu dữ liệu khối lượng cao cho loại
 
 14
 00:01:06,880 --> 00:01:07,990
-kind of use cases.
+use case này.
 
 15
 00:01:07,990 --> 00:01:15,340
-Monolithic approaches like single database for services can cause bottlenecks for complex and large
+Các phương pháp Monolithic như một cơ sở dữ liệu duy nhất cho các dịch vụ có thể gây ra các nút thắt cho các
 
 16
 00:01:15,340 --> 00:01:17,290
-scale microservice architectures.
+kiến trúc microservice phức tạp và quy mô lớn.
 
 17
 00:01:17,290 --> 00:01:23,440
-We can use both SQS and event sourcing patterns to improve application performance.
+Chúng ta có thể sử dụng cả CQRS và event sourcing patterns để cải thiện hiệu suất ứng dụng.
 
 18
 00:01:24,190 --> 00:01:31,000
-SQS offers two separate read and write data that provide to maximize query performance and scalability.
+CQRS cung cấp hai cơ sở dữ liệu đọc và ghi riêng biệt giúp tối đa hóa hiệu suất truy vấn và khả năng mở rộng.
 
 19
 00:01:32,950 --> 00:01:35,410
-Let's think about the monolithic applications.
+Hãy suy nghĩ về các ứng dụng monolithic.
 
 20
 00:01:35,410 --> 00:01:42,340
-Most of the time we have one databases, and this database should respond to both query and update operations.
+Hầu hết thời gian chúng ta có một cơ sở dữ liệu, và cơ sở dữ liệu này phải đáp ứng cả các hoạt động truy vấn và cập nhật.
 
 21
 00:01:42,340 --> 00:01:49,690
-That means a single database is both working for complex join operations and also perform Crud operations.
+Điều đó có nghĩa là một cơ sở dữ liệu duy nhất vừa phục vụ các hoạt động join phức tạp vừa thực hiện các hoạt động CRUD.
 
 22
 00:01:51,490 --> 00:01:58,840
-But if the application goes more complex, this query and Crud operations will be also going to be unmanageable
+Nhưng nếu ứng dụng trở nên phức tạp hơn, các hoạt động truy vấn và CRUD này cũng sẽ trở thành một tình huống
 
 23
 00:01:58,840 --> 00:01:59,620
-situation.
+không thể quản lý được.
 
 24
 00:02:00,190 --> 00:02:06,610
-In example of reading database, if your application required some query that needs to join more than
+Ví dụ về cơ sở dữ liệu đọc, nếu ứng dụng của bạn yêu cầu một số truy vấn cần join nhiều hơn
 
 25
 00:02:06,610 --> 00:02:12,070
-one table, this will lock the database due to latency of query computation.
+một bảng, điều này sẽ khóa cơ sở dữ liệu do độ trễ của tính toán truy vấn.
 
 26
 00:02:13,620 --> 00:02:20,250
-Also, if you give example of writing database when performing the Crud operations, we would need to
+Ngoài ra, nếu bạn lấy ví dụ về cơ sở dữ liệu ghi khi thực hiện các hoạt động CRUD, chúng tôi sẽ cần
 
 27
 00:02:20,250 --> 00:02:23,640
-make complex validations and process long business logics.
+thực hiện các xác thực phức tạp và xử lý các logic kinh doanh dài.
 
 28
 00:02:23,640 --> 00:02:26,640
-So this will cause the lock database operations.
+Vậy điều này sẽ gây ra các hoạt động khóa cơ sở dữ liệu.
 
 29
 00:02:27,550 --> 00:02:33,580
-So reading and writing database has different approaches that we can define different strategies to
+Vậy cơ sở dữ liệu đọc và ghi có các phương pháp khác nhau mà chúng ta có thể định nghĩa các chiến lược khác nhau để
 
 30
 00:02:33,580 --> 00:02:34,900
-handle that operation.
+xử lý hoạt động đó.
 
 31
 00:02:35,560 --> 00:02:42,940
-In order to that, SQL is offered to use separation of concerns, principles and separate reading database
+Để làm điều đó, CQRS được đưa ra để sử dụng nguyên tắc tách biệt các mối quan tâm và tách cơ sở dữ liệu đọc
 
 32
 00:02:42,940 --> 00:02:45,970
-and writing database with two databases.
+và cơ sở dữ liệu ghi bằng hai cơ sở dữ liệu.
 
 33
 00:02:46,060 --> 00:02:52,450
-By this way, we can even use different database for reading and writing database types, like using
+Bằng cách này, chúng ta thậm chí có thể sử dụng các loại cơ sở dữ liệu khác nhau cho cơ sở dữ liệu đọc và ghi, như sử dụng
 
 34
 00:02:52,450 --> 00:02:56,830
-NoSQL database for reading and using relational database for Crud operations.
+NoSQL database cho cơ sở dữ liệu đọc và sử dụng cơ sở dữ liệu quan hệ cho các hoạt động CRUD.
 
 35
 00:02:58,240 --> 00:03:06,250
-Mostly read database uses NoSQL databases with Denormalized data, which generates from the right databases,
+Phần lớn cơ sở dữ liệu đọc sử dụng NoSQL databases với dữ liệu Denormalized, được tạo ra từ cơ sở dữ liệu ghi,
 
 36
 00:03:06,250 --> 00:03:13,660
-and the right database uses relational databases with fully normalized and supports strong data consistency.
+và cơ sở dữ liệu ghi sử dụng cơ sở dữ liệu quan hệ với dữ liệu được chuẩn hóa đầy đủ và hỗ trợ tính nhất quán dữ liệu mạnh.
 

@@ -1,120 +1,120 @@
 1
 00:00:00,230 --> 00:00:05,600
-In this video we are going to compare monolithic and microservice architectures.
+Trong video này, chúng ta sẽ so sánh kiến trúc monolithic và microservices.
 
 2
 00:00:05,630 --> 00:00:12,470
-By this way, you will could understand which design better fits your business requirements and capacity.
+Bằng cách này, bạn sẽ có thể hiểu được thiết kế nào phù hợp hơn với yêu cầu kinh doanh và khả năng của bạn.
 
 3
 00:00:13,710 --> 00:00:17,070
-The first comparison is application architecture.
+Lần so sánh đầu tiên là kiến trúc ứng dụng.
 
 4
 00:00:17,100 --> 00:00:22,440
-Monolithic has a simple, straightforward structure of one undivided unit.
+Monolithic có cấu trúc đơn giản, thẳng tiến của một đơn vị không chia nhỏ.
 
 5
 00:00:23,010 --> 00:00:29,970
-But microservices have a complex structure that consists of various heterogeneous services and databases.
+Nhưng microservices có cấu trúc phức tạp bao gồm các dịch vụ và cơ sở dữ liệu khác nhau.
 
 6
 00:00:31,590 --> 00:00:34,020
-The second comparison is scalability.
+Lần so sánh thứ hai là khả năng mở rộng.
 
 7
 00:00:34,260 --> 00:00:41,850
-Monolithic application is scaled as a whole single unit, but microservices can be scaled independently
+Ứng dụng monolithic được mở rộng như một đơn vị duy nhất, nhưng microservices có thể được mở rộng một cách độc lập.
 
 8
 00:00:41,850 --> 00:00:46,950
-and this will save business and development teams a lot of time and resources.
+Và cách này sẽ tiết kiệm rất nhiều thời gian và tài nguyên cho các nhóm kinh doanh và phát triển.
 
 9
 00:00:47,520 --> 00:00:54,030
-This difference between monolithic and microservices encouraged companies to migrate their rapidly growing
+Sự khác biệt này giữa monolithic và microservices đã khuyến khích các công ty di chuyển các ứng dụng đang phát triển nhanh chóng của họ
 
 10
 00:00:54,030 --> 00:01:01,620
-applications to microservices in order to derive agility and enable more cost effective approach to
+sang microservices để có được tính linh hoạt và tạo điều kiện cho một cách tiếp cận hiệu quả về chi phí hơn đối với
 
 11
 00:01:01,620 --> 00:01:02,460
-development.
+phát triển.
 
 12
 00:01:04,190 --> 00:01:07,010
-And another comparison is deployment.
+Và một lần so sánh khác là triển khai.
 
 13
 00:01:07,130 --> 00:01:12,530
-Monolithic application provides fast and easy deployment of whole system.
+Ứng dụng monolithic cung cấp triển khai nhanh chóng và dễ dàng của toàn bộ hệ thống.
 
 14
 00:01:12,560 --> 00:01:19,730
-On the other hand, microservices can deploy different components in a microservice application independently.
+Mặt khác, microservices có thể triển khai các thành phần khác nhau trong một ứng dụng microservice một cách độc lập.
 
 15
 00:01:19,760 --> 00:01:26,420
-This enables frequently and zero downtime deployment and provide CI CD automations.
+Điều này cho phép triển khai thường xuyên và không có thời gian ngừng hoạt động, đồng thời cung cấp các tự động hóa CI/CD.
 
 16
 00:01:26,450 --> 00:01:28,430
-You can see the picture in here.
+Bạn có thể thấy hình ảnh ở đây.
 
 17
 00:01:28,430 --> 00:01:34,880
-You can see the monolithic application has large development teams pushing the code single code base,
+Bạn có thể thấy ứng dụng monolithic có các nhóm phát triển lớn đẩy mã vào một cơ sở mã duy nhất,
 
 18
 00:01:34,880 --> 00:01:38,690
-and there is one deployment pipeline and deploy the production.
+và có một pipeline triển khai duy nhất rồi triển khai vào production.
 
 19
 00:01:38,990 --> 00:01:45,290
-On the other hand, you can see the different teams organized development teams in microservices, and
+Mặt khác, bạn có thể thấy các nhóm khác nhau được tổ chức trong microservices, và
 
 20
 00:01:45,290 --> 00:01:49,820
-every team has own code base about the microservice code base.
+mỗi nhóm có cơ sở mã riêng của họ về cơ sở mã microservice.
 
 21
 00:01:49,820 --> 00:01:56,450
-And every microservice has different development deployment pipelines, and they can deploy independently
+Và mỗi microservice có các pipeline phát triển triển khai khác nhau, và chúng có thể triển khai độc lập
 
 22
 00:01:56,450 --> 00:01:58,730
-and perform CI, CD automations.
+và thực hiện các tự động hóa CI/CD.
 
 23
 00:02:00,510 --> 00:02:03,810
-Another comparison is development teams.
+Lần so sánh khác là các nhóm phát triển.
 
 24
 00:02:03,990 --> 00:02:10,410
-If your team doesn't have experience with microservices and container systems, building a microservice
+Nếu nhóm của bạn không có kinh nghiệm với microservices và các hệ thống container, việc xây dựng một ứng dụng
 
 25
 00:02:10,410 --> 00:02:12,600
-based application will be difficult.
+dựa trên microservices sẽ rất khó khăn.
 
 26
 00:02:12,630 --> 00:02:17,940
-Monolithic architecture can be preferable for single developers or small teams.
+Kiến trúc monolithic có thể được ưa chuộng cho các nhà phát triển cá nhân hoặc các nhóm nhỏ.
 
 27
 00:02:18,120 --> 00:02:24,630
-On the other hand, if you have teams skilled in microservice deployments and plan to expand your team
+Mặt khác, nếu bạn có các nhóm có kỹ năng trong việc triển khai microservices và có kế hoạch mở rộng nhóm của bạn
 
 28
 00:02:24,630 --> 00:02:29,460
-over time, starting with microservices can save your time in the future.
+theo thời gian, bắt đầu với microservices có thể tiết kiệm thời gian cho bạn trong tương lai.
 
 29
 00:02:29,730 --> 00:02:36,150
-Because microservices provide better flexibility when it comes to team composition and distribution
+Bởi vì microservices cung cấp tính linh hoạt tốt hơn khi nói đến thành phần nhóm và phân bổ
 
 30
 00:02:36,150 --> 00:02:37,890
-of tasks and ownership.
+các công việc và quyền sở hữu.
 
