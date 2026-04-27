@@ -1,0 +1,228 @@
+1
+00:00:00,170 --> 00:00:05,870
+In this video we are going to learn six design pattern with Mediator library.
+
+2
+00:00:05,900 --> 00:00:11,720
+That means we will be logical sequence implementation using the mediator library.
+
+3
+00:00:12,290 --> 00:00:13,850
+Mediator is a popular.
+
+4
+00:00:14,030 --> 00:00:20,720
+Net library used to implement the mediator pattern, which is great fit for the sequence design pattern.
+
+5
+00:00:20,750 --> 00:00:27,500
+It allows to send commands and queries to the appropriate handlers without coupling the sender to the
+
+6
+00:00:27,500 --> 00:00:28,220
+receiver.
+
+7
+00:00:29,150 --> 00:00:30,020
+In mediator.
+
+8
+00:00:30,020 --> 00:00:32,299
+We have a I request interface.
+
+9
+00:00:32,299 --> 00:00:36,350
+So both commands and queries are modeled as a message.
+
+10
+00:00:36,350 --> 00:00:43,100
+The I request interface is used to define a request which can be either a command or query.
+
+11
+00:00:43,250 --> 00:00:48,080
+The return type of the request can be specified as a generic parameter.
+
+12
+00:00:48,470 --> 00:00:54,980
+After the I request interface definition, we should define the handlers for each command and query.
+
+13
+00:00:54,980 --> 00:01:02,000
+We define a handler that inherits from the I request handler, t request, and t response, where the
+
+14
+00:01:02,000 --> 00:01:07,400
+t request is the type of the command or query, and t response is return type.
+
+15
+00:01:08,360 --> 00:01:12,320
+So we can define custom I command and I query abstraction.
+
+16
+00:01:12,680 --> 00:01:19,070
+So in order to make the distinction between the commands and the queries clearer, we can define two
+
+17
+00:01:19,070 --> 00:01:20,480
+custom interfaces.
+
+18
+00:01:20,480 --> 00:01:22,880
+These are the I command and I query.
+
+19
+00:01:22,910 --> 00:01:28,130
+Both interfaces can inherit from the mediators I request object.
+
+20
+00:01:30,350 --> 00:01:38,660
+So in ASP.Net core application, using the mediator controllers or minimal APIs act as a entry point
+
+21
+00:01:38,660 --> 00:01:40,670
+for handling Http requests.
+
+22
+00:01:40,700 --> 00:01:46,730
+You can see in here Http request comes from the client and the mediator acts as an entry point.
+
+23
+00:01:46,730 --> 00:01:54,320
+So instead of the implementing the business logic directly within the API action, these actions delegate
+
+24
+00:01:54,320 --> 00:02:00,410
+the responsibility to mediator, and after that mediator sending the command and queries.
+
+25
+00:02:00,410 --> 00:02:08,479
+When a controller or minimal API receives a request, it creates a command or query object and send
+
+26
+00:02:08,479 --> 00:02:09,500
+it to the mediator.
+
+27
+00:02:09,500 --> 00:02:13,340
+Mediator then dispatch this object to the appropriate handler.
+
+28
+00:02:14,510 --> 00:02:20,270
+So if you look at the mediator pattern and pipeline behaviors, the mediator pattern is implemented
+
+29
+00:02:20,270 --> 00:02:20,570
+by.
+
+30
+00:02:20,570 --> 00:02:27,680
+The mediator library is particularly useful in a complex or enterprise level applications, where request
+
+31
+00:02:27,680 --> 00:02:31,070
+processing often involves more than just business logic.
+
+32
+00:02:31,490 --> 00:02:38,210
+In this kind of applications, handling a request might require additional steps like logging, validation,
+
+33
+00:02:38,210 --> 00:02:40,790
+auditing, and applying the security checks.
+
+34
+00:02:40,790 --> 00:02:43,820
+These are known as a cross-cutting concerns.
+
+35
+00:02:44,270 --> 00:02:51,080
+Mediator provides a mediator pipeline where these cross-cutting concerns can be inserted transparently.
+
+36
+00:02:51,080 --> 00:02:57,680
+These pipeline coordinates the request handling, ensuring that all the necessary steps are executed
+
+37
+00:02:57,680 --> 00:02:58,940
+in the right order.
+
+38
+00:02:59,090 --> 00:03:05,630
+So in mediator, we have a pipeline behavior and pipeline behaviors are used to implement cross-cutting
+
+39
+00:03:05,630 --> 00:03:06,290
+concerns.
+
+40
+00:03:06,290 --> 00:03:08,240
+You can see the image on the slide.
+
+41
+00:03:08,270 --> 00:03:16,880
+They wrap around the request handling allowing you to execute the logic before and after actual handler
+
+42
+00:03:16,880 --> 00:03:17,600
+is called.
+
+43
+00:03:17,600 --> 00:03:25,280
+So this is the mediator pipeline process before handle the actual operation mediator allowing to preprocessor
+
+44
+00:03:25,280 --> 00:03:32,090
+behavior or post-processor behaviors that you can use these behavior as a implementing cross-cutting
+
+45
+00:03:32,090 --> 00:03:32,840
+concerns.
+
+46
+00:03:34,250 --> 00:03:37,430
+Here you can see the issue of microservices.
+
+47
+00:03:37,430 --> 00:03:41,990
+It is also used for the implementing various cross-cutting concerns.
+
+48
+00:03:41,990 --> 00:03:44,240
+The first one is log behavior.
+
+49
+00:03:44,570 --> 00:03:48,290
+A behavior that logs details about the handling request.
+
+50
+00:03:48,290 --> 00:03:50,690
+And the second one is the validation behavior.
+
+51
+00:03:50,690 --> 00:03:55,370
+This is the behavior that validates incoming requests before they reach the handler.
+
+52
+00:03:55,370 --> 00:04:00,050
+So we will use these two behaviors when implementing our issue of microservices.
+
+53
+00:04:00,050 --> 00:04:06,530
+And these behaviors ensures every request processed by the mediator in the application is logged and
+
+54
+00:04:06,530 --> 00:04:12,710
+validated consistently, and it demonstrates how the cross-cutting concerns can be efficiently managed
+
+55
+00:04:12,710 --> 00:04:17,000
+using the mediator pattern and mediator library pipeline behaviors.
+
+56
+00:04:17,000 --> 00:04:24,380
+So we can say that using mediator in ASP.Net applications provides a structured and clean way to handle
+
+57
+00:04:24,380 --> 00:04:25,970
+complex request processing.
+

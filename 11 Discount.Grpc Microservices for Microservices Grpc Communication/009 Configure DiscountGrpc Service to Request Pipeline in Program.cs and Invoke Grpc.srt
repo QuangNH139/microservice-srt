@@ -1,0 +1,276 @@
+1
+00:00:00,140 --> 00:00:06,800
+In this video, we are going to configure discount gRPC service to our request pipeline in the Program.cs.
+
+2
+00:00:06,800 --> 00:00:09,230
+And we will invoke our gRPC call.
+
+3
+00:00:09,980 --> 00:00:14,060
+So as you can see that under the services we have developed the discount service.
+
+4
+00:00:14,060 --> 00:00:21,380
+And in order to activate these discount servers for exposing gRPC calls, we should map the gRPC service
+
+5
+00:00:21,380 --> 00:00:25,640
+in the Program.cs to configure the Http two request pipeline.
+
+6
+00:00:25,670 --> 00:00:27,290
+Please open the Program.cs.
+
+7
+00:00:27,290 --> 00:00:33,110
+And here you can see that we have already added services into container gRPC services.
+
+8
+00:00:33,110 --> 00:00:39,320
+And here you can see that we will configure Http request pipeline according to our discount service
+
+9
+00:00:39,320 --> 00:00:40,700
+gRPC services.
+
+10
+00:00:40,700 --> 00:00:44,930
+So for that purpose I'm going to open this command line.
+
+11
+00:00:44,930 --> 00:00:50,300
+And instead of the greeting service we are going to write in here discount service.
+
+12
+00:00:52,440 --> 00:00:59,580
+By this way, we can make ready this application to accommodate incoming gRPC calls, and we will specifically
+
+13
+00:00:59,580 --> 00:01:04,769
+invoke discount proto methods, RPC methods with gRPC calls.
+
+14
+00:01:04,769 --> 00:01:07,260
+And this will be trigger our discount services.
+
+15
+00:01:07,260 --> 00:01:12,690
+Because we have configured our services in the ASP.Net Http request pipeline.
+
+16
+00:01:12,690 --> 00:01:19,710
+For that purpose, I'm going to come here and put breakpoints into the each method for gRPC calls,
+
+17
+00:01:19,710 --> 00:01:26,130
+and we will understand how we can trigger and invoke these methods using the discount gRPC microservices.
+
+18
+00:01:26,190 --> 00:01:28,410
+Now we can run our application.
+
+19
+00:01:28,410 --> 00:01:34,710
+If you come here and run https mode, this will be start our discount gRPC microservices.
+
+20
+00:01:37,360 --> 00:01:41,110
+You can see that our application has started successfully.
+
+21
+00:01:41,110 --> 00:01:44,680
+And now listening on the localhost and 5052.
+
+22
+00:01:44,680 --> 00:01:51,160
+And we will use gRPC protocol in order to send Http two requests with gRPC calls.
+
+23
+00:01:51,160 --> 00:01:55,840
+So that means now our application ready to accept gRPC calls.
+
+24
+00:01:55,870 --> 00:01:59,800
+How can we invoke a gRPC method into our application.
+
+25
+00:01:59,830 --> 00:02:01,630
+Of course we will use postman.
+
+26
+00:02:01,630 --> 00:02:08,770
+Please open the postman in here you can see that we have using the greeter say hello method when invoking
+
+27
+00:02:08,770 --> 00:02:09,759
+gRPC method.
+
+28
+00:02:09,759 --> 00:02:13,450
+But now we will invoke our discount service methods.
+
+29
+00:02:13,450 --> 00:02:20,080
+So as you can see that I have created a separate collection because postman is not accepting Http and
+
+30
+00:02:20,080 --> 00:02:22,660
+gRPC methods at the same collection.
+
+31
+00:02:22,660 --> 00:02:27,820
+So I have created new collection and now we are going to create a new method.
+
+32
+00:02:27,820 --> 00:02:32,080
+If you right click and duplicate this, say hello.
+
+33
+00:02:32,080 --> 00:02:37,000
+So now we are going to make that this will be discount service.
+
+34
+00:02:37,000 --> 00:02:40,120
+After that we can select the gRPC method.
+
+35
+00:02:40,120 --> 00:02:43,450
+If you come here and you can see that this is say hello.
+
+36
+00:02:43,450 --> 00:02:45,940
+We would like to change the service definition.
+
+37
+00:02:45,940 --> 00:02:51,550
+If you click this button you can see that we can use different schema or import a proto file.
+
+38
+00:02:51,550 --> 00:02:57,310
+I'm going to import a proto file and we can choose a file from the our repository.
+
+39
+00:02:57,310 --> 00:03:00,820
+So if you come to your project file.
+
+40
+00:03:01,800 --> 00:03:03,150
+Under the repositories.
+
+41
+00:03:03,150 --> 00:03:11,700
+I'm going to define each of microservices source services discount discount, gRPC protocol and Discount
+
+42
+00:03:11,700 --> 00:03:13,980
+Protocol and click the open button.
+
+43
+00:03:14,010 --> 00:03:17,580
+This will be import our discount gRPC methods.
+
+44
+00:03:17,580 --> 00:03:19,890
+And after that you can come here.
+
+45
+00:03:19,890 --> 00:03:26,760
+And if you close this response and scroll down you can see the next button comes in here for the service
+
+46
+00:03:26,760 --> 00:03:27,390
+definition.
+
+47
+00:03:27,390 --> 00:03:28,680
+Click the next button.
+
+48
+00:03:28,680 --> 00:03:31,680
+And this will be import as an API.
+
+49
+00:03:31,680 --> 00:03:38,010
+And we can use that import discount API as a new API and import as API.
+
+50
+00:03:39,030 --> 00:03:43,620
+So now we can come here and select the get discount methods are available now.
+
+51
+00:03:43,650 --> 00:03:46,950
+So in here for example I'm selected the get discount.
+
+52
+00:03:46,950 --> 00:03:50,190
+And after that we can invoke as a gRPC call.
+
+53
+00:03:50,190 --> 00:03:53,670
+Please save this gRPC call and click the invoke button.
+
+54
+00:03:53,670 --> 00:03:59,490
+This will be suddenly trigger our discount service get discount method that you can see in here.
+
+55
+00:03:59,490 --> 00:04:00,000
+Breakpoint.
+
+56
+00:04:00,000 --> 00:04:05,520
+Hit from the gRPC call that we invoke from the postman so you can continue our code.
+
+57
+00:04:05,520 --> 00:04:10,500
+And this will be throw an exception because we didn't overwrite yet for that purpose.
+
+58
+00:04:10,500 --> 00:04:12,060
+This is throwing an exception.
+
+59
+00:04:12,060 --> 00:04:16,050
+And you can see that the status code is 12 unimplemented.
+
+60
+00:04:16,050 --> 00:04:21,930
+So you can test the other methods for the other create discount and other Crud operations.
+
+61
+00:04:21,930 --> 00:04:27,960
+You can see that this is very fast to invoke our discount service, because this time we will use Http
+
+62
+00:04:27,960 --> 00:04:30,000
+two protocol and gRPC call.
+
+63
+00:04:30,000 --> 00:04:33,300
+It is very performant for inter service communication.
+
+64
+00:04:33,300 --> 00:04:38,910
+Again, you can see that each method returning unimplemented response that we are going to implement
+
+65
+00:04:38,910 --> 00:04:41,490
+these methods into our discount services.
+
+66
+00:04:41,490 --> 00:04:46,980
+So after verifying these invocations, we can save the discount service method on the gRPC.
+
+67
+00:04:46,980 --> 00:04:49,980
+And you can create any discount gRPC collection.
+
+68
+00:04:49,980 --> 00:04:56,760
+So now it is time to implement our actual discount service method in override functions in order to
+
+69
+00:04:56,760 --> 00:04:59,400
+interact with database using the ORM system.
+

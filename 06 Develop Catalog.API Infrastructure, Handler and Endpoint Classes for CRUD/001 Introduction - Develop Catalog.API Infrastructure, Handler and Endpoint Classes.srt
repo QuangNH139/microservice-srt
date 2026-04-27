@@ -1,0 +1,56 @@
+1
+00:00:00,200 --> 00:00:08,119
+In this section we are going to develop catalog API infrastructure handler and endpoint clusters for
+
+2
+00:00:08,119 --> 00:00:10,220
+performing Crud operations.
+
+3
+00:00:10,490 --> 00:00:17,570
+So we will explore and develop infrastructure related operations for performing data concerns on Catholic
+
+4
+00:00:17,570 --> 00:00:19,010
+API microservices.
+
+5
+00:00:19,010 --> 00:00:24,920
+And we will use Martinet Transactional DocumentDB for PostgreSQL database.
+
+6
+00:00:24,920 --> 00:00:32,210
+Martin will be at the DocumentDB on the PostgreSQL database, and we will use opening sessions, and
+
+7
+00:00:32,210 --> 00:00:38,690
+we will set up and run PostgreSQL database using the Docker compose files for Multi-container Docker
+
+8
+00:00:38,690 --> 00:00:39,590
+environment.
+
+9
+00:00:39,680 --> 00:00:45,920
+And we will develop products feature folders in vertical slice architecture with following the securities
+
+10
+00:00:45,920 --> 00:00:50,300
+design pattern and using the mediator library in the handler classes.
+
+11
+00:00:50,330 --> 00:00:57,890
+And after that we will develop endpoints classes with using the minimal APIs and Carter library.
+
+12
+00:00:57,890 --> 00:01:05,300
+And lastly we will test our product endpoints connecting to Docker environment on the PostgreSQL Docker
+
+13
+00:01:05,300 --> 00:01:05,960
+container.
+
+14
+00:01:05,960 --> 00:01:07,730
+So now let's get started.
+

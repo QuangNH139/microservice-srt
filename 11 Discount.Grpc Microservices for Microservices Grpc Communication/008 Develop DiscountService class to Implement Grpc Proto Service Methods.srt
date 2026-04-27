@@ -1,0 +1,164 @@
+1
+00:00:00,170 --> 00:00:06,740
+In this video we are going to develop Discount service class to implement gRPC proto service methods
+
+2
+00:00:06,740 --> 00:00:08,360
+in our microservices.
+
+3
+00:00:08,360 --> 00:00:14,000
+Here you can see that now we are going to develop services folder and Discount Service class.
+
+4
+00:00:14,000 --> 00:00:19,190
+For that purpose, please open the Visual Studio and locate the services folder.
+
+5
+00:00:19,190 --> 00:00:22,490
+And now please create a new class under services folder.
+
+6
+00:00:22,490 --> 00:00:25,040
+Which name is Discount Service Class.
+
+7
+00:00:25,580 --> 00:00:31,610
+After that, we should inherit from the Proto service class which is generated from the Visual Studio
+
+8
+00:00:31,610 --> 00:00:33,680
+in the last video for that purpose.
+
+9
+00:00:33,680 --> 00:00:38,720
+Come here and inherit from the discount proto service Dot Discount Proto service Base.
+
+10
+00:00:38,720 --> 00:00:43,130
+This class is generated from the Visual Studio when building our application.
+
+11
+00:00:43,130 --> 00:00:49,250
+If you right click and go to definition, you can see the service class and all related operations under
+
+12
+00:00:49,250 --> 00:00:50,210
+the service class.
+
+13
+00:00:50,210 --> 00:00:54,050
+These are the create, delete, gate and update discount operation.
+
+14
+00:00:54,050 --> 00:01:01,610
+You can go to the method call and examine the generated codes, but the idea is that this is the generated
+
+15
+00:01:01,610 --> 00:01:07,880
+class from the Visual Studio and exposing create, delete, gate and update operation as a gRPC method
+
+16
+00:01:07,880 --> 00:01:09,530
+to the outside of the world.
+
+17
+00:01:09,530 --> 00:01:11,690
+So that means this generated class.
+
+18
+00:01:11,690 --> 00:01:14,360
+You can think that this is the presentation layer.
+
+19
+00:01:14,360 --> 00:01:21,380
+And in order to hook up the gRPC call, we will inherit our discount service from the generated class.
+
+20
+00:01:21,380 --> 00:01:25,460
+And we will implement actual business logic into our service classes.
+
+21
+00:01:25,460 --> 00:01:31,340
+So this will be our application logic business layer that we should implement our use cases.
+
+22
+00:01:31,340 --> 00:01:35,030
+Our use cases will be Crud operations on the coupon model.
+
+23
+00:01:35,030 --> 00:01:41,210
+And we will overwrite these base methods from the Discount Proto service base class in order to implement
+
+24
+00:01:41,210 --> 00:01:45,080
+our specific use case for performing Crud operations on discount.
+
+25
+00:01:45,080 --> 00:01:46,850
+So let me start one by one.
+
+26
+00:01:46,850 --> 00:01:53,150
+For example, if you come here and write for the override method, and if you can see that these are
+
+27
+00:01:53,150 --> 00:01:57,680
+the Overrideable method that we can use from the inherited generated class.
+
+28
+00:01:57,680 --> 00:02:04,280
+For example, if I click the get discount that means we can override this method when gRPC call comes
+
+29
+00:02:04,280 --> 00:02:06,230
+from the our microservices.
+
+30
+00:02:06,230 --> 00:02:09,470
+So now we will perform these operations one by one.
+
+31
+00:02:09,470 --> 00:02:17,180
+I'm going to start for the get discount and continue with the our other operation which is the create
+
+32
+00:02:17,180 --> 00:02:17,960
+discount.
+
+33
+00:02:18,140 --> 00:02:23,840
+And after that we will override for the update discount.
+
+34
+00:02:23,840 --> 00:02:29,390
+And lastly we will override delete discount method.
+
+35
+00:02:29,420 --> 00:02:33,110
+So here you can see the implementation of the Discount Service class.
+
+36
+00:02:33,110 --> 00:02:37,070
+We will implement these functions interacting with databases.
+
+37
+00:02:37,070 --> 00:02:42,380
+For example for get discount operation we should add the todos statement in here.
+
+38
+00:02:42,410 --> 00:02:44,210
+Get discount from the database.
+
+39
+00:02:44,210 --> 00:02:50,780
+Because this class is application logic layer for handling use cases to perform Crud operations.
+
+40
+00:02:51,050 --> 00:02:58,430
+But before that, let's understand how gRPC services exposes from the discount microservices and how
+
+41
+00:02:58,430 --> 00:03:01,790
+can we trigger these methods with making gRPC calls?
+

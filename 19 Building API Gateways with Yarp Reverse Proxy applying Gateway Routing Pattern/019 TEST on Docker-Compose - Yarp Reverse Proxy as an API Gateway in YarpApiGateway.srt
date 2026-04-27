@@ -1,0 +1,428 @@
+1
+00:00:00,110 --> 00:00:06,050
+In this video we are going to test the ARP API gateway microservices in a Docker compose environment.
+
+2
+00:00:06,050 --> 00:00:10,280
+So that means we will test the ARP API gateway in a full Docker environment.
+
+3
+00:00:10,280 --> 00:00:15,890
+And we will perform the deployment tool, which is the Docker compose, all microservices API gateway
+
+4
+00:00:15,890 --> 00:00:17,300
+and the backing services.
+
+5
+00:00:17,300 --> 00:00:19,940
+For that purpose, please open the Visual Studio.
+
+6
+00:00:19,940 --> 00:00:24,230
+And before we start, make sure that your Docker desktop is up and running.
+
+7
+00:00:24,230 --> 00:00:28,220
+In here you can see that we have configured our Docker Compose Yaml files.
+
+8
+00:00:28,220 --> 00:00:33,860
+And here you can see the application settings Json file for the reverse proxy settings in order to route
+
+9
+00:00:33,860 --> 00:00:36,590
+incoming requests to the downstream microservices.
+
+10
+00:00:36,590 --> 00:00:43,160
+And we have used Http ports and the container names for the downstream microservices, including Catholic
+
+11
+00:00:43,160 --> 00:00:45,560
+API, basket API, and ordering API.
+
+12
+00:00:45,560 --> 00:00:51,590
+We can also use these APIs when we are depends on to the ARP API gateway when we are starting the Docker
+
+13
+00:00:51,590 --> 00:00:52,790
+compose environment.
+
+14
+00:00:52,790 --> 00:00:57,860
+So for that purpose I am going to right click the docker compose and set a startup project.
+
+15
+00:00:57,860 --> 00:01:03,950
+And this time I'm going to use running Docker compose without debugging because we will test reverse
+
+16
+00:01:03,950 --> 00:01:05,600
+proxy on the postman.
+
+17
+00:01:05,600 --> 00:01:10,790
+I'm going to click this button and start without debugging to hold docker compose environment.
+
+18
+00:01:10,790 --> 00:01:17,240
+And we will expect to running the all microservices in the docker compose, and make sure that all microservices
+
+19
+00:01:17,240 --> 00:01:18,620
+are running on Docker compose.
+
+20
+00:01:18,620 --> 00:01:26,660
+And we can check the Catholic API on the 6000 port basket API in 6001, and ordering API will be exposed
+
+21
+00:01:26,660 --> 00:01:27,920
+6003.
+
+22
+00:01:27,920 --> 00:01:31,850
+And lastly Erb API gateway will be exposed 6004.
+
+23
+00:01:31,910 --> 00:01:37,190
+So here you can see the our Docker compose and Docker desktop.
+
+24
+00:01:37,190 --> 00:01:41,240
+And in Docker desktop we can see that our microservices come in here.
+
+25
+00:01:41,240 --> 00:01:47,510
+And now we will also expect Erb API gateway and Erb API gateway also created and running successfully
+
+26
+00:01:47,510 --> 00:01:49,010
+under our Docker compose.
+
+27
+00:01:49,010 --> 00:01:52,910
+You can check the Erb API gateway logs by clicking this container.
+
+28
+00:01:52,910 --> 00:01:58,070
+And here you can see that this will be configured with the adding configurations from the application
+
+29
+00:01:58,070 --> 00:02:02,180
+settings Json file and ready to academic the incoming request.
+
+30
+00:02:02,180 --> 00:02:10,130
+And here you can see that we have exposed the Erb API gateway in the 6004 and 6064 for Https, and I
+
+31
+00:02:10,130 --> 00:02:12,500
+am going to use this https url.
+
+32
+00:02:12,500 --> 00:02:18,530
+When we are sending requests to our erb API gateway that will redirect to us downstream microservices
+
+33
+00:02:18,530 --> 00:02:20,390
+in a Http port numbers.
+
+34
+00:02:20,390 --> 00:02:23,510
+So now we can start to test our API gateway.
+
+35
+00:02:23,510 --> 00:02:30,110
+Please open the postman and I am going to open the our Icap Microservices Postman collection and go
+
+36
+00:02:30,110 --> 00:02:36,260
+to Erb API gateway and open the catalog API and open the first gate endpoint which is the Getproduct.
+
+37
+00:02:36,260 --> 00:02:42,650
+Here you can see the our URL and catalog service, which is the our incoming request to identify the
+
+38
+00:02:42,650 --> 00:02:45,050
+incoming requests to downstream microservices.
+
+39
+00:02:45,050 --> 00:02:50,270
+And the rest of the endpoint is belong to our catalog microservices and trained in order to get the
+
+40
+00:02:50,270 --> 00:02:51,800
+products with pagination.
+
+41
+00:02:51,800 --> 00:02:53,420
+But this is the important.
+
+42
+00:02:53,420 --> 00:02:59,510
+If you check the URL, you can see the ARP URL is arranging according to localhost environment 5054
+
+43
+00:02:59,510 --> 00:03:01,850
+port in Https format.
+
+44
+00:03:01,850 --> 00:03:03,860
+So I'm going to change the environment here.
+
+45
+00:03:03,860 --> 00:03:10,610
+You can see that we can change the environment localhost to docker to get the URL in a 6064 port number
+
+46
+00:03:10,610 --> 00:03:12,200
+in a Https endpoint.
+
+47
+00:03:12,200 --> 00:03:14,510
+So this is important to change environment.
+
+48
+00:03:14,510 --> 00:03:19,460
+And this is important to adding the environment variable in a Docker network as a URL.
+
+49
+00:03:19,460 --> 00:03:22,520
+Here you can see that we have adding variable for URL.
+
+50
+00:03:22,520 --> 00:03:26,420
+And we are using the localhost https 6064 port number.
+
+51
+00:03:26,420 --> 00:03:32,690
+In order to send http request to our erb API gateway microservices in docker compose network.
+
+52
+00:03:32,690 --> 00:03:37,490
+So now I am going to hit the send button in order to retrieve products from the catalog.
+
+53
+00:03:37,490 --> 00:03:38,480
+Microservices.
+
+54
+00:03:38,480 --> 00:03:43,640
+As you can see that we have successfully get the products from the catalog microservices over the Erb
+
+55
+00:03:43,640 --> 00:03:44,450
+API gateway.
+
+56
+00:03:44,540 --> 00:03:51,890
+If I continue to send other Http get methods, you can see that we can get the specific product into
+
+57
+00:03:51,890 --> 00:03:58,430
+the URL catalog microservices over the http api gateway even we can create a new product onto the catalog
+
+58
+00:03:58,430 --> 00:04:00,770
+microservices over the Erb API gateway.
+
+59
+00:04:00,770 --> 00:04:05,930
+Using these endpoints with adding the slash catalog, slash service and slash products.
+
+60
+00:04:05,930 --> 00:04:12,050
+So catalog microservices successfully redirecting to internal downstream microservices over the Erb
+
+61
+00:04:12,050 --> 00:04:12,830
+API gateway.
+
+62
+00:04:12,860 --> 00:04:17,120
+Now I am going to perform end to end test which is the basket checkout use case.
+
+63
+00:04:17,120 --> 00:04:22,250
+For that purpose, we will open the basket subfolder under the http api gateway.
+
+64
+00:04:22,250 --> 00:04:26,750
+And I'm going to create a new basket with username as a civilian.
+
+65
+00:04:26,750 --> 00:04:28,460
+And this is the URL.
+
+66
+00:04:28,460 --> 00:04:34,250
+Here you can see the endpoint which is including the slash basket dash service and slash basket.
+
+67
+00:04:34,250 --> 00:04:39,260
+And hit the send button to sending http post request to our API gateway.
+
+68
+00:04:39,260 --> 00:04:42,680
+This will be create a new basket into our microservices.
+
+69
+00:04:42,680 --> 00:04:45,770
+This is created successfully here you can see the response.
+
+70
+00:04:45,770 --> 00:04:52,160
+Now just after that I'm going to check out this basket from the basket microservices with Kubernetes
+
+71
+00:04:52,160 --> 00:04:52,820
+payload.
+
+72
+00:04:52,820 --> 00:04:59,810
+And I'm going to send http post request to this endpoint URL which is the basket service basket check.
+
+73
+00:04:59,980 --> 00:05:00,220
+God.
+
+74
+00:05:00,220 --> 00:05:06,520
+And with this payload, sending 83 postdocs and starting our asynchronous, event driven communication
+
+75
+00:05:06,520 --> 00:05:12,190
+that will publish basket checkout event to the RabbitMQ that is consuming from the organic microservices
+
+76
+00:05:12,190 --> 00:05:15,130
+that we can confirm from the RabbitMQ management dashboard.
+
+77
+00:05:15,130 --> 00:05:21,280
+If you go to our management dashboard, you can see that basket checkout queue is created successfully
+
+78
+00:05:21,280 --> 00:05:23,620
+and consumed by the ordering microservices.
+
+79
+00:05:23,620 --> 00:05:28,990
+You can also check queues and streams and see that basket checkout event handler triggering from the
+
+80
+00:05:28,990 --> 00:05:32,020
+RabbitMQ and consuming from the ordering microservices.
+
+81
+00:05:32,020 --> 00:05:37,390
+And if you look at the ordering microservice and means if you open the ordering subfolder, we can get
+
+82
+00:05:37,390 --> 00:05:38,800
+orders with pagination.
+
+83
+00:05:38,800 --> 00:05:42,640
+And here you can see that I'm going to get the orders with pagination.
+
+84
+00:05:42,640 --> 00:05:44,560
+This is first two orders.
+
+85
+00:05:44,560 --> 00:05:47,200
+That is seeding one application startup.
+
+86
+00:05:47,200 --> 00:05:52,990
+I'm going to change the page index from 0 to 1 in order to retrieve the second page of the orders.
+
+87
+00:05:52,990 --> 00:05:59,920
+That is newly created order for the asynchronous communication and consuming from the RabbitMQ events
+
+88
+00:05:59,920 --> 00:06:01,060
+into our ordering.
+
+89
+00:06:01,060 --> 00:06:07,390
+Microservices and all these operations are retrieving from the Erb API gateway and over the Erb API
+
+90
+00:06:07,390 --> 00:06:07,960
+gateway.
+
+91
+00:06:07,960 --> 00:06:13,570
+So as you can see that we have successfully performed and dined use case over the Erb API gateway in
+
+92
+00:06:13,570 --> 00:06:15,490
+fully docker compose environment.
+
+93
+00:06:15,490 --> 00:06:20,290
+At this point I would like to test rate limiting into our ordering microservices.
+
+94
+00:06:20,320 --> 00:06:26,500
+As you remember that we have adding the rate limiting into our configurations into our ordering route.
+
+95
+00:06:26,500 --> 00:06:30,370
+Here you can see that we have rate limiter policy as a fixed.
+
+96
+00:06:30,370 --> 00:06:33,010
+So for that purpose please open the postman.
+
+97
+00:06:33,010 --> 00:06:39,850
+And I am going to several requests to the same endpoint with Http, get requests to the ordering microservices
+
+98
+00:06:39,850 --> 00:06:41,170
+and see what's happened.
+
+99
+00:06:41,170 --> 00:06:46,240
+This is the first request second, third, fourth and fifth request.
+
+100
+00:06:46,240 --> 00:06:53,410
+If I send again this time you can see that we will get 503 service unavailable exception which is returning
+
+101
+00:06:53,410 --> 00:06:54,910
+from the rate limiting.
+
+102
+00:06:54,910 --> 00:06:58,870
+And we have sending maximum five requests in 10s.
+
+103
+00:06:58,870 --> 00:07:05,470
+If I refresh again and wait several times, this 10s start again and we can get successful response
+
+104
+00:07:05,470 --> 00:07:07,150
+from the ordering microservices.
+
+105
+00:07:07,150 --> 00:07:10,030
+So we have also successful test rate limiting.
+
+106
+00:07:10,030 --> 00:07:15,850
+And we have also successful testing and trend process over the ARP API gateway in fully docker compose
+
+107
+00:07:15,850 --> 00:07:16,690
+environment.
+

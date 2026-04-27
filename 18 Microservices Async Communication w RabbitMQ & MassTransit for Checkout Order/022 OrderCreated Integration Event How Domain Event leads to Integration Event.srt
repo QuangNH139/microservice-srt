@@ -1,0 +1,252 @@
+1
+00:00:00,110 --> 00:00:06,170
+In this video we are going to learn integration events, how domain event leads to integration events
+
+2
+00:00:06,170 --> 00:00:11,540
+and transition from the domain to integration event, and the difference between domain and integration
+
+3
+00:00:11,540 --> 00:00:12,230
+events.
+
+4
+00:00:12,500 --> 00:00:17,510
+At the core, they are the same thing, a representation of something that happened in the past.
+
+5
+00:00:17,510 --> 00:00:22,640
+However, their purpose, use case and implementation details are different.
+
+6
+00:00:22,640 --> 00:00:23,540
+Let me see.
+
+7
+00:00:23,570 --> 00:00:24,380
+Domain events.
+
+8
+00:00:24,380 --> 00:00:28,100
+Domain events published and consumed within a single domain.
+
+9
+00:00:28,100 --> 00:00:32,030
+So you publish and subscribe to the event in the same application instance.
+
+10
+00:00:32,030 --> 00:00:36,200
+They are strictly within the boundary of the microservice or domain context.
+
+11
+00:00:36,200 --> 00:00:42,410
+They typically indicate something that happened within the aggregate and domain events happen in process
+
+12
+00:00:42,410 --> 00:00:45,860
+and synchronously sent using in-memory message pass.
+
+13
+00:00:45,860 --> 00:00:48,860
+As an example, we can give order created event.
+
+14
+00:00:48,860 --> 00:00:54,980
+So if you look at the integration event integration events used to communicate state changes or events
+
+15
+00:00:54,980 --> 00:01:01,010
+between different bounded contexts or microservices, they are more about the overall systems reaction
+
+16
+00:01:01,010 --> 00:01:02,630
+to certain domain events.
+
+17
+00:01:02,630 --> 00:01:07,700
+Integration events should be asynchronously sent with a message broker over a queue.
+
+18
+00:01:07,790 --> 00:01:11,540
+Integration events are consumed by other subsystems.
+
+19
+00:01:11,570 --> 00:01:17,330
+As an example, after handling the order created event, an order created integration event might be
+
+20
+00:01:17,330 --> 00:01:23,000
+published to the message broker like the RabbitMQ, which could then be consumed by other microservices.
+
+21
+00:01:23,000 --> 00:01:28,790
+So if you compare with the domain and integration event, we can say that domain events happen in process
+
+22
+00:01:28,790 --> 00:01:29,810
+and synchronously.
+
+23
+00:01:29,810 --> 00:01:35,450
+On the other hand, the integration event should be asynchronously domain events published and consumed
+
+24
+00:01:35,450 --> 00:01:36,650
+within a single domain.
+
+25
+00:01:36,650 --> 00:01:40,460
+So you publish and subscribe to events in the same application instance.
+
+26
+00:01:40,460 --> 00:01:44,870
+On the other hand, integration events are consumed by other subsystems.
+
+27
+00:01:44,870 --> 00:01:50,390
+Domain events are sent using in-memory message pass, and integration events are sent with a message
+
+28
+00:01:50,390 --> 00:01:51,620
+broker over a queue.
+
+29
+00:01:52,220 --> 00:01:53,390
+So let's see.
+
+30
+00:01:53,390 --> 00:01:57,050
+Each of microservices has domain and integration events.
+
+31
+00:01:57,050 --> 00:02:02,060
+So we will develop initially microservices that include domain and integration events.
+
+32
+00:02:02,060 --> 00:02:05,270
+And the first one is basket checkout integration event.
+
+33
+00:02:05,270 --> 00:02:10,610
+So basket checkout is an integration event that published from the basket microservices to RabbitMQ
+
+34
+00:02:10,610 --> 00:02:13,100
+and consume from the ordering microservices.
+
+35
+00:02:13,100 --> 00:02:18,800
+So we will develop basket checkout event during this section and basket checkout integration event that
+
+36
+00:02:18,800 --> 00:02:24,290
+will subscribe and consume by the ordering microservices from the RabbitMQ using the mass transit in
+
+37
+00:02:24,290 --> 00:02:27,410
+order to perform asynchronous event driven communication.
+
+38
+00:02:27,590 --> 00:02:34,580
+So in the second domain event, we can say that order created domain event and in ordering when consumes
+
+39
+00:02:34,580 --> 00:02:39,650
+the basket checkout integration event into handler class, it will create a new order into ordering
+
+40
+00:02:39,650 --> 00:02:40,640
+microservices.
+
+41
+00:02:40,640 --> 00:02:46,730
+So in ordering microservices, when a new order is created, it will raise an order, created domain
+
+42
+00:02:46,730 --> 00:02:49,460
+event and triggers internal operations.
+
+43
+00:02:50,000 --> 00:02:55,400
+And after that we can give order created integration event for the order fulfillment operations.
+
+44
+00:02:55,400 --> 00:03:01,130
+So when dispatching the order created domain event, a domain event handler class will publish an order
+
+45
+00:03:01,130 --> 00:03:06,530
+created integration event for the order fulfillment, microservices and implementing Saga pattern.
+
+46
+00:03:06,530 --> 00:03:10,010
+So this is the transition from the domain to integration event.
+
+47
+00:03:10,010 --> 00:03:15,290
+Once the order created domain event is handled and order created, integration event is published.
+
+48
+00:03:15,290 --> 00:03:21,110
+So this integration event can be used to implement complex workflows like a Saga pattern involving the
+
+49
+00:03:21,110 --> 00:03:22,250
+other microservices.
+
+50
+00:03:22,250 --> 00:03:26,630
+So here you can see the domain and integration events that we are going to create.
+
+51
+00:03:26,630 --> 00:03:32,060
+This is the end to end process of the domain and integration events for each of microservices.
+
+52
+00:03:32,060 --> 00:03:38,120
+And the process starts from the basket microservices that publish the basket checkout integration event.
+
+53
+00:03:38,120 --> 00:03:43,670
+And this will be consumed by the ordering microservices and handling the ordering microservices.
+
+54
+00:03:43,670 --> 00:03:50,240
+And when ordering microservices consume these integration event, it will create a new order and this
+
+55
+00:03:50,240 --> 00:03:53,750
+operation will raise an order created domain event.
+
+56
+00:03:53,750 --> 00:03:59,750
+And after that this domain event dispatch and handles in the domain handler classes of the ordering
+
+57
+00:03:59,750 --> 00:04:06,290
+microservices that will also lead any integration event which is the order created integration event
+
+58
+00:04:06,290 --> 00:04:09,740
+and this will be performed order fulfillment use case.
+
+59
+00:04:09,740 --> 00:04:16,670
+And this will be subscribing from the other microservices including the shipment, payment and notification
+
+60
+00:04:16,670 --> 00:04:20,450
+to performing end to end flow of the order fulfillment process.
+
+61
+00:04:20,450 --> 00:04:25,790
+So now we are at this point when we are consuming these basket checkout integration event in the order
+
+62
+00:04:25,790 --> 00:04:31,250
+microservices, that we will create a new order, and this will be raised at a domain event that lead
+
+63
+00:04:31,250 --> 00:04:32,210
+to integration event.
+

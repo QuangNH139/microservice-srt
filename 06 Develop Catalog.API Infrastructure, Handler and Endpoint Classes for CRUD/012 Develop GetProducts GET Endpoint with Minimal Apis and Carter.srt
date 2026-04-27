@@ -1,0 +1,284 @@
+1
+00:00:00,200 --> 00:00:06,920
+In this video, we are going to develop Getproducts endpoint class with using minimal APIs and Carter.
+
+2
+00:00:06,920 --> 00:00:14,270
+So we will build Http get method endpoint for our catalog microservices to retrieve the product listing
+
+3
+00:00:14,270 --> 00:00:17,930
+and using the Carter library along with the mediator pattern.
+
+4
+00:00:17,930 --> 00:00:23,780
+So please open the Visual Studio and this time locate the Getproducts endpoint class.
+
+5
+00:00:24,110 --> 00:00:28,340
+So in this class we will develop our request and response object.
+
+6
+00:00:28,340 --> 00:00:34,880
+Since we are developing an Http get endpoint, our request doesn't require a Json input.
+
+7
+00:00:34,880 --> 00:00:40,670
+However, we will define a response record structure in order to return with data.
+
+8
+00:00:40,670 --> 00:00:48,230
+So for that purpose I'm coming in here and I'm going to put a command at request object to make it best
+
+9
+00:00:48,230 --> 00:00:48,860
+practices.
+
+10
+00:00:48,860 --> 00:00:55,850
+We should always define request and response in the endpoint and always define query or command and
+
+11
+00:00:55,850 --> 00:00:57,380
+result in the handler class.
+
+12
+00:00:57,380 --> 00:01:01,580
+So for that purpose I'm going to follow the best practice and put a command in here.
+
+13
+00:01:01,580 --> 00:01:05,810
+We don't required any request object but we will see in here.
+
+14
+00:01:05,810 --> 00:01:13,850
+And after that I'm going to define public record Getproduct response object.
+
+15
+00:01:13,850 --> 00:01:20,750
+And this will be including IEnumerable products that we have already defined in the result.
+
+16
+00:01:20,750 --> 00:01:23,000
+So this will be response object.
+
+17
+00:01:23,000 --> 00:01:26,120
+We have finished the request and response object.
+
+18
+00:01:26,120 --> 00:01:29,600
+And now we will develop the Getproducts endpoint class.
+
+19
+00:01:29,600 --> 00:01:32,810
+We will use Carter to create our Get endpoint.
+
+20
+00:01:32,810 --> 00:01:38,000
+Carter simplifies the definition and configuration of routes in ASP.Net core.
+
+21
+00:01:38,000 --> 00:01:44,300
+So as you remember that we have already installed Carter into our catalog microservices.
+
+22
+00:01:44,300 --> 00:01:50,360
+If you double click the project file, you can verify that Carter is located into our dependencies and
+
+23
+00:01:50,360 --> 00:01:51,080
+libraries.
+
+24
+00:01:51,080 --> 00:01:58,040
+And if you go to the program says, you can also verify that we have injected the Carter packages and
+
+25
+00:01:58,040 --> 00:02:01,250
+we have added the services into built in dependency injection.
+
+26
+00:02:01,250 --> 00:02:06,680
+And we have already configured Http request pipeline for Carter libraries.
+
+27
+00:02:06,680 --> 00:02:11,300
+That means we can use Carter into our Getproducts endpoint directly.
+
+28
+00:02:11,300 --> 00:02:16,160
+And I'm going to define this class inherit from the I Carter module.
+
+29
+00:02:16,520 --> 00:02:24,560
+So once we are inherit from the I Carter model it is indicating to implement interface member which
+
+30
+00:02:24,560 --> 00:02:25,820
+is the add routes.
+
+31
+00:02:25,820 --> 00:02:34,280
+So now in this method we will exposing Http get method and define the get endpoint using the I Carter
+
+32
+00:02:34,280 --> 00:02:34,820
+module.
+
+33
+00:02:34,820 --> 00:02:38,360
+This interface allows us to implement routes Greenway.
+
+34
+00:02:38,360 --> 00:02:47,780
+So now in here you can see that we will implement actual logic with using the app dot map get method.
+
+35
+00:02:47,780 --> 00:02:52,490
+And in here I will provide the product's Uri.
+
+36
+00:02:52,490 --> 00:02:59,030
+And in the delegate handle method we basically handle the async method.
+
+37
+00:02:59,030 --> 00:03:04,850
+And I'm going to inject Isander which comes from the mediator.
+
+38
+00:03:05,480 --> 00:03:12,260
+And here you can see the delegate handle method that we are going to implement when we are exposing
+
+39
+00:03:12,260 --> 00:03:14,720
+slash products http get method.
+
+40
+00:03:14,720 --> 00:03:19,640
+In this method, we basically get the result from the mediator.
+
+41
+00:03:19,640 --> 00:03:27,380
+I'm going to use standard dot send method and passing the new query object, which is the get Getproducts
+
+42
+00:03:27,380 --> 00:03:28,670
+query object.
+
+43
+00:03:29,060 --> 00:03:35,900
+Here you can see the object and it doesn't get any parameter because we will retrieve all products.
+
+44
+00:03:35,900 --> 00:03:45,410
+So after getting response from the mediator, we can convert our response type from the mediator handler
+
+45
+00:03:45,740 --> 00:03:50,840
+class, which will be our result object.
+
+46
+00:03:50,840 --> 00:03:55,520
+And we will adapt this result object to the get product response object.
+
+47
+00:03:58,060 --> 00:04:01,210
+Okay to use Napster in that way.
+
+48
+00:04:01,210 --> 00:04:05,650
+That means we can directly pass result object to do our response object.
+
+49
+00:04:05,650 --> 00:04:09,580
+The parameters and parameter names should be exact name.
+
+50
+00:04:09,580 --> 00:04:15,790
+So if you look at the Getproducts response, it is getting a parameter which name is enumerable product
+
+51
+00:04:15,790 --> 00:04:18,310
+and the parameter name is products.
+
+52
+00:04:18,310 --> 00:04:24,460
+If you go to the get products handler, the result should be the same structure and see that this is
+
+53
+00:04:24,460 --> 00:04:28,420
+getting exactly same parameter and parameter name is the same.
+
+54
+00:04:28,420 --> 00:04:33,490
+By this way, Napster can be adapted without any further configuration.
+
+55
+00:04:33,490 --> 00:04:42,430
+Okay, we have completed our actual operation and after getting the response, we can return these response
+
+56
+00:04:42,430 --> 00:04:44,020
+into results.
+
+57
+00:04:44,020 --> 00:04:49,330
+Dot okay, and passing the response object to the client.
+
+58
+00:04:49,330 --> 00:04:56,290
+After defining any Http method with Carter, we can define additional configurations including the width
+
+59
+00:04:56,290 --> 00:04:59,950
+name produced and produce problem summary and description.
+
+60
+00:04:59,950 --> 00:05:01,480
+Here you can see that we have.
+
+61
+00:05:01,480 --> 00:05:03,010
+Give the name as a Getproducts.
+
+62
+00:05:03,010 --> 00:05:08,770
+Submit and description and produce 200 okay response with sending the results.
+
+63
+00:05:08,770 --> 00:05:09,220
+Okay.
+
+64
+00:05:09,220 --> 00:05:13,570
+And if there is any problem we can return back such as 400 bad request.
+
+65
+00:05:13,570 --> 00:05:17,110
+So this will be complete the http get request.
+
+66
+00:05:17,110 --> 00:05:23,110
+So if you go on top of this page you can see that there is no any using statement because all using
+
+67
+00:05:23,110 --> 00:05:27,250
+stated related classes will already including our global using.
+
+68
+00:05:27,250 --> 00:05:32,620
+So we don't need any using statement in this class and it makes it more cleaner.
+
+69
+00:05:32,860 --> 00:05:41,350
+As you can see that we have defined an Http get endpoint for products URL, and we use mediator Isander
+
+70
+00:05:41,350 --> 00:05:45,760
+in order to send get products query and get back the results.
+
+71
+00:05:45,760 --> 00:05:51,880
+And adapting these results to the Get products response object which is returned to the client application.
+

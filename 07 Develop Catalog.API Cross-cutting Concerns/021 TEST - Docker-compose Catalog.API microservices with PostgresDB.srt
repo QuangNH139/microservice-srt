@@ -1,0 +1,392 @@
+1
+00:00:00,110 --> 00:00:06,500
+In this video we are going to test our catalog API microservices orchestrated with Docker compose,
+
+2
+00:00:06,500 --> 00:00:09,770
+including integration with PostgreSQL database.
+
+3
+00:00:09,860 --> 00:00:14,570
+Docker compose provides an efficient way to run Multi-container applications.
+
+4
+00:00:14,870 --> 00:00:21,530
+Our focus will be to ensure that our Catholic API microservices interact seamlessly with PostgreSQL
+
+5
+00:00:21,530 --> 00:00:23,660
+database in a dockerized setup.
+
+6
+00:00:23,660 --> 00:00:25,670
+How we can run these Docker compose.
+
+7
+00:00:25,670 --> 00:00:28,310
+In our application we have two ways.
+
+8
+00:00:28,490 --> 00:00:32,509
+The first way is we can run docker compose up command manually.
+
+9
+00:00:32,659 --> 00:00:39,080
+If you don't want to use Visual Studio tooling, you can right click the Docker compose and open in
+
+10
+00:00:39,080 --> 00:00:41,690
+terminal and start the PowerShell.
+
+11
+00:00:41,690 --> 00:00:47,420
+And you can run that docker compose up command with providing docker compose yaml and overwrite yaml
+
+12
+00:00:47,420 --> 00:00:47,960
+file.
+
+13
+00:00:47,960 --> 00:00:49,400
+This is the way one.
+
+14
+00:00:49,400 --> 00:00:50,540
+What is the way two?
+
+15
+00:00:50,540 --> 00:00:54,350
+Way two is using the Docker tooling on Visual Studio.
+
+16
+00:00:54,380 --> 00:01:00,710
+Visual studio has a great support for Docker and docker Compose that we can right click Docker Compose
+
+17
+00:01:00,710 --> 00:01:06,770
+and set a startup project, and we can run this application in Docker Compose running profile.
+
+18
+00:01:06,770 --> 00:01:13,850
+And we can debug all the applications and containers in the Docker compose with using Visual Studio
+
+19
+00:01:13,850 --> 00:01:14,420
+tooling.
+
+20
+00:01:14,420 --> 00:01:19,160
+This is one of the powerful feature that we can debug inside of the Docker containers.
+
+21
+00:01:19,160 --> 00:01:23,060
+So I'm going to following this step and click this button.
+
+22
+00:01:23,270 --> 00:01:28,310
+That means this will be run the docker compose up command in behind of the scenes.
+
+23
+00:01:28,310 --> 00:01:36,290
+And after that this will be activate all microservices and containers inside of the Docker compose that
+
+24
+00:01:36,290 --> 00:01:40,730
+you can see the Catalog and container window in Visual Studio tooling.
+
+25
+00:01:40,730 --> 00:01:45,980
+This is starting our catalog API at 66 support, which is a Docker network.
+
+26
+00:01:45,980 --> 00:01:50,690
+And you can see the catalog DB also running on our application.
+
+27
+00:01:50,690 --> 00:01:53,240
+Let's open the Docker desktop.
+
+28
+00:01:53,240 --> 00:01:59,540
+That means we will verify the containers from the Docker desktop that you can see that Docker compose.
+
+29
+00:01:59,540 --> 00:02:04,310
+Now two containers, one for the catalog API and another for the catalog DB.
+
+30
+00:02:04,370 --> 00:02:09,110
+If you click the Catholic API, you can see the logs listed on the Docker desktop.
+
+31
+00:02:09,110 --> 00:02:12,650
+And here you can see that Martin applies the migration.
+
+32
+00:02:12,650 --> 00:02:17,960
+You can see the applying the initial data catalog API and using the catalog initial data.
+
+33
+00:02:17,960 --> 00:02:21,500
+So this is the logs that we can verify the migration.
+
+34
+00:02:21,500 --> 00:02:26,420
+And we have seen all the containers are running successfully.
+
+35
+00:02:26,420 --> 00:02:29,570
+Now we can perform the health check for Catholic API.
+
+36
+00:02:29,570 --> 00:02:30,620
+For that purpose.
+
+37
+00:02:30,620 --> 00:02:34,970
+Please open the postman and go to the health checks.
+
+38
+00:02:34,970 --> 00:02:37,550
+And this time catalog URL should be changed.
+
+39
+00:02:37,550 --> 00:02:39,200
+The environment is changed.
+
+40
+00:02:39,200 --> 00:02:44,480
+For that purpose I'm going to change the environment localhost to Docker, and you can see that our
+
+41
+00:02:44,480 --> 00:02:47,660
+catalog URL has changed to 6060.
+
+42
+00:02:47,660 --> 00:02:53,960
+And I'm going to send a http get request to health endpoint and see that the status is healthy.
+
+43
+00:02:53,960 --> 00:02:59,120
+That means these microservices connected to PostgreSQL successfully.
+
+44
+00:02:59,660 --> 00:03:03,800
+So now we will use postman for testing various API endpoints.
+
+45
+00:03:03,800 --> 00:03:08,180
+Let's start by fetching a list of the products for that purpose.
+
+46
+00:03:08,180 --> 00:03:15,440
+Open the http get method for Getproducts endpoint and this is the providing the page number and page
+
+47
+00:03:15,440 --> 00:03:16,040
+size.
+
+48
+00:03:16,190 --> 00:03:17,990
+Click the Http send method.
+
+49
+00:03:17,990 --> 00:03:24,920
+See that this is also put to breakpoint, and we can debug docker compose inside of the container.
+
+50
+00:03:24,920 --> 00:03:30,650
+And this very powerful feature that we can debug this container and get a response.
+
+51
+00:03:30,650 --> 00:03:37,760
+You can see the five products retrieved from the database and return back to our API result.
+
+52
+00:03:37,760 --> 00:03:45,350
+So we can continue and confirm that the second page should be come with two product item we have confirmed
+
+53
+00:03:45,350 --> 00:03:46,490
+in the last videos.
+
+54
+00:03:46,490 --> 00:03:51,110
+Yes, you can see that we have also see two products listed in the second page.
+
+55
+00:03:51,110 --> 00:03:54,950
+So the next thing we can do is post operation.
+
+56
+00:03:54,950 --> 00:03:59,480
+We can use http post products in order to create a new product.
+
+57
+00:03:59,480 --> 00:04:06,530
+So I am going to add a new product which will be the test prod docker product.
+
+58
+00:04:08,330 --> 00:04:14,330
+And click the send button and this will be hit to or create product endpoint.
+
+59
+00:04:14,330 --> 00:04:17,600
+And if I put to F5 this will be trigger validator.
+
+60
+00:04:17,600 --> 00:04:19,850
+And after that actual handle class.
+
+61
+00:04:19,850 --> 00:04:22,700
+Of course before that we have validation behavior.
+
+62
+00:04:22,790 --> 00:04:29,060
+And now you can see that this is going to create a new product into our database and fully Docker environment.
+
+63
+00:04:29,060 --> 00:04:31,130
+And the new product ID is in here.
+
+64
+00:04:31,130 --> 00:04:35,570
+So Visual Studio allows us to debug our services running in Docker.
+
+65
+00:04:35,570 --> 00:04:41,780
+Let me open the Docker desktop and see how blocks are configured in the catalog API.
+
+66
+00:04:41,780 --> 00:04:45,200
+When performing Http, get and post operation.
+
+67
+00:04:45,200 --> 00:04:52,220
+Here you can see that we are adding log information when starting and adding these Http get products
+
+68
+00:04:52,220 --> 00:04:52,640
+query.
+
+69
+00:04:52,640 --> 00:04:59,450
+And here you can see the create product command which including the new Json object for the new product.
+
+70
+00:04:59,450 --> 00:05:04,160
+So we can confirm that our operation are logged successfully.
+
+71
+00:05:04,160 --> 00:05:08,420
+And you can also verify newly created product from the Pgadmin.
+
+72
+00:05:08,420 --> 00:05:17,390
+If you connect to catalog DB and run this select script, you can see that this time we have eight product
+
+73
+00:05:17,390 --> 00:05:18,830
+into our database.
+
+74
+00:05:19,250 --> 00:05:24,830
+As you can see that we have successfully performed Docker compose operation and we have run several
+
+75
+00:05:24,830 --> 00:05:26,570
+Http get and post requests.
+
+76
+00:05:26,570 --> 00:05:34,610
+Let me quickly test these Http put and delete operations, copy these newly created id and open the
+
+77
+00:05:34,610 --> 00:05:37,940
+http put request and change the ID information.
+
+78
+00:05:37,940 --> 00:05:44,900
+And I'm going to update it for Docker, change the name and hit the send button.
+
+79
+00:05:44,900 --> 00:05:51,950
+This will be also put our breakpoints and I hit the F5 to run the validators and run the actual handle
+
+80
+00:05:51,950 --> 00:05:55,820
+method, and after that this will be updated the existing product.
+
+81
+00:05:55,820 --> 00:05:58,520
+And here you can see the response is success.
+
+82
+00:05:58,520 --> 00:06:01,490
+We can verify these operations from the database.
+
+83
+00:06:01,490 --> 00:06:07,730
+And in here if you run again this script you can see that the value is updated which is the updated
+
+84
+00:06:07,730 --> 00:06:08,540
+for Docker.
+
+85
+00:06:08,540 --> 00:06:15,860
+So if you continue to delete operation or before that, you can also verify with the get products by
+
+86
+00:06:15,860 --> 00:06:16,430
+ID.
+
+87
+00:06:16,610 --> 00:06:19,130
+This API also working fine.
+
+88
+00:06:19,130 --> 00:06:25,610
+If you change the ID information and send request, this will be hit the get product by ID endpoint
+
+89
+00:06:25,610 --> 00:06:30,710
+and query handler and respond back to the newly updated product for us.
+
+90
+00:06:30,710 --> 00:06:32,870
+So now I'm going to delete this product.
+
+91
+00:06:32,870 --> 00:06:41,150
+And if you change the product ID on the http delete operation and send the Http delete, this will be
+
+92
+00:06:41,150 --> 00:06:44,990
+delete this product into our database.
+
+93
+00:06:44,990 --> 00:06:50,000
+You can hit F5 to perform delete operation and delete also is success.
+
+94
+00:06:50,000 --> 00:06:51,950
+You can open the Pgadmin.
+
+95
+00:06:51,950 --> 00:06:58,340
+And now if you refresh this secret, you can see that now we will have only seven item in PostgreSQL
+
+96
+00:06:58,340 --> 00:06:58,970
+database.
+
+97
+00:06:58,970 --> 00:07:05,270
+So that means we have completed the deployment to Docker, compose all catalog microservices with database
+
+98
+00:07:05,270 --> 00:07:08,840
+and next section we will focus on the basket microservices.
+

@@ -1,0 +1,348 @@
+1
+00:00:00,200 --> 00:00:06,650
+In this video we are going to develop create product endpoint class with using the minimal APIs.
+
+2
+00:00:06,650 --> 00:00:07,670
+And Carter.
+
+3
+00:00:07,850 --> 00:00:10,430
+So we are in the create product vertical slice.
+
+4
+00:00:10,430 --> 00:00:12,320
+And we have finished the handler class.
+
+5
+00:00:12,320 --> 00:00:18,770
+Now we will develop the product endpoint class which including the minimal APIs and Carter library to
+
+6
+00:00:18,770 --> 00:00:21,590
+expose an Http post endpoint.
+
+7
+00:00:21,590 --> 00:00:27,470
+So we will explore how to build a minimal API endpoint for creating products in our catalog.
+
+8
+00:00:27,470 --> 00:00:30,080
+Microservices using the Carter Library.
+
+9
+00:00:30,770 --> 00:00:35,870
+But before that, let's understand our schools and mediator request lifecycle.
+
+10
+00:00:35,870 --> 00:00:42,320
+According to this image, we have completed the internal parts of the request, which is considered
+
+11
+00:00:42,320 --> 00:00:45,860
+the application layer of the six design pattern implementation.
+
+12
+00:00:45,860 --> 00:00:51,830
+So we will implement the command classes and command handler classes and return the result.
+
+13
+00:00:51,830 --> 00:00:55,970
+So you can confirm these class names from the our application.
+
+14
+00:00:55,970 --> 00:00:59,120
+If you open the Visual Studio here you can see the.
+
+15
+00:00:59,120 --> 00:01:02,330
+We are at the create product handler C class.
+
+16
+00:01:02,330 --> 00:01:08,840
+And in this class we have a command object and result object representing to our slide.
+
+17
+00:01:08,840 --> 00:01:12,440
+You can see the slide the command object and result object.
+
+18
+00:01:12,440 --> 00:01:18,590
+And here you can see the actual class which is the create product command handler class representing
+
+19
+00:01:18,590 --> 00:01:20,150
+these command handle box.
+
+20
+00:01:20,150 --> 00:01:23,090
+So that means we have finished the internal part.
+
+21
+00:01:23,090 --> 00:01:28,040
+Now we will develop the external part of the request lifecycles.
+
+22
+00:01:28,040 --> 00:01:33,110
+These are the incoming requests and response and exposing the Http endpoints.
+
+23
+00:01:33,110 --> 00:01:39,740
+So now we will expose endpoints with request and response objects using the minimal APIs and Carter
+
+24
+00:01:39,740 --> 00:01:42,590
+library in the endpoint C class.
+
+25
+00:01:42,590 --> 00:01:45,920
+So let's go back to our Visual Studio.
+
+26
+00:01:45,920 --> 00:01:51,020
+And this time we will focus on developing create product and point class.
+
+27
+00:01:51,020 --> 00:01:54,560
+You can see that we have a clear separation of these classes.
+
+28
+00:01:54,560 --> 00:01:57,890
+These are the endpoint and handler classes.
+
+29
+00:01:57,890 --> 00:02:03,530
+Now we will start to develop endpoint classes in the endpoint class according to picture.
+
+30
+00:02:03,530 --> 00:02:07,820
+We will define our request and response record types.
+
+31
+00:02:07,820 --> 00:02:15,140
+So let's define request and response models for our endpoint I'm going to write public record.
+
+32
+00:02:15,140 --> 00:02:22,580
+These should be the record types and create product request object.
+
+33
+00:02:22,580 --> 00:02:28,220
+And this will be including all items in the product model class.
+
+34
+00:02:28,220 --> 00:02:33,740
+So you can copy paste from the model class including the name, category, description and so on.
+
+35
+00:02:33,950 --> 00:02:42,560
+And after these requests we can define public record, create product response type.
+
+36
+00:02:42,560 --> 00:02:47,540
+And this will be returned only with ID information.
+
+37
+00:02:49,700 --> 00:02:54,080
+So here you can see the our request and response object.
+
+38
+00:02:54,080 --> 00:03:00,770
+The request model captures all the details needed to create a product and the response simply return
+
+39
+00:03:00,770 --> 00:03:06,020
+the ID information of newly created product so you can confirm this class.
+
+40
+00:03:06,020 --> 00:03:09,920
+In our picture we have created the request and response object.
+
+41
+00:03:09,920 --> 00:03:15,530
+Now it is time to exposing RESTful endpoints from the catalog microservices.
+
+42
+00:03:15,530 --> 00:03:18,950
+So we will start with the http post method.
+
+43
+00:03:18,950 --> 00:03:22,190
+You can check the our endpoints here.
+
+44
+00:03:22,190 --> 00:03:23,690
+You can see that we are.
+
+45
+00:03:23,690 --> 00:03:31,250
+At this point we will expose Http post endpoint with slash products in order to create any product.
+
+46
+00:03:31,760 --> 00:03:37,010
+But before proceeding to our development, let's understand what is Carter?
+
+47
+00:03:37,010 --> 00:03:43,880
+With ASP.Net core eight, minimal APIs have become more popular way to build lightweight and performant
+
+48
+00:03:43,880 --> 00:03:46,010
+microservices and web APIs.
+
+49
+00:03:46,550 --> 00:03:52,820
+Carter is a library that extends the capabilities of ASP.Net core minimal APIs.
+
+50
+00:03:53,000 --> 00:04:00,080
+It provides a more structured way to organize our endpoints and simplify the creation of the Http request
+
+51
+00:04:00,080 --> 00:04:00,770
+handlers.
+
+52
+00:04:01,640 --> 00:04:07,910
+Carter is a framework that is a thin layer of extension methods and functionality over the age With.net
+
+53
+00:04:07,910 --> 00:04:13,520
+core, allowing code to be more explicit and more importantly, more enjoyable.
+
+54
+00:04:14,060 --> 00:04:21,320
+So Carter is especially beneficial in minimal APIs, which were introduced in the ASP.Net core six and
+
+55
+00:04:21,320 --> 00:04:28,310
+further improved in the ASP.Net core eight for simplifying the development of the minimal API endpoints.
+
+56
+00:04:28,310 --> 00:04:33,650
+Now we can go to the GitHub page of the Carter and examine the project on GitHub.
+
+57
+00:04:33,650 --> 00:04:40,640
+You can see in the GitHub and if you scroll down you can see the Carter Project description on the Readme
+
+58
+00:04:40,640 --> 00:04:41,240
+file.
+
+59
+00:04:41,240 --> 00:04:43,190
+Here you can see the explanations.
+
+60
+00:04:43,190 --> 00:04:50,270
+If you scroll down, you can see how we can use Carter as a routing in one line of code.
+
+61
+00:04:50,270 --> 00:04:53,150
+And if you scroll down you can see additional details.
+
+62
+00:04:53,150 --> 00:04:56,990
+And here you can see the an example of the Carter usage.
+
+63
+00:04:56,990 --> 00:04:59,870
+This is the program case first of all.
+
+64
+00:05:00,020 --> 00:05:06,260
+We will register the cutter into our ASP.Net core built in dependency injection, and after that we
+
+65
+00:05:06,260 --> 00:05:10,460
+will map the cutter for adding cutter into request pipeline.
+
+66
+00:05:10,460 --> 00:05:16,010
+And after that we can create a new model cartoon model inherit from the cartoon model.
+
+67
+00:05:16,010 --> 00:05:22,550
+And in this model, inside of the home model class, we can define the routes for this model.
+
+68
+00:05:22,550 --> 00:05:29,180
+Each route is associated with a handler method, making the code more modular and more maintainable.
+
+69
+00:05:29,180 --> 00:05:34,910
+So in this example, this is only mapping the http get method and returning a message.
+
+70
+00:05:34,910 --> 00:05:38,990
+You can find additional samples if you scroll down the Readme file.
+
+71
+00:05:38,990 --> 00:05:46,610
+You can see the different Http methods exposing with cutter and handle these post operation in the sample
+
+72
+00:05:46,610 --> 00:05:47,390
+code block.
+
+73
+00:05:47,970 --> 00:05:55,110
+So in order to use this cutter library in our microservices, we have to install NuGet packages into
+
+74
+00:05:55,110 --> 00:05:56,280
+our building blocks.
+
+75
+00:05:56,280 --> 00:06:02,790
+So as you can see the image from the building blocks, we are adding the all common libraries into building
+
+76
+00:06:02,790 --> 00:06:06,210
+blocks in order to use for each microservices.
+
+77
+00:06:06,210 --> 00:06:09,240
+And we don't install one by one these libraries.
+
+78
+00:06:09,240 --> 00:06:14,760
+And Carter is one of the library that we will use in a common place in the building blocks.
+
+79
+00:06:14,760 --> 00:06:21,150
+For that purpose, we will install Carter into our Building Blocks class library, open the Visual Studio
+
+80
+00:06:21,150 --> 00:06:23,850
+and go to the Building Blocks class library.
+
+81
+00:06:23,850 --> 00:06:26,670
+Right click and manage NuGet packages.
+
+82
+00:06:27,310 --> 00:06:34,450
+So in this window, search for the Carter and select the Carter and install the Carter Library.
+
+83
+00:06:36,420 --> 00:06:43,740
+So if you double click the Boolean Blocks C-sharp project, you can see that now we have two libraries
+
+84
+00:06:43,740 --> 00:06:47,310
+inside of the are commonplace, which is the Carter and Mediator.
+
+85
+00:06:47,310 --> 00:06:48,930
+Please save this file.
+
+86
+00:06:48,930 --> 00:06:56,130
+And now we will use these Carter library during the exposing microservice endpoints in catalog basket
+
+87
+00:06:56,130 --> 00:06:57,810
+and ordering microservices.
+

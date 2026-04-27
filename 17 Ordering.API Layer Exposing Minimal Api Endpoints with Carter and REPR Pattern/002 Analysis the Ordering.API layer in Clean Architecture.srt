@@ -1,0 +1,120 @@
+1
+00:00:00,170 --> 00:00:06,410
+In this video we are going to analyze ordering API layer in a clean architecture and application use
+
+2
+00:00:06,410 --> 00:00:06,890
+cases.
+
+3
+00:00:06,890 --> 00:00:12,290
+We can remember that we have a Crud operations, and we have also asynchronous operations for basket
+
+4
+00:00:12,290 --> 00:00:13,820
+checkout and order fulfillment.
+
+5
+00:00:14,330 --> 00:00:20,060
+So if you look at the rest API endpoints for ordering microservices, we will expose these endpoints
+
+6
+00:00:20,060 --> 00:00:25,340
+as a minimal Rest API using Carter following the wrapper pattern in a clean architecture.
+
+7
+00:00:25,340 --> 00:00:27,380
+And these are the get orders.
+
+8
+00:00:27,380 --> 00:00:29,480
+Get orders with order name.
+
+9
+00:00:29,480 --> 00:00:33,590
+Get orders by customer post orders for creating any order.
+
+10
+00:00:33,590 --> 00:00:40,400
+Put orders for updating an existing order and delete order with ID, so we will expose these endpoints
+
+11
+00:00:40,400 --> 00:00:42,590
+when developing our ordering API layer.
+
+12
+00:00:42,590 --> 00:00:47,900
+And if you look at the pattern and principles in ordering API layer, we will utilize the minimal APIs
+
+13
+00:00:47,900 --> 00:00:53,720
+for streamline the end point exposure and implement the wrapper design pattern and leverage the ASP.Net
+
+14
+00:00:53,720 --> 00:00:56,420
+core dependency injection and routing features.
+
+15
+00:00:56,420 --> 00:01:02,690
+So if you look at the folder structure, you can see that in ordering API layer we will create endpoints
+
+16
+00:01:02,690 --> 00:01:03,140
+folder.
+
+17
+00:01:03,140 --> 00:01:10,520
+And under this folder we will exposing each rest API including the create update delete order and also
+
+18
+00:01:10,520 --> 00:01:13,130
+get orders by customer and name.
+
+19
+00:01:13,130 --> 00:01:18,770
+These will be representing exposing minimal APIs as separate classes under the endpoints folder.
+
+20
+00:01:18,860 --> 00:01:24,680
+And also we have dependency injection which configures services and dependencies for the API layer.
+
+21
+00:01:24,680 --> 00:01:28,850
+And we have also global using for centralized command using directives.
+
+22
+00:01:29,090 --> 00:01:35,540
+And if you look at the ordering NuGet packages in API layer, we will use different NuGet packages.
+
+23
+00:01:35,540 --> 00:01:40,250
+These are the ASP.Net core libraries Carter for defining minimal APIs.
+
+24
+00:01:40,250 --> 00:01:44,060
+And we will also use building blocks comes from the application layer.
+
+25
+00:01:44,060 --> 00:01:49,700
+Here you can see the clean architecture getting reference application layer into our API layer that
+
+26
+00:01:49,700 --> 00:01:55,700
+we can use from the application layers, building blocks, libraries like mediator maps and other common
+
+27
+00:01:55,700 --> 00:01:56,450
+libraries.
+
+28
+00:01:56,450 --> 00:02:02,870
+As a result, we can say that we will expose the endpoints from the API presentation layer, and after
+
+29
+00:02:02,870 --> 00:02:09,050
+that we will call the application layer six command query handler classes in order to perform our actual
+
+30
+00:02:09,050 --> 00:02:09,650
+use cases.
+

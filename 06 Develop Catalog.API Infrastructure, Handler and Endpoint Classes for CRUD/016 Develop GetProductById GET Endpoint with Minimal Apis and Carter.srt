@@ -1,0 +1,172 @@
+1
+00:00:00,110 --> 00:00:06,410
+In this video we are going to develop get product by ID and point class with using the minimal APIs
+
+2
+00:00:06,410 --> 00:00:07,610
+and cutter library.
+
+3
+00:00:07,610 --> 00:00:11,840
+So we will start with defining request and response record types.
+
+4
+00:00:11,840 --> 00:00:17,300
+Please open the Visual Studio and go to the Get product by ID and point classes.
+
+5
+00:00:17,300 --> 00:00:20,780
+And we will start with the request and response object.
+
+6
+00:00:20,780 --> 00:00:26,660
+We don't have any request object because we will get the ID information from the request parameters.
+
+7
+00:00:26,660 --> 00:00:31,910
+But to be following the best practices I am putting in here commented request object.
+
+8
+00:00:31,910 --> 00:00:38,270
+And after that we will continue with the response object as a record type, and this will be the get
+
+9
+00:00:38,270 --> 00:00:40,130
+product by ID response.
+
+10
+00:00:40,130 --> 00:00:43,880
+And in the response we are expecting a single product.
+
+11
+00:00:46,340 --> 00:00:51,350
+And make sure that your parameter name also product P is uppercase.
+
+12
+00:00:51,350 --> 00:00:57,320
+And this will be same as your handle class because we will use master in order to map correctly.
+
+13
+00:00:57,320 --> 00:01:00,590
+The parameter and parameter name should be exactly same.
+
+14
+00:01:00,680 --> 00:01:06,800
+Okay, now we can develop our implementation which is the get product by id and point class, and we
+
+15
+00:01:06,800 --> 00:01:13,550
+will inherit from the equator module and implement the interface member, which is the ID Ross.
+
+16
+00:01:13,550 --> 00:01:18,140
+And we will start with the app dot map get operation.
+
+17
+00:01:19,160 --> 00:01:26,930
+And we basically define products slash and curly bracket.
+
+18
+00:01:26,930 --> 00:01:30,830
+We will getting the ID information from the request parameters.
+
+19
+00:01:30,830 --> 00:01:39,260
+And in the delegate handler we implement an asynchronous function with expecting with ID information
+
+20
+00:01:39,260 --> 00:01:42,170
+which comes from the these request parameters.
+
+21
+00:01:42,170 --> 00:01:49,010
+And also we will inject Isander which is the mediator sender object.
+
+22
+00:01:51,530 --> 00:01:56,090
+So now we will accodomate the incoming requests and paste the mediator.
+
+23
+00:01:56,090 --> 00:02:04,640
+For that purpose I'm going to define a result variable and sending with the mediator with using the
+
+24
+00:02:04,640 --> 00:02:06,440
+sender dot send method.
+
+25
+00:02:06,440 --> 00:02:11,960
+And we are passing naive get product by ID query information.
+
+26
+00:02:11,960 --> 00:02:14,750
+And that means we will passing the query object.
+
+27
+00:02:14,750 --> 00:02:20,780
+And in the query object we passing the id information which comes from the our request parameters.
+
+28
+00:02:20,780 --> 00:02:24,890
+So by this way we will pass these query object to the mediator.
+
+29
+00:02:24,890 --> 00:02:30,830
+And mediator will be trigger corresponding query handler class and perform its logic and return back
+
+30
+00:02:30,830 --> 00:02:31,670
+as a result.
+
+31
+00:02:31,670 --> 00:02:43,490
+And after that we can define a response object with mapping the result object result dot adapt and passing
+
+32
+00:02:43,520 --> 00:02:46,100
+our get product by id response.
+
+33
+00:02:46,100 --> 00:02:50,840
+And lastly, we will return to the client with this response object.
+
+34
+00:02:50,840 --> 00:02:54,410
+So for that purpose I'm going to write return results that okay.
+
+35
+00:02:54,410 --> 00:02:56,210
+And passing this response object.
+
+36
+00:02:56,630 --> 00:03:05,060
+And always we will configure these Http get endpoint with using the extension methods we will define
+
+37
+00:03:05,060 --> 00:03:11,810
+the API name summary description and produce the Http results according to these implementation.
+
+38
+00:03:11,810 --> 00:03:19,580
+So basically in this endpoint definition we are mapping the Get request with this product slash ID information
+
+39
+00:03:19,580 --> 00:03:22,580
+which takes a product id as a parameter.
+
+40
+00:03:22,580 --> 00:03:25,310
+And the endpoint is using the mediator.
+
+41
+00:03:25,310 --> 00:03:32,690
+In order to send get product by id query object, then mediator will be trigger the corresponding query
+
+42
+00:03:32,690 --> 00:03:39,860
+handler, and after that with getting the result object mapping this result object to the or get product
+
+43
+00:03:39,860 --> 00:03:45,920
+by id response object and return to the client as a result that okay 200 response.
+

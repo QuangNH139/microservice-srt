@@ -1,0 +1,288 @@
+1
+00:00:00,140 --> 00:00:05,270
+In this video we are going to do technical analysis of the asynchronous communication.
+
+2
+00:00:05,300 --> 00:00:10,880
+This will include application architecture, style pattern and principles libraries, NuGet packages
+
+3
+00:00:10,880 --> 00:00:13,880
+that we are going to use and project folder structure.
+
+4
+00:00:13,940 --> 00:00:17,120
+So let me start with the application architecture style.
+
+5
+00:00:17,150 --> 00:00:21,830
+As an application architecture style we will use event driven microservice architecture.
+
+6
+00:00:21,860 --> 00:00:27,770
+This architecture style focuses on events as a primary source of the communication between different
+
+7
+00:00:27,770 --> 00:00:28,880
+microservices.
+
+8
+00:00:29,150 --> 00:00:34,790
+The benefits are enhanced decoupling, scalability and responsiveness for implementation.
+
+9
+00:00:34,790 --> 00:00:40,040
+In our case, we will basket an authentic microservices communicate asynchronous through the events.
+
+10
+00:00:40,040 --> 00:00:45,440
+So if you look at the pattern and principles, we can say that we will follow the publish subscribe
+
+11
+00:00:45,440 --> 00:00:49,850
+design pattern, which is a core pattern enabling event driven architectures.
+
+12
+00:00:49,850 --> 00:00:55,640
+One service which is a publisher, send message or events without knowing the receivers which are the
+
+13
+00:00:55,640 --> 00:00:56,480
+subscribers.
+
+14
+00:00:56,480 --> 00:01:02,540
+So subscribers listen and react to these events and basket service basically publish event which is
+
+15
+00:01:02,540 --> 00:01:03,350
+ordering services.
+
+16
+00:01:03,350 --> 00:01:06,200
+Subscribe to this event and process accordingly.
+
+17
+00:01:06,290 --> 00:01:09,800
+Now we can also check the class library architecture analyzing.
+
+18
+00:01:09,800 --> 00:01:14,810
+So if you look at the class libraries we can say that first of all we have a building blocks.
+
+19
+00:01:14,840 --> 00:01:21,080
+Building blocks is a shared class library catalog basket and ordering microservices already getting
+
+20
+00:01:21,080 --> 00:01:27,170
+referenced building blocks, shared class library for common operations and abstractions like securities,
+
+21
+00:01:27,170 --> 00:01:29,390
+cross-cutting concerns and so on.
+
+22
+00:01:29,390 --> 00:01:35,090
+Also, we will create a new class library which name is Building Blocks Messaging.
+
+23
+00:01:35,090 --> 00:01:41,390
+So this class library will be dedicated for common asynchronous communication operations and for each
+
+24
+00:01:41,390 --> 00:01:47,210
+microservices that need to asynchronous communication over RabbitMQ and communicate via integration
+
+25
+00:01:47,210 --> 00:01:48,620
+events will be used.
+
+26
+00:01:48,620 --> 00:01:51,050
+These building blocks messaging class library.
+
+27
+00:01:51,500 --> 00:01:53,510
+So please look at the image on the slide.
+
+28
+00:01:53,510 --> 00:01:58,100
+Here you can see the microservices that using building blocks for common operations.
+
+29
+00:01:58,100 --> 00:02:03,650
+So we have developed building blocks class library which is a shared class library that contains common
+
+30
+00:02:03,650 --> 00:02:06,320
+class and logic shared across microservices.
+
+31
+00:02:06,320 --> 00:02:12,440
+That is using from the catalog basket and ordering reference these building blocks for common sequence
+
+32
+00:02:12,440 --> 00:02:14,810
+abstractions and cross-cutting concerns.
+
+33
+00:02:14,810 --> 00:02:20,780
+But this time we will also create Building Blocks messaging Class library, which is a dedicated class
+
+34
+00:02:20,780 --> 00:02:26,390
+library for asynchronous communication over the RabbitMQ and will containing common integration events
+
+35
+00:02:26,390 --> 00:02:28,250
+and mass transit configurations.
+
+36
+00:02:28,250 --> 00:02:31,790
+So by this way, only asynchronous communication required.
+
+37
+00:02:31,790 --> 00:02:34,040
+Microservices will be getting reference.
+
+38
+00:02:34,040 --> 00:02:40,220
+These building blocks class library in our case basket and ordering microservices will be getting reference
+
+39
+00:02:40,220 --> 00:02:44,540
+from the building blocks messaging class library for common event classes.
+
+40
+00:02:44,540 --> 00:02:50,660
+That means we will implement common event objects into these building blocks messaging class library,
+
+41
+00:02:50,660 --> 00:02:56,300
+and these will be getting reference from the basket and ordering in order to perform asynchronous communication.
+
+42
+00:02:56,840 --> 00:03:02,600
+So if you continue our analyzing here, you can see the libraries and NuGet packages that we are going
+
+43
+00:03:02,600 --> 00:03:03,110
+to use.
+
+44
+00:03:03,110 --> 00:03:09,170
+We will use Mass Transit NuGet packages, Mass Transit, and abstraction over the message broker for.
+
+45
+00:03:09,350 --> 00:03:13,100
+Net and simplifying the implementation of the asynchronous messaging.
+
+46
+00:03:13,100 --> 00:03:20,120
+And we will also use Mass transit RabbitMQ which is specific integration for the RabbitMQ with mass
+
+47
+00:03:20,120 --> 00:03:20,690
+transit.
+
+48
+00:03:20,690 --> 00:03:26,870
+It enables the basket microservice to publish the events and the ordering microservices to subscribe
+
+49
+00:03:26,870 --> 00:03:29,720
+them, using the RabbitMQ as a message broker.
+
+50
+00:03:29,810 --> 00:03:35,780
+So we will use RabbitMQ Message Broker and Mass Transit NuGet package and library for implementing publish,
+
+51
+00:03:35,780 --> 00:03:38,570
+subscribe, design pattern and asynchronous communication.
+
+52
+00:03:38,900 --> 00:03:43,370
+So lastly we will check project folder structure according to folder structure.
+
+53
+00:03:43,370 --> 00:03:49,040
+First of all, we will develop a new class library which name is Building Blocks Messaging.
+
+54
+00:03:49,040 --> 00:03:52,970
+This is newly created shared class library for asynchronous communication.
+
+55
+00:03:52,970 --> 00:03:59,150
+And this will be include events folder which is the common events between basket and ordering microservices.
+
+56
+00:03:59,150 --> 00:04:05,060
+And also this will be include Masstransit extensions and configurations inside of these messaging class
+
+57
+00:04:05,060 --> 00:04:05,690
+library.
+
+58
+00:04:05,720 --> 00:04:11,510
+So we have explained that this class library getting reference from the microservices that required
+
+59
+00:04:11,510 --> 00:04:13,100
+for the asynchronous communication.
+
+60
+00:04:13,340 --> 00:04:18,050
+And after that we will develop basket API checkout basket feature folder.
+
+61
+00:04:18,050 --> 00:04:24,440
+So that means we will add a new feature folder, which name is checkout basket and adding handler and
+
+62
+00:04:24,440 --> 00:04:27,740
+endpoint classes in order to handle checkout process.
+
+63
+00:04:27,860 --> 00:04:32,540
+And after that we will consume these event from the ordering microservices.
+
+64
+00:04:32,540 --> 00:04:38,840
+That means in the ordering application layer we are going to create a new event handler which is integration
+
+65
+00:04:38,840 --> 00:04:39,500
+event handler.
+
+66
+00:04:39,500 --> 00:04:42,350
+Which name is basket checkout event handler.
+
+67
+00:04:42,350 --> 00:04:47,780
+So this will be contain these event handling from the integration event handling to consume these event
+
+68
+00:04:47,780 --> 00:04:51,860
+from the RabbitMQ and handle the events from the basket microservices.
+
+69
+00:04:51,860 --> 00:04:55,910
+Lastly, we will analyze the deployment part of the asynchronous communication.
+
+70
+00:04:55,910 --> 00:04:59,750
+So basically we will add RabbitMQ image container into.
+
+71
+00:04:59,880 --> 00:05:05,280
+Or multi-container docker compose file, and after that we will implement Docker file and docker compose
+
+72
+00:05:05,280 --> 00:05:11,190
+files for running basket and organic microservices with RabbitMQ message broker in a Docker environment.
+

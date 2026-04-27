@@ -1,0 +1,284 @@
+1
+00:00:00,140 --> 00:00:07,520
+In this video, we are going to integrate the Basket repository class with our six handler classes to
+
+2
+00:00:07,520 --> 00:00:10,910
+perform Crud operations on the basket microservices.
+
+3
+00:00:10,910 --> 00:00:14,630
+So we have developed the basket repository under data folders.
+
+4
+00:00:14,630 --> 00:00:20,840
+Now it is time to integrate these repository objects to our 600 classes.
+
+5
+00:00:20,840 --> 00:00:26,450
+These are the get basket handler, store basket handler and delete basket handler.
+
+6
+00:00:26,810 --> 00:00:29,120
+So let's open the get basket handler.
+
+7
+00:00:29,630 --> 00:00:36,200
+In get basket handler class, we basically inject a basket repository to retrieve the basket data from
+
+8
+00:00:36,200 --> 00:00:38,390
+the database with a given username.
+
+9
+00:00:38,480 --> 00:00:47,240
+For that purpose, I am going to inject the I basket repository into our query handler classes I basket
+
+10
+00:00:47,240 --> 00:00:51,290
+repository and I'm going to give as a name repository.
+
+11
+00:00:52,190 --> 00:00:59,990
+So with injecting these I basket repository in the handle method we use this repository object and perform
+
+12
+00:00:59,990 --> 00:01:06,140
+the get basket operation in order to fetch the basket for provided username from the database.
+
+13
+00:01:06,140 --> 00:01:11,450
+For that purpose I'm going to remove the these two do statement.
+
+14
+00:01:11,450 --> 00:01:16,610
+And in here I'm going to write the basket variable.
+
+15
+00:01:16,610 --> 00:01:22,130
+And this time we will get this basket using the repository that get basket method.
+
+16
+00:01:22,130 --> 00:01:27,770
+And we will passing the username from incoming query object.
+
+17
+00:01:28,250 --> 00:01:32,300
+And here you can see that we got the basket information.
+
+18
+00:01:32,300 --> 00:01:36,530
+And I'm going to remove the mocking shopping cart object inside of the result.
+
+19
+00:01:36,530 --> 00:01:39,500
+And passed the basket object in here.
+
+20
+00:01:40,400 --> 00:01:44,690
+So here we handle the get basket query and return basket data.
+
+21
+00:01:44,690 --> 00:01:51,320
+And if you right click and go to implementation of this repository class you can see the Basket repository
+
+22
+00:01:51,320 --> 00:01:51,650
+class.
+
+23
+00:01:51,650 --> 00:01:58,760
+And in this class we basically load async method and get the basket information with a given username
+
+24
+00:01:58,760 --> 00:01:59,780
+from database.
+
+25
+00:01:59,780 --> 00:02:02,450
+If basket is null, we will throw an exception.
+
+26
+00:02:02,450 --> 00:02:07,730
+If not, we will return back to the basket object to the our handle method and this will be.
+
+27
+00:02:07,730 --> 00:02:13,640
+Go to the result object and result object will be redirect to the endpoint class, and endpoint class
+
+28
+00:02:13,640 --> 00:02:19,040
+will be convert to the response object and return back to the client application using the result dot
+
+29
+00:02:19,040 --> 00:02:20,180
+okay method.
+
+30
+00:02:20,180 --> 00:02:25,700
+So after that we can continue to the next Crud operation, which is the store basket.
+
+31
+00:02:25,700 --> 00:02:30,740
+For that purpose, please open the store basket and go to Store Basket Handle class.
+
+32
+00:02:30,740 --> 00:02:33,590
+Here you can see the our actual handle class.
+
+33
+00:02:33,590 --> 00:02:43,760
+In this class we again use I basket repository and inject a basket repository into our handle class.
+
+34
+00:02:44,390 --> 00:02:48,440
+We will use these basket repository to store basket data.
+
+35
+00:02:48,440 --> 00:02:50,900
+And this will be an observed operation.
+
+36
+00:02:50,900 --> 00:02:55,430
+Creating a new basket or updating an existing basket with a given username.
+
+37
+00:02:55,430 --> 00:03:05,600
+For that purpose I'm going to use await repository dot store basket method and I will passing to shopping
+
+38
+00:03:05,600 --> 00:03:09,680
+cart information with incoming command object command dot cart.
+
+39
+00:03:09,680 --> 00:03:15,110
+And we will passing the cancellation token which is the incoming cancellation token.
+
+40
+00:03:16,040 --> 00:03:19,640
+And here you can see that we basically store the basket information.
+
+41
+00:03:19,640 --> 00:03:26,570
+And after that we are going to return back to the store basket result object with a given username.
+
+42
+00:03:26,570 --> 00:03:34,730
+For that purpose I'm going to remove this hardcoded username and passing the command dot cart dot username.
+
+43
+00:03:37,860 --> 00:03:38,370
+Okay.
+
+44
+00:03:38,370 --> 00:03:42,360
+We have completed the implementation of store basket command handler.
+
+45
+00:03:42,390 --> 00:03:46,290
+If you go on top of this page you can see that we have using statement.
+
+46
+00:03:46,290 --> 00:03:52,080
+And I am going to move these using statement to the global using CSS.
+
+47
+00:03:53,610 --> 00:03:58,140
+By this way each class can be used these data related operations.
+
+48
+00:03:58,140 --> 00:04:03,720
+And if you open the gate basket handler now we can remove these unnecessary using statement in here.
+
+49
+00:04:03,750 --> 00:04:09,540
+Now if you go to the delete basket and delete basket handler we will follow the same steps.
+
+50
+00:04:09,690 --> 00:04:14,730
+In class definition we basically inject the I basket repository.
+
+51
+00:04:16,890 --> 00:04:21,089
+And we will use basket repository inside of the handle method.
+
+52
+00:04:21,089 --> 00:04:23,790
+So basically this is very straightforward.
+
+53
+00:04:23,790 --> 00:04:30,090
+We will just use the repository dot delete basket operation.
+
+54
+00:04:30,090 --> 00:04:36,750
+And I am going to paste the username with the incoming command command dot username and paste the cancellation
+
+55
+00:04:36,750 --> 00:04:38,670
+token.
+
+56
+00:04:38,670 --> 00:04:42,030
+Now we can delete this session line.
+
+57
+00:04:42,870 --> 00:04:48,270
+And of course we should make this method call as an available method call.
+
+58
+00:04:48,480 --> 00:04:54,360
+So basically this handle method processed the delete command and ensure the basket is removed from the
+
+59
+00:04:54,360 --> 00:04:55,230
+database.
+
+60
+00:04:55,320 --> 00:05:02,070
+After integrating repository object with the handle methods, it is time to register our basket repository
+
+61
+00:05:02,070 --> 00:05:08,790
+into ASP.Net Core Dependency Injection container, because we will inject these repository into every
+
+62
+00:05:08,790 --> 00:05:14,640
+100 class with using the primary constructor, it is need to register into Program.cs.
+
+63
+00:05:14,640 --> 00:05:19,710
+Please open the Program.cs and go to the add services into container part.
+
+64
+00:05:19,710 --> 00:05:21,900
+Before building the application.
+
+65
+00:05:21,900 --> 00:05:28,530
+In here we can add a Services Builder Services add scoped.
+
+66
+00:05:28,530 --> 00:05:33,630
+I'm going to add a scoped services and this will be the I basket repository.
+
+67
+00:05:36,080 --> 00:05:38,450
+And we are going to resolve this.
+
+68
+00:05:38,630 --> 00:05:41,300
+I basket repository to basket repository.
+
+69
+00:05:44,410 --> 00:05:45,820
+With this setup.
+
+70
+00:05:45,850 --> 00:05:52,300
+Our handler class now fully integrated with the basket repository and capable of performing the necessary
+
+71
+00:05:52,300 --> 00:05:54,700
+Crud operations on basket microservices.
+

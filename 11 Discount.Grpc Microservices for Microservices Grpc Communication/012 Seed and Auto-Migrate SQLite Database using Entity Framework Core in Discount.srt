@@ -1,0 +1,296 @@
+1
+00:00:00,170 --> 00:00:06,440
+In this video, we are going to see an auto migrate SQLite database using the Entity Framework core
+
+2
+00:00:06,440 --> 00:00:08,210
+in discount microservices.
+
+3
+00:00:08,210 --> 00:00:13,130
+That means we will ensure created SQLite database and running migration classes.
+
+4
+00:00:13,130 --> 00:00:15,110
+When the application start up.
+
+5
+00:00:15,110 --> 00:00:21,170
+For that purpose, please go to the Discount Context class under the data folder.
+
+6
+00:00:21,170 --> 00:00:28,460
+And this time we are going to overwrite all model creating and after constructor come here and create
+
+7
+00:00:28,460 --> 00:00:31,640
+a new function which is the on model creating function.
+
+8
+00:00:31,640 --> 00:00:37,730
+And basically in this function we will use model builder object to see it initial data.
+
+9
+00:00:37,730 --> 00:00:47,600
+For that purpose I am writing Model builder dot entity and we will specify the coupon entity and we
+
+10
+00:00:47,600 --> 00:00:49,760
+will use has data method.
+
+11
+00:00:52,670 --> 00:00:58,850
+By this method we basically add some new coupons when the application start up as a initial data.
+
+12
+00:00:58,850 --> 00:01:01,520
+Here you can see the the whole implementation.
+
+13
+00:01:01,520 --> 00:01:08,330
+I have added two coupon and the first one is ID, one product name iPhone description and the amount
+
+14
+00:01:08,330 --> 00:01:10,070
+is 150.
+
+15
+00:01:10,070 --> 00:01:13,010
+And the coupon two is in located in here.
+
+16
+00:01:13,010 --> 00:01:20,990
+So that means with using the has data method, we basically see the database with initial coupon entries.
+
+17
+00:01:20,990 --> 00:01:26,180
+And this is important to have some data when application start up for the first time.
+
+18
+00:01:26,180 --> 00:01:32,840
+After saving these context class, the next thing we will focus on auto migrate SQLite database to ensure
+
+19
+00:01:32,840 --> 00:01:37,550
+these DB is created and migration codes are running when the application start up.
+
+20
+00:01:37,550 --> 00:01:44,270
+So for that reason I'm going to create a new class under the data folder which name is extensions.
+
+21
+00:01:44,270 --> 00:01:51,410
+Because we are going to develop an extension method to auto migrate our database.
+
+22
+00:01:51,410 --> 00:01:59,060
+And in this extension method, we basically make this class static in order to create an extension method
+
+23
+00:01:59,060 --> 00:02:01,430
+for the I application builder.
+
+24
+00:02:01,430 --> 00:02:07,730
+So we will create use migration extension method for automating database migrate operations.
+
+25
+00:02:07,730 --> 00:02:14,420
+Here you can see the signature of the method use migration extension method from the I application builder.
+
+26
+00:02:14,420 --> 00:02:19,250
+And in this method we basically create a scope in the beginning of method.
+
+27
+00:02:19,250 --> 00:02:24,440
+So this scope will be help to us getting our db context object.
+
+28
+00:02:24,440 --> 00:02:30,590
+The scope is creating from the application builder, and after that we can reach the db context object
+
+29
+00:02:30,590 --> 00:02:33,230
+which is in our case discount context.
+
+30
+00:02:33,230 --> 00:02:39,380
+Here you can see that we are using word db context, and this time we will using the scope that we have
+
+31
+00:02:39,380 --> 00:02:40,790
+created in this line of code.
+
+32
+00:02:40,790 --> 00:02:47,240
+And with using this scope, we can reach the discount context with running the get required service
+
+33
+00:02:47,240 --> 00:02:47,750
+method.
+
+34
+00:02:47,750 --> 00:02:53,000
+So in this method we will get the db context object which is the discount context.
+
+35
+00:02:53,000 --> 00:03:00,650
+And after that we will perform the migrate auto migrate operation with running the DB context database
+
+36
+00:03:00,650 --> 00:03:02,540
+that migrate async method.
+
+37
+00:03:02,540 --> 00:03:09,200
+If you read the documentation of the migrate async method, you can see that this method provide asynchronously
+
+38
+00:03:09,200 --> 00:03:15,560
+applies any pending migrations for the context to the database, and it will also create the database
+
+39
+00:03:15,560 --> 00:03:18,050
+if the database not already exist.
+
+40
+00:03:18,050 --> 00:03:25,040
+So this is very powerful database method which provides to ensure created database and also apply the
+
+41
+00:03:25,040 --> 00:03:27,020
+migrations in the migration folder.
+
+42
+00:03:27,020 --> 00:03:32,900
+And after that we can return app to complete our extension method.
+
+43
+00:03:32,900 --> 00:03:39,890
+And after developing this extension method, we can register and use these migration extension method
+
+44
+00:03:39,890 --> 00:03:41,300
+into Program.cs.
+
+45
+00:03:41,300 --> 00:03:47,570
+If you open the Program.cs, we will utilize this extension method in the Program.cs and after the building
+
+46
+00:03:47,570 --> 00:03:50,900
+the application, we can configure the Http request pipeline.
+
+47
+00:03:50,900 --> 00:03:59,450
+So in the first line of this code App.use migration extension method in here we are using the app dot
+
+48
+00:03:59,450 --> 00:04:00,740
+use migration method.
+
+49
+00:04:00,740 --> 00:04:04,280
+In the beginning of the configuring Http request pipeline.
+
+50
+00:04:04,280 --> 00:04:11,240
+So placing this extension method at the start of the Http request pipeline, ensure that the database
+
+51
+00:04:11,240 --> 00:04:17,000
+migration occurs before application start up processing and before accepting any requests.
+
+52
+00:04:17,000 --> 00:04:19,370
+So please save this Program.cs.
+
+53
+00:04:19,370 --> 00:04:24,710
+And after that, we can remove the migration folder and discount database into our application.
+
+54
+00:04:24,710 --> 00:04:31,400
+And now I'm going to remove existing migration folder and discount database that we have created in
+
+55
+00:04:31,400 --> 00:04:32,570
+the previous video.
+
+56
+00:04:32,570 --> 00:04:36,320
+And we will reflect the changes to our discount context.
+
+57
+00:04:36,320 --> 00:04:41,810
+Because whenever we change Discount context class, we have adding a new method in here.
+
+58
+00:04:41,810 --> 00:04:48,080
+We should also delete the migrations and recreate the migrations in order to reflect the newly adding
+
+59
+00:04:48,080 --> 00:04:49,340
+haste data operations.
+
+60
+00:04:49,340 --> 00:04:56,450
+For that purpose, I'm going to delete migration folder and also I'm going to delete discount DB.
+
+61
+00:04:56,480 --> 00:04:57,110
+This time.
+
+62
+00:04:57,110 --> 00:04:59,780
+This will be create automatically when the application start up.
+
+63
+00:05:00,530 --> 00:05:03,410
+Okay after deleted these operations.
+
+64
+00:05:03,410 --> 00:05:10,880
+So basically we will perform any migration operation to create migrate folder again for that purpose
+
+65
+00:05:10,880 --> 00:05:15,350
+please open the Package Manager console and select the default project.
+
+66
+00:05:15,350 --> 00:05:18,170
+Discount your PC and run this command.
+
+67
+00:05:18,170 --> 00:05:20,690
+Add migration initial create hit enter.
+
+68
+00:05:20,810 --> 00:05:24,860
+This will be build the application and create a migration folder.
+
+69
+00:05:24,860 --> 00:05:30,530
+And in here again you can see the app method, but this time in app method we have created coupon table
+
+70
+00:05:30,530 --> 00:05:33,380
+and after that we will insert the seeding database.
+
+71
+00:05:33,380 --> 00:05:37,640
+Data operations comes from the discount context that all model creating.
+
+72
+00:05:37,640 --> 00:05:40,340
+So now we are ready to update database.
+
+73
+00:05:40,340 --> 00:05:46,640
+But this time I'm not going to run update database command using the package manager console, because
+
+74
+00:05:46,640 --> 00:05:53,420
+in the program.cs we have developed use migration extension method to handle the database update operations.
+

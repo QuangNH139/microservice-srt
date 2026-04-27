@@ -1,0 +1,264 @@
+1
+00:00:00,170 --> 00:00:07,520
+In this video, we are going to develop service classes for consuming API gateway with using Revit Http
+
+2
+00:00:07,520 --> 00:00:08,870
+client factory library.
+
+3
+00:00:08,870 --> 00:00:15,560
+So that means we are at the third step, and we will use Revit Http client factory to developing a catalog
+
+4
+00:00:15,560 --> 00:00:16,010
+service.
+
+5
+00:00:16,010 --> 00:00:20,870
+I basket service and I ordering services to communicate with ERP API gateway.
+
+6
+00:00:21,800 --> 00:00:27,050
+Here you can see that we have using the traditional linear architecture into our client application.
+
+7
+00:00:27,050 --> 00:00:33,110
+That means now we will implement the service classes as a business logic and consume the ERP API gateway
+
+8
+00:00:33,110 --> 00:00:33,860
+endpoints.
+
+9
+00:00:33,860 --> 00:00:40,190
+For that purpose, please open the Visual Studio and go to the Shopping Web application to Creating
+
+10
+00:00:40,190 --> 00:00:40,970
+a Business layer.
+
+11
+00:00:40,970 --> 00:00:44,390
+I am going to right click the shopping web and add a new folder.
+
+12
+00:00:44,390 --> 00:00:46,220
+Which name is services?
+
+13
+00:00:46,220 --> 00:00:51,860
+This will be represent our business logic and I am going to add a new interface under services which
+
+14
+00:00:51,860 --> 00:00:53,420
+name is AI Catalog Service.
+
+15
+00:00:53,420 --> 00:00:59,210
+And this interface will be responsible for the communicating ERP API gateway using the Revit library.
+
+16
+00:00:59,210 --> 00:01:04,430
+But before that, let's analyze which methods we need to consume from the ERP API gateway.
+
+17
+00:01:04,430 --> 00:01:08,960
+For that purpose, I am going to open the catalog microservices under services.
+
+18
+00:01:08,960 --> 00:01:16,190
+And if you open the catalog API and open the products feature folder, you can see that these are the
+
+19
+00:01:16,190 --> 00:01:20,390
+our use cases that we can available for the AI catalog service.
+
+20
+00:01:20,390 --> 00:01:26,900
+Since we used catalog operations for reading data and representing shopping web index page, we only
+
+21
+00:01:26,900 --> 00:01:33,290
+use get methods into our shopping web client application because we will only get the products and representing
+
+22
+00:01:33,290 --> 00:01:37,280
+on the shopping web client, application index page, product page and so on.
+
+23
+00:01:37,460 --> 00:01:43,670
+So now we should create these methods into our AI catalog service interface and consume these endpoints
+
+24
+00:01:43,670 --> 00:01:47,240
+from the ARP API gateway using the Revit generated clients.
+
+25
+00:01:47,240 --> 00:01:53,420
+So if you open, for example, Getproducts endpoint, you can see that these will be the R request and
+
+26
+00:01:53,420 --> 00:01:54,050
+response.
+
+27
+00:01:54,050 --> 00:02:00,830
+And we will create these kind of methods to getting incoming request object with page number and page
+
+28
+00:02:00,830 --> 00:02:04,550
+size and return back a IEnumerable product response.
+
+29
+00:02:04,550 --> 00:02:11,240
+So if you open the get product by ID, you can see that we have sending a Guid, ID and returning with
+
+30
+00:02:11,240 --> 00:02:12,680
+a single product model.
+
+31
+00:02:12,680 --> 00:02:15,380
+And here you can see the get products by category and paint.
+
+32
+00:02:15,380 --> 00:02:22,370
+We will use a category information as a string category and respond back the IEnumerable product model
+
+33
+00:02:22,370 --> 00:02:23,030
+products.
+
+34
+00:02:23,030 --> 00:02:29,960
+So we will arrange these kind of operations under the R service layer as a catalog service that I am
+
+35
+00:02:29,960 --> 00:02:32,510
+going to create these method bodies in here.
+
+36
+00:02:32,510 --> 00:02:35,450
+So you can come here and develop the R methods.
+
+37
+00:02:35,450 --> 00:02:41,840
+These are the task get products methods, get product by ID and get product by category.
+
+38
+00:02:41,840 --> 00:02:48,050
+So the first one is task and return back the get products response and the method name as a get products
+
+39
+00:02:48,050 --> 00:02:51,890
+and as a parameter it is taking page number and page size.
+
+40
+00:02:51,890 --> 00:02:57,560
+And the second method is returning get product by id response and which method name as a get product
+
+41
+00:02:57,560 --> 00:02:59,900
+and taking grid id as a parameter.
+
+42
+00:02:59,900 --> 00:03:03,860
+And the third method name is get products by category response.
+
+43
+00:03:03,860 --> 00:03:09,500
+Returning this response and the method name is a get products by category and taking string category.
+
+44
+00:03:09,500 --> 00:03:15,260
+As a parameter of this method, you can go to these response object and see the including the product
+
+45
+00:03:15,260 --> 00:03:21,110
+model and IEnumerable product models in the wrapper classes that we have developed in the last videos.
+
+46
+00:03:21,110 --> 00:03:24,080
+So this is the implementation of the AI catalog services.
+
+47
+00:03:24,080 --> 00:03:30,200
+And we have created our AI catalog service methods in order to consume Erb API gateway endpoints from
+
+48
+00:03:30,200 --> 00:03:31,490
+our service layer.
+
+49
+00:03:31,490 --> 00:03:33,800
+Also, we can enhance the code readability.
+
+50
+00:03:33,800 --> 00:03:37,130
+I am going to move these using statement under the global using.
+
+51
+00:03:37,130 --> 00:03:43,010
+Come here and add new class at the top of the shopping web client application and adding the class name
+
+52
+00:03:43,010 --> 00:03:44,120
+as a global Usings.
+
+53
+00:03:44,120 --> 00:03:50,120
+So at this point, I am going to remove all the codes and go back to our AI catalog services and moving
+
+54
+00:03:50,120 --> 00:03:55,850
+these using statement under the R global Usings and put the global keyword save this file.
+
+55
+00:03:55,850 --> 00:04:02,030
+Go back to our main class and this time we can remove these using statements into our AI catalog interfaces.
+
+56
+00:04:02,030 --> 00:04:09,740
+So now how can we send a Http get request to consume these Erb API gateways into a catalog service methods.
+
+57
+00:04:09,740 --> 00:04:12,230
+So there is very effective way to handle this.
+
+58
+00:04:12,230 --> 00:04:14,780
+Without implementing these interface members.
+
+59
+00:04:14,780 --> 00:04:18,620
+We will use Refit for consuming Erb, API gateway and twins.
+
+60
+00:04:18,620 --> 00:04:25,400
+If you look at the method body of these catalog services and these method body structure same as the
+
+61
+00:04:25,400 --> 00:04:31,190
+microservice endpoint definition, it is taking request parameters and return back a response.
+
+62
+00:04:31,190 --> 00:04:36,650
+So how this could consume API's with using only interface method bodies.
+
+63
+00:04:36,650 --> 00:04:38,720
+The answer is using the Refit.
+
+64
+00:04:38,720 --> 00:04:44,990
+Refit is mapping the request and response objects of the Erb API gateway endpoint using the generated
+
+65
+00:04:44,990 --> 00:04:48,470
+client endpoints, without implementing actual these methods.
+
+66
+00:04:48,470 --> 00:04:50,600
+So now let's learn the refit.
+

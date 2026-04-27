@@ -1,0 +1,216 @@
+1
+00:00:00,140 --> 00:00:07,640
+In this video we are going to develop order created and order updated domain event in organic microservices
+
+2
+00:00:07,640 --> 00:00:13,580
+and these events are crucial in domain driven design approach as they help to communicating significant
+
+3
+00:00:13,580 --> 00:00:15,050
+changes within the domain.
+
+4
+00:00:15,680 --> 00:00:21,530
+Please open the Visual Studio and go to the Order Aggregate class and if you scroll down, you can see
+
+5
+00:00:21,530 --> 00:00:25,820
+that in the Create and Update method, we use Add Domain Event method.
+
+6
+00:00:25,820 --> 00:00:31,760
+And if you right click and go to definition, you can see that this method comes from the aggregate
+
+7
+00:00:31,790 --> 00:00:35,660
+abstract base class that we can use for order aggregate.
+
+8
+00:00:36,140 --> 00:00:40,730
+So now I am going to start to developing order created event in here.
+
+9
+00:00:40,730 --> 00:00:47,750
+In the order case you can see that we are triggering order created event to defining and developing
+
+10
+00:00:47,750 --> 00:00:49,490
+these order created domain event.
+
+11
+00:00:49,520 --> 00:00:54,770
+I am going to right click the order domain and add a new folder.
+
+12
+00:00:54,770 --> 00:00:56,540
+Which name is events.
+
+13
+00:00:58,010 --> 00:01:04,370
+So under this folder I'm going to create a order created domain event so you can add a new class.
+
+14
+00:01:04,370 --> 00:01:05,450
+Which name is order?
+
+15
+00:01:05,480 --> 00:01:07,280
+Created events.
+
+16
+00:01:07,280 --> 00:01:13,010
+And for defining these domain events I am going to use a record type.
+
+17
+00:01:13,040 --> 00:01:16,790
+But before that let me remove unnecessary using statement.
+
+18
+00:01:16,790 --> 00:01:25,940
+And in here I'm going to use public record and give the name of this domain event, which is the order
+
+19
+00:01:25,940 --> 00:01:31,640
+created event and passing the order as a parameter and inherit from the I domain event.
+
+20
+00:01:31,790 --> 00:01:38,300
+So this event class inherit from the I domain event, which is a marker interface that can be used by
+
+21
+00:01:38,300 --> 00:01:41,630
+infrastructure services to identify the domain events.
+
+22
+00:01:41,660 --> 00:01:49,220
+So if you right click and go to definition, you can see that domain event is developed under the abstractions
+
+23
+00:01:49,220 --> 00:01:50,540
+in the ordering domain.
+
+24
+00:01:50,600 --> 00:01:53,090
+So we can inherit by domain event.
+
+25
+00:01:53,120 --> 00:01:59,270
+To identify the domain events in here you can go back to events order created event.
+
+26
+00:01:59,300 --> 00:02:04,810
+We can mark these order created event as a domain event with inheriting a domain event.
+
+27
+00:02:04,840 --> 00:02:11,590
+The order created event also carrying the order data as a parameter of the domain event, and this can
+
+28
+00:02:11,590 --> 00:02:15,100
+include all the details of the order that was just created.
+
+29
+00:02:15,700 --> 00:02:19,960
+And after that we can start to develop the other domain event.
+
+30
+00:02:19,990 --> 00:02:26,110
+If you save this file, go back to order CS and if you scroll down you can see that we need one more
+
+31
+00:02:26,110 --> 00:02:32,320
+domain event when updating the order, which name is order updated event, I am going to copy the name
+
+32
+00:02:32,320 --> 00:02:38,170
+and create a new class under the events folder which name is Order Updated Events.
+
+33
+00:02:38,170 --> 00:02:41,050
+So we will following the same steps again.
+
+34
+00:02:41,080 --> 00:02:43,000
+This will be the record type.
+
+35
+00:02:43,870 --> 00:02:50,320
+I am going to develop public record and order updated event.
+
+36
+00:02:50,350 --> 00:02:52,900
+Here you can see that order updated event.
+
+37
+00:02:52,900 --> 00:02:56,620
+Also taking the order and inherit from the I domain event.
+
+38
+00:02:56,650 --> 00:03:02,570
+That means it is similar to order created event and this event signifies that an existing order has
+
+39
+00:03:02,570 --> 00:03:03,530
+been updated.
+
+40
+00:03:03,560 --> 00:03:08,330
+It also carries the order entity in order to provide context to event handler.
+
+41
+00:03:08,330 --> 00:03:10,160
+So save also this file.
+
+42
+00:03:10,160 --> 00:03:12,500
+And now I'm going to add a global using.
+
+43
+00:03:12,500 --> 00:03:15,170
+You can see that we have created a new namespace.
+
+44
+00:03:15,170 --> 00:03:22,430
+In order to add this namespace available for each module, I am going to add a global using Go Global
+
+45
+00:03:22,430 --> 00:03:26,960
+using and add new line of code, which is the ordering domain events.
+
+46
+00:03:26,960 --> 00:03:33,590
+And if you go back to order CSS, you can see that we will activate Order Created and order updated
+
+47
+00:03:33,590 --> 00:03:36,590
+event when updating and creating a new order.
+
+48
+00:03:36,590 --> 00:03:43,790
+So if you right click and build the ordering domain, you can see that we can build succeeded for our
+
+49
+00:03:43,820 --> 00:03:44,780
+domain layer.
+
+50
+00:03:44,810 --> 00:03:51,110
+As you can see that when a new order is created or updating an existing order, the respective domain
+
+51
+00:03:51,110 --> 00:03:57,530
+events is raised and we will dispatch these events into infrastructure layer with using Entity Framework
+
+52
+00:03:57,530 --> 00:03:58,010
+Core.
+
+53
+00:03:58,010 --> 00:04:03,260
+So that means we have finished the ordering domain layer and we will continue to develop ordering infrastructure
+
+54
+00:04:03,260 --> 00:04:03,830
+layer.
+

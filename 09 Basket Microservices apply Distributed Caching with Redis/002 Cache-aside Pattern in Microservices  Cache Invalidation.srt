@@ -1,0 +1,168 @@
+1
+00:00:00,080 --> 00:00:06,680
+In this video we are going to learn cache aside pattern in distributed caching for microservices.
+
+2
+00:00:07,580 --> 00:00:13,460
+A cache aside pattern is the most common caching strategy used in microservices.
+
+3
+00:00:13,490 --> 00:00:15,470
+You can see the picture on the slide.
+
+4
+00:00:15,470 --> 00:00:16,970
+We have three steps.
+
+5
+00:00:16,970 --> 00:00:20,000
+Now I am going to explain these following steps.
+
+6
+00:00:20,930 --> 00:00:24,650
+The first step is when a client needs to access data.
+
+7
+00:00:24,650 --> 00:00:28,460
+It first checks to see if the data is in the cache.
+
+8
+00:00:29,030 --> 00:00:36,260
+The second step is if the data is in the case, the client retrieves it from the cache and returns it
+
+9
+00:00:36,260 --> 00:00:37,550
+to the caller system.
+
+10
+00:00:38,120 --> 00:00:45,230
+And the third step is if the data is not in the cache, the client retrieves it from the database and
+
+11
+00:00:45,230 --> 00:00:49,490
+stores it in the cache, and then returns it to the caller system.
+
+12
+00:00:50,370 --> 00:00:55,950
+Some of the caching systems provide read through and write through or write behind operations.
+
+13
+00:00:55,950 --> 00:01:00,720
+In these systems, client applications retrieves data over by the cache.
+
+14
+00:01:01,590 --> 00:01:08,040
+For caches that don't provide this functionality, it is the responsibility of the applications that
+
+15
+00:01:08,040 --> 00:01:11,790
+use the cache and update the cache if there is a cache miss.
+
+16
+00:01:12,060 --> 00:01:17,400
+So a cache aside pattern comes to the picture and implements for these kind of cases.
+
+17
+00:01:17,400 --> 00:01:18,540
+Microservices.
+
+18
+00:01:18,540 --> 00:01:21,870
+Also a good example to implement cache aside pattern.
+
+19
+00:01:21,960 --> 00:01:28,350
+In a microservice architecture, it is common to use a distributed cache that is shared across multiple
+
+20
+00:01:28,350 --> 00:01:29,160
+services.
+
+21
+00:01:29,580 --> 00:01:35,880
+This can be useful for storing data that is commonly accessed by the multiple services, or storing
+
+22
+00:01:35,880 --> 00:01:40,320
+data that is expensive to compete or retrieve from a databases.
+
+23
+00:01:42,680 --> 00:01:48,620
+Using the cache aside pattern can improve the performance of a microservice architecture by reducing
+
+24
+00:01:48,620 --> 00:01:52,460
+the number of expensive database calls or data store lookups.
+
+25
+00:01:52,490 --> 00:01:59,390
+It can also help to reduce the load on the database or data store, as many requests for data can be
+
+26
+00:01:59,390 --> 00:02:00,560
+served from the cache.
+
+27
+00:02:01,580 --> 00:02:07,490
+In order to use the cache aside pattern in microservices, you would need to implement a cache layer
+
+28
+00:02:07,490 --> 00:02:11,450
+in your service that is responsible for managing the cache.
+
+29
+00:02:12,050 --> 00:02:18,710
+This may involve using a cache library or framework such as Redis or Memcached, or implementing a custom
+
+30
+00:02:18,710 --> 00:02:19,640
+cache solution.
+
+31
+00:02:21,380 --> 00:02:24,560
+Here you can see the process of the cache aside pattern.
+
+32
+00:02:24,560 --> 00:02:30,530
+When a service needs to access data, it first checks to see if the data is in the cache.
+
+33
+00:02:30,650 --> 00:02:36,530
+If the data is in the cache, the service retrieves from the cache and returns it to the caller system.
+
+34
+00:02:36,590 --> 00:02:42,740
+If the data is not in the cache, the service retrieves it from the database or other data store.
+
+35
+00:02:42,770 --> 00:02:48,500
+And after that stores it into the cache, and after that then returns it to the caller system.
+
+36
+00:02:49,720 --> 00:02:54,280
+So there are some drawbacks of using cache aside pattern for microservices.
+
+37
+00:02:54,310 --> 00:03:02,560
+Cache can introduce additional complexity into our architecture or may not be suitable for all situations.
+
+38
+00:03:02,740 --> 00:03:10,030
+For example, the cache may need to be invalidated or refreshed when the data is updated in the database,
+
+39
+00:03:10,030 --> 00:03:14,350
+and this can require additional coordination between the microservices.
+
+40
+00:03:15,100 --> 00:03:22,450
+And additionally the cache may introduce additional latency if it is located remotely from the microservices
+
+41
+00:03:22,450 --> 00:03:23,500
+that are using it.
+
+42
+00:03:23,500 --> 00:03:28,630
+So additional latency is also one of the drawbacks of using the distributed cache.
+

@@ -1,0 +1,360 @@
+1
+00:00:00,110 --> 00:00:06,260
+In this video we are going to test ordering microservices with secrets and clean architecture layers.
+
+2
+00:00:06,290 --> 00:00:11,990
+We will walk through the testing, ordering API endpoints in a clean architecture setup and ensuring
+
+3
+00:00:11,990 --> 00:00:15,740
+our implementation of the secrets and domain driven design patterns.
+
+4
+00:00:15,740 --> 00:00:20,750
+So here you can see the internal architecture of the ordering microservices that we have finished the
+
+5
+00:00:20,750 --> 00:00:26,540
+development of the clean architecture layers, including domain application, infrastructure and presentation.
+
+6
+00:00:26,540 --> 00:00:33,680
+And now we are ready to hitting or exposing Http methods and trigger our clean architecture secrets
+
+7
+00:00:33,680 --> 00:00:39,200
+and domain driven design implementation when interacting with SQL database and implementing business
+
+8
+00:00:39,200 --> 00:00:40,040
+use cases.
+
+9
+00:00:40,040 --> 00:00:45,410
+So for that purpose, it is good to remembering ordering microservices with clean architecture layers.
+
+10
+00:00:45,410 --> 00:00:52,100
+If you open the Visual Studio, you can see that we have clean architecture layers including domain,
+
+11
+00:00:52,100 --> 00:00:54,470
+infrastructure, application and API.
+
+12
+00:00:54,530 --> 00:01:00,620
+So if we explore these layers one by one in the ordering domain layer, we will contain the domain logic
+
+13
+00:01:00,620 --> 00:01:01,400
+and the models.
+
+14
+00:01:01,400 --> 00:01:04,489
+And it is crucial for the business rules and behaviors.
+
+15
+00:01:04,489 --> 00:01:11,120
+And if you expand the ordering infrastructure it is managed the data access and external resources providing
+
+16
+00:01:11,120 --> 00:01:14,030
+support for the persistence in the data folder.
+
+17
+00:01:14,030 --> 00:01:20,000
+And if we explore the ordering application, this will be in command sequence design pattern using the
+
+18
+00:01:20,000 --> 00:01:25,580
+mediator library, handling the application logic commands, queries and event handlers in the orders
+
+19
+00:01:25,580 --> 00:01:26,600
+feature folder.
+
+20
+00:01:26,720 --> 00:01:33,740
+Lastly, if we explore the ordering API presentation layer, this is the entry point for external request
+
+21
+00:01:33,740 --> 00:01:38,420
+and exposing endpoints to interacting with the application in the endpoint folder.
+
+22
+00:01:38,690 --> 00:01:44,270
+So we will follow these clean architecture layers when testing our ordering microservices, for example,
+
+23
+00:01:44,270 --> 00:01:50,420
+where we are initializing database and seeding data in ordering API, the application entry point is
+
+24
+00:01:50,420 --> 00:01:51,170
+Program.cs.
+
+25
+00:01:51,170 --> 00:01:56,480
+If you open the program says here, you can see that when the application start up, we will running
+
+26
+00:01:56,480 --> 00:01:59,690
+the initialize database async extension method.
+
+27
+00:01:59,690 --> 00:02:01,220
+When application startup.
+
+28
+00:02:01,220 --> 00:02:08,419
+And in this method we basically responsible for seeding database on application startup and Program.cs
+
+29
+00:02:08,419 --> 00:02:13,400
+trigger the database initialization in the development environment, which is looking for the development
+
+30
+00:02:13,400 --> 00:02:14,120
+environment.
+
+31
+00:02:14,120 --> 00:02:19,430
+And if you go to this method, you can see that this method is implemented under the Ordering infrastructure
+
+32
+00:02:19,430 --> 00:02:22,340
+layer under data folder under extensions.
+
+33
+00:02:22,340 --> 00:02:28,370
+Here you can see the database extension and initial data class that provides the seeding and database
+
+34
+00:02:28,370 --> 00:02:29,360
+initialization.
+
+35
+00:02:29,360 --> 00:02:34,100
+So we are seeding SQL server database when application start up in the program cache.
+
+36
+00:02:34,100 --> 00:02:36,740
+And this will be triggered ordering infrastructure.
+
+37
+00:02:36,740 --> 00:02:42,020
+And now the second question is how we can implement security design pattern.
+
+38
+00:02:42,020 --> 00:02:43,370
+In the application layer.
+
+39
+00:02:43,370 --> 00:02:48,860
+We are implementing the security design pattern commands, queries and event handlers in tormenting
+
+40
+00:02:48,860 --> 00:02:55,340
+use cases for ordering features under the orders feature folder, you can see the commands, event handlers
+
+41
+00:02:55,340 --> 00:02:59,660
+and queries that performing the six design pattern implementation.
+
+42
+00:02:59,660 --> 00:03:05,390
+And if you look at the ordering domain layer, you can see that for example, under the modules we have
+
+43
+00:03:05,390 --> 00:03:11,060
+a ordered aggregate that encapsulate the order creation logic and domain event raising operation.
+
+44
+00:03:11,060 --> 00:03:16,670
+In here you can see the create and update method that is representing our rich domain model, which
+
+45
+00:03:16,670 --> 00:03:23,420
+means create and update operation responsible for the order entity and when order, create or update
+
+46
+00:03:23,420 --> 00:03:29,390
+it will raise order created an order updated domain event that will catch these event into application
+
+47
+00:03:29,390 --> 00:03:29,870
+layer.
+
+48
+00:03:29,870 --> 00:03:32,120
+So how we can dispatch this event.
+
+49
+00:03:32,120 --> 00:03:38,660
+So if you go to infrastructure layer, if you go to the interceptors and go to the dispatch domain event
+
+50
+00:03:38,660 --> 00:03:44,570
+interceptor class, you can see that this will be intercept Entity Framework core operations in order
+
+51
+00:03:44,570 --> 00:03:47,180
+to dispatch domain events using the mediator.
+
+52
+00:03:47,180 --> 00:03:52,280
+And this dispatching domain events will catch under the ordering application layer.
+
+53
+00:03:52,280 --> 00:03:57,800
+If you go to orders and event handlers, you can see that the dispatching domain events are handling
+
+54
+00:03:57,800 --> 00:03:59,570
+under the ordering application layer.
+
+55
+00:03:59,570 --> 00:04:05,960
+And here you can see the order created domain event handler, which inherit from the notification handler
+
+56
+00:04:05,960 --> 00:04:09,830
+in order to handle domain event which is raising from the infrastructure layer.
+
+57
+00:04:09,830 --> 00:04:12,590
+So these are the domain events lifecycle.
+
+58
+00:04:12,590 --> 00:04:16,700
+And last section we have also developed the ordering API project.
+
+59
+00:04:16,700 --> 00:04:20,060
+Here you can see the ordering API and endpoints folder.
+
+60
+00:04:20,060 --> 00:04:25,640
+In this folder we basically expose Crud operations and communicates with the application layer using
+
+61
+00:04:25,640 --> 00:04:26,390
+the mediator.
+
+62
+00:04:26,390 --> 00:04:32,600
+So that means we have Crud endpoints in order to trigger application sequence command and queries using
+
+63
+00:04:32,600 --> 00:04:33,350
+the mediator.
+
+64
+00:04:33,350 --> 00:04:38,450
+Here you can see the Crud endpoints and this will be trigger the application layer.
+
+65
+00:04:38,450 --> 00:04:41,660
+And this will be performed with the mediator send operation.
+
+66
+00:04:41,660 --> 00:04:47,240
+If you go to the application layer orders command for example delete order command handler, you can
+
+67
+00:04:47,240 --> 00:04:50,480
+see that these will be trigger from the API layer.
+
+68
+00:04:50,480 --> 00:04:56,330
+When the request comes, this will be delayed order handler and using the AI application db context,
+
+69
+00:04:56,330 --> 00:04:59,540
+which is abstraction of the Entity Framework core db context object.
+
+70
+00:04:59,780 --> 00:05:05,600
+And perform the Crud operations on SQL server database using the Infrastructure Layer and Entity Framework
+
+71
+00:05:05,600 --> 00:05:06,260
+Core ORM.
+
+72
+00:05:06,260 --> 00:05:12,680
+So after remembering our ordering microservices clean architecture layers, it is time to perform end
+
+73
+00:05:12,680 --> 00:05:15,950
+to end test for ordering microservice use cases.
+
+74
+00:05:15,950 --> 00:05:18,770
+The first use case will be create order endpoint.
+
+75
+00:05:18,770 --> 00:05:24,830
+But before that, make sure that your Docker desktop is up and running, and after that we should activate
+
+76
+00:05:24,830 --> 00:05:28,850
+the backing services for ordering microservices or backing services.
+
+77
+00:05:28,850 --> 00:05:31,430
+Is Microsoft SQL server database.
+
+78
+00:05:31,430 --> 00:05:37,520
+For that purpose, you can open the Visual Studio and go to the Docker Compose Yaml file.
+
+79
+00:05:37,520 --> 00:05:41,000
+If you right click and set a startup project, this will be.
+
+80
+00:05:41,000 --> 00:05:46,820
+Activate our backing services when running the Docker Compose profile, and this will be run all backing
+
+81
+00:05:46,820 --> 00:05:48,620
+services into our application.
+
+82
+00:05:48,620 --> 00:05:52,910
+Please set a startup project for Docker compose and run without debugging.
+
+83
+00:05:52,910 --> 00:05:57,200
+This will be run the docker compose up command on the behind of the scene.
+
+84
+00:05:57,200 --> 00:06:03,230
+In order to activate database message brokers and the rest of the backing services that are required
+
+85
+00:06:03,230 --> 00:06:05,690
+to run our microservices locally.
+
+86
+00:06:05,690 --> 00:06:08,780
+So here you can see the progress is continue.
+
+87
+00:06:08,780 --> 00:06:14,660
+And you can confirm from the Docker desktop when activating our backing services with running Docker
+
+88
+00:06:14,660 --> 00:06:15,290
+Compose.
+
+89
+00:06:15,290 --> 00:06:21,980
+Here you can see that our order DB now is up and running that requiring from the ordering microservices
+
+90
+00:06:21,980 --> 00:06:23,240
+as a backing services.
+

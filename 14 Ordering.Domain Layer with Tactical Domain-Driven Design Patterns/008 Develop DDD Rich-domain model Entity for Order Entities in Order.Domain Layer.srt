@@ -1,0 +1,336 @@
+1
+00:00:00,140 --> 00:00:06,560
+In this video we are going to develop rich domain modal entity for ordered entities in the order domain
+
+2
+00:00:06,560 --> 00:00:07,160
+layer.
+
+3
+00:00:07,160 --> 00:00:12,650
+So if you open the order CSS under the modal, you can see that under the order entity.
+
+4
+00:00:12,650 --> 00:00:17,360
+Now we have only data related properties including the order entity.
+
+5
+00:00:17,450 --> 00:00:19,520
+But we have a set of questions.
+
+6
+00:00:19,520 --> 00:00:22,310
+The first question is how to create an order.
+
+7
+00:00:22,310 --> 00:00:28,280
+We should use naive object.create operation and every domain should responsible with its own create
+
+8
+00:00:28,280 --> 00:00:29,060
+operation.
+
+9
+00:00:29,510 --> 00:00:34,430
+And the question two is how to add or remove new items into order aggregate.
+
+10
+00:00:34,430 --> 00:00:40,610
+So we should not adding and removing collections over the order entity and reaching the order items
+
+11
+00:00:40,610 --> 00:00:41,870
+with a public manner.
+
+12
+00:00:42,050 --> 00:00:48,260
+These add and remove operations are domain use cases and should be responsible for the order entity.
+
+13
+00:00:48,470 --> 00:00:54,320
+So after defining these responsibilities, domain rules and the domain events, we can start developing
+
+14
+00:00:54,320 --> 00:00:55,520
+the domain methods.
+
+15
+00:00:55,520 --> 00:01:00,050
+I would like to start with the basic entity, which is the customer case.
+
+16
+00:01:00,050 --> 00:01:06,530
+If you open the customer case, you can see that we can start by enhancing the customer entity to include
+
+17
+00:01:06,530 --> 00:01:09,440
+domain specific operations and validations.
+
+18
+00:01:09,440 --> 00:01:15,500
+So customer entity is responsible for creating its own instance and managing its state.
+
+19
+00:01:15,740 --> 00:01:20,810
+Let's add a create static method to encapsulate these create logic.
+
+20
+00:01:20,810 --> 00:01:29,210
+I'm going to come here and write public static and return back a customer and create method including
+
+21
+00:01:29,210 --> 00:01:32,750
+the parameters customer ID, name and email.
+
+22
+00:01:33,890 --> 00:01:38,030
+And in this method we will basically return back a new customer.
+
+23
+00:01:38,030 --> 00:01:41,390
+But before that we can perform some of the validations.
+
+24
+00:01:41,390 --> 00:01:48,260
+I'm going to use argument exception throw if null or whitespace extension method, checking the name
+
+25
+00:01:48,260 --> 00:01:51,530
+and email values in the parameters.
+
+26
+00:01:51,530 --> 00:01:59,090
+And after that I'm going to create a new customer which including the ID name and email information
+
+27
+00:01:59,090 --> 00:02:00,530
+passing from the parameters.
+
+28
+00:02:00,530 --> 00:02:02,930
+And lastly, we can return a customer.
+
+29
+00:02:05,330 --> 00:02:11,480
+So the create method is a factory method that encapsulates the creation of customer instance in this
+
+30
+00:02:11,480 --> 00:02:17,480
+create method, and it includes domain validations to ensure the integrity of the customer instance.
+
+31
+00:02:17,480 --> 00:02:23,210
+These are the domain validations and after that we have create a new customer using the default constructor
+
+32
+00:02:23,210 --> 00:02:25,370
+and return the customer in the create method.
+
+33
+00:02:25,370 --> 00:02:31,670
+So basically we have created static create method that create customer in the customer entity, but
+
+34
+00:02:31,670 --> 00:02:37,460
+customer entity using strongly typed IDs which is the customer ID value objects.
+
+35
+00:02:37,460 --> 00:02:40,910
+So these objects also need to create its own type.
+
+36
+00:02:40,910 --> 00:02:43,910
+For that purpose we will create off method.
+
+37
+00:02:43,910 --> 00:02:50,840
+So that means in order to separate entities and value objects for the create responsibilities, we will
+
+38
+00:02:50,840 --> 00:02:55,670
+develop the static create method for each entities under the model folder.
+
+39
+00:02:55,670 --> 00:03:02,570
+And we will also develop the static off method for each value objects under the value object folder.
+
+40
+00:03:02,570 --> 00:03:07,700
+For that purpose, please go to the customer ID value object and this is the value object.
+
+41
+00:03:07,700 --> 00:03:13,100
+And this value object also responsible to create its own type with accepting the Guid value.
+
+42
+00:03:13,100 --> 00:03:19,910
+So we will develop a static off method in order to create instance of customer id for that purpose.
+
+43
+00:03:19,910 --> 00:03:22,670
+I'm going to start with the private constructor.
+
+44
+00:03:22,790 --> 00:03:29,270
+The value objects are the record type, and I'm going to create a private constructors in order to set
+
+45
+00:03:29,270 --> 00:03:30,590
+the value information.
+
+46
+00:03:30,590 --> 00:03:34,370
+And after that we will create a static off method.
+
+47
+00:03:34,370 --> 00:03:41,300
+In order to instantiate this customer ID here you can see the static customer ID off method, and we
+
+48
+00:03:41,300 --> 00:03:47,390
+will use off method for each value objects, and we will use create method for each domain models.
+
+49
+00:03:47,390 --> 00:03:54,560
+So in the off method you can see that we will perform the domain validation and after that contain the
+
+50
+00:03:54,560 --> 00:03:57,740
+domain validation and throwing a domain exception.
+
+51
+00:03:57,740 --> 00:04:03,680
+And after that returning a new customer ID with passing the volume information in the parameter of the
+
+52
+00:04:03,680 --> 00:04:04,370
+off method.
+
+53
+00:04:04,370 --> 00:04:11,000
+And these customer ID is a private constructor located under the customer ID record type.
+
+54
+00:04:11,150 --> 00:04:18,920
+So customer ID is a record type with a single property, which is the value, and this off method provide
+
+55
+00:04:18,920 --> 00:04:23,090
+a clear and domain specific way to create customer ID instances.
+
+56
+00:04:23,780 --> 00:04:28,280
+This method includes a domain rule that validate the GID is not empty.
+
+57
+00:04:28,520 --> 00:04:35,810
+In here you can see that value cannot be null, and after that we have throwing a domain exception so
+
+58
+00:04:35,810 --> 00:04:39,710
+we can both use argument exception and custom exception in here.
+
+59
+00:04:39,710 --> 00:04:41,660
+So domain exception represent.
+
+60
+00:04:41,660 --> 00:04:45,290
+These error happens in the domain layer in the domain logic.
+
+61
+00:04:45,290 --> 00:04:51,980
+So that means we should create custom domain exception class for representing our domain related operations
+
+62
+00:04:51,980 --> 00:04:53,510
+under the ordering domain.
+
+63
+00:04:53,510 --> 00:04:59,510
+And in order to handle domain specific exceptions let's create a domain exceptions under the exceptions
+
+64
+00:04:59,510 --> 00:04:59,870
+folder.
+
+65
+00:05:00,170 --> 00:05:06,080
+I'm going to right click the ordering domain and add new folder, which name is exceptions.
+
+66
+00:05:06,080 --> 00:05:12,380
+And under this folder I'm going to create a new class which is the domain exceptions.
+
+67
+00:05:13,010 --> 00:05:15,170
+This is typical to custom exceptions.
+
+68
+00:05:15,170 --> 00:05:22,250
+I'm going to remove unnecessary using statement and make it public and inherit from the exception class.
+
+69
+00:05:22,250 --> 00:05:28,130
+And as a constructor, we have defined a custom constructor with incoming message, which is a domain
+
+70
+00:05:28,130 --> 00:05:31,040
+exception and throwing from the domain layer.
+
+71
+00:05:32,210 --> 00:05:38,210
+Okay, after defining domain exception, you can see that domain exception is a custom exception type
+
+72
+00:05:38,210 --> 00:05:43,850
+that represents the error that occurred within the domain layer, and it enriched the exception message
+
+73
+00:05:43,850 --> 00:05:45,890
+with the domain specific context.
+
+74
+00:05:46,160 --> 00:05:53,240
+And after defining these domain exception, I'm going to move these namespace into the global using
+
+75
+00:05:53,240 --> 00:05:53,840
+statement.
+
+76
+00:05:53,840 --> 00:05:59,120
+If you open the global using statement, I'm going to add a new using statement which is the ordering
+
+77
+00:05:59,120 --> 00:05:59,570
+domain.
+
+78
+00:05:59,570 --> 00:06:00,440
+Exceptions.
+
+79
+00:06:00,440 --> 00:06:06,470
+And after that, if you go back to customer ID value object, you can see that domain exception introduced
+
+80
+00:06:06,470 --> 00:06:07,160
+in here.
+
+81
+00:06:07,370 --> 00:06:11,000
+So we have developed static of method under the customer ID.
+
+82
+00:06:11,000 --> 00:06:17,780
+And we have developed static create method under the customer entity by developing customer and customer
+
+83
+00:06:17,780 --> 00:06:24,140
+ID with domain specific methods and validations, we created a rich domain model that encapsulate domain
+
+84
+00:06:24,140 --> 00:06:25,640
+logic within the entities.
+

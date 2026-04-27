@@ -1,0 +1,492 @@
+1
+00:00:00,170 --> 00:00:06,800
+Hi, my name is Mehmet Ã–zkaya and welcome to my course .NET 8 Microservices, Domain Driven Design,
+
+2
+00:00:06,800 --> 00:00:09,650
+CQRS, Vertical and Clean Architecture.
+
+3
+00:00:09,980 --> 00:00:15,920
+I am a software architect and currently focusing on dotnet microservice architecture design and implementation.
+
+4
+00:00:16,370 --> 00:00:19,550
+So in this course we are going to learn microservices on
+
+5
+00:00:19,730 --> 00:00:27,710
+.Net platform which uses ASP.Net web API, Docker, RabbitMQ, Masstransit, gRPC, YARP API gateway,
+
+6
+00:00:27,710 --> 00:00:35,120
+PostgreSQL, Redis, SQLite, SQL server, Martin, Entity Framework Core, CQRS, mediator and so on.
+
+7
+00:00:35,930 --> 00:00:37,820
+Here you can find the sample EShop
+
+8
+00:00:38,000 --> 00:00:43,790
+.Net microservice Reference Application architecture and this sample application powered by Microsoft
+
+9
+00:00:43,790 --> 00:00:49,550
+based on a simplified microservice architecture and backing services on cloud native environment.
+
+10
+00:00:49,760 --> 00:00:55,880
+As you can see, the architecture different client application consumes back end services via API gateways.
+
+11
+00:00:55,910 --> 00:01:01,820
+Each microservice has different architecture style and databases and using synchronous and asynchronous
+
+12
+00:01:01,820 --> 00:01:03,470
+communication with event buses.
+
+13
+00:01:03,470 --> 00:01:09,230
+So we are going to follow these reference application and create our own e-commerce microservice application
+
+14
+00:01:09,230 --> 00:01:14,810
+with using latest implementation and the best practices of dotnet eight on cloud native environments.
+
+15
+00:01:15,020 --> 00:01:18,170
+So this is the our big picture of the course project.
+
+16
+00:01:18,170 --> 00:01:23,150
+And during the course we are going to develop all these microservice architectures step by step.
+
+17
+00:01:23,150 --> 00:01:28,100
+And together there is a couple of microservices which implemented e-commerce modules.
+
+18
+00:01:28,100 --> 00:01:34,850
+E-commerce microservices are catalog basket discount ordering, Yarp API gateway, microservices and
+
+19
+00:01:34,850 --> 00:01:36,590
+shopping web client application.
+
+20
+00:01:36,590 --> 00:01:43,610
+And these microservices datas will store NoSQL and relational databases which communicating over gRPC
+
+21
+00:01:43,610 --> 00:01:49,760
+and RabbitMQ event driven communication and also using Yarp API gateway for client operations.
+
+22
+00:01:50,180 --> 00:01:56,390
+The course proposes a microservice oriented architecture implementation with multiple autonomous microservices,
+
+23
+00:01:56,390 --> 00:02:02,420
+each one owning its own databases with ceding some data and implementing different design approaches
+
+24
+00:02:02,420 --> 00:02:09,710
+within each microservices vertical or clean architectures using Http and gRPC as the communication protocol
+
+25
+00:02:09,710 --> 00:02:16,130
+between the microservices and support asynchronous communication for microservice updates across multiple
+
+26
+00:02:16,130 --> 00:02:21,170
+servers based on domain and integration events, and an event bus as a RabbitMQ.
+
+27
+00:02:21,200 --> 00:02:25,280
+So now let's deep dive into internal microservice architectures.
+
+28
+00:02:25,280 --> 00:02:29,750
+One by one I'm going to start catalog microservices internal architecture.
+
+29
+00:02:29,750 --> 00:02:33,050
+Here you can see the catalog microservices internal architecture.
+
+30
+00:02:33,050 --> 00:02:36,590
+And here you can see the database using from the catalog microservices.
+
+31
+00:02:36,590 --> 00:02:40,910
+And here you can see the NuGet packages that we are using in the catalog microservices.
+
+32
+00:02:40,910 --> 00:02:47,030
+So in the catalog microservices we will using ASP.Net core minimal APIs and latest features of the.
+
+33
+00:02:47,180 --> 00:02:48,890
+.Net 8 and C-sharp 12.
+
+34
+00:02:48,890 --> 00:02:54,950
+It includes vertical slice architecture implementation with feature folders and single C-sharp file
+
+35
+00:02:54,950 --> 00:02:57,230
+include different classes in one file.
+
+36
+00:02:57,230 --> 00:02:58,850
+It also includes CQRS.
+
+37
+00:02:58,850 --> 00:03:04,670
+Implementation using the mediator library, and includes CQRS validation pipeline behaviors
+
+38
+00:03:04,670 --> 00:03:10,910
+with mediator and fluent validation and catalog microservice use Martin Library for dotnet transactional
+
+39
+00:03:10,910 --> 00:03:12,980
+document database on PostgreSQL.
+
+40
+00:03:12,980 --> 00:03:19,220
+So product microservice database will be PostgreSQL, but acting as a document database using the Martin
+
+41
+00:03:19,220 --> 00:03:19,760
+library.
+
+42
+00:03:20,030 --> 00:03:23,600
+And also it uses Carter for minimal API endpoint definition.
+
+43
+00:03:23,600 --> 00:03:29,120
+And it also implement cross-cutting concerns like logging, global exception handling and health checks,
+
+44
+00:03:29,120 --> 00:03:34,970
+and it is also implement Docker file and Docker compose file for running product microservices and PostgreSQL
+
+45
+00:03:34,970 --> 00:03:36,950
+database in a Docker environment.
+
+46
+00:03:37,070 --> 00:03:43,040
+So the next microservices is basket microservices, which includes all above the catalog microservice
+
+47
+00:03:43,040 --> 00:03:49,070
+items in the basket microservices, including the ASP.Net eight web API application following the Rest
+
+48
+00:03:49,070 --> 00:03:55,490
+API principles, Crud operations and using Redis as a distributed cache over the basket database and
+
+49
+00:03:55,490 --> 00:03:56,600
+basket microservices.
+
+50
+00:03:56,600 --> 00:04:03,410
+Implements proxy, decorator and cache aside patterns and consume discount gRPC microservices for inter
+
+51
+00:04:03,410 --> 00:04:09,410
+service synchronous communications in order to calculate product final price, and it also publish basket
+
+52
+00:04:09,410 --> 00:04:15,380
+checkout queue with using Mass transit and RabbitMQ and containerized basket microservices with Redis
+
+53
+00:04:15,380 --> 00:04:17,000
+and PostgreSQL database.
+
+54
+00:04:17,000 --> 00:04:23,690
+So the next microservices is Discount microservices, which includes ASP.Net gRPC service application
+
+55
+00:04:23,690 --> 00:04:29,900
+with highly performant entire service gRPC communication with discount and basket microservices and
+
+56
+00:04:29,900 --> 00:04:36,230
+apply the gRPC communication with proto files, Crud operations and exposing gRPC services with creating
+
+57
+00:04:36,230 --> 00:04:42,200
+these protobuf files and using SQLite database connection and containerization and using Entity Framework,
+
+58
+00:04:42,200 --> 00:04:48,770
+core ORM, SQLite data provider and migrations to simplify data access and ensuring high performance
+
+59
+00:04:48,770 --> 00:04:53,000
+and applying end layer architecture implementation and containerized discount.
+
+60
+00:04:53,000 --> 00:04:59,000
+Microservices with SQLite database using Docker Compose and last, microservices is ordering.
+
+61
+00:04:59,330 --> 00:05:05,510
+Services that is following more complex patterns, implementing domain driven design skills and clean
+
+62
+00:05:05,510 --> 00:05:11,360
+architecture with using best practices, and apply solid principles and dependency injection principles,
+
+63
+00:05:11,360 --> 00:05:17,450
+and use domain events and integration events and also using Entity Framework core code first approach
+
+64
+00:05:17,450 --> 00:05:23,150
+migrations, domain driven design, entity configurations, clean Architecture implementation on Entity
+
+65
+00:05:23,150 --> 00:05:29,120
+Framework core and SQL server and it is also consuming RabbitMQ basket checkout event queue with using
+
+66
+00:05:29,120 --> 00:05:35,030
+the Mass Transit and RabbitMQ configuration and lastly containerize ordering microservices with SQL
+
+67
+00:05:35,030 --> 00:05:36,320
+server databases.
+
+68
+00:05:36,470 --> 00:05:39,170
+And after that we can talk about microservices.
+
+69
+00:05:39,170 --> 00:05:44,960
+Asynchronous communication with RabbitMQ Masstransit for checkout, order between basket and ordering
+
+70
+00:05:44,960 --> 00:05:45,860
+microservices.
+
+71
+00:05:45,860 --> 00:05:51,800
+So we will be using asynchronous microservice communication with RabbitMQ message broker service and
+
+72
+00:05:51,800 --> 00:05:57,890
+using RabbitMQ publish subscribe topic exchange model and using Masstransit for abstraction over the
+
+73
+00:05:57,890 --> 00:06:01,070
+RabbitMQ message broker system and publishing basket.
+
+74
+00:06:01,070 --> 00:06:05,420
+Checkout event queue from the basket microservices and subscribing these events.
+
+75
+00:06:05,420 --> 00:06:06,980
+From the ordering microservices.
+
+76
+00:06:06,980 --> 00:06:12,830
+We will create event bus message library and add reference into these microservices and containerize
+
+77
+00:06:12,830 --> 00:06:18,230
+RabbitMQ message queue system with the basket and ordering microservices using the Docker compose.
+
+78
+00:06:18,230 --> 00:06:22,310
+And after that we will explain irb API gateway microservices.
+
+79
+00:06:22,310 --> 00:06:28,580
+We will develop API gateways with YARP reverse proxy, applying the gateway routing pattern and implement
+
+80
+00:06:28,580 --> 00:06:34,190
+the YARP reverse proxy configuration including route cluster, path transform and destinations.
+
+81
+00:06:34,190 --> 00:06:39,920
+And we will also apply rate limiting with fixed window limiter on YARP reverse proxy configuration.
+
+82
+00:06:39,920 --> 00:06:44,690
+And we will containerize YARP API gateway microservices using the Docker compose.
+
+83
+00:06:44,690 --> 00:06:51,320
+And lastly we will develop shopping web client application which is ASP.Net core razor web application
+
+84
+00:06:51,320 --> 00:06:57,860
+with bootstrap 4 and razor template, and it consumes YARP API gateway APIs using the Refit library
+
+85
+00:06:57,860 --> 00:07:03,710
+and with generated Http client factories and applying bootstrap for HTML implementation.
+
+86
+00:07:03,830 --> 00:07:09,740
+ASP.Net core razor tools, view components, partial views, tag helpers, model binding and validations,
+
+87
+00:07:09,740 --> 00:07:10,580
+and so on.
+
+88
+00:07:10,580 --> 00:07:15,290
+And we will containerize these shopping web client application using the Docker compose.
+
+89
+00:07:15,290 --> 00:07:21,320
+So that means we will learn how to develop microservices with .NET 8 into enterprise real world
+
+90
+00:07:21,320 --> 00:07:22,280
+applications.
+
+91
+00:07:22,280 --> 00:07:28,250
+So we will implement different architecture styles including domain driven design, vertical slice and
+
+92
+00:07:28,250 --> 00:07:29,210
+clean architecture.
+
+93
+00:07:29,210 --> 00:07:35,030
+And we will implement different patterns like solid principles, dependency injection principles, secure
+
+94
+00:07:35,180 --> 00:07:41,300
+and mediator pattern options, pattern, proxy and decorator pattern, publish subscribe pattern and
+
+95
+00:07:41,300 --> 00:07:42,590
+API gateway pattern.
+
+96
+00:07:42,920 --> 00:07:48,590
+And after that we will implement different database types, including NoSQL and relational databases.
+
+97
+00:07:48,590 --> 00:07:55,010
+We will use transactional, DocumentDB, PostgreSQL, SQLite, SQL server, Distributed Cache, Redis
+
+98
+00:07:55,010 --> 00:08:01,160
+and message brokers, async communication with RabbitMQ and Masstransit library and we will use popular.
+
+99
+00:08:01,160 --> 00:08:08,300
+Net libraries including Carter, Martin, mediator, Fluent Validation, Mapster, Masstransit, Entity
+
+100
+00:08:08,300 --> 00:08:09,860
+Framework, core and Refit.
+
+101
+00:08:09,860 --> 00:08:15,200
+And we will implement different communication styles, including synchronous and asynchronous communication
+
+102
+00:08:15,200 --> 00:08:20,270
+between microservices and building highly performant inter service communication with gRPC.
+
+103
+00:08:20,480 --> 00:08:25,850
+And we will also following the microservice async communication with publish subscribe design pattern
+
+104
+00:08:25,850 --> 00:08:31,280
+using the RabbitMQ and Masstransit for checkout order between basket and ordering microservices.
+
+105
+00:08:31,280 --> 00:08:37,490
+And we will be building API gateways with using Yarp reverse proxy, applying the gateway routing pattern.
+
+106
+00:08:37,880 --> 00:08:43,640
+So this course comes from the live GitHub repository that dotnet community develop and grow with.
+
+107
+00:08:43,640 --> 00:08:44,270
+Together.
+
+108
+00:08:44,270 --> 00:08:48,440
+I am also developing aspnetrun repositories on GitHub with latest.
+
+109
+00:08:48,620 --> 00:08:51,230
+.Net 8 and create course from these repositories.
+
+110
+00:08:51,230 --> 00:08:55,250
+So this course is the main repository of the aspnetrun ecosystem.
+
+111
+00:08:55,250 --> 00:08:58,610
+And this is a lively course and evolve with repository changes.
+
+112
+00:08:59,330 --> 00:09:06,200
+So this course has one main target to be a master of developing .NET 8 microservices with patterns,
+
+113
+00:09:06,200 --> 00:09:08,510
+principles and best practices.
+
+114
+00:09:08,510 --> 00:09:15,140
+This course is designed for the software developers and architects, and includes 95% of the hands on
+
+115
+00:09:15,140 --> 00:09:17,120
+design and development activities.
+
+116
+00:09:17,120 --> 00:09:23,180
+Apply best practices with cloud native microservices, design patterns and principles, and latest features
+
+117
+00:09:23,180 --> 00:09:29,570
+of the C-sharp 12 and .NET 8 and ASP.NET 8 like minimal APIs, primary constructors, and
+
+118
+00:09:29,570 --> 00:09:30,020
+so on.
+
+119
+00:09:30,020 --> 00:09:36,320
+By the end of the course, you will gain real world experience and you will have a solid understanding
+
+120
+00:09:36,320 --> 00:09:36,620
+of the.
+
+121
+00:09:36,770 --> 00:09:43,010
+.Net 8 microservices and will be ready to design, develop and deploy your own microservice applications.
+
+122
+00:09:43,010 --> 00:09:45,560
+I hope you will join me on this journey and develop 
+
+123
+00:09:45,560 --> 00:09:47,180
+.Net 8 microservices with me.
+

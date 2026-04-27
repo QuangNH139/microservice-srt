@@ -1,0 +1,316 @@
+1
+00:00:00,300 --> 00:00:05,939
+In this video, we are going to set port numbers for catalog API microservices.
+
+2
+00:00:05,939 --> 00:00:12,780
+That means we will configuring port numbers for our catalog microservices by modifying the launch settings.
+
+3
+00:00:13,110 --> 00:00:15,300
+Here you can see the table on the slide.
+
+4
+00:00:15,330 --> 00:00:18,930
+This table includes port numbers for each microservices.
+
+5
+00:00:18,960 --> 00:00:24,630
+Here you can see the microservices and we have three dimensions to exposing the port numbers.
+
+6
+00:00:24,630 --> 00:00:29,040
+These are the local environment Docker environment and Docker inside.
+
+7
+00:00:29,040 --> 00:00:32,940
+So for each value you can see two port numbers.
+
+8
+00:00:32,940 --> 00:00:39,000
+Because the ASP.Net ports listed http and https for running the application.
+
+9
+00:00:39,000 --> 00:00:46,200
+So you can see that for example in catalog microservices in local environment, we will exposing services
+
+10
+00:00:46,200 --> 00:00:51,240
+in 5000 for Http and 5050 for Https.
+
+11
+00:00:51,330 --> 00:00:57,360
+After finish the local development we will shifting the docker environment and we will exposing the
+
+12
+00:00:57,360 --> 00:01:01,560
+Http port from the Docker environment as a 6000.
+
+13
+00:01:01,560 --> 00:01:07,890
+And for Https we will expose the 6060 in docker inside the port numbers.
+
+14
+00:01:07,890 --> 00:01:13,650
+Always the same for each microservices, because these are the environment variables in the Docker file
+
+15
+00:01:13,650 --> 00:01:15,840
+for any ASP.Net application.
+
+16
+00:01:15,840 --> 00:01:18,270
+You can see in the illustration in here.
+
+17
+00:01:18,270 --> 00:01:22,260
+This is the Docker environment for internal IP port numbers.
+
+18
+00:01:22,260 --> 00:01:30,660
+This will be invoking the 80, 80 and 8081 ports for the Http and Https, but external IP ports from
+
+19
+00:01:30,660 --> 00:01:38,700
+the Docker environment, we can expose 60,000 port numbers in order to reach for internal Docker microservices.
+
+20
+00:01:38,700 --> 00:01:42,960
+But now we will start with the local environment and set the microservices.
+
+21
+00:01:42,960 --> 00:01:44,610
+With starting to 5000.
+
+22
+00:01:44,610 --> 00:01:48,600
+For catalog microservices, we will set 5050 50.
+
+23
+00:01:48,750 --> 00:01:50,580
+So let's get started.
+
+24
+00:01:51,180 --> 00:01:55,320
+In order to do that, let me remember the launch setting Json.
+
+25
+00:01:55,320 --> 00:02:01,170
+We will modify the launch setting Json in order to set these port numbers correctly from our big picture
+
+26
+00:02:01,170 --> 00:02:02,250
+of the architecture.
+
+27
+00:02:02,250 --> 00:02:04,200
+But before that, let me explain.
+
+28
+00:02:04,200 --> 00:02:05,760
+What is the launch settings?
+
+29
+00:02:05,790 --> 00:02:11,760
+Launch settings is located under the properties for each ASP.Net project, and if you open the launch
+
+30
+00:02:11,760 --> 00:02:14,250
+settings, you can see different running profiles.
+
+31
+00:02:14,250 --> 00:02:20,220
+It determines how our application runs in the development environment, specifically things like the
+
+32
+00:02:20,220 --> 00:02:22,830
+URL, port numbers and environment variables.
+
+33
+00:02:22,830 --> 00:02:26,520
+Here you can see the Http, https and docker environment.
+
+34
+00:02:26,520 --> 00:02:30,120
+These will be aligned with our running profile in this window.
+
+35
+00:02:30,120 --> 00:02:33,360
+So basically we will already know that launch setting.
+
+36
+00:02:33,360 --> 00:02:38,010
+And now we are going to modify the launch settings according to our port numbers.
+
+37
+00:02:38,010 --> 00:02:41,580
+So we have two options to modify the launch settings.
+
+38
+00:02:41,580 --> 00:02:47,430
+You can right click the catalog API, go to properties and go to debug section.
+
+39
+00:02:47,430 --> 00:02:53,820
+And after that you can open Debug Launch Settings Profile and you can set the launch setting configurations
+
+40
+00:02:53,820 --> 00:02:55,410
+with using these window.
+
+41
+00:02:55,440 --> 00:02:58,950
+Here you can see the working directory environment variables.
+
+42
+00:02:58,950 --> 00:03:05,370
+And if you scroll down you can select the launch browser URL and app URL port numbers in here.
+
+43
+00:03:05,370 --> 00:03:11,880
+But for each configuration already reflected under the launch settings Json file that we can directly
+
+44
+00:03:11,880 --> 00:03:13,140
+change in this file.
+
+45
+00:03:13,140 --> 00:03:19,680
+So I will choose these profiles under the launch settings in order to change our port numbers.
+
+46
+00:03:19,680 --> 00:03:25,980
+So basically we will assign specific ports to our microservices which is the catalog API.
+
+47
+00:03:25,980 --> 00:03:34,500
+As you can see that in local environment we will expose Http 5000 and Https on 50 over 50, and other
+
+48
+00:03:34,500 --> 00:03:36,840
+services will follow in that way.
+
+49
+00:03:36,840 --> 00:03:45,930
+So let's set these 50 ports on our environment, open the Visual Studio and go to the in Http port.
+
+50
+00:03:45,930 --> 00:03:49,470
+I'm going to change as a port number in here 5000.
+
+51
+00:03:49,470 --> 00:03:57,540
+And after that in Https we can change the Http port as a 5000 and https port as a 5050.
+
+52
+00:03:57,900 --> 00:04:01,260
+Please make this change on your catalog API.
+
+53
+00:04:01,260 --> 00:04:06,030
+And after that we can run these application to see how ports affected.
+
+54
+00:04:06,030 --> 00:04:13,710
+So if you come here and select the Http port and if you run this Http running profile, we will see
+
+55
+00:04:13,710 --> 00:04:18,300
+that these application will expose on localhost 5000.
+
+56
+00:04:18,300 --> 00:04:22,920
+To confirm this, it is good to open the project console window.
+
+57
+00:04:22,920 --> 00:04:30,480
+And here you can see that the application listening on the http localhost 5000 if you close this window.
+
+58
+00:04:30,480 --> 00:04:38,130
+And now let's try with the https running profile and verify that this will be exposing to 5050 port.
+
+59
+00:04:38,130 --> 00:04:41,610
+And here you can see the 5050 port comes.
+
+60
+00:04:41,610 --> 00:04:49,620
+And if you open the project console window you can see that this time this will be exposing 55,000 for
+
+61
+00:04:49,620 --> 00:04:52,890
+Http 5050 for Https.
+
+62
+00:04:52,890 --> 00:04:58,560
+If you look at the Docker ports, you can see the Docker ports assigned internal 8080.
+
+63
+00:04:58,680 --> 00:04:59,730
+And you can.
+
+64
+00:04:59,870 --> 00:05:01,280
+And verify from the Visual Studio.
+
+65
+00:05:01,280 --> 00:05:08,180
+If you open the Docker file, you can see that there is two environment variable exposing the 8080 ports
+
+66
+00:05:08,180 --> 00:05:10,520
+one Containerizing these application.
+
+67
+00:05:10,520 --> 00:05:14,330
+These are the internal port numbers in Docker containers.
+
+68
+00:05:14,330 --> 00:05:19,490
+It is requiring to external port numbers in order to invoke internal docker container.
+
+69
+00:05:19,490 --> 00:05:21,860
+You can see the architecture diagram in here.
+
+70
+00:05:21,860 --> 00:05:24,410
+These are the internal IP and port numbers.
+
+71
+00:05:24,410 --> 00:05:26,840
+We need an external IP and port numbers.
+
+72
+00:05:26,840 --> 00:05:30,530
+So that's why we will expose these as a 6000.
+
+73
+00:05:30,530 --> 00:05:36,590
+If you go back to our Visual Studio and change the running profile as a docker, if you run these application,
+
+74
+00:05:36,590 --> 00:05:41,480
+the curve will be assigned a custom port numbers for our application.
+
+75
+00:05:41,480 --> 00:05:44,000
+So how we can change as a 6000.
+
+76
+00:05:44,000 --> 00:05:50,360
+We will see in the upcoming videos when orchestrating our application with Docker compose files, but
+
+77
+00:05:50,360 --> 00:05:53,810
+for now it is enough to continue with the current configuration.
+
+78
+00:05:53,810 --> 00:05:58,880
+As you can see that we have successfully configured our LAN settings for Catholic API.
+
+79
+00:05:58,880 --> 00:06:04,160
+That will be exposing 5000 for Http and 5050 for Https for.
+

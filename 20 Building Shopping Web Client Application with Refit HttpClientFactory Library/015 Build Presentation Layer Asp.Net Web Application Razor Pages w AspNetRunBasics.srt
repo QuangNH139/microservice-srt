@@ -1,0 +1,568 @@
+1
+00:00:00,140 --> 00:00:03,530
+In this video we are going to build presentation layer.
+
+2
+00:00:03,530 --> 00:00:10,010
+That means we are at the fourth step and we will be develop ASP.Net Web Application Razor page with
+
+3
+00:00:10,010 --> 00:00:11,840
+ASP.Net Run Basics repository.
+
+4
+00:00:12,140 --> 00:00:17,930
+Here you can see that we will develop index card, product detail checkout order HTML and see page.
+
+5
+00:00:17,930 --> 00:00:23,750
+And we will consume the Erb API gateway and prints from the eye service interfaces with using Revit
+
+6
+00:00:23,750 --> 00:00:25,880
+Http client factory libraries.
+
+7
+00:00:25,880 --> 00:00:28,160
+So please open the Visual Studio.
+
+8
+00:00:28,160 --> 00:00:33,140
+And here you can see the our shopping web client application that you can see that we have developed
+
+9
+00:00:33,140 --> 00:00:35,570
+our model folder service folder.
+
+10
+00:00:35,570 --> 00:00:41,930
+And now we are going to develop our presentation layer which includes the page WW route and so on.
+
+11
+00:00:41,930 --> 00:00:49,190
+If you look at the root folder you can see that this will include Ccjs and leave folders.
+
+12
+00:00:49,190 --> 00:00:52,670
+And each folder has include the required operations.
+
+13
+00:00:52,670 --> 00:00:56,780
+For example, in the leaf folder we will implement Bootstrap Fatima.
+
+14
+00:00:57,020 --> 00:01:03,290
+So this is the front end implementation and all details under the WW root folder.
+
+15
+00:01:03,290 --> 00:01:09,740
+And if we expand the page folder this will be represent our page in the front end application and including
+
+16
+00:01:09,740 --> 00:01:11,960
+the index error and shared folder.
+
+17
+00:01:11,960 --> 00:01:18,200
+So if you expand the shared folder this will be include shared HTML operations during the implementation
+
+18
+00:01:18,200 --> 00:01:19,370
+of the other pages.
+
+19
+00:01:19,370 --> 00:01:22,760
+And you can see the layout and validation scripts partial.
+
+20
+00:01:22,760 --> 00:01:28,970
+So if you look at the index.html you can see that this is typical HTML page, but also including some
+
+21
+00:01:28,970 --> 00:01:35,480
+of the C-sharp models which including the model index model in order to populate data inside of these
+
+22
+00:01:35,630 --> 00:01:36,500
+HTML pages.
+
+23
+00:01:36,500 --> 00:01:42,680
+And where these index model comes, this will be comes from the our C sharp file of these HTML file.
+
+24
+00:01:42,680 --> 00:01:48,470
+If you click this button, this will be expanding to C sharp file of these index css HTML.
+
+25
+00:01:48,470 --> 00:01:53,150
+And if you open this class you can see that the class definition comes from in here.
+
+26
+00:01:53,150 --> 00:01:55,460
+This is implementation of the page model.
+
+27
+00:01:55,460 --> 00:02:01,820
+And the name of the class is index model that we can develop our properties in order to populate data
+
+28
+00:02:01,820 --> 00:02:03,950
+when consuming the API gateway.
+
+29
+00:02:03,950 --> 00:02:08,750
+So in this class we basically inject our I service interfaces.
+
+30
+00:02:08,750 --> 00:02:13,820
+And we will communicate with the Erb API gateway using the Revit Http client factory.
+
+31
+00:02:13,850 --> 00:02:20,210
+And after that we will populate the data into our HTML page with placing the module inside of the class.
+
+32
+00:02:20,210 --> 00:02:24,680
+So now we can start to develop our e-commerce microservice client application.
+
+33
+00:02:24,680 --> 00:02:33,470
+But as you can see that we need to develop Ccjs lib and also develop all pages HTML files into our application.
+
+34
+00:02:33,470 --> 00:02:37,820
+But I'm not going to develop front end operations in this course.
+
+35
+00:02:37,820 --> 00:02:42,980
+Instead of that, we will take these HTML, CSS, js files from the repository.
+
+36
+00:02:43,010 --> 00:02:44,390
+Which repository?
+
+37
+00:02:44,390 --> 00:02:51,050
+I have mentioned that we have run ASP.Net Core Basics repository that include implementation of the
+
+38
+00:02:51,050 --> 00:02:55,400
+basic real world e-commerce web application project in one solution.
+
+39
+00:02:55,400 --> 00:03:01,040
+Here you can see the details of the pages of the e-commerce application in this repository that we are
+
+40
+00:03:01,040 --> 00:03:06,080
+going to copy these files from our microservice application client application.
+
+41
+00:03:06,080 --> 00:03:11,780
+And if you scroll down, you can see that this is only one solution and one web application project,
+
+42
+00:03:11,780 --> 00:03:17,570
+including the ASP.Net Core and Entity Framework Core, and using the ASP.Net core components, which
+
+43
+00:03:17,600 --> 00:03:23,000
+including the razor pages, Middlewares, dependency injection configuration and logging.
+
+44
+00:03:23,000 --> 00:03:29,420
+So we will use this website when developing our client application, especially copy from the HTML,
+
+45
+00:03:29,420 --> 00:03:34,520
+CSS, and JavaScript files in order to build these e-commerce web application.
+
+46
+00:03:34,520 --> 00:03:37,880
+So before that, let me explain these repository.
+
+47
+00:03:37,880 --> 00:03:43,220
+If you open this folder, you can see the folder structure of these one ASP.Net core solution.
+
+48
+00:03:43,220 --> 00:03:46,160
+And I am going to focus on the WW root and page.
+
+49
+00:03:46,160 --> 00:03:50,210
+Here you can see that it is including required CSS and image folder.
+
+50
+00:03:50,210 --> 00:03:52,490
+We will copy from these website.
+
+51
+00:03:52,490 --> 00:03:58,610
+And also if you go to the page folder you can see that these will be including the index product, cart
+
+52
+00:03:58,610 --> 00:04:01,700
+checkout, confirmation order and so on.
+
+53
+00:04:01,700 --> 00:04:08,510
+So these are the related for the e-commerce and e-shop pages when we are making our e-commerce application.
+
+54
+00:04:08,510 --> 00:04:15,560
+For example, if you open the index.html, you can see that this is typical HTML page, one representing
+
+55
+00:04:15,560 --> 00:04:20,089
+in the landing page, including the all products with pagination.
+
+56
+00:04:20,089 --> 00:04:24,980
+And these are the are including the partial name and partial operations.
+
+57
+00:04:24,980 --> 00:04:25,820
+Partial HTML.
+
+58
+00:04:26,090 --> 00:04:31,190
+When populating the products here, you can see that these will be populating the product partial,
+
+59
+00:04:31,190 --> 00:04:34,550
+which is getting the first order default from the product list.
+
+60
+00:04:34,550 --> 00:04:40,070
+And if you scroll down here, you can see the for each iteration and listing all products with using
+
+61
+00:04:40,070 --> 00:04:43,850
+the partial again, which is the product item partial.
+
+62
+00:04:43,850 --> 00:04:49,490
+So where this partial storing in this application under the page we have a shared folder.
+
+63
+00:04:49,490 --> 00:04:55,400
+And under the shared folder you can see that this is the product item partial, representing each product
+
+64
+00:04:55,400 --> 00:04:59,720
+in a HTML format and populating the product data, for example.
+
+65
+00:05:00,090 --> 00:05:03,300
+Model summary, model, model price and so on.
+
+66
+00:05:03,300 --> 00:05:08,640
+And if you look at the top product partial, again, this is the single product for the top product
+
+67
+00:05:08,640 --> 00:05:09,660
+in the landing page.
+
+68
+00:05:09,660 --> 00:05:14,730
+So we can use common HTML operations with using the shared folders and partial weaves.
+
+69
+00:05:14,730 --> 00:05:20,430
+And if you scroll down and go back to index.html, you can see that as a model we will use index model
+
+70
+00:05:20,430 --> 00:05:23,100
+and populate the are products according to index model.
+
+71
+00:05:23,100 --> 00:05:28,620
+And if you go to the see page, you can see that in the index model we basically retrieve the products
+
+72
+00:05:28,620 --> 00:05:34,350
+from the repository, because this is the single application using the Entity Framework code that communicating
+
+73
+00:05:34,350 --> 00:05:36,210
+the database and retrieve the products.
+
+74
+00:05:36,210 --> 00:05:43,140
+But in our case, we will inject our AI service interfaces in order to consume Erb API gateway endpoints
+
+75
+00:05:43,140 --> 00:05:47,400
+and retrieve the products from the catalog microservices over the Erb API gateway.
+
+76
+00:05:47,400 --> 00:05:53,160
+So as the same way you can examine the other pages, including the product, product detail, and so
+
+77
+00:05:53,160 --> 00:05:53,490
+on.
+
+78
+00:05:53,490 --> 00:05:59,190
+Here you can see the product HTML page that including the listing all products in here and here you
+
+79
+00:05:59,190 --> 00:06:03,060
+can see the see page that retrieving the products from the database.
+
+80
+00:06:03,060 --> 00:06:06,330
+In our case we will retrieve from the Erb API gateway.
+
+81
+00:06:06,330 --> 00:06:11,430
+And here you can see the product detail which representing a single product with detail information.
+
+82
+00:06:11,430 --> 00:06:16,830
+And here you can see that we will use razor page and model in order to reach the product name, price
+
+83
+00:06:16,830 --> 00:06:17,610
+and so on.
+
+84
+00:06:17,610 --> 00:06:20,430
+And these will be populated from the RC page.
+
+85
+00:06:20,430 --> 00:06:23,100
+And as the same way here you can see the order page.
+
+86
+00:06:23,100 --> 00:06:25,560
+And also here you can see the shopping cart page.
+
+87
+00:06:25,560 --> 00:06:30,360
+And here you can see the checkout page that we will start with the asynchronous communication.
+
+88
+00:06:30,360 --> 00:06:35,010
+So now I'm going to start to copy from the R project.
+
+89
+00:06:35,010 --> 00:06:37,650
+And I will start with the root folder.
+
+90
+00:06:37,650 --> 00:06:44,910
+In order to perform these front end styling for each page here you can see that we have including the
+
+91
+00:06:44,910 --> 00:06:51,900
+front end styling, CSS and image files that include the bootstrap for and CSS image folder that.
+
+92
+00:06:51,900 --> 00:06:57,240
+We are going to copy these folders and paste into our shopping client web application to representing
+
+93
+00:06:57,240 --> 00:06:58,290
+our shop page.
+
+94
+00:06:58,290 --> 00:07:03,330
+So let's build the presentation layer from this ASP.Net basics repository.
+
+95
+00:07:03,330 --> 00:07:09,540
+For that purpose, I'm going to go to on top of this GitHub repository page I'm going to come here,
+
+96
+00:07:09,540 --> 00:07:13,320
+click the code and copy to clone link of this repository.
+
+97
+00:07:13,320 --> 00:07:20,400
+And just after that I am going to open Additional Visual Studio and click this clone a repository and
+
+98
+00:07:20,400 --> 00:07:21,270
+paste in here.
+
+99
+00:07:21,270 --> 00:07:23,760
+So we are going to create a new repository.
+
+100
+00:07:23,760 --> 00:07:26,430
+But I have already clone this repository before.
+
+101
+00:07:26,430 --> 00:07:31,710
+For that purpose I have go to that location and open this project solution file.
+
+102
+00:07:31,710 --> 00:07:38,640
+And this will be our ASP.Net run basic repository that we are going to use when we are developing our
+
+103
+00:07:38,640 --> 00:07:39,630
+client application.
+
+104
+00:07:39,630 --> 00:07:43,530
+So let me come here and close all the tabs.
+
+105
+00:07:43,530 --> 00:07:50,670
+And if you expand this page and close all files, you can see that we will use these root folder.
+
+106
+00:07:50,670 --> 00:07:53,130
+When we are styling our each page.
+
+107
+00:07:53,130 --> 00:07:59,310
+For that purpose, we can copy these CSS and image files from the ASP.Net basics repository.
+
+108
+00:07:59,310 --> 00:08:02,220
+Right click and I'm going to copy these files.
+
+109
+00:08:02,220 --> 00:08:07,380
+And after that I'm going to open our actual Icap microservices repository.
+
+110
+00:08:07,380 --> 00:08:12,150
+And this will be include shopping Web client application and go to the root folder.
+
+111
+00:08:12,150 --> 00:08:16,350
+First of all I'm going to delete these Ccjs and lib folders.
+
+112
+00:08:16,350 --> 00:08:23,520
+So right click these folders and delete all these Ccjs and lib folder under the Shopping Web client
+
+113
+00:08:23,520 --> 00:08:24,420
+application.
+
+114
+00:08:27,160 --> 00:08:29,140
+Okay, we can't delete leaf folder.
+
+115
+00:08:29,140 --> 00:08:35,200
+It doesn't important for us because we will copy from the styling, including the CSS and image from
+
+116
+00:08:35,200 --> 00:08:36,700
+the ASP.Net basics.
+
+117
+00:08:36,700 --> 00:08:43,299
+Right click and copy these files and paste into the root into our Shopping Web client application.
+
+118
+00:08:43,299 --> 00:08:44,500
+Right click paste.
+
+119
+00:08:44,500 --> 00:08:50,950
+Here you can see that we have added requiring CSS and image folder for our microservices and client
+
+120
+00:08:50,950 --> 00:08:51,580
+application.
+
+121
+00:08:51,580 --> 00:08:55,690
+After that we can continue the copy operation under the page folder.
+
+122
+00:08:55,690 --> 00:08:58,750
+If you go to page folder and go to subfolder shared.
+
+123
+00:08:58,750 --> 00:09:06,460
+Here you can see the underscore layout HTML page that including all common operation for each page under
+
+124
+00:09:06,460 --> 00:09:07,360
+the page folder.
+
+125
+00:09:07,360 --> 00:09:12,430
+So we are going to copy these layout page from the ASP.Net basics.
+
+126
+00:09:12,430 --> 00:09:15,970
+So I'm going to open the page open the shared and go to layout.
+
+127
+00:09:15,970 --> 00:09:23,830
+And I'm going to select all copy these layout CSS HTML and go back to our actual repository and delete
+
+128
+00:09:23,830 --> 00:09:27,010
+all file from the our shopping web client application.
+
+129
+00:09:27,010 --> 00:09:29,440
+And paste in here and save this file.
+
+130
+00:09:29,440 --> 00:09:35,410
+So as you can see that this file is including all required operation for the common operation in the
+
+131
+00:09:35,410 --> 00:09:42,730
+page, including the CSS files and arranging the our header, including the our index product card order
+
+132
+00:09:42,730 --> 00:09:45,700
+and contact page links in this file.
+
+133
+00:09:45,700 --> 00:09:51,040
+And here you can see the form for submitting the button for the search operation and so on.
+
+134
+00:09:51,040 --> 00:09:57,910
+So by changing this layout page, we can access and reach the front end application with using these
+
+135
+00:09:57,910 --> 00:09:59,950
+footer and header operations.
+
+136
+00:09:59,950 --> 00:10:04,510
+Here you can see the header and footer that we are going to arranging our layout.
+
+137
+00:10:04,510 --> 00:10:08,920
+And after that we will develop our index product categories and other pages.
+
+138
+00:10:08,920 --> 00:10:15,610
+And at this point if you run this shopping web application, you can see that our layout prepared successfully.
+
+139
+00:10:15,610 --> 00:10:17,830
+And this will be open the Chrome page.
+
+140
+00:10:17,830 --> 00:10:22,990
+And here you can see that we have header including the product card order and contact links.
+
+141
+00:10:22,990 --> 00:10:26,920
+And we have also footer including the about information and other links.
+
+142
+00:10:26,920 --> 00:10:31,720
+And this is the actual index page that we are going to modify in the next video.
+

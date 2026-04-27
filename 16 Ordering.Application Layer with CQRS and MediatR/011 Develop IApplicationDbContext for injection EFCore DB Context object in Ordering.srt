@@ -1,0 +1,396 @@
+1
+00:00:00,260 --> 00:00:06,980
+In this video we are going to develop AI application DB context interface for injecting the Entity Framework
+
+2
+00:00:06,980 --> 00:00:09,860
+core DB context object in our application layer.
+
+3
+00:00:10,160 --> 00:00:15,890
+So this approach provides an abstraction over the Entity Framework core DB context object, which is
+
+4
+00:00:15,890 --> 00:00:21,710
+vital for the decoupling of the application layer from the specific database provider implementation
+
+5
+00:00:21,710 --> 00:00:23,270
+from the infrastructure layer.
+
+6
+00:00:23,840 --> 00:00:30,470
+So normally for abstraction we are going to use repository objects and we will create IO parser object.
+
+7
+00:00:30,470 --> 00:00:36,590
+But when using the Entity Framework core we don't need extra abstractions like implementing repository
+
+8
+00:00:36,590 --> 00:00:43,070
+pattern, entity framework core db context object is already an abstraction of any database provider
+
+9
+00:00:43,070 --> 00:00:45,560
+that we can use for the application layer.
+
+10
+00:00:45,740 --> 00:00:52,550
+For that purpose, we will define an interface which name is AI application db context that uses Entity
+
+11
+00:00:52,550 --> 00:00:59,270
+Framework core NuGet package reference, and this interface will expose Dbset properties for each entity
+
+12
+00:00:59,270 --> 00:01:02,780
+and including a method for saving changes asynchronously.
+
+13
+00:01:03,110 --> 00:01:07,820
+So please open the Visual Studio and go to the Create Order folder.
+
+14
+00:01:07,820 --> 00:01:11,780
+And in here we can use Save to Database operation.
+
+15
+00:01:11,780 --> 00:01:15,980
+For that purpose we will create AI application db context object.
+
+16
+00:01:15,980 --> 00:01:20,840
+In order to do that, you can navigate to Ordering Application and go to the data folder.
+
+17
+00:01:20,840 --> 00:01:24,170
+And in this data folder I'm going to create a new interface.
+
+18
+00:01:24,170 --> 00:01:27,770
+Which name is AI application db context dot CSS.
+
+19
+00:01:28,370 --> 00:01:35,270
+So this interface will include dbset properties for entities like customer, product, order and order
+
+20
+00:01:35,270 --> 00:01:35,750
+item.
+
+21
+00:01:35,750 --> 00:01:39,080
+And we will add a method for saving changes asynchronously.
+
+22
+00:01:39,080 --> 00:01:40,580
+So let's get started.
+
+23
+00:01:40,580 --> 00:01:46,250
+I'm going to remove unnecessary using statement and make this interface as a public.
+
+24
+00:01:46,250 --> 00:01:52,400
+And here you can see that I'm going to define the members of this interface with using the Dbset properties.
+
+25
+00:01:52,400 --> 00:01:55,610
+And in here I'm going to create a customers entity.
+
+26
+00:01:55,610 --> 00:02:00,830
+And following that I'm going to use product order and order item.
+
+27
+00:02:00,830 --> 00:02:04,580
+These will be represent our entities from these interface.
+
+28
+00:02:04,580 --> 00:02:12,080
+And lastly I'm going to create a new method which is the task integer save change async method and accepting
+
+29
+00:02:12,080 --> 00:02:14,180
+the cancellation token as a parameter.
+
+30
+00:02:14,180 --> 00:02:16,190
+So this is the interface definition.
+
+31
+00:02:16,190 --> 00:02:18,650
+I'm going to remove unnecessary using statement.
+
+32
+00:02:18,650 --> 00:02:25,220
+And these interface provide a contract for database operations, ensuring that the application layer
+
+33
+00:02:25,220 --> 00:02:33,020
+remains independent of specific database implementation and also not including any infrastructure implementation
+
+34
+00:02:33,020 --> 00:02:35,720
+like SQL server, database provider and so on.
+
+35
+00:02:35,720 --> 00:02:41,480
+This will be the main abstractions, but as you can see that even we are using the abstractions.
+
+36
+00:02:41,480 --> 00:02:43,250
+We need a Dbset object.
+
+37
+00:02:43,250 --> 00:02:49,010
+So where these Dbset object comes from, of course this comes from the Entity Framework core package.
+
+38
+00:02:49,010 --> 00:02:55,820
+In order to use Dbset in our application Dbcontext interface, we should add the Microsoft Entity Framework
+
+39
+00:02:55,820 --> 00:02:58,700
+Core NuGet package into our ordering application.
+
+40
+00:02:58,700 --> 00:03:03,260
+So I'm going to right click dependencies and manage NuGet packages.
+
+41
+00:03:05,150 --> 00:03:11,120
+And in here I'm going to search for the browse for the Microsoft Entity Framework core.
+
+42
+00:03:11,240 --> 00:03:16,820
+As you can see that there's lots of Entity Framework core packages, like including the SQL server and
+
+43
+00:03:16,820 --> 00:03:18,200
+other data providers.
+
+44
+00:03:18,200 --> 00:03:24,530
+And in here we are using the plain Entity Framework core that will represent an abstraction of other
+
+45
+00:03:24,530 --> 00:03:25,700
+database providers.
+
+46
+00:03:25,700 --> 00:03:32,720
+So for application layer, we can install this package safely in order to perform abstractions into
+
+47
+00:03:32,720 --> 00:03:33,650
+our interface.
+
+48
+00:03:33,650 --> 00:03:38,660
+So please select this Microsoft Entity Framework core and install this package into the application
+
+49
+00:03:38,660 --> 00:03:40,640
+layer after installation.
+
+50
+00:03:40,640 --> 00:03:45,410
+You can confirm this from the Ordering application project file and save this file.
+
+51
+00:03:45,410 --> 00:03:49,850
+And here you can see that we have adding the package Microsoft Entity Framework Core.
+
+52
+00:03:49,850 --> 00:03:55,760
+And this package will act as an abstraction for Entity Framework core SQL server data related operations
+
+53
+00:03:55,760 --> 00:03:59,540
+and data provider which we implement into Infrastructure Layer.
+
+54
+00:03:59,540 --> 00:04:01,220
+And this will be an abstraction.
+
+55
+00:04:01,220 --> 00:04:05,960
+You can think this is an AI repository layer into ordering application.
+
+56
+00:04:05,960 --> 00:04:11,630
+So after installing an abstraction of the Entity Framework core NuGet packages, we can go back to our
+
+57
+00:04:11,630 --> 00:04:17,899
+interface and add the using statement for these Dbset objects using Microsoft Entity Framework core
+
+58
+00:04:17,899 --> 00:04:19,940
+and save these interface.
+
+59
+00:04:20,029 --> 00:04:26,120
+And after that we should register Dependency Injection in order to use these interface.
+
+60
+00:04:26,120 --> 00:04:32,450
+For that purpose, I am going to go to the Dependency injection class on the ordering infrastructure
+
+61
+00:04:32,450 --> 00:04:35,930
+where we have installing these application DB context.
+
+62
+00:04:35,930 --> 00:04:42,110
+For that purpose, open the ordering infrastructure and go to the dependency injection case that we
+
+63
+00:04:42,110 --> 00:04:45,890
+have already registered DB context object in this line of code.
+
+64
+00:04:45,890 --> 00:04:51,920
+So these are the registration and configuration for the Entity Framework core and SQL server data provider.
+
+65
+00:04:51,920 --> 00:04:59,240
+And in here I'm going to also adding an if scoped services which is the AI application db context and
+
+66
+00:04:59,240 --> 00:05:00,980
+application db context.
+
+67
+00:05:00,980 --> 00:05:05,300
+So please open these commented code and add a scoped services.
+
+68
+00:05:05,300 --> 00:05:06,860
+I application db context.
+
+69
+00:05:06,860 --> 00:05:13,520
+If you come here you can using the ordering application data because infrastructure layer can easily
+
+70
+00:05:13,520 --> 00:05:16,730
+use the application layer according to Clean architecture.
+
+71
+00:05:16,730 --> 00:05:19,250
+That's why I am adding these using statement.
+
+72
+00:05:19,520 --> 00:05:24,710
+After that you can see that there is still an exception and you can come here and read the exception.
+
+73
+00:05:24,710 --> 00:05:30,200
+According to the exception, you can see that there is no implicit reference conversion from the application
+
+74
+00:05:30,200 --> 00:05:32,270
+DB context to our interface.
+
+75
+00:05:32,270 --> 00:05:37,370
+For that purpose, we should implement this interface inside of the application db context.
+
+76
+00:05:37,370 --> 00:05:40,790
+Right click the application db context, go to definition.
+
+77
+00:05:40,790 --> 00:05:44,150
+And here you can see that we will inherit from the DB context.
+
+78
+00:05:44,150 --> 00:05:50,570
+And also we will implement the AI application db context inside of the our actual implementation of
+
+79
+00:05:50,570 --> 00:05:53,810
+the application DB context under the infrastructure layer.
+
+80
+00:05:53,810 --> 00:05:57,350
+So please make sure that you have also adding these interface.
+
+81
+00:05:57,350 --> 00:06:03,260
+Because without adding these interface we cannot resolve these interface to our actual application DB
+
+82
+00:06:03,260 --> 00:06:05,510
+context into the application layer.
+
+83
+00:06:05,630 --> 00:06:11,510
+So if you go back to our dependency injection and save this file and go back to dependency injection,
+
+84
+00:06:11,510 --> 00:06:17,240
+you can see that we have added the code for this interface to our actual DB context object.
+
+85
+00:06:17,240 --> 00:06:23,600
+This registration enables the injection of AI application db context interface throughout the application
+
+86
+00:06:23,600 --> 00:06:29,150
+layer, where we implement actual business logic, which is the create order handler, and you can see
+
+87
+00:06:29,150 --> 00:06:32,210
+that we can save the database with using this interface.
+
+88
+00:06:32,210 --> 00:06:37,370
+But before that, let me right click the ordering API and build the ordering microservices.
+
+89
+00:06:37,370 --> 00:06:40,640
+And let's recap what we have done in this video.
+
+90
+00:06:40,880 --> 00:06:43,520
+As you can see that we succeeded in this video.
+
+91
+00:06:43,520 --> 00:06:49,760
+We basically start with creating a data folder and AI application db context interface under the ordering
+
+92
+00:06:49,760 --> 00:06:50,660
+application.
+
+93
+00:06:50,870 --> 00:06:56,960
+And after that we have installed the Entity Framework core based NuGet packages into our ordering application.
+
+94
+00:06:57,080 --> 00:07:02,390
+After that, we have registered our interface under the ordering infrastructure and Dependency injection
+
+95
+00:07:02,390 --> 00:07:05,900
+with adding scope services to our application DB context.
+
+96
+00:07:06,050 --> 00:07:12,680
+And lastly, we adding these interface into our application DB context with implementing these interface
+
+97
+00:07:12,680 --> 00:07:18,980
+with using the application DB context in order to resolve application db context one dependency injection.
+
+98
+00:07:18,980 --> 00:07:25,760
+So now we can ready for the inject these AI application db context into our command handler class to
+
+99
+00:07:25,760 --> 00:07:29,630
+performing Crud operations and performing use cases in the handle method.
+

@@ -1,0 +1,104 @@
+1
+00:00:00,110 --> 00:00:06,560
+In this video we are going to develop delete basket endpoint with using minimal API and Carter.
+
+2
+00:00:06,560 --> 00:00:10,700
+For that purpose, please open the Visual Studio and go to Delete basket.
+
+3
+00:00:10,700 --> 00:00:13,580
+Use case folder and open the delete basket and print.
+
+4
+00:00:13,610 --> 00:00:17,420
+The first thing we should do that define request and response object.
+
+5
+00:00:17,420 --> 00:00:23,180
+So as a request object I put command to delete basket request because we will get username from the
+
+6
+00:00:23,180 --> 00:00:30,110
+request parameters and as a response object we will develop the delete basket response object, including
+
+7
+00:00:30,110 --> 00:00:35,840
+the Issuccess same as the r handler class delete basket command operation.
+
+8
+00:00:35,870 --> 00:00:42,470
+After that, we can expose http delete operation into our delete basket endpoint with inheriting from
+
+9
+00:00:42,470 --> 00:00:48,110
+the I Carter module, which comes from the Carter library and implement the members and this will be
+
+10
+00:00:48,110 --> 00:00:54,170
+create add routes method that we can expose HTTP delete operations inside of this method.
+
+11
+00:00:54,170 --> 00:01:01,280
+So basically I'm going to exposing delete operation using the app dot map delete method.
+
+12
+00:01:01,280 --> 00:01:05,269
+And these are the endpoint of our delete operation.
+
+13
+00:01:05,269 --> 00:01:08,540
+This username specifying in the request parameters.
+
+14
+00:01:08,540 --> 00:01:11,990
+That's why we will get the username in the asynchronous delegate handler.
+
+15
+00:01:11,990 --> 00:01:13,790
+And injecting the I sender.
+
+16
+00:01:13,820 --> 00:01:15,050
+The first line of code.
+
+17
+00:01:15,050 --> 00:01:18,170
+We basically sending the mediator send operation.
+
+18
+00:01:18,170 --> 00:01:21,560
+And we will passing the command object with incoming username.
+
+19
+00:01:21,560 --> 00:01:26,390
+And this will be run the our delete basket command handler and return back the result.
+
+20
+00:01:26,390 --> 00:01:31,610
+And we will convert the result object to the response with using the master and the last line of code,
+
+21
+00:01:31,610 --> 00:01:33,620
+we basically return to the client okay.
+
+22
+00:01:33,650 --> 00:01:34,190
+Response.
+
+23
+00:01:34,190 --> 00:01:37,970
+And these are the configurations of the HTTP delete operation.
+
+24
+00:01:38,030 --> 00:01:40,430
+Please develop these codes into your computer.
+
+25
+00:01:40,430 --> 00:01:42,410
+And we don't have any using statement.
+
+26
+00:01:42,410 --> 00:01:45,590
+And this is the our delete basket endpoint definition.
+

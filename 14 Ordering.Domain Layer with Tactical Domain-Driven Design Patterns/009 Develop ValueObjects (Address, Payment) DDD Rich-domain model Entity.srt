@@ -1,0 +1,408 @@
+1
+00:00:00,200 --> 00:00:06,260
+In this video, we are going to continue to develop value objects with the rich domain model entity
+
+2
+00:00:06,260 --> 00:00:08,180
+in the ordering domain layer.
+
+3
+00:00:08,180 --> 00:00:10,310
+So we will continue with the IDs.
+
+4
+00:00:10,340 --> 00:00:14,420
+Here you can see the customer ID completed with the static of method.
+
+5
+00:00:14,420 --> 00:00:17,570
+And I'm going to continue with the order ID.
+
+6
+00:00:17,720 --> 00:00:23,060
+The order id value object should also be responsible for its own instantiation.
+
+7
+00:00:23,060 --> 00:00:27,950
+And here we will use a static off method in order to create instance of the order id.
+
+8
+00:00:28,220 --> 00:00:34,700
+First of all, I'm going to create a private constructor and we will use this constructor into the off
+
+9
+00:00:34,700 --> 00:00:35,330
+method.
+
+10
+00:00:35,330 --> 00:00:37,910
+And here you can see the static off method.
+
+11
+00:00:37,910 --> 00:00:43,550
+And we will perform the static off method accepting the grid value information.
+
+12
+00:00:43,550 --> 00:00:49,220
+And we will apply the domain rules and validations in the beginning of this static method.
+
+13
+00:00:49,220 --> 00:00:55,070
+And here you can see that we will throw if null exception and we will check with empty and throwing
+
+14
+00:00:55,070 --> 00:00:56,030
+domain exception.
+
+15
+00:00:56,030 --> 00:01:02,750
+Order ID cannot be empty and we will return a new order using the private constructor passing the body
+
+16
+00:01:02,750 --> 00:01:03,650
+information.
+
+17
+00:01:03,650 --> 00:01:08,270
+So this is the order id and I'm going to continue with the order item ID.
+
+18
+00:01:08,480 --> 00:01:15,470
+If you go to Order Item Entity class, you can see that we have already used order item ID that of static
+
+19
+00:01:15,470 --> 00:01:17,990
+method when creating new order item.
+
+20
+00:01:17,990 --> 00:01:23,600
+So we will implement this off method under the order item id value object.
+
+21
+00:01:23,630 --> 00:01:31,550
+Please go to Order Item id value object and we will use a static method of method to create instance
+
+22
+00:01:31,550 --> 00:01:33,050
+of order item id.
+
+23
+00:01:33,260 --> 00:01:40,160
+First of all, I'm going to create a private constructor, and after that we will follow the same steps
+
+24
+00:01:40,160 --> 00:01:45,710
+to create public static of method returning the order item id.
+
+25
+00:01:46,010 --> 00:01:52,670
+So in this method we will getting the volume information and we will performing the domain validations
+
+26
+00:01:52,670 --> 00:01:53,390
+in here.
+
+27
+00:01:53,390 --> 00:01:59,030
+And after that returning new order item ID with passing the value in the private constructor.
+
+28
+00:01:59,030 --> 00:02:04,760
+So this is the implementation of the order item id and we will continue with the next one, which is
+
+29
+00:02:04,790 --> 00:02:06,200
+the product ID.
+
+30
+00:02:06,440 --> 00:02:11,390
+If you go to the product ID you can come here and follow the same steps.
+
+31
+00:02:11,390 --> 00:02:13,400
+Create the private constructor.
+
+32
+00:02:13,410 --> 00:02:18,450
+and after that we will develop the off method following the this code.
+
+33
+00:02:18,450 --> 00:02:23,760
+And here you can see that we are doing exactly the same operations with the other value objects.
+
+34
+00:02:23,790 --> 00:02:28,380
+I'm not going to explain again and please develop it the same way like me.
+
+35
+00:02:28,380 --> 00:02:33,000
+And after that we can go ahead to the next value object which is the order name.
+
+36
+00:02:33,090 --> 00:02:38,130
+The order name value object should also be responsible for its own instantiation.
+
+37
+00:02:38,130 --> 00:02:43,770
+And here we will use a static off method to create new instance of the order name.
+
+38
+00:02:43,770 --> 00:02:45,000
+And we set that value.
+
+39
+00:02:45,000 --> 00:02:49,800
+Objects can include domain rules and apply these rules when creating the value objects.
+
+40
+00:02:49,800 --> 00:02:53,820
+So I'm going to focus on these domain rules for that purpose.
+
+41
+00:02:53,820 --> 00:03:00,930
+The first row of this order name value object I'm going to create private const integer default length
+
+42
+00:03:00,960 --> 00:03:01,770
+as a five.
+
+43
+00:03:01,770 --> 00:03:05,400
+So we will put a constraint when creating order name.
+
+44
+00:03:05,400 --> 00:03:13,860
+And after that we will create a private constructor as the same way with the previous value objects.
+
+45
+00:03:13,860 --> 00:03:15,150
+Private order name.
+
+46
+00:03:15,150 --> 00:03:22,230
+Accepting the value information as a string and passing the value inside of these value property of
+
+47
+00:03:22,230 --> 00:03:24,000
+the order name value objects.
+
+48
+00:03:24,000 --> 00:03:31,230
+And finally, we can create our off method in order to create instantiate these order name.
+
+49
+00:03:31,230 --> 00:03:36,090
+And this is the public static order name of method accepting the volume formation.
+
+50
+00:03:36,090 --> 00:03:42,630
+And in here you can see that we have used out of the box extension method of the argument.
+
+51
+00:03:42,630 --> 00:03:43,380
+Exceptions.
+
+52
+00:03:43,380 --> 00:03:50,100
+In order to perform domain rules and validations and constraints, the first row we are checking if
+
+53
+00:03:50,100 --> 00:03:56,430
+null or empty the incoming value operation, and the second row we basically throw exception.
+
+54
+00:03:56,430 --> 00:04:02,310
+If not length operation is the same that we defined in the default length in the beginning of the order
+
+55
+00:04:02,310 --> 00:04:03,840
+name value object.
+
+56
+00:04:03,840 --> 00:04:08,190
+So this is the finished of the order name and the next value object is address.
+
+57
+00:04:08,190 --> 00:04:14,310
+If you go to address the address value object represents a shipping or billing address in the order
+
+58
+00:04:14,310 --> 00:04:15,060
+aggregate.
+
+59
+00:04:15,090 --> 00:04:21,360
+This object encapsulates all relevant address information and provide a method to create a fully initialized
+
+60
+00:04:21,390 --> 00:04:22,350
+address object.
+
+61
+00:04:22,350 --> 00:04:28,050
+If you go to the order aggregate, you can see that we will use address value object for shipping and
+
+62
+00:04:28,050 --> 00:04:28,890
+billing address.
+
+63
+00:04:28,920 --> 00:04:35,970
+If you go back to address value object, we will define the off method in order to create an instantiate
+
+64
+00:04:36,000 --> 00:04:37,290
+address information.
+
+65
+00:04:37,290 --> 00:04:40,470
+But before that I would like to start with the constructors.
+
+66
+00:04:40,470 --> 00:04:44,970
+I'm going to create a default constructor, which is the protected address.
+
+67
+00:04:44,970 --> 00:04:47,220
+This is required for Entity Framework core.
+
+68
+00:04:47,250 --> 00:04:54,990
+I will explain later, but passing this point for now, and after that we will create a private constructor.
+
+69
+00:04:54,990 --> 00:05:02,280
+As usual, when accepting all the parameters in the constructor parameter, you can see that private
+
+70
+00:05:02,310 --> 00:05:07,890
+address and including the first name, last name, email address, address, line, country, state
+
+71
+00:05:07,890 --> 00:05:13,560
+and zip code as a parameter and passing this value inside of this private constructor.
+
+72
+00:05:13,560 --> 00:05:19,050
+So after that, we will use this private constructor in order to develop off method.
+
+73
+00:05:19,050 --> 00:05:26,940
+So here you can see that our public static address off method And we will passing all these parameters
+
+74
+00:05:26,940 --> 00:05:29,820
+at the same way in the private constructor.
+
+75
+00:05:29,820 --> 00:05:37,800
+And after that we have running the domain rules and violations by using the argument exceptions.
+
+76
+00:05:37,800 --> 00:05:43,920
+And after that we will use private constructor with passing these parameters into our off method.
+
+77
+00:05:43,920 --> 00:05:48,930
+So these domain validations ensure the mandatory fields are provided.
+
+78
+00:05:48,930 --> 00:05:54,750
+We are expecting email address and address line as a mandatory when creating a new address information.
+
+79
+00:05:54,870 --> 00:06:02,070
+So after defining these address value object with the private constructors and the static off method,
+
+80
+00:06:02,070 --> 00:06:04,800
+we can go to the payment value object.
+
+81
+00:06:04,800 --> 00:06:10,770
+If you go to payment case, the payment value object represents the payment information associated with
+
+82
+00:06:10,770 --> 00:06:11,430
+an order.
+
+83
+00:06:11,430 --> 00:06:16,560
+You can go to Order Aggregate and you can see the payment located under our order aggregate.
+
+84
+00:06:16,590 --> 00:06:22,350
+That's why we will define payment and payment also required to instantiate its own entity.
+
+85
+00:06:22,380 --> 00:06:25,440
+We will follow the same steps as the address.
+
+86
+00:06:25,440 --> 00:06:31,170
+I'm going to create a protected constructor in order to align with the Entity Framework core.
+
+87
+00:06:31,170 --> 00:06:37,800
+And after that I'm going to create a private constructor including all members into payment record type.
+
+88
+00:06:37,800 --> 00:06:43,900
+These are the card name, card number, expiration, CVV and payment method and passing these incoming
+
+89
+00:06:43,900 --> 00:06:46,090
+parameter into our properties.
+
+90
+00:06:46,090 --> 00:06:54,550
+And after that we can ready to create our public static payment of method, including all the same parameters
+
+91
+00:06:54,550 --> 00:06:57,010
+in the parameter line of this method.
+
+92
+00:06:57,010 --> 00:07:00,910
+And after that we can perform domain logic in here.
+
+93
+00:07:00,910 --> 00:07:03,520
+And after that we will return a new payment.
+
+94
+00:07:03,520 --> 00:07:08,950
+With passing these parameters and using the private constructor, you can see the domain validations
+
+95
+00:07:08,950 --> 00:07:10,780
+that we have used out-of-the-box.
+
+96
+00:07:10,780 --> 00:07:13,030
+Argument exception extension methods.
+
+97
+00:07:13,030 --> 00:07:19,390
+First of all, we will check if null or empty for three parameters, and after that we will check throw
+
+98
+00:07:19,420 --> 00:07:26,590
+if greater than three the length of the CVV, and we will check these conditions before creating a payment.
+
+99
+00:07:26,590 --> 00:07:32,500
+So as you can see that we have completed the creating static of method for each value object you can
+
+100
+00:07:32,530 --> 00:07:38,380
+go to for each value object and verify that we have created auth method for each value object.
+
+101
+00:07:38,380 --> 00:07:44,650
+By this way, we can encapsulate the relevant properties and business rules within the auth method for
+
+102
+00:07:44,650 --> 00:07:45,580
+each value objects.
+

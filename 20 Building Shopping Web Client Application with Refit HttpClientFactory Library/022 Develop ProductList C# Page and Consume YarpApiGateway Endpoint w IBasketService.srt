@@ -1,0 +1,444 @@
+1
+00:00:00,140 --> 00:00:06,380
+In this video, we are going to develop product model page and consume the Erb API gateway and trains
+
+2
+00:00:06,380 --> 00:00:09,560
+with using the API catalog and I basket services.
+
+3
+00:00:09,560 --> 00:00:12,230
+So for that purpose, let me start the development.
+
+4
+00:00:12,230 --> 00:00:18,050
+I am going to remove unnecessary using statement and come to the class definitions in order to add our
+
+5
+00:00:18,050 --> 00:00:22,820
+primary constructors, which will be the catalog service, our basket service.
+
+6
+00:00:22,820 --> 00:00:28,310
+And also we need a Ilogger which is logging operations for the product list model.
+
+7
+00:00:28,310 --> 00:00:31,700
+I'm going to change the Ilogger operation as a product list model.
+
+8
+00:00:31,700 --> 00:00:32,479
+Okay.
+
+9
+00:00:32,479 --> 00:00:36,170
+Here you can see that we have injected required services.
+
+10
+00:00:36,170 --> 00:00:39,740
+Now we can start to development of the our properties.
+
+11
+00:00:39,740 --> 00:00:45,860
+If you come to the beginning of this class definitions I'm going to create I enumerable string category
+
+12
+00:00:45,860 --> 00:00:46,220
+list.
+
+13
+00:00:46,220 --> 00:00:49,370
+And also I enumerable product model product list.
+
+14
+00:00:49,370 --> 00:00:54,890
+And these are the empty lists that we can represent into our product list HTML file.
+
+15
+00:00:54,890 --> 00:00:58,610
+And we are iterating these objects into our HTML page.
+
+16
+00:00:58,610 --> 00:01:02,660
+When our listing the categories and listing the our products.
+
+17
+00:01:02,750 --> 00:01:03,680
+After that.
+
+18
+00:01:03,680 --> 00:01:09,830
+After defining these properties, we can continue our defining to HTML members.
+
+19
+00:01:09,830 --> 00:01:17,210
+One of the important HTML member is the selected category and we are using the razor bind property attribute.
+
+20
+00:01:17,210 --> 00:01:19,550
+Features and support gets as a true.
+
+21
+00:01:19,580 --> 00:01:25,400
+That means we will set the selected category when the application opens the page.
+
+22
+00:01:25,400 --> 00:01:29,060
+And now we can check these HTML object into the HTML.
+
+23
+00:01:29,060 --> 00:01:35,510
+If you search for the selected category, you can see that we have a Li object that we can change and
+
+24
+00:01:35,510 --> 00:01:37,070
+set the selected category.
+
+25
+00:01:37,070 --> 00:01:39,500
+When opening this product list page.
+
+26
+00:01:39,500 --> 00:01:44,780
+And after defining these objects, I'm going to continue to implement our methods.
+
+27
+00:01:45,080 --> 00:01:46,070
+We have two methods.
+
+28
+00:01:46,070 --> 00:01:50,870
+One is on get async and another is on post add to cart operation.
+
+29
+00:01:50,870 --> 00:01:53,720
+First of all, let me implement on get async method.
+
+30
+00:01:53,720 --> 00:01:58,100
+I am going to change the method signature which is the public async task.
+
+31
+00:01:58,100 --> 00:02:04,370
+I action result and name of the on get async as a parameter, we are taking string category name, so
+
+32
+00:02:04,370 --> 00:02:07,280
+this category name can be come from the selected category.
+
+33
+00:02:07,280 --> 00:02:12,620
+So in the beginning of this method we are going to get the products with using the catalog service.
+
+34
+00:02:12,620 --> 00:02:18,260
+Here you can see that I have used Await catalog service, get products and get products into response
+
+35
+00:02:18,260 --> 00:02:18,890
+object.
+
+36
+00:02:18,980 --> 00:02:25,670
+And just after that we can populate the category list into our object I enumerable string with using
+
+37
+00:02:25,670 --> 00:02:26,840
+this response object.
+
+38
+00:02:26,840 --> 00:02:32,660
+In here you can see that we have set the category list according to the incoming response object products
+
+39
+00:02:32,660 --> 00:02:33,620
+and Selectmany.
+
+40
+00:02:33,620 --> 00:02:39,170
+And we have selected categories under the our products with a distinct method.
+
+41
+00:02:39,170 --> 00:02:44,690
+That means we will select all categories and populate the category list object in this line of code.
+
+42
+00:02:44,690 --> 00:02:51,740
+And just after that I am going to check the Or category name is null or empty, if not null.
+
+43
+00:02:51,740 --> 00:02:54,800
+We will filter the products according to our category name.
+
+44
+00:02:54,800 --> 00:02:56,360
+Category name comes from the.
+
+45
+00:02:56,360 --> 00:03:02,270
+As a parameter of this on get async method that is populated from the selected category property and
+
+46
+00:03:02,270 --> 00:03:03,860
+we have checked these if statement.
+
+47
+00:03:03,860 --> 00:03:09,380
+If category name is not empty, we are going to get the products from the response object with using
+
+48
+00:03:09,380 --> 00:03:15,590
+the where keyword, and we are going to filter by category which contains category name and return back
+
+49
+00:03:15,590 --> 00:03:19,610
+the product list and populate the product list according to category name.
+
+50
+00:03:19,610 --> 00:03:25,100
+And just after that, we will set the selected category as a category name, which comes from the parameter
+
+51
+00:03:25,100 --> 00:03:26,840
+of this on get async method.
+
+52
+00:03:26,840 --> 00:03:32,660
+And if this category name is empty, we basically populating the product list with incoming response
+
+53
+00:03:32,660 --> 00:03:38,660
+object from the R Catalog Service products list and setting this product list into our application.
+
+54
+00:03:38,780 --> 00:03:45,560
+And lastly, we can return a page after performing these operations and complete the on get async method
+
+55
+00:03:45,560 --> 00:03:48,860
+operations when opening the R product list page.
+
+56
+00:03:48,860 --> 00:03:55,700
+And just after that we can continue develop our second method, which is the on post add to cart operation.
+
+57
+00:03:55,700 --> 00:04:03,200
+In here I am going to create a new method which name is on post add to cart async method and this will
+
+58
+00:04:03,200 --> 00:04:09,050
+be implementation of adding item into cart and why I am implement this method in this product list page.
+
+59
+00:04:09,050 --> 00:04:15,620
+Because if you open the HTML, you can see that we are listing the products and we are using the partial
+
+60
+00:04:15,620 --> 00:04:16,940
+product item partial.
+
+61
+00:04:16,940 --> 00:04:22,730
+And if you open this partial HTML page, you can see that this page has a form and submit the form with
+
+62
+00:04:22,730 --> 00:04:28,160
+the add to cart operation that we need to implement this method when submitting the product list page,
+
+63
+00:04:28,160 --> 00:04:33,650
+and this will be submitting this page, and we will implement these operation inside of these product
+
+64
+00:04:33,650 --> 00:04:34,970
+list see file.
+
+65
+00:04:34,970 --> 00:04:37,820
+And we will accepting product ID as a parameter.
+
+66
+00:04:37,820 --> 00:04:40,550
+And we will perform at the cart operations.
+
+67
+00:04:40,550 --> 00:04:45,740
+And first of all I am going to logging the information which is the cart button is clicked.
+
+68
+00:04:45,740 --> 00:04:51,410
+And just after that I'm going to get the products with a given product ID using the catalog service
+
+69
+00:04:51,410 --> 00:04:55,760
+Getproduct and passing the product ID and populating the R product response.
+
+70
+00:04:55,760 --> 00:04:59,810
+And just after that I'm going to loading a basket information.
+
+71
+00:04:59,960 --> 00:05:06,560
+Using the basket services and get the basket information from the await basket services load user basket
+
+72
+00:05:06,560 --> 00:05:07,220
+method.
+
+73
+00:05:07,220 --> 00:05:12,380
+And after that I am going to add a new item which is including the product response.
+
+74
+00:05:12,470 --> 00:05:18,200
+Here you can see that we will use basket items add method and passing the new shopping cart item model
+
+75
+00:05:18,200 --> 00:05:23,870
+and we will populate the product ID, product name, price, quantity and color with incoming product
+
+76
+00:05:23,870 --> 00:05:30,200
+ID parameter and product name comes from the product response of the Getproduct operation and get the
+
+77
+00:05:30,200 --> 00:05:36,110
+price from the product response again and set the quantity one and set the color as a black fixed value.
+
+78
+00:05:36,110 --> 00:05:42,890
+And just after that, we can send the await basket store basket and sending new store basket request
+
+79
+00:05:42,890 --> 00:05:44,630
+and passing the basket in here.
+
+80
+00:05:44,630 --> 00:05:50,960
+By this way we will send http post request in order to save this basket information in the basket.
+
+81
+00:05:50,960 --> 00:05:56,930
+Microservices distribute cache and database and after confirming this operation we are redirecting to
+
+82
+00:05:56,930 --> 00:05:57,860
+page as a cart.
+
+83
+00:05:57,860 --> 00:06:03,800
+So that means whenever we are adding item into cart, we will redirecting to the page of the cart operations
+
+84
+00:06:03,800 --> 00:06:07,070
+to see our cart in the latest status.
+
+85
+00:06:07,070 --> 00:06:15,080
+And after implementing this on post operation, we have completed to our product list page and we are
+
+86
+00:06:15,080 --> 00:06:17,960
+developing category and product list property.
+
+87
+00:06:17,960 --> 00:06:21,350
+And we have selected category which is the Bindable property.
+
+88
+00:06:21,350 --> 00:06:25,190
+And we have implemented on get async method with a given category name.
+
+89
+00:06:25,190 --> 00:06:28,130
+And we check the category name is null or empty is not null.
+
+90
+00:06:28,130 --> 00:06:30,860
+We will filter the categories and return the product list.
+
+91
+00:06:30,860 --> 00:06:35,690
+If the category name is null, we will return the product list with sending get product request to the
+
+92
+00:06:35,690 --> 00:06:37,010
+catalog microservices.
+
+93
+00:06:37,010 --> 00:06:42,410
+And if you scroll down, we have additional on post operation which comes from the our partial view.
+
+94
+00:06:42,410 --> 00:06:47,990
+And in here we are taking the product ID and we will basically perform add item into cart operation
+
+95
+00:06:47,990 --> 00:06:54,320
+which including the get product load user basket and store basket operations and redirecting to page
+
+96
+00:06:54,320 --> 00:06:55,010
+as a cart.
+
+97
+00:06:55,010 --> 00:06:59,870
+So after developing this page I am going to right click show me, create and build the project.
+
+98
+00:06:59,870 --> 00:07:07,100
+And this time we will get some of the exceptions because our HTML page is not ready for these operations.
+
+99
+00:07:07,100 --> 00:07:13,040
+If you open one of the exception, you can see that for example, HTML page is requiring the ID information,
+
+100
+00:07:13,040 --> 00:07:16,220
+but we don't have any category table and category ID.
+
+101
+00:07:16,250 --> 00:07:21,140
+That's why I am going to modify this HTML page according to our product model.
+
+102
+00:07:21,140 --> 00:07:26,210
+So according to our product model, our category list including the string object.
+
+103
+00:07:26,210 --> 00:07:31,970
+That's why I'm going to remove these ID operation and passing on the category name as a in here.
+
+104
+00:07:31,970 --> 00:07:35,570
+So after that I'm going to scroll down and see the exceptions.
+
+105
+00:07:35,570 --> 00:07:35,780
+Here.
+
+106
+00:07:35,780 --> 00:07:41,330
+You can see that we have a summary and we don't have summary property into our product list.
+
+107
+00:07:41,330 --> 00:07:43,910
+I'm going to change the summary to the description in here.
+
+108
+00:07:43,910 --> 00:07:47,960
+And after that you can scroll down and check the for exceptions.
+
+109
+00:07:47,960 --> 00:07:52,820
+If there is no exception I'm going to rebuild again and see if there is any exception.
+
+110
+00:07:52,820 --> 00:07:55,550
+Yes, there is no exception for our product list page.
+
+111
+00:07:55,550 --> 00:08:01,970
+And we have completed the HTML and also C-sharp file for listing the products into our client application.
+

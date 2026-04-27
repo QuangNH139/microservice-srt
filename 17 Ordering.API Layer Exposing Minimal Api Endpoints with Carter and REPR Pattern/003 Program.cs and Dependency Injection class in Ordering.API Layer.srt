@@ -1,0 +1,172 @@
+1
+00:00:00,110 --> 00:00:05,689
+In this video we are going to remembering Program.cs and Dependency Injection class in our ordering
+
+2
+00:00:05,689 --> 00:00:08,630
+API layer and we will install required packages.
+
+3
+00:00:08,630 --> 00:00:14,360
+So if you go to the ordering folder you can reach the ordering API, which is the presentation layer
+
+4
+00:00:14,360 --> 00:00:20,840
+of our clean Architecture and ordering API is a ASP.Net web API project that, including the program,
+
+5
+00:00:20,840 --> 00:00:26,750
+says if you open the program says, you can see that at this point we will add services into container.
+
+6
+00:00:26,750 --> 00:00:33,470
+That means we have calling different extension methods for adding services into ASP.Net dependency injection
+
+7
+00:00:33,470 --> 00:00:35,450
+according to clean architecture layers.
+
+8
+00:00:35,450 --> 00:00:42,020
+So the application is configuring services from different layers, including the application infrastructure
+
+9
+00:00:42,020 --> 00:00:43,970
+and API specific services.
+
+10
+00:00:44,330 --> 00:00:48,770
+And after that, at this point we will configure the Http request pipeline.
+
+11
+00:00:48,770 --> 00:00:55,460
+That means the use API services method configures the middleware specific to the API, such as the routing
+
+12
+00:00:55,460 --> 00:01:01,490
+and endpoint handling, and after that we are environment specific configurations.
+
+13
+00:01:01,490 --> 00:01:05,209
+In development environment the application initialize the database.
+
+14
+00:01:05,209 --> 00:01:08,690
+So these are the configurations into our ordering API.
+
+15
+00:01:08,690 --> 00:01:09,500
+Program.cs.
+
+16
+00:01:09,500 --> 00:01:13,340
+So now let's focus on the ASP.Net dependency injection.
+
+17
+00:01:13,340 --> 00:01:17,750
+If you come here and go to add API services right click go to definition.
+
+18
+00:01:17,750 --> 00:01:21,980
+You can reach the point where we are defining dependency injections.
+
+19
+00:01:21,980 --> 00:01:28,340
+For ordering API we can go to ordering API dependency Injection and you can reach the eight API services
+
+20
+00:01:28,340 --> 00:01:32,930
+and use API services extension methods that we are using in the Program.cs.
+
+21
+00:01:32,930 --> 00:01:39,410
+So if you look at the add API services, this method is adding the Carter and adding potentially other
+
+22
+00:01:39,410 --> 00:01:43,610
+API related services into the application service dependency injection.
+
+23
+00:01:43,610 --> 00:01:47,270
+That's why this is the extension method on the eye service collection.
+
+24
+00:01:47,270 --> 00:01:53,630
+And if you look at the use API services, this will configure the application to use Carter and map
+
+25
+00:01:53,630 --> 00:01:57,500
+Carter functionality for handling requests and mapping the endpoints.
+
+26
+00:01:57,500 --> 00:02:01,400
+So we should add the API related NuGet packages into our class.
+
+27
+00:02:01,400 --> 00:02:03,800
+And in here we need a Carter library.
+
+28
+00:02:03,800 --> 00:02:04,820
+For that purpose.
+
+29
+00:02:04,820 --> 00:02:09,919
+I'm going to right click the dependencies of the ordering API and manage NuGet packages.
+
+30
+00:02:09,919 --> 00:02:16,460
+In here I am going to browse for the Carter Library and install Carter Library into our ordering API
+
+31
+00:02:16,460 --> 00:02:17,030
+layer.
+
+32
+00:02:17,760 --> 00:02:23,700
+Carter Library is used to define minimal API endpoints, and it simplifies the creation and maintenance
+
+33
+00:02:23,700 --> 00:02:26,970
+of routing and request handling for that purpose.
+
+34
+00:02:27,000 --> 00:02:33,030
+After installation completed in ordering API, we can confirm that we have successfully installed Carter
+
+35
+00:02:33,030 --> 00:02:39,210
+into our ordering API, and if you go back to dependency Injection, we can open these command sections,
+
+36
+00:02:39,210 --> 00:02:44,790
+which is the Registering Carter services into ASP.Net Core Dependency Injection system.
+
+37
+00:02:44,820 --> 00:02:48,060
+Of course, we need to add a using statement for Carter.
+
+38
+00:02:48,060 --> 00:02:55,290
+And after that we can come to use API services and open these command sections, which is the app dot
+
+39
+00:02:55,290 --> 00:02:55,710
+map.
+
+40
+00:02:55,710 --> 00:03:01,560
+Carter which is configured the application to use Carter for request handling effectively mapping to
+
+41
+00:03:01,560 --> 00:03:03,390
+define minimal API endpoints.
+
+42
+00:03:03,390 --> 00:03:08,370
+We can say the dependency injection and these extension methods using in the Program.cs.
+
+43
+00:03:08,370 --> 00:03:13,800
+In order to activate our endpoints and exposing our Carter minimal API endpoints.
+

@@ -1,0 +1,440 @@
+1
+00:00:00,140 --> 00:00:07,160
+In this video we are going to develop save Change Interceptor in order to auditing entities for order
+
+2
+00:00:07,160 --> 00:00:07,790
+entity.
+
+3
+00:00:07,820 --> 00:00:14,300
+So this interceptor will automatically set the auditing fields such as the created at, created by,
+
+4
+00:00:14,300 --> 00:00:20,510
+last modified and last modified by columns whenever entities are added or modified.
+
+5
+00:00:20,510 --> 00:00:27,830
+So please open the Visual Studio and go to the Ordering infrastructure and under data folder we are
+
+6
+00:00:27,830 --> 00:00:31,160
+going to create a new subfolder which is the interceptors.
+
+7
+00:00:31,160 --> 00:00:36,680
+Right click data and add new subfolder which is the interceptors.
+
+8
+00:00:36,680 --> 00:00:43,520
+So in the interceptors folder I'm going to create a new class which name is Auditable Entity Interceptor.
+
+9
+00:00:43,520 --> 00:00:49,850
+So come here and create a new class auditable entity interceptor dot CSS.
+
+10
+00:00:50,270 --> 00:00:54,170
+And we will implement this interceptor into the this class.
+
+11
+00:00:54,170 --> 00:01:00,740
+Before start implementing remove unnecessary using statements and make this class as a public.
+
+12
+00:01:00,740 --> 00:01:06,320
+The first thing we should implement the base class which is the save change interceptor.
+
+13
+00:01:06,320 --> 00:01:13,010
+Come here and implement Save Change interceptor which comes from the Entity Framework Core Diagnostic.
+
+14
+00:01:13,010 --> 00:01:18,860
+And we are going to inherit from this class in order to override saving changes method.
+
+15
+00:01:18,890 --> 00:01:21,920
+After that, we should define the methods to override.
+
+16
+00:01:21,950 --> 00:01:25,220
+We override the saving changes and saving change.
+
+17
+00:01:25,220 --> 00:01:27,470
+Async method not saved changes.
+
+18
+00:01:27,590 --> 00:01:33,590
+If you type to override in the beginning of this class, you can see that there are lots of methods
+
+19
+00:01:33,590 --> 00:01:40,100
+that we can override into our custom interceptor, and specifically we are looking for the saving changes.
+
+20
+00:01:40,100 --> 00:01:45,260
+But here you can see that there are saved changes methods that we can override.
+
+21
+00:01:45,260 --> 00:01:51,440
+But please make sure that you have selecting the saving changes because if you select the saved change,
+
+22
+00:01:51,440 --> 00:01:56,150
+the entity status will be disappeared and performing after the saving changes.
+
+23
+00:01:56,150 --> 00:02:02,270
+But specifically we are writing these custom interceptor for auditing entities when saving the changes.
+
+24
+00:02:02,270 --> 00:02:04,880
+So please select this overwrite method.
+
+25
+00:02:04,880 --> 00:02:09,650
+The first one is saving changes and the second one is saving changes.
+
+26
+00:02:09,650 --> 00:02:12,950
+All right saving changes.
+
+27
+00:02:12,950 --> 00:02:14,150
+Async I'm sorry.
+
+28
+00:02:14,150 --> 00:02:17,360
+The second method is saving changes async method.
+
+29
+00:02:17,360 --> 00:02:23,510
+So here you can see that we have implemented two Overrideable method into our custom interceptor.
+
+30
+00:02:23,510 --> 00:02:27,830
+Now we can implement our actual logic for auditing entities.
+
+31
+00:02:27,830 --> 00:02:30,110
+In these methods we can audit the entities.
+
+32
+00:02:30,110 --> 00:02:35,930
+But before that I'm going to show you a base abstract entity class into the auditing domain.
+
+33
+00:02:35,930 --> 00:02:39,650
+If you go to ordering domain you can see the modules are creating in here.
+
+34
+00:02:39,650 --> 00:02:43,730
+For example I'm going to open an example customer model entity.
+
+35
+00:02:43,730 --> 00:02:47,900
+And here you can see that this is inherit from the entity base class.
+
+36
+00:02:47,900 --> 00:02:51,140
+If you go to definition of these entity base class.
+
+37
+00:02:51,140 --> 00:02:57,560
+And this is the abstract class that you can see, the members are including auditable members which
+
+38
+00:02:57,560 --> 00:03:02,090
+including created at created by last modified and last modified by.
+
+39
+00:03:02,090 --> 00:03:08,870
+That means every entity class has these audit columns that we need to set during the Entity Framework
+
+40
+00:03:08,870 --> 00:03:11,030
+Core saving change operation.
+
+41
+00:03:11,030 --> 00:03:16,880
+So we will set and load these values for every saving operation into Entity Framework Core.
+
+42
+00:03:16,880 --> 00:03:24,740
+For that purpose, go back to Interceptors and Auditable Entity Interceptor, and we are going to update
+
+43
+00:03:24,740 --> 00:03:27,380
+the entities before saving the changes.
+
+44
+00:03:27,380 --> 00:03:34,070
+Come here and I'm going to create a new method which name is update entities method that checks the
+
+45
+00:03:34,070 --> 00:03:37,910
+entity state and update the audit fields accordingly.
+
+46
+00:03:38,000 --> 00:03:41,930
+But before that you can see the method signature.
+
+47
+00:03:41,930 --> 00:03:49,400
+As you can see that these saving changes method is accepting the Dbcontext event data that we can access
+
+48
+00:03:49,400 --> 00:03:52,250
+the context object inside of these event data.
+
+49
+00:03:52,250 --> 00:03:54,710
+And the second parameter is result.
+
+50
+00:03:54,710 --> 00:03:59,180
+And the third parameter is Cancellationtoken for asynchronous Overridable function.
+
+51
+00:03:59,180 --> 00:04:03,170
+So we are going to use event data in order to reach context object.
+
+52
+00:04:03,170 --> 00:04:09,290
+You can come here and see that context object is reachable which is a db context into our application.
+
+53
+00:04:09,290 --> 00:04:16,670
+So I'm going to use a new method which is the update entities and passing context object as a parameter
+
+54
+00:04:16,670 --> 00:04:24,080
+of this method, and copy this method and paste into beginning of the hour saving change async operation.
+
+55
+00:04:24,080 --> 00:04:30,050
+By this way, we can perform the update entities before saving change and saving change async method
+
+56
+00:04:30,050 --> 00:04:32,480
+into these custom interceptor.
+
+57
+00:04:32,480 --> 00:04:38,630
+But of course I'm going to create our update entities method after this class definition.
+
+58
+00:04:38,630 --> 00:04:43,550
+And in this method we basically get the db context object as a parameter.
+
+59
+00:04:43,550 --> 00:04:48,170
+And if the context is null, I'm going to return back to the method.
+
+60
+00:04:48,170 --> 00:04:54,200
+If not null, we can iterate the entities and check the entity state according to the entity state.
+
+61
+00:04:54,200 --> 00:04:56,660
+We can set the auditable columns here.
+
+62
+00:04:56,660 --> 00:04:59,660
+You can see the for each statement and we will basically.
+
+63
+00:05:00,210 --> 00:05:06,240
+The context change tracker entries, which is inherited from the I entity.
+
+64
+00:05:06,240 --> 00:05:10,320
+And with looking these entries, I'm going to check the entry state.
+
+65
+00:05:10,320 --> 00:05:16,740
+If the entry state is added, which means this is the new record, we can set the created add and created
+
+66
+00:05:16,740 --> 00:05:25,170
+by columns, but if the entry state is added or modified, we can set the modified auditable columns
+
+67
+00:05:25,170 --> 00:05:29,070
+which including the last modified and last modified by.
+
+68
+00:05:29,100 --> 00:05:30,960
+Here you can see the if statement.
+
+69
+00:05:30,960 --> 00:05:36,120
+In this if statement we have checked entity state is added or modified.
+
+70
+00:05:36,120 --> 00:05:41,760
+And also we have some custom extension method which is the has changed owned entities.
+
+71
+00:05:41,760 --> 00:05:48,210
+So I'm going to create and develop these custom extension method in order to understand these entity
+
+72
+00:05:48,210 --> 00:05:49,890
+changed owned entities.
+
+73
+00:05:49,890 --> 00:05:53,430
+So you can come here and close the for each statement.
+
+74
+00:05:53,430 --> 00:05:58,440
+And after these update entities and go to the class definitions.
+
+75
+00:05:58,440 --> 00:06:04,890
+At the end of this class definition we can create a new class which name is extension static class.
+
+76
+00:06:04,890 --> 00:06:11,790
+And I'm going to develop has changed owned entities on the entity entity extension method.
+
+77
+00:06:11,790 --> 00:06:17,160
+And this method basically identify the owned entities has changed or not.
+
+78
+00:06:17,160 --> 00:06:19,380
+It is looking for the target entity state.
+
+79
+00:06:19,380 --> 00:06:26,340
+And if the target entity state is added or modified, this will be indicating the changed owned entity.
+
+80
+00:06:26,340 --> 00:06:32,430
+And we will populate the last modified by and last modified columns into the actual update entities
+
+81
+00:06:32,430 --> 00:06:32,910
+method.
+
+82
+00:06:32,910 --> 00:06:38,850
+So after developing these interceptor, it is time to register the interceptor into our Program.cs.
+
+83
+00:06:38,850 --> 00:06:42,630
+But before that I'm going to arrange our global using statement.
+
+84
+00:06:42,630 --> 00:06:46,980
+Here you can see that this is required for the abstractions folder from the domain.
+
+85
+00:06:46,980 --> 00:06:50,910
+And also we have created a new namespace under Data Interceptors.
+
+86
+00:06:50,910 --> 00:06:55,980
+So I'm going to add these using statements under the global using.
+
+87
+00:06:55,980 --> 00:07:01,680
+Come here and make global using for the ordering domain abstractions.
+
+88
+00:07:01,680 --> 00:07:07,020
+Also I'm going to add a new global using for data column data folder.
+
+89
+00:07:07,020 --> 00:07:13,170
+Under data folder we have created an interceptors that we are going to use in the Program.cs when registering
+
+90
+00:07:13,170 --> 00:07:14,220
+this interceptor.
+
+91
+00:07:14,220 --> 00:07:17,970
+So now it is time to register these custom interceptor.
+
+92
+00:07:17,970 --> 00:07:21,900
+For that purpose I'm going to open the program CSS.
+
+93
+00:07:21,900 --> 00:07:29,580
+If you open the program CSS of the ordering API, you can see that we have registered our services according
+
+94
+00:07:29,580 --> 00:07:31,110
+to clean architecture layers.
+
+95
+00:07:31,110 --> 00:07:37,590
+So for Entity Framework Core interceptors we should register into the infrastructure services.
+
+96
+00:07:37,590 --> 00:07:43,470
+If you right click and go to definition of this extension method, you can see the dependency injection
+
+97
+00:07:43,470 --> 00:07:46,350
+class under the ordering infrastructure layer.
+
+98
+00:07:46,350 --> 00:07:54,420
+So when we are registering our DB context object, we can set up our interceptor and register in this
+
+99
+00:07:54,420 --> 00:07:54,930
+place.
+
+100
+00:07:54,930 --> 00:07:59,910
+For that purpose I'm going to locate the add db context operation.
+
+101
+00:07:59,910 --> 00:08:08,430
+And when setting the options I'm going to extend these options as a curly breaker and setting these
+
+102
+00:08:08,550 --> 00:08:13,530
+options as a use SQL server as expected.
+
+103
+00:08:13,530 --> 00:08:21,720
+And before that, I'm going to also set the options that add interceptors method and setting the newly
+
+104
+00:08:21,720 --> 00:08:23,610
+created auditable entity.
+
+105
+00:08:23,610 --> 00:08:31,920
+Inside of this add interceptor method, I'm going to use Neve Auditable Entity Interceptor, and this
+
+106
+00:08:31,920 --> 00:08:36,780
+will be provided to interceptors added to DB context object.
+
+107
+00:08:36,780 --> 00:08:42,659
+Enable automatic auditing whenever entities are saving and creating or updating.
+
+108
+00:08:42,659 --> 00:08:47,580
+So this is the registration step of the our custom entity interceptors.
+
+109
+00:08:47,580 --> 00:08:54,510
+By implementing the Auditable Entity Interceptor, we have automated the process of setting audit information
+
+110
+00:08:54,510 --> 00:08:57,930
+for all entities within our auditing microservices.
+

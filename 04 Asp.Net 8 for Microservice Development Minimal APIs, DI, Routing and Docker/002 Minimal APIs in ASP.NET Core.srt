@@ -1,0 +1,104 @@
+1
+00:00:00,170 --> 00:00:05,180
+In this video we are going to learn minimal APIs in ASP.Net core.
+
+2
+00:00:05,210 --> 00:00:10,010
+We will use minimal APIs for every microservices into our application.
+
+3
+00:00:10,010 --> 00:00:13,220
+That's why it is important to learn them in here.
+
+4
+00:00:13,640 --> 00:00:15,260
+So what is minimal APIs?
+
+5
+00:00:15,290 --> 00:00:23,060
+Minimal APIs provide a simplified approach for building fast and efficient Http APIs in ASP.Net core.
+
+6
+00:00:23,690 --> 00:00:30,680
+They enable you to create fully functional Rest endpoints with minimal coding and configuration, reducing
+
+7
+00:00:30,680 --> 00:00:34,910
+the need for the traditional scaffolding and unnecessary controllers.
+
+8
+00:00:35,390 --> 00:00:42,710
+We can skip the traditional scaffolding and avoid the unnecessary controllers by fluent decorating API
+
+9
+00:00:42,710 --> 00:00:44,270
+routes and actions.
+
+10
+00:00:45,050 --> 00:00:47,480
+Here you can see the basic example.
+
+11
+00:00:47,480 --> 00:00:54,230
+Basically, we will use top level statement and in the first row we will creating a web application
+
+12
+00:00:54,230 --> 00:00:58,610
+and mapping the Http get request to the root path.
+
+13
+00:00:58,610 --> 00:01:00,950
+And it is basically simplified.
+
+14
+00:01:00,950 --> 00:01:04,610
+Return the hello world for every request.
+
+15
+00:01:04,700 --> 00:01:12,140
+So this shows the easy of setting up a basic http api endpoint with minimal APIs.
+
+16
+00:01:13,560 --> 00:01:17,580
+Minimal APIs also supporting dynamic routing.
+
+17
+00:01:17,580 --> 00:01:20,490
+You can see example code in here.
+
+18
+00:01:20,700 --> 00:01:27,960
+This time we will have a route parameters for using the user ID and book ID.
+
+19
+00:01:28,110 --> 00:01:32,310
+In this example we will also exposing Http get request.
+
+20
+00:01:32,310 --> 00:01:40,980
+But this route has some dynamic routing parameters which are the user ID and book ID and the API business
+
+21
+00:01:40,980 --> 00:01:48,360
+internal code basically respond with these IDs and basic text with including the user ID and book ID
+
+22
+00:01:48,360 --> 00:01:49,350
+is in here.
+
+23
+00:01:49,350 --> 00:01:57,210
+So in this demonstration, we can show that how easily you can handle more complex routing scenarios
+
+24
+00:01:57,210 --> 00:02:00,750
+using the dynamic routing feature on minimal APIs.
+
+25
+00:02:00,900 --> 00:02:07,140
+So throughout the course, we will leverage the minimal APIs for developing for each microservices in
+
+26
+00:02:07,140 --> 00:02:08,039
+our application.
+

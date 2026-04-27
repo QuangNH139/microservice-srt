@@ -1,0 +1,164 @@
+1
+00:00:00,170 --> 00:00:06,950
+In this video, we are going to run Docker Compose on Visual Studio in order to set up PostgreSQL database
+
+2
+00:00:06,950 --> 00:00:08,210
+on the environment.
+
+3
+00:00:08,930 --> 00:00:15,350
+So first of all, please open the Visual Studio and also open the Docker desktop and make sure that
+
+4
+00:00:15,350 --> 00:00:17,090
+your Docker desktop is running.
+
+5
+00:00:17,090 --> 00:00:23,270
+And after that you can come to Visual Studio and right click the Docker Compose as a startup project.
+
+6
+00:00:24,040 --> 00:00:27,490
+And run the Docker compose profile from the Visual Studio.
+
+7
+00:00:28,150 --> 00:00:33,580
+This action will bring up our PostgreSQL database as defined in the Docker compose files.
+
+8
+00:00:35,590 --> 00:00:37,720
+Okay if you open the.
+
+9
+00:00:38,410 --> 00:00:39,580
+Docker desktop.
+
+10
+00:00:39,580 --> 00:00:45,160
+You can see that this time we have two PostgreSQL database on Docker desktop.
+
+11
+00:00:45,160 --> 00:00:51,400
+So after running the Docker compose, we have verified that we have two PostgreSQL instance running
+
+12
+00:00:51,400 --> 00:00:53,410
+one for the catalog db.
+
+13
+00:00:53,410 --> 00:00:59,920
+And if you look at the catalog db port numbers, you can see that this is exposing the default port
+
+14
+00:00:59,920 --> 00:01:02,920
+number and another for the basket db.
+
+15
+00:01:02,920 --> 00:01:10,690
+Exposing the PostgreSQL database 5433 that we have exposed to our local computer, and the internal
+
+16
+00:01:10,690 --> 00:01:12,220
+port numbers are the same.
+
+17
+00:01:12,220 --> 00:01:14,140
+These are the five, four, three, two.
+
+18
+00:01:14,170 --> 00:01:19,390
+These are the internal port numbers, that is the actual PostgreSQL default port number.
+
+19
+00:01:19,630 --> 00:01:25,840
+So now we have successfully run two database into our computer and docker compose environment.
+
+20
+00:01:25,840 --> 00:01:32,080
+Now it is time to browse the databases and see the database and tables into the basket database.
+
+21
+00:01:32,080 --> 00:01:38,800
+I recommended to using Pgadmin for more user friendly interface and managing our databases for that
+
+22
+00:01:38,800 --> 00:01:41,140
+purpose, please open the Pgadmin.
+
+23
+00:01:41,140 --> 00:01:44,770
+You can download Pgadmin from their official website.
+
+24
+00:01:44,860 --> 00:01:49,780
+After opening the PGA admin, you can register servers for Catalog and basket DB.
+
+25
+00:01:49,810 --> 00:01:56,020
+You can come here and right click and register a new server and give the server name as a local server
+
+26
+00:01:56,020 --> 00:01:58,000
+name as a catalog or basket DB.
+
+27
+00:01:58,000 --> 00:02:04,330
+For example, you can give basket db and after that in the connection tab, you can give the server
+
+28
+00:02:04,330 --> 00:02:11,290
+name as a localhost, and this time basket db will be hosting as a five, four, three and three in
+
+29
+00:02:11,290 --> 00:02:14,080
+order to access basket db in different port.
+
+30
+00:02:14,080 --> 00:02:16,780
+So you can create this kind of server registration.
+
+31
+00:02:16,780 --> 00:02:22,210
+And after that you can come here and listing your servers for catalog and basket DB.
+
+32
+00:02:22,240 --> 00:02:24,670
+Here you can see that I have created basket DB.
+
+33
+00:02:24,670 --> 00:02:28,960
+And you can see the empty doc products table is created successfully.
+
+34
+00:02:28,960 --> 00:02:35,290
+And if you open the basket DB you can see that basket DB also connected in different port from our local
+
+35
+00:02:35,290 --> 00:02:35,980
+computer.
+
+36
+00:02:35,980 --> 00:02:40,420
+And if you go to the tables, we can right click and refresh this page.
+
+37
+00:02:40,420 --> 00:02:45,970
+There is no table is created yet because we are looking for the basket DB database now.
+
+38
+00:02:45,970 --> 00:02:50,680
+And we didn't start our basket DB application or we didn't send any request.
+
+39
+00:02:50,680 --> 00:02:53,980
+That's why Martin is only create database for us.
+
+40
+00:02:53,980 --> 00:03:00,940
+So as you can see that we have connected two different database into our local computer and we are ready
+
+41
+00:03:00,940 --> 00:03:07,090
+to implement actual business operations which are the basket get, delete and store basket operations.
+

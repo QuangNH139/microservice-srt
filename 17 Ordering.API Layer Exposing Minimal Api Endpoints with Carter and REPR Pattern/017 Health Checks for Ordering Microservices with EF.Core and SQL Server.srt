@@ -1,0 +1,384 @@
+1
+00:00:00,110 --> 00:00:05,750
+In this video, we are going to develop health checks for ordering microservices with Entity Framework,
+
+2
+00:00:05,750 --> 00:00:07,370
+core and SQL server.
+
+3
+00:00:07,640 --> 00:00:11,900
+As you know that ordering microservices relying on the SQL server database.
+
+4
+00:00:11,900 --> 00:00:17,870
+So we should add a health check into ASP.Net core application using the Entity Framework core and SQL
+
+5
+00:00:17,870 --> 00:00:18,410
+server.
+
+6
+00:00:18,740 --> 00:00:24,650
+ASP.Net core provides middleware and libraries in order to implement health checks, and health checks
+
+7
+00:00:24,650 --> 00:00:27,410
+are exposed by an application as an Http.
+
+8
+00:00:27,410 --> 00:00:28,280
+Endpoints.
+
+9
+00:00:28,310 --> 00:00:32,450
+Health check endpoints can be configured for various real time monitoring scenarios.
+
+10
+00:00:32,450 --> 00:00:34,010
+Please open the Visual Studio.
+
+11
+00:00:34,010 --> 00:00:37,430
+And now we are going to implement health checks in ordering microservices.
+
+12
+00:00:37,430 --> 00:00:43,070
+If you open the program.cs of the ordering API layer, you can reach the point where we are adding services
+
+13
+00:00:43,070 --> 00:00:44,000
+into container.
+
+14
+00:00:44,000 --> 00:00:50,030
+For ordering API, we are using add API services and this is the dependency injection case under the
+
+15
+00:00:50,030 --> 00:00:51,020
+ordering API.
+
+16
+00:00:51,020 --> 00:00:55,790
+And here you can see that we are adding services into add API extension method.
+
+17
+00:00:55,790 --> 00:01:01,610
+In this method I am going to register the health check services in the application dependency container.
+
+18
+00:01:01,610 --> 00:01:08,660
+So in here I'm going to add a services dot add health checks method to adding health check related objects
+
+19
+00:01:08,660 --> 00:01:10,280
+into dependency injection.
+
+20
+00:01:10,280 --> 00:01:13,040
+And after that we should set up the middleware.
+
+21
+00:01:13,040 --> 00:01:20,420
+If you scroll down, if you go to the use API services, this is where we are configuring the Http lifecycle.
+
+22
+00:01:20,420 --> 00:01:27,230
+So I'm going to configure the middleware which is the app dot use health checks with exposing the health
+
+23
+00:01:27,230 --> 00:01:27,830
+endpoint.
+
+24
+00:01:27,830 --> 00:01:31,790
+In here you can see that we have added App.use health checks.
+
+25
+00:01:31,790 --> 00:01:33,680
+And this is the endpoint of the health.
+
+26
+00:01:33,680 --> 00:01:38,870
+So with these two line of code we can activate the health checks for ordering microservices.
+
+27
+00:01:38,870 --> 00:01:42,590
+So now we can run the ordering API in Https mode.
+
+28
+00:01:42,590 --> 00:01:47,690
+And after that we will hit the health endpoint and get the response from ordering microservices.
+
+29
+00:01:47,690 --> 00:01:50,420
+After running application you can open the postman.
+
+30
+00:01:50,420 --> 00:01:56,420
+And if you go to the ordering microservices postman collection, you can see that I have added get health
+
+31
+00:01:56,420 --> 00:02:03,350
+endpoint and this is the Http get and ordering URL and slash health that we can configure in the order
+
+32
+00:02:03,350 --> 00:02:05,150
+configuration dependency injection.
+
+33
+00:02:05,150 --> 00:02:10,639
+So I am going to hit the send button and hit the health endpoint to our ordering microservices.
+
+34
+00:02:10,639 --> 00:02:12,770
+And it is returning 200 okay.
+
+35
+00:02:12,770 --> 00:02:14,150
+And health response.
+
+36
+00:02:14,150 --> 00:02:17,540
+But this is only returning ordering microservice health check.
+
+37
+00:02:17,540 --> 00:02:19,340
+That means ASP.Net project.
+
+38
+00:02:19,340 --> 00:02:24,740
+But ordering microservices relying on the ordering database which is SQL server.
+
+39
+00:02:24,740 --> 00:02:28,430
+That's why we need to add some custom health check for SQL server.
+
+40
+00:02:28,430 --> 00:02:33,920
+So for that purpose, I'm going to check the SQL server database using the Entity Framework core Health
+
+41
+00:02:33,920 --> 00:02:34,940
+check libraries.
+
+42
+00:02:34,940 --> 00:02:36,770
+We can adding the custom health check.
+
+43
+00:02:36,770 --> 00:02:41,150
+But for SQL server there is already predefined health check libraries.
+
+44
+00:02:41,150 --> 00:02:46,910
+If you remember that we have mentioned a GitHub repository that includes every health checks for the
+
+45
+00:02:46,910 --> 00:02:47,900
+backing services.
+
+46
+00:02:47,900 --> 00:02:52,640
+Here you can see the name of the ASP.Net Core Diagnostic and Health checks.
+
+47
+00:02:52,640 --> 00:02:57,800
+If you search for the SQL server, you can go to the SQL server implementation of the health check.
+
+48
+00:02:57,800 --> 00:03:02,120
+And here you can see the NuGet packages for the SQL server implementation.
+
+49
+00:03:02,120 --> 00:03:08,030
+So that's why I'm going to copy these NuGet packages and open the R Visual Studio.
+
+50
+00:03:08,030 --> 00:03:12,410
+Right click the ordering API dependencies and manage NuGet packages.
+
+51
+00:03:12,410 --> 00:03:18,530
+Of course we should stop the application, right click manage NuGet packages and browse for the ASP.Net
+
+52
+00:03:18,530 --> 00:03:23,210
+Core Health checks and SQL server install these NuGet packages.
+
+53
+00:03:23,420 --> 00:03:28,820
+After that, we should also install UI client library in order to getting Json response.
+
+54
+00:03:28,820 --> 00:03:34,730
+For that purpose, I am going to browse ASP.Net Core Health Checks UI client library and install this
+
+55
+00:03:34,730 --> 00:03:35,360
+package.
+
+56
+00:03:35,840 --> 00:03:41,120
+So if you double click the ordering API, you can save the ordering API project file, and you can verify
+
+57
+00:03:41,120 --> 00:03:46,940
+that we have installed SQL server and UI client library from the ASP.Net Core Health checks.
+
+58
+00:03:46,940 --> 00:03:51,290
+So now we can configure SQL Server Health check in the dependency injection.
+
+59
+00:03:51,290 --> 00:03:57,140
+If you go to dependency injection of the ordering API and you can locate the services dot add health
+
+60
+00:03:57,140 --> 00:03:57,950
+checks method.
+
+61
+00:03:57,950 --> 00:04:03,860
+And I am going to modify this health check operation with adding the SQL server into the health checks.
+
+62
+00:04:03,860 --> 00:04:07,610
+Here you can see that we are using services dot add health checks.
+
+63
+00:04:07,610 --> 00:04:14,000
+And also we are using additional extension method which is the add SQL server extension method which
+
+64
+00:04:14,000 --> 00:04:16,790
+comes from the our newly added library.
+
+65
+00:04:16,790 --> 00:04:21,200
+And we are passing the connection string as a parameter of this extension method.
+
+66
+00:04:21,200 --> 00:04:22,550
+That means this.
+
+67
+00:04:22,550 --> 00:04:27,950
+Add a health check specifically for SQL server using the connection string from the configuration.
+
+68
+00:04:27,950 --> 00:04:32,720
+So that means we need to inject configuration as a parameter of this extension method.
+
+69
+00:04:32,720 --> 00:04:40,100
+For that purpose, I am going to come here and write I configuration and give the name as a configuration,
+
+70
+00:04:40,100 --> 00:04:46,100
+and we will use this configuration when adding SQL Server Health check into the health check codes.
+
+71
+00:04:46,100 --> 00:04:52,070
+Of course, we should add the configuration parameter into add API services when we are using in the
+
+72
+00:04:52,070 --> 00:04:57,200
+program says if you open the program says, you can see that this method is expecting configuration.
+
+73
+00:04:57,200 --> 00:04:59,600
+So I'm going to copy this builder config.
+
+74
+00:05:00,120 --> 00:05:02,880
+And facing these at API service extension method.
+
+75
+00:05:02,880 --> 00:05:07,890
+By this way, we can pass the configuration that we can access the configuration from the parameter
+
+76
+00:05:07,890 --> 00:05:10,950
+of these eight API services extension method.
+
+77
+00:05:10,950 --> 00:05:16,740
+And we will paste these configuration when we are adding a SQL Server health check with facing the database
+
+78
+00:05:16,740 --> 00:05:22,740
+connection string, and after registering Health check SQL server operations, we can configure the
+
+79
+00:05:22,740 --> 00:05:25,380
+health check for the UI related operations.
+
+80
+00:05:25,380 --> 00:05:30,300
+That means I am going to modify the use health checks condition in here.
+
+81
+00:05:30,300 --> 00:05:33,810
+When we are using the health checks we can configure this method.
+
+82
+00:05:33,810 --> 00:05:40,350
+So I'm going to come here and modify this configuration with adding the health check options.
+
+83
+00:05:40,350 --> 00:05:46,350
+Here you can see that I have added the new health check options and set the response writer with health
+
+84
+00:05:46,350 --> 00:05:47,610
+check UI response.
+
+85
+00:05:47,610 --> 00:05:53,760
+So this will configures the endpoint in order to return detailed health check responses in a readable
+
+86
+00:05:53,760 --> 00:05:55,650
+format and Json format.
+
+87
+00:05:55,650 --> 00:06:01,920
+So after configuring these health checks and adding health check related services into ASP.Net Dependency
+
+88
+00:06:01,920 --> 00:06:05,610
+Injection, we can run the application with https mode.
+
+89
+00:06:05,670 --> 00:06:10,020
+And now I am going to test health check with running order API application.
+
+90
+00:06:10,020 --> 00:06:14,100
+And after running the application we can open the our postman.
+
+91
+00:06:14,100 --> 00:06:18,360
+And now I am going to send http get method for the health endpoint.
+
+92
+00:06:18,360 --> 00:06:23,460
+And this time I have expected to return a Json format and including the SQL server.
+
+93
+00:06:23,460 --> 00:06:30,120
+Hit the send button and see that we have a Json response indicating that status is healthy and also
+
+94
+00:06:30,120 --> 00:06:33,930
+indicating the entities and SQL server is status is healthy.
+
+95
+00:06:33,960 --> 00:06:39,900
+So that means we have successfully configured our health checks, including ordering microservices and
+
+96
+00:06:39,900 --> 00:06:41,010
+SQL server databases.
+

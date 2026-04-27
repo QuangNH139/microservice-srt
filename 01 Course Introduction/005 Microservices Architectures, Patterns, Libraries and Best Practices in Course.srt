@@ -1,0 +1,184 @@
+1
+00:00:00,230 --> 00:00:06,710
+In this video we are going to explore microservices, architectures, patterns, libraries, and best
+
+2
+00:00:06,710 --> 00:00:09,140
+practices that we use during the course.
+
+3
+00:00:09,170 --> 00:00:12,050
+So let me start with the architecture styles.
+
+4
+00:00:12,050 --> 00:00:17,660
+These are the layered vertical slice, domain driven design and clean architecture.
+
+5
+00:00:17,690 --> 00:00:24,260
+The vertical slice architecture breakdowns are back end into manageable feature based modules, and
+
+6
+00:00:24,260 --> 00:00:29,960
+domain driven design will help us to align our software with the complex business requirements, and
+
+7
+00:00:29,960 --> 00:00:35,960
+Clean Architecture will organize our code into independent layers, promoting the separation of concerns.
+
+8
+00:00:36,720 --> 00:00:41,490
+After that, our journey will also cover key design patterns and principles.
+
+9
+00:00:41,520 --> 00:00:49,260
+These are the solid Dikeh's mediator, proxy decorator options, pop up caching and API gateway.
+
+10
+00:00:49,290 --> 00:00:54,330
+So we will adapt the solid principles to write robust, maintainable code.
+
+11
+00:00:54,330 --> 00:00:59,010
+And also dependency injection will decouple our classes and interfaces.
+
+12
+00:00:59,010 --> 00:01:06,600
+And we will learn six design patterns that will separate our read and write operations for greater scalability.
+
+13
+00:01:06,600 --> 00:01:13,440
+And the mediator pattern will reduce dependencies between objects, facilitating easier to communication.
+
+14
+00:01:13,440 --> 00:01:20,130
+And the proxy and decorator patterns will add new behaviors to objects without changing their interfaces.
+
+15
+00:01:20,160 --> 00:01:26,520
+The publish subscribe pattern will enable our microservice to communicate asynchronously, and we will
+
+16
+00:01:26,520 --> 00:01:31,980
+leverage the API gateway pattern for request routing, aggregation, and resilience.
+
+17
+00:01:32,720 --> 00:01:36,860
+And after that we will learn database management and caching.
+
+18
+00:01:36,860 --> 00:01:44,180
+So we will work with a mix of the NoSQL and relational databases, including the transactional DocumentDB
+
+19
+00:01:44,180 --> 00:01:48,470
+implementation with PostgreSQL, SQLite and SQL server.
+
+20
+00:01:48,470 --> 00:01:55,460
+We will also use Redis for distributed caching to enhance the performance, and also we will leveraging
+
+21
+00:01:55,460 --> 00:01:55,580
+the.
+
+22
+00:01:55,730 --> 00:01:56,780
+Net libraries.
+
+23
+00:01:56,780 --> 00:01:58,280
+These are the popular.
+
+24
+00:01:58,490 --> 00:02:05,330
+Net libraries including the Carter Martin mediator, Napster, Masstransit, fluent Validation and the
+
+25
+00:02:05,330 --> 00:02:06,920
+framework core and Refit.
+
+26
+00:02:06,920 --> 00:02:11,390
+Carter basically simplify our routing and handling of requests.
+
+27
+00:02:11,390 --> 00:02:18,410
+Martin will turn PostgreSQL into an event store and document database, and mediator will handle the
+
+28
+00:02:18,410 --> 00:02:20,060
+requests and notifications.
+
+29
+00:02:20,060 --> 00:02:27,200
+Fluent validation will ensure our inputs are correct, master will handle our object mappings and Masstransit
+
+30
+00:02:27,200 --> 00:02:30,320
+will abstract the complexity of message brokers.
+
+31
+00:02:31,220 --> 00:02:33,260
+And after that we will learn communications.
+
+32
+00:02:33,260 --> 00:02:39,980
+For inter service communication, we will build high performance gRPC connections, particularly between
+
+33
+00:02:39,980 --> 00:02:42,380
+the discount and basket microservices.
+
+34
+00:02:42,380 --> 00:02:49,520
+We will also implement asynchronous communication using RabbitMQ and Masstransit library, enabling
+
+35
+00:02:49,520 --> 00:02:53,780
+efficient message passing for actions like basket checkout and order.
+
+36
+00:02:53,780 --> 00:02:57,200
+Create operation between basket and ordering microservices.
+
+37
+00:02:57,840 --> 00:03:01,350
+After that we will learn API gateways and web applications.
+
+38
+00:03:01,350 --> 00:03:07,980
+We will construct API gateways with IRB in order to manage our requests and route them to the appropriate
+
+39
+00:03:07,980 --> 00:03:09,450
+internal microservices.
+
+40
+00:03:09,450 --> 00:03:10,290
+Implements.
+
+41
+00:03:10,290 --> 00:03:11,760
+Gateway routing pattern.
+
+42
+00:03:11,940 --> 00:03:18,390
+Our shopping web application will consume these APIs using the Refit library combined with a generated
+
+43
+00:03:18,390 --> 00:03:25,890
+Http client factory for efficient network operations and finally containerization and orchestration.
+
+44
+00:03:25,890 --> 00:03:32,070
+We will implement Docker files and Docker compose Yaml files in order to containerize and orchestrate
+
+45
+00:03:32,070 --> 00:03:38,730
+our microservices and their backing services ensures that they can be easily managed, scale and deploy
+
+46
+00:03:38,730 --> 00:03:39,690
+independently.
+

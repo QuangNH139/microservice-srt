@@ -1,0 +1,184 @@
+1
+00:00:00,140 --> 00:00:04,910
+In this section we are going to learn why dot net and what is naive.
+
+2
+00:00:05,090 --> 00:00:07,100
+Net eight and C 12.
+
+3
+00:00:07,580 --> 00:00:10,970
+So we are going to explore the transformation of dot net.
+
+4
+00:00:10,970 --> 00:00:17,570
+It is developing popularity and why it is increasingly becoming the go to choice for developers around
+
+5
+00:00:17,570 --> 00:00:18,260
+the world.
+
+6
+00:00:18,560 --> 00:00:23,210
+Dot net has undergone a dramatic evolution since its inception.
+
+7
+00:00:23,270 --> 00:00:30,020
+It started as a windows focused framework, has now become a fast moving, open source and cross-platform
+
+8
+00:00:30,020 --> 00:00:30,680
+project.
+
+9
+00:00:32,090 --> 00:00:35,210
+Here you can see the dot net build anything anywhere.
+
+10
+00:00:35,210 --> 00:00:40,040
+With Dot net, you can target any application type running on any platform.
+
+11
+00:00:40,040 --> 00:00:48,050
+This unified platform approach means that you can develop web, mobile, desktop, games, IoT and more,
+
+12
+00:00:48,050 --> 00:00:51,710
+reusing your skills and codes in a familiar environment.
+
+13
+00:00:51,740 --> 00:00:56,690
+This versatility accelerates the development and reduce costs significantly.
+
+14
+00:00:58,460 --> 00:01:00,950
+Here you can see the net momentum.
+
+15
+00:01:00,950 --> 00:01:04,040
+The momentum behind that net is undeniable.
+
+16
+00:01:04,040 --> 00:01:12,890
+With over the 6.1 million monthly active users, a community of 53,000 plus members, and accolades
+
+17
+00:01:12,890 --> 00:01:19,340
+such as the Most Admired Developer Framework on StackOverflow and a top programming language on GitHub.
+
+18
+00:01:19,340 --> 00:01:19,460
+The.
+
+19
+00:01:19,760 --> 00:01:23,480
+Net footprint in the development landscape is expensive.
+
+20
+00:01:23,630 --> 00:01:26,840
+So what do developers really think about the net?
+
+21
+00:01:26,840 --> 00:01:28,280
+It is not just liked.
+
+22
+00:01:28,280 --> 00:01:30,800
+Most of the developers are love net.
+
+23
+00:01:31,250 --> 00:01:36,620
+Net has been ranked as the first most loved framework in the StackOverflow of developer survey.
+
+24
+00:01:36,830 --> 00:01:43,190
+It is modern, innovative features and open source community support make it a delightful platform for
+
+25
+00:01:43,190 --> 00:01:44,030
+developers.
+
+26
+00:01:44,390 --> 00:01:45,860
+So we said that the.
+
+27
+00:01:46,040 --> 00:01:48,860
+Net ecosystem is vast with millions of.
+
+28
+00:01:49,040 --> 00:01:51,020
+Net developers in the worldwide.
+
+29
+00:01:51,050 --> 00:01:56,360
+The platform provide benefits of the shared knowledge, libraries and tools.
+
+30
+00:01:56,360 --> 00:02:03,110
+The NuGet package manager and the Visual Studio Marketplace are treasure troves of the resources that
+
+31
+00:02:03,110 --> 00:02:06,200
+enhance the developer productivity and capabilities.
+
+32
+00:02:06,410 --> 00:02:09,650
+So now let's look at the performance of Net eight.
+
+33
+00:02:10,100 --> 00:02:13,130
+Net eight brings the most performant release to date.
+
+34
+00:02:13,130 --> 00:02:19,730
+It is not just the fast, it is blazingly fast, offering incredible response time and reduced to compute
+
+35
+00:02:19,730 --> 00:02:21,020
+power requirements.
+
+36
+00:02:21,110 --> 00:02:27,230
+Whether you are serializing Json or accessing databases or rendering server side templates.
+
+37
+00:02:27,230 --> 00:02:27,680
+Dot.
+
+38
+00:02:27,680 --> 00:02:29,990
+Net sets the benchmark for the speed.
+
+39
+00:02:30,620 --> 00:02:33,740
+Here you can see the Techempower benchmark.
+
+40
+00:02:33,740 --> 00:02:40,910
+The popular Techempower benchmark compares the web application frameworks with the task like Json serialization,
+
+41
+00:02:40,910 --> 00:02:43,580
+database access, and server side templating.
+
+42
+00:02:43,580 --> 00:02:48,290
+Rendering dot net performs faster than any other popular frameworks.
+
+43
+00:02:49,130 --> 00:02:52,460
+So dot net is the best for modern application.
+
+44
+00:02:52,460 --> 00:02:58,970
+It is designed for the modern workloads from the web two client side, from AI to cloud native developments,
+
+45
+00:02:58,970 --> 00:03:05,420
+dot net language features, productivity tools and modernization capabilities, positioning it as the
+
+46
+00:03:05,420 --> 00:03:08,630
+framework of choice for the forward thinking developers.
+

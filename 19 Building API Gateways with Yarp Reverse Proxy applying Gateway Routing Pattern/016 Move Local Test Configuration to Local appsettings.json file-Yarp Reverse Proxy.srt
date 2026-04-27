@@ -1,0 +1,204 @@
+1
+00:00:00,170 --> 00:00:06,320
+In this video, we are going to move local test configuration to the local application settings Json
+
+2
+00:00:06,320 --> 00:00:06,830
+file.
+
+3
+00:00:06,830 --> 00:00:13,430
+That means we will focus on organizing our configuration settings for the Yarp reverse proxy API gateway,
+
+4
+00:00:13,430 --> 00:00:20,780
+particularly separating local testing configurations into a dedicated application settings local Json
+
+5
+00:00:20,780 --> 00:00:21,320
+file.
+
+6
+00:00:21,320 --> 00:00:27,200
+This separation is crucial for managing different environments such as the local development and Docker
+
+7
+00:00:27,200 --> 00:00:28,010
+deployment.
+
+8
+00:00:28,760 --> 00:00:32,420
+So here you can see the R sharp microservices deployment strategy.
+
+9
+00:00:32,420 --> 00:00:35,360
+We will perform successfully testing deployment one.
+
+10
+00:00:35,360 --> 00:00:41,510
+And we are going to test deployment two which is the Docker compose all microservices and API gateway
+
+11
+00:00:41,510 --> 00:00:42,740
+and backing services.
+
+12
+00:00:42,740 --> 00:00:44,810
+But we will go to second step.
+
+13
+00:00:44,810 --> 00:00:48,830
+But before that we should arrange our configurations according to environments.
+
+14
+00:00:48,830 --> 00:00:53,960
+So now let's start the understanding configuration retrieve operation from the R Visual Studio.
+
+15
+00:00:53,960 --> 00:00:56,780
+If you open the Visual Studio go to ERP, API gateway.
+
+16
+00:00:56,780 --> 00:01:03,530
+And if you open the Program.cs in Program.cs, you can see the Yarp reverse proxy settings and configuration
+
+17
+00:01:03,530 --> 00:01:09,620
+in here, and the R service retrieves its configuration from the application settings Json file and
+
+18
+00:01:09,620 --> 00:01:11,120
+reverse proxy configuration.
+
+19
+00:01:11,120 --> 00:01:13,550
+So this line of code will be retrieved.
+
+20
+00:01:13,550 --> 00:01:18,710
+The reverse proxy configuration from the application settings Json file and reverse proxy settings.
+
+21
+00:01:18,710 --> 00:01:24,200
+But if you look at this configuration, if you scroll down the destination address are including the
+
+22
+00:01:24,200 --> 00:01:25,640
+localhost as a server.
+
+23
+00:01:25,640 --> 00:01:31,910
+But when we deploy these Yarp API gateway microservices into Docker environment, these localhost address
+
+24
+00:01:31,910 --> 00:01:34,160
+cannot be reachable in the network.
+
+25
+00:01:34,160 --> 00:01:39,980
+In Docker network, we should use correct container names in order to communicate with each other.
+
+26
+00:01:39,980 --> 00:01:46,070
+So that's why we need to separate configuration files for the local development and Docker environment.
+
+27
+00:01:46,070 --> 00:01:52,070
+The current configuration in application settings are suitable for local testing, but may not be appropriate
+
+28
+00:01:52,070 --> 00:01:53,180
+for Docker environment.
+
+29
+00:01:53,180 --> 00:01:57,680
+In Docker services communicate using container names rather than the localhost.
+
+30
+00:01:57,680 --> 00:02:02,360
+For that reason, the address specified in the local config won't work in Docker.
+
+31
+00:02:02,360 --> 00:02:08,419
+In order to solve this problem, we should create a new configuration file which name application settings
+
+32
+00:02:08,419 --> 00:02:14,870
+dot local dot Json in the ARP API gateway project, and this file will contain configurations specific
+
+33
+00:02:14,870 --> 00:02:15,890
+to local testing.
+
+34
+00:02:15,890 --> 00:02:19,250
+For that purpose comes to irb API gateway project.
+
+35
+00:02:19,250 --> 00:02:27,560
+Right click Add New Item and give the name of the new item as a application settings dot local dot Json
+
+36
+00:02:27,560 --> 00:02:28,910
+and click the add button.
+
+37
+00:02:29,330 --> 00:02:34,370
+Here you can see that this file comes and located under the Application Settings Json file.
+
+38
+00:02:34,370 --> 00:02:40,790
+Because it is derived from the our application Json file and specified the environment name as a local
+
+39
+00:02:40,790 --> 00:02:41,360
+Json.
+
+40
+00:02:41,360 --> 00:02:47,900
+So now I'm going to copy configurations from the application Json, and we will copy all existing configuration
+
+41
+00:02:47,900 --> 00:02:50,390
+settings from the application settings Json file.
+
+42
+00:02:50,390 --> 00:02:56,690
+I'm going to copy and go back to Application settings Json, local Json and paste in here.
+
+43
+00:02:56,690 --> 00:03:03,470
+By this way we can put all localhost related destination address under the application settings local
+
+44
+00:03:03,470 --> 00:03:04,220
+Json file.
+
+45
+00:03:04,220 --> 00:03:09,440
+By separating the local testing configuration into application settings local Json file.
+
+46
+00:03:09,440 --> 00:03:14,870
+We can maintain different settings for different environments without changing the core application
+
+47
+00:03:14,870 --> 00:03:15,410
+logic.
+
+48
+00:03:15,410 --> 00:03:21,230
+In the next video, we are going to develop actual configurations for Docker network environment and
+
+49
+00:03:21,230 --> 00:03:26,990
+ensuring that our API gateway correctly routes requests in the containerized setup, which will be changing
+
+50
+00:03:26,990 --> 00:03:28,910
+the Solo Cloud server name as a container.
+
+51
+00:03:28,910 --> 00:03:30,170
+Names in the environment.
+

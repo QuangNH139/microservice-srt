@@ -1,0 +1,252 @@
+1
+00:00:00,140 --> 00:00:06,620
+In this video we are going to install Entity Framework core and SQLite database connections in discount
+
+2
+00:00:06,620 --> 00:00:07,700
+microservices.
+
+3
+00:00:08,180 --> 00:00:13,550
+As you know that when we are analyzing underlying data structure of discount microservices, we said
+
+4
+00:00:13,550 --> 00:00:16,760
+that we have one data store which is the SQL database.
+
+5
+00:00:16,760 --> 00:00:24,830
+In order to store coupon table in a lite database SQLite database chosen for its simplicity and efficiency,
+
+6
+00:00:25,010 --> 00:00:31,700
+especially for small scale data like discounts, and also it is embedded within the application, reducing
+
+7
+00:00:31,700 --> 00:00:37,430
+the need for additional infrastructure to implement SQLite database into our discount.
+
+8
+00:00:37,430 --> 00:00:38,330
+Microservices.
+
+9
+00:00:38,330 --> 00:00:44,720
+We should install some of the NuGet packages, including Entity Framework, core, SQLite and Entity
+
+10
+00:00:44,720 --> 00:00:46,250
+Framework Core tools.
+
+11
+00:00:46,250 --> 00:00:51,920
+So as a ORM system, we will use Entity Framework Core when communicating the SQL database.
+
+12
+00:00:51,920 --> 00:00:58,850
+That's why we should install SQL Lite Data provider for Entity Framework core into our ASP.Net applications.
+
+13
+00:00:59,180 --> 00:01:05,300
+Please open the Visual Studio and right click the discount gRPC and manage NuGet packages.
+
+14
+00:01:06,260 --> 00:01:12,530
+And we are going to install Microsoft Entity Framework core dot SQLite database.
+
+15
+00:01:12,530 --> 00:01:20,000
+To communicate with the SQLite, please install this database, click the exit button and install this
+
+16
+00:01:20,000 --> 00:01:20,540
+package.
+
+17
+00:01:20,540 --> 00:01:28,190
+You can verify by double click to your project file and see that our SQLite ORM NuGet packages installed
+
+18
+00:01:28,190 --> 00:01:28,940
+successfully.
+
+19
+00:01:28,940 --> 00:01:35,240
+We can save this project file, and after that, the next thing we should do that we should create a
+
+20
+00:01:35,240 --> 00:01:38,990
+data folder in order to encapsulate data related operations.
+
+21
+00:01:38,990 --> 00:01:43,580
+In here, if you right click and create a new folder, add new folder.
+
+22
+00:01:43,580 --> 00:01:45,170
+Which name is data.
+
+23
+00:01:45,170 --> 00:01:51,200
+This will be represent our data access layer according to our n layer architecture implementation.
+
+24
+00:01:51,200 --> 00:01:55,010
+And in this class we are going to create a new context class.
+
+25
+00:01:55,010 --> 00:02:01,130
+Which name is Discount Context to perform database operation in this context.
+
+26
+00:02:01,130 --> 00:02:07,550
+So basically we will create discount context object inherited from the DB context object.
+
+27
+00:02:07,550 --> 00:02:12,800
+This comes from the Entity Framework core and this is typical DB context object.
+
+28
+00:02:12,800 --> 00:02:19,520
+In the Entity Framework core db context classes, we should define the table name as a property.
+
+29
+00:02:19,550 --> 00:02:22,430
+So you can see that we have one model as a coupon.
+
+30
+00:02:22,430 --> 00:02:28,430
+So we should create coupon table as a DB set property under the Discount Context class.
+
+31
+00:02:28,430 --> 00:02:35,540
+For that purpose, I have added the DB set coupon as a coupon table property of the Discount Context
+
+32
+00:02:35,540 --> 00:02:41,750
+class, and after that, we should also provide the constructor which is inherited from the base constructor.
+
+33
+00:02:41,750 --> 00:02:42,890
+Passing the options.
+
+34
+00:02:42,890 --> 00:02:48,800
+In here you can see that we will create a discount context constructor and this will be passing the
+
+35
+00:02:48,800 --> 00:02:52,070
+Discount context DB context option to the base.
+
+36
+00:02:52,070 --> 00:02:55,700
+So this is typical context object from the Entity Framework core.
+
+37
+00:02:55,700 --> 00:03:02,420
+And this class is a DB context class that maps to our SQLite database and coupon table.
+
+38
+00:03:02,420 --> 00:03:10,040
+Specifically table represent the coupon entity and after that we can configure these Discount context
+
+39
+00:03:10,040 --> 00:03:16,070
+object from our Program.cs and application settings to communicate with the SQLite database.
+
+40
+00:03:16,280 --> 00:03:20,900
+First of all, let's add connection string to Application settings file.
+
+41
+00:03:20,900 --> 00:03:25,760
+If you open the application settings file, we can add a connection string in here.
+
+42
+00:03:25,760 --> 00:03:32,990
+Since SQLite is an embedded database, the connection string is simple and typical, just the data source
+
+43
+00:03:32,990 --> 00:03:34,070
+of the file path.
+
+44
+00:03:34,070 --> 00:03:39,710
+For that purpose, I am going to add a connection string in the beginning of this file, and in here
+
+45
+00:03:39,710 --> 00:03:41,960
+you can see that connection string.
+
+46
+00:03:41,960 --> 00:03:43,550
+And we put database string.
+
+47
+00:03:43,550 --> 00:03:47,330
+And this only including data source and database name.
+
+48
+00:03:47,330 --> 00:03:53,060
+That means SQLite database located inside of our application server.
+
+49
+00:03:53,060 --> 00:04:01,640
+So when we give data source as a discount DB, this discount DB SQLite database will create a new database
+
+50
+00:04:01,640 --> 00:04:04,550
+into the root directory of our application.
+
+51
+00:04:04,970 --> 00:04:10,310
+And we will see a discount db SQLite database under the discount gRPC project file.
+
+52
+00:04:10,670 --> 00:04:13,580
+After that we can continue configuration part.
+
+53
+00:04:13,580 --> 00:04:19,100
+We will configure the application with using the Discount Context object.
+
+54
+00:04:19,100 --> 00:04:21,950
+And this will be communicate with SQLite database.
+
+55
+00:04:21,950 --> 00:04:25,190
+And this configuration should be done in the program case.
+
+56
+00:04:25,250 --> 00:04:30,230
+Please open the Program.cs and we are going to locate before building the application.
+
+57
+00:04:30,230 --> 00:04:34,400
+And we will add services into dependency injection container.
+
+58
+00:04:34,400 --> 00:04:41,030
+So in here I'm going to add DB context object which comes from the Entity Framework core with communicating
+
+59
+00:04:41,030 --> 00:04:48,200
+with the SQLite database, with passing the options as a use SQLite and giving the connection string
+
+60
+00:04:48,200 --> 00:04:51,020
+into the parameter of the SQLite extension method.
+
+61
+00:04:51,020 --> 00:04:58,520
+So in here, first of all, we will use a db context method which is used to register our discount context
+
+62
+00:04:58,520 --> 00:05:04,460
+object with Entity Framework Core, and we will specifying that SQLite database will be the database
+
+63
+00:05:04,460 --> 00:05:07,400
+provider for our discount gRPC application.
+

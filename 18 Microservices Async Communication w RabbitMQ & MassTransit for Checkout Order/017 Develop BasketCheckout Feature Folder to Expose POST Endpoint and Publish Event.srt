@@ -1,0 +1,384 @@
+1
+00:00:00,170 --> 00:00:06,590
+In this video we are going to develop Basket Checkout feature folder to expose post and point and publish
+
+2
+00:00:06,590 --> 00:00:07,760
+event to RabbitMQ.
+
+3
+00:00:07,760 --> 00:00:11,180
+So that means we are at the third and fourth step.
+
+4
+00:00:11,180 --> 00:00:15,470
+And we will start with the third step for exposing Http post method.
+
+5
+00:00:15,470 --> 00:00:18,530
+For that purpose, we will create a new feature folder.
+
+6
+00:00:18,530 --> 00:00:22,910
+If you open the Visual Studio and go to basket API and go to Basket Folder.
+
+7
+00:00:22,910 --> 00:00:28,730
+If you expand this folder, you can see the feature folders including delete Gate and Store basket.
+
+8
+00:00:28,730 --> 00:00:29,450
+Basket.
+
+9
+00:00:29,450 --> 00:00:34,460
+Microservices is designed with a vertical slice architecture that use slices.
+
+10
+00:00:34,460 --> 00:00:38,570
+Include both end point and implementation class into handle classes.
+
+11
+00:00:38,570 --> 00:00:44,300
+If you open the one of the use case, you can see that these are including end point and handle classes.
+
+12
+00:00:44,300 --> 00:00:47,930
+So now we are going to create a new feature folder.
+
+13
+00:00:47,930 --> 00:00:51,230
+Which name is Checkout Basket in the basket API project.
+
+14
+00:00:51,230 --> 00:00:54,770
+So I'm going to right click Add new subfolder.
+
+15
+00:00:54,770 --> 00:00:57,020
+Which name is checkout basket.
+
+16
+00:00:57,020 --> 00:01:02,810
+And this align with the vertical slice architecture where each use case includes both end points and
+
+17
+00:01:02,810 --> 00:01:04,879
+implementation in the handle classes.
+
+18
+00:01:04,879 --> 00:01:10,820
+So that means we will develop two main class under this folder, which is the checkout basket end point
+
+19
+00:01:10,820 --> 00:01:12,800
+and the checkout basket handle classes.
+
+20
+00:01:12,800 --> 00:01:16,100
+So now I'm going to add a new two classes.
+
+21
+00:01:16,100 --> 00:01:20,390
+The first one is for the checkout basket and point six.
+
+22
+00:01:20,390 --> 00:01:26,030
+And the second class will be the checkout basket handle class.
+
+23
+00:01:26,420 --> 00:01:32,120
+So these two classes will be aligned with the vertical slice architecture and exposing endpoints in
+
+24
+00:01:32,120 --> 00:01:35,780
+the endpoint class and implementing actual logic in the handle class.
+
+25
+00:01:35,780 --> 00:01:39,440
+So now we are going to develop checkout basket and point class.
+
+26
+00:01:39,440 --> 00:01:44,240
+And this class is responsible for exposing APIs from the basket microservices.
+
+27
+00:01:44,240 --> 00:01:49,880
+So that means we will implement http post method at the end point of the basket slash checkout.
+
+28
+00:01:49,880 --> 00:01:54,170
+So now we are going to start with the developing request and response object.
+
+29
+00:01:54,170 --> 00:02:00,260
+So I'm going to come here and create a two record type for the request and response object.
+
+30
+00:02:00,260 --> 00:02:03,500
+Here you can see that I have created request and response object.
+
+31
+00:02:03,500 --> 00:02:07,670
+This is for the request which is the public record checkout basket request.
+
+32
+00:02:07,670 --> 00:02:13,010
+And as a parameter it is taking basket checkout DTO and the name of the basket checkout DTO.
+
+33
+00:02:13,040 --> 00:02:19,460
+That means this will be accepting basket checkout DTO object in a Json payload of these http post operation
+
+34
+00:02:19,460 --> 00:02:25,250
+and as a response this will be returned public record checkout basket response and parameter should
+
+35
+00:02:25,250 --> 00:02:30,170
+be boolean is success that indicating the operation is successfully complete or not.
+
+36
+00:02:30,170 --> 00:02:33,920
+So after that we will define our actual checkout basket.
+
+37
+00:02:33,920 --> 00:02:35,060
+Endpoint classes.
+
+38
+00:02:35,060 --> 00:02:41,720
+This class should implement Ikatan module in order to expose http post method in a minimal API way.
+
+39
+00:02:41,720 --> 00:02:46,160
+So that's why I'm going to implement this interface, which is the Ikatan module.
+
+40
+00:02:46,160 --> 00:02:51,050
+And when we are implementing interface members, this will be adding routes into this method.
+
+41
+00:02:51,050 --> 00:02:56,240
+So we will use Endpoint Route Builder when exposing APIs with using the Carter.
+
+42
+00:02:56,240 --> 00:03:01,340
+But before developing this method, it is good to define our DTO object, which is the basket checkout
+
+43
+00:03:01,340 --> 00:03:01,940
+DTO.
+
+44
+00:03:01,940 --> 00:03:07,160
+So I'm going to right click the basket API and create new folder, which name is DTO.
+
+45
+00:03:07,490 --> 00:03:12,050
+And in this details folder I'm going to create basket checkout DTO.
+
+46
+00:03:12,050 --> 00:03:18,710
+In order to accept these Json object into from the client application, please add a new class.
+
+47
+00:03:18,710 --> 00:03:22,100
+Which name is basket checkout DTO under the DTO folder.
+
+48
+00:03:22,310 --> 00:03:26,930
+So after that we can start the implementation of the basket checkout DTO class.
+
+49
+00:03:26,930 --> 00:03:29,870
+This is typical basket checkout event class.
+
+50
+00:03:29,870 --> 00:03:35,240
+I'm going to copy these members from the Basket Checkout event and paste in here including the username,
+
+51
+00:03:35,240 --> 00:03:40,790
+customer ID, total price, billing and shipping address and payment information so you can get these
+
+52
+00:03:40,790 --> 00:03:44,810
+properties from the Basket Checkout event under the Building Blocks messaging.
+
+53
+00:03:44,810 --> 00:03:47,690
+Copy from this side and paste into the D2 object.
+
+54
+00:03:47,690 --> 00:03:54,500
+The idea is that we can getting these DTO variables from the client application as a Json format and
+
+55
+00:03:54,500 --> 00:03:56,750
+passing these informations to the event object.
+
+56
+00:03:56,750 --> 00:04:00,320
+So please develop these DTO objects, including these members.
+
+57
+00:04:00,320 --> 00:04:07,100
+And after that we can go back to our Checkout Basket endpoint class and start to implement our add method
+
+58
+00:04:07,100 --> 00:04:10,310
+in order to expose these Http post method.
+
+59
+00:04:10,310 --> 00:04:16,519
+But before that, of course we should add a using statement into our basket API DTO into our checkout
+
+60
+00:04:16,519 --> 00:04:17,450
+endpoint class.
+
+61
+00:04:17,450 --> 00:04:21,740
+By the way, we can move these using statement to the our global Usings.
+
+62
+00:04:21,740 --> 00:04:28,430
+I'm going to cut in here and go to global Usings into basket API and adhere with adding the global keyword.
+
+63
+00:04:28,430 --> 00:04:33,650
+By this way, we can develop checkout basket end point class without adding the using statement.
+
+64
+00:04:33,650 --> 00:04:35,960
+So go back to our checkout basket endpoint.
+
+65
+00:04:35,960 --> 00:04:39,170
+And now it is time to exposing http post request.
+
+66
+00:04:39,170 --> 00:04:45,620
+So we are going to use app dot map post operation in order to exposing our checkout basket.
+
+67
+00:04:45,620 --> 00:04:46,760
+So let me develop.
+
+68
+00:04:46,760 --> 00:04:51,830
+And after that I will explain one by one I'm going to using app dot map post operation.
+
+69
+00:04:51,830 --> 00:04:55,280
+And after that we will exposing basket checkout end point.
+
+70
+00:04:55,280 --> 00:04:59,540
+And this will be representing our minimal API definition using the.
+
+71
+00:04:59,750 --> 00:05:00,980
+Or Carter Library.
+
+72
+00:05:00,980 --> 00:05:05,000
+So these are the extension methods that we can configure these endpoint.
+
+73
+00:05:05,000 --> 00:05:10,130
+So here you can see the implementation of the expose checkout operation.
+
+74
+00:05:10,130 --> 00:05:16,130
+So we are going to start with the app dot map post method to define Http post endpoint for the basket
+
+75
+00:05:16,130 --> 00:05:16,730
+checkout.
+
+76
+00:05:16,730 --> 00:05:23,030
+And it is adopting incoming requests in to do our checkout basket request that we have defined in this
+
+77
+00:05:23,030 --> 00:05:23,510
+class.
+
+78
+00:05:23,510 --> 00:05:26,870
+And this will be accodomate the incoming requests in this object.
+
+79
+00:05:26,870 --> 00:05:32,690
+And after that you can see that we will inject Isander center object, which is the mediator Isander
+
+80
+00:05:32,690 --> 00:05:36,080
+object, into our asynchronous delegate handler class.
+
+81
+00:05:36,080 --> 00:05:40,190
+When we are calling the http post request for this endpoint.
+
+82
+00:05:40,190 --> 00:05:47,030
+So this will be delegate handler using the sender method in order to send this command to the mediator.
+
+83
+00:05:47,030 --> 00:05:52,010
+Here you can see that in the first row of code, we will basically adopting incoming requests to the
+
+84
+00:05:52,010 --> 00:05:55,490
+checkout basket command object that we will develop in the next video.
+
+85
+00:05:55,490 --> 00:05:58,670
+And after that we will passing this command object to the mediator.
+
+86
+00:05:58,670 --> 00:06:01,580
+This will be trigger handler class and returning a result.
+
+87
+00:06:01,580 --> 00:06:07,520
+And lastly we will converting this result object to our response which is the checkout basket response.
+
+88
+00:06:07,520 --> 00:06:09,530
+And this will be returned back to the client.
+
+89
+00:06:09,530 --> 00:06:13,310
+This response object which is using the results method.
+
+90
+00:06:13,310 --> 00:06:18,410
+And after that we will configure this method with using different extension method from the Carter,
+
+91
+00:06:18,410 --> 00:06:22,760
+including the with name, summary and description and producers methods.
+
+92
+00:06:22,760 --> 00:06:27,020
+So this is our typical implementation for the secrets and mediator.
+
+93
+00:06:27,020 --> 00:06:33,350
+And using the Carter library which is for accepting map post operation with the URL of the slash basket
+
+94
+00:06:33,350 --> 00:06:37,880
+and slash checkout and implementation using the mediator and secrets lifecycle.
+
+95
+00:06:37,880 --> 00:06:43,040
+So in the next video we are going to develop actual command and command handler class with using the
+
+96
+00:06:43,040 --> 00:06:43,550
+mediator.
+

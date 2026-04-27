@@ -1,0 +1,176 @@
+1
+00:00:00,140 --> 00:00:06,920
+In this video, we are going to setting up our feature folder structure using the vertical slice architecture
+
+2
+00:00:06,920 --> 00:00:09,950
+combined with the access and mediator patterns.
+
+3
+00:00:09,980 --> 00:00:12,950
+Let's start with the folder and class structure.
+
+4
+00:00:13,010 --> 00:00:15,800
+Here you can see the our folder structure in here.
+
+5
+00:00:15,800 --> 00:00:19,130
+And our main feature folder name is basket.
+
+6
+00:00:19,130 --> 00:00:25,760
+And under the basket we will create a sub folders representing our use cases including get basket,
+
+7
+00:00:25,760 --> 00:00:27,890
+delete basket and store basket.
+
+8
+00:00:27,950 --> 00:00:34,250
+And for each folder we will create two classes, one for the endpoints and one for the handle class.
+
+9
+00:00:34,250 --> 00:00:35,870
+So let's get started.
+
+10
+00:00:35,870 --> 00:00:37,970
+Please open the Visual Studio.
+
+11
+00:00:37,970 --> 00:00:41,450
+Right click the catalog API, add new folder.
+
+12
+00:00:41,450 --> 00:00:43,190
+Which name is basket?
+
+13
+00:00:43,190 --> 00:00:45,710
+This will be the our main feature folder.
+
+14
+00:00:45,710 --> 00:00:51,140
+And under this folder I'm going to create sub folders representing our use cases.
+
+15
+00:00:51,140 --> 00:00:59,060
+The first one is Get basket and the second one is right click Add new sub folder store basket.
+
+16
+00:01:00,060 --> 00:01:02,970
+And another one is right click add subfolder.
+
+17
+00:01:02,970 --> 00:01:05,129
+Which name is delete basket.
+
+18
+00:01:05,370 --> 00:01:10,530
+Now I'm going to add new classes under these each folder.
+
+19
+00:01:10,530 --> 00:01:15,750
+And for example if you go to the get basket I'm going to create two new classes.
+
+20
+00:01:15,750 --> 00:01:21,990
+This means the first class is get basket and points representing our API definitions.
+
+21
+00:01:21,990 --> 00:01:25,590
+And the second one is get basket handle class.
+
+22
+00:01:25,590 --> 00:01:29,130
+This will be representing our actual business logics.
+
+23
+00:01:29,130 --> 00:01:34,410
+So why we are creating two classes inside of the each feature folder.
+
+24
+00:01:34,410 --> 00:01:37,200
+Even we are following the vertical slice architecture.
+
+25
+00:01:37,200 --> 00:01:44,610
+Because separating the handler and endpoint clusters makes our code more readable and easier to maintain.
+
+26
+00:01:44,610 --> 00:01:49,440
+And also these structure align well with the principle of the clean architecture.
+
+27
+00:01:49,440 --> 00:01:55,740
+We can mapping the handle class to the application layer and mapping the endpoint class to the presentation
+
+28
+00:01:55,740 --> 00:01:57,390
+layer in clean architecture.
+
+29
+00:01:57,570 --> 00:02:01,650
+So now we will follow the same steps for other Crud operations.
+
+30
+00:02:01,650 --> 00:02:03,660
+Let me continue with the store basket.
+
+31
+00:02:03,660 --> 00:02:06,450
+I am going to add store basket endpoints.
+
+32
+00:02:06,450 --> 00:02:11,550
+And after that I'm going to add new class which name is store basket handler.
+
+33
+00:02:11,640 --> 00:02:15,450
+So the last folder is delete basket.
+
+34
+00:02:15,450 --> 00:02:20,640
+If you go to delete basket add new class which name is delete basket endpoints.
+
+35
+00:02:20,640 --> 00:02:24,360
+After that we will create delete basket handler.
+
+36
+00:02:26,210 --> 00:02:33,230
+Okay, let me zoom into and see that we have created basket feature folder.
+
+37
+00:02:33,230 --> 00:02:35,750
+And under basket we have use case folders.
+
+38
+00:02:35,750 --> 00:02:38,900
+And each sub folder has two classes.
+
+39
+00:02:38,900 --> 00:02:44,390
+Please make sure that you have created this kind of folder structure into your computer.
+
+40
+00:02:44,390 --> 00:02:49,160
+So now we can start to development of our feature sub folders.
+
+41
+00:02:49,160 --> 00:02:52,250
+And we will start with the Get Basket feature.
+
+42
+00:02:52,250 --> 00:02:58,790
+And every time when we are implementing any use case we will start with developing handle classes.
+
+43
+00:02:58,790 --> 00:03:03,050
+So our first step is to develop handle class in the application layer.
+
+44
+00:03:03,050 --> 00:03:07,910
+So these handles will encapsulate the business logic for our microservice use cases.
+

@@ -1,0 +1,364 @@
+1
+00:00:00,140 --> 00:00:05,810
+In this video we are going to test update order endpoint with queries and clean architecture.
+
+2
+00:00:05,810 --> 00:00:10,490
+That means we will send http put request in the slash orders endpoint.
+
+3
+00:00:10,490 --> 00:00:18,110
+In order to update an existing order, please open the Visual Studio and go to the Update Order case
+
+4
+00:00:18,110 --> 00:00:19,670
+under the endpoint folder.
+
+5
+00:00:19,670 --> 00:00:25,790
+You can see that under the ordering API, under the endpoint we have update order sales, which will
+
+6
+00:00:25,790 --> 00:00:30,260
+be accodomate incoming http put request in the delegate handler function.
+
+7
+00:00:30,260 --> 00:00:35,720
+So put breakpoint in the beginning of this function and returning this function and this function will
+
+8
+00:00:35,720 --> 00:00:38,390
+be trigger update order command handler.
+
+9
+00:00:38,390 --> 00:00:45,530
+So for that purpose we will go to ordering application and go to the update order folder under the Commands
+
+10
+00:00:45,530 --> 00:00:51,500
+and Orders folder and open the update Order handler class and put a breakpoint in the beginning of the
+
+11
+00:00:51,500 --> 00:00:52,310
+handle method.
+
+12
+00:00:52,310 --> 00:00:58,220
+So this method will be perform actual use case, which is updating an order from the database.
+
+13
+00:00:58,220 --> 00:01:04,340
+And if you go to the update order with values, you can see that this will be using order update method.
+
+14
+00:01:04,340 --> 00:01:06,380
+From the ordering domain layer.
+
+15
+00:01:06,380 --> 00:01:12,770
+You can verify that under ordering domain we have ordered aggregate and under that we have ordered update
+
+16
+00:01:12,770 --> 00:01:13,220
+method.
+
+17
+00:01:13,220 --> 00:01:16,940
+That means order is responsible for update operation.
+
+18
+00:01:16,940 --> 00:01:20,420
+So in here also we have a order updated event list.
+
+19
+00:01:20,420 --> 00:01:25,310
+That means we will adding domain event into aggregate which is the order updated event.
+
+20
+00:01:25,310 --> 00:01:31,070
+And this domain event will dispatch with using the ordering infrastructure and dispatch domain event
+
+21
+00:01:31,070 --> 00:01:32,360
+handler interceptor.
+
+22
+00:01:32,360 --> 00:01:38,420
+And this will be trigger to handle method of the ordering application layer, which is the under the
+
+23
+00:01:38,420 --> 00:01:41,960
+orders event handlers and order updated event handler.
+
+24
+00:01:41,960 --> 00:01:47,840
+And I am going to put additional breakpoint in order to handle this domain event when updating an order.
+
+25
+00:01:47,840 --> 00:01:51,890
+So we have put the end to end breakpoints for the update order use cases.
+
+26
+00:01:51,890 --> 00:01:55,070
+You can also verify the order data in the last video.
+
+27
+00:01:55,070 --> 00:01:57,620
+We have added newly created order in here.
+
+28
+00:01:57,620 --> 00:02:03,860
+So we are going to update these order name and other details for example such as billing address and
+
+29
+00:02:03,860 --> 00:02:04,400
+so on.
+
+30
+00:02:04,400 --> 00:02:09,320
+So I'm going to copy this ID information in here and open the postman.
+
+31
+00:02:09,560 --> 00:02:15,290
+And if you open the postman you can see that we have additional request which is the Http put.
+
+32
+00:02:15,290 --> 00:02:18,860
+And these are the endpoints of these put operation.
+
+33
+00:02:18,860 --> 00:02:21,380
+This is similar with the http post operation.
+
+34
+00:02:21,380 --> 00:02:27,230
+I'm going to use 50 port numbers for sending request to our local computer and slash orders.
+
+35
+00:02:27,230 --> 00:02:30,110
+But this time our function is http put.
+
+36
+00:02:30,110 --> 00:02:36,500
+And if you look at our Json payload you can see that this is similar with the order object.
+
+37
+00:02:36,500 --> 00:02:41,750
+And this will be sample request payload including the whole order attributes.
+
+38
+00:02:41,750 --> 00:02:47,810
+And we are updating some of the fields for example order name and shipping and billing information,
+
+39
+00:02:47,810 --> 00:02:49,430
+payment details and so on.
+
+40
+00:02:49,430 --> 00:02:56,660
+So specifically I have changed the order name and shipping first name and state information, and you
+
+41
+00:02:56,660 --> 00:03:02,090
+can also change the billing, first name and state information and change the payment card name.
+
+42
+00:03:02,090 --> 00:03:07,040
+So these are the changed attributes from the our newly created order.
+
+43
+00:03:07,040 --> 00:03:11,360
+And this time I am going to update the order with sending the whole Json payload.
+
+44
+00:03:11,360 --> 00:03:14,840
+But of course, please don't forget the change ID information.
+
+45
+00:03:14,840 --> 00:03:20,990
+You can copy the ID from the database or in this place when we are sending the http post request from
+
+46
+00:03:20,990 --> 00:03:26,570
+the last video, and I am going to change the ID information with a newly created order in the last
+
+47
+00:03:26,570 --> 00:03:27,050
+video.
+
+48
+00:03:27,050 --> 00:03:33,890
+So I'm going to change with this with information and remove this note and save this payload and hit
+
+49
+00:03:33,890 --> 00:03:37,190
+the send button in order to trigger our breakpoints.
+
+50
+00:03:37,190 --> 00:03:41,300
+And now we can observe our breakpoints, the flow of the request lifecycle.
+
+51
+00:03:41,300 --> 00:03:47,060
+Here you can see that we have hit the update order endpoint with the request of the order details.
+
+52
+00:03:47,060 --> 00:03:53,060
+You can see that the order is updated with the order name is five and you can see other details.
+
+53
+00:03:53,060 --> 00:03:55,910
+I have changed the billing address, first name and so on.
+
+54
+00:03:55,910 --> 00:04:01,460
+So if I continue debugging, you can see that the first thing we are converting these requests to command
+
+55
+00:04:01,460 --> 00:04:03,920
+object and we will hit the mediator send button.
+
+56
+00:04:03,920 --> 00:04:08,990
+The command will be triggered our application layer update order handler handle method.
+
+57
+00:04:08,990 --> 00:04:11,780
+And in this method we will perform the actual logic.
+
+58
+00:04:11,780 --> 00:04:16,070
+First of all we will check this order ID exists or not in the database.
+
+59
+00:04:16,070 --> 00:04:19,279
+If not exist we will throw an order not found exception.
+
+60
+00:04:19,279 --> 00:04:25,010
+In our case we can find the order in database and after that we will update orders with the new values
+
+61
+00:04:25,010 --> 00:04:26,000
+in this method.
+
+62
+00:04:26,000 --> 00:04:32,630
+In here you can see that after preparing our value object, we are hitting the order update method which
+
+63
+00:04:32,630 --> 00:04:36,140
+is the located or ordered domain layer.
+
+64
+00:04:36,140 --> 00:04:41,540
+And in here we are going to update new order name, which is the order five and shipping address, billing
+
+65
+00:04:41,540 --> 00:04:43,100
+address, payment and status.
+
+66
+00:04:43,100 --> 00:04:48,380
+And after that we will adding domain event which name is order updated event into order aggregate.
+
+67
+00:04:48,380 --> 00:04:54,470
+After updating this operation and after continuing this our handle method in the application layer,
+
+68
+00:04:54,470 --> 00:04:58,970
+we basically update an existing order using the Entity Framework core and when saving.
+
+69
+00:04:59,340 --> 00:04:59,820
+Async.
+
+70
+00:04:59,820 --> 00:05:04,860
+Here you can see that this will be triggered our interceptor from the infrastructure layer.
+
+71
+00:05:04,860 --> 00:05:07,080
+And after that we will dispatching domain events.
+
+72
+00:05:07,080 --> 00:05:12,540
+In our case we will dispatch one domain event which is the our update order domain event.
+
+73
+00:05:12,540 --> 00:05:17,490
+And here you can see that this will be triggered and handled from the ordering application layer.
+
+74
+00:05:17,490 --> 00:05:21,540
+Order updated event handler which is implementing a notification handler.
+
+75
+00:05:21,540 --> 00:05:27,420
+You can confirm that this is the place where the ordering application event handlers located, and in
+
+76
+00:05:27,420 --> 00:05:31,320
+this case I am only logging the information which incoming domain event.
+
+77
+00:05:31,320 --> 00:05:34,950
+But in the next videos we can send integration event in here.
+
+78
+00:05:34,950 --> 00:05:41,160
+So I'm going to hit F5 and go at the end of this endpoint class and return a response to the client
+
+79
+00:05:41,160 --> 00:05:41,880
+application.
+
+80
+00:05:41,880 --> 00:05:45,270
+You can see the response is 200 okay successful.
+
+81
+00:05:45,270 --> 00:05:49,410
+And you can see the payload of the response which is the success is true.
+
+82
+00:05:49,410 --> 00:05:53,130
+So now we can verify these updated records on the database.
+
+83
+00:05:53,130 --> 00:05:59,250
+If you open the Visual Studio and if you open the SQL Server Object Explorer I have already opened these
+
+84
+00:05:59,250 --> 00:06:00,960
+orders before this video.
+
+85
+00:06:00,960 --> 00:06:05,910
+Here you can see that this is the last record that we have inserted in the last video.
+
+86
+00:06:05,910 --> 00:06:08,010
+And please check this order name.
+
+87
+00:06:08,010 --> 00:06:09,660
+We have updated this order name.
+
+88
+00:06:09,660 --> 00:06:15,900
+If I refresh this page, you can see that our order name has changed with the five and the order of
+
+89
+00:06:15,900 --> 00:06:17,190
+the values are changed.
+
+90
+00:06:17,190 --> 00:06:21,600
+If you check the the first name of the billing and shipping address and so on.
+
+91
+00:06:21,600 --> 00:06:27,390
+That means we have successfully updated an existing record with using the update order endpoint.
+

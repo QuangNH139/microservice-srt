@@ -1,0 +1,332 @@
+1
+00:00:00,140 --> 00:00:07,490
+In this video we are going to orchestrating basket API microservices with Docker Compose and involving
+
+2
+00:00:07,490 --> 00:00:13,730
+setting up a Multi-container environment where each microservices and its dependencies, for example,
+
+3
+00:00:13,730 --> 00:00:20,540
+databases and cache run in a separate container, but they can communicate with each other in the network.
+
+4
+00:00:20,930 --> 00:00:27,080
+For that purpose, please open the Visual Studio and open the Docker-compose.yml file.
+
+5
+00:00:27,080 --> 00:00:33,530
+This file defines services, network, and volume definitions that make up your application, but as
+
+6
+00:00:33,530 --> 00:00:37,520
+you can see that these are the backing services and these are the microservices.
+
+7
+00:00:37,520 --> 00:00:41,270
+We have only one microservices which is a Catholic microservices.
+
+8
+00:00:41,270 --> 00:00:47,900
+But this time we will put basket API microservices inside of the Docker network which using the Docker
+
+9
+00:00:47,900 --> 00:00:48,650
+compose.
+
+10
+00:00:48,650 --> 00:00:52,970
+And in here I'm going to add basket API manually.
+
+11
+00:00:52,970 --> 00:00:55,910
+Or we can generate from the Visual Studio.
+
+12
+00:00:55,940 --> 00:00:59,540
+I would like to follow with generating using the Visual Studio.
+
+13
+00:00:59,540 --> 00:01:03,230
+If you right click the basket API and click the add button.
+
+14
+00:01:03,230 --> 00:01:07,460
+And this time you can see that we have container orchestrator support.
+
+15
+00:01:07,460 --> 00:01:13,190
+If you click the Container Orchestrator, you can select the orchestrator as a docker compose and click
+
+16
+00:01:13,190 --> 00:01:14,330
+the okay button.
+
+17
+00:01:14,330 --> 00:01:17,840
+And operating system will be Linux and click the okay button.
+
+18
+00:01:17,840 --> 00:01:25,010
+You can see that basket API comes after the Catholic API, and this is indicating the image file from
+
+19
+00:01:25,010 --> 00:01:26,990
+the basket API project.
+
+20
+00:01:26,990 --> 00:01:33,800
+And in the build context, docker file is following the docker file inside of the basket API project.
+
+21
+00:01:33,800 --> 00:01:39,890
+So that means we have added the basket API microservices into docker compose environment.
+
+22
+00:01:39,890 --> 00:01:47,270
+After defining basket API in the docker-compose.yml file, it is time to define and give configurations
+
+23
+00:01:47,270 --> 00:01:49,580
+in the docker compose overwrite yaml file.
+
+24
+00:01:49,580 --> 00:01:51,290
+And as you can see that in.
+
+25
+00:01:51,290 --> 00:01:56,600
+Here we have configured the backing services on top of this page, and after the backing services it
+
+26
+00:01:56,600 --> 00:01:59,210
+is listing the microservice configurations.
+
+27
+00:01:59,210 --> 00:02:04,820
+This is the catalog microservice configurations, including environment variables, depends on ports
+
+28
+00:02:04,820 --> 00:02:05,600
+and volumes.
+
+29
+00:02:05,600 --> 00:02:12,740
+And in here now we will configure basket API microservices with exposing correct endpoints port numbers
+
+30
+00:02:12,740 --> 00:02:14,090
+and volume definitions.
+
+31
+00:02:14,330 --> 00:02:20,450
+So that means we need to modify these configurations according to our project port numbers and environment
+
+32
+00:02:20,450 --> 00:02:21,110
+variables.
+
+33
+00:02:21,110 --> 00:02:24,260
+So we will configure basket API like Catholic API.
+
+34
+00:02:24,260 --> 00:02:27,590
+And the first configuration is environment variables.
+
+35
+00:02:27,590 --> 00:02:31,130
+Here you can see the environment variables including connection string.
+
+36
+00:02:31,130 --> 00:02:35,450
+So for basket API we will also populate the environment variables.
+
+37
+00:02:35,450 --> 00:02:40,310
+And for the environment variables we should check the application settings of the basket API.
+
+38
+00:02:40,310 --> 00:02:46,580
+And here you can see that we have two connection strings that we have to override in the docker compose
+
+39
+00:02:46,580 --> 00:02:47,720
+overwrite Yaml file.
+
+40
+00:02:47,720 --> 00:02:53,960
+In order to overwrite these configurations, please open the docker compose overwriting file and locate
+
+41
+00:02:53,960 --> 00:02:54,890
+the environment.
+
+42
+00:02:54,890 --> 00:02:59,480
+So now I'm going to define two environment variables in here.
+
+43
+00:02:59,480 --> 00:03:04,010
+So the first one is this one which is the connection string database.
+
+44
+00:03:04,010 --> 00:03:10,940
+Here you can see that we use two underscore character in order to overwrite these application settings.
+
+45
+00:03:10,940 --> 00:03:16,550
+And as a server we can give basket db which is the container name of the backing services in Docker
+
+46
+00:03:16,550 --> 00:03:17,180
+network.
+
+47
+00:03:17,180 --> 00:03:19,520
+In Docker network we can give container names.
+
+48
+00:03:19,520 --> 00:03:26,090
+You can scroll up and see that basket database is container name basket db in Docker network.
+
+49
+00:03:26,090 --> 00:03:30,560
+That's why we can give as a server name basket db inside of the basket.
+
+50
+00:03:30,560 --> 00:03:37,280
+Microservices and port number is 5432, which is the default port number for PostgreSQL database.
+
+51
+00:03:37,280 --> 00:03:44,210
+Since we can give the basket db as a container name, we can use internal port name in docker network.
+
+52
+00:03:44,210 --> 00:03:50,240
+We don't need to change port number inside of the docker, because the server names are differentiated
+
+53
+00:03:50,240 --> 00:03:52,310
+in the docker compose network.
+
+54
+00:03:52,340 --> 00:03:58,910
+The first one is catalog db for catalog microservices, and the second one is basket db for basket microservices
+
+55
+00:03:58,910 --> 00:04:03,380
+and database name, and the rest of the connection strings are same.
+
+56
+00:04:03,380 --> 00:04:08,300
+And the next overriding thing is connection string and Redis.
+
+57
+00:04:08,330 --> 00:04:12,140
+Again, we use double underscore to overwrite application settings.
+
+58
+00:04:12,140 --> 00:04:19,399
+And in here instead of using localhost we use distributed cache which is the container name Docker container
+
+59
+00:04:19,399 --> 00:04:21,680
+name inside of the docker compose.
+
+60
+00:04:21,680 --> 00:04:23,630
+That's why we can give that name.
+
+61
+00:04:23,630 --> 00:04:28,520
+And we use the default port number of the distributed cache which is the radius.
+
+62
+00:04:28,520 --> 00:04:31,760
+So we have completed the environment variables.
+
+63
+00:04:31,760 --> 00:04:35,540
+And now after that we can configure the dependson.
+
+64
+00:04:35,540 --> 00:04:39,950
+Here you can see that I am going to copy from the Catholic API and comes in here.
+
+65
+00:04:39,950 --> 00:04:42,560
+So according to Dependson.
+
+66
+00:04:42,560 --> 00:04:50,240
+And make sure that you have indentation correctly as it depends on we can say that basket API microservices
+
+67
+00:04:50,240 --> 00:04:52,580
+depending on two backing services.
+
+68
+00:04:52,580 --> 00:04:57,980
+The first one is basket db and the second one is distributed cache.
+
+69
+00:04:57,980 --> 00:04:59,840
+And please make sure that.
+
+70
+00:04:59,990 --> 00:05:05,990
+You have put correct indentation and it depends on part also finished.
+
+71
+00:05:05,990 --> 00:05:08,960
+And the last part is port definitions.
+
+72
+00:05:08,960 --> 00:05:14,570
+At this stage we can check our port definitions for basket API microservices.
+
+73
+00:05:14,570 --> 00:05:23,480
+Here you can see the basket microservices exposing 5001 and 5051 for local environment Http and Https.
+
+74
+00:05:23,480 --> 00:05:33,050
+But in docker environment we will expose these services 6001 and 6061 for http and https endpoint in
+
+75
+00:05:33,050 --> 00:05:35,210
+Docker environment for that purpose.
+
+76
+00:05:35,210 --> 00:05:41,240
+If you go back to our Visual Studio, we are going to replace these port numbers according to our port
+
+77
+00:05:41,240 --> 00:05:43,190
+number mapping table.
+
+78
+00:05:43,190 --> 00:05:51,110
+And here you can see that this is the internal Docker network Http endpoint that is exposing to 6001.
+
+79
+00:05:51,110 --> 00:05:56,930
+And here you can see the internal Https endpoint exposing to 6061.
+
+80
+00:05:56,930 --> 00:06:00,710
+And we have completed the configurations for basket API.
+
+81
+00:06:00,710 --> 00:06:06,440
+Please save this override HTML file by using docker compose and docker compose overwrite HTML files.
+
+82
+00:06:06,440 --> 00:06:10,970
+We can efficiently manage and orchestrate all components for the basket API.
+
+83
+00:06:10,970 --> 00:06:11,720
+Microservices.
+

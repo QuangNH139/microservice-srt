@@ -1,0 +1,380 @@
+1
+00:00:00,110 --> 00:00:06,290
+In this video, we are going to test end to end use case for discount and basket microservices.
+
+2
+00:00:06,290 --> 00:00:09,020
+So we are start with the basket microservices.
+
+3
+00:00:09,020 --> 00:00:11,210
+When adding item into basket.
+
+4
+00:00:11,210 --> 00:00:17,030
+This will be integrated with the discount over the gRPC protocol and get discount values and calculate
+
+5
+00:00:17,030 --> 00:00:19,820
+the latest price of the products into the basket.
+
+6
+00:00:19,820 --> 00:00:27,680
+So when we are sending these payload, we will send the price 500 and we have discount 150 and 100.
+
+7
+00:00:27,680 --> 00:00:30,440
+So this will be deduct our product prices.
+
+8
+00:00:30,830 --> 00:00:32,810
+Please open the Visual Studio.
+
+9
+00:00:32,810 --> 00:00:37,340
+And first of all we should make sure that our Docker desktop is running.
+
+10
+00:00:37,340 --> 00:00:42,860
+And after that we should start baking services like PostgreSQL, Redis, cache and so on.
+
+11
+00:00:42,860 --> 00:00:47,960
+For that purpose, I'm going to right click the Docker compose and set a startup project.
+
+12
+00:00:47,960 --> 00:00:55,490
+And this time I'm going to run without debugging because the idea is that activate and up and running
+
+13
+00:00:55,490 --> 00:01:01,250
+for the backing services, because we will test these basket and discount integration into our local
+
+14
+00:01:01,250 --> 00:01:02,030
+computer.
+
+15
+00:01:02,030 --> 00:01:08,750
+Please click this button, start without debugging and make sure that your backing services is up and
+
+16
+00:01:08,750 --> 00:01:09,410
+running.
+
+17
+00:01:09,410 --> 00:01:15,230
+That our local microservices can connect to database and cache services.
+
+18
+00:01:15,750 --> 00:01:20,520
+So this will be running the docker compose up command on behind of the scenes.
+
+19
+00:01:20,520 --> 00:01:28,470
+And after that you can open the Docker desktop and verify that your backing services are up and running.
+
+20
+00:01:28,470 --> 00:01:30,960
+Catalog basket and distributed cache.
+
+21
+00:01:30,960 --> 00:01:37,230
+So after that we will perform and test our discount operation into our local computer.
+
+22
+00:01:37,230 --> 00:01:42,900
+For that purpose, we can put breakpoint under the store basket command handler class and put breakpoint
+
+23
+00:01:42,900 --> 00:01:44,820
+into deduct discount method.
+
+24
+00:01:44,820 --> 00:01:48,390
+And at the same way we can put a breakpoint under the discount.
+
+25
+00:01:48,390 --> 00:01:54,090
+And if you go to the services discount services and we will put a breakpoint under the get discount
+
+26
+00:01:54,090 --> 00:01:54,810
+method.
+
+27
+00:01:54,810 --> 00:01:59,730
+So now it is time to run multiple startup project in our local environment.
+
+28
+00:01:59,730 --> 00:02:03,600
+For that purpose I am going to right click the solution file.
+
+29
+00:02:03,630 --> 00:02:07,950
+Come here, right click the solution file and select the properties.
+
+30
+00:02:07,950 --> 00:02:11,100
+And we can select the multiple startup project.
+
+31
+00:02:11,100 --> 00:02:13,290
+And these are the basket API.
+
+32
+00:02:13,560 --> 00:02:17,100
+We can set a start and after that discount gRPC.
+
+33
+00:02:18,200 --> 00:02:24,380
+Because these will be integrated when performing add item in the shopping cart and apply and okay.
+
+34
+00:02:24,500 --> 00:02:29,990
+So now we are ready to test our basket and discount gRPC in our local computer.
+
+35
+00:02:29,990 --> 00:02:36,560
+In here you can see the newly start button comes in here and click this run button and start basket
+
+36
+00:02:36,560 --> 00:02:39,260
+and discount gRPC into our local computer.
+
+37
+00:02:39,320 --> 00:02:43,460
+You can verify the microservices from the Project Console windows.
+
+38
+00:02:43,460 --> 00:02:49,790
+So here you can see that basket microservices is up and running on my local computer and listening to
+
+39
+00:02:49,790 --> 00:02:51,230
+5051 port.
+
+40
+00:02:51,230 --> 00:02:59,420
+And also you can see the discount gRPC services is running on local computer and listening to 5052.
+
+41
+00:02:59,450 --> 00:03:05,600
+So if you look at our basket microservices, if you go to application settings, these will be getting
+
+42
+00:03:05,600 --> 00:03:08,060
+5052 port for the discount URL.
+
+43
+00:03:08,060 --> 00:03:13,250
+So that means it is ready for the accepting requests to our services.
+
+44
+00:03:13,250 --> 00:03:15,050
+Please open the postman.
+
+45
+00:03:15,050 --> 00:03:21,530
+And first of all, I would like to verify that our gRPC services is working fine for that purpose.
+
+46
+00:03:21,530 --> 00:03:27,410
+Open the discount servers and select the method as a get discount and change the port number localhost
+
+47
+00:03:27,410 --> 00:03:29,180
+5052.
+
+48
+00:03:29,180 --> 00:03:36,080
+And after that I will paste product name as a request parameters and invoke gRPC call.
+
+49
+00:03:36,080 --> 00:03:44,030
+This will be trigger or get discount method of the gRPC microservices and this will be return us a id
+
+50
+00:03:44,030 --> 00:03:49,580
+one product name and amount as 150 discount information from the coupon table.
+
+51
+00:03:49,580 --> 00:03:54,140
+So our discount service is running successfully in our local computer.
+
+52
+00:03:54,140 --> 00:03:56,810
+That means we can go to end to end test.
+
+53
+00:03:56,810 --> 00:04:02,810
+For that purpose, I'm going to open each of microservices postman collection, go to basket folder
+
+54
+00:04:02,810 --> 00:04:05,420
+and go to Post Store Basket operation.
+
+55
+00:04:05,420 --> 00:04:11,570
+And if you open this store basket operation you can see that we have already prepared our endpoint http
+
+56
+00:04:11,570 --> 00:04:13,190
+post request and the payload.
+
+57
+00:04:13,190 --> 00:04:19,670
+In the payload you can see that items has two items and the item price is 500.
+
+58
+00:04:19,670 --> 00:04:24,230
+So we have two discount for iPhone X and Samsung ten.
+
+59
+00:04:24,230 --> 00:04:28,940
+And this will be price deducting from the coupon amount information.
+
+60
+00:04:28,940 --> 00:04:32,720
+And we will calculate the total price in different and deducted way.
+
+61
+00:04:32,720 --> 00:04:35,720
+So you can check the basket URL in here in basket URL.
+
+62
+00:04:35,720 --> 00:04:37,430
+Now looking for the Docker environment.
+
+63
+00:04:37,430 --> 00:04:40,910
+But we are testing in the local environment.
+
+64
+00:04:40,910 --> 00:04:44,900
+That's why I change the environment as a localhost and verify the basket.
+
+65
+00:04:44,900 --> 00:04:51,440
+URL comes as a 5051 and send http post request to perform store basket operation.
+
+66
+00:04:51,440 --> 00:04:56,600
+Here you can see that our breakpoint is triggering in the store basket endpoint.
+
+67
+00:04:56,600 --> 00:05:02,480
+If you continue to debug operation, you can see that it comes to our store basket command handler handle
+
+68
+00:05:02,480 --> 00:05:03,050
+method.
+
+69
+00:05:03,350 --> 00:05:06,620
+In this method we basically perform two main operations.
+
+70
+00:05:06,620 --> 00:05:09,560
+These are the deduct discount and store basket.
+
+71
+00:05:09,560 --> 00:05:14,540
+So if you continue the debugging we will basically paste the shopping cart into deduct discount method.
+
+72
+00:05:14,540 --> 00:05:19,460
+And in this method we basically iterate for each item in the shopping cart.
+
+73
+00:05:19,460 --> 00:05:25,310
+And after that for each item we will call the discount gRPC services get discount async method.
+
+74
+00:05:25,310 --> 00:05:30,770
+Here you can see that we suddenly trigger get discount operation under Discount services.
+
+75
+00:05:30,770 --> 00:05:37,070
+In order to get the coupon information from the discount gRPC database and return back to the client
+
+76
+00:05:37,070 --> 00:05:42,290
+for this operation, we can put breakpoint after the item price point in here.
+
+77
+00:05:42,290 --> 00:05:48,710
+And if I hit the F5, you can see the coupon amount comes 150 and item price is 500.
+
+78
+00:05:48,710 --> 00:05:53,330
+And we will calculate the latest price and set the latest price is at 350.
+
+79
+00:05:53,330 --> 00:05:58,700
+And for the next item we can call again the discount gRPC get discount async method.
+
+80
+00:05:58,820 --> 00:06:03,410
+At the same way we will retrieve the coupon information and after that calculate the amount.
+
+81
+00:06:03,410 --> 00:06:09,140
+Deducting from the 500 to 100 and latest price is calculated to 400.
+
+82
+00:06:09,140 --> 00:06:11,870
+So this is the deduct discount operation.
+
+83
+00:06:11,870 --> 00:06:15,770
+And the rest of the operation is similar that we have done before.
+
+84
+00:06:15,770 --> 00:06:19,670
+Connected and communicating PostgreSQL database and Redis cache.
+
+85
+00:06:19,670 --> 00:06:22,820
+I'm going to hit the F5 and complete the operation.
+
+86
+00:06:22,820 --> 00:06:27,860
+And you can see that the client response comes in here as a username as the boolean.
+
+87
+00:06:27,860 --> 00:06:33,320
+That means this will be complete this operation successfully 201 created operations.
+
+88
+00:06:33,530 --> 00:06:36,140
+You can see the payload of the store basket.
+
+89
+00:06:36,140 --> 00:06:41,840
+We will send 500 price for each item in the shopping cart for the username as Julian.
+
+90
+00:06:41,840 --> 00:06:49,820
+If we get basket by username and send http get method and I'm hitting F5 to skipping these debugging
+
+91
+00:06:49,820 --> 00:06:57,320
+operations and focus on the response, you can see that each item deducted from the coupon amount discounted.
+
+92
+00:06:57,320 --> 00:07:05,090
+The first item is 350, and the second item comes 400 and the total price comes accordingly for the
+
+93
+00:07:05,090 --> 00:07:07,610
+deducting prices into our shopping cart.
+
+94
+00:07:07,610 --> 00:07:13,100
+And as you can see that we have successfully called discount gRPC service from the basket microservices
+
+95
+00:07:13,100 --> 00:07:15,890
+when adding and removing item into shopping cart.
+

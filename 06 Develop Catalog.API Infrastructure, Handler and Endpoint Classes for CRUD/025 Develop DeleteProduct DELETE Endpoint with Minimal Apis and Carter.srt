@@ -1,0 +1,180 @@
+1
+00:00:00,140 --> 00:00:05,750
+In this video, we are going to develop delete product and point with using minimal APIs.
+
+2
+00:00:05,750 --> 00:00:06,620
+And Carter.
+
+3
+00:00:06,650 --> 00:00:12,980
+That means we will expose Http delete method and performing this delete method in this URL.
+
+4
+00:00:12,980 --> 00:00:15,830
+And we will remove a product from the database.
+
+5
+00:00:15,830 --> 00:00:18,800
+For that purpose, please open the Visual Studio.
+
+6
+00:00:18,800 --> 00:00:22,820
+This time we will developing the delete product endpoint class.
+
+7
+00:00:22,820 --> 00:00:25,430
+Double click this class and go to this class.
+
+8
+00:00:25,730 --> 00:00:29,000
+As always, we will start with the defining record types.
+
+9
+00:00:29,000 --> 00:00:35,270
+In the endpoint class, we have defined request and response record types, and after that we will perform
+
+10
+00:00:35,270 --> 00:00:38,990
+an exposing Http delete operation with using Carter.
+
+11
+00:00:38,990 --> 00:00:41,150
+So please open the Visual Studio.
+
+12
+00:00:41,150 --> 00:00:45,050
+And I'm going to create a request and response object.
+
+13
+00:00:45,050 --> 00:00:46,280
+For request object.
+
+14
+00:00:46,280 --> 00:00:52,310
+We basically require a gid id information that we can get from the request parameters.
+
+15
+00:00:52,310 --> 00:00:58,310
+For that purpose, I'm putting a commented request object to following the best practices in here,
+
+16
+00:00:58,310 --> 00:01:05,900
+and after that we are developing the response object, which name is delete product response and it
+
+17
+00:01:05,900 --> 00:01:13,700
+is getting the bool is success property, and this should be same as the r result object into the handler
+
+18
+00:01:13,700 --> 00:01:17,870
+class in order to convert each other easily using the master.
+
+19
+00:01:17,870 --> 00:01:21,800
+So we are creating request and response object.
+
+20
+00:01:21,800 --> 00:01:26,720
+Now it is time to develop our actual delete product and point class.
+
+21
+00:01:26,720 --> 00:01:34,400
+In this class we will implement I Carter model interface in order to define our delete end point and
+
+22
+00:01:34,400 --> 00:01:40,670
+remove the products for that purpose, I'm implement I Carter module and implement these interface members,
+
+23
+00:01:40,670 --> 00:01:43,940
+which is the add routes in the Addross methods.
+
+24
+00:01:43,940 --> 00:01:49,850
+We can exposing the Http methods with calling the map methods.
+
+25
+00:01:49,850 --> 00:01:56,960
+This time we will using the map delete to exposing Http delete operation as a request URL.
+
+26
+00:01:56,960 --> 00:02:04,220
+We will use products slash ID information that we can get the ID from the request parameters, and after
+
+27
+00:02:04,220 --> 00:02:10,100
+that we will implement this operation with writing the delegate handler.
+
+28
+00:02:10,100 --> 00:02:17,870
+First of all, we need a gid id value from the request parameters, and after that we can inject I sender
+
+29
+00:02:18,680 --> 00:02:21,740
+which is the our mediator.
+
+30
+00:02:22,190 --> 00:02:27,740
+And in here we can perform the our actual operation in the delegate handler method.
+
+31
+00:02:27,740 --> 00:02:33,530
+So I'm going to open this method and writing the result variable.
+
+32
+00:02:33,530 --> 00:02:36,740
+We will get the result variable from the mediator.
+
+33
+00:02:36,740 --> 00:02:45,830
+I'm going to using the standard dot send to passing our delete product command to the mediator.
+
+34
+00:02:45,830 --> 00:02:51,860
+So in the product command I'm going to paste the ID information that comes from the request parameters.
+
+35
+00:02:51,860 --> 00:02:57,500
+And mediator will be trigger the delete product command handler class and return back the result.
+
+36
+00:02:57,500 --> 00:03:04,850
+And after that we can convert these result as a response object that we can use the result dot adapt
+
+37
+00:03:04,850 --> 00:03:09,020
+method and pacing the delete product.
+
+38
+00:03:10,590 --> 00:03:11,700
+Response object.
+
+39
+00:03:14,760 --> 00:03:17,910
+Lastly, we will return results.
+
+40
+00:03:22,500 --> 00:03:24,420
+Okay response to the client.
+
+41
+00:03:25,890 --> 00:03:30,780
+As always, we can configure this endpoint with using the extension methods.
+
+42
+00:03:30,780 --> 00:03:37,110
+Here you can see that we have defined the name summary description and produce Http responses.
+
+43
+00:03:37,110 --> 00:03:44,520
+In this endpoint definition we define Http delete requests for slash products slash id endpoint.
+
+44
+00:03:44,520 --> 00:03:50,610
+And the endpoint uses mediator in order to send a delete product command with the specified product
+
+45
+00:03:50,610 --> 00:03:56,280
+ID, and then adapts the result to the delete product response and return back to the client.
+

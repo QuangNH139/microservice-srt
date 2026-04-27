@@ -1,0 +1,136 @@
+1
+00:00:00,140 --> 00:00:05,120
+In this video we are going to learn, fan out, publish, subscribe pattern.
+
+2
+00:00:05,630 --> 00:00:08,300
+Let me start with the what is fan out?
+
+3
+00:00:08,930 --> 00:00:16,610
+Fan out is a messaging pattern where piece of message is distributed or fanned out to multiple destinations
+
+4
+00:00:16,610 --> 00:00:17,480
+in parallel.
+
+5
+00:00:18,800 --> 00:00:24,470
+The main idea is each of destination can work and process these messages in parallel.
+
+6
+00:00:24,980 --> 00:00:31,430
+One way to implement these messaging pattern is to use publisher, subscriber or pub sub model.
+
+7
+00:00:31,910 --> 00:00:37,700
+In the pub sub model, we define a topic which is a logical access point to enabling message communication
+
+8
+00:00:37,700 --> 00:00:38,690
+with asynchronously.
+
+9
+00:00:40,570 --> 00:00:46,690
+A publisher simply sent the message to the topic, and after that, this message is immediately fanned
+
+10
+00:00:46,690 --> 00:00:49,060
+out to all subscribers of this topic.
+
+11
+00:00:49,090 --> 00:00:53,350
+This message communication is completely decoupled and asynchronously.
+
+12
+00:00:54,970 --> 00:01:01,510
+Each service can operate and scale independently and individually without having any dependency of other
+
+13
+00:01:01,510 --> 00:01:02,290
+services.
+
+14
+00:01:03,040 --> 00:01:08,800
+The publisher doesn't need to know who is consuming this message that is broadcasting, and also the
+
+15
+00:01:08,800 --> 00:01:12,040
+subscriber does not need to know where the message comes from.
+
+16
+00:01:13,470 --> 00:01:19,350
+So these architectural challenges requirements by using messaging patterns and it resulting in loosely
+
+17
+00:01:19,350 --> 00:01:25,410
+coupled communication between highly cohesive components to manage complexity in microservice architectures.
+
+18
+00:01:25,710 --> 00:01:31,710
+And a common approach when one component wish to deliver the same message to multiple receivers is to
+
+19
+00:01:31,710 --> 00:01:34,500
+use Fanout publish subscribe messaging pattern.
+
+20
+00:01:35,370 --> 00:01:39,030
+So now let's focus on the publish subscribe messaging pattern.
+
+21
+00:01:39,060 --> 00:01:41,370
+So what is pub sub messaging?
+
+22
+00:01:41,400 --> 00:01:47,160
+Publish subscribe messaging is a form of asynchronous service to service communication used in microservice
+
+23
+00:01:47,160 --> 00:01:48,000
+architectures.
+
+24
+00:01:48,270 --> 00:01:55,080
+In publish subscribe model, any message published to the topic is immediately received by all of the
+
+25
+00:01:55,080 --> 00:01:56,550
+subscriber of the topic.
+
+26
+00:01:57,120 --> 00:02:02,910
+So a pub sub messaging can be used to enable event driven architectures and to decouple applications
+
+27
+00:02:02,910 --> 00:02:08,850
+in order to increase performance, reliability and scalability in modern cloud architectures.
+
+28
+00:02:08,970 --> 00:02:15,180
+The applications are decoupled into smaller, independent building blocks that are easier to develop,
+
+29
+00:02:15,180 --> 00:02:16,620
+deploy, and maintain.
+
+30
+00:02:17,370 --> 00:02:24,000
+Publish subscribe messaging provides instant event notification for these distributed applications.
+
+31
+00:02:25,250 --> 00:02:31,520
+The public subscriber model allows message to be broadcast to different parts of the system asynchronously.
+
+32
+00:02:31,940 --> 00:02:37,850
+A message topic provides a lightweight mechanism to broadcast asynchronous event notification, and
+
+33
+00:02:37,850 --> 00:02:43,670
+the endpoints that allow software components to connect to the topic in order to send and receive those
+
+34
+00:02:43,670 --> 00:02:44,270
+messages.
+

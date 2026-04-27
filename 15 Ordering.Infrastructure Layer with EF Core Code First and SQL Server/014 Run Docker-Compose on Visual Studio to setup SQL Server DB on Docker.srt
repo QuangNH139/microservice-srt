@@ -1,0 +1,180 @@
+1
+00:00:00,140 --> 00:00:06,020
+In this video, we are going to run Docker Compose on Visual Studio in order to activate SQL server
+
+2
+00:00:06,020 --> 00:00:07,910
+database on the environment.
+
+3
+00:00:08,090 --> 00:00:13,310
+For that purpose, make sure that your Docker desktop is up and running on your computer.
+
+4
+00:00:13,310 --> 00:00:17,900
+And after that we will run the Docker compose using the Visual Studio.
+
+5
+00:00:17,900 --> 00:00:23,060
+So please open the Visual Studio and we are going to come here as a Docker compose.
+
+6
+00:00:23,060 --> 00:00:26,390
+Right click Docker Compose and set a startup project.
+
+7
+00:00:26,390 --> 00:00:31,310
+By this way we can run the docker compose Yaml file to activate our backing services.
+
+8
+00:00:31,310 --> 00:00:35,660
+So after setting the startup project we can run without debugging.
+
+9
+00:00:35,660 --> 00:00:41,810
+So come here and click this button in order to execute Docker compose project without debugging.
+
+10
+00:00:41,810 --> 00:00:48,380
+And if you click this button this will start building and running the containers defined in our Docker-compose.yml
+
+11
+00:00:48,380 --> 00:00:51,800
+and overwrite Yaml files without debugging profile.
+
+12
+00:00:51,800 --> 00:00:57,800
+And these will be run docker compose up command, and you can verify the SQL server container from the
+
+13
+00:00:57,800 --> 00:00:58,850
+Docker desktop.
+
+14
+00:00:58,850 --> 00:01:04,489
+If you open the Docker desktop, there is nothing happened yet because this is going to pulling the
+
+15
+00:01:04,489 --> 00:01:06,980
+latest Docker image in here.
+
+16
+00:01:07,010 --> 00:01:13,220
+After waiting a certain time, we can reach the SQL Server Docker image on Docker desktop.
+
+17
+00:01:13,220 --> 00:01:18,830
+If you open the desktop, you can see that our Docker compose is up and running and Oldroyd-b comes
+
+18
+00:01:18,830 --> 00:01:19,760
+in the picture.
+
+19
+00:01:19,760 --> 00:01:22,970
+And if you click the order db container, you can see the logs.
+
+20
+00:01:22,970 --> 00:01:28,310
+That means we have successfully activated SQL server database on our Docker environment.
+
+21
+00:01:28,310 --> 00:01:36,260
+So now in order to connect these SQL server I'm going to use SQL Server Object Explorer into the Visual
+
+22
+00:01:36,260 --> 00:01:36,890
+Studio.
+
+23
+00:01:36,890 --> 00:01:39,980
+Here you can see that I'm going to close these windows.
+
+24
+00:01:39,980 --> 00:01:47,150
+If you come to view and open the SQL Server Object Explorer, you can reach the SQL Server Object Explorer
+
+25
+00:01:47,150 --> 00:01:48,890
+window located in here.
+
+26
+00:01:48,890 --> 00:01:54,560
+So I'm going to open these SQL servers and I'm going to connect to localhost.
+
+27
+00:01:54,560 --> 00:01:58,700
+For that purpose we can add a new server into our databases.
+
+28
+00:01:58,700 --> 00:02:05,480
+If you click this button add SQL server we can define the server name or server name is localhost and
+
+29
+00:02:05,480 --> 00:02:11,780
+authentication should be SQL server authentication, username should be SA and the password should be
+
+30
+00:02:11,780 --> 00:02:15,260
+the 1 to 8 that we have defined.
+
+31
+00:02:15,260 --> 00:02:20,570
+Complex password under the our application settings Json file and give the password.
+
+32
+00:02:20,570 --> 00:02:24,440
+And after that we can continue to encrypt property.
+
+33
+00:02:24,440 --> 00:02:26,180
+This should be false.
+
+34
+00:02:26,180 --> 00:02:29,210
+And the trust server certificate should be true.
+
+35
+00:02:29,270 --> 00:02:35,480
+This is for development purpose that we can connect our SQL server database in Docker environment.
+
+36
+00:02:35,480 --> 00:02:38,390
+Click the connect button and this will be.
+
+37
+00:02:39,010 --> 00:02:43,480
+Communicate to our SQL server Docker image under this localhost server.
+
+38
+00:02:43,480 --> 00:02:50,740
+If you expand this server and refresh this page databases, you can see that there is no databases because
+
+39
+00:02:50,740 --> 00:02:55,120
+we didn't create any database into our SQL server database server yet.
+
+40
+00:02:55,120 --> 00:03:00,130
+So if you open the ordering infrastructure and go to data migrations.
+
+41
+00:03:00,130 --> 00:03:05,230
+In the last video, we have generated the migration folders with using the Package Manager console.
+
+42
+00:03:05,230 --> 00:03:11,830
+But when we run the update database command, we got the exception about the network related exceptions
+
+43
+00:03:11,830 --> 00:03:13,510
+when connecting the SQL server.
+
+44
+00:03:13,510 --> 00:03:19,750
+But now we have activated the SQL server using the Docker compose that we can run this command in order
+
+45
+00:03:19,750 --> 00:03:24,370
+to create our database and tables into our SQL server database.
+

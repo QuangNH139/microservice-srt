@@ -1,0 +1,236 @@
+1
+00:00:00,170 --> 00:00:06,140
+In this video we are going to implement six command and command handler patterns with mediator.
+
+2
+00:00:06,650 --> 00:00:09,800
+So six can be implemented in two main ways.
+
+3
+00:00:09,800 --> 00:00:12,320
+These are the logical and physical.
+
+4
+00:00:12,320 --> 00:00:17,060
+So now let's remember these logical and physical implementation of the six.
+
+5
+00:00:17,060 --> 00:00:23,180
+In the logical implementation of six we basically splitting the operations not databases.
+
+6
+00:00:23,180 --> 00:00:30,350
+Separate the read query operations from the write command operations at the code level, but not necessarily
+
+7
+00:00:30,350 --> 00:00:31,730
+at the database level.
+
+8
+00:00:31,730 --> 00:00:38,450
+Even though the same database is used, the path for reading and writing data are distinct, and if
+
+9
+00:00:38,450 --> 00:00:44,870
+you look at the physical implementation of six, this is basically perform separate databases, splitting
+
+10
+00:00:44,870 --> 00:00:50,750
+the read and write operations, not just at the code level, but also physically using the separated
+
+11
+00:00:50,750 --> 00:00:51,740
+databases.
+
+12
+00:00:51,740 --> 00:00:57,740
+It introduces data consistency and synchronization problems in ordering microservices.
+
+13
+00:00:57,740 --> 00:01:04,849
+We will use logical six implementation when applying the separation of concerns between read and write
+
+14
+00:01:04,849 --> 00:01:05,720
+operations.
+
+15
+00:01:06,410 --> 00:01:12,470
+So now let's understand the command and command handles in queries when developing ordering application
+
+16
+00:01:12,470 --> 00:01:18,860
+layer in the command in six, a command is directive to change the state of the system.
+
+17
+00:01:18,860 --> 00:01:23,090
+It encapsulates the data which required for a specific action.
+
+18
+00:01:23,090 --> 00:01:29,390
+As an example, you can see create order command under the orders commands and create order.
+
+19
+00:01:29,390 --> 00:01:35,510
+And here you can see the create order command CS that might be contain order details for a command class.
+
+20
+00:01:36,320 --> 00:01:38,810
+After that we can see command handlers.
+
+21
+00:01:38,930 --> 00:01:41,930
+Those are the responsible for handling the command.
+
+22
+00:01:41,930 --> 00:01:45,770
+Each command has a corresponding handler that containing the logic.
+
+23
+00:01:45,770 --> 00:01:51,440
+In order to execute the command, the handler interacts within the domain model and persist the changes.
+
+24
+00:01:51,440 --> 00:01:56,660
+That means it executes the business logic and updates the state through the repositories.
+
+25
+00:01:56,660 --> 00:02:00,680
+Here you can see the command handler class under the create order folder.
+
+26
+00:02:00,680 --> 00:02:05,000
+This is the command, and this is the command handler class that perform the business logic.
+
+27
+00:02:05,000 --> 00:02:08,479
+And also you can see the image of the command and command handlers.
+
+28
+00:02:08,479 --> 00:02:13,670
+When a request comes from the client, you can see that these will be trigger the command and query
+
+29
+00:02:13,670 --> 00:02:17,300
+operations that comes to interact with the command handler.
+
+30
+00:02:17,300 --> 00:02:23,600
+In order to perform use cases with interacting repository object and connecting the database, and after
+
+31
+00:02:23,600 --> 00:02:27,890
+handling the command that will be returned, the result and response to the client application.
+
+32
+00:02:27,890 --> 00:02:32,960
+So how we can trigger these commands to do their command handler classes.
+
+33
+00:02:32,960 --> 00:02:37,280
+Of course implementing the mediator pattern and using the mediator library.
+
+34
+00:02:37,370 --> 00:02:43,910
+So for that purpose let's understand six design pattern with mediator library we will be using the mediator
+
+35
+00:02:43,910 --> 00:02:45,680
+for six implementation.
+
+36
+00:02:45,680 --> 00:02:51,440
+And mediator is a popular dotnet library used to implement the mediator pattern which is a great fit
+
+37
+00:02:51,440 --> 00:02:53,390
+for the six implementation.
+
+38
+00:02:53,540 --> 00:02:56,180
+And we will use I request interface.
+
+39
+00:02:56,330 --> 00:03:00,920
+It is used to define a request which can be either a command or a query.
+
+40
+00:03:00,920 --> 00:03:05,180
+The return type of the request can be specified as a generic parameter.
+
+41
+00:03:05,830 --> 00:03:08,350
+And after that we can learn handlers.
+
+42
+00:03:08,350 --> 00:03:15,040
+For each command and query, you can define a handler that inherits from the request handler interface,
+
+43
+00:03:15,040 --> 00:03:21,160
+which is accepting tracks and t response generics, where the t request is the type of the command or
+
+44
+00:03:21,160 --> 00:03:24,340
+query, and t response is the return type.
+
+45
+00:03:24,820 --> 00:03:30,490
+And we can also make our custom I command and I query abstractions.
+
+46
+00:03:30,490 --> 00:03:33,430
+So we will distinct I command and I query.
+
+47
+00:03:33,430 --> 00:03:39,880
+To make this distinction between command and queries, we can define two custom interface which are
+
+48
+00:03:39,880 --> 00:03:41,500
+the I command and I query.
+
+49
+00:03:41,500 --> 00:03:46,120
+Both interface can inherit from the mediators I request interface.
+
+50
+00:03:46,120 --> 00:03:51,790
+So we will use mediator and securities design pattern into our ordinary microservices.
+
+51
+00:03:51,910 --> 00:03:58,510
+ASP.Net core application with controllers or minimal APIs act as an entry point for handling the Http
+
+52
+00:03:58,510 --> 00:04:03,310
+request, instead of the implementing the business logic directly within the API.
+
+53
+00:04:03,310 --> 00:04:03,970
+Actions.
+
+54
+00:04:03,970 --> 00:04:10,360
+These actions delegate the responsibility to the mediator, and we can call this process as a wrapper
+
+55
+00:04:10,360 --> 00:04:14,410
+pattern, which is the request response pattern that we will see in the upcoming sections.
+
+56
+00:04:14,410 --> 00:04:22,240
+So that means when a minimal API receives a request, it creates a command or query object and send
+
+57
+00:04:22,240 --> 00:04:23,140
+to the mediator.
+
+58
+00:04:23,140 --> 00:04:28,870
+And mediator dispatch this object to the appropriate handler, and this handler class interact with
+
+59
+00:04:28,870 --> 00:04:34,120
+the repository object in order to perform use case and return back the result to the client application.
+

@@ -1,0 +1,244 @@
+1
+00:00:00,170 --> 00:00:06,770
+In this video, we are going to develop update product and pointclass with using minimal APIs and Carter
+
+2
+00:00:06,770 --> 00:00:10,610
+to automate Http put request in this URL.
+
+3
+00:00:11,420 --> 00:00:16,550
+So as you can see that we have already implemented actual handle class.
+
+4
+00:00:16,550 --> 00:00:19,460
+And now we are going to implement endpoint class.
+
+5
+00:00:19,460 --> 00:00:23,300
+First of all we will develop request and response record type.
+
+6
+00:00:23,300 --> 00:00:28,550
+And after that we will handle the incoming requests and redirect to the mediator sender.
+
+7
+00:00:28,550 --> 00:00:29,960
+So let's get started.
+
+8
+00:00:29,960 --> 00:00:35,030
+Please open the Visual Studio and locate the update product and point class.
+
+9
+00:00:35,030 --> 00:00:39,560
+First of all we will create Request and response record type.
+
+10
+00:00:39,560 --> 00:00:40,460
+For that purpose.
+
+11
+00:00:40,460 --> 00:00:47,060
+I'm going to write Public record and this time we will require a request object which is the update
+
+12
+00:00:47,060 --> 00:00:48,170
+product request.
+
+13
+00:00:48,170 --> 00:00:55,280
+And we should passing all the items into product model as a parameter.
+
+14
+00:00:55,280 --> 00:00:59,480
+You can see that I'm going to pass ID name category description.
+
+15
+00:00:59,480 --> 00:01:00,230
+And so on.
+
+16
+00:01:00,230 --> 00:01:07,370
+By the way, these parameter names should be exactly name with the command object in the update product
+
+17
+00:01:07,370 --> 00:01:07,970
+handler.
+
+18
+00:01:07,970 --> 00:01:15,200
+Because these maps will be mapped these objects looking for the parameter type and the parameter name.
+
+19
+00:01:15,200 --> 00:01:19,490
+So make sure that you have created update product request correctly.
+
+20
+00:01:19,490 --> 00:01:24,920
+And this will be comes from the Http body into http put request.
+
+21
+00:01:24,920 --> 00:01:29,750
+And after defining the request object we will also response object.
+
+22
+00:01:29,750 --> 00:01:35,720
+Again we will write the public record and this type I'm going to write update product response object
+
+23
+00:01:35,720 --> 00:01:40,190
+with getting the boolean is success property.
+
+24
+00:01:40,430 --> 00:01:45,650
+So these are the requests and response object when we accommodating http post request.
+
+25
+00:01:45,650 --> 00:01:51,290
+And now we can implement actual endpoint class with inherit from the equator model.
+
+26
+00:01:51,290 --> 00:01:57,800
+And if you implement this interface you can see that we will define what's inside of the add method.
+
+27
+00:01:57,800 --> 00:02:04,550
+So in here basically I'm going to use app dot map put because this is the http put operation.
+
+28
+00:02:04,550 --> 00:02:08,870
+We should map the put operation inside of the map put method.
+
+29
+00:02:08,870 --> 00:02:13,940
+And in here we are going to use products endpoint again.
+
+30
+00:02:13,940 --> 00:02:21,500
+And when we are implementing this Http put operation I have two parameters.
+
+31
+00:02:21,500 --> 00:02:25,220
+The first one is update product request.
+
+32
+00:02:25,220 --> 00:02:32,900
+And we will get this request from the Http put body information as a Json format.
+
+33
+00:02:32,900 --> 00:02:39,530
+And after that the second parameter is I sender interface, which is the mediator interface that we
+
+34
+00:02:39,530 --> 00:02:43,460
+are going to inject with using the delegate handler function.
+
+35
+00:02:43,460 --> 00:02:50,870
+And in this function we are going to implement accommodating request with getting the command value
+
+36
+00:02:51,620 --> 00:02:53,750
+from the request object.
+
+37
+00:02:53,750 --> 00:02:54,590
+The first row.
+
+38
+00:02:54,620 --> 00:03:01,640
+We are going to adapting incoming requests and converting these requests to the update product command.
+
+39
+00:03:01,640 --> 00:03:05,090
+Because the mediator is requiring command and query.
+
+40
+00:03:05,090 --> 00:03:10,970
+That's why we should define a command object in here with mapping from the incoming request object.
+
+41
+00:03:10,970 --> 00:03:20,000
+And the second thing we will perform getting result information from the mediator with sending using
+
+42
+00:03:20,000 --> 00:03:21,890
+the sender dot send method.
+
+43
+00:03:21,890 --> 00:03:27,110
+And this time, as you can see that we are passing the command object okay.
+
+44
+00:03:27,110 --> 00:03:32,600
+After sending the command object, mediator will be trigger command handler and return back to the result
+
+45
+00:03:32,600 --> 00:03:33,200
+object.
+
+46
+00:03:33,200 --> 00:03:41,960
+And after that again we are going to use map star to converting result object to the response object.
+
+47
+00:03:41,960 --> 00:03:47,840
+So I'm going to use adapt method and passing this update product response object.
+
+48
+00:03:47,840 --> 00:03:50,360
+And this will be perform convert operation.
+
+49
+00:03:50,600 --> 00:03:55,040
+At last point we can use return results.
+
+50
+00:03:56,550 --> 00:04:01,620
+That okay to respond back to client with passing these response object?
+
+51
+00:04:02,730 --> 00:04:06,780
+As always, we will configure with using the extension method.
+
+52
+00:04:06,780 --> 00:04:13,740
+And here you can see that extension methods about update product providing the name description summary.
+
+53
+00:04:13,740 --> 00:04:17,100
+And we can return back to the 200 okay.
+
+54
+00:04:17,100 --> 00:04:23,370
+And if there is any problem we can return 400 bad request or 404 not found exception.
+
+55
+00:04:23,370 --> 00:04:30,690
+In this endpoint class we basically define a put request for slash products endpoint and the endpoint
+
+56
+00:04:30,690 --> 00:04:36,930
+receive an update product request object, and it adapts it to do an update product command using the
+
+57
+00:04:36,930 --> 00:04:37,710
+master.
+
+58
+00:04:37,710 --> 00:04:41,430
+And we basically send this command through the mediator.
+
+59
+00:04:41,430 --> 00:04:46,110
+And mediator will be triggered the command handler and respond back the result object.
+
+60
+00:04:46,110 --> 00:04:46,620
+Again.
+
+61
+00:04:46,620 --> 00:04:51,240
+We will adapt the result object to the response object and send back to the client.
+

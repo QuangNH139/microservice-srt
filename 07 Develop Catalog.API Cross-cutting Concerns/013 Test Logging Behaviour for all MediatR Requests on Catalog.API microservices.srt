@@ -1,0 +1,344 @@
+1
+00:00:00,140 --> 00:00:07,250
+In this video, we are going to test logging behavior for all mediator requests on catalog API microservices.
+
+2
+00:00:07,250 --> 00:00:12,860
+So that means we will see how our newly implemented logging behavior works in action.
+
+3
+00:00:12,860 --> 00:00:19,850
+So first of all, we will clean up our code by removing manual logging from all mediator handlers in
+
+4
+00:00:19,850 --> 00:00:21,170
+our catalog API.
+
+5
+00:00:21,200 --> 00:00:27,230
+That means if you go to the create product handle method, you can see that we have manually log in
+
+6
+00:00:27,230 --> 00:00:28,610
+the incoming handle method.
+
+7
+00:00:28,610 --> 00:00:35,450
+For that purpose, we will clean up these logger injections and log operations for each handle method
+
+8
+00:00:35,450 --> 00:00:36,740
+and each use cases.
+
+9
+00:00:36,740 --> 00:00:39,380
+So let me start with the create product command.
+
+10
+00:00:39,860 --> 00:00:45,290
+I have removed the logger and remove the log operation in the beginning of the handle method.
+
+11
+00:00:45,290 --> 00:00:50,930
+And if you go to the next one, which is the delete product handler, and you can go to the command
+
+12
+00:00:50,930 --> 00:00:57,170
+handler class and remove the logger injection and remove the log information in the beginning of the
+
+13
+00:00:57,170 --> 00:01:03,650
+handle method and go to the next one, which is the update product handler.
+
+14
+00:01:03,650 --> 00:01:11,660
+So in here also, I'm going to scroll down and remove the logger and remove the log operation in the
+
+15
+00:01:11,660 --> 00:01:13,100
+beginning of the handle method.
+
+16
+00:01:14,720 --> 00:01:20,720
+But also we have log operations in the Http get methods, not only Crud operations.
+
+17
+00:01:20,720 --> 00:01:26,150
+If you open the get products and get product handler, you can see the log information comes in here.
+
+18
+00:01:26,150 --> 00:01:29,180
+And also I have to remove these log operation.
+
+19
+00:01:29,180 --> 00:01:36,230
+And I have rely on the these logging behavior for each endpoint and for each use cases.
+
+20
+00:01:36,230 --> 00:01:42,500
+So if you look at the validation behavior and logging behavior in the validation behavior we have a
+
+21
+00:01:42,500 --> 00:01:44,810
+filter about tracks should be command.
+
+22
+00:01:44,810 --> 00:01:50,870
+So that means this behavior only applies for Crud operation which is create delete and update product.
+
+23
+00:01:50,870 --> 00:01:58,250
+But if you look at the logging behavior this filter is becomes tracks and inherit from the I request
+
+24
+00:01:58,250 --> 00:01:58,610
+object.
+
+25
+00:01:58,610 --> 00:02:05,030
+And this comes from the mediator and this will be combined both query and command operation.
+
+26
+00:02:05,030 --> 00:02:11,510
+That means logging behavior will reflect both Http get and other Crud operations together.
+
+27
+00:02:11,510 --> 00:02:19,040
+So for that purpose I am going to open the get products handler and remove the logger injection and
+
+28
+00:02:19,040 --> 00:02:25,760
+remove the log operation at the beginning of the handle method and continue to other get methods.
+
+29
+00:02:25,760 --> 00:02:34,100
+Get product by ID, go to handle method and remove the I logger and remove the log operation.
+
+30
+00:02:35,450 --> 00:02:40,550
+So these manual logging are now redundant due to our global logging behavior.
+
+31
+00:02:40,550 --> 00:02:47,780
+And the last item is get product by category and go to handler class and remove these injection and
+
+32
+00:02:47,780 --> 00:02:49,760
+remove the logger operation.
+
+33
+00:02:51,440 --> 00:02:58,490
+So as you can see that now these handler methods are more cleaner and only focusing on their actual
+
+34
+00:02:58,490 --> 00:03:00,170
+logic and core functionality.
+
+35
+00:03:00,470 --> 00:03:07,790
+So after removing these manual injections, now it is time to test various mediator requests to see
+
+36
+00:03:07,790 --> 00:03:11,870
+our logging behavior is log the request and response as expected.
+
+37
+00:03:11,870 --> 00:03:17,570
+For that purpose, please go to the logging behavior and put a breakpoint at the beginning of the handle
+
+38
+00:03:17,570 --> 00:03:18,170
+method.
+
+39
+00:03:18,170 --> 00:03:23,660
+And after that we can say that put a breakpoint at the end of these log information.
+
+40
+00:03:23,660 --> 00:03:27,590
+So now I am going to run this application in a https mode.
+
+41
+00:03:27,590 --> 00:03:35,780
+And I will send different Http requests and see how centralized logging handled into our pipeline behavior.
+
+42
+00:03:37,070 --> 00:03:38,630
+And the application has started.
+
+43
+00:03:38,630 --> 00:03:43,400
+Please open the our postman and I'm going to send an http get request.
+
+44
+00:03:43,400 --> 00:03:47,000
+And in here this will be coming to Getproducts endpoint.
+
+45
+00:03:47,000 --> 00:03:53,180
+If I continue with the step over you can see that before handling the actual operation, it has come
+
+46
+00:03:53,180 --> 00:03:57,290
+to the logging behavior and it is logging the incoming request and response.
+
+47
+00:03:57,290 --> 00:04:02,270
+And after that it starts with timer, and after that this will be triggered to our next method which
+
+48
+00:04:02,270 --> 00:04:04,070
+is the our actual handle method.
+
+49
+00:04:04,070 --> 00:04:10,850
+See that actual handle method is triggering and getting all products from the database, and it is returning
+
+50
+00:04:10,850 --> 00:04:14,480
+the response to our result object that will lead us for the.
+
+51
+00:04:15,390 --> 00:04:21,060
+Products, but after that, we can realize that at the end of the actual operation, we can come to
+
+52
+00:04:21,060 --> 00:04:28,440
+the again logging behavior in order to log the finished operation with indicating this is the end of
+
+53
+00:04:28,440 --> 00:04:31,080
+the handle method and continue the response.
+
+54
+00:04:32,510 --> 00:04:34,490
+So now we don't have any products.
+
+55
+00:04:34,490 --> 00:04:41,060
+But if we check the logs in the project console window, you can see that this time we will handle the
+
+56
+00:04:41,060 --> 00:04:43,190
+log operations with logging behavior.
+
+57
+00:04:43,220 --> 00:04:46,700
+This is the start which is the beginning of the handle method.
+
+58
+00:04:46,700 --> 00:04:51,650
+And here you can see the warning message because I'm debugging the code.
+
+59
+00:04:51,650 --> 00:04:54,860
+And when I was debugging that passed the three seconds.
+
+60
+00:04:54,860 --> 00:05:01,580
+And it is adding a performance log and indicate that this operation is took 16 seconds.
+
+61
+00:05:01,610 --> 00:05:04,400
+After that it is putting and logging.
+
+62
+00:05:04,400 --> 00:05:08,120
+That means the operation is ended with this behavior.
+
+63
+00:05:08,120 --> 00:05:14,060
+And you can see the handle method name as a get query and the result with name Getproduct result.
+
+64
+00:05:14,060 --> 00:05:21,410
+So if you send another request, for example http post request, you can follow the same request lifecycle.
+
+65
+00:05:21,410 --> 00:05:23,330
+We will start with mediator dot send.
+
+66
+00:05:23,330 --> 00:05:27,350
+But the first thing that we should put the validation logic.
+
+67
+00:05:27,350 --> 00:05:32,930
+And in here you can remember that the first behavior is validation behavior in the program says that's
+
+68
+00:05:32,930 --> 00:05:35,540
+why it is executing validation behavior.
+
+69
+00:05:35,540 --> 00:05:41,360
+And after that this validation behavior we have executing the next pipeline behavior, which is the
+
+70
+00:05:41,360 --> 00:05:43,340
+logging behavior for that purpose.
+
+71
+00:05:43,340 --> 00:05:46,220
+It is a adding start log information.
+
+72
+00:05:46,220 --> 00:05:53,030
+And again it is executing actual logic in the command create product command handler method.
+
+73
+00:05:53,030 --> 00:05:58,130
+And inside of this method this will be perform actual logic which is create a new product.
+
+74
+00:05:58,130 --> 00:06:04,490
+And after that this will again come back to our logging behavior and adding last log information which
+
+75
+00:06:04,490 --> 00:06:06,140
+is end log information.
+
+76
+00:06:06,140 --> 00:06:12,320
+And if you hit F5 and you can see that new product is created, if you open the Project Console window
+
+77
+00:06:12,320 --> 00:06:19,520
+and click the right hand side your mouse, you can see that this logs has generated which is starting
+
+78
+00:06:19,520 --> 00:06:22,700
+from the our Create product command.
+
+79
+00:06:22,700 --> 00:06:23,960
+This is the start command.
+
+80
+00:06:23,960 --> 00:06:29,420
+And with this command object this is the incoming command object that you can see the properties.
+
+81
+00:06:29,420 --> 00:06:37,140
+And after that again it is adding a performance indicator log to explain that this operation took 11
+
+82
+00:06:37,140 --> 00:06:37,700
+seconds.
+
+83
+00:06:37,700 --> 00:06:39,680
+And lastly this is the end logs.
+
+84
+00:06:39,680 --> 00:06:42,020
+This is generated from the logging behavior.
+
+85
+00:06:42,020 --> 00:06:48,140
+So by testing these various requests, we have demonstrated that our logging behavior successfully logs
+
+86
+00:06:48,140 --> 00:06:51,770
+every mediator request in a consistent and centralized manner.
+

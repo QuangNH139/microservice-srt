@@ -1,0 +1,700 @@
+1
+00:00:00,200 --> 00:00:06,320
+In this video we are going to test our deployment tool, which is the Docker compose all microservices
+
+2
+00:00:06,320 --> 00:00:07,640
+and backing services.
+
+3
+00:00:07,640 --> 00:00:13,250
+So we will run our application on Docker environment with Docker compose and test all microservices,
+
+4
+00:00:13,250 --> 00:00:15,920
+including the backing services in Docker network.
+
+5
+00:00:16,190 --> 00:00:21,950
+So we will perform and testing, publish and subscribe basket checkout event using the mass transit
+
+6
+00:00:21,950 --> 00:00:26,060
+between basket and ordering microservices in a Docker compose environment.
+
+7
+00:00:26,060 --> 00:00:32,090
+So please open the Visual Studio and open the our application solution which is the microservices.
+
+8
+00:00:32,090 --> 00:00:38,150
+So one of the best features of the Visual Studio is using the Docker compose running profile in your
+
+9
+00:00:38,150 --> 00:00:38,960
+application.
+
+10
+00:00:38,960 --> 00:00:44,540
+This is one of the elegant feature from the Visual Studio that we can debug our microservices with running
+
+11
+00:00:44,540 --> 00:00:46,790
+Docker compose profile in the Docker environment.
+
+12
+00:00:46,790 --> 00:00:49,430
+But before that I am going to prepare the environment.
+
+13
+00:00:49,430 --> 00:00:54,590
+You can right click the docker compose and select the properties that you can select the launch actions
+
+14
+00:00:54,590 --> 00:00:56,000
+for each microservices.
+
+15
+00:00:56,000 --> 00:00:58,400
+Here you can see the basket API do nothing.
+
+16
+00:00:58,400 --> 00:01:03,530
+When we are running Docker compose, you can change other microservices and set launch actions as a
+
+17
+00:01:03,530 --> 00:01:09,710
+do nothing Catholic microservices discount, gRPC and ordering API do not apply.
+
+18
+00:01:09,710 --> 00:01:12,770
+And okay, this is docker compose running profile.
+
+19
+00:01:12,770 --> 00:01:17,930
+So now I am going to right click the docker compose and set a startup project.
+
+20
+00:01:19,300 --> 00:01:25,090
+As you can see that when we are using the VGG studio, it is very easy to configure the Docker compose
+
+21
+00:01:25,090 --> 00:01:27,940
+launch settings to start necessary microservices.
+
+22
+00:01:27,940 --> 00:01:33,040
+Here you can see the docker compose running profile come to our Visual Studio, but if you are not using
+
+23
+00:01:33,160 --> 00:01:36,460
+Visual Studio, you can start Docker Compose manually.
+
+24
+00:01:36,460 --> 00:01:42,340
+Here you can see that if you go to the docker compose Yaml file location and run the docker compose
+
+25
+00:01:42,460 --> 00:01:48,160
+up command with specifying the docker compose and override Yaml file, you can start the necessary microservices
+
+26
+00:01:48,160 --> 00:01:54,040
+manually, but I would like to use Visual Studio tooling when running the docker compose in docker environment.
+
+27
+00:01:54,040 --> 00:01:57,910
+For that purpose, make sure that your Docker desktop is up and running.
+
+28
+00:01:57,910 --> 00:02:02,740
+Here you can see that we have started Docker Compose before we are running our application.
+
+29
+00:02:02,740 --> 00:02:08,650
+But now I will again start Docker Compose, including the our newly develop authentic microservices
+
+30
+00:02:08,650 --> 00:02:12,400
+with communicating the RabbitMQ basket and discount microservices.
+
+31
+00:02:12,400 --> 00:02:18,040
+In order to start our Docker compose profile, you can come to this point and this time I am not going
+
+32
+00:02:18,040 --> 00:02:19,750
+to debug our operation.
+
+33
+00:02:19,750 --> 00:02:25,120
+That's why I will choose the next button, which is the start without debugging for Docker compose and
+
+34
+00:02:25,120 --> 00:02:26,050
+click this button.
+
+35
+00:02:26,050 --> 00:02:31,870
+This will be start docker compose up command on behind of the scenes and start microservices, including
+
+36
+00:02:31,870 --> 00:02:37,420
+the ordering microservices fully Docker network with connecting as a backing services like RabbitMQ
+
+37
+00:02:37,420 --> 00:02:39,430
+and order DB as a SQL server.
+
+38
+00:02:42,720 --> 00:02:47,130
+So this will take some time to spin up the microservices for the first time.
+
+39
+00:02:47,130 --> 00:02:52,890
+And we will see authentic microservices, including our Docker compose running profile.
+
+40
+00:03:09,470 --> 00:03:15,320
+After waiting a certain of time, you can see that our microservices is up and running on Docker network,
+
+41
+00:03:15,320 --> 00:03:17,510
+and you can watch the output window.
+
+42
+00:03:17,510 --> 00:03:21,170
+In order to understand authentic microservices started successfully.
+
+43
+00:03:21,170 --> 00:03:26,270
+You can also verify from the Docker desktop if you open the Docker desktop and see the Docker compose
+
+44
+00:03:26,270 --> 00:03:27,380
+running containers.
+
+45
+00:03:27,380 --> 00:03:32,240
+Here you can see the ordering API comes to the picture, and if you open this container, you can see
+
+46
+00:03:32,240 --> 00:03:37,580
+the logs that will start with seeding and migrating database and inserting new data.
+
+47
+00:03:37,580 --> 00:03:42,500
+When starting ordering microservices here you can see the insert into commands, which is the seeding
+
+48
+00:03:42,500 --> 00:03:43,160
+operation.
+
+49
+00:03:43,160 --> 00:03:48,650
+And at the end of these logs you can see that ordering microservices successfully connected backing
+
+50
+00:03:48,650 --> 00:03:50,840
+services as a RabbitMQ message broker.
+
+51
+00:03:50,840 --> 00:03:52,940
+So now we can start our testing.
+
+52
+00:03:52,940 --> 00:03:58,040
+But before start testing our intent use case I would like to verify the ordering DB.
+
+53
+00:03:58,040 --> 00:04:04,070
+If you come here and open the SQL Server Object Explorer and connect the localhost for the SQL server
+
+54
+00:04:04,070 --> 00:04:05,330
+database order db.
+
+55
+00:04:05,360 --> 00:04:06,680
+Open the database.
+
+56
+00:04:06,680 --> 00:04:12,410
+Here you can see the order db is created successfully, and if you open the an Expanding Tables and
+
+57
+00:04:12,410 --> 00:04:18,529
+right click the orders view data, you can see that we have two seeded data when ordering application
+
+58
+00:04:18,529 --> 00:04:20,120
+is starting successfully.
+
+59
+00:04:20,120 --> 00:04:26,360
+So I'm going to delete these rows in order to understand how we can insert any order when we are performing
+
+60
+00:04:26,360 --> 00:04:29,270
+end to end use case for publish subscribe basket checkout event.
+
+61
+00:04:29,270 --> 00:04:35,990
+So please delete these rows and we can see and verify how we can insert any record in the order table.
+
+62
+00:04:35,990 --> 00:04:38,780
+And after that we can start our intent use case.
+
+63
+00:04:38,780 --> 00:04:41,900
+We can start by verifying the container health checks.
+
+64
+00:04:41,900 --> 00:04:47,270
+Please open the our postman and if you open the postman you can come to the basket.
+
+65
+00:04:47,270 --> 00:04:49,640
+And please get the health of the basket.
+
+66
+00:04:49,640 --> 00:04:53,630
+Microservices with sending Http get requests to the health endpoint.
+
+67
+00:04:53,630 --> 00:04:58,700
+But before that of course we should change the environment localhost to Docker, because now we are
+
+68
+00:04:58,700 --> 00:05:00,230
+running full docker environment.
+
+69
+00:05:00,230 --> 00:05:05,930
+In order to send Http request, we should change the environment as a docker and you can verify the
+
+70
+00:05:05,930 --> 00:05:08,030
+basket URL is starting 60.
+
+71
+00:05:08,090 --> 00:05:13,820
+So after that you can send http get request to the health of the basket and verify that basket.
+
+72
+00:05:13,820 --> 00:05:20,810
+Microservices is healthy and under the entries you can see that basket microservices successfully connected
+
+73
+00:05:21,020 --> 00:05:21,890
+RabbitMQ.
+
+74
+00:05:21,920 --> 00:05:23,840
+You can see the mass transit entry.
+
+75
+00:05:23,840 --> 00:05:29,360
+And if you scroll down you can see the successfully connecting PostgreSQL database and Redis distributed
+
+76
+00:05:29,360 --> 00:05:29,870
+cache.
+
+77
+00:05:29,960 --> 00:05:34,550
+And at the same way I am going to following the ordering microservices health status.
+
+78
+00:05:34,550 --> 00:05:40,580
+If you go to the ordering and health endpoint, you can also see that the ordering URL is starting with
+
+79
+00:05:40,580 --> 00:05:41,180
+the 60.
+
+80
+00:05:41,180 --> 00:05:44,450
+That means Docker environment and this is the end point.
+
+81
+00:05:44,450 --> 00:05:50,900
+Slash health and send http get request to ordering microservices and verify that ordering is also healthy.
+
+82
+00:05:50,900 --> 00:05:56,330
+And as the entries, you can see that we have successfully connected RabbitMQ from the ordering microservices
+
+83
+00:05:56,330 --> 00:05:59,870
+and successfully connected SQL server from the ordering microservices.
+
+84
+00:05:59,870 --> 00:06:02,690
+That means it is time to perform end to end use case.
+
+85
+00:06:02,690 --> 00:06:09,110
+So we will start by creating a new basket into our application, and after that we will send http post
+
+86
+00:06:09,110 --> 00:06:14,210
+request for the checkout basket in the basket microservices that will publish the basket checkout event
+
+87
+00:06:14,210 --> 00:06:18,980
+to RabbitMQ and consume from the ordering, microservices and ordering microservices will be create
+
+88
+00:06:18,980 --> 00:06:21,800
+a new order record under the SQL server database.
+
+89
+00:06:21,800 --> 00:06:29,870
+So please open the our postman and go back to basket Microservices Http request and go to the Http post
+
+90
+00:06:29,870 --> 00:06:34,880
+request to store basket that we will create a new basket with this payload.
+
+91
+00:06:34,880 --> 00:06:37,700
+I'm going to hit the Http send button.
+
+92
+00:06:37,700 --> 00:06:45,410
+This will be send http post request and return back to us a created any username basket.
+
+93
+00:06:45,410 --> 00:06:51,410
+As you can see that we didn't debug this process and this is fully running on the environment we have
+
+94
+00:06:51,410 --> 00:06:55,910
+started without debugging on our Docker compose profile using the Visual Studio.
+
+95
+00:06:55,910 --> 00:07:02,870
+That's why this will be performed successfully and created a username and basket into our basket microservices.
+
+96
+00:07:02,870 --> 00:07:06,860
+Just after that we can check out the basket into our application.
+
+97
+00:07:06,860 --> 00:07:11,840
+That means we will send another http post request to initiate the checkout process.
+
+98
+00:07:11,840 --> 00:07:15,620
+Please come to this post request for the basket checkout endpoint.
+
+99
+00:07:15,620 --> 00:07:19,280
+And here you can see the our payload for the basket checkout DTO.
+
+100
+00:07:19,280 --> 00:07:22,910
+And after that I am going to hit the Http send button.
+
+101
+00:07:22,910 --> 00:07:26,480
+In order to send http post request to basket checkout.
+
+102
+00:07:26,480 --> 00:07:31,010
+This will be start asynchronous communication with organic microservices using RabbitMQ.
+
+103
+00:07:32,220 --> 00:07:34,770
+Here you can see the response back to the success.
+
+104
+00:07:34,770 --> 00:07:38,550
+That means the asynchronous communication is started successfully.
+
+105
+00:07:38,550 --> 00:07:41,580
+We can verify from the RabbitMQ dashboard.
+
+106
+00:07:41,580 --> 00:07:47,700
+If you open the RabbitMQ dashboard and connect to username guest and password guest, you can see that
+
+107
+00:07:47,700 --> 00:07:54,300
+we have hitting the new event into RabbitMQ message broker that will consume by the ordering microservices.
+
+108
+00:07:54,300 --> 00:07:58,530
+And this is the basket checkout event that you can confirm from the queues and streams.
+
+109
+00:07:58,530 --> 00:08:00,390
+This is the basket checkout event handler.
+
+110
+00:08:00,390 --> 00:08:04,380
+And this will be hitting one record in the five minutes before.
+
+111
+00:08:04,380 --> 00:08:06,660
+And that consumed from the ordering microservices.
+
+112
+00:08:06,660 --> 00:08:11,970
+You can check the connections and channels which is consuming from the ordering API comes to the channels
+
+113
+00:08:11,970 --> 00:08:13,440
+in the RabbitMQ dashboard.
+
+114
+00:08:13,440 --> 00:08:18,600
+So that means this event consumed from the ordering microservices that we can confirm the newly created
+
+115
+00:08:18,600 --> 00:08:19,980
+order from the postman.
+
+116
+00:08:19,980 --> 00:08:25,680
+If you open the postman and go to ordering microservices, and if you get orders with pagination, you
+
+117
+00:08:25,680 --> 00:08:32,220
+can send Http get request and you can get the one record which is newly inserted item from the consuming
+
+118
+00:08:32,250 --> 00:08:33,390
+the Basket checkout event.
+
+119
+00:08:33,390 --> 00:08:36,990
+You can see the order name, shipping address, billing address, and so on.
+
+120
+00:08:36,990 --> 00:08:40,140
+And this is only one record into our orders table.
+
+121
+00:08:40,140 --> 00:08:43,110
+You can also verify from the R SQL server.
+
+122
+00:08:43,110 --> 00:08:47,610
+And here you can see the SQL Server Object Explorer under the R Visual Studio.
+
+123
+00:08:47,610 --> 00:08:52,860
+If I refresh this page, you can see that newly created orders comes to the picture when consuming the
+
+124
+00:08:52,860 --> 00:08:53,730
+basket checkout event.
+
+125
+00:08:53,730 --> 00:08:58,500
+That means we have successfully publish and subscribe basket checkout event and consume from the ordering
+
+126
+00:08:58,500 --> 00:08:59,460
+microservices.
+
+127
+00:08:59,460 --> 00:09:04,650
+So now I am going to stop docker compose profile and this time we will testing with debugging.
+
+128
+00:09:04,650 --> 00:09:10,170
+So that means we will rerun the docker compose environment with debugging enabled to step through the
+
+129
+00:09:10,170 --> 00:09:11,040
+Rbac points.
+
+130
+00:09:11,040 --> 00:09:15,090
+So here you can see that this time you can click the Docker compose run profile.
+
+131
+00:09:15,090 --> 00:09:18,780
+That will start docker compose up command on behind of the scenes.
+
+132
+00:09:19,600 --> 00:09:22,630
+But this time we will debug our microservices.
+
+133
+00:09:23,440 --> 00:09:27,010
+Here you can see the our microservices is started successfully.
+
+134
+00:09:27,010 --> 00:09:30,070
+Now I am going to open the our Visual Studio.
+
+135
+00:09:30,070 --> 00:09:34,180
+Here you can see that the order seed operations come to the our breakpoint.
+
+136
+00:09:34,180 --> 00:09:42,580
+And I am hitting F5 and verify that every microservices is up and running under our Docker compose network.
+
+137
+00:09:42,910 --> 00:09:48,550
+And you can open the ordering API and see that ordering API also started successfully with seeding and
+
+138
+00:09:48,550 --> 00:09:49,510
+migrating data.
+
+139
+00:09:49,510 --> 00:09:53,500
+That means we can perform our internet use case using the postman.
+
+140
+00:09:53,500 --> 00:09:57,340
+If you open the postman and go to the basket post store basket.
+
+141
+00:09:57,340 --> 00:10:02,710
+If you hit the send button this time, you can see that we can debug incoming event from our Visual
+
+142
+00:10:02,710 --> 00:10:04,870
+Studio fully docker environment.
+
+143
+00:10:04,870 --> 00:10:11,050
+That means I am debugging now from the Docker network and docker containers in the basket microservices.
+
+144
+00:10:11,050 --> 00:10:16,300
+So I am hitting F5 and creating a new basket in to do our application.
+
+145
+00:10:16,300 --> 00:10:21,520
+And this will be communicating with the discount gRPC microservices in order to get latest discount
+
+146
+00:10:21,520 --> 00:10:26,770
+and calculating the price here you can see that our basket is created successfully.
+
+147
+00:10:26,770 --> 00:10:32,230
+And again I am going to check out this basket from the basket microservices that will start event driven
+
+148
+00:10:32,230 --> 00:10:33,040
+communication.
+
+149
+00:10:33,040 --> 00:10:36,070
+And we will accumulate checkout basket event endpoints.
+
+150
+00:10:36,070 --> 00:10:39,520
+And here you can see that we will adapt and send the mediator.
+
+151
+00:10:39,520 --> 00:10:42,220
+This will be triggered the checkout basket command handler.
+
+152
+00:10:42,220 --> 00:10:45,370
+And in this method we basically get the existing basket.
+
+153
+00:10:45,370 --> 00:10:50,200
+And after that we will publish the basket checkout event to RabbitMQ and delete the basket.
+
+154
+00:10:50,200 --> 00:10:54,130
+And here you can see that we have started the event driven communication.
+
+155
+00:10:54,130 --> 00:10:59,470
+And this will be consumed from the ordering microservices that will basically perform these operations
+
+156
+00:10:59,470 --> 00:11:00,850
+with clicking F10.
+
+157
+00:11:00,880 --> 00:11:04,090
+Step into these two processes at the same time.
+
+158
+00:11:04,090 --> 00:11:10,870
+You can see that we have created a new order DTO in order to send this command to the mediator and this
+
+159
+00:11:10,870 --> 00:11:14,080
+will be handled create order handle method.
+
+160
+00:11:14,080 --> 00:11:19,270
+This will be create a new order and whenever we are creating any order, this comes from the ordering
+
+161
+00:11:19,300 --> 00:11:21,760
+domain and raising order created domain event.
+
+162
+00:11:21,760 --> 00:11:25,570
+And this will be also consumed by the ordering application layer.
+
+163
+00:11:25,570 --> 00:11:30,400
+Here you can see the intercepting and dispatching to domain events that will handle in the order created
+
+164
+00:11:30,400 --> 00:11:31,090
+event handler.
+
+165
+00:11:31,090 --> 00:11:36,400
+We are going to logging the information and we are looking to our feature which is the order fulfillment.
+
+166
+00:11:36,400 --> 00:11:41,200
+And according to our Docker compose override environment variables, we will set the order fulfillment
+
+167
+00:11:41,200 --> 00:11:42,190
+feature as a false.
+
+168
+00:11:42,190 --> 00:11:44,680
+That's why it is not entering this if statement.
+
+169
+00:11:44,680 --> 00:11:47,230
+And I am hitting the F5 and completed the process.
+
+170
+00:11:47,230 --> 00:11:52,120
+You can also verify the newly created order from the SQL Server Object Explorer.
+
+171
+00:11:52,120 --> 00:11:58,180
+If you right click and view data and refresh this page, you can see that we have created new data in
+
+172
+00:11:58,180 --> 00:11:58,690
+here.
+
+173
+00:11:58,690 --> 00:12:03,400
+As you can see that we have successfully tested basket checkout event for event driven asynchronous
+
+174
+00:12:03,400 --> 00:12:04,180
+communication.
+
+175
+00:12:04,180 --> 00:12:06,280
+Applying the publish subscribe design pattern.
+

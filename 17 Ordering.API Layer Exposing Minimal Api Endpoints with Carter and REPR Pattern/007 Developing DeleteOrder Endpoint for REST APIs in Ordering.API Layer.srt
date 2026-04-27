@@ -1,0 +1,168 @@
+1
+00:00:00,110 --> 00:00:04,100
+In this video we are going to develop delayed order endpoint.
+
+2
+00:00:04,100 --> 00:00:08,029
+As always, we will follow the steps that we have written in the last video.
+
+3
+00:00:08,029 --> 00:00:12,590
+And I'm going to start with creating delayed order request and response object type.
+
+4
+00:00:12,590 --> 00:00:16,100
+Here you can see that public record request and response object.
+
+5
+00:00:16,100 --> 00:00:22,370
+So in the request object as you can see that we don't require delayed order request record type, since
+
+6
+00:00:22,370 --> 00:00:28,730
+the only required information is the ID of the ordered to be deleted, which is obtained directly from
+
+7
+00:00:28,730 --> 00:00:30,440
+the request URL parameters.
+
+8
+00:00:30,440 --> 00:00:37,010
+That's why we don't define any request object that we get the ID information from the request parameters.
+
+9
+00:00:37,010 --> 00:00:42,770
+And here you can see the delayed order response object, which is the result of the delete operation
+
+10
+00:00:42,770 --> 00:00:44,840
+indicating success or failure.
+
+11
+00:00:44,900 --> 00:00:50,600
+After that, we can develop our actual class, which is a delayed order implementing Écarter module
+
+12
+00:00:50,600 --> 00:00:53,930
+and implement the interface members, which is the ID routes.
+
+13
+00:00:53,930 --> 00:01:00,770
+So in the add method, we basically uses the map delayed function in order to define a delayed endpoint
+
+14
+00:01:00,770 --> 00:01:04,010
+at the orders slash id and point definition.
+
+15
+00:01:04,010 --> 00:01:09,470
+So for that purpose I'm going to remove the throw statement and using app dot map delete.
+
+16
+00:01:09,470 --> 00:01:13,310
+And this is the endpoint which is the slash orders slash ID.
+
+17
+00:01:13,520 --> 00:01:18,500
+And here you can see the delegate handler function which is accepting two parameters.
+
+18
+00:01:18,500 --> 00:01:23,570
+The first one is with id id comes from the endpoint definition in here.
+
+19
+00:01:23,570 --> 00:01:30,440
+And the second parameter is I sender sender which is injecting mediator I sender object into our delegate
+
+20
+00:01:30,470 --> 00:01:31,310
+handler function.
+
+21
+00:01:31,310 --> 00:01:33,680
+So I'm going to implement this function.
+
+22
+00:01:33,680 --> 00:01:36,680
+So as you remember that we will follow the same steps.
+
+23
+00:01:36,680 --> 00:01:41,990
+The first step is normally we will map the incoming request object to create command object.
+
+24
+00:01:41,990 --> 00:01:48,950
+But this time I am passing this ID information into command object and directly using the mediator standard
+
+25
+00:01:48,950 --> 00:01:54,680
+dot send function and passing the new delete order command object with passing the id information comes
+
+26
+00:01:54,680 --> 00:01:56,150
+from the request parameters.
+
+27
+00:01:56,150 --> 00:02:02,990
+So with getting the result object from the delete order command handler, we will adapting the result
+
+28
+00:02:02,990 --> 00:02:05,660
+object to the delayed order response object.
+
+29
+00:02:05,660 --> 00:02:12,620
+And lastly, we will returning the results that okay function passing the response object to the client
+
+30
+00:02:12,620 --> 00:02:13,520
+application.
+
+31
+00:02:13,640 --> 00:02:17,870
+So this is the implementation of the map delete function.
+
+32
+00:02:17,870 --> 00:02:24,140
+We basically extract the ID information from the request URL and create a delete order command with
+
+33
+00:02:24,140 --> 00:02:30,110
+the ID information, and send this command to mediator for processing, handle operation and await the
+
+34
+00:02:30,110 --> 00:02:35,540
+results from the command handler and adapted into the delayed order response and returning the client
+
+35
+00:02:35,540 --> 00:02:37,730
+in a results dot okay function.
+
+36
+00:02:37,730 --> 00:02:45,500
+So after that we can define and configure these http delete endpoint with passing the name summary description
+
+37
+00:02:45,500 --> 00:02:47,150
+and produces functions.
+
+38
+00:02:47,150 --> 00:02:50,270
+And here you can see the implementation of the delete order.
+
+39
+00:02:50,270 --> 00:02:53,960
+This is the using statement that comes from the commands delete order.
+
+40
+00:02:53,960 --> 00:02:56,540
+And these are the delete order requests and response.
+
+41
+00:02:56,540 --> 00:03:00,770
+And this is the delete order actual endpoint class that we are following.
+
+42
+00:03:00,770 --> 00:03:03,830
+The repair design pattern and using the cutter library.
+

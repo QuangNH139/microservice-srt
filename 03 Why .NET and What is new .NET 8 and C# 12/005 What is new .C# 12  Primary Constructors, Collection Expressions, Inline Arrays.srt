@@ -1,0 +1,184 @@
+1
+00:00:00,170 --> 00:00:04,760
+In this video we are going to learn what is naive in C sharp 12.
+
+2
+00:00:05,240 --> 00:00:12,080
+The first feature is primary constructs that we will also use so much when developing our application.
+
+3
+00:00:12,110 --> 00:00:16,129
+Primary constructs have been extended beyond the record types.
+
+4
+00:00:16,309 --> 00:00:21,740
+As you know that in the previous versions, primary constructs already included in the record types.
+
+5
+00:00:21,740 --> 00:00:24,500
+But now we can use in the class types.
+
+6
+00:00:24,500 --> 00:00:29,540
+So that means parameters are now in scope for the entire class body.
+
+7
+00:00:29,780 --> 00:00:36,650
+In order to ensure all primary constructs parameters are definitely assigned, we should explicitly
+
+8
+00:00:36,650 --> 00:00:44,210
+declare constructs must call the primary construct using the this syntax, we can see an example of
+
+9
+00:00:44,210 --> 00:00:44,450
+in.
+
+10
+00:00:44,450 --> 00:00:50,120
+Here there is a person class, and we can define the parameters that will be the primary constructs.
+
+11
+00:00:50,120 --> 00:00:56,660
+And after that we can use these name and age parameters in the inside of the class, which is the in
+
+12
+00:00:56,660 --> 00:00:58,490
+scope for the entire class body.
+
+13
+00:00:59,650 --> 00:01:03,010
+Another new feature is Collection Expressions.
+
+14
+00:01:03,040 --> 00:01:10,750
+The collection expressions are now a new addition, introducing a more concise syntax to create common
+
+15
+00:01:10,750 --> 00:01:11,800
+collection values.
+
+16
+00:01:11,830 --> 00:01:16,660
+This syntax simplifies the way collections are initialized and manipulated.
+
+17
+00:01:16,690 --> 00:01:18,730
+You can see an example in here.
+
+18
+00:01:18,730 --> 00:01:20,020
+The previous versions.
+
+19
+00:01:20,020 --> 00:01:23,830
+We should use this syntax, which is a bit confusing.
+
+20
+00:01:23,830 --> 00:01:32,020
+And now with dotnet eight and C-sharp 12, we can define the collections with only writing these values
+
+21
+00:01:32,020 --> 00:01:33,580
+inside of the brackets.
+
+22
+00:01:35,260 --> 00:01:38,470
+Another new feature is inline arrays.
+
+23
+00:01:38,500 --> 00:01:45,250
+Inline arrays enhance the performance by enabling developers to create fixed size arrays in the struct
+
+24
+00:01:45,250 --> 00:01:45,850
+types.
+
+25
+00:01:46,180 --> 00:01:52,240
+This feature is useful for optimizing memory layout and improving runtime performance.
+
+26
+00:01:52,240 --> 00:01:57,520
+You can see an example in here we have a buffer struct and using the inline arrays.
+
+27
+00:01:58,090 --> 00:02:02,500
+Another new feature is optional parameters in lambda expressions.
+
+28
+00:02:02,560 --> 00:02:09,190
+C-sharp 12 introduces the ability to define default values for parameters in lambda expressions.
+
+29
+00:02:09,190 --> 00:02:14,290
+These mirrors the syntax and rules for adding new default values in the methods.
+
+30
+00:02:14,290 --> 00:02:17,200
+Making lambda expression is more flexible.
+
+31
+00:02:17,200 --> 00:02:22,600
+You can see an example in here with defining optional parameters in the lambda expressions.
+
+32
+00:02:23,580 --> 00:02:26,940
+Another new feature is ref Read-only parameters.
+
+33
+00:02:26,940 --> 00:02:33,360
+The addition of ref Read-only parameters enhanced the way read-only references are passed in the C sharp.
+
+34
+00:02:33,360 --> 00:02:40,020
+This feature is a significant improvement for optimizing memory usage and performance in scenarios involving
+
+35
+00:02:40,020 --> 00:02:41,490
+the large data structures.
+
+36
+00:02:41,490 --> 00:02:42,450
+You can see in.
+
+37
+00:02:42,450 --> 00:02:50,340
+Here we are using the enlarge data data and including and processing data without the risk of the modification.
+
+38
+00:02:50,340 --> 00:02:52,980
+And another new feature is alias.
+
+39
+00:02:52,980 --> 00:03:00,270
+Any type C 12 expands the using alias directive to include any type, not just the named types.
+
+40
+00:03:00,270 --> 00:03:07,110
+This allows for the creation and semantic alias for the complex types like tuples, arrays and pointer
+
+41
+00:03:07,110 --> 00:03:07,620
+types.
+
+42
+00:03:07,620 --> 00:03:09,090
+You can see an example.
+
+43
+00:03:09,090 --> 00:03:16,650
+We can use coordinate alias for the tuple, and we will use coordinate for defining the location parameter.
+
+44
+00:03:17,070 --> 00:03:22,470
+So we will use some of these new C 12 features into our microservice applications.
+
+45
+00:03:22,470 --> 00:03:28,620
+But especially we will use primary constructs collection expression inline arrays and default lambda
+
+46
+00:03:28,620 --> 00:03:29,460
+parameters.
+

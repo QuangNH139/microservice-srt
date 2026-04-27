@@ -1,0 +1,296 @@
+1
+00:00:00,200 --> 00:00:06,290
+In this video, we are going to continue seed operations with product and order tables in SQL server
+
+2
+00:00:06,290 --> 00:00:07,070
+database.
+
+3
+00:00:07,100 --> 00:00:13,670
+Previously we have developed initialized database async method and after migrate operation we will perform
+
+4
+00:00:13,670 --> 00:00:14,900
+seed async method.
+
+5
+00:00:14,900 --> 00:00:20,690
+And in this method you can see that we will implement only seed customer async method to performing
+
+6
+00:00:20,690 --> 00:00:24,380
+adding range of the customer array into customer's table.
+
+7
+00:00:24,380 --> 00:00:29,390
+But now in this video we will focus on seeding product and order and order items.
+
+8
+00:00:29,390 --> 00:00:34,250
+So I'm going to open these command codes and comes here.
+
+9
+00:00:34,250 --> 00:00:38,000
+You can see that seed async functions including three functions.
+
+10
+00:00:38,000 --> 00:00:42,380
+Now this will be seeding customer product order and order items.
+
+11
+00:00:42,380 --> 00:00:47,840
+If you scroll down you can see that we will continue our static async methods for each entity.
+
+12
+00:00:47,840 --> 00:00:50,210
+And this was the customer entity.
+
+13
+00:00:50,210 --> 00:00:54,980
+And I'm going to follow the same steps for product and order and order items.
+
+14
+00:00:54,980 --> 00:00:56,240
+So come here.
+
+15
+00:00:56,240 --> 00:01:02,750
+And just after this method you can create any private static async method which name is seed product
+
+16
+00:01:02,750 --> 00:01:03,320
+async.
+
+17
+00:01:03,320 --> 00:01:07,940
+And this will be also executing context object which is our application db context.
+
+18
+00:01:07,940 --> 00:01:10,280
+And in here we will follow the same steps.
+
+19
+00:01:10,280 --> 00:01:15,140
+First of all we have checked if there is any product into database exists or not.
+
+20
+00:01:15,140 --> 00:01:21,290
+If not exist we will apply the add range async method with passing the product array into the products
+
+21
+00:01:21,500 --> 00:01:22,160
+entity.
+
+22
+00:01:22,160 --> 00:01:27,650
+And after that we will save changes async to reflect these new records into the database.
+
+23
+00:01:27,650 --> 00:01:33,770
+And after seeding the products, we will follow the same steps for seed order and items async method.
+
+24
+00:01:33,770 --> 00:01:40,370
+So after this method I'm going to create a new method which name is seed orders with items async method.
+
+25
+00:01:40,370 --> 00:01:45,950
+And this is also private static async method and accepting the application db context.
+
+26
+00:01:45,950 --> 00:01:47,720
+And we have followed the same steps.
+
+27
+00:01:47,720 --> 00:01:51,050
+First of all, we will check if there is any orders in the database.
+
+28
+00:01:51,050 --> 00:01:57,320
+If not, we will use ad range async method in order to add orders array into the orders entity of the
+
+29
+00:01:57,320 --> 00:01:58,220
+SQL server.
+
+30
+00:01:58,220 --> 00:02:01,460
+So these are the seed product and orders method.
+
+31
+00:02:01,700 --> 00:02:07,520
+As you can see that these methods are expecting initial data properties, which are the static properties
+
+32
+00:02:07,520 --> 00:02:12,020
+in the initial data class to provide initial data for product and orders.
+
+33
+00:02:12,020 --> 00:02:18,350
+For that purpose, I am going to open the initial database and after defining the customers property,
+
+34
+00:02:18,350 --> 00:02:21,590
+we will follow the same steps for the products and orders.
+
+35
+00:02:21,590 --> 00:02:28,010
+And here you can see the products static property which is the public static IEnumerable product, which
+
+36
+00:02:28,010 --> 00:02:29,570
+name is products property.
+
+37
+00:02:29,570 --> 00:02:35,150
+And here you can see that we are returning a new list product and this will be including for new product
+
+38
+00:02:35,150 --> 00:02:37,490
+using the product dot create method.
+
+39
+00:02:37,490 --> 00:02:44,990
+And inside of this method we will passing the product id using the product id of strongly type IDs to
+
+40
+00:02:44,990 --> 00:02:51,380
+generating these with id and following that, you can see that I'm going to add new for product with
+
+41
+00:02:51,380 --> 00:02:52,460
+different prices.
+
+42
+00:02:52,460 --> 00:02:58,250
+So you can confirm these product create operation in your initial data class operation.
+
+43
+00:02:58,250 --> 00:03:03,290
+And just after that I'm going to create orders with items for that purpose.
+
+44
+00:03:03,290 --> 00:03:09,320
+I'm going to create an additional static and IEnumerable order property.
+
+45
+00:03:09,320 --> 00:03:16,160
+And here you can see that this is long property, which is the public static IEnumerable order order
+
+46
+00:03:16,160 --> 00:03:17,240
+with items.
+
+47
+00:03:17,240 --> 00:03:24,230
+And in the getter of these property, you can see that we have defined two new address and two new payment
+
+48
+00:03:24,230 --> 00:03:26,930
+in order to prepare for creating orders.
+
+49
+00:03:26,930 --> 00:03:32,720
+So these are the address and payment value objects that we defined predefined values.
+
+50
+00:03:32,720 --> 00:03:39,560
+And after that we have create a new order using the order create method and passing the order ID, customer
+
+51
+00:03:39,560 --> 00:03:43,610
+ID, order name, shipping and billing address and payment information.
+
+52
+00:03:43,610 --> 00:03:50,420
+And after created a order one we can adding new products which are the ID information comes from the
+
+53
+00:03:50,420 --> 00:03:54,680
+above of this property and passing the quantity and price.
+
+54
+00:03:54,680 --> 00:04:01,040
+And just after that we have create order to including a different order ID, customer ID, order name,
+
+55
+00:04:01,040 --> 00:04:04,310
+shipping and billing address and payment to the value object.
+
+56
+00:04:04,310 --> 00:04:07,910
+And we have added different two products into this order.
+
+57
+00:04:07,910 --> 00:04:14,450
+And we are going to return these order one and order two as a generated predefined seating order tables.
+
+58
+00:04:14,450 --> 00:04:22,400
+So make sure that and note that we have using the different grid IDs and passing the same IDs when creating
+
+59
+00:04:22,400 --> 00:04:22,850
+order.
+
+60
+00:04:22,850 --> 00:04:29,900
+So this is crucial when making consistency between table rows, including the customer product order
+
+61
+00:04:29,900 --> 00:04:30,860
+with items.
+
+62
+00:04:30,860 --> 00:04:37,370
+So you can copy this code and initial data from the GitHub of our repository in order to seeding our
+
+63
+00:04:37,370 --> 00:04:39,710
+operations in the database extensions.
+
+64
+00:04:39,710 --> 00:04:46,700
+And by this way, we will execute these codes automatically when the application start up into our initial
+
+65
+00:04:46,700 --> 00:04:48,110
+database async method.
+
+66
+00:04:48,110 --> 00:04:53,450
+So here you can see that we got an exception which is the seed order and items async method.
+
+67
+00:04:53,450 --> 00:04:57,260
+If you scroll down you can see that the method name is different.
+
+68
+00:04:57,260 --> 00:04:59,840
+You can see that we will use order in here.
+
+69
+00:05:00,020 --> 00:05:01,760
+We can use orders in here.
+
+70
+00:05:01,760 --> 00:05:07,610
+I'm going to copy this method and make this method seed orders with items in this method.
+
+71
+00:05:07,610 --> 00:05:10,520
+So after that you can come here and right click.
+
+72
+00:05:10,520 --> 00:05:15,470
+And building the ordering API make sure that your codes are building successfully.
+
+73
+00:05:15,920 --> 00:05:22,670
+This setup provides that SQL server ordered DB database populated with essential data for customers,
+
+74
+00:05:22,670 --> 00:05:25,490
+products and orders when application startup.
+

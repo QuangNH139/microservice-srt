@@ -1,0 +1,336 @@
+1
+00:00:00,140 --> 00:00:06,470
+In this video we are going to create models folder for shopping web application microservice to consume
+
+2
+00:00:06,470 --> 00:00:08,240
+irb API gateway endpoints.
+
+3
+00:00:08,240 --> 00:00:10,520
+So let's remember our main use cases.
+
+4
+00:00:10,520 --> 00:00:13,100
+These are the listing products and categories.
+
+5
+00:00:13,100 --> 00:00:16,520
+Add product to shopping cart and checkout basket and create order.
+
+6
+00:00:16,550 --> 00:00:22,610
+These are the main use cases that can trigger from the are client side page, and we will use irb API
+
+7
+00:00:22,640 --> 00:00:28,220
+gateway endpoints and consume these endpoints with following these http, get and post methods.
+
+8
+00:00:28,220 --> 00:00:35,180
+So when we are sending these http get and post methods, we need to store incoming and outgoing messages
+
+9
+00:00:35,180 --> 00:00:38,090
+into our models, folder and domain models.
+
+10
+00:00:38,090 --> 00:00:41,360
+For that purpose, I'm going to create three domain model.
+
+11
+00:00:41,360 --> 00:00:46,040
+Here you can find the our domain models including the catalog basket and ordering.
+
+12
+00:00:46,040 --> 00:00:52,670
+And as a sub domain model we can say product get product response get product ID response basket shopping
+
+13
+00:00:52,670 --> 00:00:58,760
+cart, shopping cart, item basket, checkout, ordering order item address, payment, get order response,
+
+14
+00:00:58,760 --> 00:00:59,540
+so on.
+
+15
+00:00:59,540 --> 00:01:03,200
+So we will create these domain models into our application.
+
+16
+00:01:03,200 --> 00:01:04,700
+Please open the Visual Studio.
+
+17
+00:01:04,700 --> 00:01:07,700
+And first of all we are going to create models folder.
+
+18
+00:01:07,700 --> 00:01:11,570
+Right click the Shopping Web application and add a new folder.
+
+19
+00:01:11,570 --> 00:01:13,700
+Which name is models.
+
+20
+00:01:13,700 --> 00:01:19,130
+Inside of the models folder we will encapsulate domain models for the shopping, web application and
+
+21
+00:01:19,130 --> 00:01:25,340
+models folder should match the responses of the IRB API gateway endpoints and the internal microservices
+
+22
+00:01:25,340 --> 00:01:26,750
+endpoint responses.
+
+23
+00:01:26,750 --> 00:01:29,210
+So let me explain and give an example.
+
+24
+00:01:29,210 --> 00:01:35,420
+For example, when we are send http get request to product and catalog related page, this will be go
+
+25
+00:01:35,420 --> 00:01:42,110
+to the irb api gateway and irb API gateway will be redirect to this request to the downstream microservices
+
+26
+00:01:42,110 --> 00:01:44,210
+and specifically catalog microservices.
+
+27
+00:01:44,210 --> 00:01:46,430
+So we can go to catalog microservices.
+
+28
+00:01:46,430 --> 00:01:53,600
+And if you open the products vertical slice feature folder, and if you go to the Get Products folder,
+
+29
+00:01:53,600 --> 00:02:00,500
+and if you open the Get Products endpoint, and this will be hit the get products and paint with according
+
+30
+00:02:00,530 --> 00:02:02,480
+to request and response object.
+
+31
+00:02:02,480 --> 00:02:08,479
+That means when we are sending Http get request from our catalog and product page in the client application,
+
+32
+00:02:08,479 --> 00:02:13,940
+this will be goes to irb API gateway and this will be triggered to get products endpoint class with
+
+33
+00:02:13,940 --> 00:02:17,780
+sending the get product request and response back to the get products response.
+
+34
+00:02:17,780 --> 00:02:22,460
+So that means we are analyzing response of all microservices and the endpoints.
+
+35
+00:02:22,460 --> 00:02:28,970
+For that reason, we will check all endpoint classes and in our case we will create get product response
+
+36
+00:02:28,970 --> 00:02:36,110
+model with including the IEnumerable product model when responding to our shopping client web application.
+
+37
+00:02:36,110 --> 00:02:41,660
+So here you can see that I have created a required use case and domain models.
+
+38
+00:02:41,660 --> 00:02:44,630
+Here you can see that this is for the get products endpoint.
+
+39
+00:02:44,630 --> 00:02:50,030
+When we are retrieving product into our client application, we need data models according to request
+
+40
+00:02:50,030 --> 00:02:51,110
+and response object.
+
+41
+00:02:51,110 --> 00:02:53,300
+And we need as a product model.
+
+42
+00:02:53,300 --> 00:02:57,770
+And here you can see that we can also filter by category into our client application.
+
+43
+00:02:57,770 --> 00:03:03,830
+For that reason we need a request and response object including again IEnumerable product model.
+
+44
+00:03:03,830 --> 00:03:09,980
+And here you can see that we can open a single product into our product detail page, into client application
+
+45
+00:03:09,980 --> 00:03:14,690
+that need to request and response object, including a single product model.
+
+46
+00:03:14,690 --> 00:03:20,120
+For that reason, we should create all these wrapper requests and response object with the same format.
+
+47
+00:03:20,120 --> 00:03:25,220
+And here you can see that we will create product model and we will create get product request.
+
+48
+00:03:25,220 --> 00:03:29,480
+And we will not include the page number and size load from the query parameters.
+
+49
+00:03:29,480 --> 00:03:35,120
+But we need at least create a wrapper classes for the product model in order to get response from the
+
+50
+00:03:35,120 --> 00:03:37,430
+client application and Erb API gateway.
+
+51
+00:03:37,430 --> 00:03:42,740
+And here you can see the our additional domain models that we are going to create according to our use
+
+52
+00:03:42,740 --> 00:03:43,280
+cases.
+
+53
+00:03:43,280 --> 00:03:44,930
+So let's get started.
+
+54
+00:03:44,930 --> 00:03:51,560
+So if you go back to our actual project which is a shopping web, and go to the models folder, I'm
+
+55
+00:03:51,560 --> 00:03:56,690
+going to create a subfolder under the models add new subfolder, which name is catalog.
+
+56
+00:03:56,690 --> 00:04:00,470
+So we are going to create domain models according to microservices.
+
+57
+00:04:00,470 --> 00:04:04,850
+First of all I'm going to create product model under the catalog sub folder.
+
+58
+00:04:04,880 --> 00:04:07,880
+Add a new class which name is product model dot CSS.
+
+59
+00:04:07,880 --> 00:04:14,510
+And in this model class I'm going to create a product model which is belonging to parameters and members
+
+60
+00:04:14,510 --> 00:04:16,220
+in the product entity class.
+
+61
+00:04:16,220 --> 00:04:22,790
+Here you can see the guild id string, name list, string category, string, description, string,
+
+62
+00:04:22,790 --> 00:04:24,470
+image file and decimal price.
+
+63
+00:04:24,470 --> 00:04:30,290
+This is typical product entity when we are developing catalog microservices and at the same format,
+
+64
+00:04:30,290 --> 00:04:34,400
+I have created product model under the our shopping web client application.
+
+65
+00:04:34,400 --> 00:04:40,820
+And just after that we can create record types for the wrapper classes in order to accommodate incoming
+
+66
+00:04:40,820 --> 00:04:45,350
+and outgoing requests to our API gateway and catalog microservices.
+
+67
+00:04:45,350 --> 00:04:51,530
+Here you can see our wrapper classes get products response, including the IEnumerable product model
+
+68
+00:04:51,530 --> 00:04:57,410
+which is the products, and this is the get products by category response, including the IEnumerable
+
+69
+00:04:57,410 --> 00:04:58,100
+product model.
+
+70
+00:04:58,100 --> 00:04:59,750
+Which name is products?
+
+71
+00:04:59,990 --> 00:05:05,060
+And this is the last record type, which is a get products by ID response, including a single product
+
+72
+00:05:05,060 --> 00:05:07,010
+model which is name is product.
+
+73
+00:05:07,010 --> 00:05:13,460
+So these are the comes from the Our services catalog micro services and the product endpoints.
+
+74
+00:05:13,460 --> 00:05:16,160
+You can check the get products endpoint response.
+
+75
+00:05:16,160 --> 00:05:19,040
+And here you can see the get product by ID endpoint.
+
+76
+00:05:19,040 --> 00:05:20,600
+And this is the our response.
+
+77
+00:05:20,600 --> 00:05:22,820
+And here you can see the get product by category.
+
+78
+00:05:22,820 --> 00:05:26,930
+And here you can see the our get product category endpoint response.
+
+79
+00:05:26,930 --> 00:05:32,750
+And we will simulate all these data model under the our client application under the models catalog
+
+80
+00:05:32,750 --> 00:05:34,910
+and product model CSV file.
+
+81
+00:05:34,910 --> 00:05:41,300
+By this way we can capable to accommodate incoming requests from the response of the Erb API gateway
+
+82
+00:05:41,300 --> 00:05:45,800
+and populate the data inside of the our domain models into the catalog.
+
+83
+00:05:45,800 --> 00:05:48,530
+As you can see that we have created catalog domain models.
+
+84
+00:05:48,530 --> 00:05:52,520
+In the next video, we will continue basket and ordering data models.
+

@@ -1,0 +1,172 @@
+1
+00:00:00,140 --> 00:00:06,470
+In this video, we are going to start to explain common pattern and principles that we will use when
+
+2
+00:00:06,470 --> 00:00:08,480
+developing organic market services.
+
+3
+00:00:09,250 --> 00:00:15,010
+We will start with the solid principles that include five different principles Single responsibility,
+
+4
+00:00:15,010 --> 00:00:20,620
+open closed, Liskov substitution, interface segregation, and dependency inversion.
+
+5
+00:00:21,070 --> 00:00:24,430
+So the first one is single responsibility principle.
+
+6
+00:00:24,430 --> 00:00:29,260
+Each of our components or modules should responsible only one functionality.
+
+7
+00:00:29,530 --> 00:00:31,030
+And the second one is open.
+
+8
+00:00:31,030 --> 00:00:32,259
+Closed principle.
+
+9
+00:00:32,320 --> 00:00:38,500
+When we design the system, it should be able to extend without changing existing architecture.
+
+10
+00:00:38,500 --> 00:00:43,660
+That means it should be open for extensions, closed for the modifications.
+
+11
+00:00:44,110 --> 00:00:50,830
+And the next one is Liskov substitution principle system can be substituted each other easily.
+
+12
+00:00:50,830 --> 00:00:55,630
+In our case we can use plugin services that we can shift them easily.
+
+13
+00:00:56,050 --> 00:00:59,560
+And the other one is interface segregation principle.
+
+14
+00:00:59,560 --> 00:01:04,599
+It states that no code should be forced to depend on method it doesn't use.
+
+15
+00:01:04,629 --> 00:01:07,720
+And the last one is dependency inversion principle.
+
+16
+00:01:07,720 --> 00:01:13,300
+It states that high level modules should not depend on low level modules, but should depend on the
+
+17
+00:01:13,300 --> 00:01:14,170
+abstractions.
+
+18
+00:01:14,170 --> 00:01:17,980
+So now let me expand these dependency inversion principle.
+
+19
+00:01:17,980 --> 00:01:24,250
+Basically, in dependency inversion principle we provide to block dependency of classes by inverting
+
+20
+00:01:24,250 --> 00:01:28,450
+dependencies and inject the dependent classes via constructor.
+
+21
+00:01:28,840 --> 00:01:35,740
+That means we can say that upper level class and lower level class must not be dependent on the modules.
+
+22
+00:01:35,740 --> 00:01:42,340
+Lower level modules must be dependent on the higher level modules with using the interface or abstractions.
+
+23
+00:01:42,400 --> 00:01:48,280
+Here you can find the illustration of the dependency inversion and without dependency inversion according
+
+24
+00:01:48,280 --> 00:01:53,860
+to without dependency inversion, you can see that our business layer directly access to our data access
+
+25
+00:01:53,860 --> 00:01:56,470
+layer and using the SQL database classes.
+
+26
+00:01:56,470 --> 00:02:02,170
+In the business logic, this is not acceptable and not following the dependency inversion principle.
+
+27
+00:02:02,170 --> 00:02:06,400
+Instead of these coupling, we can use dependency inversion.
+
+28
+00:02:06,400 --> 00:02:13,210
+That means lower level class, which is a data access, can be dependent to higher level modules using
+
+29
+00:02:13,210 --> 00:02:15,010
+the interface and abstraction.
+
+30
+00:02:15,010 --> 00:02:21,550
+In our case, we will use AI repository in the business logic to perform data access operations into
+
+31
+00:02:21,550 --> 00:02:23,050
+the SQL database.
+
+32
+00:02:23,050 --> 00:02:30,880
+We have already used this kind of abstractions and injecting dependencies into our ASP.Net microservices.
+
+33
+00:02:31,360 --> 00:02:38,200
+So the next thing we should check the design principles of the separation of concerns according to separation
+
+34
+00:02:38,200 --> 00:02:44,050
+of concerns, which is the one of the core software design principle, we can separate the computer
+
+35
+00:02:44,050 --> 00:02:46,120
+program into distinct sections.
+
+36
+00:02:46,120 --> 00:02:53,080
+That means we can isolate the software application into separate sections, manage complexities by partitioning
+
+37
+00:02:53,080 --> 00:02:54,310
+the software system.
+
+38
+00:02:54,310 --> 00:03:01,150
+It distinguish between the concepts of the layer and tiers with certain responsibilities, and basically
+
+39
+00:03:01,150 --> 00:03:07,030
+IT elements of the software should be unique and limit to allocate responsibilities and low coupling
+
+40
+00:03:07,030 --> 00:03:08,080
+and high cohesion.
+
+41
+00:03:08,080 --> 00:03:14,050
+You can see an example of the separation concerns in here we can separate our web application, writing
+
+42
+00:03:14,050 --> 00:03:17,530
+the HTML, CSS and JavaScript file in different layers.
+
+43
+00:03:17,530 --> 00:03:22,150
+And here you can see the separation of concerns about the HTML elements.
+

@@ -1,0 +1,196 @@
+1
+00:00:00,140 --> 00:00:06,680
+In this video, we are going to use ASP.Net Feature Management to removing and disabling these order
+
+2
+00:00:06,680 --> 00:00:10,070
+created integration event part into our end to end flow.
+
+3
+00:00:10,070 --> 00:00:16,340
+So that means we will set the order fulfillment feature as a false and we will expect to behave system
+
+4
+00:00:16,340 --> 00:00:21,080
+correctly without publishing integration event in the handle of the domain events.
+
+5
+00:00:21,080 --> 00:00:27,470
+Because we don't have any fulfillment subscriber microservices yet and RabbitMQ is not created queue
+
+6
+00:00:27,470 --> 00:00:30,110
+if there is no subscriber for that purpose.
+
+7
+00:00:30,110 --> 00:00:36,560
+Since fulfillment microservices is developed, it is good to set the flag false for the order fulfillment
+
+8
+00:00:36,560 --> 00:00:39,920
+message in order to avoid unnecessary queue messages.
+
+9
+00:00:39,920 --> 00:00:46,040
+So please open the Visual Studio and in here please go to the ordering API and go to the Application
+
+10
+00:00:46,040 --> 00:00:47,360
+Settings Json file.
+
+11
+00:00:47,360 --> 00:00:52,580
+As you can see that I have started the application which is started the ordering basket and discount
+
+12
+00:00:52,580 --> 00:00:57,770
+microservices that I am going to change the configuration on the flight when running the application.
+
+13
+00:00:57,770 --> 00:01:01,430
+So this is the power of the ASP.Net feature management.
+
+14
+00:01:01,430 --> 00:01:06,230
+I am going to change the feature of the order fulfillment from true to false.
+
+15
+00:01:07,010 --> 00:01:08,990
+So save this configuration file.
+
+16
+00:01:08,990 --> 00:01:14,480
+And if you open the ordering application event handlers and order created domain event handler, you
+
+17
+00:01:14,480 --> 00:01:17,750
+can see that we have a breakpoint that will not be entered.
+
+18
+00:01:17,750 --> 00:01:21,380
+The breakpoint due to our order fulfillment feature is false.
+
+19
+00:01:21,380 --> 00:01:27,080
+So now I am not going to skipping any breakpoint and I am going to continue with the F10 and we will
+
+20
+00:01:27,080 --> 00:01:29,840
+see that these if statement will not be entered.
+
+21
+00:01:29,840 --> 00:01:32,990
+So now I am going to perform the intent use case.
+
+22
+00:01:32,990 --> 00:01:39,530
+Please open the postman and go to the basket microservices and send the http post request in order to
+
+23
+00:01:39,530 --> 00:01:40,610
+create any basket.
+
+24
+00:01:40,610 --> 00:01:45,950
+So I am going to hit F5 to pacing these breakpoints when creating a new basket.
+
+25
+00:01:47,190 --> 00:01:49,980
+And here you can see that our basket created successfully.
+
+26
+00:01:49,980 --> 00:01:54,210
+Now I am going to perform asynchronous use case which is the basket checkout.
+
+27
+00:01:54,240 --> 00:01:58,830
+Please go to this http post operation and this endpoint and click the send button.
+
+28
+00:01:58,830 --> 00:02:03,060
+This will be hit the basket checkout operation and I am going to hit F5.
+
+29
+00:02:03,060 --> 00:02:06,660
+Since we will consume this basket checkout event from the RabbitMQ.
+
+30
+00:02:06,690 --> 00:02:09,090
+Here you can see the consume operation performed.
+
+31
+00:02:09,090 --> 00:02:12,240
+This is the ordering microservices consume operation.
+
+32
+00:02:12,240 --> 00:02:17,550
+Again I am hitting the F5 and this is go back to our basket microservices delete operation.
+
+33
+00:02:17,550 --> 00:02:20,640
+This will be continue to consume operation from the basket.
+
+34
+00:02:20,640 --> 00:02:25,920
+I am hitting the F5 since we are coming to domain event handler part.
+
+35
+00:02:25,920 --> 00:02:30,600
+So this is the order create operation and this is dispatching order create domain event.
+
+36
+00:02:30,600 --> 00:02:34,050
+And in here we can handle the order created domain event handler.
+
+37
+00:02:34,050 --> 00:02:36,750
+In here you can see the if statement comes to this point.
+
+38
+00:02:36,750 --> 00:02:38,220
+And I am going to hit F10.
+
+39
+00:02:38,220 --> 00:02:40,710
+So you can see that the feature is false.
+
+40
+00:02:40,710 --> 00:02:46,710
+And we can see that this feature is disabled when we are changing the application settings on the ordering
+
+41
+00:02:46,710 --> 00:02:52,650
+API, and the application has started before changing the configuration, that means this is powerful
+
+42
+00:02:52,650 --> 00:02:58,440
+feature from the ASP.Net feature management that we can change the behavior of the application on the
+
+43
+00:02:58,440 --> 00:03:00,270
+flight without changing any code.
+
+44
+00:03:00,270 --> 00:03:06,690
+So I am hitting the F5 and you can see the basket checkout Antoine process complete successfully.
+
+45
+00:03:06,690 --> 00:03:10,170
+And you can also check the RabbitMQ management dashboard.
+
+46
+00:03:10,170 --> 00:03:12,480
+And we don't have any integration event.
+
+47
+00:03:12,480 --> 00:03:14,490
+This is for the basket checkout event.
+
+48
+00:03:14,490 --> 00:03:18,240
+And we don't see any additional event for the order created.
+
+49
+00:03:18,240 --> 00:03:18,990
+Operations.
+

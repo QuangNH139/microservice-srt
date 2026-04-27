@@ -1,0 +1,136 @@
+1
+00:00:00,140 --> 00:00:05,210
+In this video, we are going to learn when not to use microservices.
+
+2
+00:00:05,210 --> 00:00:09,590
+That means anti-patterns of usage microservices.
+
+3
+00:00:09,890 --> 00:00:14,180
+The first anti-pattern is don't do distributed monolithic.
+
+4
+00:00:14,750 --> 00:00:22,250
+Make sure that you decompose your services properly and respecting the decoupling rule like applying
+
+5
+00:00:22,250 --> 00:00:24,650
+bounded context and business capabilities.
+
+6
+00:00:24,650 --> 00:00:25,490
+Principles.
+
+7
+00:00:26,950 --> 00:00:30,730
+Otherwise you are losing the benefits of microservices.
+
+8
+00:00:30,760 --> 00:00:35,020
+Also, make sure that services should be loosely coupling.
+
+9
+00:00:35,620 --> 00:00:42,730
+If your services has chatty communication with strong coupling, you will end up with highly coupled
+
+10
+00:00:42,730 --> 00:00:43,960
+service architecture.
+
+11
+00:00:43,960 --> 00:00:50,530
+That means you have developed a distributed monolithic architecture which comes with none of the benefits
+
+12
+00:00:50,530 --> 00:00:52,390
+of microservices should be doing.
+
+13
+00:00:53,770 --> 00:01:01,000
+Distributed monolithic architecture is the worst case because you increase the complexity of your architecture
+
+14
+00:01:01,000 --> 00:01:04,330
+without getting any benefit of microservices.
+
+15
+00:01:04,950 --> 00:01:07,830
+Microservices are all about autonomy.
+
+16
+00:01:07,860 --> 00:01:10,650
+When you lose or lose the autonomy.
+
+17
+00:01:10,680 --> 00:01:17,340
+Teams must coordinate during the development and deployment, and teams will highly dependent on each
+
+18
+00:01:17,340 --> 00:01:17,970
+other.
+
+19
+00:01:18,150 --> 00:01:22,560
+By the time you will lose your agility of new feature deployments.
+
+20
+00:01:23,640 --> 00:01:30,450
+So if you end up with distributed monolithic application, has a higher latency and application can
+
+21
+00:01:30,450 --> 00:01:38,130
+have synchronization issues and application is a lot harder to manage and debug when something breaks.
+
+22
+00:01:38,160 --> 00:01:40,650
+Coupled services are hard to debug.
+
+23
+00:01:41,600 --> 00:01:47,840
+The second antipattern is don't do microservices without DevOps or cloud services.
+
+24
+00:01:48,140 --> 00:01:54,830
+Microservices are embraced the distributed cloud native approaches, and you can only maximize benefits
+
+25
+00:01:54,830 --> 00:01:58,940
+of microservices with following these cloud native principles.
+
+26
+00:02:00,080 --> 00:02:07,250
+Some of these principles are CI CD pipeline with DevOps automations, proper deployment and monitoring
+
+27
+00:02:07,280 --> 00:02:07,880
+tools.
+
+28
+00:02:07,880 --> 00:02:11,630
+Managed cloud services to support your infrastructure.
+
+29
+00:02:11,630 --> 00:02:15,950
+Follow key enabling technologies and tools like containers.
+
+30
+00:02:15,950 --> 00:02:22,580
+Orchestrator, Docker and Kubernetes broke the dependencies with following asynchronous communications
+
+31
+00:02:22,580 --> 00:02:26,120
+using messaging and even event streaming services.
+
+32
+00:02:27,470 --> 00:02:33,740
+If you don't follow these principles in microservice architecture, you will again end up with distributed
+
+33
+00:02:33,740 --> 00:02:40,100
+monolithic, which is the worst case because you increase complexity of your architecture without getting
+
+34
+00:02:40,100 --> 00:02:41,960
+any benefit of microservices.
+

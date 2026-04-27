@@ -1,0 +1,192 @@
+1
+00:00:00,140 --> 00:00:06,020
+In this video we are going to develop events folder under the Building Blocks messaging class library.
+
+2
+00:00:06,050 --> 00:00:10,940
+For that purpose, please open the Visual Studio and go to the Building Blocks class library.
+
+3
+00:00:11,030 --> 00:00:13,040
+Right click and create new folder.
+
+4
+00:00:14,640 --> 00:00:15,480
+A new folder.
+
+5
+00:00:15,480 --> 00:00:17,070
+Which name is events?
+
+6
+00:00:17,220 --> 00:00:21,390
+So within the Building Blocks messaging project we will create events folder.
+
+7
+00:00:21,390 --> 00:00:24,540
+And this folder will include all integration event classes.
+
+8
+00:00:24,540 --> 00:00:29,190
+And we will start developing by adding a base class for our integration event.
+
+9
+00:00:29,190 --> 00:00:31,170
+Which name is Integration event.
+
+10
+00:00:31,170 --> 00:00:36,930
+And this will be base class that provide common properties that all integration events will inherit.
+
+11
+00:00:36,930 --> 00:00:41,820
+For that purpose, I am going to add a new class under the events folder, which name is Integration
+
+12
+00:00:41,820 --> 00:00:42,750
+Events.
+
+13
+00:00:42,750 --> 00:00:45,990
+So in this folder I'm going to create a new record type.
+
+14
+00:00:45,990 --> 00:00:52,080
+First of all, remove unnecessary using statement and remove this class definition and create any record
+
+15
+00:00:52,110 --> 00:00:52,350
+type.
+
+16
+00:00:52,350 --> 00:00:57,540
+Which name is integration event including members of the ID occurred on an event type.
+
+17
+00:00:57,540 --> 00:01:02,730
+So that means this will be the our base class, which is the integration event including the property
+
+18
+00:01:02,730 --> 00:01:03,570
+of the ID.
+
+19
+00:01:03,750 --> 00:01:07,410
+Each event gets a unique identifier from the get Nuguid.
+
+20
+00:01:07,410 --> 00:01:10,320
+And also there is a occurred on property.
+
+21
+00:01:10,320 --> 00:01:14,490
+That means each event also have a timestamp of the occurred on.
+
+22
+00:01:14,490 --> 00:01:16,380
+We will pass the date time now.
+
+23
+00:01:16,380 --> 00:01:22,320
+And lastly we will have a event type member under the integration event that is ensuring the event type
+
+24
+00:01:22,320 --> 00:01:24,510
+from the SMD qualified name.
+
+25
+00:01:24,510 --> 00:01:28,380
+By this way, we can ensure the standard structure for all events.
+
+26
+00:01:28,380 --> 00:01:33,000
+After that we can create our actual business event which is the basket checkout event.
+
+27
+00:01:33,000 --> 00:01:36,150
+So which will be inherit from this integration event?
+
+28
+00:01:36,150 --> 00:01:41,850
+For that purpose, I am going to create a new class under the events and which name is Basket Checkout
+
+29
+00:01:41,850 --> 00:01:42,390
+Event.
+
+30
+00:01:42,870 --> 00:01:47,130
+So this class will represent the data structure for the basket checkout process.
+
+31
+00:01:47,130 --> 00:01:51,000
+And it is a key part of the our asynchronous communication setup.
+
+32
+00:01:51,000 --> 00:01:55,230
+Remove unnecessary using statement and make this as a public.
+
+33
+00:01:55,230 --> 00:01:59,400
+And also I would like to use record type and basket checkout event.
+
+34
+00:01:59,400 --> 00:02:02,430
+So this will be inherit from the integration event.
+
+35
+00:02:03,480 --> 00:02:08,400
+As you can see that we have created our basket checkout event inherited from the our integration event
+
+36
+00:02:08,400 --> 00:02:10,800
+and both these event types as a record type.
+
+37
+00:02:10,800 --> 00:02:14,100
+Because record type is very good match for the event.
+
+38
+00:02:14,100 --> 00:02:16,260
+Deserialize and serialize operations.
+
+39
+00:02:16,260 --> 00:02:19,680
+After that we can develop basket checkout event members.
+
+40
+00:02:19,680 --> 00:02:25,080
+Here you can see that this will be include username, customer ID, total price, shipping and billing
+
+41
+00:02:25,080 --> 00:02:27,120
+address information and payment data.
+
+42
+00:02:27,120 --> 00:02:32,280
+So these are the comes from the our checkout data and which is basket checkout event.
+
+43
+00:02:32,280 --> 00:02:38,070
+And these basket checkout event contains all necessary information for processing a basket checkout
+
+44
+00:02:38,070 --> 00:02:41,220
+including user address and payment details.
+
+45
+00:02:41,220 --> 00:02:48,150
+And notice that we only use primitive data types in order to ensure easy serialization and deserialization
+
+46
+00:02:48,150 --> 00:02:49,860
+across different microservices.
+
+47
+00:02:49,860 --> 00:02:55,860
+So see that event object types are primitive types that is available for Json conversion for different
+
+48
+00:02:55,860 --> 00:02:56,550
+services.
+

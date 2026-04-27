@@ -1,0 +1,272 @@
+1
+00:00:00,140 --> 00:00:06,170
+In this video we are going to containerize and configure basket and ordering microservices into docker
+
+2
+00:00:06,170 --> 00:00:10,130
+compose file for Multi-container docker environment Containerizing.
+
+3
+00:00:10,130 --> 00:00:15,950
+And configuring the basket and ordering microservices in a docker compose environment involves defining
+
+4
+00:00:15,950 --> 00:00:21,080
+the configuration in a docker-compose.yml file and the override file, which is the docker compose override
+
+5
+00:00:21,110 --> 00:00:21,950
+YAML file.
+
+6
+00:00:21,950 --> 00:00:28,820
+So here you can see that basket and ordering microservices using RabbitMQ as a backend services in Docker
+
+7
+00:00:28,820 --> 00:00:29,510
+environment.
+
+8
+00:00:29,510 --> 00:00:33,170
+But we are using the basket and ordering microservices locally.
+
+9
+00:00:33,260 --> 00:00:39,200
+So if you remember the our e-commerce microservices deployment strategy, you can see that so far we
+
+10
+00:00:39,200 --> 00:00:44,990
+have built the deployment one, which is the developing locally basket and ordering microservices that
+
+11
+00:00:44,990 --> 00:00:49,670
+connect to RabbitMQ message broker as a backend services in Docker environment.
+
+12
+00:00:49,670 --> 00:00:56,390
+So now it is time to orchestrate all microservices with Docker compose and test inside of the full Docker
+
+13
+00:00:56,390 --> 00:00:57,050
+environment.
+
+14
+00:00:57,050 --> 00:01:02,840
+Here you can see that we will go to deployment tool which is Docker compose all micro services and banking
+
+15
+00:01:02,840 --> 00:01:04,160
+services together.
+
+16
+00:01:04,400 --> 00:01:09,860
+So for that purpose we will check the Docker compose configuration for RabbitMQ basket and ordering
+
+17
+00:01:09,860 --> 00:01:10,850
+microservices.
+
+18
+00:01:10,850 --> 00:01:13,070
+So please open the Visual Studio.
+
+19
+00:01:13,100 --> 00:01:15,260
+Here you can see the our Docker compose file.
+
+20
+00:01:15,260 --> 00:01:20,660
+If you open the docker-compose.yml file we have already added the message docker image in here.
+
+21
+00:01:20,660 --> 00:01:26,090
+Also we have already containerized basket microservices in the docker-compose.yml file.
+
+22
+00:01:26,090 --> 00:01:32,180
+So after that, if you look at the docker compose original file, you can see the overriding configuration
+
+23
+00:01:32,180 --> 00:01:37,190
+in the message broker RabbitMQ, including the container name, hostname, environment, variables,
+
+24
+00:01:37,190 --> 00:01:38,870
+port numbers and so on.
+
+25
+00:01:38,870 --> 00:01:45,770
+And if you scroll down you can see the basket API override configurations when containerizing in Docker
+
+26
+00:01:45,770 --> 00:01:46,340
+environment.
+
+27
+00:01:46,340 --> 00:01:49,970
+So these are the environment variables, depends on ports and volumes.
+
+28
+00:01:49,970 --> 00:01:55,670
+So now we are going to configure basket API in order to communicate with the message broker in Docker
+
+29
+00:01:55,670 --> 00:01:56,360
+environment.
+
+30
+00:01:56,360 --> 00:01:58,820
+For that purpose I'm going to open the basket API.
+
+31
+00:01:58,820 --> 00:02:04,460
+And you can see that if you look at the application settings JSON file, there is a message broker settings
+
+32
+00:02:04,460 --> 00:02:07,550
+that we can override in the Docker compose override YAML file.
+
+33
+00:02:07,550 --> 00:02:10,729
+In order to communicate RabbitMQ in Docker network.
+
+34
+00:02:10,729 --> 00:02:13,970
+So here you can see the host address, username and password.
+
+35
+00:02:13,970 --> 00:02:15,020
+In host address.
+
+36
+00:02:15,050 --> 00:02:21,550
+We will choose the localhost for the connected server name from the local environment to the RabbitMQ
+
+37
+00:02:21,580 --> 00:02:26,770
+Docker environment, but this time basket microservices also include in Docker network.
+
+38
+00:02:26,770 --> 00:02:31,900
+For that purpose, instead of choosing the localhost, we should put the docker name of the RabbitMQ.
+
+39
+00:02:31,930 --> 00:02:37,000
+That means we should change the localhost and overwrite the acronyms with the hostname of the message
+
+40
+00:02:37,000 --> 00:02:39,790
+broker, which is the e-commerce dash MQ.
+
+41
+00:02:39,820 --> 00:02:44,740
+So that means we should override this message broker configurations in the docker compose.
+
+42
+00:02:44,770 --> 00:02:48,550
+Override YAML file for the basket microservices for that purpose.
+
+43
+00:02:48,580 --> 00:02:52,840
+Please open the docker compose or writing file and go to the basket API part.
+
+44
+00:02:52,840 --> 00:02:57,550
+And here you can see the environment variables that we are going to override for the message broker
+
+45
+00:02:57,550 --> 00:02:58,180
+settings.
+
+46
+00:02:58,180 --> 00:03:00,310
+So I'm going to come to this point.
+
+47
+00:03:00,310 --> 00:03:07,570
+And just after that I'm going to create a message broker settings which including the message broker
+
+48
+00:03:07,600 --> 00:03:10,240
+host username and password.
+
+49
+00:03:10,270 --> 00:03:14,020
+Here you can see that the message broker including these parameters.
+
+50
+00:03:14,020 --> 00:03:19,750
+And we can override these parameters in the basket API or writable configuration under the Docker compose
+
+51
+00:03:19,780 --> 00:03:20,890
+or write HTML file.
+
+52
+00:03:20,890 --> 00:03:25,000
+And the important configuration in here is a message broker hostname.
+
+53
+00:03:25,000 --> 00:03:30,940
+Here you can see that we will replace the localhost to the e-commerce MQ, which is the hostname of
+
+54
+00:03:30,970 --> 00:03:37,000
+the R message broker, and after that we will put the port number, which is the default port number
+
+55
+00:03:37,000 --> 00:03:38,260
+for the RabbitMQ.
+
+56
+00:03:38,290 --> 00:03:43,690
+By this way we can communicate basket and RabbitMQ microservices full docker environment.
+
+57
+00:03:43,690 --> 00:03:48,730
+So please make sure that you have added these environment variables under the basket API.
+
+58
+00:03:48,760 --> 00:03:54,490
+After that, we should not forget to add the Dependson for the message broker, because now basket API.
+
+59
+00:03:54,520 --> 00:04:00,550
+Also depending on the message broker container name and this will be also dependent from the basket
+
+60
+00:04:00,550 --> 00:04:01,060
+API.
+
+61
+00:04:01,090 --> 00:04:04,990
+I am going to add a message broker as it depends on the basket API.
+
+62
+00:04:05,020 --> 00:04:10,330
+So please add this line of code and also this line of code for overriding environment variables.
+
+63
+00:04:10,330 --> 00:04:14,500
+So we have completed the Docker configurations for the basket microservices.
+
+64
+00:04:14,530 --> 00:04:20,290
+Now it is time to configure our ordinary microservices to consume events from the RabbitMQ.
+
+65
+00:04:20,320 --> 00:04:26,020
+For that purpose, if you go back to and open the Visual Studio, and if you open the ordinary microservices,
+
+66
+00:04:26,020 --> 00:04:30,880
+and if you open the ordering API and open the application settings JSON file, here you can see that
+
+67
+00:04:30,880 --> 00:04:36,550
+the same message broker sections comes to the ordering API that we need to override in the docker compose
+
+68
+00:04:36,580 --> 00:04:37,510
+override YAML file.
+

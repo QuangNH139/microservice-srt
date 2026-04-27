@@ -1,0 +1,248 @@
+1
+00:00:00,140 --> 00:00:06,980
+In this video, we are going to test the communication between basket API and the discount gRPC microservices
+
+2
+00:00:06,980 --> 00:00:10,250
+within the Docker environment using the Docker compose files.
+
+3
+00:00:10,250 --> 00:00:16,760
+And we will also addressing the SSL certificate exception when we are integrating basket API to discount
+
+4
+00:00:16,760 --> 00:00:25,370
+gRPC for that purpose, please open the Visual Studio and we will recreate the basket API container
+
+5
+00:00:25,370 --> 00:00:28,430
+in order to reflect new changes in our code.
+
+6
+00:00:28,430 --> 00:00:34,040
+For that purpose, I'm going to right click the Docker compose and set a startup project.
+
+7
+00:00:34,040 --> 00:00:41,300
+Normally, you can remove all existing containers and recreate from scratch in your Docker desktop.
+
+8
+00:00:41,300 --> 00:00:45,140
+We should delete the basket API and recreate from the scratch.
+
+9
+00:00:45,140 --> 00:00:51,170
+But when we use Visual Studio docker compose running profile, it will detect the changes on specific
+
+10
+00:00:51,170 --> 00:00:55,520
+container, which configurations are changed and recreate the container for us.
+
+11
+00:00:55,520 --> 00:01:01,700
+For example, in our case we have changed the basket API microservice configuration and the docker compose
+
+12
+00:01:01,700 --> 00:01:02,480
+overwrite file.
+
+13
+00:01:02,480 --> 00:01:06,170
+So it should only recreate basket container.
+
+14
+00:01:06,170 --> 00:01:09,890
+And we will see this when running docker compose on Visual Studio.
+
+15
+00:01:09,890 --> 00:01:11,390
+Set a startup project.
+
+16
+00:01:11,390 --> 00:01:17,780
+And this time I'm going to start without debugging to observe the containers being created or updated
+
+17
+00:01:17,780 --> 00:01:23,540
+in the Docker desktop, click this button to start without debugging, and you can check the container
+
+18
+00:01:23,540 --> 00:01:28,850
+logs for basket and discount microservices to ensure they are ready to accept requests.
+
+19
+00:01:28,850 --> 00:01:36,440
+But here you can see that the basket microservices is removed and recreate from scratch using the Docker
+
+20
+00:01:36,440 --> 00:01:44,420
+compose up commands by Visual Studio and the basket API recreate with the newly adding codes and configurations,
+
+21
+00:01:44,420 --> 00:01:49,430
+and we can confirm the basket API and discount gRPC from the logs.
+
+22
+00:01:49,430 --> 00:01:55,670
+If you open the basket API here, you can see the basket API created successfully and discount gRPC
+
+23
+00:01:55,670 --> 00:01:57,320
+also created successfully.
+
+24
+00:01:57,320 --> 00:02:00,350
+Now we can send the request using the postman.
+
+25
+00:02:00,350 --> 00:02:05,780
+Please open the postman and let me start with testing discount gRPC microservices.
+
+26
+00:02:05,780 --> 00:02:08,990
+Select the discount service and select the Get discount method.
+
+27
+00:02:08,990 --> 00:02:13,910
+Make sure that you have called the Docker IP and port number.
+
+28
+00:02:13,910 --> 00:02:21,530
+This is localhost 6062 and get discount method and the method body should be product name iPhone x.
+
+29
+00:02:21,530 --> 00:02:28,010
+Click the invoke button in order to run gRPC and get a success response from the discount microservices,
+
+30
+00:02:28,010 --> 00:02:29,360
+which is the environment.
+
+31
+00:02:29,360 --> 00:02:32,960
+So we have confirmed that the discount service is up and running.
+
+32
+00:02:32,960 --> 00:02:36,860
+Now we should go to end to end test for the basket API.
+
+33
+00:02:36,860 --> 00:02:38,030
+Microservices.
+
+34
+00:02:38,030 --> 00:02:43,880
+Under a microservices postman collection, you can go to the post store basket request.
+
+35
+00:02:43,880 --> 00:02:50,600
+And in here we should change the environment localhost to the docker and make sure that the basket URL
+
+36
+00:02:50,600 --> 00:02:52,640
+is 6061.
+
+37
+00:02:52,640 --> 00:02:58,580
+And you can see the payload in here we are going to send http post request in order to communicate with
+
+38
+00:02:58,580 --> 00:03:02,450
+the discount gRPC fully Docker environment using the docker compose.
+
+39
+00:03:02,450 --> 00:03:05,390
+And I'm going to send http post request.
+
+40
+00:03:05,390 --> 00:03:09,740
+And this time you can see that we got 500 internal server error.
+
+41
+00:03:09,740 --> 00:03:11,660
+And the exception is error.
+
+42
+00:03:11,660 --> 00:03:13,160
+Starting gRPC call.
+
+43
+00:03:13,160 --> 00:03:16,940
+And this is the SSL connection could not be establishment.
+
+44
+00:03:16,940 --> 00:03:20,090
+That means we don't have the remote certification.
+
+45
+00:03:20,090 --> 00:03:23,000
+And this is the invalid according to the validation procedure.
+
+46
+00:03:23,000 --> 00:03:30,500
+This error happens due to ASP.Net core Https development certificate not being trusted by the client.
+
+47
+00:03:30,500 --> 00:03:32,720
+In our case, client is basket API.
+
+48
+00:03:32,720 --> 00:03:40,760
+When making call to the gRPC server discount gRPC, the asp.net https development certificate is required.
+
+49
+00:03:40,760 --> 00:03:43,340
+So how we can solve this problem?
+
+50
+00:03:43,340 --> 00:03:51,110
+We can solve this problem to configure gRPC client in basket API to bypassing SSL certificate validations.
+
+51
+00:03:51,110 --> 00:03:56,780
+And this is done by modifying the configure primary Http message handler method.
+
+52
+00:03:56,780 --> 00:04:02,900
+For that purpose, I'm going to open Visual Studio and go to the basket API programs case.
+
+53
+00:04:02,900 --> 00:04:09,440
+If you open the Program.cs and go to the configuration of the gRPC services here, you can see that
+
+54
+00:04:09,440 --> 00:04:14,750
+we would like to bypass the SSL certificate validation for that purpose.
+
+55
+00:04:14,750 --> 00:04:18,589
+There is very good method extension for the configuration.
+
+56
+00:04:18,589 --> 00:04:23,690
+I'm going to edit this configuration after these builder services at gRPC client.
+
+57
+00:04:23,690 --> 00:04:31,160
+In here I'm going to add this line of code which is the configure primary Http message handler method,
+
+58
+00:04:31,160 --> 00:04:38,090
+and specifying the Http client handler, and say that you can bypass the server certificate, custom
+
+59
+00:04:38,090 --> 00:04:44,780
+validation callback and accept any server certificate validators in our gRPC settings.
+
+60
+00:04:44,780 --> 00:04:51,380
+But this setup is typically used for the development purpose and you should not be used in production
+
+61
+00:04:51,380 --> 00:04:53,540
+environment due to security risks.
+
+62
+00:04:54,350 --> 00:05:00,380
+So with this configuration we have fixed the SSL certification exception and we will continue our test.
+

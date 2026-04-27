@@ -1,0 +1,348 @@
+1
+00:00:00,140 --> 00:00:03,500
+In this video, we are going to run the final application.
+
+2
+00:00:03,500 --> 00:00:09,830
+So we will clone our repository from the GitHub and set up our environment in Visual Studio and run
+
+3
+00:00:09,830 --> 00:00:15,860
+our application using the Docker compose profile and work through a live demo, and we will perform
+
+4
+00:00:15,860 --> 00:00:17,930
+our main use case of the application.
+
+5
+00:00:17,930 --> 00:00:20,840
+These are the listing product and categories.
+
+6
+00:00:20,840 --> 00:00:26,330
+Add product item in the shopping cart and check out the basket and create order with asynchronous event
+
+7
+00:00:26,330 --> 00:00:27,530
+driven communication.
+
+8
+00:00:27,530 --> 00:00:33,020
+And we will consume these operations from the Erb API gateway into our client application by sending
+
+9
+00:00:33,020 --> 00:00:36,500
+the Http, get and post method into downstream microservices.
+
+10
+00:00:36,500 --> 00:00:42,290
+That means our client application will be consumed the Erb API gateway in order to perform end to end
+
+11
+00:00:42,290 --> 00:00:45,260
+use case over the downstream microservices.
+
+12
+00:00:45,590 --> 00:00:48,140
+For that purpose, please open the Visual Studio.
+
+13
+00:00:48,170 --> 00:00:53,750
+First of all, I have cloned the repository from the GitHub and open the our solution, which is the
+
+14
+00:00:53,750 --> 00:00:55,160
+Icap microservices.
+
+15
+00:00:55,160 --> 00:00:59,750
+Before we start, make sure that your Docker desktop is up and running.
+
+16
+00:00:59,900 --> 00:01:04,459
+If you go back to our solution, you can see that we have a Docker compose files.
+
+17
+00:01:04,459 --> 00:01:09,650
+If you right click the docker compose and set a startup project, we can run the whole application as
+
+18
+00:01:09,650 --> 00:01:11,090
+a docker compose profile.
+
+19
+00:01:11,090 --> 00:01:16,370
+After setting startup project, you can see the Docker compose running profile come to Visual Studio.
+
+20
+00:01:16,370 --> 00:01:21,350
+This time I am going to click this button in order to start docker compose without debugging.
+
+21
+00:01:22,190 --> 00:01:27,980
+After clicking this button, you can see that these will be zipping up all microservices into our architecture
+
+22
+00:01:27,980 --> 00:01:35,240
+that we are going to include all microservices catalog basket discount and ordering up API gateway shopping,
+
+23
+00:01:35,240 --> 00:01:42,410
+web client application and downstream microservices including databases, PostgreSQL, Redis, SQLite,
+
+24
+00:01:42,410 --> 00:01:45,020
+SQL server and RabbitMQ message broker.
+
+25
+00:01:45,110 --> 00:01:51,560
+So this will be take some time to spin up all these microservices into our Docker compose environment.
+
+26
+00:01:51,590 --> 00:01:57,380
+After waiting a certain of time, you can see that our Docker compose is started successfully and this
+
+27
+00:01:57,380 --> 00:02:03,590
+will be including all microservices, downstream operations, backing services and client application.
+
+28
+00:02:03,590 --> 00:02:09,080
+So here you can see that in the last two items is API Gateway and Shopping Web Client application.
+
+29
+00:02:09,080 --> 00:02:15,470
+Now we are going to hit this shopping web client application in order to see our browser client application
+
+30
+00:02:15,470 --> 00:02:18,290
+and perform the end to end use case for that purpose.
+
+31
+00:02:18,320 --> 00:02:24,290
+Please type your browser into the Https localhost 6065.
+
+32
+00:02:24,290 --> 00:02:30,470
+And as you can see that this is opening the index page of our microservices that including and listing
+
+33
+00:02:30,470 --> 00:02:35,570
+all the products that consume from the ARB API gateway inside of the catalog microservices.
+
+34
+00:02:35,570 --> 00:02:41,510
+So this is the landing page that including all the products, but we are going to follow our use cases.
+
+35
+00:02:41,510 --> 00:02:44,420
+The first use case is listing products and categories.
+
+36
+00:02:44,420 --> 00:02:49,220
+If you click this button, this will be opening the product list page, including all the categories
+
+37
+00:02:49,220 --> 00:02:51,410
+and all the products into your application.
+
+38
+00:02:51,410 --> 00:02:58,310
+And if I click the one of the product, this will be open and go to Product Detail and including a single
+
+39
+00:02:58,310 --> 00:03:00,620
+product detail with all information.
+
+40
+00:03:00,620 --> 00:03:05,570
+And just after that we can continue and adding these items into our cart.
+
+41
+00:03:05,570 --> 00:03:09,560
+You can click this button in order to add this product into our shopping cart.
+
+42
+00:03:09,620 --> 00:03:15,530
+Whenever I click this button, this will be Add item into Shopping Cart and navigate to us cart HTML
+
+43
+00:03:15,530 --> 00:03:15,950
+page.
+
+44
+00:03:15,950 --> 00:03:21,860
+So in this page we are listing all the items in the shopping cart and we can continue shopping or check
+
+45
+00:03:21,860 --> 00:03:22,760
+out this basket.
+
+46
+00:03:22,760 --> 00:03:28,850
+In order to create asynchronous event driven communication and create any order, I'm going to continue
+
+47
+00:03:28,850 --> 00:03:35,420
+our shopping go to product page, and this time I'm going to adding a new item which is the iPhone X
+
+48
+00:03:35,420 --> 00:03:36,470
+and Samsung ten.
+
+49
+00:03:36,470 --> 00:03:38,390
+I'm going to add item to cart.
+
+50
+00:03:38,390 --> 00:03:43,520
+And here you can see that we have two items in the shopping cart that we are going to check out this
+
+51
+00:03:43,520 --> 00:03:47,450
+basket in order to perform our asynchronous event driven communication.
+
+52
+00:03:47,450 --> 00:03:50,360
+But before that, let's check the order list page.
+
+53
+00:03:50,360 --> 00:03:55,040
+If you click this order list page, you can see that we have one order into our application.
+
+54
+00:03:55,040 --> 00:04:02,270
+That means whenever we are spinning off microservices or microservices, creating its own data by seeding
+
+55
+00:04:02,270 --> 00:04:04,640
+this data into our application startup.
+
+56
+00:04:04,640 --> 00:04:10,460
+So now I am going to go to cart operations and continue the basket checkout in order to create a new
+
+57
+00:04:10,460 --> 00:04:11,450
+order in this list.
+
+58
+00:04:11,450 --> 00:04:14,990
+So go back to cart page and click the checkout page.
+
+59
+00:04:14,990 --> 00:04:20,570
+This will be redirecting to us checkout page that including the cart information and total price.
+
+60
+00:04:20,570 --> 00:04:25,760
+And now we are going to populate some data in this form which is the basket checkout form.
+
+61
+00:04:25,760 --> 00:04:31,070
+And after that we will click the checkout order in order to start asynchronous event driven communication.
+
+62
+00:04:31,070 --> 00:04:36,830
+To publish the basket checkout event for that purpose, please populate a valid data for each blank
+
+63
+00:04:36,830 --> 00:04:37,340
+item.
+
+64
+00:04:37,340 --> 00:04:44,150
+So I'm going to come here and type some of the first name, last name, username and a valid email address.
+
+65
+00:04:44,150 --> 00:04:51,500
+And after that continue for the address definition and populate the country state zip code and so on.
+
+66
+00:04:51,500 --> 00:04:54,650
+So please provide all the details in this list.
+
+67
+00:04:56,300 --> 00:05:02,000
+Here you can see that we have loaded all items in the checkout form that we are going to check out this
+
+68
+00:05:02,000 --> 00:05:03,890
+page by clicking this button.
+
+69
+00:05:03,890 --> 00:05:05,540
+Click this Checkout order button.
+
+70
+00:05:05,540 --> 00:05:10,550
+And this will be redirecting to your confirmation page and your order submitted successfully.
+
+71
+00:05:10,550 --> 00:05:15,980
+That means this will be the checkout to Basket Microservices and Basket Microservices will publish the
+
+72
+00:05:15,980 --> 00:05:17,900
+basket checkout event to the RabbitMQ.
+
+73
+00:05:17,930 --> 00:05:22,430
+So after that ordering microservices consume these events from the RabbitMQ.
+
+74
+00:05:22,460 --> 00:05:25,160
+First of all, I'm going to check the RabbitMQ dashboard.
+
+75
+00:05:25,160 --> 00:05:31,040
+And in here if you go to the queues and streams, you can see that our basket checkout event is published
+
+76
+00:05:31,040 --> 00:05:33,290
+successfully from the basket microservices.
+
+77
+00:05:33,290 --> 00:05:38,780
+And this will be storing in the RabbitMQ that will consume from the subscriber system which is the ordering
+
+78
+00:05:38,780 --> 00:05:39,710
+microservices.
+
+79
+00:05:39,710 --> 00:05:45,710
+In order to verify order consume operations, we can go back to our client application and open the
+
+80
+00:05:45,710 --> 00:05:46,490
+order page.
+
+81
+00:05:46,490 --> 00:05:50,030
+Here you can see that newly adding order comes into the page.
+
+82
+00:05:50,030 --> 00:05:55,130
+That means this order created from the basket checkout operation for our client application.
+
+83
+00:05:55,130 --> 00:05:59,000
+We can again check the cart operation and this time cart is empty.
+
+84
+00:05:59,000 --> 00:06:05,030
+That means this card checkout from the client application and creating a new order record into ordering
+
+85
+00:06:05,030 --> 00:06:06,140
+microservices.
+
+86
+00:06:06,140 --> 00:06:11,510
+As you can see that we have successfully completed end to end test fully on docker compose environment
+
+87
+00:06:11,510 --> 00:06:14,900
+and sending the Http requests from our client applications.
+

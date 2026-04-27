@@ -1,0 +1,148 @@
+1
+00:00:00,260 --> 00:00:06,620
+In this video, we are going to explore the integration of database services with our microservices.
+
+2
+00:00:06,620 --> 00:00:10,970
+And specifically we will focus on our catalog API microservices.
+
+3
+00:00:10,970 --> 00:00:15,620
+And it is usage of the PostgreSQL database with using the Martin library.
+
+4
+00:00:16,490 --> 00:00:23,240
+Let's start by discussing the backing services in the realm of the microservices backing services for
+
+5
+00:00:23,240 --> 00:00:23,780
+the cloud.
+
+6
+00:00:23,780 --> 00:00:30,650
+Native microservices are the external resources or components that microservices, depending on their
+
+7
+00:00:30,650 --> 00:00:37,670
+operations they provide to support for various functionalities such as the data storage, messaging,
+
+8
+00:00:37,670 --> 00:00:41,810
+caching and authentication in a cloud native architecture.
+
+9
+00:00:41,810 --> 00:00:49,910
+Backing services like databases, messaging systems and caching services are treated as attached resources.
+
+10
+00:00:49,910 --> 00:00:57,260
+These backing services are located external to the microservices, and they can be swapped or replaced
+
+11
+00:00:57,260 --> 00:01:00,380
+without changing the microservices core logic.
+
+12
+00:01:00,380 --> 00:01:06,770
+In a cloud native microservice architecture, backing services are decoupled from the microservice themselves
+
+13
+00:01:06,770 --> 00:01:11,420
+and promoting the flexibility, scalability, and easier to maintenance.
+
+14
+00:01:12,590 --> 00:01:18,620
+So here you can see the illustration showing various backing services in a cloud native ecosystem.
+
+15
+00:01:18,890 --> 00:01:25,040
+As you can see that databases these are the NoSQL Newsql and relational databases.
+
+16
+00:01:25,040 --> 00:01:32,480
+Distributed caches, message brokers, event streaming systems, authentication authorization systems,
+
+17
+00:01:32,480 --> 00:01:38,480
+API gateways, service meshes, logging, monitoring, tracing, cross-cutting concerns, and so on.
+
+18
+00:01:38,750 --> 00:01:44,510
+All these services can be integrated with microservices and acting as a backing services.
+
+19
+00:01:44,510 --> 00:01:50,330
+They can be swapped or replaced without changing the microservice core logic during the course.
+
+20
+00:01:50,330 --> 00:01:55,370
+We will use these services as a backing services of issue of microservice applications.
+
+21
+00:01:55,370 --> 00:02:02,210
+If you look at our architecture, you can see that our catalog microservices rely on the PostgreSQL
+
+22
+00:02:02,210 --> 00:02:04,760
+database for database operations.
+
+23
+00:02:05,060 --> 00:02:10,460
+But catalog microservices is very good match for the NoSQL document databases.
+
+24
+00:02:10,460 --> 00:02:17,690
+So why we use PostgreSQL relational database for catalog operations and product operations even they
+
+25
+00:02:17,690 --> 00:02:20,780
+are more applicable with the NoSQL document database.
+
+26
+00:02:21,080 --> 00:02:24,230
+The answer is lies in the innovative approach.
+
+27
+00:02:24,230 --> 00:02:31,220
+In the PostgreSQL database, we use PostgreSQL Json object storage capabilities and transforming it
+
+28
+00:02:31,220 --> 00:02:39,200
+to the document database while maintaining the strong consistency so it is acting like as a naive SQL
+
+29
+00:02:39,200 --> 00:02:46,700
+database, providing both document database NoSQL features and strong consistency like the relational
+
+30
+00:02:46,700 --> 00:02:47,600
+databases.
+
+31
+00:02:47,600 --> 00:02:49,130
+So how we can do that?
+
+32
+00:02:49,130 --> 00:02:57,500
+Of course we will use Martin ORM library and we have already know what was the Martin Martin is a object
+
+33
+00:02:57,500 --> 00:02:59,450
+relational mapping library.
+
+34
+00:02:59,450 --> 00:03:03,320
+And this will use the PostgreSQL Json capabilities.
+
+35
+00:03:03,410 --> 00:03:10,490
+And Martin is a powerful library that transform the PostgreSQL into dotnet transactional document database.
+
+36
+00:03:10,490 --> 00:03:16,760
+It combines the flexibility of a document database with the reliability of the relational databases
+
+37
+00:03:16,760 --> 00:03:22,550
+and catalog microservices using Martin for PostgreSQL interaction as a document database.
+

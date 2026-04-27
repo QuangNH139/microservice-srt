@@ -1,0 +1,240 @@
+1
+00:00:00,140 --> 00:00:05,780
+In this video, we are going to learn how to run Docker Compose within the Visual Studio in order to
+
+2
+00:00:05,780 --> 00:00:10,100
+set up RabbitMQ, which is a crucial component for asynchronous communication.
+
+3
+00:00:10,100 --> 00:00:15,710
+So please open the Visual Studio and let's getting started with Docker Compose in Visual Studio.
+
+4
+00:00:15,710 --> 00:00:22,340
+So you can see that under the our microservice solution we have a Docker compose file in the root folder.
+
+5
+00:00:22,340 --> 00:00:28,190
+If you right click the docker compose and set a startup project, you can see that the Docker Compose
+
+6
+00:00:28,190 --> 00:00:30,590
+learning profile comes into Visual Studio.
+
+7
+00:00:30,590 --> 00:00:34,940
+So now this will be run the docker compose using the Visual Studio.
+
+8
+00:00:34,940 --> 00:00:39,020
+But this time I'm going to run Docker compose without debugging.
+
+9
+00:00:39,020 --> 00:00:44,150
+Here you can see that next to Docker Compose learning profile you can see the start without debugging
+
+10
+00:00:44,150 --> 00:00:45,530
+option in Visual Studio.
+
+11
+00:00:45,530 --> 00:00:48,290
+So we will start without debugging in Docker Compose.
+
+12
+00:00:48,290 --> 00:00:51,920
+That means this will be run the docker compose project without debugging.
+
+13
+00:00:51,920 --> 00:00:55,070
+So hitting this button and this will be start to running.
+
+14
+00:00:55,070 --> 00:01:00,860
+And this process may take a few minutes during the first run as Docker pulls and build the necessary
+
+15
+00:01:00,860 --> 00:01:01,580
+images.
+
+16
+00:01:01,580 --> 00:01:06,410
+So when the first time running, it takes some time to spin up RabbitMQ images.
+
+17
+00:01:06,410 --> 00:01:13,490
+Because when we give the management image for RabbitMQ, it does not the base RabbitMQ image and management
+
+18
+00:01:13,490 --> 00:01:15,200
+dashboard image altogether.
+
+19
+00:01:15,200 --> 00:01:17,840
+Here you can see the docker compose Yaml file.
+
+20
+00:01:17,840 --> 00:01:23,480
+We give the image name as a management RabbitMQ that includes the base image Erlang and the management
+
+21
+00:01:23,510 --> 00:01:24,110
+dashboard.
+
+22
+00:01:24,110 --> 00:01:28,190
+So this is the overall HTML file that we have configured in the last time.
+
+23
+00:01:28,190 --> 00:01:30,980
+So you can see the progress in the output.
+
+24
+00:01:30,980 --> 00:01:36,020
+And also we can confirm the created image from the Docker desktop.
+
+25
+00:01:36,020 --> 00:01:39,470
+Here you can see the Docker compose has started successfully.
+
+26
+00:01:39,470 --> 00:01:44,450
+And also all microservices started successfully without debugging.
+
+27
+00:01:44,450 --> 00:01:50,300
+And if you scroll down you can see the message broker is started successfully for the RabbitMQ management
+
+28
+00:01:50,300 --> 00:01:50,750
+image.
+
+29
+00:01:50,750 --> 00:01:53,150
+This is our message broker container.
+
+30
+00:01:53,150 --> 00:01:59,690
+If you open the container, you can see the logs are created successfully and that means we are ready
+
+31
+00:01:59,690 --> 00:02:02,930
+to use these message broker as a asynchronous communication.
+
+32
+00:02:02,930 --> 00:02:06,200
+So now we can examine the RabbitMQ Docker image.
+
+33
+00:02:06,200 --> 00:02:12,110
+If you scroll the right hand side you can see that we have exposed the RabbitMQ port numbers in our
+
+34
+00:02:12,110 --> 00:02:13,010
+local computer.
+
+35
+00:02:13,010 --> 00:02:20,030
+And RabbitMQ management image has two port numbers, the one for the actual RabbitMQ image and another
+
+36
+00:02:20,030 --> 00:02:21,980
+for the RabbitMQ management dashboard.
+
+37
+00:02:21,980 --> 00:02:30,680
+So if I hit the 15672 port number, you can see that this will be redirecting to us RabbitMQ management
+
+38
+00:02:30,680 --> 00:02:31,190
+dashboard.
+
+39
+00:02:31,190 --> 00:02:33,260
+Here you can see the username and password.
+
+40
+00:02:33,260 --> 00:02:38,000
+You can give the guest and guest as a username and password and click the login button.
+
+41
+00:02:38,000 --> 00:02:44,150
+So this is the our RabbitMQ management dashboard that we can log in the credentials with the guest and
+
+42
+00:02:44,150 --> 00:02:44,540
+guest.
+
+43
+00:02:44,540 --> 00:02:50,990
+And here you can see the main sections including the connections channels exchange queues and streams
+
+44
+00:02:50,990 --> 00:02:51,950
+and the admin.
+
+45
+00:02:51,950 --> 00:02:59,150
+So exchange are representing the routes messages between the queues and the queues and streams representing
+
+46
+00:02:59,150 --> 00:03:02,180
+the storing messages that are waiting to be processed.
+
+47
+00:03:02,180 --> 00:03:05,750
+And we have also topics for routing mechanism for messages.
+
+48
+00:03:05,750 --> 00:03:10,580
+So if you scroll down in the overview page you can see that we have a node section.
+
+49
+00:03:10,580 --> 00:03:16,520
+And under the node section we will identify the node name as a RabbitMQ message queue.
+
+50
+00:03:16,550 --> 00:03:20,180
+Here you can see that this is the rabbit at e-commerce MQ.
+
+51
+00:03:20,210 --> 00:03:25,610
+As you remember that e-commerce MQ is our hostname when we are configuring our Docker compose.
+
+52
+00:03:25,610 --> 00:03:27,710
+And this is the our node definition.
+
+53
+00:03:27,710 --> 00:03:32,300
+And if you scroll down you can see the listening ports in different protocols.
+
+54
+00:03:32,300 --> 00:03:34,340
+Here you can see the Amqp protocol.
+
+55
+00:03:34,340 --> 00:03:37,610
+The port number is default port number for the RabbitMQ image.
+
+56
+00:03:37,610 --> 00:03:42,650
+And this is the Http protocol that we are going to use for the RabbitMQ management dashboard.
+
+57
+00:03:42,650 --> 00:03:44,960
+This is 15672.
+
+58
+00:03:44,960 --> 00:03:49,400
+And these are the other configurations in the RabbitMQ overview section.
+
+59
+00:03:49,400 --> 00:03:54,740
+So as you can see that we have successfully run the RabbitMQ using the Docker compose in Visual Studio.
+
+60
+00:03:54,740 --> 00:03:59,570
+And we have verified the RabbitMQ setup through the Docker desktop and the management dashboard.
+

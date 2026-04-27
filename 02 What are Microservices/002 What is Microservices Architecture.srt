@@ -1,0 +1,92 @@
+1
+00:00:00,050 --> 00:00:06,470
+In this video we are going to learn what is microservices architecture from Martin Fowler.
+
+2
+00:00:06,470 --> 00:00:07,760
+Microservice article.
+
+3
+00:00:07,760 --> 00:00:13,400
+We can say that the microservice architecture style is an approach to developing a single application
+
+4
+00:00:13,400 --> 00:00:20,600
+as a suite of small services, each running in its own process and communicating with lightweight mechanism,
+
+5
+00:00:20,600 --> 00:00:23,540
+often an Http or gRPC APIs.
+
+6
+00:00:24,320 --> 00:00:30,320
+So these services are built around business capabilities and independently deployable by fully automated
+
+7
+00:00:30,320 --> 00:00:31,610
+deployment processes.
+
+8
+00:00:32,170 --> 00:00:38,050
+There is a bare minimum of centralized management of these services, which may be written in different
+
+9
+00:00:38,050 --> 00:00:41,800
+programming languages and use different data storage technologies.
+
+10
+00:00:42,910 --> 00:00:48,580
+The microservice architecture is a software design approach that decompose an application into small,
+
+11
+00:00:48,580 --> 00:00:52,900
+independent services that communicate over well-defined APIs.
+
+12
+00:00:54,170 --> 00:01:00,650
+Since each service can be developed and maintained by autonomous teams, it is the most scalable method
+
+13
+00:01:00,650 --> 00:01:02,300
+for software development.
+
+14
+00:01:02,570 --> 00:01:06,410
+These services are owned by small, self-contained teams.
+
+15
+00:01:06,410 --> 00:01:13,340
+Microservice architecture make applications easier to scale and faster to develop, enabling innovation
+
+16
+00:01:13,340 --> 00:01:14,210
+and acceleration.
+
+17
+00:01:14,210 --> 00:01:16,340
+Time to market for new features.
+
+18
+00:01:16,930 --> 00:01:23,020
+So we can say that microservice architecture is a cloud native architecture approach, in which application
+
+19
+00:01:23,020 --> 00:01:28,120
+composed of many loosely coupled and independently deployable similar components.
+
+20
+00:01:29,600 --> 00:01:35,960
+So microservices have their own technology stack included the database and data management model, and
+
+21
+00:01:35,960 --> 00:01:41,990
+they communicate to each other over a combination of Rest APIs, event streaming and message brokers.
+
+22
+00:01:41,990 --> 00:01:47,840
+And microservices are organized by business capability, with a line of separating services, often
+
+23
+00:01:47,840 --> 00:01:49,730
+referred as a bounded context.
+

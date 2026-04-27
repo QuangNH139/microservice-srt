@@ -1,0 +1,332 @@
+1
+00:00:00,140 --> 00:00:07,400
+In this video, we are going to continue to develop other Rest API endpoints for our catalog microservices.
+
+2
+00:00:07,400 --> 00:00:14,990
+And specifically we will focus on developing Get products feature in vertical slice architecture using
+
+3
+00:00:14,990 --> 00:00:17,120
+the Securities and Mediator library.
+
+4
+00:00:17,120 --> 00:00:24,680
+And we will create an endpoint and handler classes to exposing these products endpoint and accommodating
+
+5
+00:00:24,680 --> 00:00:28,760
+Http get method and listing all products for that purpose.
+
+6
+00:00:28,760 --> 00:00:30,860
+Please open the Visual Studio.
+
+7
+00:00:30,860 --> 00:00:34,490
+And after that I'm going to create a new folder.
+
+8
+00:00:34,490 --> 00:00:38,660
+Which name is Get products under the are products feature folder.
+
+9
+00:00:38,660 --> 00:00:46,070
+If you come here and you can zoom into the solution window, you can see that we have already completed
+
+10
+00:00:46,070 --> 00:00:48,050
+created product feature folder.
+
+11
+00:00:48,050 --> 00:00:50,510
+Now I'm going to add a new feature folder.
+
+12
+00:00:50,510 --> 00:00:51,980
+Which name is Get Products.
+
+13
+00:00:51,980 --> 00:00:55,070
+So right click Add New folder.
+
+14
+00:00:56,090 --> 00:00:58,400
+Which name is Get products.
+
+15
+00:01:01,470 --> 00:01:08,790
+This will be the R feature folder for the vertical slice architecture, and under the getproducts we
+
+16
+00:01:08,790 --> 00:01:15,090
+will add two classes into this folder, which is one for the endpoint and another for the handler.
+
+17
+00:01:15,090 --> 00:01:19,170
+So I'm going to add a Getproducts endpoint class.
+
+18
+00:01:19,350 --> 00:01:25,560
+And this is the C sharp class that will handle for the API endpoints.
+
+19
+00:01:25,560 --> 00:01:32,700
+And after that I'm going to add the additional class which name is Getproducts handler class.
+
+20
+00:01:32,700 --> 00:01:38,760
+And this is for handling the query operations implementing SQS using the mediator.
+
+21
+00:01:38,820 --> 00:01:42,990
+So here you can see that every feature folder have two classes.
+
+22
+00:01:42,990 --> 00:01:45,420
+And now we are going to implement one by one.
+
+23
+00:01:45,420 --> 00:01:52,290
+If we remember the flow of the request through our system using the actors and mediator, we basically
+
+24
+00:01:52,290 --> 00:01:57,030
+accommodate the incoming Http get method into our endpoint classes.
+
+25
+00:01:57,030 --> 00:02:01,350
+And these request object will be mapping to the query object.
+
+26
+00:02:01,350 --> 00:02:04,590
+And after that passing to mediator sender method.
+
+27
+00:02:04,590 --> 00:02:08,039
+In order to trigger to query handler class.
+
+28
+00:02:08,039 --> 00:02:13,290
+And in the query handler class, we perform database operations and return back to a result.
+
+29
+00:02:13,290 --> 00:02:19,140
+And lastly, we will map these result to the response object and return the response to the client application.
+
+30
+00:02:19,320 --> 00:02:23,250
+So first of all we will develop with the handler class.
+
+31
+00:02:23,250 --> 00:02:27,660
+And in the handler class we will develop query and result record types.
+
+32
+00:02:27,660 --> 00:02:28,770
+For that purpose.
+
+33
+00:02:28,770 --> 00:02:33,330
+Please open the Visual Studio and go to Getproducts handler class.
+
+34
+00:02:33,330 --> 00:02:39,060
+And in here I'm going to create two record type one for the Getproducts query.
+
+35
+00:02:39,450 --> 00:02:48,600
+Let me write first public record Getproducts query and this should be inherit from the I query and we
+
+36
+00:02:48,600 --> 00:02:52,290
+should get response which name is Getproduct result.
+
+37
+00:02:52,290 --> 00:02:57,630
+And in the next record type we have to define our Getproduct result.
+
+38
+00:02:57,630 --> 00:03:02,790
+For that purpose, I'm going to write again public record Getproduct result.
+
+39
+00:03:02,790 --> 00:03:12,090
+And we would like to passing I enumerable I mean returning the enumerable product response.
+
+40
+00:03:14,610 --> 00:03:19,380
+And here you can see that we are returning the products from our result object.
+
+41
+00:03:19,380 --> 00:03:25,860
+These record types represent to request for fetching products and the structure of the data that we
+
+42
+00:03:25,860 --> 00:03:27,060
+expect to return.
+
+43
+00:03:27,330 --> 00:03:32,580
+So now let's develop the our actual Getproducts handler class.
+
+44
+00:03:32,580 --> 00:03:39,780
+This class is responsible for handling the Getproducts query and returning to the Getproduct result.
+
+45
+00:03:39,780 --> 00:03:43,230
+The first thing we should do is changing the class name.
+
+46
+00:03:43,230 --> 00:03:45,660
+Here you can see the Getproducts under.
+
+47
+00:03:45,660 --> 00:03:48,900
+I'm changing Getproducts query under.
+
+48
+00:03:49,110 --> 00:03:56,940
+So it is best practice to separate query and commands in the names of the class, and this will be Getproducts
+
+49
+00:03:56,940 --> 00:03:57,720
+query handler.
+
+50
+00:03:57,720 --> 00:04:01,350
+And we can understand what we will do in the handle method.
+
+51
+00:04:01,350 --> 00:04:05,250
+After that I'm going to changing the access modifier as a internal.
+
+52
+00:04:05,250 --> 00:04:10,350
+And first of all, let's implement from the I query handler class.
+
+53
+00:04:12,750 --> 00:04:19,110
+And in the query handler as a request we will explain get products query.
+
+54
+00:04:19,110 --> 00:04:23,190
+And as a response we will return get products result.
+
+55
+00:04:23,670 --> 00:04:28,740
+So here you can see that we will inherit from the equator handler.
+
+56
+00:04:28,740 --> 00:04:32,310
+So I'm going to implement these equate handler members.
+
+57
+00:04:32,310 --> 00:04:37,440
+And here you can see the handle method comes into our Getproducts query handler.
+
+58
+00:04:37,440 --> 00:04:40,830
+So in the handler module we will perform our actual logic.
+
+59
+00:04:40,830 --> 00:04:45,240
+In order to perform our actual logic we will inject some kind of classes.
+
+60
+00:04:45,240 --> 00:04:48,060
+So let me inject a document session.
+
+61
+00:04:48,420 --> 00:04:51,630
+This is comes from the Martin.
+
+62
+00:04:51,630 --> 00:05:02,130
+And after that I would like to also inject a logger in order to put logs into our class.
+
+63
+00:05:02,130 --> 00:05:07,110
+So basically you can see that we have injected two items in here.
+
+64
+00:05:07,110 --> 00:05:10,500
+And the first one is Martin and the second one is logger.
+
+65
+00:05:10,500 --> 00:05:14,970
+Now we are going to use these operations into our handle method.
+
+66
+00:05:14,970 --> 00:05:22,140
+In the first row I'm going to put a log and logging the information about hitting this handle method
+
+67
+00:05:22,140 --> 00:05:23,400
+in the query handler.
+
+68
+00:05:23,400 --> 00:05:27,990
+And after that we will get the products from the database.
+
+69
+00:05:27,990 --> 00:05:34,080
+That's why define a products variable and using the session dot query method.
+
+70
+00:05:34,080 --> 00:05:40,350
+And in this method I'm going to expecting the product documents.
+
+71
+00:05:40,350 --> 00:05:48,180
+And we can use to list async method and passing the cancellation token.
+
+72
+00:05:49,980 --> 00:05:55,110
+And after that we will return new get product and passing the products.
+
+73
+00:05:57,270 --> 00:06:05,250
+So in this handler class, we basically use AI documentation from the Martin in order to query the products
+
+74
+00:06:05,250 --> 00:06:06,030
+documents.
+
+75
+00:06:06,030 --> 00:06:11,940
+And this handle method is accepting the our get products query request.
+
+76
+00:06:11,940 --> 00:06:14,220
+And in here this should be as a query.
+
+77
+00:06:14,220 --> 00:06:18,720
+I'm going to change the name of the query in here.
+
+78
+00:06:18,720 --> 00:06:22,530
+So please change the incoming parameter name as a query.
+
+79
+00:06:22,560 --> 00:06:29,190
+Even we don't use any query object because this is the get all products and we don't any filter operation
+
+80
+00:06:29,190 --> 00:06:30,090
+in the query.
+
+81
+00:06:30,090 --> 00:06:34,860
+But the idea is that naming is important and separate the query and commands.
+
+82
+00:06:34,860 --> 00:06:41,460
+And after that, this method handle the asynchronous fetch all the products and return them to the get
+
+83
+00:06:41,460 --> 00:06:42,120
+product result.
+

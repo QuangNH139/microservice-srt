@@ -1,0 +1,252 @@
+1
+00:00:00,170 --> 00:00:06,320
+In this video, we are going to develop domain event handlers with using mediator in notification handler
+
+2
+00:00:06,320 --> 00:00:07,130
+interface.
+
+3
+00:00:07,400 --> 00:00:13,100
+So the implementation of the domain handlers in the ordinary application layer is crucial for handling
+
+4
+00:00:13,100 --> 00:00:14,690
+internal business events.
+
+5
+00:00:14,690 --> 00:00:20,300
+So in here you can see that we will develop order created event handler which is triggered from the
+
+6
+00:00:20,300 --> 00:00:23,600
+order is successfully created from the ordering domain layer.
+
+7
+00:00:23,600 --> 00:00:28,580
+And here you can see the ordering domain layer is raising order created domain event.
+
+8
+00:00:28,580 --> 00:00:33,290
+And if you go to this domain event you can see that this will be implemented by domain event.
+
+9
+00:00:33,290 --> 00:00:38,120
+And I domain event is implement I notification which comes from the mediator.
+
+10
+00:00:38,120 --> 00:00:45,410
+That means we will handle these notification with using I notification handler interface from the mediator
+
+11
+00:00:45,410 --> 00:00:47,330
+into our handle class.
+
+12
+00:00:47,330 --> 00:00:53,600
+For that purpose, I am going to open the Or order created domain event and remove unnecessary using
+
+13
+00:00:53,600 --> 00:00:56,420
+statement and make this class as a public.
+
+14
+00:00:57,800 --> 00:01:05,330
+And now the first step is we will implement I notification handler in order to handle mediator I notification.
+
+15
+00:01:05,330 --> 00:01:10,700
+Here you can see that I'm going to implement I notification handler from the mediator and passing the
+
+16
+00:01:10,700 --> 00:01:12,200
+order created domain event.
+
+17
+00:01:12,200 --> 00:01:17,750
+And these interface implementing the members of the handle method.
+
+18
+00:01:17,750 --> 00:01:19,940
+So we will implement this handle method.
+
+19
+00:01:19,940 --> 00:01:25,850
+This will be trigger one mediator publishing the notification from the infrastructure layer.
+
+20
+00:01:25,850 --> 00:01:32,090
+If you open the Dispatch Domain Interceptor class, you can see that we will publish the domain events
+
+21
+00:01:32,090 --> 00:01:36,050
+when saving the changes and one mediator publish the domain event.
+
+22
+00:01:36,050 --> 00:01:42,170
+This will be triggered by notification and this will be comes to our I notification handler and which
+
+23
+00:01:42,170 --> 00:01:44,270
+will be the order created event handler.
+
+24
+00:01:44,270 --> 00:01:46,280
+And this will be trigger the handle method.
+
+25
+00:01:46,280 --> 00:01:49,970
+If you look at the handle method, you can see that as a parameter.
+
+26
+00:01:49,970 --> 00:01:54,260
+It is taking order created event and the parameter name is notification.
+
+27
+00:01:54,260 --> 00:02:00,080
+So we will be getting these notification and we will implement internal business cases in the handle
+
+28
+00:02:00,080 --> 00:02:00,620
+method.
+
+29
+00:02:00,620 --> 00:02:06,230
+But for now I am only doing the logging operation which is the logger that log information.
+
+30
+00:02:06,230 --> 00:02:10,669
+That means I need inject a logger into our primary constructor.
+
+31
+00:02:10,669 --> 00:02:15,410
+For that purpose, please go to the class definition and adding a logger.
+
+32
+00:02:15,410 --> 00:02:22,400
+Injecting the logger for the order created event handler class and we will use these logger object when
+
+33
+00:02:22,400 --> 00:02:28,220
+we are running the log information, which is a domain event handle is successfully hitting with these
+
+34
+00:02:28,220 --> 00:02:30,140
+event and the type of the name.
+
+35
+00:02:30,140 --> 00:02:32,060
+So this is the log operation.
+
+36
+00:02:32,060 --> 00:02:38,180
+We will log the incoming operation which indicating the order created event has been handled and the
+
+37
+00:02:38,180 --> 00:02:42,020
+logger captures the event type for monitoring and debugging purpose.
+
+38
+00:02:42,020 --> 00:02:47,240
+For now it is enough for the implementing internal business operations, which is the logging.
+
+39
+00:02:47,240 --> 00:02:51,920
+But in the upcoming sections we can publish integration event in this place.
+
+40
+00:02:51,920 --> 00:02:58,400
+So I'm going to moving these using statements into our global using for the ordering application layer.
+
+41
+00:02:58,400 --> 00:03:05,420
+If you come here and paste your using statements and put the keyword as a global, and you can see that
+
+42
+00:03:05,420 --> 00:03:08,660
+we have added these operation in the global listing.
+
+43
+00:03:08,660 --> 00:03:14,510
+And if I go back to our order created event handler, I'm going to remove these using statements after
+
+44
+00:03:14,510 --> 00:03:17,750
+adding the global using statement and save these changes.
+
+45
+00:03:17,750 --> 00:03:20,060
+And this is the order created event handler.
+
+46
+00:03:20,060 --> 00:03:25,070
+And at the same way I'm going to follow the same step for the order updated event handler.
+
+47
+00:03:25,070 --> 00:03:30,830
+If you open this class, remove unnecessary using statement and make this class as a public.
+
+48
+00:03:30,830 --> 00:03:38,300
+And also we are going to implement from the I notification handler which is in this case order updated
+
+49
+00:03:38,300 --> 00:03:44,090
+event and implement the interface members, which is the handle method, and this will be getting notification
+
+50
+00:03:44,090 --> 00:03:45,950
+from the order updated event.
+
+51
+00:03:45,950 --> 00:03:51,830
+So as you remember that in the notification object, we are passing the our orders that we can access
+
+52
+00:03:51,830 --> 00:03:56,030
+to order and get the order members with using the notification order.
+
+53
+00:03:56,030 --> 00:04:03,200
+But for our case, in our business case, we can only logging the information with the incoming event,
+
+54
+00:04:03,200 --> 00:04:09,350
+which is the domain event and we are notifying this domain event is triggering and we will use logger
+
+55
+00:04:09,350 --> 00:04:09,800
+object.
+
+56
+00:04:09,800 --> 00:04:15,680
+That means I'm going to inject the I logger in the beginning of the class definition with the primary
+
+57
+00:04:15,680 --> 00:04:21,800
+constructor that we can use Logger.log information, and in this case we will log the order updated
+
+58
+00:04:21,800 --> 00:04:28,220
+event and giving the notification type in the handle method so you can safely remove unnecessary using
+
+59
+00:04:28,220 --> 00:04:28,850
+statement.
+
+60
+00:04:28,850 --> 00:04:31,940
+And this was the implementation of the order.
+
+61
+00:04:31,940 --> 00:04:35,630
+Updated event handler and order created event handler that we have.
+
+62
+00:04:35,630 --> 00:04:39,500
+Understanding the role of the domain event handlers with using mediator I.
+
+63
+00:04:39,500 --> 00:04:41,120
+Notification handler interface.
+

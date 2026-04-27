@@ -1,0 +1,240 @@
+1
+00:00:00,110 --> 00:00:05,270
+In this video, we are going to continue steps of developing a synchronous communication.
+
+2
+00:00:05,270 --> 00:00:11,510
+And we are at the third step, which is ordering microservices to subscribe and consume basket checkout
+
+3
+00:00:11,510 --> 00:00:13,250
+event from the RabbitMQ.
+
+4
+00:00:13,280 --> 00:00:16,970
+In order to perform asynchronous event driven communication.
+
+5
+00:00:16,970 --> 00:00:20,540
+So this time we will add the consumer side.
+
+6
+00:00:20,540 --> 00:00:26,660
+That means subscriber side basket will publish the basket checkout event and RabbitMQ store this event
+
+7
+00:00:26,660 --> 00:00:29,210
+and after that ordering microservices.
+
+8
+00:00:29,210 --> 00:00:36,050
+Subscribe and consume basket checkout event from the RabbitMQ using the Masstransit to perform asynchronous
+
+9
+00:00:36,050 --> 00:00:37,610
+event driven communication.
+
+10
+00:00:37,760 --> 00:00:40,940
+So now let's check the sub steps of the ordering.
+
+11
+00:00:40,940 --> 00:00:44,120
+Subscribe consume operation for the basket checkout event.
+
+12
+00:00:44,120 --> 00:00:50,090
+And the first step is getting project reference to building blocks messaging class library in ordering
+
+13
+00:00:50,090 --> 00:00:55,250
+application project in order to access shared events and masstransit extensions.
+
+14
+00:00:55,250 --> 00:01:00,710
+That means in ordering application we will add a reference to building blocks, messaging class library.
+
+15
+00:01:00,710 --> 00:01:06,770
+This inclusion allows to access shared events and masstransit extensions required for the Consuming
+
+16
+00:01:06,770 --> 00:01:11,120
+the Basket checkout event, and the second step is register Masstransit.
+
+17
+00:01:11,120 --> 00:01:16,730
+RabbitMQ packages into ordering application dependency injection in the dependency injection file.
+
+18
+00:01:16,730 --> 00:01:23,060
+So in this step we will modify the dependency injection file into ordering application layer in order
+
+19
+00:01:23,060 --> 00:01:28,370
+to register Masstransit and RabbitMQ packages, and this setup will configure the necessary services
+
+20
+00:01:28,370 --> 00:01:30,350
+for handling the basket checkout event.
+
+21
+00:01:30,470 --> 00:01:36,020
+And the third step is we will develop basket checkout event consumer integration event handler class
+
+22
+00:01:36,020 --> 00:01:38,870
+to perform checkout and order create operations.
+
+23
+00:01:38,870 --> 00:01:44,270
+So in this step we will implement an integration event handler class within the ordering application
+
+24
+00:01:44,270 --> 00:01:44,690
+layer.
+
+25
+00:01:44,690 --> 00:01:50,210
+This class will handle the basket checkout event, creating an order and executing relevant business
+
+26
+00:01:50,210 --> 00:01:50,900
+logic.
+
+27
+00:01:50,930 --> 00:01:56,930
+And the last step is we will have a bonus step which is the publish order created integration event.
+
+28
+00:01:56,930 --> 00:02:03,320
+Optionally in the domain event handler class for order created, we can publish an order created integration
+
+29
+00:02:03,320 --> 00:02:09,830
+event to RabbitMQ using the Masstransit and this step is part of the order fulfillment and implementing
+
+30
+00:02:09,830 --> 00:02:14,510
+a Saga pattern for complex business transactions spanning multiple services.
+
+31
+00:02:14,510 --> 00:02:20,270
+So now let's get started for the first sub step, which is the getting project reference to building
+
+32
+00:02:20,270 --> 00:02:23,030
+Blocks messaging in ordering application layer.
+
+33
+00:02:23,030 --> 00:02:28,490
+For that purpose, please open the Visual Studio and go to the Ordering Microservices folder.
+
+34
+00:02:28,490 --> 00:02:30,740
+And please go to Ordering Application.
+
+35
+00:02:30,740 --> 00:02:34,280
+So open the ordering application and right click the dependencies.
+
+36
+00:02:34,280 --> 00:02:35,690
+Add a project reference.
+
+37
+00:02:35,690 --> 00:02:41,570
+If you right click and add a project reference, you can see that we have already added ordering domain
+
+38
+00:02:41,570 --> 00:02:42,980
+according to Clean Architecture.
+
+39
+00:02:42,980 --> 00:02:49,250
+And we have also added building blocks which including the abstractions for the stacks and common operations.
+
+40
+00:02:49,250 --> 00:02:55,250
+And for now I am going to adding a new class library project reference, which is the building blocks
+
+41
+00:02:55,250 --> 00:03:00,980
+that messaging and ensure that ordering application has a get referencing from the Building Blocks messaging
+
+42
+00:03:00,980 --> 00:03:05,390
+project in order to access shared events and Masstransit extensions.
+
+43
+00:03:05,390 --> 00:03:10,370
+If you click the okay button and if you double click the ordering application, save this file, you
+
+44
+00:03:10,370 --> 00:03:16,160
+can see the project reference comes into the our project file, and we will successfully adding Building
+
+45
+00:03:16,160 --> 00:03:19,430
+Blocks messaging class library into ordering application layer.
+
+46
+00:03:19,430 --> 00:03:24,710
+By this way, we can access the shared events and Masstransit extensions from the Building Blocks messaging
+
+47
+00:03:24,710 --> 00:03:25,220
+library.
+
+48
+00:03:25,580 --> 00:03:31,580
+So the question is why we added building blocks and building blocks messaging class libraries into the
+
+49
+00:03:31,580 --> 00:03:37,970
+ordering application layer, why we don't adding the API or any other layers, because we were following
+
+50
+00:03:37,970 --> 00:03:43,430
+the clean architecture in ordering microservices and application layer, representing the application
+
+51
+00:03:43,430 --> 00:03:46,160
+and performing use cases with the abstractions.
+
+52
+00:03:46,160 --> 00:03:51,860
+So basket checkout, integration, event handling is a use case and it should handle inner application
+
+53
+00:03:51,860 --> 00:03:52,340
+layer.
+
+54
+00:03:52,340 --> 00:03:58,430
+That's why we have added in the application layer to perform basket checkout integration, event handling,
+
+55
+00:03:58,430 --> 00:04:00,620
+use case into order feature folder.
+
+56
+00:04:00,620 --> 00:04:06,710
+If you open the orders feature folder, you can see that we have commands, queries and event handlers.
+
+57
+00:04:06,710 --> 00:04:09,020
+In the event handlers, we are going to handle.
+
+58
+00:04:09,020 --> 00:04:09,950
+Basket checkout.
+
+59
+00:04:09,950 --> 00:04:10,670
+Integration.
+
+60
+00:04:10,670 --> 00:04:11,360
+Event handling.
+

@@ -1,0 +1,328 @@
+1
+00:00:00,140 --> 00:00:06,830
+In this video we are going to create our first microservices, which is the catalog API, ASP.Net web
+
+2
+00:00:06,830 --> 00:00:07,880
+API project.
+
+3
+00:00:08,000 --> 00:00:11,660
+But before that we will setting up the project folder structure.
+
+4
+00:00:11,660 --> 00:00:15,890
+Here you can see the folder structure that we are going to build one by one.
+
+5
+00:00:15,890 --> 00:00:22,790
+So first of all we are going to start with Creating Services folder which will be including for each
+
+6
+00:00:22,790 --> 00:00:24,830
+microservices under the services.
+
+7
+00:00:24,830 --> 00:00:28,580
+So we will be create a service folder in our solution.
+
+8
+00:00:28,580 --> 00:00:36,170
+And after that under the service folder we will be create additional sub folders for each microservices.
+
+9
+00:00:36,170 --> 00:00:42,530
+Since we are developing catalog we will be creating a catalog sub folder under the services folder.
+
+10
+00:00:42,530 --> 00:00:44,360
+So let's get started.
+
+11
+00:00:44,360 --> 00:00:51,050
+Please open the Visual Studio environment and we are going to open our blank solution.
+
+12
+00:00:51,050 --> 00:00:56,660
+And after that you can right click this solution add Naive solution folder.
+
+13
+00:00:56,660 --> 00:01:01,370
+So in this solution folder we will give the name as a services.
+
+14
+00:01:01,910 --> 00:01:07,670
+And after that I'm going to create an additional sub folder which name is catalog.
+
+15
+00:01:07,820 --> 00:01:13,160
+Again we are going to create a new solution folder and give the name as a catalog.
+
+16
+00:01:14,090 --> 00:01:18,140
+So here you can see the our latest solution folder structure.
+
+17
+00:01:18,140 --> 00:01:19,520
+We have a services folder.
+
+18
+00:01:19,520 --> 00:01:21,680
+And under that we have a catalog folder.
+
+19
+00:01:21,770 --> 00:01:26,840
+So now we can create ASP.Net web API project for catalog microservices.
+
+20
+00:01:26,840 --> 00:01:29,690
+For that purpose select the catalog sub folder.
+
+21
+00:01:29,690 --> 00:01:32,300
+Right click Add New Project.
+
+22
+00:01:32,300 --> 00:01:35,690
+In this window we can select the ASP.Net templates.
+
+23
+00:01:35,690 --> 00:01:42,560
+We will choose ASP.Net Core Empty Project template because when we are selecting with the web API and
+
+24
+00:01:42,560 --> 00:01:47,420
+empty web API has lots of boilerplate code, and we have to remove that code.
+
+25
+00:01:47,420 --> 00:01:53,480
+Instead of that, we will choose empty project template for all microservices and arrange our code very
+
+26
+00:01:53,480 --> 00:01:53,930
+fast.
+
+27
+00:01:53,930 --> 00:02:00,440
+So for that purpose, you can search for the empty solution in here and select the ASP.Net core project
+
+28
+00:02:00,440 --> 00:02:05,210
+and you can also pin these project in here in order to use frequently.
+
+29
+00:02:05,210 --> 00:02:08,479
+So I'm going to select in this recent project templates.
+
+30
+00:02:08,479 --> 00:02:14,480
+And I have pinned this kind of project and select the ASP.Net Core Empty and click the next button.
+
+31
+00:02:14,480 --> 00:02:17,570
+So we will give the name as a catalog API.
+
+32
+00:02:17,570 --> 00:02:23,450
+Since we will develop our catalog microservices, the project name should be catalog API.
+
+33
+00:02:23,450 --> 00:02:29,090
+And the location is very, very important because we will create this project under the source folder.
+
+34
+00:02:29,090 --> 00:02:34,370
+But we have an additional folders created in here which is the services catalog.
+
+35
+00:02:34,370 --> 00:02:39,020
+These are the solution folders that will not create a physical folder.
+
+36
+00:02:39,020 --> 00:02:46,070
+In order to create physical folder as the same as our project, we should add the these folder path.
+
+37
+00:02:46,070 --> 00:02:53,690
+In here I'm going to add a slash and services and add again slash and give the name catalog.
+
+38
+00:02:53,690 --> 00:03:02,660
+So that means we will create a catalog API project under the Source Services and Catalog folder.
+
+39
+00:03:02,660 --> 00:03:06,920
+So you should verify the location name is correct on your computer.
+
+40
+00:03:06,920 --> 00:03:14,660
+And after that we will continue to create our very first microservices with clicking the next button.
+
+41
+00:03:14,660 --> 00:03:18,770
+Here you can see the configurations for ASP.Net empty Project template.
+
+42
+00:03:18,770 --> 00:03:20,780
+The framework of course should be the.
+
+43
+00:03:20,930 --> 00:03:27,410
+Net eight and we are leaving as it is for all configurations including the configure https, enable
+
+44
+00:03:27,410 --> 00:03:33,020
+Docker and Docker operating system is Linux and we will use top level statement.
+
+45
+00:03:33,020 --> 00:03:35,180
+That's why this is not selected.
+
+46
+00:03:35,180 --> 00:03:40,520
+So please create this project with clicking this create button.
+
+47
+00:03:40,520 --> 00:03:45,380
+And here you can see the very first microservices is created successfully.
+
+48
+00:03:45,380 --> 00:03:47,510
+You can examine the folder structure.
+
+49
+00:03:47,510 --> 00:03:49,820
+It is located the services catalog.
+
+50
+00:03:49,820 --> 00:03:54,650
+And you can right click and open the folder structure and verify from that.
+
+51
+00:03:54,650 --> 00:03:56,930
+This is creating in the correct folder.
+
+52
+00:03:56,930 --> 00:04:02,570
+If you open in File Explorer, you can see the folder structure is correct under the source folder we
+
+53
+00:04:02,570 --> 00:04:05,840
+have services and services has catalog.
+
+54
+00:04:05,840 --> 00:04:12,350
+And under the catalog we have catalog API microservices that will be include our actual microservice
+
+55
+00:04:12,350 --> 00:04:12,860
+codes.
+
+56
+00:04:12,860 --> 00:04:19,160
+So if you come back to our Visual Studio we can go to the Catholic API, ASP.Net project and open the
+
+57
+00:04:19,160 --> 00:04:20,120
+Program.cs.
+
+58
+00:04:20,120 --> 00:04:23,030
+So we are going to simplify the boilerplate code.
+
+59
+00:04:23,030 --> 00:04:28,550
+Once we have created, let's simplify the default code in the Program.cs for the clean start.
+
+60
+00:04:28,550 --> 00:04:36,590
+So I am going to put a comment in here and also providing our program.cs structure.
+
+61
+00:04:36,590 --> 00:04:41,180
+As you remember that we have two main division in this file.
+
+62
+00:04:41,180 --> 00:04:44,000
+The first one is before building the application.
+
+63
+00:04:44,000 --> 00:04:46,310
+The second one is after building the application.
+
+64
+00:04:46,310 --> 00:04:49,640
+So now I am going to remove these Mapkit operation.
+
+65
+00:04:49,640 --> 00:04:55,040
+Since we will develop our catalog related operation we don't need any map get operation now.
+
+66
+00:04:55,040 --> 00:04:59,420
+So basically before the building the application what we will do we will.
+
+67
+00:04:59,570 --> 00:05:04,010
+Add the services into ASP.Net builtin dependency injection container.
+
+68
+00:05:04,010 --> 00:05:06,740
+So that's why it is good to put a command in here.
+
+69
+00:05:06,740 --> 00:05:14,030
+So after building the application we will configure the Http request pipeline to mapping the incoming
+
+70
+00:05:14,030 --> 00:05:14,660
+requests.
+
+71
+00:05:14,660 --> 00:05:19,730
+So this is the structure of every Program.cs for all microservices.
+
+72
+00:05:19,730 --> 00:05:23,420
+In ASP.Net core we typically follow two main steps.
+
+73
+00:05:23,420 --> 00:05:31,040
+The first one is before building the web application in here we use various service methods for built
+
+74
+00:05:31,040 --> 00:05:32,450
+in dependency injection.
+
+75
+00:05:32,450 --> 00:05:36,890
+These are the registration operations and the second one is the.
+
+76
+00:05:36,890 --> 00:05:43,340
+After building the web application, we will apply use function or map function methods in order to
+
+77
+00:05:43,340 --> 00:05:45,710
+configure the Http request lifecycle.
+
+78
+00:05:45,710 --> 00:05:47,750
+So you can save this file.
+
+79
+00:05:47,750 --> 00:05:50,360
+And now we are ready to develop our Catholic API.
+
+80
+00:05:50,360 --> 00:05:55,310
+With these steps we have set up the foundation for the Catholic API microservices.
+
+81
+00:05:55,520 --> 00:06:01,820
+As we progress, we will delve into deeper developing the Catholic API functionality using the vertical
+
+82
+00:06:01,820 --> 00:06:02,720
+slice architecture.
+

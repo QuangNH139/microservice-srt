@@ -1,0 +1,384 @@
+1
+00:00:00,140 --> 00:00:06,500
+In this video we are going to test Docker compose discount gRPC microservices with SQLite.
+
+2
+00:00:06,500 --> 00:00:12,650
+That means we are at the second stage and we will test our Docker compose all commands including the
+
+3
+00:00:12,650 --> 00:00:15,260
+discount, gRPC and SQLite database.
+
+4
+00:00:15,260 --> 00:00:17,300
+Please open the Visual Studio.
+
+5
+00:00:17,300 --> 00:00:23,480
+In here we are going to use Visual Studio to link for running the Docker compose environment for that
+
+6
+00:00:23,480 --> 00:00:23,930
+purpose.
+
+7
+00:00:23,930 --> 00:00:29,690
+In Visual Studio you can go to Docker Compose, right click in here and set a startup project.
+
+8
+00:00:29,690 --> 00:00:33,770
+After that you can see the Docker compose running profile comes in here.
+
+9
+00:00:33,950 --> 00:00:38,900
+Alternatively, you can execute the docker compose up commands manually in your terminal.
+
+10
+00:00:38,900 --> 00:00:43,400
+But I am going to use Visual Studio to link before running this application.
+
+11
+00:00:43,400 --> 00:00:50,210
+I'm going to confirm that the desktop is up and running, and after that, I'm hitting this button to
+
+12
+00:00:50,210 --> 00:00:52,070
+run the whole docker compose.
+
+13
+00:00:52,070 --> 00:00:57,800
+And on behind of the scenes this is running docker compose up commands and this will be spin up.
+
+14
+00:00:57,800 --> 00:01:01,220
+Every microservices and database in docker environment.
+
+15
+00:01:01,220 --> 00:01:08,780
+Specifically, we will build and recreate again this gRPC microservices, including the SQLite database.
+
+16
+00:01:08,780 --> 00:01:14,690
+After running the Docker compose, you can see that newly created containers comes under Docker Compose,
+
+17
+00:01:14,690 --> 00:01:16,490
+including the discount gRPC.
+
+18
+00:01:16,610 --> 00:01:20,150
+If you come discount gRPC, you can see all details in here.
+
+19
+00:01:20,150 --> 00:01:23,240
+Also, we have confirmed from the Docker desktop.
+
+20
+00:01:23,240 --> 00:01:28,040
+In here we have the Docker compose and including the newly created discount gRPC.
+
+21
+00:01:28,100 --> 00:01:31,160
+If I open the discount gRPC, we can check the logs.
+
+22
+00:01:31,160 --> 00:01:37,190
+And if you check the logs, you can see that our Entity Framework core is newly created SQLite database
+
+23
+00:01:37,190 --> 00:01:39,410
+under the container within the container.
+
+24
+00:01:39,410 --> 00:01:45,620
+And here you can see there are migrations and seeding operations performed before running this discount
+
+25
+00:01:45,620 --> 00:01:47,090
+gRPC application.
+
+26
+00:01:47,180 --> 00:01:52,670
+So that means we can confirm that our SQLite database created within the container.
+
+27
+00:01:52,670 --> 00:01:58,940
+To verify this database under the our container, you can open this container PC and go to files.
+
+28
+00:01:58,940 --> 00:02:00,140
+And under the files.
+
+29
+00:02:00,140 --> 00:02:07,400
+If you open the app folder, you can see that newly discount DB created under the container application
+
+30
+00:02:07,400 --> 00:02:07,970
+folder.
+
+31
+00:02:07,970 --> 00:02:13,190
+And this is performed by the Entity Framework core when the application start up, and you can reach
+
+32
+00:02:13,190 --> 00:02:19,010
+the discount db SQLite database under the application folder within the discount gRPC container.
+
+33
+00:02:19,160 --> 00:02:25,970
+So now we can start our testing applications because our discount gRPC is ready for the existing gRPC
+
+34
+00:02:25,970 --> 00:02:26,420
+calls.
+
+35
+00:02:26,420 --> 00:02:32,030
+For that purpose, I'm going to open the postman and go to the discount gRPC collection and go to the
+
+36
+00:02:32,030 --> 00:02:32,960
+discount service.
+
+37
+00:02:32,960 --> 00:02:35,930
+So we are going to start with the get discount method.
+
+38
+00:02:35,930 --> 00:02:39,680
+For that purpose, please change the method name as a get discount.
+
+39
+00:02:39,680 --> 00:02:45,950
+And after that the important part is the URL which is including 5052 port.
+
+40
+00:02:45,950 --> 00:02:47,750
+But this is the development port.
+
+41
+00:02:47,750 --> 00:02:54,320
+I'm going to change this port as a 6062 for sending requests to the Docker environment.
+
+42
+00:02:54,320 --> 00:02:59,570
+And also I'm going to change the request file because this is for the get discount.
+
+43
+00:02:59,570 --> 00:03:02,060
+Get discount only required for the product name.
+
+44
+00:03:02,060 --> 00:03:05,630
+And make sure that your product name is writing correctly.
+
+45
+00:03:05,630 --> 00:03:08,630
+P is lowercase and n is uppercase.
+
+46
+00:03:08,630 --> 00:03:12,950
+After that, I'm going to invoke this gRPC call in Docker environment.
+
+47
+00:03:12,950 --> 00:03:18,260
+And here you can see that our debugger is triggered and Jesus comes to get discount.
+
+48
+00:03:18,260 --> 00:03:23,060
+And we will check discount information from the database which giving the product name.
+
+49
+00:03:23,060 --> 00:03:28,400
+And you can see that our coupon is comes from the database which is iPhone discount.
+
+50
+00:03:28,400 --> 00:03:30,230
+And this is the first ID.
+
+51
+00:03:30,230 --> 00:03:35,240
+And we will see these data when application startup using the Entity Framework core.
+
+52
+00:03:35,270 --> 00:03:37,790
+That's why we can see this coupon information.
+
+53
+00:03:37,790 --> 00:03:41,060
+Log the information and return back to the client application.
+
+54
+00:03:41,060 --> 00:03:46,820
+Here you can see the response comes from the client application including the ID, product name, description
+
+55
+00:03:46,820 --> 00:03:47,570
+and amount.
+
+56
+00:03:47,570 --> 00:03:50,660
+So you can also confirm from the Docker desktop.
+
+57
+00:03:50,660 --> 00:03:53,210
+Here you can see the newly added logs.
+
+58
+00:03:53,210 --> 00:03:56,240
+Basically we will perform the select operation.
+
+59
+00:03:56,240 --> 00:04:02,330
+And after that you can see newly created information log which is the discount is retrieved for product
+
+60
+00:04:02,330 --> 00:04:02,630
+name.
+
+61
+00:04:02,630 --> 00:04:04,310
+Which name is iPhone X.
+
+62
+00:04:04,310 --> 00:04:10,430
+So after the get discount operation we can test the create discount operation.
+
+63
+00:04:10,430 --> 00:04:12,140
+Please change the method name.
+
+64
+00:04:12,140 --> 00:04:15,410
+And also we should change the payload in the payload.
+
+65
+00:04:15,410 --> 00:04:23,360
+I'm going to send a new coupon and make sure that you have correct Json payload for the coupon, sending
+
+66
+00:04:23,360 --> 00:04:26,990
+the create discount operation and invoke this gRPC method.
+
+67
+00:04:26,990 --> 00:04:30,170
+This will also trigger our create discount operation.
+
+68
+00:04:30,170 --> 00:04:33,620
+And in here you can see that we will check the coupon.
+
+69
+00:04:33,620 --> 00:04:39,590
+And after that add this coupon into our database and log the information and return back to the client.
+
+70
+00:04:39,590 --> 00:04:47,570
+If you hit F5 and see the response that is newly created item added into the our discount and coupon
+
+71
+00:04:47,570 --> 00:04:48,170
+table.
+
+72
+00:04:48,170 --> 00:04:51,230
+The ID is four and this is the new record.
+
+73
+00:04:51,230 --> 00:04:54,560
+And you can also confirm from the our Docker desktop.
+
+74
+00:04:54,560 --> 00:04:59,780
+Here you can see that we will use insert into command this time in order to create new.
+
+75
+00:05:00,050 --> 00:05:06,110
+Item and you can see the log information discount is successfully created with new product name.
+
+76
+00:05:06,110 --> 00:05:11,540
+And after that we can continue the next operation which is the update operation in here.
+
+77
+00:05:11,540 --> 00:05:17,990
+I'm going to update this newly created iPhone with changing the product method name as a update discount,
+
+78
+00:05:17,990 --> 00:05:22,520
+and after that the payload will be required for the ID information.
+
+79
+00:05:22,520 --> 00:05:28,880
+I have added the ID and edit the product name and description with adding the updated keyword, and
+
+80
+00:05:28,880 --> 00:05:33,980
+if we invoke this gRPC call this time, we will invoke the update discount method.
+
+81
+00:05:33,980 --> 00:05:39,080
+And in this method we will check the coupon is null or not, and after that we will update the coupon
+
+82
+00:05:39,080 --> 00:05:43,070
+using the Dbcontext object and log the information as the same way.
+
+83
+00:05:43,070 --> 00:05:50,090
+If we hit F5, we can see that update successfully, and you can also confirm from the Docker desktop
+
+84
+00:05:50,090 --> 00:05:52,610
+to update operation completed successfully.
+
+85
+00:05:52,610 --> 00:05:56,030
+And lastly, we will perform the delete operation.
+
+86
+00:05:56,030 --> 00:06:01,040
+In order to do that, I am going to change the method name as a delete discount.
+
+87
+00:06:01,040 --> 00:06:08,810
+And in here I'm going to change the Or payload as a product name, which is the updated product name.
+
+88
+00:06:08,810 --> 00:06:13,790
+And if we invoke this gRPC call you can see that this will be trigger delete discount.
+
+89
+00:06:13,790 --> 00:06:19,790
+And if you continue this operation, this will be removed coupon from the database and perform operations.
+
+90
+00:06:19,790 --> 00:06:21,680
+Return back to the client as a success.
+
+91
+00:06:21,680 --> 00:06:22,520
+True.
+
+92
+00:06:22,520 --> 00:06:28,970
+Also, you can confirm from the Docker desktop that we have run delete from commands to perform delete
+
+93
+00:06:28,970 --> 00:06:29,600
+operation.
+
+94
+00:06:29,600 --> 00:06:34,100
+And here you can see the information log which is the discount is successfully deleted.
+
+95
+00:06:34,220 --> 00:06:40,220
+As you can see that we have successfully test our discount gRPC and perform Crud operations in Docker
+
+96
+00:06:40,220 --> 00:06:41,480
+compose environment.
+

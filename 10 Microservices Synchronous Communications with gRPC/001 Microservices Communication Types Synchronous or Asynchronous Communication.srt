@@ -1,0 +1,124 @@
+1
+00:00:00,230 --> 00:00:07,790
+In this video we are going to learn microservice communication types, which are the synchronous and
+
+2
+00:00:07,790 --> 00:00:09,410
+asynchronous communications.
+
+3
+00:00:09,410 --> 00:00:14,870
+Client and services communicate with each other with many different types of communications.
+
+4
+00:00:14,870 --> 00:00:22,460
+Mainly those types of communications can be classified by two axis synchronous and asynchronous communication.
+
+5
+00:00:22,460 --> 00:00:24,740
+What is synchronous communication?
+
+6
+00:00:24,740 --> 00:00:32,479
+Basically, we can say that synchronous communication is using Http or gRPC protocol for returning synchronous
+
+7
+00:00:32,479 --> 00:00:33,230
+response.
+
+8
+00:00:34,640 --> 00:00:38,810
+The client sent the request and waits for a response from the service.
+
+9
+00:00:39,080 --> 00:00:45,260
+So that means the client code blocked their thread until the response reached from the server.
+
+10
+00:00:47,240 --> 00:00:52,640
+The synchronous communication protocols can be used Http or Https.
+
+11
+00:00:52,640 --> 00:00:58,970
+In synchronous communication, the client sends a request with using Http protocols and waits for a
+
+12
+00:00:58,970 --> 00:01:00,620
+response from the service.
+
+13
+00:01:01,160 --> 00:01:07,160
+So that means the client call the server and block client data operations.
+
+14
+00:01:07,160 --> 00:01:12,710
+The client code will continue its task when it receives the Http server response.
+
+15
+00:01:12,710 --> 00:01:21,350
+So this is the important topic that client block their code when synchronous to calling and after receiving
+
+16
+00:01:21,350 --> 00:01:24,890
+an Http server response, it continue their task.
+
+17
+00:01:24,890 --> 00:01:31,400
+So this operation called synchronous communication, it has advantages and disadvantages that we would
+
+18
+00:01:31,400 --> 00:01:33,080
+consider when we pick this way.
+
+19
+00:01:33,680 --> 00:01:38,570
+But now I am going to continue to what is asynchronous communication in microservices.
+
+20
+00:01:38,570 --> 00:01:41,420
+Another communication type is asynchronous communication.
+
+21
+00:01:41,420 --> 00:01:44,060
+So what is asynchronous communication.
+
+22
+00:01:44,060 --> 00:01:50,570
+Basically in asynchronous communication the client send the request but it doesn't wait for a response
+
+23
+00:01:50,570 --> 00:01:51,680
+from the service.
+
+24
+00:01:53,120 --> 00:01:59,420
+So the key point here is that the client should not have blocked a thread while waiting for a response.
+
+25
+00:01:59,810 --> 00:02:06,680
+The most popular protocol for these asynchronous communication is Amqp, which is the Advanced Messaging
+
+26
+00:02:06,680 --> 00:02:07,790
+Queue protocol.
+
+27
+00:02:08,300 --> 00:02:15,290
+So with using Amqp protocols, the client sent the message with using message broker systems like Kafka
+
+28
+00:02:15,290 --> 00:02:16,550
+and RabbitMQ.
+
+29
+00:02:17,600 --> 00:02:20,900
+The message producer usually doesn't wait for a response.
+
+30
+00:02:22,240 --> 00:02:28,630
+This message consumed from the subscriber systems in asynchronous way and no one waiting for response
+
+31
+00:02:28,630 --> 00:02:29,230
+suddenly.
+

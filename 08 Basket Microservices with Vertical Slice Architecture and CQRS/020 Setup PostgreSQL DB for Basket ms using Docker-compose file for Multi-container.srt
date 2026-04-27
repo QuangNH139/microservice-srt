@@ -1,0 +1,256 @@
+1
+00:00:00,140 --> 00:00:06,650
+In this video we are going to set up PostgreSQL database using docker compose file for multi-container
+
+2
+00:00:06,650 --> 00:00:07,700
+docker environment.
+
+3
+00:00:07,700 --> 00:00:13,250
+So we will use the curl compose to run PostgreSQL database in a container for the basket.
+
+4
+00:00:13,250 --> 00:00:14,300
+Microservices.
+
+5
+00:00:14,300 --> 00:00:19,610
+If you look at the R microservice deployment strategy, we are at the deployment one.
+
+6
+00:00:19,610 --> 00:00:23,930
+And so far we have built our microservices in the local environment.
+
+7
+00:00:23,930 --> 00:00:30,740
+But now we need to connect database and we need a database IP and port number that we can connect from
+
+8
+00:00:30,740 --> 00:00:31,910
+our local computer.
+
+9
+00:00:31,910 --> 00:00:37,850
+For that purpose, we should activate the PostgreSQL database in our Docker compose environment.
+
+10
+00:00:37,850 --> 00:00:44,690
+And if you open the PostgreSQL Docker image from the Docker Hub, you can see that we have already checked
+
+11
+00:00:44,690 --> 00:00:46,220
+this documentation before.
+
+12
+00:00:46,220 --> 00:00:53,390
+In the configurations, we can activate our PostgreSQL database using Docker compose, and within these
+
+13
+00:00:53,390 --> 00:00:59,930
+configurations, please open the Visual Studio and go to the Docker-compose.yml and overwrite Yaml file.
+
+14
+00:00:59,930 --> 00:01:05,540
+If you open the docker-compose.yml file, you can see that we have already downloaded the PostgreSQL
+
+15
+00:01:05,540 --> 00:01:11,360
+image for catalog db, and we can use this database for catalog microservices.
+
+16
+00:01:11,480 --> 00:01:16,460
+But in basket microservices we will also use PostgreSQL database.
+
+17
+00:01:16,460 --> 00:01:20,930
+So that means we will add another service for the basket microservices.
+
+18
+00:01:20,930 --> 00:01:26,570
+For that purpose I'm going to copy these codes and paste in here.
+
+19
+00:01:27,500 --> 00:01:31,640
+Now I'm going to change the name as a container name as a basket DB.
+
+20
+00:01:34,040 --> 00:01:36,500
+And the image should be PostgreSQL again.
+
+21
+00:01:36,500 --> 00:01:41,750
+Also we need to define volume definition for the basket database.
+
+22
+00:01:41,750 --> 00:01:44,000
+For that purpose go to the volumes.
+
+23
+00:01:44,000 --> 00:01:50,180
+And now I'm going to add an additional volume which name is Postgres underscore basket.
+
+24
+00:01:50,180 --> 00:01:54,710
+And this will be represent the database volume for the second database.
+
+25
+00:01:54,710 --> 00:01:58,550
+And now we are ready for the configurations in Docker compose.
+
+26
+00:01:58,550 --> 00:02:04,370
+And now we will go to the override Yaml file in order to configure the port numbers environment variables
+
+27
+00:02:04,370 --> 00:02:05,240
+and so on.
+
+28
+00:02:05,240 --> 00:02:07,670
+Please open the override Yaml file.
+
+29
+00:02:07,670 --> 00:02:14,720
+And in here you can see that this is the catalog db configurations container name environment variables
+
+30
+00:02:14,720 --> 00:02:17,300
+and the port numbers and the volume definitions.
+
+31
+00:02:17,300 --> 00:02:20,390
+So we will configure the basket DB is the same way.
+
+32
+00:02:20,390 --> 00:02:24,980
+For that purpose I'm going to copy this line of code and come here.
+
+33
+00:02:27,940 --> 00:02:32,470
+Paste at the same level and make sure that your indentation is correct.
+
+34
+00:02:32,470 --> 00:02:36,250
+And I'm going to change the container name as a basket db.
+
+35
+00:02:36,850 --> 00:02:40,150
+And let's configure this configuration one by one.
+
+36
+00:02:40,450 --> 00:02:42,670
+Or container name will be basket db.
+
+37
+00:02:42,670 --> 00:02:45,430
+So that's why I'm changing this basket db.
+
+38
+00:02:45,700 --> 00:02:48,760
+Environment variables username and password is same.
+
+39
+00:02:48,760 --> 00:02:57,040
+And our PostgreSQL db should be basket db and restart always is okay.
+
+40
+00:02:57,040 --> 00:02:59,230
+And the port numbers I'm going to explain.
+
+41
+00:02:59,230 --> 00:03:05,170
+We will have to change this port number and the volume definition should be changed accordingly or volume
+
+42
+00:03:05,170 --> 00:03:07,240
+is PostgreSQL basket.
+
+43
+00:03:07,240 --> 00:03:11,050
+So for that purpose change this volume definition okay.
+
+44
+00:03:11,050 --> 00:03:15,070
+So now the only thing we have left change the port numbers.
+
+45
+00:03:15,070 --> 00:03:20,950
+Since we are using the catalog db as a PostgreSQL image, this is the default port number that we are
+
+46
+00:03:20,950 --> 00:03:23,530
+going to expose to our local computer.
+
+47
+00:03:23,530 --> 00:03:30,610
+So if we try to expose the second PostgreSQL database at the same port, this will be throw an exception
+
+48
+00:03:30,610 --> 00:03:34,090
+which is the port is already allocated exception.
+
+49
+00:03:34,330 --> 00:03:39,700
+In order to avoid this kind of exception, we should change one of the port number when exposing our
+
+50
+00:03:39,700 --> 00:03:40,750
+local computer.
+
+51
+00:03:40,750 --> 00:03:45,010
+And now I am going to change this port number as A5433.
+
+52
+00:03:45,760 --> 00:03:51,670
+By this way, we can differentiate the databases for catalog and basket microservices from our local
+
+53
+00:03:51,670 --> 00:03:52,360
+computer.
+
+54
+00:03:52,360 --> 00:03:58,900
+So we assign a unique port number for the basket database in order to avoid conflicts with the catalog
+
+55
+00:03:58,900 --> 00:03:59,740
+database.
+
+56
+00:04:00,040 --> 00:04:06,640
+And in here you can see that the volume section ensures the data persistence for each microservices.
+
+57
+00:04:07,030 --> 00:04:09,670
+And we need to connect to correct database.
+
+58
+00:04:09,670 --> 00:04:14,680
+So finally we should update the our connection string accordingly.
+
+59
+00:04:14,680 --> 00:04:18,760
+Please go to basket API and go to Application Settings Json file.
+
+60
+00:04:18,760 --> 00:04:22,900
+In here you can see the server name as a localhost and port number should be changed.
+
+61
+00:04:22,900 --> 00:04:25,750
+And now I am going to change these 2 to 3.
+
+62
+00:04:26,290 --> 00:04:32,560
+By this way we can connect to correct basket database and create basket db inside of that database.
+
+63
+00:04:32,560 --> 00:04:38,170
+And we have updated the port number and we have updated the Docker compose or HTML file.
+
+64
+00:04:38,170 --> 00:04:42,610
+And we have configured the second PostgreSQL database for basket microservices.
+

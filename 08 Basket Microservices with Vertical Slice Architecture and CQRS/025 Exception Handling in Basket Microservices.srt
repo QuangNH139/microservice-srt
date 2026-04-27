@@ -1,0 +1,204 @@
+1
+00:00:00,140 --> 00:00:06,890
+In this video, we will explore how to implement effective exception handling in basket microservices.
+
+2
+00:00:07,620 --> 00:00:13,890
+Exception handling is a cross-cutting concern essential for maintaining the robustness of our microservices.
+
+3
+00:00:13,920 --> 00:00:19,860
+We have already implemented a custom exception handling mechanism in the Building Blocks project that
+
+4
+00:00:19,860 --> 00:00:25,740
+can be used for each microservices to handle the cross-cutting concerns in the building blocks.
+
+5
+00:00:25,770 --> 00:00:31,260
+So let's briefly review the custom exception handling class in the Building Blocks project.
+
+6
+00:00:31,260 --> 00:00:36,900
+For that purpose, please open the Visual Studio and go to the Building Blocks and under the exception
+
+7
+00:00:36,900 --> 00:00:43,290
+folders, if you open the handle folder, you can see the custom exception handler class is located
+
+8
+00:00:43,290 --> 00:00:44,340
+building blocks.
+
+9
+00:00:44,340 --> 00:00:51,750
+So this class standardizes how exceptions are coached and handled across different microservices.
+
+10
+00:00:51,750 --> 00:00:54,960
+You can see that we have three handle async method.
+
+11
+00:00:54,960 --> 00:00:58,920
+And in this method we will perform logging at the beginning of the method.
+
+12
+00:00:58,920 --> 00:01:05,250
+And after that we will get exception details and understand the exception types and populate the message
+
+13
+00:01:05,250 --> 00:01:09,000
+name and status code and after that we will create problem details.
+
+14
+00:01:09,000 --> 00:01:15,780
+And after that we will write as Json format the whole problem details to perform exception handling
+
+15
+00:01:15,780 --> 00:01:17,100
+as a cross-cutting concern.
+
+16
+00:01:17,100 --> 00:01:22,290
+So how can we integrate these exception handling in basket microservices.
+
+17
+00:01:22,290 --> 00:01:28,860
+Of course we can add these custom exception handler into program.cs of the basket API microservices.
+
+18
+00:01:28,860 --> 00:01:32,040
+So please go to basket API and Program.cs.
+
+19
+00:01:32,040 --> 00:01:37,200
+And if you scroll down you can come to before building the application.
+
+20
+00:01:37,200 --> 00:01:41,910
+And now I am going to add a exception handling cross-cutting concern.
+
+21
+00:01:41,910 --> 00:01:49,290
+We should register with Builder services dot add exception handler method.
+
+22
+00:01:49,290 --> 00:01:54,120
+And we can paste the custom exception handler as a generics in here.
+
+23
+00:01:54,120 --> 00:01:56,970
+In our case which is a custom exception handler.
+
+24
+00:01:56,970 --> 00:02:03,930
+So we have registered our custom exception handler before building the application into the ASP.Net
+
+25
+00:02:03,930 --> 00:02:05,580
+built in dependency injection.
+
+26
+00:02:05,580 --> 00:02:09,780
+And after that we can configure Http request pipeline.
+
+27
+00:02:09,780 --> 00:02:18,120
+For that purpose I'm going to use app dot use exception handler method.
+
+28
+00:02:18,120 --> 00:02:23,760
+And in this method we can pass the options as an empty options.
+
+29
+00:02:23,760 --> 00:02:27,900
+I'm going to put an empty options.
+
+30
+00:02:27,900 --> 00:02:34,950
+And we can basically configure Http request pipeline for the generic cross-cutting exception handlers.
+
+31
+00:02:34,950 --> 00:02:40,740
+So we have added two line of code in the program says the first line of code in here add exception handler.
+
+32
+00:02:40,740 --> 00:02:46,890
+And the second line of code is after building the web project App.use exception handler method, please
+
+33
+00:02:46,890 --> 00:02:48,210
+save this Program.cs.
+
+34
+00:02:48,210 --> 00:02:51,090
+And after that we can test our endpoint.
+
+35
+00:02:51,090 --> 00:02:51,270
+As.
+
+36
+00:02:51,270 --> 00:02:57,150
+You remember that if you open the postman last time we got these row message for the exception.
+
+37
+00:02:57,150 --> 00:03:04,380
+Now I am going to run this basket API in https format, and let's try to hit again the same endpoint
+
+38
+00:03:04,380 --> 00:03:07,170
+and see how it can be respond back.
+
+39
+00:03:07,170 --> 00:03:09,630
+So application started successfully.
+
+40
+00:03:09,630 --> 00:03:17,400
+And if you open the postman and send Http get method again, this time this will be perform the same
+
+41
+00:03:17,400 --> 00:03:17,880
+steps.
+
+42
+00:03:17,880 --> 00:03:25,320
+And if I hit F5 and throw a basket notfoundexception, you can see that we got the exceptions come to
+
+43
+00:03:25,320 --> 00:03:28,830
+the Or method which is the custom exception handler.
+
+44
+00:03:28,830 --> 00:03:34,110
+Try handle async method and after that we will see more readable method.
+
+45
+00:03:34,110 --> 00:03:38,490
+As you can see that the response is much more structured and informative.
+
+46
+00:03:38,490 --> 00:03:44,430
+And this is how building blocks perform implementing cross-cutting concerns like exception handling
+
+47
+00:03:44,430 --> 00:03:45,120
+effectively.
+
+48
+00:03:45,120 --> 00:03:51,690
+Basically, we have added only two lines of code into our Program.cs and get these exception handling
+
+49
+00:03:51,690 --> 00:03:53,790
+feature for basket microservices.
+
+50
+00:03:53,790 --> 00:03:59,730
+So this kind of cross-cutting concerns we can add into separate class library and get reference.
+
+51
+00:03:59,730 --> 00:04:06,450
+Are microservices in order to behave common features for all microservices very naturally and very straightforward.
+

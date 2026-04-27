@@ -1,0 +1,336 @@
+1
+00:00:00,200 --> 00:00:06,980
+In this video we are going to develop create order command underclass using the AI application DB context
+
+2
+00:00:06,980 --> 00:00:07,820
+interface.
+
+3
+00:00:08,180 --> 00:00:13,250
+For that purpose, please navigate to Ordering Application Orders commands.
+
+4
+00:00:13,250 --> 00:00:16,070
+Create order and create order handler class.
+
+5
+00:00:16,340 --> 00:00:21,890
+This class implements I command handler interface for handling the create order command.
+
+6
+00:00:22,310 --> 00:00:29,120
+And this handle method using I application db context interface in order to interact with the database.
+
+7
+00:00:29,120 --> 00:00:30,260
+For that reason.
+
+8
+00:00:30,260 --> 00:00:36,290
+First of all, we should start with injecting AI application db context into our create order handler
+
+9
+00:00:36,290 --> 00:00:36,830
+class.
+
+10
+00:00:36,860 --> 00:00:40,100
+I'm going to use primary constructor for that purpose.
+
+11
+00:00:40,100 --> 00:00:47,480
+I'm going to open a bracket and injecting application db context object, which name is db context parameter
+
+12
+00:00:47,480 --> 00:00:47,870
+name.
+
+13
+00:00:47,870 --> 00:00:53,210
+So you can see that we have injecting primary constructor of the AI application db context.
+
+14
+00:00:53,210 --> 00:00:58,280
+And now we can use db context to performing an interacting database in the handle method.
+
+15
+00:00:58,280 --> 00:01:00,920
+Let's start to implement our handle method.
+
+16
+00:01:00,920 --> 00:01:04,519
+First of all I'm going to make this function as an async.
+
+17
+00:01:04,519 --> 00:01:10,730
+And after that I'm going to change the name of the create order command parameter request to command.
+
+18
+00:01:11,450 --> 00:01:18,470
+After that we will iterate our to do list, which is the create order entity from command save to database
+
+19
+00:01:18,470 --> 00:01:19,520
+and return result.
+
+20
+00:01:19,520 --> 00:01:23,870
+So I'm going to do the first step, which is the create order entity from the command object.
+
+21
+00:01:23,870 --> 00:01:29,060
+For that purpose I'm going to create a new function which name is create new Order.
+
+22
+00:01:29,060 --> 00:01:36,680
+And I'm passing this command dot order object, which is the order DTO to do our method.
+
+23
+00:01:36,680 --> 00:01:40,850
+And in here I'm going to convert this DTO to the order entity.
+
+24
+00:01:40,850 --> 00:01:44,570
+So we will implement Create new order method in a few minutes later.
+
+25
+00:01:44,570 --> 00:01:47,270
+But before that let's continue the our task.
+
+26
+00:01:47,270 --> 00:01:53,300
+And you can think that this line of code create a new order entity from the commands DTO object.
+
+27
+00:01:53,300 --> 00:01:57,170
+And after that we can perform the save to database operation.
+
+28
+00:01:57,170 --> 00:02:00,350
+In order to do that we are going to use db context object.
+
+29
+00:02:00,350 --> 00:02:06,200
+Here you can see that after creating order entity, I'm going to use db context object and adding new
+
+30
+00:02:06,200 --> 00:02:12,650
+order into the orders collection into db context and the new order is added to orders db set and after
+
+31
+00:02:12,650 --> 00:02:17,240
+that saved using the save change async method with available function.
+
+32
+00:02:17,570 --> 00:02:23,930
+So this will be perform interaction with database operation, and after this operation we can finally
+
+33
+00:02:23,930 --> 00:02:27,680
+return the create order result with a newly created ID information.
+
+34
+00:02:27,680 --> 00:02:35,180
+So I am come here and returning a new order result which including the order ID and volume information
+
+35
+00:02:35,180 --> 00:02:37,220
+which is newly created order ID.
+
+36
+00:02:37,250 --> 00:02:41,450
+So now we can safely remove this throw new Notimplementedexception.
+
+37
+00:02:41,450 --> 00:02:44,300
+So this is the implementation of the handle method.
+
+38
+00:02:44,300 --> 00:02:48,170
+And now we can start to development of the create new order method.
+
+39
+00:02:48,170 --> 00:02:54,950
+For that purpose I'm going to come here and create a method body which is basically getting order detail
+
+40
+00:02:54,980 --> 00:02:57,290
+information and returning to order entity.
+
+41
+00:02:57,290 --> 00:03:00,770
+So this is the body of the our create new order method.
+
+42
+00:03:00,770 --> 00:03:07,220
+So in this method we will basically construct a new order entity from provided the order DTO object.
+
+43
+00:03:07,220 --> 00:03:13,370
+And it will include the conversion of DTO properties to the domain objects like the address, payment
+
+44
+00:03:13,370 --> 00:03:14,540
+and order items.
+
+45
+00:03:14,540 --> 00:03:20,120
+For that purpose, I'm going to start with the creating, shipping and billing address with incoming
+
+46
+00:03:20,120 --> 00:03:21,260
+order DTO object.
+
+47
+00:03:21,260 --> 00:03:27,080
+So I'm going to create shipping and billing address value objects from the DTO object.
+
+48
+00:03:27,080 --> 00:03:32,660
+Here you can see that this is the shipping and billing address definition using the Addressof method.
+
+49
+00:03:32,660 --> 00:03:38,570
+In order to create our value objects, and we are passing the value object parameters from the order
+
+50
+00:03:38,570 --> 00:03:44,900
+DTO shipping and billing address, first name, last name, and the rest of the properties that we are
+
+51
+00:03:44,900 --> 00:03:51,770
+going to populate when creating value objects into our method here you can see that we will populate
+
+52
+00:03:51,770 --> 00:03:56,180
+the state zipcode and the rest of the properties inside of these value objects.
+
+53
+00:03:56,180 --> 00:04:01,880
+And after defining these value objects, we can start to create new order using the order dot create
+
+54
+00:04:01,880 --> 00:04:02,420
+method.
+
+55
+00:04:02,420 --> 00:04:08,360
+So with this line of code, we will creating a new order and passing the attributes like in here.
+
+56
+00:04:08,360 --> 00:04:15,200
+So ID is generating with new width and customer id using the customer id off method and passing the
+
+57
+00:04:15,200 --> 00:04:19,760
+order detail your customer ID order name and passing the shipping and billing address.
+
+58
+00:04:19,760 --> 00:04:25,640
+And we will also create payment value object with using the payment off method with passing the incoming
+
+59
+00:04:25,640 --> 00:04:29,210
+order, DTO payment and the details of the properties.
+
+60
+00:04:29,210 --> 00:04:33,410
+So this will be create a new order entity from the incoming order DTO.
+
+61
+00:04:33,440 --> 00:04:40,640
+And after that, lastly, we should for each the order items and create new order items for our newly
+
+62
+00:04:40,640 --> 00:04:41,870
+created order entity.
+
+63
+00:04:41,870 --> 00:04:46,790
+Here you can see that we have a for each statement and we will iterate the order items from the order
+
+64
+00:04:46,790 --> 00:04:47,390
+DTO.
+
+65
+00:04:47,390 --> 00:04:54,080
+And after that we will add a order item for newly created order entity into our method.
+
+66
+00:04:54,080 --> 00:04:58,790
+And lastly, we can return a new order from our method.
+
+67
+00:04:58,790 --> 00:04:59,780
+This is the.
+
+68
+00:04:59,900 --> 00:05:06,380
+Definition of the create new order method in order to creating order from the incoming DTO object,
+
+69
+00:05:06,380 --> 00:05:12,470
+and after that we use this order for saving the database using the DB context object and returning the
+
+70
+00:05:12,470 --> 00:05:15,680
+create order result with passing the newly created order ID.
+
+71
+00:05:15,680 --> 00:05:19,790
+And basically when we are developing this create new order.
+
+72
+00:05:19,790 --> 00:05:27,020
+You can also using the custom mapping profile in order to do these operations from mapping order DTO
+
+73
+00:05:27,020 --> 00:05:28,190
+to order entity.
+
+74
+00:05:28,190 --> 00:05:35,000
+But I would like to develop explicitly to see how we can create our address and different value objects
+
+75
+00:05:35,000 --> 00:05:38,600
+and how we can populating the order items when creating any order.
+
+76
+00:05:38,600 --> 00:05:41,900
+So this is the implementation of the Create Order handler class.
+
+77
+00:05:41,900 --> 00:05:46,130
+You can also move these using statement to the global using class.
+
+78
+00:05:46,130 --> 00:05:52,220
+If you copy this using statement and go to the global using Under order application, I'm going to remove
+
+79
+00:05:52,220 --> 00:05:59,330
+these statement and putting these global keywords in the beginning of the using statement in the global
+
+80
+00:05:59,330 --> 00:06:05,420
+using CSS, I'm going to go back to our create order handler and remove unnecessary using statement.
+
+81
+00:06:05,420 --> 00:06:11,870
+So now we can right click and build the ordering API and verify that we have no exceptions.
+
+82
+00:06:11,870 --> 00:06:14,180
+Yes we completed successfully.
+
+83
+00:06:14,180 --> 00:06:17,690
+So now we have finished the development of the create order handler.
+
+84
+00:06:17,690 --> 00:06:19,850
+And we will continue the other Crud operations.
+

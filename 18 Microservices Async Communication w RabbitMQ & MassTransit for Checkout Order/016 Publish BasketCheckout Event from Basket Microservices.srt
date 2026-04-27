@@ -1,0 +1,288 @@
+1
+00:00:00,140 --> 00:00:07,310
+In this video we are going to do step two which is publish basket checkout event from the basket microservices.
+
+2
+00:00:07,310 --> 00:00:12,950
+In order to start asynchronous event driven communication using the mass transit and RabbitMQ.
+
+3
+00:00:13,280 --> 00:00:18,170
+So that means we will apply publish subscribe pattern and we are in the publisher side.
+
+4
+00:00:18,170 --> 00:00:22,430
+Basket will publish the Basket Checkout integration event to the RabbitMQ.
+
+5
+00:00:22,460 --> 00:00:26,540
+In order to store this event and send this event to the subscriber system.
+
+6
+00:00:26,540 --> 00:00:29,450
+In our case it will be ordering microservices.
+
+7
+00:00:29,450 --> 00:00:35,300
+So if you look at the sub steps of publishing event from the basket microservices, we can say that
+
+8
+00:00:35,300 --> 00:00:36,530
+we have four steps.
+
+9
+00:00:36,530 --> 00:00:41,540
+So now let me explain the sub steps of the publishing event from the basket microservices.
+
+10
+00:00:41,540 --> 00:00:47,390
+And the first step is project reference to building blocks messaging in the basket API project in order
+
+11
+00:00:47,390 --> 00:00:50,570
+to access shared events and mass transit extensions.
+
+12
+00:00:50,570 --> 00:00:55,520
+That means in the last videos, we have developed a common shared responsibilities for the asynchronous
+
+13
+00:00:55,520 --> 00:00:58,670
+communication in the Building Blocks messaging class library.
+
+14
+00:00:58,820 --> 00:01:05,450
+So now we will use this class library in order to publish event to the RabbitMQ into the basket microservices.
+
+15
+00:01:05,450 --> 00:01:07,040
+So this is the first step.
+
+16
+00:01:07,040 --> 00:01:11,330
+Getting reference from the building blocks messaging into our basket API project.
+
+17
+00:01:11,450 --> 00:01:17,570
+And the second step is registering Masstransit RabbitMQ packages into basket API, dependency injection
+
+18
+00:01:17,570 --> 00:01:19,310
+into the program CSV file.
+
+19
+00:01:19,310 --> 00:01:25,250
+And in the third step we will expose http post method for basket checkout operation in the basket API
+
+20
+00:01:25,250 --> 00:01:25,970
+project.
+
+21
+00:01:25,970 --> 00:01:31,370
+And the fourth step we will develop basket checkout handler method in order to publish event to the
+
+22
+00:01:31,370 --> 00:01:33,800
+RabbitMQ using the Masstransit library.
+
+23
+00:01:33,800 --> 00:01:36,170
+So we will implement these four steps.
+
+24
+00:01:36,170 --> 00:01:40,910
+Let me start with the first one which is the getting project reference into basket API.
+
+25
+00:01:40,910 --> 00:01:45,680
+So please open the Visual Studio and go to the basket API project.
+
+26
+00:01:45,680 --> 00:01:51,560
+The basket API project must getting reference from the Building Blocks messaging project to access the
+
+27
+00:01:51,560 --> 00:01:53,270
+shared events and mass transit.
+
+28
+00:01:53,270 --> 00:01:57,710
+And I'm going to right click the dependencies and add a project reference.
+
+29
+00:01:57,710 --> 00:02:01,460
+In our case, we will add a Building Blocks messaging class library.
+
+30
+00:02:01,460 --> 00:02:06,950
+As you can see that we have already including building Blocks class library for the shared common operations
+
+31
+00:02:06,950 --> 00:02:08,840
+including the sequence and so on.
+
+32
+00:02:08,840 --> 00:02:15,260
+So now we are going to adding messaging class library in order to access Masstransit libraries and extensions.
+
+33
+00:02:15,260 --> 00:02:21,830
+So click the okay button and you can double click the basket API and see that we have including the
+
+34
+00:02:21,830 --> 00:02:24,230
+project reference building blocks messaging.
+
+35
+00:02:24,230 --> 00:02:27,650
+In this line of code you can say the basket API project file.
+
+36
+00:02:27,650 --> 00:02:29,840
+By this way we can provide that basket.
+
+37
+00:02:29,840 --> 00:02:36,050
+Microservices can access and use basket checkout event folder inside of the building blocks messaging
+
+38
+00:02:36,050 --> 00:02:38,240
+that we are defined in the shared library.
+
+39
+00:02:38,420 --> 00:02:45,290
+So if you go back to our steps, the second step is we are basically need to register Masstransit RabbitMQ
+
+40
+00:02:45,290 --> 00:02:49,160
+packages into basket API, dependency injection and Program.cs.
+
+41
+00:02:49,160 --> 00:02:55,460
+So for that purpose, please open the Visual Studio and go to basket API and go to the program sales.
+
+42
+00:02:55,460 --> 00:03:01,070
+But before that, we need to ensure the message worker configurations is correctly set in the application
+
+43
+00:03:01,070 --> 00:03:04,760
+settings Json file to define RabbitMQ connection details.
+
+44
+00:03:04,760 --> 00:03:10,730
+For that purpose, I am going to go to basket API and Application Settings Json file and make sure that
+
+45
+00:03:10,730 --> 00:03:16,640
+you have added message broker section including the hostname, username and password in order to connect
+
+46
+00:03:16,640 --> 00:03:19,790
+and communicate with RabbitMQ from the basket microservices.
+
+47
+00:03:19,790 --> 00:03:25,850
+After that we can go back to Program.cs and now we can register required mass transit RabbitMQ classes
+
+48
+00:03:25,850 --> 00:03:27,800
+into our dependency injection tool.
+
+49
+00:03:27,800 --> 00:03:33,950
+So in Program.cs we can use the extension method which is the add message broker method from the Building
+
+50
+00:03:33,950 --> 00:03:35,840
+Blocks messaging class library.
+
+51
+00:03:35,840 --> 00:03:40,220
+So I'm going to scroll down and continue the this register operation.
+
+52
+00:03:40,220 --> 00:03:47,030
+Here you can see the application services data services gRPC services added into dependency injection.
+
+53
+00:03:47,030 --> 00:03:52,640
+And before cross-cutting concerns I am going to come here and add a new tag which is the asynchronous
+
+54
+00:03:52,640 --> 00:03:53,990
+communication services.
+
+55
+00:03:53,990 --> 00:03:59,540
+And I'm going to use Builder Services Add message broker passing the configuration from the builder
+
+56
+00:03:59,540 --> 00:04:00,020
+object.
+
+57
+00:04:00,020 --> 00:04:05,930
+So this will be provide and required message broker configurations into basket microservices dependency
+
+58
+00:04:05,930 --> 00:04:06,590
+injection.
+
+59
+00:04:06,590 --> 00:04:11,630
+You can see that add message broker extension method not introduced in the basket API.
+
+60
+00:04:11,630 --> 00:04:17,750
+For that purpose I am going to go to using statement and add a using statement manually, which is using
+
+61
+00:04:17,750 --> 00:04:20,630
+building blocks, messaging and mass transit namespace.
+
+62
+00:04:20,630 --> 00:04:26,090
+So by this way this extension method will be available for the program case of the basket API.
+
+63
+00:04:26,090 --> 00:04:28,040
+Here you can see our configuration.
+
+64
+00:04:28,040 --> 00:04:33,980
+So basically we will call the add message broker which is sets up the mass transit with the RabbitMQ
+
+65
+00:04:33,980 --> 00:04:38,720
+and preparing the basket microservices to publish messages to the message broker.
+
+66
+00:04:38,720 --> 00:04:45,470
+And we are not providing any parameter, any assembly parameter in here, because we are in the publisher
+
+67
+00:04:45,470 --> 00:04:49,190
+side and we don't need to passing any assembly for consumer side.
+
+68
+00:04:49,190 --> 00:04:54,140
+So this is the adding registering operations for the basket microservices.
+
+69
+00:04:54,140 --> 00:04:57,500
+And we can now right click and build the basket API.
+
+70
+00:04:57,500 --> 00:04:59,660
+And this will be completed our.
+
+71
+00:04:59,870 --> 00:05:03,860
+First two steps of the public checkout operations from the basket.
+
+72
+00:05:03,860 --> 00:05:04,850
+Microservices.
+

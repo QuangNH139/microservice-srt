@@ -1,0 +1,116 @@
+1
+00:00:00,080 --> 00:00:04,670
+In this video we are going to learn eventual consistency principle.
+
+2
+00:00:05,300 --> 00:00:10,910
+In the last video, we have learned the sequence pattern and how to use sequence pattern with event
+
+3
+00:00:10,910 --> 00:00:11,990
+sourcing pattern.
+
+4
+00:00:12,080 --> 00:00:18,200
+Now we will talk about the concepts of eventual consistency principle, which has happened that when
+
+5
+00:00:18,200 --> 00:00:20,810
+we use sequence with event sourcing pattern.
+
+6
+00:00:22,010 --> 00:00:25,220
+So what is eventual consistency principle?
+
+7
+00:00:25,640 --> 00:00:32,750
+Eventual consistency is especially used for the systems that prefer high availability to strong consistency.
+
+8
+00:00:34,170 --> 00:00:40,920
+The system will become consistent after a certain time, but it doesn't guarantee strong consistency.
+
+9
+00:00:41,940 --> 00:00:49,500
+We call this latency is eventual consistency principle and offers to be consistent after a certain time.
+
+10
+00:00:49,890 --> 00:00:56,010
+And as you remember that when we are learning the Cap theorem, we also learned the consistency levels.
+
+11
+00:00:56,190 --> 00:01:00,420
+According to Cap theorem, we need to consider the consistency level that we need.
+
+12
+00:01:00,450 --> 00:01:06,990
+So that means in our application we should ask ourselves what is the consistency level requirement of
+
+13
+00:01:06,990 --> 00:01:08,730
+our microservice databases.
+
+14
+00:01:09,340 --> 00:01:11,920
+So there are two types of consistency level.
+
+15
+00:01:11,950 --> 00:01:19,450
+The first one is strong or strict consistency, which is aimed at when we save data, the data should
+
+16
+00:01:19,450 --> 00:01:23,320
+affect unseen immediately for every client we can give.
+
+17
+00:01:23,320 --> 00:01:27,790
+Example of strict consistency is debit or withdrawal on bank account.
+
+18
+00:01:29,070 --> 00:01:31,530
+And the other type is eventual consistency.
+
+19
+00:01:31,530 --> 00:01:37,920
+Basically, when we write any data, it will take some time for clients reading the data we can give
+
+20
+00:01:37,920 --> 00:01:45,150
+example of eventual consistency is YouTube video counters we see in different video numbers and in different
+
+21
+00:01:45,150 --> 00:01:45,870
+sessions.
+
+22
+00:01:47,590 --> 00:01:51,760
+So with implementing six design pattern and event sourcing pattern.
+
+23
+00:01:52,270 --> 00:01:58,960
+When user perform any action in the application, this will save actions as an event into event store
+
+24
+00:01:59,530 --> 00:02:05,500
+and this data will convert to reading database with following the publish subscribe pattern using the
+
+25
+00:02:05,500 --> 00:02:12,520
+message brokers and this data will be denormalized into materialized view database for querying from
+
+26
+00:02:12,520 --> 00:02:13,360
+the application.
+
+27
+00:02:13,360 --> 00:02:22,240
+So during the process of converting the event store to Denormalized data, this system will be eventual
+
+28
+00:02:22,240 --> 00:02:23,320
+consistency.
+
+29
+00:02:24,340 --> 00:02:28,660
+And that means we call this process is a eventual consistency principle.
+

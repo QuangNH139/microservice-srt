@@ -1,0 +1,188 @@
+1
+00:00:00,140 --> 00:00:05,000
+In this video we are going to do technical analysis of discount microservices.
+
+2
+00:00:05,030 --> 00:00:08,390
+Let me start with the application architecture style.
+
+3
+00:00:08,420 --> 00:00:14,510
+If you look at the application architecture style of discount microservices, we are going to use traditional
+
+4
+00:00:14,510 --> 00:00:16,040
+and layered architecture.
+
+5
+00:00:16,040 --> 00:00:19,820
+And layered architectures basically consists of three layers.
+
+6
+00:00:19,820 --> 00:00:24,140
+These are the data access business layer and presentation layer.
+
+7
+00:00:24,680 --> 00:00:31,700
+In data access layer, we will only database operations performed on this layer and this layer perform,
+
+8
+00:00:31,700 --> 00:00:35,870
+add, delete and update and extract data from the database.
+
+9
+00:00:36,440 --> 00:00:39,230
+And after that we can implement Business layer.
+
+10
+00:00:39,230 --> 00:00:40,490
+In business Layer.
+
+11
+00:00:40,490 --> 00:00:43,100
+We will implement business logics on this layer.
+
+12
+00:00:43,100 --> 00:00:49,100
+And this layer will process the data taken by the data access and implement the actual logic and actual
+
+13
+00:00:49,100 --> 00:00:50,870
+use cases into our project.
+
+14
+00:00:51,380 --> 00:00:53,960
+And after that we will implement presentation layer.
+
+15
+00:00:53,960 --> 00:00:56,480
+This layer includes the user interactions.
+
+16
+00:00:56,480 --> 00:01:00,530
+It could be Windows Forms, Web applications or console application.
+
+17
+00:01:00,530 --> 00:01:07,160
+But the main purpose is here to show the data to the user and transmit the data from the user to business
+
+18
+00:01:07,160 --> 00:01:08,750
+layer and data access.
+
+19
+00:01:09,580 --> 00:01:13,900
+And after that we can check pattern and principles of discount microservices.
+
+20
+00:01:13,930 --> 00:01:20,500
+The first pattern is we will use gRPC protobuf files and endpoints for the inter service communication.
+
+21
+00:01:20,500 --> 00:01:25,930
+And after that we will use Entity Framework Core for all database operations.
+
+22
+00:01:25,930 --> 00:01:32,110
+And we will use SQLite database which is embedded SQL database for efficient data storage.
+
+23
+00:01:32,140 --> 00:01:38,380
+After that, we can check the libraries and NuGet packages that we are going to use for discount microservices.
+
+24
+00:01:38,410 --> 00:01:45,400
+The first one is generic packages including Master and Fluent validation, and the second one is a gRPC
+
+25
+00:01:45,400 --> 00:01:47,260
+which is ASP.Net core gRPC.
+
+26
+00:01:47,260 --> 00:01:49,420
+NuGet package comes from the template.
+
+27
+00:01:49,420 --> 00:01:55,480
+And for database infrastructure operation we will use Entity Framework core SQLite provider.
+
+28
+00:01:55,480 --> 00:02:01,840
+And we will use Entity Framework Core tools to migrate our database with discount operations.
+
+29
+00:02:02,200 --> 00:02:05,320
+And lastly we can check the project folder structure.
+
+30
+00:02:05,350 --> 00:02:07,990
+Here you can see the our project folder structure.
+
+31
+00:02:07,990 --> 00:02:10,479
+And we are planning to create these layers.
+
+32
+00:02:10,479 --> 00:02:14,710
+First of all we will create models folder including coupon entity.
+
+33
+00:02:14,710 --> 00:02:16,750
+This will be the SQL entity.
+
+34
+00:02:16,840 --> 00:02:22,270
+And after that we will create data folder including Entity Framework, Core Data Context and Migration
+
+35
+00:02:22,270 --> 00:02:23,140
+Extensions.
+
+36
+00:02:23,140 --> 00:02:30,130
+And after that we will create services folder and these services folder including actual gRPC service
+
+37
+00:02:30,130 --> 00:02:31,150
+implementation.
+
+38
+00:02:31,150 --> 00:02:38,350
+And we have Protoc folder and this protos folder including gRPC exposing API in proto files.
+
+39
+00:02:38,350 --> 00:02:42,010
+So these are the layers that we are going to define.
+
+40
+00:02:42,010 --> 00:02:45,520
+And we can map these layers into the layered architecture.
+
+41
+00:02:45,520 --> 00:02:51,220
+So that means in models folder we can say this is the domain layer and data folder this is the data
+
+42
+00:02:51,220 --> 00:02:57,280
+access layer and services folder are business layer and proto folder is representing our presentation
+
+43
+00:02:57,280 --> 00:02:57,850
+layer.
+
+44
+00:02:58,850 --> 00:03:02,600
+After that we can check the deployment of the discount microservices.
+
+45
+00:03:02,600 --> 00:03:07,340
+Basically, we will containerize discount microservices with Docker and Docker file.
+
+46
+00:03:07,340 --> 00:03:13,760
+And after that implement this Docker file and update our docker compose file for running discount microservices
+
+47
+00:03:13,760 --> 00:03:16,430
+and SQLite database in a Docker environment.
+

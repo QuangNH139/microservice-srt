@@ -1,0 +1,160 @@
+1
+00:00:00,140 --> 00:00:07,100
+In this video we are going to learn Entity Framework Core Interceptors, which is save Change interceptor
+
+2
+00:00:07,100 --> 00:00:09,050
+for auditing entities.
+
+3
+00:00:09,890 --> 00:00:16,700
+Interceptors in Entity Framework Core enable the interception, modification or suppression of Entity
+
+4
+00:00:16,700 --> 00:00:18,410
+Framework core operations.
+
+5
+00:00:18,890 --> 00:00:26,030
+These include low level database operations such as executing a command, as well as higher level operations
+
+6
+00:00:26,030 --> 00:00:28,220
+such as the cost to save changes.
+
+7
+00:00:28,670 --> 00:00:29,960
+So let me explain.
+
+8
+00:00:29,960 --> 00:00:34,430
+Save changes interceptions the save changes and save changes.
+
+9
+00:00:34,430 --> 00:00:41,180
+Async interceptions points are used to execute custom logic when saving changes to the database.
+
+10
+00:00:41,990 --> 00:00:48,710
+These interceptions points are defined by the I save change interceptor interfaces.
+
+11
+00:00:49,490 --> 00:00:56,510
+Entity Framework Core provides a save change interceptor base class with no operation methods as a convenience.
+
+12
+00:00:57,080 --> 00:01:00,380
+So let's see one of the use case when saving changes.
+
+13
+00:01:00,380 --> 00:01:02,450
+Interception for auditing.
+
+14
+00:01:02,450 --> 00:01:08,990
+Interception of save changes can be used to create an independent audit record of the change.
+
+15
+00:01:09,290 --> 00:01:15,620
+This is useful for maintaining a history of who changed an entity and when changed this entity.
+
+16
+00:01:16,550 --> 00:01:23,120
+Before saving changes to the database, you can iterate through the changed entities in the DB context
+
+17
+00:01:23,120 --> 00:01:28,760
+and lock or store the audit information like timestamps or user identifiers.
+
+18
+00:01:29,330 --> 00:01:34,880
+Now we can learn how to register interceptors so how we can register interceptors.
+
+19
+00:01:34,880 --> 00:01:39,020
+Interceptors are registered using the add interceptors.
+
+20
+00:01:39,020 --> 00:01:46,130
+When configuring a Dbcontext instance, a common approach is usually done in the on configuring method
+
+21
+00:01:46,130 --> 00:01:47,660
+of the Dbcontext.
+
+22
+00:01:48,080 --> 00:01:54,980
+As an example, you can see how to register a save change interceptor into the DB context object.
+
+23
+00:01:54,980 --> 00:01:58,430
+Here you can see that we have a example db context.
+
+24
+00:01:58,430 --> 00:02:05,390
+And when configuring these db context, we can add interceptors with using the add Interceptors method
+
+25
+00:02:05,390 --> 00:02:07,610
+into these on configuring method.
+
+26
+00:02:07,610 --> 00:02:11,990
+And here you can see that we have added text query command interceptors.
+
+27
+00:02:12,170 --> 00:02:18,560
+Now I am going to explain how we can implement a custom save change interceptor into our codes.
+
+28
+00:02:18,560 --> 00:02:20,840
+We can use custom interceptor.
+
+29
+00:02:20,840 --> 00:02:28,100
+We will implement a custom interceptor by extending save change interceptor or implementing I save change
+
+30
+00:02:28,100 --> 00:02:29,660
+Interceptor interface.
+
+31
+00:02:29,810 --> 00:02:33,140
+So this will be done with typical overriding methods.
+
+32
+00:02:33,140 --> 00:02:40,010
+We can override methods like saving changes and save changes to execute custom logic.
+
+33
+00:02:40,010 --> 00:02:46,460
+And here you can see an example of the save change interceptor implementation for auditing.
+
+34
+00:02:46,460 --> 00:02:50,000
+You can see that this will be inherited from the save change interceptor.
+
+35
+00:02:50,000 --> 00:02:52,640
+And this is our class for interceptor.
+
+36
+00:02:52,640 --> 00:02:59,690
+And we will override saving changes in order to perform auditable entities with setting the created
+
+37
+00:02:59,690 --> 00:03:03,590
+at and created by columns in the Saving Change Interceptor.
+
+38
+00:03:03,590 --> 00:03:08,930
+So we will follow the same steps when implementing our entities and using Entity Framework.
+
+39
+00:03:08,930 --> 00:03:15,410
+Core interceptors for auditing is a powerful technique to inject custom behavior during the lifecycle
+
+40
+00:03:15,410 --> 00:03:17,210
+of the Dbcontext operations.
+

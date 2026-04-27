@@ -1,0 +1,180 @@
+1
+00:00:00,340 --> 00:00:04,059
+In this video we are going to learn domain driven design.
+
+2
+00:00:04,090 --> 00:00:06,250
+So what is domain driven design?
+
+3
+00:00:06,280 --> 00:00:13,300
+Domain driven design has been around since Eric Evans published his book about the subject in 2003.
+
+4
+00:00:13,690 --> 00:00:18,370
+Domain driven design is not an improved technology or specific method.
+
+5
+00:00:18,430 --> 00:00:20,020
+Domain driven design is.
+
+6
+00:00:20,020 --> 00:00:26,890
+Solving a complex problem is to break the problem into smaller parts and focus on the smaller problems
+
+7
+00:00:26,890 --> 00:00:28,990
+that are relatively easy.
+
+8
+00:00:29,590 --> 00:00:36,280
+A complex domain may contain subdomains, and some of the sub domains can combine and grouping with
+
+9
+00:00:36,280 --> 00:00:39,550
+each other for common rules and responsibilities.
+
+10
+00:00:40,390 --> 00:00:42,940
+So domain driven design has two types.
+
+11
+00:00:42,940 --> 00:00:47,230
+These are the strategic and tactical domain driven design.
+
+12
+00:00:47,620 --> 00:00:52,720
+Strategic domain driven design is about understanding and modeling the business domain.
+
+13
+00:00:52,720 --> 00:00:58,330
+It involves identifying the different domains, their sub domains, and how they interact with each
+
+14
+00:00:58,330 --> 00:00:58,900
+other.
+
+15
+00:00:59,620 --> 00:01:05,740
+In tactical domain driven design is more about the implementation details and provide design patterns
+
+16
+00:01:05,740 --> 00:01:10,990
+including the patterns like entities, value objects, aggregates, and so on.
+
+17
+00:01:11,110 --> 00:01:16,480
+For this video, we will focus on the strategic domain driven design and its key concepts.
+
+18
+00:01:17,590 --> 00:01:23,710
+In order to understand domain driven design, some basic concepts need to be mastered and these are
+
+19
+00:01:23,710 --> 00:01:29,710
+the domain subdomain, ubiquitous language, bounded context and context mapping.
+
+20
+00:01:29,710 --> 00:01:31,630
+So let me start with the domain.
+
+21
+00:01:31,930 --> 00:01:37,240
+The domain is the sphere of the knowledge and activity around which the application logic revolves.
+
+22
+00:01:37,240 --> 00:01:44,230
+It represents the problem space and the array of the expertise or business need that the software addresses.
+
+23
+00:01:44,260 --> 00:01:50,350
+An example of the domain in e-commerce application domain might include ordering, inventory management
+
+24
+00:01:50,350 --> 00:01:52,300
+and customer support, and so on.
+
+25
+00:01:52,990 --> 00:01:55,330
+The second concept is sub domain.
+
+26
+00:01:55,420 --> 00:02:01,270
+A sub domain is a part of the domain and represents a specific area of the expertise within the overall
+
+27
+00:02:01,270 --> 00:02:01,930
+domain.
+
+28
+00:02:01,960 --> 00:02:08,979
+Each sub domain has its unique logic and rules, and another concept is ubiquitous language, which
+
+29
+00:02:08,979 --> 00:02:15,820
+is a common language used by the developers and the domain experts in order to ensure clarity and consistency.
+
+30
+00:02:15,850 --> 00:02:20,830
+It is crucial for this language to be used in both discussions and in the code base.
+
+31
+00:02:20,830 --> 00:02:27,010
+It helps to avoid misunderstanding and ensures that all stakeholders have a common understanding of
+
+32
+00:02:27,010 --> 00:02:28,180
+the domain concepts.
+
+33
+00:02:28,780 --> 00:02:31,990
+And another important concept is bounded context.
+
+34
+00:02:31,990 --> 00:02:38,200
+Bounded context is the grouping of the closely related scopes that we can say logical boundaries.
+
+35
+00:02:38,200 --> 00:02:44,860
+Bounded context is a logical boundary that represents the smaller problem particles of the complex domain
+
+36
+00:02:44,860 --> 00:02:48,430
+that are self-consistent and as dependent as possible.
+
+37
+00:02:48,430 --> 00:02:54,910
+It is a central pattern in domain driven design, and help to manage complexity by dividing these domain
+
+38
+00:02:54,910 --> 00:02:56,290
+into manageable parts.
+
+39
+00:02:56,320 --> 00:02:59,710
+Each bounded context can have its database schema.
+
+40
+00:02:59,710 --> 00:03:02,860
+It is called modules and it is team working on it.
+
+41
+00:03:03,370 --> 00:03:07,360
+And another domain driven concept is context mapping pattern.
+
+42
+00:03:07,360 --> 00:03:13,300
+In DDT, we can use context mapping pattern for identification of bounded contexts.
+
+43
+00:03:13,300 --> 00:03:19,270
+With context mapping pattern, we can identify the whole bounded context in the application and with
+
+44
+00:03:19,270 --> 00:03:20,530
+their logical boundaries.
+
+45
+00:03:20,530 --> 00:03:25,150
+And the context map is a way to define logical boundaries between the domains.
+

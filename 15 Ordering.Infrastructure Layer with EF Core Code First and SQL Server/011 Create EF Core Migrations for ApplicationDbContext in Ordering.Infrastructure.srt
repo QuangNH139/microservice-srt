@@ -1,0 +1,296 @@
+1
+00:00:00,110 --> 00:00:07,310
+In this video we are going to do step six which is create Entity Framework core migrations for application
+
+2
+00:00:07,310 --> 00:00:09,890
+DB context in ordering infrastructure.
+
+3
+00:00:10,040 --> 00:00:15,230
+But before that, let's understand what is Entity Framework core migrations.
+
+4
+00:00:15,770 --> 00:00:22,220
+Entity framework core migrations are a powerful feature for managing database schema changes in an application's
+
+5
+00:00:22,220 --> 00:00:23,120
+life cycle.
+
+6
+00:00:23,690 --> 00:00:30,440
+They enable a developer to evolve a database schema in a controlled and consistent way, in line with
+
+7
+00:00:30,440 --> 00:00:31,190
+the domain model.
+
+8
+00:00:31,190 --> 00:00:33,800
+Changes in real world projects.
+
+9
+00:00:33,800 --> 00:00:35,450
+Data models change.
+
+10
+00:00:35,450 --> 00:00:42,680
+As features get implemented, new entities or properties are added and removed, and database schemas
+
+11
+00:00:42,680 --> 00:00:47,510
+need to be changed accordingly to be kept in sync with the application.
+
+12
+00:00:48,170 --> 00:00:54,740
+Migrations provide a way to incrementally update the database schema so that it stays in synchronous
+
+13
+00:00:54,740 --> 00:00:56,780
+with the application's data model.
+
+14
+00:00:57,500 --> 00:01:03,830
+It is especially useful in team environment and continuous deployment scenarios, where database schema
+
+15
+00:01:03,830 --> 00:01:07,490
+changes are frequent and need to be applied systematically.
+
+16
+00:01:08,390 --> 00:01:15,860
+So how Entity Framework core migration works when a data model change occurs, developers use Entity
+
+17
+00:01:15,860 --> 00:01:21,740
+Framework core Tools in order to create a corresponding migration folder that describes the necessary
+
+18
+00:01:21,740 --> 00:01:22,970
+database updates.
+
+19
+00:01:23,330 --> 00:01:29,240
+Entity Framework Core compares the current model against a snapshot of the previous model in order to
+
+20
+00:01:29,240 --> 00:01:32,510
+find differences and generate migration source files.
+
+21
+00:01:32,540 --> 00:01:38,870
+Once any migration has been generated, it can be applied to a database in various ways.
+
+22
+00:01:38,900 --> 00:01:45,590
+Entity framework Core records all applied migrations in a special history table, allowing it to know
+
+23
+00:01:45,590 --> 00:01:48,890
+which migrations has been applied and which haven't.
+
+24
+00:01:50,050 --> 00:01:54,940
+So we will use Entity Framework core code first approach in our application.
+
+25
+00:01:54,940 --> 00:02:01,150
+We have already followed the Entity Framework Core Code first approach with creating Dbcontext class,
+
+26
+00:02:01,150 --> 00:02:06,730
+developing entity class and configure Entity Framework core entities in the configuration files.
+
+27
+00:02:06,730 --> 00:02:09,460
+Now it is time to perform migrations.
+
+28
+00:02:09,460 --> 00:02:16,210
+In this approach, database creation and schema updates are driven by the entity class and the Dbcontext
+
+29
+00:02:16,210 --> 00:02:18,160
+configurations in the application.
+
+30
+00:02:18,160 --> 00:02:24,460
+That means, first of all, we should complete the development of the entity class configurations and
+
+31
+00:02:24,460 --> 00:02:25,960
+Dbcontext classes.
+
+32
+00:02:25,960 --> 00:02:29,920
+After that, we can run the Entity Framework core migration commands.
+
+33
+00:02:29,920 --> 00:02:34,480
+So we are at this stage of the running Entity Framework core migration commands.
+
+34
+00:02:34,960 --> 00:02:39,070
+So how we can run these Entity Framework core migration commands.
+
+35
+00:02:39,070 --> 00:02:43,570
+In order to create database we have two ways to perform this command.
+
+36
+00:02:43,570 --> 00:02:46,570
+The first one is using the dotnet core CLI.
+
+37
+00:02:46,600 --> 00:02:54,220
+We can follow the dotnet f and Microsoft Entity Framework core design packages for cross platform command
+
+38
+00:02:54,220 --> 00:02:57,430
+line tooling, including the dotnet command.
+
+39
+00:02:57,430 --> 00:03:03,250
+First of all, we will install the dotnet f global tool, and after that we will add the package which
+
+40
+00:03:03,250 --> 00:03:04,360
+name is design.
+
+41
+00:03:04,360 --> 00:03:10,360
+And after that we can run the migrations to create migration folder with running dotnet f migrations.
+
+42
+00:03:10,360 --> 00:03:16,990
+Add an initial create which is the name of the the first initial migration folder, and after that we
+
+43
+00:03:16,990 --> 00:03:22,690
+can perform these migrations to the database with running dotnet f database update.
+
+44
+00:03:23,290 --> 00:03:26,650
+But the second way is using the Package Manager console.
+
+45
+00:03:26,650 --> 00:03:33,730
+In Visual Studio we can use Microsoft Entity Framework core tools, NuGet packages for PowerShell tooling
+
+46
+00:03:33,730 --> 00:03:36,790
+that works in the Visual Studio Package Manager console.
+
+47
+00:03:36,790 --> 00:03:43,810
+So in this case we will install the package which name is tools NuGet package, and after that we can
+
+48
+00:03:43,810 --> 00:03:48,100
+run the Add migrations initial Create and update database command.
+
+49
+00:03:48,100 --> 00:03:53,230
+In the Package Manager console in order to create migration folder and update the database.
+
+50
+00:03:53,230 --> 00:04:00,220
+So we will use and follow the second way when we are developing our application, I'm using Visual Studio
+
+51
+00:04:00,220 --> 00:04:01,570
+and Package Manager Console.
+
+52
+00:04:01,570 --> 00:04:04,510
+That's why we have installed these tools NuGet packages.
+
+53
+00:04:04,510 --> 00:04:08,680
+Now it is time to run these commands under the Package Manager console.
+
+54
+00:04:08,680 --> 00:04:13,330
+And before that I'm going to show Entity Framework Core migrations.
+
+55
+00:04:13,330 --> 00:04:17,800
+Add migration command parameters that we can define when running our commands.
+
+56
+00:04:17,800 --> 00:04:22,630
+You can see that we can give the name of the migrations, which is the name of the migration.
+
+57
+00:04:22,630 --> 00:04:28,660
+And here you can see output tier which is the directory where migration files will be created.
+
+58
+00:04:28,660 --> 00:04:31,030
+And here you can see the namespace.
+
+59
+00:04:31,030 --> 00:04:33,760
+This is the namespace for generated classes.
+
+60
+00:04:33,760 --> 00:04:35,770
+And we can specify the context.
+
+61
+00:04:35,770 --> 00:04:38,680
+This is the context class that we can use.
+
+62
+00:04:38,680 --> 00:04:40,960
+And also we can specify the project.
+
+63
+00:04:40,960 --> 00:04:43,360
+This is the project containing the context.
+
+64
+00:04:43,360 --> 00:04:46,120
+And we can also specify the startup project.
+
+65
+00:04:46,120 --> 00:04:49,450
+This is the project with the configurations and settings.
+
+66
+00:04:49,840 --> 00:04:54,340
+At this stage we have a special consideration for different assemblies.
+
+67
+00:04:54,340 --> 00:05:01,630
+Since we are applying the clean architecture or infrastructure layer and Dbcontext class starting on
+
+68
+00:05:01,630 --> 00:05:02,920
+the ordering infrastructure.
+
+69
+00:05:02,920 --> 00:05:09,490
+But our API layer is different layer, which is the presentation layer that we need to consider the
+
+70
+00:05:09,490 --> 00:05:14,260
+different assemblies when generating the migrations and running the migration commands.
+
+71
+00:05:14,260 --> 00:05:21,040
+If the Dbcontext class is in different assembly than the startup project, you need to specify both
+
+72
+00:05:21,040 --> 00:05:26,830
+target and startup project, either in the Package Manager console tools or the dotnet core CLI tools.
+
+73
+00:05:26,830 --> 00:05:33,310
+So we will use the startup project, and the startup project will be the ordering API.
+
+74
+00:05:33,310 --> 00:05:40,030
+And we will use the target project, which is the Dbcontext object for the ordering infrastructure layer.
+

@@ -1,0 +1,496 @@
+1
+00:00:00,110 --> 00:00:05,600
+In this video we are going to create postman collections for each of microservices.
+
+2
+00:00:05,600 --> 00:00:12,320
+So we will create a comprehensive postman collection for interacting with and testing our microservices
+
+3
+00:00:12,440 --> 00:00:18,650
+or Itiel project consists of several microservices, including catalog basket, discount and ordering
+
+4
+00:00:18,650 --> 00:00:24,740
+microservices that we will develop during the course, and each service has its own set of use case
+
+5
+00:00:24,740 --> 00:00:26,900
+and exposing specific endpoints.
+
+6
+00:00:26,900 --> 00:00:32,990
+For example, if you look at the catalog microservices here, you can see the Http get, post, put
+
+7
+00:00:32,990 --> 00:00:36,680
+and delete endpoints for performing these use cases.
+
+8
+00:00:36,680 --> 00:00:44,210
+So if you go back to our port numbers, each microservice is representing and exposing their APIs in
+
+9
+00:00:44,210 --> 00:00:45,410
+different port numbers.
+
+10
+00:00:45,410 --> 00:00:50,810
+So that means we have assigned different port numbers for each microservices.
+
+11
+00:00:50,810 --> 00:00:56,030
+And these port numbers differs between the local environment and the Docker environment.
+
+12
+00:00:56,420 --> 00:01:03,110
+And if you look at the our deployment strategy, this will be aligned our port numbers we have divided
+
+13
+00:01:03,110 --> 00:01:03,650
+by two.
+
+14
+00:01:03,680 --> 00:01:10,880
+The first deployment strategy is local environment where microservices run locally and connect to containerized
+
+15
+00:01:10,880 --> 00:01:13,160
+backing services with Docker containers.
+
+16
+00:01:13,160 --> 00:01:19,700
+And in the deployment tool strategy, both microservices and backing services are orchestrated using
+
+17
+00:01:19,730 --> 00:01:20,750
+the Docker compose.
+
+18
+00:01:20,750 --> 00:01:29,960
+So we will simulate these environments into our postman collection and exposing our API endpoint port
+
+19
+00:01:29,960 --> 00:01:32,660
+numbers according to environment variables.
+
+20
+00:01:32,660 --> 00:01:40,220
+So for that purpose, postman has collection feature that is very great fit for this kind of implementation
+
+21
+00:01:40,220 --> 00:01:41,660
+and API definition.
+
+22
+00:01:41,660 --> 00:01:48,980
+If you open the postman, you can see that we have created an additional Http port and guest endpoints,
+
+23
+00:01:48,980 --> 00:01:52,850
+and we will specify the whole http uri.
+
+24
+00:01:52,850 --> 00:01:59,150
+And once we deploy this catalog microservice to Docker environment, we have to change this port number
+
+25
+00:01:59,150 --> 00:01:59,660
+manually.
+
+26
+00:01:59,660 --> 00:02:02,000
+And adapting into Docker environment.
+
+27
+00:02:02,060 --> 00:02:08,690
+Instead of that we will use postman great features which is the postman collections and environments.
+
+28
+00:02:08,690 --> 00:02:11,600
+So we will create collections and environments.
+
+29
+00:02:11,600 --> 00:02:14,540
+In order to manage our microservice requests.
+
+30
+00:02:14,570 --> 00:02:21,920
+We can set the port numbers as a variables and allowing us to switch between the local and Docker environment
+
+31
+00:02:21,920 --> 00:02:23,630
+seamlessly in here.
+
+32
+00:02:23,630 --> 00:02:29,240
+Now we are going to start by defining and setting up our environment in postman.
+
+33
+00:02:29,240 --> 00:02:36,290
+Go to the environments and if you expand these environments, you can see that we can put these plus
+
+34
+00:02:36,290 --> 00:02:38,600
+button in order to create new environment.
+
+35
+00:02:38,600 --> 00:02:43,460
+In this window, we will change the environment name as a localhost.
+
+36
+00:02:45,350 --> 00:02:50,090
+And we will also create a new environment which name is Docker.
+
+37
+00:02:50,690 --> 00:02:58,160
+So by this way we can represent and aligning with deployment strategy and select the localhost environment.
+
+38
+00:02:58,160 --> 00:03:01,640
+And under the localhost environments we can define variables.
+
+39
+00:03:01,640 --> 00:03:03,950
+So which variables we will define.
+
+40
+00:03:03,950 --> 00:03:07,460
+We will define microservice URL variables in here.
+
+41
+00:03:07,460 --> 00:03:11,090
+For example let me start with catalog URL.
+
+42
+00:03:11,810 --> 00:03:20,030
+And we can give the value for according to our microservice local environment endpoints and the port
+
+43
+00:03:20,030 --> 00:03:20,630
+numbers.
+
+44
+00:03:20,630 --> 00:03:23,540
+So after that we will set the Docker environments.
+
+45
+00:03:23,540 --> 00:03:29,690
+So for the catalog microservices in local environment we should give the 50 over 50 for that purpose.
+
+46
+00:03:29,690 --> 00:03:36,380
+I'm going to write localhost 5050 in here and the current value should be the same.
+
+47
+00:03:36,380 --> 00:03:43,520
+And if you continue with the next microservices which is the basket URL and basket URL should be the
+
+48
+00:03:43,520 --> 00:03:47,300
+5051 and the current value should be 5051.
+
+49
+00:03:47,300 --> 00:03:53,720
+And if you continue the next microservices, we will see keeping the discount microservices.
+
+50
+00:03:53,720 --> 00:04:01,790
+Since discount will be exposing APIs in gRPC protocol, we will set these discount gRPC endpoints with
+
+51
+00:04:01,790 --> 00:04:02,540
+differently.
+
+52
+00:04:02,540 --> 00:04:10,550
+So let's continue with the ordering microservices that exposing our local environment 5053 and 6063
+
+53
+00:04:10,550 --> 00:04:11,240
+for Docker.
+
+54
+00:04:11,240 --> 00:04:15,320
+So come here and write for the ordering URL.
+
+55
+00:04:15,980 --> 00:04:22,970
+And in here I'm going to give the name as a value should be localhost 5053.
+
+56
+00:04:22,970 --> 00:04:25,100
+And the current value should be the same.
+
+57
+00:04:25,430 --> 00:04:26,420
+At this stage.
+
+58
+00:04:26,420 --> 00:04:32,540
+Please don't forget to save this file, because without saving this file, this will not reflecting.
+
+59
+00:04:32,540 --> 00:04:36,920
+Save this file and remove this orange box and save this file.
+
+60
+00:04:36,920 --> 00:04:37,400
+Okay.
+
+61
+00:04:37,400 --> 00:04:41,480
+So we have successfully saved our localhost environment and variables.
+
+62
+00:04:41,480 --> 00:04:44,000
+And please go to the Docker environment.
+
+63
+00:04:44,000 --> 00:04:46,970
+And we will follow the same steps for the Docker environment.
+
+64
+00:04:46,970 --> 00:04:51,200
+Set the variable name as a catalog URL in the environment.
+
+65
+00:04:51,200 --> 00:04:54,290
+We will follow the 6060 port.
+
+66
+00:04:54,290 --> 00:04:55,430
+For that purpose.
+
+67
+00:04:55,430 --> 00:04:59,540
+I'm going to write https 66 port and the current value should be.
+
+68
+00:04:59,690 --> 00:05:07,820
+The same, and after that we will be basket Earl and the initial value should be 6061 and the current
+
+69
+00:05:07,820 --> 00:05:09,260
+value will be the same.
+
+70
+00:05:09,260 --> 00:05:10,250
+And ordering.
+
+71
+00:05:10,250 --> 00:05:10,940
+Earl.
+
+72
+00:05:13,540 --> 00:05:17,230
+Will be 6063 and the current value will be the same.
+
+73
+00:05:17,230 --> 00:05:19,660
+And make sure that you also save this file.
+
+74
+00:05:19,690 --> 00:05:26,470
+Okay, now we have two environments that we can use when we are dynamically change the port number by
+
+75
+00:05:26,470 --> 00:05:28,450
+changing the postman environments.
+
+76
+00:05:28,450 --> 00:05:31,330
+So you can see that environments are listing in here.
+
+77
+00:05:31,330 --> 00:05:35,350
+And you can select the environment and select this button.
+
+78
+00:05:35,350 --> 00:05:37,990
+And you can see the variables also set in here.
+
+79
+00:05:38,080 --> 00:05:42,850
+Now we will create a new postman collection for our microservices.
+
+80
+00:05:42,850 --> 00:05:47,440
+Within this collection we will add sub collections for each microservices.
+
+81
+00:05:47,440 --> 00:05:53,680
+So for that purpose please open the collections by clicking this button and click this plus button in
+
+82
+00:05:53,680 --> 00:05:58,270
+order to create new collection and give the name as a microservices.
+
+83
+00:05:59,560 --> 00:06:03,010
+This will be the our microservices root collection.
+
+84
+00:06:03,010 --> 00:06:08,410
+And under this collection we will create separate folders for each microservices.
+
+85
+00:06:08,410 --> 00:06:15,430
+Because if you look at the our microservices, each microservices can be exposed different Http methods
+
+86
+00:06:15,430 --> 00:06:17,560
+to perform their business cases.
+
+87
+00:06:17,560 --> 00:06:22,960
+Here you can see that catalog microservices will be exposed three Http get method.
+
+88
+00:06:22,960 --> 00:06:30,310
+In order to perform these use cases and some Http post, put and delete methods to perform Crud operations,
+
+89
+00:06:30,310 --> 00:06:36,040
+I am going to create a new sub collections with clicking this button and adding folder.
+
+90
+00:06:36,040 --> 00:06:39,310
+And this folder name should be the our microservices.
+
+91
+00:06:39,310 --> 00:06:40,840
+This will be the catalog.
+
+92
+00:06:40,840 --> 00:06:44,830
+And if I'm going to add a new folder, this will be the basket.
+
+93
+00:06:45,430 --> 00:06:49,960
+And let me add a new folder for the discount.
+
+94
+00:06:50,320 --> 00:06:54,940
+And I'm going to add a new folder for the ordering.
+
+95
+00:06:58,410 --> 00:06:58,980
+Okay.
+
+96
+00:06:58,980 --> 00:07:04,770
+These folders will be represent our microservices and include microservice exposing APIs.
+
+97
+00:07:04,800 --> 00:07:07,470
+Now we will focus on the catalog microservices.
+
+98
+00:07:07,470 --> 00:07:11,250
+And I am going to add a new request under this folder.
+
+99
+00:07:11,250 --> 00:07:16,140
+And this will be representing our Get catalog operation.
+
+100
+00:07:16,170 --> 00:07:22,140
+As you remember that in the Get catalog operation we will use https localhost 5050 and products.
+
+101
+00:07:22,140 --> 00:07:28,230
+So for now I am going to use environment variable names instead of these request URL.
+
+102
+00:07:28,230 --> 00:07:33,810
+For that purpose I'm going to put a double curly bracket.
+
+103
+00:07:33,810 --> 00:07:39,780
+And here you can see that our variables already come in here and select these catalog URL.
+
+104
+00:07:39,780 --> 00:07:46,410
+And if you hover this URL you can see the initial and current value will be set localhost 5050.
+
+105
+00:07:46,410 --> 00:07:50,130
+Because we can see that the current environment is localhost.
+
+106
+00:07:50,130 --> 00:07:56,430
+If we change the environment as a docker, and if you go to the catalog URL, you can see that the initial
+
+107
+00:07:56,430 --> 00:07:59,310
+and current value has changed as a 6060.
+
+108
+00:07:59,340 --> 00:08:07,020
+So by this way we can easily switch the environments and change the environment request Uri according
+
+109
+00:08:07,050 --> 00:08:08,730
+to our deployment strategy.
+
+110
+00:08:08,730 --> 00:08:15,510
+So let me set the environment as a localhost and prepare our http get method and save this method.
+
+111
+00:08:15,510 --> 00:08:18,750
+And this will be represent our get catalog operation.
+
+112
+00:08:18,750 --> 00:08:22,380
+Let's test this Http get method for that purpose.
+
+113
+00:08:22,380 --> 00:08:29,340
+Open the Visual Studio and run our application as a catalog API, https and run without debugging.
+
+114
+00:08:29,580 --> 00:08:37,320
+Because we only test our endpoint from the postman, open the postman and send the http get request.
+
+115
+00:08:37,320 --> 00:08:41,250
+And here you can see that we have listed the products successfully.
+
+116
+00:08:41,250 --> 00:08:45,030
+So our http get method is successfully prepared.
+
+117
+00:08:45,030 --> 00:08:51,210
+And during the whole course we will be adding new endpoints as we develop microservices one by one.
+
+118
+00:08:51,360 --> 00:08:55,650
+By the way, you don't have to develop postman collection like me in here.
+
+119
+00:08:55,650 --> 00:08:59,820
+We will also put these postman collection into our GitHub repository.
+
+120
+00:08:59,820 --> 00:09:05,610
+If you go to this GitHub repository, the full postman collection will be stored into our repository
+
+121
+00:09:05,610 --> 00:09:07,140
+and available on GitHub.
+
+122
+00:09:07,140 --> 00:09:14,820
+And also I will add these postman collection into downloadable resources of the Udemy lecture resources.
+
+123
+00:09:14,820 --> 00:09:20,730
+So once you get these postman collection, you can click the import button and drag and drop these file,
+
+124
+00:09:20,730 --> 00:09:25,800
+and you will reach the latest endpoints for each microservices in here.
+

@@ -1,0 +1,140 @@
+1
+00:00:00,080 --> 00:00:06,230
+In this video, we are going to integrate radius into our Docker compose setup and making it part of
+
+2
+00:00:06,230 --> 00:00:08,450
+our multi-container Docker environment.
+
+3
+00:00:08,450 --> 00:00:11,210
+So we have two files for this operation.
+
+4
+00:00:11,210 --> 00:00:14,750
+The docker compose yaml file and docker compose overwrite yaml file.
+
+5
+00:00:14,750 --> 00:00:17,210
+So in here the docker compose yaml file.
+
+6
+00:00:17,210 --> 00:00:22,070
+We will define Redis service along with other backing services and microservices.
+
+7
+00:00:22,070 --> 00:00:28,520
+And in the docker compose overwrite file we will override and specify configuration details for local
+
+8
+00:00:28,520 --> 00:00:34,610
+development, for example container name, environment variables, port numbers and volume definitions,
+
+9
+00:00:34,610 --> 00:00:35,480
+and so on.
+
+10
+00:00:35,990 --> 00:00:42,530
+So please open the Docker-compose.yaml main file and we will set up the art baking services in our case
+
+11
+00:00:42,530 --> 00:00:45,200
+Redis distributed cache for that purpose.
+
+12
+00:00:45,200 --> 00:00:50,750
+After the basket database, we are listing the baking services on top of these docker-compose.yml file.
+
+13
+00:00:50,750 --> 00:00:53,150
+And after that we will list microservices.
+
+14
+00:00:53,150 --> 00:00:58,430
+That's why after the basket db I'm going to write distributed cache.
+
+15
+00:00:58,460 --> 00:01:01,310
+Please type distributed cache in here.
+
+16
+00:01:01,310 --> 00:01:05,720
+And as an image we should give Redis.
+
+17
+00:01:06,650 --> 00:01:13,370
+Make sure that your indentation is correct and see that we defined Redis as a distributed cache into
+
+18
+00:01:13,370 --> 00:01:15,080
+our docker compose Yaml file.
+
+19
+00:01:15,080 --> 00:01:18,590
+Save this file and we can go to the overwrite Yaml file.
+
+20
+00:01:18,590 --> 00:01:26,450
+In order to configure this Redis distributed cache, again, we should go to the after basket db configurations
+
+21
+00:01:26,450 --> 00:01:33,230
+and before microservice definitions, we should put in here our distributed cache configurations as
+
+22
+00:01:33,230 --> 00:01:34,340
+a backing services.
+
+23
+00:01:34,340 --> 00:01:38,600
+Here you can see that the name should be the same as the docker-compose.yml file.
+
+24
+00:01:38,600 --> 00:01:44,990
+And as a container name we give distributed cache because it could be generic name that we can change
+
+25
+00:01:44,990 --> 00:01:48,680
+the radius to the memcache in the upcoming and future developments.
+
+26
+00:01:48,680 --> 00:01:53,000
+For that purpose, please give a container name and restart it always.
+
+27
+00:01:53,000 --> 00:01:57,200
+If there is any problem in the cache, this will be restart always.
+
+28
+00:01:57,200 --> 00:01:59,600
+And here you can see the port definitions.
+
+29
+00:01:59,600 --> 00:02:04,820
+This is the default port that exposing the same port number to the our local environment.
+
+30
+00:02:04,820 --> 00:02:09,680
+Here you can see the internal port number to access the redis in Docker environment.
+
+31
+00:02:09,680 --> 00:02:14,540
+And here you can see that we have exposed the same port number to our local microservices.
+
+32
+00:02:14,540 --> 00:02:21,020
+So please save this overwrite Yaml file and make sure that you have be careful about the indentations
+
+33
+00:02:21,020 --> 00:02:23,150
+and you have developed a the same way.
+
+34
+00:02:23,150 --> 00:02:28,970
+As you can see that we have added the redis to our docker compose configuration for the multi-container
+
+35
+00:02:28,970 --> 00:02:29,630
+environments.
+

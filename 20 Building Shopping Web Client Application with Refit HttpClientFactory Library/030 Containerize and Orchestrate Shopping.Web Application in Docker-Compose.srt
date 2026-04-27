@@ -1,0 +1,280 @@
+1
+00:00:00,110 --> 00:00:05,600
+In this video, we are going to containerize an Orchestrate Shopping web client application in Docker
+
+2
+00:00:05,600 --> 00:00:06,230
+Compose.
+
+3
+00:00:06,260 --> 00:00:11,570
+You can see the e-commerce microservice deployment strategy that we have completed, the deployment
+
+4
+00:00:11,570 --> 00:00:15,620
+one, which is the local machine to connect the Docker compose backing services.
+
+5
+00:00:15,620 --> 00:00:21,560
+And now we are going to implement deployment tool which is the Docker compose all microservices and
+
+6
+00:00:21,560 --> 00:00:22,580
+backing services.
+
+7
+00:00:22,580 --> 00:00:27,860
+That means we will containerize and orchestrate shopping web client application and communicate with
+
+8
+00:00:27,860 --> 00:00:31,340
+the IRB API gateway inside of the docker compose environment.
+
+9
+00:00:31,460 --> 00:00:37,970
+When we are running the docker compose, Docker run the all containers into its own network and access
+
+10
+00:00:37,970 --> 00:00:40,070
+each other with Docker container names.
+
+11
+00:00:40,070 --> 00:00:45,050
+For that purpose, we should give the container names instead of the localhost and the port numbers
+
+12
+00:00:45,050 --> 00:00:49,040
+for the ARP API gateway configuration in the shopping web client application.
+
+13
+00:00:49,130 --> 00:00:50,660
+So let's get started.
+
+14
+00:00:50,660 --> 00:00:56,540
+I'm going to open the Visual Studio and we will start by Containerizing shopping web client application.
+
+15
+00:00:56,540 --> 00:01:03,470
+For that purpose you can right click the application add Docker support and select the target operating
+
+16
+00:01:03,470 --> 00:01:04,640
+system as a Linux.
+
+17
+00:01:05,410 --> 00:01:08,650
+And here you can see the Docker file is created successfully.
+
+18
+00:01:08,650 --> 00:01:11,950
+This is typical Docker file including several stages.
+
+19
+00:01:11,950 --> 00:01:15,010
+In order to containerize our shopping web client application.
+
+20
+00:01:15,010 --> 00:01:21,460
+I'm not going to explain deeply, and just after that we can go to the second step, which is the orchestrating
+
+21
+00:01:21,460 --> 00:01:23,440
+this shopping web client application.
+
+22
+00:01:23,440 --> 00:01:28,990
+That means we will include shopping web container into our Docker compose file for that purpose.
+
+23
+00:01:28,990 --> 00:01:35,530
+Again, I am going to right click the Shopping Web project file and add container Orchestrator support.
+
+24
+00:01:35,530 --> 00:01:41,140
+This time we will select Docker Compose as a container orchestrator and select Operating System as a
+
+25
+00:01:41,140 --> 00:01:41,650
+Linux.
+
+26
+00:01:41,650 --> 00:01:45,280
+Click the okay button and see the docker compose Yaml files.
+
+27
+00:01:45,460 --> 00:01:50,920
+After that, if you open the docker-compose.yml file and go at the end of this file, you can see that
+
+28
+00:01:50,920 --> 00:01:55,930
+shopping web application and container added into our docker-compose.yml file.
+
+29
+00:01:55,930 --> 00:02:02,590
+And if you expand the docker compose of HTML file and go at the end of this file, we can see that this
+
+30
+00:02:02,590 --> 00:02:07,360
+shopping web client application configurations are stored at the overridable file.
+
+31
+00:02:07,360 --> 00:02:13,390
+So now we are going to change these Overridable configurations into shopping web application according
+
+32
+00:02:13,420 --> 00:02:14,410
+to our architecture.
+
+33
+00:02:14,410 --> 00:02:19,570
+And here you can see the environment variables port numbers that we are going to modify in here.
+
+34
+00:02:19,570 --> 00:02:22,060
+So we should change these configurations.
+
+35
+00:02:22,060 --> 00:02:27,040
+Let's configure it for our microservice endpoints and start with port definitions.
+
+36
+00:02:27,040 --> 00:02:33,130
+If you look at our table you can see the shopping web application, port numbers, local environment
+
+37
+00:02:33,130 --> 00:02:34,210
+and Docker environment.
+
+38
+00:02:34,210 --> 00:02:41,680
+Here you can see that we will expand this Docker environment into 6005 and 6065 as a Http and Https
+
+39
+00:02:41,680 --> 00:02:42,220
+ports.
+
+40
+00:02:42,220 --> 00:02:50,200
+For that purpose, go back to our V studio and change the port numbers, exposing these 6005 and 6065
+
+41
+00:02:50,200 --> 00:02:50,770
+ports.
+
+42
+00:02:50,770 --> 00:02:54,250
+So just after that we will focus on the environment variables.
+
+43
+00:02:54,250 --> 00:02:59,500
+For environment variables we should referring the shopping web client application application settings
+
+44
+00:02:59,500 --> 00:03:00,310
+Json file.
+
+45
+00:03:00,310 --> 00:03:05,950
+If you open the application settings Json file, you can see that we have API settings and gateway.
+
+46
+00:03:05,950 --> 00:03:10,000
+Others we are using the localhost 6064 inside of the docker.
+
+47
+00:03:10,000 --> 00:03:13,450
+We should change this as a container name into docker name.
+
+48
+00:03:13,450 --> 00:03:19,090
+So for that purpose I'm going to go back to our docker compose, overwrite Yaml file and overwrite this
+
+49
+00:03:19,090 --> 00:03:21,340
+configuration into environment variable.
+
+50
+00:03:21,340 --> 00:03:28,270
+And this time I'm going to type as a API settings underscore underscore gateway address.
+
+51
+00:03:28,270 --> 00:03:32,590
+And this will be http api gateway and 880.
+
+52
+00:03:32,740 --> 00:03:38,080
+The ARP API gateway is the container name of the Docker compose environment that you can confirm.
+
+53
+00:03:38,080 --> 00:03:38,950
+From here.
+
+54
+00:03:38,950 --> 00:03:43,270
+And here you can see that I'm going to use Http and 880 port.
+
+55
+00:03:43,270 --> 00:03:46,270
+Why I'm using these Http and 880 port.
+
+56
+00:03:46,270 --> 00:03:53,320
+Because if I'm going to use 8081 and https port number, this will be throw an exception requiring SSL
+
+57
+00:03:53,320 --> 00:03:55,090
+connection and certification.
+
+58
+00:03:55,090 --> 00:04:01,090
+In order to avoid certificate configuration, I am going to use Http port number to communicate with
+
+59
+00:04:01,090 --> 00:04:03,940
+shopping web client application and the ARP API gateway.
+
+60
+00:04:03,940 --> 00:04:10,360
+So that's why we will put 880 port number to connect http port of the ARP API gateway inside of the
+
+61
+00:04:10,360 --> 00:04:11,980
+fully docker compose environment.
+
+62
+00:04:11,980 --> 00:04:17,529
+So after setting these configuration and the port numbers, we can also add a depends on section in
+
+63
+00:04:17,529 --> 00:04:18,130
+here.
+
+64
+00:04:18,459 --> 00:04:24,130
+After the deployment I'm going to add a new section which is the dependency on.
+
+65
+00:04:24,130 --> 00:04:29,830
+Here you can see that I have added the depends on because shopping web client application totally depends
+
+66
+00:04:29,830 --> 00:04:31,600
+on the Erb API gateway endpoints.
+
+67
+00:04:31,600 --> 00:04:34,660
+In order to consume and perform end to end use cases.
+
+68
+00:04:34,660 --> 00:04:39,190
+So please configure these client application as the same way I have did in here.
+
+69
+00:04:39,190 --> 00:04:44,890
+And within this configuration, our shopping Web client application now ready to run fully Docker compose
+
+70
+00:04:44,890 --> 00:04:50,590
+environment and to consume Erb API gateway and perform the use cases that we have defined in our slide.
+

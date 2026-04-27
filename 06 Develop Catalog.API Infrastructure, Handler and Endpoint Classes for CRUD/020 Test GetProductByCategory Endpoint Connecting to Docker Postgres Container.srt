@@ -1,0 +1,124 @@
+1
+00:00:00,200 --> 00:00:07,100
+In this video we are going to test Getproduct by category endpoint with connecting to Docker PostgreSQL
+
+2
+00:00:07,100 --> 00:00:07,939
+container.
+
+3
+00:00:08,090 --> 00:00:14,540
+So that means our first step is make sure that PostgreSQL database is set up and running inside of the
+
+4
+00:00:14,540 --> 00:00:15,050
+Docker.
+
+5
+00:00:15,440 --> 00:00:22,100
+Open the Docker desktop and make sure that your Docker compose is running and PostgreSQL container is
+
+6
+00:00:22,100 --> 00:00:23,330
+exposing to ports.
+
+7
+00:00:23,540 --> 00:00:29,060
+If you didn't start yet, you can come here and right click the Docker compose, set a startup project
+
+8
+00:00:29,060 --> 00:00:31,280
+and run the Docker compose profile.
+
+9
+00:00:31,280 --> 00:00:35,510
+And after that we will continue to our catalog microservices.
+
+10
+00:00:35,510 --> 00:00:38,300
+We will test the catalog API microservice.
+
+11
+00:00:38,300 --> 00:00:41,060
+You can right click and set a startup project.
+
+12
+00:00:41,060 --> 00:00:46,310
+But before that make sure that you should put the breakpoints in the beginning of the endpoint class.
+
+13
+00:00:46,550 --> 00:00:51,530
+And after that, if you go to the handle method, put a breakpoint handle method.
+
+14
+00:00:51,530 --> 00:01:00,230
+So after setting up the breakpoints, you can run the https mode and we will send http get method for
+
+15
+00:01:00,230 --> 00:01:02,870
+get products by category information.
+
+16
+00:01:02,870 --> 00:01:03,620
+Okay.
+
+17
+00:01:03,620 --> 00:01:11,150
+If you open the R postman, I'm going to duplicate the get product by ID and create a new http get method.
+
+18
+00:01:11,150 --> 00:01:18,020
+And this time you can see that the endpoint URL including the products category and category information
+
+19
+00:01:18,020 --> 00:01:18,710
+in here.
+
+20
+00:01:18,710 --> 00:01:25,190
+So basically I'm going to send a C5 as a category five and click the send button.
+
+21
+00:01:25,190 --> 00:01:27,770
+And this will be hit the R endpoint class.
+
+22
+00:01:27,770 --> 00:01:31,880
+And this will be redirect to mediator trigger to handle method.
+
+23
+00:01:31,880 --> 00:01:38,300
+And in the handle method we basically query inside of the product document table and see the products
+
+24
+00:01:38,600 --> 00:01:40,040
+regarding to C5.
+
+25
+00:01:40,040 --> 00:01:44,960
+So as you can see that there is no product because C5 category is not existing.
+
+26
+00:01:44,960 --> 00:01:51,170
+If you go to the get product by ID response, you can see that we have two categories C1 and C2.
+
+27
+00:01:51,170 --> 00:01:53,780
+So I'm going to change as a C2.
+
+28
+00:01:53,810 --> 00:02:00,350
+Save this request and send again http get request and hit the F5 and EF5.
+
+29
+00:02:00,350 --> 00:02:07,160
+This time you can see that we have get successful response including products filter by categories which
+
+30
+00:02:07,160 --> 00:02:08,360
+name is C2.
+
+31
+00:02:08,360 --> 00:02:13,970
+And that confirms that our endpoint is correctly querying data from the PostgreSQL database.
+

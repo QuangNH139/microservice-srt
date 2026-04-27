@@ -1,0 +1,300 @@
+1
+00:00:00,140 --> 00:00:05,930
+In this video we are going to orchestrate catalog API microservices with Docker Compose.
+
+2
+00:00:06,320 --> 00:00:12,200
+Docker compose is a tool for defining and running multi-container applications in Docker environment.
+
+3
+00:00:12,200 --> 00:00:18,110
+So you can see that in the last video we have containerized a single catalog microservices with adding
+
+4
+00:00:18,110 --> 00:00:20,240
+Docker support into our application.
+
+5
+00:00:20,240 --> 00:00:25,520
+And here you can see the illustration of the steps for containerization and orchestration.
+
+6
+00:00:25,520 --> 00:00:31,910
+We develop our code locally and adding Docker support to containerize our catalog API microservices.
+
+7
+00:00:31,910 --> 00:00:38,480
+And now we will orchestrate these microservices with using Docker Compose including the database and
+
+8
+00:00:38,480 --> 00:00:39,860
+microservice itself.
+
+9
+00:00:40,130 --> 00:00:47,270
+So with Docker Compose we use a Yaml file to configure our applications, services, networks and volume
+
+10
+00:00:47,270 --> 00:00:47,960
+definition.
+
+11
+00:00:47,960 --> 00:00:54,170
+And this allows us to run entire application with a single command which is the docker compose up.
+
+12
+00:00:54,500 --> 00:00:56,750
+So please open the Visual Studio.
+
+13
+00:00:56,750 --> 00:01:04,010
+We have already created docker compose before and docker compose overwrite file is generated when we
+
+14
+00:01:04,010 --> 00:01:10,160
+are activating our backing services PostgreSQL that you can check the docker compose for, including
+
+15
+00:01:10,160 --> 00:01:14,990
+only catalog db PostgreSQL and including in the overwrite file.
+
+16
+00:01:14,990 --> 00:01:18,890
+This only includes PostgreSQL configurations in here.
+
+17
+00:01:18,890 --> 00:01:25,820
+So far we have only used the compose for activating backing services, but now we will use the compose
+
+18
+00:01:25,820 --> 00:01:32,660
+to orchestrate all microservices and databases communicating each other in the network.
+
+19
+00:01:32,660 --> 00:01:37,880
+So for that purpose, we will follow the same steps to orchestrate the Catholic API.
+
+20
+00:01:37,880 --> 00:01:44,630
+We should select the Catholic API, right click Add Container Orchestrator Support and we should select
+
+21
+00:01:44,630 --> 00:01:46,850
+Docker Compose and click the okay button.
+
+22
+00:01:46,910 --> 00:01:49,700
+And target operating system should be Linux.
+
+23
+00:01:49,700 --> 00:01:56,780
+Click the okay and see that Docker-compose.yml and overwrite file editing from the Visual Studio.
+
+24
+00:01:56,780 --> 00:02:03,500
+And this time we can see two services, one for the Catholic DB and another for the Catholic API representing
+
+25
+00:02:03,500 --> 00:02:04,790
+our microservices.
+
+26
+00:02:04,790 --> 00:02:11,540
+And this is indicating our image and Docker file location that we will wield as a Docker container in
+
+27
+00:02:11,540 --> 00:02:12,620
+the Docker compose.
+
+28
+00:02:12,620 --> 00:02:18,320
+And if you go to the docker compose or write file, you can see that this is the catalog API.
+
+29
+00:02:18,320 --> 00:02:20,030
+Microservice configurations.
+
+30
+00:02:20,030 --> 00:02:25,760
+These configurations are generated from the Visual Studio, but these are not sufficient to activate
+
+31
+00:02:25,760 --> 00:02:31,850
+our Catholic API, because we should override these Yaml file to configure the port numbers accordingly,
+
+32
+00:02:31,850 --> 00:02:35,690
+and any new environment variables for database connections.
+
+33
+00:02:35,690 --> 00:02:38,990
+And also we will add some depends on containers.
+
+34
+00:02:38,990 --> 00:02:43,550
+So now we can start the editing these configurations one by one.
+
+35
+00:02:43,550 --> 00:02:46,490
+I'm going to explain and change the ports.
+
+36
+00:02:46,490 --> 00:02:52,520
+So ports are mapped to enable communication between our host machine and the containers.
+
+37
+00:02:52,520 --> 00:02:57,950
+We are developing the catalog API microservices and deploy the local environment.
+
+38
+00:02:57,950 --> 00:03:02,090
+But this time we will use these microservices in the Docker environment.
+
+39
+00:03:02,090 --> 00:03:08,360
+So that means we will perform the port mapping about 6066 port numbers.
+
+40
+00:03:08,450 --> 00:03:15,170
+So according to our slide we are going to edit these port numbers and exposing these port numbers with
+
+41
+00:03:15,170 --> 00:03:16,610
+starting to 6000.
+
+42
+00:03:16,610 --> 00:03:22,670
+So these are the Http and https port numbers that we redirect from the Docker environment.
+
+43
+00:03:22,670 --> 00:03:26,120
+And the next configuration is environment variables.
+
+44
+00:03:26,120 --> 00:03:31,640
+We need to set the correct connection string and environment variables for our services.
+
+45
+00:03:31,640 --> 00:03:40,190
+For that purpose I'm going to add a connection string under the these port definitions in the environment
+
+46
+00:03:40,190 --> 00:03:40,940
+variables.
+
+47
+00:03:40,940 --> 00:03:42,500
+Here you can see that.
+
+48
+00:03:45,940 --> 00:03:50,050
+We have put a connection string as an environment variable.
+
+49
+00:03:50,050 --> 00:03:55,660
+And these are the encoding servername as a catalog DB port number, which is the default PostgreSQL
+
+50
+00:03:55,660 --> 00:03:56,440
+port number.
+
+51
+00:03:56,440 --> 00:04:03,070
+Database name catalog db user id Postgres password is Postgres and include error detail is true.
+
+52
+00:04:03,280 --> 00:04:05,260
+So this is the environment variable.
+
+53
+00:04:05,260 --> 00:04:09,220
+That means this will be injected to the our catalog API.
+
+54
+00:04:09,220 --> 00:04:10,060
+Microservices.
+
+55
+00:04:10,060 --> 00:04:14,050
+When the application start up in Docker environment as a Docker container.
+
+56
+00:04:14,140 --> 00:04:16,959
+And the last configuration is dependency management.
+
+57
+00:04:16,959 --> 00:04:20,170
+We use depends on keyword in here.
+
+58
+00:04:20,170 --> 00:04:24,850
+In order to control the startup order of our services in Docker environment.
+
+59
+00:04:24,850 --> 00:04:33,250
+So catalog API service depends on the catalog DB because we are relying on the database in our catalog
+
+60
+00:04:33,250 --> 00:04:34,090
+microservices.
+
+61
+00:04:34,090 --> 00:04:39,250
+And that means this will be the or depends on keyword and under the depends on.
+
+62
+00:04:39,250 --> 00:04:46,330
+I'm going to put catalog DB which name is our PostgreSQL container name and catalog db.
+
+63
+00:04:46,660 --> 00:04:53,290
+So notice that we have configured the connection string to the point to the catalog db that also we
+
+64
+00:04:53,290 --> 00:04:57,640
+can depend on the catalog DB which is the our database server name.
+
+65
+00:04:57,640 --> 00:05:04,270
+So in Docker compose services on the same network can communicate with each other using the service
+
+66
+00:05:04,270 --> 00:05:10,660
+names or catalog API service can reach the database using the service name which is the catalog DB.
+
+67
+00:05:10,780 --> 00:05:17,290
+That's why we put the server name as a catalog DB to communicate with our PostgreSQL database in Docker
+
+68
+00:05:17,290 --> 00:05:24,100
+environment, and also we are overriding the existing configuration with double underscore.
+
+69
+00:05:24,100 --> 00:05:25,840
+This is also very important.
+
+70
+00:05:25,840 --> 00:05:30,730
+That means this will be overwrite the current configuration in the application setting.
+
+71
+00:05:30,730 --> 00:05:36,070
+If you go to the application settings for Catholic API, you can see that we have a connection string
+
+72
+00:05:36,070 --> 00:05:37,060
+and database.
+
+73
+00:05:37,060 --> 00:05:41,530
+In order to override this configuration, that means overriding this server name.
+
+74
+00:05:41,530 --> 00:05:47,860
+We put the double underscore in here and setting the whole connection string from the beginning.
+
+75
+00:05:47,860 --> 00:05:54,100
+As you can see that we have successfully orchestrated catalog API and PostgreSQL in Docker compose.
+

@@ -1,0 +1,224 @@
+1
+00:00:00,170 --> 00:00:06,770
+In this video, we are going to register discount gRPC client object into the ASP.Net Dependency Injection
+
+2
+00:00:06,770 --> 00:00:07,550
+container.
+
+3
+00:00:07,730 --> 00:00:14,510
+Here you can see that we have injected discount proto service client object and we use this object when
+
+4
+00:00:14,510 --> 00:00:17,840
+performing deduct discount actual operation.
+
+5
+00:00:17,990 --> 00:00:23,480
+So we inject this operation into the our store basket command handler class.
+
+6
+00:00:23,480 --> 00:00:30,260
+So when we inject any services we should not forget to register ASP.Net dependency injection container.
+
+7
+00:00:30,410 --> 00:00:35,120
+So let's take an action for that purpose please go to basket API and Program.cs.
+
+8
+00:00:35,150 --> 00:00:40,730
+In here we are going to register all services into the edge services to container part.
+
+9
+00:00:40,730 --> 00:00:47,690
+But before that I'm going to organize Program.cs by configuring various type of services application
+
+10
+00:00:47,690 --> 00:00:50,270
+data, gRPC and cross coding services.
+
+11
+00:00:50,270 --> 00:00:55,040
+These will be increased the readability and maintainability of the program says.
+
+12
+00:00:55,040 --> 00:00:55,460
+So.
+
+13
+00:00:55,460 --> 00:00:58,550
+Let me start with the application services in here.
+
+14
+00:00:58,550 --> 00:01:01,520
+The first line of codes are application services.
+
+15
+00:01:01,520 --> 00:01:05,960
+So these are the application services including Carter and Mediator Library.
+
+16
+00:01:05,960 --> 00:01:09,320
+And after that we will inject the data services.
+
+17
+00:01:09,320 --> 00:01:11,060
+These are the Martin.
+
+18
+00:01:11,060 --> 00:01:17,870
+So here you can see that I have put a command for the data services that is representing repository
+
+19
+00:01:17,870 --> 00:01:19,790
+objects and Martin objects.
+
+20
+00:01:19,790 --> 00:01:23,960
+And also we can add in here as a Redis cache operation.
+
+21
+00:01:23,960 --> 00:01:30,290
+So these are the data related services that adding to ASP.Net built in dependency injection container.
+
+22
+00:01:30,290 --> 00:01:33,920
+And after that I am going to add a gRPC services.
+
+23
+00:01:33,920 --> 00:01:36,410
+For now I am putting a command in here.
+
+24
+00:01:36,410 --> 00:01:39,710
+We will add gRPC related services in this line of code.
+
+25
+00:01:39,710 --> 00:01:47,120
+So after that we can see that the rest of the codes are registering crosscutting services.
+
+26
+00:01:47,120 --> 00:01:51,320
+These are the exception handling health checks and so on.
+
+27
+00:01:51,320 --> 00:01:59,450
+So these are the grouping the main methodology of the our services application data gRPC and crosscutting
+
+28
+00:01:59,450 --> 00:02:00,980
+for the basket API.
+
+29
+00:02:00,980 --> 00:02:05,120
+Now we can focus on the gRPC services and registration.
+
+30
+00:02:05,390 --> 00:02:08,810
+In here we can start to register gRPC client.
+
+31
+00:02:08,810 --> 00:02:14,780
+So I'm going to write builder services add gRPC client extension method.
+
+32
+00:02:14,780 --> 00:02:20,870
+And inside of this method we will pass discount proto service dot discount proto service client.
+
+33
+00:02:20,870 --> 00:02:24,770
+So I'm going to using discount gRPC namespace.
+
+34
+00:02:24,770 --> 00:02:29,720
+And in here we can register discount Proto service client object.
+
+35
+00:02:29,720 --> 00:02:38,720
+And of course we should provide the options in here as options I am going to provide discount gRPC endpoint.
+
+36
+00:02:38,990 --> 00:02:42,440
+As you can see that we will specify the options at this way.
+
+37
+00:02:42,440 --> 00:02:44,570
+In the options you can see that.
+
+38
+00:02:44,570 --> 00:02:45,920
+Let me check the options.
+
+39
+00:02:45,920 --> 00:02:51,530
+We can specify the address information that we can give the new Uri.
+
+40
+00:02:51,560 --> 00:02:58,610
+So I'm going to provide the new Uri which is the gRPC discount URL.
+
+41
+00:02:58,610 --> 00:03:00,860
+And I am passing this line of code here.
+
+42
+00:03:00,860 --> 00:03:06,710
+You can see that we will paste the Uri with incoming configuration from the application settings under
+
+43
+00:03:06,710 --> 00:03:09,470
+the gRPC settings discount URL.
+
+44
+00:03:09,470 --> 00:03:13,820
+So we will provide these configuration application settings very soon.
+
+45
+00:03:13,820 --> 00:03:21,260
+But before that make sure that you have registered discount proto service client with a giving configuration
+
+46
+00:03:21,260 --> 00:03:23,120
+including the address information.
+
+47
+00:03:23,120 --> 00:03:29,450
+For client connection, we should define discount URL configuration into application settings Json file.
+
+48
+00:03:29,450 --> 00:03:33,950
+For that purpose, please go to application Settings.json for the basket API.
+
+49
+00:03:33,950 --> 00:03:40,970
+And after that under the connection string, we can define the gRPC settings as we are using in the
+
+50
+00:03:40,970 --> 00:03:41,810
+Program.cs.
+
+51
+00:03:41,810 --> 00:03:47,870
+Here you can see that I have added gRPC settings and specifying the discount URL and indicating the
+
+52
+00:03:47,870 --> 00:03:49,700
+localhost 5052.
+
+53
+00:03:49,820 --> 00:03:56,360
+As you suggested, this port number is indicating discount gRPC microservices that we can connect in
+
+54
+00:03:56,360 --> 00:03:58,220
+order to call gRPC methods.
+
+55
+00:03:58,220 --> 00:04:04,940
+So with adding these configuration into application settings, Json file and also adding registration
+
+56
+00:04:04,940 --> 00:04:11,090
+operation in the program says we have completed the basket API configurations as a gRPC client.
+

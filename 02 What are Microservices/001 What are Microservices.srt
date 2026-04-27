@@ -1,0 +1,68 @@
+1
+00:00:00,110 --> 00:00:03,800
+In this video we are going to learn what are microservices?
+
+2
+00:00:04,070 --> 00:00:08,510
+Microservices are small, independent and loosely coupled services.
+
+3
+00:00:08,510 --> 00:00:15,230
+So microservices are small business services that can work together and can be deployed independently
+
+4
+00:00:15,230 --> 00:00:16,400
+and autonomously.
+
+5
+00:00:17,540 --> 00:00:23,030
+Each service has a separate code base, which can be managed by a small development team.
+
+6
+00:00:23,630 --> 00:00:28,760
+A single small team of developers can write and maintain a particular microservices.
+
+7
+00:00:29,950 --> 00:00:33,490
+Microservices communicates with each other over the network.
+
+8
+00:00:33,490 --> 00:00:34,180
+Protocols.
+
+9
+00:00:34,180 --> 00:00:38,680
+Services communicate with each other by using well defined APIs.
+
+10
+00:00:38,950 --> 00:00:43,720
+Internal implementation details of each service are hidden from the other services.
+
+11
+00:00:44,950 --> 00:00:49,870
+One of the biggest advantages is that they can be deployed independently.
+
+12
+00:00:49,900 --> 00:00:52,630
+Microservices can be deployed independently.
+
+13
+00:00:52,840 --> 00:00:59,350
+A team can update an existing microservice without rebuilding and redeploying the entire application.
+
+14
+00:01:00,640 --> 00:01:05,440
+Microservices do not need to share the same technology stack libraries or frameworks.
+
+15
+00:01:05,470 --> 00:01:11,170
+Microservice can work with many different technology stacks, which is technology agnostic.
+
+16
+00:01:12,310 --> 00:01:18,820
+Microservices has its own database or persistence layer that is not shared with other services.
+
+17
+00:01:18,850 --> 00:01:25,420
+This is different from the traditional model where a separate data layer handles data persistence.
+

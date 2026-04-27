@@ -1,0 +1,104 @@
+1
+00:00:00,140 --> 00:00:04,250
+In this video we are going to learn event sourcing pattern.
+
+2
+00:00:04,340 --> 00:00:06,530
+What is the event sourcing pattern?
+
+3
+00:00:06,980 --> 00:00:13,250
+As you know that most of the applications saves data into databases with the current state of the entity.
+
+4
+00:00:13,790 --> 00:00:20,990
+For example, if the user change email address into our application, the user email field updated with
+
+5
+00:00:20,990 --> 00:00:22,640
+the latest updated one.
+
+6
+00:00:22,970 --> 00:00:28,490
+So email information overwrite the existing field of email in the user table.
+
+7
+00:00:28,970 --> 00:00:33,110
+By this way, we always know the latest status of the data.
+
+8
+00:00:33,590 --> 00:00:39,110
+This is the traditional model that works fine to overwrite existing field when something changed.
+
+9
+00:00:40,410 --> 00:00:47,010
+But in large scale architectures frequently update database operations can negatively impact the database
+
+10
+00:00:47,010 --> 00:00:50,460
+performance, responsiveness, and limits of scalability.
+
+11
+00:00:51,600 --> 00:00:58,020
+In order to solve this problem, event sourcing pattern offers to persist each action that affects the
+
+12
+00:00:58,020 --> 00:01:03,330
+data into the event store database and call all these actions as an event.
+
+13
+00:01:04,019 --> 00:01:09,300
+So we can say that instead of saving the latest status of data into databases.
+
+14
+00:01:09,360 --> 00:01:16,230
+Event Sourcing pattern offers to save all events into database with sequential order of data events.
+
+15
+00:01:16,260 --> 00:01:19,350
+These events database called event store.
+
+16
+00:01:21,240 --> 00:01:28,170
+That means instead of overriding the data into table, it creates a new record for each change to data
+
+17
+00:01:28,170 --> 00:01:30,000
+and it becomes sequential.
+
+18
+00:01:30,000 --> 00:01:31,650
+List of the past events.
+
+19
+00:01:32,310 --> 00:01:39,120
+By this way, events store database become the source of truth for the data and these sequential list
+
+20
+00:01:39,120 --> 00:01:45,540
+using for generating materialized views that represent the final state of the data in order to perform
+
+21
+00:01:45,540 --> 00:01:46,260
+queries.
+
+22
+00:01:47,250 --> 00:01:53,820
+So that means these events store convert to read database with following the materialized view pattern.
+
+23
+00:01:54,510 --> 00:02:00,900
+This convert operation can handle by publish subscribe pattern with publish events with using the message
+
+24
+00:02:00,900 --> 00:02:01,980
+broker systems.
+
+25
+00:02:02,370 --> 00:02:09,840
+Also, these event list gives ability to reply events at given certain timestamp, and by this way it
+
+26
+00:02:09,840 --> 00:02:13,560
+is able to breathe latest status of data with replying to events.
+

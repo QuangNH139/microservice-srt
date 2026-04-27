@@ -1,0 +1,216 @@
+1
+00:00:00,170 --> 00:00:06,650
+In this video we are going to learn anemic domain model and rich domain model entities in domain driven
+
+2
+00:00:06,650 --> 00:00:07,280
+design.
+
+3
+00:00:07,580 --> 00:00:14,210
+In domain driven design, the concepts of the anemic domain model and rich domain model are crucial
+
+4
+00:00:14,210 --> 00:00:18,770
+in understanding how domain logic is encapsulated in your entities.
+
+5
+00:00:19,040 --> 00:00:23,000
+Before starting, I would like to ask questions for order entity.
+
+6
+00:00:23,030 --> 00:00:29,420
+If you open the order entity, you can see that we have encapsulated order items is a private read only
+
+7
+00:00:29,420 --> 00:00:30,500
+variable.
+
+8
+00:00:30,500 --> 00:00:35,930
+And now how can we add or remove new items into order aggregate?
+
+9
+00:00:36,290 --> 00:00:42,950
+We know that order item is one to end relation with the order aggregate, but we should add and remove
+
+10
+00:00:42,950 --> 00:00:46,130
+items in the order item for the specific order.
+
+11
+00:00:46,130 --> 00:00:47,750
+So how can we do that?
+
+12
+00:00:47,750 --> 00:00:50,450
+If you make the order items as a public?
+
+13
+00:00:50,540 --> 00:00:57,320
+Everyone can add and remove items in this list, so we should not make the public for the order items.
+
+14
+00:00:57,320 --> 00:01:01,340
+Everyone to edit the order items with reaching the order.
+
+15
+00:01:01,340 --> 00:01:06,350
+So we have to encapsulate these add and remove item operations in the order itself.
+
+16
+00:01:06,350 --> 00:01:11,510
+Because these add and remove item operations belongs to order domain aggregates.
+
+17
+00:01:11,900 --> 00:01:18,320
+To understand these operations well, I'm going to come back to slide and explain what is anemic domain
+
+18
+00:01:18,320 --> 00:01:19,310
+model entity.
+
+19
+00:01:19,340 --> 00:01:25,580
+An anemic domain model is characterized by entities that have little or no business logic.
+
+20
+00:01:25,580 --> 00:01:27,920
+That means that has no domain logic.
+
+21
+00:01:27,920 --> 00:01:33,590
+And these entities are essentially data structures with getters and setter methods.
+
+22
+00:01:33,590 --> 00:01:39,950
+But the business rules and the behaviors are typically implemented outside the entity, often in service
+
+23
+00:01:39,950 --> 00:01:40,550
+layer.
+
+24
+00:01:41,410 --> 00:01:42,850
+Here you can see the example.
+
+25
+00:01:42,850 --> 00:01:50,260
+In this example, the order class is anemic because it only contains data and lacks of any domain logic
+
+26
+00:01:50,260 --> 00:01:51,190
+or behavior.
+
+27
+00:01:52,180 --> 00:01:53,260
+So what is rich?
+
+28
+00:01:53,260 --> 00:01:59,560
+Domain model entity A rich domain model entity is an approach where the entity is encapsulated both
+
+29
+00:01:59,560 --> 00:02:01,150
+data and behavior.
+
+30
+00:02:01,240 --> 00:02:07,240
+This model enriched entities with methods that embody business rules and domain logic.
+
+31
+00:02:07,600 --> 00:02:11,830
+Here you can see an example of the rich domain model with the order.
+
+32
+00:02:11,830 --> 00:02:19,180
+Entity order is a rich domain model as it include methods add order item and remove order item, which
+
+33
+00:02:19,180 --> 00:02:22,600
+encapsulate the business logic for manipulating the order items.
+
+34
+00:02:23,290 --> 00:02:29,560
+So if you compare with the anemic versus rich domain model, you can see the image at y axis.
+
+35
+00:02:29,560 --> 00:02:36,280
+We can see workers and complexity and x axis we can see time and sadness.
+
+36
+00:02:36,490 --> 00:02:42,340
+As you can see the image, you can see that anemic model starting very less efforts if you compare with
+
+37
+00:02:42,340 --> 00:02:43,510
+the rich domain model.
+
+38
+00:02:43,510 --> 00:02:50,320
+But when the time goes anemic model is going to more complex and spanning more workers and leading to
+
+39
+00:02:50,320 --> 00:02:50,980
+sadness.
+
+40
+00:02:51,430 --> 00:02:56,560
+So if you compare with the anemic and rich domain model, we can start with the anemic domain model.
+
+41
+00:02:56,560 --> 00:03:01,240
+Business logic is scattered across the application, often in services.
+
+42
+00:03:01,240 --> 00:03:08,290
+Entities are simple data containers and easier to understand initially, but it can lead to issues with
+
+43
+00:03:08,290 --> 00:03:11,680
+maintainability and understanding the business logic by time.
+
+44
+00:03:12,130 --> 00:03:18,310
+And if you look at the rich domain model, it encapsulates the business logic within the entities more
+
+45
+00:03:18,310 --> 00:03:24,190
+closely, represent the real world business domain, and it can be more complex to design, but leads
+
+46
+00:03:24,190 --> 00:03:26,890
+to a more maintainable and cohesive model.
+
+47
+00:03:27,160 --> 00:03:32,710
+So for our ordered domain aggregate, the goal should be to create a rich domain model.
+
+48
+00:03:32,710 --> 00:03:38,620
+This involves encapsulating the logic for adding or removing orderitem objects within the order class
+
+49
+00:03:38,620 --> 00:03:39,370
+itself.
+
+50
+00:03:39,370 --> 00:03:44,800
+This encapsulation ensures that the operation follow the business rules and invariants of the order
+
+51
+00:03:44,800 --> 00:03:45,490
+aggregate.
+
+52
+00:03:45,520 --> 00:03:51,070
+Here you can see that we can add the two methods, including the add Order item and remove order item
+
+53
+00:03:51,070 --> 00:03:56,530
+to perform the order item, related operations and business logic inside of these functions under the
+
+54
+00:03:56,530 --> 00:03:58,240
+order aggregate entity class.
+

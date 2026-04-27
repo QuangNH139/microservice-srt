@@ -1,0 +1,412 @@
+1
+00:00:00,170 --> 00:00:03,860
+In this video we are going to develop ERP reverse proxy.
+
+2
+00:00:03,890 --> 00:00:10,640
+That means we will setting up the ERP reverse proxy into our ERP API gateway microservices, which will
+
+3
+00:00:10,640 --> 00:00:14,060
+act as an API gateway for our ERP microservices.
+
+4
+00:00:14,210 --> 00:00:19,880
+So the first step is we will install ERP reverse proxy NuGet packages for that purpose.
+
+5
+00:00:19,910 --> 00:00:23,240
+Please open the Visual Studio and go to the API gateway folder.
+
+6
+00:00:23,240 --> 00:00:26,630
+Open the ERP API gateway project and go to the dependencies.
+
+7
+00:00:26,630 --> 00:00:29,120
+Right click and manage NuGet packages.
+
+8
+00:00:29,120 --> 00:00:36,890
+And this time we will install Brose ERP Reverse Proxy and we will install ERP reverse proxy NuGet packages
+
+9
+00:00:36,890 --> 00:00:40,100
+into our ERP API gateway ASP.Net project.
+
+10
+00:00:40,100 --> 00:00:42,800
+So I'm going to install these NuGet packages.
+
+11
+00:00:42,800 --> 00:00:46,070
+So installation completed you can double click the project file.
+
+12
+00:00:46,070 --> 00:00:52,130
+And you can confirm that we have successfully downloaded ERP reverse proxy NuGet packages into our API
+
+13
+00:00:52,130 --> 00:00:53,120
+gateway project.
+
+14
+00:00:53,120 --> 00:00:54,470
+Please save this file.
+
+15
+00:00:54,470 --> 00:00:59,360
+And the second step is we should register Erb in ASP.Net Dependency Injection tool.
+
+16
+00:00:59,360 --> 00:01:04,670
+That means we will update the program CSS in order to include Erb services and middleware.
+
+17
+00:01:04,670 --> 00:01:06,470
+Please open the Program.cs.
+
+18
+00:01:06,470 --> 00:01:10,790
+And just after that we will add the required services to the container.
+
+19
+00:01:10,820 --> 00:01:17,120
+At this point I am going to use builder dot services dot add reverse proxy extension method and also
+
+20
+00:01:17,120 --> 00:01:23,300
+we will use load from config method in order to passing the section of the reverse proxy under the application
+
+21
+00:01:23,300 --> 00:01:24,740
+settings Json file.
+
+22
+00:01:24,740 --> 00:01:27,920
+So this code sets up the Erb reverse proxy.
+
+23
+00:01:27,920 --> 00:01:34,310
+Required objects included ASP.Net dependency injection, and just after that, in the configuring Http
+
+24
+00:01:34,310 --> 00:01:43,070
+request pipeline, I am going to use app dot map reverse proxy extension method in order to configure
+
+25
+00:01:43,070 --> 00:01:46,850
+the Http request pipeline according to reverse proxy.
+
+26
+00:01:46,850 --> 00:01:53,300
+So with adding these two line of code in the configuring Https request pipeline and adding services
+
+27
+00:01:53,300 --> 00:01:59,300
+to registering the container, we will set up the Erb as a middleware in the ASP.Net core application
+
+28
+00:01:59,300 --> 00:02:05,240
+and enabling it to act as a reverse proxy based on the configuration defined in the application settings
+
+29
+00:02:05,240 --> 00:02:07,550
+Json file reverse proxy section.
+
+30
+00:02:07,550 --> 00:02:12,950
+So that means in the third step, we can configure the Http reverse proxy in the application settings
+
+31
+00:02:12,950 --> 00:02:13,730
+Json file.
+
+32
+00:02:13,730 --> 00:02:18,470
+So I'm going to define routes and clusters in the application settings Json file.
+
+33
+00:02:18,470 --> 00:02:24,170
+For reverse proxy settings, please open the Application settings Json file and go to this location.
+
+34
+00:02:24,170 --> 00:02:29,810
+After the load host we can define our reverse proxy configurations in here.
+
+35
+00:02:29,810 --> 00:02:35,690
+Here I'm going to copy the reverse proxy configurations in the Application settings Json file that you
+
+36
+00:02:35,690 --> 00:02:38,690
+can see in this Json part of the reverse proxy.
+
+37
+00:02:38,690 --> 00:02:43,280
+So this is the basic settings redirect all the requests to catalog microservices.
+
+38
+00:02:43,280 --> 00:02:49,130
+So basically the app reverse proxy using the concepts of the routes to represent the request patterns
+
+39
+00:02:49,130 --> 00:02:50,000
+for the proxy.
+
+40
+00:02:50,150 --> 00:02:51,470
+Here you can see the routes.
+
+41
+00:02:51,470 --> 00:02:57,800
+And after that we have also clusters which is represent the services to forward those requests.
+
+42
+00:02:57,800 --> 00:03:03,110
+So these configuration redirect all incoming requests to the catalog microservices.
+
+43
+00:03:03,110 --> 00:03:07,340
+Here you can see the the catch all part of the match operation.
+
+44
+00:03:07,340 --> 00:03:12,920
+And this catch all pattern will capture all the routes and forward them to the specified destination.
+
+45
+00:03:12,920 --> 00:03:18,530
+And this example Yarp configuration with the catch all pattern routing to all incoming requests to the
+
+46
+00:03:18,530 --> 00:03:20,810
+destination address, which is our catalog.
+
+47
+00:03:20,810 --> 00:03:21,560
+Microservices.
+
+48
+00:03:21,560 --> 00:03:26,990
+In Docker environment, you can realize that our destination address, which is indicating our catalog
+
+49
+00:03:26,990 --> 00:03:34,130
+microservices, is using Http, not Https, because we are going to avoid SSL certification exception
+
+50
+00:03:34,130 --> 00:03:39,860
+when we are redirecting requests from irb API gateway to catalog microservices, and after that, these
+
+51
+00:03:39,860 --> 00:03:45,500
+6000 port number is belonging to Http endpoint for the catalog microservices.
+
+52
+00:03:45,500 --> 00:03:50,630
+And these will be the our destination address for each request coming from the IRB API gateway.
+
+53
+00:03:50,630 --> 00:03:56,120
+So before running the irb API gateway we should activate our destination address which is the catalog
+
+54
+00:03:56,120 --> 00:03:56,870
+microservices.
+
+55
+00:03:56,870 --> 00:04:00,560
+So how can we start catalog microservices on Docker environment?
+
+56
+00:04:00,650 --> 00:04:04,460
+Of course we can use Docker Compose for our microservice solution.
+
+57
+00:04:04,460 --> 00:04:09,470
+For that purpose I'm going to right click the Docker compose and set a start up project and make sure
+
+58
+00:04:09,470 --> 00:04:12,110
+that your Docker desktop is up and running for now.
+
+59
+00:04:12,110 --> 00:04:17,870
+And just after Docker Compose setting up the starting project, I am going to click this button in order
+
+60
+00:04:17,870 --> 00:04:23,390
+to start without debugging and activate all microservices and backing services on Docker environment.
+
+61
+00:04:23,390 --> 00:04:29,840
+So this will be start all these Docker compose and related services available on Docker environment,
+
+62
+00:04:29,840 --> 00:04:36,260
+including the our catalog microservices that we will redirect the requests from the local irb API gateway
+
+63
+00:04:36,260 --> 00:04:39,320
+to the Docker catalog microservices.
+
+64
+00:04:39,320 --> 00:04:43,880
+So you can verify all microservices is up and running on Docker desktop.
+
+65
+00:04:43,880 --> 00:04:50,480
+And if you look at the catalog API, you can see that catalog API is exposing 6066 ports.
+
+66
+00:04:50,480 --> 00:04:55,190
+So we will use 6000 Http port when we are redirecting the request.
+
+67
+00:04:55,190 --> 00:04:59,870
+So after running these microservices we can verify our destination is working.
+
+68
+00:04:59,990 --> 00:05:00,620
+King or not.
+
+69
+00:05:00,620 --> 00:05:04,820
+You can copy this and print and paste into the Our Postman.
+
+70
+00:05:04,820 --> 00:05:11,540
+If you open the postman and create a new Http get request, you can send a http get request to our destination
+
+71
+00:05:11,540 --> 00:05:14,000
+address, which is the catalog docker address.
+
+72
+00:05:14,000 --> 00:05:17,930
+Here you can see that our destination address returning products for us.
+
+73
+00:05:17,930 --> 00:05:22,160
+So that means we are ready to redirect our request from the Erb API gateway.
+
+74
+00:05:22,160 --> 00:05:27,050
+For that purpose, I'm going to come back to our Visual Studio, and when we are running the Docker
+
+75
+00:05:27,050 --> 00:05:32,570
+compose without stopping this docker compose, I'm going to right click the Erb API gateway and set
+
+76
+00:05:32,570 --> 00:05:33,650
+a startup project.
+
+77
+00:05:33,650 --> 00:05:39,950
+Since we are running this ERP API gateway from our local computer, we can run both Docker compose and
+
+78
+00:05:39,950 --> 00:05:41,510
+local erb API gateway.
+
+79
+00:05:41,510 --> 00:05:48,080
+For that purpose, I'm going to click https run button in order to start Erb API gateway from our local
+
+80
+00:05:48,080 --> 00:05:49,250
+development environment.
+
+81
+00:05:49,250 --> 00:05:53,360
+After running the Erb API gateway, we can verify from the project console log.
+
+82
+00:05:53,360 --> 00:05:58,820
+Here you can see the Erb API gateway exit configurations, and this will be loading proxy data from
+
+83
+00:05:58,820 --> 00:06:00,320
+the configuration successfully.
+
+84
+00:06:00,320 --> 00:06:05,870
+And now it is listening to port numbers which is the https localhost 5054.
+
+85
+00:06:05,870 --> 00:06:09,080
+So now I am going to send random requests to this URL.
+
+86
+00:06:09,080 --> 00:06:14,270
+And this will be redirect to us catalog microservices Docker environment which is our destination address.
+
+87
+00:06:14,270 --> 00:06:17,120
+For that purpose please open the postman.
+
+88
+00:06:17,120 --> 00:06:24,020
+And in here I'm going to come here and I'm going to write the https localhost 5054.
+
+89
+00:06:24,020 --> 00:06:27,110
+And this will be redirect endpoint to our catalog.
+
+90
+00:06:27,110 --> 00:06:29,480
+Microservices hit the Http send button.
+
+91
+00:06:29,480 --> 00:06:33,320
+And here you can see the our products are listing in here successfully.
+
+92
+00:06:33,320 --> 00:06:38,930
+That means we have successfully redirecting these requests to the Erb API gateway to Destination catalog
+
+93
+00:06:38,930 --> 00:06:39,770
+microservices.
+
+94
+00:06:39,770 --> 00:06:42,260
+We can again verify from the console logs.
+
+95
+00:06:42,260 --> 00:06:48,830
+Here you can see that the ARP reverse proxy forwarding the request to the our destination of the localhost
+
+96
+00:06:48,830 --> 00:06:50,840
+6000 products endpoint.
+
+97
+00:06:50,840 --> 00:06:56,090
+We can also send additional requests including the catalog microservice endpoints, for example get
+
+98
+00:06:56,090 --> 00:06:58,520
+product by id category, and so on.
+
+99
+00:06:58,520 --> 00:07:05,540
+For example, let's open the postman and send by id and this will be getting a specific ID of the product
+
+100
+00:07:05,540 --> 00:07:09,260
+from our catalog microservices over the Erb API gateway.
+
+101
+00:07:09,260 --> 00:07:15,470
+So as you can see that all requests redirect to catalog API and get the products with the ID information.
+
+102
+00:07:15,470 --> 00:07:20,780
+As you can see that we have successfully demonstrated basic functioning of the ARP as an API gateway,
+
+103
+00:07:20,810 --> 00:07:24,050
+handling the request and routing them to the appropriate microservices.
+

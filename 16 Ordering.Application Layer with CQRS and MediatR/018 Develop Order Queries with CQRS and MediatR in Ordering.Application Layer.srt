@@ -1,0 +1,496 @@
+1
+00:00:00,140 --> 00:00:05,900
+In this video, we are going to develop ordered queries with securities and mediator in the ordering
+
+2
+00:00:05,900 --> 00:00:07,070
+application layer.
+
+3
+00:00:07,400 --> 00:00:14,690
+So in our ordering application layer we have following folder structure to Accodomate securities pattern
+
+4
+00:00:14,690 --> 00:00:18,410
+these including the commands, queries and event handlers.
+
+5
+00:00:18,410 --> 00:00:21,890
+So now we will focus on the queries part in securities.
+
+6
+00:00:22,010 --> 00:00:30,290
+So we have three queries sub folder which including get orders by name get orders get orders by customer.
+
+7
+00:00:30,290 --> 00:00:36,200
+These are the representing our query use cases that we are going to implement in this video.
+
+8
+00:00:36,200 --> 00:00:39,380
+So let me start with the get orders by name.
+
+9
+00:00:39,380 --> 00:00:42,800
+So please open the Our Visual Studio.
+
+10
+00:00:42,800 --> 00:00:47,000
+And I am going to locate the ordering application orders.
+
+11
+00:00:47,000 --> 00:00:49,100
+And now we are locate the queries.
+
+12
+00:00:49,100 --> 00:00:55,310
+So now I'm going to right click and add a new subfolder which is get orders by name.
+
+13
+00:00:55,310 --> 00:00:59,930
+In this folder we will follow the same steps when we are developing any commands.
+
+14
+00:00:59,930 --> 00:01:05,690
+Here you can see that we have a create ordered use case and we will develop command and handle class.
+
+15
+00:01:05,690 --> 00:01:09,500
+But in the queries we will create query and handler class.
+
+16
+00:01:09,500 --> 00:01:11,390
+So we will follow the same steps.
+
+17
+00:01:11,390 --> 00:01:13,550
+When implementing get orders by name.
+
+18
+00:01:13,550 --> 00:01:16,250
+I'm going to create a new class under this folder.
+
+19
+00:01:16,250 --> 00:01:18,980
+Which name is get Orders by Name query.
+
+20
+00:01:19,580 --> 00:01:25,220
+And in this class we basically define our record types for the query and the result operation.
+
+21
+00:01:25,220 --> 00:01:30,860
+For that purpose, I'm going to create a record type, and I'm going to remove unnecessary using statement
+
+22
+00:01:30,860 --> 00:01:32,960
+and remove these internal class.
+
+23
+00:01:32,960 --> 00:01:36,140
+And we will use record type which is the public record.
+
+24
+00:01:36,140 --> 00:01:43,100
+Get orders by name query with including the string name as a parameter and this will be implement AI
+
+25
+00:01:43,130 --> 00:01:46,910
+query interface and returning the get orders by name result.
+
+26
+00:01:46,910 --> 00:01:53,570
+So I query interface also comes from the our abstractions that we define under the six folder from the
+
+27
+00:01:53,570 --> 00:01:59,420
+building blocks library that represent separating the query and command operations with using these
+
+28
+00:01:59,420 --> 00:02:00,320
+interfaces.
+
+29
+00:02:00,320 --> 00:02:06,410
+So this time we will use I query interface to implementing get orders by name use case.
+
+30
+00:02:06,410 --> 00:02:10,190
+And this will be returning get orders by name result.
+
+31
+00:02:10,190 --> 00:02:12,530
+And this is also again record type.
+
+32
+00:02:12,530 --> 00:02:14,780
+And we will define public record.
+
+33
+00:02:14,780 --> 00:02:21,230
+Get orders by name and including parameter of the order detail list which is the I enumerable order
+
+34
+00:02:21,230 --> 00:02:22,520
+DTO orders.
+
+35
+00:02:22,670 --> 00:02:30,080
+So this class represents the query in order to retrieve orders by a given name, and it contains a single
+
+36
+00:02:30,080 --> 00:02:31,580
+string name property.
+
+37
+00:02:31,790 --> 00:02:37,340
+So after defining get orders by name query, we should also develop the handle class.
+
+38
+00:02:37,340 --> 00:02:41,480
+So that means I'm going to create a new class under this use case folder.
+
+39
+00:02:41,480 --> 00:02:44,360
+Which name is get orders by name handler.
+
+40
+00:02:44,360 --> 00:02:51,050
+So this will be the our query handler and responsible for handling the get orders by name query object
+
+41
+00:02:51,050 --> 00:02:52,970
+and returning the corresponding result.
+
+42
+00:02:52,970 --> 00:02:57,800
+So I'm going to remove unnecessary using statement and make this class as a public.
+
+43
+00:02:58,820 --> 00:03:04,460
+And the important thing is we are going to implement this class from the I query handler.
+
+44
+00:03:04,460 --> 00:03:10,730
+And as a type parameters, you can see that this will be accepting get orders by name query and returning
+
+45
+00:03:10,730 --> 00:03:12,410
+the get orders by name result.
+
+46
+00:03:12,410 --> 00:03:18,830
+So in order to implement this query handler members we can add the members which is the handle method.
+
+47
+00:03:18,830 --> 00:03:24,260
+And in this method we will get the request parameter which is the get orders by query.
+
+48
+00:03:24,260 --> 00:03:30,620
+And I'm going to change the name of this parameter as a query, and this will be respond back to the
+
+49
+00:03:30,620 --> 00:03:31,250
+task.
+
+50
+00:03:31,250 --> 00:03:34,310
+Get orders by name result object in the handle method.
+
+51
+00:03:34,310 --> 00:03:36,980
+So now we are going to implement this handle method.
+
+52
+00:03:36,980 --> 00:03:42,440
+I'm going to make this method as an async and also change the parameter name as a query.
+
+53
+00:03:42,440 --> 00:03:48,740
+And after that we can start by implementing and planning our todo items in a commented section.
+
+54
+00:03:48,740 --> 00:03:54,320
+Here you can see that the first step we will do get orders by name using the Dbcontext and return the
+
+55
+00:03:54,320 --> 00:03:54,890
+result.
+
+56
+00:03:54,890 --> 00:03:57,320
+So how we can use the Dbcontext?
+
+57
+00:03:57,320 --> 00:04:02,810
+Of course we need to inject I application db context into our query handler class.
+
+58
+00:04:02,810 --> 00:04:09,470
+Come to the class definition and adding and injecting I application db context as a db context parameter
+
+59
+00:04:09,470 --> 00:04:13,820
+that we can use for querying and retrieving data from the database.
+
+60
+00:04:13,820 --> 00:04:16,310
+And after that we can start the implementation.
+
+61
+00:04:16,310 --> 00:04:21,019
+So the first step is getting orders by name using the DB context object.
+
+62
+00:04:21,019 --> 00:04:27,770
+Here you can see that we will use await db context orders collection in order to get orders by username
+
+63
+00:04:27,770 --> 00:04:30,680
+and return back to the orders into our orders variable.
+
+64
+00:04:30,680 --> 00:04:35,030
+And we are using different extension method to performing these query operation.
+
+65
+00:04:35,030 --> 00:04:36,860
+So let me explain one by one.
+
+66
+00:04:36,860 --> 00:04:43,430
+The first step is we will include order with order items into our query in order to get the order items
+
+67
+00:04:43,430 --> 00:04:49,610
+from the order when we are reaching the order list, and the second configuration is as no tracking.
+
+68
+00:04:49,610 --> 00:04:55,670
+This is a good optimization when you are only reading data and don't plan to update these entities in
+
+69
+00:04:55,670 --> 00:04:59,840
+the same context, it tells Entity Framework Core not to track changes to.
+
+70
+00:05:00,030 --> 00:05:02,910
+These entities, which can improve the performance.
+
+71
+00:05:03,030 --> 00:05:09,570
+And after that we are performing the where keyword with using the var keyword, we basically filters
+
+72
+00:05:09,570 --> 00:05:13,230
+the orders based on the incoming query name information.
+
+73
+00:05:13,230 --> 00:05:19,770
+So in here we are using the order name dot value because order name is a strongly typed value object
+
+74
+00:05:19,770 --> 00:05:25,200
+that we need to contains with the value object, which is a string, and we will compare with the query
+
+75
+00:05:25,200 --> 00:05:27,780
+name with the string value of the order name.
+
+76
+00:05:27,780 --> 00:05:33,000
+So after performing these filter operation, we have also ordered by keyword.
+
+77
+00:05:33,000 --> 00:05:36,300
+This will be provide sorting the result by the order name.
+
+78
+00:05:36,300 --> 00:05:40,950
+And lastly we will use two list async method with passing the Cancellationtoken.
+
+79
+00:05:40,950 --> 00:05:42,840
+This provides to asynchronous.
+
+80
+00:05:42,840 --> 00:05:48,390
+Executing the query and respecting the Cancellationtoken is a good practice and return back to order
+
+81
+00:05:48,390 --> 00:05:48,810
+list.
+
+82
+00:05:48,810 --> 00:05:53,310
+So this is the performing filter and returning the orders to our object.
+
+83
+00:05:53,400 --> 00:05:57,090
+After performing these query operation, we should return the result.
+
+84
+00:05:57,090 --> 00:06:02,700
+But if you look at the result, result is including the I enumerable order DTO object.
+
+85
+00:06:02,700 --> 00:06:05,490
+So we should convert these orders to order DTO.
+
+86
+00:06:05,520 --> 00:06:12,120
+In order to do that, I am going to create a new method which name is project to order DTO with passing
+
+87
+00:06:12,120 --> 00:06:14,880
+the orders entities as a parameter of this method.
+
+88
+00:06:14,880 --> 00:06:22,200
+So basically this method provides to transform order entities into order DTO object because our result
+
+89
+00:06:22,200 --> 00:06:26,190
+object requiring enumerable order DTO for that purpose.
+
+90
+00:06:26,190 --> 00:06:32,550
+After preparing the order DTO object, we can basically return nil get orders by name result with passing
+
+91
+00:06:32,580 --> 00:06:34,050
+to order DTO collection.
+
+92
+00:06:34,050 --> 00:06:36,840
+So now I'm going to remove these throws statement.
+
+93
+00:06:36,840 --> 00:06:39,390
+And this is the implementation of the handle method.
+
+94
+00:06:39,390 --> 00:06:43,950
+So according to this method we should develop project to order DTO method.
+
+95
+00:06:43,950 --> 00:06:49,140
+For that purpose I'm going to create any private method under this handle method.
+
+96
+00:06:49,140 --> 00:06:54,960
+And in this method we basically accepting list order entities as a parameter of this method.
+
+97
+00:06:54,960 --> 00:06:57,780
+And we will return list order dto object.
+
+98
+00:06:57,780 --> 00:07:01,440
+That means we will transform order entities to order DTO.
+
+99
+00:07:01,560 --> 00:07:05,490
+For that purpose, I'm going to create a new list order DTO.
+
+100
+00:07:05,490 --> 00:07:10,260
+And after that I'm going to for each for the incoming order entities.
+
+101
+00:07:10,260 --> 00:07:13,620
+And I'm going to convert order DTO by Mon-El.
+
+102
+00:07:13,740 --> 00:07:18,690
+Here you can see that we will use order DTO and New Order DTO record type.
+
+103
+00:07:18,690 --> 00:07:24,330
+And in this record type I'm passing the ID, customer name, order name, shipping address, billing
+
+104
+00:07:24,330 --> 00:07:31,050
+address, payment status, and order items and these will be provided to convert order entity to order
+
+105
+00:07:31,050 --> 00:07:31,890
+DTO.
+
+106
+00:07:31,920 --> 00:07:36,480
+Here you can see that we will passing the value objects address and payment.
+
+107
+00:07:36,480 --> 00:07:40,980
+And after that we will passing the order items with select method.
+
+108
+00:07:40,980 --> 00:07:47,340
+And I'm going to pass order item with new order item DTO with passing the order item members, which
+
+109
+00:07:47,340 --> 00:07:53,670
+is the order ID, product ID quantity and price and respond back to the to list object in order to populate
+
+110
+00:07:53,670 --> 00:08:00,060
+order items for our application in here you can see that we need to fix these member which is the payment
+
+111
+00:08:00,060 --> 00:08:00,630
+CVV.
+
+112
+00:08:00,660 --> 00:08:06,600
+This should be CVV uppercase in order to make it correctly and save this file.
+
+113
+00:08:06,600 --> 00:08:09,750
+And after that we can safely return this result object.
+
+114
+00:08:09,750 --> 00:08:16,200
+After this, for each statement I am going to return the result and this will be basically return all
+
+115
+00:08:16,200 --> 00:08:17,970
+result DTO object.
+
+116
+00:08:17,970 --> 00:08:22,440
+And this result object is projected to list of the order DTO.
+
+117
+00:08:22,440 --> 00:08:28,470
+Here you can see that this will be returned list of the order DTO aligning with to our project to orders
+
+118
+00:08:28,470 --> 00:08:31,110
+method with expecting in this line of code.
+
+119
+00:08:31,110 --> 00:08:36,480
+In the handle method, if you go on top of this page, you can see that we will move these using statement
+
+120
+00:08:36,480 --> 00:08:38,850
+to our global using CSS.
+
+121
+00:08:38,880 --> 00:08:45,120
+Go to global using CSS and moving to our Entity Framework core reference into here.
+
+122
+00:08:45,120 --> 00:08:50,640
+And if you go back to our get orders by name handler, you can see that we have successfully developed
+
+123
+00:08:50,640 --> 00:08:55,350
+get orders by name and you can right click the ordering API and build the project.
+
+124
+00:08:55,350 --> 00:09:01,890
+This will be the first query object in our ordering application layer that align with the sex and mediator.
+

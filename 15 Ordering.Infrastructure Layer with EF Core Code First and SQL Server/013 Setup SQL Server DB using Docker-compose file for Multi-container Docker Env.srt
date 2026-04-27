@@ -1,0 +1,192 @@
+1
+00:00:00,170 --> 00:00:06,410
+In this video, we are going to set up a SQL server database using docker compose file for multi-container
+
+2
+00:00:06,410 --> 00:00:07,490
+Docker environment.
+
+3
+00:00:07,490 --> 00:00:13,700
+Here you can see that our ordering microservices using SQL server database as a backing services.
+
+4
+00:00:13,700 --> 00:00:19,400
+So we should download SQL server Docker image and run this image into our Docker compose environment.
+
+5
+00:00:19,640 --> 00:00:23,270
+If we look at our deployment strategy, we are at the deployment.
+
+6
+00:00:23,270 --> 00:00:27,830
+One stage we are going to develop ordering microservices with clean architecture.
+
+7
+00:00:27,830 --> 00:00:34,430
+But now we will focus on activating SQL server database as a backing services in Docker compose files.
+
+8
+00:00:34,430 --> 00:00:38,570
+So how to set up the SQL server database in the environment?
+
+9
+00:00:38,570 --> 00:00:43,640
+I'm going to follow an article from the Microsoft documentation, which is the run SQL Server Linux
+
+10
+00:00:43,640 --> 00:00:45,260
+container image with Docker.
+
+11
+00:00:45,260 --> 00:00:51,860
+If you scroll down, you can see that we will use Microsoft SQL server Docker image with running docker
+
+12
+00:00:51,860 --> 00:00:52,490
+pull command.
+
+13
+00:00:52,490 --> 00:00:57,680
+And here you can see the environment variables and the port numbers that we are going to follow when
+
+14
+00:00:57,680 --> 00:01:00,440
+defining these image into our Docker compose file.
+
+15
+00:01:00,440 --> 00:01:03,530
+For that purpose, please open the Visual Studio.
+
+16
+00:01:03,530 --> 00:01:08,660
+And I'm going to use docker compose file in order to activate SQL server.
+
+17
+00:01:08,660 --> 00:01:15,230
+If you close these folders and go to the Docker compose files, you can see that we have docker-compose.yml
+
+18
+00:01:15,230 --> 00:01:17,720
+file and docker compose overwrite yaml file.
+
+19
+00:01:18,020 --> 00:01:23,030
+So that means we will update these files in order to include SQL server docker image.
+
+20
+00:01:23,030 --> 00:01:28,940
+And also we will set the environment variables and ports under the docker compose or write file to configure
+
+21
+00:01:28,940 --> 00:01:33,050
+SQL server database with necessary environment variables and so on.
+
+22
+00:01:33,050 --> 00:01:35,810
+So let me start with the docker-compose.yml file.
+
+23
+00:01:35,810 --> 00:01:41,330
+As you can see that it is starting with the backing services and continue with to microservices and
+
+24
+00:01:41,330 --> 00:01:47,030
+come here after the distributed cache as a backing services I'm going to add a new service which is
+
+25
+00:01:47,030 --> 00:01:51,410
+the order DB, and make sure that you have correct indentation.
+
+26
+00:01:51,410 --> 00:01:54,650
+This is important to activate these services correctly.
+
+27
+00:01:54,650 --> 00:01:56,480
+We are providing order db.
+
+28
+00:01:56,480 --> 00:02:00,080
+And as an image I'm going to copy from the Microsoft SQL server.
+
+29
+00:02:00,080 --> 00:02:01,670
+The image from the Docker Hub.
+
+30
+00:02:01,670 --> 00:02:06,680
+So this is the definition of the Docker-compose.yml file that you can save this file.
+
+31
+00:02:06,680 --> 00:02:12,440
+And in order to configure these SQL server database, I'm going to open the Docker compose overwrite
+
+32
+00:02:12,440 --> 00:02:17,210
+file and go to the same location which is the after distributed cache.
+
+33
+00:02:17,210 --> 00:02:24,110
+And before starting to microservices, we can specify the configurations about the SQL server.
+
+34
+00:02:24,380 --> 00:02:30,050
+SQL server has a environment and port numbers that we should define according to our article.
+
+35
+00:02:30,050 --> 00:02:35,540
+If you come here and put these order db, we can give a container name as a order db.
+
+36
+00:02:35,540 --> 00:02:41,240
+And here you can see the environment variables are crucial when implementing the SQL server docker image.
+
+37
+00:02:41,240 --> 00:02:44,720
+The except error should be y and C.
+
+38
+00:02:44,720 --> 00:02:49,460
+Password should be the complex password that we can connect for the SQL server.
+
+39
+00:02:49,460 --> 00:02:51,740
+Login with the same username and password.
+
+40
+00:02:51,740 --> 00:02:57,710
+In here we can confirm the password from the application settings file that we defined as a and password.
+
+41
+00:02:57,710 --> 00:03:03,800
+In the Application settings connection string, we can follow the same configurations in the docker
+
+42
+00:03:03,800 --> 00:03:09,290
+compose or write file for order db, SQL server, docker image and we will give the port numbers.
+
+43
+00:03:09,290 --> 00:03:10,220
+Also crucial.
+
+44
+00:03:10,220 --> 00:03:11,600
+This is the port number.
+
+45
+00:03:11,600 --> 00:03:17,060
+Default port number, which is the one four, three three is exposed and mapped to the host for database
+
+46
+00:03:17,060 --> 00:03:17,990
+connectivity.
+
+47
+00:03:18,110 --> 00:03:23,810
+As you can see that we have defined Docker compose, overwrite HTML file and docker compose Yaml file
+
+48
+00:03:23,810 --> 00:03:29,120
+in order to activate SQL server database as a backing service of authentic microservices.
+

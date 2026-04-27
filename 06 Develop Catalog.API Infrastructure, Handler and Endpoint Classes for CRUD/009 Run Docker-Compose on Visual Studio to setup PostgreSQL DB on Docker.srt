@@ -1,0 +1,312 @@
+1
+00:00:00,170 --> 00:00:07,160
+In this video we are going to run Docker Compose running Profile on Visual Studio to set up the PostgreSQL
+
+2
+00:00:07,160 --> 00:00:08,540
+database on Docker.
+
+3
+00:00:09,180 --> 00:00:15,180
+So for that purpose, make sure that your Docker desktop is up and running and you can see this green
+
+4
+00:00:15,180 --> 00:00:16,079
+box in here.
+
+5
+00:00:16,379 --> 00:00:19,080
+So after that please open the Visual Studio.
+
+6
+00:00:19,080 --> 00:00:24,630
+And you can see that we have developed Docker compose and overwrite files with configuring the setup
+
+7
+00:00:24,630 --> 00:00:26,070
+PostgreSQL database.
+
+8
+00:00:26,070 --> 00:00:32,520
+And here you can see that there is a new running profile which is the Docker compose that we can click
+
+9
+00:00:32,520 --> 00:00:39,270
+these Docker compose run profile in order to activate these PostgreSQL Docker image into Docker environment.
+
+10
+00:00:39,270 --> 00:00:44,970
+But this is not only one option to running the docker compose with using this button.
+
+11
+00:00:44,970 --> 00:00:50,460
+Actually, most of the time we can use Docker commands to activate this docker compose environment.
+
+12
+00:00:50,460 --> 00:00:56,880
+We can run the docker compose up command to running these containers under the docker compose file.
+
+13
+00:00:56,880 --> 00:01:03,060
+But since we are developing our microservices using the Visual Studio, Visual Studio has a great experience
+
+14
+00:01:03,060 --> 00:01:04,200
+with Docker Compose.
+
+15
+00:01:04,200 --> 00:01:11,010
+For that purpose, I am going to use docker compose running file, and it is also able to debug our
+
+16
+00:01:11,010 --> 00:01:12,810
+codes in the docker environment.
+
+17
+00:01:12,810 --> 00:01:14,670
+Even we are running the docker compose.
+
+18
+00:01:14,670 --> 00:01:16,230
+That is very great feature.
+
+19
+00:01:16,230 --> 00:01:18,960
+So for that purpose please click this button.
+
+20
+00:01:18,960 --> 00:01:21,450
+And on behind of the scenes.
+
+21
+00:01:21,630 --> 00:01:26,970
+As you can see that this button will be run docker compose up command for us.
+
+22
+00:01:26,970 --> 00:01:35,760
+And this will be retrieving container from the Docker Hub and configure our container with these configurations
+
+23
+00:01:35,760 --> 00:01:40,110
+and activate PostgreSQL database to our Docker environment.
+
+24
+00:01:40,110 --> 00:01:42,630
+So you can follow the output windows.
+
+25
+00:01:42,630 --> 00:01:45,870
+And you can see the logs from the containers.
+
+26
+00:01:45,870 --> 00:01:49,740
+And you can see that our catalog DB is activated.
+
+27
+00:01:49,740 --> 00:01:54,210
+And this is so fast for me because I have already pulled this image before.
+
+28
+00:01:54,210 --> 00:01:56,760
+And you can verify from the Docker desktop.
+
+29
+00:01:56,760 --> 00:02:02,580
+If you open the Docker desktop and go to containers, you can see that our Docker compose is running.
+
+30
+00:02:02,580 --> 00:02:09,660
+And under the docker compose root file you can see the catalog db as a PostgreSQL image is running and
+
+31
+00:02:09,660 --> 00:02:10,410
+activated.
+
+32
+00:02:10,410 --> 00:02:17,820
+And if you go to the images, you can see that Postgres image is downloaded before creating the container.
+
+33
+00:02:17,820 --> 00:02:23,340
+And if you go to the volumes, you can see that we have defined one volumes, which is defined under
+
+34
+00:02:23,490 --> 00:02:27,360
+our Docker-compose.yml file, which name is PostgreSQL catalog.
+
+35
+00:02:27,360 --> 00:02:31,530
+So we have verified that our container is running successfully.
+
+36
+00:02:31,530 --> 00:02:34,980
+Now how we can interact these PostgreSQL database.
+
+37
+00:02:34,980 --> 00:02:42,120
+So in order to interact with these PostgreSQL database we will use Docker commands to access the containers,
+
+38
+00:02:42,120 --> 00:02:48,660
+bash shell scripts and connect to the database using the SQL command line interface.
+
+39
+00:02:48,660 --> 00:02:52,560
+So for that purpose I'm going to open a command window.
+
+40
+00:02:52,560 --> 00:02:56,460
+And in this command window I'm going to run the Docker ps.
+
+41
+00:02:56,460 --> 00:02:59,670
+And this will be listing running containers on our machine.
+
+42
+00:02:59,670 --> 00:03:04,920
+Here you can see the our PostgreSQL database running as a container ID in here.
+
+43
+00:03:04,920 --> 00:03:11,190
+So after that we are going to run the Execute Interactive terminal with bash script.
+
+44
+00:03:11,190 --> 00:03:14,340
+For that purpose I'm going to run Docker.
+
+45
+00:03:17,970 --> 00:03:22,620
+Exec interactive terminal and I'm going to paste the container ID right.
+
+46
+00:03:22,620 --> 00:03:28,050
+Copy this container ID paste in here and let's start with the bash script.
+
+47
+00:03:28,050 --> 00:03:29,250
+Hit the enter.
+
+48
+00:03:29,280 --> 00:03:33,090
+So now we have connected the container bash script.
+
+49
+00:03:33,090 --> 00:03:37,080
+And now I'm going to connect the database PostgreSQL database.
+
+50
+00:03:37,080 --> 00:03:46,350
+For that purpose we are running the SQL script dash u and give the name Postgres and hit enter.
+
+51
+00:03:46,350 --> 00:03:52,260
+So now inside the PostgreSQL shell script we can list available databases.
+
+52
+00:03:52,260 --> 00:03:59,040
+So our docker compose overwrite HTML file, specifies the environment variables for our PostgreSQL database,
+
+53
+00:03:59,040 --> 00:04:02,700
+and we will see that the database name are catalog db.
+
+54
+00:04:02,700 --> 00:04:04,260
+You can verify from in here.
+
+55
+00:04:04,260 --> 00:04:09,720
+So now let's listing existing databases into our PostgreSQL.
+
+56
+00:04:09,720 --> 00:04:14,940
+For that purpose I'm going to make it backslash and L.
+
+57
+00:04:15,120 --> 00:04:19,170
+And here you can see the catalog DB is listing under our database.
+
+58
+00:04:19,170 --> 00:04:25,020
+So that means catalog DB is created by Postgres with using the docker compose overwrite file in the
+
+59
+00:04:25,020 --> 00:04:26,190
+environment variables.
+
+60
+00:04:26,190 --> 00:04:28,740
+So now our database is ready.
+
+61
+00:04:28,740 --> 00:04:32,310
+So if you go back with the exit.
+
+62
+00:04:32,310 --> 00:04:38,910
+And now I'm going to also would like to connect this database for backslash and give the database name
+
+63
+00:04:38,910 --> 00:04:40,080
+as a catalog DB.
+
+64
+00:04:40,710 --> 00:04:43,110
+And now we have connected to our database.
+
+65
+00:04:43,110 --> 00:04:50,220
+In order to see the tables we can write the backslash D and see that there is no tables created into
+
+66
+00:04:50,220 --> 00:04:51,090
+our database.
+
+67
+00:04:51,090 --> 00:04:57,900
+That means we see the catalog DB is created, but catalog DB not containing any table yet.
+
+68
+00:04:58,230 --> 00:05:04,200
+How we can configure these tables when we are running this application Martin will handle this.
+
+69
+00:05:04,200 --> 00:05:09,240
+Create operation of tables and schema objects based on our application models.
+
+70
+00:05:09,240 --> 00:05:11,010
+When the application start up.
+
+71
+00:05:11,160 --> 00:05:17,610
+As you know that Martin is a ORM system and will be connect to PostgreSQL database when the application
+
+72
+00:05:17,610 --> 00:05:20,670
+start up, you can remember that we have one configuration.
+
+73
+00:05:20,670 --> 00:05:24,600
+If schema is not defined, this will be create by the Martin.
+
+74
+00:05:24,600 --> 00:05:31,500
+So there is no need to manually create database and tables in PostgreSQL database, as Martin will automatically
+
+75
+00:05:31,500 --> 00:05:37,560
+generate the required database and tables based on our application need that we have already configured
+
+76
+00:05:37,560 --> 00:05:38,850
+in the Program.cs.
+
+77
+00:05:39,120 --> 00:05:46,980
+So we can say that we have successfully run our Docker container, and we see that our backing services
+
+78
+00:05:46,980 --> 00:05:50,700
+PostgreSQL database is up and running on our Docker environment.
+

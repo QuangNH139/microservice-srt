@@ -1,0 +1,216 @@
+1
+00:00:00,140 --> 00:00:07,939
+In this video we are going to developing http post endpoint with using the Carter with implementing
+
+2
+00:00:07,939 --> 00:00:11,240
+the I Carter module for building minimal APIs.
+
+3
+00:00:11,480 --> 00:00:16,340
+So let's begin by implementing I Carter module interface into our code.
+
+4
+00:00:16,520 --> 00:00:23,030
+Open the Visual Studio and go to Create Product Endpoint and locate the Create Product Endpoint class.
+
+5
+00:00:23,030 --> 00:00:27,290
+And now I'm going to inherit from the I Carter module.
+
+6
+00:00:28,610 --> 00:00:32,180
+So this should come from the building blocks Carter Library.
+
+7
+00:00:32,180 --> 00:00:34,580
+And we can adding the using statement.
+
+8
+00:00:34,580 --> 00:00:42,260
+So once we adding the I Carter module and implementing to our endpoint class, it is required to implement
+
+9
+00:00:42,260 --> 00:00:43,190
+some of the methods.
+
+10
+00:00:43,190 --> 00:00:45,950
+These are the add route methods.
+
+11
+00:00:45,950 --> 00:00:52,760
+So as you remember that in the add methods we can define exposing APIs from our minimal API.
+
+12
+00:00:52,760 --> 00:01:00,110
+So that means these create product endpoint class will be responsible for setting up our post endpoint.
+
+13
+00:01:00,110 --> 00:01:05,930
+We will exposing post endpoint in here using the minimal API and Carter.
+
+14
+00:01:05,930 --> 00:01:08,960
+But before that let's understand our requirement.
+
+15
+00:01:08,960 --> 00:01:14,690
+We should passing the objects to the create product request to do command handler.
+
+16
+00:01:14,690 --> 00:01:21,440
+The idea is that in here we will use the mediator library and trigger the mediator command under class.
+
+17
+00:01:21,440 --> 00:01:27,350
+So that means we should pass the values from the request object to the handler command object.
+
+18
+00:01:27,350 --> 00:01:33,440
+In order to pass values from request to command object, we need a mapping object and mapping library.
+
+19
+00:01:33,440 --> 00:01:40,700
+So if you open the our request lifecycle, you can see that once we get the request object, we should
+
+20
+00:01:40,700 --> 00:01:45,140
+convert this request object as a command object in order to trigger command handler.
+
+21
+00:01:45,140 --> 00:01:48,230
+So how we can convert request to command object.
+
+22
+00:01:48,230 --> 00:01:50,810
+Of course we need a mapping library.
+
+23
+00:01:50,810 --> 00:01:54,770
+Here you can see the a mapping library which name is master.
+
+24
+00:01:54,770 --> 00:01:57,980
+Master is a high performance object mapper.
+
+25
+00:01:57,980 --> 00:02:02,510
+And it is very straightforward and flexible and perfect for mapping objects.
+
+26
+00:02:02,510 --> 00:02:04,670
+In ASP.Net core applications.
+
+27
+00:02:04,670 --> 00:02:11,510
+We will use master in order to convert our request module to the mediator command object and vice versa.
+
+28
+00:02:11,780 --> 00:02:16,340
+So if you go to the GitHub project, you can see the details on the Readme file.
+
+29
+00:02:16,340 --> 00:02:23,120
+You can see the master writing mapping methods is a machine job and do not waste your time and let master
+
+30
+00:02:23,150 --> 00:02:23,690
+do it.
+
+31
+00:02:23,690 --> 00:02:26,330
+This is very typical installation.
+
+32
+00:02:26,330 --> 00:02:31,880
+We will install Mapsto nuget package and if you scroll down you can see the basic usage.
+
+33
+00:02:31,880 --> 00:02:37,640
+We can just using the adapt method in order to convert target and destination object.
+
+34
+00:02:37,640 --> 00:02:45,170
+And you can see additional configuration in order to activate master into an ASP.Net core application.
+
+35
+00:02:45,170 --> 00:02:50,090
+So now let's install the master NuGet package into our application.
+
+36
+00:02:50,090 --> 00:02:55,880
+So where should we install Master library in catalog microservices or building blocks.
+
+37
+00:02:55,880 --> 00:03:03,110
+If you open the R class library project diagram, as you know that we have created the Building Blocks
+
+38
+00:03:03,110 --> 00:03:10,160
+class library in order to storing all common operations and all common NuGet packages for any microservice
+
+39
+00:03:10,160 --> 00:03:10,760
+development.
+
+40
+00:03:10,760 --> 00:03:13,070
+In our issue of microservice solution.
+
+41
+00:03:13,070 --> 00:03:20,090
+For that purpose, it is best practice to move master class library into building blocks class library
+
+42
+00:03:20,090 --> 00:03:26,420
+in order to manage common libraries into one place for each microservices, and it could be also easy
+
+43
+00:03:26,420 --> 00:03:30,140
+for the version management of these kind of NuGet packages.
+
+44
+00:03:30,530 --> 00:03:37,160
+Whenever any microservices added into our picture, it will very easy to start development with referencing
+
+45
+00:03:37,160 --> 00:03:38,900
+the Building Blocks class library.
+
+46
+00:03:39,110 --> 00:03:42,980
+So please open the Visual Studio and go to the Building blocks.
+
+47
+00:03:42,980 --> 00:03:45,620
+Right click and manage NuGet packages.
+
+48
+00:03:46,070 --> 00:03:54,380
+So in here we are going to install Master Search for the master library and select and install this
+
+49
+00:03:54,380 --> 00:03:55,100
+library.
+
+50
+00:03:55,520 --> 00:04:02,300
+And if you double click the building blocks you can see that this time master comes into our command
+
+51
+00:04:02,300 --> 00:04:03,140
+class library.
+
+52
+00:04:03,140 --> 00:04:07,970
+And you can see that we have three common library for each microservices.
+
+53
+00:04:07,970 --> 00:04:09,830
+Please save these building blocks.
+
+54
+00:04:09,830 --> 00:04:14,420
+Now we are ready for the development or actual endpoint definitions.
+

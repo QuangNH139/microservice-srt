@@ -1,0 +1,244 @@
+1
+00:00:00,140 --> 00:00:07,100
+In this video we will test Http, get and delete endpoints of our basket microservices which are connected
+
+2
+00:00:07,100 --> 00:00:09,860
+to PostgreSQL database using the Martin.
+
+3
+00:00:09,860 --> 00:00:16,340
+And we will also address how to handle exceptions to ensure our servers respond with user friendly message.
+
+4
+00:00:16,700 --> 00:00:22,820
+So please open the postman as you remember that in the last video we have created new basket with using
+
+5
+00:00:22,820 --> 00:00:24,350
+http post request.
+
+6
+00:00:24,350 --> 00:00:29,840
+Now I am going to open http get request, which is the get basket by username.
+
+7
+00:00:29,840 --> 00:00:37,550
+And if you look at the endpoint you can see the basket URL is located our localhost 5051 and the endpoint
+
+8
+00:00:37,550 --> 00:00:45,410
+continue with the basket slash means that our username we will pass the username from the request parameters.
+
+9
+00:00:45,410 --> 00:00:50,090
+Please click the send button and trigger our Http get endpoint.
+
+10
+00:00:50,090 --> 00:00:54,110
+And this will be hit our breakpoint which is the get basket endpoint.
+
+11
+00:00:54,110 --> 00:01:01,190
+And if you continue and debugging this will be sent to our Get Basket query object into the Get Basket
+
+12
+00:01:01,190 --> 00:01:02,180
+query handle.
+
+13
+00:01:02,180 --> 00:01:03,680
+And this handle method.
+
+14
+00:01:03,680 --> 00:01:07,820
+This will be using repository Get basket object with passing the username.
+
+15
+00:01:07,820 --> 00:01:14,960
+And in this method we basically use Martin session load async method in order to get shopping cart by
+
+16
+00:01:14,960 --> 00:01:15,710
+username.
+
+17
+00:01:15,710 --> 00:01:22,250
+So if you continue debug operation, you can see that we will retrieve basket information from the database.
+
+18
+00:01:22,250 --> 00:01:28,460
+And if you come here and expand the basket, you can see that we have two items and calculated total
+
+19
+00:01:28,460 --> 00:01:28,820
+price.
+
+20
+00:01:28,820 --> 00:01:30,890
+And the username is boolean.
+
+21
+00:01:30,890 --> 00:01:33,920
+Now I am going to return back to the our handle method.
+
+22
+00:01:33,920 --> 00:01:37,640
+This will be returned a result object and this result object will be.
+
+23
+00:01:37,640 --> 00:01:41,060
+Continue a response object and return back the result okay.
+
+24
+00:01:41,060 --> 00:01:47,870
+To the client application that we can confirm from the this response we have 200 okay response.
+
+25
+00:01:47,870 --> 00:01:53,930
+And we have whole Json body of the shopping cart object including the username and two items.
+
+26
+00:01:53,930 --> 00:01:58,190
+So we have confirmed that our Http get operation working successfully.
+
+27
+00:01:58,190 --> 00:02:01,010
+Now I am going to test http delete operation.
+
+28
+00:02:01,010 --> 00:02:03,560
+This is delete by username.
+
+29
+00:02:03,560 --> 00:02:06,590
+Again the end point is exactly same.
+
+30
+00:02:06,590 --> 00:02:09,080
+We passing the username from the request parameters.
+
+31
+00:02:09,080 --> 00:02:12,050
+But this time we will send http delete method.
+
+32
+00:02:12,050 --> 00:02:13,490
+So click the send button.
+
+33
+00:02:13,490 --> 00:02:16,370
+This will be triggered delete basket and point class.
+
+34
+00:02:16,370 --> 00:02:20,750
+And this will be sending to mediator to delete basket command handler class.
+
+35
+00:02:20,750 --> 00:02:24,080
+This time we will use repository dot delete basket method.
+
+36
+00:02:24,080 --> 00:02:29,750
+If you go to implementation and put breakpoint and continue our debug operation in here, you can see
+
+37
+00:02:29,750 --> 00:02:35,510
+that we will use Martin's session dot delete method in order to delete shopping cart by username with
+
+38
+00:02:35,510 --> 00:02:41,180
+passing the username as a parameter, and this will be delete or record from database and we will save
+
+39
+00:02:41,180 --> 00:02:47,840
+change async and return true object and this result object returning true, and we will return back
+
+40
+00:02:47,840 --> 00:02:49,430
+to the client as a response.
+
+41
+00:02:49,430 --> 00:02:56,420
+And in the response we will include a message of the is success that you can confirm from the 200 okay
+
+42
+00:02:56,420 --> 00:02:58,580
+delete operation is succeed.
+
+43
+00:02:58,580 --> 00:03:03,680
+So now we can verify the deleted shopping cart from the database using Pgadmin.
+
+44
+00:03:03,680 --> 00:03:08,450
+Or we can send http get method again with the same username.
+
+45
+00:03:08,450 --> 00:03:15,410
+Last time we can get the whole cart object, but this time we will expect that this boolean has deleted
+
+46
+00:03:15,410 --> 00:03:18,710
+and with no response to our http get method.
+
+47
+00:03:18,710 --> 00:03:21,530
+Click send method and see what's going happen.
+
+48
+00:03:21,530 --> 00:03:24,890
+And this comes to our Get basket endpoint.
+
+49
+00:03:24,890 --> 00:03:26,420
+I'm going to hit F5.
+
+50
+00:03:26,420 --> 00:03:32,270
+And in here in the handle method we will use repository dot get basket and the repository get basket
+
+51
+00:03:32,270 --> 00:03:32,720
+method.
+
+52
+00:03:32,720 --> 00:03:35,360
+As you remember that we use load async method.
+
+53
+00:03:35,360 --> 00:03:37,010
+But this time basket is null.
+
+54
+00:03:37,010 --> 00:03:41,660
+When basket is null we have throwing basket not found exception with a given username.
+
+55
+00:03:41,660 --> 00:03:44,540
+So that's why this will be throwing an exception.
+
+56
+00:03:44,540 --> 00:03:46,970
+And if we hit F5 we can see.
+
+57
+00:03:46,970 --> 00:03:51,230
+The exception is entity basket with the username as was not found.
+
+58
+00:03:51,230 --> 00:03:54,650
+But as you can see that this is unreadable real message.
+
+59
+00:03:54,650 --> 00:03:57,800
+And this is not acceptable for the client response.
+
+60
+00:03:57,800 --> 00:04:03,140
+So we should fix this response and make this more readable and manageable.
+
+61
+00:04:03,140 --> 00:04:07,400
+Now let's improve this exception message for the client applications.
+

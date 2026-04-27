@@ -1,0 +1,132 @@
+1
+00:00:00,140 --> 00:00:05,480
+In this video we are going to containerize basket API microservices with Docker.
+
+2
+00:00:05,689 --> 00:00:11,870
+If we look at our deployment strategy, you can see that we have finished the deployment one, which
+
+3
+00:00:11,870 --> 00:00:16,640
+is the deploying local and communicated with backing services on Docker.
+
+4
+00:00:16,640 --> 00:00:19,100
+And we will shifting to the deployment two.
+
+5
+00:00:19,130 --> 00:00:25,430
+That means we will Containerize and Docker compose all microservice and backing services together.
+
+6
+00:00:25,460 --> 00:00:32,390
+The first step for this operation is containerizing your microservices with docker file.
+
+7
+00:00:32,390 --> 00:00:37,760
+For that purpose, please open the Visual Studio and right click the basket API.
+
+8
+00:00:37,790 --> 00:00:41,360
+You can come here and add Docker support.
+
+9
+00:00:41,360 --> 00:00:46,160
+So if you click the Docker support you can see the target operating system should be Linux.
+
+10
+00:00:46,160 --> 00:00:47,480
+Click the okay button.
+
+11
+00:00:47,480 --> 00:00:50,420
+This is asking that you have already Docker file.
+
+12
+00:00:50,420 --> 00:00:52,220
+Do you want to overwrite this file?
+
+13
+00:00:52,220 --> 00:00:53,030
+Yes.
+
+14
+00:00:53,570 --> 00:00:57,980
+And here you can see the newly generated docker file for Visual Studio.
+
+15
+00:00:57,980 --> 00:01:02,150
+Docker file contains a set of instructions to build the docker image.
+
+16
+00:01:02,150 --> 00:01:04,220
+So let's break down its component.
+
+17
+00:01:04,220 --> 00:01:06,410
+The first one is base image.
+
+18
+00:01:06,410 --> 00:01:07,430
+This is using.
+
+19
+00:01:07,610 --> 00:01:16,130
+Net eight as a base image and set the working directory slash app and exposing 8080 and 8081 for http
+
+20
+00:01:16,130 --> 00:01:17,630
+and Https ports.
+
+21
+00:01:17,630 --> 00:01:20,840
+And the second stage is build stage.
+
+22
+00:01:20,870 --> 00:01:26,990
+This is using dotnet SDK image for building the application and restored NuGet packages and builds the
+
+23
+00:01:26,990 --> 00:01:27,740
+project.
+
+24
+00:01:27,830 --> 00:01:30,290
+And the third image is publish.
+
+25
+00:01:30,350 --> 00:01:37,280
+And at this stage this will be publishes the application to the slash app slash publish directory.
+
+26
+00:01:37,280 --> 00:01:39,290
+You can see this directory in here.
+
+27
+00:01:39,290 --> 00:01:46,220
+And the last step is final stage is prepares the final image by copying the published application into
+
+28
+00:01:46,220 --> 00:01:51,620
+the base image, and it sets the Entrypoint in order to start the basket API application.
+
+29
+00:01:51,620 --> 00:01:52,310
+This is the.
+
+30
+00:01:52,520 --> 00:01:54,170
+Net and DLL application.
+
+31
+00:01:54,170 --> 00:01:59,960
+Also, you can see that how basket API integration with the building blocks the docker file.
+
+32
+00:01:59,960 --> 00:02:05,810
+Also handle dependencies with the building blocks project and ensuring all necessary components are
+
+33
+00:02:05,810 --> 00:02:07,550
+included in the build stage.
+

@@ -1,0 +1,248 @@
+1
+00:00:00,140 --> 00:00:04,640
+In this video, we are going to develop an extension method for the order entity.
+
+2
+00:00:04,670 --> 00:00:11,000
+Here you can see that we have developed project to order DTO and this method project to order entities
+
+3
+00:00:11,000 --> 00:00:16,520
+into order DTO object and facilitating the transformation process in various query handlers.
+
+4
+00:00:16,520 --> 00:00:22,580
+So in order to make it reusable, it is good to create an extension method to performing these operations.
+
+5
+00:00:22,610 --> 00:00:28,310
+For that purpose, let's creating an extension method in the ordering application layer and we will
+
+6
+00:00:28,310 --> 00:00:31,100
+create a new folder which name is extensions.
+
+7
+00:00:31,100 --> 00:00:33,680
+In here select the ordering application.
+
+8
+00:00:33,680 --> 00:00:35,630
+Right click add new folder.
+
+9
+00:00:35,630 --> 00:00:37,520
+Which name is extensions.
+
+10
+00:00:37,520 --> 00:00:40,760
+In this extension folder I'm going to create a new class.
+
+11
+00:00:40,760 --> 00:00:43,670
+Which name is order extensions dot CSS.
+
+12
+00:00:43,670 --> 00:00:50,360
+So when we are developing our get orders by name handler class, we have developing project to orders
+
+13
+00:00:50,360 --> 00:00:56,960
+DTO manually and it is good to move these methods as an extension method in order to make it reusable
+
+14
+00:00:56,960 --> 00:01:02,930
+for other get use cases, which is the get orders by name, get orders by customer, and so on.
+
+15
+00:01:02,930 --> 00:01:07,580
+So for that purpose please go to Extensions and Order Extension.
+
+16
+00:01:07,580 --> 00:01:10,430
+And I'm going to remove unnecessary using statement.
+
+17
+00:01:10,430 --> 00:01:17,030
+I'm going to make it public and static class because we will develop an extension method under the Order
+
+18
+00:01:17,030 --> 00:01:18,110
+extensions class.
+
+19
+00:01:18,110 --> 00:01:21,080
+So I'm going to create public static.
+
+20
+00:01:21,080 --> 00:01:24,830
+And here you can see that this is the extension method body.
+
+21
+00:01:24,830 --> 00:01:32,240
+And according to this body we will create and we will develop this method with extending the I enumerable
+
+22
+00:01:32,240 --> 00:01:39,950
+order entity to transform a collection of the order entities to the order DTO object, which is the
+
+23
+00:01:39,950 --> 00:01:42,620
+collection of the enumerable order DTO.
+
+24
+00:01:42,770 --> 00:01:46,460
+So now we will implement this static extension method.
+
+25
+00:01:46,460 --> 00:01:52,640
+In order to do that, I'm going to copy from this operation in the handler class here you can see that
+
+26
+00:01:52,640 --> 00:01:55,460
+we will move this operation into extension.
+
+27
+00:01:55,460 --> 00:02:00,530
+I'm going to write a different and manipulating with using the orders select method.
+
+28
+00:02:00,530 --> 00:02:07,280
+If you go back in here you can see that I'm going to directly return orders dot select method.
+
+29
+00:02:07,280 --> 00:02:11,450
+In order to manipulate order data to the new order DTO.
+
+30
+00:02:11,510 --> 00:02:19,400
+With select method, we can return back the IEnumerable order DTO object with iterating for orders object.
+
+31
+00:02:19,400 --> 00:02:25,430
+And here you can see that for each order, we are going to create a new order DTO and passing the ID,
+
+32
+00:02:25,430 --> 00:02:32,000
+customer ID, order name, shipping and billing address, payment status and order item values to the
+
+33
+00:02:32,000 --> 00:02:33,230
+order DTO object.
+
+34
+00:02:33,230 --> 00:02:40,370
+And again in here for order items, we are using select method in order to manipulating order item to
+
+35
+00:02:40,370 --> 00:02:45,800
+order item DTO object with passing the order id, product id quantity and price.
+
+36
+00:02:45,800 --> 00:02:52,310
+If you scroll right hand side, you can see that we have an exception that I am going to change payments
+
+37
+00:02:52,340 --> 00:02:53,090
+CVV.
+
+38
+00:02:53,090 --> 00:03:00,320
+And here you can see that we are basically creating our address value objects and payment value objects
+
+39
+00:03:00,320 --> 00:03:05,720
+with passing values from incoming order entity and creating order DTO object.
+
+40
+00:03:05,990 --> 00:03:14,000
+So with this implementation, we basically perform the two order DTO list extension method and this
+
+41
+00:03:14,000 --> 00:03:19,610
+method designed to encapsulate the logic for transforming domain entities, which is the order into
+
+42
+00:03:19,610 --> 00:03:23,240
+their corresponding DTO objects, which is the order DTO.
+
+43
+00:03:23,240 --> 00:03:28,340
+And this makes the code more maintainable and reusable across different parts of the application.
+
+44
+00:03:28,340 --> 00:03:34,670
+So now it is time to using this extension method into our get orders by name handler.
+
+45
+00:03:34,670 --> 00:03:40,580
+Please go to the get Orders by name handler, and we are going to using as an extension method.
+
+46
+00:03:40,580 --> 00:03:46,280
+Instead of the manually writing this method, please go to this location where we are using the project
+
+47
+00:03:46,280 --> 00:03:47,750
+to order DTO class.
+
+48
+00:03:47,750 --> 00:03:54,290
+If you come here and write the orders collection, which is our least ordered entity collection, and
+
+49
+00:03:54,290 --> 00:04:01,460
+if you type the dot and if you look at the methods, you can see that we have to order DTO list extension
+
+50
+00:04:01,460 --> 00:04:05,000
+method returning the IEnumerable order data object.
+
+51
+00:04:05,000 --> 00:04:08,810
+That means we don't need to convert this line of code anymore.
+
+52
+00:04:08,810 --> 00:04:10,430
+And I'm going to remove this line of code.
+
+53
+00:04:10,430 --> 00:04:13,160
+And when we are returning result object.
+
+54
+00:04:13,160 --> 00:04:20,300
+This result object expecting us a DTO object, which is the IEnumerable DTO object that we can convert
+
+55
+00:04:20,300 --> 00:04:21,920
+from the orders list.
+
+56
+00:04:21,920 --> 00:04:27,710
+Here you can see the orders entity list that I am going to use, newly created extension method, which
+
+57
+00:04:27,710 --> 00:04:33,440
+is to order DTO list and passing the I enumerable order DTO into our result object.
+
+58
+00:04:33,440 --> 00:04:40,580
+By this way, we can provide maintainability and reusability of our application code and make it simplify
+
+59
+00:04:40,580 --> 00:04:43,790
+for handler method by removing these manually.
+
+60
+00:04:43,790 --> 00:04:46,850
+Project operation which is the project to order DTO.
+
+61
+00:04:46,850 --> 00:04:53,870
+So I am going to remove the whole function, and you can see that our handler method is more clear and
+
+62
+00:04:53,870 --> 00:04:54,770
+more concise.
+

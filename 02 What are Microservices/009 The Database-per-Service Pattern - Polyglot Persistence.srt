@@ -1,0 +1,124 @@
+1
+00:00:00,170 --> 00:00:06,830
+In this video, we are going to learn one of two fundamental design patterns of microservice architecture,
+
+2
+00:00:06,830 --> 00:00:09,950
+which is the database per service pattern.
+
+3
+00:00:11,240 --> 00:00:16,490
+One of the core characteristic of the microservice architecture is the loosely coupling services.
+
+4
+00:00:16,520 --> 00:00:20,930
+For that reason, every service should have its own database.
+
+5
+00:00:20,960 --> 00:00:24,830
+It can be a polyglot persistence among the microservices.
+
+6
+00:00:26,870 --> 00:00:29,630
+Let's think about our e-commerce application.
+
+7
+00:00:29,630 --> 00:00:37,460
+We will have product shopping cart and ordering microservices that each services data in their own database.
+
+8
+00:00:37,460 --> 00:00:41,300
+And any changes to one database don't impact the other.
+
+9
+00:00:41,300 --> 00:00:42,320
+Microservices.
+
+10
+00:00:45,650 --> 00:00:50,240
+The services database can't be accessed directly by other microservices.
+
+11
+00:00:50,270 --> 00:00:55,820
+Each services persistent data can only be accessed via Rest APIs.
+
+12
+00:00:57,960 --> 00:00:59,820
+So database per service.
+
+13
+00:00:59,820 --> 00:01:07,020
+Microservice provides many benefits, especially for evolve rapidly and support massive scale systems.
+
+14
+00:01:07,050 --> 00:01:10,770
+Let's talk about the benefits of database per service pattern.
+
+15
+00:01:11,610 --> 00:01:18,780
+The first benefit is data schema changes made easy without impacting other microservices, and each
+
+16
+00:01:18,780 --> 00:01:21,390
+database can scale independently.
+
+17
+00:01:21,960 --> 00:01:27,090
+Microservices domain data is encapsulated within the microservices itself.
+
+18
+00:01:28,080 --> 00:01:33,420
+If one of the database server is down, this will not affect the other services.
+
+19
+00:01:34,140 --> 00:01:41,220
+Also, polyglot data persistence gives ability to select the best optimized storage needs as per the
+
+20
+00:01:41,220 --> 00:01:42,210
+microservices.
+
+21
+00:01:44,460 --> 00:01:49,650
+So if you see the image on the slide, that is the example of microservice architecture of e-commerce
+
+22
+00:01:49,650 --> 00:01:50,490
+application.
+
+23
+00:01:50,490 --> 00:01:58,620
+We will have product shopping cart and ordering microservices that each services data in their own database.
+
+24
+00:01:59,280 --> 00:02:06,240
+The first microservice is product microservices, the product microservice using NoSQL document database
+
+25
+00:02:06,240 --> 00:02:12,990
+for storing catalog related data, which is storing Json objects to accommodate high volume of read
+
+26
+00:02:12,990 --> 00:02:13,920
+operations.
+
+27
+00:02:15,680 --> 00:02:18,200
+And the second microservice is shopping cart.
+
+28
+00:02:18,230 --> 00:02:25,100
+The shopping cart microservice using a distributed cache that supports it is simple key value data store.
+
+29
+00:02:25,970 --> 00:02:28,850
+And the last microservice is ordering microservices.
+
+30
+00:02:28,880 --> 00:02:35,270
+The ordering microservice using a relational database to accommodate to reach relational structure of
+
+31
+00:02:35,270 --> 00:02:36,740
+its underlying data.
+

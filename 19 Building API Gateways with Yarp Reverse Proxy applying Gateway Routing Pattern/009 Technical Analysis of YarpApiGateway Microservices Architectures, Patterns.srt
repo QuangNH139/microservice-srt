@@ -1,0 +1,176 @@
+1
+00:00:00,140 --> 00:00:04,610
+In this video, we are going to do technical analysis for your API gateway.
+
+2
+00:00:04,610 --> 00:00:10,730
+Microservices that include application architecture, analyze pattern and principles libraries, NuGet
+
+3
+00:00:10,730 --> 00:00:14,330
+packages and project folder structure that we are going to analyze.
+
+4
+00:00:14,330 --> 00:00:18,530
+So let me start with the application architecture style for your API gateway.
+
+5
+00:00:18,530 --> 00:00:24,110
+We don't have any architecture which is simple application settings configuration for reverse proxy
+
+6
+00:00:24,140 --> 00:00:24,590
+irb.
+
+7
+00:00:24,590 --> 00:00:30,080
+API gateway doesn't follow any application architecture and focus on the configuration based approach
+
+8
+00:00:30,080 --> 00:00:32,720
+to route requests to different microservices.
+
+9
+00:00:32,720 --> 00:00:35,090
+That means we will implement reverse proxy.
+
+10
+00:00:35,270 --> 00:00:40,670
+Reverse proxy is a server that sits in front of the web server and forward the client requests to these
+
+11
+00:00:40,670 --> 00:00:41,630
+web servers.
+
+12
+00:00:41,720 --> 00:00:46,700
+If you look at the pattern and principles, we can say that we will implement gateway routing pattern
+
+13
+00:00:46,700 --> 00:00:51,620
+to manage routing of the requests to various services handling the path based routing.
+
+14
+00:00:51,620 --> 00:00:57,530
+And we will implement API gateway pattern irb API Gateway Server as a single entry point for multiple
+
+15
+00:00:57,530 --> 00:01:01,070
+microservices and simplifying the client side interaction.
+
+16
+00:01:01,070 --> 00:01:06,800
+And we will also implement the reverse proxy pattern IRB act as an intermediary for requests from the
+
+17
+00:01:06,800 --> 00:01:10,790
+client seeking resources from the microservices IT roster.
+
+18
+00:01:10,820 --> 00:01:16,490
+After that, we can analyze libraries and NuGet packages that we are going to use, and we will use
+
+19
+00:01:16,490 --> 00:01:22,220
+airport reverse proxy packages, and we will install these packages to enable the implementation of
+
+20
+00:01:22,220 --> 00:01:25,160
+the reverse proxy capabilities within the application.
+
+21
+00:01:25,160 --> 00:01:30,890
+So we said that IRB is a lightweight and highly customizable reverse proxy solution developed by the
+
+22
+00:01:30,890 --> 00:01:31,550
+Microsoft.
+
+23
+00:01:31,550 --> 00:01:32,960
+And it is tailored for the.
+
+24
+00:01:33,080 --> 00:01:34,040
+Net application.
+
+25
+00:01:34,040 --> 00:01:37,520
+That means it is designed to integrate seamlessly with dotnet core.
+
+26
+00:01:37,550 --> 00:01:41,360
+That's why we will use airport reverse proxy NuGet packages.
+
+27
+00:01:41,360 --> 00:01:47,810
+And if you look at the folder structure, you can see that we will develop our irb API gateway project,
+
+28
+00:01:47,810 --> 00:01:51,020
+including the Program.cs and application settings Json file.
+
+29
+00:01:51,020 --> 00:01:57,110
+Program.cs is the entry point of the application where IRB and other services are configured, and here
+
+30
+00:01:57,110 --> 00:02:02,930
+you can see the application settings Json file, which is a central to irb API gateway functionality.
+
+31
+00:02:02,930 --> 00:02:07,280
+And this file contains all the routing configurations for the microservices.
+
+32
+00:02:07,280 --> 00:02:11,540
+And here you can see as an example of the application settings configuration.
+
+33
+00:02:11,540 --> 00:02:12,350
+It includes.
+
+34
+00:02:12,350 --> 00:02:17,990
+The routes and routes are defined pointing to the different services like catalog basket and ordering
+
+35
+00:02:17,990 --> 00:02:18,950
+microservices.
+
+36
+00:02:18,950 --> 00:02:23,900
+And we can also implement load balancing, health check and other middleware configurations with this
+
+37
+00:02:23,900 --> 00:02:24,500
+file.
+
+38
+00:02:24,740 --> 00:02:28,400
+And lastly we will analyze the deployment of the IRB API gateway.
+
+39
+00:02:28,400 --> 00:02:33,800
+We will basically containerize our service with Docker and ensuring the deployment and integration with
+
+40
+00:02:33,800 --> 00:02:35,030
+the IRB API gateway.
+
+41
+00:02:35,030 --> 00:02:40,460
+And we will implement Docker file and docker compose file for running irb API gateway in a docker compose
+
+42
+00:02:40,460 --> 00:02:41,240
+environment.
+
+43
+00:02:41,330 --> 00:02:46,640
+As you can see that we have completed the domain and technical analysis for irb API gateway microservices
+
+44
+00:02:46,640 --> 00:02:48,170
+and we will start to development.
+

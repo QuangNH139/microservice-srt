@@ -1,0 +1,64 @@
+1
+00:00:00,110 --> 00:00:05,420
+In this video, we are going to learn gRPC for high performance remote procedure calls.
+
+2
+00:00:06,050 --> 00:00:11,450
+gRPC is an open source remote procedure call system initially developed at Google.
+
+3
+00:00:11,930 --> 00:00:17,540
+gRPC is a framework to efficiently connect services and build distributed systems.
+
+4
+00:00:17,960 --> 00:00:24,980
+It is focused on high performance and uses the Http two protocol to transport binary messages.
+
+5
+00:00:26,060 --> 00:00:30,500
+It relies on the protocol buffer language to define service contracts.
+
+6
+00:00:31,280 --> 00:00:38,390
+Protocol buffers, also known as protobuf, allows you to define the interface to be used in service
+
+7
+00:00:38,390 --> 00:00:41,900
+to service communication regardless of the programming language.
+
+8
+00:00:42,410 --> 00:00:46,610
+It generates cross-platform client and server bindings for many languages.
+
+9
+00:00:46,970 --> 00:00:53,450
+Most common usage scenarios include connecting services in microservices style architecture and connect
+
+10
+00:00:53,450 --> 00:00:57,110
+mobile devices browser clients to backend services.
+
+11
+00:00:58,430 --> 00:01:04,760
+So the gRPC framework allows developers to create services that can communicate with each other efficiently
+
+12
+00:01:04,760 --> 00:01:08,480
+and independently from their preferred programming language.
+
+13
+00:01:09,140 --> 00:01:15,710
+Once you define a contract with protobuf, this contract can be used by each service to automatically
+
+14
+00:01:15,710 --> 00:01:19,880
+generate the code that can sets up the communication infrastructure.
+
+15
+00:01:20,480 --> 00:01:26,300
+This feature simplifies the creation of the service interactions and together with high performance,
+
+16
+00:01:26,300 --> 00:01:33,050
+makes gRPC the ideal framework for creating microservices and communicating between inter service communications.
+

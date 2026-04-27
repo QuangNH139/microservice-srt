@@ -1,0 +1,644 @@
+1
+00:00:00,140 --> 00:00:05,510
+In this video, we are going to developing the domain model for ordering microservices.
+
+2
+00:00:05,510 --> 00:00:11,990
+That means we will create ordered domain entities, aggregates and value objects that represent our
+
+3
+00:00:11,990 --> 00:00:13,760
+business logic and requirements.
+
+4
+00:00:13,760 --> 00:00:19,130
+For that purpose, please open the Visual Studio and go to the ordering domain.
+
+5
+00:00:19,130 --> 00:00:22,010
+And this time we are going to create a new folder.
+
+6
+00:00:22,010 --> 00:00:24,530
+Right click Add New folder.
+
+7
+00:00:24,530 --> 00:00:26,360
+Which name is models.
+
+8
+00:00:26,360 --> 00:00:28,850
+This will be represent our domain models.
+
+9
+00:00:28,850 --> 00:00:31,940
+And the first domain model is Order Aggregate.
+
+10
+00:00:31,940 --> 00:00:37,610
+I am going to add a new class which name is order dot css and this will be our aggregate.
+
+11
+00:00:37,610 --> 00:00:42,590
+For that purpose I am going to remove using statement and make it public.
+
+12
+00:00:42,590 --> 00:00:49,010
+And the important thing is we are going to inherit from the aggregate class, which is the our base
+
+13
+00:00:49,010 --> 00:00:51,440
+abstract class from the abstractions.
+
+14
+00:00:51,440 --> 00:00:54,830
+And I am going to define the t id as a grid.
+
+15
+00:00:54,860 --> 00:00:59,150
+That means order entities, id type as a grid.
+
+16
+00:00:59,150 --> 00:01:05,630
+So you can right click the aggregate, go to definition and see that aggregate inherits from the entity.
+
+17
+00:01:05,630 --> 00:01:12,110
+And if you go to right click and go to definition of the entity, you can see that there is a t id property
+
+18
+00:01:12,110 --> 00:01:15,680
+which represents grid for our order model.
+
+19
+00:01:15,680 --> 00:01:22,730
+So please go back to the order model definition and continue to our business domain model properties.
+
+20
+00:01:22,730 --> 00:01:25,310
+And the first property is order items.
+
+21
+00:01:25,310 --> 00:01:31,250
+If you go back to our architecture and you can see domain modeling, analyzing order has one to end
+
+22
+00:01:31,250 --> 00:01:33,110
+relationship with the order items.
+
+23
+00:01:33,110 --> 00:01:38,060
+That means I am going to create a order item list into the order aggregate.
+
+24
+00:01:38,060 --> 00:01:44,420
+If you go back to our code, you can come here and we are going to create a list which is including
+
+25
+00:01:44,420 --> 00:01:50,180
+the order item, which is the private read only list, and this is the order item list that we are going
+
+26
+00:01:50,180 --> 00:01:52,790
+to create newly in the order class.
+
+27
+00:01:52,790 --> 00:01:59,540
+And I am going to return back the Order items property with returning this private order items as a
+
+28
+00:01:59,540 --> 00:02:00,020
+read only.
+
+29
+00:02:00,200 --> 00:02:06,350
+This is one of the important thing that returning read only list when reaching these order items from
+
+30
+00:02:06,350 --> 00:02:10,490
+the outside of the world, and this is the definition of the one to end relationships.
+
+31
+00:02:10,490 --> 00:02:12,830
+So please ignore these order items.
+
+32
+00:02:12,830 --> 00:02:18,830
+Exceptions that we are going to develop a few minutes later, but continue the implementation of order.
+
+33
+00:02:18,830 --> 00:02:25,160
+Entity order has customer order, name, shipping address, billing address, payment, and so on.
+
+34
+00:02:25,160 --> 00:02:28,010
+So let me define these attributes one by one.
+
+35
+00:02:28,010 --> 00:02:30,110
+The first one is customer ID.
+
+36
+00:02:30,260 --> 00:02:37,340
+As you can see that we will define with customer ID in order to access the customer ID information from
+
+37
+00:02:37,340 --> 00:02:38,930
+the customer bounded context.
+
+38
+00:02:38,930 --> 00:02:43,280
+And after that, the second thing is we can define the order name.
+
+39
+00:02:43,280 --> 00:02:46,220
+This is the public string order name property.
+
+40
+00:02:46,220 --> 00:02:52,970
+And I am using the get and private set because this property cannot be settable from outside of the
+
+41
+00:02:52,970 --> 00:02:53,540
+world.
+
+42
+00:02:53,540 --> 00:02:58,040
+And after the order name we can define two address information.
+
+43
+00:02:58,040 --> 00:03:00,680
+These are the shipping address and billing address.
+
+44
+00:03:00,680 --> 00:03:06,350
+And these address informations should be value object of the address that we will define after this
+
+45
+00:03:06,350 --> 00:03:07,100
+definition.
+
+46
+00:03:07,100 --> 00:03:12,860
+So please make sure that you have added the two address, one for the shipping and one for the billing
+
+47
+00:03:12,860 --> 00:03:13,370
+address.
+
+48
+00:03:13,370 --> 00:03:17,480
+And this will be the representing our value objects in order aggregate.
+
+49
+00:03:17,480 --> 00:03:21,320
+And after that we have one more value object which is the payment.
+
+50
+00:03:21,320 --> 00:03:25,910
+And we will define payment property from the payment value object.
+
+51
+00:03:25,910 --> 00:03:30,740
+And lastly we will define order status which is the enum.
+
+52
+00:03:30,740 --> 00:03:35,240
+And in here you can see that order status should be our enumeration.
+
+53
+00:03:35,240 --> 00:03:37,460
+And the property name should be status.
+
+54
+00:03:37,460 --> 00:03:41,990
+And the default value should be order status dot panning for order aggregate.
+
+55
+00:03:41,990 --> 00:03:49,640
+And finally I am going to create a total price decimal property, which will be calculate the order
+
+56
+00:03:49,640 --> 00:03:54,350
+items and iterating the order items with using the sum function.
+
+57
+00:03:54,350 --> 00:03:55,700
+Price and quantity.
+
+58
+00:03:55,700 --> 00:03:58,190
+Multiplexing the price and quantity information.
+
+59
+00:03:58,190 --> 00:04:04,040
+So this is calculating of the total price into the property of the order aggregate.
+
+60
+00:04:04,040 --> 00:04:10,850
+So these are the order aggregate definitions that we are going to build one by one.
+
+61
+00:04:10,880 --> 00:04:13,340
+You can find the whole class in here.
+
+62
+00:04:13,340 --> 00:04:18,709
+Basically order is the aggregate root including all related entities and value objects.
+
+63
+00:04:18,709 --> 00:04:25,550
+Order item is a list of the order item entities and order aggregate include customer shipping, billing
+
+64
+00:04:25,550 --> 00:04:30,050
+and payment details, and total price is computed from the order items.
+
+65
+00:04:30,320 --> 00:04:34,910
+After that, we will continue with the next entity, which is the order item.
+
+66
+00:04:34,910 --> 00:04:40,790
+I'm going to create a new class under the models folder, which name is order item dot CSS and this
+
+67
+00:04:40,790 --> 00:04:44,120
+will be entity from the our order aggregate.
+
+68
+00:04:44,120 --> 00:04:49,280
+I'm going to remove unnecessary using statement and make this class as a public.
+
+69
+00:04:50,060 --> 00:04:58,520
+And after that I'm going to inherit from the entity abstract class and specify the ID information as
+
+70
+00:04:58,520 --> 00:04:59,180
+a grid.
+
+71
+00:04:59,880 --> 00:05:02,880
+Here you can see the definition of the Orderitem entity.
+
+72
+00:05:02,880 --> 00:05:09,390
+And in this orderitem entity we basically have some of the attributes including the order ID, product
+
+73
+00:05:09,390 --> 00:05:11,340
+id, quantity and price.
+
+74
+00:05:11,340 --> 00:05:16,140
+So I'm going to add these properties under the Orderitem entity class.
+
+75
+00:05:16,140 --> 00:05:20,040
+Here you can see the order ID which is the great value.
+
+76
+00:05:20,040 --> 00:05:26,760
+And product ID is also great value and quantity integer and decimal price.
+
+77
+00:05:26,760 --> 00:05:34,680
+So also I would like to add an internal constructor to create a new Orderitem with a given properties
+
+78
+00:05:34,680 --> 00:05:36,480
+as a parameter of the constructor.
+
+79
+00:05:36,480 --> 00:05:43,050
+Here you can see that we have an internal constructor in the Orderitem accepting the order id, product
+
+80
+00:05:43,050 --> 00:05:50,340
+id quantity and price as a parameters of the Orderitem that we will create new Orderitem.
+
+81
+00:05:50,340 --> 00:05:57,540
+So Orderitem represents individual items within an order, and it contains product information and quantity
+
+82
+00:05:57,540 --> 00:05:59,160
+information, and so on.
+
+83
+00:05:59,160 --> 00:06:01,410
+The next entity is customer.
+
+84
+00:06:01,410 --> 00:06:10,530
+So I'm going to create a new file under the models which is the customer X and customer also be entity.
+
+85
+00:06:10,530 --> 00:06:20,250
+I'm going to change the public class customer and inherit from the entity and the ID value also with.
+
+86
+00:06:20,730 --> 00:06:27,450
+So in here we can define customer related attributes that I'm going to add only name and email as a
+
+87
+00:06:27,450 --> 00:06:29,910
+string value of these properties.
+
+88
+00:06:29,910 --> 00:06:33,510
+Please make sure that also you have defined customer entity.
+
+89
+00:06:33,510 --> 00:06:36,810
+And after that we can define product entity.
+
+90
+00:06:36,810 --> 00:06:37,830
+Under the models.
+
+91
+00:06:37,830 --> 00:06:41,310
+I'm going to add a new class which name is product X.
+
+92
+00:06:41,310 --> 00:06:51,330
+And in this class I'm going to follow the same steps, make it public and inherit from the entity with
+
+93
+00:06:51,510 --> 00:06:52,290
+value.
+
+94
+00:06:52,290 --> 00:06:57,000
+In the product class we have two attributes, which is the name and price.
+
+95
+00:06:57,000 --> 00:07:03,360
+These are the string name and decimal price attributes defined in the product class as an entity.
+
+96
+00:07:03,360 --> 00:07:10,230
+So you can see that we have completed domain modeling, including the order Orderitem customer and product.
+
+97
+00:07:10,230 --> 00:07:13,560
+And you can see that even it is the ordering microservices.
+
+98
+00:07:13,560 --> 00:07:15,840
+We have customer and product entity.
+
+99
+00:07:16,080 --> 00:07:19,680
+Why we should use customer and product entity in the ordering.
+
+100
+00:07:19,680 --> 00:07:20,670
+Microservices.
+
+101
+00:07:20,670 --> 00:07:28,080
+Microservices can duplicate data like product from the catalog microservices in order to reduce interservice
+
+102
+00:07:28,080 --> 00:07:28,980
+communication.
+
+103
+00:07:28,980 --> 00:07:35,520
+But when you duplicate the microservice data from other microservices, this time it needs to be updated
+
+104
+00:07:35,520 --> 00:07:37,650
+in eventual consistency way.
+
+105
+00:07:37,650 --> 00:07:40,020
+We will learn it in in coming videos.
+
+106
+00:07:40,020 --> 00:07:43,410
+So for now we will continue to our domain modeling.
+
+107
+00:07:43,410 --> 00:07:47,610
+We have finished the models and this time I am going to create value objects.
+
+108
+00:07:47,610 --> 00:07:50,520
+So right click the order domain add new folder.
+
+109
+00:07:50,520 --> 00:07:52,530
+Which name is value objects.
+
+110
+00:07:52,530 --> 00:07:56,190
+We will adding value objects inside of this folder.
+
+111
+00:07:56,190 --> 00:07:58,980
+I'm going to start with the address dot CSS.
+
+112
+00:07:58,980 --> 00:08:01,860
+Create a new class with the address definition.
+
+113
+00:08:01,860 --> 00:08:05,400
+And I'm going to remove the unnecessary using statement.
+
+114
+00:08:05,400 --> 00:08:08,160
+And I'm going to change the public.
+
+115
+00:08:08,160 --> 00:08:12,810
+And this time instead of using the class we are going to use record type.
+
+116
+00:08:12,810 --> 00:08:20,040
+Because record types is very good for defining value objects in terms of the comparing and removing
+
+117
+00:08:20,040 --> 00:08:21,210
+the ID operations.
+
+118
+00:08:21,210 --> 00:08:24,720
+So that's why we are going to use address as a value object.
+
+119
+00:08:24,720 --> 00:08:31,110
+And this is very powerful for the C sharp that we can define domain driven design value object as a
+
+120
+00:08:31,110 --> 00:08:31,860
+record type.
+
+121
+00:08:31,860 --> 00:08:38,490
+And in the address I'm going to define lots of the attributes and properties including the first name,
+
+122
+00:08:38,490 --> 00:08:42,750
+last name, email address, address, line, country, state, and zip code.
+
+123
+00:08:42,750 --> 00:08:48,660
+All of these attributes are string properties under the address value object record type.
+
+124
+00:08:48,660 --> 00:08:55,560
+So basically we will define an address as a value object and utilize the C sharp record type for immutability.
+
+125
+00:08:56,130 --> 00:08:59,040
+After that we can define the payment value object.
+
+126
+00:08:59,040 --> 00:09:04,740
+I'm going to add a new class which is the payment dot CSS, and following the same steps as the value
+
+127
+00:09:04,740 --> 00:09:14,580
+object, make it public and record type and after that define the attributes including the card name,
+
+128
+00:09:14,580 --> 00:09:18,900
+card number, expiration, CVV, and payment method.
+
+129
+00:09:18,900 --> 00:09:23,100
+Payment value object basically encapsulates the payment details.
+
+130
+00:09:23,490 --> 00:09:26,190
+After that we can define the enumerations.
+
+131
+00:09:26,190 --> 00:09:27,150
+For that purpose.
+
+132
+00:09:27,150 --> 00:09:32,550
+I'm going to right click the order domain and add new folder, which name is enums.
+
+133
+00:09:33,030 --> 00:09:37,470
+And in this folder I'm going to create our enum which is the order status.
+
+134
+00:09:37,470 --> 00:09:41,940
+So create a new class which is the order statistics.
+
+135
+00:09:41,940 --> 00:09:47,310
+And I'm going to remove the unnecessary using statement and make it public.
+
+136
+00:09:48,450 --> 00:09:57,210
+And this time we will define enum for order status and as an enumeration order status we have several
+
+137
+00:09:57,210 --> 00:09:57,750
+values.
+
+138
+00:09:57,750 --> 00:09:58,920
+These are the.
+
+139
+00:09:59,710 --> 00:10:02,470
+Planning completed and cancelled.
+
+140
+00:10:02,680 --> 00:10:07,240
+So these are the possible states for ordered as an ordered status.
+
+141
+00:10:07,660 --> 00:10:12,280
+And finally we can go back to order domain aggregate.
+
+142
+00:10:12,280 --> 00:10:15,880
+You can go to the models and go to the ordered aggregate.
+
+143
+00:10:15,880 --> 00:10:23,110
+Here you can see that we can define these address payment and order status as a complex type.
+
+144
+00:10:23,110 --> 00:10:30,070
+If you come here and using the value objects address and payment comes into our order aggregate.
+
+145
+00:10:30,070 --> 00:10:36,700
+And if you come here and using the ordered domain enums, you can see that our order aggregate is now
+
+146
+00:10:36,700 --> 00:10:37,390
+ready.
+
+147
+00:10:37,390 --> 00:10:44,080
+But as you can see that we have three using statements that we can remove these unnecessary using statements
+
+148
+00:10:44,080 --> 00:10:46,360
+to the global using CSS.
+
+149
+00:10:46,420 --> 00:10:53,560
+For that purpose, go to ordering domain level and add new class which name is global using dot CSS.
+
+150
+00:10:53,620 --> 00:10:58,150
+And in here we are going to write global using statement directly.
+
+151
+00:10:58,150 --> 00:11:03,880
+And I'm going to copy paste these global using statements including abstractions, models, value objects
+
+152
+00:11:03,880 --> 00:11:05,230
+and enums folder.
+
+153
+00:11:05,230 --> 00:11:11,050
+If you go back to our order model now, we can safely remove these using statements.
+
+154
+00:11:11,680 --> 00:11:12,850
+Save these orders.
+
+155
+00:11:12,850 --> 00:11:13,360
+Yes.
+
+156
+00:11:13,360 --> 00:11:20,950
+And if you go to order item we can also remove these ordering domain abstraction using statement.
+
+157
+00:11:20,950 --> 00:11:26,020
+Save this item and go to product and also check the customer.
+
+158
+00:11:26,020 --> 00:11:32,110
+So as you can see that we have cleared unnecessary using statement and we have finished to our domain
+
+159
+00:11:32,110 --> 00:11:35,170
+modeling into the ordering domain project.
+
+160
+00:11:35,170 --> 00:11:40,990
+If you right click and build this class library, you can see that we have successfully finished the
+
+161
+00:11:40,990 --> 00:11:43,390
+definition of the ordering domain model.
+

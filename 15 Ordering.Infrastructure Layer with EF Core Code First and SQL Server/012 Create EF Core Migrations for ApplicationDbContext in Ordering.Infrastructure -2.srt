@@ -1,0 +1,444 @@
+1
+00:00:00,110 --> 00:00:06,320
+In this video we are going to create Entity Framework core migrations for application DB context in
+
+2
+00:00:06,320 --> 00:00:07,640
+ordering infrastructure.
+
+3
+00:00:07,820 --> 00:00:15,050
+So that means after setting up the Entity Framework Core Context object and configure these entities
+
+4
+00:00:15,050 --> 00:00:21,710
+into our configuration classes, the next step is generate and apply migrations in order to create or
+
+5
+00:00:21,710 --> 00:00:24,680
+update the database schema on our SQL server.
+
+6
+00:00:25,100 --> 00:00:31,130
+So to perform the migrations, there are several steps to generate and apply these migrations.
+
+7
+00:00:31,130 --> 00:00:36,470
+Please follow me carefully, because this is the crucial step that we are going to create migrations
+
+8
+00:00:36,470 --> 00:00:38,060
+and run these migrations.
+
+9
+00:00:38,060 --> 00:00:42,140
+So the first step is we should ensure the correct startup project.
+
+10
+00:00:42,140 --> 00:00:47,660
+So if you look at the our ordering microservices, we will follow the clean architecture.
+
+11
+00:00:47,660 --> 00:00:51,200
+And you should set a startup project for ordering API.
+
+12
+00:00:51,200 --> 00:00:54,590
+I'm going to right click and set a startup project.
+
+13
+00:00:55,500 --> 00:00:58,950
+And make sure that ordering API is set as startup project.
+
+14
+00:00:58,980 --> 00:01:05,250
+This is necessary because Entity Framework core tools will look for the database related configurations
+
+15
+00:01:05,250 --> 00:01:07,890
+like connection string in the startup project.
+
+16
+00:01:07,890 --> 00:01:14,220
+That's why the application settings storing the database connection string and these API project should
+
+17
+00:01:14,220 --> 00:01:16,230
+be set as startup project.
+
+18
+00:01:16,230 --> 00:01:21,600
+And the second step is we should specify the target and startup project in the command.
+
+19
+00:01:21,600 --> 00:01:27,690
+So when running the migration command, we should explicitly specify both the target and the startup
+
+20
+00:01:27,690 --> 00:01:28,320
+project.
+
+21
+00:01:28,320 --> 00:01:35,670
+This is important if your DB context object is in different project, in our case our db context object
+
+22
+00:01:35,670 --> 00:01:40,170
+storing under the ordering infrastructure and application db context.
+
+23
+00:01:40,170 --> 00:01:47,490
+So we should explicitly specify the target and startup project in the Package Manager console tool or
+
+24
+00:01:47,490 --> 00:01:49,170
+the dotnet core CLI tool.
+
+25
+00:01:49,170 --> 00:01:55,380
+Since I'm going to use Visual Studio, I'm going to use Package Manager Console for that purpose, you
+
+26
+00:01:55,380 --> 00:02:01,500
+can go to Visual Studio Vive, and in the Vive window you can go to the other windows.
+
+27
+00:02:01,500 --> 00:02:04,800
+And if you come here you can see the Package Manager console.
+
+28
+00:02:04,800 --> 00:02:09,330
+Click this Package Manager console and open your Package Manager console.
+
+29
+00:02:09,330 --> 00:02:14,520
+And as you can see, that Package Manager console, including the package source and the default project
+
+30
+00:02:14,670 --> 00:02:21,120
+in this window, I'm going to change the default project name from ordering API to ordering infrastructure,
+
+31
+00:02:21,120 --> 00:02:27,390
+because we will run the migration command where the application DB context is stored, which is the
+
+32
+00:02:27,390 --> 00:02:28,740
+ordering infrastructure.
+
+33
+00:02:28,740 --> 00:02:34,110
+After changing the default project, we can run the add migration command, which is including the add
+
+34
+00:02:34,110 --> 00:02:39,690
+migration initial create, which is the name of the migration, and we can specify the properties like
+
+35
+00:02:39,690 --> 00:02:42,660
+output tier which is the data migration folder.
+
+36
+00:02:42,660 --> 00:02:47,310
+And I'm going to specify the project which is the default project ordering infrastructure.
+
+37
+00:02:47,310 --> 00:02:51,390
+And we have to specify the startup project which is the ordering API.
+
+38
+00:02:51,420 --> 00:02:57,990
+This is important to running this add migration command with giving these properties, specifying the
+
+39
+00:02:57,990 --> 00:03:00,540
+target and startup project explicitly.
+
+40
+00:03:00,540 --> 00:03:01,710
+If you are using the.
+
+41
+00:03:01,890 --> 00:03:09,060
+Net CLI, you can run dotnet f migrations command with passing these parameters dash or dash p and dash
+
+42
+00:03:09,060 --> 00:03:10,890
+s commands in here.
+
+43
+00:03:10,890 --> 00:03:15,210
+So I'm going to follow the Visual Studio and Package Manager console.
+
+44
+00:03:15,210 --> 00:03:19,620
+And after writing this command I'm hitting the enter and see what's going on.
+
+45
+00:03:19,620 --> 00:03:22,410
+So this will be start to build our application.
+
+46
+00:03:27,100 --> 00:03:30,970
+And after that we can see that we got exception.
+
+47
+00:03:30,970 --> 00:03:33,280
+Which name is your startup project?
+
+48
+00:03:33,280 --> 00:03:33,760
+Ordering?
+
+49
+00:03:33,760 --> 00:03:40,150
+API doesn't reference Microsoft Entity Framework Core Design package, and this package required for
+
+50
+00:03:40,150 --> 00:03:42,310
+the Entity Framework core tools to work.
+
+51
+00:03:42,310 --> 00:03:45,280
+So we should ensure our startup project is correct.
+
+52
+00:03:45,280 --> 00:03:47,530
+Install the package and we will try again.
+
+53
+00:03:47,530 --> 00:03:54,370
+That means the startup project, which is the ordering API requiring to install design packages in order
+
+54
+00:03:54,370 --> 00:04:00,460
+to understand the whole application and reach the connection strings of our application, which is including
+
+55
+00:04:00,460 --> 00:04:01,690
+the application setting.
+
+56
+00:04:01,690 --> 00:04:08,350
+So as a solution, I am going to go to the ordering API and right click the dependencies and manage
+
+57
+00:04:08,350 --> 00:04:09,400
+NuGet packages.
+
+58
+00:04:11,370 --> 00:04:12,060
+In here.
+
+59
+00:04:12,060 --> 00:04:19,740
+I'm going to install Microsoft Entity Framework Core Design package into ordering API in order to access
+
+60
+00:04:19,740 --> 00:04:22,710
+application settings, connection settings, and so on.
+
+61
+00:04:22,710 --> 00:04:28,440
+So this is required for the clean architecture setup because in a clean architecture setup, it is a
+
+62
+00:04:28,440 --> 00:04:34,350
+common goal to encapsulate all data related concerns, including Entity Framework core dependencies
+
+63
+00:04:34,350 --> 00:04:36,120
+within the infrastructure layer.
+
+64
+00:04:36,150 --> 00:04:43,080
+However, the Entity Framework core tools, particularly for migrations, often need some more information
+
+65
+00:04:43,080 --> 00:04:46,830
+from the start up project, which is in our case, ordering API.
+
+66
+00:04:46,830 --> 00:04:52,500
+That's why the Entity Framework core tools are looking for the design packages in the startup project
+
+67
+00:04:52,500 --> 00:04:56,070
+that we have to install design package into ordering API.
+
+68
+00:04:56,070 --> 00:04:59,760
+So select the design package and install into ordering API.
+
+69
+00:05:00,540 --> 00:05:02,280
+And installation is completed.
+
+70
+00:05:02,280 --> 00:05:05,820
+You can verify from the ordering API project file.
+
+71
+00:05:05,820 --> 00:05:07,710
+The design package is located in here.
+
+72
+00:05:07,710 --> 00:05:14,130
+So if you go back to our package manager console and running the same command with setting the default
+
+73
+00:05:14,130 --> 00:05:20,490
+project ordering infrastructure, and you can hit the enter this time, this will be create our migration
+
+74
+00:05:20,490 --> 00:05:23,940
+folder under the Our Infrastructure project.
+
+75
+00:05:23,940 --> 00:05:27,000
+You can see that the migration completed successfully.
+
+76
+00:05:27,000 --> 00:05:29,220
+And here you can see the details as a log.
+
+77
+00:05:29,220 --> 00:05:34,260
+So if you go back to our infrastructure project you can see the data configurations.
+
+78
+00:05:34,260 --> 00:05:36,750
+And now we have created migration folder.
+
+79
+00:05:36,750 --> 00:05:42,990
+And under migration code folder we have two classes which is indicating our initial create the first
+
+80
+00:05:42,990 --> 00:05:43,710
+migration.
+
+81
+00:05:43,710 --> 00:05:48,870
+If you go to the our initial create class you can examine our up and down method.
+
+82
+00:05:48,870 --> 00:05:52,260
+You can see that we have two methods for up and down.
+
+83
+00:05:52,260 --> 00:05:59,340
+Up for the creating a migrations in the database and down for the rollback the changes from the database.
+
+84
+00:05:59,340 --> 00:06:05,730
+So in the up method you can see that we basically create a table which name is customers products orders
+
+85
+00:06:05,730 --> 00:06:11,730
+with a given and specifying configurations that we have defined the value object as a complex type in
+
+86
+00:06:11,730 --> 00:06:16,980
+here you can see that comes in here billing address and address line country and so on.
+
+87
+00:06:16,980 --> 00:06:24,030
+And these are the value object definitions and relationships and enumerations are configuring according
+
+88
+00:06:24,060 --> 00:06:25,950
+to our configuration classes.
+
+89
+00:06:25,950 --> 00:06:33,150
+That is generating the migration folder that is going to create our update the database table on SQL
+
+90
+00:06:33,150 --> 00:06:33,660
+server.
+
+91
+00:06:33,660 --> 00:06:36,330
+In the down method this will be dropped two tables.
+
+92
+00:06:36,330 --> 00:06:42,300
+And because this is the first migration that we are going to apply for the initial create of the ordering
+
+93
+00:06:42,330 --> 00:06:45,540
+tables, for example, we can also check the relationships.
+
+94
+00:06:45,540 --> 00:06:49,980
+If you scroll down and go to the Order and Order item table.
+
+95
+00:06:49,980 --> 00:06:55,320
+For example, in order Item table, you can see that we have two foreign key, one for the order ID
+
+96
+00:06:55,320 --> 00:07:00,690
+and another for the product ID these columns will be generated with using these migration folder.
+
+97
+00:07:00,690 --> 00:07:07,080
+So after generating these migration class we should run additional command which is the update database.
+
+98
+00:07:07,080 --> 00:07:12,390
+I'm going to open the Package manager console and run the second command, which is the update database
+
+99
+00:07:12,390 --> 00:07:12,840
+command.
+
+100
+00:07:12,840 --> 00:07:19,110
+In order to reflect these class to do our SQL server database, this command is going to apply these
+
+101
+00:07:19,110 --> 00:07:20,970
+migrations to the SQL server.
+
+102
+00:07:20,970 --> 00:07:24,870
+And I'm going to hit the enter and see what's going on.
+
+103
+00:07:24,990 --> 00:07:31,770
+This will be try to connect SQL server with ordering API application settings in order to affect these
+
+104
+00:07:31,770 --> 00:07:33,390
+changes to the database.
+
+105
+00:07:33,390 --> 00:07:40,140
+But we didn't create a SQL server database as a backing services in docker compose file yet, so we
+
+106
+00:07:40,140 --> 00:07:47,160
+have expecting a network related or instance specific error occurred when connecting communicating to
+
+107
+00:07:47,160 --> 00:07:47,730
+SQL server.
+
+108
+00:07:47,730 --> 00:07:55,080
+Yes, you can see that the exception comes as a network related and instance specific error when connecting
+
+109
+00:07:55,080 --> 00:07:56,040
+to SQL server.
+
+110
+00:07:56,040 --> 00:08:02,820
+Because we didn't create a SQL server image in our Docker environment, yet that means we should set
+
+111
+00:08:02,820 --> 00:08:07,710
+up the SQL server database using the docker compose file for multi-container Docker environment.
+

@@ -1,0 +1,332 @@
+1
+00:00:00,140 --> 00:00:05,480
+In this video, we are going to develop ordering domain models for shopping web application.
+
+2
+00:00:05,480 --> 00:00:11,090
+So here you can see that our domain and domain submodels that we are going to represent and integrate
+
+3
+00:00:11,090 --> 00:00:13,070
+with the ordering microservices.
+
+4
+00:00:13,070 --> 00:00:19,340
+Please open the Visual Studio and go to the shopping web application and go to the models and right
+
+5
+00:00:19,340 --> 00:00:23,510
+click the models and add new subfolder which name is ordering.
+
+6
+00:00:23,510 --> 00:00:27,740
+So we will encapsulate ordering related data models in this folder.
+
+7
+00:00:27,740 --> 00:00:31,640
+Before we start we can check the ordering microservices use cases.
+
+8
+00:00:31,640 --> 00:00:32,600
+For that purpose.
+
+9
+00:00:32,600 --> 00:00:39,020
+You can go to the services ordering and open the ordering API project and go to the endpoints that we
+
+10
+00:00:39,020 --> 00:00:42,020
+are going to consume from the our Shopping web client application.
+
+11
+00:00:42,020 --> 00:00:43,460
+Here you can see the endpoints.
+
+12
+00:00:43,460 --> 00:00:48,230
+I am going to focus on the get endpoints when we are consuming from the client application.
+
+13
+00:00:48,230 --> 00:00:50,420
+The first one is get orders.
+
+14
+00:00:50,420 --> 00:00:54,260
+Here you can see the get orders requiring the request and response object.
+
+15
+00:00:54,260 --> 00:01:00,140
+In the response object, we are accepting paginated order DTO orders as a parameter.
+
+16
+00:01:00,140 --> 00:01:02,930
+So that means I need a create order model.
+
+17
+00:01:02,930 --> 00:01:06,680
+And this model should be encapsulated with the paginated result.
+
+18
+00:01:06,680 --> 00:01:10,700
+And this will be encapsulated with the get orders response record type.
+
+19
+00:01:10,700 --> 00:01:16,550
+First of all, we can go to the order DTO that we are going to create order model with the same parameters.
+
+20
+00:01:16,550 --> 00:01:21,500
+And if you look at the parameters, you can see that this will be include some sub parameters which
+
+21
+00:01:21,500 --> 00:01:26,120
+is the orders, DTO payment, DTO order status and order item DTO.
+
+22
+00:01:26,120 --> 00:01:31,700
+So all these classes, I am going to convert these as a model classes under the Shopping Web Client
+
+23
+00:01:31,700 --> 00:01:32,420
+application.
+
+24
+00:01:32,420 --> 00:01:37,010
+In order to communicate with Http, get methods from the ordering microservices.
+
+25
+00:01:37,010 --> 00:01:42,140
+For that purpose, you can go back to our shopping web application and close the ordering and go to
+
+26
+00:01:42,140 --> 00:01:48,170
+the ordering subfolder under the models folder and add new class, which name is order model dot CSS.
+
+27
+00:01:48,170 --> 00:01:54,260
+So we will adding a record type as a order model and order item model, and including the address and
+
+28
+00:01:54,260 --> 00:01:55,070
+payment model.
+
+29
+00:01:55,070 --> 00:01:57,650
+So I'm going to start with the order model.
+
+30
+00:01:57,650 --> 00:01:59,030
+Instead of using the class.
+
+31
+00:01:59,030 --> 00:02:03,740
+This time I'm going to use record type is the same as the are ordering microservices.
+
+32
+00:02:03,740 --> 00:02:09,380
+And here you can see the ordering model including the ID, customer ID, order name, shipping and billing
+
+33
+00:02:09,380 --> 00:02:12,050
+address, payment status and order items.
+
+34
+00:02:12,050 --> 00:02:17,900
+So we will continue define these submodules including the address model, payment model, order status
+
+35
+00:02:17,900 --> 00:02:19,280
+and Order item model.
+
+36
+00:02:19,280 --> 00:02:23,480
+So just after this record type definition I am going to add these line of codes.
+
+37
+00:02:23,480 --> 00:02:29,780
+These are including the public record order item model including the order ID, product ID, quantity
+
+38
+00:02:29,780 --> 00:02:32,960
+and price as a parameter, and record type members.
+
+39
+00:02:32,960 --> 00:02:38,510
+And if you look at the address model, you can see that we have defined these address model, including
+
+40
+00:02:38,540 --> 00:02:45,380
+the all these members copying from the orders DTO from the our ordering microservices that you can copy
+
+41
+00:02:45,380 --> 00:02:52,040
+and paste these record types from the order DTO models and change the class names, address DTO to model
+
+42
+00:02:52,040 --> 00:02:55,250
+order item, detailed model, order DTO model.
+
+43
+00:02:55,250 --> 00:03:00,380
+And also you can continue with the payment model including the card name, card number, and so on.
+
+44
+00:03:00,380 --> 00:03:04,700
+These members comes from the DTO classes, from the ordering microservices.
+
+45
+00:03:04,700 --> 00:03:10,040
+And lastly, we have a order status including the all members from the order DTO classes.
+
+46
+00:03:10,040 --> 00:03:16,340
+So this is the order model definition under the are ordering microservices to accodomate Http get requests
+
+47
+00:03:16,340 --> 00:03:17,960
+into our client application.
+
+48
+00:03:17,960 --> 00:03:23,750
+Just after that we can define the wrapper classes, but before that we can check again our endpoints
+
+49
+00:03:23,750 --> 00:03:24,650
+and use cases.
+
+50
+00:03:24,650 --> 00:03:26,240
+These are the get orders.
+
+51
+00:03:26,240 --> 00:03:32,090
+Here you can find the get order response record type that we are going to create from the order models.
+
+52
+00:03:32,090 --> 00:03:35,660
+And after that you can see that get orders by customer.
+
+53
+00:03:35,660 --> 00:03:37,430
+Here you can see the record type.
+
+54
+00:03:37,430 --> 00:03:39,890
+And we will also use get orders by name.
+
+55
+00:03:39,890 --> 00:03:44,360
+And here you can see the order record type that we can define in the shopping web application.
+
+56
+00:03:44,360 --> 00:03:48,200
+And all these response types requiring the some parameters.
+
+57
+00:03:48,200 --> 00:03:51,530
+This one is requiring the IEnumerable order model.
+
+58
+00:03:51,530 --> 00:03:57,680
+And this one is requiring the again enumerable order model and get orders only requiring for the pageant
+
+59
+00:03:57,680 --> 00:04:01,820
+result that we are going to create this class into our shopping web client application.
+
+60
+00:04:01,820 --> 00:04:06,770
+So let's focus on our ordering model and go at the end of this class definition.
+
+61
+00:04:06,770 --> 00:04:12,200
+Now I'm going to define our wrapper classes, including our endpoint use cases.
+
+62
+00:04:12,200 --> 00:04:16,670
+Here you can see that the first one is get orders response record type.
+
+63
+00:04:16,670 --> 00:04:17,480
+As a parameter.
+
+64
+00:04:17,480 --> 00:04:21,920
+We can define paginated result order model, generic type and orders.
+
+65
+00:04:21,920 --> 00:04:26,090
+And the second record type is a get orders by name response as a parameter.
+
+66
+00:04:26,090 --> 00:04:32,780
+It is taking IEnumerable order model orders, and the third one is get orders by customer response and
+
+67
+00:04:32,780 --> 00:04:35,870
+parameter as a enumerable order model orders.
+
+68
+00:04:35,870 --> 00:04:38,090
+So please define these wrapper classes.
+
+69
+00:04:38,090 --> 00:04:41,210
+As you can see that this time we need a page entity result.
+
+70
+00:04:41,210 --> 00:04:45,770
+For that purpose, I'm going to create additional class under the ordering which is the page entity
+
+71
+00:04:45,770 --> 00:04:46,850
+results.
+
+72
+00:04:46,850 --> 00:04:53,120
+This will be represent arpeggiated wrapper to our response of the order data.
+
+73
+00:04:53,120 --> 00:04:54,170
+With the order model.
+
+74
+00:04:54,170 --> 00:04:59,630
+Here you can see that I have created page entity result which is the entity generic type and.
+
+75
+00:04:59,890 --> 00:05:06,940
+These are the primary constructor parameters page index, page size, long and data and where t entity
+
+76
+00:05:06,940 --> 00:05:07,690
+is a class.
+
+77
+00:05:07,690 --> 00:05:13,540
+So these definitions comes from the our actual page entity result definition from the ordering microservices
+
+78
+00:05:13,540 --> 00:05:20,200
+that I am going to copy and paste all these members page index, page size count and data so you can
+
+79
+00:05:20,200 --> 00:05:22,810
+save this page entity result and go back to order module.
+
+80
+00:05:22,810 --> 00:05:25,480
+And you can see that our exception is disappeared.
+
+81
+00:05:25,480 --> 00:05:30,070
+As you can see that we have successfully defined our wrapper classes and our order model.
+
+82
+00:05:30,070 --> 00:05:35,050
+From the ordering domain model, you can right click and build the shopping web application and verify
+
+83
+00:05:35,050 --> 00:05:37,630
+that our domain models are created successfully.
+

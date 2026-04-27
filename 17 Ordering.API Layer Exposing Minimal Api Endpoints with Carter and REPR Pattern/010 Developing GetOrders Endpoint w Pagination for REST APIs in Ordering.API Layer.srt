@@ -1,0 +1,260 @@
+1
+00:00:00,110 --> 00:00:05,270
+In this video we are going to develop get orders endpoint with pagination.
+
+2
+00:00:05,630 --> 00:00:10,490
+As you remember that in the last section when we are developing ordering application, we can go to
+
+3
+00:00:10,490 --> 00:00:12,680
+orders and you can go to queries folder.
+
+4
+00:00:12,680 --> 00:00:19,040
+And if you open the get orders you can see that in the Get Orders query, we will expecting the pagination
+
+5
+00:00:19,040 --> 00:00:21,980
+request and return back the page entity result.
+
+6
+00:00:21,980 --> 00:00:27,620
+And these pagination classes are developed on the building blocks in the pageant request.
+
+7
+00:00:27,620 --> 00:00:34,190
+It is expecting page index and page size and it is returned back to paginated result that including
+
+8
+00:00:34,190 --> 00:00:36,770
+page index, size, count and data.
+
+9
+00:00:36,770 --> 00:00:42,350
+So if you scroll down and if you look at the get orders handler, you can see that this is the incoming
+
+10
+00:00:42,350 --> 00:00:42,830
+query.
+
+11
+00:00:42,830 --> 00:00:48,800
+And in the handle method we will perform the pagination with incoming query and taking the page size
+
+12
+00:00:48,800 --> 00:00:55,190
+and page index and return back to get all the results inside of the page entity result and return back
+
+13
+00:00:55,190 --> 00:00:58,700
+to order detail list in the data of this page.
+
+14
+00:00:58,700 --> 00:01:03,440
+Entity result and this result also include page index, page size and total count.
+
+15
+00:01:03,440 --> 00:01:09,380
+So we will implement these pagination in the presentation layer, which is the ordering API when developing
+
+16
+00:01:09,380 --> 00:01:11,420
+or get orders and point class.
+
+17
+00:01:11,420 --> 00:01:16,640
+So I'm going to start with implementing Request and response object as a request.
+
+18
+00:01:16,640 --> 00:01:22,910
+I'm going to put a commented request object, which means that we will get the pagination request as
+
+19
+00:01:22,910 --> 00:01:25,760
+a request parameters of the get orders endpoint.
+
+20
+00:01:25,760 --> 00:01:32,390
+And here you can see the public record get orders response and taking the orders paginated result as
+
+21
+00:01:32,390 --> 00:01:33,860
+a type of the order DTO.
+
+22
+00:01:33,860 --> 00:01:40,430
+So that means if you go to page end result, the type will be the order actual data, which is the IEnumerable
+
+23
+00:01:40,430 --> 00:01:40,940
+data.
+
+24
+00:01:40,940 --> 00:01:48,650
+In our case, we will expecting IEnumerable order DTO as a data into page entity result into get orders
+
+25
+00:01:48,650 --> 00:01:50,060
+response record type.
+
+26
+00:01:50,060 --> 00:01:56,900
+So now I'm going to implement get orders actual class which is implementing Écarter model.
+
+27
+00:01:56,900 --> 00:02:01,730
+And if you implement this interface members, we will be developing add routes method.
+
+28
+00:02:01,790 --> 00:02:08,840
+In the add method we are going to expose Http get method which is a slash orders and retrieving the
+
+29
+00:02:08,840 --> 00:02:10,729
+whole orders with pagination.
+
+30
+00:02:10,729 --> 00:02:16,880
+So I'm going to develop app dot map get function and passing the slash orders as endpoint.
+
+31
+00:02:16,880 --> 00:02:21,170
+And here you can see the delegate handler which accodomate the incoming request.
+
+32
+00:02:21,170 --> 00:02:26,330
+And this endpoint is handle the Http get request with pagination details.
+
+33
+00:02:26,330 --> 00:02:32,960
+It facilitating the efficient data fetching from a potential large data set, and in the handler function,
+
+34
+00:02:32,960 --> 00:02:36,170
+which takes a paginated request object as a input.
+
+35
+00:02:36,170 --> 00:02:42,710
+Here you can see the first parameter is a pagination request object as input, and here you can see
+
+36
+00:02:42,710 --> 00:02:45,320
+as parameters attribute in the route handler.
+
+37
+00:02:45,320 --> 00:02:51,320
+So that ensures query parameters are correctly bound into the pagination request object.
+
+38
+00:02:51,320 --> 00:02:57,470
+So the pagination request object include page index and page size essential for the pagination.
+
+39
+00:02:57,560 --> 00:03:01,970
+So after that the second parameter is isander which is injected.
+
+40
+00:03:01,970 --> 00:03:05,090
+Mediator is enter into our request delegator.
+
+41
+00:03:05,090 --> 00:03:08,570
+So I'm going to implement this function.
+
+42
+00:03:08,810 --> 00:03:12,050
+So inside of this function we will follow the same steps.
+
+43
+00:03:12,050 --> 00:03:18,110
+What we have done in the last videos we basically perform sequence and mediator request lifecycle.
+
+44
+00:03:18,320 --> 00:03:22,910
+Here you can see the implementation in the first row of these hundred class.
+
+45
+00:03:22,910 --> 00:03:29,750
+You can see that we will use await mediator Sanderson function and passing the get orders query and
+
+46
+00:03:29,750 --> 00:03:31,010
+passing the request object.
+
+47
+00:03:31,010 --> 00:03:37,220
+So these get orders query containing the pagination information which is sent to mediator for processing
+
+48
+00:03:37,220 --> 00:03:38,720
+query handler functions.
+
+49
+00:03:38,720 --> 00:03:46,250
+Once query is executed, the result which comes from the paginated list of the ordered DTO is adapted
+
+50
+00:03:46,250 --> 00:03:52,430
+to get ordered response as a result object, and we will use result of adapt method with passing this
+
+51
+00:03:52,460 --> 00:03:55,100
+object and converting to the response object.
+
+52
+00:03:55,100 --> 00:03:59,330
+And finally, we can paste this response object to the result that okay function.
+
+53
+00:03:59,330 --> 00:04:04,490
+In order to retrieve Http 200 okay response to the client application.
+
+54
+00:04:04,490 --> 00:04:11,180
+And finally we can configure these Carter function with passing these extension method including name
+
+55
+00:04:11,180 --> 00:04:12,560
+summary and description.
+
+56
+00:04:12,560 --> 00:04:17,690
+And these are the produce and produce problems for returning these Http get method.
+
+57
+00:04:17,690 --> 00:04:23,630
+So if you go on top of this class you can see that we are using two statement which comes from the pagination
+
+58
+00:04:23,630 --> 00:04:24,950
+from the building blocks.
+
+59
+00:04:24,950 --> 00:04:28,880
+And these are the comes from the orders queries from the application layer.
+
+60
+00:04:28,880 --> 00:04:32,870
+And here you can see that we will create request and response record type.
+
+61
+00:04:32,870 --> 00:04:38,720
+And this is the actual implementation of the get orders endpoint class with following the wrapper design
+
+62
+00:04:38,720 --> 00:04:40,970
+pattern and using the Carter library.
+
+63
+00:04:40,970 --> 00:04:43,130
+So we have completed the ordering API.
+
+64
+00:04:43,130 --> 00:04:48,500
+I'm going to right click and build the whole clean architecture layers for ordering microservices.
+
+65
+00:04:48,500 --> 00:04:54,110
+And you can confirm that your application will successfully and you are ready for the test our application.
+

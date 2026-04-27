@@ -1,0 +1,444 @@
+1
+00:00:00,170 --> 00:00:06,260
+In this video, we are going to learn how we can seeding catalog database with using Martin.
+
+2
+00:00:06,260 --> 00:00:14,450
+Initial baseline data seeding is essential for initializing the database with baseline data, and Martin
+
+3
+00:00:14,450 --> 00:00:19,430
+provides a feature which called I initial data interface for this purpose.
+
+4
+00:00:20,040 --> 00:00:27,390
+So we will implement I initial data interface in order to see our catalog database with predefined product
+
+5
+00:00:27,390 --> 00:00:28,440
+information.
+
+6
+00:00:28,440 --> 00:00:35,280
+And this interface allows Martin to automatically populate the database when it's first initialized.
+
+7
+00:00:35,280 --> 00:00:42,360
+If you go to the official documentation by clicking this link, you can reach the I initial data interface
+
+8
+00:00:42,360 --> 00:00:44,700
+implementation on the Martin documentation.
+
+9
+00:00:44,700 --> 00:00:48,540
+So here you can see that this is implement this interface.
+
+10
+00:00:48,540 --> 00:00:50,460
+The class name is initial data.
+
+11
+00:00:50,460 --> 00:00:55,950
+And in this class we have a constructor accepting the object array.
+
+12
+00:00:55,950 --> 00:01:00,660
+This array will be inserting the database with using the Upsert method.
+
+13
+00:01:00,660 --> 00:01:07,560
+So that means using the session dot store method and passing the this initial data object array, and
+
+14
+00:01:07,560 --> 00:01:11,100
+after that save changes onto the Martin Oram system.
+
+15
+00:01:11,100 --> 00:01:14,940
+This will be save the changes into the PostgreSQL database.
+
+16
+00:01:14,940 --> 00:01:23,130
+So Martin has Upsert function, which is name is store that will insert if not exist and update if exists.
+
+17
+00:01:23,130 --> 00:01:29,250
+So if you scroll down you can see that we can also create a static class which name is initial data
+
+18
+00:01:29,250 --> 00:01:29,640
+set.
+
+19
+00:01:29,640 --> 00:01:37,710
+And in this class we will create a static read only arrays for each entry for your database tables.
+
+20
+00:01:37,710 --> 00:01:40,620
+So here you can see that companies and users.
+
+21
+00:01:40,620 --> 00:01:47,070
+And after that if you scroll down in the Program.cs when configuring our Martin, we can see that we
+
+22
+00:01:47,070 --> 00:01:49,860
+can use initialize with method.
+
+23
+00:01:49,860 --> 00:01:52,620
+And we will passing the naive initial data class.
+
+24
+00:01:52,620 --> 00:01:59,490
+And we will passing our arrays, which is the entry arrays into the parameters of this class.
+
+25
+00:01:59,490 --> 00:02:02,220
+In this case it is passing the companies.
+
+26
+00:02:02,220 --> 00:02:09,060
+So we will follow the same steps when we are seeding our product data into the PostgreSQL database.
+
+27
+00:02:09,060 --> 00:02:10,229
+Using the Martin.
+
+28
+00:02:10,229 --> 00:02:15,900
+For that purpose, please open the Visual Studio and locate the catalog API.
+
+29
+00:02:15,900 --> 00:02:21,870
+And under the catalog API we will create catalog initial data class in the data folder.
+
+30
+00:02:21,870 --> 00:02:25,770
+So for that purpose I am going to right click and create new folder.
+
+31
+00:02:25,770 --> 00:02:32,370
+And this will be our data folder and include data related operations under this folder.
+
+32
+00:02:32,370 --> 00:02:37,650
+And the first thing I am going to create a new class which name is catalog initial data.
+
+33
+00:02:37,650 --> 00:02:42,210
+So if you come here and see that we have created data folder.
+
+34
+00:02:42,210 --> 00:02:46,920
+And inside of this folder we have created Catalog Initial Data class.
+
+35
+00:02:47,220 --> 00:02:49,530
+So now we can implement this class.
+
+36
+00:02:49,530 --> 00:02:56,220
+The first thing we should do that we will implement this interface which name is I initial data.
+
+37
+00:02:56,220 --> 00:03:02,700
+And if you implement this interface members you can see that the populate method is generated from the
+
+38
+00:03:02,700 --> 00:03:03,360
+interface.
+
+39
+00:03:03,360 --> 00:03:06,390
+And this method getting these two parameters.
+
+40
+00:03:06,390 --> 00:03:13,410
+The first one is I document store in order to store the information to the database and the cancellation
+
+41
+00:03:13,410 --> 00:03:14,040
+token.
+
+42
+00:03:14,040 --> 00:03:16,710
+So let's start the implementation the populate.
+
+43
+00:03:16,710 --> 00:03:21,150
+So in the populate class in the first thing we should create a new session.
+
+44
+00:03:21,150 --> 00:03:27,720
+And this will be a lightweight session in order to store our incoming initial data.
+
+45
+00:03:27,720 --> 00:03:34,050
+And after creating the session we can use that if there is any product in the database or not.
+
+46
+00:03:34,050 --> 00:03:40,650
+So if there is any product on database, that means we have already seeding before and this will be
+
+47
+00:03:40,650 --> 00:03:42,180
+the available function.
+
+48
+00:03:42,180 --> 00:03:44,820
+That's why I'm going to make it async function.
+
+49
+00:03:44,820 --> 00:03:50,940
+And here you can see that we check the database if there is any product exist or not.
+
+50
+00:03:50,940 --> 00:03:54,180
+If not exist we will continue to our seed operation.
+
+51
+00:03:54,180 --> 00:03:59,610
+If exists, we can return the function and not implement any seed operation.
+
+52
+00:03:59,760 --> 00:04:05,970
+At this point we can perform actual operation, which is absurd with using the store method.
+
+53
+00:04:05,970 --> 00:04:12,360
+So here you can see that we will use session dot store and using the product as a generic and passing
+
+54
+00:04:12,360 --> 00:04:17,399
+the our object array in the newly created get Pre-configured products method.
+
+55
+00:04:17,399 --> 00:04:24,990
+And after that we will use Session.save change exec in order to update or insert all records into the
+
+56
+00:04:24,990 --> 00:04:26,430
+PostgreSQL database.
+
+57
+00:04:26,430 --> 00:04:32,430
+So we have completed this populate method, and after that I am going to create these get configured
+
+58
+00:04:32,430 --> 00:04:34,110
+products method.
+
+59
+00:04:34,110 --> 00:04:36,120
+And this will be a static method.
+
+60
+00:04:36,120 --> 00:04:41,100
+And returning us new product list that will be seeding our database.
+
+61
+00:04:41,100 --> 00:04:45,000
+I'm going to copy paste this code in here and I will explain.
+
+62
+00:04:45,000 --> 00:04:50,550
+After that you can see that we basically create several products into our database.
+
+63
+00:04:50,550 --> 00:04:57,780
+And this is the I enumerable product returnable static method which name is get pre-configured products
+
+64
+00:04:57,780 --> 00:05:00,690
+that you can copy from our GitHub repository.
+
+65
+00:05:00,690 --> 00:05:07,500
+Because this is a seeding data and information including the products name, description, image, file
+
+66
+00:05:07,500 --> 00:05:09,780
+price for different types of products.
+
+67
+00:05:09,780 --> 00:05:16,620
+And as you can see that we have also set the ID numbers as a guide that we can define and use these
+
+68
+00:05:16,620 --> 00:05:18,900
+IDs in the upcoming videos.
+
+69
+00:05:19,570 --> 00:05:22,780
+This was the seeding database and seeding class.
+
+70
+00:05:22,780 --> 00:05:30,190
+Basically, in this class we check that if database already has data, we return from the method, but
+
+71
+00:05:30,190 --> 00:05:35,320
+if not any data, it basically sits with the predefined product entries.
+
+72
+00:05:35,590 --> 00:05:39,130
+And we use Martin's upstart feature in here.
+
+73
+00:05:39,130 --> 00:05:45,820
+So this Upsert operation, which is a stored method, ensure that existing records are not duplicated
+
+74
+00:05:45,820 --> 00:05:46,960
+on database.
+
+75
+00:05:47,260 --> 00:05:51,460
+So of course we have some considerations about these seed operation.
+
+76
+00:05:51,460 --> 00:05:55,390
+These seed operation should work on the development environment.
+
+77
+00:05:55,390 --> 00:06:00,760
+We can also check before if is there any item in the document in the development environment.
+
+78
+00:06:00,760 --> 00:06:05,650
+But in the production environment we should not recommend this kind of seed operations.
+
+79
+00:06:05,650 --> 00:06:11,980
+So now it's time to register our catalog initial data into the Program.cs.
+
+80
+00:06:12,190 --> 00:06:18,610
+But for that purpose, please open the Program.cs and go to the location of where we are configuring
+
+81
+00:06:18,610 --> 00:06:20,410
+Martin database.
+
+82
+00:06:20,410 --> 00:06:26,530
+In this configuration, Martin provides some of the extension method that we can use for seeding.
+
+83
+00:06:26,530 --> 00:06:32,800
+For example, if you put dot notation in here, you can see that we have to initialize with extension
+
+84
+00:06:32,800 --> 00:06:38,380
+method that we can initialize these Martin van startup of the application.
+
+85
+00:06:38,380 --> 00:06:45,850
+But I would like to use an if statement because we will seeding database if the environment is development.
+
+86
+00:06:45,850 --> 00:06:50,980
+So after this registration I'm going to put an if keyword in here.
+
+87
+00:06:50,980 --> 00:06:57,490
+And in here we can use that builder environment is development.
+
+88
+00:06:58,150 --> 00:07:01,990
+So I would like to check that if the environment is development.
+
+89
+00:07:01,990 --> 00:07:09,670
+After that we can seeding our Martin and PostgreSQL database with using building services and initialize
+
+90
+00:07:09,670 --> 00:07:11,110
+Martin with method.
+
+91
+00:07:11,110 --> 00:07:21,400
+And in here we can test our initialize class as a generic, which is the catalog initial data and so
+
+92
+00:07:21,400 --> 00:07:26,230
+we have added the catalog initial data as a generic of this method.
+
+93
+00:07:26,230 --> 00:07:33,430
+This will be provided to our seeding operation when the application start up please save the Program.cs.
+
+94
+00:07:33,430 --> 00:07:37,690
+And also I'm going to move these using statement into our global using.
+
+95
+00:07:37,690 --> 00:07:43,990
+So go to global using and make this as a global and go back to Program.cs.
+
+96
+00:07:43,990 --> 00:07:44,710
+Okay.
+
+97
+00:07:44,710 --> 00:07:49,030
+Now we have clear our using statement and this is the our Program.cs.
+
+98
+00:07:49,060 --> 00:07:56,830
+This code is basically register or catalog initial data class for seeding database and initialization.
+
+99
+00:07:56,830 --> 00:08:01,780
+And note that we are performing this operation only in the development environment.
+
+100
+00:08:02,260 --> 00:08:05,770
+So there are some main considerations in seeding operation.
+
+101
+00:08:05,770 --> 00:08:10,600
+One critical aspect to consider is the database is ready or not.
+
+102
+00:08:10,600 --> 00:08:15,760
+So what if our PostgreSQL database isn't ready when this code runs?
+
+103
+00:08:15,760 --> 00:08:21,730
+If you open the our architecture, you can see that we put the seed operation in the beginning of the
+
+104
+00:08:21,730 --> 00:08:22,420
+program says.
+
+105
+00:08:22,420 --> 00:08:28,570
+That means when this catalog API microservices is starting, the seed operation will be work and try
+
+106
+00:08:28,570 --> 00:08:31,390
+to seed data into PostgreSQL database.
+
+107
+00:08:31,390 --> 00:08:36,760
+So what if PostgreSQL database is not ready and not running on the code environment?
+
+108
+00:08:36,760 --> 00:08:43,809
+So in order to handle this we should use retry mechanism while Martins initialize Martin with method
+
+109
+00:08:43,809 --> 00:08:50,860
+doesn't handle the retries, we can use poly library or ensure our Docker setup is restart the database
+
+110
+00:08:50,860 --> 00:08:52,030
+until it's ready.
+
+111
+00:08:52,420 --> 00:08:57,610
+So for now I am skipping this kind of problems and continue to our seed operation.
+

@@ -1,0 +1,196 @@
+1
+00:00:00,200 --> 00:00:06,740
+In this video, we are going to test update product and point connecting to Docker PostgreSQL container.
+
+2
+00:00:06,770 --> 00:00:13,250
+So the first step is ensure that your PostgreSQL database is up and running on your Docker environment.
+
+3
+00:00:13,250 --> 00:00:19,010
+Open the desktop and make sure that your Docker compose is running and PostgreSQL up and running on
+
+4
+00:00:19,010 --> 00:00:19,730
+that port.
+
+5
+00:00:19,940 --> 00:00:26,180
+And the second thing is we will put the breakpoints under the update product endpoint in the beginning
+
+6
+00:00:26,180 --> 00:00:28,460
+of the put method delegate handler.
+
+7
+00:00:28,460 --> 00:00:34,670
+And if you go to the handler method, you can put breakpoint in the handle method of the update product
+
+8
+00:00:34,670 --> 00:00:35,750
+command handler.
+
+9
+00:00:35,780 --> 00:00:41,150
+And after that right click set as Startup project for Catholic API and run https mode.
+
+10
+00:00:44,480 --> 00:00:51,110
+So after running the application, we will use postman to send http put requests in order to update
+
+11
+00:00:51,110 --> 00:00:52,100
+product details.
+
+12
+00:00:52,100 --> 00:00:59,300
+So for that purpose please open the postman and please create an Http put request in postman.
+
+13
+00:00:59,300 --> 00:01:06,620
+You can see in here I have created http post and put request and in the post request you can see that
+
+14
+00:01:06,620 --> 00:01:12,530
+I have specified these kind of Json body requests and an http put request.
+
+15
+00:01:12,530 --> 00:01:18,290
+We will additionally add ID information into the updated product details.
+
+16
+00:01:18,290 --> 00:01:21,080
+So where can I find this ID information?
+
+17
+00:01:21,080 --> 00:01:28,310
+If you go to the Get product and get product id http get request, you can copy and paste the ID information
+
+18
+00:01:28,310 --> 00:01:29,300
+from in here.
+
+19
+00:01:29,300 --> 00:01:36,860
+The response of this kind of Http get response and put the ID into this ID information and update the
+
+20
+00:01:36,860 --> 00:01:44,690
+rest of the attributes like we have updated the name information, new product, a updated and new category
+
+21
+00:01:44,690 --> 00:01:45,410
+is added.
+
+22
+00:01:45,410 --> 00:01:48,020
+Description and image file has changed.
+
+23
+00:01:48,020 --> 00:01:54,020
+So now we are going to test these http put request and see how the system affected.
+
+24
+00:01:54,020 --> 00:02:01,760
+Click the Http send button and you will see that these will be trigger or update product endpoint class.
+
+25
+00:02:01,760 --> 00:02:05,660
+And these will be get the first line of the our delegate handler.
+
+26
+00:02:05,660 --> 00:02:10,940
+In the first line of delegate handler, we will basically get the request object and convert these request
+
+27
+00:02:10,940 --> 00:02:15,680
+object as a command object, because this command will be sent to mediator.
+
+28
+00:02:15,680 --> 00:02:20,420
+And mediator will be send this command corresponding command handler class.
+
+29
+00:02:20,420 --> 00:02:25,550
+If you put F10, you can see that our handle class is triggered.
+
+30
+00:02:25,550 --> 00:02:28,040
+And the first line we will log the information.
+
+31
+00:02:28,040 --> 00:02:33,830
+And the second line we will retrieve the product which is select product in the database.
+
+32
+00:02:33,830 --> 00:02:39,350
+And you can see that if the product is null, we should throw an exception.
+
+33
+00:02:39,350 --> 00:02:42,980
+But we have already comes product from the database.
+
+34
+00:02:42,980 --> 00:02:49,880
+And after that we will update all the attributes in the product and we will update product intersection,
+
+35
+00:02:49,880 --> 00:02:53,060
+which is the ID documentation from the Martins library.
+
+36
+00:02:53,060 --> 00:02:59,630
+And with saving change these updated product, we will reflect the update and return back the command
+
+37
+00:02:59,630 --> 00:03:06,200
+response result to do our endpoint class, and these result object will be converted to response object
+
+38
+00:03:06,200 --> 00:03:07,760
+and return back to the client.
+
+39
+00:03:07,760 --> 00:03:12,110
+You can see that our response is comes from the postman.
+
+40
+00:03:12,110 --> 00:03:15,290
+And this response is is success is true.
+
+41
+00:03:15,290 --> 00:03:21,830
+And this is indicating that success of this operation and this confirms that our endpoint is correctly
+
+42
+00:03:21,830 --> 00:03:23,360
+processing this update.
+
+43
+00:03:23,510 --> 00:03:25,910
+We can verify this update operation.
+
+44
+00:03:25,910 --> 00:03:32,840
+So in order to ensure the product was updated, we can send an http get request to retrieve the product
+
+45
+00:03:32,840 --> 00:03:35,750
+by ID and observe the updated details.
+
+46
+00:03:35,750 --> 00:03:42,560
+If you click the get product by ID and if you retrieve again the same ID information, this will be
+
+47
+00:03:42,560 --> 00:03:46,670
+also hit the our breakpoints and I'm passing this breakpoint with F5.
+
+48
+00:03:46,670 --> 00:03:53,060
+And here you can see that these attributes are coming with the updated values that we have confirmed
+
+49
+00:03:53,060 --> 00:03:55,790
+and verified the update operation into our database.
+

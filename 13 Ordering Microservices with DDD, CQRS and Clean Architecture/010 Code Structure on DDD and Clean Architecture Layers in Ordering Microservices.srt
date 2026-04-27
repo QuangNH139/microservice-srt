@@ -1,0 +1,116 @@
+1
+00:00:00,170 --> 00:00:06,110
+In this video, we are going to learn code structure on domain driven design and clean architecture
+
+2
+00:00:06,110 --> 00:00:13,760
+when developing organic microservices, ordering microservices using ASP.Net Core Web API, and using
+
+3
+00:00:13,760 --> 00:00:16,730
+Entity Framework Core to communicate with SQL server.
+
+4
+00:00:17,150 --> 00:00:23,330
+If you look at the internal architecture, we can see that organic microservices implements clean architecture
+
+5
+00:00:23,330 --> 00:00:29,450
+with including the core application infrastructure and presentation layers, and domain driven design,
+
+6
+00:00:29,450 --> 00:00:34,700
+which is the entities, repositories, domain and application services and so on.
+
+7
+00:00:35,120 --> 00:00:41,210
+And also it is implements and provide good infrastructure and best practices such as dependency injection,
+
+8
+00:00:41,210 --> 00:00:44,630
+logging, validation, exception handling and so on.
+
+9
+00:00:44,630 --> 00:00:48,050
+But we will focus on the code structure during this video.
+
+10
+00:00:48,050 --> 00:00:53,270
+If you look at this architecture, you can see that the code structure of the ordering microservices.
+
+11
+00:00:53,270 --> 00:00:56,330
+We will create four different class library.
+
+12
+00:00:56,360 --> 00:01:04,129
+These are the ordering domain ordering application ordering infrastructure and ordering API layer ordering
+
+13
+00:01:04,129 --> 00:01:09,620
+domain and application layer representing the core layers and ordering infrastructure and API layer
+
+14
+00:01:09,620 --> 00:01:15,650
+will be representing the peripheral layers, so these will be referencing each other according to clean
+
+15
+00:01:15,650 --> 00:01:16,460
+architecture.
+
+16
+00:01:16,460 --> 00:01:24,560
+So how we can implement these layers into our ordering microservices to make it simple and easy to understandable.
+
+17
+00:01:24,560 --> 00:01:26,720
+I'm going to start with the ordering domain.
+
+18
+00:01:26,720 --> 00:01:32,180
+And after that I'm going to develop ordering infrastructure and continue with the ordering application
+
+19
+00:01:32,180 --> 00:01:34,070
+and ordering API layers.
+
+20
+00:01:34,070 --> 00:01:40,550
+If you look at the folder structure, you can see that we will create three class library and one web
+
+21
+00:01:40,550 --> 00:01:41,510
+API project.
+
+22
+00:01:41,510 --> 00:01:47,630
+So I'm going to start with ordering domain including the domain models, domain events, value objects
+
+23
+00:01:47,630 --> 00:01:48,590
+and so on.
+
+24
+00:01:48,590 --> 00:01:54,200
+After that I'm going to develop ordering infrastructure including the data related operations, Entity
+
+25
+00:01:54,230 --> 00:01:57,260
+framework, core seeding, migration and so on.
+
+26
+00:01:57,260 --> 00:02:03,260
+And after that I'm going to implement ordering application class library including the order use case
+
+27
+00:02:03,260 --> 00:02:06,050
+implementation with abstractions in here.
+
+28
+00:02:06,050 --> 00:02:11,930
+And lastly, we will develop ordering API in order to expose endpoints for performing the ordering use
+
+29
+00:02:11,930 --> 00:02:12,440
+cases.
+

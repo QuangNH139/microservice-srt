@@ -1,0 +1,200 @@
+1
+00:00:00,200 --> 00:00:06,080
+In this video, we are going to do domain modeling with using tactical domain driven design patterns
+
+2
+00:00:06,080 --> 00:00:08,060
+for ordering microservices.
+
+3
+00:00:08,510 --> 00:00:14,660
+Domain driven design provides a framework that lead us to create a set of well designed microservices
+
+4
+00:00:14,660 --> 00:00:21,590
+and we will define entities, aggregates, value objects, domain services, and domain events for ordering
+
+5
+00:00:21,590 --> 00:00:22,610
+microservices.
+
+6
+00:00:22,610 --> 00:00:28,820
+That means within the ordering bounded context, we will apply these tactical domain driven design patterns
+
+7
+00:00:28,820 --> 00:00:33,620
+in order to define entities, aggregates, domain services and so on.
+
+8
+00:00:33,860 --> 00:00:40,010
+We are going to particularly interested in the entity and aggregate patterns, and applying these patterns
+
+9
+00:00:40,010 --> 00:00:45,170
+will help us to identify natural boundaries for the services in our application.
+
+10
+00:00:45,470 --> 00:00:49,880
+Let's remember the application use cases for ordering microservices.
+
+11
+00:00:49,880 --> 00:00:56,510
+We said that we have Crud ordering operations including get order with items, create, update, delete,
+
+12
+00:00:56,510 --> 00:01:02,780
+order and add and remove item from the order and also we have asynchronous ordering operations including
+
+13
+00:01:02,780 --> 00:01:08,990
+basket checkout and order fulfillment to perform fulfillment operations for other microservices.
+
+14
+00:01:08,990 --> 00:01:15,800
+So that means we will raising order created domain event that leads to integration event to see our
+
+15
+00:01:15,800 --> 00:01:21,440
+domain events into analyzing the ordering microservices and according to these ordering application
+
+16
+00:01:21,440 --> 00:01:26,720
+use cases, we can start to perform our domain analyzing into the next slide.
+
+17
+00:01:26,720 --> 00:01:33,050
+And here you can see the our domain analyzing with applying the tactical domain driven design pattern
+
+18
+00:01:33,050 --> 00:01:34,640
+in ordering microservices.
+
+19
+00:01:34,640 --> 00:01:41,270
+So in this diagram we illustrate the relationship between aggregates entities, value objects and domain
+
+20
+00:01:41,270 --> 00:01:41,900
+events.
+
+21
+00:01:41,900 --> 00:01:49,010
+So it shows the how order aggregates encompass the order items, which in turn reference to customer
+
+22
+00:01:49,010 --> 00:01:50,510
+and product entities.
+
+23
+00:01:50,510 --> 00:01:53,090
+And let me explain these domain modeling.
+
+24
+00:01:53,090 --> 00:01:55,850
+First of all we have a order aggregate.
+
+25
+00:01:55,850 --> 00:02:01,850
+This is the central focus of the ordering microservices, which coordinates the entire order process.
+
+26
+00:02:01,880 --> 00:02:06,710
+And after that we have order item which is the one to end relationship.
+
+27
+00:02:06,710 --> 00:02:10,220
+And this is represent each product item in an order.
+
+28
+00:02:10,220 --> 00:02:15,380
+And we have also customer in here customer entity and order item.
+
+29
+00:02:15,380 --> 00:02:20,030
+Also entity only order will be aggregate in the customer entity.
+
+30
+00:02:20,030 --> 00:02:22,640
+It represents the customer who placed the order.
+
+31
+00:02:22,640 --> 00:02:24,830
+And here you can see the product entity.
+
+32
+00:02:24,830 --> 00:02:27,320
+It represents the products being ordered.
+
+33
+00:02:27,560 --> 00:02:35,810
+Entities like customer and products might be sharing in other microservices indicating the bounded context.
+
+34
+00:02:35,810 --> 00:02:40,490
+You can see these are the different bounded contexts from the ordering model context.
+
+35
+00:02:40,850 --> 00:02:44,840
+And now we can defining value object in the order aggregate.
+
+36
+00:02:44,840 --> 00:02:49,340
+For example, address is an value object from the order.
+
+37
+00:02:49,340 --> 00:02:51,260
+You can see the order aggregate route.
+
+38
+00:02:51,260 --> 00:02:53,420
+And these are the attributes and methods.
+
+39
+00:02:53,420 --> 00:02:58,370
+In the attributes, we can see some of the value object that we can define in here.
+
+40
+00:02:58,400 --> 00:03:04,100
+Address is a value object that can represent shipping or billing address in the order aggregate.
+
+41
+00:03:04,100 --> 00:03:10,670
+And we have also payment aggregate which is also value object that encapsulate payment details for an
+
+42
+00:03:10,670 --> 00:03:11,870
+order and value.
+
+43
+00:03:11,870 --> 00:03:17,810
+Objects like these are the crucial in reflecting real world scenarios and constraints in our domain.
+
+44
+00:03:17,810 --> 00:03:21,320
+And also we have domain events that we can analyze.
+
+45
+00:03:21,320 --> 00:03:25,340
+We can see that our domain event is order created event.
+
+46
+00:03:25,430 --> 00:03:30,380
+It is a domain event that gets triggered when a new order is successfully created.
+
+47
+00:03:30,380 --> 00:03:37,940
+This event could lead to various integrations like inventory checks or notifications, and this is event
+
+48
+00:03:37,940 --> 00:03:38,960
+driven approach.
+
+49
+00:03:38,960 --> 00:03:39,380
+Enable.
+
+50
+00:03:39,380 --> 00:03:44,000
+The reactive and decoupled architectures is especially important in microservices.
+

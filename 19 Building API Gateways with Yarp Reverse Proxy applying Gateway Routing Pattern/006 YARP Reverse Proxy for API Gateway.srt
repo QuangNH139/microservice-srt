@@ -1,0 +1,316 @@
+1
+00:00:00,200 --> 00:00:05,060
+In this video we are going to learn URP reverse proxy for API gateway.
+
+2
+00:00:05,120 --> 00:00:11,600
+But before that, let's understand the basics and as a basics we will learn what is reverse proxy.
+
+3
+00:00:12,290 --> 00:00:18,890
+A reverse proxy is a server that sits in front of the web servers and forwards client requests to these
+
+4
+00:00:18,890 --> 00:00:19,700
+web servers.
+
+5
+00:00:19,730 --> 00:00:21,980
+You can see the image as a reverse proxy.
+
+6
+00:00:21,980 --> 00:00:28,400
+It is basically sits in front of the web servers and forwards the client requests to these web servers,
+
+7
+00:00:28,400 --> 00:00:32,509
+and it is implements gateway routing and API gateway pattern.
+
+8
+00:00:32,540 --> 00:00:39,170
+It acts as an intermediary for requests from the clients seeking resources from servers that provide
+
+9
+00:00:39,170 --> 00:00:45,200
+those resources and functions, including the load balancing, which is distributes incoming traffic
+
+10
+00:00:45,200 --> 00:00:52,280
+across multiple servers to ensure no single server bears too much load, and it is also provide offloading
+
+11
+00:00:52,280 --> 00:00:57,770
+that can perform tasks like the authentication, SSL encryption, caching, and so on.
+
+12
+00:00:57,770 --> 00:00:59,870
+And also it provides security.
+
+13
+00:00:59,870 --> 00:01:05,930
+It is adding additional layer for the security, hiding the true details of the backend servers from
+
+14
+00:01:05,930 --> 00:01:07,250
+the external access.
+
+15
+00:01:07,340 --> 00:01:11,240
+So now we can understand what is Microsoft Reverse Proxy?
+
+16
+00:01:11,240 --> 00:01:12,530
+Which name is URP?
+
+17
+00:01:12,560 --> 00:01:19,340
+URP is a lightweight, highly customizable reverse proxy solution developed by the Microsoft and tailored
+
+18
+00:01:19,340 --> 00:01:19,670
+for.
+
+19
+00:01:19,820 --> 00:01:20,960
+Net applications.
+
+20
+00:01:20,960 --> 00:01:24,590
+It is open source and primarily developed by Microsoft.
+
+21
+00:01:24,590 --> 00:01:27,290
+It is designed to integrate seamlessly with.
+
+22
+00:01:27,440 --> 00:01:30,260
+Net core and making it easy to add to existing.
+
+23
+00:01:30,440 --> 00:01:31,460
+Net projects.
+
+24
+00:01:31,520 --> 00:01:37,700
+It aims to simplify the routing of requests to different backend services, offering capabilities for
+
+25
+00:01:37,700 --> 00:01:40,490
+request transformation, load balancing and more.
+
+26
+00:01:40,490 --> 00:01:43,130
+So we will examine this project on GitHub.
+
+27
+00:01:43,130 --> 00:01:47,960
+But before that, let's understand the Microsoft Reverse Proxy URP features.
+
+28
+00:01:47,960 --> 00:01:51,320
+The first feature is customizable routing rules.
+
+29
+00:01:51,320 --> 00:01:57,470
+It allows detailed specification of how requests should be routed to the backend services, and the
+
+30
+00:01:57,470 --> 00:01:59,300
+second feature is Cross Platform.
+
+31
+00:01:59,300 --> 00:02:00,590
+URP is built on.
+
+32
+00:02:00,770 --> 00:02:05,870
+Net and making it Cross platform, it can run on any platform that supports.
+
+33
+00:02:06,020 --> 00:02:11,810
+Net core, including the windows, Linux and macOS, and it also supports latest protocols.
+
+34
+00:02:11,840 --> 00:02:18,050
+URP supports modern networking protocols including gRPC, Http two, and WebSockets.
+
+35
+00:02:18,170 --> 00:02:24,470
+It has great performance and optimized for high throughput and low latency, making it suitable for
+
+36
+00:02:24,470 --> 00:02:30,980
+the scenarios requiring high performance proxying, and it is also include health checks, monitor the
+
+37
+00:02:30,980 --> 00:02:34,730
+health of the backend services, and reroute the traffic as needed.
+
+38
+00:02:34,730 --> 00:02:40,580
+And we can say it is using the modern Http client and uses the latest Http client features in.
+
+39
+00:02:40,730 --> 00:02:42,740
+Net for improved performance.
+
+40
+00:02:42,740 --> 00:02:46,700
+Now we can examine our GitHub project of the URP and documentation.
+
+41
+00:02:46,700 --> 00:02:52,430
+So if you click the links on the slide and go to the GitHub page, you can see the reverse proxy is
+
+42
+00:02:52,430 --> 00:02:55,280
+storing under the Microsoft repository on GitHub.
+
+43
+00:02:55,280 --> 00:03:00,410
+And if you scroll down you can get details about this project, which is the URP project.
+
+44
+00:03:00,410 --> 00:03:03,890
+And it is stand for the yet another reverse proxy.
+
+45
+00:03:03,890 --> 00:03:08,750
+And this is developed by the Microsoft for cross-cutting concerns and applying the reverse proxy.
+
+46
+00:03:08,750 --> 00:03:15,110
+And in here I'm going to click the Getting Started link that is opening the documentation of the URP
+
+47
+00:03:15,110 --> 00:03:16,010
+reverse proxy.
+
+48
+00:03:16,010 --> 00:03:21,620
+And here you can see an example of the how to getting started with URP using the dotnet eight.
+
+49
+00:03:21,620 --> 00:03:25,040
+Here you can see that this will be creating a new web application.
+
+50
+00:03:25,040 --> 00:03:30,530
+And after that this will be adding a project reference which is the URP reverse proxy NuGet package.
+
+51
+00:03:30,530 --> 00:03:34,820
+And after that this will be arranging the middleware by adding the builder services.
+
+52
+00:03:34,820 --> 00:03:39,980
+Add reverse proxy and loading configurations from the application settings and the section of the reverse
+
+53
+00:03:39,980 --> 00:03:40,400
+proxy.
+
+54
+00:03:40,580 --> 00:03:43,760
+And after that you can see the configurations including.
+
+55
+00:03:43,760 --> 00:03:48,020
+At this point, this will be including a low cost reverse proxy routes.
+
+56
+00:03:48,050 --> 00:03:51,800
+Route definitions, clusters, destinations, and so on.
+
+57
+00:03:51,800 --> 00:03:57,050
+And lastly, we can run the project with dotnet run command in order to route incoming requests to back
+
+58
+00:03:57,050 --> 00:03:58,010
+end services.
+
+59
+00:03:58,010 --> 00:04:03,320
+And after that, in the left hand side, you can see that there is different documentation.
+
+60
+00:04:03,320 --> 00:04:08,540
+For example, we can examine the how to configure these URP with advanced configurations.
+
+61
+00:04:08,540 --> 00:04:14,780
+In this section you can read this documentation to understand how we can load and how we can structure
+
+62
+00:04:14,780 --> 00:04:22,550
+of the configurations for any redirect operations, including the rod, cluster, ID, match and destinations.
+
+63
+00:04:22,550 --> 00:04:28,310
+And also you can check the configuration providers that include of the structure of the providers and
+
+64
+00:04:28,310 --> 00:04:32,750
+routes, clusters, memory config lifecycles and so on.
+
+65
+00:04:32,750 --> 00:04:38,540
+And you can see configuration filters that including how we can filter the configurations with coding,
+
+66
+00:04:38,540 --> 00:04:42,830
+and also configurations using the AI proxy config filter interface.
+
+67
+00:04:42,830 --> 00:04:46,670
+This is the an implementation and example of these features.
+
+68
+00:04:46,670 --> 00:04:51,350
+And if you look at the these left hand side you can see the features of the URP reverse proxy.
+
+69
+00:04:51,350 --> 00:04:57,170
+If I scroll down, you can see that we can provide authentication and authorization with only settings
+
+70
+00:04:57,170 --> 00:04:59,300
+on the configurations Json file.
+
+71
+00:04:59,300 --> 00:04:59,720
+And also.
+
+72
+00:04:59,890 --> 00:05:04,720
+So you can see that we will apply the rate limiting with changing the configuration.
+
+73
+00:05:04,720 --> 00:05:11,470
+Or we can use these operations by coding on program says that you can handle different rate limiting
+
+74
+00:05:11,470 --> 00:05:13,180
+algorithms in the program says.
+
+75
+00:05:13,180 --> 00:05:18,070
+So you can see we will apply course requests in the reverse proxy ARP.
+
+76
+00:05:18,070 --> 00:05:21,400
+And we can apply session affinity load balancing.
+
+77
+00:05:21,400 --> 00:05:27,430
+And we can check the destination health checks, gRPC support, distributed tracing support, WebSockets
+
+78
+00:05:27,430 --> 00:05:28,270
+and so on.
+
+79
+00:05:28,270 --> 00:05:32,080
+So these are the features that can handle in the ARP reverse proxy.
+

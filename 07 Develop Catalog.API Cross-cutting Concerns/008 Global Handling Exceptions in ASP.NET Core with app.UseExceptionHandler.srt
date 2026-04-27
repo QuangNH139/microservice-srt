@@ -1,0 +1,256 @@
+1
+00:00:00,140 --> 00:00:07,580
+In this video, we are going to learn global exception handling in ASP.Net core with using the App.use
+
+2
+00:00:07,580 --> 00:00:09,020
+exception handling method.
+
+3
+00:00:09,470 --> 00:00:15,800
+As you can see that when we are sending invalid requests to our Http put operations without including
+
+4
+00:00:15,800 --> 00:00:18,350
+the name information, this is the response.
+
+5
+00:00:18,350 --> 00:00:23,720
+And as seen in the response, this is the raw exception message from our application.
+
+6
+00:00:23,720 --> 00:00:28,850
+And it can be very hard to read and very hard to maintainable and understandable.
+
+7
+00:00:28,850 --> 00:00:32,840
+So we should format these errors in a more user friendly way.
+
+8
+00:00:33,170 --> 00:00:40,310
+In order to make this message more accurate way, we will use ASP.Net global Exception Handling mechanism
+
+9
+00:00:40,310 --> 00:00:41,840
+in ASP.Net core.
+
+10
+00:00:41,870 --> 00:00:47,060
+Handling exceptions globally is crucial for a consistent error response format.
+
+11
+00:00:47,180 --> 00:00:52,550
+It helps to debugging and provides clear feedback to the consumer of our API.
+
+12
+00:00:52,550 --> 00:00:59,690
+So we should refer to Microsoft official documentation so you can go to the Microsoft ASP.Net core documentation
+
+13
+00:00:59,690 --> 00:01:00,980
+and handle errors.
+
+14
+00:01:00,980 --> 00:01:06,170
+In here you can see that we can handle the errors in ASP.Net core in different ways.
+
+15
+00:01:06,170 --> 00:01:12,770
+So we can you can see that we can handle with developing exception page and using the exception handle
+
+16
+00:01:12,770 --> 00:01:13,310
+page.
+
+17
+00:01:13,310 --> 00:01:15,770
+And we can use exception handle Lambda.
+
+18
+00:01:15,770 --> 00:01:21,290
+And we can use AI exception handler to perform global exception handling.
+
+19
+00:01:21,290 --> 00:01:23,270
+So we will follow these steps.
+
+20
+00:01:23,270 --> 00:01:29,750
+And I am going to explain to how we can handle the exception in a handle lambda function.
+
+21
+00:01:29,750 --> 00:01:35,750
+If you go to the exception handler lambda part of this article, you can see that this is an alternative
+
+22
+00:01:35,750 --> 00:01:42,830
+way to custom exception handle page and provide a lambda function to handle the exceptions globally.
+
+23
+00:01:42,830 --> 00:01:46,250
+So we can use the use exception handle method.
+
+24
+00:01:46,250 --> 00:01:48,410
+And we can provide the lambda function.
+
+25
+00:01:48,410 --> 00:01:52,520
+And this lambda allows to access error before returning the response.
+
+26
+00:01:52,520 --> 00:01:56,900
+So you can see an example implementation that we will follow the same steps.
+
+27
+00:01:56,900 --> 00:02:03,020
+So we will implement a custom exception handler in our Program.cs with the similar approach.
+
+28
+00:02:03,020 --> 00:02:08,030
+In order to catch the exceptions and return a standardized error message.
+
+29
+00:02:08,030 --> 00:02:13,670
+So please go to the Visual Studio and open the program.cs of the Catholic API.
+
+30
+00:02:13,670 --> 00:02:14,750
+Microservices.
+
+31
+00:02:14,750 --> 00:02:22,730
+In Program.cs, you can scroll down and locate the or configure Http request pipeline part, and after
+
+32
+00:02:22,730 --> 00:02:28,280
+the map cutter operation, we can configure our application according to our global exception handling.
+
+33
+00:02:28,280 --> 00:02:35,750
+So we will use the same step which is the app dot use exception handler function.
+
+34
+00:02:35,750 --> 00:02:39,680
+So in this function we can configure our exceptions in globally.
+
+35
+00:02:39,680 --> 00:02:42,920
+So we can use this function and configure this function.
+
+36
+00:02:42,920 --> 00:02:47,390
+You can see the method parameters in here we will use an action configuration.
+
+37
+00:02:47,390 --> 00:02:55,010
+And as you can see that we can use action configuration to configure these middleware as exception handling.
+
+38
+00:02:55,010 --> 00:02:56,630
+So now let me copy paste.
+
+39
+00:02:56,630 --> 00:02:59,030
+And after that I will explain one by one.
+
+40
+00:02:59,030 --> 00:03:02,540
+Here you can see the whole use exception handler method.
+
+41
+00:03:02,540 --> 00:03:09,410
+So basically we configure the application to use a custom exception handler that captures all unhandled
+
+42
+00:03:09,410 --> 00:03:10,400
+exceptions.
+
+43
+00:03:10,490 --> 00:03:17,360
+Our main goal is to return a structured Json response containing the error details, which is more readable
+
+44
+00:03:17,360 --> 00:03:18,590
+and informative.
+
+45
+00:03:18,590 --> 00:03:25,160
+So you can see that in the exception handler application we basically run this code and inside of this
+
+46
+00:03:25,160 --> 00:03:27,860
+code, first of all we will get the exception.
+
+47
+00:03:27,860 --> 00:03:32,780
+So once the we get the exception we can prepare the problem details.
+
+48
+00:03:32,780 --> 00:03:36,620
+The problem details object is used to format the error response.
+
+49
+00:03:36,620 --> 00:03:39,980
+It includes the exception message and the stacktrace.
+
+50
+00:03:39,980 --> 00:03:47,060
+And after that, besides returning the error response, it is important to log the exception for further
+
+51
+00:03:47,060 --> 00:03:48,500
+analysis and debugging.
+
+52
+00:03:48,500 --> 00:03:52,310
+That's why we will put a logging operations the exception.
+
+53
+00:03:52,310 --> 00:03:58,460
+So after that we will write all details into our response object as a Json format.
+
+54
+00:03:58,460 --> 00:04:06,350
+So this is the our use exception handle method in order to handle the ASP.Net exceptions globally.
+
+55
+00:04:06,350 --> 00:04:10,160
+So now we can test our application save this file.
+
+56
+00:04:10,160 --> 00:04:14,540
+Last time you can see that we have Get response as a raw message.
+
+57
+00:04:14,540 --> 00:04:22,070
+Now I am going to run this again without debugging and see that how these exception will be handled
+
+58
+00:04:22,400 --> 00:04:23,480
+with this method.
+
+59
+00:04:23,480 --> 00:04:25,760
+So application is started.
+
+60
+00:04:25,760 --> 00:04:32,210
+If I send again this http put request, you can see that we get the response as a Json format and it
+
+61
+00:04:32,210 --> 00:04:33,260
+is also structured.
+
+62
+00:04:33,260 --> 00:04:36,530
+You can come to Raw and go back to purity.
+
+63
+00:04:36,560 --> 00:04:43,070
+You can see that this is the title, information, status and details which including the Stacktrace.
+
+64
+00:04:43,070 --> 00:04:49,430
+This is more structural and more easy to read as a formatted Json error response.
+

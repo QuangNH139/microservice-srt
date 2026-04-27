@@ -1,0 +1,204 @@
+1
+00:00:00,170 --> 00:00:05,780
+In this video we are going to add project reference between clean architecture layers.
+
+2
+00:00:05,780 --> 00:00:12,050
+It is crucial step to establish the correct dependencies between different layers of the application.
+
+3
+00:00:12,350 --> 00:00:15,050
+Let's understand layer dependencies.
+
+4
+00:00:15,200 --> 00:00:22,340
+As we said before, our domain and application layer responsible for business requirement without any
+
+5
+00:00:22,340 --> 00:00:23,630
+external dependencies.
+
+6
+00:00:23,930 --> 00:00:30,710
+So we can think domain and application layer as a core layers and only application layer get referenced
+
+7
+00:00:30,710 --> 00:00:34,850
+from the domain layer and domain should not get any reference.
+
+8
+00:00:35,090 --> 00:00:41,630
+And after that we have infrastructure layer which includes all external concerns and infrastructure
+
+9
+00:00:41,630 --> 00:00:48,260
+layer should encapsulate these external dependencies like databases, edge systems, integrations and
+
+10
+00:00:48,260 --> 00:00:48,830
+so on.
+
+11
+00:00:48,830 --> 00:00:52,880
+So these infrastructure layer could be replaced when needed.
+
+12
+00:00:52,880 --> 00:00:57,260
+And infrastructure layer should have application layer get referenced.
+
+13
+00:00:57,290 --> 00:01:04,670
+That means we need to reference from the core layers into infrastructure layer in order to perform infrastructure
+
+14
+00:01:04,670 --> 00:01:05,960
+works properly.
+
+15
+00:01:06,230 --> 00:01:12,920
+And lastly, we have API layer as a presentation layer and this will need it both application and infrastructure
+
+16
+00:01:12,920 --> 00:01:13,670
+layers.
+
+17
+00:01:13,970 --> 00:01:19,850
+As a result, we can say that domain layer, which is the ordering domain, has no dependency on other
+
+18
+00:01:19,850 --> 00:01:20,510
+layers.
+
+19
+00:01:20,510 --> 00:01:27,050
+And application layer, which is the ordinary application depends on the domain layer and infrastructure
+
+20
+00:01:27,050 --> 00:01:33,290
+layer, which is the ordering infrastructure depends on the application layer for implementing interfaces
+
+21
+00:01:33,290 --> 00:01:39,560
+and API layer, which is the ordering API depends on both application and infrastructure layer.
+
+22
+00:01:39,740 --> 00:01:43,820
+Please open the Visual Studio and go to Ordering Application layer.
+
+23
+00:01:43,820 --> 00:01:49,310
+In ordering application layer we are going to add project reference from the ordering domain.
+
+24
+00:01:49,310 --> 00:01:55,580
+Also, we will add a reference from the building blocks of the project in order to leverage skills,
+
+25
+00:01:55,580 --> 00:01:59,990
+abstractions and other shared functionalities into ordering microservices.
+
+26
+00:01:59,990 --> 00:02:05,330
+For that purpose, I am going to come to ordering application, right click dependencies, Add Project
+
+27
+00:02:05,330 --> 00:02:10,910
+Reference and in here I am going to select Building Blocks and also ordering domain.
+
+28
+00:02:11,390 --> 00:02:12,770
+And click the okay button.
+
+29
+00:02:13,070 --> 00:02:17,660
+And you can confirm in the Ordering application project file and save this file.
+
+30
+00:02:17,660 --> 00:02:19,730
+See that these item group added.
+
+31
+00:02:19,730 --> 00:02:23,360
+And two project is adding reference into ordering application.
+
+32
+00:02:23,690 --> 00:02:27,050
+After that we can go to the ordering infrastructure.
+
+33
+00:02:27,140 --> 00:02:32,900
+In Ordering infrastructure layer, we will add a project reference from the ordering application and
+
+34
+00:02:32,900 --> 00:02:37,580
+implement its interface and use its services inside of the infrastructure.
+
+35
+00:02:37,580 --> 00:02:43,160
+For that purpose, I am going to right click dependencies, Add Project Reference and select the ordering
+
+36
+00:02:43,160 --> 00:02:45,740
+application and click the okay button.
+
+37
+00:02:46,610 --> 00:02:52,580
+You can see that we have successfully added ordering application project getting reference in the ordering
+
+38
+00:02:52,580 --> 00:02:53,600
+infrastructure.
+
+39
+00:02:53,600 --> 00:02:57,080
+Lastly, we will go to the ordering API project.
+
+40
+00:02:57,080 --> 00:03:03,440
+In ordering API we will add a project reference both ordering infrastructure and ordering application.
+
+41
+00:03:03,440 --> 00:03:09,470
+If you right click the dependencies Add Project reference, I'm going to select Ordering Application
+
+42
+00:03:09,470 --> 00:03:12,440
+and Ordering Infrastructure and click the okay button.
+
+43
+00:03:12,770 --> 00:03:18,590
+If you double click the ordering API, you can see the item group comes in here from the ordering application
+
+44
+00:03:18,590 --> 00:03:21,350
+infrastructure reference to ordering API.
+
+45
+00:03:21,380 --> 00:03:28,250
+This allows the API layer to use application services and infrastructure implementations inside of the
+
+46
+00:03:28,250 --> 00:03:28,700
+endpoint.
+
+47
+00:03:28,700 --> 00:03:29,600
+Definitions.
+
+48
+00:03:29,840 --> 00:03:35,780
+After adding all necessary references, we can build the solution and ensure everything is correctly
+
+49
+00:03:35,780 --> 00:03:38,030
+set up and there is no missing dependencies.
+
+50
+00:03:38,030 --> 00:03:44,960
+If you right click the ordering API and build the API project, you can see that will is succeeded completed.
+
+51
+00:03:44,960 --> 00:03:49,790
+That means we have successfully added project references into our clean architecture layers.
+

@@ -1,0 +1,176 @@
+1
+00:00:00,140 --> 00:00:05,930
+In this video we are going to develop update order and point class and we will follow the steps.
+
+2
+00:00:05,930 --> 00:00:10,100
+And here you can see that we will start with creating update Order request.
+
+3
+00:00:10,100 --> 00:00:16,460
+So in here I'm going to create Public Record update order request and taking parameter which is from
+
+4
+00:00:16,460 --> 00:00:18,200
+the order DTO and order.
+
+5
+00:00:18,200 --> 00:00:22,790
+So Update Order request represent the incoming data for the update operation.
+
+6
+00:00:22,790 --> 00:00:28,580
+And it contains an order DTO which holds the updated order details with the ID information.
+
+7
+00:00:28,580 --> 00:00:33,110
+So after that I'm going to also prepare update order response object.
+
+8
+00:00:33,110 --> 00:00:39,980
+And here you can see that we have created public record update order response and Boolean is success
+
+9
+00:00:39,980 --> 00:00:42,140
+as a parameter of this record type.
+
+10
+00:00:42,140 --> 00:00:48,050
+So basically the update order response define the structure of the response indicating whether the update
+
+11
+00:00:48,050 --> 00:00:50,330
+operation was successful or not.
+
+12
+00:00:50,420 --> 00:00:55,880
+After that, we can start to develop our actual class, which is the update order, and I am going to
+
+13
+00:00:55,880 --> 00:01:01,820
+implement from the equator module and implement these interface members, which is the add method.
+
+14
+00:01:01,820 --> 00:01:08,930
+So basically we have implemented equator module interface and defining the routes for Http request handling.
+
+15
+00:01:08,930 --> 00:01:15,860
+For performing the update operation, we will utilize map put method in order to define Http put endpoint
+
+16
+00:01:15,860 --> 00:01:17,750
+at the path of the slash orders.
+
+17
+00:01:17,750 --> 00:01:23,900
+For that purpose, I'm going to remove this throw statement and writing the app dot map put method and
+
+18
+00:01:23,900 --> 00:01:27,620
+passing the slash orders endpoint URL as a parameter of the map put.
+
+19
+00:01:27,620 --> 00:01:31,910
+And after that we have asynchronous delegate handler class and method.
+
+20
+00:01:31,910 --> 00:01:37,070
+For this method, we will accommodate the incoming requests and perform the our actual logic.
+
+21
+00:01:37,070 --> 00:01:40,730
+Here you can see that the first parameter is request object, which is.
+
+22
+00:01:40,730 --> 00:01:46,340
+The update order request comes from the incoming request object and the second parameter is I standard
+
+23
+00:01:46,340 --> 00:01:52,910
+sender object, which is basically injecting mediator I sender interface into our delegate handler method.
+
+24
+00:01:52,910 --> 00:01:56,570
+So after that I'm going to put a implementation of this method.
+
+25
+00:01:56,570 --> 00:02:03,020
+So as the same way we will implement this method with converting incoming request object to the update
+
+26
+00:02:03,020 --> 00:02:04,190
+command object.
+
+27
+00:02:04,190 --> 00:02:10,400
+And after converting this command object, we basically send this command object to the mediator using
+
+28
+00:02:10,400 --> 00:02:12,260
+the standard dot send method.
+
+29
+00:02:12,260 --> 00:02:19,070
+And after that we will converting these responding result object to the our response object, which
+
+30
+00:02:19,070 --> 00:02:24,680
+is the update or the response object, and return back this response object to the client application.
+
+31
+00:02:24,680 --> 00:02:30,680
+So with this line of code, we basically accept and update all the requests and adapt the request to
+
+32
+00:02:30,680 --> 00:02:36,110
+an update order command using the map star and using mediators sender send method.
+
+33
+00:02:36,110 --> 00:02:41,180
+With passing this command object in order to process the command and handle the corresponding handle
+
+34
+00:02:41,180 --> 00:02:47,030
+method, and also await the result from the command handler and convert the result into our update order
+
+35
+00:02:47,030 --> 00:02:51,560
+response and return back to that okay response to the client application.
+
+36
+00:02:51,560 --> 00:02:55,700
+Okay response is returning status 200 okay response.
+
+37
+00:02:55,700 --> 00:03:02,210
+And finally we can configure this method using the Carter extension methods, including the with name
+
+38
+00:03:02,210 --> 00:03:02,990
+producers.
+
+39
+00:03:02,990 --> 00:03:05,930
+Producers problem with summary and description.
+
+40
+00:03:05,930 --> 00:03:09,500
+By this way, we can complete the update order and print class.
+
+41
+00:03:09,500 --> 00:03:13,970
+If you go on top of this page, you can see that we don't have any special using statement.
+
+42
+00:03:13,970 --> 00:03:16,850
+This is for the update order command object.
+
+43
+00:03:16,850 --> 00:03:23,060
+And here you can see the implementation of the update order endpoint class that we are going to adhering
+
+44
+00:03:23,090 --> 00:03:28,280
+to implement wrapper design pattern and implementing Rest API using the Carter.
+

@@ -1,0 +1,284 @@
+1
+00:00:00,330 --> 00:00:07,860
+In this video we are going to do step eight, which is seeding a SQL server order DB using the Entity
+
+2
+00:00:07,860 --> 00:00:11,100
+Framework core when application startup with coding.
+
+3
+00:00:11,100 --> 00:00:17,310
+So this process involves populating the database with initial data, which is particularly useful for
+
+4
+00:00:17,310 --> 00:00:19,320
+development and testing environments.
+
+5
+00:00:19,320 --> 00:00:21,570
+So please open the Visual Studio.
+
+6
+00:00:21,570 --> 00:00:27,240
+In the last video we have created an extension method and called this extension method in the Program.cs.
+
+7
+00:00:27,240 --> 00:00:33,630
+When application start up here, you can see that we call initialize database async extension method.
+
+8
+00:00:33,630 --> 00:00:39,720
+So in this method we migrate and created Entity Framework core entities into SQL server database tables.
+
+9
+00:00:39,720 --> 00:00:45,840
+Just after that, it is good to see the database tables so we can create code structure for seeding
+
+10
+00:00:45,840 --> 00:00:48,060
+database into this extension method.
+
+11
+00:00:48,060 --> 00:00:54,090
+If you right click and go to definition, you can see that this method is located under the Ordering
+
+12
+00:00:54,090 --> 00:00:57,270
+Infrastructure extensions and Database extensions.
+
+13
+00:00:57,270 --> 00:00:57,720
+Yes.
+
+14
+00:00:57,720 --> 00:01:04,349
+And right after the migrate async operation and performing these migrate operation, we can seeding
+
+15
+00:01:04,349 --> 00:01:07,470
+our tables and databases in this extension method.
+
+16
+00:01:07,470 --> 00:01:13,140
+For that purpose, let's plan our codes after these migrate operations.
+
+17
+00:01:13,140 --> 00:01:16,920
+So first of all we will implement these settings in this line of codes.
+
+18
+00:01:16,920 --> 00:01:23,040
+That means I'm going to modify this method to include seeding operations just after the applying the
+
+19
+00:01:23,040 --> 00:01:28,260
+migrations here you can see that I'm going to add a new function which name is seed async.
+
+20
+00:01:28,260 --> 00:01:31,710
+And passing this context object as a parameter of this method.
+
+21
+00:01:31,800 --> 00:01:37,770
+And after that we can implement these seeding methods with creating methods for seeding each table.
+
+22
+00:01:37,770 --> 00:01:45,240
+For example, in our model you can see that we have customer order, order item and product entities
+
+23
+00:01:45,240 --> 00:01:48,840
+that we are going to seed each table in this method.
+
+24
+00:01:48,840 --> 00:01:55,260
+For that purpose, I'm going to develop and implement this method as a private static async method.
+
+25
+00:01:55,260 --> 00:02:01,710
+Just after the developing our extension method in here, you can see that we call seed async method.
+
+26
+00:02:01,710 --> 00:02:08,759
+This is the private static async task method and accepting the application db context as a parameter.
+
+27
+00:02:08,759 --> 00:02:13,950
+So in this method we basically seeding tables one by one.
+
+28
+00:02:13,950 --> 00:02:17,730
+So I'm going to implement these seeding table operations.
+
+29
+00:02:17,730 --> 00:02:24,510
+Here you can see that seeding customer product order and order item async functions located under the
+
+30
+00:02:24,510 --> 00:02:25,650
+seed async method.
+
+31
+00:02:25,650 --> 00:02:28,950
+And after that I'm going to create a new method.
+
+32
+00:02:28,950 --> 00:02:36,420
+For each seed operation we will develop seed customer async method just after the seed async method.
+
+33
+00:02:36,420 --> 00:02:42,120
+So in this method we are also taking the application db context as a parameter.
+
+34
+00:02:42,120 --> 00:02:49,530
+But this time we will check that if there is any customer inside of the database table or not.
+
+35
+00:02:49,530 --> 00:02:57,720
+If not any table including any row about the customers, we can use context customer at range async
+
+36
+00:02:57,720 --> 00:03:01,890
+method which passing the customers from the initial data class.
+
+37
+00:03:01,890 --> 00:03:04,620
+And after that we can save changes async method.
+
+38
+00:03:04,620 --> 00:03:09,480
+So basically this is one of the customer seeding method that provide that.
+
+39
+00:03:09,480 --> 00:03:16,800
+This method checks that if the table are empty and if so, populate them with the predefined data which
+
+40
+00:03:16,800 --> 00:03:19,320
+comes from the initial data that customers.
+
+41
+00:03:19,320 --> 00:03:23,550
+So we can follow the same steps for the other entities.
+
+42
+00:03:23,550 --> 00:03:30,420
+But before that, you can see that in order to adding the seeding data, we are using the initial data
+
+43
+00:03:30,420 --> 00:03:31,470
+dot customer.
+
+44
+00:03:31,470 --> 00:03:38,070
+That means we will create additional class which name is initial data initial data class, including
+
+45
+00:03:38,070 --> 00:03:43,350
+static properties, in order to provide the initial set of the data for seeding.
+
+46
+00:03:43,350 --> 00:03:48,390
+For that purpose, I'm going to create a new class under the extensions folder.
+
+47
+00:03:48,390 --> 00:03:55,650
+So I'm going to add a new class which name is initial data and this will be internal class initial data
+
+48
+00:03:55,650 --> 00:03:57,690
+removing unnecessary using statement.
+
+49
+00:03:57,690 --> 00:04:04,170
+And in this class I'm going to create some of the properties which is a static properties.
+
+50
+00:04:04,170 --> 00:04:08,220
+Returning the list of the initial data, including our entities.
+
+51
+00:04:08,220 --> 00:04:15,450
+For example, in here I'm creating public static IEnumerable customer customers property and it is returning
+
+52
+00:04:15,450 --> 00:04:17,010
+new list of the customers.
+
+53
+00:04:17,010 --> 00:04:21,899
+And I'm going to use customer dot create method, which is the a rich domain model.
+
+54
+00:04:21,899 --> 00:04:28,410
+And we are going to create the new with customer ID using the strongly type IDs.
+
+55
+00:04:28,410 --> 00:04:35,310
+And after that these are the predefined values that we are going to use when seeding our customer entity
+
+56
+00:04:35,310 --> 00:04:37,350
+table when the application start up.
+
+57
+00:04:37,350 --> 00:04:42,690
+So initial data provide a set of predefined data for our entities.
+
+58
+00:04:42,690 --> 00:04:47,310
+Here you can see the two customers seeding into our table.
+
+59
+00:04:47,310 --> 00:04:54,060
+And this method will be using one or seed operations happened in the database extensions.
+
+60
+00:04:54,060 --> 00:04:59,730
+You can come here and see that when seeding customer async method we use add range async.
+
+61
+00:05:00,240 --> 00:05:06,150
+That accepting an array of the customer records into the customer saving operation.
+
+62
+00:05:06,150 --> 00:05:12,090
+So if you go back to our initial data, you can see that we are using two statements, which is the
+
+63
+00:05:12,090 --> 00:05:13,980
+come from the ordering domain layer.
+
+64
+00:05:13,980 --> 00:05:19,800
+I'm going to move these using statements to our global using into ordering infrastructure.
+
+65
+00:05:19,800 --> 00:05:27,450
+If you go here and copy paste these using statements for the ordering domain layer, you can move that
+
+66
+00:05:27,450 --> 00:05:28,230
+global using.
+
+67
+00:05:28,230 --> 00:05:31,500
+And if you come back to initial data this will be activated.
+
+68
+00:05:31,500 --> 00:05:36,300
+Or customer create operation and customerid the operation from the domain layer.
+
+69
+00:05:36,300 --> 00:05:43,320
+So as you can see that the seeding process is part of the or I initial database async method.
+
+70
+00:05:43,320 --> 00:05:47,340
+And just after the migrate operation we perform the seed operations.
+
+71
+00:05:47,340 --> 00:05:53,010
+And first of all we will seeding the customer data using the I initial data that customers.
+

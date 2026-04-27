@@ -1,0 +1,176 @@
+1
+00:00:00,110 --> 00:00:05,930
+In this video, we are going to learn the prerequisites of this course, how to access the source code
+
+2
+00:00:05,930 --> 00:00:07,790
+and where to find the course slide.
+
+3
+00:00:08,210 --> 00:00:11,180
+So now let me start with the prerequisites.
+
+4
+00:00:11,180 --> 00:00:17,150
+In order to follow along with the course effectively, you will need to download and install dotnet
+
+5
+00:00:17,150 --> 00:00:17,600
+eight.
+
+6
+00:00:17,600 --> 00:00:20,510
+Make sure that you have Net eight installed.
+
+7
+00:00:20,510 --> 00:00:24,920
+It is the backbone of everything what we are going to develop during the course.
+
+8
+00:00:24,920 --> 00:00:30,620
+And the second prerequisite is Visual Studio, which is preferred IDE for the.
+
+9
+00:00:30,620 --> 00:00:31,640
+Net development.
+
+10
+00:00:31,640 --> 00:00:37,640
+And I am going to use Visual Studio for coding, debugging and testing our microservices during the
+
+11
+00:00:37,640 --> 00:00:38,150
+course.
+
+12
+00:00:38,150 --> 00:00:44,570
+And the third prerequisites is Docker Desktop, which is essential for containerizing our microservices
+
+13
+00:00:44,570 --> 00:00:50,750
+and running them in a simulated production environment with using Docker compose, at least seven gigabytes
+
+14
+00:00:50,750 --> 00:00:52,310
+of free space is required.
+
+15
+00:00:52,310 --> 00:00:58,070
+This is necessary for installing the required software and storing project in the Docker compose, and
+
+16
+00:00:58,070 --> 00:01:00,290
+the last prerequisite is postman.
+
+17
+00:01:00,620 --> 00:01:08,060
+Postman is a popular tool for the testing APIs that we can use it extensively in order to test our microservice
+
+18
+00:01:08,060 --> 00:01:11,210
+API endpoints, so you can use the links on the slide.
+
+19
+00:01:11,210 --> 00:01:17,150
+In order to download and install these prerequisites, please install and download these prerequisites
+
+20
+00:01:17,150 --> 00:01:20,900
+before proceeding to course by using the links on the slide.
+
+21
+00:01:20,900 --> 00:01:23,450
+Next, we can talk about the source code.
+
+22
+00:01:23,450 --> 00:01:29,210
+All the code written and demonstrated in this course is available on GitHub, and this course comes
+
+23
+00:01:29,210 --> 00:01:33,110
+from a live GitHub repository that dotnet community develop and grow with.
+
+24
+00:01:33,110 --> 00:01:33,740
+Together.
+
+25
+00:01:33,740 --> 00:01:36,620
+Here you can see the ASP.Net run organization on GitHub.
+
+26
+00:01:36,620 --> 00:01:40,490
+And we are going to develop run ASP.Net core microservices repository.
+
+27
+00:01:40,490 --> 00:01:43,700
+During the course I have provided the link on the slide.
+
+28
+00:01:43,700 --> 00:01:46,610
+You can click this link and reach this repository.
+
+29
+00:01:46,610 --> 00:01:52,040
+And alternatively you can follow this course with this issue of microservices repository under my GitHub
+
+30
+00:01:52,040 --> 00:01:52,670
+account.
+
+31
+00:01:52,790 --> 00:01:58,940
+All these repository codes is exactly same and feel free to download, explore and even contribute it.
+
+32
+00:01:58,940 --> 00:02:04,820
+And also you can download the source code section by section, every section code separated in this
+
+33
+00:02:04,820 --> 00:02:05,480
+repository.
+
+34
+00:02:05,480 --> 00:02:11,180
+By this way, you can jump to the section and continue developments where you left without hesitating
+
+35
+00:02:11,180 --> 00:02:12,800
+the starting from the beginning.
+
+36
+00:02:12,800 --> 00:02:17,240
+So this course has a main repository under the ASP.Net run organization.
+
+37
+00:02:17,240 --> 00:02:20,360
+And this is the level of course and evolves with repository changes.
+
+38
+00:02:20,360 --> 00:02:26,480
+And this is the section by section in Udemy course that you can follow every section codes in the repository
+
+39
+00:02:26,510 --> 00:02:26,960
+link.
+
+40
+00:02:26,960 --> 00:02:29,780
+Lastly we can talk about the course slide.
+
+41
+00:02:29,780 --> 00:02:34,970
+So each lecture comes with a detailed slides summarizing the key points and concepts.
+
+42
+00:02:34,970 --> 00:02:40,880
+So these slides are available for download in this lecture resource sections that you can go to the
+
+43
+00:02:40,880 --> 00:02:43,190
+Udemy lecture and download resources.
+
+44
+00:02:43,190 --> 00:02:48,830
+And also I have already added course slides into GitHub link of the section microservice repository.
+

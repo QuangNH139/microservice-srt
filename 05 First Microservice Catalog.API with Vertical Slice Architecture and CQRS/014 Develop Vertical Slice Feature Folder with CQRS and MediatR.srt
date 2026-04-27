@@ -1,0 +1,228 @@
+1
+00:00:00,200 --> 00:00:07,070
+In this video, we are going to developing vertical slice feature folders with circles and mediator.
+
+2
+00:00:07,460 --> 00:00:14,420
+So we said that in vertical slice architecture we structure our application around the features or functionalities
+
+3
+00:00:14,420 --> 00:00:15,830
+rather than layers.
+
+4
+00:00:15,890 --> 00:00:20,120
+So in Catholic microservices we will follow the vertical slice architecture.
+
+5
+00:00:20,120 --> 00:00:26,630
+And each vertical slice cut through all architectural layers such as the UI, business logic and data
+
+6
+00:00:26,630 --> 00:00:27,320
+access.
+
+7
+00:00:27,860 --> 00:00:33,110
+And the project organized with the models, features, data and abstractions that you can see the folder
+
+8
+00:00:33,110 --> 00:00:34,820
+structure as a feature.
+
+9
+00:00:34,820 --> 00:00:35,270
+Folders.
+
+10
+00:00:35,270 --> 00:00:41,060
+We will give the name as a products, which will be the our domain entity name, and under the products
+
+11
+00:00:41,060 --> 00:00:46,550
+feature folder we will add the use case features which is the create product, delete product, get
+
+12
+00:00:46,550 --> 00:00:47,840
+product and so on.
+
+13
+00:00:48,020 --> 00:00:54,080
+So now let's get started to implement this kind of folder structure into our application, open the
+
+14
+00:00:54,080 --> 00:00:57,830
+Visual Studio and go to the catalog API project folder.
+
+15
+00:00:57,830 --> 00:01:00,350
+And you can right click Add New Folder.
+
+16
+00:01:02,410 --> 00:01:04,599
+The folder name will be the products.
+
+17
+00:01:04,599 --> 00:01:12,940
+This will be the our feature folder and under the products folder we will create each use case or feature
+
+18
+00:01:12,940 --> 00:01:15,040
+as a sub folder in here.
+
+19
+00:01:15,040 --> 00:01:22,270
+So for example we will create a create product feature and we will create corresponding sub folders
+
+20
+00:01:22,270 --> 00:01:24,220
+under the products feature folder.
+
+21
+00:01:24,220 --> 00:01:29,620
+Let me right click Add New Sub folder and give the name as a great product.
+
+22
+00:01:29,620 --> 00:01:35,830
+This helps in organizing our code based functionalities and keeps related components together.
+
+23
+00:01:35,830 --> 00:01:40,270
+So we have created a sub folder which name is Create product.
+
+24
+00:01:40,270 --> 00:01:47,680
+Under the Create Product sub folder, we can create one class in order to include all codes in a vertical
+
+25
+00:01:47,680 --> 00:01:48,400
+fashion.
+
+26
+00:01:48,400 --> 00:01:54,670
+But since we have already created a separate folder for the vertical slice feature folder, I would
+
+27
+00:01:54,670 --> 00:01:59,530
+like to separate by two, which are the handles and the endpoints.
+
+28
+00:01:59,530 --> 00:02:05,770
+So that means within the create product folder, we will divide our code into two main classes.
+
+29
+00:02:05,770 --> 00:02:08,169
+The first class is create product handler.
+
+30
+00:02:08,169 --> 00:02:12,370
+If you right click Add New item, I'm going to create a new class.
+
+31
+00:02:12,370 --> 00:02:14,740
+Which name is Create product handler class.
+
+32
+00:02:14,740 --> 00:02:19,450
+And also I would like to create an additional class under the create product.
+
+33
+00:02:19,450 --> 00:02:25,690
+Right click Add New Item and give the name as a create product endpoint.
+
+34
+00:02:26,170 --> 00:02:34,390
+So if I zoom into this folder structure, you can see that we have created a products main feature folder.
+
+35
+00:02:34,390 --> 00:02:38,740
+And under the products we have created application use case folder name.
+
+36
+00:02:38,740 --> 00:02:41,410
+This will be the our vertical slice folder.
+
+37
+00:02:41,410 --> 00:02:46,990
+And under these vertical slice I have divided by two which is the handler and endpoint.
+
+38
+00:02:46,990 --> 00:02:52,960
+So that means handler will be our application logic layer endpoints will be represent our presentation
+
+39
+00:02:52,960 --> 00:02:53,800
+API layer.
+
+40
+00:02:53,800 --> 00:02:58,630
+So why I have created two classes inside of the feature folder.
+
+41
+00:02:58,990 --> 00:03:06,130
+A common approach in vertical slice architecture is to encapsulate all aspects of a feature in one class.
+
+42
+00:03:06,130 --> 00:03:12,610
+However, this makes the code hard to read, hard to maintain, and hard to locate for actual business
+
+43
+00:03:12,610 --> 00:03:13,240
+logic.
+
+44
+00:03:13,510 --> 00:03:15,760
+Instead of that, even we have.
+
+45
+00:03:15,760 --> 00:03:17,770
+Following the vertical slice architecture.
+
+46
+00:03:17,770 --> 00:03:26,170
+Inside the feature folder, I have separated application logic and presentation endpoints into two different
+
+47
+00:03:26,170 --> 00:03:30,340
+classes in order to make it more readable and manageable and easy.
+
+48
+00:03:30,340 --> 00:03:31,210
+Maintenance.
+
+49
+00:03:31,210 --> 00:03:37,120
+This separation makes it easier to locate specific parts of the code and manage them effectively.
+
+50
+00:03:37,120 --> 00:03:42,730
+Especially, we will encapsulate business logics under the handle class, and we will see API related
+
+51
+00:03:42,730 --> 00:03:44,710
+operations in endpoint class.
+
+52
+00:03:44,710 --> 00:03:49,660
+And we already applied the vertical slice architecture in the folder level.
+
+53
+00:03:50,200 --> 00:03:56,800
+We will apply the same structure approach to other Crud operations like get product, update product
+
+54
+00:03:56,800 --> 00:03:57,850
+and Delete product.
+
+55
+00:03:57,850 --> 00:04:04,330
+As you can see in here, each feature will have its own dedicated folder with the handle and endpoint
+
+56
+00:04:04,330 --> 00:04:05,080
+classes.
+
+57
+00:04:05,080 --> 00:04:09,490
+Now let's focus on the develop these create product handle class.
+

@@ -1,0 +1,216 @@
+1
+00:00:00,200 --> 00:00:07,250
+In this video, we are going to start to develop catalog API microservices with creating domain entities
+
+2
+00:00:07,250 --> 00:00:08,540
+in modules folder.
+
+3
+00:00:08,930 --> 00:00:14,000
+So we are in here developing catalog microservices and we will focus on the domain entities.
+
+4
+00:00:14,000 --> 00:00:17,090
+We will create domain entities under the modules folder.
+
+5
+00:00:17,090 --> 00:00:22,790
+So far we have finished the domain and technical analyze and understand the pattern and principles that
+
+6
+00:00:22,790 --> 00:00:24,200
+we use during the course.
+
+7
+00:00:24,200 --> 00:00:30,800
+So now it is time to develop our catalog microservices and we will focus on creating product entity
+
+8
+00:00:30,800 --> 00:00:32,540
+for our catalog microservices.
+
+9
+00:00:32,540 --> 00:00:35,900
+Here you can see the our catalog microservices domain model.
+
+10
+00:00:35,900 --> 00:00:40,700
+We will create product entity and this will be one to end relation with category.
+
+11
+00:00:40,880 --> 00:00:42,590
+So let's take an action.
+
+12
+00:00:42,590 --> 00:00:45,830
+Please open the Visual Studio 2022.
+
+13
+00:00:45,830 --> 00:00:52,250
+And we are going to start by adding modules folder into our project folder structure.
+
+14
+00:00:52,250 --> 00:01:00,080
+So if you come to catalog API and right click Add New folder which name is modules.
+
+15
+00:01:00,080 --> 00:01:03,800
+And after that I'm going to add a new class under the modules folder.
+
+16
+00:01:03,800 --> 00:01:06,950
+Right click Add New Item.
+
+17
+00:01:07,040 --> 00:01:11,150
+And we are going to create a product C-sharp class.
+
+18
+00:01:12,750 --> 00:01:19,530
+Here you can see that we will create a models folder under the Catholic API, and under the models we
+
+19
+00:01:19,530 --> 00:01:22,770
+will add a product key domain entity class.
+
+20
+00:01:22,800 --> 00:01:27,240
+Now we are going to implement this product entity class product domain.
+
+21
+00:01:27,240 --> 00:01:32,280
+Entity class will include ID name category description and so on.
+
+22
+00:01:32,280 --> 00:01:35,400
+So we will start to implement this kind of properties.
+
+23
+00:01:35,430 --> 00:01:37,920
+The ID property should be guided.
+
+24
+00:01:39,640 --> 00:01:45,610
+And after that we will set the name and I'm going to give the default value.
+
+25
+00:01:47,290 --> 00:01:54,340
+And after that we will define list string category.
+
+26
+00:01:54,370 --> 00:01:57,580
+This will be one to end relationships.
+
+27
+00:01:59,320 --> 00:02:00,820
+Here you can see the category.
+
+28
+00:02:00,820 --> 00:02:09,430
+And we will create a new category list when the product is initializing.
+
+29
+00:02:09,430 --> 00:02:12,250
+And after that I'm going to add a description.
+
+30
+00:02:12,250 --> 00:02:20,860
+Again I'm going to provide a default value after description property I'm going to define image file
+
+31
+00:02:20,860 --> 00:02:21,670
+property.
+
+32
+00:02:22,180 --> 00:02:26,830
+Again it will be string and the name of the property will be image file.
+
+33
+00:02:26,830 --> 00:02:31,570
+So we can again give the default value of the image file property.
+
+34
+00:02:31,570 --> 00:02:34,690
+And lastly we will define.
+
+35
+00:02:36,610 --> 00:02:39,970
+Decimal property, which will be the price.
+
+36
+00:02:40,090 --> 00:02:41,890
+This will be the product price.
+
+37
+00:02:43,030 --> 00:02:43,840
+Okay.
+
+38
+00:02:43,870 --> 00:02:48,010
+As you can see that we have finished the implementation of product domain.
+
+39
+00:02:48,010 --> 00:02:54,130
+Entity class and product class includes properties like ID, name, category and others.
+
+40
+00:02:54,130 --> 00:03:01,960
+Product and category has one to many relationships and this class will be our document table on the
+
+41
+00:03:01,960 --> 00:03:03,250
+document database.
+
+42
+00:03:03,250 --> 00:03:10,450
+These ID property will act as a our document ID identified in the document database.
+
+43
+00:03:10,450 --> 00:03:15,550
+That means this ID will be document ID that we will manage by database.
+
+44
+00:03:15,550 --> 00:03:21,220
+And remember that we will use PostgreSQL with Martin Library for this catalog.
+
+45
+00:03:21,220 --> 00:03:22,240
+Microservices.
+
+46
+00:03:22,240 --> 00:03:30,100
+So in the PostgreSQL database we should be transform this PostgreSQL database as a document database
+
+47
+00:03:30,100 --> 00:03:36,310
+that will provide by the Martin converting this PostgreSQL database to the dotnet transactional document
+
+48
+00:03:36,310 --> 00:03:36,670
+DB.
+
+49
+00:03:36,820 --> 00:03:44,860
+So PostgreSQL has Json column features that allowing us to store and query our data as a Json document.
+
+50
+00:03:44,860 --> 00:03:50,890
+So it combines the flexibility of document database with the reliability of the relational PostgreSQL
+
+51
+00:03:50,890 --> 00:03:51,670
+database.
+
+52
+00:03:51,670 --> 00:03:58,090
+So this setup is ideal for handling complex data structures like our product entity, which includes
+
+53
+00:03:58,090 --> 00:04:03,910
+a list of the categories and other varied data types into document entity object.
+
+54
+00:04:03,910 --> 00:04:10,120
+As you can see that we have finished the development of product document entity for our catalog microservices.
+

@@ -1,0 +1,416 @@
+1
+00:00:00,140 --> 00:00:06,290
+In this video we are going to do fourth sub steps of the ordering subscribe consume operation which
+
+2
+00:00:06,290 --> 00:00:12,170
+is the publish order, created integration event for the order fulfillment process and microservices
+
+3
+00:00:12,170 --> 00:00:13,820
+and implemented Saga pattern.
+
+4
+00:00:13,820 --> 00:00:18,950
+So we will follow the last step in the ordering subscribe consume operation.
+
+5
+00:00:18,950 --> 00:00:24,530
+And if you follow the Icap microservice Domain and Integration event, we have developed the Basket
+
+6
+00:00:24,530 --> 00:00:28,550
+Checkout Integration event and consume these event into our handler class.
+
+7
+00:00:28,550 --> 00:00:35,780
+And after that we will raising order created domain event when creating any order into our consume operation.
+
+8
+00:00:35,780 --> 00:00:42,020
+And lastly, it is time to create order created integration event for the order fulfillment process.
+
+9
+00:00:42,020 --> 00:00:48,590
+So that means if you look at the our order flow you can see that basket microservices publish the basket
+
+10
+00:00:48,590 --> 00:00:53,030
+checkout integration event to the ordering microservices and ordering microservices.
+
+11
+00:00:53,030 --> 00:00:59,210
+Consume these event and create a new order and raising order created domain event that will handle in
+
+12
+00:00:59,210 --> 00:00:59,840
+this point.
+
+13
+00:00:59,840 --> 00:01:06,890
+And for this video we will publish order created integration event to performing order fulfillment process
+
+14
+00:01:06,890 --> 00:01:11,120
+and notifying order microservices like shipping, billing and inventory.
+
+15
+00:01:11,120 --> 00:01:17,120
+So when we are handling the order created domain event, we can also publishing the order created integration
+
+16
+00:01:17,120 --> 00:01:20,240
+event in order to perform order fulfillment process.
+
+17
+00:01:20,240 --> 00:01:26,420
+For that purpose, please open the Visual Studio and go to the event handlers under the ordering application
+
+18
+00:01:26,420 --> 00:01:30,470
+and go to the Domain Event Handlers and open the order created Event handler.
+
+19
+00:01:30,470 --> 00:01:36,080
+This will be accodomate the incoming order created domain event handler, and this will be leading the
+
+20
+00:01:36,080 --> 00:01:38,390
+integration event to our architecture.
+
+21
+00:01:38,390 --> 00:01:44,360
+In order to publish an integration event from this class, we should inject AI publish endpoint interface
+
+22
+00:01:44,360 --> 00:01:45,440
+from the mass transit.
+
+23
+00:01:45,440 --> 00:01:51,350
+So for that purpose, please come to the primary constructor point and inject any interface which is
+
+24
+00:01:51,350 --> 00:01:54,680
+the AI publish endpoint which comes from the mass transit.
+
+25
+00:01:54,680 --> 00:01:57,680
+And the second injection will be the AI logger object.
+
+26
+00:01:57,680 --> 00:02:02,570
+So with using these two objects we are going to perform our handle operation.
+
+27
+00:02:02,570 --> 00:02:08,210
+In the handle operation we will modify the order created domain event handler to publishing order created
+
+28
+00:02:08,210 --> 00:02:09,530
+integration event handler.
+
+29
+00:02:09,530 --> 00:02:14,480
+First of all, I'm going to look at the first parameter of the handle method, which is the order created
+
+30
+00:02:14,480 --> 00:02:16,820
+event which comes from the domain event handler.
+
+31
+00:02:16,820 --> 00:02:22,310
+So I'm going to change the name of the parameter notification to domain event handler.
+
+32
+00:02:22,310 --> 00:02:25,130
+I'm going to write domain event.
+
+33
+00:02:25,130 --> 00:02:27,560
+So this will be representing our domain event.
+
+34
+00:02:27,560 --> 00:02:34,220
+So I'm going to change the first log information operation and change the notification to domain event.
+
+35
+00:02:34,220 --> 00:02:37,940
+So this will be represent our domain event in the incoming parameter.
+
+36
+00:02:37,940 --> 00:02:44,210
+So before returning a task completed we will performing the our publishing integration event part.
+
+37
+00:02:44,210 --> 00:02:48,380
+So we will utilize I publish endpoint from the mass transit for publishing.
+
+38
+00:02:48,380 --> 00:02:52,970
+But before that we should map the order entity to the order DTO for the event data.
+
+39
+00:02:52,970 --> 00:02:59,990
+For that purpose I'm going to mapping the incoming event, which is domain event to the order DTO.
+
+40
+00:02:59,990 --> 00:03:05,900
+Here you can see the incoming domain event and this is the order which is representing our order entity.
+
+41
+00:03:05,900 --> 00:03:13,220
+And we will write an extension method which is to order DTO to converting order DTO for the order created
+
+42
+00:03:13,220 --> 00:03:14,270
+integration event.
+
+43
+00:03:14,270 --> 00:03:20,990
+And after that I'm going to use Publish Endpoint Object in order to publish an integration event.
+
+44
+00:03:20,990 --> 00:03:24,350
+And here you can see that we have available function.
+
+45
+00:03:24,350 --> 00:03:28,280
+That's why I'm going to change public async for the handle method.
+
+46
+00:03:28,280 --> 00:03:34,670
+And after that you can see that we are using await publish endpoint dot publish method and passing the
+
+47
+00:03:34,670 --> 00:03:36,230
+order created integration event.
+
+48
+00:03:36,230 --> 00:03:39,290
+This will be the order data and cancellation token.
+
+49
+00:03:39,290 --> 00:03:44,060
+This line of code provide to publishing an integration event to the RabbitMQ.
+
+50
+00:03:44,060 --> 00:03:50,570
+So now we can safely delete this return operation because we will perform available function with publishing
+
+51
+00:03:50,570 --> 00:03:51,710
+the integration event.
+
+52
+00:03:51,710 --> 00:03:54,140
+And this is the implementation of the handle method.
+
+53
+00:03:54,140 --> 00:04:00,950
+And we should now develop the two order DTO extension method on the order entity, as you remember that
+
+54
+00:04:00,950 --> 00:04:03,950
+in the application layer we have extension folder.
+
+55
+00:04:03,950 --> 00:04:10,250
+And under the extensions we have order extensions that I am going to develop to order DTO extension
+
+56
+00:04:10,250 --> 00:04:11,660
+method under this class.
+
+57
+00:04:11,660 --> 00:04:17,300
+If you open this class, you can see that we have ordered the existing to order DTO list extension method
+
+58
+00:04:17,300 --> 00:04:19,310
+for the IEnumerable order.
+
+59
+00:04:19,310 --> 00:04:23,240
+Now we are going to follow the same steps for a single order entity.
+
+60
+00:04:23,240 --> 00:04:24,230
+For that purpose.
+
+61
+00:04:24,230 --> 00:04:31,370
+Come here and develop our public static order DTO to order DTO method name and we will write this extension
+
+62
+00:04:31,370 --> 00:04:33,320
+method in the order entity.
+
+63
+00:04:33,320 --> 00:04:39,320
+So here you can see that we will returning DTO from Order Private method with passing the order entity.
+
+64
+00:04:39,320 --> 00:04:45,980
+And in here you can see that we will perform the actual operation under this private static order dto
+
+65
+00:04:45,980 --> 00:04:52,250
+dto from the order and taking order entity as a parameter and returning a new order DTO with passing
+
+66
+00:04:52,250 --> 00:04:55,850
+the incoming order entity members to the order DTO members.
+
+67
+00:04:55,850 --> 00:04:59,720
+Here you can see that ID, customer id order name, shipping.
+
+68
+00:04:59,860 --> 00:05:00,700
+And billing address.
+
+69
+00:05:00,700 --> 00:05:07,630
+In this case, we are creating a new address DTO to representing our value object and passing the order
+
+70
+00:05:07,630 --> 00:05:09,640
+entity value information.
+
+71
+00:05:09,670 --> 00:05:16,240
+Here you can see that we are passing the order shipping and billing address informations for these two
+
+72
+00:05:16,240 --> 00:05:19,180
+value objects, including the shipping and billing address.
+
+73
+00:05:19,180 --> 00:05:25,510
+And this is the pricing the payment information to create payment DTO in the order DTO object.
+
+74
+00:05:25,510 --> 00:05:27,880
+And we are passing the status as a order status.
+
+75
+00:05:27,880 --> 00:05:31,360
+And in here you can see that we are also passing the order items.
+
+76
+00:05:31,360 --> 00:05:37,510
+We are iterating the order entity order items and using the select link function in order to create
+
+77
+00:05:37,510 --> 00:05:42,460
+a new order item DTO and mapping this order id values to the new order item.
+
+78
+00:05:42,460 --> 00:05:43,120
+Details.
+
+79
+00:05:43,120 --> 00:05:50,080
+So this is the implementation of the extension method from two ordered DTO function, and you can save
+
+80
+00:05:50,080 --> 00:05:51,040
+the order extensions.
+
+81
+00:05:51,040 --> 00:05:56,770
+And you can see that this method is using to our handle method, which is the order created domain event
+
+82
+00:05:56,800 --> 00:05:57,220
+handler.
+
+83
+00:05:57,220 --> 00:06:03,190
+So after converting these DTO objects, we are passing these D2 object to the publish method of the
+
+84
+00:06:03,190 --> 00:06:09,010
+mass transit publish endpoint in order to trigger any integration event to the RabbitMQ.
+
+85
+00:06:09,040 --> 00:06:12,130
+But this is the new feature for our application.
+
+86
+00:06:12,130 --> 00:06:18,670
+We don't plan any integration event in the ordering domain event handler, because whenever we are creating
+
+87
+00:06:18,670 --> 00:06:24,970
+any order, this will be trigger an integration event, but we should be available this function when
+
+88
+00:06:24,970 --> 00:06:29,770
+only subscriber order fulfillment microservices are developed for that purpose.
+
+89
+00:06:29,770 --> 00:06:34,390
+Since that time it will create unnecessary event messages on the RabbitMQ.
+
+90
+00:06:34,420 --> 00:06:39,970
+For example, when the ordering microservices start up, we are migrating and sending database.
+
+91
+00:06:39,970 --> 00:06:45,370
+If you open the ordering infrastructure and expand the data folder, you can see the extension folder
+
+92
+00:06:45,370 --> 00:06:47,410
+and open the database extensions.
+
+93
+00:06:47,410 --> 00:06:53,950
+This is basically migrate the database and seeding async function that will seeding the order with items
+
+94
+00:06:53,950 --> 00:06:54,550
+data.
+
+95
+00:06:54,550 --> 00:07:00,880
+If you go to the function, you can see that this will be creating any orders on the database and this
+
+96
+00:07:00,910 --> 00:07:03,760
+operation will be triggered or order created.
+
+97
+00:07:03,760 --> 00:07:04,630
+Domain event.
+
+98
+00:07:04,630 --> 00:07:09,490
+And this handler will be leading to our integration event for application startup.
+
+99
+00:07:09,490 --> 00:07:15,580
+We don't want to raising and triggering and publishing integration event with using the seed function.
+
+100
+00:07:15,580 --> 00:07:16,570
+For that purpose.
+
+101
+00:07:16,570 --> 00:07:19,240
+We can make this operation as a feature.
+
+102
+00:07:19,240 --> 00:07:24,850
+So ASP.Net has very good feature in the out-of-the-box for the ASP.Net feature management.
+
+103
+00:07:24,850 --> 00:07:30,730
+For that purpose, let's develop ASP.Net Feature Management for these order fulfillment event publish
+
+104
+00:07:30,730 --> 00:07:31,390
+operation.
+

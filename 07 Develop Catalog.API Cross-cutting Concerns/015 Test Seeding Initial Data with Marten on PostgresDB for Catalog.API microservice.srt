@@ -1,0 +1,280 @@
+1
+00:00:00,110 --> 00:00:07,220
+In this video we are going to test seeding initial data with Martin on PostgreSQL database for our catalog
+
+2
+00:00:07,220 --> 00:00:08,240
+microservices.
+
+3
+00:00:08,270 --> 00:00:10,850
+First of all, please open the Visual Studio.
+
+4
+00:00:10,850 --> 00:00:16,910
+And now the first thing, we should ensure that our PostgreSQL database container is up and running.
+
+5
+00:00:16,910 --> 00:00:20,660
+So for that purpose I have started our Docker desktop.
+
+6
+00:00:20,660 --> 00:00:23,870
+But as you can see that PostgreSQL is not running.
+
+7
+00:00:23,870 --> 00:00:28,070
+In order to run our PostgreSQL we will use Docker compose.
+
+8
+00:00:28,070 --> 00:00:33,470
+I'm going to right click the docker compose and set a startup project and run without debugging.
+
+9
+00:00:33,470 --> 00:00:40,460
+Because my aim was is up and running to backing services for Catholic microservices or backing services
+
+10
+00:00:40,460 --> 00:00:42,230
+is PostgreSQL database.
+
+11
+00:00:42,230 --> 00:00:46,310
+So this will run the docker compose up command on behalf behind of the scene.
+
+12
+00:00:46,310 --> 00:00:52,670
+And if you open the Docker desktop, you can see that Docker Compose is running our PostgreSQL database
+
+13
+00:00:52,670 --> 00:00:54,050
+in this port numbers.
+
+14
+00:00:54,140 --> 00:00:57,080
+So now we are ready to run our catalog API.
+
+15
+00:00:57,080 --> 00:01:00,680
+I'm going to right click the catalog API and set a startup project.
+
+16
+00:01:00,680 --> 00:01:07,220
+And also I'm going to put a breakpoint into the data folder, catalog initial data and put a breakpoint
+
+17
+00:01:07,220 --> 00:01:12,080
+in the populate method which is actual seeding operation handle in this method.
+
+18
+00:01:12,080 --> 00:01:14,660
+So now we are ready to seeding database.
+
+19
+00:01:14,660 --> 00:01:22,880
+But before that let's check our existing PostgreSQL database has not any table or seeding product data
+
+20
+00:01:22,880 --> 00:01:24,800
+inside of it for that purpose.
+
+21
+00:01:24,800 --> 00:01:27,830
+This time I'm going to use Pgadmin.
+
+22
+00:01:27,830 --> 00:01:34,160
+If you open the Pgadmin, you can see that we can add new service in here in order to connect existing
+
+23
+00:01:34,160 --> 00:01:34,970
+catalog DB.
+
+24
+00:01:34,970 --> 00:01:38,990
+But I have created before and here you can see my catalog DB.
+
+25
+00:01:39,170 --> 00:01:43,400
+If I try to connect catalog DB, the server is connected successfully.
+
+26
+00:01:43,400 --> 00:01:49,760
+We can add a new server with providing information in the Program.cs appsettings.json file.
+
+27
+00:01:49,760 --> 00:01:55,760
+You can add new server with adding the server name localhost port name is this port name.
+
+28
+00:01:55,760 --> 00:02:01,820
+Default port name and connect the catalog db, providing these user id and password information into
+
+29
+00:02:01,820 --> 00:02:02,810
+your Pgadmin.
+
+30
+00:02:02,810 --> 00:02:09,710
+So after edit this information and server, we can connect the PostgreSQL database and browse the database.
+
+31
+00:02:09,710 --> 00:02:16,190
+Here you can see that we have created the catalog database if we explore the catalog database, if you
+
+32
+00:02:16,190 --> 00:02:22,280
+go to schemas and see is there any table or not under the schemas you can go to tables and see that
+
+33
+00:02:22,280 --> 00:02:25,430
+we have already created our product table before.
+
+34
+00:02:25,430 --> 00:02:32,690
+And if you right click and script as a select secret and run this script, you can see that we have
+
+35
+00:02:32,690 --> 00:02:38,660
+only one record that we have creating this record when sending the http post request.
+
+36
+00:02:38,660 --> 00:02:45,140
+But for now, I'm going to remove this table in order to see how we can see the operation without any
+
+37
+00:02:45,140 --> 00:02:47,240
+table and how Martin will be.
+
+38
+00:02:47,240 --> 00:02:53,030
+Create an auto, create this schema for us, and insert new records into newly created database for
+
+39
+00:02:53,030 --> 00:02:54,530
+performing seeding operation.
+
+40
+00:02:54,530 --> 00:02:58,310
+So I'm going to right click and delete this table.
+
+41
+00:02:58,310 --> 00:03:02,780
+And now you can see that we don't have any table under this database.
+
+42
+00:03:02,780 --> 00:03:07,880
+Now I am going to run this catalog microservices with Https running profile.
+
+43
+00:03:07,880 --> 00:03:13,790
+But before that I'm going to put additional breakpoint in the Program.cs and see that we are in development
+
+44
+00:03:13,790 --> 00:03:14,360
+environment.
+
+45
+00:03:14,360 --> 00:03:19,130
+And we can initialize Martin with using the catalog initial data.
+
+46
+00:03:19,130 --> 00:03:26,120
+And if I hit F5 you can see that this will be coming our breakpoint under the populate method for catalog
+
+47
+00:03:26,120 --> 00:03:27,050
+initial data.
+
+48
+00:03:27,050 --> 00:03:30,740
+This is the first thing in the catalog microservices.
+
+49
+00:03:30,740 --> 00:03:34,910
+That's why we should up and running this PostgreSQL database.
+
+50
+00:03:34,910 --> 00:03:41,120
+So now it is creating a lightweight session and it is checking that if is there any product under the
+
+51
+00:03:41,120 --> 00:03:42,200
+our database.
+
+52
+00:03:42,200 --> 00:03:49,070
+If not this will be continuing to our store operation, which will be the absurd operation that will
+
+53
+00:03:49,070 --> 00:03:56,450
+be create a new database table which is the product, and also insert these product records into the
+
+54
+00:03:56,450 --> 00:03:57,080
+database.
+
+55
+00:03:57,080 --> 00:04:02,630
+Here you can see that we have facing the get pre-configured products under this object array.
+
+56
+00:04:02,630 --> 00:04:05,390
+And this will be insert our product table.
+
+57
+00:04:05,390 --> 00:04:10,790
+And here you can see that in this line of code we will save change async and hit F5.
+
+58
+00:04:10,790 --> 00:04:13,820
+And this is performing the seed operation.
+
+59
+00:04:13,820 --> 00:04:19,130
+And also you can confirm from the project console logs, if you open the project console logs, you
+
+60
+00:04:19,130 --> 00:04:26,090
+can see that Martin is executing some SQL commands which is including the create table commands.
+
+61
+00:04:26,090 --> 00:04:30,650
+So it is running these scripts when the application start up.
+
+62
+00:04:30,650 --> 00:04:36,890
+When performing the seed operation, this is creating a new table which name is empty doc product and
+
+63
+00:04:36,890 --> 00:04:39,320
+after that this will be insert new records.
+
+64
+00:04:39,320 --> 00:04:40,670
+Under this table.
+
+65
+00:04:40,670 --> 00:04:48,110
+We can confirm from the Pgadmin if you open the Pgadmin and if you go to the tables under the catalog
+
+66
+00:04:48,110 --> 00:04:50,510
+DB, right click Refresh Tables.
+
+67
+00:04:50,510 --> 00:04:53,480
+See that our new table is coming in here.
+
+68
+00:04:53,540 --> 00:04:56,420
+Again right click script as select.
+
+69
+00:04:56,420 --> 00:04:59,750
+And if I run this script this time we will see that.
+
+70
+00:05:00,110 --> 00:05:07,070
+The whole data is listing into our database and different products are listed into our database.
+

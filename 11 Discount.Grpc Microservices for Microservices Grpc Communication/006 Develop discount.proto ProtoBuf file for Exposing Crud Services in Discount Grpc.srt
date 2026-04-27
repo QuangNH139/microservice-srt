@@ -1,0 +1,212 @@
+1
+00:00:00,170 --> 00:00:06,860
+In this video we are going to develop discount proto protobuf file under the protos folder for exposing
+
+2
+00:00:06,860 --> 00:00:09,920
+Crud services in discount gRPC microservices.
+
+3
+00:00:10,250 --> 00:00:11,960
+Please open the Visual Studio.
+
+4
+00:00:11,960 --> 00:00:17,030
+And now we are going to start with deleting greet, proto, file and grid services.
+
+5
+00:00:17,030 --> 00:00:23,750
+For that purpose we are going to go to the protos folder and remove and delete this proto file.
+
+6
+00:00:24,050 --> 00:00:28,790
+And after that go to services, delete the greeter services.
+
+7
+00:00:29,420 --> 00:00:33,260
+And of course we should also delete Program.cs and point middleware.
+
+8
+00:00:33,320 --> 00:00:40,100
+If you open the Program.cs you can put command in here in order to remove greeter services.
+
+9
+00:00:40,100 --> 00:00:44,060
+Of course, we should also remove these unnecessary using statements.
+
+10
+00:00:44,840 --> 00:00:48,230
+And now we can ready to create our discount proto file.
+
+11
+00:00:48,230 --> 00:00:56,330
+If you go to protos folder and add new item, which name is discount dot proto add new file this protobuf
+
+12
+00:00:56,330 --> 00:00:56,690
+file.
+
+13
+00:00:56,690 --> 00:01:02,150
+Here you can see the image comes for the protobuf files and now we are going to develop these proto
+
+14
+00:01:02,150 --> 00:01:04,099
+file for discount operation.
+
+15
+00:01:04,099 --> 00:01:08,690
+So which services we should expose from this protobuf file.
+
+16
+00:01:09,080 --> 00:01:15,380
+At this stage we can open the Or slide and see that these are the gRPC endpoints that we are going to
+
+17
+00:01:15,380 --> 00:01:17,660
+expose from the discount protobuf file.
+
+18
+00:01:17,660 --> 00:01:20,270
+These are the including Crud discount operations.
+
+19
+00:01:20,270 --> 00:01:22,730
+Get create update and delete discount.
+
+20
+00:01:22,730 --> 00:01:26,000
+And here you can see the request and response object.
+
+21
+00:01:26,000 --> 00:01:34,850
+To perform these use cases please open the or discount proto file and start developing our gRPC services.
+
+22
+00:01:34,850 --> 00:01:38,150
+It is starting with syntax definition Proto3.
+
+23
+00:01:38,150 --> 00:01:43,760
+And after that I am going to define the namespace with options keyword.
+
+24
+00:01:43,880 --> 00:01:46,280
+Our namespace is discount gRPC.
+
+25
+00:01:46,430 --> 00:01:50,630
+And after that we can create a package which is namespace.
+
+26
+00:01:50,630 --> 00:01:52,880
+For our case this is the discount.
+
+27
+00:01:52,880 --> 00:02:01,160
+And after that we can develop our discount proto service and the RPC methods under the service definition.
+
+28
+00:02:01,160 --> 00:02:06,830
+In here you can see that we have created a new gRPC service which name is Discount Proto service.
+
+29
+00:02:06,830 --> 00:02:13,220
+And these are the RPC functions that we are going to exposing as a gRPC protocol.
+
+30
+00:02:13,220 --> 00:02:19,670
+And these are the request objects that exists from the RPC functions and return back to the response
+
+31
+00:02:19,670 --> 00:02:20,210
+models.
+
+32
+00:02:20,210 --> 00:02:25,190
+So we can define these request and response models after the service definition.
+
+33
+00:02:25,190 --> 00:02:28,670
+For example let me start with the get discount request object.
+
+34
+00:02:28,670 --> 00:02:32,510
+Here you can see that these objects are only required for the product name.
+
+35
+00:02:32,510 --> 00:02:35,780
+And after that we can define the coupon model.
+
+36
+00:02:35,780 --> 00:02:41,840
+This is the generic model that we can pass for the request and response object, and including the all
+
+37
+00:02:41,840 --> 00:02:47,900
+attributes for the coupon, model ID, product name, description and amount and the order of the parameters
+
+38
+00:02:47,900 --> 00:02:50,180
+can be give one, two, three and four.
+
+39
+00:02:50,180 --> 00:02:58,310
+And after that we can continue to define other message types which are the including create discount,
+
+40
+00:02:58,310 --> 00:03:02,420
+request, update, discount, request and delete discount request.
+
+41
+00:03:02,420 --> 00:03:09,530
+And these are the parameters incoming parameters that accodomate our request and response object.
+
+42
+00:03:09,530 --> 00:03:12,050
+So let me explain these protobuf file.
+
+43
+00:03:12,050 --> 00:03:18,290
+So first of all the syntax statement tells the protobuf compiler what syntax we are going to use.
+
+44
+00:03:18,290 --> 00:03:22,310
+It is important to specify which protobuf versions we are using.
+
+45
+00:03:22,310 --> 00:03:29,360
+And after that the second statement is optional and it is tells the protobuf compiler to generate C-sharp
+
+46
+00:03:29,360 --> 00:03:35,570
+classes within the specified namespace, in our case discount gRPC namespace.
+
+47
+00:03:35,840 --> 00:03:40,040
+After that, we have defined the discount proto service definition.
+
+48
+00:03:40,040 --> 00:03:46,730
+This service definition includes four RPC methods get discount, create discount, update discount,
+
+49
+00:03:46,730 --> 00:03:53,810
+and Delete discount corresponding to Crud operations, and each method uses specific request and response
+
+50
+00:03:53,810 --> 00:03:54,740
+message types.
+
+51
+00:03:54,740 --> 00:04:01,640
+For example, Get Discount requests takes a product name, and returns a coupon model into response
+
+52
+00:04:01,640 --> 00:04:02,270
+of these.
+
+53
+00:04:02,270 --> 00:04:04,040
+Get discount RPC method.
+

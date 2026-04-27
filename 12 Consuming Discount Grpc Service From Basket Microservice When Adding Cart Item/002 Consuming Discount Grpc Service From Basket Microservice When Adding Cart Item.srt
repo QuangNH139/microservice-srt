@@ -1,0 +1,332 @@
+1
+00:00:00,140 --> 00:00:05,630
+In this video we are going to consume discount gRPC service from the basket microservices.
+
+2
+00:00:05,630 --> 00:00:11,750
+So we are going to establishment to connection between basket and discount gRPC microservices.
+
+3
+00:00:11,750 --> 00:00:13,700
+Please open the Visual Studio.
+
+4
+00:00:13,700 --> 00:00:19,700
+And the first point is we should identify the trigger point from the basket API microservices.
+
+5
+00:00:19,700 --> 00:00:26,060
+For that purpose, please open the basket API and go to Basket Vertical Slice folder and go to the store
+
+6
+00:00:26,060 --> 00:00:27,260
+Basket use case.
+
+7
+00:00:27,260 --> 00:00:32,630
+And if you open the store basket end point, you can see that this is the end point.
+
+8
+00:00:32,630 --> 00:00:36,050
+When triggering add or remove item into shopping cart.
+
+9
+00:00:36,050 --> 00:00:43,070
+And in the shopping cart is a Json object that we can store the whole Json as an object into this shopping
+
+10
+00:00:43,070 --> 00:00:43,430
+cart.
+
+11
+00:00:43,430 --> 00:00:50,000
+You can see the shopping cart model in here, and we will send and receive shopping cart Json request
+
+12
+00:00:50,000 --> 00:00:57,950
+and response with using this slash basket http post endpoint in order to store baskets and this class
+
+13
+00:00:57,950 --> 00:01:03,470
+trigger mediator store basket command and execute the handler method.
+
+14
+00:01:03,470 --> 00:01:04,610
+In this line of code.
+
+15
+00:01:04,610 --> 00:01:05,510
+This will be.
+
+16
+00:01:05,510 --> 00:01:08,720
+Send this command to the our handled class.
+
+17
+00:01:08,720 --> 00:01:15,200
+And if you open the store basket handle class in here, you can see that this is the handle method that
+
+18
+00:01:15,200 --> 00:01:19,280
+we will trigger when we are add or remove item into shopping cart.
+
+19
+00:01:19,280 --> 00:01:26,210
+So this is the point where we are communicate and integrate with the discount gRPC and call gRPC methods
+
+20
+00:01:26,210 --> 00:01:27,890
+from the basket microservices.
+
+21
+00:01:27,890 --> 00:01:33,500
+For that purpose, I am going to put a command in the beginning of the handle method, and this is the
+
+22
+00:01:33,500 --> 00:01:39,320
+communicate with discount gRPC and calculate latest prices of products into basket.
+
+23
+00:01:39,320 --> 00:01:44,060
+And this is the 2D statement that we are going to perform in the beginning of the handle method.
+
+24
+00:01:44,060 --> 00:01:48,080
+And after that I am going to refactor this handle method.
+
+25
+00:01:48,260 --> 00:01:51,860
+For example, this cart variable is not using anywhere.
+
+26
+00:01:51,860 --> 00:01:53,990
+So I'm going to remove this statement.
+
+27
+00:01:53,990 --> 00:02:00,140
+And after that I'm going to combine these statements which is basically we have already performed this
+
+28
+00:02:00,140 --> 00:02:01,010
+todo statements.
+
+29
+00:02:01,010 --> 00:02:06,710
+And I'm going to put a command about what we have done in the previous videos.
+
+30
+00:02:06,710 --> 00:02:11,390
+We basically store basket in database using Martin and Redis cache.
+
+31
+00:02:11,450 --> 00:02:17,960
+Now we can focus on our todo statement which is communicate and integrate discount gRPC from the basket
+
+32
+00:02:17,960 --> 00:02:19,010
+microservices.
+
+33
+00:02:19,100 --> 00:02:21,260
+So how we can do that?
+
+34
+00:02:21,260 --> 00:02:24,590
+The first thing we should do that we will set up the gRPC client.
+
+35
+00:02:24,590 --> 00:02:31,940
+That means in order to consume our discount gRPC microservices, we should set up the basket API as
+
+36
+00:02:31,940 --> 00:02:34,880
+a gRPC client in the basket API project.
+
+37
+00:02:34,880 --> 00:02:38,540
+So how we can do basket API to the gRPC client?
+
+38
+00:02:38,540 --> 00:02:43,010
+We should use the Connected Services feature in Visual Studio for this purpose.
+
+39
+00:02:43,010 --> 00:02:45,650
+So I'm going to open the Visual Studio.
+
+40
+00:02:45,710 --> 00:02:52,250
+If you go to the basket API project you can see that under the basket API we have connected services.
+
+41
+00:02:52,250 --> 00:02:58,820
+So we will use connected services for creating client for the discount gRPC into basket API.
+
+42
+00:02:58,820 --> 00:03:03,050
+For that purpose I'm going to right click and manage Connected Services.
+
+43
+00:03:03,050 --> 00:03:09,170
+And in this window you can see that there is a service reference that we can define OpenAPI, gRPC,
+
+44
+00:03:09,170 --> 00:03:10,490
+VRF and so on.
+
+45
+00:03:10,490 --> 00:03:13,340
+So at this point I'm going to click this button.
+
+46
+00:03:13,340 --> 00:03:19,700
+And after that I'm going to add a service reference for gRPC to consume these web services.
+
+47
+00:03:19,700 --> 00:03:21,230
+And click the next button.
+
+48
+00:03:21,230 --> 00:03:26,300
+And this will required a file definition which will be the R protobuf files.
+
+49
+00:03:26,300 --> 00:03:32,450
+In the file definition we should provide the discount gRPC proto file which is the discount proto.
+
+50
+00:03:32,450 --> 00:03:40,070
+So I'm going to browse this file and go back to services and go to Discount discount gRPC protocol folder
+
+51
+00:03:40,070 --> 00:03:42,350
+and select the Discount Proto file.
+
+52
+00:03:42,560 --> 00:03:47,870
+And after that we should select the type of the generated class as a client object.
+
+53
+00:03:47,870 --> 00:03:53,960
+Because basket microservices will be client of the discount gRPC and call the gRPC methods.
+
+54
+00:03:53,960 --> 00:03:59,630
+So make sure that you have selected the type of the class as a client and click the finish button.
+
+55
+00:04:00,880 --> 00:04:04,510
+And this will automatically perform client requirements for us.
+
+56
+00:04:04,510 --> 00:04:08,860
+This will add required NuGet packages and create reference to proto file.
+
+57
+00:04:08,860 --> 00:04:13,780
+In the client application, you can see that our service is added successfully.
+
+58
+00:04:13,780 --> 00:04:15,430
+We can close this window.
+
+59
+00:04:15,430 --> 00:04:20,410
+So in order to verify this operation you can double click the basket API.
+
+60
+00:04:20,410 --> 00:04:25,600
+And we will check the basket API project for the correct configuration under the item group.
+
+61
+00:04:25,600 --> 00:04:29,350
+If you scroll down, you can see the packages added in here.
+
+62
+00:04:29,350 --> 00:04:36,490
+In here you can see that the gRPC dot ASP.Net core package is added successfully when adding the connected
+
+63
+00:04:36,490 --> 00:04:37,240
+services.
+
+64
+00:04:37,240 --> 00:04:42,550
+And if you scroll down, you can see that there is new item group added in here.
+
+65
+00:04:42,550 --> 00:04:48,940
+According to this item group, we will define a protobuf file including the address of the discount
+
+66
+00:04:48,940 --> 00:04:54,580
+proto file, which is the discount gRPC address, and we will link this discount proto file into the
+
+67
+00:04:54,580 --> 00:04:55,840
+basket API project.
+
+68
+00:04:55,840 --> 00:04:59,680
+You can see that naively proto folder created under our project.
+
+69
+00:04:59,680 --> 00:05:05,710
+If you open this folder and come to discount proto, if you right click this discount proto file and
+
+70
+00:05:05,710 --> 00:05:11,110
+see the properties, you can see that this is the gRPC stub classes client only.
+
+71
+00:05:11,110 --> 00:05:17,650
+That means basket API microservices will be our gRPC client and this will be protobuf compiler.
+
+72
+00:05:17,650 --> 00:05:22,210
+And this will be create a client class in order to communicate with the discount gRPC.
+
+73
+00:05:22,540 --> 00:05:26,080
+For that purpose, I am going to build the basket API project.
+
+74
+00:05:26,080 --> 00:05:32,350
+If you right click and build the basket API, this project will be build and ensure the gRPC client
+
+75
+00:05:32,350 --> 00:05:36,010
+code is generated correctly and we will confirm this.
+
+76
+00:05:36,010 --> 00:05:40,780
+Create operation of the Discount Proto Service client class in the object folder.
+
+77
+00:05:40,780 --> 00:05:43,810
+Here you can see that Will is completed successfully.
+
+78
+00:05:43,810 --> 00:05:50,950
+If you select the basket API and show all files, you can see that the hidden object folder is comes
+
+79
+00:05:50,950 --> 00:05:51,970
+in the picture.
+
+80
+00:05:51,970 --> 00:05:57,070
+And if you open the object and if you open the debug net eight.
+
+81
+00:05:57,070 --> 00:06:03,580
+And if you scroll down a bit, you can see that the discount and discount gRPC client object is generated
+
+82
+00:06:03,580 --> 00:06:08,350
+from the Visual Studio as a client of the RPC services.
+
+83
+00:06:08,350 --> 00:06:14,590
+So we will use these classes when communicating between discount gRPC and call the gRPC methods.
+

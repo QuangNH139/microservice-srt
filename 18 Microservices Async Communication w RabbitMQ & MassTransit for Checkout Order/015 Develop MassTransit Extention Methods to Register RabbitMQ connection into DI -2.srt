@@ -1,0 +1,208 @@
+1
+00:00:00,230 --> 00:00:04,250
+In this video we are going to continue developing our extension method.
+
+2
+00:00:04,250 --> 00:00:06,800
+So here you can see the add message broker.
+
+3
+00:00:06,800 --> 00:00:12,770
+And this is getting the parameter as a Iservice collection services and send information with optional
+
+4
+00:00:12,770 --> 00:00:13,430
+parameter.
+
+5
+00:00:13,430 --> 00:00:17,750
+So now we are going to implement RabbitMQ Masstransit configuration in this place.
+
+6
+00:00:17,750 --> 00:00:20,180
+So I'm going to copy this configurations.
+
+7
+00:00:20,180 --> 00:00:23,810
+And we can step by step explain these configurations.
+
+8
+00:00:23,810 --> 00:00:29,630
+But before that you can see that we are using configuration variable in order to retrieve message broker
+
+9
+00:00:29,630 --> 00:00:32,930
+host username and password from the application settings.
+
+10
+00:00:32,930 --> 00:00:37,940
+So that means we need configuration value when calling this extension method.
+
+11
+00:00:37,940 --> 00:00:41,540
+That means we have to inject I configuration into our method.
+
+12
+00:00:41,540 --> 00:00:47,810
+So I'm going to add a I configuration parameter in the add message broker extension method.
+
+13
+00:00:47,810 --> 00:00:50,600
+Here you can see the first parameter is I configuration.
+
+14
+00:00:50,600 --> 00:00:56,390
+We are going to paste this configuration from the program.cs of the basket and ordering microservices.
+
+15
+00:00:56,390 --> 00:01:02,360
+So after getting this configuration variable we can paste this value and get the value when configuring
+
+16
+00:01:02,360 --> 00:01:03,230
+our RabbitMQ.
+
+17
+00:01:03,260 --> 00:01:05,960
+So let me start explaining from the scratch.
+
+18
+00:01:05,960 --> 00:01:09,620
+This is using services dot add mass transit function.
+
+19
+00:01:09,620 --> 00:01:15,260
+And this add mass transit function is used to set up mass transit in the dotnet service collection.
+
+20
+00:01:15,260 --> 00:01:20,060
+It allows configuration of the message bus consumers, sagas, and so on.
+
+21
+00:01:20,060 --> 00:01:26,840
+So after that we are opening a configuration for the mass transit and in the first configuration is
+
+22
+00:01:26,840 --> 00:01:29,420
+set kebab case endpoint name formatter.
+
+23
+00:01:29,420 --> 00:01:33,320
+So this line sets the naming convention for the endpoints.
+
+24
+00:01:33,320 --> 00:01:38,780
+Kebab case is a common naming convention used in the URLs, which is preferred by the readability.
+
+25
+00:01:38,900 --> 00:01:45,260
+So after that you can see that we are adding some consumers in here we are checking the assembly information.
+
+26
+00:01:45,260 --> 00:01:53,120
+If not null, we are adding the consumers because this method can using from the boat basket and ordering
+
+27
+00:01:53,120 --> 00:01:53,990
+microservices.
+
+28
+00:01:53,990 --> 00:01:59,420
+When we are using for the ordering microservices, this will be as a consumers that we can trigger for
+
+29
+00:01:59,420 --> 00:02:00,530
+the consumer operation.
+
+30
+00:02:00,530 --> 00:02:06,230
+So if the assembly parameter is provided, this line will scan the assembly and automatically register
+
+31
+00:02:06,230 --> 00:02:07,670
+and discovered consumers.
+
+32
+00:02:07,670 --> 00:02:12,830
+This is crucial for the microservices acting as a subscriber or consumer of the messages.
+
+33
+00:02:12,830 --> 00:02:19,010
+For our cases this will be the ordering microservices and after that we can reach the RabbitMQ host
+
+34
+00:02:19,010 --> 00:02:19,970
+configurations.
+
+35
+00:02:19,970 --> 00:02:26,600
+So we are using the using RabbitMQ configure method, which is configures the bus to use RabbitMQ as
+
+36
+00:02:26,600 --> 00:02:27,440
+a transport.
+
+37
+00:02:27,440 --> 00:02:33,350
+And inside of this method you can see that we specify the host settings for RabbitMQ.
+
+38
+00:02:33,380 --> 00:02:36,380
+The host method takes the RabbitMQ server URL.
+
+39
+00:02:36,380 --> 00:02:41,840
+From the configuration you can see that we will passing the configuration message broker host, and
+
+40
+00:02:41,840 --> 00:02:48,560
+we will also configure the host with passing the username and password configurations from the application
+
+41
+00:02:48,560 --> 00:02:49,940
+settings Json file.
+
+42
+00:02:49,940 --> 00:02:54,500
+The username and password also configured from the application settings Json file.
+
+43
+00:02:54,500 --> 00:03:00,080
+And after that, at the end of the line, you can see that we will configure endpoint with passing the
+
+44
+00:03:00,080 --> 00:03:00,950
+context object.
+
+45
+00:03:00,950 --> 00:03:05,720
+This ensures that Masstransit automatically configures the endpoints for the consumers.
+
+46
+00:03:05,720 --> 00:03:11,360
+And lastly, we can return these services into our service collection with configuring the Masstransit
+
+47
+00:03:11,360 --> 00:03:12,320
+and RabbitMQ.
+
+48
+00:03:12,320 --> 00:03:19,070
+And this is the our extension method that we are going to using from basket and ordering microservices.
+
+49
+00:03:19,070 --> 00:03:25,100
+When we are using from the basket microservices, which is the publisher system, we are sending the
+
+50
+00:03:25,100 --> 00:03:29,120
+assembly as null because it doesn't require for the publisher system.
+
+51
+00:03:29,120 --> 00:03:34,790
+But when we are using this method into ordering microservices, we will pass the assembly information
+
+52
+00:03:34,790 --> 00:03:39,530
+in order to adding consumers into our configurations and hitting the our consumer side.
+

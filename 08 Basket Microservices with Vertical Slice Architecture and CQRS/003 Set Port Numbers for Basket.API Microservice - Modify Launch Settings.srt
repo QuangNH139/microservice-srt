@@ -1,0 +1,128 @@
+1
+00:00:00,140 --> 00:00:05,510
+In this video we are going to configure port numbers for basket API microservices.
+
+2
+00:00:05,510 --> 00:00:11,030
+Here you can see the R port mapping strategy for different microservices in our architecture.
+
+3
+00:00:11,030 --> 00:00:14,300
+As you can see that we have completed the catalog microservices.
+
+4
+00:00:14,300 --> 00:00:16,940
+And now we are developing basket microservices.
+
+5
+00:00:16,940 --> 00:00:26,270
+And in local environment basket microservices will expose Http port in 5001 and Https for 50 over 51.
+
+6
+00:00:26,270 --> 00:00:30,380
+So we are going to follow these steps and configure our launch settings.
+
+7
+00:00:30,380 --> 00:00:36,650
+If you open the URL Visual Studio, you can see that we will configure our port numbers in the launch
+
+8
+00:00:36,650 --> 00:00:38,120
+settings Json file.
+
+9
+00:00:38,120 --> 00:00:45,020
+Launch settings Json file in our project is crucial for defining how our application runs during the
+
+10
+00:00:45,020 --> 00:00:51,230
+development, and we will set the Http and Https ports according to our architecture plan.
+
+11
+00:00:51,230 --> 00:00:55,850
+So let's modify the launch settings in order to set the port numbers correctly.
+
+12
+00:00:55,850 --> 00:01:00,380
+So if you open the line settings Json, you can see different running profiles.
+
+13
+00:01:00,380 --> 00:01:04,730
+I'm going to change for the Https 5001.
+
+14
+00:01:04,730 --> 00:01:12,950
+And if you go to the Https running profile, you can see that we have http URL should be 5001.
+
+15
+00:01:12,950 --> 00:01:18,200
+And we will change the https port number as a 5051.
+
+16
+00:01:18,200 --> 00:01:23,000
+Okay, we have configured our basket API according to port mapping strategy.
+
+17
+00:01:23,000 --> 00:01:25,040
+Now we can run the application.
+
+18
+00:01:25,040 --> 00:01:28,190
+Please set a startup project for basket API.
+
+19
+00:01:28,190 --> 00:01:29,060
+Come here.
+
+20
+00:01:29,060 --> 00:01:32,240
+Right click set a startup project.
+
+21
+00:01:32,240 --> 00:01:37,310
+After setting a startup project you can see that our running profiles comes in here.
+
+22
+00:01:37,310 --> 00:01:40,460
+So this profiles is matching our launch setting Json.
+
+23
+00:01:40,460 --> 00:01:45,440
+And this time I'm going to select Https running profile and click this button.
+
+24
+00:01:45,440 --> 00:01:47,300
+In order to run this application.
+
+25
+00:01:47,300 --> 00:01:52,100
+This will be exposed our basket API to the 5051 port.
+
+26
+00:01:52,100 --> 00:01:57,440
+And we have configured from the this URL and also in the project console.
+
+27
+00:01:57,440 --> 00:02:04,640
+Here you can see that our application is listening these https port and these Http port.
+
+28
+00:02:04,640 --> 00:02:10,820
+So we have configured our port numbers according to local environment for basket API microservices.
+
+29
+00:02:10,820 --> 00:02:17,000
+And if you look at the our deployment strategy we can start with the deployment one which is the developing
+
+30
+00:02:17,000 --> 00:02:23,600
+our basket API microservices in our local environment that connect to backing services from Docker environment.
+
+31
+00:02:23,600 --> 00:02:26,000
+And after that we will go to the deployment tool.
+
+32
+00:02:26,000 --> 00:02:30,020
+But for now let's focus on developing basket API microservices.
+

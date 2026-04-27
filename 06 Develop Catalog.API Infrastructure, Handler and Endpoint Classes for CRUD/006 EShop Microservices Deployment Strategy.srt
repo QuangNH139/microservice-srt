@@ -1,0 +1,148 @@
+1
+00:00:00,170 --> 00:00:07,340
+In this video, we are going to learn the deployment strategy for our e-commerce microservices, particularly
+
+2
+00:00:07,340 --> 00:00:12,140
+focusing on setting up the PostgreSQL database using Docker Compose.
+
+3
+00:00:12,560 --> 00:00:19,520
+Here you can see the recap architecture that contains different databases and different microservices.
+
+4
+00:00:19,520 --> 00:00:25,640
+So in here catalog microservices using the PostgreSQL database as a backing services.
+
+5
+00:00:25,640 --> 00:00:31,400
+And we will adding the Redis, SQLite, SQL server, RabbitMQ and so on.
+
+6
+00:00:31,940 --> 00:00:37,160
+So far we have built on catalog microservices into our local environment.
+
+7
+00:00:37,160 --> 00:00:43,610
+But now we need to connect to database and we need a database IP and port number that we can connect
+
+8
+00:00:43,610 --> 00:00:45,320
+from our local computer.
+
+9
+00:00:45,560 --> 00:00:52,190
+So we should download the PostgreSQL Docker image and run this image into our Docker compose environment.
+
+10
+00:00:52,190 --> 00:00:56,840
+By this way we can connect the database from our catalog microservices.
+
+11
+00:00:57,620 --> 00:01:03,890
+But before that we should clarify our deployment strategy of e-commerce microservices.
+
+12
+00:01:04,010 --> 00:01:06,410
+Here you can see the image on the slide.
+
+13
+00:01:06,650 --> 00:01:10,160
+Our deployment strategy has two main steps.
+
+14
+00:01:10,160 --> 00:01:17,240
+The first one is local development with Docker compose for backing services, and the second one is
+
+15
+00:01:17,240 --> 00:01:21,890
+full Docker environment and orchestration, all microservice and databases.
+
+16
+00:01:21,920 --> 00:01:29,960
+So let me explain one by one, in the first phase of our deployment strategy, we focus on local microservices
+
+17
+00:01:29,960 --> 00:01:30,920
+development.
+
+18
+00:01:31,340 --> 00:01:38,600
+After that, we use Docker compose in order to spin up backing services like databases which are exposed
+
+19
+00:01:38,600 --> 00:01:40,250
+to our local environment.
+
+20
+00:01:40,400 --> 00:01:47,240
+So this setup allows us to develop and test microservices locally while connecting to containerized
+
+21
+00:01:47,240 --> 00:01:48,440
+backing services.
+
+22
+00:01:48,830 --> 00:01:53,120
+In this case, catalog using PostgreSQL database as a backing services.
+
+23
+00:01:53,120 --> 00:02:00,200
+So we will develop microservices locally and after that activate backing services using Docker and Docker
+
+24
+00:02:00,200 --> 00:02:00,920
+Compose.
+
+25
+00:02:01,100 --> 00:02:07,430
+If we go to the second phase of the deployment strategy, which is the Docker compose, all including
+
+26
+00:02:07,430 --> 00:02:11,030
+microservices and backing services in the Docker environment.
+
+27
+00:02:11,030 --> 00:02:17,780
+So the second phase involves orchestrating all microservices, including their dependencies within a
+
+28
+00:02:17,780 --> 00:02:19,340
+Docker compose environment.
+
+29
+00:02:19,370 --> 00:02:25,700
+This is a comprehensive setup, simulates a more production like environment allowing for through end
+
+30
+00:02:25,700 --> 00:02:26,810
+to end testing.
+
+31
+00:02:26,810 --> 00:02:33,350
+So we should orchestrate all microservices with Docker compose and test inside of the full Docker environment
+
+32
+00:02:33,350 --> 00:02:35,270
+with end to end perspective.
+
+33
+00:02:35,880 --> 00:02:43,200
+And after that we can add additional deployment strategy, which include deploy all microservices to
+
+34
+00:02:43,200 --> 00:02:46,920
+the Kubernetes Minikube or cloud EKS, and so on.
+
+35
+00:02:47,040 --> 00:02:50,820
+But during the course we will focus on these two steps.
+
+36
+00:02:50,820 --> 00:02:57,960
+So now let's focus on the setting up the PostgreSQL database for catalog microservices using the Docker
+
+37
+00:02:57,960 --> 00:02:58,500
+compose.
+

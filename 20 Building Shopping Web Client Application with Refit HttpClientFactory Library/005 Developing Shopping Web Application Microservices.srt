@@ -1,0 +1,324 @@
+1
+00:00:00,140 --> 00:00:06,110
+In this video, we are going to start developing shopping web client application into our microservice
+
+2
+00:00:06,110 --> 00:00:06,770
+solution.
+
+3
+00:00:06,770 --> 00:00:12,530
+For that purpose, please open the Visual Studio and go to the solution of the microservices.
+
+4
+00:00:12,530 --> 00:00:19,040
+So first of all, I'm going to create a naive solution folder under the our solution because we are
+
+5
+00:00:19,040 --> 00:00:22,040
+going to develop client application in a separate folder.
+
+6
+00:00:22,040 --> 00:00:28,520
+For that purpose please right click the solution add new solution folder and give the name as a web
+
+7
+00:00:28,520 --> 00:00:29,030
+apps.
+
+8
+00:00:29,540 --> 00:00:35,150
+By this way, we can encapsulate all client applications under the Web Apps folder, but this folder
+
+9
+00:00:35,150 --> 00:00:38,810
+is a solution folder that need to required creating a real folder.
+
+10
+00:00:38,810 --> 00:00:43,610
+For that purpose, I am going to create a new folder when creating a new client application project.
+
+11
+00:00:43,610 --> 00:00:45,740
+So now let's create a new project.
+
+12
+00:00:45,740 --> 00:00:52,010
+I'm going to right click this folder Add New Project and this time we will use ASP.Net Core Web app
+
+13
+00:00:52,010 --> 00:00:52,940
+razor page.
+
+14
+00:00:52,940 --> 00:00:58,850
+Here you can see the template of the R project ASP.Net Core Web Application razor page.
+
+15
+00:00:58,850 --> 00:01:04,400
+If you double click this template, you can see the project name and location configurations.
+
+16
+00:01:04,400 --> 00:01:08,120
+I'm going to give the project name as a shopping dot web.
+
+17
+00:01:08,120 --> 00:01:12,860
+And location is important because we are going to select the source folder first of all.
+
+18
+00:01:12,860 --> 00:01:19,550
+And after that we are going to add a Web Apps solution folder in order to create a new folder under
+
+19
+00:01:19,550 --> 00:01:25,400
+this web apps and under the web apps, we are going to create shopping dot web client application as
+
+20
+00:01:25,400 --> 00:01:27,800
+a ASP.Net core Web Application razor page.
+
+21
+00:01:27,800 --> 00:01:31,850
+So please make sure that your project name and location is correct.
+
+22
+00:01:31,850 --> 00:01:37,550
+After that, you can click the next button and you can configure our ASP.Net web application.
+
+23
+00:01:37,550 --> 00:01:39,740
+I'm going to set a framework.
+
+24
+00:01:39,890 --> 00:01:45,830
+Net eight authentication type none, configure Https, enable Docker and Docker operating system as
+
+25
+00:01:45,830 --> 00:01:46,340
+a Linux.
+
+26
+00:01:46,340 --> 00:01:50,240
+So I am leaving as it is for all configurations and click the create button.
+
+27
+00:01:50,660 --> 00:01:55,400
+And this will be create our first client application which is a soap shopping web application.
+
+28
+00:01:55,400 --> 00:02:02,630
+So you are going to right click and open File Location and verify that this is created under the source
+
+29
+00:02:02,630 --> 00:02:06,230
+Web Applications and Shopping Web under source.
+
+30
+00:02:06,230 --> 00:02:12,050
+We have web application services, building blocks and API gateways as the same with the solution view.
+
+31
+00:02:12,080 --> 00:02:16,280
+So we have created shopping web client application under the web application folder.
+
+32
+00:02:16,280 --> 00:02:21,860
+And now we are going to examine our ASP.Net Core Web Application razor page under the our solution.
+
+33
+00:02:21,860 --> 00:02:29,450
+First of all I would like to show you there is a page and WW root folder created due to our template
+
+34
+00:02:29,450 --> 00:02:32,420
+project template which is the ASP.Net Core Razor template.
+
+35
+00:02:32,420 --> 00:02:35,570
+And here you can see the pages including the index error.
+
+36
+00:02:35,570 --> 00:02:37,010
+And these are the default pages.
+
+37
+00:02:37,010 --> 00:02:43,070
+And under the page we have a subfolder which is a shared that is containing layout and validation script.
+
+38
+00:02:43,070 --> 00:02:45,260
+Partial says HTML files.
+
+39
+00:02:45,260 --> 00:02:52,550
+So under the root you can find Ccjs and library folders for the client side page.
+
+40
+00:02:52,550 --> 00:02:59,090
+And after that you can see that except this file this is typical ASP.Net web application that you can
+
+41
+00:02:59,090 --> 00:03:02,870
+see the Program.cs application settings Json file and so on.
+
+42
+00:03:02,870 --> 00:03:07,820
+So if you open the program says, you can see that there is a difference comes from the adding the razor
+
+43
+00:03:07,820 --> 00:03:10,970
+page into ASP.Net building dependency injection container.
+
+44
+00:03:10,970 --> 00:03:16,850
+Because we have selected the project template of the razor template, and after building the application,
+
+45
+00:03:16,850 --> 00:03:24,320
+there is some configured Http request pipelines which including the use http redirections static files,
+
+46
+00:03:24,320 --> 00:03:27,650
+routing authorization and map the razor pages.
+
+47
+00:03:27,650 --> 00:03:32,840
+And by this way, this application is become a razor web application and client web application.
+
+48
+00:03:32,840 --> 00:03:37,610
+If you look at the application settings Json file, this will be the include all configurations for
+
+49
+00:03:37,610 --> 00:03:38,810
+the client applications.
+
+50
+00:03:38,810 --> 00:03:43,310
+So now I am going to set the port numbers for the shopping web client applications.
+
+51
+00:03:43,310 --> 00:03:46,670
+But before that, let's check the port numbers into our slide.
+
+52
+00:03:46,670 --> 00:03:50,000
+Here you can see that we have created shopping web client application.
+
+53
+00:03:50,000 --> 00:03:57,980
+And in the local environment this will be expose 5005 for the Http port and 5055 for the Https port.
+
+54
+00:03:57,980 --> 00:04:05,150
+But in the Docker environment we will expose 6005 for Http 6065 for https ports.
+
+55
+00:04:05,150 --> 00:04:10,160
+So now we are going to set local environment port numbers with these port number values.
+
+56
+00:04:10,160 --> 00:04:14,330
+Please open the Visual Studio and open the Shopping Web application.
+
+57
+00:04:14,330 --> 00:04:20,240
+If you open the properties and open the Launch Settings Json file, you can see the Http and https ports.
+
+58
+00:04:20,240 --> 00:04:24,920
+So now I am going to modify the application URLs for Http.
+
+59
+00:04:24,950 --> 00:04:28,010
+We need to set the 5005.
+
+60
+00:04:28,010 --> 00:04:34,670
+And just after that if you go to https profile you can see that we have again http port number which
+
+61
+00:04:34,670 --> 00:04:36,230
+is 5005.
+
+62
+00:04:36,230 --> 00:04:42,470
+And for https port numbers we need to set 5055 and save this file.
+
+63
+00:04:42,470 --> 00:04:46,490
+By this way we can run our application into our port mappings.
+
+64
+00:04:46,490 --> 00:04:49,670
+And this time we will set launch browser as a true.
+
+65
+00:04:49,670 --> 00:04:54,770
+Since this is the client application, we need to see client application into our browser.
+
+66
+00:04:54,770 --> 00:04:59,690
+For that purpose, I'm going to right click the shopping web application set a startup project and.
+
+67
+00:04:59,890 --> 00:05:06,640
+After that you can change the the zoning profile docker to https and click this button in order to run
+
+68
+00:05:06,640 --> 00:05:09,820
+https mode or shopping with client application.
+
+69
+00:05:09,820 --> 00:05:16,990
+So this will be start our client application and you can verify that this time we will open a browser
+
+70
+00:05:16,990 --> 00:05:19,930
+and locating the index page.
+
+71
+00:05:19,930 --> 00:05:22,810
+Here you can see the localhost 5055.
+
+72
+00:05:22,810 --> 00:05:24,400
+And this is the https port.
+
+73
+00:05:24,400 --> 00:05:29,620
+And here you can see the our index page of the ASP.Net razor web application.
+
+74
+00:05:29,620 --> 00:05:33,280
+You can find these page details under the page and index.
+
+75
+00:05:33,280 --> 00:05:36,010
+This is our HTML of the first page.
+
+76
+00:05:36,010 --> 00:05:38,200
+And you can see the first page.
+
+77
+00:05:38,200 --> 00:05:40,480
+See files under the index page.
+
+78
+00:05:40,480 --> 00:05:45,850
+Also, you can check the project console log that is similar with the other microservices, exposing
+
+79
+00:05:45,850 --> 00:05:50,080
+our ASP.Net web application into Http and Https ports.
+
+80
+00:05:50,080 --> 00:05:54,850
+As you can see that we have successfully created and running shopping web client applications under
+
+81
+00:05:54,850 --> 00:05:55,720
+our solution.
+

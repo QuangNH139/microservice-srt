@@ -1,0 +1,136 @@
+1
+00:00:00,170 --> 00:00:07,040
+In this video, we are going to see how to apply domain driven design skills and clean architecture
+
+2
+00:00:07,040 --> 00:00:09,350
+patterns in ordering microservices.
+
+3
+00:00:09,410 --> 00:00:14,630
+So here you can see the architecture diagram for internal architecture of the ordering microservices
+
+4
+00:00:14,630 --> 00:00:17,210
+that we are going to develop during this section.
+
+5
+00:00:17,330 --> 00:00:20,900
+So we said that we will start with the domain driven design.
+
+6
+00:00:20,900 --> 00:00:26,660
+And it is focusing on the modeling business domain encapsulating the business logic in domain entities
+
+7
+00:00:26,660 --> 00:00:28,670
+value objects and aggregates.
+
+8
+00:00:29,030 --> 00:00:32,420
+And after that we will implement six design pattern.
+
+9
+00:00:32,420 --> 00:00:38,030
+It basically separates the handling of the data modifications from the data retrieving operations.
+
+10
+00:00:38,030 --> 00:00:43,070
+That means commands and queries and enhancing the scalability and maintainability.
+
+11
+00:00:43,490 --> 00:00:46,460
+And lastly, we will apply clean architecture.
+
+12
+00:00:46,460 --> 00:00:52,820
+It ensures separation of concerns by dividing the system into the layers and each layer with a specific
+
+13
+00:00:52,820 --> 00:00:53,870
+responsibility.
+
+14
+00:00:54,050 --> 00:00:58,850
+So we will apply these three main patterns into internal architecture of the ordering.
+
+15
+00:00:58,850 --> 00:00:59,870
+Microservices.
+
+16
+00:00:59,870 --> 00:01:05,269
+And if you follow the clean architecture in the domain layer, this will be contain the business logic
+
+17
+00:01:05,269 --> 00:01:08,120
+and the domain models like order and order item.
+
+18
+00:01:08,120 --> 00:01:13,130
+And these will be incorporated with the aggregates entities, value objects and so on.
+
+19
+00:01:13,160 --> 00:01:19,190
+This layer is the heart of the microservices dictating the business rules and the behaviors.
+
+20
+00:01:19,220 --> 00:01:22,760
+And after that we can go to the application use case layer.
+
+21
+00:01:22,760 --> 00:01:28,460
+In this layer we will basically implement securities using the mediator for handling command and queries.
+
+22
+00:01:28,460 --> 00:01:33,530
+And these commands might include create order, command, update order command and so on.
+
+23
+00:01:33,530 --> 00:01:40,670
+And queries could be the get order by ID query or get orders by customer query objects into the use
+
+24
+00:01:40,670 --> 00:01:41,360
+cases.
+
+25
+00:01:41,390 --> 00:01:45,950
+After that we can go to the infrastructure layer you can see in here.
+
+26
+00:01:45,950 --> 00:01:52,700
+So it will basically integrates with the databases external systems and implement the repository pattern
+
+27
+00:01:52,700 --> 00:01:58,760
+and interfaces defined in the domain layer and handles the data persistence, network communications
+
+28
+00:01:58,760 --> 00:02:05,330
+and external integration and contains Entity Framework, core context, migrations and data configurations.
+
+29
+00:02:05,810 --> 00:02:09,080
+And lastly, we can say that presentation UI layer.
+
+30
+00:02:09,080 --> 00:02:16,220
+It basically defines RESTful endpoints using the minimal APIs and possibly with Carter for routing the
+
+31
+00:02:16,220 --> 00:02:17,150
+definitions.
+
+32
+00:02:17,630 --> 00:02:23,660
+So basically, the combination of these domain driven design secrets and clean architecture provide
+
+33
+00:02:23,660 --> 00:02:26,480
+a powerful structure of the microservices.
+
+34
+00:02:26,750 --> 00:02:31,850
+So in the next videos we will explain detailed for these architecture styles.
+

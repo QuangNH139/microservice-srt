@@ -1,0 +1,216 @@
+1
+00:00:00,110 --> 00:00:07,010
+In this video, we are going to run Docker Compose in Visual Studio in order to set up Redis as a distributed
+
+2
+00:00:07,010 --> 00:00:08,660
+cache in Docker environment.
+
+3
+00:00:08,660 --> 00:00:15,080
+For that purpose, make sure that your Docker desktop is started, and after that come to our Visual
+
+4
+00:00:15,080 --> 00:00:15,530
+Studio.
+
+5
+00:00:15,530 --> 00:00:19,490
+Right click the Docker compose and set a startup project.
+
+6
+00:00:19,490 --> 00:00:23,090
+And after that you can see Docker Compose running profile.
+
+7
+00:00:23,090 --> 00:00:23,840
+Come here.
+
+8
+00:00:23,840 --> 00:00:29,840
+And I am going to run without debugging in order to only activate the backing services.
+
+9
+00:00:29,840 --> 00:00:33,920
+These are the PostgreSQL databases and the Redis distributed cache.
+
+10
+00:00:33,920 --> 00:00:36,140
+Here you can see the output window.
+
+11
+00:00:36,140 --> 00:00:38,780
+This is going to run docker compose up command.
+
+12
+00:00:38,780 --> 00:00:45,320
+And the first thing it is downloading the redis image from the Docker hub and activating the Redis image
+
+13
+00:00:45,320 --> 00:00:48,350
+in our docker compose environment for the first time.
+
+14
+00:00:48,350 --> 00:00:53,300
+And you can see that our microservices also has started.
+
+15
+00:00:53,300 --> 00:00:56,900
+If you go back to Visual Studio, you can see the output window.
+
+16
+00:00:56,900 --> 00:01:02,390
+It is started our catalog and basket microservices and if you open the containers you can see that this
+
+17
+00:01:02,390 --> 00:01:07,640
+time we have four containers under Docker Compose including the distributed cache.
+
+18
+00:01:07,640 --> 00:01:12,500
+And if you click the distributed cache you can see all details, environments, ports, volumes and
+
+19
+00:01:12,500 --> 00:01:13,160
+so on.
+
+20
+00:01:13,160 --> 00:01:16,280
+And it's the same way we can open the Docker desktop.
+
+21
+00:01:16,280 --> 00:01:20,960
+And here you can see that our Docker compose environment, including the distributed cache.
+
+22
+00:01:20,960 --> 00:01:25,910
+And if you come here you can see the port number is exposing default port number.
+
+23
+00:01:25,910 --> 00:01:30,620
+So that means we have successfully activated Redis as a distributed cache.
+
+24
+00:01:30,620 --> 00:01:32,630
+In our Docker compose environment.
+
+25
+00:01:32,630 --> 00:01:37,520
+We can click the radius docker container and you can see the logs in here.
+
+26
+00:01:37,520 --> 00:01:40,940
+So now it is time to connect this Redis cache.
+
+27
+00:01:40,940 --> 00:01:45,770
+And we can run Redis CLI commands into Docker environment for that purpose.
+
+28
+00:01:45,770 --> 00:01:50,630
+First of all we should connect to interactive terminal of these redis docker image.
+
+29
+00:01:50,630 --> 00:01:52,850
+How we can open interactive terminal.
+
+30
+00:01:52,850 --> 00:01:54,290
+We have several options.
+
+31
+00:01:54,290 --> 00:02:01,220
+We can run docker exec command and dash it command to open the interactive terminal for this Docker
+
+32
+00:02:01,220 --> 00:02:01,850
+container.
+
+33
+00:02:01,850 --> 00:02:06,170
+But I am following the easy way to connect the container.
+
+34
+00:02:06,170 --> 00:02:13,610
+If you click this Docker image, and if you go to the exec section, you can see that this is going
+
+35
+00:02:13,610 --> 00:02:17,240
+to open interactive terminal for the radius container.
+
+36
+00:02:17,240 --> 00:02:23,840
+And we can directly run the Redis CLI command in order to interact with the radius container in Docker
+
+37
+00:02:23,840 --> 00:02:24,680
+environment.
+
+38
+00:02:24,680 --> 00:02:32,690
+For that purpose, I'm going to run Redis cli command to start our redis into our docker environment
+
+39
+00:02:32,690 --> 00:02:35,840
+and test the connection with sending the ping request.
+
+40
+00:02:35,840 --> 00:02:41,630
+So first of all, I'm going to run redis cli and hit the enter.
+
+41
+00:02:41,660 --> 00:02:44,870
+As you can see that we have started the Redis CLI.
+
+42
+00:02:44,870 --> 00:02:52,880
+And I'm going to try basic commands like get and set key value and ensure that Redis is functioning
+
+43
+00:02:52,880 --> 00:02:53,750
+correctly.
+
+44
+00:02:53,750 --> 00:03:00,080
+For that purpose we can write the ping command and this will be returned as the prompt.
+
+45
+00:03:00,110 --> 00:03:03,260
+That means redis is working successfully.
+
+46
+00:03:03,260 --> 00:03:08,540
+And also I'm going to set key value.
+
+47
+00:03:09,530 --> 00:03:14,000
+And after that we can get the key information.
+
+48
+00:03:14,000 --> 00:03:17,660
+In the previous line we have set the key as a value.
+
+49
+00:03:17,660 --> 00:03:22,400
+If we get the key from the redis, you can see the value comes as a value.
+
+50
+00:03:22,400 --> 00:03:27,380
+And you can also understand by setting the name as a met.
+
+51
+00:03:27,380 --> 00:03:33,020
+And you can also get the name key information, the value of the met.
+
+52
+00:03:33,020 --> 00:03:37,580
+So as you can see that we have run several commands into Redis container terminal.
+
+53
+00:03:37,580 --> 00:03:41,450
+So now we are ready to connect radius from our basket API.
+
+54
+00:03:41,450 --> 00:03:42,320
+Microservices.
+

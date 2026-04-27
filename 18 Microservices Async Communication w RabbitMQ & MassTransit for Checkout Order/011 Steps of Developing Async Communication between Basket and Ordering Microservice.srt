@@ -1,0 +1,100 @@
+1
+00:00:00,140 --> 00:00:05,300
+In this video, we are going to define the development steps of the asynchronous communication.
+
+2
+00:00:05,300 --> 00:00:10,220
+And the first step is creating building blocks messaging shared class library.
+
+3
+00:00:10,220 --> 00:00:15,440
+And we will create a shared class library for common asynchronous communication functionalities.
+
+4
+00:00:15,440 --> 00:00:21,410
+And we will develop basket checkout event class in order to represent the data structure of the event.
+
+5
+00:00:21,410 --> 00:00:27,170
+And also we will develop mass transit extension methods in order to facilitate the registration and
+
+6
+00:00:27,170 --> 00:00:30,740
+configuration of the mass transit with RabbitMQ in the microservices.
+
+7
+00:00:30,740 --> 00:00:37,160
+And the second step is developing basket API to publish basket checkout event in order to enable basket
+
+8
+00:00:37,160 --> 00:00:44,630
+microservices to publish Basket Checkout event to RabbitMQ, we will expose Http post endpoint and develop
+
+9
+00:00:44,630 --> 00:00:47,480
+a post API endpoint for the basket checkout operation.
+
+10
+00:00:47,480 --> 00:00:52,880
+So that means we will develop a new feature folder, which name is checkout basket under the basket
+
+11
+00:00:52,880 --> 00:00:56,600
+microservices and this will be include endpoint and handler class.
+
+12
+00:00:56,600 --> 00:01:00,980
+In the endpoint class we will expose http post API to client.
+
+13
+00:01:00,980 --> 00:01:06,620
+And in the handler class we basically use mass transit in order to publish basket checkout event to
+
+14
+00:01:06,620 --> 00:01:07,460
+the RabbitMQ.
+
+15
+00:01:08,360 --> 00:01:13,520
+And the third step, we will develop authentic microservices to subscribe and consume basket checkout
+
+16
+00:01:13,520 --> 00:01:14,000
+event.
+
+17
+00:01:14,000 --> 00:01:19,160
+So that means we will set up the authentic microservices, listen and process the basket checkout event.
+
+18
+00:01:19,160 --> 00:01:20,360
+From the RabbitMQ.
+
+19
+00:01:20,480 --> 00:01:26,240
+We will create integration event handler folder under the event handlers and under the Creating integration
+
+20
+00:01:26,240 --> 00:01:32,210
+folder we will develop Basket Checkout Event handler class in order to implement event processing logic
+
+21
+00:01:32,210 --> 00:01:36,590
+in the event handler to create orders based on the received basket checkout event.
+
+22
+00:01:36,590 --> 00:01:40,940
+And the last step is we will add RabbitMQ image in a multi-container environment.
+
+23
+00:01:40,940 --> 00:01:45,290
+That means we will add RabbitMQ service configuration in the docker compose file.
+
+24
+00:01:45,290 --> 00:01:50,900
+We will execute the docker compose setup in Visual Studio to bring up the RabbitMQ container connected
+
+25
+00:01:50,900 --> 00:01:52,220
+with our microservices.
+

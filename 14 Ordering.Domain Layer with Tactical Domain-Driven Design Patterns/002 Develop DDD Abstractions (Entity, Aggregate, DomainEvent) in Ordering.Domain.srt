@@ -1,0 +1,552 @@
+1
+00:00:00,170 --> 00:00:06,920
+In this video, we are going to develop domain driven design abstractions, including entity aggregate
+
+2
+00:00:06,920 --> 00:00:10,550
+domain events in the ordering domain layer for that purpose.
+
+3
+00:00:10,580 --> 00:00:15,290
+Please open the Visual Studio and go to the ordering domain layer.
+
+4
+00:00:15,290 --> 00:00:18,920
+And in this layer we are going to create an abstraction folder.
+
+5
+00:00:18,920 --> 00:00:22,790
+And we will add AI entity related classes into abstractions.
+
+6
+00:00:22,790 --> 00:00:29,150
+So I'm going to right click the ordering domain and add new folder which name is abstractions.
+
+7
+00:00:29,360 --> 00:00:34,580
+And in this abstraction classes we will start with the AI entity interface.
+
+8
+00:00:34,580 --> 00:00:39,560
+For that purpose, select the abstraction folder and create AI entity dot css file.
+
+9
+00:00:39,560 --> 00:00:47,090
+And in this file we will create interface which name is AI entity and make this interface as a public.
+
+10
+00:00:47,090 --> 00:00:54,380
+And after that we are going to add some common properties for each entity into our ordering domain.
+
+11
+00:00:54,380 --> 00:01:00,800
+So these are the created at created by last modified and last modified by.
+
+12
+00:01:00,800 --> 00:01:07,220
+So these are the date, time and string properties that we are going to use as a common property for
+
+13
+00:01:07,220 --> 00:01:11,270
+AI entity interface and removing unnecessary using statement.
+
+14
+00:01:11,270 --> 00:01:15,530
+And this is the AI entity abstraction interface for us.
+
+15
+00:01:15,530 --> 00:01:22,010
+And at the same file I'm going to create additional interface, which is the generic version of the
+
+16
+00:01:22,010 --> 00:01:22,790
+AI entity.
+
+17
+00:01:22,790 --> 00:01:30,650
+For that purpose, I'm going to write public Interface, and this time we will create AI entity and
+
+18
+00:01:30,650 --> 00:01:35,690
+accepting generic T and inherit from the AI entity interface.
+
+19
+00:01:35,690 --> 00:01:44,600
+And inside of this AI entity generic type, we basically create one property, which name is id and
+
+20
+00:01:44,600 --> 00:01:46,610
+the id type is a t generic.
+
+21
+00:01:46,610 --> 00:01:49,550
+So we have developed AI entity interface.
+
+22
+00:01:49,550 --> 00:01:56,690
+And these AI entity includes common properties like created ID and created by for auditing purposes.
+
+23
+00:01:56,690 --> 00:02:04,040
+And in here you can see the AI entity which is defined a generic interface for all entities with a unique
+
+24
+00:02:04,040 --> 00:02:10,550
+identifier of type of the T, so that we will use for implementing the entity classes.
+
+25
+00:02:10,550 --> 00:02:13,610
+And after that I'm going to create entity base class.
+
+26
+00:02:13,610 --> 00:02:18,680
+For that purpose I'm going to create an entity class under the abstraction.
+
+27
+00:02:18,680 --> 00:02:25,040
+If you add a new file which is the entity dot CSS, this entity class will be our base class.
+
+28
+00:02:25,040 --> 00:02:30,860
+For that purpose, I'm going to change modifier as a public and make this class as a abstract class
+
+29
+00:02:30,860 --> 00:02:37,790
+in order to use as a base entity class and make these entity as a generic to inherit from the AI entity
+
+30
+00:02:37,790 --> 00:02:38,930
+generic type.
+
+31
+00:02:38,930 --> 00:02:45,800
+And we can give generic as a T, and inside of the these abstract class we should implement AI entity
+
+32
+00:02:45,800 --> 00:02:46,340
+members.
+
+33
+00:02:46,340 --> 00:02:53,600
+These are including the id created at created by last modified and last modified by.
+
+34
+00:02:53,630 --> 00:02:58,880
+So you can copy and paste these properties from the interface definitions of the AI entity.
+
+35
+00:02:58,910 --> 00:03:03,950
+We will accumulate these properties inside of the abstract entity class.
+
+36
+00:03:03,950 --> 00:03:05,540
+And you can give this way.
+
+37
+00:03:05,540 --> 00:03:08,120
+And you can remove the unnecessary using statement.
+
+38
+00:03:08,120 --> 00:03:12,020
+And this is the abstract class definition into our abstraction.
+
+39
+00:03:12,020 --> 00:03:17,120
+So this is the abstract class and provide a base implementation of the AI entity.
+
+40
+00:03:17,120 --> 00:03:23,210
+And it is a generic class that can be used to define entities without various type of identifiers,
+
+41
+00:03:23,210 --> 00:03:26,630
+including string, integer, even the custom types.
+
+42
+00:03:26,720 --> 00:03:32,570
+After entity based definitions, we can continue with the other domain driven design abstractions.
+
+43
+00:03:32,570 --> 00:03:39,050
+This time I am going to create domain event, which will be the AI domain event interface to perform
+
+44
+00:03:39,050 --> 00:03:43,040
+an exposing these domain events from our aggregates and entities.
+
+45
+00:03:43,040 --> 00:03:45,920
+For that purpose, please go to the Visual Studio.
+
+46
+00:03:46,310 --> 00:03:51,950
+Under the abstractions, I'm going to create a new file which name is AI Domain Events.
+
+47
+00:03:52,160 --> 00:03:56,120
+So in this file we will implement domain event related operations.
+
+48
+00:03:56,120 --> 00:04:01,340
+But this time we need a mediator package to use AI notification interface.
+
+49
+00:04:01,340 --> 00:04:07,640
+Because I want to inherit from the AI notification from the mediator to perform domain events.
+
+50
+00:04:07,640 --> 00:04:14,030
+Because mediator provides very good interface to implement domain event operations inside of the domain
+
+51
+00:04:14,030 --> 00:04:14,570
+layers.
+
+52
+00:04:14,570 --> 00:04:19,040
+For that purpose, I'm going to add a NuGet package into domain layer.
+
+53
+00:04:19,040 --> 00:04:23,390
+This is the only package for domain layer to perform domain event pattern.
+
+54
+00:04:23,390 --> 00:04:31,580
+I'm going to right click dependencies and manage NuGet packages, and browse for the mediator and install
+
+55
+00:04:31,580 --> 00:04:34,670
+the mediator into our ordering domain layer.
+
+56
+00:04:34,670 --> 00:04:42,590
+So if you go back to our our domain and you can see that we can add a notification using the mediator
+
+57
+00:04:42,590 --> 00:04:44,750
+and remove unnecessary using statement.
+
+58
+00:04:44,750 --> 00:04:50,450
+And this will be the only one package for the ordering domain to implement domain event pattern into
+
+59
+00:04:50,450 --> 00:04:52,010
+the ordering domain layer.
+
+60
+00:04:52,010 --> 00:04:58,280
+And when implementing this pattern, I'm going to adding some members for the I domain event.
+
+61
+00:04:58,280 --> 00:04:59,840
+The first one is event.
+
+62
+00:04:59,960 --> 00:05:07,130
+ID, which is the width and defining newly created domain event, and after that we can add a occurred
+
+63
+00:05:07,130 --> 00:05:14,180
+on DateTime property to specify the date when event is occurring.
+
+64
+00:05:14,180 --> 00:05:20,720
+And lastly, we can specify the event type that we can get the event type from the current assembly
+
+65
+00:05:20,720 --> 00:05:27,350
+qualified name, which will be which class throwing this domain event understanding from the assembly
+
+66
+00:05:27,350 --> 00:05:29,630
+information into these interface.
+
+67
+00:05:29,630 --> 00:05:36,020
+So as you can see that we have created a domain event which extends from the eye notification mediator.
+
+68
+00:05:36,020 --> 00:05:39,200
+So why we use eye notification interface.
+
+69
+00:05:39,200 --> 00:05:44,480
+Because it is allowing domain events to be dispatched through the mediator handlers.
+
+70
+00:05:44,480 --> 00:05:51,050
+So by this way we can use mediator handlers in order to handle these domain event using the mediator
+
+71
+00:05:51,050 --> 00:05:51,800
+libraries.
+
+72
+00:05:51,800 --> 00:05:59,930
+And each event has a unique ID, a timestamp and event type identifier inside of the interface definition,
+
+73
+00:05:59,930 --> 00:06:06,290
+we can continue the other domain driven design abstractions, which is the aggregate route and aggregate
+
+74
+00:06:06,290 --> 00:06:14,210
+route and aggregate is defining from the entities, which is a special kind of entity can handle a domain
+
+75
+00:06:14,210 --> 00:06:14,690
+events.
+
+76
+00:06:14,690 --> 00:06:20,750
+That means aggregate should have domain event list that you can clear and add domain events into the
+
+77
+00:06:20,750 --> 00:06:21,620
+aggregates.
+
+78
+00:06:21,620 --> 00:06:26,030
+So please open the Visual Studio and create eye aggregate interface.
+
+79
+00:06:26,030 --> 00:06:32,990
+Under the abstractions I aggregate dot CSS and in this interface we basically implement from the eye
+
+80
+00:06:32,990 --> 00:06:33,560
+entity.
+
+81
+00:06:33,590 --> 00:06:42,590
+This is the special kind of the entity, and we will make it public and remove unnecessary using statements
+
+82
+00:06:42,650 --> 00:06:49,310
+in the eye aggregate interface, we are going to define domain events as a ID on list.
+
+83
+00:06:49,310 --> 00:06:53,300
+Here you can see that we have a property which is the ID only list.
+
+84
+00:06:53,300 --> 00:06:58,700
+And in this list we will expect eye domain event related interface objects.
+
+85
+00:06:58,700 --> 00:07:01,400
+And the property name is domain events.
+
+86
+00:07:01,400 --> 00:07:06,260
+So in here you can see an exception which is inconsistency accessibility.
+
+87
+00:07:06,260 --> 00:07:09,680
+This is giving for the eye domain event accessibility.
+
+88
+00:07:09,680 --> 00:07:16,430
+If you go to the eye domain event if you go to definition you can see that we forgot to change these
+
+89
+00:07:16,430 --> 00:07:18,980
+access modifier internal to public.
+
+90
+00:07:18,980 --> 00:07:26,180
+Make this public and go back to eye aggregate interface and see that the error is disappeared.
+
+91
+00:07:26,180 --> 00:07:30,890
+And we will adding domain events as an ID on list into eye aggregate.
+
+92
+00:07:30,890 --> 00:07:36,170
+Because eye aggregate is a special kind of entity that can handle the domain events.
+
+93
+00:07:36,320 --> 00:07:41,690
+And of course, after this domain event property list, we need to clear domain events.
+
+94
+00:07:41,690 --> 00:07:47,930
+For that purpose, I have added additional property and method, which is a clear domain events that
+
+95
+00:07:47,930 --> 00:07:50,330
+can return eye domain events array.
+
+96
+00:07:50,840 --> 00:07:56,360
+After this definition, we should also define generic type of the eye aggregate interface.
+
+97
+00:07:56,360 --> 00:07:57,200
+For that purpose.
+
+98
+00:07:57,200 --> 00:08:00,170
+I'm going to come here and paste this line of code.
+
+99
+00:08:00,200 --> 00:08:05,780
+This will be basically define an interface of the eye, aggregate with the generic type, and inherit
+
+100
+00:08:05,780 --> 00:08:08,960
+from the eye aggregate interface that we defined in here.
+
+101
+00:08:08,960 --> 00:08:11,270
+And eye entity generic type T.
+
+102
+00:08:12,440 --> 00:08:18,920
+After these interface definitions, we should create aggregate base class, which means that we will
+
+103
+00:08:18,920 --> 00:08:23,690
+implement these interfaces into our abstract aggregate class for that purpose.
+
+104
+00:08:23,720 --> 00:08:26,210
+Go to abstraction folder and add new class.
+
+105
+00:08:26,210 --> 00:08:28,760
+Which name is aggregate CSS.
+
+106
+00:08:29,150 --> 00:08:34,100
+This class should be base class of our aggregate related operations.
+
+107
+00:08:34,100 --> 00:08:40,820
+I'm going to remove unnecessary using statement and change internal to public abstract class to make
+
+108
+00:08:40,820 --> 00:08:44,390
+it as a base abstract class and inherit from the entity.
+
+109
+00:08:44,390 --> 00:08:45,560
+And I aggregate.
+
+110
+00:08:45,560 --> 00:08:52,430
+First of all, I'm going to make it as a generic with t id and inherit from the entity with specifying
+
+111
+00:08:52,430 --> 00:08:54,530
+the t id as a generic.
+
+112
+00:08:54,530 --> 00:09:01,280
+And also we will additional implement I aggregate interface passing to the id generic.
+
+113
+00:09:01,280 --> 00:09:07,100
+And if you come here and implement I aggregate members, you can see that we should define domain events
+
+114
+00:09:07,100 --> 00:09:09,770
+and define clear domain events method.
+
+115
+00:09:09,770 --> 00:09:16,820
+So in the first line of this class we will define a read only object which is the our domain event list.
+
+116
+00:09:16,820 --> 00:09:24,050
+These are the private read only list I domain event and underscore domain events variable with a newly
+
+117
+00:09:24,050 --> 00:09:31,250
+created list object, and after that we can return the domain events property with using our newly created
+
+118
+00:09:31,250 --> 00:09:34,880
+private list object, which is the underscore domain events.
+
+119
+00:09:34,880 --> 00:09:43,370
+And I'm going to convert as read only in here, so we can return as read only copy of these domain events
+
+120
+00:09:43,370 --> 00:09:48,140
+to the domain events property, which is expected from the I aggregate interface.
+
+121
+00:09:48,440 --> 00:09:52,430
+After that, we can develop the methods related to domain events.
+
+122
+00:09:52,430 --> 00:09:56,870
+These are the add domain events and also clear domain events functions.
+
+123
+00:09:56,870 --> 00:10:04,070
+So in here I'm going to develop add domain events function with getting parameter to I domain event
+
+124
+00:10:04,070 --> 00:10:10,880
+into the parameters and adding these incoming domain events to our domain event list, which is the
+
+125
+00:10:10,880 --> 00:10:13,250
+defined in the first line of code.
+
+126
+00:10:13,250 --> 00:10:17,180
+So basically this will be provided to a domain events into our list.
+
+127
+00:10:17,180 --> 00:10:20,240
+And after that we can implement the clear domain events.
+
+128
+00:10:20,240 --> 00:10:25,280
+In this method we basically get the domain events to the array.
+
+129
+00:10:25,520 --> 00:10:31,310
+As you can see that in here I have created I domain event array which name is dict events.
+
+130
+00:10:31,310 --> 00:10:34,970
+And we will get this array from the domain events list.
+
+131
+00:10:34,970 --> 00:10:42,080
+And after that we can clear the domain events by using the domain ones dot clear function.
+
+132
+00:10:42,410 --> 00:10:48,200
+And after that we can return these Dequeued event list to the response of this method.
+
+133
+00:10:48,200 --> 00:10:55,580
+Because even I deleted the domain events, I can return the domain events before deleting these operations
+
+134
+00:10:55,580 --> 00:10:57,830
+in this clear domain event function.
+
+135
+00:10:57,950 --> 00:11:03,770
+As you can see that we have finished the aggregate base class and also finished the abstraction folder,
+
+136
+00:11:03,770 --> 00:11:08,180
+including the entity, aggregate and domain events abstractions.
+
+137
+00:11:08,180 --> 00:11:14,900
+By developing these domain driven design abstractions, we have laid the groundwork for our domain model
+
+138
+00:11:14,900 --> 00:11:16,520
+in the Ordering Domain project.
+

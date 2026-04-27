@@ -1,0 +1,384 @@
+1
+00:00:00,140 --> 00:00:04,220
+In this video we are going to develop, create, order and win class.
+
+2
+00:00:04,310 --> 00:00:08,060
+So we will follow the steps that we are going to write in the last video.
+
+3
+00:00:08,060 --> 00:00:11,390
+And we will start with creating Create Order Request Object.
+
+4
+00:00:11,390 --> 00:00:12,350
+For that purpose.
+
+5
+00:00:12,350 --> 00:00:15,170
+I'm going to go on top of this class definition.
+
+6
+00:00:15,170 --> 00:00:22,520
+And after that I will create public record, create order request and order DTO as a taking parameter.
+
+7
+00:00:22,520 --> 00:00:29,000
+So create order request capture the incoming request data and it contains an order DTO object which
+
+8
+00:00:29,000 --> 00:00:32,030
+represents the order detail submitted by the client.
+
+9
+00:00:32,030 --> 00:00:37,280
+So where this order data comes from, as you can see the using statement, it comes from the ordering
+
+10
+00:00:37,280 --> 00:00:38,810
+application details folder.
+
+11
+00:00:38,810 --> 00:00:44,780
+So if you remember our reference architecture for the clean architecture and dependencies, you can
+
+12
+00:00:44,780 --> 00:00:47,750
+see that we are in API layer and in API layer.
+
+13
+00:00:47,780 --> 00:00:52,760
+Getting reference from the application and infrastructure and details comes from the application that
+
+14
+00:00:52,760 --> 00:00:58,910
+you can check from the ordering application details and see that order DTO comes from in here.
+
+15
+00:00:58,910 --> 00:01:05,239
+So since our ordering API getting reference from the application and infrastructure layer, we can access
+
+16
+00:01:05,239 --> 00:01:09,530
+the order details with using statement in the Create Order request object.
+
+17
+00:01:09,530 --> 00:01:14,720
+So as the same way, I'm going to create a response object by following the request object.
+
+18
+00:01:14,720 --> 00:01:20,360
+Here you can see that we have created public record create order response and get ID as a parameter
+
+19
+00:01:20,360 --> 00:01:21,350
+of this response.
+
+20
+00:01:21,350 --> 00:01:27,680
+So that means create order response defines the shape of the response data and it contains the ID of
+
+21
+00:01:27,680 --> 00:01:29,240
+the newly created order.
+
+22
+00:01:29,240 --> 00:01:35,270
+So after created request and response object, we can start to implement our actual create order and
+
+23
+00:01:35,270 --> 00:01:35,930
+print class.
+
+24
+00:01:35,930 --> 00:01:40,550
+So the first start I'm going to start with the I Carter module implementation.
+
+25
+00:01:40,550 --> 00:01:47,930
+And this interface provide to make this create order as a Carter module in order to expose Http methods.
+
+26
+00:01:47,930 --> 00:01:53,390
+You can see the Carter comes from the our ordering API, NuGet packages that we have downloaded in the
+
+27
+00:01:53,390 --> 00:01:54,050
+last videos.
+
+28
+00:01:54,050 --> 00:01:59,600
+So now I'm going to implement these interface members which is the add routes that we can adding the
+
+29
+00:01:59,600 --> 00:02:03,350
+routes into our application with using and implementing this method.
+
+30
+00:02:03,350 --> 00:02:08,660
+So we will implement these add road methods with using the endpoint route builder.
+
+31
+00:02:08,660 --> 00:02:16,040
+When defining a set of routes for handling Http requests for create order, we are going to use http
+
+32
+00:02:16,040 --> 00:02:17,000
+post operation.
+
+33
+00:02:17,000 --> 00:02:23,600
+For that purpose, I'm going to remove this throw statement and write app dot map post and with writing
+
+34
+00:02:23,600 --> 00:02:24,410
+the map post.
+
+35
+00:02:24,410 --> 00:02:29,390
+Basically we will define http post endpoint at the path of the orders.
+
+36
+00:02:29,480 --> 00:02:35,330
+Here you can see the endpoint URL slash orders and this is the implementation of these endpoint URL
+
+37
+00:02:35,330 --> 00:02:38,510
+when incoming requests comes and hit this point.
+
+38
+00:02:38,510 --> 00:02:44,630
+And as you can see that I'm going to developing our map post operation which is the endpoint.
+
+39
+00:02:44,630 --> 00:02:47,510
+And this is the implementation of the asynchronous function.
+
+40
+00:02:47,510 --> 00:02:53,390
+So in this function we basically get a request parameters which is the create order request coming from
+
+41
+00:02:53,390 --> 00:02:54,650
+the request parameters.
+
+42
+00:02:54,650 --> 00:03:01,100
+And the second parameter which is the I sender comes from the mediator will be injected into our asynchronous
+
+43
+00:03:01,100 --> 00:03:01,700
+method.
+
+44
+00:03:01,700 --> 00:03:07,070
+So we will develop these delegate handler method with following the steps that we are writing in here.
+
+45
+00:03:07,070 --> 00:03:13,520
+So the first step is we are going to adapting incoming request object to the command object.
+
+46
+00:03:13,520 --> 00:03:16,640
+As you can see that we will map the request to create order command.
+
+47
+00:03:16,640 --> 00:03:23,180
+In this line of code we will use requested map method and adapt is comes from the our maps, library
+
+48
+00:03:23,180 --> 00:03:23,810
+and maps.
+
+49
+00:03:23,810 --> 00:03:28,670
+The library comes from the ordering application that is getting reference from the building blocks for
+
+50
+00:03:28,670 --> 00:03:35,030
+common operations and common NuGet packages, and the second operation is using the mediator in order
+
+51
+00:03:35,030 --> 00:03:38,090
+to send this command to the corresponding handler method.
+
+52
+00:03:38,090 --> 00:03:41,420
+So we are creating a create order command object.
+
+53
+00:03:41,420 --> 00:03:47,420
+Now we can send this command object using the mediator in order to trigger corresponding handler method.
+
+54
+00:03:47,420 --> 00:03:53,570
+For that purpose I'm going to use await that sender dot send method and passing this command object
+
+55
+00:03:53,570 --> 00:03:59,060
+as a parameter of the mediator sender object, and this will be return back a result object, which
+
+56
+00:03:59,060 --> 00:04:05,570
+is the create order result object that we can also continue to mapping this result object to the our
+
+57
+00:04:05,570 --> 00:04:08,870
+response object, which is including the created order IDs.
+
+58
+00:04:08,870 --> 00:04:16,279
+So after triggering the mediator, the next step is we will be again using the mapper for adopting result
+
+59
+00:04:16,279 --> 00:04:18,470
+object to the create order response object.
+
+60
+00:04:18,470 --> 00:04:24,230
+By this line of code, we will return back the response object with converting this result object to
+
+61
+00:04:24,230 --> 00:04:25,760
+the create order response object.
+
+62
+00:04:25,760 --> 00:04:32,030
+And lastly, we will return these response object to the client application with using the return results
+
+63
+00:04:32,030 --> 00:04:36,830
+that created method, which is basically response back to Http 201.
+
+64
+00:04:36,830 --> 00:04:43,430
+Created response with passing the parameters of the endpoint URL definition orders dot order id which
+
+65
+00:04:43,460 --> 00:04:49,820
+incoming response.id and return the whole response object as a response of the client application.
+
+66
+00:04:49,820 --> 00:04:56,000
+So basically with this line of codes, we will perform the mediator and secure life cycles that we have
+
+67
+00:04:56,000 --> 00:04:57,530
+already seen in our slide.
+
+68
+00:04:57,530 --> 00:04:59,690
+We will accepting the request incoming.
+
+69
+00:04:59,820 --> 00:05:05,460
+Take us into our request object and we will map this request object to the command object and we will
+
+70
+00:05:05,460 --> 00:05:08,460
+passing this command object to mediator dot send function.
+
+71
+00:05:08,460 --> 00:05:14,310
+This will be triggered the corresponding command handler to performing use cases and returning the result.
+
+72
+00:05:14,310 --> 00:05:20,040
+And we will also respawning this result object to mapping the response object and return back to the
+
+73
+00:05:20,040 --> 00:05:21,060
+client application.
+
+74
+00:05:21,060 --> 00:05:28,680
+So we will perform all these secrets lifecycle in example of the http post operation to the orders endpoint.
+
+75
+00:05:28,680 --> 00:05:34,710
+And after that we can configure these Carter endpoint configuration with passing the extension methods
+
+76
+00:05:34,710 --> 00:05:38,640
+including the with name produce with summary description, and so on.
+
+77
+00:05:38,640 --> 00:05:45,180
+We basically use with name for assigning a name to this endpoint for easy reference, and we will produce
+
+78
+00:05:45,180 --> 00:05:49,260
+use a create order response and this code will be 201 created.
+
+79
+00:05:49,260 --> 00:05:52,770
+And if any problem we will return 400 bad request.
+
+80
+00:05:52,770 --> 00:05:57,930
+And you can also configure the summary and description which provide a brief summary of the endpoint
+
+81
+00:05:57,930 --> 00:05:58,560
+purpose.
+
+82
+00:05:58,560 --> 00:06:01,920
+So this is the definition of the create order endpoint.
+
+83
+00:06:01,920 --> 00:06:07,740
+If you go on top of this class, you can see that we have several using statements for removing these
+
+84
+00:06:07,740 --> 00:06:12,750
+using statement I'm going to create a global using under the ordering API project.
+
+85
+00:06:12,780 --> 00:06:18,300
+And for that purpose come to ordering API and add new item which name is global using CSS.
+
+86
+00:06:18,300 --> 00:06:23,520
+So you can remove all things in this class, because we will be moving these using statement from the
+
+87
+00:06:23,520 --> 00:06:25,140
+create order and Point class.
+
+88
+00:06:25,140 --> 00:06:29,850
+If you open this endpoint class, you can see that these are the common using statements that we are
+
+89
+00:06:29,850 --> 00:06:31,710
+going to use for all endpoints.
+
+90
+00:06:31,710 --> 00:06:34,740
+And this is for specifically create order endpoint.
+
+91
+00:06:34,740 --> 00:06:40,620
+That's why I am leaving the last one and moving the rest of the using statements into our global using.
+
+92
+00:06:40,620 --> 00:06:46,770
+So if you go back to global using and paste in here and write the global keywords in the beginning of
+
+93
+00:06:46,770 --> 00:06:47,880
+this using statement.
+
+94
+00:06:47,880 --> 00:06:54,330
+And these will be representing the common packages that we can use the whole endpoint class definitions.
+
+95
+00:06:54,330 --> 00:06:58,980
+So if you go back to our create order you can see that we have one using statement.
+
+96
+00:06:58,980 --> 00:07:04,830
+And this is the implementation of the create order endpoint class with using the I Carter module implementation.
+

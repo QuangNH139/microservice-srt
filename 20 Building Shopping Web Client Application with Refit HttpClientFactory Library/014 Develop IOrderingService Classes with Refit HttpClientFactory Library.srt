@@ -1,0 +1,196 @@
+1
+00:00:00,140 --> 00:00:06,260
+In this video, we are going to develop AI ordering service interfaces with using Revit Http client
+
+2
+00:00:06,260 --> 00:00:06,860
+factory.
+
+3
+00:00:06,980 --> 00:00:13,130
+If you look at our e-commerce application, we will sending Http get requests from the ordering microservices
+
+4
+00:00:13,130 --> 00:00:17,900
+over the http api gateway in order, the listing orders by customer, and so on.
+
+5
+00:00:17,900 --> 00:00:21,740
+And here you can see the or using Http get methods.
+
+6
+00:00:21,740 --> 00:00:27,080
+We will get orders get orders by Paginating and we will get orders by name.
+
+7
+00:00:27,080 --> 00:00:29,450
+And we will get orders by customer ID.
+
+8
+00:00:29,480 --> 00:00:32,960
+Here you can see that we will use Erb API gateway endpoint.
+
+9
+00:00:32,960 --> 00:00:36,530
+Of course this should be 6064 for the environment.
+
+10
+00:00:36,530 --> 00:00:41,660
+And here you can see the our endpoint URL which is ordering dash service slash orders.
+
+11
+00:00:41,660 --> 00:00:45,920
+With pagination we can add page index and page size as a request parameters.
+
+12
+00:00:45,920 --> 00:00:50,690
+For get orders by username we can adding slash order name for customers.
+
+13
+00:00:50,690 --> 00:00:54,920
+We can adding orders slash customer and customer ID which is the grid.
+
+14
+00:00:54,920 --> 00:00:59,150
+So please open the Visual Studio and go to the R services.
+
+15
+00:00:59,150 --> 00:01:05,269
+I am going to create a new interface which is the I ordering services under the services folder.
+
+16
+00:01:05,269 --> 00:01:11,030
+And this will be representing our interface and consume operations into the I ordering service.
+
+17
+00:01:11,030 --> 00:01:15,560
+But before that you can examine the ordering microservices from the services.
+
+18
+00:01:15,560 --> 00:01:16,910
+Ordering microservices.
+
+19
+00:01:16,910 --> 00:01:21,140
+If you expand the ordering API, you can expand the ordering endpoint.
+
+20
+00:01:21,140 --> 00:01:27,470
+And here you can see the all get orders, get orders by customer and get orders by name use cases listing
+
+21
+00:01:27,470 --> 00:01:28,880
+under the endpoint folder.
+
+22
+00:01:28,880 --> 00:01:34,220
+So if you open the get orders, you can see the get order request and response structure.
+
+23
+00:01:34,220 --> 00:01:40,190
+And at the same way you can check the get orders by customer to understand which the getting request
+
+24
+00:01:40,190 --> 00:01:43,340
+and response object from the actual ordering microservices.
+
+25
+00:01:43,340 --> 00:01:48,950
+And we will accodomate these ordering microservice consume operations under the modules ordering with
+
+26
+00:01:48,950 --> 00:01:55,460
+the order module, with defining the wrapper classes and getting result from the IEnumerable order model
+
+27
+00:01:55,460 --> 00:01:56,780
+orders parameters.
+
+28
+00:01:56,780 --> 00:02:01,880
+And here you can see the pageant result defined in the order module that we can get the orders with
+
+29
+00:02:01,880 --> 00:02:02,990
+pageant results.
+
+30
+00:02:02,990 --> 00:02:09,350
+So now we are going to define our methods in order to consume ordering microservices over the Erb API
+
+31
+00:02:09,350 --> 00:02:09,949
+gateway.
+
+32
+00:02:09,949 --> 00:02:16,370
+Here you can see that I have created annotations and methods for the Http get operation, get orders
+
+33
+00:02:16,370 --> 00:02:19,490
+with taking the page index and page size parameter.
+
+34
+00:02:19,490 --> 00:02:22,100
+And here you can see the returning a response.
+
+35
+00:02:22,100 --> 00:02:26,360
+And in this response we will expecting pageant result in the order models.
+
+36
+00:02:26,360 --> 00:02:32,150
+And if you go back to our method you can see the annotation which is the Http get with the parameter
+
+37
+00:02:32,150 --> 00:02:37,100
+name of the our ordering service slash orders and page index and page size.
+
+38
+00:02:37,100 --> 00:02:42,380
+This value comes from the request parameters of this method, and in the second method we will define
+
+39
+00:02:42,380 --> 00:02:46,070
+get orders by name and parameter name as a string order name.
+
+40
+00:02:46,100 --> 00:02:51,110
+As a response, we will return back get orders by name response, which is a wrapper class including
+
+41
+00:02:51,110 --> 00:02:56,720
+the IEnumerable order model, and this will be http get operation and the endpoint definition should
+
+42
+00:02:56,720 --> 00:03:01,700
+be ordering service slash orders and order name will be taken from the request parameter.
+
+43
+00:03:01,700 --> 00:03:07,850
+And lastly we will perform get orders by customer with taking with customer ID returning get orders
+
+44
+00:03:07,850 --> 00:03:09,080
+by customer response.
+
+45
+00:03:09,080 --> 00:03:15,500
+And this is the Http get method and the endpoint definition to consuming Erb API gateway and getting
+
+46
+00:03:15,500 --> 00:03:20,090
+response from the ordering microservices from our shopping web client application.
+
+47
+00:03:20,090 --> 00:03:23,180
+As you can see that we have developed our business layer.
+
+48
+00:03:23,180 --> 00:03:30,350
+Now it is time to go to the building presentation layer with using the razor page and ASP.Net basics
+
+49
+00:03:30,350 --> 00:03:31,010
+repository.
+

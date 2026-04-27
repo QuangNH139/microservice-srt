@@ -1,0 +1,456 @@
+1
+00:00:00,200 --> 00:00:07,010
+In this video, we are going to develop validation pipeline behavior with using mediator and validation
+
+2
+00:00:07,010 --> 00:00:07,640
+library.
+
+3
+00:00:08,180 --> 00:00:15,830
+So the idea is that directly injecting a validator in the command handler classes is not the most efficient
+
+4
+00:00:15,830 --> 00:00:16,400
+approach.
+
+5
+00:00:16,430 --> 00:00:23,750
+It requires manually adding validation logic to each handle method, which can be repetitive and error
+
+6
+00:00:23,750 --> 00:00:24,320
+prone.
+
+7
+00:00:24,740 --> 00:00:29,030
+So we should remove these repetitive code into our flow.
+
+8
+00:00:29,060 --> 00:00:35,960
+For that purpose, we will use mediator pipeline behavior that we can already see in the previous videos.
+
+9
+00:00:35,990 --> 00:00:42,530
+Mediation pipeline behavior allows us to introduce additional processing steps such as the validation
+
+10
+00:00:42,530 --> 00:00:44,570
+into the handling of the request.
+
+11
+00:00:44,570 --> 00:00:50,390
+So combining with the mediator with the full length validation, centralized or cross-cutting concerns
+
+12
+00:00:50,390 --> 00:00:55,250
+like validations and making our code more cleaner and more maintainable.
+
+13
+00:00:55,430 --> 00:01:02,780
+So now we will add these fluent validation mediator pipeline into our building blocks, because we will
+
+14
+00:01:02,780 --> 00:01:05,480
+put the building blocks as a common object.
+
+15
+00:01:05,480 --> 00:01:11,510
+So if you open the Visual Studio and go to the building blocks, we basically create a new folder which
+
+16
+00:01:11,510 --> 00:01:12,950
+name is behaviors.
+
+17
+00:01:12,950 --> 00:01:18,740
+And in here we will add our validation behavior class which will handle the validation of commands.
+
+18
+00:01:18,740 --> 00:01:23,990
+Using the full length validation, I'm going to right click and create a new folder.
+
+19
+00:01:23,990 --> 00:01:25,940
+Under the building blocks.
+
+20
+00:01:25,940 --> 00:01:33,860
+You can add folder and give the folder name behaviors and under the behaviors folder I'm going to start
+
+21
+00:01:33,860 --> 00:01:35,900
+by adding validation behavior.
+
+22
+00:01:35,960 --> 00:01:41,540
+In the upcoming videos we can add different behaviors like logging behavior, tracing behavior, and
+
+23
+00:01:41,540 --> 00:01:42,200
+so on.
+
+24
+00:01:42,200 --> 00:01:45,530
+So now we will develop our validation behavior.
+
+25
+00:01:45,530 --> 00:01:48,920
+We should remove the unnecessary using statements.
+
+26
+00:01:48,920 --> 00:01:51,620
+And after that I'm going to make it public.
+
+27
+00:01:52,850 --> 00:01:59,810
+And after that I make it generic types in validation behavior which will be the request and returning
+
+28
+00:01:59,810 --> 00:02:00,770
+the response.
+
+29
+00:02:00,770 --> 00:02:08,930
+So after that the important thing is we should inherit these validation class from the I pipeline behavior.
+
+30
+00:02:08,930 --> 00:02:12,800
+So this will make it pipeline behavior from the mediator.
+
+31
+00:02:12,800 --> 00:02:16,070
+And we can also paste these tracks and t response.
+
+32
+00:02:16,070 --> 00:02:23,630
+So once we are implementing from the interface members we can see that this will be the handle method.
+
+33
+00:02:23,630 --> 00:02:30,500
+If you look at the handle method parameters the first parameter is t request and the second parameter
+
+34
+00:02:30,500 --> 00:02:33,650
+is the next request handle delegate.
+
+35
+00:02:33,740 --> 00:02:39,830
+So the first parameter is representing the incoming request from the client, and the second parameter
+
+36
+00:02:39,830 --> 00:02:46,580
+is representing the next request handle delegate which means the next pipeline behavior or actual handle
+
+37
+00:02:46,580 --> 00:02:47,090
+method.
+
+38
+00:02:47,090 --> 00:02:50,870
+So this is very good illustration into our slide.
+
+39
+00:02:50,870 --> 00:02:53,690
+You can see that we are at this point.
+
+40
+00:02:53,690 --> 00:02:55,730
+So we have creating a middleware.
+
+41
+00:02:55,730 --> 00:02:59,720
+That means the pipeline behavior which is a preprocessor behavior.
+
+42
+00:02:59,720 --> 00:03:03,050
+And the request comes in here we have a request parameter.
+
+43
+00:03:03,050 --> 00:03:10,460
+And we can also paste the next method that will be defined and redirecting to our request in the handle
+
+44
+00:03:10,460 --> 00:03:10,940
+method.
+
+45
+00:03:10,940 --> 00:03:13,220
+So this is a very good illustration in here.
+
+46
+00:03:13,220 --> 00:03:16,490
+So we are going to put our validation logic at this point.
+
+47
+00:03:16,490 --> 00:03:20,870
+So please open the Visual Studio and continue the implementation.
+
+48
+00:03:20,870 --> 00:03:24,770
+Before proceeding the handle method I am going to put a var statement.
+
+49
+00:03:24,770 --> 00:03:29,480
+That means we are going to put a filter for the validation behavior.
+
+50
+00:03:29,480 --> 00:03:34,190
+I'm going to apply this validation behavior only for the Icommand object.
+
+51
+00:03:34,190 --> 00:03:37,850
+So you can see that t request could be I request.
+
+52
+00:03:37,850 --> 00:03:39,980
+Is it normal for the mediator.
+
+53
+00:03:39,980 --> 00:03:42,830
+But this time I'm going to change this I command.
+
+54
+00:03:42,830 --> 00:03:47,120
+That means I would like to apply all these validation behavior.
+
+55
+00:03:47,120 --> 00:03:50,120
+Only request comes from the commands.
+
+56
+00:03:50,120 --> 00:03:54,800
+That means Crud operations for example create product, update product and delete product.
+
+57
+00:03:54,800 --> 00:04:02,300
+And with this var keyword, this validation behavior would not be work for the I query request that
+
+58
+00:04:02,300 --> 00:04:05,720
+means get product and get product by ID and so on.
+
+59
+00:04:05,930 --> 00:04:08,600
+So now we can handle this method.
+
+60
+00:04:08,600 --> 00:04:17,360
+And before proceeding this method, the only thing that I need I validator objects to inject these objects
+
+61
+00:04:17,360 --> 00:04:21,050
+I'm going to use primary constructor in here.
+
+62
+00:04:21,050 --> 00:04:28,460
+So we basically inject I enumerable and I validator request which are the representing I validators.
+
+63
+00:04:28,460 --> 00:04:34,490
+So that means when we are implementing the I validator request in the command handler method, this
+
+64
+00:04:34,490 --> 00:04:38,240
+is only applying for the particular handle method.
+
+65
+00:04:38,240 --> 00:04:45,620
+In order to collect all handle methods, we are using the IEnumerable and validators that we can validate
+
+66
+00:04:45,620 --> 00:04:49,520
+all these validators in one place, which is the validator behavior.
+
+67
+00:04:49,520 --> 00:04:53,360
+So now we can implement these validation using the validators.
+
+68
+00:04:53,480 --> 00:04:59,420
+So the first thing I am going to do is creating a context object which is the validation context.
+
+69
+00:04:59,590 --> 00:05:02,260
+Comes from the or fluent validation.
+
+70
+00:05:02,260 --> 00:05:06,790
+So we are passing the incoming request and reaching the context object.
+
+71
+00:05:06,790 --> 00:05:13,840
+And after that we can run these all the validators using the validators object and return back the validation
+
+72
+00:05:13,840 --> 00:05:14,530
+results.
+
+73
+00:05:14,800 --> 00:05:18,910
+Here you can see that I'm going to run all validators.
+
+74
+00:05:19,330 --> 00:05:24,550
+And of course we should make it asynchronous function to run available functions.
+
+75
+00:05:24,580 --> 00:05:25,150
+Okay.
+
+76
+00:05:25,150 --> 00:05:29,020
+So in this method you can see that we use Task1.
+
+77
+00:05:29,020 --> 00:05:35,320
+All that means complete all validation operations where this comes from validators that we have injected
+
+78
+00:05:35,320 --> 00:05:36,820
+from the primary constructor.
+
+79
+00:05:36,820 --> 00:05:40,720
+And we are going to select these validate asynchronous method.
+
+80
+00:05:40,720 --> 00:05:44,650
+And we will call these validate method for each handle method.
+
+81
+00:05:44,650 --> 00:05:50,500
+And this will be accumulates all validation results into the validation result object.
+
+82
+00:05:50,680 --> 00:05:57,970
+And after that we will check that if there is any failures in any validation result, we can get the
+
+83
+00:05:57,970 --> 00:06:04,570
+failures object from the validation results and we are filtered by errors and select these errors into
+
+84
+00:06:04,570 --> 00:06:05,680
+the failure object.
+
+85
+00:06:05,680 --> 00:06:12,370
+And lastly, if there is any errors, we can throw an validation exception with a given failure message.
+
+86
+00:06:13,300 --> 00:06:22,420
+And at the last time of the handle method we have to return await and next request delegate handler.
+
+87
+00:06:22,420 --> 00:06:28,720
+This will be run the next pipeline behavior, which will be the our actual command handle method.
+
+88
+00:06:28,720 --> 00:06:36,310
+This is very crucial to calling this next method in order to continue this pipeline request lifecycle.
+
+89
+00:06:36,790 --> 00:06:37,480
+Okay.
+
+90
+00:06:37,480 --> 00:06:41,320
+As you can see that we have completed the validation behavior in here.
+
+91
+00:06:41,320 --> 00:06:49,240
+In this class, we basically implement AI pipeline behavior interface, and it checks for the all validation
+
+92
+00:06:49,240 --> 00:06:52,090
+errors in the incoming request in here.
+
+93
+00:06:52,090 --> 00:06:58,780
+And if there is any error which including the validation errors in the request, we will throw a validation
+
+94
+00:06:58,780 --> 00:06:59,410
+exception.
+
+95
+00:06:59,410 --> 00:07:00,940
+If any errors are found.
+
+96
+00:07:00,940 --> 00:07:07,420
+So that means the behavior iterates over all provided validators for the request type.
+
+97
+00:07:07,420 --> 00:07:14,020
+And it also accumulates any validation failures and throws an exception if there is any exception,
+
+98
+00:07:14,020 --> 00:07:18,790
+and ensuring that the only valid request reached our handle methods.
+
+99
+00:07:20,200 --> 00:07:27,220
+After developed validation behavior, it is crucial to register these behavior into ASP.Net within dependency
+
+100
+00:07:27,220 --> 00:07:29,080
+injection for that purpose.
+
+101
+00:07:29,110 --> 00:07:32,830
+Please go to the catalog API and open the program CSS.
+
+102
+00:07:32,860 --> 00:07:38,890
+When we are registering the mediator, we can add the pipeline behaviors into this place.
+
+103
+00:07:38,890 --> 00:07:44,770
+That means when we are adding the mediator related packages into dependency injection, we can also
+
+104
+00:07:44,770 --> 00:07:49,480
+add the pipeline behaviors in the configuration of the mediator block.
+
+105
+00:07:49,480 --> 00:07:57,250
+So after registering services from assembly we can use config dot add open behavior.
+
+106
+00:07:57,250 --> 00:08:01,660
+This will be provide pipeline behaviors into our application.
+
+107
+00:08:01,660 --> 00:08:06,640
+So I'm going to use this method and passing the type of the validation.
+
+108
+00:08:06,640 --> 00:08:12,370
+So that means we can use type of method and passing our validation behavior.
+
+109
+00:08:14,500 --> 00:08:16,690
+From the building blocks.
+
+110
+00:08:16,690 --> 00:08:23,950
+And in here I'm going to use generic one and complete this add open behavior method.
+
+111
+00:08:23,950 --> 00:08:25,480
+So save this file.
+
+112
+00:08:25,480 --> 00:08:31,030
+So in here we basically add our validation behavior as a pipeline behavior into mediator.
+
+113
+00:08:31,030 --> 00:08:35,530
+We also register all validators from our assembly with this way.
+
+114
+00:08:35,530 --> 00:08:42,100
+By using this pipeline behavior we achieve the cleaner handler methods focused on the business logic.
+

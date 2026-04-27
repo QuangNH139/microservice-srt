@@ -1,0 +1,188 @@
+1
+00:00:00,170 --> 00:00:05,450
+In this video we are going to start to develop get product by category feature.
+
+2
+00:00:05,450 --> 00:00:12,200
+So as you can see that under the products we have develop create products, get product by ID and Get
+
+3
+00:00:12,200 --> 00:00:13,130
+products features.
+
+4
+00:00:13,130 --> 00:00:18,080
+So now we are going to focus on the developing Get products by category feature.
+
+5
+00:00:18,080 --> 00:00:22,880
+For that purpose right click with the products and add a new subfolder.
+
+6
+00:00:22,880 --> 00:00:25,520
+Which name is Get Product by category.
+
+7
+00:00:26,630 --> 00:00:32,150
+So under the Get Product by category we will create 100 and endpoint classes.
+
+8
+00:00:32,150 --> 00:00:40,100
+For that purpose I'm going to create a new class which name is Get Product by category under class under
+
+9
+00:00:40,100 --> 00:00:41,060
+this folder.
+
+10
+00:00:41,060 --> 00:00:46,370
+And also I'm going to create an additional class which name is endpoint class.
+
+11
+00:00:46,790 --> 00:00:50,000
+So as always we have start with the handle method.
+
+12
+00:00:50,000 --> 00:00:56,750
+So in this handle method this will be responsible for handling the query for fetching products by category.
+
+13
+00:00:56,870 --> 00:01:00,740
+Let me start with developing query and result object.
+
+14
+00:01:00,740 --> 00:01:03,770
+So we will start with public record.
+
+15
+00:01:03,770 --> 00:01:07,130
+And the name of the query is get product by category query.
+
+16
+00:01:07,130 --> 00:01:14,180
+And as a parameter we will get a string category information in order to filter by category and inherit
+
+17
+00:01:14,180 --> 00:01:15,440
+from the I query.
+
+18
+00:01:15,440 --> 00:01:22,130
+And this time we will return a result object which name is get product by category result.
+
+19
+00:01:22,340 --> 00:01:29,840
+Okay, after this definition, we will again public record and get product by category result and as
+
+20
+00:01:29,840 --> 00:01:33,110
+a result we expecting I innumerable.
+
+21
+00:01:35,150 --> 00:01:37,610
+Product that means product list.
+
+22
+00:01:37,610 --> 00:01:41,990
+So we will give the name as a products okay.
+
+23
+00:01:41,990 --> 00:01:45,320
+We have defined the our query and result object.
+
+24
+00:01:45,320 --> 00:01:48,320
+Now we will focus on the actual operation.
+
+25
+00:01:48,320 --> 00:01:54,560
+First of all, we will change the name as a query handler to indicate that this is the query handler
+
+26
+00:01:54,560 --> 00:01:57,080
+class and make it internal.
+
+27
+00:01:59,520 --> 00:02:06,180
+And after that we will inherit from the AI query handler, which passing the query and result object
+
+28
+00:02:06,180 --> 00:02:07,410
+into the interface.
+
+29
+00:02:07,410 --> 00:02:11,880
+And if we implement this interface you can see the handle method in here.
+
+30
+00:02:11,880 --> 00:02:15,570
+So in the handle method we basically interact with the database.
+
+31
+00:02:15,570 --> 00:02:23,100
+For that reason I am going to inject two items which are the AI documentation and AI logger to our handler
+
+32
+00:02:23,100 --> 00:02:23,580
+class.
+
+33
+00:02:23,580 --> 00:02:29,250
+So let's implement this handle method with using these injecting objects.
+
+34
+00:02:29,250 --> 00:02:35,550
+First of all I'm going to logging the incoming handle object with passing the query.
+
+35
+00:02:35,670 --> 00:02:42,390
+As you can see that we should change the name as a query in the parameters of the handle method, and
+
+36
+00:02:42,390 --> 00:02:46,410
+this will be log incoming request and query operation.
+
+37
+00:02:46,410 --> 00:02:53,280
+So after the logging operation we basically perform actual logic which is the getting the products from
+
+38
+00:02:53,280 --> 00:03:02,400
+the database with filtering session dot query method and we expecting product.
+
+39
+00:03:04,540 --> 00:03:10,360
+And in here we will filter by using the where statement.
+
+40
+00:03:12,130 --> 00:03:18,460
+And inside of the where statement I'm going to define p dot category.
+
+41
+00:03:18,460 --> 00:03:24,730
+Dot contains and pacing the incoming query category information.
+
+42
+00:03:24,730 --> 00:03:28,210
+And after that we can return to to list async.
+
+43
+00:03:28,810 --> 00:03:36,610
+So after getting filtered products we will return new result object with pacing this products.
+
+44
+00:03:38,380 --> 00:03:45,430
+In this handle method we use I documentation from the Martin in order to query this product document
+
+45
+00:03:45,430 --> 00:03:47,200
+table by category.
+
+46
+00:03:47,200 --> 00:03:55,210
+So this method handle the asynchronously fetch all matching products with given category information
+
+47
+00:03:55,210 --> 00:04:01,630
+and returns them as a part of the our result object in a I enumerable product object.
+

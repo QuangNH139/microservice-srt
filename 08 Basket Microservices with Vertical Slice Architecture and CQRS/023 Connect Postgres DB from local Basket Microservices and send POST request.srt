@@ -1,0 +1,256 @@
+1
+00:00:00,110 --> 00:00:07,070
+In this video, we are going to demonstrate how to connect a local basket microservices to a PostgreSQL
+
+2
+00:00:07,070 --> 00:00:09,620
+database running in a Docker container.
+
+3
+00:00:10,160 --> 00:00:14,210
+We will then test creating a new shopping cart in the basket database.
+
+4
+00:00:14,630 --> 00:00:16,340
+So please open the Visual Studio.
+
+5
+00:00:16,340 --> 00:00:23,150
+First of all, we should ensure that Docker container running PostgreSQL database for our basket services.
+
+6
+00:00:23,150 --> 00:00:29,690
+For that purpose, please open the Docker desktop and verify that basket db is running and the port
+
+7
+00:00:29,690 --> 00:00:31,850
+number is 5433.
+
+8
+00:00:32,600 --> 00:00:37,370
+And also we can check the application settings to connect from the basket API.
+
+9
+00:00:37,370 --> 00:00:44,210
+If you go to basket API, application settings confirm that server is localhost and port is 5433.
+
+10
+00:00:44,960 --> 00:00:48,500
+And now we can continue our debug operations in the basket.
+
+11
+00:00:48,500 --> 00:00:49,400
+Microservices.
+
+12
+00:00:49,400 --> 00:00:54,680
+For that purpose, I am going to put a breakpoint in the beginning of the our Crud operations.
+
+13
+00:00:54,680 --> 00:00:57,020
+For example get basket endpoint.
+
+14
+00:00:57,020 --> 00:01:03,860
+You can put a breakpoint in here get basket handler and store basket endpoint and store basket handler.
+
+15
+00:01:03,860 --> 00:01:07,250
+And at the same way for the delete basket and point and handler.
+
+16
+00:01:07,400 --> 00:01:13,940
+So after confirming that our breakpoint is already stay on the correct place, we can run our basket.
+
+17
+00:01:13,940 --> 00:01:14,750
+Microservices.
+
+18
+00:01:14,750 --> 00:01:20,390
+In order to connect to PostgreSQL database, right click the basket API, set a startup project and
+
+19
+00:01:20,390 --> 00:01:21,710
+run https mode.
+
+20
+00:01:22,830 --> 00:01:25,050
+Basket API started successfully.
+
+21
+00:01:25,050 --> 00:01:32,940
+You can confirm that Project Console Window Basket API now listening on https localhost 5051.
+
+22
+00:01:33,300 --> 00:01:39,060
+Okay, now we are ready to sending post requests using the postman, so please open the postman.
+
+23
+00:01:39,060 --> 00:01:45,180
+We will use postman to send post requests to create a new shopping cart which is the basket, URL and
+
+24
+00:01:45,180 --> 00:01:45,930
+basket.
+
+25
+00:01:45,930 --> 00:01:52,470
+And in here you can see that still we are in the localhost, but this time we will connect to PostgreSQL
+
+26
+00:01:52,470 --> 00:01:54,390
+database from the docker environment.
+
+27
+00:01:54,390 --> 00:02:01,410
+In this post request you can see that Json payload which including the whole cart object as a Json format.
+
+28
+00:02:01,410 --> 00:02:06,150
+So we will create a new cart which username is a boolean.
+
+29
+00:02:06,150 --> 00:02:11,340
+And here you can see that we are going to add two items under this shopping cart.
+
+30
+00:02:11,340 --> 00:02:19,440
+So please run the https send button and this http post request will be hit our endpoint which is the
+
+31
+00:02:19,440 --> 00:02:20,970
+store basket endpoints.
+
+32
+00:02:20,970 --> 00:02:27,420
+If you continue this operation and this is converting as a command and this center object will be hit
+
+33
+00:02:27,420 --> 00:02:28,620
+the R command handler.
+
+34
+00:02:28,620 --> 00:02:31,290
+So here you can see the store basket command handler.
+
+35
+00:02:31,290 --> 00:02:36,570
+But this time we have injected eye basket repository object as a primary constructor.
+
+36
+00:02:36,570 --> 00:02:41,460
+So now I am going to get a cart object from the incoming command object.
+
+37
+00:02:41,460 --> 00:02:45,660
+After that I will hit the repository store basket operation.
+
+38
+00:02:45,660 --> 00:02:47,610
+I'm going to right click go to definition.
+
+39
+00:02:47,610 --> 00:02:53,850
+And you can see that this is the interface that we are going to implement into our Basket repository
+
+40
+00:02:53,850 --> 00:02:54,180
+class.
+
+41
+00:02:54,180 --> 00:02:57,330
+We can go to implementation and put two breakpoint in here.
+
+42
+00:02:57,330 --> 00:03:04,980
+If you continue and come here you can see that we will use session dot store operation in order to save
+
+43
+00:03:04,980 --> 00:03:09,240
+the whole basket object into database as a document object.
+
+44
+00:03:09,240 --> 00:03:14,220
+So here you can see that we have added a new item into shopping cart.
+
+45
+00:03:14,430 --> 00:03:19,320
+At this stage, Martin will create a new table and store basket object into this table.
+
+46
+00:03:19,320 --> 00:03:21,120
+And we are going to save changes.
+
+47
+00:03:21,120 --> 00:03:26,550
+And if you go continue our code, it is going to return back the result.
+
+48
+00:03:26,550 --> 00:03:28,920
+And this result comes to the response object.
+
+49
+00:03:28,920 --> 00:03:33,870
+And it is going to respond back to the client application as a created response.
+
+50
+00:03:33,870 --> 00:03:41,490
+If you open the response, you can see that 201 created response comes and the username is created successfully.
+
+51
+00:03:41,490 --> 00:03:48,030
+So lastly we can confirm this database and verify this shopping cart is correctly stored in the basket
+
+52
+00:03:48,030 --> 00:03:50,010
+database from the Pgadmin.
+
+53
+00:03:50,010 --> 00:03:53,430
+Please open the Pgadmin and connect the basket DB.
+
+54
+00:03:53,670 --> 00:04:00,450
+After opening the Pgadmin, we basically expand the servers and go to Basket Database Server and this
+
+55
+00:04:00,450 --> 00:04:02,280
+will be expand the database.
+
+56
+00:04:02,280 --> 00:04:04,590
+We our database is basket DB.
+
+57
+00:04:04,590 --> 00:04:09,180
+And here you can see that this time under the schemas we are looking for the tables.
+
+58
+00:04:09,180 --> 00:04:13,350
+And this time we have created one table which is the empty dog shopping cart.
+
+59
+00:04:13,350 --> 00:04:19,860
+If you right click and script as a select and if you run the select script on the database, you can
+
+60
+00:04:19,860 --> 00:04:23,010
+see that our newly created shopping cart comes in here.
+
+61
+00:04:23,010 --> 00:04:30,330
+And this is storing a data as a Json B column, which is the including the whole Json object as a shopping
+
+62
+00:04:30,330 --> 00:04:34,590
+cart with including the items, username, total price, and so on.
+
+63
+00:04:35,010 --> 00:04:41,400
+As you can see that we have successfully saved basket data in a Json format into basket document database
+
+64
+00:04:41,400 --> 00:04:42,450
+using Martin.
+

@@ -1,0 +1,144 @@
+1
+00:00:00,140 --> 00:00:03,830
+In this video we are going to create our domain models.
+
+2
+00:00:03,830 --> 00:00:09,440
+So that means we will create shopping cart, shopping cart item and basket checkout under the basket.
+
+3
+00:00:09,440 --> 00:00:10,490
+Microservices.
+
+4
+00:00:10,490 --> 00:00:16,190
+For that purpose, please open the Visual Studio and go to the basket API project.
+
+5
+00:00:16,219 --> 00:00:19,130
+Our first step is Create Models folder.
+
+6
+00:00:19,130 --> 00:00:23,540
+So if you right click and add new folder, which name is models.
+
+7
+00:00:23,540 --> 00:00:29,240
+This will be store our domain entities so we can create by entities one by one.
+
+8
+00:00:29,240 --> 00:00:32,990
+I'm going to start with shopping cart item domain entity.
+
+9
+00:00:33,140 --> 00:00:38,360
+Let's add a new class under the models which name is shopping cart item.
+
+10
+00:00:38,630 --> 00:00:41,720
+So this will be represent each item in the shopping cart.
+
+11
+00:00:41,720 --> 00:00:49,100
+So the shopping cart item can be different properties which including quantity, color, price, product
+
+12
+00:00:49,100 --> 00:00:50,630
+ID and product name.
+
+13
+00:00:50,780 --> 00:00:55,610
+Please develop these properties under the shopping cart item domain entity.
+
+14
+00:00:55,610 --> 00:01:01,490
+The shopping Cart item class encapsulate the details of each item in the shopping cart, including the
+
+15
+00:01:01,490 --> 00:01:04,700
+quantity, color, price, and product information.
+
+16
+00:01:05,090 --> 00:01:08,120
+After that, we will define the shopping cart domain entity.
+
+17
+00:01:08,120 --> 00:01:13,520
+So I'm going to create a new entity under the models which name is Shopping Cart.
+
+18
+00:01:13,640 --> 00:01:17,690
+And this will be include a collection of the shopping cart item object.
+
+19
+00:01:17,690 --> 00:01:22,430
+For that purpose I'm going to develop members in here.
+
+20
+00:01:22,430 --> 00:01:25,160
+So we will start with the username.
+
+21
+00:01:25,160 --> 00:01:33,260
+And after that we can develop list shopping cart item items property which represent one to end relationships.
+
+22
+00:01:33,260 --> 00:01:40,220
+And after that we will calculate the total price with iterating our shopping cart item and multiplying
+
+23
+00:01:40,220 --> 00:01:42,230
+price and quantity information.
+
+24
+00:01:42,350 --> 00:01:49,580
+And we have one constructor including the username, and we have also one empty constructor.
+
+25
+00:01:49,580 --> 00:01:51,230
+This is required for mapping.
+
+26
+00:01:51,230 --> 00:01:57,290
+Shopping cart class will be aggregate throughout our domain analyzing and these will be indexed by the
+
+27
+00:01:57,290 --> 00:01:58,100
+username.
+
+28
+00:01:58,100 --> 00:02:00,440
+And this will be unique identifier.
+
+29
+00:02:00,440 --> 00:02:07,010
+So that means these two classes shopping cart and shopping cart item will be our document table on document
+
+30
+00:02:07,010 --> 00:02:08,780
+database with using Martin.
+
+31
+00:02:08,780 --> 00:02:14,360
+And the username will be our primary key object into the document table.
+
+32
+00:02:14,360 --> 00:02:19,430
+And this will be managed by the NoSQL database which will be the Martin and PostgreSQL.
+
+33
+00:02:19,430 --> 00:02:25,280
+And the whole shopping cart and shopping cart item data will be stored Martin document database and
+
+34
+00:02:25,280 --> 00:02:27,710
+also distributed cache with Redis.
+
+35
+00:02:27,710 --> 00:02:31,850
+So we will store shopping cart and shopping cart item in a Json format.
+
+36
+00:02:31,850 --> 00:02:37,340
+And these entities stored both PostgreSQL database and also Redis distributed cache.
+

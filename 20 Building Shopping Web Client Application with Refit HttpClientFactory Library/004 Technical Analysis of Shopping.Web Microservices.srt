@@ -1,0 +1,152 @@
+1
+00:00:00,140 --> 00:00:05,300
+In this video we are going to do technical analysis of shopping web microservices.
+
+2
+00:00:05,300 --> 00:00:11,270
+This will include application architecture, analyzing pattern and principles libraries, NuGet packages
+
+3
+00:00:11,270 --> 00:00:12,890
+and project folder structure.
+
+4
+00:00:12,890 --> 00:00:16,219
+So let me start with the application architecture style.
+
+5
+00:00:16,370 --> 00:00:21,980
+As an application architecture style, we will use traditional and layered architecture that will include
+
+6
+00:00:21,980 --> 00:00:27,860
+presentation layer which is the CSS, HTML, razor, web page and business layer which is the services
+
+7
+00:00:27,860 --> 00:00:34,700
+classes that calls Erb, API gateway and Data layer, which basically Erb API gateway calls to downstream
+
+8
+00:00:34,700 --> 00:00:37,040
+microservices with using models folder.
+
+9
+00:00:37,550 --> 00:00:42,200
+And just after that, we can examine the pattern and principles that we are going to use.
+
+10
+00:00:42,200 --> 00:00:49,430
+We will use Typesafe raised Http client factory Implementation service Proxy pattern, and ASP.Net razor
+
+11
+00:00:49,430 --> 00:00:50,060
+pages.
+
+12
+00:00:50,150 --> 00:00:55,160
+And just after that we can examine libraries and NuGet packages as a NuGet package.
+
+13
+00:00:55,160 --> 00:01:02,540
+We will use refit Http client factory and this will be provide generated clients for efficient Http
+
+14
+00:01:02,540 --> 00:01:03,740
+communications.
+
+15
+00:01:03,770 --> 00:01:06,800
+After that we can examine the project folder structure.
+
+16
+00:01:06,800 --> 00:01:12,080
+And here you can see the our project folder structure including the presentation model and services
+
+17
+00:01:12,080 --> 00:01:12,650
+folder.
+
+18
+00:01:12,650 --> 00:01:18,320
+So as you can see that in the presentation folder we have pages and root folder.
+
+19
+00:01:18,320 --> 00:01:24,920
+You can see in here this will be representing our presentation layer page folder and WW root folder.
+
+20
+00:01:25,040 --> 00:01:30,230
+And after that you can see the models folder including the catalog basket and ordering data models.
+
+21
+00:01:30,230 --> 00:01:32,750
+These will be staying under the models folder.
+
+22
+00:01:32,750 --> 00:01:39,350
+And lastly we have services folder including the catalog basket and I ordering service interfaces to
+
+23
+00:01:39,350 --> 00:01:44,240
+communicate and interact with the internal downstream microservices over the AAP API gateway.
+
+24
+00:01:44,240 --> 00:01:47,270
+And this will be located under the services folder.
+
+25
+00:01:47,270 --> 00:01:50,000
+So this is the our shopping page client application.
+
+26
+00:01:50,000 --> 00:01:55,190
+And if you look at these picture you can see the full folder structure with expanded folders.
+
+27
+00:01:55,190 --> 00:01:59,900
+According to this picture you can see the shopping web client application and we have modules folder
+
+28
+00:01:59,900 --> 00:02:04,520
+including the catalog basket and ordering domain models and data models.
+
+29
+00:02:04,520 --> 00:02:11,540
+And we have also pages folder including our cart checkout, confirmation, contact index, order list,
+
+30
+00:02:11,540 --> 00:02:17,720
+product detail and product list page that represent our E-shop and e-commerce client application page.
+
+31
+00:02:17,720 --> 00:02:23,090
+And here you can see the services folder, including the Eye Basket Catalog and Eye Ordering service
+
+32
+00:02:23,090 --> 00:02:28,790
+folder that represents an interact with the ERP API gateway in order to perform end to end use case
+
+33
+00:02:28,790 --> 00:02:31,280
+and expanding data into our pages.
+
+34
+00:02:31,400 --> 00:02:35,750
+And lastly, we can check the deployment of the shopping web client application.
+
+35
+00:02:35,750 --> 00:02:41,360
+According to deployment, we can say that we will containerize our servers with Docker and ensuring
+
+36
+00:02:41,360 --> 00:02:44,570
+deployment and integration with the shopping web client application.
+
+37
+00:02:44,570 --> 00:02:49,610
+And we will implement Docker file and docker compose file for running shopping web client application
+
+38
+00:02:49,610 --> 00:02:51,020
+in fully docker environment.
+

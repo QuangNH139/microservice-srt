@@ -1,0 +1,196 @@
+1
+00:00:00,170 --> 00:00:05,300
+In this video we are going to create ASP.Net web API for basket API.
+
+2
+00:00:05,300 --> 00:00:06,470
+Microservices.
+
+3
+00:00:06,470 --> 00:00:11,780
+This microservices is crucial for managing shopping cart operations in our application.
+
+4
+00:00:11,780 --> 00:00:16,250
+So please open the Visual Studio and go to the services folder.
+
+5
+00:00:16,250 --> 00:00:21,170
+So as you can see that we have already created Catalog Microservices under the catalog folder.
+
+6
+00:00:21,170 --> 00:00:25,130
+For that purpose, we will start by organizing our solution.
+
+7
+00:00:25,130 --> 00:00:31,220
+Under the services we will create a subfolder which name is basket and we will include basket API project
+
+8
+00:00:31,220 --> 00:00:32,360
+under this folder.
+
+9
+00:00:32,360 --> 00:00:38,630
+So please right click the services and add new subfolder which name is basket.
+
+10
+00:00:39,800 --> 00:00:46,760
+And under the basket we will create a new ASP.Net web API project which name is basket API.
+
+11
+00:00:46,760 --> 00:00:50,660
+But we should put correct location in this web API project.
+
+12
+00:00:50,660 --> 00:00:56,510
+And this project will be dotnet eight and include both Http and https support.
+
+13
+00:00:56,510 --> 00:01:01,490
+So for that purpose please right click the basket and add new project.
+
+14
+00:01:01,490 --> 00:01:05,390
+So we will follow the ASP.Net Core Empty Project template.
+
+15
+00:01:05,390 --> 00:01:10,220
+If you click the next button we can configure our ASP.Net web API project.
+
+16
+00:01:10,220 --> 00:01:12,980
+The project name should be basket dot API.
+
+17
+00:01:12,980 --> 00:01:17,960
+And the important thing is we should give the correct location for our API project.
+
+18
+00:01:17,960 --> 00:01:24,620
+For that purpose, you can click this browse button and go to the our main repository which is the microservices,
+
+19
+00:01:24,620 --> 00:01:26,240
+and go to source folder.
+
+20
+00:01:26,240 --> 00:01:30,950
+Under the source folder we have services folder including our microservices.
+
+21
+00:01:30,950 --> 00:01:34,520
+Here you can see that we have only catalog microservices yet.
+
+22
+00:01:34,520 --> 00:01:36,650
+But now I'm going to select this folder.
+
+23
+00:01:36,650 --> 00:01:39,710
+And after that I'm going to create a basket folder with monolith.
+
+24
+00:01:39,800 --> 00:01:45,320
+With writing in here you can see that this will be create a new basket folder under the services.
+
+25
+00:01:45,320 --> 00:01:48,980
+And my API project will be located in this path.
+
+26
+00:01:49,010 --> 00:01:52,370
+So let me zoom into this configurations.
+
+27
+00:01:52,370 --> 00:01:59,360
+And you can see that project name is basket API and location is following the microservices source services
+
+28
+00:01:59,360 --> 00:02:02,150
+and basket will be created newly folder.
+
+29
+00:02:02,150 --> 00:02:06,830
+And this will be the our main location for basket API web API project.
+
+30
+00:02:06,830 --> 00:02:13,370
+So after configure this project we can click the next button and we will leave as it is for these configurations.
+
+31
+00:02:13,370 --> 00:02:15,500
+These are the dotnet eight framework.
+
+32
+00:02:15,500 --> 00:02:19,190
+And we can configure for Https enabled for Docker.
+
+33
+00:02:19,190 --> 00:02:21,650
+And this Docker operating system will be Linux.
+
+34
+00:02:21,650 --> 00:02:24,440
+And we will follow the top level using statement.
+
+35
+00:02:24,440 --> 00:02:26,990
+That's why this checkbox is not checked.
+
+36
+00:02:26,990 --> 00:02:29,120
+And please click the create button.
+
+37
+00:02:29,120 --> 00:02:34,640
+And this will be Create Basket API microservices under our Services Basket folder.
+
+38
+00:02:34,640 --> 00:02:37,160
+Here you can see the our basket microservices.
+
+39
+00:02:37,160 --> 00:02:39,980
+The first thing we should do that go to the program stage.
+
+40
+00:02:39,980 --> 00:02:44,210
+And we will refactor Program.cs according to our requirements.
+
+41
+00:02:44,210 --> 00:02:49,970
+So as you remember that we are separating by two before building the application and after building
+
+42
+00:02:50,000 --> 00:02:50,750
+the application.
+
+43
+00:02:50,750 --> 00:02:55,910
+So before building the application we will add services to the built in dependency injection container.
+
+44
+00:02:55,910 --> 00:02:58,580
+That's why I'm putting a command in here.
+
+45
+00:02:58,580 --> 00:03:04,610
+And after building the web application I'm going to remove these Mapkit operation.
+
+46
+00:03:04,610 --> 00:03:11,390
+And we basically configure the Http request pipeline before running the application and after building
+
+47
+00:03:11,390 --> 00:03:14,030
+the application so you can save these programs.
+
+48
+00:03:14,030 --> 00:03:19,130
+Yes, we will follow this structure when configuring our basket API microservices.
+
+49
+00:03:19,220 --> 00:03:24,200
+As you can see that we have finished the initial setup of our basket API microservices.
+

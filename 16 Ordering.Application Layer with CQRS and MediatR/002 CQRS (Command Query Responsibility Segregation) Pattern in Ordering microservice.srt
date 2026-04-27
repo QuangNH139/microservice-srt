@@ -1,0 +1,144 @@
+1
+00:00:00,350 --> 00:00:03,350
+In this video we are going to learn skills.
+
+2
+00:00:03,350 --> 00:00:09,590
+Design pattern skills is one of the important pattern when querying between microservices.
+
+3
+00:00:09,860 --> 00:00:17,030
+We can use skills design pattern in order to avoid complex queries to get rid of the inefficient joins.
+
+4
+00:00:17,480 --> 00:00:22,040
+Queries stands for the command and query Responsibility segregation.
+
+5
+00:00:22,130 --> 00:00:28,040
+And basically this pattern separates read and write operations with separating the databases.
+
+6
+00:00:28,790 --> 00:00:34,160
+The main idea is that we can divide application operations into two separate categories.
+
+7
+00:00:34,160 --> 00:00:35,690
+The first one is commands.
+
+8
+00:00:35,690 --> 00:00:41,600
+These commands are changing the state of data into application, and the second one is queries.
+
+9
+00:00:41,810 --> 00:00:44,780
+And these queries are handling the complex.
+
+10
+00:00:44,780 --> 00:00:50,600
+Join operations and returning a result and don't change the state of data into the application.
+
+11
+00:00:51,560 --> 00:00:57,950
+In a large scale, microservice architectures need to manage high volume data requirements for this
+
+12
+00:00:57,950 --> 00:00:59,150
+kind of use cases.
+
+13
+00:00:59,150 --> 00:01:06,200
+Monolithic approach, like single databases for services, can cause the bottlenecks for complex and
+
+14
+00:01:06,200 --> 00:01:08,120
+large scale microservice architectures.
+
+15
+00:01:08,120 --> 00:01:14,210
+We can use both skills and event sourcing pattern in order to improve application performance.
+
+16
+00:01:14,210 --> 00:01:21,620
+Skills offers to separate the read and write data that provide to maximize query performance and scalability.
+
+17
+00:01:23,340 --> 00:01:25,740
+Let's think about the monolithic applications.
+
+18
+00:01:25,740 --> 00:01:32,610
+Most of the time we have one database, and this database should respond to both query and update operations.
+
+19
+00:01:32,700 --> 00:01:39,630
+That means a single database is both working for the complex joint queries and also perform Crud operations.
+
+20
+00:01:40,440 --> 00:01:47,280
+But if the application goes more complex, this query and Crud operations will be also is going to be
+
+21
+00:01:47,280 --> 00:01:48,840
+unmanageable situation.
+
+22
+00:01:49,350 --> 00:01:55,680
+In example of reading database, if your application required some queries that needs to join more than
+
+23
+00:01:55,680 --> 00:02:01,050
+one table that will lock the database due to latency of query computation.
+
+24
+00:02:01,560 --> 00:02:07,770
+Also, if we give example of writing database when performing Crud operations, we would need to make
+
+25
+00:02:07,770 --> 00:02:11,190
+complex validations and process long business logics.
+
+26
+00:02:11,190 --> 00:02:14,580
+So this will cause to lock the database operations also.
+
+27
+00:02:15,150 --> 00:02:21,090
+So reading and writing database has different approaches that we can define different strategies in
+
+28
+00:02:21,090 --> 00:02:22,860
+order to handle that operations.
+
+29
+00:02:23,460 --> 00:02:30,090
+In order to do that, Sickles offer to use separation of concerns principles and separate reading database
+
+30
+00:02:30,090 --> 00:02:32,970
+and writing database with two databases.
+
+31
+00:02:32,970 --> 00:02:39,420
+By this way, we can even use different database for reading and writing database types, like using
+
+32
+00:02:39,420 --> 00:02:45,960
+NoSQL databases for reading operations and using relational databases for Crud operations.
+
+33
+00:02:46,410 --> 00:02:53,730
+Mostly read database uses NoSQL database with denormalized data which is generated from the right database,
+
+34
+00:02:53,730 --> 00:03:01,110
+and right database uses relational databases with fully normalized and support strong data consistency.
+
+35
+00:03:01,200 --> 00:03:07,980
+But during this section we are going to use logical sequence pattern implementation, which separates
+
+36
+00:03:07,980 --> 00:03:11,880
+the read and write operations logically in ordering microservices.
+

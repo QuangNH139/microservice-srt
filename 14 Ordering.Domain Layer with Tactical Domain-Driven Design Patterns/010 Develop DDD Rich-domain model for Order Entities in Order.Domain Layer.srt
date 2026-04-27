@@ -1,0 +1,520 @@
+1
+00:00:00,170 --> 00:00:06,950
+In this video, we are going to develop rich domain model for other entities in the order domain layer.
+
+2
+00:00:07,250 --> 00:00:11,930
+For that purpose we will use static create method for each entity.
+
+3
+00:00:11,960 --> 00:00:14,600
+As you know that in the previous videos we.
+
+4
+00:00:14,630 --> 00:00:18,650
+When we developing the value objects, we have used all static methods.
+
+5
+00:00:18,650 --> 00:00:24,440
+But this time we will develop entities and we will develop create static methods for that purpose.
+
+6
+00:00:24,470 --> 00:00:29,540
+Please open the Visual Studio and go to the modules and go to the customer entity.
+
+7
+00:00:29,570 --> 00:00:36,530
+Customer entity is responsible for creating instance of itself and ensuring that all the necessary validations
+
+8
+00:00:36,530 --> 00:00:38,360
+are applied during the creation.
+
+9
+00:00:38,390 --> 00:00:44,750
+Here you can see that we have already developed static customer create method, and the create method
+
+10
+00:00:44,750 --> 00:00:50,630
+allows for the instantiation of the customer object, ensuring that all the necessary properties are
+
+11
+00:00:50,630 --> 00:00:52,070
+provided and valid.
+
+12
+00:00:52,070 --> 00:00:58,670
+And you can see that we have used argument validation and argument exception used for the validate input
+
+13
+00:00:58,670 --> 00:01:06,030
+parameters So we will follow the same steps and we will create a new create method for the rest of the
+
+14
+00:01:06,030 --> 00:01:06,690
+entities.
+
+15
+00:01:06,690 --> 00:01:13,470
+I'm going to open the product case and the product entity similarly encapsulate its own create logic.
+
+16
+00:01:13,470 --> 00:01:21,660
+For that purpose, I'm going to develop a create method which is the public static and product create
+
+17
+00:01:21,660 --> 00:01:24,540
+method with including the all the parameters.
+
+18
+00:01:24,540 --> 00:01:28,980
+So in here you can see that we have developed the static create method.
+
+19
+00:01:28,980 --> 00:01:34,110
+And in this method the parameters including product id name and price.
+
+20
+00:01:34,140 --> 00:01:41,550
+We get the ID information in the beginning of these create methods to explicitly set the ID information
+
+21
+00:01:41,550 --> 00:01:48,090
+for each entities, and in the beginning of this static create method, we always perform the validations
+
+22
+00:01:48,090 --> 00:01:48,990
+and domain rules.
+
+23
+00:01:48,990 --> 00:01:53,850
+Here you can see that I'm going to use out-of-the-box argument exception extension method.
+
+24
+00:01:53,880 --> 00:02:01,950
+Check if null or empty for the name property and check the price is positive and greater than zero.
+
+25
+00:02:01,980 --> 00:02:09,150
+You can see this validation and after that we can use the default constructors to create new product,
+
+26
+00:02:09,180 --> 00:02:12,030
+safely passing the ID name and price.
+
+27
+00:02:12,030 --> 00:02:17,760
+And lastly, we will return the newly created product to the create static method.
+
+28
+00:02:18,000 --> 00:02:23,940
+So the create method is responsible for constructing product objects, and it validates the name and
+
+29
+00:02:23,940 --> 00:02:26,550
+price and ensuring they meet the domain rules.
+
+30
+00:02:26,670 --> 00:02:32,310
+And after that we can go to the next domain model and entity which is the order item.
+
+31
+00:02:32,310 --> 00:02:40,110
+If you look at the order item, we don't have any responsibility for this entity because all the responsibilities
+
+32
+00:02:40,110 --> 00:02:45,930
+of these order item entity belongs to aggregate which is the order aggregate.
+
+33
+00:02:45,960 --> 00:02:52,770
+We can see the constructor access modifier is internal for order item, because order item should only
+
+34
+00:02:52,770 --> 00:02:55,440
+be created from the aggregate, which is the order.
+
+35
+00:02:55,440 --> 00:03:02,400
+If you open the order, you can understand that all order item related operations should be responsible
+
+36
+00:03:02,400 --> 00:03:03,960
+in the order aggregate.
+
+37
+00:03:03,960 --> 00:03:11,560
+So the order entity is the aggregate root and it is responsible for managing its own state and the state
+
+38
+00:03:11,560 --> 00:03:14,020
+of its associated order items.
+
+39
+00:03:14,050 --> 00:03:22,870
+That means ordered domain model is responsibilities are create and update an order for the existing
+
+40
+00:03:22,870 --> 00:03:29,740
+entity, and also add or remove items for the order items related to order aggregate.
+
+41
+00:03:29,740 --> 00:03:34,780
+So let's implement these functions under the these data related properties.
+
+42
+00:03:34,780 --> 00:03:40,780
+If you scroll down and go at the end of these order aggregate class, the first thing we should develop
+
+43
+00:03:40,780 --> 00:03:42,550
+is static create method.
+
+44
+00:03:42,550 --> 00:03:50,080
+So I'm going to write public static order and create method with passing all the members inside of the
+
+45
+00:03:50,080 --> 00:03:51,580
+this class.
+
+46
+00:03:51,580 --> 00:03:56,890
+And here you can see that we have created the public static order create.
+
+47
+00:03:56,890 --> 00:04:02,740
+And after that this will be include all the information including the order aggregate.
+
+48
+00:04:02,740 --> 00:04:07,420
+We will start with the ID in order to define this ID explicitly.
+
+49
+00:04:07,420 --> 00:04:14,320
+When creating any order and continue with the customer ID order name address, shipping address and
+
+50
+00:04:14,320 --> 00:04:15,070
+billing address.
+
+51
+00:04:15,100 --> 00:04:16,690
+Payment and so on.
+
+52
+00:04:16,690 --> 00:04:23,050
+So this is the body of the arcade operation that we will define when creating a new order.
+
+53
+00:04:23,050 --> 00:04:29,110
+And in the beginning of this code, I'm going to directly create a new order using the default constructor
+
+54
+00:04:29,110 --> 00:04:35,890
+with passing all these parameters and members for the order entity, and we are passing the status for
+
+55
+00:04:35,890 --> 00:04:38,500
+order status pending for the initial status.
+
+56
+00:04:38,500 --> 00:04:43,540
+And after that I'm going to use order dot Add Domain event.
+
+57
+00:04:43,540 --> 00:04:49,030
+If you come here and write to order, and if you check the method you can see that we have a domain
+
+58
+00:04:49,030 --> 00:04:49,480
+events.
+
+59
+00:04:49,480 --> 00:04:54,070
+And these methods comes from the our aggregate base abstract class.
+
+60
+00:04:54,070 --> 00:05:00,550
+In order to adding domain event into our order aggregate, I will explain the domain events in the next
+
+61
+00:05:00,550 --> 00:05:00,910
+videos.
+
+62
+00:05:00,910 --> 00:05:06,880
+But now I'm going to put this line of code adding new domain event, which is the order created event
+
+63
+00:05:06,880 --> 00:05:08,890
+with passing the newly created order.
+
+64
+00:05:08,890 --> 00:05:11,500
+And after that we can safely return order.
+
+65
+00:05:13,090 --> 00:05:19,820
+So this is the static create method for responsibility of the creating an order for the order entity,
+
+66
+00:05:19,820 --> 00:05:23,300
+and after that we can continue with the update operation.
+
+67
+00:05:23,300 --> 00:05:30,200
+I'm going to follow the same steps, but this time we are going to create update method and this will
+
+68
+00:05:30,200 --> 00:05:32,150
+be using when updating an order.
+
+69
+00:05:32,150 --> 00:05:35,150
+So this is typical public void update method.
+
+70
+00:05:35,150 --> 00:05:41,030
+And we will be passing the order name address shipping address and billing address payment and order
+
+71
+00:05:41,030 --> 00:05:41,660
+status.
+
+72
+00:05:41,660 --> 00:05:45,530
+So in here we will using the update operations.
+
+73
+00:05:45,530 --> 00:05:52,940
+So I'm going to update these incoming parameters with the property values of the current order aggregate
+
+74
+00:05:52,940 --> 00:05:53,840
+entity class.
+
+75
+00:05:53,840 --> 00:06:01,220
+And after that I'm going to use a domain event function again in order to throw any domain event which
+
+76
+00:06:01,220 --> 00:06:06,140
+is the order updated event with passing this order aggregate entity class.
+
+77
+00:06:06,140 --> 00:06:12,140
+So these are the create and update method responsible for the order entity.
+
+78
+00:06:12,140 --> 00:06:18,720
+And as you can see that I'm not using any domain rules and validations in the beginning of the create
+
+79
+00:06:18,750 --> 00:06:19,440
+operation.
+
+80
+00:06:19,440 --> 00:06:24,240
+Because if you check these parameters, all parameters are the value objects.
+
+81
+00:06:24,240 --> 00:06:29,700
+And if you go to the value objects, you can see that we have already applied domain rules in the beginning
+
+82
+00:06:29,700 --> 00:06:30,240
+of the.
+
+83
+00:06:30,240 --> 00:06:32,730
+These create operation of the value objects.
+
+84
+00:06:32,730 --> 00:06:39,390
+And for each value object we have adding enough domain rules and validations that we cannot pass the
+
+85
+00:06:39,420 --> 00:06:43,830
+invalid data when creating any order under the order CS file.
+
+86
+00:06:44,070 --> 00:06:50,940
+After this method, we can continue with the next responsibility, which is the add or remove item from
+
+87
+00:06:50,940 --> 00:06:52,470
+the order aggregate.
+
+88
+00:06:52,470 --> 00:06:58,200
+And that's why I'm going to create a new method, which is the public void add, and the parameters
+
+89
+00:06:58,200 --> 00:07:04,950
+representing required for the new order item operation, which is including product ID, quantity and
+
+90
+00:07:04,950 --> 00:07:05,460
+price.
+
+91
+00:07:05,460 --> 00:07:10,170
+So this method is responsible for adding new item into order aggregate.
+
+92
+00:07:10,170 --> 00:07:13,020
+That means we will create new order item id.
+
+93
+00:07:13,170 --> 00:07:20,130
+So before starting we will check the domain rules and validations using the argument out of range Outofrange
+
+94
+00:07:20,160 --> 00:07:26,670
+exception, I'm going to check quantity and price information with incoming to our add method, and
+
+95
+00:07:26,670 --> 00:07:33,420
+after that we will create a new Orderitem with passing these values to our Orderitem constructor.
+
+96
+00:07:33,450 --> 00:07:39,660
+Here you can see that I am using a new Orderitem variable and using new Orderitem constructor, which
+
+97
+00:07:39,660 --> 00:07:46,080
+is the internal constructor that we can only reach access in the ordering domain layer, and we will
+
+98
+00:07:46,080 --> 00:07:48,690
+be passing the ID information, which is the order ID.
+
+99
+00:07:48,840 --> 00:07:57,090
+This ID information the current ID of the entity of the order and passing the product ID, quantity
+
+100
+00:07:57,090 --> 00:07:57,750
+and price.
+
+101
+00:07:57,750 --> 00:08:03,450
+If you right click and go to definition of the Orderitem constructor, you can see that we will be passing
+
+102
+00:08:03,480 --> 00:08:08,880
+order ID in the beginning of the parameters and continue to product ID quantity and price.
+
+103
+00:08:08,880 --> 00:08:16,170
+And in the inside of this constructor, we will newly create order item ID and continue to set order
+
+104
+00:08:16,170 --> 00:08:18,990
+ID, product ID, quantity and price information.
+
+105
+00:08:18,990 --> 00:08:27,850
+If you go back to our order and locate our add method After defining and new orderitem, we basically
+
+106
+00:08:27,880 --> 00:08:34,659
+add these orderitem into the orderitems of the current order aggregate so we can use order underscore
+
+107
+00:08:34,690 --> 00:08:43,390
+Orderitems private readonly list object and click the add button, and we will use add button and placing
+
+108
+00:08:43,419 --> 00:08:46,270
+the Orderitem inside of the this list.
+
+109
+00:08:46,300 --> 00:08:51,340
+By this way we can encapsulate the order items into the order aggregate.
+
+110
+00:08:51,730 --> 00:08:57,640
+We can see order items and go to the definition of the order items, which is in the beginning of the
+
+111
+00:08:57,640 --> 00:08:58,660
+order aggregate.
+
+112
+00:08:58,690 --> 00:09:05,350
+We basically create new private readonly list order item underscore order items with the new keyword
+
+113
+00:09:05,350 --> 00:09:11,890
+and when we need to return order item list to the outside of the world, we basically use order items
+
+114
+00:09:11,890 --> 00:09:12,610
+property.
+
+115
+00:09:12,610 --> 00:09:19,090
+And for this property we basically return read only copy of the original list of the order items.
+
+116
+00:09:19,090 --> 00:09:26,860
+So if you go at the end of the this class and continue to our the next method which is the remove items
+
+117
+00:09:26,860 --> 00:09:28,210
+from the order.
+
+118
+00:09:28,210 --> 00:09:34,510
+For that purpose, I'm going to use and create a new method which is the public void remove, including
+
+119
+00:09:34,540 --> 00:09:40,090
+the product id because we will remove items according to product ID for that purpose.
+
+120
+00:09:40,090 --> 00:09:47,620
+First of all, we need to find order item regarding to this product ID and we will use order items that
+
+121
+00:09:47,620 --> 00:09:53,440
+first or default method, and we will passing the product ID inside of this method body.
+
+122
+00:09:53,440 --> 00:09:56,140
+And by this way we can reach the order item.
+
+123
+00:09:56,140 --> 00:10:01,990
+And if the order item is not null, we can remove this order item in our current list.
+
+124
+00:10:02,020 --> 00:10:05,110
+Here you can see that we will check the order item is not null.
+
+125
+00:10:05,110 --> 00:10:10,450
+We can remove order items that remove method and passing the order item in order to remove this item
+
+126
+00:10:10,450 --> 00:10:11,380
+into our list.
+
+127
+00:10:11,380 --> 00:10:18,370
+As you can see that we have completed the order aggregate behavior with developing add, remove, update
+
+128
+00:10:18,370 --> 00:10:22,240
+and create methods inside of the order Aggregate class.
+
+129
+00:10:22,240 --> 00:10:28,810
+By this way, each entity is responsible for its own behavior, validating its own state and ensuring
+
+130
+00:10:28,840 --> 00:10:29,770
+the consistency.
+

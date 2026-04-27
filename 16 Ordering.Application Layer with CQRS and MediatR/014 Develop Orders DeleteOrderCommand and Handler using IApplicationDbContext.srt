@@ -1,0 +1,364 @@
+1
+00:00:00,170 --> 00:00:06,170
+In this video we are going to develop delete, order, command and handle using the AI application db
+
+2
+00:00:06,170 --> 00:00:06,920
+context.
+
+3
+00:00:06,920 --> 00:00:11,180
+Here you can see that we are at the stage of the delete order use case.
+
+4
+00:00:11,180 --> 00:00:15,170
+And we are going to create this folder and implement Command and handle class.
+
+5
+00:00:15,170 --> 00:00:22,310
+For that purpose, please open the Visual Studio and go to the Ordering application orders commands.
+
+6
+00:00:22,310 --> 00:00:25,580
+And under the commands I'm going to create a new folder.
+
+7
+00:00:25,580 --> 00:00:27,470
+Which name is delete order.
+
+8
+00:00:27,470 --> 00:00:34,250
+Right click Add new sub folder, which name is delete order and in the delete order folder I'm going
+
+9
+00:00:34,250 --> 00:00:35,960
+to create a new class.
+
+10
+00:00:35,960 --> 00:00:38,090
+Which name is Delete Order command.
+
+11
+00:00:38,090 --> 00:00:41,660
+So we will follow the same steps with the Create and update order.
+
+12
+00:00:41,660 --> 00:00:47,630
+I'm going to add a new class, which name is Delete order command and this delete order command will
+
+13
+00:00:47,630 --> 00:00:48,890
+be very straightforward.
+
+14
+00:00:48,890 --> 00:00:52,520
+It will be carry the ID of the order to be deleted.
+
+15
+00:00:52,520 --> 00:00:57,110
+And we will also validate ensure the presence of the order ID for that purpose.
+
+16
+00:00:57,110 --> 00:01:02,870
+Please remove the unnecessary using statement and I am going to delete the internal class definition
+
+17
+00:01:02,870 --> 00:01:07,190
+because we will create a record type for the delete order command.
+
+18
+00:01:07,190 --> 00:01:12,620
+And here you can see the delete order command which is the public record delete order command.
+
+19
+00:01:12,620 --> 00:01:19,250
+And it is taking order ID get value as a parameter and implementing a command interface with a returning
+
+20
+00:01:19,250 --> 00:01:20,570
+the delete order result.
+
+21
+00:01:20,840 --> 00:01:25,160
+That means we should also create delete order result as a record type.
+
+22
+00:01:25,160 --> 00:01:25,520
+In.
+
+23
+00:01:25,520 --> 00:01:32,000
+Here I have created public record delete order result and taking its success Boolean value as a parameter
+
+24
+00:01:32,000 --> 00:01:35,600
+that representing the delete operation is success or not.
+
+25
+00:01:35,600 --> 00:01:40,070
+And after that we can also validate the incoming command object.
+
+26
+00:01:40,070 --> 00:01:46,820
+For that purpose, we always creating a delete command validator with inherits from the abstract validator
+
+27
+00:01:46,820 --> 00:01:48,500
+for the delete order command.
+
+28
+00:01:48,500 --> 00:01:54,140
+And in this validator class, we basically create a constructor and put a rule for method.
+
+29
+00:01:54,140 --> 00:02:00,380
+In order to rule for the order id not empty with the message is order id is required.
+
+30
+00:02:00,380 --> 00:02:03,770
+So this is the implementation of the delete order command class.
+
+31
+00:02:03,770 --> 00:02:07,490
+And we will also implement delete order command handler.
+
+32
+00:02:07,490 --> 00:02:12,590
+For that purpose, please go to the delete order folder and add a new class.
+
+33
+00:02:12,590 --> 00:02:14,780
+Which name is delete order handler.
+
+34
+00:02:15,080 --> 00:02:21,380
+So in this handler class we basically implements a command handler interface with getting type of the
+
+35
+00:02:21,380 --> 00:02:23,840
+delete order command and delete order result.
+
+36
+00:02:23,840 --> 00:02:25,490
+So let's get started.
+
+37
+00:02:25,490 --> 00:02:30,110
+Please remove unnecessary using statement and make this class as a public.
+
+38
+00:02:30,560 --> 00:02:37,070
+And after that I am going to implement I command handler interface for this class.
+
+39
+00:02:37,070 --> 00:02:42,560
+Here you can see that we have implementing I command handler and getting the type of the delete order
+
+40
+00:02:42,560 --> 00:02:45,440
+command and returning type of the delete order result.
+
+41
+00:02:45,440 --> 00:02:49,910
+And after that we can implement the interface members which is the handle method.
+
+42
+00:02:50,150 --> 00:02:53,690
+So now we can start to implement these actual handle method.
+
+43
+00:02:53,690 --> 00:02:56,180
+I'm going to make this method as an async method.
+
+44
+00:02:56,180 --> 00:03:00,110
+And after that as you can see that the first parameter is delete order command.
+
+45
+00:03:00,110 --> 00:03:03,470
+I'm going to change the parameter name request to command.
+
+46
+00:03:03,470 --> 00:03:08,360
+And now we are going to implement this handle method which is the our actual operation.
+
+47
+00:03:08,360 --> 00:03:13,040
+For that purpose I'm going to start with the our to do list command items.
+
+48
+00:03:13,040 --> 00:03:17,330
+Here you can see that we will delete order entity from the command object.
+
+49
+00:03:17,330 --> 00:03:23,750
+And we will say to database and return the result before start the implementation of this method.
+
+50
+00:03:23,750 --> 00:03:28,340
+When we are implementing the database, we need AI application db context.
+
+51
+00:03:28,340 --> 00:03:34,490
+For that purpose, I am going to go to the the class definition and inject the AI application db context
+
+52
+00:03:34,490 --> 00:03:36,410
+with using primary constructor.
+
+53
+00:03:36,410 --> 00:03:42,170
+Please add this line of code in order to inject our db context when the application start up, and we
+
+54
+00:03:42,170 --> 00:03:48,920
+will use these db context object when we are interacting and deleting order into our database using
+
+55
+00:03:48,920 --> 00:03:50,060
+the Entity Framework core.
+
+56
+00:03:50,060 --> 00:03:52,430
+So now we can start implementation.
+
+57
+00:03:52,430 --> 00:03:58,850
+And the first step is I'm going to fetch the order using the find async method, which I have provided
+
+58
+00:03:58,850 --> 00:04:01,850
+the order ID information to the find async method.
+
+59
+00:04:01,850 --> 00:04:08,330
+So here you can see that the first line of code I'm going to create an order ID for strongly type IDs.
+
+60
+00:04:08,330 --> 00:04:15,350
+I'm going to passing the command dot order id to creating this strongly type order id because find async
+
+61
+00:04:15,350 --> 00:04:21,800
+method in the Entity Framework, core is requiring the strongly type id in order to get the order id
+
+62
+00:04:21,800 --> 00:04:23,780
+and order record from the database.
+
+63
+00:04:23,780 --> 00:04:30,620
+So after getting the order ID, we are using the await db context orders and find async method and passing
+
+64
+00:04:30,620 --> 00:04:36,260
+the these order id as a parameter of the find async method and cancellation token, and this will be
+
+65
+00:04:36,260 --> 00:04:40,310
+returned an order from the database with a given order id.
+
+66
+00:04:40,550 --> 00:04:47,210
+If the order is null, we can throwing any order not found exception as we have created in the last
+
+67
+00:04:47,210 --> 00:04:54,410
+video, and we can pass the order ID from incoming command to order ID and after that, after validating
+
+68
+00:04:54,410 --> 00:04:59,810
+order is exist, we can remove the order from the context and save the changes that.
+
+69
+00:04:59,980 --> 00:05:05,650
+Means we will perform the remove operation in the database level using the DB context, and this line
+
+70
+00:05:05,680 --> 00:05:06,520
+of code provides.
+
+71
+00:05:06,550 --> 00:05:12,190
+DB context orders removed, and we are passing the order that we get from the database.
+
+72
+00:05:12,190 --> 00:05:18,310
+And after that we will running the await db context save changes async method with passing Cancellationtoken
+
+73
+00:05:18,310 --> 00:05:21,430
+in order to delete this record from the database.
+
+74
+00:05:21,430 --> 00:05:26,200
+And lastly, we can return a result indicating the success of this operation.
+
+75
+00:05:26,200 --> 00:05:30,310
+Here you can see that return new delete order result with passing to true.
+
+76
+00:05:30,310 --> 00:05:34,540
+So now I'm going to safely delete this throw operation.
+
+77
+00:05:34,540 --> 00:05:38,950
+And this is the implementation of the delete order handler method.
+
+78
+00:05:38,950 --> 00:05:41,350
+We can remove unnecessary using statement.
+
+79
+00:05:41,350 --> 00:05:45,310
+And here you can see the delete order handler command and handle method.
+
+80
+00:05:45,430 --> 00:05:51,580
+At this point I would like to explain why we are using find async method in order to retrieve a one
+
+81
+00:05:51,580 --> 00:05:53,260
+order record from the database.
+
+82
+00:05:53,260 --> 00:05:59,740
+If you open the documentation, you can see that we can several ways to read one entity with using entity
+
+83
+00:05:59,740 --> 00:06:04,660
+Framework code, including first order default, single order default, and find async.
+
+84
+00:06:04,660 --> 00:06:11,200
+So when we are using the find async, the retrieve operation performing over the primary key.
+
+85
+00:06:11,200 --> 00:06:16,720
+And this is the best performance way in order to retrieve a single record from the database.
+
+86
+00:06:16,720 --> 00:06:21,130
+So that's why I have used the find and async method into our code.
+
+87
+00:06:21,130 --> 00:06:28,300
+And also when we are passing the order ID, order id is a primary key and the type is order id strongly
+
+88
+00:06:28,300 --> 00:06:28,960
+type ID.
+
+89
+00:06:28,990 --> 00:06:33,310
+That's why Entity Framework code expecting this strongly type IDs.
+
+90
+00:06:33,310 --> 00:06:38,740
+When seeking the table, it has conversion definition into configurations that is getting the great
+
+91
+00:06:38,740 --> 00:06:40,990
+value and seek table with the great value.
+

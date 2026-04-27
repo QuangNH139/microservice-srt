@@ -1,0 +1,144 @@
+1
+00:00:00,200 --> 00:00:04,160
+In this video we are going to develop update discount method.
+
+2
+00:00:04,160 --> 00:00:06,860
+So this is very similar with the create discount method.
+
+3
+00:00:06,860 --> 00:00:11,540
+But this time we will expect the ID information when request coming in.
+
+4
+00:00:11,540 --> 00:00:16,910
+Here you can see the update discount and update discount request also accepting the coupon information.
+
+5
+00:00:16,910 --> 00:00:21,260
+But this time we will expect the ID information in order to update these values.
+
+6
+00:00:21,260 --> 00:00:27,380
+So if you go back to Discount service, I'm going to copy the whole code from the our create discount
+
+7
+00:00:27,380 --> 00:00:29,930
+and paste into the update discount method.
+
+8
+00:00:31,040 --> 00:00:34,550
+And in here the first line of codes are similar.
+
+9
+00:00:34,550 --> 00:00:40,970
+We will check the coupon and if coupon is null we will send the exception and the second line of code
+
+10
+00:00:40,970 --> 00:00:43,400
+we will change when interacting database.
+
+11
+00:00:43,400 --> 00:00:47,960
+First of all, I'm going to change the coupon add method to the update method.
+
+12
+00:00:48,290 --> 00:00:53,630
+So this will be update coupon information with the existing value into database.
+
+13
+00:00:53,630 --> 00:00:59,030
+And after that we will make this method as an async method to perform changes to the database.
+
+14
+00:00:59,030 --> 00:01:05,780
+And when we are logging this information, we will change successfully created to the successfully updated.
+
+15
+00:01:07,970 --> 00:01:12,110
+And also the product name passing in the same value from the coupon object.
+
+16
+00:01:12,110 --> 00:01:16,160
+And lastly, we will respond back with converting to coupon model.
+
+17
+00:01:16,160 --> 00:01:22,280
+In this update discount method, we basically use Entity Framework core DB Context Object and update
+
+18
+00:01:22,280 --> 00:01:25,010
+existing coupon into our discount database.
+
+19
+00:01:25,010 --> 00:01:27,860
+So now we can start to test our application.
+
+20
+00:01:27,860 --> 00:01:31,010
+Please run the discount gRPC application.
+
+21
+00:01:31,010 --> 00:01:33,890
+And after that we will send with the postman.
+
+22
+00:01:33,890 --> 00:01:39,740
+So if you open the postman after running the application you can come here and change the method name
+
+23
+00:01:39,740 --> 00:01:40,940
+as a update discount.
+
+24
+00:01:40,940 --> 00:01:45,440
+But this time I'm going to paste the ID information in here.
+
+25
+00:01:45,440 --> 00:01:50,870
+I'm going to change the whole payload and adding the ID information and changing the value as a updated
+
+26
+00:01:50,870 --> 00:01:53,420
+value for product name, description and amount.
+
+27
+00:01:53,420 --> 00:01:57,260
+So this is the latest payload for the update discount operation.
+
+28
+00:01:57,260 --> 00:02:01,700
+And if we invoke this operation this will be trigger update discount method.
+
+29
+00:02:01,700 --> 00:02:06,620
+And if we continue the debug we will basically convert to our coupon object.
+
+30
+00:02:06,620 --> 00:02:12,920
+And after that update the coupon object using the Dbcontext coupon update method and reflect the change
+
+31
+00:02:12,920 --> 00:02:13,820
+to the database.
+
+32
+00:02:13,820 --> 00:02:19,730
+And after that, log the information and return back to the coupon model to the gRPC client application.
+
+33
+00:02:19,730 --> 00:02:23,240
+Here you can see the updated values comes into our response.
+
+34
+00:02:23,240 --> 00:02:28,430
+In order to verify this, we can open our database and locate the third row.
+
+35
+00:02:28,430 --> 00:02:35,690
+If you refresh this coupons table, you can see that values has changed with the updated values including
+
+36
+00:02:35,690 --> 00:02:37,340
+product name and description.
+

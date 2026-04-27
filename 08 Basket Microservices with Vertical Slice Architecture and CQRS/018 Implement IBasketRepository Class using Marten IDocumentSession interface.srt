@@ -1,0 +1,324 @@
+1
+00:00:00,230 --> 00:00:06,620
+In this video, we are going to implement a basket repository interface using the Martin Library AI
+
+2
+00:00:06,620 --> 00:00:08,210
+documentation interface.
+
+3
+00:00:08,330 --> 00:00:12,920
+Here you can see the opening sessions in Martin as a document database.
+
+4
+00:00:12,950 --> 00:00:18,560
+We will use Primary Constructor to inject Martin classes into our repository object.
+
+5
+00:00:18,590 --> 00:00:21,710
+Here you can see that we will inject a document session.
+
+6
+00:00:21,710 --> 00:00:26,600
+And especially we will use lightweight document sessions for that purpose.
+
+7
+00:00:26,630 --> 00:00:32,479
+Please open the Visual Studio and we should install Martin NuGet packages into basket API.
+
+8
+00:00:32,509 --> 00:00:39,290
+I'm going to right click the basket API project and manage NuGet packages and search for the Martin.
+
+9
+00:00:42,470 --> 00:00:46,940
+Install Martin Library into basket API project.
+
+10
+00:00:48,290 --> 00:00:54,860
+And if you double click the basket API, you can confirm that our Martin library comes into basket API.
+
+11
+00:00:54,890 --> 00:01:01,310
+Now we can use this library into our basket repository to inject AI documentation.
+
+12
+00:01:01,310 --> 00:01:06,440
+So I'm going to inject AI documentation.
+
+13
+00:01:09,080 --> 00:01:10,400
+Is the station name.
+
+14
+00:01:10,400 --> 00:01:17,120
+So if you come here and using Martin's statement, you can see that we have injected successfully.
+
+15
+00:01:17,480 --> 00:01:22,580
+And now we can use Session object to perform, get, store and delete operation.
+
+16
+00:01:22,580 --> 00:01:25,400
+Let me start with the get basket operation.
+
+17
+00:01:25,400 --> 00:01:28,730
+I'm going to remove this throw exception statement.
+
+18
+00:01:28,730 --> 00:01:32,630
+And now I'm going to create a basket variable.
+
+19
+00:01:32,630 --> 00:01:37,910
+And we will use session dot load async method.
+
+20
+00:01:38,360 --> 00:01:44,900
+And I'm going to retrieve shopping cart with a given username and cancellation token.
+
+21
+00:01:45,860 --> 00:01:52,490
+Here you can see that we will get basket information from the PostgreSQL database using the I document
+
+22
+00:01:52,490 --> 00:01:54,320
+session from the Martin library.
+
+23
+00:01:54,320 --> 00:01:59,570
+And we will passing the username because we will get shopping cart by username.
+
+24
+00:01:59,570 --> 00:02:02,840
+And after that I'm going to return this basket.
+
+25
+00:02:02,840 --> 00:02:05,030
+But this basket can be null.
+
+26
+00:02:05,030 --> 00:02:12,890
+So for that purpose I'm going to check that if basket is null we can throw an exception.
+
+27
+00:02:13,520 --> 00:02:15,920
+So what kind of exception that we can throw.
+
+28
+00:02:15,950 --> 00:02:20,090
+We can throw any basket Notfoundexception.
+
+29
+00:02:20,090 --> 00:02:23,480
+We will create this exception a few minutes later.
+
+30
+00:02:23,480 --> 00:02:25,220
+So let me create.
+
+31
+00:02:25,220 --> 00:02:26,870
+And after that I will explain.
+
+32
+00:02:26,990 --> 00:02:32,990
+If basket is not null we can return the basket object to do our method operation.
+
+33
+00:02:33,470 --> 00:02:33,860
+Okay.
+
+34
+00:02:33,860 --> 00:02:36,290
+Get basket is completed successfully.
+
+35
+00:02:36,290 --> 00:02:40,310
+Now I'm going to implement Store basket as.
+
+36
+00:02:40,310 --> 00:02:46,940
+You remember that when we are storing the basket information, we will perform Upsert operation because
+
+37
+00:02:46,940 --> 00:02:51,860
+Martin provides an absurd functionality that simplifies our operations.
+
+38
+00:02:51,860 --> 00:02:59,210
+That means if this shopping cart doesn't exist into database, Martin will insert it.
+
+39
+00:02:59,210 --> 00:03:03,560
+If the shopping cart is already existing, Martin will be updated.
+
+40
+00:03:03,560 --> 00:03:05,480
+The existing shopping cart object.
+
+41
+00:03:05,480 --> 00:03:11,570
+Since we are storing the shopping cart as a Json body into document database, we can update the whole
+
+42
+00:03:11,570 --> 00:03:13,310
+Json into our database.
+
+43
+00:03:13,310 --> 00:03:18,830
+So this behavior aligns with the dynamic nature of the shopping cart and shopping cart items in our
+
+44
+00:03:18,830 --> 00:03:20,150
+e-commerce application.
+
+45
+00:03:20,600 --> 00:03:24,890
+So we will use store method for that purpose.
+
+46
+00:03:24,890 --> 00:03:29,240
+I'm going to write session dot store and pacing the whole basket object.
+
+47
+00:03:29,690 --> 00:03:38,120
+And after that we have to write session dot save change async operation to perform all these operation
+
+48
+00:03:38,540 --> 00:03:39,530
+on database.
+
+49
+00:03:39,530 --> 00:03:42,200
+And I'm going to return this basket.
+
+50
+00:03:46,600 --> 00:03:50,080
+And lastly we can implement delete basket method.
+
+51
+00:03:50,080 --> 00:03:56,860
+For that purpose we have using the session dot delete method, passing the shopping cart as a generic
+
+52
+00:03:56,860 --> 00:04:02,770
+and we have to give username because we will also delete shopping cart by username.
+
+53
+00:04:02,770 --> 00:04:07,870
+And after this operation, of course we will again using the save changes async method.
+
+54
+00:04:07,870 --> 00:04:13,480
+And I'm going to return true as a successful complete operation.
+
+55
+00:04:13,960 --> 00:04:19,510
+So now it is time to develop our custom exception which is the basket not found exception.
+
+56
+00:04:19,510 --> 00:04:24,970
+For that purpose I'm going to create a new folder under the basket API project.
+
+57
+00:04:24,970 --> 00:04:29,020
+Right click Add new folder, which name is exceptions.
+
+58
+00:04:29,020 --> 00:04:32,200
+And under this folder I'm going to create a new class.
+
+59
+00:04:32,200 --> 00:04:35,170
+Which name is basket Notfoundexception.
+
+60
+00:04:35,500 --> 00:04:44,230
+So in here we basically inherit from the not found exception which comes from the or actual building
+
+61
+00:04:44,230 --> 00:04:50,050
+blocks operation, which including all common related objects into building blocks.
+
+62
+00:04:50,050 --> 00:04:56,080
+And we will follow the same step and creating our custom notfoundexception inherited from the not one
+
+63
+00:04:56,110 --> 00:04:58,120
+exceptions comes from the building blocks.
+
+64
+00:04:58,120 --> 00:05:05,500
+And in this class we basically create a new constructor exception constructor and this constructor gets
+
+65
+00:05:05,500 --> 00:05:07,180
+a username information.
+
+66
+00:05:08,800 --> 00:05:14,920
+And we will paste these username in the base of the notfoundexception.
+
+67
+00:05:14,920 --> 00:05:21,730
+If you look at the parameters of the base constructor, you can see that we have two parameters that
+
+68
+00:05:21,730 --> 00:05:23,740
+we can use name and object k.
+
+69
+00:05:23,740 --> 00:05:27,220
+So I'm giving as a name basket and key username.
+
+70
+00:05:27,220 --> 00:05:33,820
+So this will be provide a clear and meaningful exception when a basket is not found in the database.
+
+71
+00:05:34,030 --> 00:05:41,560
+So we can move these using statement into global Usings I'm going to go to global Usings and add exceptions
+
+72
+00:05:41,560 --> 00:05:44,020
+to make it available for each classes.
+
+73
+00:05:44,020 --> 00:05:50,200
+And if you go back to our actual Basket repository class, you can see that basket Notfoundexception
+
+74
+00:05:50,200 --> 00:05:52,180
+is requiring using statement.
+
+75
+00:05:52,180 --> 00:05:54,130
+And I am adding these using statement.
+
+76
+00:05:54,130 --> 00:05:58,990
+And if you go on top of this page you can see that we have two using statement.
+
+77
+00:05:58,990 --> 00:06:06,580
+I'm going to move to the global using CSS and come here copy paste and make it global using statements
+
+78
+00:06:06,580 --> 00:06:08,320
+for Martin and the basket.
+
+79
+00:06:08,320 --> 00:06:09,220
+Exceptions.
+
+80
+00:06:12,080 --> 00:06:17,420
+And if you go back to our basket repository, as you can see that we have successfully implemented the
+
+81
+00:06:17,420 --> 00:06:20,840
+basket repository class using the Martin AI documentation.
+

@@ -1,0 +1,316 @@
+1
+00:00:00,110 --> 00:00:06,320
+In this video we are going to set up RabbitMQ for asynchronous communication using the docker compose
+
+2
+00:00:06,320 --> 00:00:06,830
+file.
+
+3
+00:00:06,830 --> 00:00:12,770
+So that means we are at the last step which is the developing asynchronous communication steps.
+
+4
+00:00:12,770 --> 00:00:18,080
+And this is the docker compose at RabbitMQ image in a multi-container environment in Docker compose
+
+5
+00:00:18,080 --> 00:00:18,710
+files.
+
+6
+00:00:19,010 --> 00:00:23,360
+So now let's see our microservices asynchronous communication.
+
+7
+00:00:23,360 --> 00:00:28,460
+Here you can see the RabbitMQ sitting between basket and ordering microservices.
+
+8
+00:00:28,460 --> 00:00:34,790
+And we are using the RabbitMQ message broker as a backing services of the basket and ordering microservices.
+
+9
+00:00:34,790 --> 00:00:40,340
+Basket will publish the basket checkout integration event and RabbitMQ store this event and send the
+
+10
+00:00:40,340 --> 00:00:45,320
+event to the ordering microservices which subscribe and consume these basket checkout event.
+
+11
+00:00:45,320 --> 00:00:51,230
+So we should download the RabbitMQ message broker docker image and run this docker image into our Docker
+
+12
+00:00:51,230 --> 00:00:56,210
+compose environment as a backing services for the basket and ordering microservices.
+
+13
+00:00:56,210 --> 00:01:01,610
+So we will configure the RabbitMQ in a multi-container docker environment for asynchronous communication
+
+14
+00:01:01,610 --> 00:01:05,420
+between basket and ordering microservices into the Docker files.
+
+15
+00:01:05,420 --> 00:01:10,040
+But before that, let's remember our e-commerce microservice deployment strategy.
+
+16
+00:01:10,160 --> 00:01:15,860
+According to our deployment strategy, we are at the deployment one, and we have developed the basket
+
+17
+00:01:15,860 --> 00:01:19,580
+and ordering microservices into our local development machines.
+
+18
+00:01:19,580 --> 00:01:23,510
+But now we need to connect the message broker as a backing services.
+
+19
+00:01:23,510 --> 00:01:29,990
+And we need to message broker IP and port number that we can connect from our local computer and local
+
+20
+00:01:29,990 --> 00:01:31,160
+microservices.
+
+21
+00:01:31,370 --> 00:01:38,150
+And here you can see the deployment two, which is basically orchestrate all microservices with Docker
+
+22
+00:01:38,150 --> 00:01:41,060
+compose and test inside of the full Docker environment.
+
+23
+00:01:41,060 --> 00:01:45,140
+But now we will focus on the first part, which is the deployment one.
+
+24
+00:01:45,140 --> 00:01:51,260
+And we have developed our microservices in local computer and we need to activate Message Broker as
+
+25
+00:01:51,260 --> 00:01:53,240
+a backing services in Docker environment.
+
+26
+00:01:53,240 --> 00:01:58,910
+For that purpose I'm going to open the RabbitMQ page on the Docker Hub.
+
+27
+00:01:58,910 --> 00:02:04,610
+Here you can see the RabbitMQ official image in the crop that we can see the details how we can activate
+
+28
+00:02:04,610 --> 00:02:06,410
+RabbitMQ in a Docker environment.
+
+29
+00:02:06,410 --> 00:02:12,770
+If you scroll down, you can see that the RabbitMQ can be run and activate with using this command.
+
+30
+00:02:12,770 --> 00:02:19,190
+Basically we will using the host name and name and we will pasting the image name as a RabbitMQ and
+
+31
+00:02:19,190 --> 00:02:23,180
+RabbitMQ is exposing as a default port is A5672.
+
+32
+00:02:23,180 --> 00:02:28,490
+And if you scroll down you can see the environment variables that we can set when we are activating
+
+33
+00:02:28,490 --> 00:02:30,320
+these RabbitMQ in our Docker compose.
+
+34
+00:02:30,320 --> 00:02:35,900
+And here you can see the default username and password that we can paste this configuration with, including
+
+35
+00:02:35,900 --> 00:02:40,700
+the hostname name RabbitMQ default user RabbitMQ default password.
+
+36
+00:02:40,700 --> 00:02:41,930
+And this is the image.
+
+37
+00:02:41,930 --> 00:02:47,900
+So these are the settings and configurations about the RabbitMQ that we are going to use when we are
+
+38
+00:02:47,900 --> 00:02:50,690
+activating RabbitMQ in our Docker compose environment.
+
+39
+00:02:50,690 --> 00:02:56,630
+So now we will follow the docker compose and add the RabbitMQ image into our docker compose file for
+
+40
+00:02:56,630 --> 00:02:58,220
+multi-container docker environment.
+
+41
+00:02:58,220 --> 00:03:03,770
+But before that, make sure that your Docker desktop is up and running, and after that you should go
+
+42
+00:03:03,770 --> 00:03:08,780
+back to our Visual Studio and go to Docker Compose and open the docker compose Yaml file.
+
+43
+00:03:08,780 --> 00:03:14,570
+If you scroll down, you can see that we have listing the backing services in the beginning of the docker
+
+44
+00:03:14,570 --> 00:03:15,380
+compose file.
+
+45
+00:03:15,380 --> 00:03:21,080
+And we have already added the Microsoft SQL server image for ordering database.
+
+46
+00:03:21,080 --> 00:03:25,220
+And now we will follow the same configuration for the RabbitMQ message broker.
+
+47
+00:03:25,220 --> 00:03:31,700
+For that purpose, I am going to add a new image under the order DB, because this will be representing
+
+48
+00:03:31,700 --> 00:03:34,190
+the backing services for our microservices.
+
+49
+00:03:34,190 --> 00:03:39,350
+And I will put a message broker and the image should be the RabbitMQ management.
+
+50
+00:03:39,350 --> 00:03:44,870
+Here you can see that I put a required indentation and after that give the image name as a RabbitMQ
+
+51
+00:03:44,870 --> 00:03:45,410
+management.
+
+52
+00:03:45,410 --> 00:03:50,780
+So please add these two line of code into our docker compose after the order db definition.
+
+53
+00:03:50,780 --> 00:03:57,110
+So after that we can go to the override yaml file in order to configure these RabbitMQ message broker
+
+54
+00:03:57,110 --> 00:03:57,560
+image.
+
+55
+00:03:57,560 --> 00:04:03,500
+So if you double click the override Yaml file and locate the same location after the order db configuration,
+
+56
+00:04:03,500 --> 00:04:05,660
+we are going to configure our message broker.
+
+57
+00:04:05,660 --> 00:04:09,170
+Come to this point and arrange for the message broker.
+
+58
+00:04:09,710 --> 00:04:14,930
+At this point I am going to start the Message broker configurations and as a configuration I am going
+
+59
+00:04:14,930 --> 00:04:19,490
+to adding container name, host name and environment variables.
+
+60
+00:04:19,490 --> 00:04:25,700
+And after that restart always and the port numbers which is belonging to default port numbers for the
+
+61
+00:04:25,700 --> 00:04:26,930
+RabbitMQ message broker.
+
+62
+00:04:26,930 --> 00:04:32,540
+So please save the overwriting file and make sure that you have added the correct message broker configurations.
+
+63
+00:04:32,540 --> 00:04:33,770
+After the order db.
+
+64
+00:04:33,800 --> 00:04:40,460
+Please save this file and make sure that the configuration settings is same and correct as we are setting
+
+65
+00:04:40,460 --> 00:04:42,890
+up the our application settings Json file.
+
+66
+00:04:42,890 --> 00:04:48,230
+If you open, for example ordering API and go to Application Settings, you can see the message broker
+
+67
+00:04:48,230 --> 00:04:51,770
+configuration including the hostname, username and password.
+
+68
+00:04:51,770 --> 00:04:57,410
+So in our Docker compose file our username and password guest guest it is correct.
+
+69
+00:04:57,410 --> 00:04:59,630
+And the host name is amqp localhost.
+
+70
+00:04:59,870 --> 00:05:01,130
+And the default port number.
+
+71
+00:05:01,130 --> 00:05:02,870
+So this is the default port number.
+
+72
+00:05:02,870 --> 00:05:04,940
+And we are following the default port number.
+
+73
+00:05:04,940 --> 00:05:10,070
+When communicating from our local ordering and basket microservices, we can also validate from the
+
+74
+00:05:10,070 --> 00:05:13,370
+basket microservices application Settings.json file.
+
+75
+00:05:13,370 --> 00:05:18,920
+This is same as the configuration in the ordering microservices host username and password.
+
+76
+00:05:18,920 --> 00:05:25,520
+So that means we have successfully configured and set up the RabbitMQ in a Docker environment for asynchronous
+
+77
+00:05:25,520 --> 00:05:26,270
+communication.
+
+78
+00:05:26,270 --> 00:05:31,670
+Now we are going to run RabbitMQ message broker in a Docker environment in order to connect from the
+
+79
+00:05:31,670 --> 00:05:33,650
+basket and authentic microservices.
+

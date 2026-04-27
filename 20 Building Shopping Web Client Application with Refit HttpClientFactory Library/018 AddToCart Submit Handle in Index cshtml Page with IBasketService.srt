@@ -1,0 +1,484 @@
+1
+00:00:00,140 --> 00:00:06,950
+In this video we are going to develop add item into shopping cart in the Index.cshtml page with using
+
+2
+00:00:06,950 --> 00:00:08,330
+the I basket service.
+
+3
+00:00:08,330 --> 00:00:14,810
+So if you open the shared page which is the product item partial shared page, you can see that there
+
+4
+00:00:14,810 --> 00:00:17,720
+is a form tag and which is the add to cart.
+
+5
+00:00:17,720 --> 00:00:20,030
+And this is the http post operation.
+
+6
+00:00:20,030 --> 00:00:21,140
+And there is a button.
+
+7
+00:00:21,140 --> 00:00:24,380
+And on click we will submit the form which is the index page.
+
+8
+00:00:24,380 --> 00:00:30,020
+And this is the hidden input type which is passing the model id product id as a parameters.
+
+9
+00:00:30,020 --> 00:00:34,610
+So this button basically submit the form in the index page.
+
+10
+00:00:34,610 --> 00:00:40,700
+In order to handle this method, we should create method in the index page which name is on post add
+
+11
+00:00:40,700 --> 00:00:41,630
+to cart async.
+
+12
+00:00:41,630 --> 00:00:48,050
+So if you go back to index C-sharp file, you can see that we have a on get async method.
+
+13
+00:00:48,050 --> 00:00:51,140
+And we are going to create on post add to cart async.
+
+14
+00:00:51,140 --> 00:00:57,170
+And in this method we will use I basket service to communicate with the basket microservices over the
+
+15
+00:00:57,350 --> 00:00:58,190
+API gateway.
+
+16
+00:00:58,190 --> 00:01:04,370
+But before that we have to register our basket service into our ASP.Net dependency injection tool.
+
+17
+00:01:04,370 --> 00:01:10,970
+For that purpose, we have to go to the program case and when we are registering the catalog service,
+
+18
+00:01:10,970 --> 00:01:13,790
+we should also register the basket services.
+
+19
+00:01:13,970 --> 00:01:19,670
+At this point, I am going to copy the catalog service part and paste in here.
+
+20
+00:01:19,670 --> 00:01:23,750
+And this time I am going to change my catalog service to I Basket Service.
+
+21
+00:01:24,590 --> 00:01:28,550
+And the base address is the same which is the Erb API gateway.
+
+22
+00:01:28,550 --> 00:01:33,950
+And this time refit will be generate Http client for the I basket services.
+
+23
+00:01:33,950 --> 00:01:38,240
+To perform these get, post, delete and post checkout operations.
+
+24
+00:01:38,240 --> 00:01:45,680
+By this way we can use an inject I basket service any page in order to interact with the basket microservices
+
+25
+00:01:45,680 --> 00:01:47,210
+over the web API gateway.
+
+26
+00:01:47,450 --> 00:01:53,810
+After adding thrift client for the basket service, save the program case and go back to our index C
+
+27
+00:01:54,080 --> 00:01:54,560
+file.
+
+28
+00:01:54,560 --> 00:02:01,310
+And now I am going to inject and use I basket services to create an add item into product into shopping
+
+29
+00:02:01,310 --> 00:02:01,880
+cart.
+
+30
+00:02:02,000 --> 00:02:04,970
+At this point, I am going to go to the primary constructor.
+
+31
+00:02:04,970 --> 00:02:09,860
+Just after the catalog service injection, I have injected the I basket services.
+
+32
+00:02:09,860 --> 00:02:16,010
+Here you can see that we have injected three services I Catalog service, I Basket service and I logger.
+
+33
+00:02:16,280 --> 00:02:23,630
+And after that we can use I basket services into our newly created method which will be create our own
+
+34
+00:02:23,630 --> 00:02:25,550
+post add to cart async method.
+
+35
+00:02:25,550 --> 00:02:32,270
+Here you can see the async method that accodomate the submit operation form of the product item partial
+
+36
+00:02:32,270 --> 00:02:39,650
+partial page, and in here when add to cart operation submitted in the HTML, this method will be trigger.
+
+37
+00:02:39,650 --> 00:02:46,400
+That's why we have created public async and task I action result and name of the method is on post add
+
+38
+00:02:46,400 --> 00:02:52,580
+to cart async and as a parameter we will pass with product id that will retrieve the product id in the
+
+39
+00:02:52,580 --> 00:02:58,940
+hidden item in the product item partial, which we will pass when we are add to cart item and submit
+
+40
+00:02:58,940 --> 00:02:59,690
+this button.
+
+41
+00:02:59,690 --> 00:03:04,520
+So if you go back to our index C file, we will implement these method.
+
+42
+00:03:04,520 --> 00:03:09,740
+First of all, I am going to add a log information for adding item into cart.
+
+43
+00:03:09,740 --> 00:03:16,910
+And just after that we can basically get the product with a given product ID inside of this parameter.
+
+44
+00:03:16,910 --> 00:03:23,060
+So I'm going to retrieve the product from the catalog services with get product method in order to get
+
+45
+00:03:23,060 --> 00:03:28,880
+single product details when adding item into cart, because we will need some additional information
+
+46
+00:03:28,880 --> 00:03:32,030
+about the products like the product name, price and so on.
+
+47
+00:03:32,030 --> 00:03:36,080
+For that purpose, it is good to retrieve a product from the catalog services.
+
+48
+00:03:36,080 --> 00:03:40,460
+And just after that, I am going to get or create a new shopping cart.
+
+49
+00:03:40,460 --> 00:03:47,090
+For that purpose, I have created a new method which is the await load user basket and passing the basket
+
+50
+00:03:47,090 --> 00:03:49,310
+services and get back the basket.
+
+51
+00:03:49,310 --> 00:03:54,500
+This method will be getting or creating a new basket that we will develop in soon.
+
+52
+00:03:54,500 --> 00:04:01,190
+And after that we can continue our operation, which is the using this basket and adding item into basket.
+
+53
+00:04:01,190 --> 00:04:07,910
+Using the basket dot items dot add method and passing the new shopping cart item model including and
+
+54
+00:04:07,910 --> 00:04:12,320
+populating the product ID, product name, price, quantity and color.
+
+55
+00:04:12,320 --> 00:04:15,080
+Product ID comes from the Our Method parameter.
+
+56
+00:04:15,080 --> 00:04:21,320
+Product name comes from the R product Response product name, and we get the price from the again product
+
+57
+00:04:21,320 --> 00:04:27,140
+response product price and quantity is one color is black for hard coded value.
+
+58
+00:04:27,140 --> 00:04:33,350
+So now we can see that we have adding the basket items with using the basket dot items method.
+
+59
+00:04:33,350 --> 00:04:38,630
+Basket will be our shopping cart model object that we have defined under the models.
+
+60
+00:04:38,630 --> 00:04:44,810
+And just after the adding item into basket, we basically passing this basket object into the store
+
+61
+00:04:44,810 --> 00:04:45,200
+basket.
+
+62
+00:04:45,200 --> 00:04:50,600
+Request wrapper classes and send to basket service dot store basket method.
+
+63
+00:04:50,600 --> 00:04:56,450
+In order to send http post request to the basket microservices and create new basket.
+
+64
+00:04:56,600 --> 00:04:59,450
+So after created new basket we can.
+
+65
+00:04:59,790 --> 00:05:01,560
+Link to the page, which is the card.
+
+66
+00:05:01,590 --> 00:05:06,030
+That means we will redirect you to page card from index to card page.
+
+67
+00:05:06,030 --> 00:05:09,450
+So now we can implement the load user basket method.
+
+68
+00:05:09,450 --> 00:05:15,660
+Basically we will get or create a new basket according to if it is exist or not.
+
+69
+00:05:15,660 --> 00:05:22,560
+In here you can see that I have adding the private static async function which is returning task shopping
+
+70
+00:05:22,560 --> 00:05:28,860
+cart model, and the method name is a load user basket, and as a parameter it is taking I basket service
+
+71
+00:05:28,860 --> 00:05:30,000
+basket services.
+
+72
+00:05:30,000 --> 00:05:37,200
+So in this method we basically get or create new basket with default username which is the boolean.
+
+73
+00:05:37,200 --> 00:05:44,070
+Since we don't have authentication username for now, we can use default username as the boolean for
+
+74
+00:05:44,070 --> 00:05:47,040
+the workaround in order to get or create new basket.
+
+75
+00:05:47,040 --> 00:05:49,800
+After that we will add the product into shopping cart.
+
+76
+00:05:49,800 --> 00:05:52,140
+Here you can see that we have a try catch block.
+
+77
+00:05:52,140 --> 00:05:56,910
+We basically get the basket using the basket service interface.
+
+78
+00:05:56,910 --> 00:06:02,220
+And here you can see that we will return the response dot cart object if it is existing.
+
+79
+00:06:02,220 --> 00:06:08,070
+If not existing, we will creating any basket object with empty items that we can adding new item into
+
+80
+00:06:08,070 --> 00:06:08,910
+shopping cart.
+
+81
+00:06:08,910 --> 00:06:13,080
+And here you can see the load basket is using into our actual method.
+
+82
+00:06:13,080 --> 00:06:19,620
+And once we get the basket, we will add a new item and we will paste this basket object with adding
+
+83
+00:06:19,620 --> 00:06:21,630
+the new item into the store basket.
+
+84
+00:06:21,630 --> 00:06:28,140
+Request variable class and hit the http post request to the Basket Services Store basket endpoint.
+
+85
+00:06:28,530 --> 00:06:30,330
+Now we can refactor our code.
+
+86
+00:06:30,330 --> 00:06:35,850
+If you look at the our method, you can see that we always relying on the load user basket method.
+
+87
+00:06:35,850 --> 00:06:38,160
+And this method is a private static method.
+
+88
+00:06:38,160 --> 00:06:43,620
+And we are using this method for each page when we are developing and loading the basket.
+
+89
+00:06:43,620 --> 00:06:45,120
+So this is the pain point.
+
+90
+00:06:45,120 --> 00:06:50,670
+And we should move this function and this method into the I basket service interface.
+
+91
+00:06:50,670 --> 00:06:56,070
+Here you can see that we can move this method into the our I basket service interface.
+
+92
+00:06:56,070 --> 00:07:02,400
+Because C sharp has default interface methods feature that comes with the C sharp eight.
+
+93
+00:07:02,400 --> 00:07:09,480
+Here you can see the article default interface methods that we can explicitly implement interface methods
+
+94
+00:07:09,480 --> 00:07:10,170
+in here.
+
+95
+00:07:10,170 --> 00:07:16,050
+So if you scroll down you can see an example of the implementation of the interface methods that we
+
+96
+00:07:16,050 --> 00:07:24,060
+can use this feature in here because we will requiring to using the load async method load user basket
+
+97
+00:07:24,060 --> 00:07:27,000
+method in each clusters and in each pages.
+
+98
+00:07:27,000 --> 00:07:30,870
+For that purpose, it is good to move this method in the eye basket services.
+
+99
+00:07:30,870 --> 00:07:32,880
+So please go to the eye basket service.
+
+100
+00:07:32,880 --> 00:07:39,510
+And at this point I am going to develop our actual method which is the load user basket.
+
+101
+00:07:39,510 --> 00:07:43,020
+Here you can see that I have adding the same method in here.
+
+102
+00:07:43,020 --> 00:07:49,320
+But this time we will make it public async and return back as a task shopping cart model and method
+
+103
+00:07:49,320 --> 00:07:50,820
+name is a load user basket.
+
+104
+00:07:50,820 --> 00:07:57,660
+We will use worker and username as a boolean, and just after that in the try block we will get basket
+
+105
+00:07:57,660 --> 00:07:58,860
+with a given username.
+
+106
+00:07:58,860 --> 00:08:05,160
+Get basket methods comes from the interface and once we are getting the basket response, we will populate
+
+107
+00:08:05,160 --> 00:08:06,960
+the basket and return this basket.
+
+108
+00:08:06,960 --> 00:08:11,190
+But if there is no basket, we will catch the API exception.
+
+109
+00:08:11,190 --> 00:08:15,270
+And also we will check the API exception status as a not found.
+
+110
+00:08:15,300 --> 00:08:18,480
+That means there is no item and basket in the basket.
+
+111
+00:08:18,480 --> 00:08:19,350
+Microservices.
+
+112
+00:08:19,350 --> 00:08:24,480
+Then we should create a new basket with a new shopping cart model and empty items.
+
+113
+00:08:24,480 --> 00:08:31,620
+And after that, we can return back this basket to this method that we can use this method into all
+
+114
+00:08:31,620 --> 00:08:33,960
+operations when we are loading the user basket.
+
+115
+00:08:33,960 --> 00:08:41,309
+So if you go back to our index.cshtml file now I am going to delete all these private static method.
+
+116
+00:08:41,309 --> 00:08:50,250
+And whenever we are using this load user basket this time I am going to use basket service dot load
+
+117
+00:08:50,400 --> 00:08:51,360
+basket method.
+
+118
+00:08:51,360 --> 00:08:52,980
+And we don't have any parameter.
+
+119
+00:08:52,980 --> 00:08:59,310
+So it is now more readable and more clean to implementation of the our add to cart operation.
+
+120
+00:08:59,310 --> 00:09:04,830
+So as you can see that we have completed the implementation of the Add to cart into our index page.
+
+121
+00:09:04,830 --> 00:09:08,040
+In the next video we will continue to developing our cart page.
+

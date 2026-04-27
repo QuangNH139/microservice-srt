@@ -1,0 +1,248 @@
+1
+00:00:00,140 --> 00:00:03,320
+In this video we are going to do cross-cutting concerns.
+
+2
+00:00:03,350 --> 00:00:08,090
+Especially we will develop custom exception handling in microservices.
+
+3
+00:00:08,119 --> 00:00:11,450
+In the last video we have tested the late order use case.
+
+4
+00:00:11,450 --> 00:00:16,880
+And if you look at the delayed order handler you can see that first of all, we will check that the
+
+5
+00:00:16,880 --> 00:00:21,110
+incoming order ID is exist or not into order DB database.
+
+6
+00:00:21,110 --> 00:00:24,800
+If not exist this is throwing order not found exception.
+
+7
+00:00:25,100 --> 00:00:28,880
+So I have tried these exception cases into our postman.
+
+8
+00:00:28,880 --> 00:00:34,490
+Here you can see that I have sent http delete method with non-existing ID information.
+
+9
+00:00:34,490 --> 00:00:40,340
+This is the response from the our API which is returning order not found exception.
+
+10
+00:00:40,340 --> 00:00:46,340
+But as you can see that it is not readable exception message and it is not manageable for understanding
+
+11
+00:00:46,340 --> 00:00:47,240
+the exception.
+
+12
+00:00:47,240 --> 00:00:49,280
+And it is also not formatted.
+
+13
+00:00:49,280 --> 00:00:54,620
+We cannot read which column is getting exception, and we cannot read in a Json format.
+
+14
+00:00:54,620 --> 00:01:00,170
+For that purpose, we should apply cross-cutting concerns and custom exception handling in the ordering
+
+15
+00:01:00,170 --> 00:01:01,310
+microservices.
+
+16
+00:01:01,310 --> 00:01:05,720
+So we have chosen to implement our custom exception handling in the building blocks.
+
+17
+00:01:05,720 --> 00:01:11,180
+As you remember that we are developing building blocks, and in the building blocks we have exception
+
+18
+00:01:11,180 --> 00:01:13,850
+folders and we have custom exception handler class.
+
+19
+00:01:13,850 --> 00:01:19,490
+In order to apply these exception handling for each microservices, if you open the custom exception
+
+20
+00:01:19,490 --> 00:01:25,160
+handling, you can see that this class encapsulate the logic for the handling different type of the
+
+21
+00:01:25,160 --> 00:01:28,550
+exceptions that the microservices might encounter.
+
+22
+00:01:28,550 --> 00:01:35,150
+So it is designed to catch exceptions, log them appropriately, and convert them into standardized
+
+23
+00:01:35,150 --> 00:01:39,410
+response format which is suitable for the API response.
+
+24
+00:01:39,410 --> 00:01:44,120
+So for that purpose, we will apply these custom exception in the ordering microservices.
+
+25
+00:01:44,120 --> 00:01:49,670
+If you go back to our delete order handler, you can see that we will throw order not found exception.
+
+26
+00:01:49,670 --> 00:01:54,650
+And if you go to exception details, you can see that this is inherited from the not found exception.
+
+27
+00:01:54,650 --> 00:01:58,340
+And these exception is located under the building blocks.
+
+28
+00:01:58,340 --> 00:01:59,960
+And we can see not found.
+
+29
+00:01:59,960 --> 00:02:02,450
+Exception is located custom exception handler.
+
+30
+00:02:02,450 --> 00:02:07,820
+Here you can see that we will populate the existing message name and status code will be returning.
+
+31
+00:02:07,820 --> 00:02:09,530
+Follow one not found.
+
+32
+00:02:09,530 --> 00:02:13,790
+So we will apply these custom exception handling in the ordering API.
+
+33
+00:02:13,790 --> 00:02:15,290
+So how we can do that?
+
+34
+00:02:15,290 --> 00:02:20,270
+Of course we should add the dependency injection services for the custom exception handling.
+
+35
+00:02:20,270 --> 00:02:24,380
+If you go to Program.cs we can add the dependency injection in here.
+
+36
+00:02:24,380 --> 00:02:28,640
+For the ordering API we will use add API services extension method.
+
+37
+00:02:28,640 --> 00:02:33,860
+If you right click and go to definition, you can see the Dependency injection class under the ordering
+
+38
+00:02:33,860 --> 00:02:34,700
+API layer.
+
+39
+00:02:34,910 --> 00:02:39,560
+In this class we can configure our application for the custom exception handling.
+
+40
+00:02:39,560 --> 00:02:43,370
+So first of all I'm going to start with the add API services.
+
+41
+00:02:43,550 --> 00:02:49,400
+At this point I am going to add services dot exception handler which is a custom exception handler and
+
+42
+00:02:49,400 --> 00:02:53,390
+which comes from the building blocks exception and handler namespace.
+
+43
+00:02:53,390 --> 00:03:00,770
+So with this line of code we will perform the adding or custom exception handling into dependency injection
+
+44
+00:03:00,770 --> 00:03:05,030
+container and making it available for use throughout the application.
+
+45
+00:03:05,030 --> 00:03:10,250
+And after that I am going to also adding use API services.
+
+46
+00:03:10,250 --> 00:03:11,390
+After the mapping.
+
+47
+00:03:11,390 --> 00:03:17,420
+Carter I am going to add that use exception handling and giving the empty options.
+
+48
+00:03:17,420 --> 00:03:21,830
+And with this line of code we set up the middleware for handling exceptions.
+
+49
+00:03:21,830 --> 00:03:27,260
+It configures the application to use the custom exception handling during the request pipeline.
+
+50
+00:03:27,260 --> 00:03:33,500
+So with adding these two line of code, we are activating custom exception handling for the ordering
+
+51
+00:03:33,500 --> 00:03:34,490
+microservices.
+
+52
+00:03:34,490 --> 00:03:39,380
+You can go on top of this and remove unnecessary using statement and save this file.
+
+53
+00:03:39,380 --> 00:03:46,970
+And now I am going to run this ordering API in https mode in order to activate custom exception handling.
+
+54
+00:03:47,000 --> 00:03:53,750
+After running the application, we can send http delete method with a wrong ID information and see.
+
+55
+00:03:53,750 --> 00:03:58,490
+This time the exception will be seem more formatted and more manageable way.
+
+56
+00:03:58,490 --> 00:04:03,920
+If I send again, you can see that this will be triggered or delete order endpoint.
+
+57
+00:04:03,920 --> 00:04:10,640
+If I hit F5, you can see that this will be comes to the if statement and enter the if statement and
+
+58
+00:04:10,640 --> 00:04:12,590
+throwing order not found exception.
+
+59
+00:04:12,800 --> 00:04:18,980
+And here you can see that this will be trigger our custom exception handling and return back as a Json
+
+60
+00:04:18,980 --> 00:04:22,640
+and formatted exception response to our API response.
+
+61
+00:04:22,640 --> 00:04:30,260
+We can see that the exception is returning 404 not found exception response to API and this is the title,
+
+62
+00:04:30,260 --> 00:04:35,870
+status, detail instance and trace ID is located more manageable and more readable.
+

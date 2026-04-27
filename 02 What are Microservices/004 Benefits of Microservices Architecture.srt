@@ -1,0 +1,132 @@
+1
+00:00:00,080 --> 00:00:04,730
+In this video we are going to learn the benefits of microservices.
+
+2
+00:00:05,060 --> 00:00:10,460
+As we already talked on previous video, but let's elaborate these benefits one by one.
+
+3
+00:00:10,490 --> 00:00:15,050
+The first benefit is agility, innovation and time to market.
+
+4
+00:00:15,410 --> 00:00:21,890
+Microservice architecture make applications easier to scale and faster to develop, enabling innovation
+
+5
+00:00:21,890 --> 00:00:24,680
+and accelerating time to market for new features.
+
+6
+00:00:24,710 --> 00:00:31,190
+Since microservices are smaller and independently deployable, it is easier to manage bug fixes and
+
+7
+00:00:31,190 --> 00:00:32,479
+feature releases.
+
+8
+00:00:32,960 --> 00:00:38,750
+You can update a service without redeploying the entire application and rollback an update if something
+
+9
+00:00:38,750 --> 00:00:39,680
+goes wrong.
+
+10
+00:00:39,890 --> 00:00:46,010
+In monolithic applications, if a bug is found in one part of the application, it can block the entire
+
+11
+00:00:46,010 --> 00:00:47,240
+release process.
+
+12
+00:00:47,240 --> 00:00:53,510
+So new features was waiting for a bug fix to be integrated, tested and published in microservices.
+
+13
+00:00:55,110 --> 00:00:58,200
+Second benefit is flexible scalability.
+
+14
+00:00:58,320 --> 00:01:06,000
+Microservices can be scaled independently so you can scale out sub services that require less resources
+
+15
+00:01:06,000 --> 00:01:08,850
+without scaling out the entire application.
+
+16
+00:01:08,850 --> 00:01:15,480
+So we can say that microservices require less infrastructure than monolithic applications because they
+
+17
+00:01:15,480 --> 00:01:21,870
+enable precise scaling of only the required services instead of scaling the entire application.
+
+18
+00:01:21,870 --> 00:01:29,550
+Also, scaling is very easy with using an container orchestration tool like Kubernetes, we can pack
+
+19
+00:01:29,550 --> 00:01:35,730
+a higher volume of the services onto a single host, which allows for more efficient utilization of
+
+20
+00:01:35,730 --> 00:01:37,230
+hardware resources.
+
+21
+00:01:38,640 --> 00:01:41,580
+Another benefit is small focused teams.
+
+22
+00:01:41,580 --> 00:01:47,850
+Microservices should be small enough that a single featured team can build, test, and deploy it.
+
+23
+00:01:47,850 --> 00:01:54,510
+The microservice model enables an organization to create small cross-functional teams around one service
+
+24
+00:01:54,510 --> 00:01:59,670
+or a collection of microservices, and have them operate in agile fashion.
+
+25
+00:01:59,670 --> 00:02:02,460
+Small team size increases the agility.
+
+26
+00:02:02,460 --> 00:02:09,509
+Large teams tend to be less productive due to communication is slower and management overhead goes up.
+
+27
+00:02:09,509 --> 00:02:16,410
+So that occurs the agility diminishing, so small teams and focused teams provided by microservices.
+
+28
+00:02:16,530 --> 00:02:19,920
+Another benefit is small and separated codebase.
+
+29
+00:02:19,920 --> 00:02:24,540
+In monolithic application, the codebase is going to be so bigger over time.
+
+30
+00:02:24,540 --> 00:02:28,110
+For code dependencies to become tangled, try to.
+
+31
+00:02:28,110 --> 00:02:32,340
+Adding any feature requires lots of refactoring on existing code base.
+
+32
+00:02:32,340 --> 00:02:39,600
+Since microservices are not sharing code or data stores with other services, it minimizes dependencies
+
+33
+00:02:39,600 --> 00:02:42,450
+and that makes it easier to adding new features.
+

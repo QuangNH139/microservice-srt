@@ -1,0 +1,248 @@
+1
+00:00:00,110 --> 00:00:03,650
+In this video we are going to learn dual write problem.
+
+2
+00:00:03,650 --> 00:00:10,910
+Dual write problem occurs when application needs to change data in two different systems, for example
+
+3
+00:00:10,910 --> 00:00:13,040
+a database and a message queue.
+
+4
+00:00:13,070 --> 00:00:18,350
+If one of the write fails, it can result in inconsistent state.
+
+5
+00:00:19,460 --> 00:00:26,240
+This is the typical case when you use a local transactions with each of the external systems operations.
+
+6
+00:00:26,600 --> 00:00:33,740
+For example, when an application needs to persist data in the database and send a message to the Kafka
+
+7
+00:00:33,740 --> 00:00:35,570
+for notifying other systems.
+
+8
+00:00:36,680 --> 00:00:43,520
+If one of two these two operations fails, the data will be inconsistent data and these two systems
+
+9
+00:00:43,520 --> 00:00:45,200
+become inconsistent.
+
+10
+00:00:46,060 --> 00:00:47,620
+Here you can see the problems.
+
+11
+00:00:47,620 --> 00:00:54,580
+This can lead to problems such as data loss or corruption, and can be difficult to resolve without
+
+12
+00:00:54,580 --> 00:00:57,850
+proper error handling and recovery mechanism in place.
+
+13
+00:00:57,850 --> 00:01:02,020
+So that means dual right can be hard to detect and fix.
+
+14
+00:01:04,769 --> 00:01:07,410
+Here you can see an example of dual write problem.
+
+15
+00:01:07,410 --> 00:01:12,270
+In this example we will illustrate create order use case in microservices.
+
+16
+00:01:12,270 --> 00:01:19,620
+That means when create an order request comes, we want to change data in order database with creating
+
+17
+00:01:19,620 --> 00:01:24,420
+a new record and also send an order created event to the event bus.
+
+18
+00:01:24,420 --> 00:01:31,380
+Like Apache Kafka, both operation is handled with two different local transaction that causes dual
+
+19
+00:01:31,380 --> 00:01:32,430
+write problems.
+
+20
+00:01:32,730 --> 00:01:38,070
+As you can see the image we have a order microservices client application send the request which is
+
+21
+00:01:38,070 --> 00:01:43,110
+the create order and in the order microservices we have two main operations.
+
+22
+00:01:43,110 --> 00:01:49,470
+The first one is write order table which is the create any order item in the order table into the database,
+
+23
+00:01:49,470 --> 00:01:56,580
+and after that order microservice is going to publish event to the create order event in order to start
+
+24
+00:01:56,580 --> 00:02:03,870
+order fulfillment process to notify other microservices which subscribing to event from the create order
+
+25
+00:02:03,870 --> 00:02:07,950
+event into the event path, which could be the inventory shipment and so on.
+
+26
+00:02:08,400 --> 00:02:10,410
+So this is the dual write problem.
+
+27
+00:02:10,710 --> 00:02:16,170
+So how to avoid dual write problem in microservices transactional outbox pattern.
+
+28
+00:02:16,290 --> 00:02:19,260
+What is the transactional outbox pattern.
+
+29
+00:02:19,680 --> 00:02:23,310
+The outbox pattern provides to publish events reliably.
+
+30
+00:02:24,060 --> 00:02:27,960
+The idea of this approach is to have an outbox table.
+
+31
+00:02:27,960 --> 00:02:34,290
+In the microservices databases, we solve dual write problem at the last video.
+
+32
+00:02:34,290 --> 00:02:39,480
+That happens when application need to change data in two different systems.
+
+33
+00:02:40,260 --> 00:02:42,600
+So we transactional outbox pattern.
+
+34
+00:02:42,600 --> 00:02:49,170
+Instead of sending the data to separate locations, we send a single transaction that will store two
+
+35
+00:02:49,170 --> 00:02:51,900
+separate copies of the data on the database.
+
+36
+00:02:52,800 --> 00:02:59,670
+One copy is stored in the relevant database table, and the other copy is stored in an outbox table
+
+37
+00:02:59,670 --> 00:03:03,300
+that will update the other microservices over the event path.
+
+38
+00:03:03,750 --> 00:03:11,040
+For example, we might connect the outbox table from the Kafka or other messaging queue systems.
+
+39
+00:03:12,050 --> 00:03:17,810
+That means when your API publishes event messages, it doesn't directly send them.
+
+40
+00:03:17,810 --> 00:03:21,980
+Instead, the messages are persisted in a database table.
+
+41
+00:03:22,760 --> 00:03:28,940
+After that, a job publish events to the message broker systems in the predefined time intervals.
+
+42
+00:03:29,900 --> 00:03:35,180
+So with the outbox pattern, domain events aren't written directly to the event bus.
+
+43
+00:03:35,210 --> 00:03:41,990
+Instead of that, it is written to a table in the artworks role of the service that stores the events
+
+44
+00:03:41,990 --> 00:03:43,850
+in its own databases.
+
+45
+00:03:45,350 --> 00:03:51,920
+However, the critical point is here that the transaction performed before the event and the event written
+
+46
+00:03:51,920 --> 00:03:55,190
+to Outbox Table are part of the same transactions.
+
+47
+00:03:55,910 --> 00:04:02,900
+For example, when an Eve order is added to the system, the process of the adding order and writing
+
+48
+00:04:02,900 --> 00:04:09,650
+the order created event to the outbox table is done in the same transaction, in order to ensure that
+
+49
+00:04:09,650 --> 00:04:11,780
+the event is saved to the database.
+
+50
+00:04:12,680 --> 00:04:18,769
+If one of the process is failed, this will rollback the whole operation with following the Acid principles.
+
+51
+00:04:19,760 --> 00:04:26,600
+The second step is to receive these events written to the outbox table by an independent service, and
+
+52
+00:04:26,600 --> 00:04:28,460
+write them into the event bus.
+
+53
+00:04:28,970 --> 00:04:31,130
+We can see the image on the slide.
+
+54
+00:04:31,220 --> 00:04:38,090
+This is an example of creating an order, creating new order record into the order table, and creating
+
+55
+00:04:38,090 --> 00:04:41,480
+a new order created event into the outbox table.
+
+56
+00:04:42,230 --> 00:04:44,720
+And these are the in the same transaction.
+
+57
+00:04:44,720 --> 00:04:48,320
+And these same operations perform in the same transaction.
+
+58
+00:04:48,530 --> 00:04:54,620
+If one of the process is fails, this will be rollback the whole transaction with following the Acid
+
+59
+00:04:54,620 --> 00:04:55,460
+principles.
+
+60
+00:04:56,120 --> 00:04:58,520
+After that, another service.
+
+61
+00:04:58,520 --> 00:05:04,730
+Listen and post the outbox table records and publish to the into separate process.
+
+62
+00:05:04,730 --> 00:05:06,560
+Publish the events into the event post.
+

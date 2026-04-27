@@ -1,0 +1,160 @@
+1
+00:00:00,140 --> 00:00:06,620
+In this video, we are going to apply Entity Framework Core migrations to SQL server database with using
+
+2
+00:00:06,650 --> 00:00:08,150
+update database command.
+
+3
+00:00:08,180 --> 00:00:13,970
+So in the previous videos we will apply the migrations and create the migration folder.
+
+4
+00:00:13,970 --> 00:00:20,000
+And remember that before you can run the update database command, you must first generate the migrations
+
+5
+00:00:20,000 --> 00:00:22,100
+using the Add Migration command.
+
+6
+00:00:22,100 --> 00:00:26,180
+If you open the Visual Studio, come to Package Manager Console.
+
+7
+00:00:26,180 --> 00:00:32,630
+Before running the update database, you have to run add migration, initial, create and give these
+
+8
+00:00:32,630 --> 00:00:34,670
+specifications and properties.
+
+9
+00:00:34,670 --> 00:00:37,310
+When creating these migration folder.
+
+10
+00:00:37,310 --> 00:00:42,530
+If you open the migration folder, you can see that we have successfully create initial create an op
+
+11
+00:00:42,530 --> 00:00:42,950
+method.
+
+12
+00:00:42,950 --> 00:00:47,390
+This will be create all tables into our SQL server database.
+
+13
+00:00:47,390 --> 00:00:54,470
+So that means if you change anything on your DB context and the properties of the entities.
+
+14
+00:00:54,470 --> 00:01:01,610
+For example, if you change or add new property into product entity, you can delete the whole migration
+
+15
+00:01:01,610 --> 00:01:06,890
+folder and rerun these apply command in the Package Manager console.
+
+16
+00:01:06,890 --> 00:01:14,930
+Add migration in order to create new migrations and generate the latest codes into the SQL server database.
+
+17
+00:01:14,930 --> 00:01:21,020
+For that purpose, we have already generated the migrations and we have already up command, which is
+
+18
+00:01:21,020 --> 00:01:21,950
+the up to date.
+
+19
+00:01:21,950 --> 00:01:27,800
+I'm going to open the Package Manager console and run the update database command and make sure that
+
+20
+00:01:27,800 --> 00:01:30,260
+your default project is ordering infrastructure.
+
+21
+00:01:30,260 --> 00:01:36,320
+And before running this command, also make sure that your ordering API should be set as startup project.
+
+22
+00:01:36,320 --> 00:01:43,070
+Right click Set Startup Project for ordering API and open the Package Manager console the default project
+
+23
+00:01:43,070 --> 00:01:46,970
+ordering infrastructure and hit the update database command.
+
+24
+00:01:47,810 --> 00:01:56,270
+This command will be run all migration codes and create database and tables that we have applied these
+
+25
+00:01:56,270 --> 00:01:58,610
+migrations to the SQL server database.
+
+26
+00:01:58,610 --> 00:02:01,070
+So you can see the logs in here.
+
+27
+00:02:01,070 --> 00:02:07,700
+This is running SQL commands onto our database including the create table commands.
+
+28
+00:02:07,700 --> 00:02:12,170
+For example this is creating order table including these columns.
+
+29
+00:02:12,170 --> 00:02:16,790
+And after that execute DB command which is the create table for order items.
+
+30
+00:02:16,790 --> 00:02:22,070
+And here you can see that we will create the indexes foreign keys and so on.
+
+31
+00:02:22,070 --> 00:02:26,210
+So we have successfully running the update database command.
+
+32
+00:02:26,210 --> 00:02:31,220
+And this will be run these commands generating from the our migrations folder.
+
+33
+00:02:31,220 --> 00:02:39,800
+And now I am going to verify migrations execution onto the these SQL Server Object Explorer Object Explorer.
+
+34
+00:02:39,800 --> 00:02:44,540
+You can see that there is no databases under our local SQL server database.
+
+35
+00:02:44,540 --> 00:02:48,740
+If I refresh this page, you can open and open a database.
+
+36
+00:02:48,740 --> 00:02:54,320
+This time you can see that our order DB is generating and created successfully.
+
+37
+00:02:54,320 --> 00:03:01,280
+And if you expand this order db and expand the tables, we can see that our customers ordered order
+
+38
+00:03:01,280 --> 00:03:05,690
+items and product table is comes into our order DB database.
+
+39
+00:03:05,750 --> 00:03:12,110
+That means we have successfully applied Entity Framework core migrations to SQL server database, creating
+
+40
+00:03:12,110 --> 00:03:14,750
+the necessary schema for the ordering microservices.
+

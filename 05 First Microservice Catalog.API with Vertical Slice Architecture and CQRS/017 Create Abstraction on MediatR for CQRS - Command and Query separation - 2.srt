@@ -1,0 +1,456 @@
+1
+00:00:00,200 --> 00:00:06,050
+In this video, we are going to continue to create abstractions on mediator for sequence.
+
+2
+00:00:06,050 --> 00:00:11,630
+So we will continue building upon our sequence abstractions with the mediator framework.
+
+3
+00:00:11,660 --> 00:00:14,930
+As you can see that we have created a query and a command.
+
+4
+00:00:14,960 --> 00:00:19,130
+Now it is time to create a query handler and a command handler.
+
+5
+00:00:19,160 --> 00:00:22,790
+Firstly, let's define the command handler interface.
+
+6
+00:00:22,790 --> 00:00:25,670
+This interface will extend the mediators.
+
+7
+00:00:25,670 --> 00:00:32,000
+I request handler interface, but will be specific for the handling command request.
+
+8
+00:00:32,000 --> 00:00:38,150
+So please open the Visual Studio and go to the Building Blocks and C queries folder.
+
+9
+00:00:38,150 --> 00:00:41,750
+You can right click and create new interface.
+
+10
+00:00:41,750 --> 00:00:43,640
+Which name is a command handler.
+
+11
+00:00:47,810 --> 00:00:51,710
+Okay, now we can develop our AI command handler interface.
+
+12
+00:00:51,710 --> 00:00:58,490
+First of all, I would like to create this command handler with getting the generic responses.
+
+13
+00:00:59,120 --> 00:01:05,690
+This will be the command and response I'm going to passing the int command and t response.
+
+14
+00:01:05,960 --> 00:01:08,480
+This will be represented by command handler.
+
+15
+00:01:08,480 --> 00:01:09,680
+And this is the command.
+
+16
+00:01:09,680 --> 00:01:11,390
+And this will be the command response.
+
+17
+00:01:11,390 --> 00:01:15,440
+So we will inherit from the I request handler.
+
+18
+00:01:16,100 --> 00:01:18,290
+This comes from the mediator.
+
+19
+00:01:18,290 --> 00:01:23,480
+And this makes this interface as a handler interface for command operations.
+
+20
+00:01:23,480 --> 00:01:28,100
+So you can continue the passing generic types.
+
+21
+00:01:28,430 --> 00:01:31,850
+Here you can see that we have defined our command handler.
+
+22
+00:01:31,850 --> 00:01:34,130
+Of course this should be public.
+
+23
+00:01:34,970 --> 00:01:39,980
+And after defining this command handler you can see that there is an exception.
+
+24
+00:01:39,980 --> 00:01:46,490
+If you hover this exception, you can see that these three command type cannot be used as a T request
+
+25
+00:01:46,490 --> 00:01:50,150
+that means these t commands comes from the request object.
+
+26
+00:01:50,150 --> 00:01:54,020
+That's why we should put some of the parameters in var keyword.
+
+27
+00:01:54,020 --> 00:02:00,170
+So the t command should be a command and returning the t response.
+
+28
+00:02:00,170 --> 00:02:05,600
+If you go to the I command, you can see the I command comes from the I request t response.
+
+29
+00:02:05,600 --> 00:02:09,740
+When we have defined this filter, the exception is gone.
+
+30
+00:02:09,740 --> 00:02:14,630
+Okay, now we have completed the command handler for the first interface.
+
+31
+00:02:14,630 --> 00:02:17,510
+We will also create one more interface as the same name.
+
+32
+00:02:17,510 --> 00:02:20,480
+But this time the response will not be coming.
+
+33
+00:02:20,480 --> 00:02:24,500
+So we will prepare additional interface as the same name.
+
+34
+00:02:24,500 --> 00:02:31,520
+But this time if there is no any response, we will only accommodate the command object.
+
+35
+00:02:32,090 --> 00:02:41,450
+So I'm going to make it a command handler inherit from the below interface and as you can see that it
+
+36
+00:02:41,450 --> 00:02:44,870
+is expecting command and response as a command.
+
+37
+00:02:44,870 --> 00:02:47,570
+We will passing the T command.
+
+38
+00:02:47,570 --> 00:02:51,500
+And as a response we can define the unit.
+
+39
+00:02:51,500 --> 00:02:55,040
+As you remember that unit is a void type as mediator.
+
+40
+00:02:55,040 --> 00:03:00,170
+So that's why we have defined additional interface in order to accommodate.
+
+41
+00:03:00,170 --> 00:03:04,970
+If there is no response from the command object, we will use this kind of interfaces.
+
+42
+00:03:04,970 --> 00:03:08,930
+So again I'm going to put a var keyword which is the filtering.
+
+43
+00:03:08,930 --> 00:03:11,420
+The command should be a command.
+
+44
+00:03:11,420 --> 00:03:15,620
+And as you remember that we have also a command passing the unit object.
+
+45
+00:03:17,600 --> 00:03:25,850
+So in here we have defined two interfaces one for the command handler and do not return any response.
+
+46
+00:03:25,850 --> 00:03:32,270
+We can see the unit type and one for the I command handler getting the response object.
+
+47
+00:03:32,270 --> 00:03:34,670
+And this response object should not be null.
+
+48
+00:03:34,670 --> 00:03:39,500
+By this way, we can use a command handler according to our type.
+
+49
+00:03:39,500 --> 00:03:42,860
+If we return any response, we will use this command handler.
+
+50
+00:03:42,860 --> 00:03:48,380
+If we don't any return response, we will use these interface which is the I command handler.
+
+51
+00:03:48,380 --> 00:03:53,900
+After defining the I command handler now we should define the I query handler.
+
+52
+00:03:53,900 --> 00:03:58,220
+It is similar to I command handler and it specialized mediator.
+
+53
+00:03:58,220 --> 00:04:01,400
+I request handler for handling the query request.
+
+54
+00:04:01,400 --> 00:04:06,710
+So please open the Visual Studio and go to the secrets folder under the building blocks.
+
+55
+00:04:06,710 --> 00:04:09,380
+And you can right click and add new interface.
+
+56
+00:04:09,380 --> 00:04:11,300
+Which name is AI query handler.
+
+57
+00:04:13,470 --> 00:04:16,260
+So this should be public interface.
+
+58
+00:04:16,260 --> 00:04:23,940
+And again I'm going to get a query object and returning the response type.
+
+59
+00:04:23,940 --> 00:04:25,320
+These are the generics.
+
+60
+00:04:25,320 --> 00:04:28,500
+And we will inherit from the I request sender.
+
+61
+00:04:33,090 --> 00:04:38,280
+From the mediator and desist accepting the decree and returning to teh response.
+
+62
+00:04:41,530 --> 00:04:48,700
+And also we should define the word keywords in here in order to specify the query should be the I query
+
+63
+00:04:48,700 --> 00:04:51,640
+object and returning the t response.
+
+64
+00:04:52,710 --> 00:04:59,370
+And again we should additional where filter for the response should not be null.
+
+65
+00:05:04,370 --> 00:05:04,760
+Okay.
+
+66
+00:05:04,760 --> 00:05:08,690
+As you can see that we have defined our query handler in one interface.
+
+67
+00:05:08,690 --> 00:05:15,920
+This interface will handle our query request and providing that each query is matched with a corresponding
+
+68
+00:05:15,920 --> 00:05:16,850
+response type.
+
+69
+00:05:16,850 --> 00:05:20,120
+By this way, we can separate the query and commands.
+
+70
+00:05:20,120 --> 00:05:24,290
+You can see in here the query should be inherited from the query object.
+
+71
+00:05:24,290 --> 00:05:30,860
+But if you go to the command handler, this command should be comes from the I command.
+
+72
+00:05:30,860 --> 00:05:36,050
+So that means we have separate query and command handler according to our abstraction.
+
+73
+00:05:36,050 --> 00:05:40,010
+Now it is time to get in reference to our microservices.
+
+74
+00:05:40,010 --> 00:05:46,130
+If you go back to our main architecture, you can see that all microservices are referencing building
+
+75
+00:05:46,130 --> 00:05:46,580
+blocks.
+
+76
+00:05:46,580 --> 00:05:51,950
+So now let's referencing these interfaces into our catalog microservices.
+
+77
+00:05:51,950 --> 00:05:59,150
+First we need to remove the direct installation of the mediator package from the catalog API, because
+
+78
+00:05:59,150 --> 00:06:02,330
+it will now come through our building blocks library.
+
+79
+00:06:02,600 --> 00:06:07,910
+As you remember that when we are developing the catalog microservices, we install Mediator library.
+
+80
+00:06:07,940 --> 00:06:09,740
+Now we should remove this library.
+
+81
+00:06:09,740 --> 00:06:15,440
+And this library comes from the building blocks because we will install all common packages under the
+
+82
+00:06:15,440 --> 00:06:17,930
+building blocks for each microservices.
+
+83
+00:06:17,930 --> 00:06:19,400
+Let's get started.
+
+84
+00:06:19,400 --> 00:06:23,750
+Please open the Visual Studio Code and go to the catalog microservices.
+
+85
+00:06:23,750 --> 00:06:30,800
+If you double click the catalog API project file, you can see that we have installed the mediator library.
+
+86
+00:06:30,800 --> 00:06:35,450
+In order to remove these package from our catalog API microservices.
+
+87
+00:06:35,450 --> 00:06:41,930
+You can remove these line of code or you can remove from the NuGet package window I am going to remove
+
+88
+00:06:41,930 --> 00:06:42,860
+from in here.
+
+89
+00:06:42,860 --> 00:06:48,290
+And you can see that there is no mediator package in the item group in the project C-sharp file.
+
+90
+00:06:48,290 --> 00:06:55,130
+So we removed the mediator package from our catalog API in order to avoid conflicts and ensure that
+
+91
+00:06:55,130 --> 00:06:59,240
+all mediator related packages comes from the building blocks.
+
+92
+00:06:59,330 --> 00:07:03,500
+Next, we will add a project reference to our Building Blocks library.
+
+93
+00:07:03,500 --> 00:07:04,940
+In our catalog project.
+
+94
+00:07:04,940 --> 00:07:07,850
+So let me right click dependencies.
+
+95
+00:07:07,850 --> 00:07:11,300
+Here you can see the dependencies add project reference.
+
+96
+00:07:11,300 --> 00:07:13,100
+This time we will add a project reference.
+
+97
+00:07:13,100 --> 00:07:17,810
+And here you can see that there is only one project listed which is the building blocks.
+
+98
+00:07:17,810 --> 00:07:21,020
+Check this checkbox and click the okay button.
+
+99
+00:07:21,020 --> 00:07:27,890
+So once we add a project reference, you can double click the catalog API and you can see new item Group
+
+100
+00:07:27,890 --> 00:07:32,360
+edit which is the project reference and indicating the are building blocks.
+
+101
+00:07:32,360 --> 00:07:34,940
+C-sharp project which is the class library.
+
+102
+00:07:34,940 --> 00:07:40,100
+Save this file and you can now right click and build the catalog API.
+
+103
+00:07:40,370 --> 00:07:45,830
+So after adding the reference, we build the project in order to verify that everything is correctly
+
+104
+00:07:45,830 --> 00:07:46,280
+set up.
+
+105
+00:07:46,280 --> 00:07:48,470
+And there is no any compilation error.
+
+106
+00:07:48,470 --> 00:07:52,340
+Yes, there is no any compilation error and we will complete it successfully.
+
+107
+00:07:52,340 --> 00:07:59,000
+Now we can go to the our actual business logic which is a feature folder products and go to the create
+
+108
+00:07:59,000 --> 00:08:00,110
+product feature.
+
+109
+00:08:00,110 --> 00:08:05,630
+And if you go to the create product handler, now we can implement the actual logic which is the business
+
+110
+00:08:05,630 --> 00:08:09,200
+logic, to create a product using the mediator libraries.
+
+111
+00:08:09,200 --> 00:08:15,770
+Since we are getting reference from the building blocks now, we can use these abstractions into our
+
+112
+00:08:15,770 --> 00:08:16,670
+handle class.
+
+113
+00:08:16,670 --> 00:08:23,000
+Now we will refactor our existing handler in the catalog microservices and we will replace mediators
+
+114
+00:08:23,000 --> 00:08:26,420
+eraqus with our I command and Iquery interfaces.
+

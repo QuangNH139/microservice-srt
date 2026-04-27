@@ -1,0 +1,300 @@
+1
+00:00:00,140 --> 00:00:06,740
+In this video we are going to connect to PostgreSQL database from our local catalog microservices,
+
+2
+00:00:06,740 --> 00:00:13,790
+and we will send Http post requests in order to create new product in the catalog db PostgreSQL database.
+
+3
+00:00:14,690 --> 00:00:18,950
+So in the last video we have activated our PostgreSQL database.
+
+4
+00:00:18,950 --> 00:00:22,640
+And you can see the containers under the Docker desktop.
+
+5
+00:00:22,640 --> 00:00:29,360
+And if you scroll to the right hand side you can see the port numbers are exposed in here.
+
+6
+00:00:29,360 --> 00:00:36,500
+So according to our Docker compose override configuration, the catalog db PostgreSQL is exposing in
+
+7
+00:00:36,500 --> 00:00:39,410
+localhost 5432 ports.
+
+8
+00:00:39,410 --> 00:00:43,430
+So you can verify from the our docker compose or write file.
+
+9
+00:00:43,430 --> 00:00:50,630
+We have already expose this port number, and we can verify these port numbers from the our Docker desktop.
+
+10
+00:00:50,630 --> 00:00:58,100
+And according to this we will check our catalog API microservices and our catalog microservices will
+
+11
+00:00:58,100 --> 00:01:04,400
+connect the PostgreSQL database using the connection string in the application Settings.json file.
+
+12
+00:01:04,400 --> 00:01:10,010
+If you double click this Json file, you can verify that the server is localhost and port number is
+
+13
+00:01:10,010 --> 00:01:16,640
+this one, and this will be match our port number and exposing server name into Docker Desktop.
+
+14
+00:01:16,640 --> 00:01:18,830
+So we have verified the connection string.
+
+15
+00:01:18,830 --> 00:01:25,940
+Now we will run this catalog API microservices and integrate with the PostgreSQL database.
+
+16
+00:01:25,940 --> 00:01:33,650
+Before that make sure that you are putting breakpoints under the create product endpoint and after the
+
+17
+00:01:33,650 --> 00:01:40,460
+create product handler methods, in order to debug the whole end to end process of the create product
+
+18
+00:01:40,460 --> 00:01:47,720
+http post request and after verify the breakpoints, we can run this application in https mode.
+
+19
+00:01:47,720 --> 00:01:54,920
+That means I'm going to right click the catalog API microservice, set a startup project and change
+
+20
+00:01:54,920 --> 00:01:59,150
+the Https running profile and run this application.
+
+21
+00:02:00,310 --> 00:02:07,630
+So that means we are going to run our catalog microservices in local environment, and we are going
+
+22
+00:02:07,630 --> 00:02:13,030
+to connect and communicate PostgreSQL database in the environment as a backing services.
+
+23
+00:02:13,720 --> 00:02:19,630
+So if you go back to our Visual Studio, we can verify that our application is successfully started.
+
+24
+00:02:19,630 --> 00:02:22,930
+And you can open the Project console window.
+
+25
+00:02:22,930 --> 00:02:27,580
+And this is listening on https localhost 5050.
+
+26
+00:02:28,120 --> 00:02:32,380
+So now we can send http post request to create a new product.
+
+27
+00:02:32,380 --> 00:02:36,490
+We will use postman to send an http post request.
+
+28
+00:02:36,490 --> 00:02:38,620
+Please open the postman.
+
+29
+00:02:38,620 --> 00:02:42,910
+Set a new request I have already prepared before in the previous videos.
+
+30
+00:02:42,910 --> 00:02:48,430
+Make sure that you are sending http post request and the URL should be localhost 5050.
+
+31
+00:02:48,430 --> 00:02:52,150
+And make sure that you have added products in the Uri.
+
+32
+00:02:52,150 --> 00:02:59,380
+And if you go to the body raw Json file and make sure that you are sending this kind of Json in order
+
+33
+00:02:59,380 --> 00:03:04,900
+to create a new product onto PostgreSQL database and click the Http send button.
+
+34
+00:03:04,990 --> 00:03:08,350
+As you can see that this is hit the breakpoint which is.
+
+35
+00:03:08,350 --> 00:03:15,400
+The endpoints accommodate the incoming requests, and if you continue this process, mediator will be
+
+36
+00:03:15,400 --> 00:03:18,370
+sent to our command into handler class.
+
+37
+00:03:18,370 --> 00:03:24,010
+In the handler class we have created a new product and after that we will use Martin session in order
+
+38
+00:03:24,010 --> 00:03:27,250
+to store product into our PostgreSQL database.
+
+39
+00:03:27,250 --> 00:03:29,800
+Martin will be checking the database.
+
+40
+00:03:29,800 --> 00:03:36,130
+If there is no table with regarding the products, this will be create product table and schema and
+
+41
+00:03:36,130 --> 00:03:39,310
+this will be auto create this process with Martin.
+
+42
+00:03:39,310 --> 00:03:45,820
+This is powerful feature and we will use this feature when connecting to PostgreSQL database using the
+
+43
+00:03:45,820 --> 00:03:46,360
+Martin.
+
+44
+00:03:46,360 --> 00:03:54,070
+So if you continue this line of code this will be waiting and creating a new product table on the PostgreSQL.
+
+45
+00:03:54,070 --> 00:03:59,230
+And after that this will be saved to database and hit the F5 and see the response.
+
+46
+00:03:59,230 --> 00:04:02,980
+So after sending the request you can see the response coming.
+
+47
+00:04:02,980 --> 00:04:06,790
+In this way you should receive any product ID in return.
+
+48
+00:04:06,790 --> 00:04:12,730
+This indicates that our microservices has successfully communicate with the PostgreSQL database and
+
+49
+00:04:12,730 --> 00:04:14,320
+create a new product record.
+
+50
+00:04:14,320 --> 00:04:21,190
+Now let's connect the PostgreSQL container and verify the new product entry is created for that purpose.
+
+51
+00:04:21,190 --> 00:04:23,440
+Open the our command window.
+
+52
+00:04:23,560 --> 00:04:29,620
+As you remember that we have connected our container, which is the Postgres container, and open a
+
+53
+00:04:29,620 --> 00:04:30,460
+bash script.
+
+54
+00:04:30,460 --> 00:04:36,130
+And after that we run the SQL dash u PostgreSQL in order to reach the database.
+
+55
+00:04:36,130 --> 00:04:43,210
+And after that we will listing the our databases and see that catalog DB is including.
+
+56
+00:04:43,210 --> 00:04:49,300
+And you can verify again from the listing databases and see that our catalog DB is created.
+
+57
+00:04:49,300 --> 00:04:55,660
+And after that we can now connect to database and see the tables that are created.
+
+58
+00:04:55,660 --> 00:05:01,900
+And for that purpose I'm going to connect with backslash C and catalog DB.
+
+59
+00:05:01,900 --> 00:05:06,220
+Now I have connected the catalog DB into our PostgreSQL database.
+
+60
+00:05:06,220 --> 00:05:10,150
+Now we can backslash D listing the tables.
+
+61
+00:05:10,150 --> 00:05:16,180
+Last time we didn't see any tables, but this time you can see that empty dot product table is created
+
+62
+00:05:16,180 --> 00:05:23,530
+by Martin and it is automatically created when session is adding and storing new item into the database.
+
+63
+00:05:23,530 --> 00:05:27,130
+So this is very powerful feature from the Martin.
+
+64
+00:05:27,130 --> 00:05:33,580
+And now we can run the select star from this table to see is there any record on this table.
+
+65
+00:05:33,580 --> 00:05:37,360
+And please write this command and hit the enter.
+
+66
+00:05:37,360 --> 00:05:43,660
+As you can see that newly created ID and product is listing into our database.
+
+67
+00:05:43,660 --> 00:05:51,040
+You can verify the ID numbers is exactly the same with value, with listing from the database table
+
+68
+00:05:51,040 --> 00:05:54,100
+and from response to the R postman request.
+
+69
+00:05:54,100 --> 00:06:00,220
+As you can see that we have verified the newly created product data on PostgreSQL database and we have
+
+70
+00:06:00,220 --> 00:06:06,880
+successfully connect, debug and test it our local catalog, microservices and database on Docker environment.
+
+71
+00:06:06,880 --> 00:06:13,990
+By the way, this is very a hard way to retrieve data and running the SQL commands on the PostgreSQL
+
+72
+00:06:13,990 --> 00:06:16,480
+using the command window instead of that.
+
+73
+00:06:16,480 --> 00:06:20,170
+From now on we will install pgadmin four.
+
+74
+00:06:20,170 --> 00:06:27,910
+Please go to this URL and download pgadmin four according to your operating system, and we will use
+
+75
+00:06:27,910 --> 00:06:33,010
+pgadmin four when browsing PostgreSQL database tables and records.
+

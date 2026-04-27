@@ -1,0 +1,176 @@
+1
+00:00:00,140 --> 00:00:06,860
+In this section we are going to develop ordering microservices, implementing domain driven design cycles
+
+2
+00:00:06,860 --> 00:00:13,400
+and clean architecture patterns using the ASP.Net core, Entity Framework core and SQL server database.
+
+3
+00:00:13,820 --> 00:00:17,720
+Let's check our big picture and see what we are going to build one by one.
+
+4
+00:00:17,750 --> 00:00:25,010
+As you can see that we are in here and start to developing ordering microservices with SQL server databases.
+
+5
+00:00:25,880 --> 00:00:29,930
+And here you can find the internal architecture of the ordering microservices.
+
+6
+00:00:29,930 --> 00:00:36,260
+Ordering microservices will follow the ASP.Net core, minimal APIs and latest features of dotnet eight
+
+7
+00:00:36,260 --> 00:00:43,940
+and C 12, and applying the domain driven design cycles and clean architecture patterns and best practices,
+
+8
+00:00:43,940 --> 00:00:51,080
+and also implementing design principles including solid keys, uni separation of concerns or dependency
+
+9
+00:00:51,080 --> 00:00:52,340
+inversion principles.
+
+10
+00:00:52,340 --> 00:00:57,470
+And also we will use Entity Framework Core and communicate with the SQL server databases.
+
+11
+00:00:58,010 --> 00:01:03,170
+So we will develop clean architecture layer in the internal architecture of the ordering microservices.
+
+12
+00:01:03,170 --> 00:01:07,760
+And these layers are domain application infrastructure and API layer.
+
+13
+00:01:07,910 --> 00:01:14,750
+And we will also follow the unimplemented secrets with mediator library to implement command and command
+
+14
+00:01:14,780 --> 00:01:15,830
+handler classes.
+
+15
+00:01:15,830 --> 00:01:22,070
+And here you can see the NuGet packages that we are going to use when building ordering microservices.
+
+16
+00:01:22,070 --> 00:01:27,140
+So now let me explain the clean architecture layers for ordering microservices.
+
+17
+00:01:27,170 --> 00:01:29,810
+Let me start with the ordering domain layer.
+
+18
+00:01:29,810 --> 00:01:36,440
+In this layer we basically implement tactical domain driven design pattern entities, value objects,
+
+19
+00:01:36,440 --> 00:01:43,550
+aggregates and also implement strongly typed IDs in domain driven design, implement anemic domain model
+
+20
+00:01:43,550 --> 00:01:45,860
+versus rich domain model entities.
+
+21
+00:01:45,860 --> 00:01:49,520
+And lastly we will see domain events and integration events.
+
+22
+00:01:50,090 --> 00:01:53,150
+And the second layer is ordering infrastructure layer.
+
+23
+00:01:53,360 --> 00:01:59,690
+In this layer we will use Entity Framework core eight code first Approach and migrations and SQL Server
+
+24
+00:01:59,690 --> 00:02:00,830
+Connection.
+
+25
+00:02:00,830 --> 00:02:06,140
+We will use Entity Framework, core eight relations and Domain driven Design value objects mapping with
+
+26
+00:02:06,140 --> 00:02:08,509
+the complex type and complex property.
+
+27
+00:02:08,509 --> 00:02:13,670
+And we will follow the Auto Migrate Entity Framework core entities to SQL server database.
+
+28
+00:02:13,670 --> 00:02:19,580
+That means we will migrate and see the order DB in SQL server, and we will use Entity Framework Core
+
+29
+00:02:19,580 --> 00:02:24,440
+Interceptors, which is the save change interceptor for auditing entities.
+
+30
+00:02:24,440 --> 00:02:28,640
+And we will dispatching the domain events in Entity Framework Core interceptors.
+
+31
+00:02:29,120 --> 00:02:31,940
+And the next layer is ordering Application layer.
+
+32
+00:02:31,940 --> 00:02:37,880
+In this layer we will follow the secrets with Mediator Library in order to implement the command and
+
+33
+00:02:37,880 --> 00:02:39,230
+command handler classes.
+
+34
+00:02:39,230 --> 00:02:44,120
+And we will use mediator pipeline behaviors like validation and logging behavior.
+
+35
+00:02:44,120 --> 00:02:49,250
+And we will use domain event handlers with mediator in notification handler class.
+
+36
+00:02:49,250 --> 00:02:55,400
+And we will also use fluent validation to validate inputs and add mediator validation pipeline.
+
+37
+00:02:55,790 --> 00:02:58,820
+And the last layer is ordering API layer.
+
+38
+00:02:58,820 --> 00:03:04,520
+In this layer we will use Carter for minimal API endpoint definition and we will perform cross-cutting
+
+39
+00:03:04,520 --> 00:03:08,390
+concerns, custom exception handling and health checks and so on.
+
+40
+00:03:08,600 --> 00:03:12,770
+And finally, after all these implementation we will perform deployments.
+
+41
+00:03:12,770 --> 00:03:19,760
+So in deployments we will use SQL server database containerization and orchestration for each microservices
+
+42
+00:03:19,760 --> 00:03:20,990
+in the Docker compose.
+
+43
+00:03:20,990 --> 00:03:26,540
+And we will use Docker file and Docker compose file for running ordering microservices and SQL server
+
+44
+00:03:26,540 --> 00:03:28,370
+database in Docker environment.
+

@@ -1,0 +1,124 @@
+1
+00:00:00,230 --> 00:00:05,390
+In this section, we are going to consume discount gRPC service from the basket.
+
+2
+00:00:05,390 --> 00:00:06,290
+Microservices.
+
+3
+00:00:06,290 --> 00:00:11,060
+When adding cart item into shopping cart in order to calculate the final price.
+
+4
+00:00:11,060 --> 00:00:16,400
+So we will focus on integrating the discount gRPC service into the basket microservices.
+
+5
+00:00:17,210 --> 00:00:20,900
+Let's check our big picture and see what we are going to build one by one.
+
+6
+00:00:20,900 --> 00:00:28,190
+As you can see that we are at this point and we will consume discount gRPC service from the basket microservices
+
+7
+00:00:28,190 --> 00:00:30,650
+when adding cart item into shopping cart.
+
+8
+00:00:30,830 --> 00:00:34,730
+So in the last section we have developed a discount gRPC microservices.
+
+9
+00:00:34,730 --> 00:00:39,200
+And we have exposed the gRPC methods to the basket API.
+
+10
+00:00:39,200 --> 00:00:45,560
+So in this section, when the client add item into shopping cart basket, microservices will consume
+
+11
+00:00:45,560 --> 00:00:52,250
+discount gRPC service methods in order to calculate and get latest discount and calculate the discount
+
+12
+00:00:52,250 --> 00:00:54,320
+for the particular product item.
+
+13
+00:00:54,560 --> 00:01:01,430
+In this picture you can see that basket API microservices will be our gRPC client and call the gRPC
+
+14
+00:01:01,430 --> 00:01:07,640
+method to the discount gRPC server, and this will be triggered by the client add item into basket use
+
+15
+00:01:07,640 --> 00:01:08,300
+cases.
+
+16
+00:01:08,600 --> 00:01:12,320
+So let me explain the main steps of the our application.
+
+17
+00:01:12,320 --> 00:01:15,800
+So the first step is integration of gRPC client.
+
+18
+00:01:15,800 --> 00:01:22,340
+The basket microservices will act as a gRPC client to consume services exposed by the discount gRPC
+
+19
+00:01:22,340 --> 00:01:23,030
+service.
+
+20
+00:01:23,030 --> 00:01:28,220
+And this involves registering discount gRPC operations into basket microservices.
+
+21
+00:01:28,220 --> 00:01:31,580
+That means the next step is service registration.
+
+22
+00:01:31,580 --> 00:01:37,400
+Modify the Program.cs in the basket microservices to include the discount gRPC client, and we will
+
+23
+00:01:37,400 --> 00:01:42,050
+configure the client with the necessary endpoint details of the discount gRPC services.
+
+24
+00:01:42,470 --> 00:01:46,850
+And after that we will consume discount services in the relevant part of the basket.
+
+25
+00:01:46,850 --> 00:01:47,690
+Microservices.
+
+26
+00:01:47,690 --> 00:01:53,990
+That means when adding items into cart, we call the discount gRPC services in order to fetch applicable
+
+27
+00:01:53,990 --> 00:01:59,390
+discounts, and we will update the logic to apply these discounts to the cart items and calculate the
+
+28
+00:01:59,390 --> 00:02:01,100
+final price accordingly.
+
+29
+00:02:01,100 --> 00:02:03,980
+And lastly, we will perform re containerization.
+
+30
+00:02:03,980 --> 00:02:09,590
+That means we will update the Docker compose setup to ensure the basket microservices can communicate
+
+31
+00:02:09,590 --> 00:02:13,970
+within the discount gRPC services in the orchestrated environments.
+

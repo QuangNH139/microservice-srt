@@ -1,0 +1,272 @@
+1
+00:00:00,110 --> 00:00:08,150
+In this video we are going to develop pagination for Getproducts query with using to page list async
+
+2
+00:00:08,150 --> 00:00:09,500
+extension method.
+
+3
+00:00:09,500 --> 00:00:15,200
+So pagination is a crucial feature for managing large data sets in microservices.
+
+4
+00:00:15,200 --> 00:00:22,460
+And Martin provides a bulletin to page list async method that simplifies the pagination implementation
+
+5
+00:00:22,460 --> 00:00:25,760
+and eliminates the need for the custom pagination logic.
+
+6
+00:00:25,760 --> 00:00:32,119
+So here you can see that Martin provides to page list and to page list async method, and this will
+
+7
+00:00:32,119 --> 00:00:38,450
+be facilitate and simplifies pagination implementation without writing any custom pagination logic,
+
+8
+00:00:38,450 --> 00:00:42,320
+and it only required by page number and page size.
+
+9
+00:00:42,320 --> 00:00:48,320
+And we can use to run this extension method which pacing this page number and page size.
+
+10
+00:00:48,320 --> 00:00:50,690
+So let's get start to implementation.
+
+11
+00:00:50,690 --> 00:00:56,900
+For that purpose, please open the Visual Studio and locate the Getproducts and Getproducts endpoint.
+
+12
+00:00:56,900 --> 00:01:00,020
+So we will put the pagination into Getproducts.
+
+13
+00:01:00,020 --> 00:01:03,680
+And this will be returning the products with pagination.
+
+14
+00:01:03,680 --> 00:01:11,690
+So at this point we are going to create a request object that will accept page number and page size.
+
+15
+00:01:11,690 --> 00:01:17,720
+For that purpose I'm going to remove these commented get product request object.
+
+16
+00:01:17,720 --> 00:01:22,550
+And after that I'm going to put a parameters which is the page number and page size.
+
+17
+00:01:22,550 --> 00:01:30,080
+So this is our current Getproduct request object that will will get these information from the request.
+
+18
+00:01:30,080 --> 00:01:33,080
+So how we can get this page number and page size.
+
+19
+00:01:33,080 --> 00:01:40,190
+Of course we will get this request object as a request parameter into the our application endpoint.
+
+20
+00:01:40,190 --> 00:01:47,240
+So in here you can see that we have a delegate handler for these products and put it in the first parameter.
+
+21
+00:01:47,240 --> 00:01:50,990
+I am going to get these request parameters as a parameter.
+
+22
+00:01:50,990 --> 00:01:56,240
+And I would like to specify with these as a parameter notation.
+
+23
+00:01:56,240 --> 00:02:01,700
+And I'm going to give the parameter name as a get products request.
+
+24
+00:02:01,700 --> 00:02:06,440
+And this will be get this request object into our method.
+
+25
+00:02:06,440 --> 00:02:12,950
+And after that we can reach the request page number and page size in the request delegate handler.
+
+26
+00:02:12,950 --> 00:02:20,600
+So the first step is we are going to change the query object from the our incoming request object.
+
+27
+00:02:20,600 --> 00:02:27,590
+And I am adapting this request object with the Getproducts query that will be accepting from the our
+
+28
+00:02:27,590 --> 00:02:28,430
+mediator.
+
+29
+00:02:28,430 --> 00:02:35,480
+So in here as you can see that this is converting from the incoming request to the get products query.
+
+30
+00:02:35,480 --> 00:02:39,530
+And after that we can paste this query to the mediator send method.
+
+31
+00:02:41,150 --> 00:02:44,090
+And this will be trigger our query handler method.
+
+32
+00:02:44,090 --> 00:02:51,350
+So at this stage we can update Getproducts handler and handle the pagination logic inside of the these
+
+33
+00:02:51,350 --> 00:02:52,310
+handle method.
+
+34
+00:02:52,370 --> 00:02:57,350
+With passing this query information, we will move these page number and page size.
+
+35
+00:02:57,350 --> 00:03:04,310
+That means we will make it exactly same to our query object with adding page number and page size.
+
+36
+00:03:04,310 --> 00:03:10,220
+So please copy these parameters and go to the Getproducts handle method.
+
+37
+00:03:10,220 --> 00:03:16,820
+And in here I'm going to adding new parameters which is the page number and page size.
+
+38
+00:03:16,820 --> 00:03:22,280
+So this is the latest implementation of our Getproducts query with parameters.
+
+39
+00:03:22,280 --> 00:03:26,900
+By this way we can convert our incoming requests to query object.
+
+40
+00:03:26,900 --> 00:03:31,760
+And in the handle method we should implement the pagination actual logic in here.
+
+41
+00:03:31,820 --> 00:03:38,240
+Here you can see that the implementation performing with session query and to list async method.
+
+42
+00:03:38,240 --> 00:03:41,180
+But this time we will perform the pagination.
+
+43
+00:03:41,180 --> 00:03:41,990
+For that purpose.
+
+44
+00:03:41,990 --> 00:03:48,710
+I'm going to choose another extension method which is the to to page list async method.
+
+45
+00:03:48,710 --> 00:03:52,910
+So this will be provided to pagination using the Martin library.
+
+46
+00:03:52,910 --> 00:03:57,290
+And in this method this will be accepting the page number and page size.
+
+47
+00:03:57,290 --> 00:04:04,340
+So I'm going to pasting the page number and page size from the our incoming query parameters.
+
+48
+00:04:04,340 --> 00:04:07,370
+So let's me implement these parameters.
+
+49
+00:04:07,370 --> 00:04:09,020
+And after that explain.
+
+50
+00:04:09,020 --> 00:04:16,190
+So here you can see that we will use to page list async method to make it pagination available and passing
+
+51
+00:04:16,190 --> 00:04:17,630
+the query that page number.
+
+52
+00:04:17,630 --> 00:04:21,649
+If not provided we will give the one and passing the page size.
+
+53
+00:04:21,649 --> 00:04:27,530
+If not provided, we will give a ten and the cancellation token also providing in this method.
+
+54
+00:04:27,530 --> 00:04:34,430
+So this is magical operation from the Martin and this will be handled all pagination operations with
+
+55
+00:04:34,430 --> 00:04:36,200
+only one extension method.
+
+56
+00:04:36,200 --> 00:04:42,380
+If you want to learn how Martin handle these pagination, at this point we can take a closer look to
+
+57
+00:04:42,380 --> 00:04:44,630
+the to page list async method.
+
+58
+00:04:44,630 --> 00:04:50,420
+If you right click and go to definition, you can see that this method handle in the Martin Library
+
+59
+00:04:50,420 --> 00:04:52,700
+and return back to page list.
+
+60
+00:04:52,700 --> 00:04:59,210
+And if you right click and go to definition of this interface, you can see the basic information about
+
+61
+00:04:59,210 --> 00:04:59,660
+the pagination.
+
+62
+00:04:59,790 --> 00:05:06,810
+Asians like page count, total item count and methods to check for the next and previous pages and so
+
+63
+00:05:06,810 --> 00:05:07,200
+on.
+
+64
+00:05:07,230 --> 00:05:14,730
+This is the Martin implementation of pagination result and it can run on the session Equatable object.
+
+65
+00:05:14,730 --> 00:05:21,420
+So if you go back to our actual method, you can see that we will implement the two page list async.
+
+66
+00:05:21,420 --> 00:05:23,880
+And this will be adding using statement.
+
+67
+00:05:23,880 --> 00:05:29,250
+I'm going to moving this pagination using todo or global using statement.
+
+68
+00:05:31,680 --> 00:05:36,480
+And perform the pagination in our Getproducts query scenario.
+

@@ -1,0 +1,260 @@
+1
+00:00:00,140 --> 00:00:04,970
+In this video we are going to develop gate basket endpoint with minimal APIs.
+
+2
+00:00:04,970 --> 00:00:10,040
+And Carter, we will start with developing request and response record type.
+
+3
+00:00:10,070 --> 00:00:14,120
+Please open the Visual Studio and go to the Get Basket endpoint.
+
+4
+00:00:14,120 --> 00:00:17,450
+And now I am going to create Request and Response object.
+
+5
+00:00:17,660 --> 00:00:18,350
+As a request.
+
+6
+00:00:18,380 --> 00:00:20,960
+We will get username from the request parameter.
+
+7
+00:00:20,960 --> 00:00:25,850
+For that purpose I am putting in here commented request object to follow the best practices.
+
+8
+00:00:25,850 --> 00:00:33,140
+And after that I am going to create a get basket response object as a record type public record get
+
+9
+00:00:33,140 --> 00:00:38,060
+basket response, and as a response we will expect the whole shopping cart object.
+
+10
+00:00:38,450 --> 00:00:41,390
+After that, we can define the get basket endpoints.
+
+11
+00:00:41,390 --> 00:00:48,920
+In order to implement minimal API we will implement these I Carter module interface and I Carter module
+
+12
+00:00:48,950 --> 00:00:50,300
+should be comes from the Carter.
+
+13
+00:00:50,300 --> 00:00:52,730
+But we didn't install Carter yet.
+
+14
+00:00:52,760 --> 00:00:58,700
+So as you remember that when we are developing our catalog microservices, we realized that in the catalog
+
+15
+00:00:58,700 --> 00:01:06,920
+Program.cs the Carter only scanning the operation and I Carter module interfaces for the current assembly.
+
+16
+00:01:06,920 --> 00:01:10,470
+And we cannot give the assembly like mediator for that purpose.
+
+17
+00:01:10,470 --> 00:01:16,380
+We have to install Carter for each microservices where we are implementing minimal APIs.
+
+18
+00:01:16,380 --> 00:01:24,780
+And I am going to go to the basket API and right click manage NuGet packages and search for the Carter
+
+19
+00:01:25,290 --> 00:01:30,210
+and install Carter for basket microservices into the web API project.
+
+20
+00:01:30,210 --> 00:01:34,290
+And if you double click, you can see that we have installed Carter successfully.
+
+21
+00:01:34,290 --> 00:01:36,090
+And save this file.
+
+22
+00:01:36,120 --> 00:01:38,460
+Go to the Get basket endpoint.
+
+23
+00:01:38,460 --> 00:01:44,010
+And this time you can see that we can implement Carter module with using Carter statement.
+
+24
+00:01:44,010 --> 00:01:50,130
+And also I'm going to move this using statement into the global using class.
+
+25
+00:01:50,250 --> 00:01:56,430
+If you come here and put the global keyword in the using statement of the Carter.
+
+26
+00:01:56,430 --> 00:02:02,190
+And if you go back to get basket endpoint, you can see that our Carter module now is available.
+
+27
+00:02:02,190 --> 00:02:06,810
+And I'm going to implement the interface members which is the add routes method.
+
+28
+00:02:07,110 --> 00:02:11,070
+At this point we can check the basket microservice RESTful APIs.
+
+29
+00:02:11,070 --> 00:02:18,420
+You can see that we are going to expose http get method with this endpoint URL and we will get basket
+
+30
+00:02:18,420 --> 00:02:19,410
+with username.
+
+31
+00:02:19,410 --> 00:02:21,660
+So please open the Visual Studio.
+
+32
+00:02:21,660 --> 00:02:29,400
+And now I am going to implement this add route method with add dot map get method to expose http get
+
+33
+00:02:29,430 --> 00:02:30,210
+operation.
+
+34
+00:02:30,210 --> 00:02:34,680
+And we will specify the endpoint URL which is the basket slash username.
+
+35
+00:02:34,680 --> 00:02:37,860
+And after that we will perform delegate handle operation.
+
+36
+00:02:37,860 --> 00:02:45,330
+And in this delegate handler I am going to take the username from the request parameters.
+
+37
+00:02:45,330 --> 00:02:51,510
+And after that I am going to inject Isander object which is our mediator.
+
+38
+00:02:51,510 --> 00:02:56,880
+So in delegate handler method the first parameter is populated from the request parameters.
+
+39
+00:02:56,880 --> 00:03:01,680
+And the second parameter will be injected by the ASP.Net built in dependency injection.
+
+40
+00:03:01,680 --> 00:03:05,730
+So I'm going to click the Isander and using mediator.
+
+41
+00:03:05,730 --> 00:03:09,690
+And also I am going to move this mediator to the global namespace.
+
+42
+00:03:09,690 --> 00:03:14,790
+If you go to the global using and put in here, you can copy and paste global.
+
+43
+00:03:14,790 --> 00:03:21,370
+And if you go back to our Get Basket endpoint classes, you can see that Lysander comes in here.
+
+44
+00:03:21,370 --> 00:03:26,110
+And now we will implement to accommodating incoming HTTP requests.
+
+45
+00:03:26,110 --> 00:03:35,170
+In here the first line we will get the result object with async await sender that send object.
+
+46
+00:03:35,170 --> 00:03:40,300
+That means mediator will send a new get basket query object.
+
+47
+00:03:41,020 --> 00:03:49,180
+And inside of this get basket query, we will passing the username and expecting the result object from
+
+48
+00:03:49,180 --> 00:03:55,150
+the mediator that will be handled the query handle method and respond back to the result object.
+
+49
+00:03:55,150 --> 00:03:59,890
+And after that we can convert this result object as a response.
+
+50
+00:03:59,890 --> 00:04:12,130
+For that purpose I am going to use result dot adopt method and passing the get basket response object.
+
+51
+00:04:12,850 --> 00:04:15,400
+So how we can run this adopt method?
+
+52
+00:04:15,400 --> 00:04:22,750
+We didn't install master in the basket API because master has installed in the building blocks, and
+
+53
+00:04:22,750 --> 00:04:28,930
+since we are getting reference from the building blocks, we can access the Master and Mediator library
+
+54
+00:04:28,930 --> 00:04:30,220
+from the building blocks.
+
+55
+00:04:30,220 --> 00:04:36,130
+So if you go back to the get basket endpoint, we can return back to the client application, this response
+
+56
+00:04:36,130 --> 00:04:36,640
+object.
+
+57
+00:04:36,640 --> 00:04:46,270
+For that purpose I'm going to write return results dot okay response and passing the response object.
+
+58
+00:04:46,510 --> 00:04:52,870
+We can also configure these HTTP get endpoint with using the width methods.
+
+59
+00:04:52,870 --> 00:04:58,000
+These are the extension method that we can configure our HTTP get method.
+
+60
+00:04:58,000 --> 00:05:06,100
+If you go on top of this class, you can see that we can move these master to the our global using statement.
+
+61
+00:05:06,880 --> 00:05:13,300
+By this way, the other operations will not be using statement into their operation.
+
+62
+00:05:13,300 --> 00:05:20,170
+So if you go back to get basket endpoints here you can see that we define get basket endpoint class
+
+63
+00:05:20,170 --> 00:05:22,720
+that implements the I Carter module.
+
+64
+00:05:22,720 --> 00:05:29,740
+And our Get request takes the username as a route parameter and returns to the user basket, which means
+
+65
+00:05:29,740 --> 00:05:33,730
+that shopping cart object from running the query handler class.
+

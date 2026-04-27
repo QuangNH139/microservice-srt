@@ -1,0 +1,200 @@
+1
+00:00:00,140 --> 00:00:05,900
+In this video we are going to test pagination for Getproducts query use cases.
+
+2
+00:00:05,930 --> 00:00:12,530
+For that purpose, make sure that your Docker environment is running and our catalog db PostgreSQL is
+
+3
+00:00:12,530 --> 00:00:14,600
+up and running on Docker environment.
+
+4
+00:00:14,600 --> 00:00:21,890
+And after that you can see in the pgadmin we have seven items under the our product table.
+
+5
+00:00:21,890 --> 00:00:27,530
+And I am going to test by the pagination with sending only five in a first page.
+
+6
+00:00:27,530 --> 00:00:30,350
+And the second page we will see two items.
+
+7
+00:00:30,350 --> 00:00:31,490
+For that purpose.
+
+8
+00:00:31,490 --> 00:00:38,330
+Please open the Visual Studio and put breakpoints in the Getproducts endpoint and Getproducts under
+
+9
+00:00:38,330 --> 00:00:38,900
+method.
+
+10
+00:00:38,900 --> 00:00:44,660
+And after that run this catalog API microservice application in here.
+
+11
+00:00:45,460 --> 00:00:48,280
+And after running this application.
+
+12
+00:00:48,920 --> 00:00:53,570
+I'm going to remove this breakpoint and remove the breakpoint from the seed operation.
+
+13
+00:00:55,600 --> 00:01:00,280
+And yes, the application has started and after that please open the postman.
+
+14
+00:01:00,370 --> 00:01:07,750
+And in this time we will start by testing scenario where we send the first page with the five products.
+
+15
+00:01:07,750 --> 00:01:11,260
+And this is common use case in real world applications.
+
+16
+00:01:11,260 --> 00:01:19,090
+But before that let me send only products and to see all products listed and responded into our.
+
+17
+00:01:20,450 --> 00:01:21,350
+Product list.
+
+18
+00:01:21,350 --> 00:01:26,660
+Here you can see that these are the all products that including seven products from the database.
+
+19
+00:01:26,660 --> 00:01:29,390
+And we don't have any pagination yet.
+
+20
+00:01:29,420 --> 00:01:35,870
+So before proceeding to pagination, make sure that you have removed the unnecessary breakpoints into
+
+21
+00:01:35,870 --> 00:01:39,170
+your application in order to debug properly.
+
+22
+00:01:39,170 --> 00:01:46,970
+So after that, if you open the postman this time, we are going to request maximum five items in one
+
+23
+00:01:46,970 --> 00:01:50,750
+page and I would like to request the page one for that purpose.
+
+24
+00:01:50,750 --> 00:01:54,020
+I'm going to put request parameters in here.
+
+25
+00:01:54,020 --> 00:01:57,710
+The first one is page number, the second one is page size.
+
+26
+00:01:57,710 --> 00:02:01,310
+Here you can see the query parameters comes listed on here.
+
+27
+00:02:01,310 --> 00:02:06,110
+So if you save this Http get method this will be paging anymore.
+
+28
+00:02:06,110 --> 00:02:12,530
+And if you send http get request this will be come to the our Getproducts endpoint.
+
+29
+00:02:12,530 --> 00:02:18,890
+And if you check the request parameter as a parameter type, you can see the page number and page size
+
+30
+00:02:18,890 --> 00:02:21,740
+comes into our Getproduct request object.
+
+31
+00:02:21,740 --> 00:02:24,770
+And the first thing we are converting as a query.
+
+32
+00:02:24,770 --> 00:02:27,590
+And in query we will send query handler.
+
+33
+00:02:27,590 --> 00:02:31,220
+And of course before that we will see some logging operation.
+
+34
+00:02:31,220 --> 00:02:34,460
+Now here you can see the actual handle operation.
+
+35
+00:02:34,460 --> 00:02:38,360
+And in the query object we have page number and page size.
+
+36
+00:02:38,360 --> 00:02:44,630
+And this time Martin will be run to page list async extension method with pacing this page number and
+
+37
+00:02:44,630 --> 00:02:49,520
+page size and return back to product list according to this page number and page size.
+
+38
+00:02:49,520 --> 00:02:54,620
+Here you can see the product list comes with the five, which is the our page size.
+
+39
+00:02:54,620 --> 00:03:01,940
+And if you go back to response to the client, you can see that only five products comes for the first
+
+40
+00:03:01,940 --> 00:03:02,450
+page.
+
+41
+00:03:02,450 --> 00:03:10,370
+So in order to perform the pagination and retrieving the second page, we will send the page number
+
+42
+00:03:10,460 --> 00:03:11,660
+is two.
+
+43
+00:03:11,660 --> 00:03:19,010
+And if we send the page number is two, you can see that this time we will retrieve the next five items
+
+44
+00:03:19,010 --> 00:03:20,810
+if available on database.
+
+45
+00:03:20,810 --> 00:03:24,950
+If we continue these codes and go to the our actual logic.
+
+46
+00:03:24,950 --> 00:03:28,310
+This time you can see the product count comes with two.
+
+47
+00:03:28,340 --> 00:03:34,640
+That means we are retrieved the second two products into our database that is listing in here, which
+
+48
+00:03:34,640 --> 00:03:37,310
+is the LG, G7 and Panasonic Lumix.
+
+49
+00:03:37,310 --> 00:03:45,080
+And you can confirm from the these Pgadmin dashboard, we are retrieving the second page size items
+
+50
+00:03:45,080 --> 00:03:46,040
+from the database.
+

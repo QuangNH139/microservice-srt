@@ -1,0 +1,108 @@
+1
+00:00:00,140 --> 00:00:06,200
+In this video, we are going to explain infrastructure and data concerns for basket API.
+
+2
+00:00:06,710 --> 00:00:09,320
+Let's start by remembering banking services.
+
+3
+00:00:09,350 --> 00:00:15,710
+Banking services are the external resources or the components that microservices depends on for their
+
+4
+00:00:15,710 --> 00:00:16,580
+operations.
+
+5
+00:00:16,880 --> 00:00:23,120
+They provide support for various functionalities and in the cloud native architectures, banking services
+
+6
+00:00:23,120 --> 00:00:29,780
+like databases, messaging systems and caching services are treated as attached resources.
+
+7
+00:00:30,410 --> 00:00:36,170
+So these services are the external to the microservices and can be swapped or replaced without changing
+
+8
+00:00:36,170 --> 00:00:37,820
+the microservice core logic.
+
+9
+00:00:37,850 --> 00:00:43,790
+In a cloud native microservice architecture, backing services are decoupled from the microservice themselves
+
+10
+00:00:43,790 --> 00:00:48,260
+and promoting the flexibility, scalability, and easier to maintenance.
+
+11
+00:00:49,130 --> 00:00:54,920
+Here you can see the illustration showing the various backing services in the cloud native setup that
+
+12
+00:00:54,920 --> 00:00:59,780
+you can see the databases, distributed caches, message brokers, and so on.
+
+13
+00:01:01,280 --> 00:01:07,790
+In our scenario basket, microservices interacts with the PostgreSQL database and the Redis distributed
+
+14
+00:01:07,790 --> 00:01:08,360
+cache.
+
+15
+00:01:08,540 --> 00:01:15,140
+So that means for this section we will focus on PostgreSQL database operations similar to catalog microservices.
+
+16
+00:01:15,140 --> 00:01:20,990
+But in the next section we will focus on the adding cache capabilities into basket microservices.
+
+17
+00:01:21,530 --> 00:01:27,860
+In order to implement these two different external resources for our basket microservices, we will
+
+18
+00:01:27,860 --> 00:01:29,390
+use repository pattern.
+
+19
+00:01:29,690 --> 00:01:35,090
+Let's examine the class diagram for our repository implementation that you can see in the picture.
+
+20
+00:01:35,120 --> 00:01:41,510
+So according to this picture you can see that we will create an interface which name is AI basket repository.
+
+21
+00:01:41,510 --> 00:01:47,690
+And this interface should be inherited from the basket repository and cached basket repository.
+
+22
+00:01:48,140 --> 00:01:53,840
+So we will follow the repository pattern which is provide an abstraction layer over the database.
+
+23
+00:01:53,840 --> 00:02:01,160
+And we will use decorator pattern using the secretary library in order to decorate the basket repository
+
+24
+00:02:01,160 --> 00:02:02,930
+for caching operations.
+
+25
+00:02:02,930 --> 00:02:08,660
+And we will follow the cache aside pattern fetching data from the radius when available, otherwise
+
+26
+00:02:08,660 --> 00:02:11,990
+from the PostgreSQL and updating the cache information.
+
+27
+00:02:11,990 --> 00:02:13,700
+So now let's get started.
+

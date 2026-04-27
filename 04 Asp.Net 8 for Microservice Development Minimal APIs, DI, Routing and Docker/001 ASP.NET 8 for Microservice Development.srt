@@ -1,0 +1,152 @@
+1
+00:00:00,200 --> 00:00:05,720
+In this section we are going to learn ASP.Net eight for microservices development.
+
+2
+00:00:05,720 --> 00:00:12,440
+So we will explore the capabilities of ASP.Net eight in building robust and scalable microservices.
+
+3
+00:00:12,440 --> 00:00:17,480
+It will provide to build web APIs and web UI using the ASP.Net core.
+
+4
+00:00:17,480 --> 00:00:25,760
+And we will see ASP.Net eight minimal APIs built in dependency Injection, create ASP.Net core web API
+
+5
+00:00:25,760 --> 00:00:27,470
+for single microservices.
+
+6
+00:00:27,470 --> 00:00:32,810
+And lastly, we will containerize and orchestrate services with Docker and Docker Compose.
+
+7
+00:00:33,110 --> 00:00:36,380
+So let's start with what is ASP.Net?
+
+8
+00:00:36,740 --> 00:00:43,730
+ASP.Net core is a cross-platform, high performance open source framework for building modern, cloud
+
+9
+00:00:43,730 --> 00:00:46,550
+enabled, internet connected applications.
+
+10
+00:00:46,910 --> 00:00:54,020
+With ASP.Net core, we can build web applications and services, Internet of things and mobile backends,
+
+11
+00:00:54,020 --> 00:00:59,090
+and we can also deploy to the cloud or on premises and we can run on.
+
+12
+00:00:59,240 --> 00:01:01,070
+Net core and net eight.
+
+13
+00:01:01,730 --> 00:01:04,489
+So why choose ASP.Net core?
+
+14
+00:01:04,489 --> 00:01:11,810
+Millions of developers use or have used ASP.Net to create web applications and building microservices.
+
+15
+00:01:12,140 --> 00:01:18,920
+ASP.Net core provides some of the benefits, including a unified story for building web UI and web APIs,
+
+16
+00:01:18,920 --> 00:01:21,140
+and architected for testability.
+
+17
+00:01:21,290 --> 00:01:26,390
+Razor page makes coding page focus scenarios easier and more productive.
+
+18
+00:01:26,390 --> 00:01:33,110
+Blazor lets you use the C sharp in the browser alongside with the JavaScript, and it provides ability
+
+19
+00:01:33,110 --> 00:01:41,270
+to develop and run on windows, macOS, and Linux, and it is also open source and community focused.
+
+20
+00:01:41,270 --> 00:01:48,080
+We can also add that integration of the modern client side frameworks and development workflows it supports
+
+21
+00:01:48,080 --> 00:01:54,830
+for hosting remote procedure calls, which is the gRPC, and it is also cloud ready environment based
+
+22
+00:01:54,830 --> 00:01:56,780
+configuration system included.
+
+23
+00:01:56,780 --> 00:02:04,070
+It also included built in dependency injection, and it is a lightweight, high performance and modular
+
+24
+00:02:04,070 --> 00:02:13,130
+Http request pipeline included, so it is ability to host on the kestrel IIs, nginx, Apache and Docker.
+
+25
+00:02:13,130 --> 00:02:18,140
+These two link that simplifies the modern web development and microservice development.
+
+26
+00:02:18,140 --> 00:02:26,000
+So now let's see the ASP.Net eight for microservice development, ASP.Net eight introduced enhanced
+
+27
+00:02:26,000 --> 00:02:31,460
+features that align perfectly with the cloud native microservice architecture and developments.
+
+28
+00:02:31,460 --> 00:02:38,690
+It supports building high performance web APIs and services, which are key components in a microservice
+
+29
+00:02:38,690 --> 00:02:39,530
+ecosystem.
+
+30
+00:02:39,530 --> 00:02:46,880
+We will also creating web APIs using ASP.Net core, leveraging its power to build both service endpoints
+
+31
+00:02:46,880 --> 00:02:48,470
+and user interfaces.
+
+32
+00:02:48,470 --> 00:02:53,000
+It offers best performance, scalability, and flexibility.
+
+33
+00:02:53,270 --> 00:02:59,780
+ASP.Net core is lightweight, supports cross-platform development, and provides a vast ecosystem of
+
+34
+00:02:59,780 --> 00:03:01,220
+libraries and tools.
+
+35
+00:03:01,220 --> 00:03:08,600
+It is optimized for cloud deployment and supports modern architecture patterns like SQS and event driven
+
+36
+00:03:08,600 --> 00:03:13,100
+design, making it ideal for building sophisticated microservices.
+
+37
+00:03:13,100 --> 00:03:19,730
+So ASP.Net eight is a great choice to building modern, efficient, and scalable microservices on the
+
+38
+00:03:19,730 --> 00:03:20,210
+cloud.
+

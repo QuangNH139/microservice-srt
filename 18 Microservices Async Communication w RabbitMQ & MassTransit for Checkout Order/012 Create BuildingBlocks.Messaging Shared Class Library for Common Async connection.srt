@@ -1,0 +1,148 @@
+1
+00:00:00,200 --> 00:00:07,280
+In this video we are going to do step one which is creating boolean blocks messaging shared class library
+
+2
+00:00:07,280 --> 00:00:10,580
+for common asynchronous communication responsibilities.
+
+3
+00:00:10,820 --> 00:00:17,240
+So for that purpose I am going to open our class library image which including microservices and building
+
+4
+00:00:17,240 --> 00:00:18,410
+blocks class library.
+
+5
+00:00:18,440 --> 00:00:24,560
+So here you can see that Building blocks messaging class library will be getting referenced by the microservices
+
+6
+00:00:24,560 --> 00:00:30,500
+that requiring asynchronous communication specifically basket and ordering microservices in our case
+
+7
+00:00:30,830 --> 00:00:36,860
+other microservices like catalog microservices which may not require asynchronous communication, will
+
+8
+00:00:36,860 --> 00:00:40,370
+only getting reference from the main building blocks class library.
+
+9
+00:00:40,400 --> 00:00:45,830
+So that means in our e-commerce application catalog only getting reference building blocks, class library
+
+10
+00:00:45,980 --> 00:00:51,500
+basket and ordering, getting reference both building blocks and also building blocks messaging class
+
+11
+00:00:51,500 --> 00:00:51,950
+library.
+
+12
+00:00:52,190 --> 00:00:58,670
+The idea is that every microservices need to getting reference from the building blocks, but only asynchronous
+
+13
+00:00:58,670 --> 00:01:02,510
+communication required services need to getting reference building blocks.
+
+14
+00:01:02,510 --> 00:01:03,890
+Messaging class library.
+
+15
+00:01:03,950 --> 00:01:10,250
+It is a best practice to separate and grouping these shared class libraries according to microservice
+
+16
+00:01:10,250 --> 00:01:12,140
+requirement and responsibilities.
+
+17
+00:01:12,140 --> 00:01:16,190
+So now let's develop the building blocks messaging shared class library.
+
+18
+00:01:16,310 --> 00:01:18,200
+Please open the Visual Studio.
+
+19
+00:01:18,200 --> 00:01:23,150
+We can go to the Building Blocks folder under our solution which is the building blocks.
+
+20
+00:01:23,150 --> 00:01:27,710
+If you expand this folder, you can see that we have only one building blocks class library.
+
+21
+00:01:27,710 --> 00:01:31,550
+I'm going to create a new class library under the Building Blocks folder.
+
+22
+00:01:31,550 --> 00:01:36,500
+Right click Add New Project which will be the class library.
+
+23
+00:01:36,680 --> 00:01:41,990
+And here you can see the class library and give the project name as a building blocks dot messaging.
+
+24
+00:01:41,990 --> 00:01:44,480
+So in here the location is important.
+
+25
+00:01:44,480 --> 00:01:50,870
+If you click this button, you can go to the microservices source and select the Building Blocks folder.
+
+26
+00:01:50,870 --> 00:01:54,050
+Under this folder we are going to create a second class library.
+
+27
+00:01:54,050 --> 00:01:55,490
+I'm going to select this folder.
+
+28
+00:01:55,490 --> 00:01:59,720
+And here you can see the the project directory that we are going to create.
+
+29
+00:01:59,720 --> 00:02:06,800
+These are the microservices source building blocks main folder and building blocks messaging class library.
+
+30
+00:02:06,800 --> 00:02:11,450
+And make sure that you have selected the correct location and click the next button.
+
+31
+00:02:11,450 --> 00:02:13,070
+So select the framework as a.
+
+32
+00:02:13,220 --> 00:02:15,080
+Net eight and click the create button.
+
+33
+00:02:15,440 --> 00:02:21,680
+So in here you can see that we have created Building Blocks Messaging class library which is dedicated
+
+34
+00:02:21,680 --> 00:02:23,810
+to messaging and asynchronous communication.
+
+35
+00:02:23,810 --> 00:02:27,050
+You can right click and open folder in the File Explorer.
+
+36
+00:02:27,050 --> 00:02:32,690
+And you can verify that we have created building blocks under the Building blocks folder, including
+
+37
+00:02:32,690 --> 00:02:36,050
+two class library under this source building blocks folder.
+

@@ -1,0 +1,268 @@
+1
+00:00:00,140 --> 00:00:06,560
+In this video, we are going to register Custom Exception handling class into the ASP.Net with using
+
+2
+00:00:06,560 --> 00:00:09,320
+add exception handler method and remove the old codes.
+
+3
+00:00:09,320 --> 00:00:13,310
+So here you can see that we have developed custom exception handler.
+
+4
+00:00:13,310 --> 00:00:17,810
+In order to register this class we should go to the Catholic API Program.cs.
+
+5
+00:00:17,810 --> 00:00:26,030
+But in here, as you can see that we previously used inline code in Program.cs for handling the exceptions.
+
+6
+00:00:26,030 --> 00:00:32,810
+So while this works, it is not the most useful approach, especially for larger microservice applications.
+
+7
+00:00:32,810 --> 00:00:38,960
+For that purpose, I am going to remove this part so you can select the all code block and remove these
+
+8
+00:00:38,960 --> 00:00:40,640
+use exception handler.
+
+9
+00:00:40,760 --> 00:00:48,020
+So now we will inject actual custom exception handler class which is a more modular approach using a
+
+10
+00:00:48,020 --> 00:00:49,460
+custom exception handler.
+
+11
+00:00:49,460 --> 00:00:55,880
+So for that purpose you can go on top of these programs JS and remove these using statements.
+
+12
+00:00:56,000 --> 00:01:00,110
+And in here we can also move these as a global handling.
+
+13
+00:01:00,110 --> 00:01:05,390
+Please go to the global using and make this as a global using block.
+
+14
+00:01:06,500 --> 00:01:10,100
+Now we are ready to register our custom exception handler.
+
+15
+00:01:10,100 --> 00:01:15,590
+In order to utilize our custom exception handler, we need to register it in our application services
+
+16
+00:01:15,590 --> 00:01:17,780
+and configure it in the request pipelines.
+
+17
+00:01:17,780 --> 00:01:19,670
+So we should add two places.
+
+18
+00:01:19,670 --> 00:01:22,190
+The first one is in the container side.
+
+19
+00:01:22,190 --> 00:01:24,800
+So let me go to the container side.
+
+20
+00:01:24,800 --> 00:01:31,940
+And at the end of this line of code before building the application we can add a exception handler with
+
+21
+00:01:31,940 --> 00:01:37,730
+using builder services and add exception handler extension method.
+
+22
+00:01:37,730 --> 00:01:44,300
+And we can configure with the custom exception which name is custom exception handler class, which
+
+23
+00:01:44,300 --> 00:01:50,300
+comes from the our building blocks, which is the using building blocks custom exception handler.
+
+24
+00:01:50,300 --> 00:01:56,060
+So in here we basically add required services into ASP.Net routine dependency injection.
+
+25
+00:01:56,060 --> 00:01:57,950
+And here you can see the using statement.
+
+26
+00:01:57,950 --> 00:02:04,160
+I'm going to also move these using statement to the global using and make this clear our program case.
+
+27
+00:02:04,160 --> 00:02:09,350
+And if you go back to Program.cs we have completed the registration side.
+
+28
+00:02:09,500 --> 00:02:17,000
+But this time we need also add a required pipeline in order to configure our Http pipeline for that
+
+29
+00:02:17,000 --> 00:02:17,420
+purpose.
+
+30
+00:02:17,420 --> 00:02:28,040
+After the mapping Carter you can use app dot, use exception handler method and you can pass empty option
+
+31
+00:02:28,040 --> 00:02:28,580
+value.
+
+32
+00:02:29,360 --> 00:02:36,410
+So as you can see that in this line of code, we basically add our custom exception handler as a service
+
+33
+00:02:36,410 --> 00:02:38,510
+into built in dependency injection.
+
+34
+00:02:38,510 --> 00:02:44,510
+And after that, in this line of code we configure the application to use our custom exception handler.
+
+35
+00:02:44,510 --> 00:02:50,060
+So the empty option parameter indicates that we are relying on custom configured handler.
+
+36
+00:02:50,060 --> 00:02:54,710
+Now we can test our new setup by triggering different type of exceptions.
+
+37
+00:02:54,710 --> 00:03:00,800
+But before that I'm going to go to the custom exception handler and put a breakpoint in the try handle
+
+38
+00:03:00,800 --> 00:03:04,340
+async method and run this application in an https mode.
+
+39
+00:03:04,760 --> 00:03:08,000
+So this will be running our catalog microservices.
+
+40
+00:03:08,000 --> 00:03:09,020
+And after that.
+
+41
+00:03:10,160 --> 00:03:12,380
+We will open the postman.
+
+42
+00:03:12,380 --> 00:03:19,580
+And in here again I am going to send an http put request and will expected to this kind of structured
+
+43
+00:03:19,580 --> 00:03:20,420
+response.
+
+44
+00:03:20,420 --> 00:03:25,460
+Please send http put request without giving the name information and click the send.
+
+45
+00:03:25,490 --> 00:03:29,390
+Here you can see that this is triggering our update product endpoint.
+
+46
+00:03:29,390 --> 00:03:36,170
+And once we are validating this request, we don't send a name information.
+
+47
+00:03:36,170 --> 00:03:41,660
+And after these rule definitions you can see that our global exceptions will be triggering.
+
+48
+00:03:41,660 --> 00:03:46,670
+So if I hit the F5 this will be go to the validation exception.
+
+49
+00:03:46,670 --> 00:03:52,370
+When we throw the validation exception it is go to the these custom exception handler class.
+
+50
+00:03:52,370 --> 00:03:58,790
+So in here you can see that we are trying handle async method and start with logging the error in the
+
+51
+00:03:58,790 --> 00:03:59,810
+exception message.
+
+52
+00:03:59,810 --> 00:04:03,740
+So after that we are switching the incoming exception type.
+
+53
+00:04:03,740 --> 00:04:08,720
+And accordingly these exception we are defining the detail title and status code.
+
+54
+00:04:08,720 --> 00:04:11,510
+And here you can see that this is the validation exception.
+
+55
+00:04:11,510 --> 00:04:16,550
+And after that with these detail information we have prepared our problem details.
+
+56
+00:04:16,550 --> 00:04:20,990
+And in the problem details we add some extensions which is the trace ID.
+
+57
+00:04:20,990 --> 00:04:26,570
+And also since this is the validation exception we will add validation errors from the these exception
+
+58
+00:04:26,570 --> 00:04:28,790
+class in the errors message.
+
+59
+00:04:28,790 --> 00:04:33,680
+So after that we can return as a Json message as expected.
+
+60
+00:04:33,680 --> 00:04:38,000
+And this is more readable and manageable from our response to the client.
+
+61
+00:04:38,000 --> 00:04:40,700
+Here you can see the title as a validation exception.
+
+62
+00:04:40,700 --> 00:04:46,940
+And following that you can see the status 400 and details comes from the validation failed name is required
+
+63
+00:04:46,940 --> 00:04:49,280
+which is the inline exception message.
+
+64
+00:04:49,280 --> 00:04:51,920
+And here you can see the instance and trace ID.
+
+65
+00:04:52,070 --> 00:04:57,230
+And lastly we solve the validation errors which we can add the extension for the problem details.
+
+66
+00:04:57,230 --> 00:05:03,020
+In the validation errors, you can see the whole information about the validation rule into the full
+
+67
+00:05:03,020 --> 00:05:03,710
+length validation.
+

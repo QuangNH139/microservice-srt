@@ -1,0 +1,148 @@
+1
+00:00:00,260 --> 00:00:07,400
+In this video we are going to learn primitive obsession and strongly typed IDs in domain driven design.
+
+2
+00:00:07,520 --> 00:00:11,480
+So let me start with the what is primitive obsession?
+
+3
+00:00:11,840 --> 00:00:18,980
+Primitive obsession is a code smell where primitives like string, integer, grid are used for the domain
+
+4
+00:00:18,980 --> 00:00:22,520
+concepts, leading to ambiguity and errors.
+
+5
+00:00:22,880 --> 00:00:30,320
+For instance, using a grid or string for an order ID, customer ID, or product ID makes it easy to
+
+6
+00:00:30,320 --> 00:00:35,330
+mix these identifiers up as they are all of the same type.
+
+7
+00:00:35,330 --> 00:00:39,230
+So how can we solve these primitive obsession?
+
+8
+00:00:39,860 --> 00:00:43,070
+The solution is using strongly typed IDs.
+
+9
+00:00:43,460 --> 00:00:46,190
+So now let me answer these questions.
+
+10
+00:00:46,190 --> 00:00:49,070
+What is strongly typed IDs pattern?
+
+11
+00:00:49,070 --> 00:00:55,490
+Strongly typed IDs involves creating distinct types for each kind of ID in your domain.
+
+12
+00:00:55,730 --> 00:00:59,450
+This makes your code more expressive and less error prone.
+
+13
+00:01:00,020 --> 00:01:07,670
+It clarifies which type of ID is expected and prevents accidentally using one type of ID where another
+
+14
+00:01:07,670 --> 00:01:09,620
+type of ID is intended.
+
+15
+00:01:09,650 --> 00:01:15,980
+So now let me show you how can we use strongly type ID pattern into the orderitem?
+
+16
+00:01:15,980 --> 00:01:20,660
+Please open the Visual Studio and go to the models and Orderitem.
+
+17
+00:01:20,660 --> 00:01:26,990
+If you go to Orderitem and go to the constructor of the Orderitem, you can see the first two parameters
+
+18
+00:01:26,990 --> 00:01:34,550
+are order id and product ID and when we are creating Orderitem, it is very easy to pass wrong IDs into
+
+19
+00:01:34,550 --> 00:01:35,570
+constructors.
+
+20
+00:01:35,570 --> 00:01:42,110
+That means you can create Orderitem with the wrong order ID and product ID, you can simply replace
+
+21
+00:01:42,110 --> 00:01:44,750
+wrong ids them into the parameter.
+
+22
+00:01:44,750 --> 00:01:50,300
+Instead of sending order ID, you can send product ID in here and send order ID in here.
+
+23
+00:01:50,300 --> 00:01:51,200
+So we call.
+
+24
+00:01:51,200 --> 00:01:53,510
+This problem is a primitive obsession.
+
+25
+00:01:53,510 --> 00:01:58,580
+And in order to solve this problem we can define strongly type IDs.
+
+26
+00:01:58,580 --> 00:02:07,250
+That means instead of using the grid for order id, I can create an order id type and we can pass the
+
+27
+00:02:07,250 --> 00:02:10,520
+order id parameter into Orderitem constructor.
+
+28
+00:02:10,520 --> 00:02:15,740
+And at the same way we can create product id type for product id definition.
+
+29
+00:02:15,740 --> 00:02:20,210
+By this way we can avoid the setting value by mistake.
+
+30
+00:02:20,390 --> 00:02:24,710
+So using the strong type IDs giving lots of benefits.
+
+31
+00:02:24,710 --> 00:02:27,320
+The first benefit is type safety.
+
+32
+00:02:27,320 --> 00:02:34,940
+Mistakenly passing a product ID where an order ID is expected is now a compile time error, and we cannot
+
+33
+00:02:34,940 --> 00:02:40,040
+pass the order ID instead of the product id with a type saved values.
+
+34
+00:02:40,040 --> 00:02:42,530
+And the second benefit is readability.
+
+35
+00:02:42,530 --> 00:02:47,300
+The constructor clearly indicates that what type of id is required.
+
+36
+00:02:47,300 --> 00:02:54,470
+And lastly, we can say that it is also beneficial for refactoring support IDs can easily distinguish
+
+37
+00:02:54,470 --> 00:02:58,730
+between these types and adding in refactoring and navigation very easily.
+

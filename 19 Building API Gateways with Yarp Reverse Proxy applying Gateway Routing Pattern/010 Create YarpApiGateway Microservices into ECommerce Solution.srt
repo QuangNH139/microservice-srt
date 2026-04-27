@@ -1,0 +1,284 @@
+1
+00:00:00,110 --> 00:00:06,740
+In this video we are going to create Erb API gateway microservices into our microservice solution.
+
+2
+00:00:06,770 --> 00:00:10,070
+Here you can see the our folder structure that we are going to develop.
+
+3
+00:00:10,070 --> 00:00:14,750
+During this video I'm going to start with setting up the solution structure.
+
+4
+00:00:14,750 --> 00:00:19,520
+Please open the Visual Studio and go to the Recap Microservices solution.
+
+5
+00:00:19,520 --> 00:00:24,710
+I am going to create a new solution folder like building blocks services and so on.
+
+6
+00:00:24,710 --> 00:00:28,850
+So we will create a new solution folder which name is API gateways.
+
+7
+00:00:29,450 --> 00:00:35,870
+Right click the solution add new solution folder and give the name as a API gateways.
+
+8
+00:00:36,200 --> 00:00:40,100
+And this folder will encapsulate all API gateway related projects.
+
+9
+00:00:40,100 --> 00:00:44,810
+After that, we will add a new project under this API gateway solution folder.
+
+10
+00:00:44,810 --> 00:00:52,040
+That means we will create an ASP.Net core empty solution, which name Erb API gateway under this API
+
+11
+00:00:52,040 --> 00:00:53,330
+gateway solution folder.
+
+12
+00:00:53,330 --> 00:00:54,770
+So let's get started.
+
+13
+00:00:54,770 --> 00:01:00,650
+Right click this solution, add new project and select the ASP.Net core empty project.
+
+14
+00:01:00,650 --> 00:01:06,230
+Double click this project template and give the project name as a Erb API gateway and select the correct
+
+15
+00:01:06,230 --> 00:01:06,860
+location.
+
+16
+00:01:06,860 --> 00:01:07,820
+For that purpose.
+
+17
+00:01:07,820 --> 00:01:13,430
+We can click this button and select the source folder, and under the source folder we are going to
+
+18
+00:01:13,430 --> 00:01:14,330
+create new folder.
+
+19
+00:01:14,330 --> 00:01:15,920
+Which name is API gateways.
+
+20
+00:01:15,920 --> 00:01:19,310
+First of all I'm going to select this folder which is the source folder.
+
+21
+00:01:19,310 --> 00:01:23,360
+And also I am adding API gateways solution folder in here.
+
+22
+00:01:23,360 --> 00:01:27,560
+That means we have created API gateway solution folder under our solution.
+
+23
+00:01:27,560 --> 00:01:33,020
+And we will create physical folder with following the source backslash API gateways that we are going
+
+24
+00:01:33,020 --> 00:01:34,700
+to create Erb API gateway.
+
+25
+00:01:34,700 --> 00:01:36,380
+Under this folder structure.
+
+26
+00:01:36,410 --> 00:01:41,870
+Please also create the correct structure of your Erb API gateway, and make sure that this will be the
+
+27
+00:01:41,870 --> 00:01:44,240
+correct folder path for your API gateway.
+
+28
+00:01:44,270 --> 00:01:48,650
+And after that, I am going to click the next button and selected framework as a.
+
+29
+00:01:48,770 --> 00:01:49,310
+Net eight.
+
+30
+00:01:49,460 --> 00:01:51,170
+Configure the Https.
+
+31
+00:01:51,170 --> 00:01:55,640
+And also we will enable the Docker and Docker operating system should be Linux.
+
+32
+00:01:55,640 --> 00:02:01,010
+And I am not checking these top level statement because we will follow the top level statement in Program.cs.
+
+33
+00:02:01,010 --> 00:02:05,210
+Yes, please make these configurations like this way and click the create button.
+
+34
+00:02:05,210 --> 00:02:12,890
+This will be create our Erb API gateway ASP.Net m2 project inside of the our microservices solution.
+
+35
+00:02:12,890 --> 00:02:15,860
+Here you can see the microservices created successfully.
+
+36
+00:02:15,860 --> 00:02:20,780
+And if you go to Program.cs, this will be the entry point of our ASP.Net project.
+
+37
+00:02:20,780 --> 00:02:24,230
+We can arrange our project according to our minimal setup.
+
+38
+00:02:24,230 --> 00:02:29,210
+First of all, before building the application, we can put a command and section for adding services
+
+39
+00:02:29,210 --> 00:02:32,210
+into ASP.Net built in dependency injection container.
+
+40
+00:02:32,210 --> 00:02:38,780
+And after building the application, we can again put a command for configuring Http request pipeline
+
+41
+00:02:38,780 --> 00:02:41,360
+with removing these Mapkit operation.
+
+42
+00:02:41,360 --> 00:02:47,630
+And this is the minimal configuration for any ASP.Net microservice application for our solution.
+
+43
+00:02:47,630 --> 00:02:54,110
+That means this code sets up a minimal ASP.Net core application and services, and Middlewares configuration
+
+44
+00:02:54,110 --> 00:02:57,110
+specific to your will be added in the next videos.
+
+45
+00:02:57,110 --> 00:03:02,510
+But before that, if you look at the port numbers for your API gateway, microservices, we can see
+
+46
+00:03:02,510 --> 00:03:10,040
+that we will expose the Erb API gateway in development and local environment for 5004 and 5054, and
+
+47
+00:03:10,040 --> 00:03:16,190
+we will expose 6004 and 6064 for the code environment in the Erb API gateway.
+
+48
+00:03:16,190 --> 00:03:21,650
+So I am going to set these local environment port numbers into our ASP.Net empty project.
+
+49
+00:03:21,650 --> 00:03:27,650
+In our solution, if you go back to Visual Studio, you can right click the Erb API gateway and go to
+
+50
+00:03:27,650 --> 00:03:28,400
+the properties.
+
+51
+00:03:28,400 --> 00:03:32,780
+Or you can open the properties and go to the Launch Settings Json file.
+
+52
+00:03:32,780 --> 00:03:38,630
+In here I am going to edit our API gateway http and https port numbers.
+
+53
+00:03:38,630 --> 00:03:40,160
+Here you can see the http.
+
+54
+00:03:40,160 --> 00:03:43,520
+I'm going to change this port number to 5004.
+
+55
+00:03:43,520 --> 00:03:45,380
+And again under the https.
+
+56
+00:03:45,380 --> 00:03:50,420
+I am going to select the http one and change http port number as a 5004.
+
+57
+00:03:50,420 --> 00:03:55,430
+And just after that for https port, I am going to change 5054.
+
+58
+00:03:55,430 --> 00:04:03,350
+So please set the port numbers according to our slide with 5004 for the Http and 5054 for the Https
+
+59
+00:04:03,350 --> 00:04:05,840
+in the Erb API gateway project.
+
+60
+00:04:05,840 --> 00:04:08,060
+And finally we can run the application.
+
+61
+00:04:08,060 --> 00:04:12,080
+I am going to right click the http api gateway and set a startup project.
+
+62
+00:04:13,260 --> 00:04:15,750
+After that, we can go to the running profile.
+
+63
+00:04:15,750 --> 00:04:21,570
+If you change the running profile from Docker to Https, we will run our application in the https mode.
+
+64
+00:04:21,570 --> 00:04:27,480
+And if you click this button, this will be run your API gateway project in Https mode locally.
+
+65
+00:04:27,480 --> 00:04:31,830
+And this will be exposing our services in 5054.
+
+66
+00:04:31,830 --> 00:04:37,620
+And you can verify the starting and exposing services from the project console window that you can see
+
+67
+00:04:37,620 --> 00:04:43,110
+that we have successfully started our API gateway under our issue of microservices solution.
+
+68
+00:04:43,110 --> 00:04:49,680
+Also, we can change the launch browser from the true to false in order to avoid to see our browser
+
+69
+00:04:49,680 --> 00:04:51,600
+when we are starting to our application.
+
+70
+00:04:51,600 --> 00:04:57,930
+So that means we have completed the creating our API gateway project and ready to implement the reverse
+
+71
+00:04:57,930 --> 00:05:00,300
+proxy into our ASP.Net application.
+

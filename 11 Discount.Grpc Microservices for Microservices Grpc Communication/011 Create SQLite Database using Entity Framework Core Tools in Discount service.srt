@@ -1,0 +1,304 @@
+1
+00:00:00,140 --> 00:00:06,350
+In this video, we are going to create a SQLite database using Entity Framework Core tools in discount
+
+2
+00:00:06,350 --> 00:00:07,310
+market sources.
+
+3
+00:00:07,310 --> 00:00:13,400
+For that purpose, I am going to install Microsoft Entity Framework Core Tools NuGet packages into our
+
+4
+00:00:13,400 --> 00:00:14,240
+application.
+
+5
+00:00:14,480 --> 00:00:18,050
+But before that I would like to explain one important thing.
+
+6
+00:00:18,050 --> 00:00:24,890
+I am using Visual Studio as an IDE when developing our micro services, we always using Visual Studio.
+
+7
+00:00:24,890 --> 00:00:32,000
+So when we are using Visual Studio, we should install Microsoft Entity Framework Core tools NuGet packages
+
+8
+00:00:32,000 --> 00:00:38,540
+in order to run Entity Framework commands like Add Migration Update Database into the Package Manager
+
+9
+00:00:38,540 --> 00:00:39,110
+console.
+
+10
+00:00:39,110 --> 00:00:45,380
+Because Visual Studio has Integrated Package Manager Console that we can run direct commands into the
+
+11
+00:00:45,380 --> 00:00:48,470
+Package Manager console with installing tools packages.
+
+12
+00:00:48,470 --> 00:00:56,300
+But if you are using dotnet CLI or any other IDE like Visual Studio Code that has not package Manager
+
+13
+00:00:56,300 --> 00:01:03,410
+console inside of this IDE, that means you should download dotnet tools install command first of all
+
+14
+00:01:03,410 --> 00:01:11,150
+globally, download dotnet f commands into your computer and it also requires to Microsoft Entity Framework
+
+15
+00:01:11,150 --> 00:01:12,920
+Core Design packages.
+
+16
+00:01:12,920 --> 00:01:20,330
+And after adding this package you can run add migration or update database command running the net F
+
+17
+00:01:20,330 --> 00:01:23,690
+migration command or net f database update commands.
+
+18
+00:01:23,690 --> 00:01:25,580
+So this is very important.
+
+19
+00:01:25,580 --> 00:01:30,710
+And please consider this according to your Entity Framework core usage I am using Visual Studio.
+
+20
+00:01:30,710 --> 00:01:36,950
+So I'm going to install two library to interact with Entity Framework Core and add Migration and update
+
+21
+00:01:36,950 --> 00:01:37,760
+database.
+
+22
+00:01:38,030 --> 00:01:44,210
+So please open the Visual Studio and right click the discount gRPC and manage NuGet packages.
+
+23
+00:01:44,860 --> 00:01:50,020
+For Visual Studio, we should install Entity Framework Core Dot tools for that purpose.
+
+24
+00:01:50,050 --> 00:01:54,760
+Please browse this NuGet package and install into your discount gRPC.
+
+25
+00:01:55,000 --> 00:01:55,660
+Except.
+
+26
+00:01:55,660 --> 00:02:01,030
+And if you double click the project file, you can verify that this time we have two Entity Framework
+
+27
+00:02:01,030 --> 00:02:04,300
+packages, one for the SQLite data provider.
+
+28
+00:02:04,300 --> 00:02:09,910
+And we have also installed tools packages in order to add migration and update the database.
+
+29
+00:02:09,940 --> 00:02:17,170
+Save this project file and after that we can start to run our commands that we seen in the slide here
+
+30
+00:02:17,170 --> 00:02:20,770
+you can see that we will create add migration and update database.
+
+31
+00:02:21,040 --> 00:02:22,270
+Add migration command.
+
+32
+00:02:22,270 --> 00:02:28,960
+Basically scaffold a migration to create a initial set of tables for the model and the update database
+
+33
+00:02:28,960 --> 00:02:29,380
+command.
+
+34
+00:02:29,380 --> 00:02:33,670
+Create the database and applies the new migrations into the database.
+
+35
+00:02:33,670 --> 00:02:36,580
+So we will follow these commands for that purpose.
+
+36
+00:02:36,580 --> 00:02:38,200
+Open the Visual Studio.
+
+37
+00:02:38,200 --> 00:02:41,710
+And this time I'm going to open Package Manager Console.
+
+38
+00:02:41,710 --> 00:02:45,280
+If you come here you can see the Package Manager console comes in here.
+
+39
+00:02:45,280 --> 00:02:49,120
+And make sure that your default project is discount gRPC.
+
+40
+00:02:49,150 --> 00:02:52,420
+Here you can see that you can select the default project.
+
+41
+00:02:52,420 --> 00:02:55,720
+And we are going to run this commands under the discount gRPC.
+
+42
+00:02:55,720 --> 00:02:57,160
+So this is important.
+
+43
+00:02:57,160 --> 00:03:03,610
+And after that we can run the add migration command with a giving the name migration initial create.
+
+44
+00:03:03,610 --> 00:03:10,180
+So this command create a new migration which name is initial create based on the our model defined in
+
+45
+00:03:10,180 --> 00:03:11,710
+the discount context object.
+
+46
+00:03:11,710 --> 00:03:14,650
+If you hit enter, you can see that this will be.
+
+47
+00:03:14,650 --> 00:03:21,850
+Create a migration folder under the our discount gRPC and we will see the model up and down methods
+
+48
+00:03:21,850 --> 00:03:22,540
+in here.
+
+49
+00:03:22,540 --> 00:03:26,260
+Here you can see that migration folder is created.
+
+50
+00:03:26,260 --> 00:03:30,700
+And in the migration folder we have a initial create C class.
+
+51
+00:03:30,700 --> 00:03:34,210
+And in this class we have two primary methods.
+
+52
+00:03:34,210 --> 00:03:36,070
+These are the up and down.
+
+53
+00:03:36,070 --> 00:03:40,870
+In the up method we basically define the database schema change that we apply.
+
+54
+00:03:40,870 --> 00:03:47,200
+And in the down method we basically revert back the changes defined in the up method if we need it.
+
+55
+00:03:47,200 --> 00:03:48,880
+So this is the migration file.
+
+56
+00:03:48,880 --> 00:03:53,800
+And after created migration file we can go to the second step which is the create database.
+
+57
+00:03:53,800 --> 00:03:58,840
+For that purpose I am going to open a package manager console again.
+
+58
+00:03:58,840 --> 00:04:03,640
+And this time we are going to run the command which name is update database.
+
+59
+00:04:03,640 --> 00:04:07,570
+And this will be apply this up method into the our database.
+
+60
+00:04:07,570 --> 00:04:10,120
+And if I hit the enter this will be.
+
+61
+00:04:10,120 --> 00:04:16,240
+Apply this migration to the database and creating necessary tables and structures as defined in the
+
+62
+00:04:16,240 --> 00:04:17,260
+migration file.
+
+63
+00:04:17,260 --> 00:04:19,000
+And here you can see the logs.
+
+64
+00:04:19,000 --> 00:04:21,490
+This will be executed DB command.
+
+65
+00:04:21,490 --> 00:04:27,130
+And this will be basically create a new coupon table into our SQLite database.
+
+66
+00:04:27,130 --> 00:04:33,610
+After running the update database command you can see a newly created file which name is discount DB
+
+67
+00:04:33,640 --> 00:04:38,650
+under the our discount gRPC project and this is under the project directory.
+
+68
+00:04:38,650 --> 00:04:43,630
+And you can see this country be created on our project directory which is the SQLite.
+
+69
+00:04:43,630 --> 00:04:47,440
+And it is a good fit for simple and performant data operations.
+
+70
+00:04:47,440 --> 00:04:54,970
+But this is not a good way and not best practice to open package manager console and run the add migration
+
+71
+00:04:54,970 --> 00:04:57,190
+and update database command.
+
+72
+00:04:57,190 --> 00:05:03,460
+Instead of that, we should auto migrate database on application startup because when we containerize
+
+73
+00:05:03,460 --> 00:05:09,190
+this discount microservices with Docker, how can we run these commands when container is up and ready
+
+74
+00:05:09,190 --> 00:05:10,360
+for that purpose?
+
+75
+00:05:10,360 --> 00:05:16,180
+Entity Framework Core provide a very good feature like auto migrate the database model when the application
+
+76
+00:05:16,180 --> 00:05:16,840
+start up.
+

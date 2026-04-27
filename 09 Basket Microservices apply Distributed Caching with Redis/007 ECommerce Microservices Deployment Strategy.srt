@@ -1,0 +1,128 @@
+1
+00:00:00,140 --> 00:00:06,080
+In this video, we are going to remember our e-commerce microservice deployment strategy, and we will
+
+2
+00:00:06,080 --> 00:00:10,250
+start to set up Redis as a distributed cache using the Docker compose.
+
+3
+00:00:10,550 --> 00:00:16,940
+So here you can see that our basket microservices using the Redis distributed cache as a backing services.
+
+4
+00:00:16,940 --> 00:00:22,160
+So we should download Redis Docker image and run this image into our Docker compose environment.
+
+5
+00:00:22,160 --> 00:00:26,630
+By this way we can connect to radius from our local basket microservices.
+
+6
+00:00:26,930 --> 00:00:31,370
+But before that, let's remember our e-commerce microservice deployment strategy.
+
+7
+00:00:31,370 --> 00:00:34,880
+You can see that we have two options so far.
+
+8
+00:00:34,880 --> 00:00:38,780
+We have build and develop our microservices in local environment.
+
+9
+00:00:38,780 --> 00:00:42,230
+But now we need to connect to our Redis cache.
+
+10
+00:00:42,230 --> 00:00:46,940
+And we need IP and port number that we can connect from our local computer.
+
+11
+00:00:46,940 --> 00:00:53,450
+That means we will activate backing services on Docker environment with using Docker compose and expose
+
+12
+00:00:53,450 --> 00:00:55,940
+endpoints to our local microservices.
+
+13
+00:00:55,940 --> 00:01:02,060
+And the second step, we will orchestrate all microservices and backing services into Docker compose
+
+14
+00:01:02,060 --> 00:01:04,640
+and test inside of the full Docker environment.
+
+15
+00:01:04,640 --> 00:01:07,970
+But now we will do the first part of the deployment.
+
+16
+00:01:07,970 --> 00:01:12,290
+So we will set up the Redis as a distributed cache using Docker compose.
+
+17
+00:01:12,290 --> 00:01:13,460
+For that purpose.
+
+18
+00:01:13,460 --> 00:01:18,380
+Let's see how we can download and run Redis image into docker environment.
+
+19
+00:01:18,380 --> 00:01:21,680
+Here you can see the Redis image into Docker Hub.
+
+20
+00:01:21,680 --> 00:01:24,140
+This is the official image on the crop.
+
+21
+00:01:24,140 --> 00:01:28,040
+And if you scroll down we can get more detail about the configurations.
+
+22
+00:01:28,040 --> 00:01:34,130
+And if you scroll down you can see that how we can start Redis instance on Docker environment with run
+
+23
+00:01:34,130 --> 00:01:35,510
+the docker run command.
+
+24
+00:01:35,510 --> 00:01:39,800
+And if you scroll down you can see additional details about the Redis image.
+
+25
+00:01:39,800 --> 00:01:46,490
+And if you go to the Redis CLI documentation, you can see that Redis is connecting the localhost and
+
+26
+00:01:46,490 --> 00:01:49,010
+the port number is 6379.
+
+27
+00:01:49,010 --> 00:01:51,470
+This is the default port number for the radius.
+
+28
+00:01:51,470 --> 00:01:56,240
+And now we are going to download this Redis image and run this image.
+
+29
+00:01:56,240 --> 00:01:58,490
+There are two ways that we can do that.
+
+30
+00:01:58,490 --> 00:02:01,280
+The first one is running the docker run command.
+
+31
+00:02:01,280 --> 00:02:04,220
+And the second one is using the docker compose command.
+
+32
+00:02:04,220 --> 00:02:09,800
+So we will follow the docker compose command and add the image into our docker-compose.yml file.
+

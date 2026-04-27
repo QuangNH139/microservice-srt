@@ -1,0 +1,348 @@
+1
+00:00:00,260 --> 00:00:07,700
+In this video we are going to add PostgreSQL database image into docker compose file for multi-container
+
+2
+00:00:07,700 --> 00:00:08,750
+docker environment.
+
+3
+00:00:08,750 --> 00:00:15,980
+So that means we will follow the deployment one, and we will set up the PostgreSQL as a backing services
+
+4
+00:00:15,980 --> 00:00:19,490
+for our catalog microservices using the Docker compose.
+
+5
+00:00:20,090 --> 00:00:26,240
+Here you can see the image how our catalog microservices connects to PostgreSQL database within the
+
+6
+00:00:26,240 --> 00:00:31,130
+Docker environment and our catalog microservices requiring the PostgreSQL database.
+
+7
+00:00:31,880 --> 00:00:36,110
+And now I am going to show an example Docker compose yaml and override file.
+
+8
+00:00:36,110 --> 00:00:42,140
+If you open the GitHub and go to one of my previous microservice application repository, you can scroll
+
+9
+00:00:42,140 --> 00:00:44,720
+down and open the docker-compose.yml file.
+
+10
+00:00:45,780 --> 00:00:53,070
+We can see that there is multiple services, including databases on message brokers are defined in the
+
+11
+00:00:53,070 --> 00:00:54,510
+docker-compose.yml file.
+
+12
+00:00:54,510 --> 00:01:00,150
+And if you select the override Yaml file in here, you can see that how these microservices and backing
+
+13
+00:01:00,150 --> 00:01:05,099
+services configure and set the port numbers, set the environment variables and so on.
+
+14
+00:01:05,099 --> 00:01:11,370
+So we will follow the same steps when we are developing our application as a backing services for that
+
+15
+00:01:11,370 --> 00:01:17,550
+purpose, open the Visual Studio and open the Docker-compose.yml file which is located under the docker
+
+16
+00:01:17,550 --> 00:01:19,230
+compose root file.
+
+17
+00:01:19,230 --> 00:01:25,530
+So we will edit the docker compose and overwrite Yaml file when configuring PostgreSQL as a backing
+
+18
+00:01:25,530 --> 00:01:26,250
+services.
+
+19
+00:01:26,250 --> 00:01:33,510
+So according to this we will set up the backing services databases message brokers on top of these docker
+
+20
+00:01:33,510 --> 00:01:34,860
+compose Yaml file.
+
+21
+00:01:34,860 --> 00:01:38,820
+So now let's modify our docker-compose.yml file.
+
+22
+00:01:38,820 --> 00:01:46,080
+So we will modify this Yaml file to include PostgreSQL database services for catalog microservice says.
+
+23
+00:01:46,080 --> 00:01:51,000
+Here you can see that there is already existing catalog microservice API project.
+
+24
+00:01:51,000 --> 00:01:57,660
+But for now I'm going to remove these services because we will run these microservice from locally and
+
+25
+00:01:57,660 --> 00:02:01,500
+connect to our database as a backing services for that purpose.
+
+26
+00:02:01,500 --> 00:02:06,240
+I'm going to start with the backing services into our docker-compose.yml file.
+
+27
+00:02:06,240 --> 00:02:10,770
+So I'm first of all we are giving the name as a catalog DB.
+
+28
+00:02:10,919 --> 00:02:18,240
+And after that I'm providing only image name into this docker compose file.
+
+29
+00:02:20,100 --> 00:02:24,090
+So here you can see that we have added PostgreSQL database.
+
+30
+00:02:24,090 --> 00:02:29,010
+And the indentation and space character is very very important in here.
+
+31
+00:02:29,010 --> 00:02:36,090
+If you are not following the same structure for the services and image property with nested style,
+
+32
+00:02:36,090 --> 00:02:37,890
+this will be getting exception.
+
+33
+00:02:37,890 --> 00:02:38,580
+So that's why.
+
+34
+00:02:38,580 --> 00:02:41,340
+Please be careful about the indentation.
+
+35
+00:02:41,340 --> 00:02:47,130
+After defining our catalog db, we should not forget to adding the volume definition for PostgreSQL
+
+36
+00:02:47,130 --> 00:02:54,270
+data and volumes should be the same level with the services, and under the volumes we can give the.
+
+37
+00:02:56,370 --> 00:03:01,950
+Postgres catalog volume information and this will be regarding with this catalog.
+
+38
+00:03:01,980 --> 00:03:02,310
+DB.
+
+39
+00:03:02,550 --> 00:03:06,210
+Okay, now let's configure our Docker compose override HTML file.
+
+40
+00:03:06,240 --> 00:03:09,180
+The docker compose file is enough for this information.
+
+41
+00:03:09,180 --> 00:03:15,150
+We only specify the image name and we will give additional configurations in the docker compose override
+
+42
+00:03:15,180 --> 00:03:15,810
+yaml file.
+
+43
+00:03:15,810 --> 00:03:18,480
+So where this get this kind of configurations.
+
+44
+00:03:18,480 --> 00:03:18,630
+As.
+
+45
+00:03:18,630 --> 00:03:24,840
+You remember that in the official docker compose documentation, we have already seen the how to define
+
+46
+00:03:24,840 --> 00:03:27,270
+this database in the docker-compose.yml file.
+
+47
+00:03:27,270 --> 00:03:33,480
+So if we go back to our Visual Studio now we will configure the docker compose override HTML file.
+
+48
+00:03:33,480 --> 00:03:34,800
+Double click this file.
+
+49
+00:03:34,800 --> 00:03:41,010
+In this override Yaml file, we generally set up the environment variables, port mappings, and volume
+
+50
+00:03:41,010 --> 00:03:47,010
+mappings for our PostgreSQL services or any kind of the services that we define in the docker compose
+
+51
+00:03:47,250 --> 00:03:47,730
+file.
+
+52
+00:03:47,730 --> 00:03:52,950
+So as you can see that there is already defined for catalog API microservices.
+
+53
+00:03:52,950 --> 00:03:58,500
+Since we are following the deployment, one strategy, we will remove the microservices to run from
+
+54
+00:03:58,500 --> 00:03:59,100
+the local.
+
+55
+00:03:59,100 --> 00:04:04,890
+We will focus on the our backing services which will be the our catalog DB PostgreSQL database.
+
+56
+00:04:04,890 --> 00:04:09,180
+For that purpose I'm going to define this catalog DB configurations.
+
+57
+00:04:09,180 --> 00:04:14,340
+You can see that we have started with the catalog DB, and this name should be matched from the docker
+
+58
+00:04:14,340 --> 00:04:17,370
+compose file which the under the services catalog db.
+
+59
+00:04:17,430 --> 00:04:21,029
+So in the docker compose file we only specify the image name.
+
+60
+00:04:21,029 --> 00:04:26,970
+But in the override file we have specified additional configurations, including the container name
+
+61
+00:04:26,970 --> 00:04:34,680
+we will give as a container name catalog db, and after that we will define the PostgreSQL service with
+
+62
+00:04:34,680 --> 00:04:39,210
+environment variables for user password and database.
+
+63
+00:04:39,210 --> 00:04:47,040
+So you can see the user Postgres and password Postgres and db as a catalog db, and we can specify the
+
+64
+00:04:47,040 --> 00:04:48,240
+restart always.
+
+65
+00:04:48,240 --> 00:04:52,830
+This will be spin up if there is any problem in the our container.
+
+66
+00:04:52,830 --> 00:04:59,250
+And you can see that we have exposed the port numbers which will be the current port number for PostgreSQL,
+
+67
+00:04:59,250 --> 00:05:03,420
+and we will redirecting the same port number to our local environment.
+
+68
+00:05:03,420 --> 00:05:10,170
+And after that we have give and define volume definition and volume name should be comes from the docker-compose.yml
+
+69
+00:05:10,170 --> 00:05:12,600
+file which name is Postgres catalog.
+
+70
+00:05:12,600 --> 00:05:18,810
+So please write this configuration into your overall HTML file and save this file and make sure that
+
+71
+00:05:18,810 --> 00:05:19,590
+you have.
+
+72
+00:05:19,590 --> 00:05:25,830
+Be careful about the indentation about this configuration, because if there is a problem with the indentation,
+
+73
+00:05:25,830 --> 00:05:27,270
+this will not be work.
+
+74
+00:05:27,540 --> 00:05:34,530
+After defining the PostgreSQL override configuration, we should also configure connection string according
+
+75
+00:05:34,560 --> 00:05:38,970
+to these username, password and database configuration values.
+
+76
+00:05:38,970 --> 00:05:45,690
+So if you go to the application settings Json file, you can compare with the database connection string
+
+77
+00:05:45,690 --> 00:05:48,450
+with the docker compose override HTML file.
+
+78
+00:05:48,450 --> 00:05:53,190
+The server name should be localhost and the port number should be 5432.
+
+79
+00:05:53,220 --> 00:05:59,190
+This will be PostgreSQL port number that we have exposed for the host port number from the container
+
+80
+00:05:59,190 --> 00:05:59,970
+port number.
+
+81
+00:05:59,970 --> 00:06:06,180
+So after that database, as you can see that we use catalog db and you can see the database information
+
+82
+00:06:06,180 --> 00:06:07,710
+from the environment variables.
+
+83
+00:06:07,710 --> 00:06:11,670
+And after that user ID is Postgres and password is Postgres.
+
+84
+00:06:11,670 --> 00:06:16,650
+You can see that these are injecting as an environment variable into PostgreSQL database.
+
+85
+00:06:16,650 --> 00:06:21,900
+And lastly we give include error details as true for development purpose.
+
+86
+00:06:21,900 --> 00:06:29,340
+So that means these connection settings are prepared from our Docker compose HTML file for PostgreSQL
+
+87
+00:06:29,340 --> 00:06:29,970
+database.
+

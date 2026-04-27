@@ -1,0 +1,456 @@
+1
+00:00:00,140 --> 00:00:07,220
+In this video we are going to develop index see page to consume irb, API gateway and print using the
+
+2
+00:00:07,370 --> 00:00:11,450
+catalog service which is implementation of the Http client factory.
+
+3
+00:00:11,570 --> 00:00:17,120
+For that purpose, I am going to start by removing these logging operations, because I am going to
+
+4
+00:00:17,120 --> 00:00:23,930
+inject by primary constructor instead of the normal constructor, and come to this index model class.
+
+5
+00:00:23,930 --> 00:00:26,570
+And I am going to inject these two classes.
+
+6
+00:00:26,570 --> 00:00:32,210
+The first one is a catalog service and the second one is Ilogger index model and logger.
+
+7
+00:00:32,210 --> 00:00:37,400
+So we will use these two services when implementing of these index model see our page.
+
+8
+00:00:37,400 --> 00:00:40,700
+So in here you can see that we have defined product list.
+
+9
+00:00:40,700 --> 00:00:45,350
+Now I am going to populate the product list with communicating with the IRB API gateway.
+
+10
+00:00:45,350 --> 00:00:48,230
+For that purpose I am going to use one get method.
+
+11
+00:00:48,230 --> 00:00:51,320
+But this time I will use one get async method.
+
+12
+00:00:51,320 --> 00:00:54,110
+In order to make this function available.
+
+13
+00:00:54,110 --> 00:00:59,090
+Here you can see that public async and this will be return task.
+
+14
+00:00:59,090 --> 00:01:05,570
+This time we are going to return task and this will be returning I action result.
+
+15
+00:01:05,570 --> 00:01:10,490
+Okay, so now we can start the implementation of the one get async method.
+
+16
+00:01:10,490 --> 00:01:17,210
+In this method we will start by logging the information which is the logger log information and index
+
+17
+00:01:17,210 --> 00:01:18,380
+page visited.
+
+18
+00:01:18,380 --> 00:01:24,890
+And just after that we will use Catalog Service to communicate with the IRB API gateway and send request
+
+19
+00:01:24,890 --> 00:01:26,990
+to the catalog downstream microservices.
+
+20
+00:01:26,990 --> 00:01:31,940
+So here you can see that I am going to use await catalog service Getproduct method.
+
+21
+00:01:31,940 --> 00:01:37,400
+If you go to this method, you can see that this method will be generated client with refit in order
+
+22
+00:01:37,400 --> 00:01:40,070
+to send Http get request to this endpoint.
+
+23
+00:01:40,070 --> 00:01:43,610
+So if you go back to our index page, we will return back the result.
+
+24
+00:01:43,610 --> 00:01:49,850
+And in this result we have a products collection that we can paste this product collection into our
+
+25
+00:01:49,850 --> 00:01:53,270
+product list property under the Index model class.
+
+26
+00:01:53,270 --> 00:01:59,180
+Here you can see that I have assigning the results dot products to the product list, which is the IEnumerable
+
+27
+00:01:59,180 --> 00:02:02,660
+product model, and just after that we can return the page.
+
+28
+00:02:02,660 --> 00:02:07,070
+So this is the implementation of the asynchronous on get async method.
+
+29
+00:02:07,070 --> 00:02:13,160
+That means this method will be triggered when the index page opening in the browser, and this will
+
+30
+00:02:13,160 --> 00:02:17,390
+be retrieving the products from the API gateway to make it more readable.
+
+31
+00:02:17,390 --> 00:02:20,900
+I am going to move these using statements to the global using class.
+
+32
+00:02:20,900 --> 00:02:27,890
+So cut here and go to the global using and paste at this point and put the global keywords.
+
+33
+00:02:28,400 --> 00:02:33,110
+If you go back to index.cshtml you can see that our class is more readable.
+
+34
+00:02:33,380 --> 00:02:37,640
+So now I am going to perform quick test our shopping web client application.
+
+35
+00:02:37,640 --> 00:02:42,680
+But as you can see that if you open the application settings Json file, we should activate the our
+
+36
+00:02:42,950 --> 00:02:44,660
+API gateway in Docker environment.
+
+37
+00:02:44,660 --> 00:02:50,420
+For that purpose, please run the Docker desktop and just after that you can right click the Docker
+
+38
+00:02:50,420 --> 00:02:54,110
+compose and set a startup project and you can run without debugging.
+
+39
+00:02:54,110 --> 00:02:58,730
+This will be activate baking services including the Erb API gateway.
+
+40
+00:02:58,730 --> 00:03:04,100
+And just after that we will run the our shopping Web client application in order to communicate with
+
+41
+00:03:04,100 --> 00:03:09,380
+the Erb API gateway and consume products from the catalog microservices and populate the product data
+
+42
+00:03:09,380 --> 00:03:10,520
+in the landing page.
+
+43
+00:03:10,520 --> 00:03:16,790
+Here you can see that our Docker compose is up and running, and Erb API gateway is started successfully
+
+44
+00:03:16,790 --> 00:03:19,130
+and we can verify from the postman.
+
+45
+00:03:19,130 --> 00:03:25,280
+If you go to your API gateway catalog and get product and select the Docker environment and send Http
+
+46
+00:03:25,280 --> 00:03:28,850
+get method, you can see that products responding successfully.
+
+47
+00:03:28,850 --> 00:03:33,230
+So that means we can also call these API from our client application.
+
+48
+00:03:33,230 --> 00:03:36,140
+For that purpose, please go back to our Visual Studio.
+
+49
+00:03:36,140 --> 00:03:41,720
+And if you go back to our shopping web application, right click and set a startup project.
+
+50
+00:03:41,720 --> 00:03:44,750
+And I'm going to run and debug this client application.
+
+51
+00:03:44,750 --> 00:03:50,600
+But before that you can put the breakpoints in the program.cs of the Or register operation, which is
+
+52
+00:03:50,600 --> 00:03:53,120
+the Revit client and a catalog service.
+
+53
+00:03:53,120 --> 00:03:55,340
+You can come here and check the base address.
+
+54
+00:03:55,340 --> 00:04:02,360
+And also we can go to the index Cshtml C-sharp page and put the debug point on get async method.
+
+55
+00:04:02,360 --> 00:04:07,730
+So now I'm going to run the or https mode shopping web client application.
+
+56
+00:04:07,730 --> 00:04:13,370
+See how we can consume these erb API gateway from the shopping web client application.
+
+57
+00:04:13,370 --> 00:04:21,079
+So when the browser is opening, it is going to set a or base address, which is basically our Docker
+
+58
+00:04:21,079 --> 00:04:22,880
+address of the Erb API gateway.
+
+59
+00:04:22,880 --> 00:04:28,520
+You can get these configurations from the application, and if I hit the F5 this will be triggered on
+
+60
+00:04:28,520 --> 00:04:29,570
+get async method.
+
+61
+00:04:29,570 --> 00:04:35,480
+And we are going to retrieve information from the catalog microservices which Revit generated clients.
+
+62
+00:04:35,480 --> 00:04:39,200
+If I hit F10, you can see that results come successfully.
+
+63
+00:04:39,200 --> 00:04:41,810
+And here you can see the product count as nine.
+
+64
+00:04:41,810 --> 00:04:46,250
+So we have set the product list into our product list object and return the page.
+
+65
+00:04:46,250 --> 00:04:51,050
+So if you hit the F5 you can see the index page is populated successfully.
+
+66
+00:04:51,050 --> 00:04:52,850
+And here you can see the top products.
+
+67
+00:04:52,850 --> 00:04:54,980
+And here you can see the our last products.
+
+68
+00:04:54,980 --> 00:04:58,160
+And if you scroll down here you can see the best products and so on.
+
+69
+00:04:58,160 --> 00:04:58,850
+This is.
+
+70
+00:04:59,030 --> 00:05:05,060
+Arms from the catalog, microservices and matching to our product image into the shopping web client
+
+71
+00:05:05,060 --> 00:05:05,780
+application.
+
+72
+00:05:05,780 --> 00:05:11,390
+So this is how we can consume the products from the catalog microservices and representing into our
+
+73
+00:05:11,390 --> 00:05:13,880
+index page of the shopping web client application.
+
+74
+00:05:13,880 --> 00:05:17,810
+But in the product endpoint you can see our postman.
+
+75
+00:05:17,810 --> 00:05:21,920
+We have also pagination that we can send page number and page size.
+
+76
+00:05:21,920 --> 00:05:26,420
+But in the index page we don't have pagination object in here.
+
+77
+00:05:26,420 --> 00:05:31,760
+And you can put the pagination item in the index HTML page and get the products with pagination.
+
+78
+00:05:31,760 --> 00:05:35,060
+Let me give an example how we can implement this pagination.
+
+79
+00:05:35,060 --> 00:05:40,490
+After putting these pagination item in here, you can come here and go to the on get async method.
+
+80
+00:05:40,490 --> 00:05:43,520
+So in here I'm going to comment this line of code.
+
+81
+00:05:43,850 --> 00:05:48,500
+And just after that I'm going to send additional request to the get products.
+
+82
+00:05:48,500 --> 00:05:51,050
+But this time we can pass two and three.
+
+83
+00:05:51,080 --> 00:05:54,140
+Two is a second page three is three item.
+
+84
+00:05:54,140 --> 00:05:56,240
+You can see the page number and page size.
+
+85
+00:05:56,240 --> 00:06:00,800
+So after setting this line of code we can use Hot Reload.
+
+86
+00:06:00,800 --> 00:06:06,380
+Come here and click this Hot Reload and refresh the page to enable the debug point.
+
+87
+00:06:06,380 --> 00:06:09,620
+Here you can see that debug point comes again in here.
+
+88
+00:06:09,620 --> 00:06:15,500
+If I hit F5 this time, we will refresh the page in order to get items with pagination.
+
+89
+00:06:15,500 --> 00:06:18,680
+You can see that this will be triggered on get async method.
+
+90
+00:06:18,680 --> 00:06:21,860
+This time we will retrieve the products according to pagination.
+
+91
+00:06:21,860 --> 00:06:26,930
+So here you can see that product list comes to three because we are retrieving the second page.
+
+92
+00:06:26,930 --> 00:06:33,230
+And if I hit F5 this will be comes to second page of the product that including the Xiaomi, HTC and
+
+93
+00:06:33,230 --> 00:06:33,590
+LG.
+
+94
+00:06:33,830 --> 00:06:39,770
+As you can see that our API is capable to applying the pagination, we need to adding the pagination
+
+95
+00:06:39,770 --> 00:06:41,690
+object into our HTML page.
+
+96
+00:06:41,690 --> 00:06:47,720
+But for now, I'm going to skip this pagination from the front end layer and I will rollback the change
+
+97
+00:06:47,720 --> 00:06:49,400
+which comes from the get products.
+
+98
+00:06:49,400 --> 00:06:55,550
+I'm going to uncomment this line of code and comment this line of code that you can develop the pagination.
+
+99
+00:06:55,550 --> 00:06:56,360
+Okay.
+
+100
+00:06:56,360 --> 00:07:02,120
+If you look at our landing page and index page, you can see that we have listing the products, but
+
+101
+00:07:02,120 --> 00:07:08,630
+we can't go the product details or add the item into shopping cart because these buttons is not working
+
+102
+00:07:08,630 --> 00:07:09,110
+yet.
+
+103
+00:07:09,110 --> 00:07:12,770
+But before that we should handle the another operation in index page.
+
+104
+00:07:12,770 --> 00:07:15,050
+Index page has two actions.
+
+105
+00:07:15,050 --> 00:07:20,060
+The first action is listing the products, and the second action is add item into cart.
+
+106
+00:07:20,060 --> 00:07:23,480
+So we should focus on the eight item into shopping cart.
+
+107
+00:07:23,480 --> 00:07:25,490
+If you go to the HTML page.
+
+108
+00:07:25,490 --> 00:07:31,730
+If you go to the page and shared folder, you can see that we have a product item partial, and at this
+
+109
+00:07:31,730 --> 00:07:35,900
+point you can see ASP page 100 as add item to cart.
+
+110
+00:07:35,900 --> 00:07:42,530
+And in here you can see that we will post operation into these index page in order to adding item into
+
+111
+00:07:42,530 --> 00:07:43,100
+shopping cart.
+
+112
+00:07:43,100 --> 00:07:49,760
+And we will passing the model ID which is the product ID that means in the index C-sharp file, we can
+
+113
+00:07:49,760 --> 00:07:56,900
+create a new method which is the on post async to Accodomate incoming post operation and adding item
+
+114
+00:07:56,900 --> 00:07:57,920
+into shopping cart.
+

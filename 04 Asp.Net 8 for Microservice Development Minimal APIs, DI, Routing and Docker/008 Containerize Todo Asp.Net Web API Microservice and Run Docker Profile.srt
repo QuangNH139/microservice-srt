@@ -1,0 +1,532 @@
+1
+00:00:00,170 --> 00:00:06,260
+In this video, we are going to containerize to do web API project and run Docker profile.
+
+2
+00:00:06,380 --> 00:00:10,490
+You can see the picture on the slide we have developed to do web API.
+
+3
+00:00:10,490 --> 00:00:16,370
+And now in this video we will be containerize this web API project using the Docker.
+
+4
+00:00:16,370 --> 00:00:20,900
+And after that we will see docker compose operation using the Visual Studio.
+
+5
+00:00:21,260 --> 00:00:29,240
+But before that, let me explain the running profiles on ASP.Net in Visual Studio and how we can configure
+
+6
+00:00:29,240 --> 00:00:30,710
+these running profiles.
+
+7
+00:00:30,710 --> 00:00:37,190
+If you open the Visual Studio, you can see that we are running this application in Https.
+
+8
+00:00:37,190 --> 00:00:39,110
+Here you can see the running profiles.
+
+9
+00:00:39,110 --> 00:00:46,940
+If you click this drop down you can see different running profiles including Http, https, IIs, Docker,
+
+10
+00:00:46,940 --> 00:00:48,470
+and VCL.
+
+11
+00:00:48,470 --> 00:00:52,910
+So these are the running profiles that we can use to run these application.
+
+12
+00:00:52,910 --> 00:00:58,310
+So how we can define these running profiles for these ASP.Net web API project.
+
+13
+00:00:58,310 --> 00:01:01,160
+For that purpose we can open the properties.
+
+14
+00:01:01,160 --> 00:01:06,140
+You can come here and open the properties and see the launch Settings.json file.
+
+15
+00:01:06,140 --> 00:01:10,370
+If you double click, you can see the running properties stored in this Json file.
+
+16
+00:01:10,370 --> 00:01:16,280
+So launch Settings.json file is primarily utilized during the development phase of.
+
+17
+00:01:16,430 --> 00:01:23,540
+Net applications, and it resides under the properties folder and configures the behavior of the development
+
+18
+00:01:23,540 --> 00:01:27,020
+server when running the application using the Visual Studio.
+
+19
+00:01:27,020 --> 00:01:35,450
+So you can see this dropdown list is listed as a profiles under the profile section Http, https, IaaS
+
+20
+00:01:35,450 --> 00:01:36,320
+and Docker.
+
+21
+00:01:36,320 --> 00:01:42,230
+So under these profiles you can see some of the attributes that we can define for running profiles.
+
+22
+00:01:42,230 --> 00:01:49,490
+And we can also set these running profiles with right click and go to properties of the project.
+
+23
+00:01:49,490 --> 00:01:56,600
+And if you go to the debug and if you open the debug Launch Settings profile UI, you can see the same
+
+24
+00:01:56,600 --> 00:02:00,080
+profiles in here Http, https, and so on.
+
+25
+00:02:00,080 --> 00:02:05,270
+And if you click one of the profile and scroll down, you can see the environment variables when we
+
+26
+00:02:05,270 --> 00:02:09,440
+choosing these running profile, injecting one application running.
+
+27
+00:02:09,440 --> 00:02:14,840
+And if you scroll down you can see other configuration like setting URL and application URL that we
+
+28
+00:02:14,840 --> 00:02:15,500
+define.
+
+29
+00:02:15,500 --> 00:02:22,820
+So now let's set some of the application URLs for our web UI application to the application.
+
+30
+00:02:22,820 --> 00:02:30,590
+So I am going to set the Http port as a 5000 and https port 5050.
+
+31
+00:02:30,950 --> 00:02:34,190
+Please save this file and close this window.
+
+32
+00:02:34,190 --> 00:02:41,210
+And if you open the Launch settings Json again you can see that these configuration is changed accordingly
+
+33
+00:02:41,210 --> 00:02:42,920
+that we have changed on the UI.
+
+34
+00:02:42,920 --> 00:02:50,600
+So basically we will set the Https port numbers in here that we can use when running the application.
+
+35
+00:02:50,660 --> 00:02:54,320
+And also we can right click and go to the same window.
+
+36
+00:02:54,320 --> 00:02:59,030
+And we can also change the starting URL if you scroll down.
+
+37
+00:02:59,030 --> 00:03:04,310
+If you go to URL, this address of the web page will be navigate when the application start up.
+
+38
+00:03:04,310 --> 00:03:09,740
+So we would like to go to the slash todo items when the application start up.
+
+39
+00:03:09,740 --> 00:03:13,520
+You can see in here we basically write the startup.
+
+40
+00:03:13,610 --> 00:03:19,160
+This will be go to the todo items when the application start up using these port numbers.
+
+41
+00:03:19,160 --> 00:03:20,510
+So save this file.
+
+42
+00:03:20,510 --> 00:03:26,540
+And if you go back to launch setting, you can verify that this time the launch URL is setting the todo
+
+43
+00:03:26,540 --> 00:03:33,080
+items so you can run the Https port and verify that this will be redirected to the items and using the
+
+44
+00:03:33,080 --> 00:03:34,520
+port number 5050.
+
+45
+00:03:34,520 --> 00:03:39,800
+See that the 5050 port numbers is using but double slash is using.
+
+46
+00:03:39,800 --> 00:03:43,280
+In here we have to remove one of them for that purpose.
+
+47
+00:03:43,280 --> 00:03:49,760
+I'm going to remove this slash and save this file again and run this Https port.
+
+48
+00:03:49,760 --> 00:03:53,000
+And this time you will see the todo items in here.
+
+49
+00:03:53,000 --> 00:03:58,700
+Since we are using the in-memory database, we didn't see any items in here when the application start
+
+50
+00:03:58,700 --> 00:04:00,650
+up, but you understand the idea.
+
+51
+00:04:00,650 --> 00:04:04,100
+We will use launch settings during the microservice development.
+
+52
+00:04:04,100 --> 00:04:10,910
+So much so if you come back to our main problem, which is the containerized todo application, the
+
+53
+00:04:10,910 --> 00:04:13,730
+first thing we should do to create Docker file.
+
+54
+00:04:13,940 --> 00:04:20,630
+So in order to add a Docker support to our todo web API, we should go to Visual Studio and right click
+
+55
+00:04:20,630 --> 00:04:21,769
+the project file.
+
+56
+00:04:21,950 --> 00:04:24,080
+And you can click the add button.
+
+57
+00:04:24,080 --> 00:04:30,380
+And here you can see the container related operations which is the adding Docker support or adding container
+
+58
+00:04:30,380 --> 00:04:31,790
+orchestration support.
+
+59
+00:04:31,790 --> 00:04:37,130
+Since we are containerizing our API project, we should add the CR support first.
+
+60
+00:04:37,130 --> 00:04:44,390
+So please click this Docker support and choose the target operating system as a Linux and click the
+
+61
+00:04:44,390 --> 00:04:45,410
+okay button.
+
+62
+00:04:45,590 --> 00:04:50,300
+As you can see that Visual Studio generate a Docker file for our project.
+
+63
+00:04:50,300 --> 00:04:52,880
+So now let's understand this Docker file.
+
+64
+00:04:52,880 --> 00:04:59,510
+Basically the Docker file is a script containing the instructions to build a Docker image, including
+
+65
+00:04:59,510 --> 00:04:59,840
+setting.
+
+66
+00:04:59,980 --> 00:05:04,990
+Of the environment, copying our application and defining how to run the application.
+
+67
+00:05:04,990 --> 00:05:11,470
+So this is the Docker file that generates from the Visual Studio and containerize our to do web API
+
+68
+00:05:11,470 --> 00:05:12,190
+project.
+
+69
+00:05:12,190 --> 00:05:16,150
+And it includes four different stages in the Docker file.
+
+70
+00:05:16,150 --> 00:05:18,160
+You can see this stage in here.
+
+71
+00:05:18,160 --> 00:05:23,620
+Basically it is typically start from a base image which is the ASP.Net eight.
+
+72
+00:05:23,620 --> 00:05:27,070
+And after that it is copies our application.
+
+73
+00:05:27,070 --> 00:05:29,410
+And after that publish this application.
+
+74
+00:05:29,410 --> 00:05:37,630
+And lastly it will be create a final stage and this will be Entrypoint in order to run our application
+
+75
+00:05:37,630 --> 00:05:38,800
+in the Docker environment.
+
+76
+00:05:38,800 --> 00:05:43,000
+So we will examine these kind of Docker files when developing our microservices.
+
+77
+00:05:43,000 --> 00:05:48,910
+Basically this file defines a multi-stage build process for a typical.
+
+78
+00:05:49,060 --> 00:05:50,170
+Net application.
+
+79
+00:05:50,170 --> 00:05:54,190
+So now let's run the Docker profile with our Docker file.
+
+80
+00:05:54,190 --> 00:05:58,420
+Now we can run our application in a Docker container in Docker environment.
+
+81
+00:05:58,420 --> 00:06:03,220
+In Visual Studio we can choose the running profiles in here.
+
+82
+00:06:03,220 --> 00:06:10,390
+So if you expand this dropdown and see the Docker running profile listed in here, we can select the
+
+83
+00:06:10,390 --> 00:06:11,650
+Docker running profile.
+
+84
+00:06:11,650 --> 00:06:15,790
+And just after that you can check the our output window.
+
+85
+00:06:15,790 --> 00:06:23,080
+This will be retrieved the ASP.Net eight base image and prepare our application to the Docker environment.
+
+86
+00:06:23,080 --> 00:06:30,070
+But of course you should open and start your Docker desktop on your local computer and make sure that
+
+87
+00:06:30,070 --> 00:06:31,630
+the green box comes in here.
+
+88
+00:06:31,630 --> 00:06:35,890
+So after that, set the these running profile as a docker.
+
+89
+00:06:35,890 --> 00:06:42,640
+By this way we this video will build the Docker image and run a container instance of our application.
+
+90
+00:06:42,640 --> 00:06:51,880
+So after start your Docker and set your running profile, you can click the Run Docker button and wait
+
+91
+00:06:51,880 --> 00:06:58,210
+for the Visual Studio building this Docker image and run a container in the Docker host environment.
+
+92
+00:06:58,210 --> 00:07:01,660
+And you can follow the logs in the project window.
+
+93
+00:07:01,660 --> 00:07:04,840
+And also you can check the Docker desktop.
+
+94
+00:07:04,840 --> 00:07:10,420
+If I open the Docker desktop, you can see the to do API is listed as a containers.
+
+95
+00:07:10,420 --> 00:07:12,760
+That means it is running perfectly.
+
+96
+00:07:12,760 --> 00:07:17,440
+And you can see the port number is starting with the 32.
+
+97
+00:07:17,470 --> 00:07:22,540
+That means Docker is assigning any port number for our application.
+
+98
+00:07:22,540 --> 00:07:27,400
+So this is the 8080 port redirecting for the internal Docker environment.
+
+99
+00:07:27,400 --> 00:07:36,730
+So if we expand this as a todo items we can reach the our internal todo items from the web API project.
+
+100
+00:07:36,730 --> 00:07:41,470
+So that means we have successfully send http get method for our application.
+
+101
+00:07:41,470 --> 00:07:46,690
+Once we confirm the application is running correctly, we can test our application.
+
+102
+00:07:46,690 --> 00:07:53,920
+That means we can test these web API project from inside the Docker container in Docker environment.
+
+103
+00:07:53,920 --> 00:08:02,110
+So this process packages are to do API microservices into a Docker container and allowing it to be run
+
+104
+00:08:02,110 --> 00:08:06,670
+any environment and accommodating the incoming requests in from Docker environment.
+
+105
+00:08:06,670 --> 00:08:09,760
+So now we can open our postman.
+
+106
+00:08:09,760 --> 00:08:14,680
+As you can see that we have already prepared our test and the port number has changed.
+
+107
+00:08:14,680 --> 00:08:19,870
+If you open the Docker desktop, you can see the port numbers in listed in here.
+
+108
+00:08:19,870 --> 00:08:24,880
+So we are going to change port number as a 32 768.
+
+109
+00:08:24,880 --> 00:08:32,200
+So if you copy this port number you can come to the postman and change the port number and send the
+
+110
+00:08:32,200 --> 00:08:33,429
+http get method.
+
+111
+00:08:33,429 --> 00:08:36,070
+We have no any todo items.
+
+112
+00:08:36,070 --> 00:08:42,520
+In order to add a new todo items, we can change the port number and send http post request.
+
+113
+00:08:42,520 --> 00:08:46,270
+And here you can see that we have added the first item.
+
+114
+00:08:46,270 --> 00:08:52,450
+And if you go back to the http get method and send again here you can see that our Http get and post
+
+115
+00:08:52,450 --> 00:08:56,320
+methods are running perfectly into our Docker environment.
+
+116
+00:08:56,320 --> 00:09:02,650
+So we have already finished our containerization of web API project with Docker.
+
+117
+00:09:02,650 --> 00:09:09,370
+But the best part of using the Visual Studio for Containerizing this kind of application is debugging.
+
+118
+00:09:09,370 --> 00:09:16,030
+So that means Visual Studio allowing us to debugging a Docker container from our local computer.
+
+119
+00:09:16,030 --> 00:09:23,020
+So that means when we send a Http request, we can able to debug these codes into the Docker environment.
+
+120
+00:09:23,020 --> 00:09:25,030
+So let's try this operation.
+
+121
+00:09:25,030 --> 00:09:33,790
+If you open the Program.cs in the our Visual Studio in the program case you can go to the Http get method
+
+122
+00:09:33,790 --> 00:09:34,330
+in here.
+
+123
+00:09:34,330 --> 00:09:37,270
+And also we can send the http post request.
+
+124
+00:09:37,270 --> 00:09:45,910
+So now if I send the http post request from the postman, you can see that we can able to debug incoming
+
+125
+00:09:45,910 --> 00:09:48,400
+requests from Docker environment.
+
+126
+00:09:48,400 --> 00:09:50,800
+And this will be allowing from Visual Studio.
+
+127
+00:09:50,800 --> 00:09:53,860
+And this is one of the powerful features in Visual Studio.
+
+128
+00:09:53,860 --> 00:09:59,770
+So during the course we will also debug our Docker containers for microservices with using.
+
+129
+00:09:59,940 --> 00:10:01,020
+The same methodology.
+
+130
+00:10:01,020 --> 00:10:07,860
+As you can see that containerization and Docker is very natural in ASP.Net web API project using the
+
+131
+00:10:07,860 --> 00:10:08,670
+Visual Studio.
+
+132
+00:10:08,670 --> 00:10:14,970
+During the whole course, I will use Visual Studio Docker tooling in order to containerize and orchestrate
+
+133
+00:10:14,970 --> 00:10:16,050
+our microservices.
+

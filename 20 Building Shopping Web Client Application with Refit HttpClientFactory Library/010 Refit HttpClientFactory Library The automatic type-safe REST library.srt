@@ -1,0 +1,184 @@
+1
+00:00:00,170 --> 00:00:06,650
+In this video, we are going to learn what is Refit library and how we can create generated clients
+
+2
+00:00:06,650 --> 00:00:08,210
+using the Refit library.
+
+3
+00:00:08,690 --> 00:00:10,850
+So let me start with the what is refit?
+
+4
+00:00:10,880 --> 00:00:16,250
+Refit is the automatic type safe rest library for the dotnet core and Xamarin.
+
+5
+00:00:16,250 --> 00:00:22,880
+And it is type Safe rest Http client factory implementation that we can use when we are consuming our
+
+6
+00:00:22,880 --> 00:00:23,540
+APIs.
+
+7
+00:00:23,540 --> 00:00:29,720
+So now we will implement our service layer classes for business logic and consume the Erb API gateway
+
+8
+00:00:29,720 --> 00:00:30,350
+endpoints.
+
+9
+00:00:30,350 --> 00:00:34,760
+And we will use Refit for consuming Erb API gateway endpoints.
+
+10
+00:00:34,760 --> 00:00:37,730
+So how can we use Refit with dotnet?
+
+11
+00:00:37,760 --> 00:00:41,570
+DotNet has several options when we are consuming an API.
+
+12
+00:00:41,570 --> 00:00:47,180
+If you look at this article, you can see that we can implement I http client factory with dotnet in
+
+13
+00:00:47,180 --> 00:00:48,050
+a several ways.
+
+14
+00:00:48,050 --> 00:00:55,070
+If you scroll down, you can see that there is a I http client factory type and we have several consumption
+
+15
+00:00:55,070 --> 00:00:55,670
+patterns.
+
+16
+00:00:55,670 --> 00:01:01,370
+This was including basic usage, named clients, type clients and generated clients.
+
+17
+00:01:01,370 --> 00:01:04,760
+So during the course we will use generated clients.
+
+18
+00:01:04,760 --> 00:01:10,730
+If you click this link you can see that we can use I http client factory in a combination with the third
+
+19
+00:01:10,730 --> 00:01:11,600
+party libraries.
+
+20
+00:01:11,600 --> 00:01:13,700
+In our case we will use refit.
+
+21
+00:01:13,700 --> 00:01:20,150
+Refit is a Rest based library for DotNet and it allows for declarative Rest API definitions mapping
+
+22
+00:01:20,150 --> 00:01:22,280
+the interface methods to the endpoints.
+
+23
+00:01:22,280 --> 00:01:26,990
+So here you can see an implementation of the to do list consuming to to do API.
+
+24
+00:01:27,020 --> 00:01:29,390
+This is the to do domain model.
+
+25
+00:01:29,390 --> 00:01:34,250
+And if you scroll down we can rely on the refit Http client factory NuGet packages.
+
+26
+00:01:34,250 --> 00:01:38,300
+And this will be basically create an interface which is the I to do service.
+
+27
+00:01:38,300 --> 00:01:41,180
+And this is the method with the request and response object.
+
+28
+00:01:41,180 --> 00:01:46,520
+And there is annotation that will specify the consuming endpoint which is a slice todos.
+
+29
+00:01:46,520 --> 00:01:52,490
+And we can specify request parameters as a user id which comes from the parameter of this Getuser todo
+
+30
+00:01:52,520 --> 00:01:53,090
+method.
+
+31
+00:01:53,090 --> 00:01:58,400
+And this method will be provided to consume to do service without implementing this action method,
+
+32
+00:01:58,400 --> 00:02:02,450
+and this will be generated client using the refit Http client factory.
+
+33
+00:02:02,450 --> 00:02:07,970
+And if you look at the NuGet packages, you can see that we need to install refit dot http client factory
+
+34
+00:02:07,970 --> 00:02:08,630
+packages.
+
+35
+00:02:08,630 --> 00:02:16,010
+And just after that, you can see as an example of the implementation to consuming GitHub API for specific
+
+36
+00:02:16,010 --> 00:02:16,490
+user.
+
+37
+00:02:16,490 --> 00:02:22,130
+Here you can see that we have defined a GitHub API interface, and the method is getuser with a given
+
+38
+00:02:22,130 --> 00:02:25,880
+username and returning a specific user for the GitHub user.
+
+39
+00:02:25,880 --> 00:02:31,220
+So this is the annotation that we can specify the endpoint which is a slash user slash username.
+
+40
+00:02:31,220 --> 00:02:36,860
+So if you scroll down you can see that we can add the services with using the Add Refit client with
+
+41
+00:02:36,860 --> 00:02:40,460
+passing the GitHub API as a generics to this extension method.
+
+42
+00:02:40,460 --> 00:02:46,130
+And just after that we can configure the Http client with base address and additional configurations.
+
+43
+00:02:46,130 --> 00:02:53,900
+By this way, we can call this GitHub API with sending the GitHub API dot get user and get back to this
+
+44
+00:02:53,900 --> 00:02:56,390
+username information into the R variable.
+
+45
+00:02:56,390 --> 00:02:59,180
+So this is the simple implementation of the refit into.
+
+46
+00:02:59,330 --> 00:03:05,390
+Net and we will use refit when we are consuming our API gateway and internal e-commerce microservices.
+

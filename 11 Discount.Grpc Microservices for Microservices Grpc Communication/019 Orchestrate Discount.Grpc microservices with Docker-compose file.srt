@@ -1,0 +1,172 @@
+1
+00:00:00,140 --> 00:00:06,140
+In this video, we are going to orchestrate the second gRPC microservices with Docker Compose.
+
+2
+00:00:06,530 --> 00:00:12,590
+That means we will modify the Docker-compose.yml file in order to include the discount gRPC service.
+
+3
+00:00:12,770 --> 00:00:18,560
+So discount gRPC service is defined similarly to other services with its own Docker file.
+
+4
+00:00:18,560 --> 00:00:23,360
+You can open the Visual Studio and you can see that we have created our Docker file.
+
+5
+00:00:23,360 --> 00:00:27,110
+And now we are going to add container orchestrator support.
+
+6
+00:00:27,110 --> 00:00:29,210
+Please select the discount gRPC project.
+
+7
+00:00:29,210 --> 00:00:36,260
+Right click add and this time we will select Container Orchestrator Support and choose Docker Compose
+
+8
+00:00:36,260 --> 00:00:37,100
+and Target.
+
+9
+00:00:37,100 --> 00:00:39,080
+Operating system should be Linux.
+
+10
+00:00:39,080 --> 00:00:46,640
+And after click okay we can go to the Docker compose Yaml file and see that this time discount gRPC
+
+11
+00:00:46,640 --> 00:00:49,550
+is generated under the our microservices.
+
+12
+00:00:49,550 --> 00:00:56,390
+And this is the Docker-compose.yml file and discount gRPC added like other microservices indicating
+
+13
+00:00:56,390 --> 00:01:00,350
+the Docker file, which is the discount gRPC docker file.
+
+14
+00:01:00,350 --> 00:01:04,970
+After this definition, we should also check the docker compose overwrite Yaml file.
+
+15
+00:01:04,970 --> 00:01:10,220
+Here you can see the docker compose of retinal file and this file used for the settings environment.
+
+16
+00:01:10,220 --> 00:01:14,630
+Specific configurations like ports, environment variables, and volume mappings.
+
+17
+00:01:14,630 --> 00:01:21,440
+If you scroll down and go to end of this document, you can see that discount gRPC configurations also
+
+18
+00:01:21,440 --> 00:01:23,990
+generated in Docker compose of HTML file.
+
+19
+00:01:23,990 --> 00:01:28,820
+But we need to modify these configurations with the port numbers and environment variables.
+
+20
+00:01:28,820 --> 00:01:36,710
+So if you look at our slide you can see that for discount microservices we will follow the 6002 and
+
+21
+00:01:36,710 --> 00:01:39,980
+6062 ports for Docker environment.
+
+22
+00:01:39,980 --> 00:01:45,380
+For that purpose, if you go back to our Visual Studio, we can configure our port numbers according
+
+23
+00:01:45,410 --> 00:01:46,190
+to our slide.
+
+24
+00:01:46,190 --> 00:01:49,010
+And also we should add some environment variables.
+
+25
+00:01:49,010 --> 00:01:53,390
+For the environment variables we can check the application settings of the discount gRPC.
+
+26
+00:01:53,540 --> 00:01:58,460
+If you double click application settings, you can see that we should overwrite connection settings
+
+27
+00:01:58,460 --> 00:02:03,800
+database and these data source operation which is the SQLite discount DB database.
+
+28
+00:02:03,800 --> 00:02:10,610
+And we will also add these database connection strings and add the environment variable for discount
+
+29
+00:02:10,610 --> 00:02:11,180
+gRPC.
+
+30
+00:02:11,480 --> 00:02:17,450
+To perform these configurations, I'm going to add a new environment variable and change the port numbers.
+
+31
+00:02:17,450 --> 00:02:23,600
+Come here and I'm going to paste new configurations including the connection settings in the environment
+
+32
+00:02:23,600 --> 00:02:24,290
+variables.
+
+33
+00:02:24,290 --> 00:02:30,410
+Here you can see that for this country RPC, the SQLite database is configured with the connection string,
+
+34
+00:02:30,410 --> 00:02:33,830
+data source and discount DB which is the SQLite database.
+
+35
+00:02:33,830 --> 00:02:37,340
+And this points to SQLite file within the container.
+
+36
+00:02:37,340 --> 00:02:44,450
+That means, unlike the other services using the PostgreSQL and other databases, discount gRPC uses
+
+37
+00:02:44,450 --> 00:02:48,200
+an SQLite database which doesn't require a separate database.
+
+38
+00:02:48,200 --> 00:02:48,920
+Services.
+
+39
+00:02:48,920 --> 00:02:53,330
+The database file is managed within the discount gRPC container itself.
+
+40
+00:02:53,390 --> 00:02:57,830
+After the environment variables, we have set the port numbers according to our slide.
+
+41
+00:02:57,830 --> 00:03:05,150
+So for port numbers we use 6002 for Http and 6062 for Https in Docker environment.
+
+42
+00:03:05,150 --> 00:03:12,080
+So within this configuration we can say that the discount gRPC microservices is now part of our Docker
+
+43
+00:03:12,080 --> 00:03:13,670
+compose orchestration files.
+

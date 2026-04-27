@@ -1,0 +1,256 @@
+1
+00:00:00,110 --> 00:00:06,170
+In this video, we are going to containerize an orchestrate irb API gateway microservices for reverse
+
+2
+00:00:06,170 --> 00:00:09,110
+proxy as an API gateway into Docker Compose.
+
+3
+00:00:09,110 --> 00:00:15,410
+So we will focus on Containerizing and orchestrating these API gateway microservices into Docker Compose.
+
+4
+00:00:15,410 --> 00:00:18,800
+Here you can see our e-commerce microservice deployment strategy.
+
+5
+00:00:18,800 --> 00:00:22,190
+We are at this point and performing the deployment tool.
+
+6
+00:00:22,220 --> 00:00:28,370
+That means in Docker compose environment, each container operates within its own network and identified
+
+7
+00:00:28,370 --> 00:00:31,070
+by the container names instead of the localhost.
+
+8
+00:00:31,070 --> 00:00:37,490
+And our goal is to configure irb API gateway to communicate with other microservices using these container
+
+9
+00:00:37,490 --> 00:00:38,180
+names.
+
+10
+00:00:38,180 --> 00:00:42,530
+So now let me start with Containerizing irb API gateway microservices.
+
+11
+00:00:42,530 --> 00:00:46,520
+Please open the Visual Studio and go to the irb API gateway project.
+
+12
+00:00:46,520 --> 00:00:49,580
+You can right click and click the add button.
+
+13
+00:00:49,580 --> 00:00:51,500
+And you can click the Docker support.
+
+14
+00:00:51,590 --> 00:00:56,510
+So you can click the target operating system as a Linux and click the okay button.
+
+15
+00:00:56,990 --> 00:01:02,870
+And here you can see the our Docker file which is basically building the Docker image for the irb API
+
+16
+00:01:02,870 --> 00:01:03,380
+gateway.
+
+17
+00:01:03,380 --> 00:01:08,690
+That means Docker file includes the steps for creating a Docker image for the irb API gateway.
+
+18
+00:01:08,690 --> 00:01:14,630
+It will start with using the dotnet base image for building and running the application, and after
+
+19
+00:01:14,630 --> 00:01:15,230
+that it is.
+
+20
+00:01:15,230 --> 00:01:21,380
+Continue with the copying the project files and restoring the dependencies, and after that it is building
+
+21
+00:01:21,380 --> 00:01:22,790
+and publishing the application.
+
+22
+00:01:22,790 --> 00:01:27,440
+And lastly, it is setting the entry point in order to run the IRB API gateway.
+
+23
+00:01:27,440 --> 00:01:33,170
+After creating Docker file and containerizing our irb API gateway, we can go to next step, which is
+
+24
+00:01:33,170 --> 00:01:36,050
+the orchestrate irb API gateway microservices.
+
+25
+00:01:36,050 --> 00:01:40,970
+So when we are talking about orchestration, we should talk about the docker compose Yaml files.
+
+26
+00:01:40,970 --> 00:01:46,850
+Docker compose and docker compose overwrite HTML files in order to include irb api gateway into docker
+
+27
+00:01:46,850 --> 00:01:50,510
+compose Yaml files, we should add the container orchestration support.
+
+28
+00:01:50,510 --> 00:01:56,210
+For that purpose, I am going to right click the irb API gateway project add container orchestrator
+
+29
+00:01:56,210 --> 00:01:56,930
+support.
+
+30
+00:01:57,050 --> 00:02:02,300
+After that you can select the or container orchestrator as a docker compose and click the okay button
+
+31
+00:02:02,300 --> 00:02:06,050
+and select the target operating system as a Linux and click the okay button.
+
+32
+00:02:06,050 --> 00:02:11,030
+So this will be create two items in Docker Compose and docker compose or write Yaml file.
+
+33
+00:02:11,030 --> 00:02:13,820
+If you open the docker compose file and go to.
+
+34
+00:02:13,820 --> 00:02:18,710
+At the end of this file, you can see that irb api gateway added successfully.
+
+35
+00:02:18,710 --> 00:02:20,750
+So that means this process.
+
+36
+00:02:20,750 --> 00:02:26,540
+Adding the entries for the irb API gateway in both docker compose and docker compose overwriting file.
+
+37
+00:02:26,540 --> 00:02:29,030
+So you can go to the compose file.
+
+38
+00:02:29,030 --> 00:02:35,510
+And if you scroll down and go to at the end of this file, you can see that we have also irb API gateway
+
+39
+00:02:35,510 --> 00:02:38,870
+configurations listing in the docker compose of HTML file.
+
+40
+00:02:38,870 --> 00:02:45,110
+But we need to configure additional configuration and adjustments in the irb API gateway, because we
+
+41
+00:02:45,110 --> 00:02:50,630
+should change these configurations and need to exposing the port numbers, adding the environment variables,
+
+42
+00:02:50,630 --> 00:02:51,470
+and so on.
+
+43
+00:02:51,470 --> 00:02:55,070
+So now let's configure it for our microservice endpoints.
+
+44
+00:02:55,070 --> 00:03:00,620
+If you look at the port numbers for the ARP API gateway, we can say that we will expose the ARP API
+
+45
+00:03:00,620 --> 00:03:07,550
+gateway in the 5004 and 5054, in the local environment, but this time we will exposing Docker environment.
+
+46
+00:03:07,550 --> 00:03:14,810
+For that purpose, we will expose the port numbers 6004 for Http and 6064 for Https.
+
+47
+00:03:14,810 --> 00:03:20,780
+So now we will go back to our docker compose, overwrite HTML file and arrange the port numbers and
+
+48
+00:03:20,780 --> 00:03:24,080
+adding the depends on section into our configurations.
+
+49
+00:03:24,080 --> 00:03:29,810
+In here you can see that I have added the Dependson and the port numbers according to Http, which is
+
+50
+00:03:29,810 --> 00:03:33,320
+the 6004 Https for the 6064.
+
+51
+00:03:33,320 --> 00:03:39,290
+So please make these configurations in your computer and let me explain these configuration and adjustments.
+
+52
+00:03:39,290 --> 00:03:43,100
+Basically we have only adjustments for the port and dependencies.
+
+53
+00:03:43,100 --> 00:03:45,110
+But let me explain from the scratch.
+
+54
+00:03:45,110 --> 00:03:50,240
+Here you can see the irb api gateway overridable configurations in the docker compose overwrite yaml
+
+55
+00:03:50,240 --> 00:03:53,780
+file, and we set the environment variables for ASP.Net core.
+
+56
+00:03:53,810 --> 00:04:00,590
+I don't have any additional environment variables from the irb API gateway, and just after that we
+
+57
+00:04:00,590 --> 00:04:07,370
+have basically defined the port numbers and port mapping in order to expose these irb API gateway externally.
+
+58
+00:04:07,490 --> 00:04:11,420
+And after that you can see that we have a volume definitions.
+
+59
+00:04:11,420 --> 00:04:17,360
+And we can use volume to map the user secrets and Https settings for development purposes.
+
+60
+00:04:17,360 --> 00:04:19,700
+And also we have depends on section.
+
+61
+00:04:19,700 --> 00:04:26,570
+We can specify the dependencies in order to ensure irb API gateway starts after other microservices,
+
+62
+00:04:26,570 --> 00:04:32,000
+which is the downstream microservices including catalog basket and ordering API started.
+
+63
+00:04:32,000 --> 00:04:37,400
+As you can see that we have containerized and orchestrate irb API gateway into our application.
+
+64
+00:04:37,400 --> 00:04:43,490
+And by this way irb API gateway route to request to the downstream microservices within the Docker network.
+

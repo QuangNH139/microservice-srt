@@ -1,0 +1,564 @@
+1
+00:00:00,170 --> 00:00:06,440
+In this video, we are going to create abstraction on mediator for securities design pattern.
+
+2
+00:00:06,440 --> 00:00:13,130
+We will create a clear separation between commands and queries using the mediator, enhancing the clarity
+
+3
+00:00:13,130 --> 00:00:15,290
+and maintainability of our code.
+
+4
+00:00:15,290 --> 00:00:21,260
+In order to implement securities design pattern effectively, we will create specialized interfaces
+
+5
+00:00:21,260 --> 00:00:22,910
+for commands and queries.
+
+6
+00:00:22,910 --> 00:00:25,250
+So you can see the picture on the slide.
+
+7
+00:00:25,250 --> 00:00:31,640
+We will create the specific interfaces for query and command operation and we will inherit from the
+
+8
+00:00:31,640 --> 00:00:33,080
+mediator I request.
+
+9
+00:00:33,080 --> 00:00:40,670
+You can see in this picture we will create a query interface which inherited I request and again inherited
+
+10
+00:00:40,670 --> 00:00:41,450
+from I request.
+
+11
+00:00:41,450 --> 00:00:44,240
+And this time we will create a command interface.
+
+12
+00:00:44,540 --> 00:00:51,980
+And at the same way we will create request handler classes for I query handler and I command handler.
+
+13
+00:00:52,040 --> 00:00:58,220
+So these are the generic and normal methods with inherited from I request mediator.
+
+14
+00:00:58,220 --> 00:01:05,269
+By this way we can separate the responsibilities and apply the cross-cutting concerns with different
+
+15
+00:01:05,269 --> 00:01:07,070
+ways into commands and queries.
+
+16
+00:01:07,070 --> 00:01:13,340
+For example, you can think that we will implement a validation only run for the command objects and
+
+17
+00:01:13,340 --> 00:01:15,920
+we don't want to run validations query objects.
+
+18
+00:01:15,920 --> 00:01:21,290
+With separating these interfaces, we will apply validations only our command.
+
+19
+00:01:21,590 --> 00:01:27,770
+But before that there is very important thing before abstractions on the mediator and queries.
+
+20
+00:01:27,770 --> 00:01:33,650
+Here you can see the Icap microservices using the building blocks libraries.
+
+21
+00:01:33,650 --> 00:01:37,250
+These are the microservices that we are going to develop during the course.
+
+22
+00:01:37,250 --> 00:01:42,050
+And all these microservices are using building blocks class library.
+
+23
+00:01:42,050 --> 00:01:47,540
+So that means building blocks encapsulate our common operation for each microservices.
+
+24
+00:01:47,540 --> 00:01:55,010
+For example, we will use these six design pattern abstractions and mediator library almost for all
+
+25
+00:01:55,010 --> 00:01:55,940
+microservices.
+
+26
+00:01:55,940 --> 00:02:03,290
+So why we should develop each microservices to implement these six implementation and mediator library.
+
+27
+00:02:03,290 --> 00:02:10,370
+For that purpose I am going to create Building Blocks class library that can use every microservices
+
+28
+00:02:10,370 --> 00:02:14,570
+with referencing this class library and perform these common operations.
+
+29
+00:02:14,570 --> 00:02:21,200
+Also, we will install all common NuGet packages and codes into Building blocks class library that you
+
+30
+00:02:21,200 --> 00:02:27,350
+can see list of the NuGet packages, and these are the common NuGet packages that can be used for each
+
+31
+00:02:27,350 --> 00:02:28,190
+microservices.
+
+32
+00:02:28,190 --> 00:02:31,310
+We will encapsulate in the Building Blocks class library.
+
+33
+00:02:31,520 --> 00:02:38,450
+That means in order to ensure reusability and maintainability across for each microservices, we will
+
+34
+00:02:38,450 --> 00:02:40,790
+create a Building Blocks class library.
+
+35
+00:02:40,790 --> 00:02:48,020
+This library will contain our secrets, abstractions and these interfaces, and can be referenced by
+
+36
+00:02:48,020 --> 00:02:54,260
+any microservices in our system that can implement the secrets design pattern and using the mediator.
+
+37
+00:02:54,560 --> 00:02:58,820
+So let's start with the setting up the Building Blocks project.
+
+38
+00:02:58,820 --> 00:03:04,580
+For that purpose, open the Visual Studio and we are going to create Building Blocks project.
+
+39
+00:03:04,580 --> 00:03:12,080
+But before that let's create a folder which is a solution folder which is same as the services folder
+
+40
+00:03:12,080 --> 00:03:13,220
+structure directory.
+
+41
+00:03:13,220 --> 00:03:17,060
+We can right click the solution and add a new solution folder.
+
+42
+00:03:17,060 --> 00:03:19,310
+Which name is building blocks.
+
+43
+00:03:19,310 --> 00:03:23,210
+Because this is the existing from the microservices.
+
+44
+00:03:23,210 --> 00:03:25,670
+That could be different folder location.
+
+45
+00:03:25,670 --> 00:03:30,590
+And we are adding the building blocks at the top of the our solution perspective.
+
+46
+00:03:30,590 --> 00:03:34,850
+So under the building blocks I'm going to create a new class library.
+
+47
+00:03:34,850 --> 00:03:38,960
+And this class library will be include our common operations.
+
+48
+00:03:38,960 --> 00:03:46,670
+For that purpose right click the Building Blocks solution folder add new project and this time we will
+
+49
+00:03:46,670 --> 00:03:48,050
+use Class library.
+
+50
+00:03:48,170 --> 00:03:54,020
+I have already pinned the class library before in my recent project templates, and select the class
+
+51
+00:03:54,020 --> 00:03:56,030
+library and click the next button.
+
+52
+00:03:56,030 --> 00:04:00,680
+So project name will be the building blocks you can see in here.
+
+53
+00:04:00,680 --> 00:04:02,780
+The project name will be the building blocks.
+
+54
+00:04:02,780 --> 00:04:09,470
+And the location is very important because we should add the location name according to our building
+
+55
+00:04:09,470 --> 00:04:10,010
+blocks.
+
+56
+00:04:10,010 --> 00:04:15,830
+So as you can see the Our solution window we will have a building blocks folder.
+
+57
+00:04:15,830 --> 00:04:22,040
+And under the these building blocks folder we will create a class library which name is building blocks
+
+58
+00:04:22,040 --> 00:04:23,270
+which is the same name.
+
+59
+00:04:23,270 --> 00:04:31,160
+For that purpose I'm going to add additional slash and building blocks in here in order to create our
+
+60
+00:04:31,850 --> 00:04:35,120
+building blocks project under the source folder.
+
+61
+00:04:35,120 --> 00:04:41,510
+So under the source folder we should have a building blocks folder physical folder.
+
+62
+00:04:41,510 --> 00:04:46,280
+And under these physical folder we will create Building Blocks class library.
+
+63
+00:04:46,280 --> 00:04:49,820
+So make sure that your location and the project name is correct.
+
+64
+00:04:49,820 --> 00:04:56,060
+And after setting up these location you can see that project will be created under this source building
+
+65
+00:04:56,060 --> 00:04:56,510
+block.
+
+66
+00:04:56,510 --> 00:04:59,540
+Slash again the second building blocks and click.
+
+67
+00:04:59,860 --> 00:05:00,700
+Next button.
+
+68
+00:05:01,330 --> 00:05:03,280
+And of course framework will be.
+
+69
+00:05:03,490 --> 00:05:05,530
+Net eight and click the create button.
+
+70
+00:05:06,500 --> 00:05:12,530
+Yes, this will be great building blocks under our solution and the correct folder path.
+
+71
+00:05:12,560 --> 00:05:18,050
+You can verify from the solution window and make sure that you have created the correct building blocks
+
+72
+00:05:18,050 --> 00:05:19,100
+class library.
+
+73
+00:05:19,100 --> 00:05:22,250
+And the first thing we should do is delete the class one.
+
+74
+00:05:22,250 --> 00:05:25,280
+We will create our own class for common operations.
+
+75
+00:05:25,280 --> 00:05:27,740
+So that's why I'm going to remove these class one.
+
+76
+00:05:27,740 --> 00:05:30,680
+And after that you can save the solution.
+
+77
+00:05:30,680 --> 00:05:34,640
+And now we are ready for the perform our common operations.
+
+78
+00:05:34,640 --> 00:05:41,390
+If you look at the slide the common operations is implementing the six abstractions and mediator library.
+
+79
+00:05:41,390 --> 00:05:45,140
+So let's start with the installing the mediator library.
+
+80
+00:05:45,140 --> 00:05:52,760
+Mediator is essential for implementing the mediator pattern and which is also central of our six implementation.
+
+81
+00:05:52,910 --> 00:05:59,720
+Actually we will also install all common NuGet packages for each microservices into building blocks.
+
+82
+00:05:59,720 --> 00:06:06,350
+By this way, whenever a new microservice comes into the picture, we will just reference to the building
+
+83
+00:06:06,350 --> 00:06:10,160
+blocks and start writing the code with all common NuGet packages.
+
+84
+00:06:10,160 --> 00:06:15,560
+This also provide version management of NuGet packages make easier in one class library.
+
+85
+00:06:15,560 --> 00:06:22,220
+Instead of installing the mediator for different microservices, we will only install in one place and
+
+86
+00:06:22,220 --> 00:06:25,280
+it will be easy to managing versions.
+
+87
+00:06:25,280 --> 00:06:31,790
+So please open the Visual Studio and right click the building blocks and manage NuGet packages.
+
+88
+00:06:32,820 --> 00:06:39,750
+So again in here you can browse for the mediator and install the mediator NuGet package under the Building
+
+89
+00:06:39,750 --> 00:06:41,070
+Blocks class library.
+
+90
+00:06:41,100 --> 00:06:46,140
+We can double click the class library and verify from in here and save these building blocks.
+
+91
+00:06:46,170 --> 00:06:48,960
+So inside of our building blocks library.
+
+92
+00:06:48,960 --> 00:06:52,440
+Now we are ready to create our six abstractions.
+
+93
+00:06:52,440 --> 00:06:58,350
+For that purpose, I'm going to create a new folder under this class library, which will be the Our
+
+94
+00:06:58,350 --> 00:07:02,940
+Abstractions add new folder and give the name as a six.
+
+95
+00:07:03,060 --> 00:07:09,750
+So under the six we will define our interfaces that we have designed in the block blocks in here.
+
+96
+00:07:09,750 --> 00:07:16,470
+So we will create these interfaces to abstract our six operations in six folder.
+
+97
+00:07:16,470 --> 00:07:19,530
+Let's start with defining a command interface.
+
+98
+00:07:19,530 --> 00:07:25,800
+And this command interface will be inherited from the mediator I request interface.
+
+99
+00:07:25,800 --> 00:07:35,850
+So please go back to Visual Studio and open the our folder and add new class under the six folder.
+
+100
+00:07:35,850 --> 00:07:37,380
+Which name is L command.
+
+101
+00:07:37,380 --> 00:07:44,940
+In here I'm going to create an interface which will be the public and this will be inherit from the
+
+102
+00:07:45,690 --> 00:07:48,510
+I request object which comes from the mediator.
+
+103
+00:07:48,510 --> 00:07:51,450
+So we can remove unnecessary using statement.
+
+104
+00:07:51,450 --> 00:07:54,900
+And first of all I would like to implement for the generic one.
+
+105
+00:07:54,900 --> 00:08:01,350
+For that purpose we will also make generic our I command, which will be the returning response.
+
+106
+00:08:01,350 --> 00:08:08,190
+That means this command will be returning this response type that we can pass these I request generics.
+
+107
+00:08:08,190 --> 00:08:10,770
+So this is the first abstraction.
+
+108
+00:08:10,770 --> 00:08:18,930
+And the second abstraction we can define our regular interface which will be again public interface
+
+109
+00:08:18,930 --> 00:08:19,920
+I command.
+
+110
+00:08:20,550 --> 00:08:22,560
+But this time we don't have any generics.
+
+111
+00:08:22,560 --> 00:08:27,180
+So we can inherit from the I command in here.
+
+112
+00:08:27,180 --> 00:08:30,660
+And as a generic we can give the unit.
+
+113
+00:08:30,660 --> 00:08:34,650
+Unit is a representing weight type for the mediator.
+
+114
+00:08:34,650 --> 00:08:39,720
+So that's why we can define an empty or no generic type of the I command.
+
+115
+00:08:39,720 --> 00:08:42,150
+So this is also an empty interface.
+
+116
+00:08:42,150 --> 00:08:44,070
+We don't have any additional members.
+
+117
+00:08:44,070 --> 00:08:45,870
+So here we can implement it.
+
+118
+00:08:45,870 --> 00:08:51,420
+The I command part in this code I command defines a contract for all command types.
+
+119
+00:08:51,420 --> 00:08:55,230
+And the generic version allows for commands that produce a response.
+
+120
+00:08:55,230 --> 00:08:57,180
+So this is producing a response.
+
+121
+00:08:57,180 --> 00:09:01,500
+This is an empty I command that doesn't return any response.
+
+122
+00:09:01,500 --> 00:09:03,360
+So now at the same way.
+
+123
+00:09:03,360 --> 00:09:07,830
+Similarly we can define I query interface for our queries.
+
+124
+00:09:07,830 --> 00:09:09,120
+For that purpose.
+
+125
+00:09:09,120 --> 00:09:15,780
+In the queries location we can add new item which is the I query interface.
+
+126
+00:09:15,780 --> 00:09:19,350
+So this is the interface that we are going to abstract.
+
+127
+00:09:19,350 --> 00:09:27,270
+So again this will be the follow the same steps I query will be returned as a response again.
+
+128
+00:09:27,270 --> 00:09:31,890
+And we are going to inherit from the I request which comes from the mediator.
+
+129
+00:09:31,890 --> 00:09:36,060
+And I'm going to give the response in here okay.
+
+130
+00:09:36,060 --> 00:09:41,430
+We will make this interface as a public due to using from the other microservices.
+
+131
+00:09:41,430 --> 00:09:47,940
+And also we can add a generic filter which response could not be null.
+
+132
+00:09:49,050 --> 00:09:52,290
+We can add a not null filter in here okay.
+
+133
+00:09:52,290 --> 00:09:59,070
+The query also completed the I query interface inherit from the I request and it is designed to return
+
+134
+00:09:59,070 --> 00:09:59,730
+a result.
+
+135
+00:09:59,730 --> 00:10:02,040
+This is used for the read operations.
+
+136
+00:10:02,040 --> 00:10:07,950
+By creating these abstractions, we can separate the responsibilities and manage the cross-cutting concerns
+
+137
+00:10:07,950 --> 00:10:10,110
+like validations more effectively.
+
+138
+00:10:10,110 --> 00:10:14,280
+Commands can have their own validations and distinct from the queries.
+
+139
+00:10:14,280 --> 00:10:22,830
+And also you can see in here these six abstraction will be used across for each microservices by referencing
+
+140
+00:10:22,830 --> 00:10:28,590
+the Building Blocks class library, by adding all common stuff in the Building Blocks class library,
+
+141
+00:10:28,590 --> 00:10:34,050
+we ensure consistency and reduce the code duplication across other microservices.
+

@@ -1,0 +1,220 @@
+1
+00:00:00,230 --> 00:00:06,230
+In this video we are going to compare vertical slice architecture versus clean architecture.
+
+2
+00:00:06,770 --> 00:00:12,860
+Vertical slice architecture emphasizes organizing software development around the features, cutting
+
+3
+00:00:12,860 --> 00:00:15,290
+through all layers in a vertical manner.
+
+4
+00:00:15,290 --> 00:00:19,400
+Each feature or slice is developed and deployed independently.
+
+5
+00:00:20,140 --> 00:00:26,320
+On the other hand, clean architecture focuses on separation of concerns and dependency rules.
+
+6
+00:00:26,350 --> 00:00:33,280
+It organizes the code into layers with the most stable and business agnostic layers at the center of
+
+7
+00:00:33,280 --> 00:00:40,000
+the entities, and use cases and external concerns like UI and data access layers on the outer layers.
+
+8
+00:00:41,140 --> 00:00:43,090
+With vertical slice architecture.
+
+9
+00:00:43,090 --> 00:00:49,720
+Development teams concentrate on delivering complete features, each potentially touching all layers
+
+10
+00:00:49,720 --> 00:00:50,620
+of the stack.
+
+11
+00:00:50,650 --> 00:00:58,030
+It is closely aligned with the agile methodologies where delivering working, testable features rapidly
+
+12
+00:00:58,030 --> 00:01:05,920
+is a key, but the clean architecture advocates for a more structured approach, ensuring that business
+
+13
+00:01:05,920 --> 00:01:08,920
+logic is decoupled from the external concerns.
+
+14
+00:01:08,950 --> 00:01:14,380
+This approach is beneficial for long terme maintainability and scalability.
+
+15
+00:01:15,410 --> 00:01:22,340
+Vertical slice architecture shines in scenarios where the rapid development and delivery of the independent
+
+16
+00:01:22,340 --> 00:01:23,870
+features are critical.
+
+17
+00:01:23,900 --> 00:01:31,640
+It is well suited for agile teams working on complex applications with numerous features that may change
+
+18
+00:01:31,640 --> 00:01:33,350
+or evolve independently.
+
+19
+00:01:34,270 --> 00:01:41,050
+Clean architecture is ideal for large scale applications where long Tum maintenance and scalability
+
+20
+00:01:41,050 --> 00:01:46,990
+and the ability to adapt to changing business requirements or technologies are paramount.
+
+21
+00:01:47,020 --> 00:01:53,380
+It ensures that core business logic remains unaffected by changes in the external layers.
+
+22
+00:01:54,530 --> 00:02:01,370
+So once you choose vertical slice over the clean architecture, the first reason is rapid development
+
+23
+00:02:01,370 --> 00:02:02,450
+and deployment.
+
+24
+00:02:02,480 --> 00:02:09,410
+When the priority is to develop and deploy features rapidly and independently, vertical slice is more
+
+25
+00:02:09,410 --> 00:02:10,220
+appropriate.
+
+26
+00:02:10,550 --> 00:02:13,820
+The second reason is agile and scrum teams.
+
+27
+00:02:14,000 --> 00:02:20,690
+For teams practicing the agile or scrum that need to deliver complete features in short cycles.
+
+28
+00:02:20,720 --> 00:02:24,140
+Vertical Slice aligns well with these methodologies.
+
+29
+00:02:24,940 --> 00:02:27,670
+And another reason is microservices.
+
+30
+00:02:27,670 --> 00:02:34,150
+In a microservice architecture, where each service is often responsible for a distinct feature or business
+
+31
+00:02:34,150 --> 00:02:34,900
+capability.
+
+32
+00:02:34,930 --> 00:02:37,960
+Vertical slice can be particularly effective.
+
+33
+00:02:38,950 --> 00:02:46,180
+So let's see our issue of microservices and compare with the catalog versus organic microservices catalog
+
+34
+00:02:46,180 --> 00:02:49,030
+microservices using the vertical slice architecture.
+
+35
+00:02:49,060 --> 00:02:55,870
+So in our issue of microservices, the catalog microservices manage the products categories and inventory.
+
+36
+00:02:55,870 --> 00:02:59,110
+And it is using the vertical slice architecture.
+
+37
+00:02:59,230 --> 00:03:06,250
+Each feature, like adding any product or updating inventory or managing categories, is developed as
+
+38
+00:03:06,250 --> 00:03:07,420
+a separate slice.
+
+39
+00:03:07,600 --> 00:03:15,040
+Each slice would include its own API endpoint, business logic and data access code, allowing for the
+
+40
+00:03:15,040 --> 00:03:21,370
+rapid development and updates to individual aspects of the product catalog without affecting the others.
+
+41
+00:03:22,070 --> 00:03:26,180
+On the other hand, ordering microservices using the clean architecture.
+
+42
+00:03:26,180 --> 00:03:32,180
+So the ordering microservices handle the order processing logic, including the cart management, order
+
+43
+00:03:32,180 --> 00:03:34,190
+placement and payment processing.
+
+44
+00:03:34,190 --> 00:03:41,120
+With clean architecture, the core business rules and use cases of order processing are central and
+
+45
+00:03:41,120 --> 00:03:45,680
+isolated from the external concerns like database or UI operations.
+
+46
+00:03:45,980 --> 00:03:53,000
+This separation ensures that critical business rules remain stable and unaffected by changes in external
+
+47
+00:03:53,000 --> 00:03:56,480
+systems, like payment gateways or database schemas.
+
+48
+00:03:56,990 --> 00:04:02,870
+So the choice between the vertical slice architecture and clean architecture depends on the specific
+
+49
+00:04:02,870 --> 00:04:04,400
+requirement of the project.
+
+50
+00:04:04,400 --> 00:04:11,270
+Vertical slice is more feature focused and agile, and it is ideal for rapid feature development and
+
+51
+00:04:11,270 --> 00:04:12,170
+deployment.
+
+52
+00:04:12,530 --> 00:04:18,980
+Clean architecture is better suited for large scale, long lived applications, where the business rules
+
+53
+00:04:18,980 --> 00:04:22,250
+must remain insulated from the external changes.
+
+54
+00:04:22,610 --> 00:04:28,970
+We will use both architectures in different microservices that can leverage their strengths according
+
+55
+00:04:28,970 --> 00:04:31,250
+to the requirement of each microservice.
+

@@ -1,0 +1,316 @@
+1
+00:00:00,260 --> 00:00:07,130
+In this video, we are going to develop Getproduct by ID feature in our catalog microservices using
+
+2
+00:00:07,130 --> 00:00:09,560
+this access pattern and mediator library.
+
+3
+00:00:09,650 --> 00:00:14,600
+So we will create a new folder as a vertical slice, which is the getproduct by ID.
+
+4
+00:00:14,600 --> 00:00:21,830
+And in this vertical folder we will create two classes, one for the handler and another for the endpoint
+
+5
+00:00:21,830 --> 00:00:28,610
+that we will define these request lifecycle using the mediator library and following this pattern,
+
+6
+00:00:28,610 --> 00:00:33,080
+please open the Visual Studio and go to the Products feature folder.
+
+7
+00:00:33,080 --> 00:00:40,370
+And you can right click and add new subfolder which will be the Our Vertical Slice architecture get
+
+8
+00:00:40,370 --> 00:00:41,870
+product by ID feature.
+
+9
+00:00:41,870 --> 00:00:48,830
+So under this folder we will create two classes one for the handler, another for the endpoint.
+
+10
+00:00:48,830 --> 00:00:54,050
+So let's right click and add new class which name is get product by ID handler.
+
+11
+00:00:54,050 --> 00:00:59,120
+And another class will be the get product by id and point.
+
+12
+00:00:59,660 --> 00:01:04,849
+So basically this folder will contain all necessary classes for our feature.
+
+13
+00:01:04,849 --> 00:01:07,880
+And we have followed the vertical slice architecture.
+
+14
+00:01:07,910 --> 00:01:11,810
+Let me start to develop our query and result record types.
+
+15
+00:01:11,810 --> 00:01:17,540
+For that purpose I'm going to define public record and get products by ID query.
+
+16
+00:01:17,540 --> 00:01:28,580
+And this query this time get we get a parameter which name is with id and inherit from the I query interface,
+
+17
+00:01:28,580 --> 00:01:33,440
+which will be the A result object returning the get product by ID result.
+
+18
+00:01:34,160 --> 00:01:41,480
+And if we continue with the public record, get product by ID result, this will be returned a specific
+
+19
+00:01:41,480 --> 00:01:44,270
+product with a given ID information.
+
+20
+00:01:46,990 --> 00:01:52,240
+So we have finished the development of the query and result record types.
+
+21
+00:01:52,240 --> 00:01:56,740
+So now we will implement Getproduct by id query handler class.
+
+22
+00:01:56,740 --> 00:02:03,700
+This class is responsible for handling the query object and interacting with the database and returning
+
+23
+00:02:03,700 --> 00:02:04,870
+the result object.
+
+24
+00:02:05,020 --> 00:02:10,570
+So if you open the Visual Studio and this time we will create an actual handler class.
+
+25
+00:02:10,570 --> 00:02:16,900
+First of all, I'm going to change the name as a Getproduct by ID query handler that we can separate
+
+26
+00:02:16,900 --> 00:02:19,900
+the commands and queries by the class names.
+
+27
+00:02:20,080 --> 00:02:28,840
+And I'm going to make this class as a internal, and this class will be inherit from the I query handler.
+
+28
+00:02:30,730 --> 00:02:39,010
+And as a request this will be get product by ID query.
+
+29
+00:02:39,010 --> 00:02:40,630
+This will be the request.
+
+30
+00:02:40,630 --> 00:02:44,710
+And as a result we can return getproduct by I result.
+
+31
+00:02:44,710 --> 00:02:46,330
+So this is the query handler.
+
+32
+00:02:46,330 --> 00:02:53,230
+And if I implement this interface members we can see that this will be comes with the handle method.
+
+33
+00:02:53,230 --> 00:02:58,450
+And this handle method gets a request parameter as a getproduct by id query.
+
+34
+00:02:58,450 --> 00:03:03,430
+So I'm going to change the name as a query this parameter name okay.
+
+35
+00:03:03,430 --> 00:03:06,610
+So we have basically created a structure of this class.
+
+36
+00:03:06,610 --> 00:03:09,520
+Now I'm going to inject required services.
+
+37
+00:03:09,520 --> 00:03:11,740
+This will be the I document session.
+
+38
+00:03:15,120 --> 00:03:18,540
+And the next one is the Ilogger.
+
+39
+00:03:23,500 --> 00:03:24,010
+Okay.
+
+40
+00:03:24,010 --> 00:03:27,490
+We have injected these services to perform our actual logic.
+
+41
+00:03:27,490 --> 00:03:31,930
+So in order to do that, I'm going to start the actual implementation here.
+
+42
+00:03:31,930 --> 00:03:34,360
+You can see that this will be a handle method.
+
+43
+00:03:34,360 --> 00:03:37,750
+At the beginning of the handle method I am adding a log information.
+
+44
+00:03:37,750 --> 00:03:48,460
+And after that I'm going to get the product information from sending await session load async method.
+
+45
+00:03:48,460 --> 00:03:58,120
+And I'm expecting a single product and passing the id information, which is the incoming query.id and
+
+46
+00:03:58,120 --> 00:03:59,710
+passing the cancellation token.
+
+47
+00:04:01,510 --> 00:04:06,250
+After that, if the product is null, we should perform some actions.
+
+48
+00:04:06,250 --> 00:04:11,170
+So for that purpose I'm going to check product is null.
+
+49
+00:04:11,950 --> 00:04:17,649
+I'm going to throw an exception which is the product not found exception that we will define in this
+
+50
+00:04:17,649 --> 00:04:18,190
+video.
+
+51
+00:04:18,190 --> 00:04:26,860
+But if the product is not null, we basically return new result object by passing the product value
+
+52
+00:04:26,860 --> 00:04:30,460
+that comes from the session that load async method.
+
+53
+00:04:30,460 --> 00:04:37,630
+In this handle method, we basically fetch a product by its id information, which comes from the query
+
+54
+00:04:37,630 --> 00:04:41,110
+object, and we use Martin's session.
+
+55
+00:04:41,110 --> 00:04:48,310
+I document session object and we use load async method in order to retrieve a specific product information
+
+56
+00:04:48,310 --> 00:04:48,970
+by id.
+
+57
+00:04:49,420 --> 00:04:55,720
+If the product is null, we basically throw a new product, not found exception, but if the product
+
+58
+00:04:55,720 --> 00:05:00,790
+is not null, we basically return a result which including this product information.
+
+59
+00:05:00,790 --> 00:05:06,160
+If you look at these, if you look where the product is null, we are throwing an exception.
+
+60
+00:05:06,160 --> 00:05:08,740
+But we didn't define this custom exception.
+
+61
+00:05:08,740 --> 00:05:12,820
+So we should create a custom exception class to handle these product.
+
+62
+00:05:12,820 --> 00:05:13,720
+Not found case.
+
+63
+00:05:13,720 --> 00:05:16,960
+For that purpose, I'm going to create an exceptions folder.
+
+64
+00:05:16,960 --> 00:05:18,160
+Under the catalog.
+
+65
+00:05:18,160 --> 00:05:24,850
+I'm going to right click and create a new folder and for the name is a exceptions.
+
+66
+00:05:26,230 --> 00:05:29,380
+And after that I'm going to create a product Notfoundexception.
+
+67
+00:05:29,380 --> 00:05:30,670
+Under this folder.
+
+68
+00:05:30,670 --> 00:05:36,220
+And in this folder we will define a new class which is the product not found exception.
+
+69
+00:05:36,220 --> 00:05:40,390
+And this exception will be inherited from the exception class.
+
+70
+00:05:40,390 --> 00:05:46,900
+And in constructor we can basically perform operation inheriting from the base class.
+
+71
+00:05:46,900 --> 00:05:55,660
+And in the base class we can paste the our product not found error message in here.
+
+72
+00:05:56,290 --> 00:06:02,770
+So this is typical a custom exception class that we use into our handle method.
+
+73
+00:06:02,770 --> 00:06:08,980
+And in this handle method we basically returning product not found exception under the get product by
+
+74
+00:06:08,980 --> 00:06:10,450
+id handle class.
+
+75
+00:06:10,450 --> 00:06:15,070
+In here you can see that we need to using statement API exceptions.
+
+76
+00:06:15,070 --> 00:06:20,500
+And I'm going to move these using statement into our global handle global using class.
+
+77
+00:06:20,500 --> 00:06:25,150
+And here you can see that I'm going to add a global using statement in here.
+
+78
+00:06:25,480 --> 00:06:32,110
+As you can see that we have completed the get product by ID query handle class with following six pattern
+
+79
+00:06:32,110 --> 00:06:33,130
+and handle method.
+

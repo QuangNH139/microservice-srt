@@ -1,0 +1,120 @@
+1
+00:00:00,230 --> 00:00:05,600
+In this video we are going to compare monolithic and microservice architectures.
+
+2
+00:00:05,630 --> 00:00:12,470
+By this way, you will could understand which design better fits your business requirements and capacity.
+
+3
+00:00:13,710 --> 00:00:17,070
+The first comparison is application architecture.
+
+4
+00:00:17,100 --> 00:00:22,440
+Monolithic has a simple, straightforward structure of one undivided unit.
+
+5
+00:00:23,010 --> 00:00:29,970
+But microservices have a complex structure that consists of various heterogeneous services and databases.
+
+6
+00:00:31,590 --> 00:00:34,020
+The second comparison is scalability.
+
+7
+00:00:34,260 --> 00:00:41,850
+Monolithic application is scaled as a whole single unit, but microservices can be scaled independently
+
+8
+00:00:41,850 --> 00:00:46,950
+and this will save business and development teams a lot of time and resources.
+
+9
+00:00:47,520 --> 00:00:54,030
+This difference between monolithic and microservices encouraged companies to migrate their rapidly growing
+
+10
+00:00:54,030 --> 00:01:01,620
+applications to microservices in order to derive agility and enable more cost effective approach to
+
+11
+00:01:01,620 --> 00:01:02,460
+development.
+
+12
+00:01:04,190 --> 00:01:07,010
+And another comparison is deployment.
+
+13
+00:01:07,130 --> 00:01:12,530
+Monolithic application provides fast and easy deployment of whole system.
+
+14
+00:01:12,560 --> 00:01:19,730
+On the other hand, microservices can deploy different components in a microservice application independently.
+
+15
+00:01:19,760 --> 00:01:26,420
+This enables frequently and zero downtime deployment and provide CI CD automations.
+
+16
+00:01:26,450 --> 00:01:28,430
+You can see the picture in here.
+
+17
+00:01:28,430 --> 00:01:34,880
+You can see the monolithic application has large development teams pushing the code single code base,
+
+18
+00:01:34,880 --> 00:01:38,690
+and there is one deployment pipeline and deploy the production.
+
+19
+00:01:38,990 --> 00:01:45,290
+On the other hand, you can see the different teams organized development teams in microservices, and
+
+20
+00:01:45,290 --> 00:01:49,820
+every team has own code base about the microservice code base.
+
+21
+00:01:49,820 --> 00:01:56,450
+And every microservice has different development deployment pipelines, and they can deploy independently
+
+22
+00:01:56,450 --> 00:01:58,730
+and perform CI, CD automations.
+
+23
+00:02:00,510 --> 00:02:03,810
+Another comparison is development teams.
+
+24
+00:02:03,990 --> 00:02:10,410
+If your team doesn't have experience with microservices and container systems, building a microservice
+
+25
+00:02:10,410 --> 00:02:12,600
+based application will be difficult.
+
+26
+00:02:12,630 --> 00:02:17,940
+Monolithic architecture can be preferable for single developers or small teams.
+
+27
+00:02:18,120 --> 00:02:24,630
+On the other hand, if you have teams skilled in microservice deployments and plan to expand your team
+
+28
+00:02:24,630 --> 00:02:29,460
+over time, starting with microservices can save your time in the future.
+
+29
+00:02:29,730 --> 00:02:36,150
+Because microservices provide better flexibility when it comes to team composition and distribution
+
+30
+00:02:36,150 --> 00:02:37,890
+of tasks and ownership.
+

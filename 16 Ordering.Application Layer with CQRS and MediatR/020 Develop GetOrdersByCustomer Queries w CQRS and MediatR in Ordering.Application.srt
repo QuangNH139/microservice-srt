@@ -1,0 +1,244 @@
+1
+00:00:00,170 --> 00:00:06,590
+In this video, we are going to develop a naive query feature, which is the get orders by customer
+
+2
+00:00:06,590 --> 00:00:07,700
+for that purpose.
+
+3
+00:00:07,730 --> 00:00:12,470
+Please go to the Visual Studio and locate the orders queries.
+
+4
+00:00:12,470 --> 00:00:18,200
+And I'm going to right click in here and add new subfolder which is the get orders by customer.
+
+5
+00:00:18,350 --> 00:00:23,540
+So in this use case we will also need to add query and handle class.
+
+6
+00:00:23,540 --> 00:00:29,930
+So I'm going to add a new class which name is get Orders by Customer query and add a new class.
+
+7
+00:00:29,930 --> 00:00:33,920
+Which name is get orders by customer handler.
+
+8
+00:00:33,920 --> 00:00:39,080
+So create new class and you can see that we have query and handle class.
+
+9
+00:00:39,080 --> 00:00:42,590
+So now we are going to focus on the query class.
+
+10
+00:00:42,590 --> 00:00:46,370
+And this class will define our query request and result.
+
+11
+00:00:46,370 --> 00:00:49,970
+So for that purpose I'm going to remove unnecessary using statement.
+
+12
+00:00:49,970 --> 00:00:55,880
+And also I am going to remove these internal class definition because we will create a record type for
+
+13
+00:00:55,880 --> 00:00:57,650
+the query object.
+
+14
+00:00:57,650 --> 00:01:04,489
+And here you can see that we have created public record get orders by customer query with taking the
+
+15
+00:01:04,489 --> 00:01:07,130
+great customer ID as a parameter.
+
+16
+00:01:07,130 --> 00:01:13,460
+And this will be implemented by query interface and returning the get orders by customer result for
+
+17
+00:01:13,460 --> 00:01:14,090
+that purpose.
+
+18
+00:01:14,090 --> 00:01:17,930
+Also, I'm going to create a result object with a record type.
+
+19
+00:01:17,930 --> 00:01:21,950
+Here you can see that public record get orders by customer result.
+
+20
+00:01:21,950 --> 00:01:27,500
+And this will be getting a orders parameter which is the IEnumerable order data.
+
+21
+00:01:27,500 --> 00:01:33,560
+That means we will return this order detail list as a response of the get orders by customer request.
+
+22
+00:01:33,950 --> 00:01:38,420
+So now we can go to the handler class in order to implement this query handler.
+
+23
+00:01:38,420 --> 00:01:44,270
+So I'm going to remove unnecessary using statements and make this class as a public and implement the
+
+24
+00:01:44,270 --> 00:01:47,120
+I query handler interface, which is incoming.
+
+25
+00:01:47,120 --> 00:01:51,830
+Get orders by customer query and returning the get orders by customer result.
+
+26
+00:01:51,830 --> 00:01:57,410
+So when we implement these members here, we can see that the handle method comes in the picture.
+
+27
+00:01:57,410 --> 00:02:01,880
+And this is the our first parameter which is the get orders by customer query.
+
+28
+00:02:01,880 --> 00:02:08,990
+I am changing the name of the parameter request to query and also make this method as an async method.
+
+29
+00:02:09,139 --> 00:02:15,590
+So if you plan to implementation of handle method, we can say that we will get orders by customer using
+
+30
+00:02:15,590 --> 00:02:17,660
+the Dbcontext and return the result.
+
+31
+00:02:17,660 --> 00:02:23,000
+So that means we should inject the application db context object into our class.
+
+32
+00:02:23,000 --> 00:02:28,940
+So come to the class definition and use the primary constructor and inject the I application db context
+
+33
+00:02:28,940 --> 00:02:32,480
+as a db context parameter in order to interact with database.
+
+34
+00:02:32,480 --> 00:02:35,870
+So after that we can start the actual implementation.
+
+35
+00:02:35,870 --> 00:02:42,500
+And here you can see that we will use DB context that orders that include where as note taking order
+
+36
+00:02:42,500 --> 00:02:47,390
+by and to list async functions in order to perform get orders by customer.
+
+37
+00:02:47,390 --> 00:02:48,530
+So let me explain.
+
+38
+00:02:48,530 --> 00:02:55,220
+One by one we basically retrieve the orders using the DB context based on the given customer ID, and
+
+39
+00:02:55,220 --> 00:02:57,320
+here you can see the include keyword.
+
+40
+00:02:57,320 --> 00:03:04,160
+This statement ensures that the related order items are also fetched, and also we use as no tracking
+
+41
+00:03:04,160 --> 00:03:08,750
+because we will use for the read only scenarios in order to improve performance.
+
+42
+00:03:08,750 --> 00:03:15,500
+And also in here you can see that we have a where keyword, and in here the orders are filtered by the
+
+43
+00:03:15,500 --> 00:03:23,120
+customer ID and ordered by the order name, with the order by keyword and returning list of these orders,
+
+44
+00:03:23,120 --> 00:03:25,010
+which is the to list async method.
+
+45
+00:03:25,010 --> 00:03:30,470
+This will provide to run query asynchronously and return back to order list operation.
+
+46
+00:03:30,470 --> 00:03:34,970
+So that means we will perform the get orders by customer with this line of code.
+
+47
+00:03:34,970 --> 00:03:41,480
+And you can see that when we are filtering the customer ID, we are converting the customer ID that
+
+48
+00:03:41,480 --> 00:03:47,840
+off method with incoming query object and the customer ID, and this will be provided to convert strongly
+
+49
+00:03:47,840 --> 00:03:51,980
+typed customer ID when we are filtering the orders by customer ID.
+
+50
+00:03:52,130 --> 00:03:56,240
+So after getting orders by customer, we basically return a result.
+
+51
+00:03:56,240 --> 00:04:02,570
+So when we are returning a result, we will use return new, get orders by customer result and in this
+
+52
+00:04:02,570 --> 00:04:05,960
+result object is accepting IEnumerable order DTO.
+
+53
+00:04:05,960 --> 00:04:12,500
+For that purpose we will use orders dot to order DTO list, which is an extension method that we have
+
+54
+00:04:12,500 --> 00:04:13,970
+developed in the previous video.
+
+55
+00:04:13,970 --> 00:04:20,600
+So we will use extension method in a reusable manner into these get orders by customer handle method.
+
+56
+00:04:20,600 --> 00:04:24,680
+So after returning a response we can safely remove these throw off statement.
+
+57
+00:04:24,680 --> 00:04:28,160
+And this is the implementation of the get orders by customer.
+
+58
+00:04:28,160 --> 00:04:31,970
+And I'm going to use these statements into the global using.
+
+59
+00:04:31,970 --> 00:04:38,150
+So if you go to the global using and paste to our extensions folder, you can put the global keyword.
+
+60
+00:04:38,150 --> 00:04:41,690
+If you go back to our get customer by handler.
+
+61
+00:04:41,690 --> 00:04:45,290
+Here you can see the implementation of the get customer by handler class.
+

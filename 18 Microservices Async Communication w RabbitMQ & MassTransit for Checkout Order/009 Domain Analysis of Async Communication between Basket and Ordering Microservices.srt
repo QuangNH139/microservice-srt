@@ -1,0 +1,196 @@
+1
+00:00:00,200 --> 00:00:06,650
+In this video, we are going to do domain analysis of asynchronous communication between basket and
+
+2
+00:00:06,650 --> 00:00:08,119
+ordering microservices.
+
+3
+00:00:08,150 --> 00:00:14,960
+This will include event model, analyzing application use cases, Rest API endpoints and underlying
+
+4
+00:00:14,960 --> 00:00:16,160
+data structures.
+
+5
+00:00:16,460 --> 00:00:21,680
+So let's get started and we will start with the event models of the basket checkout event.
+
+6
+00:00:21,710 --> 00:00:26,150
+That means we have only one event model which is the basket checkout.
+
+7
+00:00:26,210 --> 00:00:32,000
+This is the primary event model used for the asynchronous communication between basket and ordering
+
+8
+00:00:32,000 --> 00:00:33,050
+microservices.
+
+9
+00:00:33,380 --> 00:00:39,200
+In the Building Blocks shared project, we should add a new class under the events folder, and this
+
+10
+00:00:39,200 --> 00:00:42,410
+should be used from the basket and ordering microservices.
+
+11
+00:00:42,410 --> 00:00:46,940
+But also we can create a new class library which is a building blocks messaging.
+
+12
+00:00:46,940 --> 00:00:51,770
+And this will include this kind of common event classes which will be the basket checkout.
+
+13
+00:00:51,800 --> 00:00:57,140
+If you look at the basket checkout class, this will be including user details which is the username,
+
+14
+00:00:57,140 --> 00:01:03,080
+total price and billing address, address, line, country, state and also payment details will be
+
+15
+00:01:03,080 --> 00:01:05,750
+including the card name, card number and so on.
+
+16
+00:01:05,780 --> 00:01:12,560
+This is the event class structure for the basket checkout, and we will also consider the domain events
+
+17
+00:01:12,560 --> 00:01:15,440
+for the basket checkout and leading to integration event.
+
+18
+00:01:15,440 --> 00:01:21,680
+But Basket Checkout event will be our integration event from throwing our basket microservices.
+
+19
+00:01:21,680 --> 00:01:27,170
+So if you look at the application use cases we should define our application use case analyzing for
+
+20
+00:01:27,170 --> 00:01:28,580
+asynchronous communication.
+
+21
+00:01:28,580 --> 00:01:33,500
+And we can say that our asynchronous use case is basket checkout operation.
+
+22
+00:01:33,500 --> 00:01:38,720
+This is the checkout basket with all information and publish event to the RabbitMQ.
+
+23
+00:01:39,080 --> 00:01:44,930
+And if you look at the asynchronous use case for ordering microservices we can say that again basket
+
+24
+00:01:44,930 --> 00:01:45,320
+checkout.
+
+25
+00:01:45,320 --> 00:01:47,720
+But this time ordering microservices.
+
+26
+00:01:47,720 --> 00:01:52,910
+Consume the basket checkout event from the RabbitMQ using the Masstransit, and after that this will
+
+27
+00:01:52,910 --> 00:01:59,030
+be start order fulfillment process that perform order fulfillment operation that is notifying billing,
+
+28
+00:01:59,030 --> 00:02:05,060
+shipment and notification of the other microservices and this can be raised order created domain event
+
+29
+00:02:05,060 --> 00:02:07,190
+that leads to integration event.
+
+30
+00:02:07,550 --> 00:02:11,450
+So now I'm going to check presentation layer and the Rest APIs.
+
+31
+00:02:11,450 --> 00:02:16,400
+Here you can see that we have a one post http API.
+
+32
+00:02:16,400 --> 00:02:22,310
+And we will expose http post method from the basket microservices with this endpoint which is the slash
+
+33
+00:02:22,310 --> 00:02:25,760
+basket and slash checkout in order to check out the basket.
+
+34
+00:02:25,760 --> 00:02:27,410
+And this will be asynchronous.
+
+35
+00:02:27,410 --> 00:02:32,900
+To check out the basket and receive the basket, checkout data in a Json body of the web API.
+
+36
+00:02:33,020 --> 00:02:40,670
+And after that you can see that ordering microservices will be using Amqp protocol in order to consume
+
+37
+00:02:40,670 --> 00:02:44,150
+basket checkout event from the RabbitMQ using the Masstransit.
+
+38
+00:02:44,150 --> 00:02:50,510
+So we have two protocols one protocol Http and exposing Http post from the basket microservices.
+
+39
+00:02:50,510 --> 00:02:57,080
+And another protocol is Amqp protocol consuming ordering microservices from the RabbitMQ message broker.
+
+40
+00:02:57,380 --> 00:03:02,810
+And if you look at the underlying data structure of the asynchronous communication, we can say that
+
+41
+00:03:02,810 --> 00:03:08,780
+for asynchronous communication between microservices we have one backing services, which is the RabbitMQ
+
+42
+00:03:08,810 --> 00:03:10,520
+distributed message broker.
+
+43
+00:03:10,520 --> 00:03:17,000
+And as a distributed message broker we will use RabbitMQ and we will see it in the implementation phase.
+
+44
+00:03:17,000 --> 00:03:23,240
+RabbitMQ allows for the robust, efficient and scalable asynchronous communication, and it facilitates
+
+45
+00:03:23,240 --> 00:03:26,660
+pub sub messaging between basket and ordering microservices.
+
+46
+00:03:26,960 --> 00:03:31,700
+And here you can see the our main architecture for the microservices asynchronous communication.
+
+47
+00:03:31,700 --> 00:03:38,420
+Basically basket microservices publish event to the RabbitMQ message broker for asynchronous communication
+
+48
+00:03:38,420 --> 00:03:39,260
+and ordering.
+
+49
+00:03:39,260 --> 00:03:45,320
+Microservices consume these event from the RabbitMQ in order to perform asynchronous communication.
+

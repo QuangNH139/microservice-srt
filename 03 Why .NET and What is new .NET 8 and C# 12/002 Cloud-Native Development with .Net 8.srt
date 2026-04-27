@@ -1,0 +1,168 @@
+1
+00:00:00,140 --> 00:00:05,300
+In this video we are going to learn cloud native development With.net eight.
+
+2
+00:00:05,600 --> 00:00:12,560
+Cloud native is not just a buzzword, it is a robust approach to building applications that leverage
+
+3
+00:00:12,560 --> 00:00:14,510
+the full potential of the cloud.
+
+4
+00:00:14,540 --> 00:00:20,930
+DotNet eight implements the foundational pillars of the cloud native, which are the observability,
+
+5
+00:00:20,930 --> 00:00:24,410
+resilience, scalability, and manageability.
+
+6
+00:00:25,790 --> 00:00:32,450
+With the Net eight, we can build services that scale effortlessly with demand and ensures that high
+
+7
+00:00:32,450 --> 00:00:37,640
+scale and high availability services using dotnet eight within your application.
+
+8
+00:00:37,940 --> 00:00:44,600
+So with dotnet eight there is a built in out of the box services provided under the resilience Health
+
+9
+00:00:44,600 --> 00:00:47,690
+Checks, Testing and Fakes and Observability.
+
+10
+00:00:48,200 --> 00:00:55,340
+So the cloud native stack in dotnet eight is a comprehensive toolkit for creating observable, production
+
+11
+00:00:55,340 --> 00:00:57,200
+ready cloud native applications.
+
+12
+00:00:57,530 --> 00:01:04,430
+We will cover how DotNet supports the creation of distributed applications that you can monitor, manage
+
+13
+00:01:04,430 --> 00:01:06,020
+and maintain with ease.
+
+14
+00:01:06,590 --> 00:01:08,870
+So let me start with the resilience.
+
+15
+00:01:08,870 --> 00:01:16,520
+You can see the resilience package in here dotnet offers to handle resilience like extension resilience
+
+16
+00:01:16,520 --> 00:01:19,820
+and extensions Http resilience packages.
+
+17
+00:01:19,820 --> 00:01:26,030
+They ensure that your applications stay responsive under the load and recover from the setbacks.
+
+18
+00:01:26,420 --> 00:01:30,680
+And after that we can say health checks and observability packages.
+
+19
+00:01:30,680 --> 00:01:36,470
+You can see that health checks are a crucial part of the maintaining cloud native applications.
+
+20
+00:01:36,470 --> 00:01:43,010
+And DotNet provides extensions that diagnostics that health checks that common packages.
+
+21
+00:01:43,010 --> 00:01:48,470
+In order to help you implement these health check features for observability.
+
+22
+00:01:48,500 --> 00:01:48,980
+The.
+
+23
+00:01:48,980 --> 00:01:56,360
+Net provide extensions that telemetry NuGet packages is our go to for insight into our applications,
+
+24
+00:01:56,360 --> 00:01:58,190
+performance and behaviors.
+
+25
+00:01:58,190 --> 00:02:05,450
+Also for testing and fix testing is the mandatory of the cloud native development with dotnet eight
+
+26
+00:02:05,480 --> 00:02:13,160
+ASP.Net core testing NuGet packages that we can use, and we can create reliable test suites that mimic
+
+27
+00:02:13,160 --> 00:02:18,890
+the real world scenarios, helping us to catch the issues before they hit on the production.
+
+28
+00:02:19,610 --> 00:02:22,760
+And also DotNet has open telemetry support.
+
+29
+00:02:22,760 --> 00:02:29,870
+DotNet eight integrates with the tools like the Prometheus and Grafana, allowing us to create rich
+
+30
+00:02:29,870 --> 00:02:33,020
+dashboards and alerts that you can see on the picture.
+
+31
+00:02:33,020 --> 00:02:39,320
+This is the typical Grafana page and dashboard that keeps us informed about our application, health
+
+32
+00:02:39,320 --> 00:02:40,490
+and performance.
+
+33
+00:02:40,940 --> 00:02:45,860
+So we can say that the Net eight handles foundational pillars of the cloud native.
+
+34
+00:02:45,860 --> 00:02:50,660
+These are the observability, resilience, scalability, and manageability.
+
+35
+00:02:50,780 --> 00:02:56,630
+Under these pillars, the Net eight provides a tremendous of development that you can think that under
+
+36
+00:02:56,630 --> 00:03:02,420
+observability, we can use built in metrics with dimensions, dependency injection, integration for
+
+37
+00:03:02,420 --> 00:03:06,260
+metrics and better for logging, enrichment and reductions.
+
+38
+00:03:06,350 --> 00:03:12,890
+Under the resilience, we can use new Polybase resilience packages and SignalR stateful reconnection.
+
+39
+00:03:12,890 --> 00:03:19,940
+And under the scalability, we can get benefit from the IoT performance and other container based developments
+
+40
+00:03:19,940 --> 00:03:21,890
+that we can see in the next videos.
+
+41
+00:03:21,890 --> 00:03:27,920
+So that means all these enhancements provide our application fully cloud native using the.
+
+42
+00:03:28,130 --> 00:03:28,790
+Net eight.
+

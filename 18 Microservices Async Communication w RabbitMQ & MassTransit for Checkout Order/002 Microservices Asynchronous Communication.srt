@@ -1,0 +1,172 @@
+1
+00:00:00,050 --> 00:00:02,150
+So what is asynchronous communication?
+
+2
+00:00:03,170 --> 00:00:08,960
+Basically, in asynchronous communication the client sends a request, but it doesn't wait for a response
+
+3
+00:00:08,960 --> 00:00:09,950
+from the server.
+
+4
+00:00:10,340 --> 00:00:17,720
+So the key point is here that the client should not have blocked their thread until waiting a response.
+
+5
+00:00:18,670 --> 00:00:23,380
+The most popular protocol for this asynchronous communication is Amqp.
+
+6
+00:00:23,410 --> 00:00:26,500
+That means advanced message queuing protocol.
+
+7
+00:00:27,400 --> 00:00:34,120
+So with using Amqp protocol, the client sent the message with using message broker systems like Kafka
+
+8
+00:00:34,120 --> 00:00:35,350
+and RabbitMQ.
+
+9
+00:00:36,950 --> 00:00:40,730
+The message producer usually doesn't wait for a response.
+
+10
+00:00:41,060 --> 00:00:47,360
+This message consumed from the subscriber systems in asynchronous way and no one waiting for a response
+
+11
+00:00:47,360 --> 00:00:48,050
+suddenly.
+
+12
+00:00:48,860 --> 00:00:55,760
+If we have a few interaction with querying microservices, then we should use Http request response
+
+13
+00:00:55,760 --> 00:00:57,230
+with resource APIs.
+
+14
+00:00:57,440 --> 00:01:04,879
+But when it comes to busy interactions in communications across multiple microservices, then we should
+
+15
+00:01:04,879 --> 00:01:08,840
+use asynchronous messaging platforms like message broker systems.
+
+16
+00:01:09,200 --> 00:01:16,700
+We said that asynchronous protocols, which is the Amqp protocol for performing async message transmissions.
+
+17
+00:01:17,490 --> 00:01:19,350
+In this amqp protocol.
+
+18
+00:01:19,350 --> 00:01:22,560
+The producer sent a message and doesn't wait a response.
+
+19
+00:01:22,560 --> 00:01:29,100
+It only sends a message and expects that it will consume by subscriber services via to message broker
+
+20
+00:01:29,100 --> 00:01:29,820
+systems.
+
+21
+00:01:31,720 --> 00:01:38,440
+So Amqp protocol mostly using in message broker that responsible for handling the message sent by the
+
+22
+00:01:38,440 --> 00:01:42,430
+producer service in asynchronous messaging based communication.
+
+23
+00:01:42,850 --> 00:01:49,000
+After the message is received by the broker, now it is passed the message to the target service that
+
+24
+00:01:49,000 --> 00:01:50,530
+you can see in the image.
+
+25
+00:01:50,530 --> 00:01:55,990
+The order microservice send message to message broker and this will be consumed by the subscriber.
+
+26
+00:01:55,990 --> 00:01:56,950
+Microservices.
+
+27
+00:01:58,400 --> 00:02:04,520
+If the consumer microservice is down at the moment, the broker might be configured to retry as long
+
+28
+00:02:04,520 --> 00:02:06,680
+as necessary for successful delivery.
+
+29
+00:02:07,700 --> 00:02:12,530
+These messages can be persisted if required or stored only in memory.
+
+30
+00:02:13,130 --> 00:02:20,570
+In the latter case, they will be lost when the broker is restarted and they aren't yet sent to consumer.
+
+31
+00:02:21,200 --> 00:02:25,760
+Since the message broker is responsible for delivering the message.
+
+32
+00:02:25,790 --> 00:02:32,270
+It is no longer necessary for both microservices to be up and running for successful communication.
+
+33
+00:02:33,030 --> 00:02:38,730
+Therefore, asynchronous messaging mitigates the biggest problem of synchronous communication, which
+
+34
+00:02:38,730 --> 00:02:44,490
+is the coupling, and it is provided to loosely coupling services with providing asynchronous communication.
+
+35
+00:02:46,080 --> 00:02:46,830
+Let's see.
+
+36
+00:02:46,830 --> 00:02:53,160
+The image you can see in the synchronous communication is becoming a chain of requests and highly coupled
+
+37
+00:02:53,160 --> 00:02:55,080
+dependent between microservices.
+
+38
+00:02:55,320 --> 00:02:58,080
+So this is the pain point of architecture.
+
+39
+00:02:58,080 --> 00:03:03,300
+And we can say this is a anti-pattern and need to redesign your system.
+
+40
+00:03:04,570 --> 00:03:08,080
+With asynchronous communication, this problem can be solved.
+
+41
+00:03:08,110 --> 00:03:13,630
+Microservices communicate with each other over the message broker system in asynchronous way.
+
+42
+00:03:13,630 --> 00:03:19,870
+Mostly it is good to use publish subscribe pattern with message broker systems that we will see in the
+
+43
+00:03:19,870 --> 00:03:20,740
+upcoming videos.
+

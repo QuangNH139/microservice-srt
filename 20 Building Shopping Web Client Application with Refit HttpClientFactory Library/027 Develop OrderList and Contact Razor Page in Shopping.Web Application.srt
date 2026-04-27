@@ -1,0 +1,208 @@
+1
+00:00:00,140 --> 00:00:06,560
+In this video we are going to develop, order, list and contact HTML pages into our shopping web client
+
+2
+00:00:06,560 --> 00:00:07,340
+application.
+
+3
+00:00:07,340 --> 00:00:11,150
+Please open the Visual Studio and go to the Shopping Web and Pages folder.
+
+4
+00:00:11,150 --> 00:00:18,650
+Right click Add New Razor page and select the razor page empty template and give the name as a order
+
+5
+00:00:18,650 --> 00:00:24,740
+list dot CSS, HTML and click the add button and this will be create Order list page of the shopping
+
+6
+00:00:24,740 --> 00:00:25,700
+web application.
+
+7
+00:00:25,700 --> 00:00:31,010
+So now we are going to copy this order list from our ASP.Net basics.
+
+8
+00:00:31,010 --> 00:00:35,000
+I'm going to open ASP.Net basics and go to the order page.
+
+9
+00:00:35,000 --> 00:00:37,370
+This will be representing and listing orders.
+
+10
+00:00:37,370 --> 00:00:43,070
+So I'm going to copy from here and paste into our shopping web client application.
+
+11
+00:00:43,070 --> 00:00:49,190
+And here you can see that our HTML page of the order list model under the Shopping Web Client application.
+
+12
+00:00:49,190 --> 00:00:53,360
+Before explaining this HTML page, I am going to fix our layout.
+
+13
+00:00:53,360 --> 00:00:56,990
+As you can see that we have a layout including the headers and footers.
+
+14
+00:00:56,990 --> 00:01:02,690
+If you scroll down we have a orders page, but in this case I'm going to create an order list instead
+
+15
+00:01:02,690 --> 00:01:06,470
+of the order in order to avoid ordered models from the AR model folder.
+
+16
+00:01:06,470 --> 00:01:12,380
+And here you can see that I have changed the slash order to slash order list in order to navigate to
+
+17
+00:01:12,380 --> 00:01:13,400
+our order page.
+
+18
+00:01:13,400 --> 00:01:19,160
+Just after that, we can go back to our order list HTML page and start to explain these HTML.
+
+19
+00:01:19,160 --> 00:01:24,800
+Here you can see that this is the order list page, and this will be basically listing the orders in
+
+20
+00:01:24,800 --> 00:01:25,700
+a table format.
+
+21
+00:01:25,700 --> 00:01:27,500
+Here you can see the order columns.
+
+22
+00:01:27,500 --> 00:01:33,620
+And this is the for each statement for each of the order rows including the first name, last name,
+
+23
+00:01:33,620 --> 00:01:35,000
+email address and so on.
+
+24
+00:01:35,000 --> 00:01:41,240
+So this order model need the orders collection of the property into the sea page.
+
+25
+00:01:41,240 --> 00:01:46,790
+But before that I am going to modify this table, including the Our order model.
+
+26
+00:01:46,790 --> 00:01:52,970
+If you open the models and go to ordering and look at the order model, our order model includes additional
+
+27
+00:01:52,970 --> 00:01:57,920
+properties that we can add and adjust into the our order list HTML.
+
+28
+00:01:57,920 --> 00:02:03,170
+Here you can see that we have customer ID order name, shipping and billing address, payment status,
+
+29
+00:02:03,170 --> 00:02:03,920
+and so on.
+
+30
+00:02:03,920 --> 00:02:08,840
+And these are representing a different record types that including the first name, last name, email
+
+31
+00:02:08,840 --> 00:02:09,949
+address and so on.
+
+32
+00:02:09,949 --> 00:02:17,570
+So now I am going to change our order list HTML, these table rows and columns according to our order
+
+33
+00:02:17,570 --> 00:02:18,020
+model.
+
+34
+00:02:18,020 --> 00:02:24,050
+So I'm going to come here and changing these columns adding some additional columns.
+
+35
+00:02:24,050 --> 00:02:29,810
+Here you can see that I have added email address, line cart name and order students as an example of
+
+36
+00:02:29,810 --> 00:02:31,430
+to accessing the order model.
+
+37
+00:02:31,430 --> 00:02:37,820
+So again, it's the same way if you scroll down you can change the Or rows in the row definition.
+
+38
+00:02:37,820 --> 00:02:43,910
+I'm going to come here and modify this row definitions according to our columns, including the first
+
+39
+00:02:43,910 --> 00:02:49,670
+name, last name, email address, address, line and payment card, and the status of the order order.
+
+40
+00:02:49,670 --> 00:02:56,330
+So this is the implementation of the order table into order list HTML page of our client application.
+
+41
+00:02:56,330 --> 00:03:02,510
+And if you scroll down, you can see that we have an action which is redirecting to product with a continue
+
+42
+00:03:02,510 --> 00:03:03,440
+shopping button.
+
+43
+00:03:03,440 --> 00:03:08,360
+So we will have also additional actions for the redirection to product page.
+
+44
+00:03:08,360 --> 00:03:11,780
+And this is the our order listing for the HTML page.
+
+45
+00:03:11,780 --> 00:03:18,200
+So after developing this order list we are going to create contact page as the same way I am going to
+
+46
+00:03:18,200 --> 00:03:24,500
+right click the page, Add New Razor page and select the empty and select the class definition name
+
+47
+00:03:24,500 --> 00:03:28,370
+which is the contact dot, css, HTML and click the add button.
+
+48
+00:03:28,370 --> 00:03:35,510
+And this page will be only plain HTML page that we are not going to implement any action for that purpose.
+
+49
+00:03:35,510 --> 00:03:43,190
+Please open the ASP.Net basics and go to the contacts page, and you can copy from here and paste into
+
+50
+00:03:43,190 --> 00:03:46,520
+our project and contact HTML page.
+
+51
+00:03:46,520 --> 00:03:49,130
+And this is the HTML of the contact page.
+
+52
+00:03:49,130 --> 00:03:54,620
+This is regular contact page including the address and other details for our client application.
+

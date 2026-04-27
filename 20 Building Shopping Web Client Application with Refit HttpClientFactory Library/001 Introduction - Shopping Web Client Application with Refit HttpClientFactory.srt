@@ -1,0 +1,192 @@
+1
+00:00:00,110 --> 00:00:06,410
+In this section we are going to develop shopping web application microservices with rapid Http client
+
+2
+00:00:06,410 --> 00:00:07,520
+factory library.
+
+3
+00:00:07,520 --> 00:00:12,980
+And this application will be the client application for our reference application architecture.
+
+4
+00:00:12,980 --> 00:00:16,790
+Here you can see the big picture that we are going to develop one by one.
+
+5
+00:00:16,880 --> 00:00:21,890
+As you can see that we are at this point and we will start the building shopping, web application,
+
+6
+00:00:21,890 --> 00:00:22,850
+microservices.
+
+7
+00:00:22,850 --> 00:00:28,280
+And this will be the ASP.Net web application razor page and the bootstrap for Tema.
+
+8
+00:00:28,820 --> 00:00:33,170
+And here you can see the internal architecture of the shopping web client application with refit.
+
+9
+00:00:33,170 --> 00:00:40,160
+Basically this application will be interact with the our backend microservices through the IRB API gateway
+
+10
+00:00:40,160 --> 00:00:43,700
+using the Refit and Http client factory.
+
+11
+00:00:43,700 --> 00:00:47,990
+And we are going to cover web UI shopping microservice application.
+
+12
+00:00:47,990 --> 00:00:50,300
+And we will build presentation layer.
+
+13
+00:00:50,300 --> 00:00:56,570
+And this will be the ASP.Net application razor page with the Bootstrap Fatima implementation using the
+
+14
+00:00:56,570 --> 00:00:58,550
+ASP.Net Run Basics repository.
+
+15
+00:00:58,790 --> 00:01:04,940
+And we will use ASP.Net Core Razor tools including the web components, partial weaves, tag helpers,
+
+16
+00:01:04,940 --> 00:01:06,590
+model building, and so on.
+
+17
+00:01:06,590 --> 00:01:12,440
+So we will start with creating catalog basket ordering models for shopping web application in order
+
+18
+00:01:12,440 --> 00:01:18,830
+to consume irb API gateway endpoints using the Revit library, which generated Http client factories
+
+19
+00:01:18,830 --> 00:01:25,430
+and refit client factory library includes automatic type saved rest library and we can create generated
+
+20
+00:01:25,430 --> 00:01:31,370
+clients using the Refit library and we will also develop a catalog service, AI Basket Service and AI
+
+21
+00:01:31,370 --> 00:01:37,430
+ordering service interface with the refit library for Http client factory libraries, and we will develop
+
+22
+00:01:37,430 --> 00:01:45,200
+index card product detail checkout and ordered HTML and see pages to consume IRB, API gateway and trains
+
+23
+00:01:45,200 --> 00:01:50,570
+with using the AI service interfaces into the IRB page with the ASP.Net application.
+
+24
+00:01:50,570 --> 00:01:56,180
+And lastly, we will containerize and orchestrate shopping web application in our Docker compose environment.
+
+25
+00:01:56,180 --> 00:02:00,860
+So now let me explain the steps of developing shopping web client application.
+
+26
+00:02:00,860 --> 00:02:05,000
+The first step is web UI shopping web application microservices.
+
+27
+00:02:05,000 --> 00:02:08,660
+And we will create ASP.Net web application using the razor page.
+
+28
+00:02:08,660 --> 00:02:14,150
+And this application will be using the ASP dotnet run basics repository as a starting point.
+
+29
+00:02:14,150 --> 00:02:17,600
+And this application styled by using bootstrap four.
+
+30
+00:02:17,600 --> 00:02:23,510
+And also we will utilize ASP.Net core razor tools including the web components, partial waves, tech
+
+31
+00:02:23,510 --> 00:02:24,860
+helpers, and so on.
+
+32
+00:02:24,860 --> 00:02:27,980
+And the second step is creating of the data models.
+
+33
+00:02:27,980 --> 00:02:33,710
+We will define the models for the catalog basket and ordering that will represent the data structures
+
+34
+00:02:33,710 --> 00:02:36,110
+used within the shopping web application.
+
+35
+00:02:36,110 --> 00:02:38,600
+And after that we will consume the ERP API gateway.
+
+36
+00:02:38,600 --> 00:02:43,670
+That means these models will be used to interact with the ERP API gateway endpoints.
+
+37
+00:02:43,670 --> 00:02:48,230
+And the third step we will implement refit Http client factory library.
+
+38
+00:02:48,230 --> 00:02:54,890
+So we will use refit library which is an automatic type saved rest library in order to create generated
+
+39
+00:02:54,890 --> 00:02:55,460
+clients.
+
+40
+00:02:55,460 --> 00:03:02,150
+This will simplify the consuming Rest APIs by abstracting Http calls into a simple interface, and we
+
+41
+00:03:02,150 --> 00:03:07,940
+will generate clients with Refit, developing the catalog service, AI basket service and AI ordering
+
+42
+00:03:07,940 --> 00:03:14,630
+service interfaces with Refit, and we will leveraging the Http client factory for efficient Http communications.
+
+43
+00:03:14,630 --> 00:03:20,240
+And in the fourth step, we will develop the razor page and we will create various pages such as the
+
+44
+00:03:20,240 --> 00:03:27,560
+index card, product detail checkout and order HTML page with the C sharp files, and each C sharp page
+
+45
+00:03:27,560 --> 00:03:33,740
+model will consume the ERP API gateway endpoints using the services like catalog service implemented
+
+46
+00:03:33,740 --> 00:03:36,170
+with the Refit and Http client factory.
+
+47
+00:03:36,170 --> 00:03:40,220
+And the last step, we can say that containerization and orchestration.
+
+48
+00:03:40,220 --> 00:03:45,770
+We will containerize the shopping web application and orchestrate it within the Docker compose environment.
+

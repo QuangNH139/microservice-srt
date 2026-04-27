@@ -1,0 +1,276 @@
+1
+00:00:00,200 --> 00:00:05,210
+In this video we are going to do domain analysis of catalog microservices.
+
+2
+00:00:05,360 --> 00:00:10,040
+But before that let's remember the way of learning methodology of the course.
+
+3
+00:00:10,400 --> 00:00:14,750
+According to the way of learning methodology we have four key steps.
+
+4
+00:00:14,750 --> 00:00:19,130
+These are the analyze, learn, develop and test and deploy.
+
+5
+00:00:19,280 --> 00:00:21,530
+So we will start the analyze phase.
+
+6
+00:00:21,800 --> 00:00:26,990
+That means we will perform domain and technical analysis of the particular microservices.
+
+7
+00:00:27,440 --> 00:00:31,310
+So let's start with the domain analysis of catalog microservices.
+
+8
+00:00:31,310 --> 00:00:36,530
+When we are performing domain analysis we will also explore in four key areas.
+
+9
+00:00:36,530 --> 00:00:44,060
+These are the domain model analysis, application use cases, Rest API endpoints and underlying data
+
+10
+00:00:44,060 --> 00:00:44,870
+structures.
+
+11
+00:00:45,170 --> 00:00:51,620
+So let's start with the first key area which is the domain model and entity analysis of catalog microservices.
+
+12
+00:00:52,610 --> 00:00:59,540
+Here you can see the domain models of catalog microservices are primary domain is product which is associated
+
+13
+00:00:59,540 --> 00:01:00,830
+with the category.
+
+14
+00:01:00,950 --> 00:01:06,980
+So a product has attributes like id, name, category, description, image, file and price.
+
+15
+00:01:06,980 --> 00:01:11,870
+And also product has a relation 1 to 1 relation with the category.
+
+16
+00:01:11,900 --> 00:01:15,800
+Here you can see the domain model analyze picture in here.
+
+17
+00:01:15,800 --> 00:01:20,090
+So basically product has attributes including in this class.
+
+18
+00:01:20,090 --> 00:01:23,420
+And product has one to many relation with the category.
+
+19
+00:01:23,540 --> 00:01:29,630
+So we will also consider a domain event for price change and leading to integration events in the upcoming
+
+20
+00:01:29,630 --> 00:01:30,260
+videos.
+
+21
+00:01:31,140 --> 00:01:36,060
+In the next step we will analyze use cases of the catalog microservices.
+
+22
+00:01:36,060 --> 00:01:39,420
+So we should define our catalog use case analysis.
+
+23
+00:01:39,450 --> 00:01:44,670
+Our main use case is listing products and categories and able to search products.
+
+24
+00:01:44,820 --> 00:01:48,030
+And also we will perform Crud operations on product entity.
+
+25
+00:01:48,030 --> 00:01:52,110
+So that means our main use case are listing product and categories.
+
+26
+00:01:52,110 --> 00:01:58,530
+Get product with product ID, get products with category, create new product, update product and delete
+
+27
+00:01:58,530 --> 00:01:59,310
+product.
+
+28
+00:01:59,310 --> 00:02:04,260
+And along with this, we should design our APIs according to Rest perspective.
+
+29
+00:02:04,740 --> 00:02:09,990
+So in the third step, we will analyze Rest API endpoints of the catalog microservices.
+
+30
+00:02:09,990 --> 00:02:14,490
+That means we will develop a set of RESTful APIs for catalog microservices.
+
+31
+00:02:14,490 --> 00:02:20,610
+Here you can see the table about the RESTful APIs that will expose from the catalog microservices.
+
+32
+00:02:20,610 --> 00:02:26,640
+According to this table, you can see the Http get methods, post, put and delete methods, and in
+
+33
+00:02:26,640 --> 00:02:33,300
+the first row we will get all products that mean list all products with these request Uri which is the
+
+34
+00:02:33,300 --> 00:02:36,510
+slash products, and this is the http get method.
+
+35
+00:02:36,510 --> 00:02:38,520
+In the second row you can see the.
+
+36
+00:02:38,520 --> 00:02:46,020
+We can add a specific product with getting ID information from the request query parameters.
+
+37
+00:02:46,020 --> 00:02:48,750
+So in the third row it is again http get.
+
+38
+00:02:48,750 --> 00:02:51,360
+But this time we will get products by category.
+
+39
+00:02:51,360 --> 00:02:54,960
+Again category name will be retrieved from the query parameters.
+
+40
+00:02:54,960 --> 00:02:57,390
+And in here you can see the post method.
+
+41
+00:02:57,390 --> 00:02:59,460
+This will be create any product.
+
+42
+00:02:59,490 --> 00:03:07,410
+Again it is slash products endpoint and Http put will be update specific product which is the ID getting
+
+43
+00:03:07,410 --> 00:03:08,820
+from the request parameters.
+
+44
+00:03:08,820 --> 00:03:14,100
+And here you can see that we can remove the A product which id comes from the request parameter.
+
+45
+00:03:14,100 --> 00:03:16,230
+So these are the rest endpoints.
+
+46
+00:03:16,230 --> 00:03:23,310
+And the last domain analyze item is underlying data structures of catalog microservices.
+
+47
+00:03:23,310 --> 00:03:30,360
+So underlying data structure of the catalog microservices will be document database in order to store
+
+48
+00:03:30,360 --> 00:03:34,800
+catalog Json data catalog data will be available for the Json.
+
+49
+00:03:34,800 --> 00:03:37,650
+And it is very good to store in the document database.
+
+50
+00:03:37,650 --> 00:03:43,920
+So after we have decided to be a document database for data storage, we have two main options.
+
+51
+00:03:43,920 --> 00:03:47,670
+These are the use MongoDB as a NoSQL database.
+
+52
+00:03:47,670 --> 00:03:55,110
+Or we can use PostgreSQL database Json column feature with using Martin library that provide the.
+
+53
+00:03:55,260 --> 00:03:56,910
+Net transactional DocumentDB.
+
+54
+00:03:57,210 --> 00:04:02,880
+So each offers a robust way to store our catalog in a Json format as a document database.
+
+55
+00:04:02,880 --> 00:04:09,330
+But for our catalog microservices, we will utilize PostgreSQL with using the Martin library.
+
+56
+00:04:09,360 --> 00:04:11,190
+So what is Martin Library?
+
+57
+00:04:11,190 --> 00:04:18,060
+Martin is a powerful library that transforms PostgreSQL into a dotnet transactional DocumentDB.
+
+58
+00:04:18,420 --> 00:04:26,010
+It leverages the PostgreSQL Json column features and allowing us to store and query our data as a Json
+
+59
+00:04:26,010 --> 00:04:28,110
+documents, like a document table.
+
+60
+00:04:28,560 --> 00:04:34,650
+So this approach combines the flexibility of document database with the reliability and robustness of
+
+61
+00:04:34,650 --> 00:04:36,870
+the relational PostgreSQL database.
+
+62
+00:04:37,530 --> 00:04:45,390
+We can query an index Json data efficiently, making it a great fit for modern agile microservices that
+
+63
+00:04:45,390 --> 00:04:48,540
+require quick iteration and flexible data models.
+
+64
+00:04:49,290 --> 00:04:55,410
+So we can say that catalog API microservices will be the simple Crud implementation on product data
+
+65
+00:04:55,410 --> 00:04:56,790
+and document database.
+
+66
+00:04:56,790 --> 00:04:59,700
+You can see the external and internal architecture.
+
+67
+00:04:59,700 --> 00:05:06,150
+We will apply internal architecture design patterns and we will use different kind of libraries.
+
+68
+00:05:06,150 --> 00:05:10,740
+So as you can see that we have finished the domain analysis of the catalog microservices.
+
+69
+00:05:10,740 --> 00:05:13,320
+Now it is time to do technical analysis.
+

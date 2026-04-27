@@ -1,0 +1,1000 @@
+1
+00:00:00,140 --> 00:00:06,560
+In this video we are going to test, subscribe and consume basket checkout event in the ordering microservices.
+
+2
+00:00:06,560 --> 00:00:12,320
+So that means we are at this point and we will consume these checkout event from the RabbitMQ to ordering
+
+3
+00:00:12,320 --> 00:00:13,370
+microservices.
+
+4
+00:00:13,370 --> 00:00:19,670
+And according to our deployment strategy, both basket and ordering microservices will be run locally
+
+5
+00:00:19,670 --> 00:00:24,170
+and interact with the RabbitMQ on the Docker environment as a backing services.
+
+6
+00:00:24,170 --> 00:00:28,940
+And if you look at the order creation flow here, you can see the end to end flow starting from the
+
+7
+00:00:28,940 --> 00:00:32,330
+basket microservices publish basket checkout integration event.
+
+8
+00:00:32,330 --> 00:00:35,720
+And we will handle these events into ordering microservices.
+
+9
+00:00:35,720 --> 00:00:39,050
+And in the ordering microservices we will create a new order.
+
+10
+00:00:39,050 --> 00:00:44,840
+And at this process we will raising order created domain event that will also handle in the ordering
+
+11
+00:00:44,840 --> 00:00:48,110
+application layer that will lead to integration layer.
+
+12
+00:00:48,110 --> 00:00:52,670
+And we will publish order created integration event in the handle of the domain event.
+
+13
+00:00:52,670 --> 00:00:57,080
+So this is the end to end process of the order creation in the ordering microservices.
+
+14
+00:00:57,080 --> 00:01:02,870
+When consuming these basket checkout event in order to perform order fulfillment operation and notify
+
+15
+00:01:02,870 --> 00:01:04,160
+the other microservices.
+
+16
+00:01:04,160 --> 00:01:06,290
+So please open the Visual Studio.
+
+17
+00:01:06,290 --> 00:01:10,940
+And I would like to start with putting breakpoints in the important points.
+
+18
+00:01:10,940 --> 00:01:13,340
+And here you can see the ordering application layer.
+
+19
+00:01:13,340 --> 00:01:17,750
+If you expand the ordering application layer you can see the orders feature folder.
+
+20
+00:01:17,750 --> 00:01:22,490
+And in here we will start with the event handlers and integration event handlers.
+
+21
+00:01:22,490 --> 00:01:27,920
+Here you can see the basket checkout event handler will be triggered when consuming event from the RabbitMQ.
+
+22
+00:01:28,010 --> 00:01:33,140
+If you put the breakpoint in the consume method, this will be hitting when consuming these event from
+
+23
+00:01:33,140 --> 00:01:33,950
+the RabbitMQ.
+
+24
+00:01:33,950 --> 00:01:40,370
+So in the consume operation we will again map to create order command to the command object and we will
+
+25
+00:01:40,370 --> 00:01:44,120
+send to mediator in order to trigger or create order command.
+
+26
+00:01:44,120 --> 00:01:50,510
+So also you can open the commands under the orders feature folder and see the command related use cases.
+
+27
+00:01:50,510 --> 00:01:56,180
+We will trigger the create order command operation in this line of code, and you can also put breakpoint
+
+28
+00:01:56,180 --> 00:01:59,660
+in the create order handler method that we have already.
+
+29
+00:01:59,660 --> 00:02:03,470
+Breakpoints existing in the handle method of the create order handler class.
+
+30
+00:02:03,470 --> 00:02:09,229
+In this method, we will create a new order, and whenever we create any order, this will be trigger
+
+31
+00:02:09,229 --> 00:02:15,440
+and raising order created domain event in the domain layer and this domain event also handled in the
+
+32
+00:02:15,440 --> 00:02:18,620
+ordering application layer which is under the event handlers.
+
+33
+00:02:18,620 --> 00:02:23,090
+And if you open the domain event handlers here you can see the order created event handler.
+
+34
+00:02:23,090 --> 00:02:27,350
+So whenever we create an order this will be hitting the order created event handler.
+
+35
+00:02:27,350 --> 00:02:30,620
+And you can also put breakpoint in the beginning of this handle method.
+
+36
+00:02:30,620 --> 00:02:34,460
+And in this method we basically logging the incoming information.
+
+37
+00:02:34,460 --> 00:02:37,130
+And we will check the feature is enabled or not.
+
+38
+00:02:37,130 --> 00:02:41,990
+And after that we will publishing additional integration event which is the order created integration
+
+39
+00:02:41,990 --> 00:02:42,350
+event.
+
+40
+00:02:42,350 --> 00:02:47,900
+So I'm going to put an additional breakpoint in the if statement that I am going to skip these if statement.
+
+41
+00:02:47,900 --> 00:02:54,620
+But at this point we have a concern when ordering microservices is start up it migrate and see the order
+
+42
+00:02:54,620 --> 00:02:58,010
+data that will create any order and publish these messages.
+
+43
+00:02:58,010 --> 00:03:03,170
+In order to avoid these operation, I am going to go to the ordering infrastructure and open the data
+
+44
+00:03:03,170 --> 00:03:07,580
+folder and go to extensions and open the database extensions.
+
+45
+00:03:07,580 --> 00:03:13,190
+You can put breakpoint in the seed orders with items, and I am going to put breakpoint in this if statement.
+
+46
+00:03:13,190 --> 00:03:15,020
+And I'm going to skip this order.
+
+47
+00:03:15,020 --> 00:03:18,560
+Create and seed operations in the beginning of the ordering microservices.
+
+48
+00:03:18,650 --> 00:03:24,830
+After that we can set up the are running profile in order to test our end to end use case, we should
+
+49
+00:03:24,830 --> 00:03:31,160
+run the microservices locally and this will be basket discount RPC and ordering microservices.
+
+50
+00:03:31,370 --> 00:03:37,250
+As you know that basket and discount gRPC microservices required to run together in order to depend
+
+51
+00:03:37,250 --> 00:03:39,770
+on each other when calculating a discount.
+
+52
+00:03:39,770 --> 00:03:43,460
+And now we are going to also consume these event from the RabbitMQ.
+
+53
+00:03:43,490 --> 00:03:48,380
+That's why we need to start ordering API additional with the basket and discount gRPC.
+
+54
+00:03:48,530 --> 00:03:53,630
+For that purpose, I am going to right click the solution and go to properties and select the Startup
+
+55
+00:03:53,630 --> 00:03:59,870
+Project and select the Multiple Startup project and see the basket and discount already started together.
+
+56
+00:03:59,870 --> 00:04:05,630
+And in here I'm going to select the ordering API and start the ordering API together with the basket
+
+57
+00:04:05,630 --> 00:04:07,070
+and discount microservices.
+
+58
+00:04:07,070 --> 00:04:09,770
+And click the apply button and click the okay button.
+
+59
+00:04:09,770 --> 00:04:12,860
+So now we are ready to perform our internal test.
+
+60
+00:04:12,860 --> 00:04:19,010
+Come to this point and click the start button in order to start our ordering basket and discount microservices
+
+61
+00:04:19,010 --> 00:04:19,640
+locally.
+
+62
+00:04:19,730 --> 00:04:25,610
+So by this way you can see that when I running this profile this is coming to add message worker.
+
+63
+00:04:25,610 --> 00:04:30,080
+If you open the call stack you can see that this comes from the ordering application.
+
+64
+00:04:30,080 --> 00:04:34,820
+And here you can see the ordering API and application has a dependency injection.
+
+65
+00:04:34,820 --> 00:04:37,280
+And we are adding message broker in this layer.
+
+66
+00:04:37,280 --> 00:04:39,620
+And we will also placing the assembly information.
+
+67
+00:04:39,620 --> 00:04:46,100
+So if you go back to our call stack and debugging our eight message broker extension, we can put the
+
+68
+00:04:46,100 --> 00:04:47,390
+breakpoint in the if statement.
+
+69
+00:04:47,390 --> 00:04:52,640
+And if I hit F5 this time, you can see that assembly information comes from the ordering application.
+
+70
+00:04:52,640 --> 00:04:58,610
+That means we are going to register our consumers in this line of code, and we will add consumers for
+
+71
+00:04:58,610 --> 00:04:58,970
+the ordering.
+
+72
+00:04:59,300 --> 00:05:00,140
+Sources.
+
+73
+00:05:00,170 --> 00:05:05,570
+I am hitting the F5 so add message blocker this time comes from the basket microservices.
+
+74
+00:05:05,570 --> 00:05:11,780
+Here you can see the basket microservices also adding mass transit registrations into dependency injection.
+
+75
+00:05:11,780 --> 00:05:14,930
+So in here we will again adding the mass transit.
+
+76
+00:05:14,930 --> 00:05:20,900
+But this time we don't have any assembly information because basket is only responsible for the publishing
+
+77
+00:05:21,020 --> 00:05:21,500
+event.
+
+78
+00:05:21,500 --> 00:05:25,130
+So I am hitting the F5 after performing the registrations.
+
+79
+00:05:25,130 --> 00:05:31,010
+It is come to the ordering microservices seeding operation and this time I am not going to see the orders
+
+80
+00:05:31,010 --> 00:05:33,980
+because this will be triggered, ordered domain event.
+
+81
+00:05:33,980 --> 00:05:38,450
+And in the handle of the domain event we will publish the additional integration event.
+
+82
+00:05:38,450 --> 00:05:44,270
+That's why I am going to skipping this point manually forwarding the debug point.
+
+83
+00:05:44,270 --> 00:05:49,910
+And after that I am hitting the F5 and we will skip the seeding order operations manually.
+
+84
+00:05:50,240 --> 00:05:57,650
+And after that we can confirm that from the R project console window basket, microservices is up and
+
+85
+00:05:57,650 --> 00:06:03,470
+ready and ready for the accepting our request and ordering microservices also up and ready.
+
+86
+00:06:03,470 --> 00:06:04,940
+And it is also connected.
+
+87
+00:06:04,940 --> 00:06:08,000
+Mass transit is the same as the basket microservices.
+
+88
+00:06:08,000 --> 00:06:14,630
+So now it is time to perform end to end use case by sending the http post request to the basket microservices.
+
+89
+00:06:14,630 --> 00:06:19,880
+And this will be consumed from the ordering microservices consuming from the RabbitMQ message broker.
+
+90
+00:06:19,880 --> 00:06:27,140
+So for that purpose please open the postman, go to the basket endpoints and go to the post basket operations
+
+91
+00:06:27,140 --> 00:06:28,910
+in order to create any order.
+
+92
+00:06:28,910 --> 00:06:32,390
+So here you can see the cart information including in the payload.
+
+93
+00:06:32,390 --> 00:06:37,160
+So I am going to send http post again for the newly created order.
+
+94
+00:06:37,160 --> 00:06:43,070
+And here you can see that we are going to hitting our store basket endpoint that we have already debugged.
+
+95
+00:06:43,070 --> 00:06:49,670
+In the last video, I am hitting F5 and continue and completing this process to deducting for discounted
+
+96
+00:06:49,670 --> 00:06:54,110
+operations and creating a new basket into basket database.
+
+97
+00:06:54,110 --> 00:07:00,530
+So here you can see that this operation is completed successfully and we have created a civilian username
+
+98
+00:07:00,530 --> 00:07:02,330
+into our basket microservices.
+
+99
+00:07:02,330 --> 00:07:04,130
+So now we have a basket.
+
+100
+00:07:04,130 --> 00:07:08,510
+And now we can check out this basket to convert these sales as a order.
+
+101
+00:07:08,510 --> 00:07:13,880
+For that purpose we can come to this point which is the Http post operations in the basket checkout
+
+102
+00:07:13,880 --> 00:07:14,450
+endpoint.
+
+103
+00:07:14,450 --> 00:07:18,920
+And this is the our actual payload that including the basket checkout DTO.
+
+104
+00:07:18,920 --> 00:07:24,260
+So I am going to hit the send button in order to trigger the basket checkout operations in the basket
+
+105
+00:07:24,260 --> 00:07:25,190
+microservices.
+
+106
+00:07:25,190 --> 00:07:32,750
+And this time I am going to hit F5 to publishing this basket checkout event into the this operation.
+
+107
+00:07:32,750 --> 00:07:39,440
+And here you can see that we will publish these operation into RabbitMQ and publish operation is completed
+
+108
+00:07:39,440 --> 00:07:40,220
+successfully.
+
+109
+00:07:40,220 --> 00:07:46,010
+And just after that the R consumer operations hitting into our breakpoint.
+
+110
+00:07:46,010 --> 00:07:49,550
+This is basket checkout event handled in the ordering application layer.
+
+111
+00:07:49,550 --> 00:07:55,550
+That means according to our slide, we have successfully publish the basket checkout event to RabbitMQ
+
+112
+00:07:55,550 --> 00:08:01,670
+and just after that ordering microservices already listening checkout event from the RabbitMQ and consuming
+
+113
+00:08:01,670 --> 00:08:03,530
+these event into handle method.
+
+114
+00:08:03,530 --> 00:08:08,390
+So if you go back to Visual Studio, you can see that this is the ordering application basket checkout
+
+115
+00:08:08,390 --> 00:08:09,140
+event handler.
+
+116
+00:08:09,140 --> 00:08:11,900
+So you can debugging these consumer operation.
+
+117
+00:08:11,900 --> 00:08:15,500
+And in this consumer operation we basically logging the incoming event.
+
+118
+00:08:15,500 --> 00:08:21,950
+And after that we will map to create order command and creating these incoming message to the create
+
+119
+00:08:21,950 --> 00:08:25,880
+order command in order to send to mediator for creating any order.
+
+120
+00:08:25,880 --> 00:08:31,310
+So after creating the command, we will send the mediator this command in order to trigger create order
+
+121
+00:08:31,310 --> 00:08:32,120
+command tender.
+
+122
+00:08:32,120 --> 00:08:37,520
+If I continue this debugging, you can see that this will be hitting the or create order handle method,
+
+123
+00:08:37,520 --> 00:08:42,409
+and this will be basically creating a new order using the Order Create domain method.
+
+124
+00:08:42,409 --> 00:08:46,190
+This will be also raising the order created domain event.
+
+125
+00:08:46,190 --> 00:08:49,970
+And after that we will again handle this event in the application layer.
+
+126
+00:08:49,970 --> 00:08:52,400
+So after that I am continuing this debugging.
+
+127
+00:08:52,400 --> 00:08:54,890
+And here you can see that we will create a new order.
+
+128
+00:08:54,890 --> 00:09:00,350
+And if I hit F5 you can see that it is execute operation and return a result.
+
+129
+00:09:00,350 --> 00:09:06,170
+But I understand that it is getting exception when we are creating a new order because we didn't hit
+
+130
+00:09:06,170 --> 00:09:08,360
+the order created domain event handler.
+
+131
+00:09:08,360 --> 00:09:11,930
+That means when creating any order, we get the exception.
+
+132
+00:09:11,930 --> 00:09:17,300
+So if you examine the logs, you can see that when creating any order with using the order dot create,
+
+133
+00:09:17,300 --> 00:09:19,190
+we will set the order name.
+
+134
+00:09:19,190 --> 00:09:24,680
+And when we are sending the and setting the order name, we will use order name value object of method.
+
+135
+00:09:24,680 --> 00:09:30,380
+And if you go to this method, you can see that we have two argument out of range exception.
+
+136
+00:09:30,380 --> 00:09:36,230
+And we are expecting that order name should be greater than default length, which is the five.
+
+137
+00:09:36,230 --> 00:09:42,800
+So in our case if you go back to our coding you can see the order name comes from the order detail.
+
+138
+00:09:42,800 --> 00:09:47,270
+And we will populate the order DTO when consuming the basket checkout event.
+
+139
+00:09:47,270 --> 00:09:52,460
+If you go to the event handler and integration event handler, you can see that when we are mapping
+
+140
+00:09:52,460 --> 00:09:58,490
+to create order command here you can see that order name coming from the incoming message username.
+
+141
+00:09:58,490 --> 00:09:58,700
+So.
+
+142
+00:09:59,020 --> 00:10:05,410
+If you go back to our postman and you can see the incoming event message, and if you check the username,
+
+143
+00:10:05,410 --> 00:10:11,440
+this is only three character that will not exist for the order name and default length is five and we
+
+144
+00:10:11,440 --> 00:10:14,680
+are sending the three length with the boolean username.
+
+145
+00:10:14,680 --> 00:10:20,440
+So in order to solve this exception and workaround, I am going to stop these applications and I am
+
+146
+00:10:20,440 --> 00:10:27,430
+going to comment it this argument out of range exception in the order namespace, which is located under
+
+147
+00:10:27,430 --> 00:10:30,610
+the ordering domain, layer value objects and order name.
+
+148
+00:10:30,610 --> 00:10:36,280
+Please comment this line of code in order to avoid this kind of exceptions, and I am going to save
+
+149
+00:10:36,280 --> 00:10:42,040
+this order name and restart the whole application, including the basket discount and ordering microservices.
+
+150
+00:10:42,040 --> 00:10:47,110
+So please hit the start button and we will perform end to end use case from the scratch.
+
+151
+00:10:47,230 --> 00:10:49,180
+When we are starting our applications.
+
+152
+00:10:49,180 --> 00:10:51,070
+This will be hitting the Add message broker.
+
+153
+00:10:51,070 --> 00:10:56,890
+And if I hit F5 this will be comes from the ordering microservices that including assembly information.
+
+154
+00:10:56,890 --> 00:11:02,170
+In order to add consumers and if I hit F5, this will be again calling the add message broker.
+
+155
+00:11:02,170 --> 00:11:07,900
+But this time this will be comes from the basket microservices that not including the assembly information
+
+156
+00:11:07,900 --> 00:11:10,060
+due to publish basket checkout event queue.
+
+157
+00:11:10,060 --> 00:11:11,770
+And I'm going to hit F5.
+
+158
+00:11:11,770 --> 00:11:14,290
+And in here you can see the ordering microservices.
+
+159
+00:11:14,290 --> 00:11:16,240
+Try to see the order information.
+
+160
+00:11:16,240 --> 00:11:22,690
+For now I am going to manually skipping this point by pressing this breakpoint under the De-seed operation
+
+161
+00:11:22,690 --> 00:11:23,860
+and hit F5.
+
+162
+00:11:23,860 --> 00:11:28,840
+So after that we are ready for the accepting requests and perform end to end use case.
+
+163
+00:11:28,840 --> 00:11:35,080
+I'm going to open the our postman and make sure that your application are started from the project console
+
+164
+00:11:35,080 --> 00:11:35,560
+window.
+
+165
+00:11:35,560 --> 00:11:41,470
+And in here we are again creating a new order with sending http post request in the slash basket and
+
+166
+00:11:41,470 --> 00:11:41,860
+point.
+
+167
+00:11:41,860 --> 00:11:43,300
+With this payload.
+
+168
+00:11:43,300 --> 00:11:47,920
+Hit the send button and this will be trigger our store basket and point class.
+
+169
+00:11:47,920 --> 00:11:50,290
+I am hitting F5 and hitting F5.
+
+170
+00:11:50,290 --> 00:11:56,290
+We will communicate and integrate with the get discount from the discount gRPC to calculate the latest
+
+171
+00:11:56,290 --> 00:12:00,580
+discount and creating the boolean username basket successfully.
+
+172
+00:12:00,580 --> 00:12:07,240
+Just after that we can go to the second http post operation in basket microservices, which is the post
+
+173
+00:12:07,240 --> 00:12:08,680
+basket checkout endpoint.
+
+174
+00:12:08,680 --> 00:12:11,500
+So I'm going to hit the send button.
+
+175
+00:12:11,500 --> 00:12:13,990
+This will be start our asynchronous communication.
+
+176
+00:12:13,990 --> 00:12:17,500
+First of all this will be hit our checkout basket endpoint.
+
+177
+00:12:17,500 --> 00:12:19,030
+And I am going to hit F5.
+
+178
+00:12:19,030 --> 00:12:22,270
+And this will be trigger the checkout basket command handle.
+
+179
+00:12:22,270 --> 00:12:28,540
+In this handle method we will perform the several operations which is the get existing basket with database.
+
+180
+00:12:28,540 --> 00:12:34,660
+And if basket is exist we will basically create event message which is the basket checkout DTO.
+
+181
+00:12:34,660 --> 00:12:39,010
+And we will publish these event messages with using publish endpoint to the RabbitMQ.
+
+182
+00:12:39,040 --> 00:12:42,640
+So I'm going to continue these operations and delete the basket.
+
+183
+00:12:42,640 --> 00:12:45,700
+And we will perform this delete operation.
+
+184
+00:12:45,700 --> 00:12:50,200
+Then just after that you can see that ordering microservices consume these event.
+
+185
+00:12:50,200 --> 00:12:52,660
+And this will be comes to the basket checkout event handler.
+
+186
+00:12:52,660 --> 00:12:58,150
+In the ordering application layer we can verify from the class from the ordering application orders,
+
+187
+00:12:58,150 --> 00:13:00,310
+event handlers and integration event handlers.
+
+188
+00:13:00,310 --> 00:13:03,970
+That means we will handle these integration event from the RabbitMQ.
+
+189
+00:13:03,970 --> 00:13:05,890
+And I'm going to continue the debugging.
+
+190
+00:13:05,890 --> 00:13:11,440
+And here you can see that since we are debugging the asynchronous communication, the debugging operation
+
+191
+00:13:11,440 --> 00:13:13,900
+is very hard to locate the correct location.
+
+192
+00:13:13,900 --> 00:13:15,280
+This is the different process.
+
+193
+00:13:15,280 --> 00:13:21,070
+But I am going to continue the hitting F10 and we will debug the our actual consume operation and map
+
+194
+00:13:21,070 --> 00:13:22,330
+to create orders command.
+
+195
+00:13:22,330 --> 00:13:25,000
+And this will be create an order DTO for us.
+
+196
+00:13:25,000 --> 00:13:32,080
+And we will send this order DTO to do our create operation in order to create order handle method.
+
+197
+00:13:32,080 --> 00:13:37,750
+So I'm going to come here and mediator send to this command in order to create a new order with using
+
+198
+00:13:37,750 --> 00:13:38,950
+the ordering application.
+
+199
+00:13:38,950 --> 00:13:43,480
+This comes from the Create Order handler class which is located in this location.
+
+200
+00:13:43,480 --> 00:13:47,380
+And we will create a new order with incoming order information.
+
+201
+00:13:47,380 --> 00:13:53,140
+Incoming order will be ordered DTO and we will create a new order using the Order Create function.
+
+202
+00:13:53,140 --> 00:13:55,900
+This time we will pass the argument validations.
+
+203
+00:13:55,900 --> 00:14:02,020
+So now you can see that we are commenting this section that we can accept or order name.
+
+204
+00:14:02,020 --> 00:14:07,690
+I'm going to continue debugging and if I hit F5, you can see that this time we will successfully come
+
+205
+00:14:07,690 --> 00:14:10,300
+to order create operation in the ordering domain layer.
+
+206
+00:14:10,300 --> 00:14:14,230
+And in here we will add a domain event which is the order created domain event.
+
+207
+00:14:14,230 --> 00:14:16,000
+And I'm going to hit F5.
+
+208
+00:14:16,000 --> 00:14:20,050
+And this will be dispatching the event whenever we are raising this event.
+
+209
+00:14:20,050 --> 00:14:23,680
+And this will be come to the point where we are located.
+
+210
+00:14:23,680 --> 00:14:25,240
+Order created event under.
+
+211
+00:14:25,240 --> 00:14:29,830
+If you look at the location, you can see that this time we will handle the domain event.
+
+212
+00:14:29,830 --> 00:14:32,410
+This is the domain event handler for the order created event.
+
+213
+00:14:32,410 --> 00:14:36,130
+So if you open the order architecture you can see that we are.
+
+214
+00:14:36,130 --> 00:14:41,050
+At this point we will create an order, an order creating and raising order created domain event.
+
+215
+00:14:41,050 --> 00:14:44,500
+And we are handling this domain event in the ordering application layer.
+
+216
+00:14:44,500 --> 00:14:48,280
+And we are going to expose and publish order integration event.
+
+217
+00:14:48,280 --> 00:14:52,690
+So if you go back to our debug point you can continue to log information.
+
+218
+00:14:52,690 --> 00:14:57,220
+And here you can see the order feature manager is looking for the order fulfillment feature.
+
+219
+00:14:57,220 --> 00:14:58,660
+And this feature is true.
+
+220
+00:14:58,940 --> 00:15:02,180
+That's why it is creating an order, creating integration event.
+
+221
+00:15:02,180 --> 00:15:07,820
+And we are again publishing the second integration event to the RabbitMQ which is the order created
+
+222
+00:15:07,820 --> 00:15:08,720
+integration event.
+
+223
+00:15:08,720 --> 00:15:10,640
+But this time there is no consumer.
+
+224
+00:15:10,640 --> 00:15:13,370
+That's why I am hitting F5 and complete this process.
+
+225
+00:15:13,370 --> 00:15:19,340
+Here you can see that we have completed successfully the end to end process of our order created operation.
+
+226
+00:15:19,340 --> 00:15:20,990
+So now we can verify the result.
+
+227
+00:15:20,990 --> 00:15:26,060
+For that purpose, I am going to open the postman and open the ordering microservice endpoints.
+
+228
+00:15:26,060 --> 00:15:30,140
+And here you can see that I am going to get orders with pagination.
+
+229
+00:15:30,140 --> 00:15:34,940
+In here I am going to retrieve the orders that we have created during the end to end process.
+
+230
+00:15:34,940 --> 00:15:36,050
+Hit the send button.
+
+231
+00:15:36,050 --> 00:15:42,950
+This will be triggered or get orders endpoint and I am hitting the F5 and get the result of the operation.
+
+232
+00:15:42,950 --> 00:15:46,520
+Here you can see the orders comes into the result page.
+
+233
+00:15:46,520 --> 00:15:52,760
+You can see the Http get response from the orders that including our newly created order comes from
+
+234
+00:15:52,760 --> 00:15:54,800
+the ordering microservice databases.
+
+235
+00:15:54,800 --> 00:15:59,240
+Also, we can verify asynchronous communication from the RabbitMQ management dashboard.
+
+236
+00:15:59,240 --> 00:16:03,920
+If you open the management dashboard, you can see the lots of events are publishing and consuming.
+
+237
+00:16:03,920 --> 00:16:08,120
+In the RabbitMQ dashboard that you can see the connections, channels and exchanges.
+
+238
+00:16:08,120 --> 00:16:13,730
+If you open the connections, you can see that this time we have two connections, one for the basket
+
+239
+00:16:13,730 --> 00:16:14,540
+microservices.
+
+240
+00:16:14,540 --> 00:16:17,660
+This is the publisher and another for the ordering microservices.
+
+241
+00:16:17,660 --> 00:16:19,940
+This is the consumer and subscriber.
+
+242
+00:16:19,940 --> 00:16:24,830
+And if you open the channels you can see that we have several channels that opening from the basket
+
+243
+00:16:24,830 --> 00:16:26,180
+and ordering microservices.
+
+244
+00:16:26,180 --> 00:16:28,190
+You can also exchange in here.
+
+245
+00:16:28,190 --> 00:16:31,010
+This time we have basket checkout and integration event.
+
+246
+00:16:31,010 --> 00:16:37,610
+And also we have additional channels that including the order consume operations for example order DTO.
+
+247
+00:16:37,610 --> 00:16:40,160
+So you can follow the queues and streams.
+
+248
+00:16:40,160 --> 00:16:44,840
+This time we can see the queues which including the basket checkout, event handler and error.
+
+249
+00:16:44,840 --> 00:16:49,850
+If you open the basket checkout event handler, you can see the interactions that publish and consume
+
+250
+00:16:49,850 --> 00:16:52,940
+these events from the basket and ordering microservices.
+

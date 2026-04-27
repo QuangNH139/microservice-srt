@@ -1,0 +1,644 @@
+1
+00:00:00,080 --> 00:00:05,360
+In this video we are going to test get endpoints with circles and cleaned architecture.
+
+2
+00:00:05,660 --> 00:00:12,080
+We will send Http get method to slash orders with sending the page index and page size in order to get
+
+3
+00:00:12,080 --> 00:00:19,040
+orders with pagination, and we will send Http get method to these orders and order name URL in order
+
+4
+00:00:19,040 --> 00:00:20,690
+to get orders by username.
+
+5
+00:00:20,690 --> 00:00:26,720
+And lastly, we will send http get method to slash orders, slash customer and slash customer id.
+
+6
+00:00:26,840 --> 00:00:33,800
+In order to get orders by customer for that purpose, please open the Visual Studio and go to the Get
+
+7
+00:00:33,800 --> 00:00:35,870
+endpoints under the ordering API.
+
+8
+00:00:35,870 --> 00:00:38,600
+Here you can see the get orders with pagination.
+
+9
+00:00:38,600 --> 00:00:44,600
+I am going to put a breakpoint in the beginning of this delegate handler, and this will be getting
+
+10
+00:00:44,600 --> 00:00:49,460
+pagination request as a parameter which including the page size and page index.
+
+11
+00:00:49,460 --> 00:00:55,490
+And I'm going to put a breakpoint at the end of this delegate handler function in order to see when
+
+12
+00:00:55,490 --> 00:01:01,040
+we are returning a response to the client application, and these get orders will be triggered to get
+
+13
+00:01:01,040 --> 00:01:01,490
+orders.
+
+14
+00:01:01,490 --> 00:01:02,540
+Query handler.
+
+15
+00:01:02,540 --> 00:01:08,990
+If you go to ordering application and close the commands and go to orders and queries.
+
+16
+00:01:08,990 --> 00:01:12,980
+And if you expand these queries folder, you can see our use cases.
+
+17
+00:01:12,980 --> 00:01:16,220
+I'm going to focus on the get orders handle function.
+
+18
+00:01:16,220 --> 00:01:20,960
+And in this handle method we will perform get orders with pagination.
+
+19
+00:01:20,960 --> 00:01:26,750
+I'm going to put a breakpoint in the beginning of this handle method, and after that I'm going to follow
+
+20
+00:01:26,750 --> 00:01:31,130
+the same steps for the rest of the get methods, which is the get orders by name.
+
+21
+00:01:31,130 --> 00:01:37,010
+I'm going to open the endpoint and put a breakpoint in the beginning of the http get method and delegate
+
+22
+00:01:37,010 --> 00:01:41,210
+handler function, and put a breakpoint when leaving our delegate handler.
+
+23
+00:01:41,210 --> 00:01:47,210
+When the http get method of the get orders by username and this will be triggered.
+
+24
+00:01:47,240 --> 00:01:50,720
+Get orders by name folder under the ordering application.
+
+25
+00:01:50,720 --> 00:01:57,680
+If you open the handle method, you can see that this will be get orders by name using the DB context
+
+26
+00:01:57,680 --> 00:02:01,490
+object and put a breakpoint in the handle method of the get orders by name.
+
+27
+00:02:01,490 --> 00:02:07,130
+You can safely remove unnecessary using statement if you see any place and save this file.
+
+28
+00:02:07,130 --> 00:02:11,810
+And of course, when we change anything in our code we should restart our application.
+
+29
+00:02:11,810 --> 00:02:17,390
+That's why I am stopping our ordering microservices and I will restart after setting the breakpoints.
+
+30
+00:02:17,390 --> 00:02:20,630
+And the last use case is get orders by customer.
+
+31
+00:02:20,630 --> 00:02:26,570
+If you go to ordering API endpoints and get orders by customer class, you can see that this will be
+
+32
+00:02:26,570 --> 00:02:30,050
+a commit, which is the orders, customers, customer ID endpoint.
+
+33
+00:02:30,050 --> 00:02:33,770
+And you can put the banquet in the beginning of the delegate handler.
+
+34
+00:02:33,770 --> 00:02:36,920
+And in the end of this delegate 101 hundred function.
+
+35
+00:02:36,920 --> 00:02:42,830
+After that, we can put breakpoint in the implementation of these customer handle query, which is under
+
+36
+00:02:42,830 --> 00:02:43,910
+the ordering application.
+
+37
+00:02:43,910 --> 00:02:49,550
+Go to queries and go to get orders by customer and open the handle function.
+
+38
+00:02:49,550 --> 00:02:52,730
+And this is the get orders by customer handler class.
+
+39
+00:02:52,730 --> 00:02:55,220
+And you can put the breakpoint in the handle method.
+
+40
+00:02:55,220 --> 00:02:59,840
+This will be perform getting orders by customer with a given customer ID.
+
+41
+00:02:59,990 --> 00:03:04,370
+So after setting the breakpoints we can start our applications.
+
+42
+00:03:04,370 --> 00:03:06,860
+Wishing the ordering API in a https mode.
+
+43
+00:03:06,890 --> 00:03:11,660
+This will be start our application and accodomate incoming http get request.
+
+44
+00:03:11,660 --> 00:03:18,410
+And in here we can open the postman and if you open the postman, you can see that I have created three
+
+45
+00:03:18,410 --> 00:03:23,720
+http get method under the ordering microservices into our postman collection.
+
+46
+00:03:23,720 --> 00:03:30,560
+So now I am going to send http get methods one by one and we will start with the get orders with pagination.
+
+47
+00:03:30,560 --> 00:03:35,600
+Here you can see the method is http get and the URL is ordering URL orders.
+
+48
+00:03:35,600 --> 00:03:41,120
+And here you can see that I have added page index and page size as a request parameters.
+
+49
+00:03:41,120 --> 00:03:43,340
+So this will be hit our pagination.
+
+50
+00:03:43,340 --> 00:03:50,990
+And as an expected result I am going to expect returning the first two orders due to pagination settings,
+
+51
+00:03:50,990 --> 00:03:54,380
+and we will validate the pagination functionality in the query handler.
+
+52
+00:03:54,380 --> 00:03:57,380
+So hit the send button and see what's going happen.
+
+53
+00:03:57,380 --> 00:04:01,160
+This will be hitting the ordering API and hit the get orders.
+
+54
+00:04:01,160 --> 00:04:07,850
+And in here you can see that we have a pagination request that include our parameters which are the
+
+55
+00:04:07,850 --> 00:04:09,560
+page index and page size.
+
+56
+00:04:09,560 --> 00:04:15,500
+So when we are putting the as parameters attribute in the beginning of this request, this will be accodomate
+
+57
+00:04:15,500 --> 00:04:19,070
+the incoming request parameters and put into the pagination request.
+
+58
+00:04:19,070 --> 00:04:24,860
+And after that we will use these requests with sending the get orders query and hitting the get orders
+
+59
+00:04:24,860 --> 00:04:25,790
+query handler.
+
+60
+00:04:25,790 --> 00:04:31,850
+I'm going to continue our debugging and this will be trigger our handle method which is located our
+
+61
+00:04:31,850 --> 00:04:34,040
+ordering application and get orders handler.
+
+62
+00:04:34,040 --> 00:04:39,080
+And this will be get the page index and page size and calculate the total count of the orders.
+
+63
+00:04:39,080 --> 00:04:45,020
+This is the three total count of the orders on our SQL server database, and we will retrieve the orders
+
+64
+00:04:45,020 --> 00:04:46,160
+by pagination.
+
+65
+00:04:46,160 --> 00:04:51,440
+Here you can see that this will be retrieving two orders, and that means we will return back these
+
+66
+00:04:51,440 --> 00:04:58,040
+two orders in a page ended result, including the page index, page size, total count and orders data.
+
+67
+00:04:58,040 --> 00:04:59,720
+So I'm going to continue this.
+
+68
+00:04:59,960 --> 00:05:03,140
+Debugging and hit F5 and see that this will be returned.
+
+69
+00:05:03,140 --> 00:05:10,280
+A response to order list, including to two items into data of these returning the pageant result.
+
+70
+00:05:10,280 --> 00:05:15,230
+And if I hit F5, you can see the postman collection and this will be returned to 100.
+
+71
+00:05:15,230 --> 00:05:16,100
+Okay response.
+
+72
+00:05:16,100 --> 00:05:22,820
+And if you expand the return of the response of these Http get method, you can see that we have returned
+
+73
+00:05:22,820 --> 00:05:30,200
+pageant result which name is orders and in this pageant result it includes page index, page size count
+
+74
+00:05:30,200 --> 00:05:31,130
+and data.
+
+75
+00:05:31,130 --> 00:05:38,930
+In the data we will have orders list and in this case we will expect two orders according to our page
+
+76
+00:05:38,930 --> 00:05:39,350
+size.
+
+77
+00:05:39,350 --> 00:05:40,760
+This is the first order.
+
+78
+00:05:40,760 --> 00:05:42,410
+Which name is order one.
+
+79
+00:05:42,410 --> 00:05:48,170
+Here you can see the first order and if you scroll down you can see the second order located in this
+
+80
+00:05:48,170 --> 00:05:49,820
+place, which is the order two.
+
+81
+00:05:49,850 --> 00:05:56,090
+If you scroll down, you can see that we have only two order items under the data of the response of
+
+82
+00:05:56,090 --> 00:05:57,800
+the pageant result.
+
+83
+00:05:57,800 --> 00:06:03,590
+So we have successfully sent the http get request for the first two records of the pagination.
+
+84
+00:06:03,590 --> 00:06:09,380
+So if I change the page index from 0 to 1, we can change the page index.
+
+85
+00:06:09,380 --> 00:06:15,110
+That means we will get the the next of the order record with including the two rows.
+
+86
+00:06:15,110 --> 00:06:20,270
+But if you send the http get method, you can see that we have only three record on orders.
+
+87
+00:06:20,270 --> 00:06:26,810
+So that means we will retrieve only ordered last order record that we have inserted in the last videos.
+
+88
+00:06:26,810 --> 00:06:28,790
+So I'm going to continue the pagination.
+
+89
+00:06:28,790 --> 00:06:33,080
+And this time our request is including in here page index is one.
+
+90
+00:06:33,080 --> 00:06:35,840
+That means the second page and the page size is two.
+
+91
+00:06:35,870 --> 00:06:40,070
+That means we will would like to retrieve two record in the page two.
+
+92
+00:06:40,070 --> 00:06:42,410
+And I'm going to continue our handle method.
+
+93
+00:06:42,410 --> 00:06:46,010
+This will be getting the page index page size and total count.
+
+94
+00:06:46,010 --> 00:06:47,960
+You can see the total count is three.
+
+95
+00:06:47,960 --> 00:06:52,430
+That means we will expect one record in the second page of these orders.
+
+96
+00:06:52,430 --> 00:06:58,580
+This will be returning a orders and return back a page result including the page index size, total
+
+97
+00:06:58,580 --> 00:06:59,600
+count and orders.
+
+98
+00:06:59,600 --> 00:07:06,170
+And if I hit F5 and return the result, you can see that this time we will have a page index one and
+
+99
+00:07:06,170 --> 00:07:07,880
+page size two country.
+
+100
+00:07:07,880 --> 00:07:14,060
+And as a data of the response you can see that this will be returned last order into our order database.
+
+101
+00:07:14,060 --> 00:07:15,740
+And this is only one record.
+
+102
+00:07:15,740 --> 00:07:19,250
+That means we have only three record into our database.
+
+103
+00:07:19,250 --> 00:07:22,160
+In the second page we have only one order data.
+
+104
+00:07:22,160 --> 00:07:27,260
+With returning this pagination, we have successfully test get orders with pagination.
+
+105
+00:07:27,260 --> 00:07:29,750
+And I'm going to test get orders by name.
+
+106
+00:07:29,750 --> 00:07:35,840
+If you come to these http get method, you can see the URL ordering, URL orders and the order name.
+
+107
+00:07:35,840 --> 00:07:42,140
+So as expected result, we will retrieve the orders with the name of the order underscore two.
+
+108
+00:07:42,140 --> 00:07:44,600
+So I'm going to send http get method.
+
+109
+00:07:44,600 --> 00:07:49,280
+And this will be trigger ordering API and get orders by name.
+
+110
+00:07:49,280 --> 00:07:55,250
+And in this endpoint class you can see that we will send get orders by name query and passing the order
+
+111
+00:07:55,250 --> 00:07:57,110
+name as a parameter of this query.
+
+112
+00:07:57,110 --> 00:08:01,580
+This will be trigger or get orders by name handle in the ordering application.
+
+113
+00:08:01,580 --> 00:08:07,160
+And in this handle method we will perform get orders by name using the Entity Framework core.
+
+114
+00:08:07,160 --> 00:08:08,810
+And I am hitting F5.
+
+115
+00:08:08,810 --> 00:08:13,520
+And you can see that we got the exception about the order by statement.
+
+116
+00:08:13,520 --> 00:08:20,060
+You can see that order by is using order order name, but it is not translatable because order name
+
+117
+00:08:20,060 --> 00:08:24,350
+is a strongly type value object that need to set a string value.
+
+118
+00:08:24,350 --> 00:08:29,150
+If you go back to our Visual Studio, you can see that this is the get orders by name.
+
+119
+00:08:29,150 --> 00:08:34,789
+And if you look at the get orders, you can see that we will use order by order name dot volume information
+
+120
+00:08:34,789 --> 00:08:35,720
+in the get orders.
+
+121
+00:08:35,720 --> 00:08:39,169
+And also I would like to check get orders by customer.
+
+122
+00:08:39,169 --> 00:08:44,780
+If you look at the get orders by customer again we are using order name dot volume information when
+
+123
+00:08:44,780 --> 00:08:49,100
+ordering the SQL script into our Entity Framework core for that purpose.
+
+124
+00:08:49,100 --> 00:08:55,820
+If you go back to our actual get orders by name and stop the application, and now I'm going to change
+
+125
+00:08:55,820 --> 00:09:01,130
+this order name volume information in the order by of these get orders by name query.
+
+126
+00:09:01,160 --> 00:09:04,250
+Please make sure that you have also fixed this bug.
+
+127
+00:09:04,250 --> 00:09:09,200
+And after that restart our application and send again these http get method.
+
+128
+00:09:09,200 --> 00:09:12,440
+Okay we have fixed the exception and run the application again.
+
+129
+00:09:12,440 --> 00:09:16,250
+And I am going to hit the Http send button again.
+
+130
+00:09:16,250 --> 00:09:17,630
+Get orders by name.
+
+131
+00:09:17,630 --> 00:09:22,550
+And if you send this button you can see that this will trigger our get orders by name end to end.
+
+132
+00:09:22,550 --> 00:09:25,640
+If I hit F5 this will be handle.
+
+133
+00:09:25,640 --> 00:09:27,200
+Method comes in the picture.
+
+134
+00:09:27,200 --> 00:09:30,020
+And now I'm going to continue these orders query.
+
+135
+00:09:30,020 --> 00:09:34,940
+And this time we can successfully respond back to orders which is including one record.
+
+136
+00:09:34,940 --> 00:09:39,590
+And if I hit F5, you can see that we will return back to the client application.
+
+137
+00:09:39,590 --> 00:09:44,630
+And if I hit F5 again in here, this time we will get success 200 okay.
+
+138
+00:09:44,630 --> 00:09:47,780
+Response from the our Http endpoint.
+
+139
+00:09:47,780 --> 00:09:50,300
+And this is the response of the our endpoint.
+
+140
+00:09:50,300 --> 00:09:56,720
+Here you can see that we will return back to the URL or two details in the response of the body.
+
+141
+00:09:56,720 --> 00:09:59,660
+This is the order attributes including shipping address.
+
+142
+00:09:59,760 --> 00:10:03,090
+Billing address, payment status and order items.
+
+143
+00:10:03,090 --> 00:10:04,830
+So we have successful tests.
+
+144
+00:10:04,830 --> 00:10:10,530
+Get orders by name and if you continue our tests, we can continue to get orders by customer.
+
+145
+00:10:10,530 --> 00:10:18,480
+If you open these Http get endpoint, you can see the URL is a Http ordering URL orders customers and
+
+146
+00:10:18,480 --> 00:10:19,590
+this is the customer ID.
+
+147
+00:10:19,620 --> 00:10:23,730
+You can get the customer id from the http post or put request.
+
+148
+00:10:23,760 --> 00:10:30,180
+You can copy the customer ID from this place and paste into the our get orders by customer and hit the
+
+149
+00:10:30,180 --> 00:10:31,410
+Http send button.
+
+150
+00:10:31,410 --> 00:10:34,980
+This will be triggered get orders endpoint in the ordering API.
+
+151
+00:10:34,980 --> 00:10:40,290
+So if you look at the customer ID which comes from the request parameters, this is the customer ID
+
+152
+00:10:40,290 --> 00:10:42,600
+that we are going to retrieve via orders.
+
+153
+00:10:42,600 --> 00:10:44,670
+So I'm going to continue debugging.
+
+154
+00:10:44,670 --> 00:10:49,860
+This will be triggered get orders by customer handle in the application layer and in the handle method.
+
+155
+00:10:49,860 --> 00:10:52,800
+We will perform the query with using the Dbcontext object.
+
+156
+00:10:52,800 --> 00:10:58,860
+And this is the returns regarding the customer ID of the number of the greet, and we can return back
+
+157
+00:10:58,860 --> 00:11:04,010
+to the client application and this will be respond back to our Http get operation.
+
+158
+00:11:04,010 --> 00:11:08,090
+Here you can see the 200 okay response for related customer.
+
+159
+00:11:08,090 --> 00:11:15,170
+And these are the customer orders including the two orders in the response of these Http get method.
+
+160
+00:11:15,170 --> 00:11:19,970
+This is the first order and this is the second order related to our customer ID.
+
+161
+00:11:20,060 --> 00:11:25,160
+As you can see that we have successfully tested Http get methods for ordering microservices.
+

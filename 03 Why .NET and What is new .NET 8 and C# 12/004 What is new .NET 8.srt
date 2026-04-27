@@ -1,0 +1,144 @@
+1
+00:00:00,170 --> 00:00:04,730
+In this video we are going to learn what is new in Net eight.
+
+2
+00:00:05,210 --> 00:00:07,460
+The first one is dotnet aspire.
+
+3
+00:00:07,490 --> 00:00:14,450
+DotNet aspire is a naive, opinionated, cloud ready stack designed for building observable, production
+
+4
+00:00:14,450 --> 00:00:16,460
+ready, distributed applications.
+
+5
+00:00:16,490 --> 00:00:22,100
+It is delivered through a collection of NuGet packages targeting specific cloud native concerns.
+
+6
+00:00:22,100 --> 00:00:24,140
+Now available in preview for.
+
+7
+00:00:24,320 --> 00:00:27,710
+Net and another new feature is called.
+
+8
+00:00:27,710 --> 00:00:28,640
+Net libraries.
+
+9
+00:00:28,670 --> 00:00:29,180
+Core.
+
+10
+00:00:29,300 --> 00:00:36,620
+Net libraries have seen significant improvements, including the serialization enhancements, time abstractions,
+
+11
+00:00:36,620 --> 00:00:43,070
+UTF eight improvements, and methods for working with the randomness and performance focused types like
+
+12
+00:00:43,070 --> 00:00:46,130
+the system numerics and system runtime intrinsics.
+
+13
+00:00:46,430 --> 00:00:49,070
+And another new feature is metrics.
+
+14
+00:00:49,460 --> 00:00:56,660
+Net eight introduces new capabilities to attach key value pair tags to meter and instrument objects,
+
+15
+00:00:56,660 --> 00:01:02,990
+and allowing for more nuanced differentiation in aggregated metrics measurement in your applications.
+
+16
+00:01:03,020 --> 00:01:05,840
+And another new feature is networking.
+
+17
+00:01:05,840 --> 00:01:06,860
+Networking in.
+
+18
+00:01:07,040 --> 00:01:15,170
+Net eight includes support for Https proxy, ensuring encrypted communication even in the proxy scenarios,
+
+19
+00:01:15,170 --> 00:01:18,050
+thus enhancing the privacy and security.
+
+20
+00:01:18,650 --> 00:01:23,870
+And if you continue for newest features, which is the extension libraries.
+
+21
+00:01:24,020 --> 00:01:30,380
+Extension libraries have been updated with the new functionalities like the options validation logger,
+
+22
+00:01:30,380 --> 00:01:37,160
+message attribute constructs, extended metrics, hosted lifecycle services, kite dependency injection
+
+23
+00:01:37,160 --> 00:01:41,330
+services and system numeric tensor tensor primitives, and so on.
+
+24
+00:01:41,360 --> 00:01:44,180
+And another new feature is garbage collection.
+
+25
+00:01:44,210 --> 00:01:49,670
+The garbage collection mechanism now allows on the fly adjustment of memory limits.
+
+26
+00:01:49,700 --> 00:01:54,530
+A crucial feature for the cloud service scenarios where dynamic scaling is mandatory.
+
+27
+00:01:54,740 --> 00:01:58,010
+And another improvement is reflection improvements.
+
+28
+00:01:58,010 --> 00:02:03,800
+Reflection capabilities have been enhanced for better performance and more efficient memory usage.
+
+29
+00:02:03,830 --> 00:02:10,550
+Function pointers also added reflection capabilities, and another new feature is native to support
+
+30
+00:02:10,550 --> 00:02:12,350
+that we have already explained.
+
+31
+00:02:12,380 --> 00:02:18,680
+These are significant additions allowing for more efficient compilation and execution, particularly
+
+32
+00:02:18,680 --> 00:02:21,260
+beneficial for cloud native applications.
+
+33
+00:02:21,320 --> 00:02:25,280
+And lastly, we can say that dotnet SDK improvements the.
+
+34
+00:02:25,460 --> 00:02:32,390
+Net SDK itself has seen updates making it more robust and feature rich, aligning with the evolving
+
+35
+00:02:32,390 --> 00:02:34,460
+needs of modern net development.
+
+36
+00:02:34,460 --> 00:02:39,470
+So enhanced net published and Jetpack Commandos is coming with new net eight.
+

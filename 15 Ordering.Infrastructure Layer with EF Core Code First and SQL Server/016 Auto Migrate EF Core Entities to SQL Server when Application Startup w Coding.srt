@@ -1,0 +1,344 @@
+1
+00:00:00,230 --> 00:00:07,490
+In this video we are going to do step seven which is Auto Migrate Entity Framework core entities to
+
+2
+00:00:07,490 --> 00:00:11,420
+SQL server database when application start up with coding.
+
+3
+00:00:11,420 --> 00:00:17,810
+So that means we will apply Entity Framework core migrations to the SQL server database using the coding
+
+4
+00:00:17,810 --> 00:00:20,780
+instead of the running update database command.
+
+5
+00:00:21,200 --> 00:00:27,860
+So if you remember the previous videos, if you go to the step six, you can see that we have running
+
+6
+00:00:27,890 --> 00:00:30,950
+two commands when we apply Entity Framework core code.
+
+7
+00:00:30,950 --> 00:00:33,260
+First approach to the SQL server database.
+
+8
+00:00:33,260 --> 00:00:37,430
+These are the add migration command and update database command.
+
+9
+00:00:37,490 --> 00:00:43,490
+In the first command which is created migrations folders and classes, and the second command is.
+
+10
+00:00:43,490 --> 00:00:50,390
+Apply these classes on database by connecting the SQL server with application settings Json file connection
+
+11
+00:00:50,390 --> 00:00:51,080
+string.
+
+12
+00:00:51,470 --> 00:00:58,100
+But when we deploy all microservices using Docker Compose, we can't run update database command for
+
+13
+00:00:58,100 --> 00:00:59,540
+every deploy operation.
+
+14
+00:00:59,540 --> 00:01:04,910
+Instead of that, one of the good practice is migrate Entity Framework core classes.
+
+15
+00:01:04,910 --> 00:01:10,040
+When the application start up using the ASP.Net Core Middleware extensions.
+
+16
+00:01:10,490 --> 00:01:14,690
+So now we can start to development of these auto migrate operation.
+
+17
+00:01:14,690 --> 00:01:18,710
+As you can see the example code, we will use application DB context.
+
+18
+00:01:18,710 --> 00:01:25,310
+And we will use context database and migrate async command in order to run update database command.
+
+19
+00:01:25,310 --> 00:01:29,870
+So for that purpose please open the Visual Studio and go to the Program.cs.
+
+20
+00:01:29,870 --> 00:01:36,380
+In ordering API, we have program says that we can add the services into ASP.Net container, and we
+
+21
+00:01:36,380 --> 00:01:39,140
+can also configure the Http request pipelines.
+
+22
+00:01:39,140 --> 00:01:45,500
+So in here we will add logic in the Program.cs in order to execute database migrations on the startup
+
+23
+00:01:45,500 --> 00:01:46,700
+of this application.
+
+24
+00:01:46,700 --> 00:01:52,130
+And this can be achieved by adding a custom extension method that applies the migration.
+
+25
+00:01:52,340 --> 00:01:57,080
+If you look at the program says, you can see that we have already developed an extension.
+
+26
+00:01:57,080 --> 00:01:57,560
+Methods.
+
+27
+00:01:57,560 --> 00:02:03,890
+When registering different layers, including the add application infrastructure and API services.
+
+28
+00:02:03,890 --> 00:02:10,280
+And if you go to the add API services, which is located under the dependency injection of the ordering
+
+29
+00:02:10,280 --> 00:02:16,910
+API, you can see that we will add required services into the service collection and for API services.
+
+30
+00:02:16,910 --> 00:02:23,750
+We have also one more method which is the use API services in order to configure the Http request lifecycle.
+
+31
+00:02:23,750 --> 00:02:28,160
+And this will be adding extension method on the web application object.
+
+32
+00:02:28,160 --> 00:02:35,450
+So I'm going to use these API services in the program says because we will use these app dot use API
+
+33
+00:02:35,480 --> 00:02:39,350
+services after the following videos.
+
+34
+00:02:39,350 --> 00:02:46,460
+And after these using API services, we can configure our application in order to automate and see the
+
+35
+00:02:46,460 --> 00:02:47,300
+operation.
+
+36
+00:02:47,300 --> 00:02:54,110
+So when configuring the ASP.Net Http request pipeline, it is a good place to database initialization
+
+37
+00:02:54,110 --> 00:02:56,210
+creation and seeding operation.
+
+38
+00:02:56,210 --> 00:02:59,120
+And we will perform these operation with extension method.
+
+39
+00:02:59,120 --> 00:03:05,030
+But of course this kind of operation should fall only do development environments for that purpose.
+
+40
+00:03:05,030 --> 00:03:16,520
+I'm going to put a if statement app dot environment dot is development environment and after confirm
+
+41
+00:03:16,520 --> 00:03:23,330
+that it is a development environment we can run awaits app dot are custom extension method which will
+
+42
+00:03:23,330 --> 00:03:28,370
+be the initialize database async method that we are going to develop in this video.
+
+43
+00:03:28,400 --> 00:03:35,480
+So please also develop these if statement under the these configured Http request pipelines.
+
+44
+00:03:35,480 --> 00:03:38,900
+And we will put a if statement for its development.
+
+45
+00:03:38,900 --> 00:03:44,780
+And after that we will develop our custom extension method to perform auto migrate and sync operations.
+
+46
+00:03:44,780 --> 00:03:49,250
+So now it is time to create an extension method for database initialization.
+
+47
+00:03:49,250 --> 00:03:54,200
+And I'm going to put this extension method under the ordering infrastructure.
+
+48
+00:03:54,200 --> 00:03:57,920
+For that purpose please go to the Ordering Infrastructure project.
+
+49
+00:03:57,920 --> 00:04:01,280
+And under the data folder I'm going to create a new folder.
+
+50
+00:04:01,280 --> 00:04:02,840
+Which name is extensions.
+
+51
+00:04:02,840 --> 00:04:07,460
+If you right click and add new subfolder which name is extensions.
+
+52
+00:04:07,460 --> 00:04:11,570
+We can create all data related extensions under this folder.
+
+53
+00:04:11,570 --> 00:04:16,640
+And I'm going to add a new class which name is Database extensions dot CSS.
+
+54
+00:04:16,940 --> 00:04:21,649
+So we will implement these initialized database async method in this place.
+
+55
+00:04:21,649 --> 00:04:25,940
+And this method will handle the logic to apply Entity Framework core migrations.
+
+56
+00:04:25,940 --> 00:04:31,520
+So for that purpose please remove the unnecessary using statement and make this class as a public.
+
+57
+00:04:31,520 --> 00:04:34,010
+And now start for the extension development.
+
+58
+00:04:34,010 --> 00:04:39,830
+First of all, this class should be a static class in order to create an extension method.
+
+59
+00:04:39,830 --> 00:04:46,700
+And after that we can define our method body which is the public static async, and this will be return
+
+60
+00:04:46,700 --> 00:04:47,330
+a task.
+
+61
+00:04:47,330 --> 00:04:52,340
+And the name of the custom extension method is initialize database async.
+
+62
+00:04:52,340 --> 00:04:57,200
+And as a parameter we can give these web application and app.
+
+63
+00:04:57,200 --> 00:04:59,570
+So we will put these extension method.
+
+64
+00:04:59,730 --> 00:05:01,620
+On the web application object.
+
+65
+00:05:01,620 --> 00:05:07,380
+So after that we can create a scope which will be getting a service scope for us.
+
+66
+00:05:07,380 --> 00:05:14,610
+And after getting this scope operation we can get required services which is our application DB context.
+
+67
+00:05:15,120 --> 00:05:20,790
+And in here you can see that we get the application db context using the scope dot service provider
+
+68
+00:05:20,790 --> 00:05:27,330
+dot get required services and we have required application db context in order to run my get async command.
+
+69
+00:05:27,330 --> 00:05:33,810
+And with using this context object, we can run context database and migrate async command.
+
+70
+00:05:33,810 --> 00:05:37,890
+And this will be perform update command operation.
+
+71
+00:05:37,890 --> 00:05:40,320
+And I'm going to use my get async method.
+
+72
+00:05:40,320 --> 00:05:46,680
+And after that I would like to use get Awaiter and get result method.
+
+73
+00:05:46,680 --> 00:05:52,260
+So these will be provided to wait until my get operation complete.
+
+74
+00:05:52,260 --> 00:05:57,630
+And this will be return task operation when the whole migration is completed.
+
+75
+00:05:57,630 --> 00:06:02,310
+So basically this calls make update database command operations.
+
+76
+00:06:02,310 --> 00:06:06,360
+That means running the SQL scripts on the SQL server database.
+
+77
+00:06:06,360 --> 00:06:12,510
+After developing these extension method, it is time to modify the Program.cs to call these initialized
+
+78
+00:06:12,510 --> 00:06:16,860
+database async method during the application startup in development environment.
+
+79
+00:06:16,860 --> 00:06:22,950
+For that purpose, please open the ordering API and Program.cs and come to the displays after the configured
+
+80
+00:06:22,950 --> 00:06:24,570
+Http request pipeline.
+
+81
+00:06:24,570 --> 00:06:27,750
+And here you can see that this is getting exception.
+
+82
+00:06:27,750 --> 00:06:34,320
+In order to do that, I'm going to put a alt enter and adding using statement which is the ordering
+
+83
+00:06:34,320 --> 00:06:36,810
+infrastructure data and extensions.
+
+84
+00:06:36,810 --> 00:06:44,070
+And after that you can save these Program.cs and these will be provided to our operation in the if statement.
+
+85
+00:06:44,070 --> 00:06:50,370
+Basically these initialize database async method is invoked only if the environment is development,
+
+86
+00:06:50,370 --> 00:06:56,640
+and this ensures that the database is updated with the latest migrations upon the application startup.
+

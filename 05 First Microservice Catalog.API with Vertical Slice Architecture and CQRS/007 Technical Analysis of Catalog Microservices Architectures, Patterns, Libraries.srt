@@ -1,0 +1,264 @@
+1
+00:00:00,140 --> 00:00:05,420
+In this video we are going to do technical analysis of the catalog microservices.
+
+2
+00:00:05,510 --> 00:00:09,800
+So we will explore the technical analysis in four key areas.
+
+3
+00:00:09,800 --> 00:00:16,730
+These are the application architecture, style, pattern and principles libraries, NuGet packages and
+
+4
+00:00:16,730 --> 00:00:18,230
+project folder structure.
+
+5
+00:00:18,880 --> 00:00:24,430
+So we will explore the architecture, pattern, libraries and folder structure in the technical analysis
+
+6
+00:00:24,430 --> 00:00:26,110
+of the catalog microservices.
+
+7
+00:00:26,410 --> 00:00:30,430
+Let's start with the first one which is the application architecture style.
+
+8
+00:00:30,640 --> 00:00:36,490
+As the application architecture style of catalog microservices, we will use vertical slice architecture.
+
+9
+00:00:36,910 --> 00:00:39,580
+So we are implementing a vertical slice architecture.
+
+10
+00:00:39,580 --> 00:00:46,210
+This approach organizes our code into feature folders, with each feature encapsulated in a single C
+
+11
+00:00:46,240 --> 00:00:49,510
+sharp file and containing all necessary classes.
+
+12
+00:00:49,510 --> 00:00:52,690
+So you can see the traditional layered architecture.
+
+13
+00:00:52,690 --> 00:01:00,040
+In vertical slice architecture, we can encapsulate the features with including different layer perspectives.
+
+14
+00:01:00,960 --> 00:01:07,770
+So in the second analyze is pattern and principles that we will use catalog microservices.
+
+15
+00:01:07,770 --> 00:01:14,220
+Let me shortly explain these pattern principles that we used in our catalog microservices.
+
+16
+00:01:14,220 --> 00:01:21,360
+The first one is six design pattern command query responsibility segregation divides the operation into
+
+17
+00:01:21,360 --> 00:01:22,470
+commands and queries.
+
+18
+00:01:22,470 --> 00:01:27,570
+Or we can say write and read operations promoting the flexibility and scalability.
+
+19
+00:01:27,930 --> 00:01:30,660
+And the second pattern is mediator pattern.
+
+20
+00:01:30,660 --> 00:01:37,920
+It facilitates object interaction through the mediator, reducing the direct dependencies and simplifying
+
+21
+00:01:37,920 --> 00:01:41,310
+communications, especially in complex workloads.
+
+22
+00:01:41,670 --> 00:01:45,720
+And we will also use dependency injection in ASP.Net core.
+
+23
+00:01:45,720 --> 00:01:52,800
+Dependency injection is a core feature allowing to inject dependencies rather than hard coding them.
+
+24
+00:01:52,920 --> 00:01:59,430
+This will increase the maintainability and testability, and another pattern is minimal.
+
+25
+00:01:59,430 --> 00:02:02,460
+APIs and routing in ASP.Net eight.
+
+26
+00:02:02,460 --> 00:02:10,020
+So ASP.Net eight minimal APIs simplify endpoint definition, providing lightweight syntax for routing
+
+27
+00:02:10,020 --> 00:02:12,090
+and handling Http requests.
+
+28
+00:02:12,510 --> 00:02:19,230
+And lastly, we can say that all patterns, which is the object relational mapping patterns object relational
+
+29
+00:02:19,230 --> 00:02:25,620
+mapping abstracts the database interactions, enabling to work with the database object using the high
+
+30
+00:02:25,620 --> 00:02:29,340
+level programming constructs and simplifying the data manipulations.
+
+31
+00:02:29,340 --> 00:02:32,910
+So we will use also object relational mapping patterns.
+
+32
+00:02:32,910 --> 00:02:39,510
+And in the third step we will examine the libraries and NuGet packages that we are going to use in the
+
+33
+00:02:39,510 --> 00:02:40,860
+catalog microservices.
+
+34
+00:02:40,860 --> 00:02:46,830
+So now let's explore the key libraries and NuGet packages that power our microservices.
+
+35
+00:02:46,830 --> 00:02:49,860
+The first one is mediator four six.
+
+36
+00:02:49,860 --> 00:02:57,390
+So Mediator Library simplifies the implementation of the six design pattern by acting as an in-process
+
+37
+00:02:57,390 --> 00:03:03,060
+messaging mechanism, helping to send commands and queries to their respective handlers.
+
+38
+00:03:03,630 --> 00:03:08,010
+Another library is Carter Carter for API endpoints.
+
+39
+00:03:08,010 --> 00:03:15,510
+Carter offers a lightweight library for routing and handling Http requests, making it easier to define
+
+40
+00:03:15,510 --> 00:03:18,690
+API endpoints with clean and concise code.
+
+41
+00:03:19,230 --> 00:03:23,670
+Another library is Martin for PostgreSQL interactions.
+
+42
+00:03:23,790 --> 00:03:29,580
+Martin Library provides a way to use PostgreSQL as a document database.
+
+43
+00:03:29,580 --> 00:03:37,230
+It leverages the PostgreSQL Json capabilities for storing, querying and managing documents, and another
+
+44
+00:03:37,230 --> 00:03:40,710
+library is mobster mobster for object mapping.
+
+45
+00:03:40,710 --> 00:03:47,130
+Mobster is a fast, configurable object mapper that simplifies the task of the mapping operations from
+
+46
+00:03:47,130 --> 00:03:51,750
+one type to another, and it is also streamlining the data transformation process.
+
+47
+00:03:52,200 --> 00:03:56,430
+And another library is fluent validation for input validations.
+
+48
+00:03:56,430 --> 00:04:03,300
+Fluent validation is a popular library for building strongly typed validation rules, ensuring our inputs
+
+49
+00:04:03,300 --> 00:04:06,420
+are correct before they are processed by the application.
+
+50
+00:04:07,110 --> 00:04:13,260
+So in the fourth step, we can examine the project folder structure so you can see the project folder
+
+51
+00:04:13,260 --> 00:04:16,380
+structure for the Catholic API on the slide.
+
+52
+00:04:16,470 --> 00:04:23,130
+So the project is organized into modal features data and abstraction folders.
+
+53
+00:04:23,430 --> 00:04:29,940
+So feature folders like create product and Get product have dedicated handler and endpoint definitions.
+
+54
+00:04:30,240 --> 00:04:37,080
+Feature folder will be the products and data folder and context objects managed database interactions.
+
+55
+00:04:37,080 --> 00:04:39,420
+So you can see the picture on the slide.
+
+56
+00:04:39,420 --> 00:04:46,830
+These are the data folder model folder products as a feature folder and under the products feature folder
+
+57
+00:04:46,830 --> 00:04:48,420
+you can see the use cases.
+
+58
+00:04:48,420 --> 00:04:54,030
+These are the vertical slices, create product, delete product and get products.
+
+59
+00:04:54,030 --> 00:05:00,180
+These implementing Crud operations and under the one of the use case folder which is the create product,
+
+60
+00:05:00,180 --> 00:05:04,470
+you can see the handle and endpoint to see classes.
+
+61
+00:05:05,820 --> 00:05:10,260
+So lastly we can examine the deployment of the catalog microservices.
+
+62
+00:05:10,290 --> 00:05:16,680
+Finally, we will containerize our microservice with Docker and ensuring the seamless deployment and
+
+63
+00:05:16,680 --> 00:05:19,230
+integration with the PostgreSQL database.
+
+64
+00:05:19,230 --> 00:05:25,200
+So we will implement Docker file and docker compose file for running the catalog microservices and the
+
+65
+00:05:25,200 --> 00:05:28,020
+PostgreSQL database in Docker environment.
+
+66
+00:05:28,230 --> 00:05:33,480
+As you can see that we have finished the domain and technical analysis for our catalog microservices.
+

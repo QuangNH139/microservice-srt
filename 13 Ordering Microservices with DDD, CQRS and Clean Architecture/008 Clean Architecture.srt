@@ -1,0 +1,200 @@
+1
+00:00:00,170 --> 00:00:03,740
+In this video we are going to learn clean architecture.
+
+2
+00:00:04,040 --> 00:00:08,990
+Clean architecture introduced by Robert C Martin, also known as uncle Bob.
+
+3
+00:00:09,020 --> 00:00:15,530
+It is a software architecture design that aims to separate concerns and create systems that are independent
+
+4
+00:00:15,530 --> 00:00:18,260
+of the frameworks, UI and databases.
+
+5
+00:00:18,650 --> 00:00:24,680
+This approach leads to systems that are more maintainable, flexible and adaptable to changes.
+
+6
+00:00:25,130 --> 00:00:28,340
+So let's check the key principles of the clean architecture.
+
+7
+00:00:28,370 --> 00:00:32,060
+The first key principle is independence of frameworks.
+
+8
+00:00:32,060 --> 00:00:38,570
+The system is not tight coupled with a specific framework, which makes it adaptable to changes in frameworks
+
+9
+00:00:38,570 --> 00:00:39,410
+and tools.
+
+10
+00:00:39,860 --> 00:00:42,350
+And the second principle is testable.
+
+11
+00:00:42,350 --> 00:00:48,680
+The business rules can be tested without the UI, database, web server or any external element.
+
+12
+00:00:48,860 --> 00:00:53,480
+And another key principle is UI agnostic UI independence.
+
+13
+00:00:53,480 --> 00:00:57,620
+The UI can change easily without changing the rest of the system.
+
+14
+00:00:57,620 --> 00:01:01,310
+The architecture can be unplugged from the user interface.
+
+15
+00:01:01,850 --> 00:01:07,700
+And another key principle is database agnostic, which means database independence.
+
+16
+00:01:07,700 --> 00:01:10,610
+The business rules are not bound to the database.
+
+17
+00:01:10,610 --> 00:01:14,510
+The architecture is decoupled from the underlying data store.
+
+18
+00:01:14,810 --> 00:01:21,230
+And another key principle is external system agnostic external agency independence.
+
+19
+00:01:21,230 --> 00:01:25,370
+Business rules do not know anything about the outside of the world.
+
+20
+00:01:25,370 --> 00:01:31,160
+The business rules of the architecture are isolated and know nothing about the outside of the world.
+
+21
+00:01:31,580 --> 00:01:34,280
+And now let's check the clean architecture layers.
+
+22
+00:01:34,280 --> 00:01:36,710
+The first layer is entities layer.
+
+23
+00:01:36,710 --> 00:01:38,630
+Or we can say domain layer.
+
+24
+00:01:39,290 --> 00:01:43,070
+Domain layer represents the business objects of the application.
+
+25
+00:01:43,070 --> 00:01:48,290
+It is the core of the system and includes enterprise wide logic and business rules.
+
+26
+00:01:48,290 --> 00:01:54,380
+It contains enterprise wide business rules and entities encapsulate the most general and high level
+
+27
+00:01:54,380 --> 00:01:55,010
+rules.
+
+28
+00:01:55,010 --> 00:01:58,160
+As an example, we can give ordering microservices.
+
+29
+00:01:58,160 --> 00:02:05,390
+Entities might be ordered and order item, and the second layer is use case layer, which we can say
+
+30
+00:02:05,390 --> 00:02:06,560
+application layer.
+
+31
+00:02:06,560 --> 00:02:12,530
+It contains application specific business rules, and it encapsulates and implements all of the use
+
+32
+00:02:12,530 --> 00:02:13,820
+cases of the system.
+
+33
+00:02:13,820 --> 00:02:20,240
+As an example of the application layer use cases, we can say that create order, cancel order and update
+
+34
+00:02:20,240 --> 00:02:23,030
+order status use case for ordering microservices.
+
+35
+00:02:23,570 --> 00:02:28,760
+And another layer is interface adapter layers, which is the infrastructure layer.
+
+36
+00:02:29,060 --> 00:02:36,140
+It basically converts data from the format most convenient for the use cases and entities to the format
+
+37
+00:02:36,140 --> 00:02:38,570
+most convenient for external systems.
+
+38
+00:02:38,570 --> 00:02:43,640
+As an example, we can give mapping data from database models to the domain entities.
+
+39
+00:02:43,760 --> 00:02:47,780
+And the last layer we can say that frameworks and drivers.
+
+40
+00:02:47,780 --> 00:02:54,800
+That means infrastructure external concerns the outermost layer consisting of the frameworks and tools
+
+41
+00:02:54,800 --> 00:02:58,280
+such as the database, the web framework, and so on.
+
+42
+00:02:58,640 --> 00:03:04,160
+So generally includes the UI database and external interfaces and so on.
+
+43
+00:03:04,190 --> 00:03:09,050
+As an example, we can say that Rest controllers and database repositories.
+
+44
+00:03:10,190 --> 00:03:16,820
+So as a conclusion, we can say that clean architecture in microservices lead to system that are more
+
+45
+00:03:16,820 --> 00:03:20,420
+modular, adaptable, testable and maintainable.
+
+46
+00:03:20,420 --> 00:03:27,560
+We say modular because changes in one module or service don't heavily impact others, and we say adaptable
+
+47
+00:03:27,560 --> 00:03:32,270
+because it is easier to update or replace technologies and databases.
+
+48
+00:03:32,270 --> 00:03:36,980
+And we say testable because core logic can be tested in isolation.
+
+49
+00:03:36,980 --> 00:03:43,820
+And lastly, we say maintainable because clear separation of concerns makes the system easier to understand
+
+50
+00:03:43,820 --> 00:03:44,720
+and maintain.
+

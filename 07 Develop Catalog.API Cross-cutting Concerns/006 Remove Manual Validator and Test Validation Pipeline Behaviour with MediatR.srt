@@ -1,0 +1,288 @@
+1
+00:00:00,200 --> 00:00:06,440
+In this video, we will demonstrate how to remove manual validators from our command handler class,
+
+2
+00:00:06,440 --> 00:00:12,290
+and we will utilize the mediator validation pipeline behavior for more efficient validations in our
+
+3
+00:00:12,290 --> 00:00:13,310
+microservices.
+
+4
+00:00:13,760 --> 00:00:19,250
+So please go to the Create Product Handler class and locate this command handler class.
+
+5
+00:00:19,340 --> 00:00:25,820
+As you can see that previously we have injected a validator instance directly into our command handler.
+
+6
+00:00:25,820 --> 00:00:28,250
+And this approach is not effective.
+
+7
+00:00:28,250 --> 00:00:33,380
+And it leads to redundant code and deviates to hundreds from their core purpose.
+
+8
+00:00:33,380 --> 00:00:39,470
+So in order to streamline our code, we will remove the manual validation logic from our create product
+
+9
+00:00:39,470 --> 00:00:45,080
+command handler method and rely on our newly implemented mediator pipeline behavior.
+
+10
+00:00:45,080 --> 00:00:50,630
+For that purpose, let's remove these validator from the primary constructor.
+
+11
+00:00:50,690 --> 00:00:56,840
+And here you can see that we have only one object into the primary constructor, which is the session
+
+12
+00:00:56,840 --> 00:00:58,700
+for actual business logic.
+
+13
+00:00:58,700 --> 00:01:06,470
+And if you scroll down you can see that we can remove all these validation code block into our handle
+
+14
+00:01:06,470 --> 00:01:11,180
+method because this will be performed by the validation behavior anymore.
+
+15
+00:01:11,180 --> 00:01:13,910
+So now make it clean for handle method.
+
+16
+00:01:13,910 --> 00:01:22,430
+By the way, we can inject the Ilogger object into our command handler and perform the logging operation
+
+17
+00:01:22,430 --> 00:01:25,730
+at the beginning of the or handle method.
+
+18
+00:01:25,730 --> 00:01:30,440
+This will be common for each handle method for Crud operations.
+
+19
+00:01:30,440 --> 00:01:37,910
+So I have injected logger instead of the our validators and we have removed all validations related
+
+20
+00:01:37,910 --> 00:01:42,650
+injection and also validation code block into the handle method.
+
+21
+00:01:42,650 --> 00:01:50,480
+If you look at the handle method now, this handle method is focused and only includes its core functionality,
+
+22
+00:01:50,480 --> 00:01:55,100
+delegating the validation responsibility to the mediator pipeline behavior.
+
+23
+00:01:55,310 --> 00:02:01,490
+So now let's test the validation pipeline behavior by sending an invalid command through the http post
+
+24
+00:02:01,490 --> 00:02:02,090
+request.
+
+25
+00:02:02,090 --> 00:02:06,560
+For that purpose, I'm going to put a breakpoint in our handle method.
+
+26
+00:02:06,560 --> 00:02:13,070
+And this time also I am going to add a breakpoint under the behaviors validation behavior under building
+
+27
+00:02:13,070 --> 00:02:15,200
+blocks and put breakpoint in here.
+
+28
+00:02:15,650 --> 00:02:21,830
+At this stage, I would like to show you a mistake done by us when developing this validation behavior.
+
+29
+00:02:21,830 --> 00:02:25,670
+And this could be become a bug when testing our application.
+
+30
+00:02:25,670 --> 00:02:27,710
+So this is the important part.
+
+31
+00:02:27,710 --> 00:02:35,060
+And as you remember that we put var keyword in order to apply only validation cross-cutting concerns
+
+32
+00:02:35,060 --> 00:02:37,190
+in the command related requests.
+
+33
+00:02:37,190 --> 00:02:42,530
+So our command interface is only accepting t response not t requests.
+
+34
+00:02:42,530 --> 00:02:46,490
+If you go to I command, you can see that it is accepting t response.
+
+35
+00:02:46,490 --> 00:02:54,800
+For this reason, please change this t request to the t response in order to apply validation correctly.
+
+36
+00:02:54,800 --> 00:02:56,300
+And I'm going to change this.
+
+37
+00:02:56,300 --> 00:02:59,240
+I command t response and save this file.
+
+38
+00:02:59,240 --> 00:03:01,640
+And after that you can go to the Program.cs.
+
+39
+00:03:01,640 --> 00:03:09,050
+And in the program.cs you can see that we will register our required mediator and validation related
+
+40
+00:03:09,050 --> 00:03:12,350
+services into this line of codes in here.
+
+41
+00:03:12,350 --> 00:03:17,750
+Also, I would like to refactor my code since we are using assembly in two places.
+
+42
+00:03:17,750 --> 00:03:24,320
+I'm going to create a new variable, which name is assembly and comes from the type of program CSS.
+
+43
+00:03:24,320 --> 00:03:31,880
+And if you copy this assembly variable and paste this places, this could be more easy to read and understand
+
+44
+00:03:31,880 --> 00:03:32,450
+our codes.
+
+45
+00:03:32,450 --> 00:03:41,150
+Also, I would like to move this Carter after this mediator and fluent validation registration okay.
+
+46
+00:03:41,150 --> 00:03:41,990
+Save this program.
+
+47
+00:03:42,080 --> 00:03:42,380
+Yes.
+
+48
+00:03:42,380 --> 00:03:44,780
+And now it is more clear and readable.
+
+49
+00:03:44,780 --> 00:03:51,620
+Now we can start to test validation pipeline behavior by sending an invalid command through the http
+
+50
+00:03:51,620 --> 00:03:52,520
+post request.
+
+51
+00:03:52,520 --> 00:03:58,280
+For that purpose, right click and set a startup project Catholic API and start https mode.
+
+52
+00:03:59,890 --> 00:04:06,490
+After starting the application, you can open the postman and create an http post request.
+
+53
+00:04:07,480 --> 00:04:14,200
+And here you can see that we will send invalid name attribute and you can send the http post request
+
+54
+00:04:14,200 --> 00:04:16,390
+in order to create new product.
+
+55
+00:04:16,390 --> 00:04:19,839
+And this will be triggered to our create product endpoint.
+
+56
+00:04:19,870 --> 00:04:26,020
+If you go further in mediator step, mediator will be sent this command to the handle method.
+
+57
+00:04:26,020 --> 00:04:29,800
+But before that we have applied the validation pipeline behavior.
+
+58
+00:04:29,830 --> 00:04:37,240
+For that reason, it is directly jump into the command validator class and before proceeding to handle
+
+59
+00:04:37,240 --> 00:04:39,880
+method it is proceeding to validators.
+
+60
+00:04:39,910 --> 00:04:45,730
+Here you can see that collecting and calculating all rules for our validations.
+
+61
+00:04:45,730 --> 00:04:50,620
+And after that you can see that this is going to trigger validation behavior.
+
+62
+00:04:50,620 --> 00:04:54,910
+And in the validation behavior handle method this is the crosscutting concern.
+
+63
+00:04:54,910 --> 00:04:57,820
+And this is a common place for each validations.
+
+64
+00:04:57,820 --> 00:05:02,350
+And it is calculating the validations for each validation rules.
+
+65
+00:05:02,350 --> 00:05:07,750
+And after that this will be proceed to failures in the rules if any failures in the rules.
+
+66
+00:05:07,750 --> 00:05:10,600
+In our case we have one failure which is the name is required.
+
+67
+00:05:10,600 --> 00:05:15,880
+This will be throw validation exception and not proceeding to actual business logic.
+
+68
+00:05:15,880 --> 00:05:19,120
+As you can see that we didn't trigger the actual handle method.
+
+69
+00:05:19,120 --> 00:05:24,670
+We only run for the validations and validation failed with the name is required keyword.
+
+70
+00:05:24,670 --> 00:05:30,820
+By following this approach, we can ensure that our command handler class are more cleaner and more
+
+71
+00:05:30,820 --> 00:05:37,510
+focused on their intended purpose, while the validation is handled in the uniformly and effectively
+
+72
+00:05:37,510 --> 00:05:39,190
+by the pipeline behavior.
+

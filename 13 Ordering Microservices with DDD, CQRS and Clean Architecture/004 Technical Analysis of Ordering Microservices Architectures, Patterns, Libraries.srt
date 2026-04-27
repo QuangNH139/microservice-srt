@@ -1,0 +1,240 @@
+1
+00:00:00,170 --> 00:00:05,060
+In this video we are going to do technical analysis of ordering microservices.
+
+2
+00:00:05,090 --> 00:00:11,120
+These are the application architecture, style, pattern and principles libraries, NuGet packages and
+
+3
+00:00:11,120 --> 00:00:12,440
+project folder structure.
+
+4
+00:00:12,860 --> 00:00:15,620
+Let me start with the application architecture style.
+
+5
+00:00:16,070 --> 00:00:22,130
+As an application architecture style, we will follow domain driven design secure and clean architecture.
+
+6
+00:00:22,130 --> 00:00:27,620
+These are the fundamental architecture styles guiding the development of the ordering microservices.
+
+7
+00:00:27,950 --> 00:00:33,830
+Clean architecture implementation with creating four layers including the class library project that
+
+8
+00:00:33,830 --> 00:00:35,990
+reference according to the clean architecture.
+
+9
+00:00:35,990 --> 00:00:42,530
+We will explain all in the next videos, but for now, let me skip the second technical analysis, which
+
+10
+00:00:42,530 --> 00:00:44,330
+is the pattern and principles.
+
+11
+00:00:44,330 --> 00:00:50,660
+When developing ordering microservices, we will see and implement lots of pattern and principles,
+
+12
+00:00:50,660 --> 00:00:55,190
+and we are grouping these patterns and principles according to clean architecture layers.
+
+13
+00:00:55,190 --> 00:00:59,480
+But before that, let me start the common principles that we are going to follow.
+
+14
+00:00:59,510 --> 00:01:06,890
+These are the solid keys Jagni SoC, the IP principles and dependency injection principles.
+
+15
+00:01:06,890 --> 00:01:09,230
+These are the foundational principles.
+
+16
+00:01:09,680 --> 00:01:14,180
+And after that we can follow the patterns according to clean architecture layer.
+
+17
+00:01:14,180 --> 00:01:18,740
+So for the domain layer we will see and implement these patterns.
+
+18
+00:01:18,740 --> 00:01:24,980
+These are the designing domain driven design oriented microservices and applying the technical patterns.
+
+19
+00:01:24,980 --> 00:01:30,560
+And we will follow domain entity pattern and entity based classes for seed work operations.
+
+20
+00:01:30,560 --> 00:01:34,490
+And we will use anemic domain model versus rich domain model.
+
+21
+00:01:34,490 --> 00:01:41,600
+And we will use value object pattern aggregate pattern aggregate root and root entity pattern, strongly
+
+22
+00:01:41,600 --> 00:01:45,350
+typed IDs pattern domain events and integration events.
+
+23
+00:01:45,950 --> 00:01:50,540
+And if you follow the other layers, these are the infrastructure data layers.
+
+24
+00:01:50,540 --> 00:01:56,960
+In this layer we will follow repository pattern, entity framework, core ORM code first approach migration
+
+25
+00:01:56,960 --> 00:02:02,900
+and seeding the database value object complex types and entity framework core aggregate root entities
+
+26
+00:02:02,900 --> 00:02:09,620
+and entity configurations with model builder domain driven design to Entity Core Entity objects.
+
+27
+00:02:09,620 --> 00:02:14,990
+And lastly, we will raise and dispatch domain events with Entity Framework Core and using Mediator
+
+28
+00:02:14,990 --> 00:02:15,680
+Library.
+
+29
+00:02:16,160 --> 00:02:19,010
+And the next layer is Application Use Case layer.
+
+30
+00:02:19,010 --> 00:02:25,250
+And in this layer we will use these patterns including Singkreis and Kqs pattern command and command
+
+31
+00:02:25,250 --> 00:02:30,890
+handler pattern, mediator pattern and mediator pipeline behaviors, fluent validation and logging,
+
+32
+00:02:30,890 --> 00:02:32,300
+cross-cutting concerns.
+
+33
+00:02:32,510 --> 00:02:36,410
+And lastly there is a presentation layer in the clean architecture.
+
+34
+00:02:36,410 --> 00:02:42,770
+And we will use minimal APIs and ASP.Net die routing with the latest ASP.Net eight features.
+
+35
+00:02:43,070 --> 00:02:47,930
+And all these pattern principles that we will follow as a section flow.
+
+36
+00:02:47,930 --> 00:02:53,690
+In section flow, we will explain all these pattern and principles when developing clean architecture
+
+37
+00:02:53,690 --> 00:02:55,370
+layers in a separate lecture.
+
+38
+00:02:55,370 --> 00:02:58,550
+So our sections should be ordered like that.
+
+39
+00:02:58,550 --> 00:03:05,840
+That means we will create domain infrastructure application and presentation section for each layer
+
+40
+00:03:05,840 --> 00:03:07,970
+representing the clean architecture.
+
+41
+00:03:07,970 --> 00:03:12,200
+So during this section we will learn all these pattern and principles.
+
+42
+00:03:12,410 --> 00:03:18,500
+If you go to the libraries and NuGet packages, we will also explain explicitly in each layer.
+
+43
+00:03:18,500 --> 00:03:21,800
+But I am going to pacing very fast as a domain layer.
+
+44
+00:03:21,800 --> 00:03:24,980
+We don't have any library infrastructure data layer.
+
+45
+00:03:24,980 --> 00:03:28,070
+We will use Entity Framework core application layer.
+
+46
+00:03:28,070 --> 00:03:33,200
+We will use mediator fluent Validation and Mapserver as a presentation layer.
+
+47
+00:03:33,200 --> 00:03:37,430
+We will use Cutter library for defining API endpoints.
+
+48
+00:03:37,430 --> 00:03:40,430
+And lastly we will check project folder structure.
+
+49
+00:03:40,430 --> 00:03:43,280
+And we said that we will follow the clean architecture.
+
+50
+00:03:43,280 --> 00:03:48,290
+That means we will create three class library and one ASP.Net web API.
+
+51
+00:03:48,290 --> 00:03:54,500
+And we will use ordering domain for defining domain models and value objects and so on.
+
+52
+00:03:54,500 --> 00:04:00,980
+We will use ordering application layer for implementing skills command and handler classes, and organizing
+
+53
+00:04:00,980 --> 00:04:01,970
+by features.
+
+54
+00:04:01,970 --> 00:04:07,970
+And we will use ordering infrastructure for implementing database context configurations, migrations
+
+55
+00:04:07,970 --> 00:04:08,960
+and so on.
+
+56
+00:04:08,960 --> 00:04:15,470
+And lastly we will implement ordering API to exposing API contracts and endpoint definitions.
+
+57
+00:04:15,470 --> 00:04:20,930
+You can find the folder structure on the slide picture that we are going to explain in the next videos.
+
+58
+00:04:20,930 --> 00:04:26,570
+And finally we can say that we will containerize our ordering microservices with Docker.
+
+59
+00:04:26,570 --> 00:04:31,970
+That means we will implement Docker file and docker compose file for running ordering microservices
+
+60
+00:04:31,970 --> 00:04:34,760
+and SQL server database in docker environment.
+

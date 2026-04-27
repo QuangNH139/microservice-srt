@@ -1,0 +1,116 @@
+1
+00:00:00,140 --> 00:00:06,200
+In this video we are going to develop Product Detail Razor page into our client application.
+
+2
+00:00:06,200 --> 00:00:10,520
+So we are at this point and we will develop HTML part for that purpose.
+
+3
+00:00:10,520 --> 00:00:15,110
+Please open our Visual Studio and go to the shopping web and page.
+
+4
+00:00:15,110 --> 00:00:18,170
+Right click the page add new razor page.
+
+5
+00:00:18,170 --> 00:00:25,070
+Select the razor page empty template, click the add button and give the name as a product detail dot
+
+6
+00:00:25,070 --> 00:00:26,330
+css HTML.
+
+7
+00:00:26,330 --> 00:00:27,500
+Click the add button.
+
+8
+00:00:27,500 --> 00:00:30,230
+This will be create our product detail model.
+
+9
+00:00:30,230 --> 00:00:35,240
+So when I'm creating this css HTML file, I didn't see product detail as a green.
+
+10
+00:00:35,240 --> 00:00:38,420
+That's why I'm going to recreate from the scratch by deleting.
+
+11
+00:00:38,420 --> 00:00:46,490
+So I'm going to right click Add New Razor page, select Empty Template and change the name as a product
+
+12
+00:00:46,490 --> 00:00:48,350
+detail dot css HTML.
+
+13
+00:00:48,350 --> 00:00:49,460
+Click the add button.
+
+14
+00:00:50,230 --> 00:00:54,400
+And this time we can introduce product detail model into our HTML page.
+
+15
+00:00:54,400 --> 00:00:58,870
+And this is the RC file that we can populate our data from here.
+
+16
+00:00:58,870 --> 00:01:05,110
+So now I am going to focus on the HTML part and copy this product detail from the our ASP.Net basics
+
+17
+00:01:05,110 --> 00:01:05,920
+repository.
+
+18
+00:01:05,920 --> 00:01:09,970
+If you open this repository, you can go to the product detail page.
+
+19
+00:01:09,970 --> 00:01:18,460
+And you can copy from at this point and copy from the ASP.Net basics and come here and paste from here.
+
+20
+00:01:19,210 --> 00:01:20,320
+Save this file.
+
+21
+00:01:20,320 --> 00:01:22,420
+Here you can see the our HTML page.
+
+22
+00:01:22,420 --> 00:01:28,690
+If we examine this HTML page, you can see that this is typical a single product page that includes
+
+23
+00:01:28,690 --> 00:01:34,270
+all details regarding the product, including the product image, product name, product price, color,
+
+24
+00:01:34,270 --> 00:01:35,080
+and so on.
+
+25
+00:01:35,080 --> 00:01:37,330
+So here you can see the exception parts.
+
+26
+00:01:37,330 --> 00:01:41,350
+In here we will develop the product model into our C sharp page.
+
+27
+00:01:41,350 --> 00:01:47,350
+And after that we will fix all these error to representing a single product in the product detail page.
+
+28
+00:01:47,350 --> 00:01:53,080
+And also you can see that again we have add the cart operation and form that we can submit in order
+
+29
+00:01:53,080 --> 00:01:57,760
+to add item in the cart that we are going to handle in the product detail page.
+

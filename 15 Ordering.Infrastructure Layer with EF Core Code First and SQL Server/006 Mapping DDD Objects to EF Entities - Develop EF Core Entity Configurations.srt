@@ -1,0 +1,392 @@
+1
+00:00:00,300 --> 00:00:06,660
+In this video we are going to do step three which is configure domain entities to Entity Framework core
+
+2
+00:00:06,660 --> 00:00:07,500
+entities.
+
+3
+00:00:07,530 --> 00:00:12,990
+That means we will develop Entity Framework core entity configurations in the ordering infrastructure.
+
+4
+00:00:13,380 --> 00:00:15,120
+Please open the Visual Studio.
+
+5
+00:00:15,450 --> 00:00:21,570
+As you can see that in the last video we have used apply configurations from assembly method in order
+
+6
+00:00:21,570 --> 00:00:26,190
+to configure all these entities in a separate folder and in a separate class.
+
+7
+00:00:26,190 --> 00:00:33,180
+For that purpose, I'm going to right click the data folder and create a new subfolder, which name
+
+8
+00:00:33,180 --> 00:00:34,590
+is configurations.
+
+9
+00:00:34,590 --> 00:00:37,320
+So in this folder we will configure entities.
+
+10
+00:00:37,320 --> 00:00:40,680
+And I would like to start with the customer configurations.
+
+11
+00:00:40,680 --> 00:00:44,790
+And I'm going to add a new class which name is Customer Configuration.
+
+12
+00:00:44,790 --> 00:00:50,400
+Under this configuration folder create new class which name is Customer configurations x.
+
+13
+00:00:50,490 --> 00:00:54,450
+So we will configure customer entity in this configuration class.
+
+14
+00:00:54,450 --> 00:01:00,600
+First of all I'm going to remove unnecessary using statement and make it public.
+
+15
+00:01:00,600 --> 00:01:05,700
+And the important thing is I'm going to inherit from the I entity.
+
+16
+00:01:08,450 --> 00:01:13,670
+Type configuration and placing the customer entity as a generic.
+
+17
+00:01:17,370 --> 00:01:23,850
+As you can see that we have implementing I entitytype configuration under the customer configuration.
+
+18
+00:01:23,850 --> 00:01:29,340
+And if you implement these interface members, you can see that the configure method comes in here.
+
+19
+00:01:29,340 --> 00:01:34,680
+By this way we can configure specifically customer entity in this customer configuration class.
+
+20
+00:01:34,680 --> 00:01:39,870
+So before configure the customer entity we can go to the customer entity and see the members.
+
+21
+00:01:39,960 --> 00:01:45,810
+Here you can see the name and email property including customer entity and customer entity using customer
+
+22
+00:01:45,810 --> 00:01:47,250
+ID as a primary key.
+
+23
+00:01:47,250 --> 00:01:52,500
+And if you go to the entity definition, the ID property comes from the entity base class.
+
+24
+00:01:52,500 --> 00:01:58,380
+So if you go back to our customer configuration, we can start by configuring the primary key.
+
+25
+00:01:58,380 --> 00:02:04,170
+And in here you can see that the builder object comes from the parameter of the configure method I'm
+
+26
+00:02:04,170 --> 00:02:12,360
+going to use builder dot has key method in order to identify the key information of this customer table
+
+27
+00:02:12,360 --> 00:02:13,290
+on database.
+
+28
+00:02:13,290 --> 00:02:18,630
+And we are going to use ID as a key of this customer table.
+
+29
+00:02:18,810 --> 00:02:25,500
+But if you look at the ID value, you can come here and see that the ID is customer ID that means it
+
+30
+00:02:25,500 --> 00:02:28,140
+is a value object and this is the customer ID.
+
+31
+00:02:28,170 --> 00:02:34,230
+But when we configure any entity, we would like to specify how we can store these columns into the
+
+32
+00:02:34,230 --> 00:02:34,920
+database.
+
+33
+00:02:34,920 --> 00:02:41,280
+So that means SQL server database should know the customer ID and how can store the customer ID into
+
+34
+00:02:41,280 --> 00:02:42,000
+database.
+
+35
+00:02:42,000 --> 00:02:45,570
+For that purpose we are going to use custom conversions.
+
+36
+00:02:45,570 --> 00:02:49,560
+Here you can see that I'm going to use his conversion method.
+
+37
+00:02:49,560 --> 00:02:54,420
+In order to custom conversion the customer id to id value.
+
+38
+00:02:54,420 --> 00:03:00,390
+You can see that we can configure the customer ID with a custom conversion between the customer ID value
+
+39
+00:03:00,390 --> 00:03:03,090
+object and it is database representation.
+
+40
+00:03:03,090 --> 00:03:09,840
+So that means we will use customer ID dot value when we are storing these information in the database.
+
+41
+00:03:09,840 --> 00:03:14,910
+And when we are reading this value from database, we will be using customer ID of method.
+
+42
+00:03:14,910 --> 00:03:18,000
+In order to reach the customer ID into our application.
+
+43
+00:03:18,000 --> 00:03:22,710
+So this is very powerful feature when configuring the Entity Framework core entities.
+
+44
+00:03:22,710 --> 00:03:29,790
+And after that we can continue to configure the other properties which is for example the name column.
+
+45
+00:03:29,850 --> 00:03:36,300
+In here we have defined maximum length and required constraint for the name property.
+
+46
+00:03:36,300 --> 00:03:44,670
+And I'm going to follow the same steps for the email column in here we have defined the maximum length
+
+47
+00:03:44,670 --> 00:03:46,080
+for the email column.
+
+48
+00:03:46,080 --> 00:03:52,620
+And also I would like to use his index method for the email property and column.
+
+49
+00:03:52,620 --> 00:03:54,810
+And using the is unique method.
+
+50
+00:03:54,810 --> 00:04:00,870
+With this line of code, we will ensure uniqueness of the email field using an index for the customer
+
+51
+00:04:00,870 --> 00:04:01,500
+table.
+
+52
+00:04:01,500 --> 00:04:09,450
+So this is the configuration for the customer entity, and we will follow the same steps for the product
+
+53
+00:04:09,450 --> 00:04:10,410
+configurations.
+
+54
+00:04:10,410 --> 00:04:16,440
+For that purpose, I'm going to create a new configuration under the configuration folder create a new
+
+55
+00:04:16,440 --> 00:04:16,680
+file.
+
+56
+00:04:16,680 --> 00:04:19,110
+Which name is product configuration dot cs.
+
+57
+00:04:19,110 --> 00:04:21,060
+And we will follow the same steps.
+
+58
+00:04:21,060 --> 00:04:28,530
+And the first thing we should do that we will inherit from the I entity type configuration and passing
+
+59
+00:04:28,560 --> 00:04:30,750
+to our product.
+
+60
+00:04:32,420 --> 00:04:40,220
+Entity and implement this interface and make sure that the class should be the public access modifier.
+
+61
+00:04:40,220 --> 00:04:44,600
+And now we can start to configure these product entity is the same way.
+
+62
+00:04:44,600 --> 00:04:50,210
+We will start configuring with defining the primary key and defining the ID column.
+
+63
+00:04:50,210 --> 00:04:58,790
+So in here you can see that we will use hash key method in order to identify the ID column of the product
+
+64
+00:04:58,820 --> 00:04:59,420
+table.
+
+65
+00:04:59,420 --> 00:05:07,400
+And after that we will use custom conversion in order to convert the product id value object to the
+
+66
+00:05:07,400 --> 00:05:09,230
+database weight value.
+
+67
+00:05:09,230 --> 00:05:15,950
+And at the same way we will read this value from database, converting the product ID of method to reaching
+
+68
+00:05:15,950 --> 00:05:17,300
+the product id value.
+
+69
+00:05:17,330 --> 00:05:22,130
+So after that, we can configure the name of the product table.
+
+70
+00:05:22,130 --> 00:05:26,030
+If you go to product, you can see that we only have name and price.
+
+71
+00:05:26,030 --> 00:05:33,380
+So I'm going to put a configuration for the name with defining the maximum length 100 and is required
+
+72
+00:05:33,380 --> 00:05:37,340
+attribute to the name column into the product table.
+
+73
+00:05:37,640 --> 00:05:40,460
+And this is enough for the product configuration.
+
+74
+00:05:40,460 --> 00:05:43,820
+And we have completed the product and customer configuration.
+
+75
+00:05:43,820 --> 00:05:49,760
+Now it is time to configure order and order item configuration that are more complicated.
+
+76
+00:05:49,760 --> 00:05:56,630
+So I'm going to start with creating order configuration under the configurations folder create new class
+
+77
+00:05:56,630 --> 00:06:04,340
+which name is Order Configuration Case and follow the same steps I'm going to inherit from the I entity
+
+78
+00:06:04,340 --> 00:06:11,870
+type configuration and passing the order entity inside of this interface, and implement these interface
+
+79
+00:06:11,870 --> 00:06:15,740
+members and make it public to this configuration class.
+
+80
+00:06:16,010 --> 00:06:18,110
+So this is the order configuration.
+
+81
+00:06:18,110 --> 00:06:24,380
+For now, I am skipping the implementation of the order configuration and contain the create a new configuration
+
+82
+00:06:24,380 --> 00:06:26,870
+file, which is the order item configuration.
+
+83
+00:06:26,870 --> 00:06:32,120
+Create new class, which name is order item configuration and follow the same steps.
+
+84
+00:06:32,120 --> 00:06:42,110
+Inherit from the I entity type configuration and pass order item as a entity of this configuration class
+
+85
+00:06:42,110 --> 00:06:43,400
+and implement members.
+
+86
+00:06:43,400 --> 00:06:51,080
+Make this class public and we are ready to implement Order and order item configurations in this class.
+
+87
+00:06:51,320 --> 00:06:54,560
+Before start the Configuring Order and Order item.
+
+88
+00:06:54,560 --> 00:07:00,290
+In this configuration classes, we should review the Order and Order item entity in the entity classes.
+
+89
+00:07:00,290 --> 00:07:05,480
+If you go to Order Configuration and select the order, right click go to definition.
+
+90
+00:07:05,480 --> 00:07:12,140
+You can reach the Order aggregate and you can see the order has complex types including the address,
+
+91
+00:07:12,140 --> 00:07:14,210
+shipping and billing address payment.
+
+92
+00:07:14,210 --> 00:07:20,750
+These are the value objects that we should define when configuring the own Entity Framework core entities.
+
+93
+00:07:20,750 --> 00:07:26,480
+And also you can see that order has one to end relationship with the order item.
+
+94
+00:07:26,480 --> 00:07:33,830
+So how can we configure these custom relationships and also value objects into the Entity Framework
+
+95
+00:07:33,830 --> 00:07:34,250
+core.
+
+96
+00:07:34,250 --> 00:07:40,910
+How can we mapping these domain driven design order object to do Entity Framework core entity.
+
+97
+00:07:40,910 --> 00:07:46,760
+So we can see these details in the next video to understanding and configuring Entity Framework, core
+
+98
+00:07:46,760 --> 00:07:48,710
+Relations and Value objects.
+

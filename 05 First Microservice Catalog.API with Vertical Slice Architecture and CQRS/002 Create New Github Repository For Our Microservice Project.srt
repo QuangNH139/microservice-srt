@@ -1,0 +1,68 @@
+1
+00:00:00,200 --> 00:00:06,320
+In this video, we are going to create a naive GitHub repository for our microservices project.
+
+2
+00:00:06,590 --> 00:00:12,740
+This is not a mandatory step, but I would like to see your progress of developing microservices and
+
+3
+00:00:12,740 --> 00:00:16,790
+if you encounter any problem, it is very easy to check your GitHub repository.
+
+4
+00:00:17,150 --> 00:00:18,830
+So let's take an action.
+
+5
+00:00:18,920 --> 00:00:23,930
+First of all, you should ensure that you have a GitHub account and login your GitHub account.
+
+6
+00:00:23,930 --> 00:00:27,020
+And after that navigate to repository section.
+
+7
+00:00:27,020 --> 00:00:34,100
+Click the repositories and after that you can click the new button in order to create any repository.
+
+8
+00:00:34,100 --> 00:00:38,720
+So as a repository name we will give each of microservices.
+
+9
+00:00:38,720 --> 00:00:45,080
+And if you scroll down you can select the public repository and add a Readme file.
+
+10
+00:00:45,110 --> 00:00:52,130
+We should add a git ignore as a Visual Studio, since we will use Visual Studio either for our development,
+
+11
+00:00:52,130 --> 00:00:58,970
+the git ignore should be Visual Studio, and you can choose any license for your repository, and after
+
+12
+00:00:58,970 --> 00:01:02,690
+that you can create repository by clicking this button.
+
+13
+00:01:04,950 --> 00:01:07,470
+Yes, our repository is created.
+
+14
+00:01:07,470 --> 00:01:13,110
+Once we create the repository, you can see the link is generated from the GitHub.
+
+15
+00:01:13,110 --> 00:01:19,740
+By this way we can follow your progress on this repository and I can easily check your repositories
+
+16
+00:01:19,740 --> 00:01:25,530
+when you stuck at some point of this course, you can share the repository address and I will check
+
+17
+00:01:25,530 --> 00:01:27,360
+your problem on that location.
+

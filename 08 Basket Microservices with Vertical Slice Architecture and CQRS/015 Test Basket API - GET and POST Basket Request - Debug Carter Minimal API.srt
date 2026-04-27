@@ -1,0 +1,340 @@
+1
+00:00:00,200 --> 00:00:07,340
+In this video we are going to test our basket APIs, get post and delete requests using the postman,
+
+2
+00:00:07,340 --> 00:00:14,810
+and debug our application because we will follow and understand the secrets and mediator request lifecycle,
+
+3
+00:00:14,810 --> 00:00:19,430
+we will send Http request from the client and we will perform that.
+
+4
+00:00:19,430 --> 00:00:22,940
+The request comes from the mediator and mediator trigger.
+
+5
+00:00:22,940 --> 00:00:27,680
+The handler and handle will be perform actual operation and return response.
+
+6
+00:00:27,680 --> 00:00:31,310
+So we will validate this flow into our application.
+
+7
+00:00:31,310 --> 00:00:38,900
+For that purpose, please open the Visual Studio Set startup project of basket API and run https mode.
+
+8
+00:00:40,550 --> 00:00:47,390
+After running the application, we are going to place debug points into our endpoint and handler class.
+
+9
+00:00:47,420 --> 00:00:54,380
+Our application is running successfully, so now I am going to open the get basket endpoint and put
+
+10
+00:00:54,380 --> 00:00:58,700
+a breakpoint inside of the delegate handler and go to handler class.
+
+11
+00:00:58,700 --> 00:01:05,330
+Put a breakpoint in the beginning of the handler method and following the same steps for different Http
+
+12
+00:01:05,330 --> 00:01:14,360
+delete operations, and after that http post operation, which is the store basket use cases.
+
+13
+00:01:15,230 --> 00:01:21,020
+Okay, our breakpoints are ready and we have already run our application and our basket API.
+
+14
+00:01:21,020 --> 00:01:26,660
+Microservices is listening on https localhost 5051 port.
+
+15
+00:01:26,660 --> 00:01:33,350
+So if you open the postman you can see that we have separate folder for basket microservices.
+
+16
+00:01:33,350 --> 00:01:38,900
+And I have created http, get post and delete endpoints inside of this folder.
+
+17
+00:01:38,900 --> 00:01:46,340
+So if you open the get basket by username you can see that basket URL variable comes from the localhost
+
+18
+00:01:46,340 --> 00:01:49,100
+environment and the value is 5051.
+
+19
+00:01:49,100 --> 00:01:51,050
+We can change the environment in here.
+
+20
+00:01:51,050 --> 00:01:54,350
+And now we are on the localhost deployment strategy.
+
+21
+00:01:54,350 --> 00:01:57,560
+So you can see the endpoint continue with the basket.
+
+22
+00:01:57,560 --> 00:02:01,280
+And we can specify the username as a request parameters.
+
+23
+00:02:01,280 --> 00:02:08,419
+So now if I click the Http send method this will be triggered our application and comes from the get
+
+24
+00:02:08,419 --> 00:02:09,500
+basket endpoint.
+
+25
+00:02:09,500 --> 00:02:15,620
+And if we continue with the step over we will send mediator to the get basket query information with
+
+26
+00:02:15,620 --> 00:02:16,730
+incoming username.
+
+27
+00:02:16,730 --> 00:02:20,870
+And this will be triggered our Get Basket query handler class.
+
+28
+00:02:20,870 --> 00:02:24,410
+And this is the handle operation which is the actual business operation.
+
+29
+00:02:24,410 --> 00:02:31,250
+For now we will mocking these operation and returning an empty shopping cart with the username as a
+
+30
+00:02:31,490 --> 00:02:32,210
+boolean.
+
+31
+00:02:32,210 --> 00:02:37,130
+Here you can see that if we hit F5, this will be returning to us.
+
+32
+00:02:37,550 --> 00:02:40,790
+A random and empty cart object.
+
+33
+00:02:40,790 --> 00:02:44,630
+The username is S1 and there is no items for this cart.
+
+34
+00:02:44,630 --> 00:02:52,310
+So we have confirmed that the http get operation is successfully triggered the Carter endpoint and successfully
+
+35
+00:02:52,310 --> 00:02:55,010
+triggered the mediator handler class.
+
+36
+00:02:55,010 --> 00:03:02,960
+And at the same way, we can send http post requests in order to store new basket into our database.
+
+37
+00:03:02,960 --> 00:03:08,750
+So here you can see that I have created http post operation and our endpoint is basket URL.
+
+38
+00:03:08,750 --> 00:03:11,750
+This is the 5051 port and slash basket.
+
+39
+00:03:11,750 --> 00:03:13,790
+And this is the http post operation.
+
+40
+00:03:13,790 --> 00:03:18,440
+That's why you can see that body row of Json format is in here.
+
+41
+00:03:18,440 --> 00:03:21,800
+This is starting and empty Json body.
+
+42
+00:03:21,800 --> 00:03:24,260
+And here you can see the cart object.
+
+43
+00:03:24,260 --> 00:03:29,570
+The cart name is very critical in here if you open the Visual Studio, if you go to the store basket
+
+44
+00:03:29,570 --> 00:03:35,930
+and print, you can see that our store basket request includes the parameter of the shopping cart and
+
+45
+00:03:35,930 --> 00:03:38,060
+the shopping cart variable name as a cart.
+
+46
+00:03:38,060 --> 00:03:44,360
+So that's why we should give the exact same name of this parameter name into our postman.
+
+47
+00:03:44,360 --> 00:03:46,130
+And that's why this is the cart.
+
+48
+00:03:46,130 --> 00:03:51,830
+And opening a new object inside of the new object, you can see the members of the shopping cart, and
+
+49
+00:03:51,830 --> 00:03:56,030
+this is the items that we have added two items into our shopping cart.
+
+50
+00:03:56,030 --> 00:04:01,730
+So let's send http post request and see the request pipeline life cycle.
+
+51
+00:04:01,730 --> 00:04:05,720
+So send button and this will be triggered store basket endpoint.
+
+52
+00:04:05,720 --> 00:04:10,850
+And the first step is we are converting to command object and inside of the command object.
+
+53
+00:04:10,850 --> 00:04:18,110
+If you expand this one you can see that cart object is populating and comes from the our incoming http
+
+54
+00:04:18,110 --> 00:04:19,579
+post operation.
+
+55
+00:04:19,579 --> 00:04:24,800
+And if you continue to debug, you can see that mediator will be sent this command to the command handler.
+
+56
+00:04:24,800 --> 00:04:27,650
+And this will be triggered our actual operation.
+
+57
+00:04:27,650 --> 00:04:32,750
+I'm going to remove these breakpoint from the validation behavior that you can see that our validations
+
+58
+00:04:32,750 --> 00:04:33,620
+also trigger.
+
+59
+00:04:33,620 --> 00:04:39,350
+And here you can see the store basket command handle method to perform the actual operation store basket
+
+60
+00:04:39,350 --> 00:04:41,030
+in database and update the cache.
+
+61
+00:04:41,030 --> 00:04:46,850
+For now we are going to return mocking response and we can continue our debug that.
+
+62
+00:04:46,850 --> 00:04:52,760
+You can see that this will be continue and converting our result object to the response, and return
+
+63
+00:04:52,760 --> 00:04:55,400
+back to the created response to the client.
+
+64
+00:04:55,970 --> 00:05:02,360
+So we have confirmed that also our post store basket operation is working perfectly.
+
+65
+00:05:02,360 --> 00:05:09,770
+But the important thing is in here, when we are sending http post request, we should create Json structure
+
+66
+00:05:09,770 --> 00:05:11,630
+same as the request class.
+
+67
+00:05:11,630 --> 00:05:16,820
+So request class is inside of the our store basket endpoint.
+
+68
+00:05:16,820 --> 00:05:18,440
+And you can see the request class.
+
+69
+00:05:18,440 --> 00:05:20,600
+So it is accepting shopping cart.
+
+70
+00:05:20,600 --> 00:05:27,200
+And this cart variable name is crucial when sending the request to the http post operation.
+
+71
+00:05:27,200 --> 00:05:31,760
+If you change this variable name, your Json will not be accepted.
+
+72
+00:05:31,760 --> 00:05:35,540
+If you, for example, change the name as a cart two or shopping cart.
+
+73
+00:05:35,540 --> 00:05:40,010
+And if you go back to http post operation, your Json would not be work and.
+
+74
+00:05:40,470 --> 00:05:44,520
+Jason is expecting the exact same name parameter into in here.
+
+75
+00:05:44,520 --> 00:05:48,930
+So the Json is very important and the naming is also very important.
+
+76
+00:05:48,930 --> 00:05:52,320
+And finally we can go to the Http delete operation.
+
+77
+00:05:52,320 --> 00:05:55,530
+In here I have created http delete basket url.
+
+78
+00:05:55,530 --> 00:06:00,480
+This is the endpoint and this username comes from the URL request parameter.
+
+79
+00:06:00,480 --> 00:06:04,830
+I'm going to hit the send button and this will be triggered our get basket endpoint.
+
+80
+00:06:04,860 --> 00:06:12,480
+If I continue I can see that this will be trigger get basket delete basket command handler class successfully
+
+81
+00:06:12,480 --> 00:06:14,490
+and return a mock response.
+
+82
+00:06:14,490 --> 00:06:19,980
+And if I hit five, I can verify that delete operation performs successfully.
+
+83
+00:06:20,160 --> 00:06:26,370
+As you can see that we have confirmed securities and mediator request lifecycle by sending Http, get,
+
+84
+00:06:26,370 --> 00:06:28,740
+post and delete request to our basket.
+
+85
+00:06:28,740 --> 00:06:29,640
+Microservices.
+

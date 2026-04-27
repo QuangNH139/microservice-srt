@@ -1,0 +1,264 @@
+1
+00:00:00,200 --> 00:00:06,440
+In this video, we are going to develop DTO classes for orders in ordering application layer.
+
+2
+00:00:06,440 --> 00:00:13,280
+Here you can see that we will develop DTO folder and it is good to use data transfer objects when accepting
+
+3
+00:00:13,280 --> 00:00:15,410
+the commands from the presentation layer.
+
+4
+00:00:15,410 --> 00:00:21,500
+And after that we will map these details into our application logic with creating domain order and raising
+
+5
+00:00:21,500 --> 00:00:22,520
+domain events.
+
+6
+00:00:22,520 --> 00:00:26,600
+So now let's setting up the folder structure and create DTO classes.
+
+7
+00:00:26,600 --> 00:00:31,730
+Please open the Visual Studio and locate the ordering application and go to details folder.
+
+8
+00:00:31,730 --> 00:00:36,410
+And after that we will include all DTO classes inside of this folder.
+
+9
+00:00:36,410 --> 00:00:40,040
+For that purpose I'm going to start with creating order DTO.
+
+10
+00:00:40,760 --> 00:00:44,900
+Add a new class under this folder, which name is Order Dukes.
+
+11
+00:00:45,290 --> 00:00:50,060
+So we will develop order DTO class in order to represent the order data structure.
+
+12
+00:00:50,060 --> 00:00:51,560
+So let's get started.
+
+13
+00:00:51,560 --> 00:00:56,120
+Remove unnecessary using statement and remove the order DTO class definitions.
+
+14
+00:00:56,120 --> 00:01:03,830
+Because I'm going to create a record type for the order DTO record types is very well suited for the
+
+15
+00:01:03,830 --> 00:01:10,670
+DTO classes, because DTO classes provide for the mapping from one type to another type, and record
+
+16
+00:01:10,700 --> 00:01:14,270
+type is best practice to using this kind of operations.
+
+17
+00:01:14,270 --> 00:01:18,380
+And here you can see that we have created public record order DTO.
+
+18
+00:01:18,380 --> 00:01:23,930
+And inside of the record type we have ID, customer ID, order, name, shipping and billing address,
+
+19
+00:01:23,930 --> 00:01:26,450
+payment status and the order item list.
+
+20
+00:01:26,450 --> 00:01:32,570
+So these DTO represent a complete order including customer details, shipping, billing address, payment
+
+21
+00:01:32,570 --> 00:01:35,060
+information and items within the order.
+
+22
+00:01:35,060 --> 00:01:38,600
+So we will follow the same steps for the rest of the details.
+
+23
+00:01:38,600 --> 00:01:43,340
+Here you can see that we use address DTO, payment DTO and order item DTO.
+
+24
+00:01:43,340 --> 00:01:50,060
+So now let's create a order item DTO inside of the the same folder which is the details folder.
+
+25
+00:01:50,090 --> 00:01:53,240
+Add new class which is the order item detox.
+
+26
+00:01:54,190 --> 00:01:54,850
+In here.
+
+27
+00:01:54,850 --> 00:02:01,450
+We also create a record type for Orderitem DTO in order to represent individual items in an order.
+
+28
+00:02:01,450 --> 00:02:06,730
+For that purpose, I'm going to remove unnecessary using statement and delete the this class definition
+
+29
+00:02:06,730 --> 00:02:09,639
+and create a record type for Orderitem DTO.
+
+30
+00:02:09,669 --> 00:02:15,820
+Here you can see that we will use public record Orderitem DTO, and these are the members that we are
+
+31
+00:02:15,820 --> 00:02:22,120
+going to use for particular Orderitem, including the order ID, product, ID, quantity and decimal.
+
+32
+00:02:22,120 --> 00:02:28,960
+This DTO represents the essential information of each item in an order such as the product ID, quantity
+
+33
+00:02:28,960 --> 00:02:29,890
+and the price.
+
+34
+00:02:29,890 --> 00:02:33,160
+So I'm going to continue the next DTO.
+
+35
+00:02:33,160 --> 00:02:37,870
+If you go to the order DTO, you can see that we will also create address DTO.
+
+36
+00:02:37,900 --> 00:02:43,930
+I'm going to create address DTO inside of this DTO folder, create a new class under this folder which
+
+37
+00:02:43,930 --> 00:02:47,650
+name is Address Detox and follow the same steps.
+
+38
+00:02:47,650 --> 00:02:53,290
+I'm going to remove unnecessary using statement and delete the address DTO and this will be represent
+
+39
+00:02:53,290 --> 00:02:59,260
+an address value object from the domain layer and we will make this record types for the address DTO.
+
+40
+00:02:59,290 --> 00:03:05,140
+Here you can see that I have created Public Record Address Studio and the members comes from the address
+
+41
+00:03:05,140 --> 00:03:10,960
+value object which including the first name, last name, email address, address, line, country state
+
+42
+00:03:10,960 --> 00:03:11,830
+and zip code.
+
+43
+00:03:11,920 --> 00:03:15,940
+So this is the address DTO definition is the same way.
+
+44
+00:03:15,940 --> 00:03:17,890
+I'm going to create payment DTO.
+
+45
+00:03:17,890 --> 00:03:23,200
+If you go back to order DTO, the only payment DTO is required under the details folder.
+
+46
+00:03:23,200 --> 00:03:30,820
+Create new class which name is payment DTO and follow the same steps and payment DTO also represent
+
+47
+00:03:30,820 --> 00:03:34,270
+payment value object from our domain layer for that purpose.
+
+48
+00:03:34,270 --> 00:03:39,730
+Again, I'm going to remove this definition and create a new record type, which is the public record
+
+49
+00:03:39,730 --> 00:03:40,150
+payment.
+
+50
+00:03:40,150 --> 00:03:46,930
+DTO and the members are card name, card number, expiration, CVV, and payment method and make sure
+
+51
+00:03:46,930 --> 00:03:52,510
+that you are setting the CVV as a C, as a uppercase, V as a lowercase.
+
+52
+00:03:52,510 --> 00:03:58,810
+Because maps cannot map for the uppercase properties inside of the record types.
+
+53
+00:03:59,050 --> 00:04:05,170
+So these are the DTO definitions that encapsulate the details from the domain layers, including the
+
+54
+00:04:05,170 --> 00:04:06,940
+address payment order and order.
+
+55
+00:04:06,940 --> 00:04:07,420
+DTO.
+
+56
+00:04:07,450 --> 00:04:13,930
+You can go to order DTO and see that now we don't have any exception and all order details representing
+
+57
+00:04:13,930 --> 00:04:19,269
+a specific order, including default value, object DTO and the list of the order item details.
+
+58
+00:04:19,269 --> 00:04:23,230
+So why we have developed these Dtos under the application layer?
+
+59
+00:04:23,230 --> 00:04:27,610
+Because we will map these D2 objects when moving to presentation layer.
+
+60
+00:04:27,610 --> 00:04:33,700
+So that means when a request comes to the ordering API, we will map these objects to the DTO in order
+
+61
+00:04:33,700 --> 00:04:35,350
+to perform our business logic.
+
+62
+00:04:35,350 --> 00:04:37,810
+So for that purpose we need a map store.
+
+63
+00:04:37,810 --> 00:04:43,810
+So if you double click the ordering application you can see that we don't have maps library, but it
+
+64
+00:04:43,810 --> 00:04:49,180
+comes from the building blocks because ordering application is getting reference from the building blocks.
+
+65
+00:04:49,180 --> 00:04:54,850
+And if you go to the building blocks that include the common libraries, that is including the master.
+
+66
+00:04:54,850 --> 00:04:59,530
+So we will use DTO objects when mapping with maps in ordering application layer.
+

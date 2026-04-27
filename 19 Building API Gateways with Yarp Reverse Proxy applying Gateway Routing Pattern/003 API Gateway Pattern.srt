@@ -1,0 +1,140 @@
+1
+00:00:00,110 --> 00:00:04,700
+In this video we are going to learn what is API gateway pattern?
+
+2
+00:00:05,240 --> 00:00:09,380
+API gateway is a single point of entry to the client applications.
+
+3
+00:00:09,800 --> 00:00:13,970
+API gateway sits between the client and multiple back end services.
+
+4
+00:00:15,850 --> 00:00:21,820
+API gateways, manage routing to internal microservices and able to aggregate several microservices
+
+5
+00:00:21,820 --> 00:00:23,560
+requests in one response.
+
+6
+00:00:23,890 --> 00:00:29,920
+API gateways also can handle cross-cutting concerns like authentication, authorization, protocol,
+
+7
+00:00:29,920 --> 00:00:33,550
+translation rate limiting, logging, monitoring, load balancing, and so on.
+
+8
+00:00:34,510 --> 00:00:40,420
+The API gateway pattern is recommended if you want to design and build complex, large, microservice
+
+9
+00:00:40,420 --> 00:00:43,840
+based applications with multiple client applications.
+
+10
+00:00:44,140 --> 00:00:50,890
+API gateway pattern is similar to facade pattern from the object oriented design, but it is part of
+
+11
+00:00:50,890 --> 00:00:56,350
+a distributed system reverse proxy or gateway routing for using synchronous communication model.
+
+12
+00:00:56,740 --> 00:01:02,800
+We said that it is similar to facade pattern of object oriented design, so it provides a single entry
+
+13
+00:01:02,800 --> 00:01:07,090
+point to the APIs with encapsulating the underlying system architecture.
+
+14
+00:01:09,180 --> 00:01:15,180
+API gateway pattern provides a reverse proxy to redirect or route requests to your internal microservice
+
+15
+00:01:15,180 --> 00:01:15,930
+endpoints.
+
+16
+00:01:16,830 --> 00:01:22,710
+API gateway provides a single endpoint for the client application, and it internally maps the requests
+
+17
+00:01:22,710 --> 00:01:24,630
+to the internal microservices.
+
+18
+00:01:26,530 --> 00:01:32,140
+In summary, the API gateway located between the client application and the internal microservices.
+
+19
+00:01:32,140 --> 00:01:38,500
+It is working as a reverse proxy and routing requests from client applications to the back end services.
+
+20
+00:01:38,530 --> 00:01:41,200
+It is also provide cross-cutting concerns.
+
+21
+00:01:41,320 --> 00:01:47,530
+You can see the image on the slide that is, collect the client request in a single entry point and
+
+22
+00:01:47,530 --> 00:01:49,960
+route the request to the internal microservices.
+
+23
+00:01:51,010 --> 00:01:55,960
+So there are several client applications connect to single API gateways in here.
+
+24
+00:01:55,960 --> 00:02:02,350
+We should careful about this situation because if we put here a single API gateway, that means it is
+
+25
+00:02:02,350 --> 00:02:05,140
+possible to single point of failure risk in here.
+
+26
+00:02:06,530 --> 00:02:12,350
+If these client applications increase, or adding more logic to business complexity in API gateway,
+
+27
+00:02:12,350 --> 00:02:14,030
+it will be anti-pattern.
+
+28
+00:02:14,570 --> 00:02:20,000
+API gateway service can be growing and evolving based on many different requirements from the client
+
+29
+00:02:20,000 --> 00:02:20,900
+applications.
+
+30
+00:02:21,290 --> 00:02:28,460
+That's why the best practice is splitting the API gateway in multiple services or multiple similar API
+
+31
+00:02:28,460 --> 00:02:29,240
+gateways.
+
+32
+00:02:29,390 --> 00:02:33,380
+We will see the back end for front end bpph pattern later.
+
+33
+00:02:33,470 --> 00:02:37,370
+In summary, we need to be careful about using single API gateway.
+
+34
+00:02:37,400 --> 00:02:43,580
+It should be segregated based on business boundaries of the client applications, and not be a single
+
+35
+00:02:43,580 --> 00:02:46,280
+aggregator for all the internal microservices.
+

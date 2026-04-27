@@ -1,0 +1,264 @@
+1
+00:00:00,140 --> 00:00:06,380
+In this video we are going to develop order lists, see page and consume the Erb API gateway and print
+
+2
+00:00:06,380 --> 00:00:11,120
+with using AI ordering service and using the Revit Http client factory.
+
+3
+00:00:11,210 --> 00:00:14,120
+For that purpose we will implement the order list module.
+
+4
+00:00:14,150 --> 00:00:15,170
+See page.
+
+5
+00:00:15,170 --> 00:00:21,140
+So whenever we are using an implementing order list module, we need to inject AI ordering services.
+
+6
+00:00:21,140 --> 00:00:27,410
+Because this page is basically representing and listing the orders into our ordering microservices over
+
+7
+00:00:27,410 --> 00:00:28,550
+the arb API gateway.
+
+8
+00:00:28,580 --> 00:00:32,150
+For that purpose, we have to inject AI ordering services.
+
+9
+00:00:32,150 --> 00:00:38,090
+But we didn't register AI ordering services into our application and ASP.Net dependency injection tool.
+
+10
+00:00:38,090 --> 00:00:43,130
+That's why the first thing we should register AI ordering services into our Program.cs.
+
+11
+00:00:43,130 --> 00:00:45,020
+Please go to the Program.cs.
+
+12
+00:00:45,020 --> 00:00:50,600
+And in here you can see that we have registering AI Catalog Service and AI basket service.
+
+13
+00:00:50,600 --> 00:00:51,620
+And it's the same way.
+
+14
+00:00:51,620 --> 00:00:54,410
+I am going to copy this line of code and paste in here.
+
+15
+00:00:54,410 --> 00:01:01,610
+And this time we will register AI ordering services into our Revit client with a given base address.
+
+16
+00:01:01,610 --> 00:01:03,710
+And the base address is same as the.
+
+17
+00:01:03,710 --> 00:01:09,590
+For each catalog basket and ordering services, you can reach the application Settings.json file or
+
+18
+00:01:09,590 --> 00:01:13,610
+base of this is always erb API gateway docker network address.
+
+19
+00:01:13,610 --> 00:01:19,730
+And if you go back you can see that we have registering all these interfaces into our Revit client.
+
+20
+00:01:19,730 --> 00:01:21,380
+And this will be generated client.
+
+21
+00:01:21,380 --> 00:01:26,930
+In order to consume authentic microservices over the Erb API gateway, if you go to AI ordering services,
+
+22
+00:01:26,930 --> 00:01:33,740
+we can send Http get methods in order to get orders with pagination, get orders by name and get orders
+
+23
+00:01:33,740 --> 00:01:34,610
+by customer.
+
+24
+00:01:34,610 --> 00:01:41,120
+During this video, I am going to get orders by customer with a given fixed customer ID into our application.
+
+25
+00:01:41,120 --> 00:01:45,590
+So now we can start to implement our actual order list page.
+
+26
+00:01:45,590 --> 00:01:51,800
+In here I'm going to remove unnecessary using statement and come to this point in order to use primary
+
+27
+00:01:51,800 --> 00:01:56,060
+Constructor and inject our AI ordering service, which is the ordering service.
+
+28
+00:01:56,060 --> 00:01:59,840
+And I am going to inject AI logger service to logging operation.
+
+29
+00:01:59,840 --> 00:02:06,860
+And just after that we will create our orders property in order to represent in the HTML page in here
+
+30
+00:02:06,860 --> 00:02:12,860
+you can see that we have a AI enumerable order module, which is the orders property with getter setter
+
+31
+00:02:12,860 --> 00:02:16,310
+that we are going to use in the HTML page of the order list.
+
+32
+00:02:16,310 --> 00:02:21,140
+When we are listing on the table here, you can see that this is not getting any exception.
+
+33
+00:02:21,140 --> 00:02:26,030
+Now we will iterating the table and listing the rows including the these informations.
+
+34
+00:02:26,030 --> 00:02:33,200
+So after defining the orders property it is time to develop on get async method and populate orders
+
+35
+00:02:33,200 --> 00:02:39,680
+data with integrating with the erb API gateway in here again I have an assumption about the customer
+
+36
+00:02:39,680 --> 00:02:40,100
+id.
+
+37
+00:02:40,100 --> 00:02:46,220
+Since we don't have implementation any authentication layer, we can pass the customer ID as a hardcoded
+
+38
+00:02:46,220 --> 00:02:46,640
+value.
+
+39
+00:02:46,640 --> 00:02:53,300
+You can see that I have set the customer ID with this great value, and which we can assumption that
+
+40
+00:02:53,300 --> 00:02:55,700
+comes from the UI authenticated user.
+
+41
+00:02:56,510 --> 00:03:02,810
+And just after that, we can integrate with the Erb API gateway in order to get orders by customer.
+
+42
+00:03:02,840 --> 00:03:05,960
+Here you can see that we are using await ordering services.
+
+43
+00:03:05,960 --> 00:03:12,440
+Get orders by customer method with passing these customer ID, and just after that we can set the orders
+
+44
+00:03:12,440 --> 00:03:16,310
+property with incoming response of these Erb API gateway.
+
+45
+00:03:16,310 --> 00:03:20,300
+And after populating the orders, we can listing orders on the HTML page.
+
+46
+00:03:20,630 --> 00:03:24,320
+Also, I am going to change method body from task to task.
+
+47
+00:03:24,320 --> 00:03:26,750
+I action result and return the page.
+
+48
+00:03:27,530 --> 00:03:30,650
+So this is the implementation of the order list.
+
+49
+00:03:30,650 --> 00:03:36,590
+See page and this is the getting orders from the ordering microservices using the http api gateway.
+
+50
+00:03:36,710 --> 00:03:40,130
+And here you can see that we have used hardcoded customer ID.
+
+51
+00:03:40,130 --> 00:03:44,150
+And you can get this hardcoded customer ID from the ordering microservices.
+
+52
+00:03:44,150 --> 00:03:49,520
+If you open the services and go to ordering microservices and go to ordering infrastructure and data.
+
+53
+00:03:49,520 --> 00:03:56,210
+And if you expand the extensions and go to the initial data, you can see that these customer ID comes
+
+54
+00:03:56,210 --> 00:03:57,080
+from here.
+
+55
+00:03:57,080 --> 00:04:03,050
+And we have injected and creating a customer ID when starting ordering microservices and seeding with
+
+56
+00:04:03,050 --> 00:04:03,620
+this data.
+
+57
+00:04:03,620 --> 00:04:07,490
+So this is the ID information comes from these seeding operation.
+
+58
+00:04:07,490 --> 00:04:13,460
+That's why we are using this ID when we are populating order list with a given customer ID.
+
+59
+00:04:13,610 --> 00:04:20,329
+Now we can build the shopping web client application and verify that our HTML and see page are working
+
+60
+00:04:20,329 --> 00:04:20,779
+fine.
+
+61
+00:04:20,779 --> 00:04:23,420
+So right click and build client web application.
+
+62
+00:04:23,420 --> 00:04:26,600
+And we have successfully build our client application.
+
+63
+00:04:26,600 --> 00:04:32,210
+As you can see that we have completed the razor page of the shopping web client application, including
+
+64
+00:04:32,210 --> 00:04:34,250
+the razor page and see page.
+
+65
+00:04:34,250 --> 00:04:40,160
+That means we can ready for the testing our application to consuming Erb API gateway and perform our
+
+66
+00:04:40,160 --> 00:04:42,440
+actions under the C3 microservices.
+

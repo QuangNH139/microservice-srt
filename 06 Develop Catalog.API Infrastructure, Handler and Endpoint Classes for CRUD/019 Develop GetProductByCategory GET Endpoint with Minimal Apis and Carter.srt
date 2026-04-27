@@ -1,0 +1,164 @@
+1
+00:00:00,200 --> 00:00:06,800
+In this video we are going to develop get product by category and point class with using minimal APIs
+
+2
+00:00:06,800 --> 00:00:07,730
+and Carter.
+
+3
+00:00:08,029 --> 00:00:12,350
+So we will start with defining request and response object.
+
+4
+00:00:12,350 --> 00:00:18,380
+And we don't have any request object because we will get the category information from the request parameter.
+
+5
+00:00:18,380 --> 00:00:23,990
+But I am putting a request object as commented to following the best practices.
+
+6
+00:00:23,990 --> 00:00:31,640
+And after that we will create a response object which will be the including I enumerable product object.
+
+7
+00:00:31,640 --> 00:00:35,030
+So this will be the our request and response object.
+
+8
+00:00:35,030 --> 00:00:41,000
+Now we can implement actual endpoint class and this will be implement I Carter model.
+
+9
+00:00:41,000 --> 00:00:46,670
+And this class will define our Get endpoint for fetching products by a specific category.
+
+10
+00:00:46,670 --> 00:00:51,260
+So let me inherit from the I Carter model and implement the members.
+
+11
+00:00:51,260 --> 00:00:56,630
+So now I am going to exposing map get method.
+
+12
+00:00:56,630 --> 00:01:00,950
+And this time the URL should be different.
+
+13
+00:01:00,950 --> 00:01:11,150
+We can give products and slash category slash curly breaker category.
+
+14
+00:01:13,700 --> 00:01:21,950
+We have to put additional category in here because we have already using the id request parameter under
+
+15
+00:01:21,950 --> 00:01:22,670
+the products.
+
+16
+00:01:22,670 --> 00:01:28,340
+So in order to get category information we have to define additional layer in here.
+
+17
+00:01:28,340 --> 00:01:33,680
+That's why we have added products category and category name getting from the request parameter.
+
+18
+00:01:33,680 --> 00:01:38,660
+To implement these handler method we can use asynchronous function.
+
+19
+00:01:38,660 --> 00:01:46,040
+And I'm going to get the category name from the request parameters.
+
+20
+00:01:46,430 --> 00:01:52,700
+And after that I will use Isander method which is the mediator sender.
+
+21
+00:01:53,660 --> 00:01:58,370
+And after that we will implement actual implementation.
+
+22
+00:01:58,370 --> 00:02:01,100
+So here you can see that asynchronous function.
+
+23
+00:02:01,100 --> 00:02:06,470
+And we will implement asynchronous function in order to accommodate these requests.
+
+24
+00:02:06,470 --> 00:02:10,340
+So first of all I'm going to get the result object from the mediator.
+
+25
+00:02:10,340 --> 00:02:12,530
+For that purpose we are passing the.
+
+26
+00:02:14,720 --> 00:02:18,800
+Query object to the standard dot send method.
+
+27
+00:02:18,800 --> 00:02:26,750
+So now we will use naive get products by category query object.
+
+28
+00:02:26,750 --> 00:02:30,590
+And we will passing the category name where this category name comes.
+
+29
+00:02:30,590 --> 00:02:32,570
+This comes from the request parameters.
+
+30
+00:02:32,570 --> 00:02:35,510
+And this mediator will be returned a result object.
+
+31
+00:02:35,510 --> 00:02:41,690
+And after that we basically adapting result object to our response object.
+
+32
+00:02:41,690 --> 00:02:46,370
+And we will return results dot okay.
+
+33
+00:02:46,370 --> 00:02:48,830
+And passing the this response object.
+
+34
+00:02:51,170 --> 00:02:57,590
+And of course, as always, we have configured the API endpoint definition with using Carter extension
+
+35
+00:02:57,590 --> 00:02:58,100
+method.
+
+36
+00:02:58,100 --> 00:03:05,240
+So here you can see the definition of name summary description and produces Http endpoints.
+
+37
+00:03:05,240 --> 00:03:13,220
+In this endpoint definition we basically map Http get method with these URL products category and category
+
+38
+00:03:13,250 --> 00:03:13,730
+name.
+
+39
+00:03:13,730 --> 00:03:19,160
+And this endpoint uses mediator to send the get products by category query.
+
+40
+00:03:19,160 --> 00:03:25,580
+And then this will be trigger the handler method and then adapts to our response object that will be
+
+41
+00:03:25,580 --> 00:03:26,540
+returned to the client.
+

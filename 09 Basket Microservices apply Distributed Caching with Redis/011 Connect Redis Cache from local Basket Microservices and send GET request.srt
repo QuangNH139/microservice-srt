@@ -1,0 +1,452 @@
+1
+00:00:00,170 --> 00:00:06,230
+In this video we are going to connect Redis cache from local basket maker services and we will send
+
+2
+00:00:06,230 --> 00:00:11,690
+http, get and Post request in order to connect basket case data from Redis container.
+
+3
+00:00:11,720 --> 00:00:17,900
+For that purpose, please open the Basket maker services and go to the Cache Basket repository.
+
+4
+00:00:17,900 --> 00:00:25,490
+And in here I'm going to put breakpoints into the get basket store basket and delete basket.
+
+5
+00:00:26,000 --> 00:00:30,170
+So now we are going to test and debug our basket maker services.
+
+6
+00:00:30,170 --> 00:00:33,110
+Make sure that your Docker desktop is up and running.
+
+7
+00:00:33,110 --> 00:00:35,090
+And you have started the Docker compose.
+
+8
+00:00:35,090 --> 00:00:38,390
+And your distributed cache container should be exposed.
+
+9
+00:00:38,390 --> 00:00:41,270
+The default port number for Redis distributed cache.
+
+10
+00:00:41,720 --> 00:00:47,210
+So after that, if you go back to our Visual Studio, you can confirm that application settings.
+
+11
+00:00:47,210 --> 00:00:51,920
+And we will connect Redis with localhost as a server name and default port number.
+
+12
+00:00:52,220 --> 00:00:54,740
+So now come to the basket API.
+
+13
+00:00:54,740 --> 00:00:58,280
+Right click the basket API project and set a startup project.
+
+14
+00:00:58,280 --> 00:01:00,620
+And I am going to run https mode.
+
+15
+00:01:03,940 --> 00:01:08,080
+And here you can see that this time application has started.
+
+16
+00:01:08,080 --> 00:01:13,120
+And listening on the localhost 5051 from local computer.
+
+17
+00:01:13,120 --> 00:01:18,490
+And it didn't open any browser that we have changed the settings from the launch settings.
+
+18
+00:01:18,490 --> 00:01:21,160
+You can see that launch browser is false.
+
+19
+00:01:21,160 --> 00:01:28,000
+That's why we didn't see any browser and our application ready to accept requests from the postman for
+
+20
+00:01:28,000 --> 00:01:28,660
+that purpose.
+
+21
+00:01:28,660 --> 00:01:35,020
+Please open the postman and this time I'm going to send a http get request to this endpoint.
+
+22
+00:01:35,020 --> 00:01:42,280
+The basket URL should be 5051 and the endpoint is basket slash s r username of the shopping cart.
+
+23
+00:01:42,280 --> 00:01:46,660
+Click the send button to send http get request and start debugging.
+
+24
+00:01:46,660 --> 00:01:52,240
+It becomes to get basket endpoint and after continue this debugging.
+
+25
+00:01:52,240 --> 00:01:55,270
+This will be trigger our query handler operation.
+
+26
+00:01:55,270 --> 00:02:01,150
+And at this time the repository get basket will be trigger or catch basket repository.
+
+27
+00:02:01,150 --> 00:02:07,090
+In here you can see that our newly developed catch basket repository hit the breakpoint for get basket
+
+28
+00:02:07,090 --> 00:02:09,009
+and the username is boolean.
+
+29
+00:02:09,009 --> 00:02:14,320
+First of all it is going to check this username from the Redis distributed cache.
+
+30
+00:02:14,320 --> 00:02:19,810
+If there is any key information as this username, the cache basket should be populated.
+
+31
+00:02:19,810 --> 00:02:21,580
+But now this is the null.
+
+32
+00:02:21,580 --> 00:02:25,480
+That means there is no cache with the username key information.
+
+33
+00:02:25,480 --> 00:02:30,100
+That's why it is going to check the database with using the actual repository object.
+
+34
+00:02:30,100 --> 00:02:36,190
+This time you can see that this is going to hit the basket repository and using the session that load
+
+35
+00:02:36,190 --> 00:02:42,910
+async method in order to get username and shopping cart from the PostgreSQL database, and it is going
+
+36
+00:02:42,910 --> 00:02:45,490
+to get the basket information.
+
+37
+00:02:45,490 --> 00:02:53,140
+But if you look at the basket basket also null from the database, because last time when we are hitting
+
+38
+00:02:53,140 --> 00:02:56,140
+the http delete method, we have deleting the.
+
+39
+00:02:56,900 --> 00:02:58,490
+Or is the boolean username.
+
+40
+00:02:58,490 --> 00:03:02,540
+So that's why we got the response which is the basket not found exception.
+
+41
+00:03:02,540 --> 00:03:07,640
+And this is the boolean username basket is not exist on our database.
+
+42
+00:03:07,640 --> 00:03:14,630
+So we can send http post requests in order to create a new basket for username.
+
+43
+00:03:14,630 --> 00:03:17,840
+For that purpose please open the http post Reqs.
+
+44
+00:03:17,840 --> 00:03:23,390
+And here you can see the URL payload that we are going to hit our store basket and point.
+
+45
+00:03:23,390 --> 00:03:25,760
+So you can see the URL is in here.
+
+46
+00:03:25,760 --> 00:03:30,830
+And we will use the slash basket and send http post request with this payload.
+
+47
+00:03:30,830 --> 00:03:36,200
+And I'm going to click the send button and trigger the Our Store Basket endpoint class.
+
+48
+00:03:36,200 --> 00:03:42,110
+In this class we basically accommodate the incoming requests and convert to command object and trigger
+
+49
+00:03:42,110 --> 00:03:45,470
+the our store basket command handle handle method.
+
+50
+00:03:45,470 --> 00:03:50,750
+And in this method we basically store basket into the database using the Martin.
+
+51
+00:03:50,750 --> 00:03:56,540
+And as you can see that it is hitting the our cache basket repository store basket.
+
+52
+00:03:56,540 --> 00:04:02,750
+And first of all this will be trigger the actual operation to storing basket into database using the
+
+53
+00:04:02,750 --> 00:04:04,880
+session dot store method.
+
+54
+00:04:04,880 --> 00:04:11,450
+And here you can see the basket as a whole Json object will be storing the database, the database store
+
+55
+00:04:11,450 --> 00:04:12,320
+operation complete.
+
+56
+00:04:12,320 --> 00:04:17,209
+And the second thing we are going to do, we will use set string async method.
+
+57
+00:04:17,209 --> 00:04:24,830
+In order to add these username and adding these basket object as a serializable object into the already
+
+58
+00:04:24,920 --> 00:04:25,400
+cache.
+
+59
+00:04:25,400 --> 00:04:31,190
+That means we are writing the username and shopping cart information on the distributed Redis cache,
+
+60
+00:04:31,190 --> 00:04:38,390
+and after continue our debugging or set string operation completed on Redis and we will continue to
+
+61
+00:04:38,390 --> 00:04:43,730
+return back the result, and this will be returned back to the client application as a username.
+
+62
+00:04:43,730 --> 00:04:48,440
+So that means we will save this shopping cart into database and the cache.
+
+63
+00:04:48,440 --> 00:04:50,810
+How we can confirm on the cache operation.
+
+64
+00:04:50,810 --> 00:04:58,340
+If you open the Docker desktop and open the distributed cache container, if you go to the exec for
+
+65
+00:04:58,340 --> 00:04:59,450
+interactive terminal.
+
+66
+00:04:59,450 --> 00:05:07,580
+So I'm going to right keys and start character and this will be checked all the keys under the Redis
+
+67
+00:05:07,580 --> 00:05:08,030
+cache.
+
+68
+00:05:08,030 --> 00:05:11,330
+Here you can see that there is newly added cache which is the.
+
+69
+00:05:11,330 --> 00:05:14,540
+Our username is the boolean added into our redis.
+
+70
+00:05:14,570 --> 00:05:20,210
+That means we have confirmed that we have successfully created this new shopping cart, and also adding
+
+71
+00:05:20,210 --> 00:05:24,530
+this shopping cart information into our distributed cache as a Json format.
+
+72
+00:05:24,530 --> 00:05:29,000
+So after that we can run Http, get operation again.
+
+73
+00:05:29,000 --> 00:05:35,390
+And this time we have expected that basket will be found and this will be retrieved from the Redis distributed
+
+74
+00:05:35,390 --> 00:05:35,720
+cache.
+
+75
+00:05:35,720 --> 00:05:42,170
+And avoid calling the database operations and provide performant response to the client application.
+
+76
+00:05:42,170 --> 00:05:46,580
+So click Http send button and this will be triggered get basket endpoint.
+
+77
+00:05:46,580 --> 00:05:51,620
+And if you continue our debug you can see that this will be comes to query 100 class.
+
+78
+00:05:51,620 --> 00:05:53,750
+And we will use repository get basket.
+
+79
+00:05:53,750 --> 00:05:56,750
+And this will be comes to our cache basket repository.
+
+80
+00:05:56,750 --> 00:05:58,040
+Get basket method.
+
+81
+00:05:58,040 --> 00:06:04,820
+And in the first line of code this will be try to get username as Subbulu and shopping cart from the
+
+82
+00:06:04,820 --> 00:06:06,140
+Redis distributed cache.
+
+83
+00:06:06,140 --> 00:06:11,780
+So if you continue that you can see that this time we will access the cache basket response.
+
+84
+00:06:11,780 --> 00:06:15,050
+This is the Json response, the whole shopping cart object.
+
+85
+00:06:15,050 --> 00:06:17,360
+And this comes from the Redis cache.
+
+86
+00:06:17,360 --> 00:06:23,990
+And if we look at the string or is empty or not, this will be not empty and null.
+
+87
+00:06:23,990 --> 00:06:29,450
+That's why we will deserialize shopping cart and return back to the client application without doing
+
+88
+00:06:29,450 --> 00:06:31,280
+any database call operations.
+
+89
+00:06:31,280 --> 00:06:34,730
+So here you can see that the method is returning.
+
+90
+00:06:34,730 --> 00:06:37,550
+And this comes from the our cache.
+
+91
+00:06:37,550 --> 00:06:43,490
+And if you come here you can see that the whole shopping cart information comes from the Redis cache
+
+92
+00:06:43,760 --> 00:06:45,260
+avoiding database calls.
+
+93
+00:06:45,260 --> 00:06:47,030
+And it is very performant.
+
+94
+00:06:47,030 --> 00:06:54,050
+If you send again you can see that this will be always go to the cache and checking all information
+
+95
+00:06:54,050 --> 00:06:57,230
+from case without sending requests to the database.
+
+96
+00:06:57,320 --> 00:07:01,250
+Okay, now the last thing we can test http delete operation.
+
+97
+00:07:01,250 --> 00:07:09,440
+If you come here and send http delete request for boolean username, you can come to the our delete
+
+98
+00:07:09,440 --> 00:07:13,130
+basket end point and continue with the delete basket command handler.
+
+99
+00:07:13,130 --> 00:07:16,490
+And this will be performed the delete basket from the database.
+
+100
+00:07:16,490 --> 00:07:22,820
+And after that remove async method will provide to delete these username key information from the Redis
+
+101
+00:07:22,820 --> 00:07:23,240
+cache.
+
+102
+00:07:23,240 --> 00:07:29,600
+So first of all let's delete from the database using the id distributed session operation.
+
+103
+00:07:29,600 --> 00:07:36,590
+So after that we will remove the cache with using the cache object from the distributed cache and returning
+
+104
+00:07:36,590 --> 00:07:39,140
+the tour information so it is returned back.
+
+105
+00:07:39,140 --> 00:07:39,950
+The is success.
+
+106
+00:07:39,950 --> 00:07:41,330
+That means delete operation.
+
+107
+00:07:41,330 --> 00:07:43,730
+Perform both database and redis cache.
+
+108
+00:07:43,730 --> 00:07:46,670
+We can confirm from the our interactive terminal.
+
+109
+00:07:46,670 --> 00:07:51,560
+If you come here and run again the keys command and hit the enter.
+
+110
+00:07:51,560 --> 00:07:56,210
+This time you can see that we don't have any boolean key under the.
+
+111
+00:07:56,530 --> 00:07:57,730
+This distributed cache.
+
+112
+00:07:57,730 --> 00:08:03,880
+So as you can see that we have successfully connected and test our basket microservices with Redis and
+
+113
+00:08:03,880 --> 00:08:07,030
+demonstrate the effective implementation of distributed cache.
+

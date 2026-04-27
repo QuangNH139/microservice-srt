@@ -1,0 +1,220 @@
+1
+00:00:00,200 --> 00:00:04,430
+In this video we are going to learn vertical slice architecture.
+
+2
+00:00:04,790 --> 00:00:08,480
+Vertical slice architecture introduced by Jaime Bogaerts.
+
+3
+00:00:08,480 --> 00:00:15,560
+And it offers this architecture against two traditional layered onion clean architecture approaches.
+
+4
+00:00:16,070 --> 00:00:22,790
+Vertical Slice Architecture aims to organize code around specific features or use cases, rather than
+
+5
+00:00:22,790 --> 00:00:26,630
+the technical concerns in a vertical slice architecture.
+
+6
+00:00:26,660 --> 00:00:33,260
+A feature is implemented across all layers of the software, from the user interface to the database.
+
+7
+00:00:34,100 --> 00:00:40,910
+This approach is often used in the development of complex, feature rich applications, particularly
+
+8
+00:00:40,910 --> 00:00:43,070
+those that are delivered over the web.
+
+9
+00:00:43,760 --> 00:00:50,120
+Vertical slice architecture is dividing an application into distinct features or functionalities, and
+
+10
+00:00:50,120 --> 00:00:54,050
+each of them cuts through all of the layers of the application.
+
+11
+00:00:54,680 --> 00:01:01,880
+This approach is in contrast to the traditional n-tier or layered architectures, where the application
+
+12
+00:01:01,880 --> 00:01:03,410
+is divided horizontally.
+
+13
+00:01:03,920 --> 00:01:10,580
+So that means, unlike the traditional n-tier or layered architectures where the application is divided
+
+14
+00:01:10,580 --> 00:01:11,480
+horizontally.
+
+15
+00:01:11,480 --> 00:01:17,090
+As you can see, the image, presentation, application and data layers, the vertical slice architectures
+
+16
+00:01:17,090 --> 00:01:21,950
+divide an application vertically based on the features or functionalities.
+
+17
+00:01:22,760 --> 00:01:26,450
+So let's see the characteristics of the vertical slice architecture.
+
+18
+00:01:26,450 --> 00:01:28,640
+Of course, the first characteristic is.
+
+19
+00:01:28,640 --> 00:01:32,510
+The application is divided into feature based slices.
+
+20
+00:01:32,510 --> 00:01:37,730
+So the application is divided into slices based on the features or use cases.
+
+21
+00:01:37,790 --> 00:01:44,120
+Each slice represents a complete vertical pathway through the application stack, including the user
+
+22
+00:01:44,120 --> 00:01:51,440
+interface, business logic, and data access layers, and each slice is self-contained and independent.
+
+23
+00:01:51,800 --> 00:01:58,670
+That means each vertical slice is intended to be self-contained and independent from other slices.
+
+24
+00:01:58,670 --> 00:02:05,090
+This means that a single feature can be developed, tested, and deployed without impacting other parts
+
+25
+00:02:05,090 --> 00:02:06,140
+of the application.
+
+26
+00:02:07,250 --> 00:02:12,860
+There are reduced dependencies between different parts of the application by focusing on the vertical
+
+27
+00:02:12,860 --> 00:02:17,960
+slices, dependencies between different areas of the application are minimized.
+
+28
+00:02:17,960 --> 00:02:24,680
+Each slice can be seen as a mini application with its own distinct functionality and dependencies.
+
+29
+00:02:25,920 --> 00:02:29,250
+It promotes the use of the cross-functional teams.
+
+30
+00:02:29,250 --> 00:02:35,880
+Development teams working with the vertical slice architecture are often cross functional, containing
+
+31
+00:02:35,880 --> 00:02:41,880
+all the skills necessary to develop a feature from start to finish, which promotes a more holistic
+
+32
+00:02:41,880 --> 00:02:47,520
+view of the development and the architecture supports scalability and maintainability.
+
+33
+00:02:47,550 --> 00:02:51,810
+This architecture allows for better scalability and maintainability.
+
+34
+00:02:51,870 --> 00:02:58,530
+As the application grows, new features can be added as a Neve slices without significantly impacting
+
+35
+00:02:58,530 --> 00:03:03,780
+the existing code, and also it allows for improved testing and deployment process.
+
+36
+00:03:03,810 --> 00:03:10,080
+Vertical slices can be individually tested and deployed, which simplifies the testing process, and
+
+37
+00:03:10,080 --> 00:03:13,320
+it can lead to more reliable and faster deployments.
+
+38
+00:03:14,130 --> 00:03:20,160
+Vertical slice is an internal application architecture pattern that every microservices can follow.
+
+39
+00:03:20,190 --> 00:03:22,590
+This architecture in their internal code.
+
+40
+00:03:22,590 --> 00:03:24,990
+Organizations in the microservices.
+
+41
+00:03:25,020 --> 00:03:31,290
+Every microservice handle a specific piece of the functionality and communicate with other services
+
+42
+00:03:31,290 --> 00:03:33,270
+through well defined interfaces.
+
+43
+00:03:34,110 --> 00:03:37,440
+So let's see the advantages of the vertical slice architecture.
+
+44
+00:03:37,470 --> 00:03:41,220
+Vertical slice architecture offers several benefits.
+
+45
+00:03:41,250 --> 00:03:47,400
+It allows for focused development where the teams can concentrate on one feature at a time.
+
+46
+00:03:47,430 --> 00:03:54,030
+It simplifies refactoring and upgrades, since changes in one slice usually don't affect others.
+
+47
+00:03:54,060 --> 00:04:00,480
+It aligns well with the agile and DevOps practices, supporting incremental development and continuous
+
+48
+00:04:00,480 --> 00:04:01,110
+delivery.
+
+49
+00:04:01,410 --> 00:04:05,520
+However, there are also challenges with using the vertical slice.
+
+50
+00:04:05,520 --> 00:04:11,760
+You might encounter duplication of code across slices, particularly for common functionalities.
+
+51
+00:04:11,760 --> 00:04:18,120
+There is a learning curve involved, especially for teams opposed to the traditional architectures.
+
+52
+00:04:18,120 --> 00:04:24,990
+The design of the each slice requires careful consideration in order to ensure independence and maintainability.
+
+53
+00:04:25,350 --> 00:04:32,040
+So vertical slice architecture is a powerful approach for developing complex applications where modularity
+
+54
+00:04:32,040 --> 00:04:34,020
+and rapid development are crucial.
+
+55
+00:04:34,020 --> 00:04:39,240
+So we will also use vertical slice architecture into our catalog and basket microservices.
+

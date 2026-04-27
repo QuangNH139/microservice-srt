@@ -1,0 +1,80 @@
+1
+00:00:00,140 --> 00:00:05,210
+In this video we are going to learn challenges of asynchronous communication.
+
+2
+00:00:05,240 --> 00:00:09,860
+The first challenges is single point of failure message brokers.
+
+3
+00:00:10,430 --> 00:00:17,000
+The message broker becomes a single point of failure if we don't configure the message broker properly.
+
+4
+00:00:17,060 --> 00:00:20,090
+It can become a problem for our architecture.
+
+5
+00:00:20,660 --> 00:00:25,670
+We shouldn't rely on all communication with a single node of the message brokers.
+
+6
+00:00:25,670 --> 00:00:33,620
+Instead, we should scale it and use hybrid communication with synchronous and asynchronous in our cases.
+
+7
+00:00:35,220 --> 00:00:37,500
+And second challenges is debugging.
+
+8
+00:00:37,530 --> 00:00:44,280
+It is often difficult to debug issues with asynchronous communication, because it can be hard to trace
+
+9
+00:00:44,280 --> 00:00:47,940
+the flow of the single operation across service boundaries.
+
+10
+00:00:48,060 --> 00:00:55,560
+Since there is no clear data flow now and messages get processed when they arrive to consumer systems,
+
+11
+00:00:55,560 --> 00:01:01,800
+debugging of the flow and the payload of the events takes so many times and hard to debug at the same
+
+12
+00:01:01,800 --> 00:01:02,430
+time.
+
+13
+00:01:02,640 --> 00:01:09,570
+So this is why it is usually a good idea to generate a unique ID when the message is received, so that
+
+14
+00:01:09,570 --> 00:01:12,840
+you can track with the unique ID into the logs.
+
+15
+00:01:12,870 --> 00:01:15,450
+Also, we can call this correlation ID.
+
+16
+00:01:15,750 --> 00:01:22,620
+And another challenges is at least once delivery and not guarantee an order of messages.
+
+17
+00:01:23,310 --> 00:01:29,250
+Message broker systems are a very good fit for event driven microservice communication, but mostly
+
+18
+00:01:29,250 --> 00:01:33,630
+they use at least once delivery and not guarantee order of messages.
+
+19
+00:01:33,630 --> 00:01:40,980
+So we should embrace these message delivery mechanism with applying idempotency consumers and not designing
+
+20
+00:01:40,980 --> 00:01:42,420
+Fifo requires cases.
+

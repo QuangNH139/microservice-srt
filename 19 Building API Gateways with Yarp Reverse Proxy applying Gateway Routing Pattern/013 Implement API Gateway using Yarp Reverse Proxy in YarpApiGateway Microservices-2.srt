@@ -1,0 +1,300 @@
+1
+00:00:00,140 --> 00:00:06,170
+In this video, we are going to continue to configure Yarp reverse proxy in the Yarp API gateway.
+
+2
+00:00:06,170 --> 00:00:07,130
+Microservices.
+
+3
+00:00:07,130 --> 00:00:11,840
+In order to route the traffic for catalog basket and ordering microservices.
+
+4
+00:00:11,840 --> 00:00:17,720
+That means this time we will extend the configuration file including the basket and ordering rod and
+
+5
+00:00:17,720 --> 00:00:18,860
+cluster definitions.
+
+6
+00:00:18,860 --> 00:00:22,340
+If you look at our example, it's the same way with the catalog.
+
+7
+00:00:22,340 --> 00:00:28,040
+We will create basket and ordering route, and we will create basket and ordering cluster and continue
+
+8
+00:00:28,040 --> 00:00:30,560
+with the basket and ordering services for the endpoint.
+
+9
+00:00:30,560 --> 00:00:37,430
+Definition and destination will be the r localhost and 6000 for Docker address for the basket and ordering
+
+10
+00:00:37,430 --> 00:00:38,360
+microservices.
+
+11
+00:00:38,360 --> 00:00:43,010
+If you look at the port numbers that we are going to expose during the course, here, you can see the
+
+12
+00:00:43,010 --> 00:00:50,000
+microservices and microservices, local Docker and Docker inside port numbers for Http and Https.
+
+13
+00:00:50,000 --> 00:00:56,090
+So during the course I'm going to use http port when redirecting from the Yarp API gateway in order
+
+14
+00:00:56,090 --> 00:00:59,540
+to avoid SSL certificate exception for that purpose.
+
+15
+00:00:59,540 --> 00:01:07,340
+For catalog basket and ordering microservices, we will use 6000, 6001 and 6003 port numbers in Docker
+
+16
+00:01:07,340 --> 00:01:08,060
+environment.
+
+17
+00:01:08,060 --> 00:01:14,780
+And after that, when we are deploying Yarp API gateway in Docker network, we can use 8080 port numbers
+
+18
+00:01:14,780 --> 00:01:18,350
+with these catalog basket and ordering API container names.
+
+19
+00:01:18,350 --> 00:01:22,400
+So now let's focus on the Docker environment and Docker port numbers.
+
+20
+00:01:22,550 --> 00:01:28,430
+Please open the application settings Json file and locate the reverse proxy configurations under these
+
+21
+00:01:28,430 --> 00:01:30,260
+application settings Json file.
+
+22
+00:01:30,260 --> 00:01:36,290
+And we will extend the configurations to include routing for the basket and ordering microservices in
+
+23
+00:01:36,290 --> 00:01:39,380
+addition to catalog services already configured in here.
+
+24
+00:01:39,380 --> 00:01:42,770
+So now I am going to remove these reverse proxy configuration.
+
+25
+00:01:42,770 --> 00:01:47,720
+And I'm going to replace with the including all microservices.
+
+26
+00:01:47,720 --> 00:01:53,900
+So if you come here and replace these configurations you can see that we have including all microservices
+
+27
+00:01:53,900 --> 00:01:55,250
+with this configuration.
+
+28
+00:01:55,250 --> 00:01:57,350
+So let me explain one by one.
+
+29
+00:01:57,350 --> 00:02:01,700
+Basically each microservices now has a dedicated route definition.
+
+30
+00:02:01,700 --> 00:02:07,610
+These are the routes collection which including the catalog route basket route and ordering route.
+
+31
+00:02:07,610 --> 00:02:13,640
+And according to this route, for each route we have defined cluster ID which is the catalog cluster
+
+32
+00:02:13,640 --> 00:02:15,920
+basket cluster and ordering cluster.
+
+33
+00:02:15,920 --> 00:02:20,300
+And these cluster definitions is comes after the route definitions.
+
+34
+00:02:20,300 --> 00:02:24,740
+Here you can see the cluster definitions catalog basket and ordering cluster.
+
+35
+00:02:24,740 --> 00:02:31,220
+And each cluster has the destination address that including Http port numbers for catalog 6000 Docker
+
+36
+00:02:31,220 --> 00:02:39,590
+port number and continue with the basket localhost 6001 again http and ordering http localhost 6003.
+
+37
+00:02:39,590 --> 00:02:43,250
+So this is the catalog cluster and destination address definitions.
+
+38
+00:02:43,250 --> 00:02:49,100
+And this is the route definition for each microservices including catalog route and matching pattern
+
+39
+00:02:49,100 --> 00:02:49,400
+is.
+
+40
+00:02:49,400 --> 00:02:53,990
+You can see the catalog service for incoming requests from the client application.
+
+41
+00:02:53,990 --> 00:02:59,900
+And we will redirect each request with coming from these endpoint to the destination address.
+
+42
+00:02:59,900 --> 00:03:05,930
+And in here you can see the path expecting from the basket cluster and basket route basket dish service
+
+43
+00:03:05,930 --> 00:03:07,970
+in the beginning of the request.
+
+44
+00:03:07,970 --> 00:03:14,000
+And for ordering microservices the matching pattern expecting slash ordering dish service, which is
+
+45
+00:03:14,000 --> 00:03:20,150
+the incoming request, comes from the endpoint to the irb API gateway, resurrecting to corresponding
+
+46
+00:03:20,150 --> 00:03:21,890
+route and cluster definitions.
+
+47
+00:03:21,890 --> 00:03:25,700
+So please develop these configurations into your computer.
+
+48
+00:03:25,700 --> 00:03:28,100
+We basically start with the route definition.
+
+49
+00:03:28,100 --> 00:03:30,500
+And each microservice has dedicated route.
+
+50
+00:03:30,500 --> 00:03:37,160
+And these routes are mapped to their respective clusters with the catch all path pattern, and allowing
+
+51
+00:03:37,160 --> 00:03:40,700
+any path under these routes to be captured and forwarded.
+
+52
+00:03:40,700 --> 00:03:46,280
+So each route act as an entry point for the request targeting to specified microservices.
+
+53
+00:03:46,280 --> 00:03:52,610
+And we said that this catch all pattern in the path ensures that all requests under a specified route,
+
+54
+00:03:52,610 --> 00:03:59,780
+which in this case catalog service, are captured and redirected to belonging destination address.
+
+55
+00:03:59,780 --> 00:04:05,870
+And we have also transformed configuration and the transform configuration with the catch all is used
+
+56
+00:04:05,870 --> 00:04:09,500
+to forward the incoming request path and query to the destination.
+
+57
+00:04:09,500 --> 00:04:10,520
+Microservices.
+
+58
+00:04:10,520 --> 00:04:17,029
+And after defining this route definition, we have a cluster definitions and cluster represents a groups
+
+59
+00:04:17,029 --> 00:04:23,210
+of destinations microservices that Earp can forward to request to, and each cluster has one or more
+
+60
+00:04:23,210 --> 00:04:23,960
+destination.
+
+61
+00:04:23,960 --> 00:04:30,980
+In our case, each cluster has a single destination pointing to the Docker address of the are microservices.
+
+62
+00:04:30,980 --> 00:04:36,860
+After defining these configurations on your computer, we can see as an example of the reverse proxy
+
+63
+00:04:36,860 --> 00:04:37,730
+redirection.
+
+64
+00:04:37,730 --> 00:04:40,220
+Here you can see as an example usage.
+
+65
+00:04:40,220 --> 00:04:47,450
+If you send the https localhost 5054, this is the URL address for the irb api gateway.
+
+66
+00:04:47,450 --> 00:04:53,750
+And if you send the slash catalog service slash products, this will be redirect to us http localhost
+
+67
+00:04:53,750 --> 00:04:58,160
+6000, which is the Docker catalog microservice address and slash products.
+
+68
+00:04:58,160 --> 00:04:59,570
+So that means these are.
+
+69
+00:04:59,740 --> 00:05:02,380
+This will be replaced from the this address.
+
+70
+00:05:02,380 --> 00:05:06,700
+So as the same way we can see the basket service example.
+
+71
+00:05:06,700 --> 00:05:15,070
+If you center slash basket service slash basket and slash then this will be get the http localhost 6001
+
+72
+00:05:15,070 --> 00:05:18,310
+which is the basket microservices docker URL address.
+
+73
+00:05:18,310 --> 00:05:25,330
+And this will be contained with the slash basket and slash w n which is the end of the our irb API gateway
+
+74
+00:05:25,330 --> 00:05:25,930
+endpoint.
+
+75
+00:05:25,930 --> 00:05:31,570
+So this is the example usage of the irb API gateway and reverse proxy configuration.
+

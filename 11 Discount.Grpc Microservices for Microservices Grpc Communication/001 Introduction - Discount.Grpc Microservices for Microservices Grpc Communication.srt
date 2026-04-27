@@ -1,0 +1,160 @@
+1
+00:00:00,140 --> 00:00:07,340
+In this section, we are going to develop discount gRPC microservices with SQLite for inter service
+
+2
+00:00:07,340 --> 00:00:09,920
+communication using the gRPC.
+
+3
+00:00:10,920 --> 00:00:12,750
+So let's check our big picture.
+
+4
+00:00:12,750 --> 00:00:14,790
+What we are going to build one by one.
+
+5
+00:00:14,820 --> 00:00:22,710
+As you can see that we are in here and start to developing discount gRPC microservices with SQLite database.
+
+6
+00:00:22,710 --> 00:00:30,030
+And we will build highly performant inter-service gRPC communication between discount and basket microservices.
+
+7
+00:00:31,110 --> 00:00:35,580
+And here you can see the internal architecture of the discount gRPC microservices.
+
+8
+00:00:35,580 --> 00:00:42,480
+According to these architecture we basically expose a gRPC and paint to the basket microservices with
+
+9
+00:00:42,480 --> 00:00:44,160
+developing protobuf files.
+
+10
+00:00:44,340 --> 00:00:50,460
+And these protobuf files will be implemented in C sharp application, which is our discount gRPC application
+
+11
+00:00:50,460 --> 00:00:52,740
+and will be trigger our business logic.
+
+12
+00:00:52,740 --> 00:00:59,610
+And as an application architecture we will use n layer architecture and we will communicate with database
+
+13
+00:00:59,610 --> 00:01:02,520
+using the Entity Framework core ORM tool.
+
+14
+00:01:02,520 --> 00:01:05,190
+And our database will be SQLite.
+
+15
+00:01:05,610 --> 00:01:09,990
+And after that we will containerize these discount gRPC microservices.
+
+16
+00:01:09,990 --> 00:01:11,010
+In the current moment.
+
+17
+00:01:11,010 --> 00:01:15,750
+So that means we can say that we will develop discount gRPC microservices.
+
+18
+00:01:15,750 --> 00:01:20,160
+And this will be ASP.Net gRPC API application template.
+
+19
+00:01:20,160 --> 00:01:24,510
+And we will build highly performant inter service gRPC communication.
+
+20
+00:01:24,510 --> 00:01:27,240
+And this communication will be held by the proto files.
+
+21
+00:01:27,240 --> 00:01:29,040
+To perform Crud operations.
+
+22
+00:01:29,040 --> 00:01:34,290
+We will expose gRPC services with creating protobuf message files.
+
+23
+00:01:34,290 --> 00:01:39,810
+And we will use SQLite database connection and conversation with discount gRPC.
+
+24
+00:01:39,960 --> 00:01:46,860
+And we will use Entity Framework core ORM system which using the SQLite data provider.
+
+25
+00:01:46,860 --> 00:01:52,770
+And this will be perform the migrations and simplify the data access and ensure the high performance.
+
+26
+00:01:52,770 --> 00:01:57,780
+And as an application architecture we will follow the Unlayered architecture implementation.
+
+27
+00:01:57,780 --> 00:02:04,050
+And finally we will containerize discount microservices with SQLite database using the Docker compose.
+
+28
+00:02:04,050 --> 00:02:10,830
+So now let me explain why we use these discount gRPC microservices and what is our main use case.
+
+29
+00:02:10,860 --> 00:02:17,520
+Our main use case is add item into shopping cart in this country RPC microservices we are going to expose
+
+30
+00:02:17,520 --> 00:02:20,970
+gRPC services for basket API microservices.
+
+31
+00:02:20,970 --> 00:02:27,450
+And when the client add item into shopping cart basket, microservices will consume this discount.
+
+32
+00:02:27,450 --> 00:02:32,220
+gRPC services in order to get latest discount on that product item.
+
+33
+00:02:32,220 --> 00:02:34,980
+That's why we will develop discount gRPC.
+
+34
+00:02:34,980 --> 00:02:41,940
+And the main idea of this microservices will be be performant as much as possible, because discount
+
+35
+00:02:41,940 --> 00:02:45,510
+microservices will synchronously call from the shopping cart.
+
+36
+00:02:45,510 --> 00:02:51,030
+Microservices and shopping cart will wait a response in order to calculate latest discount.
+
+37
+00:02:51,030 --> 00:02:54,120
+So the service invocation time will be shortest.
+
+38
+00:02:54,120 --> 00:03:00,150
+That means we should achieve maximum performance and reduce the service invocation time and ensuring
+
+39
+00:03:00,150 --> 00:03:04,740
+the discount microservices respond quickly to synchronous call from the basket.
+
+40
+00:03:04,740 --> 00:03:05,730
+Microservices.
+

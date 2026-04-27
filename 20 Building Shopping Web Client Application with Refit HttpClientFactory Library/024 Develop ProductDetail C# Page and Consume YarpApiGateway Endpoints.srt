@@ -1,0 +1,184 @@
+1
+00:00:00,140 --> 00:00:07,160
+In this video we are going to develop product detail page and consume Erb API gateway and using the
+
+2
+00:00:07,160 --> 00:00:08,780
+API service interfaces.
+
+3
+00:00:08,780 --> 00:00:11,900
+This is very similar with the product list page.
+
+4
+00:00:11,900 --> 00:00:17,600
+And I am going to develop the same way, removing the unnecessary using statement and come to this point
+
+5
+00:00:17,600 --> 00:00:20,240
+and inject our recurring services.
+
+6
+00:00:20,240 --> 00:00:24,260
+These are the eye catalog service and eye basket service.
+
+7
+00:00:24,260 --> 00:00:29,420
+And also we need to inject product detail module as a Ilogger interface.
+
+8
+00:00:29,420 --> 00:00:35,450
+And this will be primary constructor of the three services that we are going to use when implementing
+
+9
+00:00:35,450 --> 00:00:37,760
+on gate and on post async methods.
+
+10
+00:00:37,760 --> 00:00:42,560
+And after injecting these services, I am going to define our properties.
+
+11
+00:00:42,560 --> 00:00:48,440
+And the first and main property is public product module product get set and default value.
+
+12
+00:00:48,470 --> 00:00:54,590
+This will be representing our a single product that we will represent in the product detail C-sharp
+
+13
+00:00:54,740 --> 00:00:55,610
+HTML file.
+
+14
+00:00:55,610 --> 00:01:02,540
+And just after that we have some Bindable properties which are the color and quantity that can be settable
+
+15
+00:01:02,540 --> 00:01:03,770
+on the HTML page.
+
+16
+00:01:03,770 --> 00:01:08,720
+That's why I have added these two property with bind property attributes.
+
+17
+00:01:08,720 --> 00:01:15,530
+After developing these color and quantity properties, we can start to implement our own gate async
+
+18
+00:01:15,530 --> 00:01:16,010
+method.
+
+19
+00:01:16,010 --> 00:01:21,050
+First of all, I'm going to change method signature according to available function.
+
+20
+00:01:21,050 --> 00:01:24,290
+This is the public async task I action result on.
+
+21
+00:01:24,290 --> 00:01:29,480
+Get async and we will get product id with value as a parameter of this get method.
+
+22
+00:01:29,480 --> 00:01:36,710
+And after that I'm going to implement this function which basically send http get request to our catalog
+
+23
+00:01:36,710 --> 00:01:38,420
+service Getproduct method.
+
+24
+00:01:38,420 --> 00:01:45,440
+This will be representing to calling Erb API Gateway to Catalog services with passing the product ID
+
+25
+00:01:45,440 --> 00:01:49,760
+and respond back to us a single product, and this is available function.
+
+26
+00:01:49,760 --> 00:01:55,040
+After getting the single product, we are passing this product into our product model.
+
+27
+00:01:55,040 --> 00:01:56,210
+Product property.
+
+28
+00:01:56,420 --> 00:02:03,230
+After populating our product data, we can return the page and we can completed our on gate async method.
+
+29
+00:02:03,230 --> 00:02:08,330
+And just after that I'm going to continue with the on post add to cart operation.
+
+30
+00:02:08,330 --> 00:02:13,250
+And I am going to copy and paste all method at the same way with the product list.
+
+31
+00:02:13,250 --> 00:02:18,230
+And this will be including add to cart operation with incoming product ID.
+
+32
+00:02:18,230 --> 00:02:23,300
+And this is the exact same method that we have developed into the product list.
+
+33
+00:02:23,300 --> 00:02:24,290
+See page.
+
+34
+00:02:24,290 --> 00:02:29,540
+Here you can see that we have similar method in the on post add to cart method in the product list.
+
+35
+00:02:29,540 --> 00:02:36,020
+So the idea is that we will put this method whenever we are submitting to add the cart operation, and
+
+36
+00:02:36,020 --> 00:02:42,350
+whenever we are using and submitting add to cart operation into product item partial HTML page.
+
+37
+00:02:42,350 --> 00:02:47,810
+So please copy also this method and available into our product detail module class.
+
+38
+00:02:47,810 --> 00:02:52,670
+And after that I am going to right click and build the project and validate.
+
+39
+00:02:52,670 --> 00:02:55,670
+Our HTML page is validate or not.
+
+40
+00:02:55,670 --> 00:02:59,930
+So after building the project we can see some of the exceptions.
+
+41
+00:02:59,930 --> 00:03:01,580
+Yes, we have two exceptions.
+
+42
+00:03:01,580 --> 00:03:06,200
+Regarding to summary, we don't have summary property under the property.
+
+43
+00:03:06,200 --> 00:03:11,720
+Instead of that I am going to using the description and just after that there is no exception.
+
+44
+00:03:11,720 --> 00:03:13,970
+I'm going to right click and build again.
+
+45
+00:03:13,970 --> 00:03:19,580
+And here you can see that this time we have built successfully and we have completed our product detail
+
+46
+00:03:19,580 --> 00:03:20,060
+page.
+

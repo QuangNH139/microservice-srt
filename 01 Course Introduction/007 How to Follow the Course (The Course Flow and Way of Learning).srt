@@ -1,0 +1,180 @@
+1
+00:00:00,330 --> 00:00:06,330
+In this video, we are going to learn how to follow the course, including the course flow and the way
+
+2
+00:00:06,330 --> 00:00:07,320
+of learning.
+
+3
+00:00:07,800 --> 00:00:11,520
+Our journey begins with the development of the microservices.
+
+4
+00:00:11,520 --> 00:00:16,590
+You can see in here and we will starting with the catalog API microservices.
+
+5
+00:00:16,650 --> 00:00:22,590
+Here we will embrace the vertical slice architecture and implements synchronous pattern.
+
+6
+00:00:22,590 --> 00:00:28,500
+And this will be a foundational step and sets the stage for the rest of our microservices.
+
+7
+00:00:29,290 --> 00:00:35,920
+Next we will shift our focus to the basket microservices, where we will apply the distributed caching
+
+8
+00:00:35,920 --> 00:00:41,260
+using Redis, and this will enhance the performance and scalability of our microservices.
+
+9
+00:00:41,890 --> 00:00:46,210
+Following that we will create discount gRPC microservices.
+
+10
+00:00:46,240 --> 00:00:53,110
+This service will demonstrate efficient microservice communications using gRPC, providing us with a
+
+11
+00:00:53,110 --> 00:00:55,840
+performant inter-service communication channel.
+
+12
+00:00:55,870 --> 00:00:59,350
+Here you can see the basket and discount communication as a gRPC.
+
+13
+00:01:00,400 --> 00:01:07,060
+And after that the development of the ordering microservices comes next, where we will apply a clean
+
+14
+00:01:07,060 --> 00:01:11,260
+architecture coupled with a six design pattern implementation.
+
+15
+00:01:11,290 --> 00:01:16,120
+This will ensure our microservices is well structured and maintainable.
+
+16
+00:01:17,110 --> 00:01:23,230
+And as we progress with this way, we will implement asynchronous communication patterns with RabbitMQ
+
+17
+00:01:23,230 --> 00:01:24,970
+and Masstransit library.
+
+18
+00:01:25,210 --> 00:01:33,640
+This will facilitate the checkout basket process between the basket and ordering microservices in asynchronously.
+
+19
+00:01:35,360 --> 00:01:41,930
+And after that, the integral part of our architecture is the API gateway, and we will build an API
+
+20
+00:01:41,930 --> 00:01:44,390
+gateway using the Erb reverse proxy.
+
+21
+00:01:44,600 --> 00:01:51,500
+Applying the gateway routing pattern in order to effectively redirecting the request to the appropriate
+
+22
+00:01:51,500 --> 00:01:53,000
+internal microservices.
+
+23
+00:01:53,820 --> 00:01:56,370
+And lastly, we will develop shopping map.
+
+24
+00:01:56,370 --> 00:02:01,380
+In order to tie everything together, we will build the shopping web client application.
+
+25
+00:02:01,380 --> 00:02:02,610
+This is frontend.
+
+26
+00:02:02,610 --> 00:02:09,780
+Application will consume our microservices using the API gateway providing tangible user focused interface
+
+27
+00:02:09,780 --> 00:02:11,460
+for our entire system.
+
+28
+00:02:12,530 --> 00:02:15,950
+And here you can see the way of learning methodology.
+
+29
+00:02:15,980 --> 00:02:22,610
+During the whole course for each section, we will adhere to our Way of learning methodology, which
+
+30
+00:02:22,610 --> 00:02:25,430
+is consist of the four key steps.
+
+31
+00:02:25,430 --> 00:02:29,930
+These are the analyze, learn, develop and test and deploy.
+
+32
+00:02:30,110 --> 00:02:38,000
+So we will start analyzing both domain and technical analysis for each microservices, ensuring we understand
+
+33
+00:02:38,000 --> 00:02:42,680
+the business requirement and the technical landscape for particular microservices.
+
+34
+00:02:43,100 --> 00:02:49,820
+After that, we will delve into learning patterns and principles relevant to our current microservices,
+
+35
+00:02:49,820 --> 00:02:53,480
+ensuring we are equipped with the necessary knowledge to proceed.
+
+36
+00:02:54,140 --> 00:03:01,190
+And after that, with our analyze complete and knowledge in our hand, we will move to development,
+
+37
+00:03:01,190 --> 00:03:03,320
+putting our learnings into practice.
+
+38
+00:03:03,320 --> 00:03:05,930
+So that means we will develop our microservices with.
+
+39
+00:03:06,080 --> 00:03:07,280
+Net and C sharp.
+
+40
+00:03:07,280 --> 00:03:10,790
+And of course no development is complete without testing.
+
+41
+00:03:10,790 --> 00:03:16,730
+We will ensure our microservice are robust and ready for production after performing the testing.
+
+42
+00:03:16,820 --> 00:03:24,470
+And lastly, and finally, we will containerize and orchestrate our microservices, deploying them into
+
+43
+00:03:24,470 --> 00:03:27,200
+a Docker environment for real world use case.
+
+44
+00:03:27,200 --> 00:03:33,560
+By following these steps, we will have a holistic understanding of our e-commerce microservices, both
+
+45
+00:03:33,560 --> 00:03:35,600
+design and implementation steps.
+

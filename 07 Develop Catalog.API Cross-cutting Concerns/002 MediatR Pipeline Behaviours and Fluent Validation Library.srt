@@ -1,0 +1,212 @@
+1
+00:00:00,200 --> 00:00:06,560
+In this video we are going to learn mediator pipeline behavior and fluent validation library.
+
+2
+00:00:07,130 --> 00:00:12,920
+Mediator is a popular library in dotnet used for implementing the mediator pattern.
+
+3
+00:00:13,580 --> 00:00:20,990
+One of its powerful feature is pipeline behaviors, which allows us to introduce additional logic into
+
+4
+00:00:20,990 --> 00:00:27,650
+the request handling process such as validation, logging, exception handling, and performance tracking.
+
+5
+00:00:28,610 --> 00:00:32,840
+Pipeline behaviors act as a middleware in the mediator library.
+
+6
+00:00:32,900 --> 00:00:39,920
+They wrap around the request handling process, enabling us to implement cross-cutting concerns without
+
+7
+00:00:39,920 --> 00:00:42,200
+cluttering the handlers themselves.
+
+8
+00:00:43,070 --> 00:00:49,850
+A pipeline behavior is essentially a class that implements I pipeline behavior interface with t request
+
+9
+00:00:49,850 --> 00:00:50,900
+and t response.
+
+10
+00:00:50,930 --> 00:00:58,700
+It provides the handle method where you can execute the code before and after the next delegate is invoked.
+
+11
+00:00:59,570 --> 00:01:03,800
+Here you can see that how mediator pipeline behaviors works.
+
+12
+00:01:03,800 --> 00:01:07,490
+You can see that mediator will be trigger the handle method.
+
+13
+00:01:07,490 --> 00:01:11,960
+But before that we can invoke the preprocessor behavior.
+
+14
+00:01:11,960 --> 00:01:16,160
+And after that you can invoke the post-processor behavior.
+
+15
+00:01:16,160 --> 00:01:18,350
+So you can see an example of that.
+
+16
+00:01:18,350 --> 00:01:22,640
+The request comes into the first middleware and perform the first logic.
+
+17
+00:01:22,640 --> 00:01:28,760
+And after that invoke the next method in order to pass the middleware to and middleware two.
+
+18
+00:01:28,760 --> 00:01:36,350
+Also implement the actual logic and invoke the next middleware with next method, and after that, and
+
+19
+00:01:36,350 --> 00:01:42,710
+middleware three is the last middleware that performs the actual logic and response back to the middleware
+
+20
+00:01:42,710 --> 00:01:43,880
+two and one.
+
+21
+00:01:43,880 --> 00:01:49,130
+That means this will be invoke post-process behaviors and return back to the response.
+
+22
+00:01:49,130 --> 00:01:52,970
+So here you can see another example which is the tracing behavior.
+
+23
+00:01:52,970 --> 00:01:57,500
+So in the pipeline behavior this is tracing the logic.
+
+24
+00:01:57,500 --> 00:01:59,690
+And after that invoking await.
+
+25
+00:01:59,690 --> 00:02:00,560
+Next method.
+
+26
+00:02:00,560 --> 00:02:03,710
+And this will be handled actual handler method.
+
+27
+00:02:03,710 --> 00:02:07,280
+And after that this will goes to post pipeline behavior.
+
+28
+00:02:07,280 --> 00:02:12,080
+And this will be traced after operation under the post processor behavior.
+
+29
+00:02:12,080 --> 00:02:15,350
+And here you can see basic code example.
+
+30
+00:02:15,350 --> 00:02:20,180
+That is a pipeline behavior that locks the execution time of the request.
+
+31
+00:02:20,180 --> 00:02:22,160
+This is the logging behavior.
+
+32
+00:02:22,160 --> 00:02:27,350
+And in the handle method this will be basically logging the execution time.
+
+33
+00:02:27,350 --> 00:02:30,800
+And after that handle the actual handle logic.
+
+34
+00:02:31,370 --> 00:02:34,490
+So this was the mediator pipeline behaviors.
+
+35
+00:02:34,490 --> 00:02:41,630
+And now we will focus on the fluent validation library and how mediator pipelines work with the fluent
+
+36
+00:02:41,630 --> 00:02:42,800
+validation libraries.
+
+37
+00:02:42,830 --> 00:02:44,480
+What is fluent validation?
+
+38
+00:02:44,510 --> 00:02:49,970
+Fluent validation is a dotnet library for building strongly typed validation rules.
+
+39
+00:02:49,970 --> 00:02:57,770
+It is known for its clean syntax and ease of use, making validation logics more readable and maintainable,
+
+40
+00:02:58,580 --> 00:03:05,270
+so we can integrate fluent validation and with mediator to validate requests before they reach the actual
+
+41
+00:03:05,300 --> 00:03:05,900
+handler.
+
+42
+00:03:05,900 --> 00:03:11,360
+This integration happens within a pipeline behavior, especially the pipeline behaviors.
+
+43
+00:03:12,200 --> 00:03:19,370
+So fluent validation allows you to define validation rules in a separate classes, using a fluent interface
+
+44
+00:03:19,370 --> 00:03:24,530
+to specify conditions that each property of your models must satisfy.
+
+45
+00:03:24,530 --> 00:03:27,260
+You can see the image on the slide.
+
+46
+00:03:27,260 --> 00:03:33,050
+This is an example of validation class for a request model specifying various validation rules.
+
+47
+00:03:34,190 --> 00:03:37,280
+So combining mediator with fluent validation.
+
+48
+00:03:37,280 --> 00:03:44,240
+Centralized or cross-cutting concerns like validation making our code cleaner and more maintainable.
+
+49
+00:03:44,240 --> 00:03:48,680
+It is also ensures that our business logic only process valid data.
+
+50
+00:03:48,770 --> 00:03:50,690
+So this will be an example.
+
+51
+00:03:50,690 --> 00:03:58,100
+This is working Pre-processor that is validating the create product command and checking the members
+
+52
+00:03:58,100 --> 00:04:00,530
+name, category, image file price.
+
+53
+00:04:00,530 --> 00:04:04,310
+And these should not be empty and the price should be greater than zero.
+

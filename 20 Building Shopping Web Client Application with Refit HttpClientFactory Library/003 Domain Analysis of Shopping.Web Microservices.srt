@@ -1,0 +1,124 @@
+1
+00:00:00,110 --> 00:00:05,090
+In this video we are going to do domain analysis of the shopping web microservices.
+
+2
+00:00:05,120 --> 00:00:10,820
+This will be include domain models, application use cases, presentation layer and underlying data
+
+3
+00:00:10,820 --> 00:00:11,720
+structures.
+
+4
+00:00:11,750 --> 00:00:16,040
+So let's start with the domain analysis of the shopping web microservices.
+
+5
+00:00:16,070 --> 00:00:19,760
+We have only three main domain model per microservices.
+
+6
+00:00:19,760 --> 00:00:23,630
+These will be include catalog basket and ordering domain model.
+
+7
+00:00:23,630 --> 00:00:26,840
+And we will create sub domain models per microservices.
+
+8
+00:00:26,840 --> 00:00:31,430
+And we will go to Andpoint classes and use response object of the microservices.
+
+9
+00:00:31,430 --> 00:00:37,640
+For example, for catalog we will use product Getproduct response and get product by id response.
+
+10
+00:00:37,640 --> 00:00:43,460
+For basket we will get the and create the shopping cart, shopping cart item basket checkout models
+
+11
+00:00:43,460 --> 00:00:44,360
+for ordering.
+
+12
+00:00:44,360 --> 00:00:49,460
+We can create order DTO, order item, DTO and value objects and so on.
+
+13
+00:00:49,820 --> 00:00:54,710
+So the next thing we can check application use cases of the shopping web microservices.
+
+14
+00:00:54,710 --> 00:00:57,320
+We should define our shopping web use cases.
+
+15
+00:00:57,320 --> 00:01:00,860
+And our main use cases are listing products and categories.
+
+16
+00:01:00,860 --> 00:01:04,910
+Add product into shopping cart and checkout the shopping cart and create order.
+
+17
+00:01:04,910 --> 00:01:09,860
+So we will use Erb API gateway endpoints in order to perform these use cases.
+
+18
+00:01:09,860 --> 00:01:14,180
+These will be including the Http Get to Catalog Service products.
+
+19
+00:01:14,180 --> 00:01:19,880
+And after that we will create a new basket with Http post request to basket service basket.
+
+20
+00:01:19,880 --> 00:01:24,590
+And after that we will check out this basket with sending http post request to these endpoint.
+
+21
+00:01:24,590 --> 00:01:29,780
+And lastly, we can get the orders with ordering service slash orders with sending Http.
+
+22
+00:01:29,780 --> 00:01:34,070
+Get request to ordering microservices over the Erb API gateway endpoints.
+
+23
+00:01:34,070 --> 00:01:39,290
+And after that we can check the presentation layer for the Shopping Web client application.
+
+24
+00:01:39,290 --> 00:01:46,070
+As a presentation layer, we will use ASP.Net Web Application Razor page and this will be includes index,
+
+25
+00:01:46,070 --> 00:01:52,250
+product list, product detail, cart checkout, confirmation order list, contact error and privacy,
+
+26
+00:01:52,280 --> 00:01:58,040
+CSS, HTML files to representing our client application and presentation layers.
+
+27
+00:01:58,040 --> 00:02:02,090
+And just after that, we can check the underlying data structure of the shopping web.
+
+28
+00:02:02,300 --> 00:02:08,720
+As a shopping fact, we have no any data store and no any underlying data structure because this page
+
+29
+00:02:08,720 --> 00:02:09,470
+are consumed.
+
+30
+00:02:09,470 --> 00:02:15,530
+Erb API gateway endpoints using the Revit library, which generated Http client factories in order to
+
+31
+00:02:15,530 --> 00:02:17,120
+perform its use cases.
+

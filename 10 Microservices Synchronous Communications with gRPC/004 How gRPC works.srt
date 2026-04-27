@@ -1,0 +1,48 @@
+1
+00:00:00,110 --> 00:00:03,980
+In this video, we are going to learn how gRPC works.
+
+2
+00:00:04,850 --> 00:00:11,510
+A RPC is a form of client server communication that uses a function called, rather than usual Http
+
+3
+00:00:11,510 --> 00:00:11,810
+call.
+
+4
+00:00:11,810 --> 00:00:17,990
+So in gRPC, a client application can directly call a method on a server application on a different
+
+5
+00:00:17,990 --> 00:00:24,380
+machine like it is a local object, it making it easy for you to build distributed applications and
+
+6
+00:00:24,380 --> 00:00:25,190
+services.
+
+7
+00:00:26,460 --> 00:00:33,960
+As with many RPC systems, gRPC is based on the idea of defining a service that specifies methods,
+
+8
+00:00:33,960 --> 00:00:38,940
+and these can be called remotely with their parameters and return types.
+
+9
+00:00:38,940 --> 00:00:45,810
+On the server side, the server implements this interface and runs a gRPC server to handle client calls.
+
+10
+00:00:46,440 --> 00:00:52,110
+On the client side, the client has a setup that provides the same methods as the server.
+
+11
+00:00:53,490 --> 00:00:59,970
+gRPC client and servers can work and talk to each other in a different of environments, from servers
+
+12
+00:00:59,970 --> 00:01:06,570
+to your own desktop applications, and that can be written in any language that gRPC supports.
+

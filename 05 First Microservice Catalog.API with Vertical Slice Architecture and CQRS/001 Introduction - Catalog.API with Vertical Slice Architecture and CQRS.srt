@@ -1,0 +1,244 @@
+1
+00:00:00,200 --> 00:00:06,800
+In this section, we are going to develop our very first microservices, which is Catholic API with
+
+2
+00:00:06,800 --> 00:00:09,320
+vertical slice architecture and six.
+
+3
+00:00:09,950 --> 00:00:14,930
+So now let's check our big picture and see what we are going to build one by one.
+
+4
+00:00:15,200 --> 00:00:22,100
+As you can see, the image we are in here and start to developing catalog API microservices and catalog
+
+5
+00:00:22,100 --> 00:00:25,490
+API microservices will be used PostgreSQL database.
+
+6
+00:00:25,490 --> 00:00:31,670
+And here you can see the NuGet package that we are going to use when developing our catalog microservices.
+
+7
+00:00:31,670 --> 00:00:37,820
+So we can say that in catalog microservices we will use minimal APIs and latest features of dotnet eight
+
+8
+00:00:37,820 --> 00:00:39,050
+and C 12.
+
+9
+00:00:39,050 --> 00:00:42,230
+And we will implement vertical slice architecture.
+
+10
+00:00:42,230 --> 00:00:45,020
+And we will implement six design pattern.
+
+11
+00:00:45,020 --> 00:00:49,460
+And we will use Martin Library for dotnet transactional DocumentDB.
+
+12
+00:00:50,000 --> 00:00:55,910
+So now let's see what we will develop for catalog microservices internal architecture.
+
+13
+00:00:55,910 --> 00:01:00,710
+So for internal architecture you can see that we will start at this point.
+
+14
+00:01:00,710 --> 00:01:04,940
+And we will create an ASP.Net core web API project.
+
+15
+00:01:04,940 --> 00:01:12,860
+And we will use minimal APIs for building fast Http APIs, fully functioning Rest endpoints and top
+
+16
+00:01:12,860 --> 00:01:14,270
+level program.cs.
+
+17
+00:01:14,660 --> 00:01:22,400
+So if you look at the database part, the catalog database will be PostgreSQL, but we will use Martin
+
+18
+00:01:22,400 --> 00:01:22,880
+Library.
+
+19
+00:01:22,880 --> 00:01:29,180
+You can see in here Martin NuGet package for dotnet transactional DocumentDB on PostgreSQL.
+
+20
+00:01:29,180 --> 00:01:34,670
+So that means Martin will be convert this PostgreSQL as a dotnet transactional DocumentDB.
+
+21
+00:01:34,760 --> 00:01:42,440
+So our product microservices database will be PostgreSQL, but acting as a DocumentDB using the Martin
+
+22
+00:01:42,440 --> 00:01:43,130
+library.
+
+23
+00:01:43,280 --> 00:01:48,620
+If we look at the internal architecture you can see the internal of the our microservices.
+
+24
+00:01:48,620 --> 00:01:56,150
+We will use vertical slice architecture implementation with the features folders and single C-sharp
+
+25
+00:01:56,150 --> 00:01:59,390
+file including different classes in one file.
+
+26
+00:01:59,480 --> 00:02:03,740
+So we will implement vertical slice in the catalog microservices.
+
+27
+00:02:03,740 --> 00:02:12,620
+And also we will implement six design pattern with using the mediator library and also we will use Carter
+
+28
+00:02:12,740 --> 00:02:18,680
+for implementing minimal API endpoint definition into our catalog microservices.
+
+29
+00:02:18,770 --> 00:02:23,870
+And also we will use master when it possible for mapping DTO classes.
+
+30
+00:02:23,870 --> 00:02:31,460
+And also we will use fluent validation in order to validate inputs and add the mediator validation pipeline.
+
+31
+00:02:31,460 --> 00:02:37,700
+And we will also implement login and exception handling mechanism with mediator pipeline behaviors for
+
+32
+00:02:37,700 --> 00:02:39,530
+implementing cross-cutting concerns.
+
+33
+00:02:39,530 --> 00:02:46,130
+And lastly, we will implement a Docker file and Docker compose Yaml file for running the product.
+
+34
+00:02:46,130 --> 00:02:50,000
+Microservices and PostgreSQL database in Multi-container.
+
+35
+00:02:50,000 --> 00:02:53,480
+Docker environment for containerization and orchestration.
+
+36
+00:02:54,790 --> 00:02:57,760
+So let's remember our course development flow.
+
+37
+00:02:57,790 --> 00:03:00,310
+Here you can see the course development flow.
+
+38
+00:03:00,340 --> 00:03:07,180
+Our journey begins with the development of the microservices and starting with the catalog API microservices.
+
+39
+00:03:07,180 --> 00:03:12,070
+Here we will embrace the vertical slice architecture and implement the secure design pattern.
+
+40
+00:03:12,100 --> 00:03:17,470
+This is the foundational step we will stage for the rest of the R microservices.
+
+41
+00:03:18,150 --> 00:03:24,660
+So if we remember our way of learning methodology throughout the each section, we will follow this
+
+42
+00:03:24,660 --> 00:03:28,440
+way of learning methodology which consists of the four key steps.
+
+43
+00:03:28,470 --> 00:03:32,520
+These are the analyze, learn, develop and test and deploy.
+
+44
+00:03:32,520 --> 00:03:36,240
+So we will start with the domain and technical analysis.
+
+45
+00:03:36,330 --> 00:03:39,870
+After that we will delve into pattern and principles.
+
+46
+00:03:39,870 --> 00:03:45,570
+And after that we will develop our microservice codes and test these microservice project in our local
+
+47
+00:03:45,570 --> 00:03:46,290
+computer.
+
+48
+00:03:46,290 --> 00:03:52,140
+And lastly we will containerize and orchestrate these microservices using the databases.
+
+49
+00:03:52,140 --> 00:03:57,930
+For example, catalog microservices with PostgreSQL database using the Docker compose, and debugging
+
+50
+00:03:57,930 --> 00:04:01,920
+the Docker compose on Visual Studio for particular microservices.
+
+51
+00:04:02,790 --> 00:04:08,460
+So that means we will follow these learning methodology when developing our catalog API microservices,
+
+52
+00:04:08,460 --> 00:04:16,500
+including the ASP.Net core, minimal APIs for building fast Http APIs and fully functioning Rest endpoint.
+
+53
+00:04:16,500 --> 00:04:22,860
+And we will use top level Program.cs and we will implement vertical slice architecture with the feature
+
+54
+00:04:22,860 --> 00:04:27,270
+folders and single C-sharp file, including the different classes in one file.
+
+55
+00:04:27,270 --> 00:04:31,530
+And we will implement six design pattern using the mediator library.
+
+56
+00:04:31,800 --> 00:04:37,500
+And we will use Martin Library for dotnet transactional DocumentDB on PostgreSQL.
+
+57
+00:04:37,590 --> 00:04:41,280
+And we will use Carter for minimal API endpoint definition.
+
+58
+00:04:41,280 --> 00:04:44,400
+We will use Mapserver for mapping operation.
+
+59
+00:04:44,400 --> 00:04:50,580
+And we will use fluent validation to validate inputs and add a mediator validation pipeline behavior.
+
+60
+00:04:50,580 --> 00:04:56,610
+And lastly we will implement Docker file and docker compose file for running the catalog microservices
+
+61
+00:04:56,610 --> 00:04:59,520
+and PostgreSQL database in Docker environment.
+

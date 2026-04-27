@@ -1,0 +1,244 @@
+1
+00:00:00,260 --> 00:00:07,370
+In this video, we are going to test the Getproducts endpoint of our catalog microservices, which is
+
+2
+00:00:07,370 --> 00:00:12,050
+connected to a PostgreSQL database running in a Docker container.
+
+3
+00:00:12,050 --> 00:00:16,250
+So we are in here and we will test these http get method.
+
+4
+00:00:16,250 --> 00:00:24,500
+If you remember the our microservice deployment strategy, our deployment strategy is involving testing
+
+5
+00:00:24,500 --> 00:00:28,610
+local microservices with the containerized database on Docker.
+
+6
+00:00:28,610 --> 00:00:34,670
+So we will follow the first strategy when testing our Getproducts in this video.
+
+7
+00:00:34,670 --> 00:00:40,220
+So first of all we need to ensure our PostgreSQL database is running within the Docker.
+
+8
+00:00:40,220 --> 00:00:46,700
+So if we open the our Visual Studio you can remember that we will develop the Docker compose yml file.
+
+9
+00:00:46,700 --> 00:00:50,210
+Adding the PostgreSQL image and docker compose override file.
+
+10
+00:00:50,210 --> 00:00:52,430
+We will specify the configurations.
+
+11
+00:00:52,430 --> 00:00:57,530
+Now we will ensure that our PostgreSQL database is running within Docker.
+
+12
+00:00:57,530 --> 00:00:59,180
+So how we can do that.
+
+13
+00:00:59,180 --> 00:01:03,320
+This will be achieved by running the Docker compose from the Visual Studio.
+
+14
+00:01:03,320 --> 00:01:07,580
+And we will spin up catalog microservice databases.
+
+15
+00:01:07,970 --> 00:01:14,810
+Before we start, make sure that your Docker desktop is up and running and you will see this green box.
+
+16
+00:01:14,810 --> 00:01:20,420
+And after that we will activate and running this catalog DB container.
+
+17
+00:01:20,420 --> 00:01:26,000
+For that purpose, I'm going to right click the Docker compose and set a start up project.
+
+18
+00:01:26,060 --> 00:01:32,600
+This means that we will run the docker compose up command using the Visual Studio two link in order
+
+19
+00:01:32,600 --> 00:01:34,640
+to activate our database.
+
+20
+00:01:34,640 --> 00:01:37,910
+So here you can see that our running profile has changed.
+
+21
+00:01:37,910 --> 00:01:42,380
+And please run this project in a Docker compose profile.
+
+22
+00:01:42,380 --> 00:01:49,310
+And this will be running the PostgreSQL container in our Docker environment.
+
+23
+00:01:49,550 --> 00:01:56,630
+And on behind of the scenes this will be running the docker compose up command specifying this override
+
+24
+00:01:56,630 --> 00:01:57,800
+and this file.
+
+25
+00:01:57,800 --> 00:02:03,290
+So after running this docker compose you can open the.
+
+26
+00:02:04,330 --> 00:02:08,380
+Look at desktop and verify that Docker compose is running.
+
+27
+00:02:08,380 --> 00:02:16,900
+And under this docker compose we have started the PostgreSQL database into the port number is 5432.
+
+28
+00:02:16,900 --> 00:02:24,460
+So we have verified that our backing services are working perfectly now and the port numbers is in here.
+
+29
+00:02:24,460 --> 00:02:31,840
+So if you open the application settings Json file, we can verify that our connection string is correct.
+
+30
+00:02:31,840 --> 00:02:39,280
+And we are going to communicate with the PostgreSQL catalog DB database in order to getting the products
+
+31
+00:02:39,280 --> 00:02:41,860
+from the database using the catalog API.
+
+32
+00:02:41,860 --> 00:02:42,850
+Microservices.
+
+33
+00:02:42,850 --> 00:02:49,810
+Now we can start our test which is the Catholic API microservices http get method for that purpose.
+
+34
+00:02:49,810 --> 00:02:54,640
+Now I am going to right click the catalog API and set a startup project.
+
+35
+00:02:54,640 --> 00:02:59,320
+And I'm going to run this catalog API project in an Https mode.
+
+36
+00:02:59,320 --> 00:03:05,920
+Before running the our microservices, make sure that you put the breakpoints in the Getproducts endpoint,
+
+37
+00:03:05,920 --> 00:03:12,850
+which is the starting point, incoming request and also Getproducts handle method which is the handle
+
+38
+00:03:12,850 --> 00:03:14,830
+method and communicate with database.
+
+39
+00:03:14,830 --> 00:03:19,600
+So now we are ready for the running these catalog API in a https mode.
+
+40
+00:03:19,600 --> 00:03:26,860
+And after that you can see that our project and microservice started in localhost 5050.
+
+41
+00:03:26,860 --> 00:03:31,960
+And you can verify from the project console and listening on 5050.
+
+42
+00:03:31,990 --> 00:03:36,790
+That means it is ready for the according request from the our postman.
+
+43
+00:03:36,790 --> 00:03:41,950
+So in order to send http get method, I'm going to use postman.
+
+44
+00:03:41,950 --> 00:03:44,860
+Last time we will use http post request.
+
+45
+00:03:44,890 --> 00:03:53,710
+Now I am going to change this http get method and the url is https localhost 5050 and products.
+
+46
+00:03:53,710 --> 00:04:01,300
+If you hit the send button, you can see that our breakpoint is comes to our get products endpoint requests.
+
+47
+00:04:01,300 --> 00:04:09,040
+And if we put to F10 and continue the debug operations, the first row is we are sending the get products
+
+48
+00:04:09,040 --> 00:04:09,640
+query.
+
+49
+00:04:09,640 --> 00:04:15,610
+And this mediator will be triggered to our handler class with this query object.
+
+50
+00:04:15,610 --> 00:04:18,610
+Here you can see that our handle method is triggered.
+
+51
+00:04:18,610 --> 00:04:25,300
+The first row we have logging the information and the second row is communicating this database PostgreSQL
+
+52
+00:04:25,300 --> 00:04:31,090
+database and listing all products into our document database which is the catalog DB.
+
+53
+00:04:31,390 --> 00:04:37,660
+And here you can see the products is comes and you can see the product count is one.
+
+54
+00:04:37,660 --> 00:04:44,200
+Because we have already created one product before when we are developing our Http post request.
+
+55
+00:04:44,200 --> 00:04:50,560
+And if you continue debugging, you can see that we have adapting the result object to the response
+
+56
+00:04:50,560 --> 00:04:51,130
+object.
+
+57
+00:04:51,130 --> 00:04:54,070
+And after that we will send this response to the client.
+
+58
+00:04:54,070 --> 00:04:58,390
+So hit the F5 and see the response in the our postman.
+
+59
+00:04:58,390 --> 00:05:04,120
+And you can see that our products are listed in the response of Http get method.
+
+60
+00:05:04,120 --> 00:05:11,410
+So by testing our catalog API with a Dockerized PostgreSQL database, we have validated the connectivity
+
+61
+00:05:11,410 --> 00:05:13,750
+and functionality of our microservices.
+

@@ -1,0 +1,108 @@
+1
+00:00:00,200 --> 00:00:05,390
+In this video we are going to learn event driven architecture in microservices.
+
+2
+00:00:06,320 --> 00:00:11,930
+In an event driven microservice architecture, services communicate with each other by publishing and
+
+3
+00:00:11,930 --> 00:00:13,400
+subscribing to events.
+
+4
+00:00:14,330 --> 00:00:20,240
+When a service needs to communicate with another service, it publishes an event to the message broker
+
+5
+00:00:20,240 --> 00:00:21,200
+or event bus.
+
+6
+00:00:21,650 --> 00:00:28,040
+Other services can then subscribe to that event and take appropriate action when the event is received.
+
+7
+00:00:28,340 --> 00:00:30,380
+This can have several benefits.
+
+8
+00:00:30,830 --> 00:00:31,880
+For example.
+
+9
+00:00:32,060 --> 00:00:33,530
+Asynchronous communication.
+
+10
+00:00:33,530 --> 00:00:39,380
+One key feature of event driven microservice architecture is that it allows services to communicate
+
+11
+00:00:39,380 --> 00:00:42,020
+asynchronously rather than synchronously.
+
+12
+00:00:42,140 --> 00:00:47,900
+This means that a service can publish an event and continue processing without waiting for a response
+
+13
+00:00:47,900 --> 00:00:49,340
+from the other service.
+
+14
+00:00:49,970 --> 00:00:52,640
+Another benefit is decoupled communication.
+
+15
+00:00:53,090 --> 00:00:58,610
+And another key feature of event driven microservice architecture is that it decouples the publisher
+
+16
+00:00:58,610 --> 00:01:04,250
+and subscriber that allowing them evolve independently without affecting each other.
+
+17
+00:01:04,400 --> 00:01:10,310
+This can make it easier to make changes to individual servers without affecting the rest of the system.
+
+18
+00:01:12,590 --> 00:01:15,650
+And another benefit could be the real time processing.
+
+19
+00:01:15,680 --> 00:01:21,740
+Event driven architectures can support real time processing as events are published and consumed as
+
+20
+00:01:21,740 --> 00:01:22,940
+soon as they occur.
+
+21
+00:01:23,180 --> 00:01:28,760
+This can be useful in such a scenario where you need to react to events in real time.
+
+22
+00:01:28,760 --> 00:01:34,280
+For example, in systems that use change data capture to track changes to a database.
+
+23
+00:01:34,850 --> 00:01:37,460
+Another benefit is high volume events.
+
+24
+00:01:37,880 --> 00:01:44,000
+Event driven architectures are well suited to handling high volume events, as they can scale horizontally
+
+25
+00:01:44,000 --> 00:01:46,910
+by adding more events consumers as needed.
+
+26
+00:01:46,940 --> 00:01:53,090
+This can be particularly useful in Microsoft's architectures, where individual services can be scaled
+
+27
+00:01:53,090 --> 00:01:56,360
+independently in order to handle increased load.
+

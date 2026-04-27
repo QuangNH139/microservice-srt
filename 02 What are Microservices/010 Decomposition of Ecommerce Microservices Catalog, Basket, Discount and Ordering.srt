@@ -1,0 +1,352 @@
+1
+00:00:00,110 --> 00:00:03,620
+In this video we are going to learn our project domain.
+
+2
+00:00:04,100 --> 00:00:06,980
+Our project domain will be the e-commerce application.
+
+3
+00:00:06,980 --> 00:00:13,010
+So we will understand e-commerce domain with all use cases and focus on the functional requirements.
+
+4
+00:00:13,010 --> 00:00:16,129
+This project will be the e-commerce web application.
+
+5
+00:00:16,129 --> 00:00:19,940
+So we should define our basic use case analysis.
+
+6
+00:00:19,940 --> 00:00:25,400
+It is really important to understand what you will develop, and it is crucial that defining your use
+
+7
+00:00:25,400 --> 00:00:26,150
+cases.
+
+8
+00:00:26,630 --> 00:00:29,780
+There are several ways to analyze the e-commerce domain.
+
+9
+00:00:29,780 --> 00:00:37,130
+We can follow several steps like requirement and modeling, analysis, identifying user stories, identify
+
+10
+00:00:37,130 --> 00:00:41,330
+nouns in the user stories, and identify verbs in the user stories.
+
+11
+00:00:42,370 --> 00:00:46,360
+Now let's elaborate the functional requirement of our e-commerce application.
+
+12
+00:00:46,390 --> 00:00:52,600
+Functional requirements are listing products, filter products as per brand and categories, put products
+
+13
+00:00:52,600 --> 00:00:58,750
+into shopping cart, apply coupon for discounts and see total cost items in the shopping cart.
+
+14
+00:00:58,750 --> 00:01:02,020
+Check out the shopping cart and create an order list.
+
+15
+00:01:02,020 --> 00:01:05,050
+Old orders and order item history.
+
+16
+00:01:05,990 --> 00:01:09,800
+Now let's identify use cases of our e-commerce application.
+
+17
+00:01:09,950 --> 00:01:15,350
+Another way to define these function requirement is converting them to the use case items.
+
+18
+00:01:15,350 --> 00:01:17,060
+We can see the user stories.
+
+19
+00:01:17,060 --> 00:01:20,090
+As a user, I want to list product as a user.
+
+20
+00:01:20,090 --> 00:01:23,120
+I want to filter products as per brand and categories.
+
+21
+00:01:23,270 --> 00:01:28,400
+As a user, I want to put products into shopping cart that we can check out later.
+
+22
+00:01:28,550 --> 00:01:33,380
+As a user, I want to apply coupon for discount and check the total cost.
+
+23
+00:01:33,380 --> 00:01:38,090
+And as a user, I want to check out the shopping cart and create an ordering process.
+
+24
+00:01:38,210 --> 00:01:43,490
+As a user, I want to list my old orders and order item history and so on.
+
+25
+00:01:44,000 --> 00:01:49,460
+So I have expanded the user stories of our application that you can see on the slide.
+
+26
+00:01:49,490 --> 00:01:53,300
+So basically this is the user story list only.
+
+27
+00:01:53,300 --> 00:01:56,600
+I have highlighted the verbs and nouns.
+
+28
+00:01:56,600 --> 00:02:04,790
+So you can see that we have marked as a red color, which is the verbs and marked as a black for the
+
+29
+00:02:04,790 --> 00:02:05,540
+nouns.
+
+30
+00:02:05,540 --> 00:02:12,320
+So for example, as a user I want to list products, filter products, see products, put products,
+
+31
+00:02:12,320 --> 00:02:14,150
+purchase shopping cart.
+
+32
+00:02:14,150 --> 00:02:21,290
+By this way you can see very clearly what we have interactions and what we have domains.
+
+33
+00:02:21,290 --> 00:02:29,330
+These black boxes are domains and these red boxes are the interactions between domains.
+
+34
+00:02:29,330 --> 00:02:35,900
+Listing products, filter products, see products, put products, purchase shopping cart, see items
+
+35
+00:02:35,900 --> 00:02:38,690
+in the shopping cart, see items, shopping cart.
+
+36
+00:02:38,690 --> 00:02:44,240
+And also we can be calculate and specify the address and delivery address.
+
+37
+00:02:44,240 --> 00:02:45,770
+Specify credit card.
+
+38
+00:02:45,770 --> 00:02:50,570
+Checkout the basket shopping cart and arrange the stock.
+
+39
+00:02:50,570 --> 00:02:58,010
+Receive order confirmation, email and order number, list order and order, item history, login system
+
+40
+00:02:58,010 --> 00:02:59,000
+and so on.
+
+41
+00:03:00,800 --> 00:03:05,420
+Now I am going to extract the nouns and verbs from the user stories.
+
+42
+00:03:05,450 --> 00:03:11,180
+Now I am looking for the nouns that will become the main objects and not attributes.
+
+43
+00:03:11,210 --> 00:03:17,690
+So here you can see that we have extracted the nouns from the user stories and our nouns.
+
+44
+00:03:17,690 --> 00:03:23,870
+That means domains are customer order, order details, product, shopping cart, shopping cart, item,
+
+45
+00:03:23,870 --> 00:03:27,020
+supplier, user address, brand and category.
+
+46
+00:03:27,080 --> 00:03:34,070
+These nouns will help us to find subdomains and bonded contexts, and we have also.
+
+47
+00:03:34,070 --> 00:03:41,000
+Verbs also can be extracted from the verb for understanding the communication between domains.
+
+48
+00:03:41,060 --> 00:03:48,230
+Our verbs are in here listing products, applying paging filter products by brand, category and supplier.
+
+49
+00:03:48,230 --> 00:03:50,390
+See product all information.
+
+50
+00:03:50,390 --> 00:03:52,160
+Put products into shopping cart.
+
+51
+00:03:52,160 --> 00:03:53,480
+See total cost.
+
+52
+00:03:53,510 --> 00:03:55,610
+See total cost for each item.
+
+53
+00:03:55,610 --> 00:04:01,970
+Checkout order purchase step specify delivery address and pay for the items.
+
+54
+00:04:01,970 --> 00:04:08,630
+See how many stocks in our application receive order, confirmation list, order and history, and so
+
+55
+00:04:08,630 --> 00:04:09,020
+on.
+
+56
+00:04:10,370 --> 00:04:14,900
+By using the nouns and verbs we can put together in a diagram.
+
+57
+00:04:14,900 --> 00:04:20,510
+For example, you can see in here an example diagram for our e-commerce application.
+
+58
+00:04:20,510 --> 00:04:27,320
+Once we have object interaction diagram, we can start thinking about object responsibilities.
+
+59
+00:04:27,320 --> 00:04:33,980
+One of the most common mistake is to push responsibilities on the actor object.
+
+60
+00:04:33,980 --> 00:04:35,570
+For example customer.
+
+61
+00:04:35,570 --> 00:04:42,620
+We need to remember that objects must take care of themselves, and objects need to be closed for direct
+
+62
+00:04:42,620 --> 00:04:47,840
+communication, and that you need to go through the functions to communicate with them.
+
+63
+00:04:47,840 --> 00:04:52,310
+So let's follow the approach and assign the responsibilities.
+
+64
+00:04:52,310 --> 00:04:57,140
+For example, we have a customer and customer has a shopping cart.
+
+65
+00:04:57,140 --> 00:05:03,470
+And now we can add items into shopping cart and get total price and so on.
+
+66
+00:05:03,620 --> 00:05:13,370
+Same way customer has an order that we can place an order and get order summary that and we can specify
+
+67
+00:05:13,370 --> 00:05:15,080
+credit card and so on.
+
+68
+00:05:15,380 --> 00:05:22,880
+Now we have object interactions and responsibility diagrams that we can start thinking about microservice
+
+69
+00:05:22,880 --> 00:05:23,900
+decomposition.
+
+70
+00:05:23,900 --> 00:05:28,190
+Here you can see the example offering the microservices.
+
+71
+00:05:28,190 --> 00:05:34,970
+If you follow the same steps that we applied in the previous video, that means following the nouns
+
+72
+00:05:34,970 --> 00:05:41,900
+and verbs and creating the domain and bounded context and identifying the sub domains, we can see that
+
+73
+00:05:41,900 --> 00:05:45,110
+we will have reached out this kind of microservices.
+
+74
+00:05:45,110 --> 00:05:52,670
+First of all, I grouped them as a main microservices that include the customers or users, product,
+
+75
+00:05:52,700 --> 00:05:55,490
+shopping cart, discount and orders.
+
+76
+00:05:55,490 --> 00:05:59,240
+These are the main microservices for our e-commerce application.
+
+77
+00:05:59,240 --> 00:06:06,890
+And I have also separate for the order fulfillment or transactional microservices that we can define
+
+78
+00:06:06,890 --> 00:06:12,320
+order, payment, inventory, shipment, billing, notify, and so on.
+
+79
+00:06:12,320 --> 00:06:18,200
+These can be used for the order fulfillment process when we are applying Saga pattern and distributed
+
+80
+00:06:18,200 --> 00:06:19,430
+transactions.
+
+81
+00:06:19,430 --> 00:06:21,920
+This is the order fulfillment asynchronous use case.
+
+82
+00:06:21,920 --> 00:06:23,840
+And these are the main microservices.
+
+83
+00:06:23,840 --> 00:06:29,180
+And we have additional microservices like identity marketing and location.
+
+84
+00:06:29,180 --> 00:06:36,590
+And as the same way we have intelligence microservices for example, rating reviews, search products,
+
+85
+00:06:36,590 --> 00:06:39,740
+recommendation engine or finance and so on.
+
+86
+00:06:39,740 --> 00:06:45,260
+So these are the potential microservices that we can apply our design afterwards.
+
+87
+00:06:45,260 --> 00:06:51,830
+As you can see that we have understand how to identify and decompose microservices for our e-commerce
+
+88
+00:06:51,830 --> 00:06:54,860
+domain and create our final microservices.
+

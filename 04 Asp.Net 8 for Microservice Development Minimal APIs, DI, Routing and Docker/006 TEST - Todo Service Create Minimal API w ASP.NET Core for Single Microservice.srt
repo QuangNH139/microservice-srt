@@ -1,0 +1,240 @@
+1
+00:00:00,200 --> 00:00:08,180
+In this video, we are going to test our Todo web API project with incoming Http requests for accommodating
+
+2
+00:00:08,180 --> 00:00:09,470
+Crud endpoints.
+
+3
+00:00:09,470 --> 00:00:10,970
+So let's get started.
+
+4
+00:00:10,970 --> 00:00:15,860
+For that purpose, open our Visual Studio for todo API project.
+
+5
+00:00:15,860 --> 00:00:23,120
+And now I'm going to run this project with changing to run profile as a Https and click the run button.
+
+6
+00:00:23,780 --> 00:00:26,360
+So this will start our application.
+
+7
+00:00:26,360 --> 00:00:33,680
+We can confirm from the project window we can see that it is exposing and listening to these port numbers.
+
+8
+00:00:33,680 --> 00:00:39,980
+And you can see in here there is no response coming from the r localhost and port number because we
+
+9
+00:00:39,980 --> 00:00:46,670
+are exposing all the services with the endpoint name, you can come to our endpoints and see that we
+
+10
+00:00:46,670 --> 00:00:48,800
+should add slash todo items.
+
+11
+00:00:48,800 --> 00:00:56,630
+If you go back to our browser and hit the enter with adding the todo items, you can see that we don't
+
+12
+00:00:56,630 --> 00:00:59,660
+have any todo item into our application yet.
+
+13
+00:00:59,660 --> 00:01:03,500
+How we can add new todo item according to our architecture.
+
+14
+00:01:03,500 --> 00:01:10,910
+You can see that we have already exposed post http api that we can create new item into our to do list.
+
+15
+00:01:10,910 --> 00:01:18,500
+For that purpose, I'm going to use postman to sending the post request to our todo web API project.
+
+16
+00:01:18,500 --> 00:01:23,390
+Please open the postman and create a new Http request.
+
+17
+00:01:23,390 --> 00:01:26,720
+And now we can verify from the Get request.
+
+18
+00:01:26,720 --> 00:01:35,360
+If you copy from the URL into the browser and paste into your postman and send the http get request,
+
+19
+00:01:35,360 --> 00:01:38,060
+you can see that we don't have any todo item.
+
+20
+00:01:38,060 --> 00:01:41,780
+I'm going to create new http post request.
+
+21
+00:01:41,780 --> 00:01:50,030
+This time I'm going to change the Http method as a post and paste to do our http url localhost and the
+
+22
+00:01:50,030 --> 00:01:52,490
+port number, and adding the todo items.
+
+23
+00:01:52,490 --> 00:02:00,380
+So that means we are arranging our http post endpoint according to our development of this app dot map
+
+24
+00:02:00,380 --> 00:02:01,400
+post method.
+
+25
+00:02:01,400 --> 00:02:05,150
+So after that we are going to provide some Json input.
+
+26
+00:02:05,150 --> 00:02:08,300
+You can see that it is expecting todo item model.
+
+27
+00:02:08,300 --> 00:02:13,460
+So we should provide todo item model with the properties of the name and is complete.
+
+28
+00:02:13,460 --> 00:02:18,860
+So if you can go to the todo item you can see the todo item properties in here.
+
+29
+00:02:18,860 --> 00:02:22,100
+If you go back now, we will send http post request.
+
+30
+00:02:22,220 --> 00:02:31,130
+Open the postman and this time we can set the body parameters as a row and Json and paste in here.
+
+31
+00:02:31,130 --> 00:02:37,880
+Basically I'm going to adding the name and is complete attributes into Json format.
+
+32
+00:02:37,880 --> 00:02:44,240
+And now I'm going to send the http post request and it is created successfully.
+
+33
+00:02:44,240 --> 00:02:50,300
+We understood that the id is newly generated item into our in-memory database.
+
+34
+00:02:50,300 --> 00:02:58,130
+We can verify from the http get method, sending the get all todo items and see our one todo item into
+
+35
+00:02:58,130 --> 00:02:59,480
+the in-memory database.
+
+36
+00:02:59,480 --> 00:03:02,930
+We can also create new todo item into our list.
+
+37
+00:03:02,930 --> 00:03:10,790
+I'm going to change the name and send additional http post request and see there is new ID created,
+
+38
+00:03:10,790 --> 00:03:18,200
+and if you go back to get all todo items and send request, we can see two todo items into our list.
+
+39
+00:03:18,200 --> 00:03:24,500
+In order to get by id method, we can add slash and give the id in here.
+
+40
+00:03:24,500 --> 00:03:25,910
+When the query parameters.
+
+41
+00:03:25,910 --> 00:03:33,860
+If I send this get method, this will be get only specific todo item with providing the ID information
+
+42
+00:03:33,860 --> 00:03:35,090
+into the query list.
+
+43
+00:03:35,090 --> 00:03:38,750
+So now we can create the update method for that purpose.
+
+44
+00:03:38,750 --> 00:03:42,890
+I'm going to duplicate this get method with the right click and duplicate the top.
+
+45
+00:03:42,890 --> 00:03:47,120
+So the end point should be the same, but Http method should be the put.
+
+46
+00:03:47,120 --> 00:03:51,410
+And I'm going to create a body and raw json file.
+
+47
+00:03:51,410 --> 00:03:57,260
+So we will get this Json from the response of the get method and put in here.
+
+48
+00:03:57,260 --> 00:04:03,560
+So basically I'm going to name of the todo item is changed.
+
+49
+00:04:03,560 --> 00:04:10,460
+And after that I'm going to send the http put request and see that the response is not coming.
+
+50
+00:04:10,460 --> 00:04:12,380
+And the status is 204.
+
+51
+00:04:12,410 --> 00:04:14,870
+That means it is successfully updated.
+
+52
+00:04:14,870 --> 00:04:17,570
+We can confirm from in the Get method.
+
+53
+00:04:17,570 --> 00:04:25,370
+If you remove the this query parameter and get all Todo items, you can see the first item is updated
+
+54
+00:04:25,370 --> 00:04:28,700
+so now the only thing left is http get method.
+
+55
+00:04:28,700 --> 00:04:35,060
+Again, I am going to duplicate this http get method, and now I am going to remove the second item
+
+56
+00:04:35,060 --> 00:04:43,190
+and change the Http method as a delete and send this http delete method, and the status is 204.
+
+57
+00:04:43,220 --> 00:04:45,080
+That means successfully deleted.
+
+58
+00:04:45,080 --> 00:04:51,980
+If you go back to our Get method, we can successfully see that only one item left on our to do list.
+
+59
+00:04:51,980 --> 00:04:58,160
+So as you can see that we have created and implemented Todo web API project.
+
+60
+00:04:58,160 --> 00:05:03,830
+That means we will create minimal API using the ASP.Net core for a single microservices.
+

@@ -1,0 +1,300 @@
+1
+00:00:00,200 --> 00:00:05,990
+In this video we are going to create ASP.Net web API for single microservices.
+
+2
+00:00:05,990 --> 00:00:07,730
+You can see the image on the slide.
+
+3
+00:00:07,730 --> 00:00:09,830
+There is a client server architecture.
+
+4
+00:00:09,830 --> 00:00:14,930
+So we are going to create ASP.Net web API project for a single microservices.
+
+5
+00:00:14,930 --> 00:00:16,940
+So here you can see the steps.
+
+6
+00:00:16,940 --> 00:00:22,820
+We will setting up our project and exploring the Program.cs and running the application.
+
+7
+00:00:22,820 --> 00:00:27,770
+So now let's start by opening Visual Studio 2022.
+
+8
+00:00:28,130 --> 00:00:35,390
+During the course we will use Visual Studio 2022 and come here click the create a new project.
+
+9
+00:00:35,960 --> 00:00:40,130
+So I'm going to create ASP.Net Core Web API project.
+
+10
+00:00:40,130 --> 00:00:47,480
+If you search from the templates or come here, we will follow the ASP.Net Core Web API for exposing
+
+11
+00:00:47,480 --> 00:00:49,220
+and creating RESTful APIs.
+
+12
+00:00:49,220 --> 00:00:50,390
+Click the next button.
+
+13
+00:00:50,390 --> 00:00:53,540
+And now we are going to give the project name.
+
+14
+00:00:53,660 --> 00:00:57,170
+This will be the example minimal project name.
+
+15
+00:00:57,170 --> 00:01:01,520
+And if you click the next button here you can see the configuration.
+
+16
+00:01:01,520 --> 00:01:05,990
+The configuration is started with the framework which is the dotnet eight.
+
+17
+00:01:05,990 --> 00:01:12,080
+During the whole course we will follow the dotnet eight framework and authentication type is none and
+
+18
+00:01:12,080 --> 00:01:14,690
+we have configured for Https and enable.
+
+19
+00:01:14,690 --> 00:01:21,080
+Docker is checked and Docker operating system is Linux and we are leaving as it is for default configuration.
+
+20
+00:01:21,080 --> 00:01:27,080
+But notice that there is three checkbox is not checked during the the default configuration.
+
+21
+00:01:27,080 --> 00:01:33,830
+So because of the minimal APIs, the default configuration is arranged by the minimal API and C-sharp
+
+22
+00:01:33,830 --> 00:01:39,800
+12 features, which is the top level statement if you would like to go a previous version, the style,
+
+23
+00:01:39,800 --> 00:01:42,800
+which is the controller and the top level statement removing.
+
+24
+00:01:42,800 --> 00:01:49,100
+You can check these checkbox to make it the previous versions, but in default we will follow with the
+
+25
+00:01:49,100 --> 00:01:50,870
+minimal API's for that purpose.
+
+26
+00:01:50,870 --> 00:01:54,920
+Leave as it is for the current configuration and click the create button.
+
+27
+00:01:55,190 --> 00:01:59,570
+So this is going to create an ASP.Net Core Web API default project.
+
+28
+00:01:59,570 --> 00:02:04,400
+And here you can see the default template for the ASP.Net web API.
+
+29
+00:02:04,400 --> 00:02:10,160
+It is including the app settings file, Docker file Program.cs, which is the top level statement for
+
+30
+00:02:10,160 --> 00:02:12,620
+setting up and configuring our web API.
+
+31
+00:02:12,620 --> 00:02:20,330
+So if you open the program says now, we will explain the codes in the program says that has generated
+
+32
+00:02:20,330 --> 00:02:23,390
+from the default ASP.Net web API template.
+
+33
+00:02:23,390 --> 00:02:28,250
+Here you can see that the Program.cs is developed with the top level statement.
+
+34
+00:02:28,250 --> 00:02:33,680
+So that means it is directly starting from the codes, not using statement and brackets.
+
+35
+00:02:33,680 --> 00:02:40,040
+In Program.cs, we basically create a web application and building the web application, and after that
+
+36
+00:02:40,040 --> 00:02:46,490
+we will run the web application and between them we will exposing the Http methods according to our
+
+37
+00:02:46,490 --> 00:02:47,330
+business logic.
+
+38
+00:02:47,330 --> 00:02:50,900
+And here you can see the some helper class for the weather forecast.
+
+39
+00:02:50,900 --> 00:02:53,810
+So now let me explain these codes one by one.
+
+40
+00:02:53,810 --> 00:02:58,130
+The first line of code is basically create a web application builder.
+
+41
+00:02:58,130 --> 00:03:02,330
+Initialize our application with the default settings and the configurations.
+
+42
+00:03:02,330 --> 00:03:07,670
+And after that you can see a commented part in here which is the add services to the container.
+
+43
+00:03:07,670 --> 00:03:14,930
+That means in here we can add ASP.Net built in services and any custom services using the dependency
+
+44
+00:03:14,930 --> 00:03:15,770
+injection.
+
+45
+00:03:15,770 --> 00:03:20,390
+And after that we are building these Web Application builder.
+
+46
+00:03:20,390 --> 00:03:26,690
+In this step, basically we will compile the application with all provided services and configurations.
+
+47
+00:03:26,690 --> 00:03:32,930
+And after that you can see another commented part which is the configure the Http request pipeline.
+
+48
+00:03:32,930 --> 00:03:39,830
+That means in this step, we basically define how our application handle the incoming Http requests,
+
+49
+00:03:39,830 --> 00:03:45,320
+and we can customize our custom Http request pipeline in this commented section.
+
+50
+00:03:45,320 --> 00:03:51,830
+So if you scroll down and skip this section, you can see that in this line of code in the App.run we
+
+51
+00:03:51,830 --> 00:03:53,840
+finally run the application.
+
+52
+00:03:53,840 --> 00:04:00,020
+So this command is start the application and begins the listening for incoming requests for these web
+
+53
+00:04:00,020 --> 00:04:01,010
+API project.
+
+54
+00:04:01,010 --> 00:04:04,460
+I'll explain all these steps in more detail in the next videos.
+
+55
+00:04:04,460 --> 00:04:07,610
+Let's continue with the Http endpoints for now.
+
+56
+00:04:07,610 --> 00:04:14,780
+So in this step you can see that here we are configuring the services, setting up the Http request
+
+57
+00:04:14,780 --> 00:04:21,709
+pipeline, and defining the Http get endpoint for the slash weather forecast exposing services.
+
+58
+00:04:21,709 --> 00:04:26,960
+So basically the weather forecast endpoint is a simple example of the minimal API.
+
+59
+00:04:26,960 --> 00:04:32,150
+It generates a weather forecast using an array of summaries and random temperatures.
+
+60
+00:04:32,150 --> 00:04:37,430
+You can see in here this is the summaries and the random temperatures are generated.
+
+61
+00:04:37,430 --> 00:04:45,680
+So basically the logic is returning the weather forecast with handling the Http get method in the slash
+
+62
+00:04:45,680 --> 00:04:48,410
+weather forecast http endpoint URL.
+
+63
+00:04:48,410 --> 00:04:51,680
+So this is the an example of the minimal API's.
+
+64
+00:04:51,680 --> 00:04:55,430
+And it is defined an API endpoint in ASP.Net core.
+
+65
+00:04:55,580 --> 00:04:58,010
+So now let's run the application.
+
+66
+00:04:58,010 --> 00:04:59,720
+If you come here you can see the running.
+
+67
+00:05:00,050 --> 00:05:06,320
+While I'm going to select the Https and click this button in order to run this web API.
+
+68
+00:05:06,320 --> 00:05:11,810
+So the application is started successfully, you can verify from the project console logs.
+
+69
+00:05:11,810 --> 00:05:18,230
+Here you can see that the application is started and listening on these http and https ports.
+
+70
+00:05:18,230 --> 00:05:22,580
+And this is automatically started a Chrome window in a browser.
+
+71
+00:05:22,580 --> 00:05:26,660
+And you can see that it is hitting the localhost and the https port.
+
+72
+00:05:26,660 --> 00:05:32,870
+And here you can see the slash weather forecast in order to retrieve the weather information from our
+
+73
+00:05:32,870 --> 00:05:36,110
+API, API is returning this Json response.
+
+74
+00:05:36,110 --> 00:05:43,160
+That means we have successfully creating an API with ASP.Net core Web API and getting the weather forecast
+
+75
+00:05:43,160 --> 00:05:46,400
+response which data generated from our API.
+

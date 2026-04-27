@@ -1,0 +1,224 @@
+1
+00:00:00,200 --> 00:00:05,750
+In this video we are going to develop basket repository classes using Martin Library.
+
+2
+00:00:05,750 --> 00:00:11,900
+So we will use primary constructs in order to inject repository classes into our handler class.
+
+3
+00:00:12,350 --> 00:00:14,930
+So we will focus on three main components.
+
+4
+00:00:14,930 --> 00:00:20,150
+These are the eye basket repository basket repository and cache basket repository.
+
+5
+00:00:20,420 --> 00:00:26,870
+So these classes form of the core of our repository pattern for the basket microservices.
+
+6
+00:00:27,200 --> 00:00:34,760
+First of all we will create a basket repository interface that defines our contract for repository classes.
+
+7
+00:00:35,060 --> 00:00:39,920
+So for that purpose please open the Visual Studio and go to the basket API project.
+
+8
+00:00:39,920 --> 00:00:43,370
+And I'm going to start by right click Add New Folder.
+
+9
+00:00:44,160 --> 00:00:51,180
+Which is the data folder at the same level of the models, and the basket vertical slice folder.
+
+10
+00:00:51,360 --> 00:00:58,920
+And now I'm going to add a new class and actually interface which name is AI basket repository interface.
+
+11
+00:00:58,920 --> 00:01:05,580
+And in here we will define our contracts and method bodies in order to perform our business logic in
+
+12
+00:01:05,580 --> 00:01:06,750
+the handle classes.
+
+13
+00:01:06,900 --> 00:01:12,060
+So what are the use cases that we are going to implement these repository objects.
+
+14
+00:01:12,060 --> 00:01:19,080
+So if you count the basket vertical slice folder you can see that our use cases are get store and delete
+
+15
+00:01:19,080 --> 00:01:19,680
+basket.
+
+16
+00:01:19,680 --> 00:01:25,530
+For example, if I open the gate basket and go to the get basket handler in this handle class, we should
+
+17
+00:01:25,530 --> 00:01:29,580
+inject these AI basket repository to perform get operations.
+
+18
+00:01:29,580 --> 00:01:33,270
+So in order to do that the get basket is requiring the username.
+
+19
+00:01:33,270 --> 00:01:38,880
+You can see that it is accepting username and returning a result which including the whole shopping
+
+20
+00:01:38,880 --> 00:01:39,480
+cart.
+
+21
+00:01:39,480 --> 00:01:43,920
+And at the same way if you go to store basket you can go to store basket handle.
+
+22
+00:01:43,920 --> 00:01:47,190
+We are accepting the shopping cart and return back a result.
+
+23
+00:01:47,190 --> 00:01:52,590
+And you can see that we will inject a basket repository in here to store basket in database.
+
+24
+00:01:52,590 --> 00:01:54,720
+So this is the same as the delete basket.
+
+25
+00:01:54,720 --> 00:01:58,710
+And we will perform the same operations to accepting username.
+
+26
+00:01:58,710 --> 00:02:03,330
+And we will perform the delete operation from database using the repository classes.
+
+27
+00:02:03,330 --> 00:02:04,410
+For that purpose.
+
+28
+00:02:04,410 --> 00:02:10,440
+Open the AI basket repository and define our first contract which is the get basket.
+
+29
+00:02:10,440 --> 00:02:15,090
+And get basket will be return task shopping cart response.
+
+30
+00:02:15,090 --> 00:02:18,060
+And the method name should be the get basket.
+
+31
+00:02:18,060 --> 00:02:23,910
+And this will be get username as a parameter in order to retrieve a specific shopping cart.
+
+32
+00:02:23,910 --> 00:02:29,970
+And after that I'm going to pass cancellation token and give the cancellation token with default value.
+
+33
+00:02:32,240 --> 00:02:36,140
+This is the first contract and the second contract is same.
+
+34
+00:02:37,550 --> 00:02:43,820
+We will return shopping cart, but this time I'm going to perform store basket operation.
+
+35
+00:02:45,530 --> 00:02:49,400
+And this is accepting the whole shopping cart object.
+
+36
+00:02:50,210 --> 00:02:55,610
+And as a parameter name, I'm giving the basket and the rest of the operations is same.
+
+37
+00:02:55,610 --> 00:03:03,140
+We will give the cancellation token with default value, and the last contract will be the task, and
+
+38
+00:03:03,140 --> 00:03:05,300
+we will return boolean response.
+
+39
+00:03:05,300 --> 00:03:08,930
+And the name of the contract is delete basket.
+
+40
+00:03:09,470 --> 00:03:12,740
+I'm going to accept username again.
+
+41
+00:03:13,550 --> 00:03:20,300
+And I'm going to paste the same cancellation token as we use in the previous methods.
+
+42
+00:03:25,310 --> 00:03:32,180
+In this code, the eye basket repository interface declares three methods get basket, store basket,
+
+43
+00:03:32,180 --> 00:03:33,470
+and delete basket.
+
+44
+00:03:33,500 --> 00:03:39,650
+These methods correspond to the retrieval, storage, and delete operations on the shopping cart and
+
+45
+00:03:39,650 --> 00:03:42,110
+identified uniquely by the username.
+
+46
+00:03:42,350 --> 00:03:48,530
+So now let's implement the basket repository class which will fulfill all these contract defined by
+
+47
+00:03:48,560 --> 00:03:49,640
+basket repository.
+
+48
+00:03:49,670 --> 00:03:55,730
+For that purpose, I'm going to create a new class under the data folder which name is Basket Repository.
+
+49
+00:03:58,370 --> 00:04:02,630
+In this class we will implement a basket repository members.
+
+50
+00:04:02,630 --> 00:04:07,880
+And if you implement this interface, you can see that our methods come here.
+
+51
+00:04:07,880 --> 00:04:11,720
+And I'm going to order methods as we defined in the contracts.
+
+52
+00:04:11,720 --> 00:04:13,430
+The first one is get basket.
+
+53
+00:04:13,430 --> 00:04:17,089
+The second one is store basket and the last one is delete basket.
+
+54
+00:04:17,390 --> 00:04:23,750
+So the basket repository class initially throws not implemented exceptions for each method.
+
+55
+00:04:23,750 --> 00:04:30,110
+But this is a placeholder until we integrate with the Martin in order to perform actual database operations.
+
+56
+00:04:30,110 --> 00:04:35,090
+So our next step is inject the Martin's documentation into basket repository.
+

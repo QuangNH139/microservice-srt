@@ -1,0 +1,336 @@
+1
+00:00:00,140 --> 00:00:04,850
+In this video we are going to develop Store Basket feature handle class.
+
+2
+00:00:05,210 --> 00:00:09,110
+So we will be storing shopping cart with items as a JSON format.
+
+3
+00:00:09,110 --> 00:00:15,410
+And when we are storing this shopping cart with items, this will be insert or update operation and
+
+4
+00:00:15,410 --> 00:00:18,200
+covering all these related use cases.
+
+5
+00:00:18,200 --> 00:00:22,040
+And we will exposing http post request with this URL.
+
+6
+00:00:22,040 --> 00:00:28,970
+In order to store basket information, please open the Visual Studio and go to the basket API and go
+
+7
+00:00:28,970 --> 00:00:30,920
+to the basket main feature folder.
+
+8
+00:00:30,950 --> 00:00:37,940
+Under basket Folder we should locate the store basket subfolder which is the R use case and open the
+
+9
+00:00:37,940 --> 00:00:39,680
+store basket handle class.
+
+10
+00:00:39,680 --> 00:00:43,580
+So we will develop Store Basket handle class for this video.
+
+11
+00:00:43,580 --> 00:00:49,430
+And as always we will start with the creating command and result class for store basket feature.
+
+12
+00:00:49,430 --> 00:00:56,030
+So in here I am going to create a record type which is a public record and store basket command and
+
+13
+00:00:56,030 --> 00:00:57,410
+passing the shopping cart.
+
+14
+00:00:57,410 --> 00:01:04,580
+And this will be implement from the I command and we will pass our store basket result object.
+
+15
+00:01:07,540 --> 00:01:17,230
+And after that we can define store basket result object and as a result we will expecting that boiling
+
+16
+00:01:17,230 --> 00:01:18,280
+is success.
+
+17
+00:01:18,280 --> 00:01:21,130
+That means this operation is success or not.
+
+18
+00:01:21,160 --> 00:01:27,220
+We have develop command and result object and we will implement from the I command which comes from
+
+19
+00:01:27,220 --> 00:01:30,970
+the are building blocks and implementing the skills and mediator.
+
+20
+00:01:31,090 --> 00:01:37,420
+And after defining these command and result, the next thing we can do that the command validator.
+
+21
+00:01:37,420 --> 00:01:45,670
+So in here I'm going to create a new class which representing our command validator class which is the
+
+22
+00:01:45,670 --> 00:01:52,180
+store basket command validator and inherit from the abstract validator and passing the validating object
+
+23
+00:01:52,180 --> 00:01:53,950
+which is a store basket command.
+
+24
+00:01:54,490 --> 00:02:00,190
+As you remember that when we are performing the command operations, we can put the validator.
+
+25
+00:02:00,190 --> 00:02:05,890
+We are going to develop this validator and validations always perform in the constructor and in the
+
+26
+00:02:05,890 --> 00:02:06,520
+constructor.
+
+27
+00:02:06,520 --> 00:02:13,480
+I'm going to put some of the rule definitions in here, which including the cart and cart username.
+
+28
+00:02:13,480 --> 00:02:19,750
+Within this code, we basically validate the commands using the full length validation abstract validator
+
+29
+00:02:19,750 --> 00:02:22,480
+class, and this will be comes from the building blocks.
+
+30
+00:02:22,480 --> 00:02:27,040
+If you double click the building blocks, you can see the full length validation related package comes
+
+31
+00:02:27,040 --> 00:02:27,970
+from there.
+
+32
+00:02:27,970 --> 00:02:34,540
+And inside of our store basket command validator we basically validate and define rules for the cart
+
+33
+00:02:34,570 --> 00:02:38,650
+cannot be null and the username is required inside of the cart.
+
+34
+00:02:38,650 --> 00:02:44,200
+And these rules will be run by the validation pipeline behavior that you can see under the building
+
+35
+00:02:44,200 --> 00:02:46,540
+blocks behaviors and validation behavior.
+
+36
+00:02:46,540 --> 00:02:52,570
+This will be run the validate async method for each rule definition and calculate and accumulate the
+
+37
+00:02:52,570 --> 00:02:54,880
+result and throw a validation exception.
+
+38
+00:02:54,880 --> 00:03:01,270
+And this validation behavior only works for the I command interface related operations that you can
+
+39
+00:03:01,270 --> 00:03:03,010
+see in here where keyword.
+
+40
+00:03:03,010 --> 00:03:09,370
+So if you go back to our store basket handler after defining the command result and validator, now
+
+41
+00:03:09,370 --> 00:03:12,070
+it is time to develop store basket handler class.
+
+42
+00:03:12,070 --> 00:03:19,110
+And as always we can start with changing the name as a store basket command handle to identify query
+
+43
+00:03:19,110 --> 00:03:26,850
+or command operation, and after that we will inherit from the I command handle interface and we will
+
+44
+00:03:26,850 --> 00:03:30,450
+paste the command and result object as a generics.
+
+45
+00:03:30,450 --> 00:03:35,880
+You can come here and put these objects into our interface.
+
+46
+00:03:35,880 --> 00:03:40,410
+And here you can see that our class is implemented I command interface.
+
+47
+00:03:40,410 --> 00:03:45,480
+And if you implement interface members you can see that handle method is created.
+
+48
+00:03:45,480 --> 00:03:48,540
+And the first parameter is store basket command.
+
+49
+00:03:48,540 --> 00:03:52,080
+And I am going to rename the parameter name as a command.
+
+50
+00:03:52,140 --> 00:03:55,980
+Also make this function as asynchronous function.
+
+51
+00:03:56,010 --> 00:04:00,090
+And after that we can implement actual business logic in the handle method.
+
+52
+00:04:00,090 --> 00:04:03,570
+So what is the business logic for store basket command handle.
+
+53
+00:04:03,600 --> 00:04:08,220
+Basically we will store the basket in database and update the cache.
+
+54
+00:04:08,220 --> 00:04:14,010
+So for that purpose first of all I am going to define a shopping cart and get cart information from
+
+55
+00:04:14,010 --> 00:04:18,089
+incoming command object command dot cart.
+
+56
+00:04:18,420 --> 00:04:25,580
+So after that I'm going to put some to do statement and this command will be handle our actual business
+
+57
+00:04:25,580 --> 00:04:26,360
+operation.
+
+58
+00:04:26,360 --> 00:04:32,360
+But for now we didn't inject any database or cache related object into our command under.
+
+59
+00:04:32,360 --> 00:04:38,030
+That's why I'm putting in here to do statement and complete the handle method in the according to to
+
+60
+00:04:38,060 --> 00:04:38,660
+do statement.
+
+61
+00:04:38,690 --> 00:04:45,380
+We will store basket in database with using the Martin Upsert and session dot store method.
+
+62
+00:04:45,380 --> 00:04:48,590
+That means this will be run by if existing data.
+
+63
+00:04:48,590 --> 00:04:49,520
+This will be update.
+
+64
+00:04:49,520 --> 00:04:55,100
+If not this will be insert any record and after that we have to update the cache in Redis distributed
+
+65
+00:04:55,100 --> 00:04:55,580
+cache.
+
+66
+00:04:55,580 --> 00:04:59,690
+And this will be handle operations in the store command handle class.
+
+67
+00:04:59,690 --> 00:05:05,030
+But for now I am skipping the implementation and integration with the database and cache.
+
+68
+00:05:05,030 --> 00:05:12,380
+And I'm going to complete the lifecycle of our request with returning new mock response, which is store
+
+69
+00:05:12,380 --> 00:05:21,140
+basket result and passing the success as a true At this point, I would like to do a little bit refactoring
+
+70
+00:05:21,140 --> 00:05:26,630
+instead of returning to boolean success or not operation to true or false.
+
+71
+00:05:26,660 --> 00:05:33,500
+I would like to send a username and we can understand which username is stored our database for that
+
+72
+00:05:33,500 --> 00:05:33,860
+purpose.
+
+73
+00:05:33,860 --> 00:05:38,930
+I'm going to change this result parameter from boolean to string username.
+
+74
+00:05:38,930 --> 00:05:44,810
+And after that if you scroll down you can come here and you can paste the username from the cart object.
+
+75
+00:05:44,810 --> 00:05:50,780
+But for now I am going to put in here as a mock username object, which is a boolean.
+
+76
+00:05:50,780 --> 00:05:56,570
+If you go on top of this class, you can see using statement and I am moving this using statement into
+
+77
+00:05:56,570 --> 00:05:58,220
+the global using.
+
+78
+00:06:00,770 --> 00:06:01,790
+Save this file.
+
+79
+00:06:01,790 --> 00:06:03,530
+If you go back to this class.
+
+80
+00:06:03,530 --> 00:06:09,980
+In this code, we basically define a command in order to store our shopping cart object and return a
+
+81
+00:06:09,980 --> 00:06:12,500
+result including the username information.
+
+82
+00:06:12,740 --> 00:06:17,120
+And we put the validators and validate the incoming cart information.
+
+83
+00:06:17,120 --> 00:06:23,390
+And after that we will run the command under class and handle the incoming operation Currently is a
+
+84
+00:06:23,390 --> 00:06:28,430
+skeleton and we will implement the database and caching interactions in the later sessions.
+

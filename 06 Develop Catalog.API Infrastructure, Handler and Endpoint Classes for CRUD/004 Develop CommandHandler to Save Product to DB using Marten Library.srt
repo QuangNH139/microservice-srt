@@ -1,0 +1,316 @@
+1
+00:00:00,170 --> 00:00:06,320
+In this video we are going to develop command handler class save to database operations with using the
+
+2
+00:00:06,320 --> 00:00:07,340
+Martin library.
+
+3
+00:00:07,340 --> 00:00:13,910
+So that means we will explore how to implement data persistence and infrastructure related operations
+
+4
+00:00:13,910 --> 00:00:19,250
+in our catalog microservices handler class using the Martin's documentation.
+
+5
+00:00:19,250 --> 00:00:25,790
+So we will use primary constructs in order to inject Martin classes into our handler class.
+
+6
+00:00:26,270 --> 00:00:29,810
+Martin managed the data using Trudu sessions.
+
+7
+00:00:29,810 --> 00:00:31,040
+You can see the image.
+
+8
+00:00:31,040 --> 00:00:37,010
+You can think that a session is a transactional unit of work that interacts with the database.
+
+9
+00:00:37,010 --> 00:00:44,450
+So that means we should use one of the session when interacting the PostgreSQL database using the Martin.
+
+10
+00:00:44,450 --> 00:00:49,760
+For that purpose, we will focus on the I document session performing the Crud operations.
+
+11
+00:00:49,760 --> 00:00:55,190
+We will directly inject these document session object to perform Crud operations.
+
+12
+00:00:55,190 --> 00:00:59,120
+And specifically we will use lightweight documentation.
+
+13
+00:00:59,570 --> 00:01:01,130
+So let's get started.
+
+14
+00:01:01,130 --> 00:01:02,810
+Please open the Visual Studio.
+
+15
+00:01:02,810 --> 00:01:08,540
+And first of all we need to install Martin NuGet package in our project.
+
+16
+00:01:08,540 --> 00:01:12,110
+But before installing the new project, we should think about that.
+
+17
+00:01:12,110 --> 00:01:15,740
+This package is common for all microservices or not.
+
+18
+00:01:16,100 --> 00:01:21,530
+As you remember that when we are installing any packages, we are asking these questions ourselves.
+
+19
+00:01:21,530 --> 00:01:28,130
+If the package is common for all microservices, we will install this package into building Blocks class
+
+20
+00:01:28,130 --> 00:01:29,210
+library project.
+
+21
+00:01:29,210 --> 00:01:35,300
+If not, we will install the specific microservices that required the that library package.
+
+22
+00:01:35,300 --> 00:01:41,090
+So Martin is an ORM package that works on the PostgreSQL database.
+
+23
+00:01:41,090 --> 00:01:48,560
+And if we look at the our issue of microservices, you can see that only catalog and basket microservices
+
+24
+00:01:48,560 --> 00:01:55,220
+using the PostgreSQL database and discount and ordering microservices using different kind of microservices.
+
+25
+00:01:55,220 --> 00:02:02,090
+For example, ordering will be use Entity Framework core as a ORM, and SQLite can be used entity framework
+
+26
+00:02:02,090 --> 00:02:04,160
+code for the SQLite adapter.
+
+27
+00:02:04,490 --> 00:02:10,910
+So that means other microservices are not using Martin library and we should install Martin only required
+
+28
+00:02:10,910 --> 00:02:14,420
+microservices which are the catalog and basket microservices.
+
+29
+00:02:14,420 --> 00:02:20,840
+So go back to our Visual Studio and right click the Catholic API, manage NuGet packages and search
+
+30
+00:02:20,840 --> 00:02:22,790
+for the Martin.
+
+31
+00:02:24,740 --> 00:02:27,740
+Select Martin and install this package.
+
+32
+00:02:35,130 --> 00:02:35,640
+Okay.
+
+33
+00:02:35,640 --> 00:02:42,780
+If you double click the catalog API, you can verify that these Martin library is installed successfully
+
+34
+00:02:42,780 --> 00:02:45,540
+under our catalog API project.
+
+35
+00:02:45,600 --> 00:02:54,060
+So now it is time to injecting Martin AI documentation into our handler class to interact with the database
+
+36
+00:02:54,060 --> 00:02:54,840
+operation.
+
+37
+00:02:54,840 --> 00:02:59,370
+And for that reason we should go back to create product handler class.
+
+38
+00:02:59,370 --> 00:03:06,090
+And we will inject AI documentation directly into our command handler using the C sharp tools.
+
+39
+00:03:06,090 --> 00:03:08,010
+Primary constructor features.
+
+40
+00:03:08,010 --> 00:03:13,590
+This approach will be provide a clean way and direct way to interact with the database.
+
+41
+00:03:13,590 --> 00:03:22,170
+So now I'm going to injecting Martin AI documentation with adding in here open bracket and writing the
+
+42
+00:03:22,170 --> 00:03:27,810
+AI document session and give the parameter name as a session.
+
+43
+00:03:27,810 --> 00:03:34,830
+If you come here and click the add enter, we will using the Martin Library in order to inject the AI
+
+44
+00:03:34,830 --> 00:03:36,000
+document session.
+
+45
+00:03:36,000 --> 00:03:44,010
+So why we are directly injecting AI document session in here, and why we don't cover this session in
+
+46
+00:03:44,010 --> 00:03:46,740
+the repository folder or any data folder?
+
+47
+00:03:47,040 --> 00:03:52,650
+Because AI document session object is already an abstraction of the database operations.
+
+48
+00:03:52,650 --> 00:03:58,890
+So we don't need any additional abstractions or unnecessary code like repository patterns.
+
+49
+00:03:58,890 --> 00:04:03,660
+If you right click and go to definition, you can see that this is an interface.
+
+50
+00:04:03,660 --> 00:04:09,300
+And using an abstraction of the database operations with exposing these services.
+
+51
+00:04:09,510 --> 00:04:16,110
+So that means we will direct the injecting AI document session to perform database operations without
+
+52
+00:04:16,110 --> 00:04:20,010
+need for additional abstraction layer like repository patterns.
+
+53
+00:04:20,010 --> 00:04:26,790
+And also, personally, I don't like to use repository pattern if not necessary because it is very rare
+
+54
+00:04:26,790 --> 00:04:31,080
+to change the database or ORM system for any particular project.
+
+55
+00:04:31,080 --> 00:04:33,300
+So now let's perform our operation.
+
+56
+00:04:33,300 --> 00:04:41,490
+If you scroll down and come to this todo place, we basically using the session object and session has
+
+57
+00:04:41,490 --> 00:04:46,620
+store method in order to store our product information as a document database.
+
+58
+00:04:46,620 --> 00:04:54,810
+And after that of course we will use session dot save, change async method and passing the cancellation
+
+59
+00:04:54,810 --> 00:04:55,350
+token.
+
+60
+00:04:56,190 --> 00:04:59,460
+And of course we should paste the newly created product.
+
+61
+00:04:59,460 --> 00:05:01,890
+So this will be create a new product.
+
+62
+00:05:01,890 --> 00:05:08,130
+And in the result we will send a newly created product instead of the new grid operation.
+
+63
+00:05:08,130 --> 00:05:15,840
+If you right the product and go to id property, this ID will be generated from the document database.
+
+64
+00:05:16,110 --> 00:05:16,860
+Okay.
+
+65
+00:05:16,860 --> 00:05:19,290
+As you can see that we perform the handle method.
+
+66
+00:05:19,290 --> 00:05:24,090
+In this implementation, we basically create a product entity from the command.
+
+67
+00:05:24,090 --> 00:05:28,110
+And after that we will store this product into session.
+
+68
+00:05:28,110 --> 00:05:35,310
+And then we will perform asynchronously save operations into PostgreSQL database as a document object.
+
+69
+00:05:35,310 --> 00:05:41,460
+And this will be result in the product being persisted in our PostgreSQL database and returning the
+
+70
+00:05:41,460 --> 00:05:43,350
+ID information to the client.
+
+71
+00:05:43,350 --> 00:05:49,740
+So if you go on top of this implementation, you can see that we have different using statements.
+
+72
+00:05:49,740 --> 00:05:54,660
+And in order to organize these using statements we have already create global using.
+
+73
+00:05:54,660 --> 00:06:00,900
+So I'm going to adding these using statement including the Martin moving to global using statements
+
+74
+00:06:00,900 --> 00:06:02,430
+and passing in here.
+
+75
+00:06:02,430 --> 00:06:09,390
+And if we put the global on top of these statements and making it more readable.
+
+76
+00:06:09,390 --> 00:06:14,040
+So see that these are the packages that we are using in the catalog microservices.
+
+77
+00:06:14,040 --> 00:06:20,850
+If you go back to our handler class and remove all using statements, you can see that this code is
+
+78
+00:06:20,850 --> 00:06:21,570
+more cleaner.
+
+79
+00:06:21,570 --> 00:06:24,510
+And this is the are handler implementation.
+

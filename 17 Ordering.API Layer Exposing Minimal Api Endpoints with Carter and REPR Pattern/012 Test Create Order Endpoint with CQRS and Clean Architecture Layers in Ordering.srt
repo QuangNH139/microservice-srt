@@ -1,0 +1,712 @@
+1
+00:00:00,170 --> 00:00:05,930
+In this video we are going to test, create, order and print with Sequence and Kirin architecture.
+
+2
+00:00:05,930 --> 00:00:12,890
+That means we will send http post requests in the slash orders endpoint in order to create a new order,
+
+3
+00:00:12,890 --> 00:00:16,700
+and we will conduct end to end test for the create order endpoint.
+
+4
+00:00:16,700 --> 00:00:23,180
+That means we will perform queries and mediator request life cycle for incoming Http post requests.
+
+5
+00:00:23,180 --> 00:00:26,630
+This will be create order request and we will convert these.
+
+6
+00:00:26,630 --> 00:00:30,860
+Create order command and mediator will be trigger create order command handler.
+
+7
+00:00:30,860 --> 00:00:34,700
+In order to create a new item into database and returning result.
+
+8
+00:00:34,700 --> 00:00:38,540
+And this will be converting response and response back to client application.
+
+9
+00:00:38,870 --> 00:00:44,990
+For that purpose, please open the Visual Studio and go to the ordering API endpoint and create order.
+
+10
+00:00:44,990 --> 00:00:50,330
+This class is academic incoming http post Cqrs in the delegate handler function.
+
+11
+00:00:50,330 --> 00:00:56,210
+So in here I am going to put a breakpoint which is the map post operation and this will be Accodomate
+
+12
+00:00:56,210 --> 00:01:01,940
+incoming create order requests and performing actual logic and after that I am going to put additional
+
+13
+00:01:01,940 --> 00:01:07,940
+breakpoint in the end of this function in order to understand how we can respond back to our client
+
+14
+00:01:07,940 --> 00:01:08,630
+application.
+
+15
+00:01:08,630 --> 00:01:15,350
+So in the body of this method you can see that we will basically using mediator send function with sending
+
+16
+00:01:15,350 --> 00:01:15,950
+this command.
+
+17
+00:01:15,950 --> 00:01:18,650
+And this will be trigger our application layer.
+
+18
+00:01:18,740 --> 00:01:21,440
+Since we are sending the create order command.
+
+19
+00:01:21,440 --> 00:01:25,310
+And this will be trigger the create order command handler in the application layer.
+
+20
+00:01:25,310 --> 00:01:27,650
+For that purpose go to Ordering application.
+
+21
+00:01:27,650 --> 00:01:33,470
+Go to orders commands, create order use case folder and open the create order handler.
+
+22
+00:01:33,470 --> 00:01:35,660
+So this will be our actual handler.
+
+23
+00:01:35,660 --> 00:01:36,950
+For the create order command.
+
+24
+00:01:36,950 --> 00:01:42,800
+You can safely remove unnecessary using statement and save this create order command under class.
+
+25
+00:01:42,800 --> 00:01:45,860
+So in this class you can see that we have handle method.
+
+26
+00:01:45,860 --> 00:01:51,920
+And in this handle method we will perform actual use case which is the interacting database and inserting
+
+27
+00:01:51,920 --> 00:01:52,610
+any record.
+
+28
+00:01:52,610 --> 00:01:56,060
+So I am going to put a breakpoint in the beginning of the handle method.
+
+29
+00:01:56,060 --> 00:02:01,370
+And also if you go to create new order I am going to put additional breakpoint in the create new order.
+
+30
+00:02:01,370 --> 00:02:06,080
+So if you look at this logic you can see that in here we are creating order entity.
+
+31
+00:02:06,080 --> 00:02:12,170
+And after that adding orders into Entity Framework core orders collection and save change async with
+
+32
+00:02:12,170 --> 00:02:13,730
+using Entity Framework Core.
+
+33
+00:02:13,730 --> 00:02:20,030
+So in here you can see that when we are creating a new order entity, we will use order dot create function
+
+34
+00:02:20,030 --> 00:02:25,910
+which is inside of the order entity order is responsible for creating its own entity.
+
+35
+00:02:25,910 --> 00:02:30,650
+And here you can see that we have additional breakpoint in the order create operation.
+
+36
+00:02:30,650 --> 00:02:33,950
+And this is happening in the ordering domain layer.
+
+37
+00:02:33,950 --> 00:02:39,170
+And the model under the models we have ordered aggregate and we will put breakpoint under the order
+
+38
+00:02:39,170 --> 00:02:40,130
+create function.
+
+39
+00:02:40,130 --> 00:02:45,080
+And in this function you can see that we have created domain event which is the order created domain
+
+40
+00:02:45,080 --> 00:02:47,840
+event and how we can dispatch this domain event.
+
+41
+00:02:47,840 --> 00:02:50,600
+Of course it is happening in the ordering infrastructure.
+
+42
+00:02:50,600 --> 00:02:55,460
+If you go to ordering infrastructure, go to interceptors and open the dispatch domain event.
+
+43
+00:02:55,460 --> 00:03:00,860
+You can put breakpoints when we are dispatching this domain event and when we are dispatching this domain
+
+44
+00:03:00,860 --> 00:03:04,220
+event, this will be handled in the ordering application layer.
+
+45
+00:03:04,220 --> 00:03:06,590
+If you go back to ordering application layer.
+
+46
+00:03:06,590 --> 00:03:13,100
+And if you go to the event handlers, if you open the order created event handler, you can see that
+
+47
+00:03:13,100 --> 00:03:19,160
+in this code, we will handle and catch these domain events in order to perform our use case for that
+
+48
+00:03:19,160 --> 00:03:24,560
+purpose, put additional breakpoint in the handle of the order created event handler in the application
+
+49
+00:03:24,560 --> 00:03:24,920
+layer.
+
+50
+00:03:24,920 --> 00:03:31,460
+So we have successfully put breakpoints for the end to end perspective of the create order use cases.
+
+51
+00:03:31,460 --> 00:03:35,480
+So after that, let's remember our deployment strategy.
+
+52
+00:03:35,480 --> 00:03:41,720
+If you open the deployment strategy we are at the first stage which is the deployment want and deploying
+
+53
+00:03:41,720 --> 00:03:43,040
+from the local machine.
+
+54
+00:03:43,040 --> 00:03:48,020
+So we have completed the development of the ordering microservices in our local environment.
+
+55
+00:03:48,020 --> 00:03:51,890
+And we will connect the backing services, which is the SQL server database.
+
+56
+00:03:51,890 --> 00:03:57,350
+And we have activating the SQL server in order to communicate from our local ordering microservices.
+
+57
+00:03:57,350 --> 00:04:03,020
+So that means now we will perform these deployment one and performing the testing from deployment one
+
+58
+00:04:03,020 --> 00:04:05,660
+and from local machine of the ordering microservices.
+
+59
+00:04:05,660 --> 00:04:11,840
+For that purpose, I am going to open the Visual Studio and go to the ordering API and right click the
+
+60
+00:04:11,840 --> 00:04:14,420
+ordering API and set a startup project.
+
+61
+00:04:14,420 --> 00:04:18,170
+This will be academic incoming requests from our local computer.
+
+62
+00:04:18,170 --> 00:04:24,290
+For that purpose, we will start from the ordering API for ordering microservices, and I am going to
+
+63
+00:04:24,290 --> 00:04:29,600
+hit the Https button in order to run ordering microservices in Https mode.
+
+64
+00:04:30,360 --> 00:04:36,210
+So when the application start up, as you remember that these applications will be migrate and seed
+
+65
+00:04:36,270 --> 00:04:37,440
+SQL server database.
+
+66
+00:04:37,440 --> 00:04:42,720
+When the application start up, it is a development environment and it is going to initialize database.
+
+67
+00:04:42,720 --> 00:04:46,980
+And I am going to hit F5 in order to migrate and see database.
+
+68
+00:04:46,980 --> 00:04:50,700
+That means we will create order db in our SQL server database.
+
+69
+00:04:50,700 --> 00:04:57,060
+And after that we will populate some data including customer product orders and items with asynchronous
+
+70
+00:04:57,060 --> 00:04:57,510
+way.
+
+71
+00:04:57,510 --> 00:05:04,200
+Here you can see that migrated completed and the seeding operation also completed with sending and dispatching
+
+72
+00:05:04,200 --> 00:05:04,890
+domain elements.
+
+73
+00:05:04,890 --> 00:05:10,830
+Because in this case when we are seeding order, we will create a new order and these order will be
+
+74
+00:05:10,830 --> 00:05:12,840
+dispatching order created domain event.
+
+75
+00:05:12,840 --> 00:05:17,610
+And that's why it is going to hitting the dispatch domain events from the infrastructure layer.
+
+76
+00:05:17,610 --> 00:05:24,240
+And when I hit the F5 this time, we can see that when the order created, this will be catching from
+
+77
+00:05:24,240 --> 00:05:25,410
+the replication layer.
+
+78
+00:05:25,410 --> 00:05:31,410
+After dispatching all of the things here, you can see that this time when we are dispatching domain
+
+79
+00:05:31,410 --> 00:05:36,570
+events which using the I notification from the mediator, this will be handled from the order created
+
+80
+00:05:36,570 --> 00:05:40,590
+domain event which is located in our ordering application layer.
+
+81
+00:05:40,590 --> 00:05:44,160
+And this will be implement I notification handler interface.
+
+82
+00:05:44,160 --> 00:05:49,590
+And in the handle method we can perform log information and return the task completed.
+
+83
+00:05:49,590 --> 00:05:53,730
+And I'm going to hit F5 and pacing this operation for now.
+
+84
+00:05:53,730 --> 00:05:58,800
+And I would like to up and running my ordering API microservices.
+
+85
+00:05:58,800 --> 00:06:01,620
+Here you can see the log statement is completed.
+
+86
+00:06:01,620 --> 00:06:06,630
+Now that means our authentic microservices is ready for Academy incoming requests.
+
+87
+00:06:06,630 --> 00:06:08,070
+But you can see the logs.
+
+88
+00:06:08,070 --> 00:06:10,890
+This will be create a new database and tables.
+
+89
+00:06:10,890 --> 00:06:13,380
+And after that this will be inserting any record.
+
+90
+00:06:13,380 --> 00:06:20,070
+In order to seeding our databases to verify SQL server database setup, you can open the SQL Server
+
+91
+00:06:20,070 --> 00:06:25,950
+Object Explorer in the Visual Studio, and you can refresh these SQL Server Object Explorer and connect
+
+92
+00:06:25,950 --> 00:06:26,730
+the localhost.
+
+93
+00:06:26,730 --> 00:06:31,410
+And if you go to the database, you can see that order db is created successfully.
+
+94
+00:06:31,410 --> 00:06:37,590
+And if you expand the tables, you can see customers orders and order items are created successfully.
+
+95
+00:06:37,590 --> 00:06:44,250
+If you right click the orders and view data, you can see that seeding operations also completed successfully.
+
+96
+00:06:44,250 --> 00:06:47,910
+And we have only two orders in our application yet.
+
+97
+00:06:47,910 --> 00:06:52,290
+So now I'm going to create a new order with sending http post request.
+
+98
+00:06:52,290 --> 00:06:55,020
+For that purpose, please open the postman.
+
+99
+00:06:55,020 --> 00:07:00,120
+And in the postman we have a postman collection which is the Icap microservices.
+
+100
+00:07:00,120 --> 00:07:05,280
+And under the ordering microservices I have created post order operation.
+
+101
+00:07:05,280 --> 00:07:09,600
+So please create http post request for the ordering microservices.
+
+102
+00:07:09,600 --> 00:07:14,790
+Here you can see the http post operation and if you look at the endpoint, you can see that we will
+
+103
+00:07:14,790 --> 00:07:17,490
+use ordering URL and slash orders endpoint.
+
+104
+00:07:17,490 --> 00:07:23,970
+If you look at the ordering URL, you can see that we will set 5053 which is indicating our localhost
+
+105
+00:07:23,970 --> 00:07:24,660
+environment.
+
+106
+00:07:24,660 --> 00:07:31,200
+If you open the environments, you can see that we have a local environment and Docker environment for
+
+107
+00:07:31,200 --> 00:07:31,980
+local environment.
+
+108
+00:07:31,980 --> 00:07:35,550
+You can see the port numbers is starting with the 50.
+
+109
+00:07:35,550 --> 00:07:41,100
+And if you change these localhost to Docker, you can see that the environment will be changed accordingly.
+
+110
+00:07:41,100 --> 00:07:43,230
+With the 60 port numbers.
+
+111
+00:07:43,230 --> 00:07:44,460
+Here you can see that.
+
+112
+00:07:44,460 --> 00:07:49,230
+So now we are going to test from our local computer and local ordering resources.
+
+113
+00:07:49,230 --> 00:07:52,080
+For that purpose I'm going to change the environment as a localhost.
+
+114
+00:07:52,080 --> 00:07:55,530
+And after that verify the ordering URL is starting with 50.
+
+115
+00:07:55,530 --> 00:08:00,630
+After that we are ready to send http post requests for the create order endpoint.
+
+116
+00:08:00,630 --> 00:08:07,560
+But before that, please check the our Json body request which is including the whole order object.
+
+117
+00:08:07,560 --> 00:08:13,950
+And this is an example Json body with including customer details, shipping, billing, address, payment
+
+118
+00:08:13,950 --> 00:08:18,180
+information and order items according to newly created order.
+
+119
+00:08:18,180 --> 00:08:23,850
+Here you can see that we will have two order items in this order and the order status will be two.
+
+120
+00:08:23,850 --> 00:08:26,700
+And these are the payment address definitions.
+
+121
+00:08:26,700 --> 00:08:29,130
+And the order name will be order for.
+
+122
+00:08:29,130 --> 00:08:35,909
+And this is the order body structure that we are going to send as a Json body when sending http post
+
+123
+00:08:35,909 --> 00:08:37,440
+request to this endpoint.
+
+124
+00:08:37,440 --> 00:08:44,280
+So after preparing this Post request, I'm going to hit the send button in order to observe the flow
+
+125
+00:08:44,280 --> 00:08:46,260
+of execution through the breakpoints.
+
+126
+00:08:46,260 --> 00:08:51,990
+So hit the send button and see that this will be triggered our ordering API and which is the create
+
+127
+00:08:51,990 --> 00:08:53,040
+order endpoint.
+
+128
+00:08:53,040 --> 00:08:58,320
+So this is the first point when Academy request and populating the incoming create order request.
+
+129
+00:08:58,320 --> 00:09:04,980
+If you open the request you can see that this will be include the whole order Json object and this order
+
+130
+00:09:04,980 --> 00:09:10,770
+including billing, customer ID, ID, order items, order name, payment, shipping address status,
+
+131
+00:09:10,770 --> 00:09:11,670
+and so on.
+
+132
+00:09:11,670 --> 00:09:16,740
+And after that this will be converting these order and requests to the command object.
+
+133
+00:09:16,740 --> 00:09:20,730
+And this will be sent to mediator in order to trigger our command handler.
+
+134
+00:09:20,730 --> 00:09:26,460
+Here you can see that this will be triggered or create order handler class which is located under the
+
+135
+00:09:26,460 --> 00:09:27,960
+ordering application layer.
+
+136
+00:09:27,960 --> 00:09:29,970
+And in this handle method this will be.
+
+137
+00:09:30,110 --> 00:09:35,030
+Basically create a new order, and after that save the database using the Entity Framework core.
+
+138
+00:09:35,030 --> 00:09:41,450
+But before that it is preparing the new order and this will be using order dot create operation and
+
+139
+00:09:41,450 --> 00:09:43,910
+which is hitting the order create function.
+
+140
+00:09:43,910 --> 00:09:47,480
+And this is locating in the our ordering domain layer.
+
+141
+00:09:47,480 --> 00:09:50,060
+You can verify the folder structure.
+
+142
+00:09:50,060 --> 00:09:53,450
+This will be hitting the order when creating any order item.
+
+143
+00:09:53,450 --> 00:09:59,960
+And this will be creating a new order entity and adding domain events into the ordered aggregate and
+
+144
+00:09:59,960 --> 00:10:01,160
+returning a new order.
+
+145
+00:10:01,160 --> 00:10:07,430
+And this will be also adding order items into this order and returning any order entity.
+
+146
+00:10:07,430 --> 00:10:11,120
+And after that, this order is ready for the saving database.
+
+147
+00:10:11,120 --> 00:10:17,060
+So if you continue our debugging, this will be adding orders into DB context and save change async.
+
+148
+00:10:17,060 --> 00:10:22,220
+When we are saving changes with using Entity Framework Core, this will be hitting the interceptor which
+
+149
+00:10:22,220 --> 00:10:27,620
+is the Dispatch domain event interceptor, and this will be dispatching domain events regarding trees
+
+150
+00:10:27,620 --> 00:10:32,690
+or aggregate, which is the order aggregate and we have one domain event and we will publish this domain
+
+151
+00:10:32,690 --> 00:10:35,000
+event using the mediator publish function.
+
+152
+00:10:35,000 --> 00:10:38,330
+And after that this will be dispatching this domain event.
+
+153
+00:10:38,330 --> 00:10:43,820
+And this will be catching and handling in the ordering application layer which is the order created
+
+154
+00:10:43,820 --> 00:10:44,570
+event handler.
+
+155
+00:10:44,570 --> 00:10:47,540
+And this will be implement from the identification handle.
+
+156
+00:10:47,540 --> 00:10:53,720
+And in this handle method we basically handle the incoming notification which is the our order created
+
+157
+00:10:53,720 --> 00:10:55,670
+notification event and domain event.
+
+158
+00:10:55,670 --> 00:10:59,360
+Here you can see the details of this domain event and the order details.
+
+159
+00:10:59,360 --> 00:11:03,890
+And in this place I am going to only logging the information with incoming domain event.
+
+160
+00:11:03,890 --> 00:11:08,210
+But in the next videos we are going to leading the integration event.
+
+161
+00:11:08,210 --> 00:11:14,690
+That means we will be converting this domain one to integration in and in order to notify other microservices.
+
+162
+00:11:14,690 --> 00:11:20,180
+But for now at least we can see that how we can handle these domain event in the ordering application
+
+163
+00:11:20,180 --> 00:11:20,720
+layer.
+
+164
+00:11:20,720 --> 00:11:26,030
+And if I continue to our debug operation, you can see that our saving operation is completed.
+
+165
+00:11:26,030 --> 00:11:33,380
+And if I hit F5 this will be hitting the at the end of the our create order endpoint which is our ordering
+
+166
+00:11:33,380 --> 00:11:34,100
+application.
+
+167
+00:11:34,100 --> 00:11:40,700
+That means we are end of the our request life cycle and converting these create order response from
+
+168
+00:11:40,700 --> 00:11:46,040
+the result object and which we are returning this response object to the our client application, which
+
+169
+00:11:46,040 --> 00:11:50,810
+only including newly created order ID, and this will be returning results that created.
+
+170
+00:11:50,810 --> 00:11:54,350
+And I am going to hit F5 and see the our postman.
+
+171
+00:11:54,350 --> 00:11:57,080
+And in here you can see the postman response.
+
+172
+00:11:57,080 --> 00:12:02,990
+This will be responding to all one created success response, and this is the newly created order ID
+
+173
+00:12:02,990 --> 00:12:05,390
+that we are going to verify from the database.
+
+174
+00:12:05,390 --> 00:12:12,020
+So now let's verify this newly created order from the Visual Studio and SQL Server Object Explorer.
+
+175
+00:12:12,110 --> 00:12:18,020
+As you remember that we have orders data and we have only two data when starting the application.
+
+176
+00:12:18,020 --> 00:12:23,750
+If I refresh this order data, you can see that this time we have newly created order comes from the
+
+177
+00:12:23,750 --> 00:12:28,070
+database which is created from the our http post request.
+
+178
+00:12:28,070 --> 00:12:33,800
+That means we will perform end to end use case for the create order endpoint in the ordering microservices.
+

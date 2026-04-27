@@ -1,0 +1,168 @@
+1
+00:00:00,140 --> 00:00:07,100
+In this section we are going to develop microservices asynchronous communication with RabbitMQ and Masstransit.
+
+2
+00:00:07,130 --> 00:00:12,230
+This is for checkout or the use case between basket and ordering microservices.
+
+3
+00:00:12,680 --> 00:00:15,860
+Here you can see the big picture that we are going to build one by one.
+
+4
+00:00:15,860 --> 00:00:22,550
+So we will build asynchronous communication between basket and ordering microservices using the message
+
+5
+00:00:22,550 --> 00:00:23,210
+broker.
+
+6
+00:00:23,810 --> 00:00:29,810
+If you look at the our course flow, as you can see that we have finished the development of the microservices
+
+7
+00:00:29,810 --> 00:00:35,390
+and now we are in here and start to developing microservices asynchronous communication.
+
+8
+00:00:35,870 --> 00:00:41,270
+So this is the microservices asynchronous communication using the RabbitMQ and Masstransit.
+
+9
+00:00:41,270 --> 00:00:47,120
+And we are going to cover asynchronous microservice communication using the RabbitMQ message broker
+
+10
+00:00:47,120 --> 00:00:51,980
+service and using the RabbitMQ publish subscribe topic exchange model.
+
+11
+00:00:51,980 --> 00:00:57,050
+And we will use Masstransit for abstraction over the RabbitMQ message broker system.
+
+12
+00:00:57,050 --> 00:01:02,570
+And we will publishing the basket checkout event queue from the basket microservices and subscribing
+
+13
+00:01:02,570 --> 00:01:04,940
+these events from the ordering microservices.
+
+14
+00:01:04,940 --> 00:01:10,760
+And we will create RabbitMQ building blocks messaging library and adding reference this library into
+
+15
+00:01:10,760 --> 00:01:11,840
+microservices.
+
+16
+00:01:11,840 --> 00:01:17,510
+And lastly we will containerize RabbitMQ message queue system with the basket and ordering microservices
+
+17
+00:01:17,510 --> 00:01:19,010
+using the Docker compose.
+
+18
+00:01:19,010 --> 00:01:23,210
+So we will implement publish subscribe design pattern in this microservice.
+
+19
+00:01:23,210 --> 00:01:26,420
+Asynchronous communication using the RabbitMQ and Masstransit.
+
+20
+00:01:26,420 --> 00:01:32,450
+That means we will create RabbitMQ connection on the basket and ordering microservices when producing
+
+21
+00:01:32,450 --> 00:01:33,770
+and consuming events.
+
+22
+00:01:33,770 --> 00:01:39,890
+Basket microservices which include publish basket checkout queue with Masstransit and RabbitMQ queue
+
+23
+00:01:39,890 --> 00:01:45,650
+and ordering microservices consuming the RabbitMQ basket checkout event queue with using the mass transit
+
+24
+00:01:45,650 --> 00:01:47,300
+and RabbitMQ configuration.
+
+25
+00:01:47,300 --> 00:01:51,770
+So here you can see our publish subscriber of the Basket Checkout event.
+
+26
+00:01:51,770 --> 00:01:55,220
+This is the end to end use case for the basket checkout event.
+
+27
+00:01:55,220 --> 00:02:01,160
+So in the first step Basket Checkout API hitting from the client application and these requests comes
+
+28
+00:02:01,160 --> 00:02:02,810
+from the client and hitting the basket.
+
+29
+00:02:02,810 --> 00:02:09,169
+Microservices and basket microservices perform their operations like removing the basket in the Redis
+
+30
+00:02:09,169 --> 00:02:09,860
+database.
+
+31
+00:02:09,860 --> 00:02:15,830
+Because this is going to be an order, this will be removing the database and also removing the cache.
+
+32
+00:02:15,830 --> 00:02:23,000
+And after that basket microservices publish basket checkout integration event to the RabbitMQ using
+
+33
+00:02:23,000 --> 00:02:23,900
+the Masstransit.
+
+34
+00:02:23,900 --> 00:02:28,010
+And this queue typically implement with the topic messaging technology.
+
+35
+00:02:28,010 --> 00:02:32,510
+So the subscriber microservices in our case it will be ordering.
+
+36
+00:02:32,510 --> 00:02:38,180
+Microservices will consume this event and create an order in their SQL server database.
+
+37
+00:02:38,180 --> 00:02:43,700
+So by the end of the section we will have a library which provides the communication along basket and
+
+38
+00:02:43,700 --> 00:02:46,850
+ordering microservices with creating a class library.
+
+39
+00:02:46,850 --> 00:02:52,280
+The event bus implementation with RabbitMQ that microservices publish the event and receive the events
+
+40
+00:02:52,280 --> 00:02:53,660
+with using this library.
+
+41
+00:02:53,660 --> 00:02:58,640
+Before we start the development, we should understand the microservice communication basics and the
+
+42
+00:02:58,640 --> 00:02:59,240
+RabbitMQ.
+

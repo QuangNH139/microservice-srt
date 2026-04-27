@@ -1,0 +1,292 @@
+1
+00:00:00,110 --> 00:00:06,650
+In this video, we are going to explore how to centralize exception handling in microservices using
+
+2
+00:00:06,650 --> 00:00:07,370
+building blocks.
+
+3
+00:00:07,370 --> 00:00:14,450
+Approach building blocks is a concept used to encapsulate all common functionalities across microservices,
+
+4
+00:00:14,450 --> 00:00:16,460
+such as exception handling.
+
+5
+00:00:16,460 --> 00:00:21,650
+It helps in maintaining a consistent approach and reducing the code duplication.
+
+6
+00:00:21,980 --> 00:00:28,520
+So we will start by creating generic exception classes within our building Blocks project, and this
+
+7
+00:00:28,520 --> 00:00:34,220
+class will be represented our common types of the exceptions like not found exception, internal server
+
+8
+00:00:34,220 --> 00:00:36,890
+error and bad request exceptions.
+
+9
+00:00:37,160 --> 00:00:41,690
+So please open the Visual Studio and locate the building blocks.
+
+10
+00:00:41,690 --> 00:00:44,960
+So we will develop our common exceptions in here.
+
+11
+00:00:44,960 --> 00:00:51,080
+And we will create generic exception classes that we use inside of the each microservices.
+
+12
+00:00:51,080 --> 00:00:57,410
+For that purpose I'm going to right click and create exception folder under the building blocks add
+
+13
+00:00:57,410 --> 00:01:00,440
+new folder which name is exceptions.
+
+14
+00:01:00,440 --> 00:01:05,180
+Under the exceptions folder I have created three common exception classes.
+
+15
+00:01:05,750 --> 00:01:12,470
+The first one is not found exception, and in the not found exception, I'm going to make it public
+
+16
+00:01:12,470 --> 00:01:16,250
+and inherit from the system exception class.
+
+17
+00:01:16,250 --> 00:01:23,570
+And in here we will define two different constructors in order to handle not found exception.
+
+18
+00:01:23,570 --> 00:01:30,530
+The first one is passing the exception message and the second one we can name, and getting the key
+
+19
+00:01:30,530 --> 00:01:36,620
+information as a parameter that we can write the custom exception message, which is the entity name,
+
+20
+00:01:36,620 --> 00:01:38,360
+and the key was not found.
+
+21
+00:01:38,390 --> 00:01:40,280
+This is the customized exception.
+
+22
+00:01:40,280 --> 00:01:42,950
+I'm going to remove unnecessary using statement.
+
+23
+00:01:42,950 --> 00:01:46,310
+And here you can see the not found generic exception.
+
+24
+00:01:46,310 --> 00:01:51,860
+And after that I'm going to create another exception which is the invalid server exception.
+
+25
+00:01:51,860 --> 00:01:53,780
+So we will follow the same steps.
+
+26
+00:01:53,780 --> 00:02:03,380
+Make it public, inherit from the exceptions and inside of the exception class we can this time get
+
+27
+00:02:03,380 --> 00:02:04,100
+some details.
+
+28
+00:02:04,100 --> 00:02:08,690
+Here you can see that I am putting a details property that we can define.
+
+29
+00:02:08,690 --> 00:02:12,140
+And this is the typical message based implementation.
+
+30
+00:02:12,140 --> 00:02:16,730
+And in here we can passing the details about the internal server error details.
+
+31
+00:02:16,730 --> 00:02:19,580
+So we can remove the unnecessary using statement.
+
+32
+00:02:19,580 --> 00:02:27,080
+And after that we can create our last exception which is the bad request exception, and making the
+
+33
+00:02:27,080 --> 00:02:32,300
+same things as similar and remove unnecessary using statement.
+
+34
+00:02:32,300 --> 00:02:37,160
+And in here we will follow the same codes with the internal server error.
+
+35
+00:02:37,160 --> 00:02:42,500
+I'm putting the details, information and able to paste details information in a constructor of the
+
+36
+00:02:42,500 --> 00:02:43,880
+bad request exception.
+
+37
+00:02:44,630 --> 00:02:51,800
+So each of these classes extended from the system exception and adds specific context informations.
+
+38
+00:02:51,830 --> 00:02:55,970
+Next we will apply these generic exceptions in our microservices.
+
+39
+00:02:55,970 --> 00:03:03,410
+For example, we have defined the not found exception and in our catalog microservices we use Notfoundexception
+
+40
+00:03:03,410 --> 00:03:05,900
+to handle the product not found cases.
+
+41
+00:03:05,900 --> 00:03:12,590
+If you go to the catalog API microservice and see that there is an exception folder, and if you open
+
+42
+00:03:12,590 --> 00:03:14,240
+the product not found exception.
+
+43
+00:03:14,240 --> 00:03:16,220
+This is using in two places.
+
+44
+00:03:16,220 --> 00:03:19,970
+So we will also inherit from the standard exception.
+
+45
+00:03:19,970 --> 00:03:26,900
+But we can inherit from the not found exception because this time we have more generic exception that
+
+46
+00:03:26,900 --> 00:03:31,580
+we can use in here, not found exception.
+
+47
+00:03:31,610 --> 00:03:39,080
+And when we are inherited from the not found expression, we can also convert this as a with information
+
+48
+00:03:39,080 --> 00:03:42,110
+we can paste the with ID information.
+
+49
+00:03:42,110 --> 00:03:51,590
+And I'm going to convert this base constructor which will be using the our second constructor I'm going
+
+50
+00:03:51,590 --> 00:03:54,650
+to passing the are object name which is the product.
+
+51
+00:03:55,940 --> 00:03:59,060
+And after that passing the key information which is the ID.
+
+52
+00:04:00,290 --> 00:04:07,310
+In this class we basically extends from the not found exception comes from the building blocks exceptions
+
+53
+00:04:07,310 --> 00:04:14,720
+which including our generic exceptions and providing a more specific context for product related errors.
+
+54
+00:04:14,720 --> 00:04:21,200
+For that purpose, we will refactor our existing usage of the product Notfoundexception, so we will
+
+55
+00:04:21,200 --> 00:04:26,060
+refactor our handles to use these new exception constructor.
+
+56
+00:04:26,090 --> 00:04:32,690
+If you open the these two references, you can see that we have two references get product by id handler
+
+57
+00:04:32,690 --> 00:04:35,480
+and also update product handler.
+
+58
+00:04:35,480 --> 00:04:42,050
+So let me go to the first one and see that we are throwing product not found exception when we can't
+
+59
+00:04:42,050 --> 00:04:43,040
+find a product.
+
+60
+00:04:43,040 --> 00:04:48,230
+So in this case we will passing the ID information that we can't find this ID.
+
+61
+00:04:48,230 --> 00:04:51,500
+So copy this query.id and paste in here.
+
+62
+00:04:51,500 --> 00:04:56,990
+And after that if you go to the product not found exception and go to the second reference which is
+
+63
+00:04:56,990 --> 00:04:59,120
+including the update product.
+
+64
+00:04:59,410 --> 00:05:03,430
+Another class and this is also retrieving the product information.
+
+65
+00:05:03,430 --> 00:05:06,760
+If product is null, we will throw product not found exception.
+
+66
+00:05:06,760 --> 00:05:13,060
+So we will paste the ID information in the constructor of the product, not found exception and we will
+
+67
+00:05:13,060 --> 00:05:14,650
+make it correct for now.
+
+68
+00:05:14,650 --> 00:05:21,340
+So after implementing these changes, we will with the solution to ensure everything integrates seamlessly.
+
+69
+00:05:21,340 --> 00:05:28,150
+Right click and build the solution and see that there is no any exception and get the success response
+
+70
+00:05:28,150 --> 00:05:29,560
+in the build operation.
+
+71
+00:05:29,560 --> 00:05:34,810
+So this approach basically simplifies the exception management across microservices.
+
+72
+00:05:34,810 --> 00:05:40,900
+We put all common exceptions under the building blocks, and we will specify some customized exception
+
+73
+00:05:40,900 --> 00:05:46,750
+for each microservices and inherit from the actual and generic exceptions from the building blocks.
+

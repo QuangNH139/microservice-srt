@@ -1,0 +1,508 @@
+1
+00:00:00,140 --> 00:00:03,380
+In this video we are going to do cross-cutting concerns.
+
+2
+00:00:03,380 --> 00:00:10,070
+So we will apply validation with using abstract validator class using the Fluent Validation library.
+
+3
+00:00:10,460 --> 00:00:17,720
+So please open the Visual Studio and let's define validation rules for our commands under the catalog
+
+4
+00:00:17,720 --> 00:00:18,590
+microservices.
+
+5
+00:00:18,590 --> 00:00:21,380
+Here you can see the Our products feature folder.
+
+6
+00:00:21,380 --> 00:00:24,020
+And here you can see that our use cases.
+
+7
+00:00:24,020 --> 00:00:31,460
+So I'm going to choose Create Product Use Case in order to define validation rules for our create product
+
+8
+00:00:31,460 --> 00:00:32,270
+command.
+
+9
+00:00:32,270 --> 00:00:38,480
+So we do this by creating a validator class for each command using different validations.
+
+10
+00:00:38,480 --> 00:00:40,070
+Abstract validator class.
+
+11
+00:00:40,070 --> 00:00:43,910
+So please go to the create product handler class.
+
+12
+00:00:43,910 --> 00:00:50,180
+And in here we are going to put the validation for our create product command that is requiring all
+
+13
+00:00:50,180 --> 00:00:53,750
+these information name category description and so on.
+
+14
+00:00:53,750 --> 00:00:56,630
+This will be product model properties.
+
+15
+00:00:56,630 --> 00:01:02,510
+So we need to validate these properties before passing the command handler.
+
+16
+00:01:02,510 --> 00:01:05,510
+That is we should check that this should not be null.
+
+17
+00:01:05,510 --> 00:01:09,110
+So we will create create product command validator.
+
+18
+00:01:09,110 --> 00:01:16,310
+And this will be doing by creating a new class which name is create product command validator under
+
+19
+00:01:16,310 --> 00:01:19,400
+the this command and result definition.
+
+20
+00:01:19,400 --> 00:01:23,780
+And before the handle definition I'm going to create a new class.
+
+21
+00:01:23,780 --> 00:01:29,420
+Which name is public class create product command validator class.
+
+22
+00:01:29,420 --> 00:01:35,240
+And I'm going to inherit this class from the abstract validator.
+
+23
+00:01:35,240 --> 00:01:38,780
+And as you can see that it is coming from the validation library.
+
+24
+00:01:38,780 --> 00:01:46,100
+This is coming from the building blocks library that we can access from the front validation and after
+
+25
+00:01:46,100 --> 00:01:53,300
+inherit from the abstract validator it is requiring for the validation object which is the or create
+
+26
+00:01:53,300 --> 00:01:54,110
+product command.
+
+27
+00:01:54,110 --> 00:02:00,500
+I am pasting the create product command and now we can specify our actual logic inside of this class.
+
+28
+00:02:00,500 --> 00:02:05,840
+So basically in this class the first thing we should do that I'm going to create a constructor.
+
+29
+00:02:05,840 --> 00:02:11,450
+And inside of the constructor we can define the rules with using the rule for method.
+
+30
+00:02:11,450 --> 00:02:20,150
+So this method define the rules and we will give the expression functions in order to define validations.
+
+31
+00:02:20,150 --> 00:02:28,430
+So for example I'm going to write a rule for and if you open bracket you can specify the rule definition.
+
+32
+00:02:28,430 --> 00:02:31,520
+And we are going to put a rule on the name.
+
+33
+00:02:31,520 --> 00:02:34,460
+And this name should not be empty.
+
+34
+00:02:34,460 --> 00:02:38,150
+And we can also use with message method.
+
+35
+00:02:38,150 --> 00:02:40,730
+And we can give the error message.
+
+36
+00:02:40,730 --> 00:02:44,870
+If name is null, we can say that name is required.
+
+37
+00:02:45,770 --> 00:02:52,760
+And this is the our name validation that we can use before proceeding the handler method.
+
+38
+00:02:52,760 --> 00:02:55,850
+And at the same way I am going to add different rules.
+
+39
+00:02:55,850 --> 00:03:03,920
+In here you can see that I have put the category not empty rule and image file not empty rule with these
+
+40
+00:03:03,920 --> 00:03:04,940
+messages.
+
+41
+00:03:04,940 --> 00:03:12,260
+And lastly, we can put the price rule greater than zero and with the message is price must be greater
+
+42
+00:03:12,260 --> 00:03:12,950
+than zero.
+
+43
+00:03:12,950 --> 00:03:18,620
+So in the constructor of the validator that inherits from the abstract validator, we can specify the
+
+44
+00:03:18,620 --> 00:03:22,670
+rules that will be automatically validate from the validation.
+
+45
+00:03:22,670 --> 00:03:26,330
+So we have completed our command validator class.
+
+46
+00:03:26,330 --> 00:03:30,110
+If you go on top of the class you can see that there is a using statement.
+
+47
+00:03:30,110 --> 00:03:37,760
+I'm going to cut this statement and go to the global using and adding these global using statement that
+
+48
+00:03:37,760 --> 00:03:41,570
+we can access from any class to implement validations.
+
+49
+00:03:41,570 --> 00:03:44,060
+Yes, the command class is completed.
+
+50
+00:03:44,060 --> 00:03:47,120
+So how we can proceed these validations.
+
+51
+00:03:47,270 --> 00:03:53,840
+Of course we need to inject a validator in our command handler class in order to validate incoming command
+
+52
+00:03:53,840 --> 00:03:54,380
+object.
+
+53
+00:03:54,380 --> 00:03:59,450
+So for that purpose scroll down and go to the Create Product Command handler class.
+
+54
+00:03:59,450 --> 00:04:04,880
+And in this class I am going to add a naive injection, which is.
+
+55
+00:04:04,880 --> 00:04:09,110
+The I validator comes from the fluent validation.
+
+56
+00:04:09,110 --> 00:04:15,740
+And in here I'm going to passing the create product command as a generic in here okay.
+
+57
+00:04:15,740 --> 00:04:18,620
+This will be our validator object.
+
+58
+00:04:19,220 --> 00:04:26,030
+And you can see that now our primary constructor including two objects one for the session to perform
+
+59
+00:04:26,030 --> 00:04:28,040
+actual logic, one for the validator.
+
+60
+00:04:28,040 --> 00:04:33,560
+And we will use validator at the beginning of the handle method that will perform the validations with
+
+61
+00:04:33,560 --> 00:04:36,680
+using the validator dot validate method.
+
+62
+00:04:36,680 --> 00:04:38,930
+So let me write first and explain.
+
+63
+00:04:38,930 --> 00:04:48,410
+After that I'm going to get a result from await validator that you can see that we have validate async
+
+64
+00:04:48,410 --> 00:04:49,010
+method.
+
+65
+00:04:49,010 --> 00:04:52,850
+And we can pass command object that we are going to validate.
+
+66
+00:04:52,850 --> 00:04:55,820
+And after that we can pass the cancellation token.
+
+67
+00:04:59,290 --> 00:05:03,190
+So after validating, we can get the errors from the result.
+
+68
+00:05:03,190 --> 00:05:11,170
+And if you filter the result by errors and select for the error message.
+
+69
+00:05:17,660 --> 00:05:21,680
+We can access the errors from the result if there is an error.
+
+70
+00:05:21,680 --> 00:05:30,080
+So if an error we can throw an exception which is the validation exception.
+
+71
+00:05:30,980 --> 00:05:35,240
+And this validation exception also comes from the fluent validation.
+
+72
+00:05:35,240 --> 00:05:36,680
+And we are passing the.
+
+73
+00:05:37,570 --> 00:05:40,720
+Errors and first default for now.
+
+74
+00:05:43,110 --> 00:05:43,560
+Okay.
+
+75
+00:05:43,560 --> 00:05:49,500
+As you can see that we basically put a validation block in here, the handle.
+
+76
+00:05:49,530 --> 00:05:52,860
+Now check the commands against our validation rules.
+
+77
+00:05:52,860 --> 00:05:58,440
+And if there is any errors in the validations we can throw a validation exception.
+
+78
+00:05:58,440 --> 00:06:01,650
+If not it is going to actual business logic.
+
+79
+00:06:01,770 --> 00:06:05,340
+So you can see that we have created a command validator.
+
+80
+00:06:05,340 --> 00:06:09,540
+And after that we have inject a validator into our command handler.
+
+81
+00:06:09,540 --> 00:06:16,410
+And after that we have to register these validators into ASP.Net dependency injection container.
+
+82
+00:06:16,410 --> 00:06:19,290
+To do so I'm going to open the Program.cs.
+
+83
+00:06:19,290 --> 00:06:26,070
+And after the mediator I can add a new service in here Builder Services.
+
+84
+00:06:26,070 --> 00:06:30,720
+And in here add validators from the assembly.
+
+85
+00:06:30,840 --> 00:06:36,780
+And this method comes from the Fluent Validation dependency injection extension that will facilitate
+
+86
+00:06:36,780 --> 00:06:40,410
+to inject fluent validation for our ASP.Net applications.
+
+87
+00:06:40,410 --> 00:06:45,150
+So I'm going to paste the assembly as the same way with the our mediator.
+
+88
+00:06:45,150 --> 00:06:47,280
+And I'm passing the Program.cs assembly.
+
+89
+00:06:47,280 --> 00:06:54,000
+So this will be make it available in validator that we can inject into the create product command handler.
+
+90
+00:06:54,000 --> 00:07:00,930
+And this will be validate these command validator with scanning the project with abstract validators.
+
+91
+00:07:00,930 --> 00:07:07,500
+So that means when we are registering in the program says this code block basically scans the assembly
+
+92
+00:07:07,500 --> 00:07:12,000
+for any validators and register them into this ASP.Net project.
+
+93
+00:07:12,000 --> 00:07:18,300
+So now we have defined the validators, and now it is time to test our validation by sending a request
+
+94
+00:07:18,300 --> 00:07:20,010
+with missing required fields.
+
+95
+00:07:20,010 --> 00:07:25,950
+So we will use create product endpoint in order to trigger this handle method.
+
+96
+00:07:25,950 --> 00:07:30,180
+For that purpose, let's run this application in https mode.
+
+97
+00:07:30,820 --> 00:07:37,030
+And this time we will send a http post request without giving the name information.
+
+98
+00:07:37,270 --> 00:07:40,090
+And this will be trigger our command handler.
+
+99
+00:07:40,090 --> 00:07:44,020
+So please put a breakpoint inside of your validations.
+
+100
+00:07:44,020 --> 00:07:48,760
+You can put a breakpoint inside of the command validator constructor.
+
+101
+00:07:48,760 --> 00:07:56,080
+And now if you open the your postman and go to the http post method and we are going to send http post
+
+102
+00:07:56,080 --> 00:08:03,580
+request in the local environment slash products, and I'm going to make it empty for the name attribute
+
+103
+00:08:03,580 --> 00:08:05,890
+and hit the http send method.
+
+104
+00:08:05,920 --> 00:08:13,750
+This will be trigger or create product endpoint and after that mediator will be triggered our handle
+
+105
+00:08:13,750 --> 00:08:14,590
+operation.
+
+106
+00:08:14,590 --> 00:08:22,570
+But this time you can see that when we send the mediator this will be before triggering the handle method.
+
+107
+00:08:22,570 --> 00:08:24,880
+This will be trigger the command validator.
+
+108
+00:08:24,880 --> 00:08:30,580
+So that means before running the actual logic this will be validate the incoming command object and
+
+109
+00:08:30,580 --> 00:08:33,100
+in here you can see that the name is empty.
+
+110
+00:08:33,100 --> 00:08:37,960
+And this will be collected all the messages from these validations.
+
+111
+00:08:37,960 --> 00:08:45,700
+And once we go to the handle method we are basically run the validator dot validate async method that
+
+112
+00:08:45,700 --> 00:08:49,090
+will be collect all the messages from these command validators.
+
+113
+00:08:49,090 --> 00:08:52,600
+And you can see the error messages collecting from in here.
+
+114
+00:08:52,600 --> 00:08:54,580
+And if any error message.
+
+115
+00:08:54,580 --> 00:08:57,880
+In our case we have one error message which is the name is required.
+
+116
+00:08:57,880 --> 00:09:03,700
+We can throw an validation exception that will not be continue or actual business logic, which is the
+
+117
+00:09:03,700 --> 00:09:04,840
+creating new order.
+
+118
+00:09:04,840 --> 00:09:10,540
+And you can see that we are throwing full length validation validation exception and name is required.
+
+119
+00:09:10,540 --> 00:09:14,410
+So we have successfully validate our incoming command object.
+
+120
+00:09:14,410 --> 00:09:17,860
+And we see that we can throw an exception if the name is required.
+
+121
+00:09:17,860 --> 00:09:23,050
+But this is not a good way to check every command with the validators manually.
+
+122
+00:09:23,050 --> 00:09:30,400
+If you go back to our code, you can see that in every command handler method in the handle method,
+
+123
+00:09:30,400 --> 00:09:36,220
+we can use these code blocks in order to validate these abstract validator.
+
+124
+00:09:36,220 --> 00:09:41,650
+But this is not efficient and we should not duplicate this code for each handle method.
+
+125
+00:09:41,650 --> 00:09:42,910
+This is not a good way.
+
+126
+00:09:42,910 --> 00:09:49,030
+So in the next video we will validate using the validate pipeline behavior in mediator without adding
+
+127
+00:09:49,030 --> 00:09:52,450
+any if command and any validation block in the handle method.
+

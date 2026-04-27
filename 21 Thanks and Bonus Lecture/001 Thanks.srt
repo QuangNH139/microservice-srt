@@ -1,0 +1,64 @@
+1
+00:00:00,080 --> 00:00:03,050
+Thank you so much for being with me on this journey.
+
+2
+00:00:03,050 --> 00:00:06,980
+I am so glad you two followed me the course for all through with the end.
+
+3
+00:00:06,980 --> 00:00:12,770
+I hope this course will help you to understand how to design and implement microservices with pattern
+
+4
+00:00:12,770 --> 00:00:14,000
+and best practices.
+
+5
+00:00:14,000 --> 00:00:19,160
+And now I believe that you will use your skills on your next challenging project and jobs.
+
+6
+00:00:19,160 --> 00:00:22,970
+So I hope this course will grow your career for all aspects.
+
+7
+00:00:22,970 --> 00:00:26,990
+Before closing the course, I would like to request one last thing.
+
+8
+00:00:26,990 --> 00:00:32,540
+If you can provide reviews and feedbacks of this course, this will help me a lot for further courses,
+
+9
+00:00:32,540 --> 00:00:38,450
+reviews and feedbacks is really encouraged me to for pushing forward to create new courses like this.
+
+10
+00:00:38,450 --> 00:00:43,520
+And also your reviews and feedbacks help to choose the right course for other students all over the
+
+11
+00:00:43,520 --> 00:00:43,940
+world.
+
+12
+00:00:43,940 --> 00:00:49,340
+So if you can some time to put your review and rating of this course, I will be very appreciated.
+
+13
+00:00:49,340 --> 00:00:53,000
+You can follow my activities from the GitHub, Twitter and medium.
+
+14
+00:00:53,000 --> 00:00:55,280
+Thank you for everything and your support.
+
+15
+00:00:55,280 --> 00:00:56,480
+Really important for me.
+
+16
+00:00:56,510 --> 00:00:57,980
+See you next courses.
+

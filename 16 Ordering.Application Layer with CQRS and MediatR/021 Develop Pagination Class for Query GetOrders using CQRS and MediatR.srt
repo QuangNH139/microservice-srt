@@ -1,0 +1,208 @@
+1
+00:00:00,140 --> 00:00:06,230
+In this video we are going to develop get orders, query using techniques and mediator in the ordering
+
+2
+00:00:06,230 --> 00:00:07,310
+application layer.
+
+3
+00:00:07,550 --> 00:00:13,430
+But before that, let's understand pagination with using the Entity Framework core entity Framework
+
+4
+00:00:13,430 --> 00:00:18,110
+core supports pagination through the skip and take link methods.
+
+5
+00:00:18,110 --> 00:00:25,700
+These methods allow us to retrieve only a subset of the data corresponding to specific page, and in
+
+6
+00:00:25,700 --> 00:00:31,970
+the skip method, we basically skip the first and element of the sequence, and in the take method,
+
+7
+00:00:31,970 --> 00:00:38,120
+we basically returns a specified number of the contiguous elements from the start of a sequence.
+
+8
+00:00:38,690 --> 00:00:44,720
+So Entity Framework Core supports pagination through a combination of the skip and take methods, which
+
+9
+00:00:44,720 --> 00:00:50,660
+are the part of the link, and pagination is a common requirement in many applications, especially
+
+10
+00:00:50,660 --> 00:00:52,880
+when dealing with large data set.
+
+11
+00:00:52,880 --> 00:00:58,790
+It involves dividing data into pages and retrieving only a specific page at the time.
+
+12
+00:00:58,910 --> 00:01:03,590
+So let's start with developing pagination classes with using Entity Framework Core.
+
+13
+00:01:03,590 --> 00:01:09,620
+For that purpose, I am going to open the Visual Studio, but this time I'm going to add this pagination
+
+14
+00:01:09,620 --> 00:01:15,980
+functionality into building blocks because it is a common operation that can be used different microservices.
+
+15
+00:01:15,980 --> 00:01:19,850
+That's why I am going to add pagination folder under the building blocks.
+
+16
+00:01:19,910 --> 00:01:22,280
+Let's go to Building Blocks class library.
+
+17
+00:01:22,280 --> 00:01:26,660
+Right click add new folder which name is pagination.
+
+18
+00:01:27,170 --> 00:01:30,830
+So in this folder we basically add the pagination classes.
+
+19
+00:01:30,830 --> 00:01:34,610
+And this class will represent the result of the paginated query.
+
+20
+00:01:34,610 --> 00:01:36,770
+I am going to create a new class.
+
+21
+00:01:36,770 --> 00:01:42,500
+Which name is paginated result which is representing a result of the paginated query.
+
+22
+00:01:42,500 --> 00:01:48,470
+So in this class I'm going to remove unnecessary using statement and make this class as a public.
+
+23
+00:01:49,700 --> 00:01:52,310
+After that we will develop the class definition.
+
+24
+00:01:52,310 --> 00:01:58,970
+This class will be a generic type and after that you can see that we will add a generic entity that
+
+25
+00:01:58,970 --> 00:02:01,880
+accepting any entity into arpeggiated result.
+
+26
+00:02:01,880 --> 00:02:08,930
+And here you can see the primary constructor including the page index, page size count and IEnumerable
+
+27
+00:02:09,139 --> 00:02:10,070
+entity data.
+
+28
+00:02:10,070 --> 00:02:12,620
+And these two entities should be class.
+
+29
+00:02:12,620 --> 00:02:20,180
+So inside of this class definition, we can define the properties and add the these primary constructor
+
+30
+00:02:20,180 --> 00:02:22,040
+members into the properties.
+
+31
+00:02:22,040 --> 00:02:28,010
+Here you can see that we have adding the property page index, page size count and data.
+
+32
+00:02:28,010 --> 00:02:34,520
+And we will assign these parameters inside of the constructor with adding these primary constructor.
+
+33
+00:02:34,520 --> 00:02:40,610
+So as you can see that we have developed page index which is the current page index starting from the
+
+34
+00:02:40,610 --> 00:02:41,120
+zero.
+
+35
+00:02:41,120 --> 00:02:46,910
+And we have also adding property of the page size which is the number of the items per page.
+
+36
+00:02:46,910 --> 00:02:52,040
+And here you can see the count property which is the total number of the items in the data set.
+
+37
+00:02:52,040 --> 00:02:56,090
+And here you can see the data which is the actual data for the current page.
+
+38
+00:02:56,090 --> 00:03:01,790
+So this is the paginated result class that we can use for each paginated operation.
+
+39
+00:03:01,790 --> 00:03:04,790
+When we are using Entity Framework core in the microservices.
+
+40
+00:03:04,790 --> 00:03:09,560
+And as the same way we can create a new class which name is pagination request.
+
+41
+00:03:09,590 --> 00:03:12,140
+Here you can see that this is the paginated result.
+
+42
+00:03:12,140 --> 00:03:16,820
+And I am going to add an additional class which name is pagination request.
+
+43
+00:03:16,820 --> 00:03:22,220
+And in this request we basically represent a request for a paginated query.
+
+44
+00:03:22,220 --> 00:03:28,700
+I am going to remove unnecessary using statement and make this class as a public and inside of the.
+
+45
+00:03:28,700 --> 00:03:31,190
+This class we can develop the record type.
+
+46
+00:03:31,190 --> 00:03:35,480
+Here you can see that we have developed public record pagination request.
+
+47
+00:03:35,480 --> 00:03:41,780
+And in this record type we can accept page index and page size as a parameter of this record type.
+
+48
+00:03:41,780 --> 00:03:47,960
+So basically the pagination request record holds the page index and page size with the default values
+
+49
+00:03:47,960 --> 00:03:50,570
+of the zero and ten respectively.
+
+50
+00:03:50,570 --> 00:03:53,810
+This setup allows for the flexible pagination request.
+
+51
+00:03:53,810 --> 00:04:01,010
+So by implementing the paginated result and paginated request classes under the pagination and building
+
+52
+00:04:01,010 --> 00:04:06,380
+blocks, we have laid the foundation for efficient pagination in our microservices.
+

@@ -1,0 +1,28 @@
+1
+00:00:00,110 --> 00:00:06,290
+In this section, we are going to develop cross-cutting concerns for catalog API microservices.
+
+2
+00:00:06,320 --> 00:00:13,130
+So we will explore and develop all cross-cutting concerns for catalog microservices, including the
+
+3
+00:00:13,130 --> 00:00:19,760
+mediator pipeline behavior and fluent validation library logging and validation pipeline behaviors.
+
+4
+00:00:19,940 --> 00:00:27,590
+Global handling exceptions in ASP.Net core seething catalog database with Martin Health checks for catalog
+
+5
+00:00:27,590 --> 00:00:30,200
+microservices with PostgreSQL database.
+
+6
+00:00:30,320 --> 00:00:33,530
+Develop pagination for Getproducts query.
+
+7
+00:00:33,530 --> 00:00:39,950
+And lastly, we will containerize an Orchestrate catalog API microservices with Docker and Docker compose.
+

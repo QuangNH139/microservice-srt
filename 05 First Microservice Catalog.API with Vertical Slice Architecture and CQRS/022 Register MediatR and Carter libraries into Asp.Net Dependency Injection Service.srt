@@ -1,0 +1,184 @@
+1
+00:00:00,170 --> 00:00:06,920
+In this video, we are going to register Mediator and Carter libraries into ASP.Net Dependency Injection
+
+2
+00:00:06,920 --> 00:00:08,870
+Service and Request pipeline.
+
+3
+00:00:09,200 --> 00:00:11,360
+Let's start by examining the program.
+
+4
+00:00:11,360 --> 00:00:12,290
+Exe file.
+
+5
+00:00:12,320 --> 00:00:18,890
+If you open the program CS for Catalog Micro Services you can see the these empty structure.
+
+6
+00:00:18,920 --> 00:00:21,860
+As you remember that the structure is divided by two.
+
+7
+00:00:22,010 --> 00:00:27,800
+Before building the web application, we will add the services into dependency injection container.
+
+8
+00:00:27,800 --> 00:00:32,810
+And after building the web application we will configure the Http request pipeline.
+
+9
+00:00:32,810 --> 00:00:37,190
+So we will follow these steps when registering Carter and Mediator.
+
+10
+00:00:37,190 --> 00:00:43,250
+Our first step is Register Carter Library which will handle our minimal API endpoints.
+
+11
+00:00:43,250 --> 00:00:48,590
+Carter provide a structured way to define our routes using the Carter model.
+
+12
+00:00:48,590 --> 00:00:52,250
+For that purpose, we will register the Carter in here.
+
+13
+00:00:52,250 --> 00:00:59,180
+First of all, we will start with the adding Carter classes into dependency injection using the builder
+
+14
+00:00:59,180 --> 00:01:02,060
+object Builder services.
+
+15
+00:01:02,510 --> 00:01:05,030
+And we can use Add Carter method.
+
+16
+00:01:06,020 --> 00:01:08,630
+So this method comes from the Carter Library.
+
+17
+00:01:08,630 --> 00:01:14,240
+And this will be registered Carter classes into ASP.Net Dependency Injection container.
+
+18
+00:01:14,270 --> 00:01:22,040
+And after that we will configure Http request pipeline with Carter in order to exposing the Http get
+
+19
+00:01:22,040 --> 00:01:23,030
+and post methods.
+
+20
+00:01:23,030 --> 00:01:29,810
+For that purpose, we will use Http method after building the web application and we can use map method
+
+21
+00:01:29,810 --> 00:01:30,980
+map Carter.
+
+22
+00:01:33,130 --> 00:01:38,440
+If you look at the ad carton method, this is adding the necessary services for Carter into ASP.Net
+
+23
+00:01:38,440 --> 00:01:39,880
+code dependency injection.
+
+24
+00:01:39,910 --> 00:01:46,780
+If you look at the map carton method map, Carter maps the routes defined in the I Carter module implementation.
+
+25
+00:01:46,780 --> 00:01:53,320
+So if you look at the our endpoint class here, you can see the I Carter module implementation class
+
+26
+00:01:53,320 --> 00:01:59,140
+which is the create product endpoint class with adding the map Carter operation into Program.cs.
+
+27
+00:01:59,170 --> 00:02:05,800
+This will be Carter will be secondary I Carter module interface implementation and expose the minimal
+
+28
+00:02:05,800 --> 00:02:08,169
+APIs looking for the map methods.
+
+29
+00:02:08,169 --> 00:02:10,840
+So that means this will be secondary.
+
+30
+00:02:10,870 --> 00:02:17,650
+All code and looking for the I Carter module implementation and map the required Http methods.
+
+31
+00:02:18,100 --> 00:02:25,420
+So the next step is we will register the mediator library which will manage our command and query handlers.
+
+32
+00:02:25,420 --> 00:02:30,670
+I'm writing as a builder services and this time we will add mediator.
+
+33
+00:02:30,760 --> 00:02:33,280
+But this time I'm going to configure the mediator.
+
+34
+00:02:33,280 --> 00:02:37,660
+That's why we can define the config method in here.
+
+35
+00:02:37,660 --> 00:02:44,230
+And in the config method I'm going to specify the required configuration.
+
+36
+00:02:44,230 --> 00:02:49,570
+In here we can say that config dot register services from assembly.
+
+37
+00:02:49,570 --> 00:02:57,400
+So that means we are going to register all services into this project into the mediator class library.
+
+38
+00:02:57,400 --> 00:03:03,970
+For that purpose I'm going to give the type of program.cs that means this class and give the assembly
+
+39
+00:03:03,970 --> 00:03:08,920
+name when registering services into mediator.
+
+40
+00:03:08,920 --> 00:03:13,330
+So this is the adding required services into mediator.
+
+41
+00:03:13,330 --> 00:03:20,380
+So that means add mediator method, register the mediator services and register services from assembly
+
+42
+00:03:20,380 --> 00:03:25,240
+method tells the mediator where to find our command and query handler classes.
+
+43
+00:03:25,360 --> 00:03:31,240
+So with these Mediator and Carter registered our application is now ready to handle requests.
+
+44
+00:03:31,240 --> 00:03:36,850
+Carter will manage the API endpoints and mediator will handle the business logic through our command
+
+45
+00:03:36,850 --> 00:03:37,840
+and handlers.
+
+46
+00:03:37,840 --> 00:03:41,230
+And we are ready for the sending request to our application.
+

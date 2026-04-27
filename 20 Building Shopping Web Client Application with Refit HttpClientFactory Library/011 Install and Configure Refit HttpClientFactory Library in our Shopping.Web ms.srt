@@ -1,0 +1,156 @@
+1
+00:00:00,140 --> 00:00:06,500
+In this video we are going to install and configure Revit Http client factory library in our shopping
+
+2
+00:00:06,500 --> 00:00:08,930
+Web client application for that purpose.
+
+3
+00:00:08,960 --> 00:00:12,680
+Please open the Visual Studio and go to the Shopping Web application.
+
+4
+00:00:12,680 --> 00:00:18,500
+You can close the catalog microservices and locate the Shopping Web application and right click dependencies
+
+5
+00:00:18,500 --> 00:00:20,210
+and manage NuGet packages.
+
+6
+00:00:20,750 --> 00:00:27,590
+And this time we will browse for the Revit Http client factory and select these NuGet packages and install
+
+7
+00:00:27,590 --> 00:00:29,510
+these packages into our shopping web.
+
+8
+00:00:29,510 --> 00:00:35,900
+So you can double click the Shopping Web project file, and you can verify that we have installed successfully.
+
+9
+00:00:36,110 --> 00:00:41,960
+After installing these packages, I am going to go to the Application Settings Json file and adding
+
+10
+00:00:41,960 --> 00:00:45,380
+a new sections for the API settings and the gateway address.
+
+11
+00:00:45,380 --> 00:00:52,280
+If you come to this point, I am going to add a new section, which name is API settings and including
+
+12
+00:00:52,280 --> 00:00:58,670
+this section I have specified gateway address and this is the https localhost 1664.
+
+13
+00:00:58,700 --> 00:01:02,690
+This is erb api gateway docker address and the port number.
+
+14
+00:01:02,690 --> 00:01:08,300
+When we run the docker compose all we will consume this URL from the shopping web client application.
+
+15
+00:01:08,360 --> 00:01:14,210
+And after that we need to register Revit library into our ASP.Net Dependency Injection tool.
+
+16
+00:01:14,210 --> 00:01:21,110
+For that purpose, I'm going to go to the Program.cs and locate the our add services to container part.
+
+17
+00:01:21,110 --> 00:01:26,030
+And just after the Adding Razor page I am going to add the refit client libraries.
+
+18
+00:01:26,030 --> 00:01:33,110
+In here you can see that I'm going to type Builder Services add Revit client extension method with passing
+
+19
+00:01:33,110 --> 00:01:35,330
+the URL catalog service as a generic type.
+
+20
+00:01:35,330 --> 00:01:41,120
+And this is the extension method for adding Revit client related objects into our ASP.Net project,
+
+21
+00:01:41,120 --> 00:01:43,040
+which is the shopping web client application.
+
+22
+00:01:43,040 --> 00:01:49,490
+And just after that, I am going to configure these Http client with specifying the base address that
+
+23
+00:01:49,490 --> 00:01:55,790
+we have defined into our configuration file, which is the builder configuration API settings gateway
+
+24
+00:01:55,790 --> 00:01:58,940
+address into our application settings Json file.
+
+25
+00:01:58,940 --> 00:02:05,630
+That means we will create an Http client factory for our catalog service with connecting base address
+
+26
+00:02:05,630 --> 00:02:07,640
+as a these gateway address.
+
+27
+00:02:07,640 --> 00:02:12,830
+This is representing our Erb API gateway worker endpoint and URL.
+
+28
+00:02:12,830 --> 00:02:19,070
+So this is the configuration of the our catalog service and Refit client for the shopping web client
+
+29
+00:02:19,070 --> 00:02:19,670
+application.
+
+30
+00:02:19,670 --> 00:02:26,300
+By this way, Refit will create generated clients for our catalog service interface and consume from
+
+31
+00:02:26,300 --> 00:02:29,720
+these base address which is Yarp API gateway docker URL.
+
+32
+00:02:29,720 --> 00:02:35,570
+But of course we should define annotations in the Catalog Service interface before proceeding a catalog
+
+33
+00:02:35,570 --> 00:02:36,740
+service interfaces.
+
+34
+00:02:36,740 --> 00:02:40,610
+It is good to move these using statements into our global using CSS.
+
+35
+00:02:40,610 --> 00:02:43,040
+I am going to move these using statements.
+
+36
+00:02:43,070 --> 00:02:47,780
+Go to the global using and ending at this point with adding the global keyword.
+
+37
+00:02:49,460 --> 00:02:55,040
+So after adding these global using statements, we can go back to Program.cs and make sure that your
+
+38
+00:02:55,040 --> 00:02:56,420
+code is working properly.
+
+39
+00:02:56,420 --> 00:02:59,510
+So now we can go to the Eye Catalog Service interface.
+

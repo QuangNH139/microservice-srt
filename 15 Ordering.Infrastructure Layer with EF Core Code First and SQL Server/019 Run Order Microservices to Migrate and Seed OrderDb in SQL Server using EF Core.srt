@@ -1,0 +1,380 @@
+1
+00:00:00,170 --> 00:00:06,320
+In this video, we are going to run ordering microservices to automatically migrate and see the order
+
+2
+00:00:06,320 --> 00:00:09,500
+DB in SQL server using the Entity Framework core.
+
+3
+00:00:09,530 --> 00:00:15,590
+When the application start up for that purpose, make sure that your Docker desktop is up and running.
+
+4
+00:00:15,590 --> 00:00:21,200
+And after that, if you open the Visual Studio and go to Docker Desktop, you can right click and set
+
+5
+00:00:21,200 --> 00:00:28,610
+a startup project, and you can click run button without debugging in order to activate SQL server database
+
+6
+00:00:28,610 --> 00:00:30,170
+image up and running.
+
+7
+00:00:30,170 --> 00:00:36,380
+So after running this docker compose up command with using Visual Studio, you can confirm from the
+
+8
+00:00:36,380 --> 00:00:38,510
+Docker compose into Docker Desktop.
+
+9
+00:00:38,510 --> 00:00:45,050
+Here you can see that our order db image is up and running now, so that means we can verify the SQL
+
+10
+00:00:45,050 --> 00:00:47,960
+server communication from the Visual Studio.
+
+11
+00:00:47,960 --> 00:00:55,130
+If you open the SQL Server Object Explorer and connect to localhost under the SQL server, you can connect
+
+12
+00:00:55,130 --> 00:00:59,870
+to localhost and under the localhost you can browse the databases.
+
+13
+00:00:59,870 --> 00:01:06,800
+If you expanding the databases, you can see that we don't have any database under our localhost connection.
+
+14
+00:01:06,800 --> 00:01:13,430
+So if there is order db please remove it because we will create with coding one application startup
+
+15
+00:01:13,430 --> 00:01:15,110
+with following the migration folder.
+
+16
+00:01:15,110 --> 00:01:19,940
+But at least we can verify that we have communicated to SQL server database successfully.
+
+17
+00:01:19,940 --> 00:01:22,100
+And we don't have any databases.
+
+18
+00:01:22,100 --> 00:01:26,360
+So now I'm going to start ordering API application.
+
+19
+00:01:26,360 --> 00:01:31,820
+And please come here and right click Set Startup Project for ordering API.
+
+20
+00:01:31,820 --> 00:01:38,420
+And after that before starting this application go to program.cs and put a breakpoint under this if
+
+21
+00:01:38,420 --> 00:01:39,140
+statement.
+
+22
+00:01:39,140 --> 00:01:41,930
+And this will be running when the application start up.
+
+23
+00:01:41,930 --> 00:01:45,530
+And after that this extension method will be hit the debugger.
+
+24
+00:01:45,530 --> 00:01:49,640
+Put a breakpoint at the beginning of this initialize database async method.
+
+25
+00:01:49,640 --> 00:01:50,840
+This will be performed.
+
+26
+00:01:50,840 --> 00:01:53,720
+Migrate operation and see the operation at the same method.
+
+27
+00:01:53,720 --> 00:01:57,530
+And you can also put breakpoint in here, which is the seed async method.
+
+28
+00:01:57,530 --> 00:02:01,700
+So after that we can right click set startup project ordering API.
+
+29
+00:02:01,700 --> 00:02:04,790
+And we are going to run ordering API in https mode.
+
+30
+00:02:04,790 --> 00:02:11,780
+If you hit the https button this will be start ordering API and this will be trigger our Program.cs.
+
+31
+00:02:11,780 --> 00:02:17,360
+When the application start up, we are going to check if the environment is development or not.
+
+32
+00:02:17,360 --> 00:02:23,270
+We are at development environment and in here we are going to start the initialize database async extension
+
+33
+00:02:23,270 --> 00:02:23,780
+method.
+
+34
+00:02:23,780 --> 00:02:25,970
+And in this method we will create scope.
+
+35
+00:02:25,970 --> 00:02:29,720
+And after that we will get the application db context from this scope.
+
+36
+00:02:29,720 --> 00:02:36,380
+And using this context object in order to run migrate commands which are the running the migration folder
+
+37
+00:02:36,380 --> 00:02:40,340
+and create database and create columns for each tables.
+
+38
+00:02:40,340 --> 00:02:44,870
+And this will be provide the update command operation with coding.
+
+39
+00:02:44,870 --> 00:02:52,010
+And here you can see that these operations take some time in order to create database and tables and
+
+40
+00:02:52,010 --> 00:02:53,390
+columns and so on.
+
+41
+00:02:53,510 --> 00:02:59,330
+After the schema is created successfully, we will we will continue to our seed operation.
+
+42
+00:02:59,330 --> 00:03:03,020
+In here you can see that the migration is completed successfully.
+
+43
+00:03:03,020 --> 00:03:05,780
+And after that it is continuing the seeding operation.
+
+44
+00:03:05,780 --> 00:03:06,980
+As a seeding operation.
+
+45
+00:03:06,980 --> 00:03:09,320
+We will see the customers product and orders.
+
+46
+00:03:09,320 --> 00:03:15,050
+You can go to details and see that if there is no customer, this will be adding range from the our
+
+47
+00:03:15,050 --> 00:03:17,480
+initial data class and save change async.
+
+48
+00:03:17,480 --> 00:03:22,940
+And if you continue with the products, if there is no products, you can see that new product is adding
+
+49
+00:03:22,940 --> 00:03:24,260
+from the initial data.
+
+50
+00:03:24,260 --> 00:03:27,110
+We will add four products and save change async.
+
+51
+00:03:27,110 --> 00:03:32,780
+That means save the tables on database and we will follow all the same steps for order and order items
+
+52
+00:03:32,780 --> 00:03:35,030
+from the database operation.
+
+53
+00:03:35,030 --> 00:03:40,430
+Here you can see that we got exception, which is the argument out of range exception.
+
+54
+00:03:40,430 --> 00:03:43,370
+So that means we are at the order name record type.
+
+55
+00:03:43,370 --> 00:03:48,560
+And when we are trying to saving order name with a default length, default length is five.
+
+56
+00:03:48,560 --> 00:03:53,060
+But we are trying to insert new order name which value length is seven.
+
+57
+00:03:53,060 --> 00:03:59,030
+So I'm going to continue this exception and throwing and accepting exiting these operation.
+
+58
+00:03:59,030 --> 00:04:05,150
+So if you go to the initial data you can see that when we are saving the orders as a order name, we
+
+59
+00:04:05,150 --> 00:04:07,310
+are using the order one and order two.
+
+60
+00:04:07,340 --> 00:04:13,700
+But in the order name value object, you can see that we have a business exception about that.
+
+61
+00:04:13,700 --> 00:04:16,730
+The length should not be greater than five.
+
+62
+00:04:16,730 --> 00:04:23,600
+For that purpose, I'm going to calculate these names and change the names according to maximum character
+
+63
+00:04:23,600 --> 00:04:24,650
+should be five.
+
+64
+00:04:24,650 --> 00:04:25,820
+For that purpose.
+
+65
+00:04:25,820 --> 00:04:28,970
+Please change these order names as the order code.
+
+66
+00:04:28,970 --> 00:04:33,950
+For example order one which is including only five character.
+
+67
+00:04:33,950 --> 00:04:37,580
+And in here you can come here or the underscore two.
+
+68
+00:04:37,610 --> 00:04:39,530
+This will be also five character.
+
+69
+00:04:39,530 --> 00:04:43,910
+And save these initial data and run these application from the scratch.
+
+70
+00:04:43,910 --> 00:04:50,960
+And this will be restart again the ordering API operations and restart for migrate and seeding operation.
+
+71
+00:04:50,960 --> 00:04:52,880
+I'm going to follow the same steps.
+
+72
+00:04:52,880 --> 00:04:57,230
+And in here you can see that we will perform the migrate operation.
+
+73
+00:04:57,230 --> 00:04:59,390
+And after that continue the seeding operation.
+
+74
+00:04:59,390 --> 00:04:59,600
+And.
+
+75
+00:04:59,740 --> 00:05:04,270
+And this time I'm going to continue and go to the seed orders with items.
+
+76
+00:05:04,270 --> 00:05:09,730
+If there is no order items, we are going to save this order item into database and this time we will
+
+77
+00:05:09,730 --> 00:05:11,800
+perform the saving operation successfully.
+
+78
+00:05:11,800 --> 00:05:14,770
+Hit F5 and complete the starting operation.
+
+79
+00:05:14,770 --> 00:05:17,980
+That means complete the migrate and seeding operation.
+
+80
+00:05:17,980 --> 00:05:23,080
+We can verify database create and seeding operation from the SQL Server Object Explorer.
+
+81
+00:05:23,080 --> 00:05:28,210
+If you come here and connect to localhost and refresh this databases, and this time you can see that
+
+82
+00:05:28,210 --> 00:05:30,460
+we have ordered the DB database.
+
+83
+00:05:30,460 --> 00:05:36,730
+And if we expand this database and expand the tables, you can see that our tables entity tables are
+
+84
+00:05:36,730 --> 00:05:37,720
+created successfully.
+
+85
+00:05:37,720 --> 00:05:44,740
+If you right click the orders and view data, we can verify the seeding operations performed successfully
+
+86
+00:05:44,740 --> 00:05:46,570
+in the orders table.
+
+87
+00:05:46,570 --> 00:05:49,240
+And also you can right click products and View data.
+
+88
+00:05:49,240 --> 00:05:54,040
+You can see the new orders and products also created successfully.
+
+89
+00:05:54,220 --> 00:06:00,280
+So as you can see that when we are starting the ordering microservices, the SQL server database order
+
+90
+00:06:00,280 --> 00:06:06,340
+db is automatically created and the necessary tables are created and seeded with initial data on the
+
+91
+00:06:06,340 --> 00:06:07,540
+application startup.
+
+92
+00:06:07,540 --> 00:06:13,330
+You can also confirm all these processes in the logs of the ordering microservices.
+
+93
+00:06:13,330 --> 00:06:18,250
+Here you can see that when the application start up, first of all, we will perform the migrate operations
+
+94
+00:06:18,250 --> 00:06:20,290
+with running the create database command.
+
+95
+00:06:20,290 --> 00:06:25,420
+And after that we will performing the seeding operations with running the insert into commands.
+

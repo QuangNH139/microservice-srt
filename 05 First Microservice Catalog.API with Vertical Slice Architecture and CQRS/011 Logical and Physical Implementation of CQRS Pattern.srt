@@ -1,0 +1,124 @@
+1
+00:00:00,200 --> 00:00:06,170
+In this video, we are going to learn logical and physical implementation of the secrets.
+
+2
+00:00:06,500 --> 00:00:09,920
+Secrets can be implemented in two main ways.
+
+3
+00:00:09,920 --> 00:00:13,190
+These are the logical and physical implementation.
+
+4
+00:00:13,280 --> 00:00:16,850
+Let me start with the logical implementation of secrets.
+
+5
+00:00:16,850 --> 00:00:20,180
+We will splitting to operations, not databases.
+
+6
+00:00:20,180 --> 00:00:27,800
+In a logical implementation of secrets, the key idea is separate read and write operations at the code
+
+7
+00:00:27,800 --> 00:00:31,310
+level, but not necessarily at the database level.
+
+8
+00:00:31,310 --> 00:00:38,180
+So that means we will separate the query and command operations at the code level and not separate in
+
+9
+00:00:38,180 --> 00:00:39,410
+the database level.
+
+10
+00:00:39,410 --> 00:00:44,750
+Both types of the operations still interact with the same underlying database.
+
+11
+00:00:45,530 --> 00:00:51,980
+So we said that it is the same database but different paths, even though the same database is used.
+
+12
+00:00:52,010 --> 00:00:55,460
+The path for reading and writing data are distinct.
+
+13
+00:00:55,790 --> 00:01:01,700
+This means that you might have different models or methods for querying and updating data.
+
+14
+00:01:01,700 --> 00:01:08,450
+For instance, read operations could utilize the simple data transfer object optimized for performance,
+
+15
+00:01:08,450 --> 00:01:14,870
+while write operations might interact with a more complex domain model to ensure business rules and
+
+16
+00:01:14,870 --> 00:01:16,520
+validations are enforced.
+
+17
+00:01:17,090 --> 00:01:22,340
+So the second type of the implementation is physical implementation of the queries.
+
+18
+00:01:22,850 --> 00:01:29,690
+A physical implementation of the securities involves splitting the read and write operations, not just
+
+19
+00:01:29,690 --> 00:01:34,220
+at the code level, but also physically using the separate databases.
+
+20
+00:01:34,310 --> 00:01:40,100
+This is often seen in a more complex systems, particularly when scaling is a concern.
+
+21
+00:01:40,520 --> 00:01:45,590
+So there is a synchronization challenge happen when we are separate databases.
+
+22
+00:01:45,920 --> 00:01:52,850
+While a physical implementation can offer performance advantages and better scaling capabilities, it
+
+23
+00:01:52,850 --> 00:02:00,020
+also introduces complexity in terms of maintaining data consistency and synchronization between the
+
+24
+00:02:00,020 --> 00:02:01,670
+read and write operations.
+
+25
+00:02:01,700 --> 00:02:08,120
+So you can see that if we separate the write and read databases, we have to concern about the synchronization
+
+26
+00:02:08,120 --> 00:02:08,960
+challenges.
+
+27
+00:02:09,590 --> 00:02:16,520
+That's why logical security is often the first step in adopting this security pattern, especially for
+
+28
+00:02:16,520 --> 00:02:21,950
+applications where the overhead of managing separate databases is not justified.
+
+29
+00:02:21,950 --> 00:02:29,120
+It offers many of the benefits of the six, such as the clearer separation of concerns and potentially
+
+30
+00:02:29,120 --> 00:02:35,990
+more optimized read operations, without adding additional complexity of the managing separate databases.
+
+31
+00:02:35,990 --> 00:02:43,220
+For that reason, during the course, we will implement the logical sequence with ASP.Net Core and Mediator.
+

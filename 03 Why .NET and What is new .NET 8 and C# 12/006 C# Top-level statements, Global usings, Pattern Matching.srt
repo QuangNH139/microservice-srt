@@ -1,0 +1,196 @@
+1
+00:00:00,230 --> 00:00:04,430
+In this video we are going to learn C sharp top level statements.
+
+2
+00:00:04,460 --> 00:00:07,040
+Global Usings and pattern matching.
+
+3
+00:00:07,070 --> 00:00:13,280
+When developing our microservice project, we will use additional C sharp features that comes from the
+
+4
+00:00:13,280 --> 00:00:14,360
+previous versions.
+
+5
+00:00:14,360 --> 00:00:18,980
+These are the top level statements global using and pattern matching.
+
+6
+00:00:18,980 --> 00:00:21,980
+So now let me explain these features one by one.
+
+7
+00:00:21,980 --> 00:00:24,620
+The first one is top level statements.
+
+8
+00:00:24,650 --> 00:00:29,930
+Top level statements in C sharp simplify the entry point of your applications.
+
+9
+00:00:29,930 --> 00:00:36,500
+Instead of wrapping your main logic in a main method, you can directly write the code at the top level
+
+10
+00:00:36,500 --> 00:00:37,460
+of your file.
+
+11
+00:00:37,460 --> 00:00:39,320
+Here you can see an example.
+
+12
+00:00:39,320 --> 00:00:44,990
+We can just start the application logic with using an console write operations.
+
+13
+00:00:44,990 --> 00:00:51,320
+So this code automatically be part of the main method and making it simpler to write and read.
+
+14
+00:00:51,320 --> 00:00:57,620
+We will develop Program.cs classes without main method and using the top level statement during the
+
+15
+00:00:57,620 --> 00:00:58,400
+whole course.
+
+16
+00:00:59,180 --> 00:01:01,460
+And another feature is global.
+
+17
+00:01:01,460 --> 00:01:07,880
+Using global Usings are a new way to make namespaces available across your entire project.
+
+18
+00:01:07,880 --> 00:01:14,000
+Instead of repeating using statement in every file, we can declare them globally in one place.
+
+19
+00:01:14,000 --> 00:01:15,710
+We can see an example in here.
+
+20
+00:01:15,710 --> 00:01:20,840
+We can use global syntax in here global using system and generics.
+
+21
+00:01:20,840 --> 00:01:27,830
+By this way, this feature is especially useful in a large projects and we can reduce the clutter and
+
+22
+00:01:27,830 --> 00:01:29,570
+improving maintainability.
+
+23
+00:01:29,570 --> 00:01:35,960
+We will also use global using statement in every microservices with a separate class in our course.
+
+24
+00:01:36,410 --> 00:01:42,170
+So if you continue our features, the next feature is C sharp pattern matching.
+
+25
+00:01:42,200 --> 00:01:49,070
+Pattern matching in C sharp provide a more expressive syntax for checking and deconstructing value in
+
+26
+00:01:49,070 --> 00:01:49,640
+your code.
+
+27
+00:01:49,670 --> 00:01:51,680
+Here you can see an example.
+
+28
+00:01:51,680 --> 00:01:54,350
+The keyword and property patterns.
+
+29
+00:01:54,350 --> 00:02:00,020
+We are defining a person class, and after that we can create a new person.
+
+30
+00:02:00,020 --> 00:02:05,360
+And after that, in this if statement, we can see that we can pattern matching.
+
+31
+00:02:05,360 --> 00:02:09,710
+This person is keyword and the title is manager.
+
+32
+00:02:09,710 --> 00:02:14,450
+That means we can filtering the person with checking the title property.
+
+33
+00:02:14,450 --> 00:02:19,220
+So this feature allows for more readable and concise conditional logic.
+
+34
+00:02:20,090 --> 00:02:27,140
+Now let's explore another powerful aspect of C sharp pattern matching, which is the using switch expression
+
+35
+00:02:27,140 --> 00:02:27,800
+statement.
+
+36
+00:02:27,800 --> 00:02:30,530
+In order to compare the discrete values.
+
+37
+00:02:30,530 --> 00:02:32,720
+Here you can see an example.
+
+38
+00:02:32,720 --> 00:02:35,210
+There is a perform operation method.
+
+39
+00:02:35,210 --> 00:02:38,090
+Taking the operation command as a parameter.
+
+40
+00:02:38,090 --> 00:02:44,000
+In this code, command is a enum value and you can see that there is a switch statement.
+
+41
+00:02:44,000 --> 00:02:50,570
+The switch expression evaluates this value and execute different methods based on the specific enum
+
+42
+00:02:50,570 --> 00:02:51,020
+value.
+
+43
+00:02:51,200 --> 00:02:58,280
+So you can see the command is a enum value and according to command switch block, we can check that
+
+44
+00:02:58,280 --> 00:03:03,770
+operation start stop, reset and different enum values and performing different operations.
+
+45
+00:03:03,770 --> 00:03:10,250
+So it is a concise and readable way to handle multiple condition logic paths based on the value of a
+
+46
+00:03:10,250 --> 00:03:11,420
+single variable.
+
+47
+00:03:11,690 --> 00:03:18,800
+And at the last of the statement you can see underscore, which is the discard pattern, catching any
+
+48
+00:03:18,800 --> 00:03:26,240
+values not explicitly handled in the cases above, in this case throwing an exception for invalid values.
+
+49
+00:03:26,390 --> 00:03:32,540
+So throughout the course we will be integrating these C sharp features into our microservice development.
+

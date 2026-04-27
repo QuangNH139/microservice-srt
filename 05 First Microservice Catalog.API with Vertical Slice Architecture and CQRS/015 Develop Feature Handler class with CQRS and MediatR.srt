@@ -1,0 +1,492 @@
+1
+00:00:00,170 --> 00:00:06,560
+In this video we are going to develop feature handler class with six and mediator.
+
+2
+00:00:06,560 --> 00:00:12,650
+So we are in here create product feature folder and we will be develop create product handler class
+
+3
+00:00:12,650 --> 00:00:14,930
+using the six and mediator.
+
+4
+00:00:15,110 --> 00:00:18,800
+According to our main architecture we will follow the vertical slice architecture.
+
+5
+00:00:18,800 --> 00:00:25,310
+But when implementing the handler class we will use six and mediator library in six.
+
+6
+00:00:25,340 --> 00:00:33,200
+The handler is responsible for executing the command logic with using the mediator library, the handler
+
+7
+00:00:33,200 --> 00:00:39,290
+receives a command and process it, encapsulating the business logic for specific operations under the
+
+8
+00:00:39,290 --> 00:00:40,190
+handler class.
+
+9
+00:00:40,280 --> 00:00:46,220
+So in this video we will delve into implementing create product feature using the securities and mediator
+
+10
+00:00:46,220 --> 00:00:48,500
+in ASP.Net core Web application.
+
+11
+00:00:48,500 --> 00:00:56,810
+So now before that, let's start understanding the life cycle of a request in a system that use mediator
+
+12
+00:00:56,810 --> 00:00:58,940
+and six design pattern.
+
+13
+00:00:59,180 --> 00:01:04,849
+And here you can see the illustration of the six and mediator request life cycle.
+
+14
+00:01:04,849 --> 00:01:06,980
+This is request comes from the client.
+
+15
+00:01:06,980 --> 00:01:12,110
+And this will be process or catalog web API application and respond back.
+
+16
+00:01:12,110 --> 00:01:18,350
+So you can see the illustration how API request flows through our application.
+
+17
+00:01:18,350 --> 00:01:22,310
+The request first of all hits the our presentation layer.
+
+18
+00:01:22,310 --> 00:01:28,970
+This is typically Carter library Carter endpoint which is the minimal API endpoint in our case.
+
+19
+00:01:28,970 --> 00:01:32,840
+And after that it sends a command to the mediator.
+
+20
+00:01:32,840 --> 00:01:37,460
+And mediator redirect this command to the corresponding handler class.
+
+21
+00:01:37,460 --> 00:01:44,180
+And this class will process this command and perform business logic with using the DB operations, and
+
+22
+00:01:44,180 --> 00:01:45,920
+after that return the result.
+
+23
+00:01:45,920 --> 00:01:48,770
+And this will be responding to the client application.
+
+24
+00:01:49,010 --> 00:01:55,730
+So according to this flow, the mediator will be triggered by command or query object that will inherit
+
+25
+00:01:55,730 --> 00:01:58,610
+from the mediator I request interface.
+
+26
+00:01:58,610 --> 00:02:01,310
+And this is the first point to trigger the mediator.
+
+27
+00:02:01,310 --> 00:02:08,210
+So according to this command or query request object mediator will be redirect to corresponding command
+
+28
+00:02:08,210 --> 00:02:12,170
+handler class which should be inherit from the I request handler.
+
+29
+00:02:12,170 --> 00:02:16,370
+And in the command handler, we can perform business logic and return back the result.
+
+30
+00:02:16,370 --> 00:02:22,730
+So that means to trigger our handler class we need command query and result objects.
+
+31
+00:02:22,730 --> 00:02:24,530
+And after that we will define command.
+
+32
+00:02:24,530 --> 00:02:30,050
+Under this command query should be inherited from the I request and this command handler should be inherited
+
+33
+00:02:30,050 --> 00:02:31,550
+from the I request handler.
+
+34
+00:02:31,550 --> 00:02:33,260
+So let's get started.
+
+35
+00:02:33,260 --> 00:02:40,040
+If you open the Visual Studio, our first step is to define the command and result class for the create
+
+36
+00:02:40,040 --> 00:02:41,090
+product feature.
+
+37
+00:02:41,090 --> 00:02:45,380
+So for that purpose open the Create Product feature and go to handler class.
+
+38
+00:02:45,380 --> 00:02:52,310
+So in the handler class we are going to create our command and result classes inside of the command
+
+39
+00:02:52,310 --> 00:02:53,210
+Csharp file.
+
+40
+00:02:53,210 --> 00:02:56,960
+So we are going to create two type inside of the handler class.
+
+41
+00:02:56,960 --> 00:03:04,220
+These are the create product command and create product result and we will create two record type inside
+
+42
+00:03:04,220 --> 00:03:05,150
+of the handler.
+
+43
+00:03:05,420 --> 00:03:15,230
+Let me create first record type which is the public record create product command and we will specify
+
+44
+00:03:15,230 --> 00:03:15,890
+the.
+
+45
+00:03:16,670 --> 00:03:21,080
+Parameters which are the members from the product entity.
+
+46
+00:03:21,110 --> 00:03:27,800
+Here you can see that I have added the name, category, description, image, file and price.
+
+47
+00:03:27,800 --> 00:03:34,760
+This comes from the AR product model and you can see these parameters are passing into the AR create
+
+48
+00:03:34,760 --> 00:03:36,890
+product command record object.
+
+49
+00:03:36,890 --> 00:03:43,700
+And as a result we will need an additional record type which is the public record.
+
+50
+00:03:44,150 --> 00:03:49,490
+And this will be the create product result record type.
+
+51
+00:03:49,490 --> 00:03:54,200
+And as a return type we will return only ID information.
+
+52
+00:03:54,650 --> 00:03:55,310
+Okay.
+
+53
+00:03:55,310 --> 00:03:57,980
+Here you can see the two type in this code.
+
+54
+00:03:57,980 --> 00:04:03,530
+The create product command represents the data that we need to create a new product.
+
+55
+00:04:03,530 --> 00:04:10,520
+And these create the product result representing the response object return object, which in this case
+
+56
+00:04:10,520 --> 00:04:12,320
+we just return the product id.
+
+57
+00:04:12,620 --> 00:04:16,760
+So we have completed the command and result object.
+
+58
+00:04:16,760 --> 00:04:22,850
+And if you go back to our architecture you can see that we have developed this command and result object.
+
+59
+00:04:22,850 --> 00:04:25,970
+Now it is time to develop command handler object.
+
+60
+00:04:25,970 --> 00:04:28,880
+Now let's create our handler class.
+
+61
+00:04:28,880 --> 00:04:33,230
+This class will contain the business logic to handle create product command.
+
+62
+00:04:33,230 --> 00:04:43,250
+So in here I'm going to change the public as a internal because I would like to be in internal class
+
+63
+00:04:43,250 --> 00:04:45,080
+and the class name will be changed.
+
+64
+00:04:45,080 --> 00:04:47,150
+Create product command handler.
+
+65
+00:04:47,150 --> 00:04:49,970
+So I'm going to emphasize that this is the command handler.
+
+66
+00:04:49,970 --> 00:04:52,550
+And we will expecting a command okay.
+
+67
+00:04:52,550 --> 00:04:54,530
+Now we have finished the our command handler.
+
+68
+00:04:54,530 --> 00:04:57,590
+And we will implement the business logic inside of this class.
+
+69
+00:04:57,860 --> 00:05:03,950
+But before that let's understand how to trigger this handler class with this command object.
+
+70
+00:05:03,950 --> 00:05:10,220
+So if you go back to our architecture you can see that in order to trigger our command handler we need
+
+71
+00:05:10,220 --> 00:05:11,120
+a mediator.
+
+72
+00:05:11,120 --> 00:05:17,270
+So mediator provides to trigger command and queries and abstractions with the mediator pattern.
+
+73
+00:05:17,270 --> 00:05:24,080
+In order to trigger handler class, we should derive a command or query classes with the I request result
+
+74
+00:05:24,080 --> 00:05:24,860
+interface.
+
+75
+00:05:24,860 --> 00:05:30,800
+This comes from the mediator library, and after that the handler class will implement the I request
+
+76
+00:05:30,800 --> 00:05:33,500
+handler command and result interface.
+
+77
+00:05:33,500 --> 00:05:41,930
+So that means before we start, we need to install mediator NuGet package to benefit from mediator pattern.
+
+78
+00:05:41,930 --> 00:05:48,500
+So if you go back to our Visual Studio, if you can right click and manage NuGet packages, you can
+
+79
+00:05:48,500 --> 00:05:50,630
+go to the NuGet package window.
+
+80
+00:05:50,630 --> 00:05:58,040
+And if you browse and write the mediator package, you can see that we will download the mediator library
+
+81
+00:05:58,040 --> 00:06:00,620
+into our catalog microservices.
+
+82
+00:06:00,620 --> 00:06:06,710
+And if you double click the project file, you can see that we have successfully installed Mediator
+
+83
+00:06:06,710 --> 00:06:09,140
+Library into our catalog microservices.
+
+84
+00:06:09,140 --> 00:06:14,480
+Now it is time to implementing these mediator into our great product handler class.
+
+85
+00:06:14,480 --> 00:06:21,890
+If you go back the handler class, the first thing we should do that we will inherit our command object
+
+86
+00:06:21,890 --> 00:06:23,120
+from the request.
+
+87
+00:06:23,120 --> 00:06:30,950
+So if you come here and write the request, you can see that our request comes from the mediator library.
+
+88
+00:06:30,950 --> 00:06:33,290
+So we can provide the request.
+
+89
+00:06:33,290 --> 00:06:36,470
+And you can give the response as a generic.
+
+90
+00:06:36,470 --> 00:06:41,210
+In our case our response is create product result.
+
+91
+00:06:42,590 --> 00:06:48,860
+And now we are ready to using this command object for mediator trigger operations.
+
+92
+00:06:48,860 --> 00:06:56,000
+We are indicating that this product command inherited from the request which is the mediator and one
+
+93
+00:06:56,000 --> 00:06:56,690
+mediator.
+
+94
+00:06:56,690 --> 00:06:59,720
+See this request comes from the API request.
+
+95
+00:06:59,720 --> 00:07:02,900
+This will be triggered or create product command handler.
+
+96
+00:07:02,900 --> 00:07:10,010
+So in order to trigger this product command handler this is also required to inherit from the request
+
+97
+00:07:10,010 --> 00:07:11,090
+handler object.
+
+98
+00:07:11,600 --> 00:07:15,500
+And in here we will provide request and response.
+
+99
+00:07:15,500 --> 00:07:20,540
+That means we can provide the create product command as a command.
+
+100
+00:07:21,080 --> 00:07:24,710
+This will be the our command object.
+
+101
+00:07:24,710 --> 00:07:33,110
+And after that I'm going to provide create product result this object okay.
+
+102
+00:07:33,110 --> 00:07:37,370
+Now we have defined that we are a request handler interface.
+
+103
+00:07:37,370 --> 00:07:41,930
+And this will be accepting command and returning the command result object.
+
+104
+00:07:41,930 --> 00:07:47,930
+If you click the alt enter you can see that we will implement these interface members which is the handle
+
+105
+00:07:47,930 --> 00:07:48,440
+method.
+
+106
+00:07:48,440 --> 00:07:54,200
+So in this handle method we basically perform the business logic to create a product.
+
+107
+00:07:54,200 --> 00:07:56,030
+So you can put a command.
+
+108
+00:07:56,030 --> 00:07:59,240
+We will put our business logic in order to create a new product.
+
+109
+00:07:59,240 --> 00:08:05,930
+But for now let's throw an exception before we implementation we should understand how this trigger.
+
+110
+00:08:05,930 --> 00:08:13,280
+So basically with this setup we can use mediator send method in order to trigger this command.
+
+111
+00:08:13,280 --> 00:08:15,920
+And this command will be redirecting to.
+
+112
+00:08:16,210 --> 00:08:17,350
+Command handle class.
+
+113
+00:08:17,350 --> 00:08:20,890
+This will be work very well with using the mediator package.
+
+114
+00:08:20,950 --> 00:08:26,500
+But before proceeding the implementation, I would like to emphasize that we should separate the command
+
+115
+00:08:26,500 --> 00:08:32,320
+and queries in sequence because according to security design pattern, the commands and queries should
+
+116
+00:08:32,320 --> 00:08:33,460
+be separated.
+
+117
+00:08:33,460 --> 00:08:40,570
+But if you look at the mediator library, mediator will use both these operations as a I request interface.
+
+118
+00:08:40,570 --> 00:08:46,150
+In order to implement security design pattern, we should separate the command and query object.
+
+119
+00:08:46,150 --> 00:08:52,660
+That means in a true queries implementation, we will separate the command and queries at the request
+
+120
+00:08:52,660 --> 00:08:53,170
+level.
+
+121
+00:08:53,170 --> 00:08:57,910
+This means we will create distinct abstractions over the mediators.
+
+122
+00:08:57,910 --> 00:09:04,300
+I request interface object in order to differentiate commands, which is the rights and queries which
+
+123
+00:09:04,300 --> 00:09:05,650
+will read operations.
+

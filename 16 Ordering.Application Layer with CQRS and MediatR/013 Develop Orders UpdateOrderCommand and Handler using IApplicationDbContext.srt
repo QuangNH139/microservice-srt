@@ -1,0 +1,488 @@
+1
+00:00:00,140 --> 00:00:05,960
+In this video we are going to develop update order command and handler class using the AI application
+
+2
+00:00:05,960 --> 00:00:07,520
+db context interface.
+
+3
+00:00:07,520 --> 00:00:10,550
+So we are at this point and we have developed a create order.
+
+4
+00:00:10,550 --> 00:00:15,770
+Now we are going to create Update Order feature folder and implement the update order use case.
+
+5
+00:00:15,770 --> 00:00:22,580
+For that purpose, please open the Visual Studio and go to the ordering API Orders and Commands.
+
+6
+00:00:22,580 --> 00:00:26,480
+And under this command I'm going to create a new subfolder.
+
+7
+00:00:26,480 --> 00:00:32,689
+Right click Add New subfolder, which name is update Order and this will be represented update order
+
+8
+00:00:32,689 --> 00:00:38,660
+use case that need to include update order, command and handler class as well as the create order.
+
+9
+00:00:38,660 --> 00:00:43,730
+For that purpose I'm going to create a new class which name is Update Order command.
+
+10
+00:00:44,450 --> 00:00:50,630
+The update order command will include an order detail to carry the updated order data, and we will
+
+11
+00:00:50,630 --> 00:00:54,830
+also develop validator to ensure the necessary fields are present and valid.
+
+12
+00:00:54,830 --> 00:00:57,260
+So let me start with developing this class.
+
+13
+00:00:57,260 --> 00:00:59,930
+And I'm going to remove unnecessary using statement.
+
+14
+00:00:59,930 --> 00:01:02,510
+And we will make this class as a record type.
+
+15
+00:01:02,510 --> 00:01:07,010
+In here you can see that I'm going to create public Record update order command.
+
+16
+00:01:07,010 --> 00:01:10,070
+And this will be taking order DTO as a parameter.
+
+17
+00:01:10,070 --> 00:01:16,280
+And this record type implement a command interface and this will be returned update or the result.
+
+18
+00:01:16,280 --> 00:01:20,960
+For that purpose we will also need to create update order result as a record type.
+
+19
+00:01:20,960 --> 00:01:27,890
+Here you can see that public record update order result taking is success Boolean value as a response
+
+20
+00:01:27,890 --> 00:01:29,720
+of this update operation.
+
+21
+00:01:29,840 --> 00:01:36,110
+And after that we should also create a validator class which name is update order command validator
+
+22
+00:01:36,110 --> 00:01:40,580
+and this will be inherit from the abstract validator from the full length validation.
+
+23
+00:01:40,580 --> 00:01:45,770
+And in the constructor of this validator, we will validate the update order command, including the
+
+24
+00:01:45,770 --> 00:01:48,680
+ID or the name and customer ID columns.
+
+25
+00:01:48,680 --> 00:01:54,980
+So this is the update order command class that including update order command and result record types
+
+26
+00:01:54,980 --> 00:01:56,330
+and validator class.
+
+27
+00:01:56,330 --> 00:02:01,190
+So now we are going to start creating Update Order handle class.
+
+28
+00:02:01,190 --> 00:02:05,030
+I'm going to come to the update order folder and add a new class.
+
+29
+00:02:05,030 --> 00:02:07,310
+Which name is Update Order handler.
+
+30
+00:02:07,490 --> 00:02:13,100
+So in this handler class we will implement a command handler interface for updating the order.
+
+31
+00:02:13,100 --> 00:02:19,070
+For that purpose, I'm going to remove unnecessary using statement and make the class as a public.
+
+32
+00:02:19,070 --> 00:02:22,460
+And now I'm going to implement I command handler.
+
+33
+00:02:22,460 --> 00:02:26,810
+Of course we should remove duplicate column in here.
+
+34
+00:02:26,810 --> 00:02:27,590
+Okay.
+
+35
+00:02:27,590 --> 00:02:32,510
+We will inherit and implement a command handler which comes from the using building blocks.
+
+36
+00:02:32,510 --> 00:02:38,540
+And when we are implementing these interface members this will be creating a handle method that we are
+
+37
+00:02:38,540 --> 00:02:41,000
+going to perform update order operation.
+
+38
+00:02:41,000 --> 00:02:46,250
+But before that we should inject inside application DB context into our class.
+
+39
+00:02:46,250 --> 00:02:52,460
+So in here you can inject I application context object as a db context parameter in the beginning of
+
+40
+00:02:52,460 --> 00:02:53,630
+the class definition.
+
+41
+00:02:53,630 --> 00:02:56,180
+So now we can implement the handle method.
+
+42
+00:02:56,180 --> 00:03:02,060
+I'm going to make this method as an async method and also change the first parameter name request to
+
+43
+00:03:02,060 --> 00:03:02,720
+command.
+
+44
+00:03:04,160 --> 00:03:06,410
+So let's plan our handle method.
+
+45
+00:03:06,410 --> 00:03:09,080
+I am going to update the existing order.
+
+46
+00:03:09,080 --> 00:03:11,840
+So here you can see the steps that we are going to do.
+
+47
+00:03:11,840 --> 00:03:16,730
+Update order entity from the command object that we are accessed to DTO object.
+
+48
+00:03:16,730 --> 00:03:22,340
+And we will update the order entity from this DTO object and save the database and return the result.
+
+49
+00:03:22,340 --> 00:03:24,200
+So let's follow these steps.
+
+50
+00:03:24,200 --> 00:03:29,270
+First of all we will check the existing order in place or not.
+
+51
+00:03:29,270 --> 00:03:35,390
+In here you can see that with this line of code, we will basically perform the order ID and creating
+
+52
+00:03:35,390 --> 00:03:40,910
+order ID with using the order ID of method with incoming command object, I'm going to go to command
+
+53
+00:03:40,910 --> 00:03:47,390
+order d2 and ID information and getting the order id, which is the order ID strongly type ID because
+
+54
+00:03:47,390 --> 00:03:53,060
+we require this strongly type IDs in order to use find async method in the Entity Framework core.
+
+55
+00:03:53,060 --> 00:04:00,200
+So after that we will use await db context dot orders and find async method and passing this strongly
+
+56
+00:04:00,200 --> 00:04:05,780
+type order id in order to get existing order, including in database or not.
+
+57
+00:04:05,780 --> 00:04:12,620
+If the order is null, we are going to throwing order not found exception and we are passing this command
+
+58
+00:04:12,620 --> 00:04:14,810
+order ID into this exception.
+
+59
+00:04:14,810 --> 00:04:19,370
+So these are the fetching operation and check if the order exists or not.
+
+60
+00:04:19,370 --> 00:04:22,220
+If not we will throw order not found exception.
+
+61
+00:04:22,520 --> 00:04:25,940
+After that we can go to the second step which is to save the database.
+
+62
+00:04:25,940 --> 00:04:33,920
+So first of all we will update the orders with the new values from the incoming order from the command
+
+63
+00:04:33,920 --> 00:04:35,180
+dot order DTO.
+
+64
+00:04:35,180 --> 00:04:40,760
+And we will update order values with the new values incoming from the DTO object.
+
+65
+00:04:40,760 --> 00:04:47,600
+And after that we will perform the DB context orders, update and save change async in order to reflect
+
+66
+00:04:47,600 --> 00:04:49,850
+these update operation into database.
+
+67
+00:04:49,910 --> 00:04:53,450
+And finally we can go to the last step which is the returned result.
+
+68
+00:04:53,450 --> 00:04:59,660
+So I'm going to write return new update order result with passing the true, which means this update
+
+69
+00:04:59,660 --> 00:05:01,880
+operation is performed successfully.
+
+70
+00:05:01,880 --> 00:05:04,970
+So now we can remove this throw statement safely.
+
+71
+00:05:04,970 --> 00:05:09,530
+And here you can see the implementation of the handle method for the update order handle.
+
+72
+00:05:09,710 --> 00:05:15,680
+As you can see that we should develop update orders with new values method, which is basically mapping
+
+73
+00:05:15,680 --> 00:05:17,570
+DTO object to order entity.
+
+74
+00:05:17,570 --> 00:05:22,070
+So we will map these object properties in order to update new order.
+
+75
+00:05:22,070 --> 00:05:24,320
+So I'm going to create these method.
+
+76
+00:05:24,320 --> 00:05:29,420
+So this is the method body which is the public void update order with item new values.
+
+77
+00:05:29,420 --> 00:05:36,500
+And this will be taking order entity and order DTO object that we are going to map the values from DTO
+
+78
+00:05:36,500 --> 00:05:37,490
+to order entity.
+
+79
+00:05:37,580 --> 00:05:40,640
+So I am doing these mapping operation manually.
+
+80
+00:05:40,640 --> 00:05:43,910
+First of all I'm going to create our value object.
+
+81
+00:05:44,150 --> 00:05:48,830
+Which are the or shipping and billing address and also payment.
+
+82
+00:05:48,830 --> 00:05:54,290
+So here you can see the variables updated shipping address, billing address and updated payment that
+
+83
+00:05:54,290 --> 00:06:00,590
+we are going to create these value objects using the off methods and passing the DTO object related
+
+84
+00:06:00,590 --> 00:06:03,440
+parameters inside of these off function.
+
+85
+00:06:03,440 --> 00:06:11,120
+And after that, after getting these updated value objects, we can basically use order dot update method.
+
+86
+00:06:11,120 --> 00:06:13,580
+So this method is located in domain layer.
+
+87
+00:06:13,580 --> 00:06:19,280
+And according to domain driven design, we will perform update operation inside of the order entity.
+
+88
+00:06:19,520 --> 00:06:24,950
+So you can go to the update method and see the details inside of the order entity.
+
+89
+00:06:24,950 --> 00:06:30,920
+We will accept order name, shipping and billing address, payment and order status information when
+
+90
+00:06:30,920 --> 00:06:35,030
+updating an existing order into rich domain model order aggregate.
+
+91
+00:06:35,030 --> 00:06:40,820
+So after that we will sending domain event and raising domain event which is the order updated event.
+
+92
+00:06:40,820 --> 00:06:46,700
+So if you go back to our code I'm going to using order update method and passing the order name, shipping
+
+93
+00:06:46,700 --> 00:06:49,580
+and billing address and payment and status information.
+
+94
+00:06:49,580 --> 00:06:55,730
+This will be update an existing order and this will be implementation of these update orders with new
+
+95
+00:06:55,730 --> 00:06:56,600
+values method.
+
+96
+00:06:56,600 --> 00:07:03,380
+You can also use custom mapping profile for this action, but I would like to see explicitly when updating
+
+97
+00:07:03,380 --> 00:07:04,460
+an existing order.
+
+98
+00:07:04,460 --> 00:07:10,550
+If you go on top of this page and see the handle method, the only thing we left is creating order Notfound
+
+99
+00:07:10,550 --> 00:07:11,300
+exception.
+
+100
+00:07:11,300 --> 00:07:16,790
+To implement these exception, I'm going to create a new folder under the ordering application, right
+
+101
+00:07:16,790 --> 00:07:20,360
+click Add new folder, which name is exceptions folder.
+
+102
+00:07:20,360 --> 00:07:24,740
+And inside of this folder we are going to create order Notfoundexception.
+
+103
+00:07:26,580 --> 00:07:29,940
+And we will implement these custom exception.
+
+104
+00:07:29,940 --> 00:07:36,780
+I'm going to make it public and I'm going to inherit from the not found exception that we have already
+
+105
+00:07:36,780 --> 00:07:40,230
+developed in our Common Building Blocks class library.
+
+106
+00:07:40,230 --> 00:07:46,110
+You can go to Notfoundexception definition, which is located under the Building Blocks Exceptions folder.
+
+107
+00:07:46,110 --> 00:07:51,960
+And we can use these common exception class into our ordering application layer, which is inherited,
+
+108
+00:07:51,960 --> 00:07:56,580
+and getting reference from these building blocks into our ordering application layer.
+
+109
+00:07:56,580 --> 00:08:02,550
+So if you go back to our exceptions and order not found exception, we can implement the constructor
+
+110
+00:08:02,550 --> 00:08:08,820
+of these exception with inheriting from the base, not found exception with passing order and ID information.
+
+111
+00:08:08,820 --> 00:08:14,430
+If you go to base constructor, you can see that this will be is arranging some custom exception message.
+
+112
+00:08:14,430 --> 00:08:18,480
+So now we can go back to our update order handler class.
+
+113
+00:08:18,480 --> 00:08:21,990
+And now we can using these exception folder.
+
+114
+00:08:21,990 --> 00:08:27,210
+And if you go on top of these folder you can see that we will have using statements.
+
+115
+00:08:27,210 --> 00:08:31,230
+I'm going to move these using statement to the global using for that purpose.
+
+116
+00:08:31,230 --> 00:08:37,590
+Copy these using statements and go to the global using for application layer and passed in here.
+
+117
+00:08:37,980 --> 00:08:42,840
+So put the global keyword in the beginning of these using statements and save this file.
+
+118
+00:08:42,840 --> 00:08:48,540
+If you go back to update order handler you can safely remove unnecessary using statement and save this
+
+119
+00:08:48,540 --> 00:08:49,020
+file.
+
+120
+00:08:49,020 --> 00:08:54,510
+So I'm going to right click and build ordering microservices to verify everything is working fine.
+
+121
+00:08:54,570 --> 00:08:59,730
+As you can see that we have successfully develop update order use cases and we will continue to do other
+
+122
+00:08:59,730 --> 00:09:00,510
+Crud operations.
+

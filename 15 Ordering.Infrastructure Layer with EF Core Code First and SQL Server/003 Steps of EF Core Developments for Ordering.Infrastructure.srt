@@ -1,0 +1,280 @@
+1
+00:00:00,200 --> 00:00:06,650
+In this video, we are going to learn the key steps of developing ordering infrastructure layer using
+
+2
+00:00:06,650 --> 00:00:08,119
+the Entity Framework core.
+
+3
+00:00:08,690 --> 00:00:13,070
+The first key step is install Entity Framework core NuGet packages.
+
+4
+00:00:13,070 --> 00:00:18,710
+We should install the necessary packages for SQL Server and Entity Framework core tools.
+
+5
+00:00:18,710 --> 00:00:24,860
+So these are the packages including the Microsoft Entity Framework, core SQL server and the tools NuGet
+
+6
+00:00:24,860 --> 00:00:25,580
+packages.
+
+7
+00:00:25,580 --> 00:00:29,540
+So I'm going to use Visual Studio and Package Manager Console.
+
+8
+00:00:29,540 --> 00:00:32,750
+That's why I have installing the tools NuGet packages.
+
+9
+00:00:32,750 --> 00:00:34,160
+But if you use the.
+
+10
+00:00:34,160 --> 00:00:39,800
+Net CLI, you can install the design packages instead of the tools to perform an interact Entity Framework
+
+11
+00:00:39,800 --> 00:00:41,390
+core tooling operations.
+
+12
+00:00:42,020 --> 00:00:46,490
+And the second key step is developing Dbcontext object.
+
+13
+00:00:46,520 --> 00:00:51,650
+We will be adding entity objects into the Entity Framework core Dbcontext object.
+
+14
+00:00:51,650 --> 00:00:57,620
+And that's why we will define a Dbcontext class in the infrastructure layer, which name is application
+
+15
+00:00:57,620 --> 00:00:58,580
+Dbcontext.
+
+16
+00:00:58,580 --> 00:01:05,690
+So in this context class we will define entities as a DB set, including the customer product order
+
+17
+00:01:05,690 --> 00:01:08,090
+and order item in order to interact.
+
+18
+00:01:08,120 --> 00:01:14,300
+Entity framework core and SQL server database using the entities under the Dbcontext class.
+
+19
+00:01:15,020 --> 00:01:21,200
+And after that we will configure the domain entities to Entity Framework Core entities for SQL server.
+
+20
+00:01:21,230 --> 00:01:26,810
+That means we will mapping domain driven design objects to the Entity Framework core entities.
+
+21
+00:01:26,840 --> 00:01:32,870
+We are going to use Entity Framework Core Module Builder for mapping domain driven design entities to
+
+22
+00:01:32,900 --> 00:01:34,580
+Entity Framework core entities.
+
+23
+00:01:34,610 --> 00:01:40,400
+That means we will map the domain entities to database tables and configure their relationships.
+
+24
+00:01:40,400 --> 00:01:45,980
+You can see all the configurations and this is inherited from the I entity type configurations.
+
+25
+00:01:45,980 --> 00:01:52,790
+In order to configure all the entity members, including the ID and other members inside of these configure
+
+26
+00:01:52,790 --> 00:01:53,510
+methods.
+
+27
+00:01:54,320 --> 00:02:00,530
+And the next key step is ASP.Net core setup and configurations, including the application settings
+
+28
+00:02:00,530 --> 00:02:01,430
+JSON file.
+
+29
+00:02:01,430 --> 00:02:06,680
+That means we should configure the database connection string in application settings JSON file.
+
+30
+00:02:06,680 --> 00:02:13,430
+You can see the connection string database and this is representing SQL server database connections
+
+31
+00:02:14,000 --> 00:02:20,690
+And after that we should register Entity Framework Core Dbcontext to ASP.Net Dependency Injection,
+
+32
+00:02:20,690 --> 00:02:25,880
+and we can register the services like application Dbcontext in the Program.cs.
+
+33
+00:02:25,910 --> 00:02:30,530
+In order to add these Dbcontext into ASP.Net Devtool.
+
+34
+00:02:30,530 --> 00:02:36,800
+Here you can see that we have going to adding Dbcontext, which is our application Dbcontext.
+
+35
+00:02:36,800 --> 00:02:42,410
+With configuring the interceptors and using the SQL server with a given connection string indicating
+
+36
+00:02:42,410 --> 00:02:44,420
+the application settings JSON file.
+
+37
+00:02:45,320 --> 00:02:49,970
+And the next key step is create migrations and create database with commands.
+
+38
+00:02:49,970 --> 00:02:55,610
+We will use Entity Framework Core tools in order to create migrations and update the database.
+
+39
+00:02:55,700 --> 00:02:58,040
+So that means in Visual Studio.
+
+40
+00:02:58,070 --> 00:03:00,710
+First of all we will install the tools packages.
+
+41
+00:03:00,710 --> 00:03:07,460
+And after that we will run these two command which is the add migration initial create and update database.
+
+42
+00:03:07,790 --> 00:03:12,620
+The add migration command scaffolds the migration table and migration folder.
+
+43
+00:03:12,620 --> 00:03:18,800
+In order to create the initial set of the tables for the model and update database command creates the
+
+44
+00:03:18,800 --> 00:03:24,610
+database and applies to new migrations to the database itself, which is the SQL server that we can
+
+45
+00:03:24,610 --> 00:03:28,270
+check the SQL server database from the Visual Studio Management console.
+
+46
+00:03:29,320 --> 00:03:33,790
+And after that, the next key step is create database with migrate method.
+
+47
+00:03:33,790 --> 00:03:40,150
+And after creating manually we will also migrate these operations with coding.
+
+48
+00:03:40,150 --> 00:03:46,120
+And we will update the Program.cs in order to automatically apply migrations at startup.
+
+49
+00:03:46,120 --> 00:03:54,280
+You can see in here we will use context database migrate async method in order to perform all the migrations
+
+50
+00:03:54,280 --> 00:04:01,900
+from the folder automatically when the application start up, and after that the next key step is seeding
+
+51
+00:04:01,930 --> 00:04:02,950
+the database.
+
+52
+00:04:02,950 --> 00:04:09,940
+We will populate the database with initial data using a seeding method or class, and in this section
+
+53
+00:04:09,940 --> 00:04:15,670
+we will add a code that populates the database with the test data with including the data db initializer
+
+54
+00:04:15,670 --> 00:04:16,149
+class.
+
+55
+00:04:16,149 --> 00:04:19,240
+We will create this class in order seeding database.
+
+56
+00:04:19,240 --> 00:04:22,029
+We will check the orders in the application startup.
+
+57
+00:04:22,029 --> 00:04:29,770
+If there is no orders, we will adding the predefined orders from our initial data class, and the next
+
+58
+00:04:29,770 --> 00:04:34,990
+step is to dispatch the domain events with Entity Framework core interceptors.
+
+59
+00:04:35,020 --> 00:04:41,530
+We will implement a Savechanges interceptor in order to dispatch domain events before saving the changes
+
+60
+00:04:41,530 --> 00:04:42,490
+to database.
+
+61
+00:04:42,520 --> 00:04:47,470
+You can see an example of the Dispatch Domain events interceptor we have defined.
+
+62
+00:04:47,500 --> 00:04:49,780
+Domain events in the ordering domain layer.
+
+63
+00:04:49,780 --> 00:04:55,060
+In this layer, we will dispatch these domain events using the Savechanges interceptor.
+
+64
+00:04:55,060 --> 00:05:01,510
+And this is one of the powerful features combining Entity Framework core Savechanges interceptor with
+
+65
+00:05:01,510 --> 00:05:07,360
+a mediator mediator library in order to dispatching to domain events in the infrastructure layer.
+
+66
+00:05:07,630 --> 00:05:13,780
+And the last key step is test all from the local with containerized SQL server in Docker.
+
+67
+00:05:13,780 --> 00:05:19,330
+So we will set up a docker compose file in order to run SQL server in Docker container, and we will
+
+68
+00:05:19,330 --> 00:05:22,960
+test the application locally with the containerized SQL server.
+
+69
+00:05:22,990 --> 00:05:27,670
+And after that we will test the whole application in Docker compose environment.
+
+70
+00:05:27,670 --> 00:05:33,370
+So now let's follow these steps in order to develop ordering infrastructure layer one by one.
+

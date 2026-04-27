@@ -1,0 +1,348 @@
+1
+00:00:00,080 --> 00:00:06,410
+In this video, we are going to learn how to centralize logging within your application using the mediators
+
+2
+00:00:06,410 --> 00:00:06,830
+pipeline.
+
+3
+00:00:06,830 --> 00:00:07,550
+Behavior.
+
+4
+00:00:07,910 --> 00:00:14,300
+Consistent logging is crucial in microservices for debugging and monitoring, and usually logging is
+
+5
+00:00:14,300 --> 00:00:19,610
+done within each handler method and it is leading to repeated code and duplicated code.
+
+6
+00:00:19,610 --> 00:00:24,350
+So we will see how to optimize this using the mediators pipeline behavior.
+
+7
+00:00:24,350 --> 00:00:27,530
+But before that, let me show you the our handler classes.
+
+8
+00:00:27,530 --> 00:00:32,509
+If you open the Visual Studio and go to the create product handler method, you can see that in this
+
+9
+00:00:32,509 --> 00:00:34,280
+class we have injected a logger.
+
+10
+00:00:34,280 --> 00:00:38,690
+And after that we will put a log in the beginning of the handle method.
+
+11
+00:00:38,690 --> 00:00:40,400
+So this is the log information.
+
+12
+00:00:40,400 --> 00:00:44,960
+And this is typically log the incoming handle method and passing the command object.
+
+13
+00:00:44,960 --> 00:00:49,160
+And if you look at the other command object for example delete product handle.
+
+14
+00:00:49,160 --> 00:00:52,460
+And this is exactly the same what we are going to do.
+
+15
+00:00:52,460 --> 00:00:55,910
+Inject the logger and logging the incoming handle method.
+
+16
+00:00:55,910 --> 00:01:00,710
+And if we look at the update product handle method, this is exactly same.
+
+17
+00:01:00,710 --> 00:01:05,239
+We have injected logger and logging the information at the beginning of the handle method.
+
+18
+00:01:05,239 --> 00:01:08,780
+So this is not efficient and leading to repetitive code.
+
+19
+00:01:08,780 --> 00:01:13,340
+So how to avoid these log information for each handle method.
+
+20
+00:01:13,340 --> 00:01:16,520
+So the solution is mediator pipeline behavior.
+
+21
+00:01:16,640 --> 00:01:22,370
+As you can see the image mediator pipeline behavior allows us to inject logic into the handling of the
+
+22
+00:01:22,370 --> 00:01:26,510
+request and making them ideal for cross-cutting concerns like logging.
+
+23
+00:01:26,510 --> 00:01:34,250
+So we can put our cross-cutting concerns in the preprocessor or post-processor before handle the request
+
+24
+00:01:34,250 --> 00:01:36,350
+with using the mediator pipeline behavior.
+
+25
+00:01:36,590 --> 00:01:43,940
+For this video, our approach is creating logging behavior class, and this class will log every request
+
+26
+00:01:43,940 --> 00:01:45,170
+and its response.
+
+27
+00:01:45,170 --> 00:01:48,380
+And it will be applied to all mediator requests.
+
+28
+00:01:48,500 --> 00:01:51,770
+So for that purpose we are going to create logging behavior.
+
+29
+00:01:51,770 --> 00:01:56,030
+And please open the Visual Studio and go to the building blocks.
+
+30
+00:01:56,150 --> 00:02:02,120
+Under the building blocks we have behaviors folder that we are going to add new behavior which is the
+
+31
+00:02:02,120 --> 00:02:04,160
+logging behavior C-sharp class.
+
+32
+00:02:04,160 --> 00:02:07,730
+So in this class we basically perform logging operations.
+
+33
+00:02:07,730 --> 00:02:11,810
+So as you can see that I'm going to remove unnecessary using statement.
+
+34
+00:02:11,810 --> 00:02:17,390
+And the important thing that we should inherit this class from the eye pipeline behavior.
+
+35
+00:02:17,390 --> 00:02:19,640
+So this behavior comes from the mediator.
+
+36
+00:02:19,640 --> 00:02:23,570
+And this will be including T rex and t response generics.
+
+37
+00:02:23,570 --> 00:02:28,970
+For that purpose we will also make us logging behavior as a generics.
+
+38
+00:02:28,970 --> 00:02:33,260
+And after that I'm going to implement these AI pipeline behavior.
+
+39
+00:02:33,260 --> 00:02:35,690
+And this will be create handle method.
+
+40
+00:02:35,690 --> 00:02:38,810
+So before that we should configure our logging behavior.
+
+41
+00:02:38,810 --> 00:02:40,640
+First of all make it public.
+
+42
+00:02:40,640 --> 00:02:44,600
+And after that I'm going to inject logger information.
+
+43
+00:02:44,600 --> 00:02:47,390
+So here you can see that we have injected logger.
+
+44
+00:02:47,390 --> 00:02:52,190
+And after that we have inherit from implement from the AI pipeline behavior.
+
+45
+00:02:52,190 --> 00:02:58,010
+And I'm going to put some of the filters about the T rex and t response here.
+
+46
+00:02:58,010 --> 00:03:05,930
+You can see that T rex should not be null and also inherited from I rex t response object and t response
+
+47
+00:03:05,930 --> 00:03:06,920
+should not be null.
+
+48
+00:03:06,920 --> 00:03:10,580
+So please make sure that the signature of the class should be same.
+
+49
+00:03:10,580 --> 00:03:13,880
+And after that we can develop handle method.
+
+50
+00:03:13,880 --> 00:03:19,220
+In the handle method, you can see that this is accepting the t request as a request parameter.
+
+51
+00:03:19,220 --> 00:03:25,340
+And here you can see the next parameter which is the request handle delegate in order to call the next
+
+52
+00:03:25,340 --> 00:03:27,980
+pipeline or actual handle operation.
+
+53
+00:03:27,980 --> 00:03:31,190
+So now I'm going to make this class as a async.
+
+54
+00:03:31,190 --> 00:03:38,510
+And in the first line of the code we should always logging the incoming requests for that purpose.
+
+55
+00:03:38,510 --> 00:03:45,290
+I'm going to put logging information, and we are putting a start prefix and give some detail about
+
+56
+00:03:45,290 --> 00:03:48,440
+the request and response with the incoming object.
+
+57
+00:03:48,440 --> 00:03:51,020
+You can see the request data also including.
+
+58
+00:03:51,020 --> 00:03:53,600
+So we will paste these information.
+
+59
+00:03:53,600 --> 00:03:57,260
+This is the name of the T request and this is the name of the response.
+
+60
+00:03:57,260 --> 00:04:00,050
+And I'm going to paste the whole request object.
+
+61
+00:04:00,050 --> 00:04:06,320
+After logging the incoming request we can calculate the duration of the request and process time.
+
+62
+00:04:06,320 --> 00:04:09,140
+You can see that we basically add a timer.
+
+63
+00:04:09,140 --> 00:04:16,310
+And in the timer we will get a start and stop and duration of the actual handle operation.
+
+64
+00:04:16,310 --> 00:04:24,950
+And if the time taken more than 32nd, we are putting warning log and this will be the performance indication
+
+65
+00:04:24,950 --> 00:04:27,710
+and performance concern for our application.
+
+66
+00:04:27,710 --> 00:04:33,440
+So this is a very good illustration and logging operation for understanding the long running operations
+
+67
+00:04:33,440 --> 00:04:34,700
+in your handle method.
+
+68
+00:04:34,700 --> 00:04:39,080
+And lastly we will logging the end of the handle method.
+
+69
+00:04:39,080 --> 00:04:44,720
+And we indicate that this handle operation is finished with this request and response.
+
+70
+00:04:44,720 --> 00:04:48,530
+And we are returning the response object to the next operation.
+
+71
+00:04:48,530 --> 00:04:51,620
+So we have completed the logging behavior.
+
+72
+00:04:51,620 --> 00:04:58,010
+And in this logging behavior we basically implement AI pipeline behavior interface.
+
+73
+00:04:58,010 --> 00:04:59,840
+And it is logging at the start.
+
+74
+00:05:00,070 --> 00:05:04,030
+And at the end of the each request and measures execution time.
+
+75
+00:05:04,030 --> 00:05:10,330
+In order to apply this behavior globally, we need to register it in the dependency injection container.
+
+76
+00:05:10,330 --> 00:05:14,290
+For that purpose, please go to the Catholic API program case.
+
+77
+00:05:14,560 --> 00:05:20,080
+And as you remember that we are adding all the behaviors about the mediator in the configuration of
+
+78
+00:05:20,080 --> 00:05:21,610
+the mediator block.
+
+79
+00:05:21,610 --> 00:05:27,100
+In this block, add mediator block, we can configure add open behavior for the validation behavior.
+
+80
+00:05:27,100 --> 00:05:32,230
+Before now I am going to add a new open behavior which is the logging behavior.
+
+81
+00:05:32,230 --> 00:05:35,260
+So you can copy paste the logging behavior in here.
+
+82
+00:05:35,260 --> 00:05:39,970
+And you can add a second behavior into our each mediator pipelines.
+
+83
+00:05:39,970 --> 00:05:45,790
+This configuration provides that our logging behavior is applied to every mediator request.
+
+84
+00:05:45,790 --> 00:05:51,370
+So why we are using logging behavior for the mediator because we have lots of benefits.
+
+85
+00:05:51,370 --> 00:05:55,990
+For example now it is a centralized logging for every request and response.
+
+86
+00:05:55,990 --> 00:05:58,810
+And it is a consistent format for log entries.
+
+87
+00:05:58,810 --> 00:06:02,110
+And it increases the performance monitoring for each request.
+

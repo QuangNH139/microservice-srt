@@ -1,0 +1,172 @@
+1
+00:00:00,200 --> 00:00:05,960
+In this video, we are going to learn opening sessions in Martin as a document database.
+
+2
+00:00:06,260 --> 00:00:12,860
+Martin's session is an interaction pattern for working with the documents stored in PostgreSQL database.
+
+3
+00:00:13,160 --> 00:00:15,200
+You can see the image on the slide.
+
+4
+00:00:15,200 --> 00:00:21,800
+I document store is the root of the Martin usage, but most of the Martin usage in the code will start
+
+5
+00:00:21,800 --> 00:00:26,930
+with one of these session types that can be created from an I document store.
+
+6
+00:00:27,200 --> 00:00:32,930
+So under the I document store there are different flavors of session and the root store.
+
+7
+00:00:33,020 --> 00:00:41,180
+So these are the query sessions that optimize for read only scenarios and document sessions that optimize
+
+8
+00:00:41,180 --> 00:00:43,160
+for the read and write scenarios.
+
+9
+00:00:43,190 --> 00:00:45,290
+So let me explain one by one.
+
+10
+00:00:45,470 --> 00:00:47,810
+The first one is query sessions.
+
+11
+00:00:47,840 --> 00:00:54,680
+These sessions is best used for querying documents without any need for the tracking or saving changes.
+
+12
+00:00:55,070 --> 00:01:02,600
+So under the document session for read and write operation, we can also use different type of the document
+
+13
+00:01:02,600 --> 00:01:03,260
+sessions.
+
+14
+00:01:03,290 --> 00:01:07,610
+Let me start the first one which is the identity map documentation.
+
+15
+00:01:07,610 --> 00:01:14,030
+Martin's I document session implement the identity map pattern that seeks to cache documents loaded
+
+16
+00:01:14,030 --> 00:01:14,780
+by ID.
+
+17
+00:01:14,930 --> 00:01:21,590
+This behavior can be very valuable, for example, in handling the web requests or service bus messages.
+
+18
+00:01:21,590 --> 00:01:26,690
+When many different objects or functions may need to access the same logical document.
+
+19
+00:01:27,320 --> 00:01:30,230
+The second type is lightweight document session.
+
+20
+00:01:30,230 --> 00:01:35,690
+It is suitable for small transactions with a mix of the read and write operations.
+
+21
+00:01:35,690 --> 00:01:41,720
+For operations that involve updates, inserts or deletes, we use a lightweight sessions.
+
+22
+00:01:41,720 --> 00:01:46,640
+It is still transactional but doesn't track the changes to the loaded document.
+
+23
+00:01:47,240 --> 00:01:50,900
+And the last one is dirty checking documentation.
+
+24
+00:01:50,900 --> 00:01:57,530
+This is the dirty checking document session in this case, and I document station opened with a dirty
+
+25
+00:01:57,530 --> 00:01:58,670
+checking enabled.
+
+26
+00:01:58,670 --> 00:02:04,610
+The session will try to detect the changes to any of the documents loaded by that session.
+
+27
+00:02:04,610 --> 00:02:11,030
+The dirty checking is done by keeping the original Json fetched from the PostgreSQL, and using the
+
+28
+00:02:11,030 --> 00:02:15,410
+Newtonsoft.json library that makes a node by node.
+
+29
+00:02:15,410 --> 00:02:21,620
+Comparison of the Json representation of the document at the time that I document session is called,
+
+30
+00:02:21,620 --> 00:02:23,420
+so you can find the image.
+
+31
+00:02:23,420 --> 00:02:27,530
+How we can create these kind of sessions from the Martin Document DB.
+
+32
+00:02:27,650 --> 00:02:34,100
+And here you can see that we can use a document store and dot notation to create query session.
+
+33
+00:02:34,100 --> 00:02:39,860
+Here you can see the query session and we can create lightweight sessions, identity sessions, dirty
+
+34
+00:02:39,860 --> 00:02:41,480
+tricks sessions and so on.
+
+35
+00:02:41,480 --> 00:02:45,410
+These provide to create sessions using the document store.
+
+36
+00:02:45,410 --> 00:02:52,430
+And here you can see the operations to perform read write operations or enable to identity map and dirty
+
+37
+00:02:52,430 --> 00:02:53,960
+checking functions.
+
+38
+00:02:54,470 --> 00:02:56,060
+So what is the best practice?
+
+39
+00:02:56,060 --> 00:03:01,760
+Best practice is understanding and choosing the right type of the session in Martin, which is crucial
+
+40
+00:03:01,760 --> 00:03:04,520
+for effective data handling in your applications.
+
+41
+00:03:04,520 --> 00:03:11,420
+Always aim to use the lightest session that meets your needs and ensure proper disposal of the sessions
+
+42
+00:03:11,420 --> 00:03:13,460
+in order to maintain the performance.
+
+43
+00:03:13,460 --> 00:03:20,300
+So we will use mostly lightweight session which is optimized for reading and writing operations.
+

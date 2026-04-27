@@ -1,0 +1,108 @@
+1
+00:00:00,110 --> 00:00:05,360
+In this video we are going to learn benefits of asynchronous communication.
+
+2
+00:00:05,570 --> 00:00:08,930
+The first benefit is adding new subscriber services.
+
+3
+00:00:08,930 --> 00:00:12,110
+So adding new subscriber services is very simple.
+
+4
+00:00:12,110 --> 00:00:15,770
+We can easily subscribe to a message that we want to receive.
+
+5
+00:00:16,010 --> 00:00:19,610
+The producer doesn't need to be know about subscribers.
+
+6
+00:00:19,610 --> 00:00:24,470
+We can remove and add subscribers without affecting producer service.
+
+7
+00:00:25,120 --> 00:00:27,460
+And another benefit is scalability.
+
+8
+00:00:28,120 --> 00:00:34,180
+When services communicate with direct sync communications, if the servers get high volume requests,
+
+9
+00:00:34,180 --> 00:00:40,750
+these communication parties should be scaled together and at the same time, so it is hard to maintain
+
+10
+00:00:40,750 --> 00:00:42,400
+high volume peak requests.
+
+11
+00:00:43,030 --> 00:00:47,680
+With asynchronous communication, we can easier to manage scalability issues.
+
+12
+00:00:47,680 --> 00:00:54,850
+We can scale producer, consumer and message broker system independently, so we can also scale services
+
+13
+00:00:54,850 --> 00:00:57,940
+according to incoming messages into event based system.
+
+14
+00:00:58,570 --> 00:01:03,850
+The message broker can distribute the received message to more than one target services.
+
+15
+00:01:04,000 --> 00:01:10,780
+If incoming message are increased into message broker system, we can scale consumer services and receive
+
+16
+00:01:10,780 --> 00:01:13,510
+messages faster in microservices.
+
+17
+00:01:13,510 --> 00:01:20,830
+Kubernetes has autoscaler that we can define maximum port number according to CPU and Ram usage into
+
+18
+00:01:20,830 --> 00:01:22,000
+current instance.
+
+19
+00:01:22,210 --> 00:01:28,570
+But also there is another good product which is the Keda, which is a Kubernetes event driven application
+
+20
+00:01:28,570 --> 00:01:32,890
+that we can auto scale pods according to message broker system loads.
+
+21
+00:01:32,980 --> 00:01:40,930
+For example, if our microservice architecture uses Kafka, and if Kafka has more messages that we expected
+
+22
+00:01:40,930 --> 00:01:46,900
+with using the Keda, we can auto scale consumer microservices automatically.
+
+23
+00:01:47,050 --> 00:01:53,170
+So asynchronous communication is allowed to be more flexible in terms of the scalability issues.
+
+24
+00:01:54,290 --> 00:01:57,410
+And another benefit is event driven microservices.
+
+25
+00:01:57,410 --> 00:02:02,900
+With asynchronous communication, we can provide event driven architectures, which is the best way
+
+26
+00:02:02,900 --> 00:02:09,229
+to communicate between microservices services, communicates with each other by creating events and
+
+27
+00:02:09,229 --> 00:02:14,600
+send events to message broker, event bus system and subscribe events from the microservices.
+

@@ -1,0 +1,396 @@
+1
+00:00:00,170 --> 00:00:05,720
+In this video we are going to develop orders, create order command and create order command handler
+
+2
+00:00:05,720 --> 00:00:07,070
+in the application layer.
+
+3
+00:00:07,070 --> 00:00:11,840
+So that means we will develop application features into our orders folder.
+
+4
+00:00:11,840 --> 00:00:16,520
+And we will specifically implement the use case of the create order feature.
+
+5
+00:00:16,520 --> 00:00:22,130
+So under the create order we will develop create order command and create order command handler.
+
+6
+00:00:22,130 --> 00:00:23,780
+So let's get started.
+
+7
+00:00:23,780 --> 00:00:29,840
+Please open the Visual Studio and go to the ordering application and Orders folder and go to the commands
+
+8
+00:00:29,840 --> 00:00:30,500
+folder.
+
+9
+00:00:30,500 --> 00:00:34,040
+I'm going to right click this command folder and add new subfolder.
+
+10
+00:00:34,040 --> 00:00:35,900
+Which name is Create Order.
+
+11
+00:00:35,900 --> 00:00:39,710
+This will be represent our application use case and feature folder.
+
+12
+00:00:39,710 --> 00:00:44,720
+And inside of this folder we will create create order command and handler classes.
+
+13
+00:00:44,720 --> 00:00:48,230
+So under this Create Order folder I'm going to add a new class.
+
+14
+00:00:48,230 --> 00:00:51,200
+Which name is Create Order command Dax.
+
+15
+00:00:51,290 --> 00:00:53,990
+So this will be represent our command operation.
+
+16
+00:00:53,990 --> 00:01:00,170
+And we will define a record type for the create order command that takes an order DTO as a parameter.
+
+17
+00:01:00,170 --> 00:01:02,810
+So let's start the implementation.
+
+18
+00:01:02,810 --> 00:01:04,730
+Remove unnecessary using statement.
+
+19
+00:01:04,730 --> 00:01:11,840
+And I'm going to remove this internal class definition and start with defining our record type with
+
+20
+00:01:11,840 --> 00:01:13,100
+taking the order DTO.
+
+21
+00:01:13,100 --> 00:01:19,310
+And this will be inherited from the I command interface which comes from the R abstractions.
+
+22
+00:01:19,310 --> 00:01:24,800
+So here you can see that we will create public record create order command as a parameter.
+
+23
+00:01:24,800 --> 00:01:27,740
+It is getting order DTO and order.
+
+24
+00:01:27,740 --> 00:01:29,960
+And this will be inherited from the I command.
+
+25
+00:01:29,960 --> 00:01:35,450
+In order to identify this is the I command operation to performing our create order operations.
+
+26
+00:01:35,810 --> 00:01:41,390
+So this command object basically encapsulates the data needed to create a new order, which is the order
+
+27
+00:01:41,390 --> 00:01:41,840
+DTO.
+
+28
+00:01:42,110 --> 00:01:48,170
+And here you can see that we also need to create order result for the response of this command object.
+
+29
+00:01:48,170 --> 00:01:54,440
+That's why I'm going to create a create order result record that will define a record type to encapsulate
+
+30
+00:01:54,440 --> 00:02:00,530
+the result of the command execution, which is basically return a ID of the newly created order.
+
+31
+00:02:00,530 --> 00:02:06,680
+For that purpose, I'm going to create a basic record type for the result object, which is the public
+
+32
+00:02:06,680 --> 00:02:13,070
+record create order result, and as a parameter it is response, the gid id, which is the newly created
+
+33
+00:02:13,070 --> 00:02:15,950
+order id which comes from the command object.
+
+34
+00:02:16,130 --> 00:02:20,930
+And after that we can define the command validations with full and validation.
+
+35
+00:02:20,930 --> 00:02:26,600
+So as you remember that when we are developing our catalog and basket microservices in the command classes,
+
+36
+00:02:26,600 --> 00:02:30,170
+we will develop command result and validator object.
+
+37
+00:02:30,170 --> 00:02:33,350
+And these are representing our mediator lifecycle.
+
+38
+00:02:33,350 --> 00:02:38,060
+Here you can see that when the request comes we will create a command and query object.
+
+39
+00:02:38,060 --> 00:02:43,550
+And this will be also including the result object that we can return the client application.
+
+40
+00:02:43,550 --> 00:02:48,140
+And when we are developing these command and query we can also develop the validations.
+
+41
+00:02:48,140 --> 00:02:53,930
+So for that purpose I'm going to go back to Visual Studio and implement the Create Order command validator
+
+42
+00:02:53,930 --> 00:02:59,540
+using the full length validation in order to ensure that the incoming order data is valid or not.
+
+43
+00:02:59,540 --> 00:03:06,620
+And in here you can develop these codes which is the public class create order command validator.
+
+44
+00:03:06,620 --> 00:03:12,440
+And this will be inherit from the abstract validator with including the create order command type.
+
+45
+00:03:12,650 --> 00:03:17,510
+Abstract validator comes from the full length validation library to performing the validations in the
+
+46
+00:03:17,510 --> 00:03:18,980
+constructor of this class.
+
+47
+00:03:18,980 --> 00:03:24,080
+And here you can see that we have created the constructor, and inside of the constructor we can use
+
+48
+00:03:24,080 --> 00:03:27,440
+rule for methods comes from the full length validation library.
+
+49
+00:03:27,440 --> 00:03:33,410
+And we will specify the order attributes with including the order name, customer ID and order items
+
+50
+00:03:33,410 --> 00:03:38,360
+not empty and not null with the messages that we define in here.
+
+51
+00:03:38,360 --> 00:03:41,750
+So this is the rule definition for the create order command.
+
+52
+00:03:41,750 --> 00:03:47,930
+And we basically validate the crucial fields like order, name, customer ID and ensure the order items
+
+53
+00:03:47,930 --> 00:03:48,950
+are not empty.
+
+54
+00:03:48,980 --> 00:03:54,140
+Validators are vital to prevent invalid data from propagating through the system.
+
+55
+00:03:54,140 --> 00:03:59,750
+In our case, we will validate the create order, command and order data in order to perform create
+
+56
+00:03:59,750 --> 00:04:03,800
+operations without getting any error with these validators.
+
+57
+00:04:03,800 --> 00:04:08,510
+So after that we can start the developing create order command handler.
+
+58
+00:04:08,510 --> 00:04:15,770
+If we look at the order mediator pipeline, you can see that after converting the command we will trigger
+
+59
+00:04:15,770 --> 00:04:17,990
+the command handler with using the mediator.
+
+60
+00:04:17,990 --> 00:04:20,089
+So we should develop the command handler class.
+
+61
+00:04:20,089 --> 00:04:23,360
+In our case this will be the create order handler class.
+
+62
+00:04:23,360 --> 00:04:26,480
+For that purpose I'm going to create a new file.
+
+63
+00:04:26,480 --> 00:04:31,130
+Which name is create order handler in the same directory of the create order folder.
+
+64
+00:04:31,130 --> 00:04:32,960
+So please create this class.
+
+65
+00:04:32,960 --> 00:04:39,320
+And after that we will implement I command handler for the create order command and returning the result
+
+66
+00:04:39,320 --> 00:04:39,920
+object.
+
+67
+00:04:39,920 --> 00:04:45,410
+So I'm going to remove unnecessary using statement and make this class as a public.
+
+68
+00:04:47,480 --> 00:04:51,950
+And we will implement the I command handler for the create order command.
+
+69
+00:04:51,950 --> 00:04:57,860
+And the handlers responsibility is to process the command and interact with the domain model and databases.
+
+70
+00:04:57,860 --> 00:04:59,630
+So I'm going to start with the.
+
+71
+00:04:59,790 --> 00:05:05,340
+Implementation of the interface, which is the IE command handler interface, and in this interface
+
+72
+00:05:05,340 --> 00:05:09,540
+we will passing the types which is the create order command and create order result.
+
+73
+00:05:09,540 --> 00:05:14,700
+And after that I am going to implement these interface members which is the handle method.
+
+74
+00:05:14,700 --> 00:05:19,140
+So this handle method will be triggered from the mediator handle method.
+
+75
+00:05:19,140 --> 00:05:23,760
+Also act as a mediator between the incoming command and the domain model.
+
+76
+00:05:23,760 --> 00:05:29,400
+So if you look at the method body you can see that the handle method taking parameter from the create
+
+77
+00:05:29,400 --> 00:05:35,520
+order command as a request and cancellation token, and this will be respond back to the task create
+
+78
+00:05:35,520 --> 00:05:36,720
+order result object.
+
+79
+00:05:36,720 --> 00:05:42,150
+That means in the handle method, we basically encapsulate the business logic in order to create an
+
+80
+00:05:42,150 --> 00:05:47,130
+order entity from the command and persist it to the database for that purpose.
+
+81
+00:05:47,130 --> 00:05:52,110
+Let's implement this handle method with a piece of code in a commented items.
+
+82
+00:05:52,110 --> 00:05:56,820
+Here you can see that I'm going to add a commented items for implementing this handle method.
+
+83
+00:05:56,850 --> 00:06:02,610
+These are the create order entity from the command object that comes from the parameter, and after
+
+84
+00:06:02,610 --> 00:06:07,530
+that we will perform the save to database and return the result, which is the create order result.
+
+85
+00:06:07,530 --> 00:06:14,670
+So implementing these 100 logic will involve the interacting with the application db context and database.
+
+86
+00:06:14,670 --> 00:06:18,930
+So how can we save order entity in this handle method?
+
+87
+00:06:19,200 --> 00:06:24,570
+Of course we should use application db context object that we developed in the ordering infrastructure
+
+88
+00:06:24,570 --> 00:06:25,110
+layer.
+
+89
+00:06:25,350 --> 00:06:30,930
+But according to clean architecture we should not getting reference application layer from the infrastructure
+
+90
+00:06:30,930 --> 00:06:31,590
+layer.
+
+91
+00:06:31,590 --> 00:06:37,440
+If you look at the clean architecture layer and dependencies, you can see that application layer should
+
+92
+00:06:37,440 --> 00:06:43,230
+not get dependency from the infrastructure instead of that application layer is using in the infrastructure
+
+93
+00:06:43,230 --> 00:06:43,740
+layer.
+
+94
+00:06:43,740 --> 00:06:47,940
+So how we can save these operations inside of the application?
+
+95
+00:06:47,940 --> 00:06:53,820
+The best practice is using the interface abstractions in the application layer for the Entity Framework
+
+96
+00:06:53,820 --> 00:06:55,500
+core DB context object.
+
+97
+00:06:55,860 --> 00:07:02,250
+That means we will create AI application db context interface to implementing and representing the DB
+
+98
+00:07:02,250 --> 00:07:07,440
+context operations, and these will be resolved when the application start up in the dependency injection
+
+99
+00:07:07,440 --> 00:07:08,190
+classes.
+

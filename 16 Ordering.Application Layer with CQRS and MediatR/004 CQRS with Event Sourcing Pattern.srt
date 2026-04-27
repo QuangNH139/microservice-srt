@@ -1,0 +1,116 @@
+1
+00:00:00,110 --> 00:00:05,720
+In this video we are going to learn skills design pattern with event sourcing pattern.
+
+2
+00:00:06,320 --> 00:00:11,480
+In the last video, we have learned the sequence pattern and the sequence pattern is mostly using with
+
+3
+00:00:11,480 --> 00:00:12,860
+the event sourcing pattern.
+
+4
+00:00:13,340 --> 00:00:19,820
+When using sequence with event sourcing pattern, the main idea is store events into right database
+
+5
+00:00:19,820 --> 00:00:24,260
+and these will be the source of truth of that events database.
+
+6
+00:00:24,620 --> 00:00:30,830
+After that, the right database of skills design pattern provides materialized views of the data with
+
+7
+00:00:30,830 --> 00:00:32,119
+denormalized tables.
+
+8
+00:00:32,479 --> 00:00:39,020
+Of course, these materialized views read databases, consume events from the right database and convert
+
+9
+00:00:39,020 --> 00:00:40,760
+them into denormalized views.
+
+10
+00:00:41,660 --> 00:00:43,820
+The writing database is never saved.
+
+11
+00:00:43,820 --> 00:00:44,900
+Status of data.
+
+12
+00:00:44,900 --> 00:00:47,450
+Only events actions are stored.
+
+13
+00:00:48,410 --> 00:00:52,550
+By this way, saving only events actions into right database.
+
+14
+00:00:52,550 --> 00:00:59,000
+We can store history of data and able to reply any point of time in order to regenerate the status of
+
+15
+00:00:59,000 --> 00:00:59,780
+the data.
+
+16
+00:01:00,440 --> 00:01:06,170
+So with following the event sourcing pattern, the system can increase the query performance and scale
+
+17
+00:01:06,170 --> 00:01:07,760
+the databases independently.
+
+18
+00:01:09,500 --> 00:01:11,630
+Here you can see the image on the slide.
+
+19
+00:01:11,630 --> 00:01:15,590
+An example use case for applying queries and event sourcing pattern.
+
+20
+00:01:16,040 --> 00:01:21,800
+Event sourcing pattern offers to save all events into database with sequential order of data events.
+
+21
+00:01:21,830 --> 00:01:24,470
+This event database called Event Store.
+
+22
+00:01:24,470 --> 00:01:26,660
+Here you can see the event store in here.
+
+23
+00:01:26,660 --> 00:01:30,860
+In this architecture we are not updating the status of data record.
+
+24
+00:01:30,890 --> 00:01:35,450
+It appends each change in a sequential list of the events.
+
+25
+00:01:35,450 --> 00:01:41,510
+So that means these events store is become a source of truth for the data.
+
+26
+00:01:41,990 --> 00:01:47,990
+After that these events store convert the data to the read database with following the materialized
+
+27
+00:01:47,990 --> 00:01:48,890
+view patterns.
+
+28
+00:01:49,340 --> 00:01:56,570
+This convert operations can handle by such publish subscribe pattern with publish event to the message
+
+29
+00:01:56,570 --> 00:01:59,600
+broker system, and this will consume from the read database.
+

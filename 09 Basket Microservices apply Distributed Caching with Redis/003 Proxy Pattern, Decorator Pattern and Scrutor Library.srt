@@ -1,0 +1,184 @@
+1
+00:00:00,140 --> 00:00:05,990
+In this video we are going to learn proxy pattern, decorator pattern and security library.
+
+2
+00:00:06,170 --> 00:00:09,020
+Let me start with the what is proxy pattern?
+
+3
+00:00:09,050 --> 00:00:15,350
+The proxy pattern provides a placeholder for another object in order to control access to it.
+
+4
+00:00:15,380 --> 00:00:22,400
+This pattern creates a proxy object that serves as an intermediary for requests intended for the original
+
+5
+00:00:22,400 --> 00:00:23,030
+object.
+
+6
+00:00:23,870 --> 00:00:29,780
+A common use case is like lazy loading, controlling access, logging, and so on.
+
+7
+00:00:29,810 --> 00:00:37,040
+It is like having a gatekeeper who can add extra behavior or checks before accessing the actual object.
+
+8
+00:00:37,810 --> 00:00:40,270
+The next pattern is decorator pattern.
+
+9
+00:00:40,300 --> 00:00:45,850
+The decorator pattern dynamically adds behavior to an object without altering its structure.
+
+10
+00:00:45,880 --> 00:00:52,360
+It involves a set of decorator classes that are used to extend the functionality of the original class
+
+11
+00:00:52,360 --> 00:00:59,500
+without changing its code, and decorator pattern is useful for adding functionalities to objects at
+
+12
+00:00:59,500 --> 00:01:06,550
+runtime, for example, enhancing a window object with additional features like borders scrollbars dynamically.
+
+13
+00:01:07,120 --> 00:01:11,200
+So how can we use decorator pattern and how we can implement it?
+
+14
+00:01:11,230 --> 00:01:17,080
+The first step is we can create abstract decorators that implement the same interface as the object.
+
+15
+00:01:17,080 --> 00:01:22,210
+They will extend and then concrete decorator classes add additional behavior.
+
+16
+00:01:22,210 --> 00:01:28,750
+For example, if you have a basket repository class for database operation, you can create a cased
+
+17
+00:01:28,750 --> 00:01:33,550
+basket repository that extends the basket repository with caching capabilities.
+
+18
+00:01:34,800 --> 00:01:37,830
+So what is security library and why we use it?
+
+19
+00:01:37,860 --> 00:01:39,570
+Security library is a.
+
+20
+00:01:39,720 --> 00:01:44,310
+Net library that extends the built in IOC container of ASP.Net core.
+
+21
+00:01:44,340 --> 00:01:50,100
+It provides additional capabilities to scan and register services in more flexible ways.
+
+22
+00:01:50,160 --> 00:01:57,330
+Security library also particularly useful for implementing patterns like decorator in a clean and manageable
+
+23
+00:01:57,330 --> 00:01:57,780
+way.
+
+24
+00:01:57,810 --> 00:02:04,110
+It simplifies the process of service registration and decoration in ASP.Net core applications.
+
+25
+00:02:04,530 --> 00:02:08,880
+So how can we implement these decorator pattern using the security library?
+
+26
+00:02:08,910 --> 00:02:11,009
+I'm going to explain step by step.
+
+27
+00:02:11,009 --> 00:02:14,850
+The first step is define interface and base implementation.
+
+28
+00:02:14,850 --> 00:02:16,950
+We can start with an interface.
+
+29
+00:02:16,950 --> 00:02:23,460
+For example I basket repository and a base implementation which is the basket repository that communicate
+
+30
+00:02:23,460 --> 00:02:24,510
+with the database.
+
+31
+00:02:25,020 --> 00:02:27,420
+And after that we can create decorator class.
+
+32
+00:02:27,420 --> 00:02:34,440
+So in the second step we can create a decorator class like cased basket repository that also implements
+
+33
+00:02:34,440 --> 00:02:35,730
+a basket repository.
+
+34
+00:02:35,730 --> 00:02:39,390
+But adding the caching logic and business inside of this class.
+
+35
+00:02:40,210 --> 00:02:44,050
+And the last step is register services with Secretor.
+
+36
+00:02:44,470 --> 00:02:51,580
+We can use Secretor library in Program.cs to first register the Base Services basket repository, and
+
+37
+00:02:51,580 --> 00:02:54,940
+then they apply the decorator one, which is the cache basket repository.
+
+38
+00:02:54,970 --> 00:02:57,160
+You can see the code on the slide.
+
+39
+00:02:57,190 --> 00:02:58,510
+The first line of code.
+
+40
+00:02:58,510 --> 00:03:02,530
+We can register a basket repository with the actual basket repository.
+
+41
+00:03:02,710 --> 00:03:07,720
+But after that we can decorate these basket repository with using the Secretor library.
+
+42
+00:03:07,720 --> 00:03:13,150
+In the decorate method, we can decorate the basket repository with the case basket repository, including
+
+43
+00:03:13,150 --> 00:03:14,470
+the cache capabilities.
+
+44
+00:03:14,680 --> 00:03:21,730
+That means we can say that the decorator pattern and Secretor library offers a robust approach to extending
+
+45
+00:03:21,730 --> 00:03:25,180
+the functionality of services in ASP.Net core applications.
+
+46
+00:03:25,180 --> 00:03:31,780
+So now we will develop cased basket repository with proxy decorator patterns and security library.
+

@@ -1,0 +1,224 @@
+1
+00:00:00,200 --> 00:00:06,650
+In this video we are going to do domain analysis of ordering microservices, including domain model,
+
+2
+00:00:06,650 --> 00:00:12,530
+analyzing application use cases, Rest, API endpoints, and underlying data structures.
+
+3
+00:00:13,220 --> 00:00:15,320
+So let me check for the domain model.
+
+4
+00:00:15,320 --> 00:00:18,050
+Analyzing for ordering microservices.
+
+5
+00:00:18,050 --> 00:00:24,470
+Primary domain models are ordered and ordered item, and these models capture the core business entities
+
+6
+00:00:24,470 --> 00:00:26,240
+for ordering microservices.
+
+7
+00:00:26,420 --> 00:00:29,510
+So we said that we have two domain model.
+
+8
+00:00:29,510 --> 00:00:32,270
+You can see domain model analyze diagram in here.
+
+9
+00:00:32,270 --> 00:00:35,060
+This is the order and order item.
+
+10
+00:00:35,060 --> 00:00:40,970
+And we can also add customer and product which are the representing different domain analyzing.
+
+11
+00:00:40,970 --> 00:00:44,570
+So we will focus on the orders according to our domain.
+
+12
+00:00:44,570 --> 00:00:45,200
+Analyzing.
+
+13
+00:00:45,200 --> 00:00:47,750
+The main primary domain model is order.
+
+14
+00:00:47,750 --> 00:00:54,170
+An order is an aggregate root with the properties such as the customer ID, order name, shipping address,
+
+15
+00:00:54,170 --> 00:00:58,280
+billing address, payment status, and the list of the order items.
+
+16
+00:00:58,280 --> 00:01:01,400
+So the next domain entity is order item.
+
+17
+00:01:01,400 --> 00:01:07,880
+Order item is an entity associated with the order and containing fields like the product ID, quantity
+
+18
+00:01:07,880 --> 00:01:08,780
+and price.
+
+19
+00:01:08,780 --> 00:01:13,430
+So the order and order item entities has one to many relationships.
+
+20
+00:01:13,910 --> 00:01:17,210
+You can also see the class including the order aggregate.
+
+21
+00:01:17,210 --> 00:01:23,060
+See that order entity is inherited from the aggregate and including the order items, customer ID,
+
+22
+00:01:23,060 --> 00:01:26,030
+order name, shipping address, billing address and so on.
+
+23
+00:01:26,610 --> 00:01:31,800
+So also we can consider integration events for order created action.
+
+24
+00:01:31,800 --> 00:01:37,320
+Here you can see that we can throw an order created event from the order domain model.
+
+25
+00:01:37,590 --> 00:01:42,810
+The next step is application use case analyzing for ordering microservices.
+
+26
+00:01:42,810 --> 00:01:49,290
+And we can say that these are the starting with the Crud operations on ordering microservices including
+
+27
+00:01:49,290 --> 00:01:56,340
+get order with order items, create, update, delete, order, add and remove order item from the order.
+
+28
+00:01:56,340 --> 00:02:02,730
+So these will be handling the entire lifecycle of an order, including the order items, and these operations
+
+29
+00:02:02,730 --> 00:02:06,780
+will handle with the Entity Framework core over the SQL server database.
+
+30
+00:02:06,780 --> 00:02:11,160
+And the second application use cases are asynchronous cases.
+
+31
+00:02:11,160 --> 00:02:13,110
+And we have two asynchronous cases.
+
+32
+00:02:13,110 --> 00:02:15,240
+The first one is basket checkout.
+
+33
+00:02:15,240 --> 00:02:21,420
+We can consume the basket checkout event from RabbitMQ using the Masstransit library performing the
+
+34
+00:02:21,420 --> 00:02:22,920
+asynchronous communication.
+
+35
+00:02:22,920 --> 00:02:26,070
+And also we have order fulfillment asynchronous case.
+
+36
+00:02:26,070 --> 00:02:32,820
+This will be perform order fulfillment operations like billing shipment notification with raising the
+
+37
+00:02:32,820 --> 00:02:36,330
+order created domain event that leads to integration event.
+
+38
+00:02:36,330 --> 00:02:39,930
+So we will perform these asynchronous case in the next sections.
+
+39
+00:02:40,200 --> 00:02:47,370
+And after that we can analyzing the presentation layer which is Rest API endpoints of ordering microservices.
+
+40
+00:02:47,370 --> 00:02:52,950
+Here you can see the table including the Http get, post, put and delete methods.
+
+41
+00:02:52,950 --> 00:02:59,130
+We will basically perform these use cases, which is the slash orders, get order with pagination and
+
+42
+00:02:59,130 --> 00:02:59,910
+slash orders.
+
+43
+00:02:59,910 --> 00:03:01,020
+Slash order name.
+
+44
+00:03:01,020 --> 00:03:07,770
+We will get orders by order name filter by the order name, and after that we can filter by the customer
+
+45
+00:03:07,770 --> 00:03:12,720
+ID including the orders slash customer slash customer ID end point.
+
+46
+00:03:12,720 --> 00:03:19,350
+And after that we will perform http post, put and delete operation in order to perform Crud operations
+
+47
+00:03:19,350 --> 00:03:20,730
+on the database.
+
+48
+00:03:20,730 --> 00:03:27,450
+And lastly, we can say that we have Amqp protocol, which is basically consume basket checkout event
+
+49
+00:03:27,450 --> 00:03:30,180
+from RabbitMQ using the Masstransit library.
+
+50
+00:03:31,020 --> 00:03:38,130
+And the last analyzing is infrastructure data underlying data structure of the ordering microservices.
+
+51
+00:03:38,130 --> 00:03:45,420
+So we can say that ordering microservice has one data store which is the SQL server relational databases.
+
+52
+00:03:45,420 --> 00:03:52,200
+So that means we basically use relational database SQL server used for the storing orders and order
+
+53
+00:03:52,200 --> 00:03:52,830
+items.
+
+54
+00:03:52,830 --> 00:03:57,030
+And we will use Entity Framework Core, which is chosen as a ODM tool.
+
+55
+00:03:57,030 --> 00:04:03,300
+Applying the code first approach and the domain models are mapped to the Entity Framework core entities.
+
+56
+00:04:03,300 --> 00:04:08,040
+Considering the domain driven design concepts like aggregates and value objects.
+

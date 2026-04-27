@@ -1,0 +1,180 @@
+1
+00:00:00,200 --> 00:00:06,920
+In this video, we are going to learn how containerize and orchestrate microservices using the Docker
+
+2
+00:00:06,920 --> 00:00:08,119
+and Docker compose.
+
+3
+00:00:08,690 --> 00:00:10,550
+Let's start with what is Docker?
+
+4
+00:00:10,580 --> 00:00:16,100
+Docker is an open source platform for developing, shipping and running the applications.
+
+5
+00:00:16,550 --> 00:00:21,950
+We can separate your application from your infrastructure so you can deliver software quickly.
+
+6
+00:00:22,460 --> 00:00:27,440
+The advantage of Docker for shipping, testing and deploying code quickly.
+
+7
+00:00:28,070 --> 00:00:33,920
+It is significantly reduced the delay between writing code and running it on production.
+
+8
+00:00:34,580 --> 00:00:40,850
+Automating the deployment of applications as portable, self-sufficient containers that can run on the
+
+9
+00:00:40,850 --> 00:00:42,740
+cloud or on premises.
+
+10
+00:00:43,040 --> 00:00:48,080
+Docker containers can run anywhere in your local computer to the cloud systems.
+
+11
+00:00:48,080 --> 00:00:53,060
+Docker image containers can run natively on Linux and Windows machines.
+
+12
+00:00:53,060 --> 00:00:57,440
+Docker is de facto standard for containerization of microservices.
+
+13
+00:00:57,920 --> 00:01:04,640
+So what are the Docker components and how it can use the Docker components are Docker containers, images
+
+14
+00:01:04,640 --> 00:01:05,960
+and registries.
+
+15
+00:01:06,320 --> 00:01:13,460
+Developers, developers and packages application with its dependencies into a container image that is
+
+16
+00:01:13,490 --> 00:01:18,920
+a static representation of the application with its configuration and dependencies.
+
+17
+00:01:19,880 --> 00:01:26,570
+In order to run the application, the application's image is instantiated to create a container which
+
+18
+00:01:26,570 --> 00:01:28,550
+will be running on the Docker host.
+
+19
+00:01:28,580 --> 00:01:35,420
+We should always store the images into Docker registries, so that means we should store the image in
+
+20
+00:01:35,420 --> 00:01:41,390
+registry, which is a library of images, and it is needed when deploying application to the production
+
+21
+00:01:41,390 --> 00:01:42,500
+orchestrators.
+
+22
+00:01:43,070 --> 00:01:48,800
+Docker image stores a public registry like Docker Hub or Azure Container Registry.
+
+23
+00:01:48,830 --> 00:01:54,230
+Developer create container in local and push the image to the Docker registry.
+
+24
+00:01:54,590 --> 00:02:01,430
+Developer download existing image from the registry and create container from the image in local environment.
+
+25
+00:02:02,450 --> 00:02:08,030
+So here you can see the application containerization with Docker and orchestration with Docker compose.
+
+26
+00:02:08,060 --> 00:02:13,240
+The first step is we should always write docker file for our application.
+
+27
+00:02:13,240 --> 00:02:17,290
+It is a configuration file is representing a Docker configurations.
+
+28
+00:02:17,320 --> 00:02:23,260
+And the second step is build the application with this docker file and create the Docker image.
+
+29
+00:02:23,570 --> 00:02:29,660
+And after that, we can run this image on any machine and create running container, which is the Docker
+
+30
+00:02:29,660 --> 00:02:31,700
+containers from the Docker image.
+
+31
+00:02:32,030 --> 00:02:38,780
+So lastly, we can orchestrate the whole microservice application with using Docker and Kubernetes.
+
+32
+00:02:38,810 --> 00:02:44,510
+This kind of orchestration, the idea is that the orchestrating the container environment and container
+
+33
+00:02:44,510 --> 00:02:45,170
+images.
+
+34
+00:02:45,170 --> 00:02:47,360
+Here you can see the steps on the slide.
+
+35
+00:02:47,390 --> 00:02:52,580
+The first step is creating a Docker file which including configuration about the application.
+
+36
+00:02:52,580 --> 00:02:58,010
+And after that we can build the application and create the Docker image from the Docker files.
+
+37
+00:02:58,010 --> 00:03:04,520
+And after that, we can run this image on any machine and create running Docker containers from the
+
+38
+00:03:04,520 --> 00:03:05,450
+Docker image.
+
+39
+00:03:05,450 --> 00:03:07,850
+So this is the containerization step.
+
+40
+00:03:07,850 --> 00:03:12,260
+And after that we can orchestration step using the Docker compose.
+
+41
+00:03:12,290 --> 00:03:17,690
+Docker compose is a tool for defining and running multi-container Docker applications.
+
+42
+00:03:17,690 --> 00:03:24,770
+With using Docker Compose, we can use a YAML file in order to configure our application services for
+
+43
+00:03:24,770 --> 00:03:26,300
+multi-container environments.
+
+44
+00:03:26,330 --> 00:03:32,330
+After that, with a single docker command which is the docker compose up command, we can create and
+
+45
+00:03:32,330 --> 00:03:35,570
+start all the microservices from our configurations.
+

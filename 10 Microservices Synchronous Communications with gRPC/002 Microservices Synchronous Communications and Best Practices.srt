@@ -1,0 +1,56 @@
+1
+00:00:00,110 --> 00:00:06,830
+In this video we are going to learn microservices, synchronous communication and best practices.
+
+2
+00:00:07,700 --> 00:00:13,310
+As we said before, in synchronous communication, the client sends a request with using Http protocols
+
+3
+00:00:13,310 --> 00:00:15,740
+and waits for a response from the service.
+
+4
+00:00:16,070 --> 00:00:21,470
+So the synchronous communication protocols can be mainly Http or Https.
+
+5
+00:00:21,500 --> 00:00:28,490
+You can also see the image that represents Microsoft Sync communication client application called microservices
+
+6
+00:00:28,490 --> 00:00:29,720
+and microservices.
+
+7
+00:00:29,720 --> 00:00:36,380
+Return response by visiting several internal microservices using the Http and gRPC protocol.
+
+8
+00:00:37,890 --> 00:00:43,830
+For synchronous communication, we understood that we should follow request response communication model
+
+9
+00:00:43,830 --> 00:00:49,050
+with Http and Rest protocols, and we can extend this gRPC and GraphQL.
+
+10
+00:00:49,080 --> 00:00:54,120
+So under these synchronous communication model we can also divide by four.
+
+11
+00:00:54,150 --> 00:01:00,570
+The first one is Rest Http APIs when exposing from microservices.
+
+12
+00:01:00,570 --> 00:01:05,580
+The second one is gRPC APIs when communicate internal microservices.
+
+13
+00:01:05,880 --> 00:01:12,990
+The third one is GraphQL API when structured flexible data in microservices, and the last one is WebSocket
+
+14
+00:01:12,990 --> 00:01:16,320
+APIs when real time bidirectional communication.
+

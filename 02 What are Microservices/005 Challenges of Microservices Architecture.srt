@@ -1,0 +1,140 @@
+1
+00:00:00,110 --> 00:00:06,560
+In this video, we are going to learn the challenges and disadvantages of microservice architectures.
+
+2
+00:00:06,920 --> 00:00:12,350
+Microservices has significant benefits, but also has significant challenges.
+
+3
+00:00:12,350 --> 00:00:18,410
+Moving from monolithic to microservices means a lot of more management complexity.
+
+4
+00:00:18,950 --> 00:00:24,260
+Here you can see the some of the challenges we need to consider before applying the microservice architecture.
+
+5
+00:00:24,290 --> 00:00:26,750
+The first challenge is complexity.
+
+6
+00:00:26,780 --> 00:00:32,900
+Microservices application has lots of services need to work together and should create a volume.
+
+7
+00:00:33,020 --> 00:00:39,860
+Since there are lots of services, that means there is more moving parts than the monolithic application.
+
+8
+00:00:39,890 --> 00:00:44,450
+Each service is simpler, but the entire system is more complex.
+
+9
+00:00:44,540 --> 00:00:48,560
+Even deployments can be complicated for hundreds of services.
+
+10
+00:00:48,560 --> 00:00:49,910
+Deployed different times.
+
+11
+00:00:49,910 --> 00:00:51,440
+Hard to manage versions.
+
+12
+00:00:51,620 --> 00:00:53,480
+Think about the communication.
+
+13
+00:00:53,480 --> 00:01:00,560
+It is really easy to communicate components in monolithic application because it is inter-process communication.
+
+14
+00:01:00,560 --> 00:01:03,710
+It can be same machine and same process.
+
+15
+00:01:03,710 --> 00:01:11,510
+But in microservices, microservice communication is hard topic and need to have a strategy to manage
+
+16
+00:01:11,510 --> 00:01:16,790
+interservice communications between server, even different geo locations.
+
+17
+00:01:18,200 --> 00:01:22,520
+And the second challenges is network problems and latency.
+
+18
+00:01:22,550 --> 00:01:28,790
+Since microservices are small and communicate with inter service communication, we should manage network
+
+19
+00:01:28,790 --> 00:01:29,600
+problems.
+
+20
+00:01:29,630 --> 00:01:36,140
+If we call chain of services for particular request, this will increase latency problems and need the
+
+21
+00:01:36,140 --> 00:01:39,500
+correct design to APIs for proper communication.
+
+22
+00:01:39,620 --> 00:01:46,130
+In order to avoid chatty API calls, you need to consider asynchronous communication patterns like message
+
+23
+00:01:46,130 --> 00:01:49,400
+broker systems using publish subscribe patterns.
+
+24
+00:01:50,240 --> 00:01:53,300
+Another challenges is development and testing.
+
+25
+00:01:53,300 --> 00:01:58,370
+Think about the end to end process, one of the long business requirement.
+
+26
+00:01:58,400 --> 00:02:04,490
+If the requirement touch on several microservice that need to act as a one application, it is hard
+
+27
+00:02:04,490 --> 00:02:09,020
+to develop and testing these end to end processes in microservice architectures.
+
+28
+00:02:09,020 --> 00:02:16,280
+If you compare to monolithic ones, existing tools are not always designed to work with service dependencies.
+
+29
+00:02:16,280 --> 00:02:19,640
+Refactoring across service boundaries can be difficult.
+
+30
+00:02:19,640 --> 00:02:25,760
+So that means integration testing as well as the end to end testing can become more difficult and more
+
+31
+00:02:25,760 --> 00:02:27,980
+important than ever in microservices.
+
+32
+00:02:29,150 --> 00:02:31,580
+Another challenges is data integrity.
+
+33
+00:02:32,120 --> 00:02:37,760
+Microservices has its own data persistence, so data consistency can be a challenge.
+
+34
+00:02:37,760 --> 00:02:44,060
+Mostly we should follow eventual consistency where it is possible, but transactional operations are
+
+35
+00:02:44,060 --> 00:02:45,800
+always will be challenging.
+
