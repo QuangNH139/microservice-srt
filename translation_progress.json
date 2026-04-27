@@ -71,5 +71,11 @@
   "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/004 Develop CommandHandler to Save Product to DB using Marten Library.srt": "done",
   "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/005 Register and Configure Marten DocumentDB library into Program.cs asp.net DI.srt": "done",
   "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/007 Setup PostgreSQL DB using Docker-compose file for Multi-container Docker env.srt": "done",
-  "/home/user/microservice-srt/01 Course Introduction/006 Microservices Multi-Architectural Patterns (External vs Internal Architectures).srt": "done"
+  "/home/user/microservice-srt/01 Course Introduction/006 Microservices Multi-Architectural Patterns (External vs Internal Architectures).srt": "done",
+  "/home/user/microservice-srt/05 First Microservice Catalog.API with Vertical Slice Architecture and CQRS/014 Develop Vertical Slice Feature Folder with CQRS and MediatR.srt": "done",
+  "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/002 Infrastructure - Data Concerns for Catalog API - Marten .NET Transactional DB.srt": "done",
+  "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/006 EShop Microservices Deployment Strategy.srt": "done",
+  "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/008 Add PostgreSQL DB image into Docker-compose file for Multi-container Docker env.srt": "done",
+  "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/009 Run Docker-Compose on Visual Studio to setup PostgreSQL DB on Docker.srt": "done",
+  "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/010 Connect Postgres DB from local Catalog Microservices and send POST request.srt": "done"
 }

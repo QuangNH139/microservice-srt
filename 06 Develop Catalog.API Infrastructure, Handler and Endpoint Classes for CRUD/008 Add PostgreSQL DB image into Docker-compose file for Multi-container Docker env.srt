@@ -1,70 +1,70 @@
 1
 00:00:00,260 --> 00:00:07,700
-In this video we are going to add PostgreSQL database image into docker compose file for multi-container
+Trong video này chúng ta sẽ thêm image PostgreSQL vào docker compose file cho môi trường multi-container
 
 2
 00:00:07,700 --> 00:00:08,750
-docker environment.
+Docker.
 
 3
 00:00:08,750 --> 00:00:15,980
-So that means we will follow the deployment one, and we will set up the PostgreSQL as a backing services
+Điều đó có nghĩa là chúng ta sẽ theo dõi deployment một, và chúng ta sẽ thiết lập PostgreSQL như một backing services
 
 4
 00:00:15,980 --> 00:00:19,490
-for our catalog microservices using the Docker compose.
+cho catalog microservices của chúng ta sử dụng Docker compose.
 
 5
 00:00:20,090 --> 00:00:26,240
-Here you can see the image how our catalog microservices connects to PostgreSQL database within the
+Ở đây bạn có thể thấy hình ảnh về cách catalog microservices của chúng ta kết nối với PostgreSQL database trong
 
 6
 00:00:26,240 --> 00:00:31,130
-Docker environment and our catalog microservices requiring the PostgreSQL database.
+môi trường Docker và catalog microservices của chúng ta yêu cầu PostgreSQL database.
 
 7
 00:00:31,880 --> 00:00:36,110
-And now I am going to show an example Docker compose yaml and override file.
+Và bây giờ tôi sẽ chỉ cho bạn một ví dụ Docker compose yaml và override file.
 
 8
 00:00:36,110 --> 00:00:42,140
-If you open the GitHub and go to one of my previous microservice application repository, you can scroll
+Nếu bạn mở GitHub và đi tới một trong các kho lưu trữ ứng dụng microservice trước đây của tôi, bạn có thể cuộn
 
 9
 00:00:42,140 --> 00:00:44,720
-down and open the docker-compose.yml file.
+xuống và mở file docker-compose.yml.
 
 10
 00:00:45,780 --> 00:00:53,070
-We can see that there is multiple services, including databases on message brokers are defined in the
+Chúng ta có thể thấy rằng có nhiều services, bao gồm các databases và message brokers được định nghĩa trong
 
 11
 00:00:53,070 --> 00:00:54,510
-docker-compose.yml file.
+file docker-compose.yml.
 
 12
 00:00:54,510 --> 00:01:00,150
-And if you select the override Yaml file in here, you can see that how these microservices and backing
+Và nếu bạn chọn override Yaml file ở đây, bạn có thể thấy cách các microservices này và backing
 
 13
 00:01:00,150 --> 00:01:05,099
-services configure and set the port numbers, set the environment variables and so on.
+services được cấu hình và thiết lập các số cổng, thiết lập các biến môi trường và những thứ khác.
 
 14
 00:01:05,099 --> 00:01:11,370
-So we will follow the same steps when we are developing our application as a backing services for that
+Vậy chúng ta sẽ làm theo các bước tương tự khi chúng ta đang phát triển ứng dụng của chúng ta như một backing services, với mục đích đó,
 
 15
 00:01:11,370 --> 00:01:17,550
-purpose, open the Visual Studio and open the Docker-compose.yml file which is located under the docker
+hãy mở Visual Studio và mở file Docker-compose.yml nằm dưới file gốc docker
 
 16
 00:01:17,550 --> 00:01:19,230
-compose root file.
+compose.
 
 17
 00:01:19,230 --> 00:01:25,530
-So we will edit the docker compose and overwrite Yaml file when configuring PostgreSQL as a backing
+Vậy chúng ta sẽ chỉnh sửa docker compose và ghi đè file Yaml khi cấu hình PostgreSQL như một backing
 
 18
 00:01:25,530 --> 00:01:26,250
@@ -72,79 +72,79 @@ services.
 
 19
 00:01:26,250 --> 00:01:33,510
-So according to this we will set up the backing services databases message brokers on top of these docker
+Vậy theo điều này chúng ta sẽ thiết lập backing services databases message brokers trên đỉnh của
 
 20
 00:01:33,510 --> 00:01:34,860
-compose Yaml file.
+file docker compose Yaml này.
 
 21
 00:01:34,860 --> 00:01:38,820
-So now let's modify our docker-compose.yml file.
+Vậy bây giờ hãy sửa đổi file docker-compose.yml của chúng ta.
 
 22
 00:01:38,820 --> 00:01:46,080
-So we will modify this Yaml file to include PostgreSQL database services for catalog microservice says.
+Vậy chúng ta sẽ sửa đổi file Yaml này để bao gồm các dịch vụ PostgreSQL database cho catalog microservice.
 
 23
 00:01:46,080 --> 00:01:51,000
-Here you can see that there is already existing catalog microservice API project.
+Ở đây bạn có thể thấy rằng đã có một dự án API catalog microservice hiện có.
 
 24
 00:01:51,000 --> 00:01:57,660
-But for now I'm going to remove these services because we will run these microservice from locally and
+Nhưng hiện tại tôi sẽ xóa những dịch vụ này vì chúng ta sẽ chạy những microservice này từ local và
 
 25
 00:01:57,660 --> 00:02:01,500
-connect to our database as a backing services for that purpose.
+kết nối tới database của chúng ta như là backing services cho mục đích đó.
 
 26
 00:02:01,500 --> 00:02:06,240
-I'm going to start with the backing services into our docker-compose.yml file.
+Tôi sẽ bắt đầu với backing services vào file docker-compose.yml của chúng ta.
 
 27
 00:02:06,240 --> 00:02:10,770
-So I'm first of all we are giving the name as a catalog DB.
+Vậy đầu tiên chúng ta sẽ đặt tên là catalog DB.
 
 28
 00:02:10,919 --> 00:02:18,240
-And after that I'm providing only image name into this docker compose file.
+Và sau đó tôi sẽ chỉ cung cấp tên image vào file docker compose này.
 
 29
 00:02:20,100 --> 00:02:24,090
-So here you can see that we have added PostgreSQL database.
+Vậy ở đây bạn có thể thấy rằng chúng ta đã thêm PostgreSQL database.
 
 30
 00:02:24,090 --> 00:02:29,010
-And the indentation and space character is very very important in here.
+Và indentation và ký tự khoảng trắng là rất rất quan trọng ở đây.
 
 31
 00:02:29,010 --> 00:02:36,090
-If you are not following the same structure for the services and image property with nested style,
+Nếu bạn không tuân theo cùng một cấu trúc cho các property services và image với kiểu nested,
 
 32
 00:02:36,090 --> 00:02:37,890
-this will be getting exception.
+điều này sẽ gặp exception.
 
 33
 00:02:37,890 --> 00:02:38,580
-So that's why.
+Vậy đó là lý do tại sao.
 
 34
 00:02:38,580 --> 00:02:41,340
-Please be careful about the indentation.
+Vui lòng hãy cẩn thận về indentation.
 
 35
 00:02:41,340 --> 00:02:47,130
-After defining our catalog db, we should not forget to adding the volume definition for PostgreSQL
+Sau khi định nghĩa catalog db của chúng ta, chúng ta không nên quên thêm định nghĩa volume cho PostgreSQL
 
 36
 00:02:47,130 --> 00:02:54,270
-data and volumes should be the same level with the services, and under the volumes we can give the.
+data và volumes nên ở cùng mức với services, và dưới volumes chúng ta có thể đưa ra
 
 37
 00:02:56,370 --> 00:03:01,950
-Postgres catalog volume information and this will be regarding with this catalog.
+thông tin Postgres catalog volume và điều này sẽ liên quan tới catalog này.
 
 38
 00:03:01,980 --> 00:03:02,310
@@ -152,15 +152,15 @@ DB.
 
 39
 00:03:02,550 --> 00:03:06,210
-Okay, now let's configure our Docker compose override HTML file.
+Được rồi, bây giờ hãy cấu hình file Docker compose override HTML của chúng ta.
 
 40
 00:03:06,240 --> 00:03:09,180
-The docker compose file is enough for this information.
+File docker compose đã đủ cho thông tin này.
 
 41
 00:03:09,180 --> 00:03:15,150
-We only specify the image name and we will give additional configurations in the docker compose override
+Chúng ta chỉ chỉ định tên image và chúng ta sẽ cung cấp các cấu hình bổ sung trong docker compose override
 
 42
 00:03:15,180 --> 00:03:15,810
@@ -168,35 +168,35 @@ yaml file.
 
 43
 00:03:15,810 --> 00:03:18,480
-So where this get this kind of configurations.
+Vậy chúng ta lấy cấu hình kiểu này từ đâu.
 
 44
 00:03:18,480 --> 00:03:18,630
-As.
+Như bạn biết.
 
 45
 00:03:18,630 --> 00:03:24,840
-You remember that in the official docker compose documentation, we have already seen the how to define
+Bạn nhớ rằng trong tài liệu chính thức của docker compose, chúng ta đã thấy cách định nghĩa
 
 46
 00:03:24,840 --> 00:03:27,270
-this database in the docker-compose.yml file.
+database này trong docker-compose.yml file.
 
 47
 00:03:27,270 --> 00:03:33,480
-So if we go back to our Visual Studio now we will configure the docker compose override HTML file.
+Vậy bây giờ nếu chúng ta quay lại Visual Studio, chúng ta sẽ cấu hình docker compose override file.
 
 48
 00:03:33,480 --> 00:03:34,800
-Double click this file.
+Double click file này.
 
 49
 00:03:34,800 --> 00:03:41,010
-In this override Yaml file, we generally set up the environment variables, port mappings, and volume
+Trong override yaml file này, chúng ta thường thiết lập các biến môi trường, ánh xạ cổng, và ánh xạ volume
 
 50
 00:03:41,010 --> 00:03:47,010
-mappings for our PostgreSQL services or any kind of the services that we define in the docker compose
+cho các dịch vụ PostgreSQL của chúng ta hoặc bất kỳ loại dịch vụ nào mà chúng ta định nghĩa trong docker compose
 
 51
 00:03:47,250 --> 00:03:47,730
@@ -204,51 +204,51 @@ file.
 
 52
 00:03:47,730 --> 00:03:52,950
-So as you can see that there is already defined for catalog API microservices.
+Vậy như bạn có thể thấy rằng đã được định nghĩa cho catalog API microservice.
 
 53
 00:03:52,950 --> 00:03:58,500
-Since we are following the deployment, one strategy, we will remove the microservices to run from
+Vì chúng ta đang tuân theo chiến lược triển khai, chúng ta sẽ xóa microservice để chạy từ
 
 54
 00:03:58,500 --> 00:03:59,100
-the local.
+local.
 
 55
 00:03:59,100 --> 00:04:04,890
-We will focus on the our backing services which will be the our catalog DB PostgreSQL database.
+Chúng ta sẽ tập trung vào các backing services của chúng ta, đó sẽ là cơ sở dữ liệu catalog DB PostgreSQL.
 
 56
 00:04:04,890 --> 00:04:09,180
-For that purpose I'm going to define this catalog DB configurations.
+Với mục đích đó, tôi sẽ định nghĩa cấu hình catalog DB này.
 
 57
 00:04:09,180 --> 00:04:14,340
-You can see that we have started with the catalog DB, and this name should be matched from the docker
+Bạn có thể thấy rằng chúng ta đã bắt đầu với catalog DB, và tên này phải khớp với docker
 
 58
 00:04:14,340 --> 00:04:17,370
-compose file which the under the services catalog db.
+compose file, đó là dưới services catalog db.
 
 59
 00:04:17,430 --> 00:04:21,029
-So in the docker compose file we only specify the image name.
+Vậy trong docker compose file chúng ta chỉ chỉ định tên image.
 
 60
 00:04:21,029 --> 00:04:26,970
-But in the override file we have specified additional configurations, including the container name
+Nhưng trong override file chúng ta đã chỉ định các cấu hình bổ sung, bao gồm cả container name
 
 61
 00:04:26,970 --> 00:04:34,680
-we will give as a container name catalog db, and after that we will define the PostgreSQL service with
+chúng ta sẽ đặt tên container là catalog db, sau đó chúng ta sẽ định nghĩa dịch vụ PostgreSQL với
 
 62
 00:04:34,680 --> 00:04:39,210
-environment variables for user password and database.
+các biến môi trường cho user, password và database.
 
 63
 00:04:39,210 --> 00:04:47,040
-So you can see the user Postgres and password Postgres and db as a catalog db, and we can specify the
+Vậy bạn có thể thấy user là Postgres, password là Postgres, và db là catalog db, và chúng ta có thể chỉ định
 
 64
 00:04:47,040 --> 00:04:48,240
@@ -256,63 +256,63 @@ restart always.
 
 65
 00:04:48,240 --> 00:04:52,830
-This will be spin up if there is any problem in the our container.
+Điều này sẽ khởi động lại nếu có bất kỳ vấn đề nào trong container của chúng ta.
 
 66
 00:04:52,830 --> 00:04:59,250
-And you can see that we have exposed the port numbers which will be the current port number for PostgreSQL,
+Và bạn có thể thấy rằng chúng ta đã expose các port number, đó sẽ là port number hiện tại của PostgreSQL,
 
 67
 00:04:59,250 --> 00:05:03,420
-and we will redirecting the same port number to our local environment.
+và chúng ta sẽ chuyển hướng cùng một port number đến môi trường cục bộ của chúng ta.
 
 68
 00:05:03,420 --> 00:05:10,170
-And after that we have give and define volume definition and volume name should be comes from the docker-compose.yml
+Và sau đó chúng ta đã định nghĩa volume definition và tên volume phải đến từ docker-compose.yml
 
 69
 00:05:10,170 --> 00:05:12,600
-file which name is Postgres catalog.
+file có tên là Postgres catalog.
 
 70
 00:05:12,600 --> 00:05:18,810
-So please write this configuration into your overall HTML file and save this file and make sure that
+Vậy hãy viết cấu hình này vào file tổng thể của bạn và lưu file này và hãy chắc chắn rằng
 
 71
 00:05:18,810 --> 00:05:19,590
-you have.
+bạn có.
 
 72
 00:05:19,590 --> 00:05:25,830
-Be careful about the indentation about this configuration, because if there is a problem with the indentation,
+Hãy cẩn thận về indentation của cấu hình này, vì nếu có vấn đề với indentation,
 
 73
 00:05:25,830 --> 00:05:27,270
-this will not be work.
+điều này sẽ không hoạt động.
 
 74
 00:05:27,540 --> 00:05:34,530
-After defining the PostgreSQL override configuration, we should also configure connection string according
+Sau khi định nghĩa cấu hình PostgreSQL override, chúng ta cũng nên cấu hình connection string theo
 
 75
 00:05:34,560 --> 00:05:38,970
-to these username, password and database configuration values.
+các giá trị cấu hình username, password và database này.
 
 76
 00:05:38,970 --> 00:05:45,690
-So if you go to the application settings Json file, you can compare with the database connection string
+Vậy nếu bạn vào file application settings Json, bạn có thể so sánh database connection string
 
 77
 00:05:45,690 --> 00:05:48,450
-with the docker compose override HTML file.
+với file docker compose override HTML của bạn.
 
 78
 00:05:48,450 --> 00:05:53,190
-The server name should be localhost and the port number should be 5432.
+Tên server phải là localhost và port number phải là 5432.
 
 79
 00:05:53,220 --> 00:05:59,190
-This will be PostgreSQL port number that we have exposed for the host port number from the container
+Đây sẽ là PostgreSQL port number mà chúng ta đã expose cho host port number từ container
 
 80
 00:05:59,190 --> 00:05:59,970
@@ -320,29 +320,29 @@ port number.
 
 81
 00:05:59,970 --> 00:06:06,180
-So after that database, as you can see that we use catalog db and you can see the database information
+Vậy sau đó cơ sở dữ liệu, như bạn có thể thấy rằng chúng ta sử dụng catalog db và bạn có thể thấy thông tin cơ sở dữ liệu
 
 82
 00:06:06,180 --> 00:06:07,710
-from the environment variables.
+từ các biến môi trường.
 
 83
 00:06:07,710 --> 00:06:11,670
-And after that user ID is Postgres and password is Postgres.
+Và sau đó user ID là Postgres và password là Postgres.
 
 84
 00:06:11,670 --> 00:06:16,650
-You can see that these are injecting as an environment variable into PostgreSQL database.
+Bạn có thể thấy rằng những thông tin này được inject làm các biến môi trường vào cơ sở dữ liệu PostgreSQL.
 
 85
 00:06:16,650 --> 00:06:21,900
-And lastly we give include error details as true for development purpose.
+Và cuối cùng chúng ta đặt include error details thành true cho mục đích phát triển.
 
 86
 00:06:21,900 --> 00:06:29,340
-So that means these connection settings are prepared from our Docker compose HTML file for PostgreSQL
+Vậy điều đó có nghĩa là các cài đặt kết nối này được chuẩn bị từ Docker Compose file của chúng ta cho PostgreSQL
 
 87
 00:06:29,340 --> 00:06:29,970
-database.
+cơ sở dữ liệu.
 

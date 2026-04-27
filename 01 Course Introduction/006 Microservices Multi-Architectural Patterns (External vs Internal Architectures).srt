@@ -1,78 +1,78 @@
 1
 00:00:00,140 --> 00:00:05,510
-In this video we are going to learn microservices Multi-architecture patterns.
+Trong video này chúng ta sẽ học về các mẫu Multi-architecture của microservices.
 
 2
 00:00:05,540 --> 00:00:12,650
-Let's start by the differentiating between external and internal architecture per microservices.
+Hãy bắt đầu bằng cách phân biệt giữa external architecture và internal architecture của mỗi microservice.
 
 3
 00:00:12,680 --> 00:00:14,990
-Here you can see the external architecture.
+Ở đây bạn có thể thấy external architecture.
 
 4
 00:00:14,990 --> 00:00:22,130
-So externally microservices work together in a broader ecosystem including the client applications that
+Vậy ngoài ra, các microservices làm việc cùng nhau trong một hệ sinh thái rộng lớn hơn bao gồm các ứng dụng client
 
 5
 00:00:22,130 --> 00:00:23,750
-consume the API gateways.
+tiêu thụ các API gateways.
 
 6
 00:00:23,750 --> 00:00:29,510
-That is direct to the internal backend microservices that uses their own databases.
+Đó là các kết nối trực tiếp đến các backend microservices nội bộ sử dụng cơ sở dữ liệu riêng của chúng.
 
 7
 00:00:29,990 --> 00:00:37,190
-However, internally, each microservice can have its own unique architecture patterns and even the
+Tuy nhiên, nội bộ, mỗi microservice có thể có các mẫu architecture độc đáo riêng của nó và thậm chí là
 
 8
 00:00:37,190 --> 00:00:44,030
-technology stack tailored for the specific responsibilities that you can see the picture on the slide.
+technology stack được tùy chỉnh cho các trách nhiệm cụ thể như bạn có thể thấy trong hình ảnh trên slide.
 
 9
 00:00:44,030 --> 00:00:44,660
-These are.
+Đó là.
 
 10
 00:00:44,660 --> 00:00:50,900
-The layered vertical slice and clear architecture can be applied for each microservices.
+Layered architecture, vertical slice architecture và clean architecture có thể được áp dụng cho mỗi microservice.
 
 11
 00:00:51,020 --> 00:00:54,350
-We can call these as a polyglot microservices.
+Chúng ta có thể gọi đây là polyglot microservices.
 
 12
 00:00:54,350 --> 00:00:56,450
-So why we need these diversity.
+Vậy tại sao chúng ta cần sự đa dạng này.
 
 13
 00:00:57,050 --> 00:01:03,530
-A simple cloud microservices like Catalog and basket microservices might not need the same architectural
+Các microservice đơn giản trong cloud như Catalog và basket microservices có thể không cần những phức tạp kiến trúc tương tự
 
 14
 00:01:03,530 --> 00:01:09,350
-complexities like ordering microservices that needs managing complex business rules.
+như ordering microservice cần quản lý các quy tắc business phức tạp.
 
 15
 00:01:09,350 --> 00:01:13,430
-So that's why it is about choosing the right tool for the job.
+Vì vậy đó là lý do tại sao nó là về việc chọn công cụ phù hợp cho công việc.
 
 16
 00:01:13,430 --> 00:01:21,560
-And it ensures that each microservices is as simple or as sophisticated as its domain complexity requirements.
+Và nó đảm bảo rằng mỗi microservice cũng đơn giản hoặc cũng phức tạp như các yêu cầu domain complexity của nó.
 
 17
 00:01:22,310 --> 00:01:27,170
-For example, let's see our catalog and basket microservice internal architecture.
+Ví dụ, hãy xem internal architecture của catalog và basket microservice.
 
 18
 00:01:27,170 --> 00:01:33,680
-They leverage the vertical slice architectures, dividing functionality into manageable independent
+Chúng tận dụng vertical slice architecture, chia chức năng thành các features độc lập và có thể quản lý được.
 
 19
 00:01:33,680 --> 00:01:34,370
-features.
+Bạn có thể thấy vertical slice architecture, và mỗi feature là một vertical slice độc lập có thể được
 
 20
 00:01:34,370 --> 00:01:41,300
@@ -80,81 +80,81 @@ You can see the vertical slice architecture, and each feature is a self-containe
 
 21
 00:01:41,300 --> 00:01:46,760
-developed and tested in isolation and optimizing for agility and maintainability.
+được phát triển và kiểm tra một cách độc lập, tối ưu hóa cho tính nhanh nhẹn và khả năng bảo trì.
 
 22
 00:01:47,960 --> 00:01:54,080
-On the other hand, if you can see the discount microservice internal architecture discount microservice
+Mặt khác, nếu bạn có thể thấy kiến trúc nội bộ của discount microservice, discount microservice
 
 23
 00:01:54,080 --> 00:01:59,960
-using for more traditional layered architecture, this is an layered architecture approach.
+sử dụng kiến trúc layered truyền thống hơn, đây là một phương pháp layered architecture.
 
 24
 00:01:59,960 --> 00:02:05,690
-Organize the codes into layers with specific roles such as the presentation, business logic and data
+Tổ chức mã thành các lớp với các vai trò cụ thể như presentation, business logic và data
 
 25
 00:02:05,690 --> 00:02:10,880
-access, and promoting a separation of concerns within a less complex domain.
+access, và thúc đẩy sự phân tách mối quan tâm trong một domain ít phức tạp hơn.
 
 26
 00:02:11,690 --> 00:02:18,140
-So if we go further for the ordering microservices, authentic microservices using the clean architecture
+Vậy nếu chúng ta tiếp tục với ordering microservices, những microservices thực sự sử dụng clean architecture
 
 27
 00:02:18,140 --> 00:02:21,080
-in order to manage complex business rules.
+để quản lý các quy tắc kinh doanh phức tạp.
 
 28
 00:02:21,080 --> 00:02:28,130
-So clean architecture, segregated layers, for example domain layer, application layer infrastructure
+Vậy clean architecture, các lớp được phân tách, ví dụ như domain layer, application layer, infrastructure
 
 29
 00:02:28,130 --> 00:02:30,350
-and presentation web API layer.
+và presentation web API layer.
 
 30
 00:02:30,350 --> 00:02:37,370
-So this architecture divides into services, into clear layers, and each with its own responsibility
+Vậy kiến trúc này chia thành các services, vào các lớp rõ ràng, và mỗi lớp có trách nhiệm của riêng nó
 
 31
 00:02:37,370 --> 00:02:44,150
-from domain entities to application logic and the infrastructure, and enabling to manage complexity
+từ các domain entities đến application logic và infrastructure, và cho phép quản lý sự phức tạp
 
 32
 00:02:44,150 --> 00:02:49,880
-effectively and evolving the system gracefully and beyond all architectures.
+một cách hiệu quả và phát triển hệ thống một cách graceful, vượt qua tất cả các kiến trúc.
 
 33
 00:02:49,880 --> 00:02:55,850
-We embrace a polyglot approach that means, depending on the nature of the microservices, we might
+Chúng ta áp dụng một phương pháp polyglot, có nghĩa là tùy thuộc vào bản chất của microservices, chúng ta có thể
 
 34
 00:02:55,850 --> 00:02:59,480
-choose different languages, frameworks, or databases.
+chọn các ngôn ngữ, frameworks, hoặc databases khác nhau.
 
 35
 00:02:59,480 --> 00:03:05,840
-That means you can see that in these microservices using F sharp for functional programming needs,
+Điều đó có nghĩa là bạn có thể thấy rằng trong các microservices này sử dụng F sharp cho các nhu cầu lập trình hàm,
 
 36
 00:03:05,840 --> 00:03:08,690
-or Python for machine learning tasks.
+hoặc Python cho các tác vụ machine learning.
 
 37
 00:03:08,690 --> 00:03:13,490
-Or you can see Java DotNet, Node.js and so on.
+Hoặc bạn có thể thấy Java, DotNet, Node.js và so on.
 
 38
 00:03:13,490 --> 00:03:17,780
-So there is no one size fit all in microservice architecture.
+Vậy không có giải pháp duy nhất cho tất cả trong kiến trúc microservice.
 
 39
 00:03:17,780 --> 00:03:23,660
-Each service is a unique actor in our ecosystem, and we will select the architecture patterns that
+Mỗi service là một actor duy nhất trong hệ sinh thái của chúng ta, và chúng ta sẽ lựa chọn các architecture patterns
 
 40
 00:03:23,660 --> 00:03:28,520
-best fits in individual requirements and the nature of the task it performs.
+phù hợp nhất với các yêu cầu cá nhân và bản chất của công việc mà nó thực hiện.
 
