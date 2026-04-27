@@ -112,5 +112,6 @@
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/016 Develop Pagination for GetProducts Query with ToPagedListAsync extention method.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/017 Test Pagination for GetProducts Query with ToPagedListAsync extention method.srt": "done",
   "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/018 Health Check for Catalog Microservices with PostgresDB.srt": "done",
-  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/019 Containerize Catalog.API microservices with Docker.srt": "done"
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/019 Containerize Catalog.API microservices with Docker.srt": "done",
+  "/home/user/microservice-srt/07 Develop Catalog.API Cross-cutting Concerns/020 Orchestrate Catalog.API microservices with Docker-compose file.srt": "done"
 }
