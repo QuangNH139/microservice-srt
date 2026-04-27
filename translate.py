@@ -258,9 +258,21 @@ def translate_srt_file(filepath: Path, batch_size: int = 40) -> None:
     filepath.write_text(reconstruct_srt(translated_blocks), encoding="utf-8")
 
 
-def main() -> None:
+def main(skip_file: str | None = None) -> None:
     srt_dir = Path("/home/user/microservice-srt")
-    srt_files = sorted(srt_dir.rglob("*.srt"))
+    all_files = sorted(srt_dir.rglob("*.srt"))
+
+    if skip_file:
+        skip_set: set[Path] = set()
+        with open(skip_file) as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    skip_set.add(srt_dir / line)
+        srt_files = [p for p in all_files if p not in skip_set]
+    else:
+        srt_files = all_files
+
     total = len(srt_files)
 
     print(f"Translating {total} SRT files to Vietnamese")
@@ -294,4 +306,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    skip = sys.argv[1] if len(sys.argv) > 1 else None
+    main(skip_file=skip)
