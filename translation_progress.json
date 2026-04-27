@@ -70,5 +70,6 @@
   "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/003 Opening Sessions in Marten as Document DB.srt": "done",
   "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/004 Develop CommandHandler to Save Product to DB using Marten Library.srt": "done",
   "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/005 Register and Configure Marten DocumentDB library into Program.cs asp.net DI.srt": "done",
-  "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/007 Setup PostgreSQL DB using Docker-compose file for Multi-container Docker env.srt": "done"
+  "/home/user/microservice-srt/06 Develop Catalog.API Infrastructure, Handler and Endpoint Classes for CRUD/007 Setup PostgreSQL DB using Docker-compose file for Multi-container Docker env.srt": "done",
+  "/home/user/microservice-srt/01 Course Introduction/006 Microservices Multi-Architectural Patterns (External vs Internal Architectures).srt": "done"
 }

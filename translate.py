@@ -215,17 +215,18 @@ def translate_batch(texts: list[str], retries: int = MAX_RETRIES) -> list[str]:
                 for i, idx in enumerate(indices):
                     result[idx] = translated[i]
                 return result
-            # Partial match: use as many as we got, fill rest with originals
-            if len(translated) > 0 and attempt == retries:
+            # Partial match: use what we got, keep originals for the rest
+            if 0 < len(translated) <= len(to_translate):
                 result = list(texts)
                 for i, idx in enumerate(indices):
-                    if i < len(translated):
+                    if i < len(translated) and translated[i]:
                         result[idx] = translated[i]
+                print(f"  Partial match ({len(translated)}/{len(to_translate)} blocks), continuing...")
                 return result
-            # Count mismatch — retry
-            last_error = f"Expected {len(to_translate)} blocks, got {len(translated)}"
+            # Empty or excess response — retry
+            last_error = f"Got {len(translated)} blocks for {len(to_translate)}"
             wait = delay * (2 ** (attempt - 1))
-            print(f"  Block count mismatch ({len(translated)}/{len(to_translate)}), retry {attempt}/{retries} in {wait}s...")
+            print(f"  Unexpected count, retry {attempt}/{retries} in {wait}s...")
             time.sleep(wait)
         except anthropic.RateLimitError as e:
             last_error = e
