@@ -14,7 +14,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent
 PROGRESS_FILE = BASE_DIR / "translation_progress.json"
 TOTAL_FILES = 349
-COMMIT_EVERY = 3
+COMMIT_EVERY = 1
 RESTART_DELAY = 5  # seconds before restarting after crash
 BRANCH = "claude/translate-vietnamese-auto-retry-cBckl"
 
