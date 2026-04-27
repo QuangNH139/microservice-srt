@@ -142,5 +142,6 @@
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/025 Exception Handling in Basket Microservices.srt": "done",
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/001 Distributed Caching with Redis in Basket Microservices.srt": "done",
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/002 Cache-aside Pattern in Microservices  Cache Invalidation.srt": "done",
-  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/003 Proxy Pattern, Decorator Pattern and Scrutor Library.srt": "done"
+  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/003 Proxy Pattern, Decorator Pattern and Scrutor Library.srt": "done",
+  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/004 Develop CachedBasketRepository with Proxy Pattern, Decorator Pattern and Scrutor.srt": "done"
 }
