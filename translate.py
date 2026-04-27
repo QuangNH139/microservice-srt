@@ -17,7 +17,7 @@ import anthropic
 BASE_DIR = Path(__file__).parent
 PROGRESS_FILE = BASE_DIR / "translation_progress.json"
 MAX_RETRIES = 5
-BATCH_SIZE = 40
+BATCH_SIZE = 20
 SEP = "|||SEP|||"
 
 SYSTEM_PROMPT = """You are a professional Vietnamese translator specializing in technical software development content for online video courses. Your task is to translate English subtitles for a .NET 8 Microservices Architecture course into natural, clear Vietnamese that Vietnamese software developers can easily understand.
@@ -215,10 +215,17 @@ def translate_batch(texts: list[str], retries: int = MAX_RETRIES) -> list[str]:
                 for i, idx in enumerate(indices):
                     result[idx] = translated[i]
                 return result
+            # Partial match: use as many as we got, fill rest with originals
+            if len(translated) > 0 and attempt == retries:
+                result = list(texts)
+                for i, idx in enumerate(indices):
+                    if i < len(translated):
+                        result[idx] = translated[i]
+                return result
             # Count mismatch — retry
             last_error = f"Expected {len(to_translate)} blocks, got {len(translated)}"
             wait = delay * (2 ** (attempt - 1))
-            print(f"  Block count mismatch, retry {attempt}/{retries} in {wait}s...")
+            print(f"  Block count mismatch ({len(translated)}/{len(to_translate)}), retry {attempt}/{retries} in {wait}s...")
             time.sleep(wait)
         except anthropic.RateLimitError as e:
             last_error = e
@@ -257,10 +264,12 @@ def translate_file(srt_path: Path) -> Path:
 
     texts = [block[2] for block in blocks]
     translated_texts = list(texts)
+    total_batches = (len(texts) + BATCH_SIZE - 1) // BATCH_SIZE
 
     for i in range(0, len(texts), BATCH_SIZE):
         batch = texts[i: i + BATCH_SIZE]
-        print(f"  Batch {i // BATCH_SIZE + 1}/{(len(texts) + BATCH_SIZE - 1) // BATCH_SIZE} ({len(batch)} blocks)...")
+        batch_num = i // BATCH_SIZE + 1
+        print(f"  Batch {batch_num}/{total_batches} ({len(batch)} blocks)...")
         try:
             translated_texts[i: i + len(batch)] = translate_batch(batch)
         except Exception as e:
@@ -269,9 +278,9 @@ def translate_file(srt_path: Path) -> Path:
     translated_blocks = [
         (idx, ts, translated_texts[j]) for j, (idx, ts, _) in enumerate(blocks)
     ]
-    out_path = srt_path.with_name(srt_path.stem + "_vi.srt")
-    out_path.write_text(reconstruct_srt(translated_blocks), encoding="utf-8")
-    return out_path
+    # Overwrite original file in-place
+    srt_path.write_text(reconstruct_srt(translated_blocks), encoding="utf-8")
+    return srt_path
 
 
 def load_progress() -> dict:
@@ -287,8 +296,7 @@ def save_progress(progress: dict) -> None:
 
 
 def find_all_srt_files() -> list[Path]:
-    all_files = sorted(BASE_DIR.rglob("*.srt"))
-    return [f for f in all_files if not f.name.endswith("_vi.srt")]
+    return [f for f in sorted(BASE_DIR.rglob("*.srt")) if not f.name.endswith("_vi.srt")]
 
 
 def main():
@@ -321,9 +329,9 @@ def main():
         try:
             out = translate_file(srt_path)
             if out:
-                progress[str(srt_path)] = str(out)
+                progress[str(srt_path)] = "done"
                 save_progress(progress)
-                print(f"  -> {out.name}")
+                print(f"  -> done")
             else:
                 print("  Skipped.")
         except Exception as e:
