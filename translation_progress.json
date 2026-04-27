@@ -146,5 +146,6 @@
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/004 Develop CachedBasketRepository with Proxy Pattern, Decorator Pattern and Scrutor.srt": "done",
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/005 Develop CachedBasketRepository with Proxy Pattern, Decorator Pattern and Scrutor.srt": "done",
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/006 Register Decorated CachedBasketRepository and StackExchangeRedis with Scrutor.srt": "done",
-  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/007 ECommerce Microservices Deployment Strategy.srt": "done"
+  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/007 ECommerce Microservices Deployment Strategy.srt": "done",
+  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/008 Setup Redis as a Distributed Cache using Docker-compose file for Multi-container.srt": "done"
 }
