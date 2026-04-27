@@ -1,314 +1,314 @@
 1
 00:00:00,230 --> 00:00:06,620
-In this video, we are going to implement a basket repository interface using the Martin Library AI
+Trong video này, chúng ta sẽ triển khai một basket repository interface sử dụng Marten Library
 
 2
 00:00:06,620 --> 00:00:08,210
-documentation interface.
+tài liệu giao diện.
 
 3
 00:00:08,330 --> 00:00:12,920
-Here you can see the opening sessions in Martin as a document database.
+Ở đây bạn có thể thấy các phiên mở trong Marten như một document database.
 
 4
 00:00:12,950 --> 00:00:18,560
-We will use Primary Constructor to inject Martin classes into our repository object.
+Chúng ta sẽ sử dụng Primary Constructor để inject các lớp Marten vào đối tượng repository của chúng ta.
 
 5
 00:00:18,590 --> 00:00:21,710
-Here you can see that we will inject a document session.
+Ở đây bạn có thể thấy rằng chúng ta sẽ inject một document session.
 
 6
 00:00:21,710 --> 00:00:26,600
-And especially we will use lightweight document sessions for that purpose.
+Và đặc biệt là chúng ta sẽ sử dụng lightweight document sessions cho mục đích đó.
 
 7
 00:00:26,630 --> 00:00:32,479
-Please open the Visual Studio and we should install Martin NuGet packages into basket API.
+Vui lòng mở Visual Studio và chúng ta cần cài đặt các Marten NuGet packages vào basket API.
 
 8
 00:00:32,509 --> 00:00:39,290
-I'm going to right click the basket API project and manage NuGet packages and search for the Martin.
+Tôi sẽ click chuột phải vào dự án basket API và quản lý NuGet packages và tìm kiếm Marten.
 
 9
 00:00:42,470 --> 00:00:46,940
-Install Martin Library into basket API project.
+Cài đặt Marten Library vào dự án basket API.
 
 10
 00:00:48,290 --> 00:00:54,860
-And if you double click the basket API, you can confirm that our Martin library comes into basket API.
+Và nếu bạn double click vào basket API, bạn có thể xác nhận rằng Marten library của chúng ta đã được đưa vào basket API.
 
 11
 00:00:54,890 --> 00:01:01,310
-Now we can use this library into our basket repository to inject AI documentation.
+Bây giờ chúng ta có thể sử dụng thư viện này vào basket repository của chúng ta để inject documentation.
 
 12
 00:01:01,310 --> 00:01:06,440
-So I'm going to inject AI documentation.
+Vậy tôi sẽ inject documentation.
 
 13
 00:01:09,080 --> 00:01:10,400
-Is the station name.
+Là tên trạm.
 
 14
 00:01:10,400 --> 00:01:17,120
-So if you come here and using Martin's statement, you can see that we have injected successfully.
+Vậy nếu bạn đến đây và sử dụng Marten's statement, bạn có thể thấy rằng chúng ta đã inject thành công.
 
 15
 00:01:17,480 --> 00:01:22,580
-And now we can use Session object to perform, get, store and delete operation.
+Và bây giờ chúng ta có thể sử dụng Session object để thực hiện các phép toán get, store và delete.
 
 16
 00:01:22,580 --> 00:01:25,400
-Let me start with the get basket operation.
+Hãy bắt đầu với phép toán get basket.
 
 17
 00:01:25,400 --> 00:01:28,730
-I'm going to remove this throw exception statement.
+Tôi sẽ loại bỏ câu throw exception statement này.
 
 18
 00:01:28,730 --> 00:01:32,630
-And now I'm going to create a basket variable.
+Và bây giờ tôi sẽ tạo một biến basket.
 
 19
 00:01:32,630 --> 00:01:37,910
-And we will use session dot load async method.
+Và chúng ta sẽ sử dụng session dot load async method.
 
 20
 00:01:38,360 --> 00:01:44,900
-And I'm going to retrieve shopping cart with a given username and cancellation token.
+Và tôi sẽ lấy shopping cart với một username và cancellation token cho trước.
 
 21
 00:01:45,860 --> 00:01:52,490
-Here you can see that we will get basket information from the PostgreSQL database using the I document
+Ở đây bạn có thể thấy rằng chúng ta sẽ lấy thông tin giỏ hàng từ cơ sở dữ liệu PostgreSQL bằng cách sử dụng I document
 
 22
 00:01:52,490 --> 00:01:54,320
-session from the Martin library.
+session từ thư viện Marten.
 
 23
 00:01:54,320 --> 00:01:59,570
-And we will passing the username because we will get shopping cart by username.
+Và chúng ta sẽ truyền username vì chúng ta sẽ lấy giỏ hàng mua sắm theo username.
 
 24
 00:01:59,570 --> 00:02:02,840
-And after that I'm going to return this basket.
+Và sau đó tôi sẽ trả về giỏ hàng này.
 
 25
 00:02:02,840 --> 00:02:05,030
-But this basket can be null.
+Nhưng giỏ hàng này có thể là null.
 
 26
 00:02:05,030 --> 00:02:12,890
-So for that purpose I'm going to check that if basket is null we can throw an exception.
+Vì vậy cho mục đích đó, tôi sẽ kiểm tra nếu basket là null thì chúng ta có thể ném một ngoại lệ.
 
 27
 00:02:13,520 --> 00:02:15,920
-So what kind of exception that we can throw.
+Vậy loại ngoại lệ nào mà chúng ta có thể ném.
 
 28
 00:02:15,950 --> 00:02:20,090
-We can throw any basket Notfoundexception.
+Chúng ta có thể ném bất kỳ basket NotfoundException.
 
 29
 00:02:20,090 --> 00:02:23,480
-We will create this exception a few minutes later.
+Chúng ta sẽ tạo ngoại lệ này vài phút nữa.
 
 30
 00:02:23,480 --> 00:02:25,220
-So let me create.
+Vậy hãy để tôi tạo.
 
 31
 00:02:25,220 --> 00:02:26,870
-And after that I will explain.
+Và sau đó tôi sẽ giải thích.
 
 32
 00:02:26,990 --> 00:02:32,990
-If basket is not null we can return the basket object to do our method operation.
+Nếu basket không phải là null chúng ta có thể trả về đối tượng basket để thực hiện hoạt động phương thức của chúng ta.
 
 33
 00:02:33,470 --> 00:02:33,860
-Okay.
+Được rồi.
 
 34
 00:02:33,860 --> 00:02:36,290
-Get basket is completed successfully.
+Get basket đã hoàn thành thành công.
 
 35
 00:02:36,290 --> 00:02:40,310
-Now I'm going to implement Store basket as.
+Bây giờ tôi sẽ triển khai Store basket as.
 
 36
 00:02:40,310 --> 00:02:46,940
-You remember that when we are storing the basket information, we will perform Upsert operation because
+Bạn nhớ rằng khi chúng ta lưu trữ thông tin giỏ hàng, chúng ta sẽ thực hiện hoạt động Upsert vì
 
 37
 00:02:46,940 --> 00:02:51,860
-Martin provides an absurd functionality that simplifies our operations.
+Marten cung cấp chức năng upsert giúp đơn giản hóa các hoạt động của chúng ta.
 
 38
 00:02:51,860 --> 00:02:59,210
-That means if this shopping cart doesn't exist into database, Martin will insert it.
+Điều đó có nghĩa là nếu giỏ hàng mua sắm này không tồn tại trong cơ sở dữ liệu, Marten sẽ chèn nó.
 
 39
 00:02:59,210 --> 00:03:03,560
-If the shopping cart is already existing, Martin will be updated.
+Nếu giỏ hàng mua sắm đã tồn tại, Marten sẽ cập nhật nó.
 
 40
 00:03:03,560 --> 00:03:05,480
-The existing shopping cart object.
+Đối tượng giỏ hàng mua sắm hiện có.
 
 41
 00:03:05,480 --> 00:03:11,570
-Since we are storing the shopping cart as a Json body into document database, we can update the whole
+Vì chúng ta đang lưu giỏ hàng dưới dạng Json body vào document database, nên chúng ta có thể cập nhật toàn bộ
 
 42
 00:03:11,570 --> 00:03:13,310
-Json into our database.
+Json vào database của chúng ta.
 
 43
 00:03:13,310 --> 00:03:18,830
-So this behavior aligns with the dynamic nature of the shopping cart and shopping cart items in our
+Vậy hành vi này phù hợp với tính chất động của giỏ hàng và các mặt hàng trong giỏ hàng trong ứng dụng
 
 44
 00:03:18,830 --> 00:03:20,150
-e-commerce application.
+thương mại điện tử của chúng ta.
 
 45
 00:03:20,600 --> 00:03:24,890
-So we will use store method for that purpose.
+Vậy chúng ta sẽ sử dụng phương thức store cho mục đích này.
 
 46
 00:03:24,890 --> 00:03:29,240
-I'm going to write session dot store and pacing the whole basket object.
+Tôi sẽ viết session dot store và truyền toàn bộ đối tượng basket.
 
 47
 00:03:29,690 --> 00:03:38,120
-And after that we have to write session dot save change async operation to perform all these operation
+Và sau đó chúng ta phải viết session dot save change async operation để thực hiện tất cả các hoạt động này
 
 48
 00:03:38,540 --> 00:03:39,530
-on database.
+trên database.
 
 49
 00:03:39,530 --> 00:03:42,200
-And I'm going to return this basket.
+Và tôi sẽ trả về basket này.
 
 50
 00:03:46,600 --> 00:03:50,080
-And lastly we can implement delete basket method.
+Và cuối cùng chúng ta có thể triển khai phương thức delete basket.
 
 51
 00:03:50,080 --> 00:03:56,860
-For that purpose we have using the session dot delete method, passing the shopping cart as a generic
+Cho mục đích này chúng ta sử dụng session dot delete method, truyền giỏ hàng dưới dạng generic
 
 52
 00:03:56,860 --> 00:04:02,770
-and we have to give username because we will also delete shopping cart by username.
+và chúng ta phải cung cấp username vì chúng ta cũng sẽ xóa giỏ hàng theo username.
 
 53
 00:04:02,770 --> 00:04:07,870
-And after this operation, of course we will again using the save changes async method.
+Và sau hoạt động này, tất nhiên chúng ta sẽ lại sử dụng phương thức save changes async.
 
 54
 00:04:07,870 --> 00:04:13,480
-And I'm going to return true as a successful complete operation.
+Và tôi sẽ trả về true như một hoạt động hoàn thành thành công.
 
 55
 00:04:13,960 --> 00:04:19,510
-So now it is time to develop our custom exception which is the basket not found exception.
+Vậy bây giờ đã đến lúc phát triển exception tùy chỉnh của chúng ta, đó là basket not found exception.
 
 56
 00:04:19,510 --> 00:04:24,970
-For that purpose I'm going to create a new folder under the basket API project.
+Cho mục đích này, tôi sẽ tạo một folder mới dưới dự án basket API.
 
 57
 00:04:24,970 --> 00:04:29,020
-Right click Add new folder, which name is exceptions.
+Nhấp chuột phải, chọn Add new folder, tên là exceptions.
 
 58
 00:04:29,020 --> 00:04:32,200
-And under this folder I'm going to create a new class.
+Và trong folder này tôi sẽ tạo một class mới.
 
 59
 00:04:32,200 --> 00:04:35,170
-Which name is basket Notfoundexception.
+Tên là basket not found exception.
 
 60
 00:04:35,500 --> 00:04:44,230
-So in here we basically inherit from the not found exception which comes from the or actual building
+Vậy ở đây chúng ta cơ bản sẽ kế thừa từ not found exception, nó đến từ orchard hoặc actual building
 
 61
 00:04:44,230 --> 00:04:50,050
-blocks operation, which including all common related objects into building blocks.
+các opertion khối, bao gồm tất cả các đối tượng liên quan phổ biến để xây dựng các khối.
 
 62
 00:04:50,050 --> 00:04:56,080
-And we will follow the same step and creating our custom notfoundexception inherited from the not one
+Và chúng ta sẽ làm theo cùng một bước và tạo notfoundexception tùy chỉnh của chúng ta kế thừa từ cái không
 
 63
 00:04:56,110 --> 00:04:58,120
-exceptions comes from the building blocks.
+exceptions đến từ các khối xây dựng.
 
 64
 00:04:58,120 --> 00:05:05,500
-And in this class we basically create a new constructor exception constructor and this constructor gets
+Và trong lớp này, về cơ bản chúng ta tạo một constructor exception mới và constructor này nhận
 
 65
 00:05:05,500 --> 00:05:07,180
-a username information.
+thông tin username.
 
 66
 00:05:08,800 --> 00:05:14,920
-And we will paste these username in the base of the notfoundexception.
+Và chúng ta sẽ dán username này vào base của notfoundexception.
 
 67
 00:05:14,920 --> 00:05:21,730
-If you look at the parameters of the base constructor, you can see that we have two parameters that
+Nếu bạn nhìn vào các tham số của constructor base, bạn có thể thấy rằng chúng ta có hai tham số
 
 68
 00:05:21,730 --> 00:05:23,740
-we can use name and object k.
+mà chúng ta có thể sử dụng name và object k.
 
 69
 00:05:23,740 --> 00:05:27,220
-So I'm giving as a name basket and key username.
+Vì vậy tôi đang cung cấp như một tên basket và key username.
 
 70
 00:05:27,220 --> 00:05:33,820
-So this will be provide a clear and meaningful exception when a basket is not found in the database.
+Vì vậy điều này sẽ cung cấp một exception rõ ràng và có ý nghĩa khi basket không được tìm thấy trong database.
 
 71
 00:05:34,030 --> 00:05:41,560
-So we can move these using statement into global Usings I'm going to go to global Usings and add exceptions
+Vì vậy chúng ta có thể chuyển các using statement này vào global Usings, tôi sẽ đi tới global Usings và thêm exceptions
 
 72
 00:05:41,560 --> 00:05:44,020
-to make it available for each classes.
+để làm cho nó khả dụng cho các lớp.
 
 73
 00:05:44,020 --> 00:05:50,200
-And if you go back to our actual Basket repository class, you can see that basket Notfoundexception
+Và nếu bạn quay lại lớp Basket repository thực tế của chúng ta, bạn có thể thấy rằng basket Notfoundexception
 
 74
 00:05:50,200 --> 00:05:52,180
-is requiring using statement.
+đang yêu cầu using statement.
 
 75
 00:05:52,180 --> 00:05:54,130
-And I am adding these using statement.
+Và tôi đang thêm using statement này.
 
 76
 00:05:54,130 --> 00:05:58,990
-And if you go on top of this page you can see that we have two using statement.
+Và nếu bạn đi lên đầu trang này, bạn có thể thấy rằng chúng ta có hai using statement.
 
 77
 00:05:58,990 --> 00:06:06,580
-I'm going to move to the global using CSS and come here copy paste and make it global using statements
+Tôi sẽ chuyển sang global using CSS và đến đây copy paste và tạo các using statement toàn cục
 
 78
 00:06:06,580 --> 00:06:08,320
-for Martin and the basket.
+cho Martin và basket.
 
 79
 00:06:08,320 --> 00:06:09,220
@@ -316,9 +316,9 @@ Exceptions.
 
 80
 00:06:12,080 --> 00:06:17,420
-And if you go back to our basket repository, as you can see that we have successfully implemented the
+Và nếu bạn quay lại basket repository của chúng ta, như bạn có thể thấy rằng chúng ta đã triển khai thành công
 
 81
 00:06:17,420 --> 00:06:20,840
-basket repository class using the Martin AI documentation.
+repository class của basket sử dụng tài liệu Martin AI.
 

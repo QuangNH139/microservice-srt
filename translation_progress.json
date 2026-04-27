@@ -131,5 +131,6 @@
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/014 Register MediatR and Carter libraries into Asp.Net Dependency Injection Service.srt": "done",
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/015 Test Basket API - GET and POST Basket Request - Debug Carter Minimal API.srt": "done",
   "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/016 Infrastructure - Data Concerns for Basket API - Marten .NET Transactional DB.srt": "done",
-  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/017 Develop BasketRepository Class using Marten Library.srt": "done"
+  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/017 Develop BasketRepository Class using Marten Library.srt": "done",
+  "/home/user/microservice-srt/08 Basket Microservices with Vertical Slice Architecture and CQRS/018 Implement IBasketRepository Class using Marten IDocumentSession interface.srt": "done"
 }
