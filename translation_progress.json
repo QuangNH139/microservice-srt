@@ -151,5 +151,6 @@
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/009 Run Docker-Compose on Visual Studio to setup Redis Distributed Cache on Docker.srt": "done",
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/010 Configure docker-compose launch settings - Not open browser for microservices.srt": "done",
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/011 Connect Redis Cache from local Basket Microservices and send GET request.srt": "done",
-  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/012 Health Check for Basket Microservices with PostgresDB and Redis Cache.srt": "done"
+  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/012 Health Check for Basket Microservices with PostgresDB and Redis Cache.srt": "done",
+  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/013 Containerize Basket.API Microservices with Docker.srt": "done"
 }
