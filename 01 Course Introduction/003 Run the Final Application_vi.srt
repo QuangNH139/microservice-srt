@@ -1,0 +1,347 @@
+1
+00:00:00,140 --> 00:00:03,500
+Trong video này, chúng tôi sẽ chạy ứng dụng cuối cùng.
+
+2
+00:00:03,500 --> 00:00:09,830
+Vì vậy chúng tôi sẽ clone repository của chúng tôi từ GitHub và thiết lập môi trường của chúng tôi trong Visual Studio và chạy
+
+3
+00:00:09,830 --> 00:00:15,860
+ứng dụng của chúng tôi bằng Docker compose profile và thực hiện một bản demo trực tiếp, và chúng tôi sẽ thực hiện
+
+4
+00:00:15,860 --> 00:00:17,930
+trường hợp sử dụng chính của ứng dụng.
+
+5
+00:00:17,930 --> 00:00:20,840
+Đây là liệt kê sản phẩm và danh mục.
+
+6
+00:00:20,840 --> 00:00:26,330
+Thêm mục sản phẩm vào giỏ hàng và kiểm tra giỏ hàng và tạo đơn hàng với giao tiếp sự kiện không đồng bộ
+
+7
+00:00:26,330 --> 00:00:27,530
+được điều khiển bởi sự kiện.
+
+8
+00:00:27,530 --> 00:00:33,020
+Và chúng tôi sẽ tiêu thụ những hoạt động này từ Erb API gateway vào ứng dụng khách của chúng tôi bằng cách gửi
+
+9
+00:00:33,020 --> 00:00:36,500
+phương thức Http, get và post vào các microservices hạ nguồn.
+
+10
+00:00:36,500 --> 00:00:42,290
+Điều đó có nghĩa là ứng dụng khách của chúng tôi sẽ tiêu thụ Erb API gateway để thực hiện trường hợp sử dụng end to end
+
+11
+00:00:42,290 --> 00:00:45,260
+trên các microservices hạ nguồn.
+
+12
+00:00:45,590 --> 00:00:48,140
+Để thực hiện điều đó, vui lòng mở Visual Studio.
+
+13
+00:00:48,170 --> 00:00:53,750
+Trước hết, tôi đã clone repository từ GitHub và mở solution của chúng tôi, đó là
+
+14
+00:00:53,750 --> 00:00:55,160
+Icap microservices.
+
+15
+00:00:55,160 --> 00:00:59,750
+Trước khi chúng tôi bắt đầu, hãy đảm bảo rằng Docker desktop của bạn đang chạy.
+
+16
+00:00:59,900 --> 00:01:04,459
+Nếu bạn quay lại solution của chúng tôi, bạn có thể thấy rằng chúng tôi có các tệp Docker compose.
+
+17
+00:01:04,459 --> 00:01:09,650
+Nếu bạn nhấp chuột phải vào docker compose và đặt dự án khởi động, chúng tôi có thể chạy toàn bộ ứng dụng như
+
+18
+00:01:09,650 --> 00:01:11,090
+một Docker compose profile.
+
+19
+00:01:11,090 --> 00:01:16,370
+Sau khi đặt dự án khởi động, bạn có thể thấy Docker compose chạy profile đến Visual Studio.
+
+20
+00:01:16,370 --> 00:01:21,350
+Lần này tôi sẽ nhấp vào nút này để khởi động docker compose mà không cần gỡ lỗi.
+
+21
+00:01:22,190 --> 00:01:27,980
+Sau khi nhấp vào nút này, bạn có thể thấy rằng đây sẽ nén tất cả các microservices vào kiến trúc của chúng tôi
+
+22
+00:01:27,980 --> 00:01:35,240
+mà chúng tôi sẽ bao gồm tất cả các microservices catalog basket discount và ordering up API gateway shopping,
+
+23
+00:01:35,240 --> 00:01:42,410
+ứng dụng web client và các microservices hạ nguồn bao gồm các cơ sở dữ liệu, PostgreSQL, Redis, SQLite,
+
+24
+00:01:42,410 --> 00:01:45,020
+SQL server và RabbitMQ message broker.
+
+25
+00:01:45,110 --> 00:01:51,560
+Vì vậy, việc này sẽ mất một khoảng thời gian để khởi động tất cả các microservices này vào môi trường Docker compose của chúng tôi.
+
+26
+00:01:51,590 --> 00:01:57,380
+Sau khi chờ một khoảng thời gian nhất định, bạn có thể thấy rằng Docker compose của chúng tôi đã khởi động thành công và
+
+27
+00:01:57,380 --> 00:02:03,590
+sẽ bao gồm tất cả các microservices, hoạt động hạ nguồn, các dịch vụ hỗ trợ và ứng dụng khách.
+
+28
+00:02:03,590 --> 00:02:09,080
+Vì vậy ở đây bạn có thể thấy rằng trong hai mục cuối cùng là API Gateway và ứng dụng Shopping Web Client.
+
+29
+00:02:09,080 --> 00:02:15,470
+Bây giờ chúng tôi sẽ truy cập ứng dụng shopping web client này để xem ứng dụng khách trình duyệt của chúng tôi
+
+30
+00:02:15,470 --> 00:02:18,290
+và thực hiện trường hợp sử dụng end to end cho mục đích đó.
+
+31
+00:02:18,320 --> 00:02:24,290
+Vui lòng nhập vào trình duyệt của bạn Https localhost 6065.
+
+32
+00:02:24,290 --> 00:02:30,470
+Và như bạn có thể thấy, điều này sẽ mở trang chỉ mục của microservices của chúng tôi bao gồm và liệt kê
+
+33
+00:02:30,470 --> 00:02:35,570
+tất cả các sản phẩm được tiêu thụ từ ARB API gateway bên trong các microservices catalog.
+
+34
+00:02:35,570 --> 00:02:41,510
+Vì vậy đây là trang đích bao gồm tất cả các sản phẩm, nhưng chúng tôi sẽ tuân theo các trường hợp sử dụng của chúng tôi.
+
+35
+00:02:41,510 --> 00:02:44,420
+Trường hợp sử dụng đầu tiên là liệt kê sản phẩm và danh mục.
+
+36
+00:02:44,420 --> 00:02:49,220
+Nếu bạn nhấp vào nút này, điều này sẽ mở trang danh sách sản phẩm, bao gồm tất cả các danh mục
+
+37
+00:02:49,220 --> 00:02:51,410
+và tất cả các sản phẩm trong ứng dụng của bạn.
+
+38
+00:02:51,410 --> 00:02:58,310
+Và nếu tôi nhấp vào một trong các sản phẩm, điều này sẽ mở và đi tới Chi tiết sản phẩm và bao gồm một chi tiết sản phẩm duy nhất
+
+39
+00:02:58,310 --> 00:03:00,620
+với tất cả thông tin.
+
+40
+00:03:00,620 --> 00:03:05,570
+Và ngay sau đó chúng tôi có thể tiếp tục và thêm các mục này vào giỏ hàng của chúng tôi.
+
+41
+00:03:05,570 --> 00:03:09,560
+Bạn có thể nhấp vào nút này để thêm sản phẩm này vào giỏ hàng mua sắm của chúng tôi.
+
+42
+00:03:09,620 --> 00:03:15,530
+Bất cứ khi nào tôi nhấp vào nút này, điều này sẽ Thêm mục vào Shopping Cart và điều hướng đến trang HTML giỏ hàng của chúng tôi
+
+43
+00:03:15,530 --> 00:03:15,950
+trang.
+
+44
+00:03:15,950 --> 00:03:21,860
+Vì vậy trong trang này chúng tôi đang liệt kê tất cả các mục trong giỏ mua sắm và chúng tôi có thể tiếp tục mua sắm hoặc thanh toán
+
+45
+00:03:21,860 --> 00:03:22,760
+giỏ hàng này.
+
+46
+00:03:22,760 --> 00:03:28,850
+Để tạo giao tiếp sự kiện không đồng bộ được điều khiển bởi sự kiện và tạo bất kỳ đơn hàng nào, tôi sẽ tiếp tục
+
+47
+00:03:28,850 --> 00:03:35,420
+mua sắm của chúng tôi, đi tới trang sản phẩm, và lần này tôi sẽ thêm một mục mới đó là iPhone X
+
+48
+00:03:35,420 --> 00:03:36,470
+và Samsung mười.
+
+49
+00:03:36,470 --> 00:03:38,390
+Tôi sẽ thêm mục vào giỏ hàng.
+
+50
+00:03:38,390 --> 00:03:43,520
+Và ở đây bạn có thể thấy rằng chúng tôi có hai mục trong giỏ hàng mua sắm mà chúng tôi sẽ thanh toán
+
+51
+00:03:43,520 --> 00:03:47,450
+basket để thực hiện giao tiếp event driven asynchronous của chúng tôi.
+
+52
+00:03:47,450 --> 00:03:50,360
+Nhưng trước đó, hãy kiểm tra trang danh sách đơn hàng.
+
+53
+00:03:50,360 --> 00:03:55,040
+Nếu bạn nhấp vào trang danh sách đơn hàng này, bạn có thể thấy rằng chúng tôi có một đơn hàng trong ứng dụng của chúng tôi.
+
+54
+00:03:55,040 --> 00:04:02,270
+Điều đó có nghĩa là bất cứ khi nào chúng tôi khởi động microservices hoặc microservices, tạo dữ liệu riêng của nó bằng cách seeding
+
+55
+00:04:02,270 --> 00:04:04,640
+dữ liệu này vào startup ứng dụng của chúng tôi.
+
+56
+00:04:04,640 --> 00:04:10,460
+Vì vậy bây giờ tôi sẽ đi đến cart operations và tiếp tục thanh toán giỏ hàng để tạo một đơn hàng mới
+
+57
+00:04:10,460 --> 00:04:11,450
+trong danh sách này.
+
+58
+00:04:11,450 --> 00:04:14,990
+Vì vậy quay lại trang giỏ hàng và nhấp vào trang checkout.
+
+59
+00:04:14,990 --> 00:04:20,570
+Điều này sẽ chuyển hướng chúng tôi đến trang checkout bao gồm thông tin giỏ hàng và tổng giá.
+
+60
+00:04:20,570 --> 00:04:25,760
+Và bây giờ chúng tôi sẽ điền một số dữ liệu trong biểu mẫu này là biểu mẫu thanh toán giỏ hàng.
+
+61
+00:04:25,760 --> 00:04:31,070
+Và sau đó chúng tôi sẽ nhấp vào checkout order để bắt đầu giao tiếp event driven asynchronous.
+
+62
+00:04:31,070 --> 00:04:36,830
+Để xuất bản sự kiện thanh toán giỏ hàng cho mục đích đó, vui lòng điền dữ liệu hợp lệ cho mỗi mục trống.
+
+63
+00:04:36,830 --> 00:04:37,340
+item.
+
+64
+00:04:37,340 --> 00:04:44,150
+Vì vậy tôi sẽ đến đây và nhập một số họ, tên, tên người dùng và một địa chỉ email hợp lệ.
+
+65
+00:04:44,150 --> 00:04:51,500
+Và sau đó tiếp tục định nghĩa địa chỉ và điền mã quốc gia, tiểu bang, mã zip và v.v.
+
+66
+00:04:51,500 --> 00:04:54,650
+Vì vậy vui lòng cung cấp tất cả các chi tiết trong danh sách này.
+
+67
+00:04:56,300 --> 00:05:02,000
+Ở đây bạn có thể thấy rằng chúng tôi đã tải tất cả các mục trong biểu mẫu checkout mà chúng tôi sẽ thanh toán trang này
+
+68
+00:05:02,000 --> 00:05:03,890
+bằng cách nhấp nút này.
+
+69
+00:05:03,890 --> 00:05:05,540
+Nhấp nút Checkout order này.
+
+70
+00:05:05,540 --> 00:05:10,550
+Và điều này sẽ chuyển hướng bạn đến trang xác nhận và đơn hàng của bạn đã được gửi thành công.
+
+71
+00:05:10,550 --> 00:05:15,980
+Điều đó có nghĩa là điều này sẽ là checkout cho Basket Microservices và Basket Microservices sẽ xuất bản
+
+72
+00:05:15,980 --> 00:05:17,900
+sự kiện thanh toán giỏ hàng cho RabbitMQ.
+
+73
+00:05:17,930 --> 00:05:22,430
+Vì vậy sau đó ordering microservices tiêu thụ các sự kiện này từ RabbitMQ.
+
+74
+00:05:22,460 --> 00:05:25,160
+Trước hết, tôi sẽ kiểm tra dashboard RabbitMQ.
+
+75
+00:05:25,160 --> 00:05:31,040
+Và ở đây nếu bạn đi đến queues và streams, bạn có thể thấy rằng sự kiện thanh toán giỏ hàng của chúng tôi được xuất bản
+
+76
+00:05:31,040 --> 00:05:33,290
+thành công từ basket microservices.
+
+77
+00:05:33,290 --> 00:05:38,780
+Và điều này sẽ được lưu trữ trong RabbitMQ sẽ được tiêu thụ từ hệ thống subscriber đó là ordering
+
+78
+00:05:38,780 --> 00:05:39,710
+microservices.
+
+79
+00:05:39,710 --> 00:05:45,710
+Để xác minh các hoạt động tiêu thụ đơn hàng, chúng tôi có thể quay lại ứng dụng khách của chúng tôi và mở
+
+80
+00:05:45,710 --> 00:05:46,490
+trang đơn hàng.
+
+81
+00:05:46,490 --> 00:05:50,030
+Ở đây bạn có thể thấy rằng đơn hàng được thêm mới xuất hiện trên trang.
+
+82
+00:05:50,030 --> 00:05:55,130
+Điều đó có nghĩa là đơn hàng này được tạo từ hoạt động thanh toán giỏ hàng cho ứng dụng khách của chúng tôi.
+
+83
+00:05:55,130 --> 00:05:59,000
+Chúng tôi có thể lại kiểm tra hoạt động giỏ hàng và lần này giỏ hàng trống.
+
+84
+00:05:59,000 --> 00:06:05,030
+Điều đó có nghĩa là thanh toán thẻ này từ ứng dụng khách và tạo một bản ghi đơn hàng mới vào ordering
+
+85
+00:06:05,030 --> 00:06:06,140
+microservices.
+
+86
+00:06:06,140 --> 00:06:11,510
+Như bạn có thể thấy rằng chúng tôi đã hoàn thành thành công kiểm tra end to end hoàn toàn trên môi trường docker compose
+
+87
+00:06:11,510 --> 00:06:14,900
+và gửi các Http requests từ ứng dụng khách của chúng tôi.
