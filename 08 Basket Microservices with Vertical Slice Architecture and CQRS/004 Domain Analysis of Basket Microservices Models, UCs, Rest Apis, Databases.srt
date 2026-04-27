@@ -1,30 +1,30 @@
 1
 00:00:00,230 --> 00:00:05,390
-In this video we are going to learn domain analysis of basket microservices.
+Trong video này chúng ta sẽ học về domain analysis của basket microservices.
 
 2
 00:00:05,390 --> 00:00:09,830
-And this step is critical in understanding the microservice functionality.
+Và bước này rất quan trọng trong việc hiểu chức năng của microservice.
 
 3
 00:00:09,830 --> 00:00:12,080
-And it includes several steps.
+Và nó bao gồm một số bước.
 
 4
 00:00:12,080 --> 00:00:14,960
-The first step is we will understand the domain models.
+Bước đầu tiên là chúng ta sẽ hiểu về domain models.
 
 5
 00:00:14,960 --> 00:00:19,850
-After that we will understand application use cases, Rest API endpoints.
+Sau đó chúng ta sẽ hiểu về application use cases, REST API endpoints.
 
 6
 00:00:19,850 --> 00:00:23,540
-And lastly we will understand underlying data structures.
+Và cuối cùng chúng ta sẽ hiểu về các cấu trúc dữ liệu cơ bản.
 
 7
 00:00:24,400 --> 00:00:27,340
-Let's start with the domain models in the basket.
+Hãy bắt đầu với domain models trong basket.
 
 8
 00:00:27,340 --> 00:00:28,180
@@ -32,47 +32,47 @@ Microservices.
 
 9
 00:00:28,180 --> 00:00:30,970
-We primarily deal with the three domain models.
+Chúng ta chủ yếu làm việc với ba domain models.
 
 10
 00:00:30,970 --> 00:00:35,350
-These are the shopping cart, shopping cart, item and basket checkout.
+Đó là shopping cart, shopping cart item và basket checkout.
 
 11
 00:00:35,770 --> 00:00:42,310
-In shopping cart domain model, we basically hold the user's shopping cart information in the shopping
+Trong domain model shopping cart, chúng ta cơ bản lưu thông tin giỏ hàng của người dùng trong domain model shopping cart item.
 
 12
 00:00:42,310 --> 00:00:43,750
-cart item domain model.
+Đây biểu diễn các mục riêng lẻ trong giỏ hàng và nó có mối quan hệ một đối một.
 
 13
 00:00:43,750 --> 00:00:49,360
-This is represent the individual item in the shopping cart and this has 1 to 1 relationships.
+Và nếu bạn xem xét basket checkout event, đây được sử dụng trong quá trình basket checkout.
 
 14
 00:00:50,200 --> 00:00:55,780
-And if you look at the basket checkout event this is using during the basket checkout process.
+Và chúng ta có thể coi rằng những điều này có thể là domain event cho các hoạt động basket.
 
 15
 00:00:55,780 --> 00:01:00,820
-And we can think that and consider that these could be domain event for basket operation.
+Và điều này sẽ dẫn đến integration event để thực hiện giao tiếp không đồng bộ.
 
 16
 00:01:00,820 --> 00:01:05,170
-And this will be leading the integration event to perform a synchronous communication.
+Điều tiếp theo chúng ta sẽ kiểm tra là application use cases cho basket microservices.
 
 17
 00:01:07,030 --> 00:01:12,220
-The next thing we are going to check is application use cases for basket microservices.
+Và chúng ta đã nhóm những trường hợp sử dụng basket này thành Crud use case, gRPC use case và asynchronous use case.
 
 18
 00:01:12,340 --> 00:01:18,910
-And we have grouping these basket use cases in Crud use case, gRPC use case and asynchronous use case.
+Vậy hãy bắt đầu với các Crud basket use cases.
 
 19
 00:01:18,910 --> 00:01:21,910
-So let me start with the Crud basket use cases.
+Trong các hoạt động Crud chúng ta cơ bản quản lý giỏ hàng bao gồm thêm, cập nhật và xóa các mục.
 
 20
 00:01:22,210 --> 00:01:28,720
@@ -80,83 +80,83 @@ In Crud operations we basically managing shopping cart including adding, updatin
 
 21
 00:01:28,720 --> 00:01:35,410
-So we can say that get shopping cart with items for get operations and store shopping cart with items
+Vậy chúng ta có thể nói rằng get shopping cart with items cho các operasi GET và store shopping cart with items
 
 22
 00:01:35,410 --> 00:01:38,500
-that is including our observed operation in Martin.
+mà bao gồm các observed operation của chúng ta trong Marten.
 
 23
 00:01:38,500 --> 00:01:44,050
-That means insert or update existing the whole shopping cart Json object.
+Điều đó có nghĩa là insert hoặc update toàn bộ đối tượng JSON shopping cart hiện có.
 
 24
 00:01:44,050 --> 00:01:49,720
-This is including the add item into shopping cart, remove item into shopping cart, or even we can
+Điều này bao gồm add item vào shopping cart, remove item từ shopping cart, hoặc thậm chí chúng ta có thể
 
 25
 00:01:49,720 --> 00:01:52,600
-update one cart item into shopping cart for example.
+update một mục giỏ hàng vào shopping cart chẳng hạn.
 
 26
 00:01:52,600 --> 00:01:53,860
-Increase the quantity.
+Tăng số lượng.
 
 27
 00:01:53,860 --> 00:02:00,520
-All these operations is combined in the store operation that will be update the whole Json and that
+Tất cả các operasi này được kết hợp trong operasi store sẽ update toàn bộ JSON và điều đó
 
 28
 00:02:00,520 --> 00:02:03,490
-means insert or update existing record.
+có nghĩa là insert hoặc update bản ghi hiện có.
 
 29
 00:02:03,520 --> 00:02:06,820
-And the last operation is delete shopping cart with items.
+Và operasi cuối cùng là delete shopping cart with items.
 
 30
 00:02:06,820 --> 00:02:09,580
-These are the under the crud basket operations.
+Đây là các CRUD basket operations.
 
 31
 00:02:09,580 --> 00:02:15,280
-And the second main use case are gRPC cases in gRPC basket operation.
+Và use case chính thứ hai là gRPC cases trong gRPC basket operation.
 
 32
 00:02:15,280 --> 00:02:20,170
-We can discuss to the item in the shopping cart using the gRPC.
+Chúng ta có thể thảo luận về item trong shopping cart sử dụng gRPC.
 
 33
 00:02:20,260 --> 00:02:22,540
-That means we will use it operation.
+Điều đó có nghĩa là chúng ta sẽ sử dụng get operation.
 
 34
 00:02:22,540 --> 00:02:28,180
-When store the basket, we will update the shopping cart with items or add item into cart.
+Khi store basket, chúng ta sẽ update shopping cart with items hoặc add item vào cart.
 
 35
 00:02:28,180 --> 00:02:34,510
-We can run the get discount and deducted discount coupon from the item price, and the last main use
+Chúng ta có thể chạy get discount và deducted discount coupon từ giá item, và use case chính cuối cùng
 
 36
 00:02:34,510 --> 00:02:36,220
-case is Asynchronous Use Case.
+là Asynchronous Use Case.
 
 37
 00:02:36,220 --> 00:02:42,520
-This will be handling the checkout process and publishing event to the RabbitMQ to perform asynchronous
+Cái này sẽ xử lý quy trình checkout và publishing event tới RabbitMQ để thực hiện các
 
 38
 00:02:42,520 --> 00:02:45,280
-operation and publish subscribe pattern.
+operasi bất đồng bộ và publish subscribe pattern.
 
 39
 00:02:45,280 --> 00:02:49,060
-So these are the application use cases for basket microservices.
+Vậy đây là các use case của ứng dụng cho basket microservices.
 
 40
 00:02:49,060 --> 00:02:55,360
-And if you continue with the Rest API endpoints or basket microservices exposing the following RESTful
+Và nếu tiếp tục với các REST API endpoints hoặc basket microservices exposing các RESTful sau
 
 41
 00:02:55,360 --> 00:02:55,960
@@ -164,55 +164,55 @@ endpoints.
 
 42
 00:02:55,960 --> 00:02:57,400
-These are the Http.
+Đây là các Http.
 
 43
 00:02:57,400 --> 00:03:01,810
-Get into this request endpoint URL basket slash username.
+Truy cập vào endpoint URL yêu cầu basket slash username.
 
 44
 00:03:01,810 --> 00:03:08,920
-In order to perform get basket with username use cases and we will expose http post with these the same
+Để thực hiện get basket with username use cases, chúng ta sẽ expose HTTP POST với cùng
 
 45
 00:03:08,920 --> 00:03:12,460
-URL and this will be perform the store basket.
+URL này và điều này sẽ thực hiện store basket.
 
 46
 00:03:12,460 --> 00:03:19,450
-That means insert or update basket the whole Json object into database, and we will expose http delete
+Tức là insert hoặc update toàn bộ đối tượng Json vào database, và chúng ta sẽ expose HTTP DELETE
 
 47
 00:03:19,450 --> 00:03:23,380
-for the same URL in order to delete basket with username.
+cho cùng URL này để delete basket with username.
 
 48
 00:03:23,380 --> 00:03:30,820
-And lastly, we will perform http post operation in order to do basket checkout use cases.
+Và cuối cùng, chúng ta sẽ thực hiện HTTP POST operation để thực hiện basket checkout use cases.
 
 49
 00:03:30,820 --> 00:03:33,700
-These endpoint is basket slash checkout.
+Endpoint này là basket slash checkout.
 
 50
 00:03:34,000 --> 00:03:40,330
-Of course in basket checkout operation, we will send the whole basket checkout object into the Json
+Tất nhiên trong basket checkout operation, chúng ta sẽ gửi toàn bộ đối tượng basket checkout vào JSON
 
 51
 00:03:40,330 --> 00:03:42,850
-payload of these http post request.
+payload của HTTP POST request này.
 
 52
 00:03:43,530 --> 00:03:49,560
-And after that we can check infrastructure and underlying data structures of basket microservices.
+Và sau đó chúng ta có thể kiểm tra infrastructure và các cấu trúc dữ liệu cơ bản của basket microservice.
 
 53
 00:03:49,560 --> 00:03:53,280
-Basically, basket microservices has two data sources.
+Cơ bản là, basket microservice có hai nguồn dữ liệu.
 
 54
 00:03:53,280 --> 00:03:59,760
-The first one is Martin Document Database which is the PostgreSQL database, and the second one is Redis
+Nguồn đầu tiên là Marten Document Database, đó là PostgreSQL database, và nguồn thứ hai là Redis
 
 55
 00:03:59,760 --> 00:04:00,900
@@ -220,17 +220,17 @@ Distributed Cache.
 
 56
 00:04:01,320 --> 00:04:05,100
-Martin is a powerful library that transforms PostgreSQL into.
+Marten là một thư viện mạnh mẽ biến PostgreSQL thành.
 
 57
 00:04:05,250 --> 00:04:12,030
-Net transactional document database and Redis, a powerful in-memory data store and distributed cache,
+.NET transactional document database và Redis, một in-memory data store mạnh mẽ và distributed cache,
 
 58
 00:04:12,030 --> 00:04:15,030
-which is good fit for our microservice architectures.
+cái mà phù hợp với microservice architectures của chúng ta.
 
 59
 00:04:15,030 --> 00:04:18,060
-We will see all details in the implementation phase.
+Chúng ta sẽ xem tất cả chi tiết trong phase triển khai.
 
