@@ -1,158 +1,158 @@
 1
 00:00:00,140 --> 00:00:04,970
-In this video we are going to develop gate basket endpoint with minimal APIs.
+Trong video này chúng ta sẽ phát triển endpoint get basket với Minimal APIs.
 
 2
 00:00:04,970 --> 00:00:10,040
-And Carter, we will start with developing request and response record type.
+Và Carter, chúng ta sẽ bắt đầu bằng cách phát triển kiểu request và response record.
 
 3
 00:00:10,070 --> 00:00:14,120
-Please open the Visual Studio and go to the Get Basket endpoint.
+Vui lòng mở Visual Studio và đi tới endpoint Get Basket.
 
 4
 00:00:14,120 --> 00:00:17,450
-And now I am going to create Request and Response object.
+Và bây giờ tôi sẽ tạo đối tượng Request và Response.
 
 5
 00:00:17,660 --> 00:00:18,350
-As a request.
+Như một request.
 
 6
 00:00:18,380 --> 00:00:20,960
-We will get username from the request parameter.
+Chúng ta sẽ lấy username từ tham số request.
 
 7
 00:00:20,960 --> 00:00:25,850
-For that purpose I am putting in here commented request object to follow the best practices.
+Để phục vụ mục đích đó tôi đang đặt ở đây một đối tượng request được comment để tuân theo best practices.
 
 8
 00:00:25,850 --> 00:00:33,140
-And after that I am going to create a get basket response object as a record type public record get
+Và sau đó tôi sẽ tạo một đối tượng get basket response như một kiểu record public record get
 
 9
 00:00:33,140 --> 00:00:38,060
-basket response, and as a response we will expect the whole shopping cart object.
+basket response, và như một response chúng ta sẽ mong đợi toàn bộ đối tượng shopping cart.
 
 10
 00:00:38,450 --> 00:00:41,390
-After that, we can define the get basket endpoints.
+Sau đó, chúng ta có thể định nghĩa các endpoint get basket.
 
 11
 00:00:41,390 --> 00:00:48,920
-In order to implement minimal API we will implement these I Carter module interface and I Carter module
+Để triển khai Minimal API chúng ta sẽ triển khai interface I Carter module và I Carter module
 
 12
 00:00:48,950 --> 00:00:50,300
-should be comes from the Carter.
+nên đến từ Carter.
 
 13
 00:00:50,300 --> 00:00:52,730
-But we didn't install Carter yet.
+Nhưng chúng ta chưa cài đặt Carter.
 
 14
 00:00:52,760 --> 00:00:58,700
-So as you remember that when we are developing our catalog microservices, we realized that in the catalog
+Vậy như bạn nhớ rằng khi chúng ta đang phát triển catalog microservices, chúng ta nhận ra rằng trong catalog
 
 15
 00:00:58,700 --> 00:01:06,920
-Program.cs the Carter only scanning the operation and I Carter module interfaces for the current assembly.
+Program.cs thì Carter chỉ quét các operation và interface I Carter module cho assembly hiện tại.
 
 16
 00:01:06,920 --> 00:01:10,470
-And we cannot give the assembly like mediator for that purpose.
+Và chúng ta không thể cung cấp assembly như mediator cho mục đích đó.
 
 17
 00:01:10,470 --> 00:01:16,380
-We have to install Carter for each microservices where we are implementing minimal APIs.
+Chúng ta phải cài đặt Carter cho mỗi microservices nơi chúng ta đang triển khai Minimal APIs.
 
 18
 00:01:16,380 --> 00:01:24,780
-And I am going to go to the basket API and right click manage NuGet packages and search for the Carter
+Và tôi sẽ đi tới basket API và nhấp chuột phải quản lý NuGet packages và tìm kiếm Carter
 
 19
 00:01:25,290 --> 00:01:30,210
-and install Carter for basket microservices into the web API project.
+và cài đặt Carter cho basket microservices vào dự án Web API.
 
 20
 00:01:30,210 --> 00:01:34,290
-And if you double click, you can see that we have installed Carter successfully.
+Và nếu bạn double click, bạn có thể thấy rằng chúng ta đã cài đặt Carter thành công.
 
 21
 00:01:34,290 --> 00:01:36,090
-And save this file.
+Và lưu file này.
 
 22
 00:01:36,120 --> 00:01:38,460
-Go to the Get basket endpoint.
+Đi tới endpoint Get basket.
 
 23
 00:01:38,460 --> 00:01:44,010
-And this time you can see that we can implement Carter module with using Carter statement.
+Và lần này bạn có thể thấy rằng chúng ta có thể triển khai Carter module bằng cách sử dụng using Carter statement.
 
 24
 00:01:44,010 --> 00:01:50,130
-And also I'm going to move this using statement into the global using class.
+Và cũng vậy, tôi sẽ chuyển using statement này vào global using class.
 
 25
 00:01:50,250 --> 00:01:56,430
-If you come here and put the global keyword in the using statement of the Carter.
+Nếu bạn đến đây và đặt từ khóa global trong using statement của Carter.
 
 26
 00:01:56,430 --> 00:02:02,190
-And if you go back to get basket endpoint, you can see that our Carter module now is available.
+Và nếu bạn quay lại endpoint get basket, bạn có thể thấy rằng Carter module của chúng ta bây giờ đã có sẵn.
 
 27
 00:02:02,190 --> 00:02:06,810
-And I'm going to implement the interface members which is the add routes method.
+Và tôi sẽ triển khai các interface members, đó là phương thức add routes.
 
 28
 00:02:07,110 --> 00:02:11,070
-At this point we can check the basket microservice RESTful APIs.
+Tại thời điểm này, chúng ta có thể kiểm tra các RESTful APIs của basket microservice.
 
 29
 00:02:11,070 --> 00:02:18,420
-You can see that we are going to expose http get method with this endpoint URL and we will get basket
+Bạn có thể thấy rằng chúng ta sẽ expose phương thức HTTP GET với URL endpoint này và chúng ta sẽ lấy basket
 
 30
 00:02:18,420 --> 00:02:19,410
-with username.
+theo username.
 
 31
 00:02:19,410 --> 00:02:21,660
-So please open the Visual Studio.
+Vì vậy, hãy mở Visual Studio.
 
 32
 00:02:21,660 --> 00:02:29,400
-And now I am going to implement this add route method with add dot map get method to expose http get
+Và bây giờ tôi sẽ triển khai phương thức add route này bằng phương thức add dot map get để expose HTTP GET operation.
 
 33
 00:02:29,430 --> 00:02:30,210
-operation.
+Và chúng ta sẽ chỉ định URL endpoint, đó là basket slash username.
 
 34
 00:02:30,210 --> 00:02:34,680
-And we will specify the endpoint URL which is the basket slash username.
+Và sau đó chúng ta sẽ thực hiện delegate handle operation.
 
 35
 00:02:34,680 --> 00:02:37,860
-And after that we will perform delegate handle operation.
+Và trong delegate handler này, tôi sẽ lấy username từ request parameters.
 
 36
 00:02:37,860 --> 00:02:45,330
-And in this delegate handler I am going to take the username from the request parameters.
+Và sau đó tôi sẽ inject đối tượng Isander, đó là mediator của chúng ta.
 
 37
 00:02:45,330 --> 00:02:51,510
-And after that I am going to inject Isander object which is our mediator.
+Vì vậy trong phương thức delegate handler, tham số đầu tiên được điền từ request parameters.
 
 38
 00:02:51,510 --> 00:02:56,880
-So in delegate handler method the first parameter is populated from the request parameters.
+Và tham số thứ hai sẽ được inject bởi ASP.Net built in dependency injection.
 
 39
 00:02:56,880 --> 00:03:01,680
-And the second parameter will be injected by the ASP.Net built in dependency injection.
+Vì vậy tôi sẽ click vào Isander và sử dụng mediator.
 
 40
 00:03:01,680 --> 00:03:05,730
@@ -160,79 +160,79 @@ So I'm going to click the Isander and using mediator.
 
 41
 00:03:05,730 --> 00:03:09,690
-And also I am going to move this mediator to the global namespace.
+Và cũng tôi sẽ di chuyển mediator này vào global namespace.
 
 42
 00:03:09,690 --> 00:03:14,790
-If you go to the global using and put in here, you can copy and paste global.
+Nếu bạn đi đến global using và đặt nó ở đây, bạn có thể copy và paste global.
 
 43
 00:03:14,790 --> 00:03:21,370
-And if you go back to our Get Basket endpoint classes, you can see that Lysander comes in here.
+Và nếu bạn quay lại các Get Basket endpoint classes của chúng ta, bạn có thể thấy rằng Lysander xuất hiện ở đây.
 
 44
 00:03:21,370 --> 00:03:26,110
-And now we will implement to accommodating incoming HTTP requests.
+Và bây giờ chúng ta sẽ triển khai để xử lý các HTTP requests đến.
 
 45
 00:03:26,110 --> 00:03:35,170
-In here the first line we will get the result object with async await sender that send object.
+Ở dòng đầu tiên ở đây chúng ta sẽ nhận được result object với async await sender mà gửi object.
 
 46
 00:03:35,170 --> 00:03:40,300
-That means mediator will send a new get basket query object.
+Điều đó có nghĩa là mediator sẽ gửi một get basket query object mới.
 
 47
 00:03:41,020 --> 00:03:49,180
-And inside of this get basket query, we will passing the username and expecting the result object from
+Và bên trong get basket query này, chúng ta sẽ truyền username và mong đợi result object từ
 
 48
 00:03:49,180 --> 00:03:55,150
-the mediator that will be handled the query handle method and respond back to the result object.
+mediator mà sẽ xử lý query handle method và phản hồi lại result object.
 
 49
 00:03:55,150 --> 00:03:59,890
-And after that we can convert this result object as a response.
+Và sau đó chúng ta có thể chuyển đổi result object này thành response.
 
 50
 00:03:59,890 --> 00:04:12,130
-For that purpose I am going to use result dot adopt method and passing the get basket response object.
+Để mục đích đó tôi sẽ sử dụng result dot adopt method và truyền get basket response object.
 
 51
 00:04:12,850 --> 00:04:15,400
-So how we can run this adopt method?
+Vậy làm thế nào chúng ta có thể chạy adopt method này?
 
 52
 00:04:15,400 --> 00:04:22,750
-We didn't install master in the basket API because master has installed in the building blocks, and
+Chúng ta không cài đặt Mapster trong basket API vì Mapster đã được cài đặt trong building blocks, và
 
 53
 00:04:22,750 --> 00:04:28,930
-since we are getting reference from the building blocks, we can access the Master and Mediator library
+vì chúng ta đang nhận reference từ building blocks, chúng ta có thể truy cập Master và Mediator library
 
 54
 00:04:28,930 --> 00:04:30,220
-from the building blocks.
+từ building blocks.
 
 55
 00:04:30,220 --> 00:04:36,130
-So if you go back to the get basket endpoint, we can return back to the client application, this response
+Vậy nếu bạn quay lại get basket endpoint, chúng ta có thể trả lại cho client application, response object này.
 
 56
 00:04:36,130 --> 00:04:36,640
-object.
+Để mục đích đó tôi sẽ viết return results dot okay response và truyền response object.
 
 57
 00:04:36,640 --> 00:04:46,270
-For that purpose I'm going to write return results dot okay response and passing the response object.
+Chúng ta cũng có thể configure các HTTP get endpoint bằng cách sử dụng width methods.
 
 58
 00:04:46,510 --> 00:04:52,870
-We can also configure these HTTP get endpoint with using the width methods.
+Đây là extension method mà chúng ta có thể configure HTTP get method của chúng ta.
 
 59
 00:04:52,870 --> 00:04:58,000
-These are the extension method that we can configure our HTTP get method.
+Nếu bạn nhìn lên đầu của class này, bạn có thể thấy rằng chúng ta có thể di chuyển Mapster này vào global using statement của chúng ta.
 
 60
 00:04:58,000 --> 00:05:06,100
@@ -240,21 +240,21 @@ If you go on top of this class, you can see that we can move these master to the
 
 61
 00:05:06,880 --> 00:05:13,300
-By this way, the other operations will not be using statement into their operation.
+Bằng cách này, các hoạt động khác sẽ không sử dụng statement trong hoạt động của họ.
 
 62
 00:05:13,300 --> 00:05:20,170
-So if you go back to get basket endpoints here you can see that we define get basket endpoint class
+Vậy nếu bạn quay lại xem các endpoint giỏ hàng ở đây, bạn có thể thấy rằng chúng ta định nghĩa lớp get basket endpoint
 
 63
 00:05:20,170 --> 00:05:22,720
-that implements the I Carter module.
+triển khai I Carter module.
 
 64
 00:05:22,720 --> 00:05:29,740
-And our Get request takes the username as a route parameter and returns to the user basket, which means
+Và yêu cầu GET của chúng ta lấy username làm route parameter và trả về giỏ hàng của người dùng, có nghĩa là
 
 65
 00:05:29,740 --> 00:05:33,730
-that shopping cart object from running the query handler class.
+đó là đối tượng shopping cart từ việc chạy lớp query handler.
 
