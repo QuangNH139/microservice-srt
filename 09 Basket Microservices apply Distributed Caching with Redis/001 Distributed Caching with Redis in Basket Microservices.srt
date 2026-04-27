@@ -1,34 +1,34 @@
 1
 00:00:00,110 --> 00:00:06,410
-In this section, we will learn how to integrate Redis as a distributed caching solution in our basket
+Trong phần này, chúng ta sẽ học cách tích hợp Redis như một giải pháp distributed cache trong basket microservices của chúng ta
 
 2
 00:00:06,410 --> 00:00:13,220
-microservices, and we will also cover the implementation of key patterns and tools to efficiently manage
+và chúng ta cũng sẽ tìm hiểu về việc triển khai các mẫu và công cụ chính để quản lý hiệu quả
 
 3
 00:00:13,220 --> 00:00:15,260
-caching on basket microservices.
+caching trên basket microservices.
 
 4
 00:00:15,830 --> 00:00:19,460
-Here you can see the big picture of our application basket.
+Tại đây bạn có thể thấy bức tranh toàn cảnh của ứng dụng basket của chúng ta.
 
 5
 00:00:19,460 --> 00:00:25,580
-Microservices will be communicate with the Redis to increase the performance of the shopping cart operations.
+Microservices sẽ giao tiếp với Redis để tăng hiệu suất của các hoạt động giỏ hàng.
 
 6
 00:00:25,670 --> 00:00:29,600
-So how integrating Redis into basket microservices.
+Vậy làm thế nào để tích hợp Redis vào basket microservices.
 
 7
 00:00:29,750 --> 00:00:32,270
-Here you can see the implementation strategy.
+Tại đây bạn có thể thấy chiến lược triển khai.
 
 8
 00:00:32,299 --> 00:00:39,500
-We basically integrate Redis into our basket microservices to cache user data, shopping cart data into
+Về cơ bản, chúng ta tích hợp Redis vào basket microservices của chúng ta để cache dữ liệu người dùng, dữ liệu giỏ hàng vào
 
 9
 00:00:39,500 --> 00:00:39,980
@@ -36,71 +36,71 @@ Redis.
 
 10
 00:00:39,980 --> 00:00:46,280
-And this will be enhanced the performance by reducing the load our database operations and speeding
+Và điều này sẽ cải thiện hiệu suất bằng cách giảm tải các hoạt động cơ sở dữ liệu của chúng ta và tăng tốc độ
 
 11
 00:00:46,280 --> 00:00:49,460
-up the data retrieve operations from the basket microservices.
+các hoạt động truy xuất dữ liệu từ basket microservices.
 
 12
 00:00:49,460 --> 00:00:54,680
-And here you can see that we can use different NuGet packages to connect and communicate with radius
+Và tại đây bạn có thể thấy rằng chúng ta có thể sử dụng các gói NuGet khác nhau để kết nối và giao tiếp với Redis
 
 13
 00:00:54,680 --> 00:00:56,240
-from basket microservices.
+từ basket microservices.
 
 14
 00:00:56,240 --> 00:01:00,650
-And here you can see the architecture that we are going to implement during this section.
+Và tại đây bạn có thể thấy kiến trúc mà chúng ta sẽ triển khai trong phần này.
 
 15
 00:01:01,850 --> 00:01:04,700
-Why we choose Redis for distributed caching.
+Tại sao chúng ta chọn Redis cho distributed caching.
 
 16
 00:01:04,700 --> 00:01:11,360
-Redis is an advanced key value store known for its high performance, and it is often used for caching,
+Redis là một key value store nâng cao được biết đến với hiệu suất cao, và nó thường được sử dụng cho caching,
 
 17
 00:01:11,360 --> 00:01:13,880
-session store and pub sub systems.
+session store và pub sub systems.
 
 18
 00:01:13,910 --> 00:01:20,780
-Redis offers in-memory data storage resulting in fast data access, and it also supports various data
+Redis cung cấp lưu trữ dữ liệu trong bộ nhớ dẫn đến truy cập dữ liệu nhanh chóng, và nó cũng hỗ trợ nhiều loại dữ liệu
 
 19
 00:01:20,780 --> 00:01:27,200
-structures, make it versatile for different use cases, and also Radius is an excellent choice for
+structures, làm cho nó linh hoạt cho các trường hợp sử dụng khác nhau, và cũng Redis là một lựa chọn tuyệt vời cho
 
 20
 00:01:27,200 --> 00:01:33,620
-microservice architectures, primarily due to its inherent distributed characteristics and performance
+kiến trúc microservices, chủ yếu là do các đặc tính phân tán và hiệu suất vốn có của nó.
 
 21
 00:01:33,620 --> 00:01:34,550
-efficiency.
+hiệu suất.
 
 22
 00:01:34,550 --> 00:01:41,360
-Microservices often need to share state or data in a distributed environment, and Redis as a distributed
+Microservices thường cần chia sẻ trạng thái hoặc dữ liệu trong một môi trường phân tán, và Redis như một distributed cache,
 
 23
 00:01:41,360 --> 00:01:47,780
-cache, enabling services to access shared data quickly and reducing the load on databases.
+cho phép các services truy cập dữ liệu chia sẻ một cách nhanh chóng và giảm tải trên các cơ sở dữ liệu.
 
 24
 00:01:48,440 --> 00:01:54,980
-And as a result, we can say that we will implement proxy pattern, decorator pattern and security library,
+Và như một kết quả, chúng ta có thể nói rằng chúng ta sẽ triển khai proxy pattern, decorator pattern và security library,
 
 25
 00:01:55,070 --> 00:01:59,960
-and we will implement cache aside pattern and cache invalidation with using Redis.
+và chúng ta sẽ triển khai cache aside pattern và cache invalidation bằng cách sử dụng Redis.
 
 26
 00:01:59,960 --> 00:02:06,080
-And we will implement the decorator pattern with developing cased basket repository class using the
+Và chúng ta sẽ triển khai decorator pattern bằng cách phát triển một lớp basket repository được thiết kế sử dụng
 
 27
 00:02:06,080 --> 00:02:07,220
@@ -108,19 +108,19 @@ security library.
 
 28
 00:02:07,520 --> 00:02:13,310
-And we will set up Redis as a distributed cache using the docker compose file for multi-container docker
+Và chúng ta sẽ thiết lập Redis như một distributed cache sử dụng Docker Compose file cho môi trường Docker đa container.
 
 29
 00:02:13,310 --> 00:02:14,060
-environment.
+Và chúng ta sẽ kết thúc bằng cách tích hợp Redis vào basket microservices của chúng ta để cache dữ liệu giỏ hàng của người dùng,
 
 30
 00:02:14,060 --> 00:02:21,020
-And we will end up integrated Redis into our basket microservices to cache our user shopping cart data,
+và điều đó sẽ cải thiện hiệu suất bằng cách giảm tải trên cơ sở dữ liệu của chúng ta và tăng tốc độ truy xuất dữ liệu
 
 31
 00:02:21,020 --> 00:02:26,540
-and that will boost performance by reducing the load on our database and speeding up the data retrieval
+hoạt động.
 
 32
 00:02:26,540 --> 00:02:27,380
