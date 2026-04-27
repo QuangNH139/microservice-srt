@@ -76,6 +76,7 @@ def main():
     run_count = 0
 
     while True:
+      try:
         done = count_done()
         if done >= TOTAL_FILES:
             log(f"All {TOTAL_FILES} files translated!")
@@ -123,13 +124,20 @@ def main():
             break
 
         if exit_code == 0:
-            # Normal exit but not done — something unexpected, short wait
             log(f"Unexpected normal exit with {done_after} files done. Restarting...")
             time.sleep(2)
         else:
             log(f"Crashed (exit={exit_code}). Restarting in {RESTART_DELAY}s...")
             time.sleep(RESTART_DELAY)
 
+      except Exception as e:
+          log(f"Supervisor error: {e}. Recovering in {RESTART_DELAY}s...")
+          time.sleep(RESTART_DELAY)
+
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        log(f"FATAL: {e}")
+        sys.exit(1)
