@@ -1,86 +1,86 @@
 1
 00:00:00,140 --> 00:00:07,520
-In this video, we are going to integrate the Basket repository class with our six handler classes to
+Trong video này, chúng ta sẽ tích hợp lớp Basket repository với sáu handler classes của chúng ta để
 
 2
 00:00:07,520 --> 00:00:10,910
-perform Crud operations on the basket microservices.
+thực hiện các hoạt động Crud trên basket microservices.
 
 3
 00:00:10,910 --> 00:00:14,630
-So we have developed the basket repository under data folders.
+Vậy chúng ta đã phát triển basket repository trong thư mục data.
 
 4
 00:00:14,630 --> 00:00:20,840
-Now it is time to integrate these repository objects to our 600 classes.
+Bây giờ là lúc để tích hợp các đối tượng repository này vào các lớp 600 của chúng ta.
 
 5
 00:00:20,840 --> 00:00:26,450
-These are the get basket handler, store basket handler and delete basket handler.
+Đây là get basket handler, store basket handler và delete basket handler.
 
 6
 00:00:26,810 --> 00:00:29,120
-So let's open the get basket handler.
+Vậy hãy mở get basket handler.
 
 7
 00:00:29,630 --> 00:00:36,200
-In get basket handler class, we basically inject a basket repository to retrieve the basket data from
+Trong lớp get basket handler, chúng ta cơ bản là inject một basket repository để lấy dữ liệu basket từ
 
 8
 00:00:36,200 --> 00:00:38,390
-the database with a given username.
+database với một username cho trước.
 
 9
 00:00:38,480 --> 00:00:47,240
-For that purpose, I am going to inject the I basket repository into our query handler classes I basket
+Với mục đích đó, tôi sẽ inject I basket repository vào các handler classes của chúng ta là I basket
 
 10
 00:00:47,240 --> 00:00:51,290
-repository and I'm going to give as a name repository.
+repository và tôi sẽ đặt tên nó là repository.
 
 11
 00:00:52,190 --> 00:00:59,990
-So with injecting these I basket repository in the handle method we use this repository object and perform
+Vậy với việc inject I basket repository này vào handle method, chúng ta sử dụng đối tượng repository này và thực hiện
 
 12
 00:00:59,990 --> 00:01:06,140
-the get basket operation in order to fetch the basket for provided username from the database.
+hoạt động get basket để lấy basket cho username được cung cấp từ database.
 
 13
 00:01:06,140 --> 00:01:11,450
-For that purpose I'm going to remove the these two do statement.
+Với mục đích đó, tôi sẽ xoá những do statement này.
 
 14
 00:01:11,450 --> 00:01:16,610
-And in here I'm going to write the basket variable.
+Và ở đây tôi sẽ viết biến basket.
 
 15
 00:01:16,610 --> 00:01:22,130
-And this time we will get this basket using the repository that get basket method.
+Và lần này chúng ta sẽ lấy basket này bằng phương thức get basket của repository.
 
 16
 00:01:22,130 --> 00:01:27,770
-And we will passing the username from incoming query object.
+Và chúng ta sẽ truyền username từ đối tượng query đến.
 
 17
 00:01:28,250 --> 00:01:32,300
-And here you can see that we got the basket information.
+Và ở đây bạn có thể thấy rằng chúng ta đã lấy được thông tin basket.
 
 18
 00:01:32,300 --> 00:01:36,530
-And I'm going to remove the mocking shopping cart object inside of the result.
+Và tôi sẽ xoá đối tượng shopping cart được mocking bên trong result.
 
 19
 00:01:36,530 --> 00:01:39,500
-And passed the basket object in here.
+Và truyền đối tượng basket vào đây.
 
 20
 00:01:40,400 --> 00:01:44,690
-So here we handle the get basket query and return basket data.
+Vậy ở đây chúng ta xử lý truy vấn get basket và trả lại dữ liệu basket.
 
 21
 00:01:44,690 --> 00:01:51,320
-And if you right click and go to implementation of this repository class you can see the Basket repository
+Và nếu bạn nhấp chuột phải và đi đến implementation của repository class này, bạn có thể thấy Basket repository
 
 22
 00:01:51,320 --> 00:01:51,650
@@ -88,27 +88,27 @@ class.
 
 23
 00:01:51,650 --> 00:01:58,760
-And in this class we basically load async method and get the basket information with a given username
+Và trong class này, chúng ta cơ bản có một load async method và lấy thông tin giỏ hàng với một username cho sẵn
 
 24
 00:01:58,760 --> 00:01:59,780
-from database.
+từ database.
 
 25
 00:01:59,780 --> 00:02:02,450
-If basket is null, we will throw an exception.
+Nếu basket là null, chúng ta sẽ throw một exception.
 
 26
 00:02:02,450 --> 00:02:07,730
-If not, we will return back to the basket object to the our handle method and this will be.
+Nếu không, chúng ta sẽ return lại basket object cho handle method của chúng ta, và đây sẽ là.
 
 27
 00:02:07,730 --> 00:02:13,640
-Go to the result object and result object will be redirect to the endpoint class, and endpoint class
+Đi tới result object và result object sẽ redirect tới endpoint class, và endpoint class
 
 28
 00:02:13,640 --> 00:02:19,040
-will be convert to the response object and return back to the client application using the result dot
+sẽ convert sang response object và return lại cho client application sử dụng result dot
 
 29
 00:02:19,040 --> 00:02:20,180
@@ -116,103 +116,103 @@ okay method.
 
 30
 00:02:20,180 --> 00:02:25,700
-So after that we can continue to the next Crud operation, which is the store basket.
+Vậy sau đó chúng ta có thể tiếp tục tới CRUD operation tiếp theo, đó là store basket.
 
 31
 00:02:25,700 --> 00:02:30,740
-For that purpose, please open the store basket and go to Store Basket Handle class.
+Với mục đích đó, vui lòng mở store basket và đi tới Store Basket Handle class.
 
 32
 00:02:30,740 --> 00:02:33,590
-Here you can see the our actual handle class.
+Ở đây bạn có thể thấy handle class thực tế của chúng ta.
 
 33
 00:02:33,590 --> 00:02:43,760
-In this class we again use I basket repository and inject a basket repository into our handle class.
+Trong class này chúng ta lại sử dụng I basket repository và inject basket repository vào handle class của chúng ta.
 
 34
 00:02:44,390 --> 00:02:48,440
-We will use these basket repository to store basket data.
+Chúng ta sẽ sử dụng basket repository này để lưu trữ dữ liệu giỏ hàng.
 
 35
 00:02:48,440 --> 00:02:50,900
-And this will be an observed operation.
+Và đây sẽ là một observed operation.
 
 36
 00:02:50,900 --> 00:02:55,430
-Creating a new basket or updating an existing basket with a given username.
+Tạo một giỏ hàng mới hoặc cập nhật một giỏ hàng hiện có với một username cho sẵn.
 
 37
 00:02:55,430 --> 00:03:05,600
-For that purpose I'm going to use await repository dot store basket method and I will passing to shopping
+Với mục đích đó, tôi sẽ sử dụng await repository dot store basket method và tôi sẽ truyền shopping
 
 38
 00:03:05,600 --> 00:03:09,680
-cart information with incoming command object command dot cart.
+cart information với incoming command object command dot cart.
 
 39
 00:03:09,680 --> 00:03:15,110
-And we will passing the cancellation token which is the incoming cancellation token.
+Và chúng ta sẽ truyền cancellation token, đó là incoming cancellation token.
 
 40
 00:03:16,040 --> 00:03:19,640
-And here you can see that we basically store the basket information.
+Và ở đây bạn có thể thấy rằng chúng ta cơ bản lưu trữ thông tin giỏ hàng.
 
 41
 00:03:19,640 --> 00:03:26,570
-And after that we are going to return back to the store basket result object with a given username.
+Và sau đó chúng ta sẽ trả về đối tượng store basket result với một username được cho trước.
 
 42
 00:03:26,570 --> 00:03:34,730
-For that purpose I'm going to remove this hardcoded username and passing the command dot cart dot username.
+Để làm điều đó, tôi sẽ xóa username được hardcoded này và truyền command dot cart dot username.
 
 43
 00:03:37,860 --> 00:03:38,370
-Okay.
+Được rồi.
 
 44
 00:03:38,370 --> 00:03:42,360
-We have completed the implementation of store basket command handler.
+Chúng ta đã hoàn thành triển khai store basket command handler.
 
 45
 00:03:42,390 --> 00:03:46,290
-If you go on top of this page you can see that we have using statement.
+Nếu bạn cuộn lên trên cùng của trang này, bạn có thể thấy rằng chúng ta có using statement.
 
 46
 00:03:46,290 --> 00:03:52,080
-And I am going to move these using statement to the global using CSS.
+Và tôi sẽ chuyển những using statement này sang global using CSS.
 
 47
 00:03:53,610 --> 00:03:58,140
-By this way each class can be used these data related operations.
+Bằng cách này, mỗi class có thể sử dụng các data related operations này.
 
 48
 00:03:58,140 --> 00:04:03,720
-And if you open the gate basket handler now we can remove these unnecessary using statement in here.
+Và nếu bạn mở gate basket handler bây giờ, chúng ta có thể xóa những using statement không cần thiết ở đây.
 
 49
 00:04:03,750 --> 00:04:09,540
-Now if you go to the delete basket and delete basket handler we will follow the same steps.
+Bây giờ nếu bạn đi đến delete basket và delete basket handler, chúng ta sẽ theo dõi các bước tương tự.
 
 50
 00:04:09,690 --> 00:04:14,730
-In class definition we basically inject the I basket repository.
+Trong định nghĩa class, chúng ta cơ bản là inject I basket repository.
 
 51
 00:04:16,890 --> 00:04:21,089
-And we will use basket repository inside of the handle method.
+Và chúng ta sẽ sử dụng basket repository bên trong handle method.
 
 52
 00:04:21,089 --> 00:04:23,790
-So basically this is very straightforward.
+Vậy về cơ bản điều này rất đơn giản.
 
 53
 00:04:23,790 --> 00:04:30,090
-We will just use the repository dot delete basket operation.
+Chúng ta sẽ chỉ sử dụng repository dot delete basket operation.
 
 54
 00:04:30,090 --> 00:04:36,750
-And I am going to paste the username with the incoming command command dot username and paste the cancellation
+Và tôi sẽ dán username với incoming command command dot username và dán cancellation
 
 55
 00:04:36,750 --> 00:04:38,670
@@ -220,15 +220,15 @@ token.
 
 56
 00:04:38,670 --> 00:04:42,030
-Now we can delete this session line.
+Bây giờ chúng ta có thể xóa dòng session này.
 
 57
 00:04:42,870 --> 00:04:48,270
-And of course we should make this method call as an available method call.
+Và tất nhiên chúng ta nên làm cho gọi method này là một available method call.
 
 58
 00:04:48,480 --> 00:04:54,360
-So basically this handle method processed the delete command and ensure the basket is removed from the
+Vậy về cơ bản handle method này xử lý delete command và đảm bảo rằng basket được xóa khỏi
 
 59
 00:04:54,360 --> 00:04:55,230
@@ -236,49 +236,49 @@ database.
 
 60
 00:04:55,320 --> 00:05:02,070
-After integrating repository object with the handle methods, it is time to register our basket repository
+Sau khi tích hợp repository object với các handle methods, đã đến lúc đăng ký basket repository của chúng ta
 
 61
 00:05:02,070 --> 00:05:08,790
-into ASP.Net Core Dependency Injection container, because we will inject these repository into every
+vào ASP.NET Core Dependency Injection container, bởi vì chúng ta sẽ inject các repository này vào mọi
 
 62
 00:05:08,790 --> 00:05:14,640
-100 class with using the primary constructor, it is need to register into Program.cs.
+class bằng cách sử dụng primary constructor, nó cần được đăng ký vào Program.cs.
 
 63
 00:05:14,640 --> 00:05:19,710
-Please open the Program.cs and go to the add services into container part.
+Hãy mở Program.cs và đi đến phần add services vào container.
 
 64
 00:05:19,710 --> 00:05:21,900
-Before building the application.
+Trước khi build ứng dụng.
 
 65
 00:05:21,900 --> 00:05:28,530
-In here we can add a Services Builder Services add scoped.
+Ở đây chúng ta có thể add Services Builder Services add scoped.
 
 66
 00:05:28,530 --> 00:05:33,630
-I'm going to add a scoped services and this will be the I basket repository.
+Tôi sẽ add một scoped services và đây sẽ là I basket repository.
 
 67
 00:05:36,080 --> 00:05:38,450
-And we are going to resolve this.
+Và chúng ta sẽ resolve cái này.
 
 68
 00:05:38,630 --> 00:05:41,300
-I basket repository to basket repository.
+I basket repository tới basket repository.
 
 69
 00:05:44,410 --> 00:05:45,820
-With this setup.
+Với setup này.
 
 70
 00:05:45,850 --> 00:05:52,300
-Our handler class now fully integrated with the basket repository and capable of performing the necessary
+Handler class của chúng ta giờ đã được tích hợp đầy đủ với basket repository và có khả năng thực hiện các
 
 71
 00:05:52,300 --> 00:05:54,700
-Crud operations on basket microservices.
+CRUD operations trên basket microservices.
 
