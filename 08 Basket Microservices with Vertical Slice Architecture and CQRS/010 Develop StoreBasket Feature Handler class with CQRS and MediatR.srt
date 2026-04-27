@@ -1,102 +1,102 @@
 1
 00:00:00,140 --> 00:00:04,850
-In this video we are going to develop Store Basket feature handle class.
+Trong video này, chúng ta sẽ phát triển lớp xử lý tính năng Store Basket.
 
 2
 00:00:05,210 --> 00:00:09,110
-So we will be storing shopping cart with items as a JSON format.
+Vậy chúng ta sẽ lưu trữ giỏ hàng với các mục dưới dạng định dạng JSON.
 
 3
 00:00:09,110 --> 00:00:15,410
-And when we are storing this shopping cart with items, this will be insert or update operation and
+Và khi chúng ta lưu trữ giỏ hàng với các mục, đây sẽ là hoạt động chèn hoặc cập nhật, và
 
 4
 00:00:15,410 --> 00:00:18,200
-covering all these related use cases.
+bao gồm tất cả các use case liên quan.
 
 5
 00:00:18,200 --> 00:00:22,040
-And we will exposing http post request with this URL.
+Và chúng ta sẽ expose HTTP POST request với URL này.
 
 6
 00:00:22,040 --> 00:00:28,970
-In order to store basket information, please open the Visual Studio and go to the basket API and go
+Để lưu trữ thông tin giỏ hàng, vui lòng mở Visual Studio và đi tới basket API, và đi tới
 
 7
 00:00:28,970 --> 00:00:30,920
-to the basket main feature folder.
+thư mục feature chính của basket.
 
 8
 00:00:30,950 --> 00:00:37,940
-Under basket Folder we should locate the store basket subfolder which is the R use case and open the
+Dưới thư mục Basket, chúng ta cần tìm thư mục con store basket, đó là use case R, và mở
 
 9
 00:00:37,940 --> 00:00:39,680
-store basket handle class.
+lớp xử lý store basket.
 
 10
 00:00:39,680 --> 00:00:43,580
-So we will develop Store Basket handle class for this video.
+Vậy chúng ta sẽ phát triển lớp Store Basket handle cho video này.
 
 11
 00:00:43,580 --> 00:00:49,430
-And as always we will start with the creating command and result class for store basket feature.
+Và như thường lệ, chúng ta sẽ bắt đầu bằng cách tạo command và result class cho tính năng store basket.
 
 12
 00:00:49,430 --> 00:00:56,030
-So in here I am going to create a record type which is a public record and store basket command and
+Vậy ở đây tôi sẽ tạo một record type, là public record store basket command, và
 
 13
 00:00:56,030 --> 00:00:57,410
-passing the shopping cart.
+truyền shopping cart.
 
 14
 00:00:57,410 --> 00:01:04,580
-And this will be implement from the I command and we will pass our store basket result object.
+Và điều này sẽ implement từ I command và chúng ta sẽ truyền store basket result object.
 
 15
 00:01:07,540 --> 00:01:17,230
-And after that we can define store basket result object and as a result we will expecting that boiling
+Và sau đó chúng ta có thể định nghĩa store basket result object, và kết quả là chúng ta sẽ mong đợi
 
 16
 00:01:17,230 --> 00:01:18,280
-is success.
+một boolean là success.
 
 17
 00:01:18,280 --> 00:01:21,130
-That means this operation is success or not.
+Điều đó có nghĩa là hoạt động này thành công hay không.
 
 18
 00:01:21,160 --> 00:01:27,220
-We have develop command and result object and we will implement from the I command which comes from
+Chúng ta đã phát triển command và result object và sẽ implement từ I command, nó đến từ
 
 19
 00:01:27,220 --> 00:01:30,970
-the are building blocks and implementing the skills and mediator.
+các building blocks và implement skills và mediator.
 
 20
 00:01:31,090 --> 00:01:37,420
-And after defining these command and result, the next thing we can do that the command validator.
+Và sau khi định nghĩa những command và result này, điều tiếp theo chúng ta có thể làm là command validator.
 
 21
 00:01:37,420 --> 00:01:45,670
-So in here I'm going to create a new class which representing our command validator class which is the
+Vậy ở đây tôi sẽ tạo một class mới để đại diện cho validator class của chúng ta, đó là
 
 22
 00:01:45,670 --> 00:01:52,180
-store basket command validator and inherit from the abstract validator and passing the validating object
+store basket command validator và kế thừa từ abstract validator và truyền đối tượng được xác thực
 
 23
 00:01:52,180 --> 00:01:53,950
-which is a store basket command.
+đó là store basket command.
 
 24
 00:01:54,490 --> 00:02:00,190
-As you remember that when we are performing the command operations, we can put the validator.
+Như bạn nhớ, khi chúng ta thực hiện các command operations, chúng ta có thể đặt validator.
 
 25
 00:02:00,190 --> 00:02:05,890
-We are going to develop this validator and validations always perform in the constructor and in the
+Chúng ta sẽ phát triển validator này và validations luôn được thực hiện trong constructor và trong
 
 26
 00:02:05,890 --> 00:02:06,520
@@ -104,131 +104,131 @@ constructor.
 
 27
 00:02:06,520 --> 00:02:13,480
-I'm going to put some of the rule definitions in here, which including the cart and cart username.
+Tôi sẽ đặt một số rule definitions ở đây, bao gồm cart và cart username.
 
 28
 00:02:13,480 --> 00:02:19,750
-Within this code, we basically validate the commands using the full length validation abstract validator
+Trong code này, về cơ bản chúng ta xác thực các commands sử dụng full length validation abstract validator
 
 29
 00:02:19,750 --> 00:02:22,480
-class, and this will be comes from the building blocks.
+class, và cái này sẽ đến từ building blocks.
 
 30
 00:02:22,480 --> 00:02:27,040
-If you double click the building blocks, you can see the full length validation related package comes
+Nếu bạn double click vào building blocks, bạn có thể thấy full length validation related package đến
 
 31
 00:02:27,040 --> 00:02:27,970
-from there.
+từ đó.
 
 32
 00:02:27,970 --> 00:02:34,540
-And inside of our store basket command validator we basically validate and define rules for the cart
+Và bên trong store basket command validator của chúng ta, về cơ bản chúng ta xác thực và định nghĩa các rules cho cart
 
 33
 00:02:34,570 --> 00:02:38,650
-cannot be null and the username is required inside of the cart.
+không thể null và username là bắt buộc bên trong cart.
 
 34
 00:02:38,650 --> 00:02:44,200
-And these rules will be run by the validation pipeline behavior that you can see under the building
+Và những rules này sẽ được chạy bởi validation pipeline behavior mà bạn có thể thấy dưới building
 
 35
 00:02:44,200 --> 00:02:46,540
-blocks behaviors and validation behavior.
+blocks behaviors và validation behavior.
 
 36
 00:02:46,540 --> 00:02:52,570
-This will be run the validate async method for each rule definition and calculate and accumulate the
+Cái này sẽ chạy validate async method cho mỗi rule definition và tính toán và tích lũy
 
 37
 00:02:52,570 --> 00:02:54,880
-result and throw a validation exception.
+kết quả và throw một validation exception.
 
 38
 00:02:54,880 --> 00:03:01,270
-And this validation behavior only works for the I command interface related operations that you can
+Và validation behavior này chỉ hoạt động cho I command interface related operations mà bạn có thể
 
 39
 00:03:01,270 --> 00:03:03,010
-see in here where keyword.
+thấy ở đây where keyword.
 
 40
 00:03:03,010 --> 00:03:09,370
-So if you go back to our store basket handler after defining the command result and validator, now
+Vậy nếu bạn quay lại store basket handler sau khi định nghĩa command result và validator, bây giờ
 
 41
 00:03:09,370 --> 00:03:12,070
-it is time to develop store basket handler class.
+Đã đến lúc phát triển lớp store basket handler.
 
 42
 00:03:12,070 --> 00:03:19,110
-And as always we can start with changing the name as a store basket command handle to identify query
+Và như mọi khi, chúng ta có thể bắt đầu bằng cách thay đổi tên thành store basket command handle để xác định query
 
 43
 00:03:19,110 --> 00:03:26,850
-or command operation, and after that we will inherit from the I command handle interface and we will
+hoặc command operation, và sau đó chúng ta sẽ inherit từ interface I command handle và chúng ta sẽ
 
 44
 00:03:26,850 --> 00:03:30,450
-paste the command and result object as a generics.
+paste command và result object dưới dạng generics.
 
 45
 00:03:30,450 --> 00:03:35,880
-You can come here and put these objects into our interface.
+Bạn có thể đến đây và đặt các objects này vào interface của chúng ta.
 
 46
 00:03:35,880 --> 00:03:40,410
-And here you can see that our class is implemented I command interface.
+Và ở đây bạn có thể thấy rằng lớp của chúng ta đã implement interface I command.
 
 47
 00:03:40,410 --> 00:03:45,480
-And if you implement interface members you can see that handle method is created.
+Và nếu bạn implement các interface members, bạn có thể thấy rằng handle method được tạo ra.
 
 48
 00:03:45,480 --> 00:03:48,540
-And the first parameter is store basket command.
+Và tham số đầu tiên là store basket command.
 
 49
 00:03:48,540 --> 00:03:52,080
-And I am going to rename the parameter name as a command.
+Và tôi sẽ đặt lại tên tham số thành command.
 
 50
 00:03:52,140 --> 00:03:55,980
-Also make this function as asynchronous function.
+Cũng làm cho function này thành một asynchronous function.
 
 51
 00:03:56,010 --> 00:04:00,090
-And after that we can implement actual business logic in the handle method.
+Và sau đó chúng ta có thể triển khai logic business thực tế trong handle method.
 
 52
 00:04:00,090 --> 00:04:03,570
-So what is the business logic for store basket command handle.
+Vậy logic business cho store basket command handle là gì.
 
 53
 00:04:03,600 --> 00:04:08,220
-Basically we will store the basket in database and update the cache.
+Về cơ bản, chúng ta sẽ lưu giỏ hàng vào database và cập nhật cache.
 
 54
 00:04:08,220 --> 00:04:14,010
-So for that purpose first of all I am going to define a shopping cart and get cart information from
+Vì vậy, để phục vụ mục đích đó, đầu tiên tôi sẽ định nghĩa một shopping cart và lấy thông tin giỏ hàng từ
 
 55
 00:04:14,010 --> 00:04:18,089
-incoming command object command dot cart.
+command object command dot cart.
 
 56
 00:04:18,420 --> 00:04:25,580
-So after that I'm going to put some to do statement and this command will be handle our actual business
+Vì vậy, sau đó tôi sẽ đặt một số to do statement và command này sẽ xử lý business operation thực tế của chúng ta.
 
 57
 00:04:25,580 --> 00:04:26,360
-operation.
+Nhưng hiện tại chúng ta chưa inject bất kỳ database hoặc cache related object nào vào command handler của chúng ta.
 
 58
 00:04:26,360 --> 00:04:32,360
-But for now we didn't inject any database or cache related object into our command under.
+Đó là lý do tôi đặt to do statement ở đây và hoàn thành handle method theo to do statement.
 
 59
 00:04:32,360 --> 00:04:38,030
@@ -240,19 +240,19 @@ do statement.
 
 61
 00:04:38,690 --> 00:04:45,380
-We will store basket in database with using the Martin Upsert and session dot store method.
+Chúng ta sẽ lưu trữ basket trong cơ sở dữ liệu bằng cách sử dụng Marten Upsert và phương thức session dot store.
 
 62
 00:04:45,380 --> 00:04:48,590
-That means this will be run by if existing data.
+Điều đó có nghĩa là cái này sẽ chạy nếu dữ liệu đã tồn tại.
 
 63
 00:04:48,590 --> 00:04:49,520
-This will be update.
+Điều này sẽ cập nhật.
 
 64
 00:04:49,520 --> 00:04:55,100
-If not this will be insert any record and after that we have to update the cache in Redis distributed
+Nếu không, cái này sẽ chèn bất kỳ bản ghi nào và sau đó chúng ta phải cập nhật cache trong Redis distributed cache.
 
 65
 00:04:55,100 --> 00:04:55,580
@@ -260,55 +260,55 @@ cache.
 
 66
 00:04:55,580 --> 00:04:59,690
-And this will be handle operations in the store command handle class.
+Và điều này sẽ xử lý các hoạt động trong lớp store command handle.
 
 67
 00:04:59,690 --> 00:05:05,030
-But for now I am skipping the implementation and integration with the database and cache.
+Nhưng hiện tại tôi đang bỏ qua việc triển khai và tích hợp với cơ sở dữ liệu và cache.
 
 68
 00:05:05,030 --> 00:05:12,380
-And I'm going to complete the lifecycle of our request with returning new mock response, which is store
+Và tôi sẽ hoàn thành vòng đời của request bằng cách trả về phản hồi mock mới, đó là store basket result và truyền success là true. Tại thời điểm này, tôi muốn làm một chút refactoring.
 
 69
 00:05:12,380 --> 00:05:21,140
-basket result and passing the success as a true At this point, I would like to do a little bit refactoring
+thay vì trả về boolean success hay không thành true hoặc false.
 
 70
 00:05:21,140 --> 00:05:26,630
-instead of returning to boolean success or not operation to true or false.
+Tôi muốn gửi một username và chúng ta có thể hiểu được username nào được lưu trong cơ sở dữ liệu của chúng ta cho mục đích đó.
 
 71
 00:05:26,660 --> 00:05:33,500
-I would like to send a username and we can understand which username is stored our database for that
+Cho mục đích này.
 
 72
 00:05:33,500 --> 00:05:33,860
-purpose.
+Tôi sẽ thay đổi tham số kết quả này từ boolean thành string username.
 
 73
 00:05:33,860 --> 00:05:38,930
-I'm going to change this result parameter from boolean to string username.
+Và sau đó nếu bạn cuộn xuống, bạn có thể đến đây và bạn có thể dán username từ đối tượng cart.
 
 74
 00:05:38,930 --> 00:05:44,810
-And after that if you scroll down you can come here and you can paste the username from the cart object.
+Nhưng hiện tại tôi sẽ đặt vào đây một đối tượng username mock, đó là một boolean.
 
 75
 00:05:44,810 --> 00:05:50,780
-But for now I am going to put in here as a mock username object, which is a boolean.
+Nếu bạn đi lên đầu lớp này, bạn có thể thấy using statement và tôi đang di chuyển using statement này vào global using.
 
 76
 00:05:50,780 --> 00:05:56,570
-If you go on top of this class, you can see using statement and I am moving this using statement into
+Lưu tệp này.
 
 77
 00:05:56,570 --> 00:05:58,220
-the global using.
+Nếu bạn quay lại lớp này.
 
 78
 00:06:00,770 --> 00:06:01,790
-Save this file.
+Trong đoạn code này, về cơ bản chúng ta định nghĩa một command để lưu trữ đối tượng shopping cart của chúng ta và trả về
 
 79
 00:06:01,790 --> 00:06:03,530
@@ -320,17 +320,17 @@ In this code, we basically define a command in order to store our shopping cart 
 
 81
 00:06:09,980 --> 00:06:12,500
-result including the username information.
+kết quả bao gồm thông tin username.
 
 82
 00:06:12,740 --> 00:06:17,120
-And we put the validators and validate the incoming cart information.
+Và chúng ta sẽ đặt validators và validate thông tin cart đến.
 
 83
 00:06:17,120 --> 00:06:23,390
-And after that we will run the command under class and handle the incoming operation Currently is a
+Và sau đó chúng ta sẽ chạy command under class và xử lý thao tác đến. Hiện tại chỉ là
 
 84
 00:06:23,390 --> 00:06:28,430
-skeleton and we will implement the database and caching interactions in the later sessions.
+skeleton và chúng ta sẽ triển khai các tương tác database và caching trong các phiên sau.
 
