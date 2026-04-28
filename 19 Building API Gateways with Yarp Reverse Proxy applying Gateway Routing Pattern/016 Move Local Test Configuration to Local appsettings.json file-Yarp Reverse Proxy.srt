@@ -1,154 +1,154 @@
 1
 00:00:00,170 --> 00:00:06,320
-In this video, we are going to move local test configuration to the local application settings Json
+Trong video này, chúng ta sẽ chuyển cấu hình kiểm thử cục bộ vào tệp JSON cài đặt ứng dụng cục bộ
 
 2
 00:00:06,320 --> 00:00:06,830
-file.
+tệp.
 
 3
 00:00:06,830 --> 00:00:13,430
-That means we will focus on organizing our configuration settings for the Yarp reverse proxy API gateway,
+Điều đó có nghĩa là chúng ta sẽ tập trung vào việc tổ chức các cài đặt cấu hình của YARP reverse proxy API gateway,
 
 4
 00:00:13,430 --> 00:00:20,780
-particularly separating local testing configurations into a dedicated application settings local Json
+đặc biệt là tách các cấu hình kiểm thử cục bộ vào tệp JSON cài đặt ứng dụng chuyên dụng
 
 5
 00:00:20,780 --> 00:00:21,320
-file.
+tệp.
 
 6
 00:00:21,320 --> 00:00:27,200
-This separation is crucial for managing different environments such as the local development and Docker
+Sự tách biệt này rất quan trọng để quản lý các môi trường khác nhau như phát triển cục bộ và triển khai Docker
 
 7
 00:00:27,200 --> 00:00:28,010
-deployment.
+triển khai.
 
 8
 00:00:28,760 --> 00:00:32,420
-So here you can see the R sharp microservices deployment strategy.
+Vậy ở đây bạn có thể thấy chiến lược triển khai R sharp microservices.
 
 9
 00:00:32,420 --> 00:00:35,360
-We will perform successfully testing deployment one.
+Chúng ta sẽ thực hiện thành công kiểm thử triển khai một.
 
 10
 00:00:35,360 --> 00:00:41,510
-And we are going to test deployment two which is the Docker compose all microservices and API gateway
+Và chúng ta sẽ kiểm thử triển khai hai, đó là Docker compose tất cả microservices và API gateway
 
 11
 00:00:41,510 --> 00:00:42,740
-and backing services.
+và các backing services.
 
 12
 00:00:42,740 --> 00:00:44,810
-But we will go to second step.
+Nhưng chúng ta sẽ đi đến bước thứ hai.
 
 13
 00:00:44,810 --> 00:00:48,830
-But before that we should arrange our configurations according to environments.
+Nhưng trước tiên chúng ta nên sắp xếp các cấu hình của chúng ta theo môi trường.
 
 14
 00:00:48,830 --> 00:00:53,960
-So now let's start the understanding configuration retrieve operation from the R Visual Studio.
+Vậy bây giờ hãy bắt đầu hiểu hoạt động truy xuất cấu hình từ R Visual Studio.
 
 15
 00:00:53,960 --> 00:00:56,780
-If you open the Visual Studio go to ERP, API gateway.
+Nếu bạn mở Visual Studio, hãy đi tới ERP, API gateway.
 
 16
 00:00:56,780 --> 00:01:03,530
-And if you open the Program.cs in Program.cs, you can see the Yarp reverse proxy settings and configuration
+Và nếu bạn mở Program.cs trong Program.cs, bạn có thể thấy các cài đặt YARP reverse proxy và cấu hình
 
 17
 00:01:03,530 --> 00:01:09,620
-in here, and the R service retrieves its configuration from the application settings Json file and
+ở đây, và dịch vụ R truy xuất cấu hình của nó từ tệp JSON cài đặt ứng dụng và
 
 18
 00:01:09,620 --> 00:01:11,120
-reverse proxy configuration.
+cấu hình reverse proxy.
 
 19
 00:01:11,120 --> 00:01:13,550
-So this line of code will be retrieved.
+Vậy dòng mã này sẽ được truy xuất.
 
 20
 00:01:13,550 --> 00:01:18,710
-The reverse proxy configuration from the application settings Json file and reverse proxy settings.
+Cấu hình reverse proxy từ tệp JSON cài đặt ứng dụng và cài đặt reverse proxy.
 
 21
 00:01:18,710 --> 00:01:24,200
-But if you look at this configuration, if you scroll down the destination address are including the
+Nhưng nếu bạn nhìn vào cấu hình này, nếu bạn cuộn xuống địa chỉ đích sẽ bao gồm
 
 22
 00:01:24,200 --> 00:01:25,640
-localhost as a server.
+localhost là một máy chủ.
 
 23
 00:01:25,640 --> 00:01:31,910
-But when we deploy these Yarp API gateway microservices into Docker environment, these localhost address
+Nhưng khi chúng ta triển khai các Yarp API gateway microservices vào môi trường Docker, các địa chỉ localhost này
 
 24
 00:01:31,910 --> 00:01:34,160
-cannot be reachable in the network.
+không thể truy cập được trong mạng.
 
 25
 00:01:34,160 --> 00:01:39,980
-In Docker network, we should use correct container names in order to communicate with each other.
+Trong mạng Docker, chúng ta nên sử dụng tên container chính xác để có thể giao tiếp với nhau.
 
 26
 00:01:39,980 --> 00:01:46,070
-So that's why we need to separate configuration files for the local development and Docker environment.
+Đó là lý do tại sao chúng ta cần tách các file cấu hình cho phát triển cục bộ và môi trường Docker.
 
 27
 00:01:46,070 --> 00:01:52,070
-The current configuration in application settings are suitable for local testing, but may not be appropriate
+Cấu hình hiện tại trong application settings phù hợp với kiểm thử cục bộ, nhưng có thể không thích hợp
 
 28
 00:01:52,070 --> 00:01:53,180
-for Docker environment.
+cho môi trường Docker.
 
 29
 00:01:53,180 --> 00:01:57,680
-In Docker services communicate using container names rather than the localhost.
+Trong Docker các dịch vụ giao tiếp sử dụng tên container thay vì localhost.
 
 30
 00:01:57,680 --> 00:02:02,360
-For that reason, the address specified in the local config won't work in Docker.
+Vì lý do đó, địa chỉ được chỉ định trong cấu hình cục bộ sẽ không hoạt động trong Docker.
 
 31
 00:02:02,360 --> 00:02:08,419
-In order to solve this problem, we should create a new configuration file which name application settings
+Để giải quyết vấn đề này, chúng ta nên tạo một file cấu hình mới có tên application settings
 
 32
 00:02:08,419 --> 00:02:14,870
-dot local dot Json in the ARP API gateway project, and this file will contain configurations specific
+dot local dot Json trong dự án Yarp API gateway, và file này sẽ chứa các cấu hình cụ thể
 
 33
 00:02:14,870 --> 00:02:15,890
-to local testing.
+cho kiểm thử cục bộ.
 
 34
 00:02:15,890 --> 00:02:19,250
-For that purpose comes to irb API gateway project.
+Để làm điều đó, chúng ta đi đến dự án Yarp API gateway.
 
 35
 00:02:19,250 --> 00:02:27,560
-Right click Add New Item and give the name of the new item as a application settings dot local dot Json
+Nhấp chuột phải Add New Item và đặt tên mục mới là application settings dot local dot Json
 
 36
 00:02:27,560 --> 00:02:28,910
-and click the add button.
+và nhấp nút add.
 
 37
 00:02:29,330 --> 00:02:34,370
-Here you can see that this file comes and located under the Application Settings Json file.
+Ở đây bạn có thể thấy file này được tạo và nằm dưới file Application Settings Json.
 
 38
 00:02:34,370 --> 00:02:40,790
-Because it is derived from the our application Json file and specified the environment name as a local
+Vì nó được dẫn xuất từ file Application Json của chúng ta và chỉ định tên môi trường là local
 
 39
 00:02:40,790 --> 00:02:41,360
@@ -156,31 +156,31 @@ Json.
 
 40
 00:02:41,360 --> 00:02:47,900
-So now I'm going to copy configurations from the application Json, and we will copy all existing configuration
+Vậy bây giờ tôi sẽ sao chép các cấu hình từ Application Json, và chúng ta sẽ sao chép tất cả cấu hình hiện có
 
 41
 00:02:47,900 --> 00:02:50,390
-settings from the application settings Json file.
+các cài đặt từ tệp JSON appsettings của ứng dụng.
 
 42
 00:02:50,390 --> 00:02:56,690
-I'm going to copy and go back to Application settings Json, local Json and paste in here.
+Tôi sẽ sao chép và quay lại tệp appsettings Json, appsettings.local.json và dán vào đây.
 
 43
 00:02:56,690 --> 00:03:03,470
-By this way we can put all localhost related destination address under the application settings local
+Bằng cách này, chúng ta có thể đặt tất cả các địa chỉ đích liên quan đến localhost dưới appsettings.local.json
 
 44
 00:03:03,470 --> 00:03:04,220
-Json file.
+tệp.
 
 45
 00:03:04,220 --> 00:03:09,440
-By separating the local testing configuration into application settings local Json file.
+Bằng cách tách cấu hình kiểm thử cục bộ vào tệp appsettings.local.json.
 
 46
 00:03:09,440 --> 00:03:14,870
-We can maintain different settings for different environments without changing the core application
+Chúng ta có thể duy trì các cài đặt khác nhau cho các môi trường khác nhau mà không thay đổi logic ứng dụng cốt lõi.
 
 47
 00:03:14,870 --> 00:03:15,410
@@ -188,17 +188,17 @@ logic.
 
 48
 00:03:15,410 --> 00:03:21,230
-In the next video, we are going to develop actual configurations for Docker network environment and
+Trong video tiếp theo, chúng ta sẽ phát triển các cấu hình thực tế cho môi trường mạng Docker và
 
 49
 00:03:21,230 --> 00:03:26,990
-ensuring that our API gateway correctly routes requests in the containerized setup, which will be changing
+đảm bảo rằng API Gateway của chúng ta định tuyến các yêu cầu một cách chính xác trong thiết lập được container hóa, điều này sẽ thay đổi
 
 50
 00:03:26,990 --> 00:03:28,910
-the Solo Cloud server name as a container.
+tên Solo Cloud server như một container.
 
 51
 00:03:28,910 --> 00:03:30,170
-Names in the environment.
+Tên trong môi trường.
 
