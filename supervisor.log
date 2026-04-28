@@ -1946,3 +1946,13 @@ Remaining       : 46
   -> done
 [2/46] 19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/007 YARP Architecture with pipeline and Extensibility.srt
   Batch 1/3 (20 blocks)...
+[supervisor 07:35:53] === Supervisor started. Target: 349 ===
+[supervisor 07:35:53] --- Run #1 ---
+[supervisor 07:35:53] Starting translate.py (319/349 done)...
+Total SRT files : 349
+Already done    : 304
+Remaining       : 45
+
+[1/45] 19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/007 YARP Architecture with pipeline and Extensibility.srt
+  Batch 1/3 (20 blocks)...
+  Batch 2/3 (20 blocks)...
