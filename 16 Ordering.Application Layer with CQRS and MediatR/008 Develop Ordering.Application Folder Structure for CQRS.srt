@@ -1,164 +1,164 @@
 1
 00:00:00,170 --> 00:00:05,990
-In this video we are going to create folder structure for our auditing application layer.
+Trong video này, chúng ta sẽ tạo cấu trúc thư mục cho lớp ứng dụng auditing của chúng ta.
 
 2
 00:00:06,230 --> 00:00:12,140
-As you can see that we are going to create these folder structure when developing our ordering application.
+Như bạn có thể thấy, chúng ta sẽ tạo cấu trúc thư mục này khi phát triển ứng dụng ordering của chúng ta.
 
 3
 00:00:12,140 --> 00:00:19,430
-And these ordering application layer in Essex architecture is structured to separate commands, queries
+Và lớp ứng dụng ordering này trong Essex architecture được cấu trúc để tách biệt các commands, queries
 
 4
 00:00:19,430 --> 00:00:21,020
-and event handlers.
+và event handlers.
 
 5
 00:00:21,020 --> 00:00:27,860
-These separations align with the six principles which is segregating read and write operations.
+Những sự tách biệt này phù hợp với sáu nguyên tắc, đó là tách biệt các hoạt động đọc và ghi.
 
 6
 00:00:27,860 --> 00:00:31,460
-That means separating query and command operations.
+Điều đó có nghĩa là tách biệt các hoạt động query và command.
 
 7
 00:00:31,460 --> 00:00:36,110
-Here you can see that we are using orders which is the features folders.
+Ở đây bạn có thể thấy rằng chúng ta đang sử dụng orders, đó là các feature folders.
 
 8
 00:00:36,110 --> 00:00:42,110
-And under these folders we will create a commands folder which contains classes for commands and their
+Và dưới các thư mục này, chúng ta sẽ tạo một thư mục commands chứa các lớp cho commands và các
 
 9
 00:00:42,110 --> 00:00:43,520
-respective handlers.
+handlers tương ứng của chúng.
 
 10
 00:00:43,520 --> 00:00:49,490
-And after that we will create queries folder that include query models and their handlers.
+Và sau đó, chúng ta sẽ tạo thư mục queries bao gồm các mô hình query và các handlers của chúng.
 
 11
 00:00:49,490 --> 00:00:55,820
-And we will also create event handler folder for handling the events responding to the domain events.
+Và chúng ta cũng sẽ tạo thư mục event handler để xử lý các sự kiện phản hồi lại các domain events.
 
 12
 00:00:55,820 --> 00:01:00,320
-So now we will apply these folders into our application architecture.
+Vậy bây giờ chúng ta sẽ áp dụng các thư mục này vào kiến trúc ứng dụng của chúng ta.
 
 13
 00:01:00,320 --> 00:01:04,430
-Please open the Visual Studio and go to the ordering application layer.
+Vui lòng mở Visual Studio và đi đến lớp ứng dụng ordering.
 
 14
 00:01:04,430 --> 00:01:09,020
-So in this layer I'm going to create our main folder which is the orders.
+Vì vậy, trong lớp này, tôi sẽ tạo thư mục chính của chúng ta, đó là orders.
 
 15
 00:01:09,020 --> 00:01:14,090
-If you right click here and add new folder which name is orders.
+Nếu bạn nhấp chuột phải ở đây và thêm thư mục mới với tên là orders.
 
 16
 00:01:14,090 --> 00:01:19,970
-This will be representing our main sequence folder that include command queries and event handlers.
+Điều này sẽ đại diện cho thư mục sequence chính của chúng ta chứa commands, queries và event handlers.
 
 17
 00:01:19,970 --> 00:01:22,370
-So I'm going to create a sub folder.
+Vì vậy, tôi sẽ tạo một thư mục con.
 
 18
 00:01:22,370 --> 00:01:27,020
-Right click the orders add new sub folder which name is commands.
+Nhấp chuột phải vào orders, thêm thư mục con mới với tên là commands.
 
 19
 00:01:27,020 --> 00:01:31,790
-And after that I'm going to follow the same steps for the queries folder.
+Và sau đó, tôi sẽ làm theo các bước tương tự cho thư mục queries.
 
 20
 00:01:32,960 --> 00:01:36,800
-And lastly we will have event handlers folder under the orders.
+Và cuối cùng, chúng ta sẽ có thư mục event handlers dưới orders.
 
 21
 00:01:38,120 --> 00:01:43,640
-Here you can see that we have created three main folders for KCRW's implementation.
+Ở đây bạn có thể thấy rằng chúng ta đã tạo ba thư mục chính cho việc triển khai KCRW.
 
 22
 00:01:43,640 --> 00:01:49,880
-So after that I'm going to follow the R slide to creating Data and Details folders.
+Vậy sau đó tôi sẽ theo dõi slide R để tạo các thư mục Data và Details.
 
 23
 00:01:49,880 --> 00:01:55,160
-For that purpose I'm going to create a data folder in the beginning of the ordering application.
+Với mục đích đó, tôi sẽ tạo một thư mục data ở đầu ứng dụng ordering.
 
 24
 00:01:55,160 --> 00:02:00,260
-If you go back to Visual Studio and create a new folder with right clicking the ordering application,
+Nếu bạn quay lại Visual Studio và tạo một thư mục mới bằng cách nhấp chuột phải vào ứng dụng ordering,
 
 25
 00:02:00,260 --> 00:02:04,910
-add new folder, which name is data, and also we will follow the same step.
+thêm thư mục mới, có tên là data, và chúng ta cũng sẽ làm theo cùng một bước.
 
 26
 00:02:04,910 --> 00:02:12,080
-For the Dto's folder, right click application and add new folder which is the details and these details
+Đối với thư mục Dto's, nhấp chuột phải vào ứng dụng và thêm thư mục mới là details và những details này
 
 27
 00:02:12,080 --> 00:02:18,890
-representing and containing our data transfer objects like order DTO and Order Item, DTO and data folder
+đại diện và chứa các data transfer objects của chúng ta như order DTO và Order Item DTO, và thư mục data
 
 28
 00:02:18,890 --> 00:02:25,400
-include interfaces like IE application db context which is the abstraction of the DB context, Entity
+bao gồm các interface như IE application db context, đây là sự trừu tượng hóa của DB context, Entity
 
 29
 00:02:25,400 --> 00:02:27,050
-Framework, Core Operations.
+Framework Core Operations.
 
 30
 00:02:27,050 --> 00:02:33,830
-And lastly, we will create a common classes for each layer, which are the Dependency Injection case
+Và cuối cùng, chúng ta sẽ tạo các lớp chung cho mỗi lớp, đó là Dependency Injection case
 
 31
 00:02:33,830 --> 00:02:35,300
-and global using case.
+và global using case.
 
 32
 00:02:35,300 --> 00:02:38,210
-So for that purpose open the Visual Studio.
+Vậy với mục đích đó hãy mở Visual Studio.
 
 33
 00:02:38,210 --> 00:02:41,930
-As you can see that we have already created Dependency Injection case.
+Như bạn có thể thấy rằng chúng ta đã tạo sẵn Dependency Injection case.
 
 34
 00:02:41,930 --> 00:02:47,240
-This is responsible for setting up the dependencies specific to the application layer.
+Điều này chịu trách nhiệm thiết lập các dependencies cụ thể cho application layer.
 
 35
 00:02:47,240 --> 00:02:53,330
-And this is where we are configuring the mediator and other related services for application layer.
+Và đây là nơi chúng ta đang cấu hình mediator và các dịch vụ liên quan khác cho application layer.
 
 36
 00:02:53,510 --> 00:02:59,690
-After that, I'm going to create a new class under the ordering application right click Add New Item
+Sau đó, tôi sẽ tạo một lớp mới dưới ứng dụng ordering bằng cách nhấp chuột phải Add New Item
 
 37
 00:02:59,690 --> 00:03:02,000
-which is the global using CSS.
+đó là global using CSS.
 
 38
 00:03:02,850 --> 00:03:09,300
-And this is the convenient place to put all global using statements, reducing the need for the repetitive
+Và đây là nơi thuận tiện để đặt tất cả các global using statements, giảm nhu cầu cho mã
 
 39
 00:03:09,300 --> 00:03:11,610
-code across the application layer.
+lặp lại trên toàn bộ application layer.
 
 40
 00:03:11,640 --> 00:03:16,620
-So here you can see that we have created the skeleton of the ordering application that we are going
+Vậy ở đây bạn có thể thấy rằng chúng ta đã tạo khung của ứng dụng ordering mà chúng ta sẽ
 
 41
 00:03:16,620 --> 00:03:19,560
-to develop each layer and each folder one by one.
+để phát triển từng layer và từng folder một.
 
