@@ -1,86 +1,86 @@
 1
 00:00:00,140 --> 00:00:06,470
-In this video we are going to create models folder for shopping web application microservice to consume
+Trong video này, chúng ta sẽ tạo folder models cho shopping web application microservice để consume
 
 2
 00:00:06,470 --> 00:00:08,240
-irb API gateway endpoints.
+các endpoints của irb API gateway.
 
 3
 00:00:08,240 --> 00:00:10,520
-So let's remember our main use cases.
+Vậy hãy nhớ lại các use case chính của chúng ta.
 
 4
 00:00:10,520 --> 00:00:13,100
-These are the listing products and categories.
+Đó là liệt kê các sản phẩm và danh mục.
 
 5
 00:00:13,100 --> 00:00:16,520
-Add product to shopping cart and checkout basket and create order.
+Thêm sản phẩm vào giỏ hàng và thanh toán giỏ hàng và tạo đơn hàng.
 
 6
 00:00:16,550 --> 00:00:22,610
-These are the main use cases that can trigger from the are client side page, and we will use irb API
+Đây là những use case chính có thể được kích hoạt từ phía client, và chúng ta sẽ sử dụng các endpoints của irb API
 
 7
 00:00:22,640 --> 00:00:28,220
-gateway endpoints and consume these endpoints with following these http, get and post methods.
+gateway và consume những endpoints này bằng cách sử dụng HTTP GET và POST methods.
 
 8
 00:00:28,220 --> 00:00:35,180
-So when we are sending these http get and post methods, we need to store incoming and outgoing messages
+Vậy khi chúng ta gửi những HTTP GET và POST methods, chúng ta cần lưu trữ các incoming và outgoing messages
 
 9
 00:00:35,180 --> 00:00:38,090
-into our models, folder and domain models.
+vào folder models và domain models của chúng ta.
 
 10
 00:00:38,090 --> 00:00:41,360
-For that purpose, I'm going to create three domain model.
+Để làm điều đó, tôi sẽ tạo ba domain model.
 
 11
 00:00:41,360 --> 00:00:46,040
-Here you can find the our domain models including the catalog basket and ordering.
+Ở đây bạn có thể tìm thấy các domain models của chúng ta bao gồm catalog, basket và ordering.
 
 12
 00:00:46,040 --> 00:00:52,670
-And as a sub domain model we can say product get product response get product ID response basket shopping
+Và như một sub domain model, chúng ta có thể nói là product, get product response, get product ID response, basket, shopping
 
 13
 00:00:52,670 --> 00:00:58,760
-cart, shopping cart, item basket, checkout, ordering order item address, payment, get order response,
+cart, shopping cart item, basket, checkout, ordering, order item, address, payment, get order response,
 
 14
 00:00:58,760 --> 00:00:59,540
-so on.
+và những cái khác.
 
 15
 00:00:59,540 --> 00:01:03,200
-So we will create these domain models into our application.
+Vậy chúng ta sẽ tạo những domain models này vào trong ứng dụng của chúng ta.
 
 16
 00:01:03,200 --> 00:01:04,700
-Please open the Visual Studio.
+Vui lòng mở Visual Studio.
 
 17
 00:01:04,700 --> 00:01:07,700
-And first of all we are going to create models folder.
+Và đầu tiên, chúng ta sẽ tạo folder models.
 
 18
 00:01:07,700 --> 00:01:11,570
-Right click the Shopping Web application and add a new folder.
+Click phải vào Shopping Web application và thêm một folder mới.
 
 19
 00:01:11,570 --> 00:01:13,700
-Which name is models.
+Có tên là models.
 
 20
 00:01:13,700 --> 00:01:19,130
-Inside of the models folder we will encapsulate domain models for the shopping, web application and
+Bên trong folder models, chúng ta sẽ đóng gói domain models cho shopping web application và
 
 21
 00:01:19,130 --> 00:01:25,340
-models folder should match the responses of the IRB API gateway endpoints and the internal microservices
+folder models nên khớp với các responses của các IRB API gateway endpoints và các internal microservices
 
 22
 00:01:25,340 --> 00:01:26,750
@@ -88,151 +88,151 @@ endpoint responses.
 
 23
 00:01:26,750 --> 00:01:29,210
-So let me explain and give an example.
+Vậy hãy để tôi giải thích và đưa ra một ví dụ.
 
 24
 00:01:29,210 --> 00:01:35,420
-For example, when we are send http get request to product and catalog related page, this will be go
+Ví dụ, khi chúng ta gửi http get request tới trang product và catalog, yêu cầu này sẽ đi
 
 25
 00:01:35,420 --> 00:01:42,110
-to the irb api gateway and irb API gateway will be redirect to this request to the downstream microservices
+tới irb API gateway và irb API gateway sẽ chuyển hướng yêu cầu này tới các downstream microservices
 
 26
 00:01:42,110 --> 00:01:44,210
-and specifically catalog microservices.
+và cụ thể là catalog microservices.
 
 27
 00:01:44,210 --> 00:01:46,430
-So we can go to catalog microservices.
+Vậy chúng ta có thể đi tới catalog microservices.
 
 28
 00:01:46,430 --> 00:01:53,600
-And if you open the products vertical slice feature folder, and if you go to the Get Products folder,
+Và nếu bạn mở folder products vertical slice feature, và nếu bạn đi tới folder Get Products,
 
 29
 00:01:53,600 --> 00:02:00,500
-and if you open the Get Products endpoint, and this will be hit the get products and paint with according
+và nếu bạn mở Get Products endpoint, và điều này sẽ gọi get products và phản hồi theo
 
 30
 00:02:00,530 --> 00:02:02,480
-to request and response object.
+request và response object.
 
 31
 00:02:02,480 --> 00:02:08,479
-That means when we are sending Http get request from our catalog and product page in the client application,
+Điều đó có nghĩa là khi chúng ta gửi Http get request từ catalog và product page trong ứng dụng client,
 
 32
 00:02:08,479 --> 00:02:13,940
-this will be goes to irb API gateway and this will be triggered to get products endpoint class with
+yêu cầu này sẽ đi tới irb API gateway và điều này sẽ kích hoạt Get Products endpoint class với
 
 33
 00:02:13,940 --> 00:02:17,780
-sending the get product request and response back to the get products response.
+việc gửi get product request và response trở lại Get Products response.
 
 34
 00:02:17,780 --> 00:02:22,460
-So that means we are analyzing response of all microservices and the endpoints.
+Vậy điều đó có nghĩa là chúng ta đang phân tích response của tất cả microservices và các endpoints.
 
 35
 00:02:22,460 --> 00:02:28,970
-For that reason, we will check all endpoint classes and in our case we will create get product response
+Vì lý do đó, chúng ta sẽ kiểm tra tất cả các endpoint classes và trong trường hợp của chúng ta chúng ta sẽ tạo Get Product response
 
 36
 00:02:28,970 --> 00:02:36,110
-model with including the IEnumerable product model when responding to our shopping client web application.
+model với việc bao gồm IEnumerable product model khi phản hồi lại ứng dụng client web shopping của chúng ta.
 
 37
 00:02:36,110 --> 00:02:41,660
-So here you can see that I have created a required use case and domain models.
+Vậy ở đây bạn có thể thấy rằng tôi đã tạo một use case bắt buộc và domain models.
 
 38
 00:02:41,660 --> 00:02:44,630
-Here you can see that this is for the get products endpoint.
+Ở đây bạn có thể thấy rằng đây là cho Get Products endpoint.
 
 39
 00:02:44,630 --> 00:02:50,030
-When we are retrieving product into our client application, we need data models according to request
+Khi chúng ta đang lấy product vào ứng dụng client của chúng ta, chúng ta cần các data models theo
 
 40
 00:02:50,030 --> 00:02:51,110
-and response object.
+request và response object.
 
 41
 00:02:51,110 --> 00:02:53,300
-And we need as a product model.
+Và chúng ta cần một product model như một sản phẩm.
 
 42
 00:02:53,300 --> 00:02:57,770
-And here you can see that we can also filter by category into our client application.
+Và ở đây bạn có thể thấy rằng chúng ta cũng có thể lọc theo danh mục trong ứng dụng client của chúng ta.
 
 43
 00:02:57,770 --> 00:03:03,830
-For that reason we need a request and response object including again IEnumerable product model.
+Vì lý do đó, chúng ta cần một request và response object bao gồm lại IEnumerable product model.
 
 44
 00:03:03,830 --> 00:03:09,980
-And here you can see that we can open a single product into our product detail page, into client application
+Và ở đây bạn có thể thấy rằng chúng ta có thể mở một sản phẩm duy nhất vào trang chi tiết sản phẩm của chúng ta, trong ứng dụng client.
 
 45
 00:03:09,980 --> 00:03:14,690
-that need to request and response object, including a single product model.
+cần một request và response object, bao gồm một single product model.
 
 46
 00:03:14,690 --> 00:03:20,120
-For that reason, we should create all these wrapper requests and response object with the same format.
+Vì lý do đó, chúng ta nên tạo tất cả các wrapper requests và response object này với định dạng giống nhau.
 
 47
 00:03:20,120 --> 00:03:25,220
-And here you can see that we will create product model and we will create get product request.
+Và ở đây bạn có thể thấy rằng chúng ta sẽ tạo product model và chúng ta sẽ tạo get product request.
 
 48
 00:03:25,220 --> 00:03:29,480
-And we will not include the page number and size load from the query parameters.
+Và chúng ta sẽ không bao gồm số trang và kích thước tải từ các query parameters.
 
 49
 00:03:29,480 --> 00:03:35,120
-But we need at least create a wrapper classes for the product model in order to get response from the
+Nhưng chúng ta cần ít nhất tạo wrapper classes cho product model để có thể nhận response từ
 
 50
 00:03:35,120 --> 00:03:37,430
-client application and Erb API gateway.
+ứng dụng client và API gateway.
 
 51
 00:03:37,430 --> 00:03:42,740
-And here you can see the our additional domain models that we are going to create according to our use
+Và ở đây bạn có thể thấy các domain models bổ sung mà chúng ta sẽ tạo theo các use
 
 52
 00:03:42,740 --> 00:03:43,280
-cases.
+cases của chúng ta.
 
 53
 00:03:43,280 --> 00:03:44,930
-So let's get started.
+Vậy hãy bắt đầu thôi.
 
 54
 00:03:44,930 --> 00:03:51,560
-So if you go back to our actual project which is a shopping web, and go to the models folder, I'm
+Vậy nếu bạn quay lại dự án thực tế của chúng ta là shopping web, và đi vào thư mục models, tôi sẽ
 
 55
 00:03:51,560 --> 00:03:56,690
-going to create a subfolder under the models add new subfolder, which name is catalog.
+tạo một subfolder dưới thư mục models thêm subfolder mới, tên của nó là catalog.
 
 56
 00:03:56,690 --> 00:04:00,470
-So we are going to create domain models according to microservices.
+Vậy chúng ta sẽ tạo domain models theo từng microservices.
 
 57
 00:04:00,470 --> 00:04:04,850
-First of all I'm going to create product model under the catalog sub folder.
+Đầu tiên, tôi sẽ tạo product model dưới subfolder catalog.
 
 58
 00:04:04,880 --> 00:04:07,880
-Add a new class which name is product model dot CSS.
+Thêm một class mới có tên là product model dot css.
 
 59
 00:04:07,880 --> 00:04:14,510
-And in this model class I'm going to create a product model which is belonging to parameters and members
+Và trong class model này, tôi sẽ tạo một product model được thuộc về các parameters và members trong class product entity.
 
 60
 00:04:14,510 --> 00:04:16,220
@@ -240,35 +240,35 @@ in the product entity class.
 
 61
 00:04:16,220 --> 00:04:22,790
-Here you can see the guild id string, name list, string category, string, description, string,
+Ở đây bạn có thể thấy guild id string, name list, string category, string, description, string,
 
 62
 00:04:22,790 --> 00:04:24,470
-image file and decimal price.
+image file và decimal price.
 
 63
 00:04:24,470 --> 00:04:30,290
-This is typical product entity when we are developing catalog microservices and at the same format,
+Đây là một entity product điển hình khi chúng ta phát triển catalog microservices và với cùng định dạng,
 
 64
 00:04:30,290 --> 00:04:34,400
-I have created product model under the our shopping web client application.
+tôi đã tạo product model trong ứng dụng shopping web client của chúng ta.
 
 65
 00:04:34,400 --> 00:04:40,820
-And just after that we can create record types for the wrapper classes in order to accommodate incoming
+Và ngay sau đó chúng ta có thể tạo record types cho các wrapper classes để chứa các incoming
 
 66
 00:04:40,820 --> 00:04:45,350
-and outgoing requests to our API gateway and catalog microservices.
+và outgoing requests tới API gateway và catalog microservices của chúng ta.
 
 67
 00:04:45,350 --> 00:04:51,530
-Here you can see our wrapper classes get products response, including the IEnumerable product model
+Ở đây bạn có thể thấy wrapper classes get products response của chúng ta, bao gồm IEnumerable product model
 
 68
 00:04:51,530 --> 00:04:57,410
-which is the products, and this is the get products by category response, including the IEnumerable
+đó là các products, và đây là get products by category response, bao gồm IEnumerable
 
 69
 00:04:57,410 --> 00:04:58,100
@@ -276,61 +276,61 @@ product model.
 
 70
 00:04:58,100 --> 00:04:59,750
-Which name is products?
+Tên của nó là products?
 
 71
 00:04:59,990 --> 00:05:05,060
-And this is the last record type, which is a get products by ID response, including a single product
+Và đây là record type cuối cùng, đó là get products by ID response, bao gồm một single product
 
 72
 00:05:05,060 --> 00:05:07,010
-model which is name is product.
+model có tên là product.
 
 73
 00:05:07,010 --> 00:05:13,460
-So these are the comes from the Our services catalog micro services and the product endpoints.
+Vậy những cái này đến từ catalog microservices của chúng ta và các product endpoints.
 
 74
 00:05:13,460 --> 00:05:16,160
-You can check the get products endpoint response.
+Bạn có thể kiểm tra response của get products endpoint.
 
 75
 00:05:16,160 --> 00:05:19,040
-And here you can see the get product by ID endpoint.
+Và ở đây bạn có thể thấy get product by ID endpoint.
 
 76
 00:05:19,040 --> 00:05:20,600
-And this is the our response.
+Và đây là response của chúng ta.
 
 77
 00:05:20,600 --> 00:05:22,820
-And here you can see the get product by category.
+Và ở đây bạn có thể thấy get product by category.
 
 78
 00:05:22,820 --> 00:05:26,930
-And here you can see the our get product category endpoint response.
+Và ở đây bạn có thể thấy response của get product category endpoint chúng ta.
 
 79
 00:05:26,930 --> 00:05:32,750
-And we will simulate all these data model under the our client application under the models catalog
+Và chúng ta sẽ mô phỏng tất cả các data model này trong ứng dụng client của chúng ta dưới models catalog
 
 80
 00:05:32,750 --> 00:05:34,910
-and product model CSV file.
+và product model CSV file.
 
 81
 00:05:34,910 --> 00:05:41,300
-By this way we can capable to accommodate incoming requests from the response of the Erb API gateway
+Theo cách này, chúng ta có thể tiếp nhận các yêu cầu đến từ phản hồi của API Gateway Erb
 
 82
 00:05:41,300 --> 00:05:45,800
-and populate the data inside of the our domain models into the catalog.
+và điền dữ liệu vào các domain models của chúng ta trong catalog.
 
 83
 00:05:45,800 --> 00:05:48,530
-As you can see that we have created catalog domain models.
+Như bạn có thể thấy, chúng ta đã tạo các domain models của catalog.
 
 84
 00:05:48,530 --> 00:05:52,520
-In the next video, we will continue basket and ordering data models.
+Trong video tiếp theo, chúng ta sẽ tiếp tục với các data models của basket và ordering.
 
