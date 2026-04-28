@@ -1,6 +1,6 @@
 1
 00:00:00,140 --> 00:00:06,830
-In this video, we are going to develop a catalog service interfaces with using Revit Http client factory
+Trong video này, chúng ta sẽ phát triển các interface của catalog service sử dụng Refit Http client factory
 
 2
 00:00:06,830 --> 00:00:07,730
@@ -8,71 +8,71 @@ libraries.
 
 3
 00:00:07,730 --> 00:00:13,670
-So before that we should understand which APIs that we will consume from the our shopping web client
+Vậy trước tiên, chúng ta cần hiểu những API nào mà chúng ta sẽ sử dụng từ ứng dụng web client mua sắm của chúng ta.
 
 4
 00:00:13,670 --> 00:00:14,450
-application.
+Nếu bạn nghĩ rằng đây là trang đầu tiên của ứng dụng e-commerce client của chúng ta, và trên trang đích đầu tiên,
 
 5
 00:00:14,450 --> 00:00:19,910
-If you think that this is the first page of our e-commerce client application, and in the first landing
+bạn có thể thấy rằng chúng ta đang liệt kê các sản phẩm.
 
 6
 00:00:19,910 --> 00:00:22,790
-page, you can see that we are listing the products.
+Để liệt kê các sản phẩm này, chúng ta sẽ sử dụng catalog microservices với danh sách sản phẩm từ ứng dụng client của chúng ta
 
 7
 00:00:22,790 --> 00:00:29,030
-In order to listing these products, we will consume to catalog microservices with product list from
+sử dụng Refit và API gateway.
 
 8
 00:00:29,180 --> 00:00:32,810
-our client application using the refit and API gateway.
+Và khi gửi yêu cầu, chúng ta cần phân trang vì danh sách sản phẩm không thể được liệt kê trên trang đầu tiên mà không cần phân trang,
 
 9
 00:00:32,990 --> 00:00:38,960
-And when sending the request, we need pagination because the product list cannot be listing in the
+và chúng ta sẽ gửi các sản phẩm được phân trang từ catalog microservices và sử dụng API này qua Web API gateway
 
 10
 00:00:38,960 --> 00:00:44,690
-first page without pagination, and we will send paginated products from the catalog microservices and
+và liệt kê các sản phẩm trên trang đích và trang đầu tiên của microservices của chúng ta
 
 11
 00:00:44,690 --> 00:00:50,930
-consume this API over the web API gateway and listing products into our landing page and the first page
+trong ứng dụng client.
 
 12
 00:00:50,930 --> 00:00:54,440
-of our microservices and in the client application.
+Ngoài ra, chúng ta cần lọc theo danh mục.
 
 13
 00:00:54,440 --> 00:00:56,840
-Also, we need filtering the category.
+Khi chúng ta gửi danh mục, chúng ta sẽ lấy các đơn hàng theo danh mục.
 
 14
 00:00:56,840 --> 00:01:01,070
-When we are sending the category, we will retrieve the orders by the category.
+Để thực hiện hành động này, chúng ta sẽ gửi các yêu cầu Http GET bổ sung tới catalog microservices
 
 15
 00:01:01,070 --> 00:01:06,980
-In order to perform this action, we will send additional Http get requests to the catalog microservices
+qua API gateway YARP.
 
 16
 00:01:06,980 --> 00:01:08,480
-over the ERP API gateway.
+Và cũng có thể chúng ta có thể chọn một sản phẩm cụ thể.
 
 17
 00:01:08,750 --> 00:01:11,720
-And also we can select the specific product.
+Điều đó có nghĩa là chúng ta sẽ đi tới trang chi tiết sản phẩm.
 
 18
 00:01:11,720 --> 00:01:14,240
-That means we will go to the product detail page.
+Và trên trang này, chúng ta cần lấy sản phẩm theo ID với đầy đủ chi tiết.
 
 19
 00:01:14,240 --> 00:01:18,650
-And in this page we need get product by ID with full details.
+Vì lý do đó, tôi sẽ gửi yêu cầu Http GET và gửi yêu cầu lấy sản phẩm theo ID tới client của chúng ta
 
 20
 00:01:18,650 --> 00:01:25,040
@@ -80,39 +80,39 @@ For that reason I am going to again send http get request and get product by ID 
 
 21
 00:01:25,040 --> 00:01:25,910
-application.
+ứng dụng.
 
 22
 00:01:25,910 --> 00:01:31,040
-For that purpose, I have created APIs that we are going to consume from the client application.
+Để có mục đích đó, tôi đã tạo các APIs mà chúng ta sẽ sử dụng từ ứng dụng client.
 
 23
 00:01:31,040 --> 00:01:36,500
-Regarding the catalog, these are the get all products, get products with pagination, get products
+Đối với catalog, đây là get all products, get products with pagination, get products
 
 24
 00:01:36,500 --> 00:01:43,640
-by category and get product by ID here you can see that in every request we are sending these API endpoint
+by category và get product by ID, ở đây bạn có thể thấy rằng trong mỗi request, chúng ta đang gửi API endpoint
 
 25
 00:01:43,640 --> 00:01:50,240
-URL, which is the Erb API gateway, and this is the slash catalog service indicating that our request
+URL, đó là YARP API gateway, và đây là /catalog service cho biết rằng request của chúng ta
 
 26
 00:01:50,240 --> 00:01:53,000
-is redirecting to downstream catalog microservices.
+đang được chuyển hướng đến downstream catalog microservices.
 
 27
 00:01:53,000 --> 00:01:54,410
-And this is the slash products.
+Và đây là /products.
 
 28
 00:01:54,410 --> 00:02:00,860
-And this will be retrieving the all products with pagination with category and with get by ID information.
+Và điều này sẽ truy xuất tất cả các sản phẩm với pagination, với category, và với thông tin get by ID.
 
 29
 00:02:00,860 --> 00:02:06,800
-So if you go back to our Visual Studio we should understand the endpoint structure from the services
+Vậy nếu bạn quay lại Visual Studio của chúng ta, chúng ta nên hiểu cấu trúc endpoint từ các dịch vụ
 
 30
 00:02:06,800 --> 00:02:08,090
@@ -120,55 +120,55 @@ catalog microservices.
 
 31
 00:02:08,090 --> 00:02:13,490
-And here you can see the product use cases get product by category by ID and get products.
+Và ở đây bạn có thể thấy các use cases của product: get product by category, by ID, và get products.
 
 32
 00:02:13,490 --> 00:02:18,740
-If you open the endpoint classes, you understand the structure of the request and response that we
+Nếu bạn mở các endpoint classes, bạn sẽ hiểu cấu trúc của request và response mà chúng ta
 
 33
 00:02:18,740 --> 00:02:23,480
-are going to use these request response when communicating to our catalog microservices.
+sẽ sử dụng những request response này khi giao tiếp với catalog microservices của chúng ta.
 
 34
 00:02:23,480 --> 00:02:29,720
-So if you look at the all endpoint definitions and also you can check the are modules under the catalog,
+Vậy nếu bạn xem tất cả các định nghĩa endpoint và cũng bạn có thể kiểm tra các modules dưới catalog,
 
 35
 00:02:29,720 --> 00:02:35,570
-we have defined the modules to accodomate all these endpoints with given request and response object.
+chúng ta đã định nghĩa các modules để chứa tất cả các endpoints này với các đối tượng request và response cho trước.
 
 36
 00:02:35,570 --> 00:02:41,510
-And we can handle with the wrapper classes to accommodate incoming requests in this product model list.
+Và chúng ta có thể xử lý với các wrapper classes để chứa incoming requests trong product model list này.
 
 37
 00:02:41,510 --> 00:02:48,590
-So we will use these model objects into our service class which will be the our business use case layer.
+Vậy chúng ta sẽ sử dụng các đối tượng model này vào trong service class của chúng ta, đó sẽ là layer business use case của chúng ta.
 
 38
 00:02:48,590 --> 00:02:54,440
-And here you can see that our catalog service requiring the annotation in order to consume Erb API gateway.
+Và ở đây bạn có thể thấy rằng catalog service của chúng ta yêu cầu annotation để sử dụng YARP API gateway.
 
 39
 00:02:54,440 --> 00:02:58,970
-So now I am going to add annotations one by one for each method.
+Vậy bây giờ tôi sẽ thêm annotations một cách từng bước một cho mỗi method.
 
 40
 00:02:58,970 --> 00:03:02,630
-Here you can see the the first method Getproducts with pagination.
+Ở đây bạn có thể thấy method đầu tiên là Getproducts with pagination.
 
 41
 00:03:02,630 --> 00:03:04,670
-Here you can see the http get operation.
+Ở đây bạn có thể thấy HTTP GET operation.
 
 42
 00:03:04,670 --> 00:03:05,570
-With annotation.
+Với annotation.
 
 43
 00:03:05,570 --> 00:03:11,420
-We put the get method and inside of this get method I have specified the endpoint URL, which is the
+Chúng ta đặt GET method và bên trong GET method này tôi đã chỉ định URL endpoint, đó là
 
 44
 00:03:11,420 --> 00:03:12,560
@@ -176,35 +176,35 @@ slash catalog service.
 
 45
 00:03:12,560 --> 00:03:18,950
-Slash products and paginated details and page number and page size will be getting from the request
+Slash products và paginated details và page number và page size sẽ được lấy từ request parameters
 
 46
 00:03:18,950 --> 00:03:22,850
-parameters, which is indicating our Getproducts method parameters.
+, cho biết các tham số của GetProducts method chúng ta.
 
 47
 00:03:22,850 --> 00:03:28,490
-And at the same way, I am going to define the second method, which is the get products by id here
+Và cũng theo cách đó, tôi sẽ định nghĩa phương thức thứ hai, đó là get products by id, ở đây
 
 48
 00:03:28,490 --> 00:03:33,290
-you can see that again, we will use the get method and passing the slash catalog service.
+bạn có thể thấy rằng lại một lần nữa, chúng ta sẽ sử dụng GET method và truyền slash catalog service.
 
 49
 00:03:33,290 --> 00:03:38,930
-Slash products and ID information and ID will be taken from the request parameters which will be the
+Slash products và ID information, và ID sẽ được lấy từ request parameters, đó sẽ là tên tham số
 
 50
 00:03:38,930 --> 00:03:41,360
-are Getproduct method, parameter name.
+của GetProduct method chúng ta.
 
 51
 00:03:41,360 --> 00:03:47,540
-And as the same way, I am going to define the last operation, which is the get products by category.
+Và cũng theo cách đó, tôi sẽ định nghĩa operation cuối cùng, đó là get products by category.
 
 52
 00:03:47,540 --> 00:03:53,540
-And here you can see that we will use slash catalog service slash products category and category name.
+Và ở đây bạn có thể thấy rằng chúng ta sẽ sử dụng slash catalog service slash products slash category và category name.
 
 53
 00:03:53,540 --> 00:03:54,290
@@ -212,7 +212,7 @@ Category name.
 
 54
 00:03:54,290 --> 00:03:59,330
-Again taking from the request parameters which is our request parameter of the these get product by
+Lại được lấy từ request parameters, đó là request parameter của GetProductByCategory method chúng ta.
 
 55
 00:03:59,330 --> 00:03:59,810
@@ -220,11 +220,11 @@ method.
 
 56
 00:03:59,810 --> 00:04:04,490
-So now I am going to splitting these operations according to annotation type.
+Vậy bây giờ tôi sẽ chia các operations này theo annotation type.
 
 57
 00:04:04,490 --> 00:04:11,390
-And by this way we can consume three microservices over the API gateway from the our shopping web client
+Và bằng cách này chúng ta có thể consume ba microservices thông qua API gateway từ shopping web client application của chúng ta.
 
 58
 00:04:11,390 --> 00:04:12,050
