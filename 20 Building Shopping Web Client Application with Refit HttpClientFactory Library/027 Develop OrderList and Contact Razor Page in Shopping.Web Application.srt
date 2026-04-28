@@ -1,22 +1,22 @@
 1
 00:00:00,140 --> 00:00:06,560
-In this video we are going to develop, order, list and contact HTML pages into our shopping web client
+Trong video này, chúng ta sẽ phát triển, tạo order, list và contact HTML pages vào shopping web client
 
 2
 00:00:06,560 --> 00:00:07,340
-application.
+application của chúng ta.
 
 3
 00:00:07,340 --> 00:00:11,150
-Please open the Visual Studio and go to the Shopping Web and Pages folder.
+Vui lòng mở Visual Studio và đi đến thư mục Shopping Web và Pages.
 
 4
 00:00:11,150 --> 00:00:18,650
-Right click Add New Razor page and select the razor page empty template and give the name as a order
+Chuột phải chọn Add New Razor page và chọn template Razor page rỗng và đặt tên là order
 
 5
 00:00:18,650 --> 00:00:24,740
-list dot CSS, HTML and click the add button and this will be create Order list page of the shopping
+list dot CSS, HTML và nhấp nút add, điều này sẽ tạo trang Order list của shopping
 
 6
 00:00:24,740 --> 00:00:25,700
@@ -24,185 +24,185 @@ web application.
 
 7
 00:00:25,700 --> 00:00:31,010
-So now we are going to copy this order list from our ASP.Net basics.
+Vì vậy, bây giờ chúng ta sẽ copy order list này từ ASP.Net basics của chúng ta.
 
 8
 00:00:31,010 --> 00:00:35,000
-I'm going to open ASP.Net basics and go to the order page.
+Tôi sẽ mở ASP.Net basics và đi đến trang order.
 
 9
 00:00:35,000 --> 00:00:37,370
-This will be representing and listing orders.
+Điều này sẽ đại diện và liệt kê các orders.
 
 10
 00:00:37,370 --> 00:00:43,070
-So I'm going to copy from here and paste into our shopping web client application.
+Vì vậy, tôi sẽ copy từ đây và dán vào shopping web client application của chúng ta.
 
 11
 00:00:43,070 --> 00:00:49,190
-And here you can see that our HTML page of the order list model under the Shopping Web Client application.
+Và ở đây bạn có thể thấy HTML page của order list model dưới Shopping Web Client application.
 
 12
 00:00:49,190 --> 00:00:53,360
-Before explaining this HTML page, I am going to fix our layout.
+Trước khi giải thích trang HTML này, tôi sẽ sửa layout của chúng ta.
 
 13
 00:00:53,360 --> 00:00:56,990
-As you can see that we have a layout including the headers and footers.
+Như bạn có thể thấy, chúng ta có một layout bao gồm headers và footers.
 
 14
 00:00:56,990 --> 00:01:02,690
-If you scroll down we have a orders page, but in this case I'm going to create an order list instead
+Nếu bạn cuộn xuống, chúng ta có trang orders, nhưng trong trường hợp này, tôi sẽ tạo một order list thay thế
 
 15
 00:01:02,690 --> 00:01:06,470
-of the order in order to avoid ordered models from the AR model folder.
+cho order để tránh các ordered models từ thư mục AR model.
 
 16
 00:01:06,470 --> 00:01:12,380
-And here you can see that I have changed the slash order to slash order list in order to navigate to
+Và ở đây bạn có thể thấy rằng tôi đã thay đổi slash order thành slash order list để điều hướng đến
 
 17
 00:01:12,380 --> 00:01:13,400
-our order page.
+trang order của chúng ta.
 
 18
 00:01:13,400 --> 00:01:19,160
-Just after that, we can go back to our order list HTML page and start to explain these HTML.
+Ngay sau đó, chúng ta có thể quay lại trang order list HTML và bắt đầu giải thích các HTML này.
 
 19
 00:01:19,160 --> 00:01:24,800
-Here you can see that this is the order list page, and this will be basically listing the orders in
+Ở đây bạn có thể thấy đây là trang order list, và điều này cơ bản sẽ liệt kê các orders trong
 
 20
 00:01:24,800 --> 00:01:25,700
-a table format.
+định dạng bảng.
 
 21
 00:01:25,700 --> 00:01:27,500
-Here you can see the order columns.
+Ở đây bạn có thể thấy các cột đơn hàng.
 
 22
 00:01:27,500 --> 00:01:33,620
-And this is the for each statement for each of the order rows including the first name, last name,
+Và đây là câu lệnh for each cho mỗi hàng đơn hàng bao gồm tên, họ,
 
 23
 00:01:33,620 --> 00:01:35,000
-email address and so on.
+địa chỉ email và những thứ khác.
 
 24
 00:01:35,000 --> 00:01:41,240
-So this order model need the orders collection of the property into the sea page.
+Vì vậy order model này cần collection orders của thuộc tính vào trang sea.
 
 25
 00:01:41,240 --> 00:01:46,790
-But before that I am going to modify this table, including the Our order model.
+Nhưng trước tiên tôi sẽ sửa đổi bảng này, bao gồm order model của chúng tôi.
 
 26
 00:01:46,790 --> 00:01:52,970
-If you open the models and go to ordering and look at the order model, our order model includes additional
+Nếu bạn mở models và đi đến ordering và xem order model, order model của chúng tôi bao gồm các
 
 27
 00:01:52,970 --> 00:01:57,920
-properties that we can add and adjust into the our order list HTML.
+thuộc tính bổ sung mà chúng tôi có thể thêm và điều chỉnh vào danh sách đơn hàng HTML của chúng tôi.
 
 28
 00:01:57,920 --> 00:02:03,170
-Here you can see that we have customer ID order name, shipping and billing address, payment status,
+Ở đây bạn có thể thấy rằng chúng tôi có customer ID, tên đơn hàng, địa chỉ giao hàng và thanh toán, trạng thái thanh toán,
 
 29
 00:02:03,170 --> 00:02:03,920
-and so on.
+và những thứ khác.
 
 30
 00:02:03,920 --> 00:02:08,840
-And these are representing a different record types that including the first name, last name, email
+Và những thứ này đại diện cho các loại bản ghi khác nhau bao gồm tên, họ, email
 
 31
 00:02:08,840 --> 00:02:09,949
-address and so on.
+địa chỉ và những thứ khác.
 
 32
 00:02:09,949 --> 00:02:17,570
-So now I am going to change our order list HTML, these table rows and columns according to our order
+Vì vậy bây giờ tôi sẽ thay đổi order list HTML của chúng tôi, các hàng và cột bảng này theo order
 
 33
 00:02:17,570 --> 00:02:18,020
-model.
+model của chúng tôi.
 
 34
 00:02:18,020 --> 00:02:24,050
-So I'm going to come here and changing these columns adding some additional columns.
+Vì vậy tôi sẽ đến đây và thay đổi các cột này thêm một số cột bổ sung.
 
 35
 00:02:24,050 --> 00:02:29,810
-Here you can see that I have added email address, line cart name and order students as an example of
+Ở đây bạn có thể thấy rằng tôi đã thêm địa chỉ email, tên line cart và order students làm ví dụ về
 
 36
 00:02:29,810 --> 00:02:31,430
-to accessing the order model.
+cách truy cập order model.
 
 37
 00:02:31,430 --> 00:02:37,820
-So again, it's the same way if you scroll down you can change the Or rows in the row definition.
+Vì vậy một lần nữa, nó giống như vậy nếu bạn cuộn xuống bạn có thể thay đổi các hàng Or trong định nghĩa hàng.
 
 38
 00:02:37,820 --> 00:02:43,910
-I'm going to come here and modify this row definitions according to our columns, including the first
+Tôi sẽ đến đây và sửa đổi định nghĩa hàng này theo các cột của chúng tôi, bao gồm tên
 
 39
 00:02:43,910 --> 00:02:49,670
-name, last name, email address, address, line and payment card, and the status of the order order.
+họ, địa chỉ email, địa chỉ, dòng và thẻ thanh toán, và trạng thái của đơn hàng order.
 
 40
 00:02:49,670 --> 00:02:56,330
-So this is the implementation of the order table into order list HTML page of our client application.
+Vì vậy đây là việc triển khai bảng đơn hàng vào trang order list HTML của ứng dụng client của chúng tôi.
 
 41
 00:02:56,330 --> 00:03:02,510
-And if you scroll down, you can see that we have an action which is redirecting to product with a continue
+Và nếu bạn cuộn xuống, bạn có thể thấy rằng chúng tôi có một action đang chuyển hướng đến product với một nút continue
 
 42
 00:03:02,510 --> 00:03:03,440
-shopping button.
+shopping.
 
 43
 00:03:03,440 --> 00:03:08,360
-So we will have also additional actions for the redirection to product page.
+Vì vậy, chúng tôi cũng sẽ có các action bổ sung để chuyển hướng đến trang product.
 
 44
 00:03:08,360 --> 00:03:11,780
-And this is the our order listing for the HTML page.
+Và đây là danh sách order cho trang HTML của chúng tôi.
 
 45
 00:03:11,780 --> 00:03:18,200
-So after developing this order list we are going to create contact page as the same way I am going to
+Vì vậy, sau khi phát triển danh sách order này, chúng tôi sẽ tạo trang contact theo cách tương tự, tôi sẽ
 
 46
 00:03:18,200 --> 00:03:24,500
-right click the page, Add New Razor page and select the empty and select the class definition name
+nhấp chuột phải vào trang, Add New Razor page và chọn empty và chọn tên định nghĩa class
 
 47
 00:03:24,500 --> 00:03:28,370
-which is the contact dot, css, HTML and click the add button.
+đó là contact dot, css, HTML và nhấp nút add.
 
 48
 00:03:28,370 --> 00:03:35,510
-And this page will be only plain HTML page that we are not going to implement any action for that purpose.
+Và trang này sẽ chỉ là trang HTML thuần mà chúng tôi không sẽ triển khai bất kỳ action nào cho mục đích đó.
 
 49
 00:03:35,510 --> 00:03:43,190
-Please open the ASP.Net basics and go to the contacts page, and you can copy from here and paste into
+Vui lòng mở ASP.Net basics và đi đến trang contacts, và bạn có thể copy từ đây và paste vào
 
 50
 00:03:43,190 --> 00:03:46,520
-our project and contact HTML page.
+trang HTML contact của dự án chúng tôi.
 
 51
 00:03:46,520 --> 00:03:49,130
-And this is the HTML of the contact page.
+Và đây là HTML của trang contact.
 
 52
 00:03:49,130 --> 00:03:54,620
-This is regular contact page including the address and other details for our client application.
+Đây là trang contact thông thường bao gồm địa chỉ và các chi tiết khác cho ứng dụng client của chúng tôi.
 

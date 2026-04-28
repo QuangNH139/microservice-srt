@@ -1,6 +1,6 @@
 1
 00:00:00,110 --> 00:00:05,600
-In this video, we are going to containerize an Orchestrate Shopping web client application in Docker
+Trong video này, chúng tôi sẽ containerize một ứng dụng web client Orchestrate Shopping trong Docker
 
 2
 00:00:05,600 --> 00:00:06,230
@@ -8,91 +8,91 @@ Compose.
 
 3
 00:00:06,260 --> 00:00:11,570
-You can see the e-commerce microservice deployment strategy that we have completed, the deployment
+Bạn có thể thấy chiến lược triển khai microservice e-commerce mà chúng tôi đã hoàn thành, việc triển khai
 
 4
 00:00:11,570 --> 00:00:15,620
-one, which is the local machine to connect the Docker compose backing services.
+thứ nhất, đó là máy cục bộ để kết nối các dịch vụ backing của Docker compose.
 
 5
 00:00:15,620 --> 00:00:21,560
-And now we are going to implement deployment tool which is the Docker compose all microservices and
+Và bây giờ chúng tôi sẽ triển khai công cụ deployment đó là Docker compose tất cả các microservices và
 
 6
 00:00:21,560 --> 00:00:22,580
-backing services.
+các backing services.
 
 7
 00:00:22,580 --> 00:00:27,860
-That means we will containerize and orchestrate shopping web client application and communicate with
+Điều đó có nghĩa là chúng tôi sẽ containerize và orchestrate ứng dụng web client shopping và giao tiếp với
 
 8
 00:00:27,860 --> 00:00:31,340
-the IRB API gateway inside of the docker compose environment.
+IRB API gateway bên trong môi trường docker compose.
 
 9
 00:00:31,460 --> 00:00:37,970
-When we are running the docker compose, Docker run the all containers into its own network and access
+Khi chúng tôi chạy docker compose, Docker sẽ chạy tất cả các containers vào network riêng của nó và có thể truy cập
 
 10
 00:00:37,970 --> 00:00:40,070
-each other with Docker container names.
+lẫn nhau với tên Docker container.
 
 11
 00:00:40,070 --> 00:00:45,050
-For that purpose, we should give the container names instead of the localhost and the port numbers
+Vì mục đích đó, chúng tôi nên cung cấp tên container thay vì localhost và các số cổng
 
 12
 00:00:45,050 --> 00:00:49,040
-for the ARP API gateway configuration in the shopping web client application.
+cho cấu hình ARP API gateway trong ứng dụng web client shopping.
 
 13
 00:00:49,130 --> 00:00:50,660
-So let's get started.
+Vậy hãy bắt đầu.
 
 14
 00:00:50,660 --> 00:00:56,540
-I'm going to open the Visual Studio and we will start by Containerizing shopping web client application.
+Tôi sẽ mở Visual Studio và chúng tôi sẽ bắt đầu bằng cách Containerizing ứng dụng web client shopping.
 
 15
 00:00:56,540 --> 00:01:03,470
-For that purpose you can right click the application add Docker support and select the target operating
+Với mục đích đó, bạn có thể nhấp chuột phải vào ứng dụng, thêm Docker support và chọn hệ điều hành đích
 
 16
 00:01:03,470 --> 00:01:04,640
-system as a Linux.
+là Linux.
 
 17
 00:01:05,410 --> 00:01:08,650
-And here you can see the Docker file is created successfully.
+Và ở đây bạn có thể thấy Docker file được tạo thành công.
 
 18
 00:01:08,650 --> 00:01:11,950
-This is typical Docker file including several stages.
+Đây là một Docker file điển hình bao gồm nhiều stages.
 
 19
 00:01:11,950 --> 00:01:15,010
-In order to containerize our shopping web client application.
+Để containerize ứng dụng web client shopping của chúng tôi.
 
 20
 00:01:15,010 --> 00:01:21,460
-I'm not going to explain deeply, and just after that we can go to the second step, which is the orchestrating
+Tôi sẽ không giải thích chi tiết, và sau đó chúng tôi có thể đi đến bước thứ hai, đó là orchestrating
 
 21
 00:01:21,460 --> 00:01:23,440
-this shopping web client application.
+ứng dụng web client shopping này.
 
 22
 00:01:23,440 --> 00:01:28,990
-That means we will include shopping web container into our Docker compose file for that purpose.
+Điều đó có nghĩa là chúng ta sẽ đưa shopping web container vào Docker compose file cho mục đích đó.
 
 23
 00:01:28,990 --> 00:01:35,530
-Again, I am going to right click the Shopping Web project file and add container Orchestrator support.
+Một lần nữa, tôi sẽ click chuột phải vào file Shopping Web project và thêm container Orchestrator support.
 
 24
 00:01:35,530 --> 00:01:41,140
-This time we will select Docker Compose as a container orchestrator and select Operating System as a
+Lần này chúng ta sẽ chọn Docker Compose làm container orchestrator và chọn Operating System là
 
 25
 00:01:41,140 --> 00:01:41,650
@@ -100,55 +100,55 @@ Linux.
 
 26
 00:01:41,650 --> 00:01:45,280
-Click the okay button and see the docker compose Yaml files.
+Click nút okay và xem các file docker compose Yaml.
 
 27
 00:01:45,460 --> 00:01:50,920
-After that, if you open the docker-compose.yml file and go at the end of this file, you can see that
+Sau đó, nếu bạn mở file docker-compose.yml và đi đến cuối file này, bạn có thể thấy rằng
 
 28
 00:01:50,920 --> 00:01:55,930
-shopping web application and container added into our docker-compose.yml file.
+shopping web application và container đã được thêm vào docker-compose.yml file của chúng ta.
 
 29
 00:01:55,930 --> 00:02:02,590
-And if you expand the docker compose of HTML file and go at the end of this file, we can see that this
+Và nếu bạn mở rộng docker compose của file HTML và đi đến cuối file này, chúng ta có thể thấy rằng
 
 30
 00:02:02,590 --> 00:02:07,360
-shopping web client application configurations are stored at the overridable file.
+cấu hình ứng dụng web client shopping được lưu trữ tại file overridable.
 
 31
 00:02:07,360 --> 00:02:13,390
-So now we are going to change these Overridable configurations into shopping web application according
+Vì vậy bây giờ chúng ta sẽ thay đổi các cấu hình Overridable này thành ứng dụng shopping web theo
 
 32
 00:02:13,420 --> 00:02:14,410
-to our architecture.
+kiến trúc của chúng ta.
 
 33
 00:02:14,410 --> 00:02:19,570
-And here you can see the environment variables port numbers that we are going to modify in here.
+Và ở đây bạn có thể thấy các biến environment, số port mà chúng ta sẽ sửa đổi ở đây.
 
 34
 00:02:19,570 --> 00:02:22,060
-So we should change these configurations.
+Vì vậy chúng ta nên thay đổi các cấu hình này.
 
 35
 00:02:22,060 --> 00:02:27,040
-Let's configure it for our microservice endpoints and start with port definitions.
+Hãy cấu hình nó cho các microservice endpoints của chúng ta và bắt đầu với định nghĩa port.
 
 36
 00:02:27,040 --> 00:02:33,130
-If you look at our table you can see the shopping web application, port numbers, local environment
+Nếu bạn nhìn vào bảng của chúng ta, bạn có thể thấy ứng dụng shopping web, số port, local environment
 
 37
 00:02:33,130 --> 00:02:34,210
-and Docker environment.
+và Docker environment.
 
 38
 00:02:34,210 --> 00:02:41,680
-Here you can see that we will expand this Docker environment into 6005 and 6065 as a Http and Https
+Ở đây bạn có thể thấy rằng chúng ta sẽ mở rộng Docker environment này thành 6005 và 6065 như Http và Https
 
 39
 00:02:41,680 --> 00:02:42,220
@@ -156,125 +156,125 @@ ports.
 
 40
 00:02:42,220 --> 00:02:50,200
-For that purpose, go back to our V studio and change the port numbers, exposing these 6005 and 6065
+Với mục đích đó, quay lại VS studio của chúng ta và thay đổi số port, expose các 6005 và 6065
 
 41
 00:02:50,200 --> 00:02:50,770
-ports.
+cổng.
 
 42
 00:02:50,770 --> 00:02:54,250
-So just after that we will focus on the environment variables.
+Vì vậy ngay sau đó chúng ta sẽ tập trung vào các biến môi trường.
 
 43
 00:02:54,250 --> 00:02:59,500
-For environment variables we should referring the shopping web client application application settings
+Đối với các biến môi trường, chúng ta nên tham khảo file cài đặt ứng dụng web client shopping.
 
 44
 00:02:59,500 --> 00:03:00,310
-Json file.
+File Json.
 
 45
 00:03:00,310 --> 00:03:05,950
-If you open the application settings Json file, you can see that we have API settings and gateway.
+Nếu bạn mở file application settings Json, bạn có thể thấy rằng chúng ta có API settings và gateway.
 
 46
 00:03:05,950 --> 00:03:10,000
-Others we are using the localhost 6064 inside of the docker.
+Những cái khác chúng ta đang sử dụng localhost 6064 bên trong docker.
 
 47
 00:03:10,000 --> 00:03:13,450
-We should change this as a container name into docker name.
+Chúng ta nên thay đổi điều này thành tên container vào docker name.
 
 48
 00:03:13,450 --> 00:03:19,090
-So for that purpose I'm going to go back to our docker compose, overwrite Yaml file and overwrite this
+Vì vậy với mục đích đó, tôi sẽ quay lại docker compose, ghi đè file Yaml và ghi đè cái này
 
 49
 00:03:19,090 --> 00:03:21,340
-configuration into environment variable.
+configuration vào biến môi trường.
 
 50
 00:03:21,340 --> 00:03:28,270
-And this time I'm going to type as a API settings underscore underscore gateway address.
+Và lần này tôi sẽ gõ API settings underscore underscore gateway address.
 
 51
 00:03:28,270 --> 00:03:32,590
-And this will be http api gateway and 880.
+Và điều này sẽ là http api gateway và 880.
 
 52
 00:03:32,740 --> 00:03:38,080
-The ARP API gateway is the container name of the Docker compose environment that you can confirm.
+API gateway ARP là tên container của Docker compose environment mà bạn có thể xác nhận.
 
 53
 00:03:38,080 --> 00:03:38,950
-From here.
+Từ đây.
 
 54
 00:03:38,950 --> 00:03:43,270
-And here you can see that I'm going to use Http and 880 port.
+Và ở đây bạn có thể thấy rằng tôi sẽ sử dụng Http và cổng 880.
 
 55
 00:03:43,270 --> 00:03:46,270
-Why I'm using these Http and 880 port.
+Tại sao tôi sử dụng cổng Http và 880.
 
 56
 00:03:46,270 --> 00:03:53,320
-Because if I'm going to use 8081 and https port number, this will be throw an exception requiring SSL
+Bởi vì nếu tôi sử dụng 8081 và https port number, điều này sẽ throw một exception yêu cầu SSL
 
 57
 00:03:53,320 --> 00:03:55,090
-connection and certification.
+connection và certification.
 
 58
 00:03:55,090 --> 00:04:01,090
-In order to avoid certificate configuration, I am going to use Http port number to communicate with
+Để tránh certificate configuration, tôi sẽ sử dụng Http port number để giao tiếp với
 
 59
 00:04:01,090 --> 00:04:03,940
-shopping web client application and the ARP API gateway.
+shopping web client application và API gateway ARP.
 
 60
 00:04:03,940 --> 00:04:10,360
-So that's why we will put 880 port number to connect http port of the ARP API gateway inside of the
+Vì vậy đó là lý do tại sao chúng ta sẽ đặt cổng 880 để kết nối http port của API gateway ARP bên trong
 
 61
 00:04:10,360 --> 00:04:11,980
-fully docker compose environment.
+môi trường docker compose đầy đủ.
 
 62
 00:04:11,980 --> 00:04:17,529
-So after setting these configuration and the port numbers, we can also add a depends on section in
+Vì vậy sau khi thiết lập các cấu hình này và các số cổng, chúng ta cũng có thể thêm một phần depends on trong
 
 63
 00:04:17,529 --> 00:04:18,130
-here.
+đây.
 
 64
 00:04:18,459 --> 00:04:24,130
-After the deployment I'm going to add a new section which is the dependency on.
+Sau khi triển khai, tôi sẽ thêm một phần mới đó là phần dependency on.
 
 65
 00:04:24,130 --> 00:04:29,830
-Here you can see that I have added the depends on because shopping web client application totally depends
+Ở đây bạn có thể thấy rằng tôi đã thêm depends on vì ứng dụng shopping web client hoàn toàn phụ thuộc
 
 66
 00:04:29,830 --> 00:04:31,600
-on the Erb API gateway endpoints.
+vào các endpoints Erb API gateway.
 
 67
 00:04:31,600 --> 00:04:34,660
-In order to consume and perform end to end use cases.
+Để sử dụng và thực hiện các trường hợp sử dụng từ đầu đến cuối.
 
 68
 00:04:34,660 --> 00:04:39,190
-So please configure these client application as the same way I have did in here.
+Vì vậy vui lòng cấu hình ứng dụng client này theo cách giống như tôi đã làm ở đây.
 
 69
 00:04:39,190 --> 00:04:44,890
-And within this configuration, our shopping Web client application now ready to run fully Docker compose
+Và trong cấu hình này, ứng dụng shopping Web client của chúng ta giờ đã sẵn sàng để chạy môi trường docker compose đầy đủ
 
 70
 00:04:44,890 --> 00:04:50,590
-environment and to consume Erb API gateway and perform the use cases that we have defined in our slide.
+và để sử dụng Erb API gateway và thực hiện các trường hợp sử dụng mà chúng ta đã định nghĩa trong trang chiếu của chúng ta.
 

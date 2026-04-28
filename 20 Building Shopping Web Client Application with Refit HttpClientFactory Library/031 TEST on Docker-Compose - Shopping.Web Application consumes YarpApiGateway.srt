@@ -1,82 +1,82 @@
 1
 00:00:00,140 --> 00:00:06,320
-In this video we are going to test shopping web client application inside of the docker compose environment,
+Trong video này, chúng tôi sẽ test ứng dụng web client shopping bên trong môi trường docker compose,
 
 2
 00:00:06,320 --> 00:00:11,630
-and we will consume the Erb API gateway inside of the Docker environment from our client application,
+và chúng tôi sẽ sử dụng Erb API gateway bên trong môi trường Docker từ ứng dụng client của chúng tôi,
 
 3
 00:00:11,630 --> 00:00:14,750
-which is also included in the Docker compose environment.
+cái mà cũng được bao gồm trong môi trường Docker compose.
 
 4
 00:00:14,900 --> 00:00:20,690
-And we will perform these use cases into our Docker compose environment to perform internet use case
+Và chúng tôi sẽ thực hiện những use case này vào môi trường Docker compose của chúng tôi để thực hiện use case internet
 
 5
 00:00:20,690 --> 00:00:23,810
-from the shopping client application in fully docker environment.
+từ ứng dụng shopping client trong môi trường docker hoàn toàn.
 
 6
 00:00:23,810 --> 00:00:26,870
-For that purpose, please open the Visual Studio.
+Với mục đích đó, vui lòng mở Visual Studio.
 
 7
 00:00:26,870 --> 00:00:30,950
-And this time we are going to set a startup project in Docker Compose.
+Và lần này chúng tôi sẽ thiết lập một startup project trong Docker Compose.
 
 8
 00:00:31,610 --> 00:00:35,120
-And I am going to run the docker compose without debugging.
+Và tôi sẽ chạy docker compose mà không cần debugging.
 
 9
 00:00:35,120 --> 00:00:41,270
-And this will be start all microservices, including the our newly adding shopping web client application
+Và điều này sẽ khởi động tất cả các microservices, bao gồm ứng dụng web client shopping mới được thêm vào
 
 10
 00:00:41,270 --> 00:00:46,760
-into fully Docker environment, and we will consume the irb API gateway inside of the Docker environment
+vào môi trường Docker hoàn toàn, và chúng tôi sẽ sử dụng irb API gateway bên trong môi trường Docker
 
 11
 00:00:46,760 --> 00:00:54,020
-using the shopping web client application that will expose the 1665 endpoint from our local computer.
+sử dụng ứng dụng web client shopping sẽ expose endpoint 1665 từ máy tính cục bộ của chúng tôi.
 
 12
 00:00:54,320 --> 00:00:59,990
-This is building shopping web client application as a container and adding into our Docker compose environment.
+Đây là việc xây dựng ứng dụng web client shopping như một container và thêm vào môi trường Docker compose của chúng tôi.
 
 13
 00:00:59,990 --> 00:01:05,360
-Here you can see that our Docker compose started successfully, and if you scroll down, you can see
+Ở đây bạn có thể thấy rằng Docker compose của chúng tôi đã khởi động thành công, và nếu bạn cuộn xuống, bạn có thể thấy
 
 14
 00:01:05,360 --> 00:01:08,930
-that all microservices and backing services is up and running.
+tất cả các microservices và backing services đang chạy.
 
 15
 00:01:08,930 --> 00:01:14,180
-And also we can successfully edit shopping web client application into our Docker compose environment.
+Và chúng tôi cũng có thể thành công edit ứng dụng web client shopping vào môi trường Docker compose của chúng tôi.
 
 16
 00:01:14,180 --> 00:01:22,580
-Now I am going to hit the our localhost and 6065 port in order to consume our Yarp API gateway inside
+Bây giờ tôi sẽ truy cập localhost và cổng 6065 của chúng tôi để sử dụng Yarp API gateway của chúng tôi bên trong
 
 17
 00:01:22,580 --> 00:01:25,430
-of the docker environment using the our client application.
+môi trường docker sử dụng ứng dụng client của chúng tôi.
 
 18
 00:01:25,430 --> 00:01:32,330
-If you type your browser https localhost 6065, you can reach the landing page of our shopping client
+Nếu bạn gõ trình duyệt của bạn https localhost 6065, bạn có thể truy cập trang landing của shopping client của chúng tôi
 
 19
 00:01:32,330 --> 00:01:37,550
-web application and in the shopping client application in the landing page, we are retrieving the all
+ứng dụng web và trong ứng dụng shopping client ở trang landing, chúng tôi đang lấy tất cả
 
 20
 00:01:37,550 --> 00:01:43,250
-products from the IRB API gateway and from the catalog microservices that you can see the logs on the
+các sản phẩm từ IRB API gateway và từ microservices catalog mà bạn có thể thấy các logs trên
 
 21
 00:01:43,250 --> 00:01:44,300
@@ -160,23 +160,23 @@ And just after that we can continue to checkout operation.
 
 41
 00:03:00,020 --> 00:03:04,070
-But before that I am going to show you orders into our application.
+Nhưng trước đó, tôi sẽ hiển thị cho bạn các orders trong ứng dụng của chúng ta.
 
 42
 00:03:04,070 --> 00:03:10,520
-If you open the order page, you can see that we have only one order, including into our client application.
+Nếu bạn mở trang order, bạn có thể thấy rằng chúng ta chỉ có một order, được bao gồm trong ứng dụng client của chúng ta.
 
 43
 00:03:10,520 --> 00:03:15,830
-That comes from the ordering microservices seeding operation when startup to container.
+Điều đó xuất phát từ hoạt động seeding của ordering microservices khi khởi động container.
 
 44
 00:03:15,830 --> 00:03:21,290
-So now we are going to continue the cart operation and I am going to check out the cart and this will
+Vì vậy bây giờ chúng ta sẽ tiếp tục hoạt động giỏ hàng và tôi sẽ checkout giỏ hàng và điều này sẽ
 
 45
 00:03:21,290 --> 00:03:26,120
-be published basket checkout event from the basket microservices that will consume from the ordering
+xuất bản basket checkout event từ basket microservices mà sẽ được consume bởi ordering
 
 46
 00:03:26,120 --> 00:03:26,870
@@ -184,79 +184,79 @@ microservices.
 
 47
 00:03:26,870 --> 00:03:30,530
-And we will create any order under our client application.
+Và chúng ta sẽ tạo bất kỳ order nào dưới ứng dụng client của chúng ta.
 
 48
 00:03:30,530 --> 00:03:32,570
-So let me start the checkout operation.
+Vì vậy hãy để tôi bắt đầu hoạt động checkout.
 
 49
 00:03:32,570 --> 00:03:38,030
-If you click the checkout button this will be redirecting to your checkout page including the cart details.
+Nếu bạn nhấp vào nút checkout, điều này sẽ chuyển hướng bạn đến trang checkout bao gồm chi tiết giỏ hàng.
 
 50
 00:03:38,030 --> 00:03:42,980
-Here you can see that we are listing the cart details, including the prices and total price.
+Tại đây bạn có thể thấy rằng chúng ta đang liệt kê chi tiết giỏ hàng, bao gồm giá cả và giá tổng cộng.
 
 51
 00:03:42,980 --> 00:03:49,220
-And here you can see the form data that we are going to fill this form in order to check out the basket
+Và ở đây bạn có thể thấy dữ liệu form mà chúng ta sẽ điền vào form này để checkout giỏ hàng
 
 52
 00:03:49,220 --> 00:03:52,040
-and start the asynchronous event driven communication.
+và bắt đầu giao tiếp event driven không đồng bộ.
 
 53
 00:03:52,040 --> 00:03:57,770
-So now I'm going to come here and complete all these form items with a valid data.
+Vì vậy bây giờ tôi sẽ đến đây và hoàn thành tất cả các mục form này với dữ liệu hợp lệ.
 
 54
 00:03:57,770 --> 00:04:02,420
-I'm going to give a random name, and I'm going to specify the email address.
+Tôi sẽ cung cấp một tên ngẫu nhiên, và tôi sẽ chỉ định địa chỉ email.
 
 55
 00:04:02,420 --> 00:04:07,190
-And you can fulfill all the blank items with a valid data.
+Và bạn có thể điền tất cả các mục trống với dữ liệu hợp lệ.
 
 56
 00:04:16,010 --> 00:04:21,800
-Here you can see that we have loaded all items in the checkout form that we are going to check out this
+Tại đây bạn có thể thấy rằng chúng ta đã tải tất cả các mục trong form checkout mà chúng ta sẽ checkout trang này
 
 57
 00:04:21,800 --> 00:04:25,340
-page by clicking this button, click this checkout order button.
+bằng cách nhấp vào nút này, nhấp vào nút checkout order.
 
 58
 00:04:25,340 --> 00:04:30,320
-And this will be redirecting to your confirmation page and your order submitted successfully.
+Và điều này sẽ chuyển hướng bạn đến trang xác nhận và order của bạn được gửi thành công.
 
 59
 00:04:30,320 --> 00:04:35,780
-That means this will be the checkout to Basket Microservices and Basket Microservices will publish the
+Điều đó có nghĩa là đây sẽ là checkout đến Basket Microservices và Basket Microservices sẽ xuất bản
 
 60
 00:04:35,780 --> 00:04:37,670
-basket checkout event to the RabbitMQ.
+basket checkout event đến RabbitMQ.
 
 61
 00:04:37,700 --> 00:04:42,200
-So after that, authentic microservices consume these events from the RabbitMQ.
+Vì vậy, sau đó các authentic microservices tiêu thụ các events này từ RabbitMQ.
 
 62
 00:04:42,230 --> 00:04:44,930
-First of all I'm going to check the RabbitMQ dashboard.
+Trước hết, tôi sẽ kiểm tra dashboard RabbitMQ.
 
 63
 00:04:44,930 --> 00:04:50,810
-And in here if you go to the queues and streams, you can see that our basket checkout event is published
+Và ở đây nếu bạn vào queues và streams, bạn có thể thấy rằng basket checkout event của chúng tôi được công bố
 
 64
 00:04:50,810 --> 00:04:53,060
-successfully from the basket microservices.
+thành công từ basket microservices.
 
 65
 00:04:53,060 --> 00:04:58,550
-And this will be storing in the RabbitMQ that will consume from the subscriber system which is the authentic
+Và cái này sẽ được lưu trữ trong RabbitMQ mà sẽ được tiêu thụ từ subscriber system đó là authentic
 
 66
 00:04:58,550 --> 00:04:59,480
@@ -264,27 +264,27 @@ microservices.
 
 67
 00:04:59,480 --> 00:05:05,510
-In order to verify order consume operations, we can go back to our client application and open the
+Để xác minh order consume operations, chúng ta có thể quay lại ứng dụng client của chúng ta và mở trang
 
 68
 00:05:05,510 --> 00:05:06,260
-order page.
+order.
 
 69
 00:05:06,260 --> 00:05:09,800
-Here you can see that newly adding order comes into the page.
+Ở đây bạn có thể thấy rằng các order mới được thêm vào trang.
 
 70
 00:05:09,800 --> 00:05:14,900
-That means this order created from the basket checkout operation for our client application.
+Điều đó có nghĩa là order này được tạo từ basket checkout operation cho ứng dụng client của chúng tôi.
 
 71
 00:05:14,900 --> 00:05:18,800
-We can again check the cart operation and this time cart is empty.
+Chúng ta có thể kiểm tra lại cart operation và lần này cart trống.
 
 72
 00:05:18,800 --> 00:05:24,830
-That means this card checkout from the client application and creating a new order record into ordering
+Điều đó có nghĩa là card checkout từ ứng dụng client và tạo một record order mới vào ordering
 
 73
 00:05:24,830 --> 00:05:25,940
@@ -292,9 +292,9 @@ microservices.
 
 74
 00:05:25,940 --> 00:05:31,280
-As you can see that we have successfully completed end to end test fully on docker compose environment
+Như bạn có thể thấy rằng chúng tôi đã hoàn thành thành công end to end test hoàn toàn trên docker compose environment
 
 75
 00:05:31,280 --> 00:05:34,880
-and sending the Http requests from our client applications.
+và gửi các Http requests từ các ứng dụng client của chúng tôi.
 

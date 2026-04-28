@@ -1,58 +1,58 @@
 1
 00:00:00,140 --> 00:00:06,620
-In this video, we are going to develop checkout and confirmation HTML page into our client application.
+Trong video này, chúng ta sẽ phát triển trang HTML checkout và confirmation vào ứng dụng client của chúng ta.
 
 2
 00:00:06,620 --> 00:00:13,490
-For that purpose, please open the Visual Studio and go to the Shopping Web client application and Pages
+Để làm điều đó, vui lòng mở Visual Studio và đi đến ứng dụng Shopping Web client và thư mục Pages
 
 3
 00:00:13,490 --> 00:00:14,210
-folder.
+.
 
 4
 00:00:14,210 --> 00:00:17,660
-And I'm going to right click and add New Razor page.
+Và tôi sẽ click chuột phải và thêm New Razor page.
 
 5
 00:00:17,660 --> 00:00:20,870
-And we are going to create a razor page empty.
+Và chúng ta sẽ tạo một razor page trống.
 
 6
 00:00:20,870 --> 00:00:27,320
-And the name should be checkout dot css HTML file and click the add button.
+Và tên phải là checkout dot css HTML file và click nút add.
 
 7
 00:00:27,890 --> 00:00:33,500
-After creating checkout page, we can copy the HTML codes from the ASP.Net Run Basics repository.
+Sau khi tạo trang checkout, chúng ta có thể copy các mã HTML từ kho ASP.Net Run Basics.
 
 8
 00:00:33,500 --> 00:00:40,670
-You can open the ASP.Net run Basic repository and go to the page, checkout Csharp HTML page, and come
+Bạn có thể mở kho ASP.Net run Basic và đi đến trang, trang HTML checkout Csharp, và đến
 
 9
 00:00:40,670 --> 00:00:46,940
-to this point and copy from this line of code and paste into our checkout page into the Shopping Web
+điểm này và copy từ dòng mã này và dán vào trang checkout của chúng ta vào ứng dụng Shopping Web
 
 10
 00:00:46,940 --> 00:00:48,200
-client application.
+client.
 
 11
 00:00:48,200 --> 00:00:52,550
-And here you can see that this is the checkout HTML page of the.
+Và ở đây bạn có thể thấy rằng đây là trang HTML checkout của
 
 12
 00:00:52,550 --> 00:00:57,680
-Our client application and checkout page is one of the important page into our client application.
+ứng dụng client của chúng ta và trang checkout là một trong những trang quan trọng nhất trong ứng dụng client của chúng ta.
 
 13
 00:00:57,680 --> 00:01:03,200
-Because in the checkout page we basically check out the basket with a given information.
+Bởi vì trong trang checkout chúng ta cơ bản là kiểm tra giỏ hàng với thông tin được cung cấp.
 
 14
 00:01:03,200 --> 00:01:08,690
-And this will be start asynchronous communication on behind of the scenes in the downstream microservices
+Và điều này sẽ bắt đầu giao tiếp không đồng bộ phía sau các cảnh trong các microservices hạ lưu
 
 15
 00:01:08,690 --> 00:01:09,320
@@ -60,23 +60,23 @@ basket.
 
 16
 00:01:09,320 --> 00:01:15,050
-Microservices publish basket checkout event RabbitMQ and it will consume from the ordinary microservices
+Microservices xuất bản sự kiện basket checkout trên RabbitMQ và nó sẽ tiêu thụ từ các microservices thường xuyên
 
 17
 00:01:15,050 --> 00:01:21,170
-in order to create any order and start order fulfillment process and all these end to end process starting
+để tạo bất kỳ đơn hàng nào và bắt đầu quy trình hoàn thành đơn hàng và tất cả các quá trình end to end này bắt đầu
 
 18
 00:01:21,170 --> 00:01:22,340
-from the client application.
+từ ứng dụng client.
 
 19
 00:01:22,340 --> 00:01:29,030
-And in this page, if you look at these HTML page, you can see that these will be also including these
+Và trong trang này, nếu bạn nhìn vào trang HTML này, bạn có thể thấy rằng điều này cũng sẽ bao gồm các
 
 20
 00:01:29,030 --> 00:01:30,530
-shopping cart item details.
+chi tiết mục giỏ hàng mua sắm.
 
 21
 00:01:30,530 --> 00:01:32,990
@@ -160,15 +160,15 @@ And if you look at the client side experience after clicking the checkout button
 
 41
 00:02:55,760 --> 00:02:58,310
-to confirmation page for that purpose.
+tới trang confirmation cho mục đích đó.
 
 42
 00:02:58,310 --> 00:03:02,600
-I am also going to create any razor page which is the confirmation page.
+Tôi cũng sẽ tạo một razor page đó là trang confirmation.
 
 43
 00:03:02,600 --> 00:03:09,620
-I am going to right click Add new Razor page and Razor empty and the name of the page is confirmation
+Tôi sẽ click chuột phải Add new Razor page và Razor empty và tên của trang là confirmation
 
 44
 00:03:09,620 --> 00:03:11,390
@@ -176,29 +176,29 @@ dot css, HTML.
 
 45
 00:03:11,390 --> 00:03:17,390
-This page only representation of the plain HTML page to verifying the confirmation.
+Trang này chỉ là biểu diễn của một trang HTML thuần để xác minh confirmation.
 
 46
 00:03:17,390 --> 00:03:24,290
-For that purpose, I am going to open the ASP.Net run basics and go to confirmation and copy this line
+Cho mục đích đó, tôi sẽ mở ASP.Net run basics và đi tới confirmation và sao chép dòng này
 
 47
 00:03:24,320 --> 00:03:29,510
-of HTML codes and come back to our actual client application and paste in here.
+của các mã HTML và quay lại ứng dụng client thực tế của chúng ta và dán vào đây.
 
 48
 00:03:29,510 --> 00:03:34,340
-As you can see that this is only requiring the message information, and this will be verifying the
+Như bạn có thể thấy rằng điều này chỉ yêu cầu thông tin message, và điều này sẽ xác minh
 
 49
 00:03:34,340 --> 00:03:38,150
-confirmation into our application after checkout operation.
+confirmation vào ứng dụng của chúng ta sau khi thực hiện checkout.
 
 50
 00:03:38,150 --> 00:03:43,220
-As you can see that we have completed the HTML part of the confirmation and checkout page.
+Như bạn có thể thấy rằng chúng ta đã hoàn thành phần HTML của trang confirmation và checkout.
 
 51
 00:03:43,220 --> 00:03:45,620
-Now it is time to implement C sharp page.
+Bây giờ là lúc để triển khai trang C sharp.
 

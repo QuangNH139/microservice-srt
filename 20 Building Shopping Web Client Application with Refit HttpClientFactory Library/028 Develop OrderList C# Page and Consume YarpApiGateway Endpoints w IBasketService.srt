@@ -1,142 +1,142 @@
 1
 00:00:00,140 --> 00:00:06,380
-In this video we are going to develop order lists, see page and consume the Erb API gateway and print
+Trong video này, chúng tôi sẽ phát triển order lists, xem page và consume Erb API gateway và in
 
 2
 00:00:06,380 --> 00:00:11,120
-with using AI ordering service and using the Revit Http client factory.
+bằng cách sử dụng AI ordering service và sử dụng Revit Http client factory.
 
 3
 00:00:11,210 --> 00:00:14,120
-For that purpose we will implement the order list module.
+Cho mục đích đó, chúng tôi sẽ implement order list module.
 
 4
 00:00:14,150 --> 00:00:15,170
-See page.
+Xem page.
 
 5
 00:00:15,170 --> 00:00:21,140
-So whenever we are using an implementing order list module, we need to inject AI ordering services.
+Vì vậy, bất cứ khi nào chúng tôi sử dụng và implementing order list module, chúng tôi cần inject AI ordering services.
 
 6
 00:00:21,140 --> 00:00:27,410
-Because this page is basically representing and listing the orders into our ordering microservices over
+Bởi vì page này về cơ bản là representing và listing các orders vào ordering microservices của chúng tôi qua
 
 7
 00:00:27,410 --> 00:00:28,550
-the arb API gateway.
+Erb API gateway.
 
 8
 00:00:28,580 --> 00:00:32,150
-For that purpose, we have to inject AI ordering services.
+Cho mục đích đó, chúng tôi phải inject AI ordering services.
 
 9
 00:00:32,150 --> 00:00:38,090
-But we didn't register AI ordering services into our application and ASP.Net dependency injection tool.
+Nhưng chúng tôi chưa register AI ordering services vào application và ASP.Net dependency injection tool của chúng tôi.
 
 10
 00:00:38,090 --> 00:00:43,130
-That's why the first thing we should register AI ordering services into our Program.cs.
+Đó là lý do tại sao điều đầu tiên chúng tôi nên register AI ordering services vào Program.cs của chúng tôi.
 
 11
 00:00:43,130 --> 00:00:45,020
-Please go to the Program.cs.
+Vui lòng đi đến Program.cs.
 
 12
 00:00:45,020 --> 00:00:50,600
-And in here you can see that we have registering AI Catalog Service and AI basket service.
+Và ở đây bạn có thể thấy rằng chúng tôi đang registering AI Catalog Service và AI basket service.
 
 13
 00:00:50,600 --> 00:00:51,620
-And it's the same way.
+Và nó cũng vậy.
 
 14
 00:00:51,620 --> 00:00:54,410
-I am going to copy this line of code and paste in here.
+Tôi sẽ copy dòng code này và paste ở đây.
 
 15
 00:00:54,410 --> 00:01:01,610
-And this time we will register AI ordering services into our Revit client with a given base address.
+Và lần này chúng tôi sẽ register AI ordering services vào Revit client của chúng tôi với một given base address.
 
 16
 00:01:01,610 --> 00:01:03,710
-And the base address is same as the.
+Và base address là giống như.
 
 17
 00:01:03,710 --> 00:01:09,590
-For each catalog basket and ordering services, you can reach the application Settings.json file or
+Đối với mỗi catalog, basket và ordering services, bạn có thể reach file application Settings.json hoặc
 
 18
 00:01:09,590 --> 00:01:13,610
-base of this is always erb API gateway docker network address.
+base của cái này luôn là Erb API gateway docker network address.
 
 19
 00:01:13,610 --> 00:01:19,730
-And if you go back you can see that we have registering all these interfaces into our Revit client.
+Và nếu bạn quay lại, bạn có thể thấy rằng chúng tôi đang registering tất cả các interfaces này vào Revit client của chúng tôi.
 
 20
 00:01:19,730 --> 00:01:21,380
-And this will be generated client.
+Và cái này sẽ là generated client.
 
 21
 00:01:21,380 --> 00:01:26,930
-In order to consume authentic microservices over the Erb API gateway, if you go to AI ordering services,
+Để tiêu thụ các microservices xác thực qua Erb API gateway, nếu bạn đi tới AI ordering services,
 
 22
 00:01:26,930 --> 00:01:33,740
-we can send Http get methods in order to get orders with pagination, get orders by name and get orders
+chúng tôi có thể gửi Http get methods để lấy orders với pagination, lấy orders theo tên và lấy orders
 
 23
 00:01:33,740 --> 00:01:34,610
-by customer.
+theo customer.
 
 24
 00:01:34,610 --> 00:01:41,120
-During this video, I am going to get orders by customer with a given fixed customer ID into our application.
+Trong video này, tôi sẽ lấy orders theo customer với một customer ID cố định cho ứng dụng của chúng tôi.
 
 25
 00:01:41,120 --> 00:01:45,590
-So now we can start to implement our actual order list page.
+Vậy bây giờ chúng ta có thể bắt đầu triển khai trang order list thực tế của mình.
 
 26
 00:01:45,590 --> 00:01:51,800
-In here I'm going to remove unnecessary using statement and come to this point in order to use primary
+Ở đây tôi sẽ loại bỏ using statement không cần thiết và đi tới điểm này để sử dụng primary
 
 27
 00:01:51,800 --> 00:01:56,060
-Constructor and inject our AI ordering service, which is the ordering service.
+Constructor và inject AI ordering service, đó là ordering service.
 
 28
 00:01:56,060 --> 00:01:59,840
-And I am going to inject AI logger service to logging operation.
+Và tôi sẽ inject AI logger service để logging operation.
 
 29
 00:01:59,840 --> 00:02:06,860
-And just after that we will create our orders property in order to represent in the HTML page in here
+Và ngay sau đó chúng tôi sẽ tạo orders property của chúng tôi để đại diện trong trang HTML ở đây
 
 30
 00:02:06,860 --> 00:02:12,860
-you can see that we have a AI enumerable order module, which is the orders property with getter setter
+bạn có thể thấy rằng chúng tôi có một AI enumerable order module, đó là orders property với getter setter
 
 31
 00:02:12,860 --> 00:02:16,310
-that we are going to use in the HTML page of the order list.
+mà chúng ta sẽ sử dụng trong trang HTML của order list.
 
 32
 00:02:16,310 --> 00:02:21,140
-When we are listing on the table here, you can see that this is not getting any exception.
+Khi chúng ta đang liệt kê trên bảng ở đây, bạn có thể thấy rằng đây không phải là getting bất kỳ exception nào.
 
 33
 00:02:21,140 --> 00:02:26,030
-Now we will iterating the table and listing the rows including the these informations.
+Bây giờ chúng tôi sẽ lặp lại bảng và liệt kê các hàng bao gồm những thông tin này.
 
 34
 00:02:26,030 --> 00:02:33,200
-So after defining the orders property it is time to develop on get async method and populate orders
+Vì vậy sau khi định nghĩa orders property, đó là thời gian để phát triển get async method và populate orders
 
 35
 00:02:33,200 --> 00:02:39,680
-data with integrating with the erb API gateway in here again I have an assumption about the customer
+data bằng cách tích hợp với erb API gateway, ở đây tôi lại có một giả định về customer
 
 36
 00:02:39,680 --> 00:02:40,100
@@ -144,121 +144,121 @@ id.
 
 37
 00:02:40,100 --> 00:02:46,220
-Since we don't have implementation any authentication layer, we can pass the customer ID as a hardcoded
+Vì chúng tôi không có triển khai bất kỳ authentication layer nào, chúng tôi có thể truyền customer ID dưới dạng một
 
 38
 00:02:46,220 --> 00:02:46,640
-value.
+value được hardcoded.
 
 39
 00:02:46,640 --> 00:02:53,300
-You can see that I have set the customer ID with this great value, and which we can assumption that
+Bạn có thể thấy rằng tôi đã đặt customer ID với giá trị tuyệt vời này, và điều mà chúng ta có thể giả định rằng
 
 40
 00:02:53,300 --> 00:02:55,700
-comes from the UI authenticated user.
+đến từ UI authenticated user.
 
 41
 00:02:56,510 --> 00:03:02,810
-And just after that, we can integrate with the Erb API gateway in order to get orders by customer.
+Và ngay sau đó, chúng ta có thể tích hợp với Erb API gateway để lấy các đơn hàng theo khách hàng.
 
 42
 00:03:02,840 --> 00:03:05,960
-Here you can see that we are using await ordering services.
+Ở đây bạn có thể thấy rằng chúng ta đang sử dụng await ordering services.
 
 43
 00:03:05,960 --> 00:03:12,440
-Get orders by customer method with passing these customer ID, and just after that we can set the orders
+Phương thức Get orders by customer với truyền customer ID này, và ngay sau đó chúng ta có thể thiết lập các orders
 
 44
 00:03:12,440 --> 00:03:16,310
-property with incoming response of these Erb API gateway.
+property với phản hồi đến từ Erb API gateway này.
 
 45
 00:03:16,310 --> 00:03:20,300
-And after populating the orders, we can listing orders on the HTML page.
+Và sau khi điền đầy đủ các orders, chúng ta có thể liệt kê orders trên trang HTML.
 
 46
 00:03:20,630 --> 00:03:24,320
-Also, I am going to change method body from task to task.
+Ngoài ra, tôi sắp thay đổi method body từ task thành task.
 
 47
 00:03:24,320 --> 00:03:26,750
-I action result and return the page.
+I action result và trả về trang.
 
 48
 00:03:27,530 --> 00:03:30,650
-So this is the implementation of the order list.
+Vì vậy đây là việc triển khai danh sách đơn hàng.
 
 49
 00:03:30,650 --> 00:03:36,590
-See page and this is the getting orders from the ordering microservices using the http api gateway.
+Xem trang và đây là việc lấy orders từ ordering microservices bằng http API gateway.
 
 50
 00:03:36,710 --> 00:03:40,130
-And here you can see that we have used hardcoded customer ID.
+Và ở đây bạn có thể thấy rằng chúng ta đã sử dụng customer ID được hardcoded.
 
 51
 00:03:40,130 --> 00:03:44,150
-And you can get this hardcoded customer ID from the ordering microservices.
+Và bạn có thể lấy customer ID được hardcoded này từ ordering microservices.
 
 52
 00:03:44,150 --> 00:03:49,520
-If you open the services and go to ordering microservices and go to ordering infrastructure and data.
+Nếu bạn mở services và đi tới ordering microservices và đi tới ordering infrastructure và data.
 
 53
 00:03:49,520 --> 00:03:56,210
-And if you expand the extensions and go to the initial data, you can see that these customer ID comes
+Và nếu bạn mở rộng extensions và đi tới initial data, bạn có thể thấy rằng customer ID này xuất phát
 
 54
 00:03:56,210 --> 00:03:57,080
-from here.
+từ đây.
 
 55
 00:03:57,080 --> 00:04:03,050
-And we have injected and creating a customer ID when starting ordering microservices and seeding with
+Và chúng ta đã inject và tạo customer ID khi khởi động ordering microservices và seeding với
 
 56
 00:04:03,050 --> 00:04:03,620
-this data.
+dữ liệu này.
 
 57
 00:04:03,620 --> 00:04:07,490
-So this is the ID information comes from these seeding operation.
+Vì vậy đây là thông tin ID xuất phát từ seeding operation này.
 
 58
 00:04:07,490 --> 00:04:13,460
-That's why we are using this ID when we are populating order list with a given customer ID.
+Đó là lý do tại sao chúng ta sử dụng ID này khi chúng ta điền danh sách orders với một customer ID nhất định.
 
 59
 00:04:13,610 --> 00:04:20,329
-Now we can build the shopping web client application and verify that our HTML and see page are working
+Bây giờ chúng ta có thể build ứng dụng shopping web client và xác minh rằng HTML và see page của chúng ta đang hoạt động
 
 60
 00:04:20,329 --> 00:04:20,779
-fine.
+tốt.
 
 61
 00:04:20,779 --> 00:04:23,420
-So right click and build client web application.
+Vậy nên hãy click chuột phải và build client web application.
 
 62
 00:04:23,420 --> 00:04:26,600
-And we have successfully build our client application.
+Và chúng ta đã successfully build client application của mình.
 
 63
 00:04:26,600 --> 00:04:32,210
-As you can see that we have completed the razor page of the shopping web client application, including
+Như bạn có thể thấy, chúng ta đã hoàn thành razor page của shopping web client application, bao gồm
 
 64
 00:04:32,210 --> 00:04:34,250
-the razor page and see page.
+razor page và see page.
 
 65
 00:04:34,250 --> 00:04:40,160
-That means we can ready for the testing our application to consuming Erb API gateway and perform our
+Điều đó có nghĩa là chúng ta đã sẵn sàng để test application của mình để consume Erb API gateway và thực hiện các
 
 66
 00:04:40,160 --> 00:04:42,440
-actions under the C3 microservices.
+actions dưới C3 microservices.
 

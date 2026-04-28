@@ -160,79 +160,79 @@ And we have selected categories under the our products with a distinct method.
 
 41
 00:02:39,170 --> 00:02:44,690
-That means we will select all categories and populate the category list object in this line of code.
+Điều đó có nghĩa là chúng tôi sẽ chọn tất cả các danh mục và điền vào đối tượng danh sách danh mục trong dòng mã này.
 
 42
 00:02:44,690 --> 00:02:51,740
-And just after that I am going to check the Or category name is null or empty, if not null.
+Và ngay sau đó tôi sẽ kiểm tra xem tên danh mục có null hoặc rỗng không, nếu không null.
 
 43
 00:02:51,740 --> 00:02:54,800
-We will filter the products according to our category name.
+Chúng tôi sẽ lọc các sản phẩm theo tên danh mục của chúng tôi.
 
 44
 00:02:54,800 --> 00:02:56,360
-Category name comes from the.
+Tên danh mục đến từ.
 
 45
 00:02:56,360 --> 00:03:02,270
-As a parameter of this on get async method that is populated from the selected category property and
+Như một parameter của phương thức on get async này được điền từ thuộc tính danh mục được chọn và
 
 46
 00:03:02,270 --> 00:03:03,860
-we have checked these if statement.
+chúng tôi đã kiểm tra if statement này.
 
 47
 00:03:03,860 --> 00:03:09,380
-If category name is not empty, we are going to get the products from the response object with using
+Nếu tên danh mục không rỗng, chúng tôi sẽ lấy các sản phẩm từ response object bằng cách sử dụng
 
 48
 00:03:09,380 --> 00:03:15,590
-the where keyword, and we are going to filter by category which contains category name and return back
+từ khóa where, và chúng tôi sẽ lọc theo danh mục chứa tên danh mục và trả lại
 
 49
 00:03:15,590 --> 00:03:19,610
-the product list and populate the product list according to category name.
+danh sách sản phẩm và điền danh sách sản phẩm theo tên danh mục.
 
 50
 00:03:19,610 --> 00:03:25,100
-And just after that, we will set the selected category as a category name, which comes from the parameter
+Và ngay sau đó, chúng tôi sẽ đặt danh mục được chọn là tên danh mục, đến từ parameter
 
 51
 00:03:25,100 --> 00:03:26,840
-of this on get async method.
+của phương thức on get async này.
 
 52
 00:03:26,840 --> 00:03:32,660
-And if this category name is empty, we basically populating the product list with incoming response
+Và nếu tên danh mục này rỗng, về cơ bản chúng tôi đang điền danh sách sản phẩm bằng incoming response
 
 53
 00:03:32,660 --> 00:03:38,660
-object from the R Catalog Service products list and setting this product list into our application.
+object từ danh sách sản phẩm R Catalog Service và đặt danh sách sản phẩm này vào ứng dụng của chúng tôi.
 
 54
 00:03:38,780 --> 00:03:45,560
-And lastly, we can return a page after performing these operations and complete the on get async method
+Và cuối cùng, chúng tôi có thể trả về một page sau khi thực hiện các hoạt động này và hoàn thành phương thức on get async
 
 55
 00:03:45,560 --> 00:03:48,860
-operations when opening the R product list page.
+các hoạt động khi mở trang danh sách sản phẩm R.
 
 56
 00:03:48,860 --> 00:03:55,700
-And just after that we can continue develop our second method, which is the on post add to cart operation.
+Và ngay sau đó chúng tôi có thể tiếp tục phát triển phương thức thứ hai của chúng tôi, đó là hoạt động on post add to cart.
 
 57
 00:03:55,700 --> 00:04:03,200
-In here I am going to create a new method which name is on post add to cart async method and this will
+Ở đây tôi sẽ tạo một phương thức mới có tên là on post add to cart async method và cái này sẽ
 
 58
 00:04:03,200 --> 00:04:09,050
-be implementation of adding item into cart and why I am implement this method in this product list page.
+là triển khai của việc thêm item vào cart và tại sao tôi triển khai phương thức này trong trang danh sách sản phẩm.
 
 59
 00:04:09,050 --> 00:04:15,620
-Because if you open the HTML, you can see that we are listing the products and we are using the partial
+Vì nếu bạn mở HTML, bạn có thể thấy rằng chúng tôi đang liệt kê các sản phẩm và chúng tôi đang sử dụng partial
 
 60
 00:04:15,620 --> 00:04:16,940
@@ -240,127 +240,127 @@ product item partial.
 
 61
 00:04:16,940 --> 00:04:22,730
-And if you open this partial HTML page, you can see that this page has a form and submit the form with
+Và nếu bạn mở trang HTML một phần này, bạn có thể thấy rằng trang này có một form và submit form với
 
 62
 00:04:22,730 --> 00:04:28,160
-the add to cart operation that we need to implement this method when submitting the product list page,
+hoạt động add to cart mà chúng ta cần triển khai phương thức này khi submit trang danh sách sản phẩm,
 
 63
 00:04:28,160 --> 00:04:33,650
-and this will be submitting this page, and we will implement these operation inside of these product
+và điều này sẽ submit trang này, và chúng ta sẽ triển khai các hoạt động này bên trong file danh sách sản phẩm
 
 64
 00:04:33,650 --> 00:04:34,970
-list see file.
+.
 
 65
 00:04:34,970 --> 00:04:37,820
-And we will accepting product ID as a parameter.
+Và chúng ta sẽ chấp nhận product ID như một tham số.
 
 66
 00:04:37,820 --> 00:04:40,550
-And we will perform at the cart operations.
+Và chúng ta sẽ thực hiện các hoạt động của cart.
 
 67
 00:04:40,550 --> 00:04:45,740
-And first of all I am going to logging the information which is the cart button is clicked.
+Và trước tiên tôi sẽ logging thông tin là cart button được click.
 
 68
 00:04:45,740 --> 00:04:51,410
-And just after that I'm going to get the products with a given product ID using the catalog service
+Và ngay sau đó tôi sẽ lấy products với một product ID nhất định bằng cách sử dụng catalog service
 
 69
 00:04:51,410 --> 00:04:55,760
-Getproduct and passing the product ID and populating the R product response.
+Getproduct và truyền product ID và điền vào response sản phẩm.
 
 70
 00:04:55,760 --> 00:04:59,810
-And just after that I'm going to loading a basket information.
+Và ngay sau đó tôi sẽ loading thông tin basket.
 
 71
 00:04:59,960 --> 00:05:06,560
-Using the basket services and get the basket information from the await basket services load user basket
+Sử dụng basket services và lấy thông tin basket từ phương thức await basket services load user basket
 
 72
 00:05:06,560 --> 00:05:07,220
-method.
+.
 
 73
 00:05:07,220 --> 00:05:12,380
-And after that I am going to add a new item which is including the product response.
+Và sau đó tôi sẽ thêm một item mới bao gồm product response.
 
 74
 00:05:12,470 --> 00:05:18,200
-Here you can see that we will use basket items add method and passing the new shopping cart item model
+Tại đây bạn có thể thấy rằng chúng ta sẽ sử dụng phương thức basket items add và truyền shopping cart item model mới
 
 75
 00:05:18,200 --> 00:05:23,870
-and we will populate the product ID, product name, price, quantity and color with incoming product
+và chúng ta sẽ điền product ID, product name, price, quantity và color với incoming product
 
 76
 00:05:23,870 --> 00:05:30,200
-ID parameter and product name comes from the product response of the Getproduct operation and get the
+ID parameter và product name đến từ product response của hoạt động Getproduct và lấy
 
 77
 00:05:30,200 --> 00:05:36,110
-price from the product response again and set the quantity one and set the color as a black fixed value.
+price từ product response một lần nữa và đặt quantity là một và đặt color như một giá trị fixed là black.
 
 78
 00:05:36,110 --> 00:05:42,890
-And just after that, we can send the await basket store basket and sending new store basket request
+Và ngay sau đó, chúng ta có thể gửi await basket store basket và gửi request store basket mới
 
 79
 00:05:42,890 --> 00:05:44,630
-and passing the basket in here.
+và truyền basket ở đây.
 
 80
 00:05:44,630 --> 00:05:50,960
-By this way we will send http post request in order to save this basket information in the basket.
+Bằng cách này chúng ta sẽ gửi http post request để lưu thông tin basket này trong basket.
 
 81
 00:05:50,960 --> 00:05:56,930
-Microservices distribute cache and database and after confirming this operation we are redirecting to
+Microservices phân tán cache và database và sau khi xác nhận hoạt động này, chúng ta sẽ chuyển hướng đến
 
 82
 00:05:56,930 --> 00:05:57,860
-page as a cart.
+trang như một giỏ hàng.
 
 83
 00:05:57,860 --> 00:06:03,800
-So that means whenever we are adding item into cart, we will redirecting to the page of the cart operations
+Vì vậy, điều đó có nghĩa là bất cứ khi nào chúng ta thêm mục vào giỏ hàng, chúng ta sẽ chuyển hướng đến trang hoạt động giỏ hàng
 
 84
 00:06:03,800 --> 00:06:07,070
-to see our cart in the latest status.
+để xem giỏ hàng của chúng ta ở trạng thái mới nhất.
 
 85
 00:06:07,070 --> 00:06:15,080
-And after implementing this on post operation, we have completed to our product list page and we are
+Và sau khi triển khai điều này trên post operation, chúng ta đã hoàn thành trang danh sách sản phẩm và chúng ta đang
 
 86
 00:06:15,080 --> 00:06:17,960
-developing category and product list property.
+phát triển thuộc tính danh sách danh mục và sản phẩm.
 
 87
 00:06:17,960 --> 00:06:21,350
-And we have selected category which is the Bindable property.
+Và chúng ta đã chọn danh mục, đó là Bindable property.
 
 88
 00:06:21,350 --> 00:06:25,190
-And we have implemented on get async method with a given category name.
+Và chúng ta đã triển khai trên phương thức get async với tên danh mục đã cho.
 
 89
 00:06:25,190 --> 00:06:28,130
-And we check the category name is null or empty is not null.
+Và chúng ta kiểm tra tên danh mục có null hoặc trống hay không null.
 
 90
 00:06:28,130 --> 00:06:30,860
-We will filter the categories and return the product list.
+Chúng ta sẽ lọc các danh mục và trả về danh sách sản phẩm.
 
 91
 00:06:30,860 --> 00:06:35,690
-If the category name is null, we will return the product list with sending get product request to the
+Nếu tên danh mục là null, chúng ta sẽ trả về danh sách sản phẩm bằng cách gửi yêu cầu get product đến
 
 92
 00:06:35,690 --> 00:06:37,010
@@ -368,77 +368,77 @@ catalog microservices.
 
 93
 00:06:37,010 --> 00:06:42,410
-And if you scroll down, we have additional on post operation which comes from the our partial view.
+Và nếu bạn cuộn xuống, chúng ta có thêm trên post operation đến từ partial view của chúng ta.
 
 94
 00:06:42,410 --> 00:06:47,990
-And in here we are taking the product ID and we will basically perform add item into cart operation
+Và ở đây chúng ta đang lấy product ID và về cơ bản chúng ta sẽ thực hiện thêm mục vào hoạt động giỏ hàng
 
 95
 00:06:47,990 --> 00:06:54,320
-which including the get product load user basket and store basket operations and redirecting to page
+bao gồm các hoạt động get product load user basket và store basket và chuyển hướng đến trang
 
 96
 00:06:54,320 --> 00:06:55,010
-as a cart.
+như một giỏ hàng.
 
 97
 00:06:55,010 --> 00:06:59,870
-So after developing this page I am going to right click show me, create and build the project.
+Vì vậy sau khi phát triển trang này, tôi sẽ nhấp chuột phải, cho tôi xem, tạo và build dự án.
 
 98
 00:06:59,870 --> 00:07:07,100
-And this time we will get some of the exceptions because our HTML page is not ready for these operations.
+Lần này chúng ta sẽ gặp một số ngoại lệ vì trang HTML của chúng ta chưa sẵn sàng cho những hoạt động này.
 
 99
 00:07:07,100 --> 00:07:13,040
-If you open one of the exception, you can see that for example, HTML page is requiring the ID information,
+Nếu bạn mở một trong những ngoại lệ, bạn có thể thấy rằng ví dụ, trang HTML đang yêu cầu thông tin ID,
 
 100
 00:07:13,040 --> 00:07:16,220
-but we don't have any category table and category ID.
+nhưng chúng ta không có bất kỳ bảng danh mục nào và category ID.
 
 101
 00:07:16,250 --> 00:07:21,140
-That's why I am going to modify this HTML page according to our product model.
+Đó là lý do tại sao tôi sẽ sửa đổi trang HTML này theo mô hình sản phẩm của chúng ta.
 
 102
 00:07:21,140 --> 00:07:26,210
-So according to our product model, our category list including the string object.
+Vì vậy theo mô hình sản phẩm của chúng ta, danh sách category của chúng ta bao gồm string object.
 
 103
 00:07:26,210 --> 00:07:31,970
-That's why I'm going to remove these ID operation and passing on the category name as a in here.
+Đó là lý do tại sao tôi sắp xóa các ID operation này và truyền category name vào đây.
 
 104
 00:07:31,970 --> 00:07:35,570
-So after that I'm going to scroll down and see the exceptions.
+Vì vậy sau đó tôi sẽ cuộn xuống và xem các exceptions.
 
 105
 00:07:35,570 --> 00:07:35,780
-Here.
+Ở đây.
 
 106
 00:07:35,780 --> 00:07:41,330
-You can see that we have a summary and we don't have summary property into our product list.
+Bạn có thể thấy rằng chúng ta có một summary nhưng chúng ta không có summary property trong product list của chúng ta.
 
 107
 00:07:41,330 --> 00:07:43,910
-I'm going to change the summary to the description in here.
+Tôi sẽ thay đổi summary thành description ở đây.
 
 108
 00:07:43,910 --> 00:07:47,960
-And after that you can scroll down and check the for exceptions.
+Và sau đó bạn có thể cuộn xuống và kiểm tra các exceptions.
 
 109
 00:07:47,960 --> 00:07:52,820
-If there is no exception I'm going to rebuild again and see if there is any exception.
+Nếu không có exception nào tôi sẽ rebuild lại và xem có exception nào không.
 
 110
 00:07:52,820 --> 00:07:55,550
-Yes, there is no exception for our product list page.
+Vâng, không có exception nào cho trang product list của chúng ta.
 
 111
 00:07:55,550 --> 00:08:01,970
-And we have completed the HTML and also C-sharp file for listing the products into our client application.
+Và chúng ta đã hoàn thành HTML và cũng C-sharp file để liệt kê các sản phẩm vào client application của chúng ta.
 

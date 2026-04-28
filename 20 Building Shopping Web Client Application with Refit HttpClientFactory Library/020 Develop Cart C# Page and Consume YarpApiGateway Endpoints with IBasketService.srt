@@ -80,35 +80,35 @@ Please change the method signature public async task I action result and on get 
 
 21
 00:01:23,840 --> 00:01:26,900
-So we will return the page at the end of this method.
+Vì vậy chúng tôi sẽ trả về trang ở cuối method này.
 
 22
 00:01:26,900 --> 00:01:30,260
-For that purpose I am going to return the page in here.
+Với mục đích đó, tôi sẽ trả về trang ở đây.
 
 23
 00:01:30,260 --> 00:01:36,950
-So now we will consume the Erb API gateway using the basket services that we have injected in the primary
+Vì vậy bây giờ chúng tôi sẽ sử dụng Erb API gateway bằng cách sử dụng basket services mà chúng tôi đã inject vào primary
 
 24
 00:01:36,950 --> 00:01:41,000
-constructor and populating the our shopping cart model, which is the cart.
+constructor và điền vào mô hình shopping cart của chúng tôi, đó là cart.
 
 25
 00:01:41,000 --> 00:01:52,070
-So in here I am going to say that cart equal await basket service dot load user basket.
+Vì vậy ở đây tôi sẽ nói rằng cart equal await basket service dot load user basket.
 
 26
 00:01:54,500 --> 00:01:58,070
-As you can see that we will load the user basket from the basket services.
+Như bạn có thể thấy, chúng tôi sẽ tải user basket từ basket services.
 
 27
 00:01:58,070 --> 00:02:04,520
-And if you remember that this is the our interface method that we are going to implement for get or
+Và nếu bạn nhớ rằng đây là interface method mà chúng tôi sẽ implement để get hoặc
 
 28
 00:02:04,520 --> 00:02:07,460
-create any basket into our shopping cart basket.
+tạo bất kỳ basket nào vào shopping cart basket của chúng tôi.
 
 29
 00:02:07,460 --> 00:02:08,330
@@ -116,27 +116,27 @@ Microservices.
 
 30
 00:02:08,330 --> 00:02:14,180
-Here you can see that in the try block we will send Http get requests with a given username to the basket.
+Ở đây bạn có thể thấy rằng trong try block chúng tôi sẽ gửi Http get requests với một username cụ thể tới basket
 
 31
 00:02:14,180 --> 00:02:16,400
-Microservices over the ARP API gateway.
+Microservices qua ARP API gateway.
 
 32
 00:02:16,400 --> 00:02:19,250
-If basket is exist, we will return this basket.
+Nếu basket tồn tại, chúng tôi sẽ trả về basket này.
 
 33
 00:02:19,250 --> 00:02:24,740
-If not exist, we will check the API exception and Http status as a not found.
+Nếu không tồn tại, chúng tôi sẽ kiểm tra API exception và Http status là not found.
 
 34
 00:02:24,740 --> 00:02:28,610
-We will create any basket with empty items with a given username.
+Chúng tôi sẽ tạo bất kỳ basket nào với các items rỗng với một username cụ thể.
 
 35
 00:02:28,610 --> 00:02:34,190
-So after that we will populate the shopping cart that will represent our shopping cart model into HTML
+Vì vậy sau đó chúng tôi sẽ điền vào shopping cart mà sẽ đại diện cho shopping cart model của chúng tôi vào HTML
 
 36
 00:02:34,190 --> 00:02:34,730
@@ -144,205 +144,204 @@ file.
 
 37
 00:02:34,730 --> 00:02:36,770
-So this is the on get async method.
+Vì vậy đây là on get async method.
 
 38
 00:02:36,770 --> 00:02:39,650
-But we have also some of the summit operations.
+Nhưng chúng tôi cũng có một số submit operations.
 
 39
 00:02:39,650 --> 00:02:45,860
-If you open the cart HTML page you can see that we will also summit operation in the remove to cart.
+Nếu bạn mở cart HTML page bạn có thể thấy rằng chúng tôi cũng sẽ submit operation trong remove to cart.
 
 40
 00:02:45,860 --> 00:02:52,010
-That means this button will be representing and submitting when removing the cart item into the shopping
+Điều đó có nghĩa là button này sẽ đại diện và submit khi xóa cart item vào shopping
 
 41
 00:02:52,010 --> 00:02:52,430
-cart.
+giỏ hàng.
 
 42
 00:02:52,430 --> 00:02:54,230
-And these are the input items.
+Và đây là các mục nhập.
 
 43
 00:02:54,230 --> 00:03:00,050
-But when removing an item from the shopping cart, I need a product ID instead of this cart ids.
+Nhưng khi xóa một mục khỏi giỏ hàng, tôi cần product ID thay vì các cart ids này.
 
 44
 00:03:00,050 --> 00:03:06,560
-I am going to remove these input statements and passed in here as a product ID, which is including
+Tôi sẽ xóa các input statements này và truyền vào đây như một product ID, cái mà bao gồm
 
 45
 00:03:06,560 --> 00:03:13,250
-our cart item, and we have for each statement from the modal dot cart items and get this cart item
+cart item của chúng tôi, và chúng tôi có for each statement từ modal dot cart items và lấy cart item này
 
 46
 00:03:13,250 --> 00:03:17,360
-and cart item, including the product ID that we can adding in here.
+và cart item, bao gồm product ID mà chúng ta có thể thêm vào đây.
 
 47
 00:03:17,360 --> 00:03:22,040
-So please add hidden product ID before implementing our removed cart.
+Vì vậy, vui lòng thêm hidden product ID trước khi implement removed cart của chúng tôi.
 
 48
 00:03:22,040 --> 00:03:28,400
-But whenever we are changing the cart item ID, you can see that there is a exception which is getting
+Nhưng bất cứ khi nào chúng tôi thay đổi cart item ID, bạn có thể thấy rằng có một exception đang lấy
 
 49
 00:03:28,400 --> 00:03:29,210
-the product name.
+tên sản phẩm.
 
 50
 00:03:29,210 --> 00:03:32,060
-We have already the product name into the cart item.
+Chúng tôi đã có tên sản phẩm vào trong cart item.
 
 51
 00:03:32,060 --> 00:03:35,300
-So that's why I'm going to change this code with this way.
+Vì vậy đó là lý do tại sao tôi sắp thay đổi code này theo cách này.
 
 52
 00:03:35,300 --> 00:03:37,940
-Here you can see that now we don't have any exception.
+Tại đây bạn có thể thấy rằng bây giờ chúng tôi không có bất kỳ exception nào.
 
 53
 00:03:37,940 --> 00:03:43,760
-And this is representing our for each statement and iterating each item in the shopping cart model that
+Và đây là biểu diễn của for each statement và lặp qua từng mục trong shopping cart model mà
 
 54
 00:03:43,760 --> 00:03:47,240
-we can remove the cart for each item with passing the product ID.
+chúng tôi có thể xóa cart cho từng mục bằng cách truyền product ID.
 
 55
 00:03:47,360 --> 00:03:53,930
-So after changing our HTML in this way, I am going to go back to our CSS, HTML and start to implement
+Vì vậy sau khi thay đổi HTML của chúng tôi theo cách này, tôi sẽ quay lại CSS, HTML và bắt đầu implement
 
 56
 00:03:53,930 --> 00:03:55,850
-our removed cart operation.
+removed cart operation của chúng tôi.
 
 57
 00:03:55,850 --> 00:04:02,750
-So in here I am going to create a new method which is the public async task I action result and this
+Vì vậy ở đây tôi sẽ tạo một method mới đó là public async task I action result và
 
 58
 00:04:02,750 --> 00:04:04,370
-method name is a on post.
+tên method này là on post.
 
 59
 00:04:04,370 --> 00:04:10,340
-Remove the cart async and as a parameter we are taking create product id that comes from the our hidden
+Remove the cart async và như là một parameter chúng tôi đang lấy product id đến từ hidden
 
 60
 00:04:10,340 --> 00:04:10,880
-object.
+object của chúng tôi.
 
 61
 00:04:10,880 --> 00:04:16,250
-So the method name is very important in razor page because on post is representing.
+Vì vậy tên method rất quan trọng trong razor page vì on post đang đại diện cho.
 
 62
 00:04:16,250 --> 00:04:17,990
-This is the post operation remove.
+Đây là hoạt động post remove.
 
 63
 00:04:17,990 --> 00:04:21,380
-The cart is the submit method operation and async is.
+Cart là phương thức submit operation và async là.
 
 64
 00:04:21,380 --> 00:04:24,260
-This will be indicate is available function or not.
+Điều này sẽ chỉ ra function có sẵn hay không.
 
 65
 00:04:24,260 --> 00:04:27,050
-So in here I'm going to implement this method.
+Vì vậy ở đây tôi sẽ thực hiện method này.
 
 66
 00:04:27,050 --> 00:04:32,570
-First of all we will log the information which is the remove the cart button is clicked and after that
+Trước tiên chúng ta sẽ ghi lại thông tin đó là nút remove cart được nhấp và sau đó
 
 67
 00:04:32,570 --> 00:04:38,300
-I am going to again get the cart information from the our basket services with load user method.
+Tôi sẽ lại lấy thông tin cart từ basket services của chúng ta với phương thức load user.
 
 68
 00:04:38,300 --> 00:04:43,580
-And after getting the cart information we can remove the item according to product id.
+Và sau khi lấy được thông tin cart, chúng ta có thể loại bỏ mục theo product id.
 
 69
 00:04:43,580 --> 00:04:51,050
-In here I am going to type cart items dot remove all method with passing the product id filter operation
+Ở đây tôi sẽ nhập cart items dot remove all method bằng cách truyền vào product id filter operation
 
 70
 00:04:51,050 --> 00:04:56,870
-with getting the product id from the parameters and checking the product ID into our remove all method
+bằng cách lấy product id từ parameters và kiểm tra product ID vào remove all method của chúng ta
 
 71
 00:04:56,870 --> 00:04:57,890
-as a condition.
+như một điều kiện.
 
 72
 00:04:57,890 --> 00:05:03,560
-Here you can see that we will use x dot product id, which means iterating all the items and check the
+Ở đây bạn có thể thấy chúng ta sẽ sử dụng x dot product id, có nghĩa là lặp lại tất cả các mục và kiểm tra xem
 
 73
 00:05:03,560 --> 00:05:05,240
-product id is equal or not.
+product id có bằng nhau hay không.
 
 74
 00:05:05,240 --> 00:05:11,360
-If they equal, this is going to remove these items from the shopping cart items, and just after that
+Nếu chúng bằng nhau, điều này sẽ loại bỏ các mục này khỏi shopping cart items, và ngay sau đó
 
 75
 00:05:11,360 --> 00:05:14,240
-we can perform our store basket operation.
+chúng ta có thể thực hiện hoạt động store basket của chúng ta.
 
 76
 00:05:14,240 --> 00:05:19,430
-That means we will send http post request in order to save latest cart information.
+Điều đó có nghĩa là chúng ta sẽ gửi http post request để lưu thông tin cart mới nhất.
 
 77
 00:05:19,430 --> 00:05:25,220
-So here you can see that we will use Await basket service store basket and we will passing the new store
+Vì vậy ở đây bạn có thể thấy chúng ta sẽ sử dụng Await basket service store basket và chúng ta sẽ truyền vào new store
 
 78
 00:05:25,220 --> 00:05:28,910
-basket request with passing the cart information that we have.
+basket request bằng cách truyền vào thông tin cart mà chúng ta có.
 
 79
 00:05:28,910 --> 00:05:32,150
-Removing items from the cart by this operation.
+Loại bỏ các mục khỏi cart bằng hoạt động này.
 
 80
 00:05:32,150 --> 00:05:38,090
-And with this line of code, we will send http post request and save the latest cart information into
+Và với dòng code này, chúng ta sẽ gửi http post request và lưu thông tin cart mới nhất vào
 
 81
 00:05:38,090 --> 00:05:39,980
-database and distributed cache.
+database và distributed cache.
 
 82
 00:05:39,980 --> 00:05:44,420
-So after performing this operation, I am going to return the redirect to page.
+Vì vậy sau khi thực hiện operation này, tôi sẽ return redirect đến page.
 
 83
 00:05:44,420 --> 00:05:50,870
-That means we are redirecting the page of the cart after performing the post removed cart operation.
+Điều đó có nghĩa là chúng ta đang redirect page của cart sau khi thực hiện post removed cart operation.
 
 84
 00:05:50,870 --> 00:05:56,840
-So this is the implementation of the our cart model and this will be included to property on get async
+Vì vậy đây là implementation của cart model của chúng ta và điều này sẽ được included vào property trên get async method.
 
 85
 00:05:56,840 --> 00:06:00,890
-method and on post async method for removing cart from the items.
+method và on post async method để removing cart từ items.
 
 86
 00:06:00,890 --> 00:06:06,440
-So you can right click and build the shopping web application and verify that our shopping cart and
+Vì vậy bạn có thể right click và build shopping web application và verify rằng shopping cart và cart operations của chúng ta đã completed vào client application.
 
 87
 00:06:06,440 --> 00:06:10,100
-cart operations are completed into our client application.
 

@@ -1,22 +1,22 @@
 1
 00:00:00,290 --> 00:00:06,470
-In this video, we are going to register and configure Martin Document Database into Program.cs.
+Trong video này, chúng ta sẽ đăng ký và cấu hình Martin Document Database vào Program.cs.
 
 2
 00:00:06,470 --> 00:00:12,860
-Because before use the Martin, it is crucial to register and configure it correctly in our ASP.Net
+Bởi vì trước khi sử dụng Martin, điều quan trọng là phải đăng ký và cấu hình nó một cách chính xác trong ứng dụng ASP.Net
 
 3
 00:00:12,860 --> 00:00:18,410
-core applications in order to connect PostgreSQL database from our microservices.
+core của chúng ta để kết nối cơ sở dữ liệu PostgreSQL từ các microservices của chúng ta.
 
 4
 00:00:18,410 --> 00:00:21,290
-So for that purpose, please go to Program.cs.
+Vì vậy, với mục đích đó, vui lòng truy cập Program.cs.
 
 5
 00:00:21,290 --> 00:00:29,120
-Locate to add services to the container part, which is adding Martin related packages into within dependency
+Tìm đến phần add services to the container, đó là thêm các package liên quan đến Martin vào trong dependency
 
 6
 00:00:29,120 --> 00:00:29,810
@@ -24,131 +24,131 @@ Injection.
 
 7
 00:00:29,810 --> 00:00:33,950
-And we are following the same syntax which is the builder services.
+Và chúng ta đang theo dõi cùng một cú pháp đó là builder services.
 
 8
 00:00:33,950 --> 00:00:37,670
-And we will use add Martin extension method.
+Và chúng ta sẽ sử dụng phương thức mở rộng add Martin.
 
 9
 00:00:37,670 --> 00:00:40,790
-And we will configure this Martin with the options.
+Và chúng ta sẽ cấu hình Martin này với các tùy chọn.
 
 10
 00:00:43,760 --> 00:00:47,930
-I'm going to write a delegate method for configuration.
+Tôi sẽ viết một phương thức delegate để cấu hình.
 
 11
 00:00:47,930 --> 00:00:52,670
-And here you can see that the options is requiring for the connection string.
+Và ở đây bạn có thể thấy rằng options yêu cầu connection string.
 
 12
 00:00:52,670 --> 00:00:58,760
-And in connection we will provide a connection string from the application settings Json.
+Và trong kết nối, chúng ta sẽ cung cấp connection string từ application settings Json.
 
 13
 00:00:59,360 --> 00:01:06,260
-For that purpose I'm passing builder dot configuration dot get connection string and give the connection
+Với mục đích đó, tôi truyền builder dot configuration dot get connection string và đặt tên
 
 14
 00:01:06,260 --> 00:01:08,120
-string name as a database.
+connection string là database.
 
 15
 00:01:08,120 --> 00:01:12,590
-So we will provide these information at the end of this video.
+Vì vậy chúng ta sẽ cung cấp những thông tin này vào cuối video này.
 
 16
 00:01:12,590 --> 00:01:15,560
-And let's put these configuration in here.
+Và hãy đặt cấu hình này vào đây.
 
 17
 00:01:15,560 --> 00:01:22,340
-Because in order to connect the PostgreSQL database, Martin required a connection string for the PostgreSQL
+Bởi vì để kết nối cơ sở dữ liệu PostgreSQL, Martin yêu cầu connection string cho cơ sở dữ liệu PostgreSQL
 
 18
 00:01:22,340 --> 00:01:25,460
-database that we provide and configure in here.
+mà chúng ta cung cấp và cấu hình ở đây.
 
 19
 00:01:25,460 --> 00:01:33,560
-And after that we should customize the Martin sessions with using different session operations.
+Và sau đó chúng ta nên tùy chỉnh các Martin sessions bằng cách sử dụng các hoạt động session khác nhau.
 
 20
 00:01:33,560 --> 00:01:39,800
-You can see that if I write the use keyword, we can use dirty tracked sessions, identity sessions,
+Bạn có thể thấy rằng nếu tôi viết từ khóa use, chúng ta có thể sử dụng dirty tracked sessions, identity sessions,
 
 21
 00:01:39,800 --> 00:01:41,360
-and lightweight sessions.
+và các lightweight sessions.
 
 22
 00:01:41,420 --> 00:01:46,700
-As we explained before, I'm going to use lightweight sessions to perform our Crud operations.
+Như chúng tôi đã giải thích trước đây, tôi sẽ sử dụng lightweight sessions để thực hiện các Crud operations của chúng ta.
 
 23
 00:01:46,700 --> 00:01:49,550
-And here you can see the Our Martin configuration.
+Và ở đây bạn có thể thấy cấu hình Martin của chúng ta.
 
 24
 00:01:49,550 --> 00:01:56,150
-In here we use Add Martin extension method to configure the connection to our PostgreSQL database.
+Trong đây chúng ta sử dụng phương thức Add Martin extension để cấu hình kết nối đến database PostgreSQL của chúng ta.
 
 25
 00:01:56,150 --> 00:01:59,270
-And we use lightweight sessions for performance.
+Và chúng ta sử dụng lightweight sessions để có hiệu suất tốt hơn.
 
 26
 00:01:59,780 --> 00:02:04,370
-Also, at this point I would like to show one of the Martin's features.
+Ngoài ra, tại thời điểm này tôi muốn trình bày một trong những tính năng của Martin.
 
 27
 00:02:04,370 --> 00:02:11,840
-If you write the configuration and search for the auto create schema objects, if you right click and
+Nếu bạn viết cấu hình và tìm kiếm auto create schema objects, nếu bạn nhấp chuột phải và
 
 28
 00:02:11,840 --> 00:02:17,870
-go to definition, you can see that Martin using auto create operation for create or update.
+đi tới định nghĩa, bạn có thể thấy rằng Martin đang sử dụng auto create operation để tạo hoặc cập nhật.
 
 29
 00:02:17,870 --> 00:02:23,660
-So that means Martin attempt to create any missing database schema object at the runtime.
+Vì vậy, điều đó có nghĩa là Martin cố gắng tạo bất kỳ đối tượng schema database nào bị thiếu trong lúc runtime.
 
 30
 00:02:23,660 --> 00:02:30,710
-This property is create or update by default for more efficient in the development phase, but it can
+Thuộc tính này được tạo hoặc cập nhật theo mặc định để hiệu quả hơn trong giai đoạn phát triển, nhưng nó có thể
 
 31
 00:02:30,710 --> 00:02:33,530
-be set lower values for the production usage.
+được đặt thành các giá trị thấp hơn cho việc sử dụng production.
 
 32
 00:02:33,950 --> 00:02:38,810
-Go back to our Program.cs and remove these property.
+Quay lại Program.cs của chúng ta và xóa thuộc tính này.
 
 33
 00:02:39,620 --> 00:02:46,010
-And now it is time to configure database connection string in application settings Json file.
+Và bây giờ đã đến lúc cấu hình chuỗi kết nối database trong tệp application settings Json.
 
 34
 00:02:46,010 --> 00:02:51,890
-If you come here, you can see that application settings Json file located under the catalog API.
+Nếu bạn đến đây, bạn có thể thấy tệp application settings Json nằm dưới catalog API.
 
 35
 00:02:51,890 --> 00:02:55,130
-And now I am going to add a connection string in here.
+Và bây giờ tôi sẽ thêm chuỗi kết nối ở đây.
 
 36
 00:02:55,130 --> 00:03:04,370
-So if you come to at the beginning of the this Json file and write the connection string sections and
+Vì vậy, nếu bạn đến đầu tệp Json này và viết phần connection string và
 
 37
 00:03:04,370 --> 00:03:07,700
-add the database connection string as a database name.
+thêm chuỗi kết nối database như tên database.
 
 38
 00:03:07,700 --> 00:03:15,380
-So this connection string representing our PostgreSQL database that we will be keeping up in the Docker
+Vì vậy, chuỗi kết nối này đại diện cho database PostgreSQL của chúng ta mà chúng ta sẽ giữ trong Docker
 
 39
 00:03:15,380 --> 00:03:16,010
@@ -156,7 +156,7 @@ environment.
 
 40
 00:03:16,010 --> 00:03:23,120
-But for now let's copy and paste this database connection string and we will connect after running this
+Nhưng bây giờ hãy sao chép và dán chuỗi kết nối database này và chúng ta sẽ kết nối sau khi chạy
 
 41
 00:03:23,120 --> 00:03:26,030
@@ -164,11 +164,11 @@ Container PostgreSQL trên môi trường Docker của chúng ta.
 
 42
 00:03:26,030 --> 00:03:28,280
-Vậy chúng ta đã chỉ định chuỗi kết nối.
+Vậy chúng ta đã chỉ định connection string.
 
 43
 00:03:28,280 --> 00:03:35,060
-Và cái này sẽ được lấy từ Program.cs của chúng ta khi cấu hình Marten như một chuỗi kết nối.
+Và cái này sẽ được lấy từ Program.cs của chúng ta khi cấu hình Marten như một connection string.
 
 44
 00:03:35,060 --> 00:03:41,930

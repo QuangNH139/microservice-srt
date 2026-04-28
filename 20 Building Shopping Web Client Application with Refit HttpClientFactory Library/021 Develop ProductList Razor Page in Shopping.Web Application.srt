@@ -1,82 +1,82 @@
 1
 00:00:00,140 --> 00:00:05,900
-In this video we are going to develop product list razor page in the shopping web client application.
+Trong video này chúng ta sẽ phát triển product list razor page trong ứng dụng web client shopping.
 
 2
 00:00:05,900 --> 00:00:11,330
-So we are at this point and we will develop product list, CSS, HTML for that purpose.
+Vì vậy chúng ta ở điểm này và chúng ta sẽ phát triển product list, CSS, HTML cho mục đích đó.
 
 3
 00:00:11,330 --> 00:00:15,500
-Please open the Visual Studio and go to the Shopping Web client application.
+Vui lòng mở Visual Studio và đi đến ứng dụng Shopping Web client.
 
 4
 00:00:15,500 --> 00:00:23,240
-And go to the page and right click Add New Razor Page and we will select the razor page empty template.
+Và đi đến trang, click chuột phải Add New Razor Page và chúng ta sẽ chọn mẫu razor page trống.
 
 5
 00:00:23,240 --> 00:00:30,860
-Click the add button and give the name as a product list dot CSS, HTML and click the add button.
+Click nút add và đặt tên là product list dot CSS, HTML và click nút add.
 
 6
 00:00:30,860 --> 00:00:36,680
-This will be create product list CSS HTML file representing the list of the products.
+Điều này sẽ tạo tệp product list CSS HTML đại diện cho danh sách các sản phẩm.
 
 7
 00:00:37,040 --> 00:00:42,500
-At this point, before proceeding to HTML codes, we should change the layout link redirection.
+Tại điểm này, trước khi tiếp tục với các mã HTML, chúng ta nên thay đổi liên kết layout redirection.
 
 8
 00:00:42,500 --> 00:00:43,610
-Here you can see the.
+Ở đây bạn có thể thấy.
 
 9
 00:00:43,610 --> 00:00:48,290
-Under the shared folders we have a underscore layout, CSS, HTML, CSS.
+Trong thư mục shared chúng ta có underscore layout, CSS, HTML, CSS.
 
 10
 00:00:48,350 --> 00:00:53,510
-This file representing our layout operation, including the header and footer.
+Tệp này đại diện cho hoạt động layout của chúng ta, bao gồm header và footer.
 
 11
 00:00:53,510 --> 00:00:58,490
-If you scroll down you can see the our header links listing in here for product page.
+Nếu bạn cuộn xuống, bạn có thể thấy danh sách liên kết header của chúng ta ở đây cho trang product.
 
 12
 00:00:58,490 --> 00:01:05,510
-I am going to change slash product to slash product list because we are creating a product list CSS,
+Tôi sẽ thay đổi slash product thành slash product list vì chúng ta đang tạo một product list CSS,
 
 13
 00:01:05,510 --> 00:01:09,890
-HTML and we would like to redirect this page why we are doing this change.
+HTML và chúng tôi muốn chuyển hướng trang này tại sao chúng ta làm thay đổi này.
 
 14
 00:01:09,890 --> 00:01:13,370
-Because we have a product model class under the models.
+Bởi vì chúng ta có một product model class dưới models.
 
 15
 00:01:13,370 --> 00:01:17,510
-If you go to models catalog you can see that we have product model class.
+Nếu bạn đi đến danh mục models, bạn có thể thấy rằng chúng ta có product model class.
 
 16
 00:01:17,510 --> 00:01:24,530
-So whenever we create a new razor page, razor page also adding model suffix in order to avoid duplication,
+Vì vậy bất cứ khi nào chúng ta tạo một razor page mới, razor page cũng sẽ thêm model suffix để tránh trùng lặp,
 
 17
 00:01:24,530 --> 00:01:26,990
-we are changing the name as a product list.
+chúng ta đang thay đổi tên thành product list.
 
 18
 00:01:26,990 --> 00:01:31,790
-If you open the product list, you can see that we have created product list model class.
+Nếu bạn mở product list, bạn có thể thấy rằng chúng ta đã tạo product list model class.
 
 19
 00:01:31,790 --> 00:01:36,530
-By this way, we can separate the our model and the actual product list page.
+Bằng cách này, chúng ta có thể tách model của chúng ta và trang product list thực tế.
 
 20
 00:01:36,530 --> 00:01:43,400
-So now we can focus on the HTML part and copy the HTML of this product list from the ASP.Net run basic
+Vì vậy bây giờ chúng ta có thể tập trung vào phần HTML và sao chép HTML của product list này từ ASP.Net run basic
 
 21
 00:01:43,400 --> 00:01:44,060
@@ -84,97 +84,97 @@ repository.
 
 22
 00:01:44,060 --> 00:01:50,270
-For that purpose, please open the ASP.Net run basic repository and go to the pages product page.
+Vì mục đích đó, vui lòng mở ASP.Net run basic repository và đi đến trang product page.
 
 23
 00:01:50,270 --> 00:01:56,270
-And in here I am going to copy from here and paste into our product list page.
+Và ở đây tôi sẽ sao chép từ đây và dán vào trang product list của chúng ta.
 
 24
 00:01:56,270 --> 00:01:57,470
-From this point.
+Từ điểm này.
 
 25
 00:01:59,150 --> 00:02:04,610
-And here you can see that we have copied our HTML page that including the product list details.
+Và ở đây bạn có thể thấy rằng chúng tôi đã sao chép trang HTML của chúng tôi bao gồm chi tiết danh sách sản phẩm.
 
 26
 00:02:05,030 --> 00:02:08,180
-At this point, I would like to say some of the important concerns.
+Tại thời điểm này, tôi muốn nói về một số mối quan tâm quan trọng.
 
 27
 00:02:08,180 --> 00:02:13,880
-Whenever you create any razor page, make sure that your class name seems a green.
+Bất cứ khi nào bạn tạo bất kỳ razor page nào, hãy đảm bảo rằng tên lớp của bạn có vẻ xanh.
 
 28
 00:02:13,880 --> 00:02:19,610
-If the class name doesn't seem green, that means the class cannot introduce for the HTML page.
+Nếu tên lớp không có vẻ xanh, điều đó có nghĩa là lớp không thể giới thiệu cho trang HTML.
 
 29
 00:02:19,610 --> 00:02:22,250
-We have to recreate this razor page.
+Chúng ta phải tạo lại razor page này.
 
 30
 00:02:22,250 --> 00:02:25,430
-So after that we can examine our HTML page.
+Vì vậy sau đó chúng ta có thể kiểm tra trang HTML của chúng ta.
 
 31
 00:02:25,430 --> 00:02:29,360
-Here you can see that we are using model dot selected category.
+Ở đây bạn có thể thấy rằng chúng tôi đang sử dụng model dot selected category.
 
 32
 00:02:29,360 --> 00:02:33,830
-That means we have to define this property into our C sharp class.
+Điều đó có nghĩa là chúng ta phải xác định thuộc tính này trong lớp C sharp của chúng ta.
 
 33
 00:02:33,830 --> 00:02:38,960
-If you scroll down we have a for each statement and we have iterating category list.
+Nếu bạn cuộn xuống, chúng tôi có một câu lệnh for each và chúng tôi đang lặp lại category list.
 
 34
 00:02:38,960 --> 00:02:44,600
-That means we have category list object into our C sharp class and representing our categories.
+Điều đó có nghĩa là chúng tôi có đối tượng category list trong lớp C sharp của chúng ta và biểu diễn các danh mục của chúng ta.
 
 35
 00:02:44,600 --> 00:02:50,570
-If you scroll down, you can see that we are giving details about the product list of the last product
+Nếu bạn cuộn xuống, bạn có thể thấy rằng chúng tôi đang cung cấp chi tiết về danh sách sản phẩm của sản phẩm cuối cùng
 
 36
 00:02:50,570 --> 00:02:52,430
-details, name, summary and price.
+chi tiết, tên, tóm tắt và giá.
 
 37
 00:02:52,430 --> 00:02:54,710
-That means we need product list object.
+Điều đó có nghĩa là chúng ta cần đối tượng product list.
 
 38
 00:02:54,710 --> 00:03:00,410
-If you scroll down, we can also iterating the product list and for each product, we are showing the
+Nếu bạn cuộn xuống, chúng ta cũng có thể lặp lại product list và cho mỗi sản phẩm, chúng tôi đang hiển thị
 
 39
 00:03:00,410 --> 00:03:06,170
-product in the partial HTML, which is the product item partial and facing the our product information,
+sản phẩm trong HTML một phần, đó là product item partial và đối mặt với thông tin sản phẩm của chúng ta,
 
 40
 00:03:06,170 --> 00:03:07,100
-and so on.
+và như vậy.
 
 41
 00:03:07,100 --> 00:03:12,230
-So that means we will develop these HTML C sharp page in the next video.
+Vì vậy, điều đó có nghĩa là chúng tôi sẽ phát triển trang HTML C sharp này trong video tiếp theo.
 
 42
 00:03:12,230 --> 00:03:15,110
-And we need a product list category list.
+Và chúng tôi cần một danh sách sản phẩm danh sách danh mục.
 
 43
 00:03:15,110 --> 00:03:18,350
-And also we will facing the product in the product item partial.
+Và chúng tôi cũng sẽ hiển thị sản phẩm trong product item partial.
 
 44
 00:03:18,350 --> 00:03:23,330
-If you look at the product item partial you can see that this will be include all product details.
+Nếu bạn xem product item partial, bạn có thể thấy rằng nó sẽ bao gồm tất cả chi tiết sản phẩm.
 
 45
 00:03:23,330 --> 00:03:28,430
-And also we need to handle add the cart operations into product list css, HTML.
+Và chúng tôi cũng cần xử lý các thao tác thêm vào giỏ hàng trong product list css, HTML.
 

@@ -1,94 +1,94 @@
 1
 00:00:00,140 --> 00:00:06,500
-In this video, we are going to develop checkout and confirmation pages and consume the AAP API gateway
+Trong video này, chúng tôi sẽ phát triển các trang checkout và confirmation và sử dụng AAP API gateway
 
 2
 00:00:06,500 --> 00:00:10,760
-endpoint with AI basket services to perform asynchronous use cases.
+endpoint với AI basket services để thực hiện các use cases bất đồng bộ.
 
 3
 00:00:10,760 --> 00:00:15,500
-So for that purpose, I'm going to remove unnecessary using statement into checkout model class.
+Vì vậy, tôi sẽ xóa các using statement không cần thiết trong lớp checkout model.
 
 4
 00:00:15,500 --> 00:00:21,320
-And just after that I am going to inject interfaces to primary constructor.
+Và ngay sau đó tôi sẽ inject các interfaces vào primary constructor.
 
 5
 00:00:21,320 --> 00:00:25,580
-So here you can see that our checkout model requiring two services.
+Vì vậy ở đây bạn có thể thấy rằng checkout model của chúng tôi yêu cầu hai services.
 
 6
 00:00:25,580 --> 00:00:28,220
-These are the AI basket services and Ilogger.
+Đó là AI basket services và Ilogger.
 
 7
 00:00:28,430 --> 00:00:34,010
-Of course I'm going to change Ilogger generic type as a checkout model, and we will perform our checkout
+Tất nhiên tôi sẽ thay đổi Ilogger generic type thành checkout model, và chúng tôi sẽ thực hiện checkout
 
 8
 00:00:34,010 --> 00:00:40,490
-operation using the basket service interfaces and using the Basket services checkout basket and point
+operation sử dụng basket service interfaces và sử dụng Basket services checkout basket và point
 
 9
 00:00:40,490 --> 00:00:47,090
-that we are going to send http post request to AAP, API gateway and basket microservices and start
+mà chúng tôi sẽ gửi http post request đến AAP, API gateway và basket microservices và bắt đầu
 
 10
 00:00:47,090 --> 00:00:51,920
-asynchronous communication over the RabbitMQ that will consume by the ordering microservices.
+asynchronous communication qua RabbitMQ mà sẽ được consume bởi ordering microservices.
 
 11
 00:00:51,920 --> 00:00:56,990
-If you go back to our actual checkout model classes, we can continue our implementation.
+Nếu bạn quay lại checkout model classes thực tế của chúng tôi, chúng tôi có thể tiếp tục implementation.
 
 12
 00:00:56,990 --> 00:01:00,800
-And I'm going to start with defining our property.
+Và tôi sẽ bắt đầu với định nghĩa property của chúng tôi.
 
 13
 00:01:00,800 --> 00:01:07,880
-First of all, I'm going to define our Bindable property which is basket checkout model and name of
+Trước hết, tôi sẽ định nghĩa Bindable property của chúng tôi là basket checkout model và tên
 
 14
 00:01:07,880 --> 00:01:09,710
-the or property as the order.
+của or property là order.
 
 15
 00:01:09,710 --> 00:01:13,850
-And this will be the our main property that we are going to collect.
+Và đây sẽ là property chính của chúng tôi mà chúng tôi sẽ collect.
 
 16
 00:01:13,850 --> 00:01:18,740
-Order and basket checkout details in the form of the basket checkout HTML.
+Order và basket checkout details dưới dạng basket checkout HTML.
 
 17
 00:01:18,740 --> 00:01:21,800
-If you open the HTML you can see the order form.
+Nếu bạn mở HTML bạn có thể thấy order form.
 
 18
 00:01:21,800 --> 00:01:27,620
-In this form we are basically getting order first name, last name, username, email address and so
+Trong form này chúng tôi cơ bản lấy order first name, last name, username, email address và những
 
 19
 00:01:27,620 --> 00:01:27,920
-on.
+thứ khác.
 
 20
 00:01:27,920 --> 00:01:32,420
-And these members are representing basket Checkout model into our model class.
+Và những members này đang đại diện cho basket Checkout model trong lớp model của chúng tôi.
 
 21
 00:01:32,420 --> 00:01:35,450
-You can go to definition of the basket checkout model.
+Bạn có thể đi đến định nghĩa của basket checkout model.
 
 22
 00:01:35,450 --> 00:01:38,930
-This is located under the models folder and basket folder.
+Điều này được đặt trong thư mục models và thư mục basket.
 
 23
 00:01:38,930 --> 00:01:45,320
-This time we will populate these basket checkout model as the name of the order property under the checkout
+Lần này chúng ta sẽ điền vào basket checkout model như tên của thuộc tính order dưới checkout
 
 24
 00:01:45,320 --> 00:01:46,400
@@ -96,87 +96,87 @@ Csharp file.
 
 25
 00:01:46,400 --> 00:01:51,260
-Here you can see the order property definition and we will bind the order details in here.
+Ở đây bạn có thể thấy định nghĩa thuộc tính order và chúng ta sẽ liên kết chi tiết đơn hàng tại đây.
 
 26
 00:01:51,260 --> 00:01:56,810
-And just after that also we have a property which is the shopping cart model.
+Và ngay sau đó chúng ta cũng có một thuộc tính là shopping cart model.
 
 27
 00:01:56,810 --> 00:02:03,650
-And in here you can see that we basically define shopping cart cart object in order to retrieve cart
+Và ở đây bạn có thể thấy rằng về cơ bản chúng ta định nghĩa shopping cart object để lấy chi tiết giỏ hàng
 
 28
 00:02:03,650 --> 00:02:05,870
-details and represent in the checkout page.
+và biểu diễn trên trang checkout.
 
 29
 00:02:05,870 --> 00:02:09,800
-So after that we can start to implement on get async method.
+Vì vậy sau đó chúng ta có thể bắt đầu triển khai phương thức on get async.
 
 30
 00:02:09,800 --> 00:02:13,250
-First of all I'm going to change method signature.
+Trước hết tôi sẽ thay đổi chữ ký phương thức.
 
 31
 00:02:13,280 --> 00:02:17,660
-Here you can see that our typical method signature for the available functions.
+Ở đây bạn có thể thấy chữ ký phương thức điển hình cho các hàm có sẵn.
 
 32
 00:02:17,660 --> 00:02:24,260
-And when the checkout page is opening I'm going to populate the cart data from the basket services load
+Và khi trang checkout đang mở, tôi sẽ điền dữ liệu giỏ hàng từ basket services load
 
 33
 00:02:24,260 --> 00:02:25,400
-user basket method.
+phương thức user basket.
 
 34
 00:02:25,400 --> 00:02:28,460
-And just after that I'm going to return the page.
+Và ngay sau đó tôi sẽ trả về trang.
 
 35
 00:02:28,460 --> 00:02:34,160
-Because in this page when we are opening this page, we will see basket details including the total
+Vì trên trang này khi chúng ta mở trang này, chúng ta sẽ thấy chi tiết giỏ hàng bao gồm cả tổng
 
 36
 00:02:34,160 --> 00:02:34,700
-price.
+giá.
 
 37
 00:02:34,700 --> 00:02:40,610
-And after that we will loading the our order and basket checkout detail in order to start and checkout
+Và sau đó chúng ta sẽ tải order và basket checkout detail để bắt đầu và checkout
 
 38
 00:02:40,610 --> 00:02:43,520
-this basket and convert this basket to the order.
+giỏ hàng này và chuyển đổi giỏ hàng này thành order.
 
 39
 00:02:43,520 --> 00:02:49,310
-Just after that we can start to implement our main operation which is the on post checkout async.
+Ngay sau đó chúng ta có thể bắt đầu triển khai hoạt động chính của chúng ta đó là on post checkout async.
 
 40
 00:02:49,310 --> 00:02:53,960
-Here you can see that I have created method body which is the public async task.
+Ở đây bạn có thể thấy rằng tôi đã tạo phần thân phương thức là public async task.
 
 41
 00:02:53,960 --> 00:02:58,490
-I action result and the method name as a on post checkout async method.
+Tôi action result và tên method như một on post checkout async method.
 
 42
 00:02:58,490 --> 00:03:04,610
-This will be calling and triggering when we are submitting the checkout operation in the form and in
+Điều này sẽ gọi và kích hoạt khi chúng ta đang submit checkout operation trong form và trong
 
 43
 00:03:04,610 --> 00:03:05,930
-the HTML page.
+trang HTML.
 
 44
 00:03:05,930 --> 00:03:12,680
-So in the beginning of this method, basically I am going to logging checkout button clicked operation,
+Vì vậy ở đầu method này, về cơ bản tôi sẽ logging checkout button clicked operation,
 
 45
 00:03:12,680 --> 00:03:18,800
-and just after that again I am going to loading the cart information with using the await basket service
+và ngay sau đó tôi lại sẽ loading cart information bằng cách sử dụng await basket service
 
 46
 00:03:18,800 --> 00:03:20,600
@@ -184,221 +184,221 @@ dot load user basket method.
 
 47
 00:03:20,600 --> 00:03:24,050
-And just after that we can validate the modal state.
+Và ngay sau đó chúng ta có thể validate modal state.
 
 48
 00:03:24,050 --> 00:03:26,510
-In here you can see that we will check the modal state.
+Ở đây bạn có thể thấy rằng chúng ta sẽ kiểm tra modal state.
 
 49
 00:03:26,510 --> 00:03:29,630
-If the modal state is not valid, we can return the page.
+Nếu modal state không hợp lệ, chúng ta có thể return trang.
 
 50
 00:03:29,630 --> 00:03:30,920
-What is mean modal state.
+Modal state có nghĩa là gì.
 
 51
 00:03:30,920 --> 00:03:37,550
-If you open the checkout page when we are collecting the order data, if the data is not valid, we
+Nếu bạn mở trang checkout khi chúng ta đang thu thập order data, nếu dữ liệu không hợp lệ, chúng ta
 
 52
 00:03:37,550 --> 00:03:42,620
-have a validation errors that not acceptable empty value for this basket checkout data.
+có validation errors không chấp nhận giá trị empty cho basket checkout data này.
 
 53
 00:03:42,620 --> 00:03:49,040
-So after validating these modal state we can populate the basket checkout data including the customer
+Vì vậy sau khi validate modal state này chúng ta có thể populate basket checkout data bao gồm customer
 
 54
 00:03:49,040 --> 00:03:50,750
-ID username and total price.
+ID username và total price.
 
 55
 00:03:50,750 --> 00:03:56,420
-In here I'm going to type order dot, customer ID username and total price.
+Ở đây tôi sẽ type order dot, customer ID username và total price.
 
 56
 00:03:56,420 --> 00:04:02,660
-Since we don't have implementing any authentication mechanism, we can pass the customer ID from the
+Vì chúng ta không có implementing bất kỳ authentication mechanism nào, chúng ta có thể pass customer ID từ
 
 57
 00:04:02,660 --> 00:04:06,230
-UI, which is assumption of the authenticated user.
+UI, đây là giả định của authenticated user.
 
 58
 00:04:06,920 --> 00:04:10,970
-So this is the customer ID and this is the username comes from the cart.
+Vì vậy đây là customer ID và đây là username đến từ cart.
 
 59
 00:04:10,970 --> 00:04:14,240
-And this is the total price calculated from the shopping cart also.
+Và đây là total price được tính toán từ shopping cart cũng vậy.
 
 60
 00:04:14,240 --> 00:04:19,790
-And we will passing these values in the order which is representing our basket checkout data before
+Và chúng ta sẽ passing những giá trị này trong order đó là đại diện cho basket checkout data của chúng ta trước
 
 61
 00:04:19,790 --> 00:04:20,690
-sending the data.
+Gửi dữ liệu.
 
 62
 00:04:20,690 --> 00:04:27,380
-So now it is time to send http post request over the basket service checkout basket and passing the
+Vì vậy bây giờ là lúc để gửi http post request qua basket service checkout basket và truyền
 
 63
 00:04:27,380 --> 00:04:34,820
-new checkout basket request in a wrapper of the order data order is our basket checkout modal that we
+new checkout basket request trong một wrapper của order data, order là basket checkout modal của chúng ta mà
 
 64
 00:04:34,820 --> 00:04:37,280
-can hit the http post request to erb.
+chúng ta có thể gửi http post request tới erb.
 
 65
 00:04:37,280 --> 00:04:43,610
-API gateway will trigger our basket microservices and basket microservices perform actual logic for
+API gateway sẽ kích hoạt basket microservices của chúng ta và basket microservices thực hiện logic thực tế cho
 
 66
 00:04:43,610 --> 00:04:49,760
-the checkout operations, and just after that we can return the directory page of the order confirmation.
+các hoạt động checkout, và ngay sau đó chúng ta có thể trả về trang directory của xác nhận đơn hàng.
 
 67
 00:04:49,760 --> 00:04:56,120
-We set that after checkout this order we are redirecting to confirmation page with order submitted messages.
+Chúng ta đặt rằng sau khi checkout đơn hàng này chúng ta sẽ chuyển hướng đến trang confirmation với thông báo đơn hàng đã gửi.
 
 68
 00:04:56,120 --> 00:04:59,540
-So this is the implementation of the on post checkout.
+Đây là cách triển khai on post checkout.
 
 69
 00:05:00,230 --> 00:05:03,440
-Under the hour basket checkout model.
+Dưới hour basket checkout model.
 
 70
 00:05:03,440 --> 00:05:06,500
-And these are the properties on get async method.
+Và đây là các properties trong on get async method.
 
 71
 00:05:06,500 --> 00:05:08,390
-And this is the inbox checkout method.
+Và đây là inbox checkout method.
 
 72
 00:05:08,390 --> 00:05:13,190
-In order to complete this checkout operation and redirect the page of the confirmation.
+Để hoàn thành hoạt động checkout này và chuyển hướng trang confirmation.
 
 73
 00:05:13,190 --> 00:05:15,770
-So now I am going to implement confirmation page.
+Vì vậy bây giờ tôi sẽ triển khai trang confirmation.
 
 74
 00:05:15,770 --> 00:05:21,170
-Here you can see that confirmation page including only messages to verify the confirmation.
+Ở đây bạn có thể thấy trang confirmation chỉ bao gồm các thông báo để xác minh confirmation.
 
 75
 00:05:21,170 --> 00:05:23,450
-And in here we need a message property.
+Và ở đây chúng ta cần một message property.
 
 76
 00:05:23,450 --> 00:05:24,230
-For that purpose.
+Cho mục đích đó.
 
 77
 00:05:24,230 --> 00:05:31,010
-I'm going to go back to our c page of the confirmation and now implement our these message type.
+Tôi sẽ quay lại c page của confirmation và bây giờ triển khai message type của chúng ta.
 
 78
 00:05:31,010 --> 00:05:36,290
-First of all I'm going to add a message property in the beginning of this confirmation model.
+Trước hết tôi sẽ thêm một message property ở đầu confirmation model này.
 
 79
 00:05:36,290 --> 00:05:39,170
-And just after that I'm going to change.
+Và ngay sau đó tôi sẽ thay đổi.
 
 80
 00:05:39,170 --> 00:05:41,060
-And adding the on get methods.
+Và thêm on get methods.
 
 81
 00:05:41,060 --> 00:05:46,160
-In here we get on get contact method and also on get order submitted method.
+Ở đây chúng ta có phương thức get contact và cả phương thức get order submitted.
 
 82
 00:05:46,160 --> 00:05:49,970
-And we will use this message your order submitted successfully.
+Và chúng ta sẽ sử dụng message your order submitted successfully.
 
 83
 00:05:49,970 --> 00:05:54,080
-This is the generic confirmation page where we are submitting the form.
+Đây là trang confirmation chung nơi chúng ta đang submit form.
 
 84
 00:05:54,080 --> 00:05:56,450
-We are passing the our operation.
+Chúng ta đang passing operation của chúng ta.
 
 85
 00:05:56,450 --> 00:05:59,930
-In our case we are passing the order submitted when checkout order.
+Trong trường hợp của chúng ta, chúng ta đang passing order submitted khi checkout order.
 
 86
 00:05:59,930 --> 00:06:03,920
-That's why we will hit the message as your order submitted successfully.
+Đó là lý do tại sao chúng ta sẽ nhận được message your order submitted successfully.
 
 87
 00:06:03,950 --> 00:06:08,990
-After developing confirmation, we can right click the Shopping Web Client application and build the
+Sau khi phát triển confirmation, chúng ta có thể right click vào ứng dụng Shopping Web Client và build.
 
 88
 00:06:08,990 --> 00:06:13,400
-application to verify our HTML page and see our page is working fine.
+ứng dụng để verify trang HTML của chúng ta và xem trang của chúng ta có hoạt động tốt không.
 
 89
 00:06:13,400 --> 00:06:17,930
-So here you can see that shopping cart model does not contain a product definition.
+Vì vậy ở đây bạn có thể thấy rằng shopping cart model không chứa product definition.
 
 90
 00:06:17,930 --> 00:06:20,420
-You can see checkout HTML page.
+Bạn có thể thấy trang checkout HTML.
 
 91
 00:06:20,420 --> 00:06:23,030
-And we are iterating the shopping cart items.
+Và chúng ta đang iterate các items trong shopping cart.
 
 92
 00:06:23,030 --> 00:06:26,270
-And in the shopping cart item we don't have product information.
+Và trong shopping cart item, chúng ta không có product information.
 
 93
 00:06:26,270 --> 00:06:32,570
-Here you can see that we are trying to reach name and some information that we can use item dot product
+Ở đây bạn có thể thấy chúng ta đang cố gắng reach name và một số thông tin mà chúng ta có thể sử dụng item dot product.
 
 94
 00:06:32,570 --> 00:06:35,900
-name and remove product name operation.
+name và remove product name operation.
 
 95
 00:06:35,900 --> 00:06:42,320
-And instead of summary we can write the item dot description or product name again.
+Và thay vì summary, chúng ta có thể write item dot description hoặc product name lần nữa.
 
 96
 00:06:42,860 --> 00:06:47,180
-So instead of the description we need to use product detail operation.
+Vì vậy thay vì description, chúng ta cần sử dụng product detail operation.
 
 97
 00:06:47,180 --> 00:06:52,790
-As a workaround I am going to pass product name instead of the description into our listing the shopping
+Như một giải pháp thay thế, tôi sẽ pass product name thay vì description vào listing của chúng ta là shopping.
 
 98
 00:06:52,790 --> 00:06:54,140
-cart in the checkout page.
+cart trong trang checkout.
 
 99
 00:06:54,140 --> 00:07:00,020
-After that, I'm going to right click and rebuild again and see that the build operation is succeeded
+Sau đó, tôi sẽ right click và rebuild lại và xem rằng build operation đã thành công.
 
 100
 00:07:00,020 --> 00:07:02,840
-and we have completed the checkout and confirmation.
+và chúng ta đã hoàn thành checkout và confirmation.
 
 101
 00:07:02,840 --> 00:07:03,800
-See pages.
+Xem các trang.
 

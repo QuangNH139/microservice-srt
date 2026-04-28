@@ -1,146 +1,146 @@
 1
 00:00:00,170 --> 00:00:06,530
-In this video, we are going to clone these newly created GitHub repository on our local environment
+Trong video này, chúng ta sẽ clone GitHub repository vừa tạo vào môi trường local của mình
 
 2
 00:00:06,530 --> 00:00:11,300
-and set up a new solution in Visual Studio for our microservice development.
+và thiết lập một solution mới trong Visual Studio để phát triển microservice.
 
 3
 00:00:11,300 --> 00:00:13,280
-So now let's take an action.
+Vậy bây giờ hãy bắt đầu hành động.
 
 4
 00:00:13,400 --> 00:00:16,010
-So we will start cloning this repository.
+Vì vậy chúng ta sẽ bắt đầu clone repository này.
 
 5
 00:00:16,010 --> 00:00:20,540
-First we are going to open a Visual Studio 2022.
+Đầu tiên chúng ta sẽ mở Visual Studio 2022.
 
 6
 00:00:20,660 --> 00:00:24,350
-In the welcome page you can see Get Started options.
+Trên trang welcome bạn có thể thấy các tùy chọn Get Started.
 
 7
 00:00:24,350 --> 00:00:27,050
-And this time we will clone a repository.
+Và lần này chúng ta sẽ clone một repository.
 
 8
 00:00:27,200 --> 00:00:34,100
-So if you click this clone a repository section, you can see that it is expecting that repository location.
+Vì vậy nếu bạn click vào phần clone a repository, bạn có thể thấy rằng nó yêu cầu vị trí repository.
 
 9
 00:00:34,100 --> 00:00:37,100
-So we can enter a git repository URL in here.
+Vì vậy chúng ta có thể nhập URL git repository ở đây.
 
 10
 00:00:37,100 --> 00:00:39,710
-So where we can get this URL.
+Vậy chúng ta có thể lấy URL này từ đâu.
 
 11
 00:00:39,710 --> 00:00:45,440
-So if you go back to our GitHub you can come here and click the code button.
+Vì vậy nếu bạn quay lại GitHub của chúng ta, bạn có thể click vào nút code.
 
 12
 00:00:45,440 --> 00:00:50,270
-And here you can see the clone section that we can copy from the https option.
+Và ở đây bạn có thể thấy phần clone mà chúng ta có thể copy từ tùy chọn https.
 
 13
 00:00:50,270 --> 00:00:52,070
-And we can copy this URL.
+Và chúng ta có thể copy URL này.
 
 14
 00:00:52,070 --> 00:01:00,590
-And if you go back to our repository section you can paste these cloning repository for your newly created
+Và nếu bạn quay lại phần repository của chúng ta, bạn có thể paste URL clone cho repository vừa tạo
 
 15
 00:01:00,590 --> 00:01:02,120
-each of microservices.
+của mỗi microservice.
 
 16
 00:01:02,120 --> 00:01:08,000
-And also verify that your path is correct under your repositories and click the clone button.
+Và cũng xác minh rằng đường dẫn của bạn chính xác trong phần repositories của bạn và click nút clone.
 
 17
 00:01:09,050 --> 00:01:12,050
-So this will be clone or repository.
+Vì vậy đây sẽ là clone repository.
 
 18
 00:01:13,010 --> 00:01:13,610
-Okay.
+Được rồi.
 
 19
 00:01:13,610 --> 00:01:16,010
-The clone operation completes successfully.
+Thao tác clone hoàn thành thành công.
 
 20
 00:01:16,130 --> 00:01:21,980
-After cloning the repository in our local environment, we should start to create our project.
+Sau khi clone repository vào môi trường local của chúng ta, chúng ta nên bắt đầu tạo project của mình.
 
 21
 00:01:22,250 --> 00:01:26,780
-So for that purpose on Visual Studio we are going to file new project.
+Vì mục đích đó trên Visual Studio chúng ta sẽ tạo file project mới.
 
 22
 00:01:26,780 --> 00:01:33,560
-So if you come here under the this folder view you can select the file New project.
+Vì vậy nếu bạn đến đây dưới view folder này bạn có thể chọn file New project.
 
 23
 00:01:33,560 --> 00:01:36,500
-And we are going to create a new project.
+Và chúng ta sẽ tạo một project mới.
 
 24
 00:01:36,500 --> 00:01:40,370
-But this time we will create a new project for blank solution.
+Nhưng lần này chúng ta sẽ tạo một project mới cho blank solution.
 
 25
 00:01:40,370 --> 00:01:45,650
-You can search for the blank solution and select the blank solution.
+Bạn có thể tìm kiếm blank solution và chọn blank solution.
 
 26
 00:01:45,650 --> 00:01:49,790
-That means we will create a root file for our microservice project.
+Điều đó có nghĩa là chúng ta sẽ tạo một root file cho microservice project của chúng ta.
 
 27
 00:01:49,790 --> 00:01:54,140
-For that purpose, you should select the blank solution and click the next button.
+Cho mục đích đó, bạn nên chọn blank solution và nhấp nút next.
 
 28
 00:01:54,320 --> 00:01:57,470
-And after that we will give the name as a solution name.
+Và sau đó chúng ta sẽ đặt tên cho solution name.
 
 29
 00:01:57,470 --> 00:02:02,390
-In here I'm going to give as a name SCP dash microservices.
+Ở đây tôi sẽ đặt tên là SCP dash microservices.
 
 30
 00:02:02,390 --> 00:02:05,330
-And the location is very important.
+Và location rất quan trọng.
 
 31
 00:02:05,330 --> 00:02:10,310
-You should select the location that we have created and cloning our repository.
+Bạn nên chọn location mà chúng ta đã tạo và clone repository của chúng ta.
 
 32
 00:02:10,310 --> 00:02:17,810
-So please select this browse window and you can go to the SCP microservices that we have created and
+Vì vậy vui lòng chọn browse window này và bạn có thể đi đến SCP microservices mà chúng ta đã tạo và
 
 33
 00:02:17,810 --> 00:02:19,430
-cloning from the GitHub.
+clone từ GitHub.
 
 34
 00:02:19,430 --> 00:02:24,500
-So under these folder path location we will create a solution name.
+Vì vậy dưới đường dẫn folder này chúng ta sẽ tạo một solution name.
 
 35
 00:02:24,500 --> 00:02:29,930
-Which name is SCP microservices I'm going to zoom into this solution.
+Cái tên là SCP microservices tôi sẽ phóng to vào solution này.
 
 36
 00:02:29,930 --> 00:02:37,100
-You can give the solution name and location is important and we will create a new solution at the last
+Bạn có thể đặt tên solution và location rất quan trọng và chúng ta sẽ tạo một solution mới ở lần cuối
 
 37
 00:02:37,100 --> 00:02:37,940
@@ -148,47 +148,47 @@ configuration.
 
 38
 00:02:37,940 --> 00:02:40,730
-So now I'm going to click the create button.
+Vì vậy bây giờ tôi sẽ nhấp nút create.
 
 39
 00:02:40,730 --> 00:02:46,130
-And this will be create a blank solution under this folder and open this solution.
+Và điều này sẽ tạo một blank solution dưới folder này và mở solution này.
 
 40
 00:02:46,130 --> 00:02:53,030
-After created in that location we can verify the folder location of these blank solution.
+Sau khi được tạo ở location đó chúng ta có thể xác minh đường dẫn folder của blank solution này.
 
 41
 00:02:53,030 --> 00:02:54,710
-Bạn có thể nhấp chuột phải vào solution.
+You right-click on the solution.
 
 42
 00:02:54,710 --> 00:02:58,160
-Và sau đó mở thư mục trong File Explorer.
+And then open the folder in File Explorer.
 
 43
 00:02:58,730 --> 00:03:04,610
-Và bạn có thể thấy rằng solution trống này nằm trong thư mục escape microservices mà chúng ta đã clone
+And you can see that this empty solution is located in the escape microservices folder that we cloned
 
 44
 00:03:04,610 --> 00:03:05,570
-từ GitHub.
+from GitHub.
 
 45
 00:03:05,570 --> 00:03:12,410
-Và trong thư mục này, một thư mục mới được tạo ra, có tên là SCP microservices.
+And in this folder, a new folder is created, named SCP microservices.
 
 46
 00:03:12,410 --> 00:03:18,380
-Và trong thư mục này, bạn có thể thấy solution trống mà chúng ta sẽ phát triển toàn bộ microservices
+And in this folder, you can see the empty solution that we will develop all the microservices
 
 47
 00:03:18,380 --> 00:03:20,600
-dưới solution trống gốc này.
+under this original empty solution.
 
 48
 00:03:20,720 --> 00:03:28,730
-Vậy nếu bạn quay lại repository SCP microservices của chúng ta, bạn có thể thấy rằng repository này được clone từ
+So if you go back to our SCP microservices repository, you can see that this repository was cloned from
 
 49
 00:03:28,730 --> 00:03:29,390
@@ -196,15 +196,15 @@ GitHub.
 
 50
 00:03:29,390 --> 00:03:36,560
-Và sau đó, một thư mục cùng tên được tạo ra, đó là SCP microservices.
+And then, a folder with the same name is created, which is SCP microservices.
 
 51
 00:03:36,560 --> 00:03:39,530
-Và điều này có thể gây ra sự nhầm lẫn.
+And this can cause confusion.
 
 52
 00:03:39,530 --> 00:03:46,340
-Và để tránh xung đột như vậy, tôi muốn đổi tên thư mục solution này thành thư mục
+And to avoid such conflicts, I want to rename this solution folder to the folder
 
 53
 00:03:46,340 --> 00:03:46,880
@@ -212,73 +212,73 @@ source.
 
 54
 00:03:46,880 --> 00:03:54,230
-Vậy tôi sẽ nhấp chuột phải và đổi tên, đặt tên là source, vì tôi muốn đóng gói
+So I will right-click and rename, name it source, because I want to package
 
 55
 00:03:54,230 --> 00:03:57,050
-tất cả mã nguồn dưới thư mục source.
+all source code under the source folder.
 
 56
 00:03:57,050 --> 00:03:59,600
-Và solution trống này sẽ đại diện cho
+And this empty solution will represent
 
 57
 00:03:59,780 --> 00:04:02,900
-ứng dụng .NET của chúng ta bao gồm các microservices.
+our .NET application including microservices.
 
 58
 00:04:02,900 --> 00:04:08,270
-Vậy thư mục này sẽ là thư mục gốc và chứa các mã nguồn.
+So this folder will be the root folder and contain the source codes.
 
 59
 00:04:08,270 --> 00:04:12,800
-Và sau đó chúng ta có thể thêm các tệp deployment như Kubernetes Yaml files và những tệp khác.
+And then we can add deployment files like Kubernetes Yaml files and other files.
 
 60
 00:04:12,800 --> 00:04:19,130
-Để tách những thứ này, sẽ rất tốt nếu tạo một thư mục mới có tên là thư mục source.
+To separate these things, it would be good to create a new folder named source folder.
 
 61
 00:04:19,130 --> 00:04:23,210
-Vậy bây giờ chúng ta đang tổ chức cấu trúc thư mục của mình.
+So now we're organizing the directory structure of our project.
 
 62
 00:04:23,210 --> 00:04:26,870
-Và sau đó chúng ta có thể quay lại Visual Studio.
+And then we can go back to Visual Studio.
 
 63
 00:04:26,870 --> 00:04:34,040
-Và nếu bạn đi đến git change, bạn có thể thấy rằng chúng ta đã thêm một solution trống mới dưới thư mục source
+And if you go to git change, you can see that we've added a new empty solution under the source directory
 
 64
 00:04:34,040 --> 00:04:36,920
-vào repository microservices của chúng ta.
+to our microservices repository.
 
 65
 00:04:36,920 --> 00:04:41,780
-Chúng ta có thể commit những thay đổi này bằng cách viết lệnh initial.
+We can commit these changes by writing the initial command.
 
 66
 00:04:41,780 --> 00:04:46,490
-Và bạn có thể commit và sync thay đổi này với repository GitHub.
+And you can commit and sync this change with the GitHub repository.
 
 67
 00:04:47,360 --> 00:04:54,710
-Vậy nếu bạn quay lại repository GitHub của chúng ta và làm mới trang này, bạn có thể thấy rằng solution xây dựng của chúng ta
+So if you go back to our GitHub repository and refresh the page, you can see that our build solution
 
 68
 00:04:54,710 --> 00:04:57,170
-nằm dưới thư mục source trên GitHub.
+is located under the source directory on GitHub.
 
 69
 00:04:57,170 --> 00:05:04,100
-Điều đó có nghĩa là chúng ta đã thành công trong việc clone repository, thiết lập solution của chúng ta và đẩy project của chúng ta
+This means we have successfully cloned the repository, set up our solution and pushed our project
 
 70
 00:05:04,100 --> 00:05:05,060
-lên GitHub.
+to GitHub.
 
 71
 00:05:05,060 --> 00:05:08,780
-Và bây giờ chúng ta đã sẵn sàng để phát triển microservices đầu tiên của chúng ta.
+And now we are ready to develop our first microservice.
 

@@ -1,18 +1,18 @@
 1
 00:00:00,170 --> 00:00:07,730
-In this video, we are going to implement six abstractions of command interface into our vertical slices.
+Trong video này, chúng ta sẽ triển khai sáu abstractions của command interface vào vertical slices của chúng ta.
 
 2
 00:00:07,730 --> 00:00:12,500
-Here you can see that we are focusing on the create product vertical slice.
+Ở đây bạn có thể thấy rằng chúng ta đang tập trung vào create product vertical slice.
 
 3
 00:00:12,500 --> 00:00:19,460
-And we will implement handler class with using the newly created six abstractions I command and Ikuhara.
+Và chúng ta sẽ triển khai handler class bằng cách sử dụng sáu abstractions mới được tạo I command và Ikuhara.
 
 4
 00:00:19,730 --> 00:00:25,820
-So since this is a command operation, we will use I command related interfaces in the product command
+Vì đây là một command operation, chúng ta sẽ sử dụng I command related interfaces trong product command.
 
 5
 00:00:25,820 --> 00:00:26,600
@@ -20,7 +20,7 @@ handler class.
 
 6
 00:00:26,600 --> 00:00:31,640
-That means we will create a command handler for create product feature in our catalog.
+Điều đó có nghĩa là chúng ta sẽ tạo một command handler cho tính năng create product trong catalog của chúng ta.
 
 7
 00:00:31,640 --> 00:00:32,780
@@ -28,35 +28,35 @@ Microservices.
 
 8
 00:00:32,780 --> 00:00:39,950
-If you open the Visual Studio and locate the create product handler class, you can see that it is using
+Nếu bạn mở Visual Studio và định vị create product handler class, bạn có thể thấy rằng nó đang sử dụng.
 
 9
 00:00:39,950 --> 00:00:43,880
-the Isaacs and Isaacs handler interface from the mediator.
+Isaacs và Isaacs handler interface từ mediator.
 
 10
 00:00:43,880 --> 00:00:51,500
-So our first step is to refactor our create product command to use the I command abstractions instead
+Vì vậy, bước đầu tiên của chúng ta là refactor create product command để sử dụng I command abstractions thay vì.
 
 11
 00:00:51,500 --> 00:00:52,820
-of the I request.
+I request.
 
 12
 00:00:52,820 --> 00:00:54,770
-You can see the picture in here.
+Bạn có thể thấy hình ảnh ở đây.
 
 13
 00:00:54,770 --> 00:00:59,330
-Now our handler class is using the request and request handler.
+Bây giờ handler class của chúng ta đang sử dụng request và request handler.
 
 14
 00:00:59,330 --> 00:01:02,840
-We should refactor with the I command and I command handler.
+Chúng ta nên refactor với I command và I command handler.
 
 15
 00:01:02,840 --> 00:01:09,500
-This change will align our command with the securities patterns and clearly distinguish it the right
+Thay đổi này sẽ căn chỉnh command của chúng ta với các securities patterns và phân biệt rõ ràng nó là right.
 
 16
 00:01:09,500 --> 00:01:10,370
@@ -64,23 +64,23 @@ operations.
 
 17
 00:01:10,370 --> 00:01:17,810
-So if you go back to our architecture and you can check the asks and according to Boolean plus and securities
+Vì vậy, nếu bạn quay lại architecture của chúng ta và bạn có thể kiểm tra asks và theo Boolean plus và securities.
 
 18
 00:01:17,810 --> 00:01:24,110
-part, we can see that we will use I command and I command handler into the create product handler.
+phần, chúng ta có thể thấy rằng chúng ta sẽ sử dụng I command và I command handler trong create product handler.
 
 19
 00:01:25,010 --> 00:01:26,300
-So let's get started.
+Vì vậy, hãy bắt đầu nào.
 
 20
 00:01:26,300 --> 00:01:31,010
-Open the handler class and let's refactor our request to the I command.
+Mở handler class và hãy refactor request của chúng ta thành I command.
 
 21
 00:01:31,010 --> 00:01:38,750
-So I'm going to change this I request as a I command and make sure that this I command comes from the
+Vì vậy, tôi sẽ thay đổi cái này thành một I command và đảm bảo rằng I command này đến từ
 
 22
 00:01:38,750 --> 00:01:40,610
@@ -88,147 +88,147 @@ building blocks.
 
 23
 00:01:40,610 --> 00:01:46,100
-And click this button to adding the using statement which comes from the build links.
+Và nhấp vào nút này để thêm using statement đến từ build links.
 
 24
 00:01:46,100 --> 00:01:48,170
-So this changed as a I command.
+Vì vậy cái này thay đổi thành một I command.
 
 25
 00:01:48,170 --> 00:01:51,890
-And also we should change the command handler as a I command handler.
+Và chúng ta cũng nên thay đổi command handler thành một I command handler.
 
 26
 00:01:55,410 --> 00:02:02,070
-Now we have changed the Irix interface to I command interface, and this time we can separate the query
+Bây giờ chúng ta đã thay đổi Irix interface thành I command interface, và lần này chúng ta có thể tách riêng query
 
 27
 00:02:02,070 --> 00:02:03,390
-and command operations.
+và command operations.
 
 28
 00:02:03,420 --> 00:02:04,650
-Here you can see the.
+Ở đây bạn có thể thấy.
 
 29
 00:02:04,650 --> 00:02:07,320
-Our command object is inherited from the I command.
+Command object của chúng ta được kế thừa từ I command.
 
 30
 00:02:07,320 --> 00:02:11,130
-And our command handler class inherits from the I command handler.
+Và command handler class của chúng ta kế thừa từ I command handler.
 
 31
 00:02:11,130 --> 00:02:17,400
-And in the handler class make sure that the first parameter is create product command that triggers
+Và trong handler class hãy đảm bảo rằng parameter đầu tiên là create product command được kích hoạt
 
 32
 00:02:17,400 --> 00:02:19,440
-from the command handler.
+từ command handler.
 
 33
 00:02:19,740 --> 00:02:25,410
-And also I would like to change these parameter name as a command because this is not a request.
+Và tôi cũng muốn thay đổi tên parameter này thành command vì đây không phải là một request.
 
 34
 00:02:25,410 --> 00:02:28,230
-This is a command that triggers our command handler.
+Đây là một command kích hoạt command handler của chúng ta.
 
 35
 00:02:28,320 --> 00:02:31,110
-So make sure that you have implemented these changes.
+Vì vậy hãy chắc chắn rằng bạn đã thực hiện những thay đổi này.
 
 36
 00:02:31,110 --> 00:02:37,770
-And now let's start to implement our actual business logic within the our handlers handle method in
+Và bây giờ hãy bắt đầu triển khai business logic thực tế của chúng ta trong handle method của handler của chúng ta
 
 37
 00:02:37,770 --> 00:02:38,580
-the handler method.
+trong handler method.
 
 38
 00:02:38,580 --> 00:02:44,550
-First of all, let's organize and analyze what we are going to do, how to create our product.
+Trước hết, hãy tổ chức và phân tích những gì chúng ta sẽ làm, cách tạo product của chúng ta.
 
 39
 00:02:44,550 --> 00:02:45,960
-There is a several steps.
+Có một vài bước.
 
 40
 00:02:45,960 --> 00:02:50,910
-The first step is we should create a product entity from our command object.
+Bước đầu tiên là chúng ta nên tạo một product entity từ command object của chúng ta.
 
 41
 00:02:50,910 --> 00:02:53,520
-Vậy đây là bước đầu tiên - command object.
+So this is the first step - command object.
 
 42
 00:02:53,520 --> 00:02:59,490
-Như bạn có thể thấy, nó đến từ mediator và bao gồm tên, category, description và những thứ khác.
+As you can see, it comes from mediator and includes name, category, description and other things.
 
 43
 00:02:59,490 --> 00:03:02,550
-Đây là những thành viên từ R module, đó là product.
+These are members from R module, which is product.
 
 44
 00:03:02,550 --> 00:03:06,870
-Vậy chúng ta nên tạo một product entity từ command object đến.
+So we should create a product entity from command object to.
 
 45
 00:03:06,870 --> 00:03:10,170
-Bước thứ hai là chúng ta sẽ lưu vào database.
+The second step is we will save to database.
 
 46
 00:03:10,170 --> 00:03:15,060
-Vậy với command đến và tạo product entity này, chúng ta sẽ lưu vào database.
+So with command coming and creating this product entity, we will save to database.
 
 47
 00:03:15,060 --> 00:03:17,820
-Và cuối cùng chúng ta sẽ trả về kết quả.
+And finally we will return the result.
 
 48
 00:03:17,820 --> 00:03:21,540
-Vậy chúng ta sẽ trả về create product result.
+So we will return create product result.
 
 49
 00:03:21,540 --> 00:03:26,010
-Ở đây bạn có thể thấy rằng chúng ta sẽ trả về create product result object.
+Here you can see that we will return create product result object.
 
 50
 00:03:26,010 --> 00:03:28,890
-Và chúng ta sẽ thực hiện thao tác tạo.
+And we will perform the create operation.
 
 51
 00:03:28,890 --> 00:03:35,040
-Khi chúng ta trả về một kết quả, chúng ta sẽ gửi một newly created guid id như một placeholder.
+When we return a result, we will send a newly created guid id as a placeholder.
 
 52
 00:03:35,040 --> 00:03:35,880
-Được rồi.
+Alright.
 
 53
 00:03:35,880 --> 00:03:40,020
-Sau khi xác định các bước của chúng ta, chúng ta sẽ bắt đầu phát triển từng bước một.
+After defining our steps, we will start developing step by step.
 
 54
 00:03:40,020 --> 00:03:45,480
-Hãy bắt đầu với nhiệm vụ đầu tiên, đó là tạo product entity và đây sẽ là document object của chúng ta
+Let's start with the first task, which is to create product entity and this will be our document object
 
 55
 00:03:45,480 --> 00:03:47,220
-trong handle method.
+in handle method.
 
 56
 00:03:47,220 --> 00:03:57,030
-Vậy tôi sẽ tạo một biến product và tạo một new product object.
+So I will create a product variable and create a new product object.
 
 57
 00:03:57,030 --> 00:04:00,330
-Và điều này sẽ đến từ API models của chúng ta.
+And this will come from our API models.
 
 58
 00:04:00,510 --> 00:04:06,480
-Và ở đây tôi sẽ truyền các thành viên từ incoming command object.
+And here I will pass members from incoming command object.
 
 59
 00:04:13,150 --> 00:04:14,170
@@ -240,55 +240,55 @@ Image file.
 
 61
 00:04:23,380 --> 00:04:28,510
-Và cuối cùng chúng ta sẽ truyền giá từ command price value.
+And finally we will pass the price value from the command price value.
 
 62
 00:04:28,540 --> 00:04:32,770
-Vậy ở đây chúng ta đã hoàn thành nhiệm vụ đầu tiên, đó là tạo product entity.
+So here we have completed the first task, which is to create the product entity.
 
 63
 00:04:32,770 --> 00:04:34,390
-Đây sẽ là document object.
+This will be the document object.
 
 64
 00:04:34,390 --> 00:04:37,660
-Vậy trong nhiệm vụ thứ hai chúng ta sẽ lưu vào database.
+So in the second task we will save to the database.
 
 65
 00:04:37,660 --> 00:04:40,330
-Vậy chúng ta có thể lưu vào database như thế nào.
+So how can we save to the database.
 
 66
 00:04:40,330 --> 00:04:44,980
-Database của chúng ta ở đâu và các lớp communication với database của chúng ta ở đâu.
+Where is our database and where are the communication layers with our database.
 
 67
 00:04:44,980 --> 00:04:51,520
-Vậy bây giờ hãy giữ lại dữ liệu này và các tác vụ liên quan đến infrastructure, và tiếp tục triển khai hoàn chỉnh request
+So now let's keep this data and infrastructure-related tasks, and continue implementing the complete request
 
 68
 00:04:51,520 --> 00:04:58,480
-lifecycle trong ASP.NET Core và sử dụng Secrets và Mediator pipeline, bạn có thể thấy request lifecycle.
+lifecycle in ASP.NET Core and using Secrets and Mediator pipeline, you can see the request lifecycle.
 
 69
 00:04:58,480 --> 00:05:02,950
-Chúng ta sẽ xử lý incoming command object và kích hoạt command handler.
+We will handle the incoming command object and trigger the command handler.
 
 70
 00:05:02,950 --> 00:05:10,000
-Nhưng hiện tại chúng ta sẽ bỏ qua các database operations và tập trung vào hoàn thành request lifecycle này.
+But for now we will skip the database operations and focus on completing this request lifecycle.
 
 71
 00:05:10,000 --> 00:05:12,670
-Để thực hiện điều đó, chúng ta sẽ trả về một result.
+To do that, we will return a result.
 
 72
 00:05:12,670 --> 00:05:15,820
-Và sau đó chúng ta sẽ xem nó tiến hành như thế nào.
+And then we will see how it proceeds.
 
 73
 00:05:15,820 --> 00:05:26,260
-Vậy tôi đang bỏ qua điểm này và tôi sẽ trả về một result, đó là return new create product.
+So I'm skipping this point and I will return a result, which is return new create product.
 
 74
 00:05:28,320 --> 00:05:28,920
@@ -296,43 +296,43 @@ Result.
 
 75
 00:05:28,920 --> 00:05:31,440
-Đây sẽ là result và truyền một guid operation.
+This will be the result and pass a guid operation.
 
 76
 00:05:31,440 --> 00:05:40,140
-Hiện tại, tôi sẽ trả về một random new guid và loại bỏ các throw operations này.
+For now, I will return a random new guid and remove these throw operations.
 
 77
 00:05:41,010 --> 00:05:46,230
-Nếu bạn thấy exception, nó đang mong đợi một task response, vì vậy tôi sẽ tạo hàm này async.
+If you see an exception, it is expecting a task response, so I will make this function async.
 
 78
 00:05:46,230 --> 00:05:52,380
-Và sau đó chúng ta sẽ trả về product result chính xác.
+And then we will return the correct product result.
 
 79
 00:05:52,380 --> 00:05:57,600
-Vậy như bạn có thể thấy, chúng ta không triển khai thao tác thực tế đó là lưu database.
+So as you can see, we are not implementing the actual operation which is saving to the database.
 
 80
 00:05:57,600 --> 00:06:04,860
-Vậy trước khi triển khai data considerations, chúng ta sẽ tập trung vào cách kích hoạt handle method này với
+So before implementing data considerations, we will focus on how to trigger this handle method with
 
 81
 00:06:04,860 --> 00:06:06,180
-sử dụng mediator.
+use mediator.
 
 82
 00:06:06,180 --> 00:06:14,730
-Điều đó có nghĩa là chúng ta nên expose một HTTP POST endpoint API từ catalog API microservices của chúng ta bằng cách sử dụng Minimal
+That means we should expose an HTTP POST endpoint API from our catalog API microservices by using Minimal
 
 83
 00:06:14,730 --> 00:06:16,830
-API endpoints và thư viện Castle.
+API endpoints and Castle library.
 
 84
 00:06:16,830 --> 00:06:23,490
-Để hiểu cách mediator sử dụng command và kích hoạt handler class rồi trả về một số
+To understand how mediator uses command and triggers handler class then returns some
 
 85
 00:06:23,490 --> 00:06:24,120
@@ -340,29 +340,29 @@ response.
 
 86
 00:06:24,120 --> 00:06:30,960
-Vậy điều đó có nghĩa là, như bạn có thể thấy, đây là kiến trúc chính của chúng ta, đó là catalog microservices.
+So that means, as you can see, this is our main architecture, which is catalog microservices.
 
 87
 00:06:30,960 --> 00:06:32,670
-Bạn có thể nghĩ như vậy.
+You can think of it that way.
 
 88
 00:06:32,670 --> 00:06:39,360
-Chúng ta đã phát triển một vertical slice architecture bằng cách theo dõi application layer và domain layer
+We have developed a vertical slice architecture by following application layer and domain layer
 
 89
 00:06:39,360 --> 00:06:40,800
-và infrastructure layer.
+and infrastructure layer.
 
 90
 00:06:40,800 --> 00:06:44,850
-Chúng ta sẽ bỏ qua phần này để triển khai các hoạt động liên quan đến database.
+We will skip this part to implement operations related to database.
 
 91
 00:06:44,850 --> 00:06:52,170
-Và theo dõi application và domain layer, chúng ta sẽ chuyển đến UI application API Endpoint layer
+And following application and domain layer, we will move to UI application API Endpoint layer
 
 92
 00:06:52,170 --> 00:06:56,040
-để xem toàn bộ request lifecycle của mediator.
+to see the entire request lifecycle of mediator.
 

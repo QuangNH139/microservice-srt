@@ -1,6 +1,6 @@
 1
 00:00:00,140 --> 00:00:07,160
-In this video we are going to develop product detail page and consume Erb API gateway and using the
+Trong video này, chúng tôi sẽ phát triển trang chi tiết sản phẩm và sử dụng Erb API gateway và các
 
 2
 00:00:07,160 --> 00:00:08,780
@@ -8,83 +8,83 @@ API service interfaces.
 
 3
 00:00:08,780 --> 00:00:11,900
-This is very similar with the product list page.
+Điều này rất giống với trang danh sách sản phẩm.
 
 4
 00:00:11,900 --> 00:00:17,600
-And I am going to develop the same way, removing the unnecessary using statement and come to this point
+Và tôi sẽ phát triển theo cách tương tự, loại bỏ các using statement không cần thiết và đến điểm này
 
 5
 00:00:17,600 --> 00:00:20,240
-and inject our recurring services.
+và inject các dịch vụ tái diễn của chúng tôi.
 
 6
 00:00:20,240 --> 00:00:24,260
-These are the eye catalog service and eye basket service.
+Đây là eye catalog service và eye basket service.
 
 7
 00:00:24,260 --> 00:00:29,420
-And also we need to inject product detail module as a Ilogger interface.
+Và chúng tôi cũng cần inject product detail module dưới dạng Ilogger interface.
 
 8
 00:00:29,420 --> 00:00:35,450
-And this will be primary constructor of the three services that we are going to use when implementing
+Và đây sẽ là primary constructor của ba dịch vụ mà chúng tôi sẽ sử dụng khi implement
 
 9
 00:00:35,450 --> 00:00:37,760
-on gate and on post async methods.
+on gate và on post async methods.
 
 10
 00:00:37,760 --> 00:00:42,560
-And after injecting these services, I am going to define our properties.
+Và sau khi inject các dịch vụ này, tôi sẽ định nghĩa các properties của chúng tôi.
 
 11
 00:00:42,560 --> 00:00:48,440
-And the first and main property is public product module product get set and default value.
+Properties đầu tiên và chính là public product module product get set và default value.
 
 12
 00:00:48,470 --> 00:00:54,590
-This will be representing our a single product that we will represent in the product detail C-sharp
+Điều này sẽ đại diện cho một sản phẩm duy nhất mà chúng tôi sẽ thể hiện trong tệp C-sharp
 
 13
 00:00:54,740 --> 00:00:55,610
-HTML file.
+HTML của chi tiết sản phẩm.
 
 14
 00:00:55,610 --> 00:01:02,540
-And just after that we have some Bindable properties which are the color and quantity that can be settable
+Và ngay sau đó, chúng tôi có một số Bindable properties đó là color và quantity có thể được đặt
 
 15
 00:01:02,540 --> 00:01:03,770
-on the HTML page.
+trên trang HTML.
 
 16
 00:01:03,770 --> 00:01:08,720
-That's why I have added these two property with bind property attributes.
+Đó là lý do tại sao tôi đã thêm hai property này với bind property attributes.
 
 17
 00:01:08,720 --> 00:01:15,530
-After developing these color and quantity properties, we can start to implement our own gate async
+Sau khi phát triển các properties color và quantity, chúng tôi có thể bắt đầu implement on gate async
 
 18
 00:01:15,530 --> 00:01:16,010
-method.
+method của chúng tôi.
 
 19
 00:01:16,010 --> 00:01:21,050
-First of all, I'm going to change method signature according to available function.
+Trước hết, tôi sẽ thay đổi method signature theo chức năng có sẵn.
 
 20
 00:01:21,050 --> 00:01:24,290
-This is the public async task I action result on.
+Đây là public async task I action result on.
 
 21
 00:01:24,290 --> 00:01:29,480
-Get async and we will get product id with value as a parameter of this get method.
+Lấy async và chúng ta sẽ lấy product id với giá trị làm parameter của get method này.
 
 22
 00:01:29,480 --> 00:01:36,710
-And after that I'm going to implement this function which basically send http get request to our catalog
+Và sau đó tôi sẽ implement function này về cơ bản gửi http get request đến catalog của chúng ta
 
 23
 00:01:36,710 --> 00:01:38,420
@@ -92,15 +92,15 @@ service Getproduct method.
 
 24
 00:01:38,420 --> 00:01:45,440
-This will be representing to calling Erb API Gateway to Catalog services with passing the product ID
+Điều này sẽ đại diện cho việc gọi Erb API Gateway đến Catalog services với việc passing product ID
 
 25
 00:01:45,440 --> 00:01:49,760
-and respond back to us a single product, and this is available function.
+và respond lại cho chúng ta một single product, và đây là available function.
 
 26
 00:01:49,760 --> 00:01:55,040
-After getting the single product, we are passing this product into our product model.
+Sau khi lấy single product, chúng ta passing product này vào product model của chúng ta.
 
 27
 00:01:55,040 --> 00:01:56,210
@@ -108,75 +108,75 @@ Product property.
 
 28
 00:01:56,420 --> 00:02:03,230
-After populating our product data, we can return the page and we can completed our on gate async method.
+Sau khi populate product data của chúng ta, chúng ta có thể return page và chúng ta hoàn thành on gate async method của chúng ta.
 
 29
 00:02:03,230 --> 00:02:08,330
-And just after that I'm going to continue with the on post add to cart operation.
+Và ngay sau đó tôi sẽ tiếp tục với on post add to cart operation.
 
 30
 00:02:08,330 --> 00:02:13,250
-And I am going to copy and paste all method at the same way with the product list.
+Và tôi sẽ copy và paste tất cả method cùng cách với product list.
 
 31
 00:02:13,250 --> 00:02:18,230
-And this will be including add to cart operation with incoming product ID.
+Và điều này sẽ bao gồm add to cart operation với incoming product ID.
 
 32
 00:02:18,230 --> 00:02:23,300
-And this is the exact same method that we have developed into the product list.
+Và đây là method chính xác giống như chúng ta đã phát triển trong product list.
 
 33
 00:02:23,300 --> 00:02:24,290
-See page.
+Xem page.
 
 34
 00:02:24,290 --> 00:02:29,540
-Here you can see that we have similar method in the on post add to cart method in the product list.
+Ở đây bạn có thể thấy rằng chúng ta có similar method trong on post add to cart method trong product list.
 
 35
 00:02:29,540 --> 00:02:36,020
-So the idea is that we will put this method whenever we are submitting to add the cart operation, and
+Vì vậy ý tưởng là chúng ta sẽ đặt method này bất cứ khi nào chúng ta submit để add cart operation, và
 
 36
 00:02:36,020 --> 00:02:42,350
-whenever we are using and submitting add to cart operation into product item partial HTML page.
+bất cứ khi nào chúng ta đang sử dụng và submit add to cart operation vào product item partial HTML page.
 
 37
 00:02:42,350 --> 00:02:47,810
-So please copy also this method and available into our product detail module class.
+Vì vậy vui lòng copy cũng method này và available vào product detail module class của chúng ta.
 
 38
 00:02:47,810 --> 00:02:52,670
-And after that I am going to right click and build the project and validate.
+Và sau đó tôi sẽ right click và build project và validate.
 
 39
 00:02:52,670 --> 00:02:55,670
-Our HTML page is validate or not.
+HTML page của chúng ta có validate hay không.
 
 40
 00:02:55,670 --> 00:02:59,930
-So after building the project we can see some of the exceptions.
+Vì vậy sau khi build project chúng ta có thể thấy một số exceptions.
 
 41
 00:02:59,930 --> 00:03:01,580
-Yes, we have two exceptions.
+Có, chúng tôi có hai exceptions.
 
 42
 00:03:01,580 --> 00:03:06,200
-Regarding to summary, we don't have summary property under the property.
+Về summary, chúng tôi không có summary property dưới property.
 
 43
 00:03:06,200 --> 00:03:11,720
-Instead of that I am going to using the description and just after that there is no exception.
+Thay vào đó, tôi sẽ sử dụng description và ngay sau đó không có exception nào.
 
 44
 00:03:11,720 --> 00:03:13,970
-I'm going to right click and build again.
+Tôi sẽ right click và build lại.
 
 45
 00:03:13,970 --> 00:03:19,580
-And here you can see that this time we have built successfully and we have completed our product detail
+Và ở đây bạn có thể thấy rằng lần này chúng tôi đã built successfully và chúng tôi đã hoàn thành product detail của chúng tôi.
 
 46
 00:03:19,580 --> 00:03:20,060

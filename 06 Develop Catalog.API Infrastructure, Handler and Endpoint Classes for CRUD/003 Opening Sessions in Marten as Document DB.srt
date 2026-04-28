@@ -1,50 +1,50 @@
 1
 00:00:00,200 --> 00:00:05,960
-In this video, we are going to learn opening sessions in Martin as a document database.
+Trong video này, chúng ta sẽ học về opening sessions trong Martin như một document database.
 
 2
 00:00:06,260 --> 00:00:12,860
-Martin's session is an interaction pattern for working with the documents stored in PostgreSQL database.
+Martin's session là một interaction pattern để làm việc với các documents được lưu trữ trong PostgreSQL database.
 
 3
 00:00:13,160 --> 00:00:15,200
-You can see the image on the slide.
+Bạn có thể xem hình ảnh trên slide.
 
 4
 00:00:15,200 --> 00:00:21,800
-I document store is the root of the Martin usage, but most of the Martin usage in the code will start
+I document store là root của Martin usage, nhưng hầu hết Martin usage trong code sẽ bắt đầu
 
 5
 00:00:21,800 --> 00:00:26,930
-with one of these session types that can be created from an I document store.
+với một trong các session types này có thể được tạo từ I document store.
 
 6
 00:00:27,200 --> 00:00:32,930
-So under the I document store there are different flavors of session and the root store.
+Vì vậy, dưới I document store có các flavors khác nhau của session và root store.
 
 7
 00:00:33,020 --> 00:00:41,180
-So these are the query sessions that optimize for read only scenarios and document sessions that optimize
+Vì vậy, đây là query sessions tối ưu hóa cho các kịch bản read only và document sessions tối ưu hóa
 
 8
 00:00:41,180 --> 00:00:43,160
-for the read and write scenarios.
+cho các kịch bản read và write.
 
 9
 00:00:43,190 --> 00:00:45,290
-So let me explain one by one.
+Vì vậy, hãy để tôi giải thích từng cái một.
 
 10
 00:00:45,470 --> 00:00:47,810
-The first one is query sessions.
+Cái đầu tiên là query sessions.
 
 11
 00:00:47,840 --> 00:00:54,680
-These sessions is best used for querying documents without any need for the tracking or saving changes.
+Các sessions này được sử dụng tốt nhất để truy vấn documents mà không cần tracking hoặc lưu thay đổi.
 
 12
 00:00:55,070 --> 00:01:02,600
-So under the document session for read and write operation, we can also use different type of the document
+Vì vậy, dưới document session để read và write operation, chúng ta cũng có thể sử dụng các loại khác nhau của document
 
 13
 00:01:02,600 --> 00:01:03,260
@@ -52,95 +52,95 @@ sessions.
 
 14
 00:01:03,290 --> 00:01:07,610
-Let me start the first one which is the identity map documentation.
+Hãy để tôi bắt đầu với cái đầu tiên đó là identity map documentation.
 
 15
 00:01:07,610 --> 00:01:14,030
-Martin's I document session implement the identity map pattern that seeks to cache documents loaded
+Martin's I document session implement identity map pattern nhằm cache documents được tải
 
 16
 00:01:14,030 --> 00:01:14,780
-by ID.
+bằng ID.
 
 17
 00:01:14,930 --> 00:01:21,590
-This behavior can be very valuable, for example, in handling the web requests or service bus messages.
+Hành vi này có thể rất có giá trị, ví dụ, trong việc xử lý web requests hoặc service bus messages.
 
 18
 00:01:21,590 --> 00:01:26,690
-When many different objects or functions may need to access the same logical document.
+Khi nhiều objects hoặc functions khác nhau có thể cần truy cập cùng một logical document.
 
 19
 00:01:27,320 --> 00:01:30,230
-The second type is lightweight document session.
+Loại thứ hai là lightweight document session.
 
 20
 00:01:30,230 --> 00:01:35,690
-It is suitable for small transactions with a mix of the read and write operations.
+Nó phù hợp cho các small transactions với sự kết hợp của read và write operations.
 
 21
 00:01:35,690 --> 00:01:41,720
-For operations that involve updates, inserts or deletes, we use a lightweight sessions.
+Đối với các hoạt động liên quan đến updates, inserts hoặc deletes, chúng tôi sử dụng lightweight sessions.
 
 22
 00:01:41,720 --> 00:01:46,640
-It is still transactional but doesn't track the changes to the loaded document.
+Nó vẫn là transactional nhưng không theo dõi các thay đổi đối với tài liệu đã tải.
 
 23
 00:01:47,240 --> 00:01:50,900
-And the last one is dirty checking documentation.
+Và cái cuối cùng là dirty checking documentation.
 
 24
 00:01:50,900 --> 00:01:57,530
-This is the dirty checking document session in this case, and I document station opened with a dirty
+Đây là dirty checking document session trong trường hợp này, và tôi document station được mở với dirty
 
 25
 00:01:57,530 --> 00:01:58,670
-checking enabled.
+checking được bật.
 
 26
 00:01:58,670 --> 00:02:04,610
-The session will try to detect the changes to any of the documents loaded by that session.
+Session sẽ cố gắng phát hiện các thay đổi đối với bất kỳ tài liệu nào được tải bởi session đó.
 
 27
 00:02:04,610 --> 00:02:11,030
-The dirty checking is done by keeping the original Json fetched from the PostgreSQL, and using the
+Dirty checking được thực hiện bằng cách giữ lại Json gốc được lấy từ PostgreSQL, và sử dụng
 
 28
 00:02:11,030 --> 00:02:15,410
-Newtonsoft.json library that makes a node by node.
+thư viện Newtonsoft.json tạo ra một node theo node.
 
 29
 00:02:15,410 --> 00:02:21,620
-Comparison of the Json representation of the document at the time that I document session is called,
+So sánh biểu diễn Json của tài liệu tại thời điểm gọi document session của tôi,
 
 30
 00:02:21,620 --> 00:02:23,420
-so you can find the image.
+vì vậy bạn có thể tìm thấy hình ảnh.
 
 31
 00:02:23,420 --> 00:02:27,530
-How we can create these kind of sessions from the Martin Document DB.
+Cách chúng tôi có thể tạo những loại sessions này từ Martin Document DB.
 
 32
 00:02:27,650 --> 00:02:34,100
-And here you can see that we can use a document store and dot notation to create query session.
+Và ở đây bạn có thể thấy rằng chúng tôi có thể sử dụng document store và dot notation để tạo query session.
 
 33
 00:02:34,100 --> 00:02:39,860
-Here you can see the query session and we can create lightweight sessions, identity sessions, dirty
+Ở đây bạn có thể thấy query session và chúng tôi có thể tạo lightweight sessions, identity sessions, dirty
 
 34
 00:02:39,860 --> 00:02:41,480
-tricks sessions and so on.
+tricks sessions và nhiều cái khác.
 
 35
 00:02:41,480 --> 00:02:45,410
-These provide to create sessions using the document store.
+Những cái này cung cấp để tạo sessions sử dụng document store.
 
 36
 00:02:45,410 --> 00:02:52,430
-And here you can see the operations to perform read write operations or enable to identity map and dirty
+Và ở đây bạn có thể thấy các hoạt động để thực hiện read write operations hoặc bật identity map và dirty
 
 37
 00:02:52,430 --> 00:02:53,960
@@ -148,15 +148,15 @@ checking functions.
 
 38
 00:02:54,470 --> 00:02:56,060
-So what is the best practice?
+Vậy best practice là gì?
 
 39
 00:02:56,060 --> 00:03:01,760
-Best practice is understanding and choosing the right type of the session in Martin, which is crucial
+Best practice là hiểu và lựa chọn đúng loại session trong Martin, điều này rất quan trọng
 
 40
 00:03:01,760 --> 00:03:04,520
-for effective data handling in your applications.
+để xử lý dữ liệu hiệu quả trong các ứng dụng của bạn.
 
 41
 00:03:04,520 --> 00:03:11,420

@@ -1,22 +1,22 @@
 1
 00:00:00,170 --> 00:00:05,870
-In this video we are going to learn six design pattern with Mediator library.
+Trong video này chúng ta sẽ học sáu design pattern với thư viện Mediator.
 
 2
 00:00:05,900 --> 00:00:11,720
-That means we will be logical sequence implementation using the mediator library.
+Điều đó có nghĩa là chúng ta sẽ triển khai logical sequence bằng cách sử dụng thư viện mediator.
 
 3
 00:00:12,290 --> 00:00:13,850
-Mediator is a popular.
+Mediator là một thư viện .Net phổ biến.
 
 4
 00:00:14,030 --> 00:00:20,720
-Net library used to implement the mediator pattern, which is great fit for the sequence design pattern.
+Net library được sử dụng để triển khai mediator pattern, đây là một lựa chọn tuyệt vời cho sequence design pattern.
 
 5
 00:00:20,750 --> 00:00:27,500
-It allows to send commands and queries to the appropriate handlers without coupling the sender to the
+Nó cho phép gửi commands và queries đến các handlers thích hợp mà không cần coupling giữa sender và
 
 6
 00:00:27,500 --> 00:00:28,220
@@ -24,43 +24,43 @@ receiver.
 
 7
 00:00:29,150 --> 00:00:30,020
-In mediator.
+Trong mediator.
 
 8
 00:00:30,020 --> 00:00:32,299
-We have a I request interface.
+Chúng ta có một interface I request.
 
 9
 00:00:32,299 --> 00:00:36,350
-So both commands and queries are modeled as a message.
+Vì vậy cả commands và queries đều được mô hình hóa như một message.
 
 10
 00:00:36,350 --> 00:00:43,100
-The I request interface is used to define a request which can be either a command or query.
+Interface I request được sử dụng để định nghĩa một request, có thể là một command hoặc query.
 
 11
 00:00:43,250 --> 00:00:48,080
-The return type of the request can be specified as a generic parameter.
+Kiểu trả về của request có thể được chỉ định như một generic parameter.
 
 12
 00:00:48,470 --> 00:00:54,980
-After the I request interface definition, we should define the handlers for each command and query.
+Sau định nghĩa interface I request, chúng ta nên định nghĩa các handlers cho mỗi command và query.
 
 13
 00:00:54,980 --> 00:01:02,000
-We define a handler that inherits from the I request handler, t request, and t response, where the
+Chúng ta định nghĩa một handler kế thừa từ I request handler, t request, và t response, trong đó
 
 14
 00:01:02,000 --> 00:01:07,400
-t request is the type of the command or query, and t response is return type.
+t request là kiểu của command hoặc query, và t response là kiểu trả về.
 
 15
 00:01:08,360 --> 00:01:12,320
-So we can define custom I command and I query abstraction.
+Vì vậy chúng ta có thể định nghĩa custom I command và I query abstraction.
 
 16
 00:01:12,680 --> 00:01:19,070
-So in order to make the distinction between the commands and the queries clearer, we can define two
+Vì vậy để làm cho sự phân biệt giữa commands và queries rõ ràng hơn, chúng ta có thể định nghĩa hai
 
 17
 00:01:19,070 --> 00:01:20,480
@@ -68,87 +68,87 @@ custom interfaces.
 
 18
 00:01:20,480 --> 00:01:22,880
-These are the I command and I query.
+Đây là I command và I query.
 
 19
 00:01:22,910 --> 00:01:28,130
-Both interfaces can inherit from the mediators I request object.
+Cả hai interfaces đều có thể kế thừa từ mediator's I request object.
 
 20
 00:01:30,350 --> 00:01:38,660
-So in ASP.Net core application, using the mediator controllers or minimal APIs act as a entry point
+Vì vậy trong ứng dụng ASP.Net core, sử dụng mediator controllers hoặc minimal APIs hoạt động như một entry point
 
 21
 00:01:38,660 --> 00:01:40,670
-for handling Http requests.
+để xử lý các Http request.
 
 22
 00:01:40,700 --> 00:01:46,730
-You can see in here Http request comes from the client and the mediator acts as an entry point.
+Bạn có thể thấy ở đây Http request đến từ client và mediator hoạt động như một điểm vào.
 
 23
 00:01:46,730 --> 00:01:54,320
-So instead of the implementing the business logic directly within the API action, these actions delegate
+Vì vậy thay vì triển khai logic kinh doanh trực tiếp trong API action, những action này ủy quyền
 
 24
 00:01:54,320 --> 00:02:00,410
-the responsibility to mediator, and after that mediator sending the command and queries.
+trách nhiệm cho mediator, và sau đó mediator gửi command và queries.
 
 25
 00:02:00,410 --> 00:02:08,479
-When a controller or minimal API receives a request, it creates a command or query object and send
+Khi một controller hoặc minimal API nhận một request, nó tạo một command hoặc query object và gửi
 
 26
 00:02:08,479 --> 00:02:09,500
-it to the mediator.
+nó đến mediator.
 
 27
 00:02:09,500 --> 00:02:13,340
-Mediator then dispatch this object to the appropriate handler.
+Mediator sau đó dispatch object này đến handler thích hợp.
 
 28
 00:02:14,510 --> 00:02:20,270
-So if you look at the mediator pattern and pipeline behaviors, the mediator pattern is implemented
+Vì vậy nếu bạn nhìn vào mediator pattern và pipeline behaviors, mediator pattern được triển khai
 
 29
 00:02:20,270 --> 00:02:20,570
-by.
+bởi.
 
 30
 00:02:20,570 --> 00:02:27,680
-The mediator library is particularly useful in a complex or enterprise level applications, where request
+Thư viện mediator đặc biệt hữu ích trong các ứng dụng phức tạp hoặc cấp enterprise, nơi xử lý request
 
 31
 00:02:27,680 --> 00:02:31,070
-processing often involves more than just business logic.
+thường liên quan đến nhiều hơn chỉ business logic.
 
 32
 00:02:31,490 --> 00:02:38,210
-In this kind of applications, handling a request might require additional steps like logging, validation,
+Trong loại ứng dụng này, xử lý một request có thể yêu cầu các bước bổ sung như logging, validation,
 
 33
 00:02:38,210 --> 00:02:40,790
-auditing, and applying the security checks.
+auditing, và áp dụng các kiểm tra bảo mật.
 
 34
 00:02:40,790 --> 00:02:43,820
-These are known as a cross-cutting concerns.
+Những điều này được gọi là cross-cutting concerns.
 
 35
 00:02:44,270 --> 00:02:51,080
-Mediator provides a mediator pipeline where these cross-cutting concerns can be inserted transparently.
+Mediator cung cấp một mediator pipeline nơi những cross-cutting concerns này có thể được chèn vào một cách minh bạch.
 
 36
 00:02:51,080 --> 00:02:57,680
-These pipeline coordinates the request handling, ensuring that all the necessary steps are executed
+Pipeline này phối hợp xử lý request, đảm bảo rằng tất cả các bước cần thiết được thực hiện
 
 37
 00:02:57,680 --> 00:02:58,940
-in the right order.
+theo đúng thứ tự.
 
 38
 00:02:59,090 --> 00:03:05,630
-So in mediator, we have a pipeline behavior and pipeline behaviors are used to implement cross-cutting
+Vì vậy trong mediator, chúng ta có pipeline behavior và pipeline behaviors được sử dụng để triển khai cross-cutting
 
 39
 00:03:05,630 --> 00:03:06,290
@@ -156,23 +156,23 @@ concerns.
 
 40
 00:03:06,290 --> 00:03:08,240
-You can see the image on the slide.
+Bạn có thể thấy hình ảnh trên slide.
 
 41
 00:03:08,270 --> 00:03:16,880
-Chúng bao quanh quá trình xử lý request cho phép bạn thực thi logic trước và sau khi handler thực tế
+They wrap around the request processing so you can execute logic before and after the actual handler is
 
 42
 00:03:16,880 --> 00:03:17,600
-được gọi.
+called.
 
 43
 00:03:17,600 --> 00:03:25,280
-Vậy đây là quá trình pipeline mediator trước khi xử lý hoạt động thực tế, mediator cho phép preprocessor
+So this is the pipeline mediator process before handling the actual operation, mediator allows preprocessor
 
 44
 00:03:25,280 --> 00:03:32,090
-hành vi hoặc post-processor hành vi mà bạn có thể sử dụng những hành vi này để triển khai cross-cutting
+behavior or post-processor behavior that you can use these behaviors to implement cross-cutting
 
 45
 00:03:32,090 --> 00:03:32,840
@@ -180,49 +180,49 @@ concerns.
 
 46
 00:03:34,250 --> 00:03:37,430
-Ở đây bạn có thể thấy vấn đề của microservices.
+Here you can see the issue of microservices.
 
 47
 00:03:37,430 --> 00:03:41,990
-Nó cũng được sử dụng để triển khai các cross-cutting concerns khác nhau.
+It is also used to implement various cross-cutting concerns.
 
 48
 00:03:41,990 --> 00:03:44,240
-Cái đầu tiên là log behavior.
+The first one is log behavior.
 
 49
 00:03:44,570 --> 00:03:48,290
-Một hành vi ghi lại chi tiết về request xử lý.
+A behavior that logs details about request processing.
 
 50
 00:03:48,290 --> 00:03:50,690
-Và cái thứ hai là validation behavior.
+And the second is validation behavior.
 
 51
 00:03:50,690 --> 00:03:55,370
-Đây là hành vi xác thực các request đến trước khi chúng đến handler.
+This is a behavior that validates incoming requests before they reach the handler.
 
 52
 00:03:55,370 --> 00:04:00,050
-Vậy chúng ta sẽ sử dụng hai hành vi này khi triển khai issue của microservices.
+So we will use these two behaviors when implementing the microservices issue.
 
 53
 00:04:00,050 --> 00:04:06,530
-Và những hành vi này đảm bảo rằng mỗi request được xử lý bởi mediator trong ứng dụng được ghi lại và
+And these behaviors ensure that each request handled by the mediator in the application is logged and
 
 54
 00:04:06,530 --> 00:04:12,710
-xác thực một cách nhất quán, và nó chứng minh cách các cross-cutting concerns có thể được quản lý hiệu quả
+validated consistently, and it demonstrates how cross-cutting concerns can be managed effectively
 
 55
 00:04:12,710 --> 00:04:17,000
-sử dụng mẫu mediator và các pipeline behaviors của mediator library.
+using the mediator pattern and the mediator library's pipeline behaviors.
 
 56
 00:04:17,000 --> 00:04:24,380
-Vậy chúng ta có thể nói rằng sử dụng mediator trong các ứng dụng ASP.NET cung cấp một cách có cấu trúc và sạch sẽ để xử lý
+So we can say that using mediator in ASP.NET applications provides a structured and clean way to handle
 
 57
 00:04:24,380 --> 00:04:25,970
-xử lý request phức tạp.
+handling complex requests.
 

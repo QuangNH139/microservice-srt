@@ -1,62 +1,62 @@
 1
 00:00:00,140 --> 00:00:06,590
-In this video we are going to test shopping web client application using the API gateway microservices
+Trong video này, chúng tôi sẽ kiểm tra ứng dụng web client shopping bằng API gateway microservices
 
 2
 00:00:06,590 --> 00:00:07,850
-as a reverse proxy.
+làm reverse proxy.
 
 3
 00:00:08,029 --> 00:00:13,580
-So here you can see that we will perform the our test in order to consume our downstream microservice
+Vì vậy, ở đây bạn có thể thấy rằng chúng tôi sẽ thực hiện kiểm tra để sử dụng downstream microservice
 
 4
 00:00:13,580 --> 00:00:18,410
-endpoints from the API gateway and using these data into the client application.
+endpoints từ API gateway và sử dụng những dữ liệu này trong ứng dụng client.
 
 5
 00:00:18,500 --> 00:00:23,720
-But before that, let's clarify our deployment strategy of the e-commerce microservices.
+Nhưng trước đó, hãy làm rõ chiến lược triển khai của chúng tôi cho e-commerce microservices.
 
 6
 00:00:23,750 --> 00:00:30,380
-Here you can see that so far we have built our shopping web client application into our local environment.
+Ở đây bạn có thể thấy rằng cho đến nay chúng tôi đã xây dựng ứng dụng web client shopping của chúng tôi trong môi trường cục bộ.
 
 7
 00:00:30,410 --> 00:00:34,100
-That means now we need to connect to your API gateway.
+Điều đó có nghĩa là bây giờ chúng tôi cần kết nối đến API gateway của bạn.
 
 8
 00:00:34,100 --> 00:00:40,160
-And we need to Erb, API gateway, IP and port number that we can connect from our local computer.
+Và chúng tôi cần địa chỉ IP và số cổng của API gateway để có thể kết nối từ máy tính cục bộ của chúng tôi.
 
 9
 00:00:40,160 --> 00:00:46,190
-So that means we should activate the Erb API gateway and the downstream microservices as a backing services
+Vì vậy, điều đó có nghĩa là chúng tôi nên kích hoạt API gateway và downstream microservices làm backing services
 
 10
 00:00:46,190 --> 00:00:47,360
-in Docker environment.
+trong môi trường Docker.
 
 11
 00:00:47,360 --> 00:00:53,690
-And we will connect these services from our local shopping web client application and perform the deployment
+Và chúng tôi sẽ kết nối những dịch vụ này từ ứng dụng web client shopping cục bộ của chúng tôi và thực hiện triển khai
 
 12
 00:00:53,690 --> 00:00:54,170
-one.
+một.
 
 13
 00:00:54,230 --> 00:00:57,500
-For that purpose, please open the Our Visual Studio.
+Cho mục đích đó, vui lòng mở Visual Studio của chúng tôi.
 
 14
 00:00:57,500 --> 00:01:01,910
-And before we start, make sure that your Docker desktop is up and running.
+Và trước khi chúng tôi bắt đầu, hãy chắc chắn rằng Docker desktop của bạn đang chạy.
 
 15
 00:01:01,910 --> 00:01:07,910
-In order to activate baking services, I'm going to right click the docker compose and set a startup
+Để kích hoạt backing services, tôi sẽ nhấp chuột phải vào docker compose và đặt nó thành startup
 
 16
 00:01:07,910 --> 00:01:08,510
@@ -64,19 +64,19 @@ project.
 
 17
 00:01:08,510 --> 00:01:12,170
-And I am going to run Docker Compose without debugging.
+Và tôi sẽ chạy Docker Compose mà không có debugging.
 
 18
 00:01:12,170 --> 00:01:17,540
-Click this button and this will be start our docker compose without debugging and activating the backing
+Nhấp vào nút này và cái này sẽ bắt đầu docker compose mà không có debugging và kích hoạt backing
 
 19
 00:01:17,540 --> 00:01:22,340
-services, including the Erb API gateway and all microservices databases.
+services, bao gồm API gateway và tất cả databases của microservices.
 
 20
 00:01:22,340 --> 00:01:25,190
-Distributed cache and RabbitMQ message broker.
+Distributed cache và RabbitMQ message broker.
 
 21
 00:01:25,610 --> 00:01:30,800
@@ -160,39 +160,39 @@ So whenever this application is starting and open a browser for the index page, 
 
 41
 00:02:50,540 --> 00:02:53,360
-and retrieve the products from the catalog microservices.
+và retrieve các products từ catalog microservices.
 
 42
 00:02:53,360 --> 00:02:58,250
-And also I am going to put additional breakpoint on the on post add to cart operation.
+Và tôi cũng sẽ đặt thêm breakpoint trên on post add to cart operation.
 
 43
 00:02:58,250 --> 00:03:02,870
-When we are adding item into cart, we will hit the breakpoint in this method.
+Khi chúng ta thêm item vào cart, chúng ta sẽ hit breakpoint trong method này.
 
 44
 00:03:02,870 --> 00:03:06,830
-And after that I am going to continue with the product related page.
+Và sau đó tôi sẽ tiếp tục với product related page.
 
 45
 00:03:06,830 --> 00:03:08,240
-Here you can see the product list.
+Ở đây bạn có thể thấy product list.
 
 46
 00:03:08,240 --> 00:03:14,300
-If you open the product list see page, you can put a breakpoint on get async and also you can put a
+Nếu bạn mở product list page, bạn có thể đặt breakpoint trên get async và cũng có thể đặt
 
 47
 00:03:14,300 --> 00:03:17,060
-breakpoint again on post add to cart async.
+breakpoint lại trên post add to cart async.
 
 48
 00:03:17,060 --> 00:03:19,040
-And here you can see the product detail.
+Và ở đây bạn có thể thấy product detail.
 
 49
 00:03:19,040 --> 00:03:23,270
-If you open a single product you can come to this point and put a breakpoint on.
+Nếu bạn mở một single product bạn có thể đến point này và đặt breakpoint trên
 
 50
 00:03:23,270 --> 00:03:23,840
@@ -200,31 +200,31 @@ Get async.
 
 51
 00:03:23,840 --> 00:03:29,090
-In order to retrieve a single product with a given product ID, and again we can add to cart operation
+Để retrieve một single product với một product ID cho trước, và lại chúng ta có thể add to cart operation
 
 52
 00:03:29,090 --> 00:03:29,690
-in here.
+ở đây.
 
 53
 00:03:29,690 --> 00:03:32,630
-So after that I'm going to add a order list.
+Vì vậy sau đó tôi sẽ thêm một order list.
 
 54
 00:03:32,630 --> 00:03:35,330
-Here you can see the order list Cshtml.
+Ở đây bạn có thể thấy order list Cshtml.
 
 55
 00:03:35,330 --> 00:03:40,490
-And I'm going to put a breakpoint on get async method in order to get orders by customer ID.
+Và tôi sẽ đặt breakpoint trên get async method để lấy orders theo customer ID.
 
 56
 00:03:40,550 --> 00:03:44,870
-And lastly we have a asynchronous use case which is the checkout use case.
+Và cuối cùng chúng ta có một asynchronous use case đó là checkout use case.
 
 57
 00:03:44,870 --> 00:03:50,060
-If you open the checkout page, see our page and you can put a breakpoint on the beginning of the on
+Nếu bạn mở checkout page Cshtml page và bạn có thể đặt breakpoint trên đầu of the on
 
 58
 00:03:50,060 --> 00:03:50,660
@@ -232,371 +232,371 @@ get async.
 
 59
 00:03:50,660 --> 00:03:56,540
-And also you can put a breakpoint on post checkout async method, which is basically start the asynchronous
+Và cũng có thể đặt breakpoint trên post checkout async method, về cơ bản là bắt đầu asynchronous
 
 60
 00:03:56,540 --> 00:04:00,710
-communication and event driven architecture into our microservice architecture.
+communication và event driven architecture vào microservice architecture của chúng ta.
 
 61
 00:04:00,710 --> 00:04:04,580
-So after putting this breakpoints I'm going to run the application.
+Vì vậy, sau khi đặt các breakpoints này, tôi sẽ chạy ứng dụng.
 
 62
 00:04:04,580 --> 00:04:07,580
-But before that let's remember our use cases.
+Nhưng trước tiên, hãy nhớ lại các use cases của chúng ta.
 
 63
 00:04:07,580 --> 00:04:12,830
-According to our e-commerce application, our main use cases are listing products and categories, add
+Theo ứng dụng e-commerce của chúng ta, các use cases chính là liệt kê sản phẩm và danh mục, thêm
 
 64
 00:04:12,830 --> 00:04:15,890
-product to shopping cart, checkout basket and create order.
+sản phẩm vào giỏ hàng, thanh toán giỏ hàng và tạo đơn hàng.
 
 65
 00:04:15,890 --> 00:04:20,089
-So we will use Yarp API gateway endpoints to perform these use cases.
+Vì vậy, chúng ta sẽ sử dụng Yarp API gateway endpoints để thực hiện các use cases này.
 
 66
 00:04:20,089 --> 00:04:26,810
-And we will send requests to these microservices http, get and Post requests in different microservices.
+Và chúng ta sẽ gửi requests đến các microservices này http, get và Post requests trong các microservices khác nhau.
 
 67
 00:04:26,810 --> 00:04:32,360
-In order to perform these use cases, I'm going to go back to our video and start shopping web client
+Để thực hiện các use cases này, tôi sẽ quay lại video của chúng ta và khởi động ứng dụng web client shopping
 
 68
 00:04:32,360 --> 00:04:39,110
-application in https mode, and we will follow these use cases and debug our points when we are opening
+ở chế độ https, và chúng ta sẽ tuân theo các use cases này và debug các breakpoints của chúng ta khi chúng ta mở
 
 69
 00:04:39,110 --> 00:04:45,020
-browser and browsing our e-commerce client application web page here, you can see that in the beginning
+trình duyệt và duyệt trang web ứng dụng e-commerce client của chúng ta ở đây, bạn có thể thấy rằng ở đầu
 
 70
 00:04:45,020 --> 00:04:48,110
-of these application we are put a breakpoint on.
+ứng dụng này chúng ta đã đặt một breakpoint.
 
 71
 00:04:48,110 --> 00:04:52,970
-Get async of the Index.cshtml that we are going to retrieve the products in the landing page.
+Get async của Index.cshtml mà chúng ta sẽ lấy các sản phẩm trên trang landing.
 
 72
 00:04:52,970 --> 00:04:57,890
-Here you can see that we are logging incoming information, and just after that we are sending http
+Ở đây bạn có thể thấy rằng chúng ta đang ghi lại thông tin đến, và ngay sau đó chúng ta đang gửi http
 
 73
 00:04:57,890 --> 00:04:58,910
-get request to catalog.
+get request đến catalog.
 
 74
 00:04:59,200 --> 00:05:03,310
-Resources, and this is the result of the products that including nine products.
+Resources, và đây là kết quả của các sản phẩm bao gồm chín sản phẩm.
 
 75
 00:05:03,310 --> 00:05:08,650
-And we are going to populate the product list that will represent in the HTML page and return the page.
+Và chúng ta sẽ điền danh sách sản phẩm mà sẽ được biểu diễn trong trang HTML và trả về trang đó.
 
 76
 00:05:08,650 --> 00:05:15,190
-I hit the F5 and see that we will have a landing page, including the all products, into our microservice
+Tôi nhấn F5 và thấy rằng chúng ta sẽ có một trang landing, bao gồm tất cả các sản phẩm, từ microservice
 
 77
 00:05:15,190 --> 00:05:20,650
-architecture that comes from the catalog microservices over the ARP API gateway and representing our
+architecture của chúng ta đến từ catalog microservices qua Yarp API gateway và biểu diễn ứng dụng
 
 78
 00:05:20,650 --> 00:05:22,330
-shopping web client application.
+web client shopping của chúng ta.
 
 79
 00:05:22,330 --> 00:05:28,420
-When we are opening this landing page, we basically send a http get request to the ARP API gateway
+Khi chúng ta mở trang landing này, về cơ bản chúng ta gửi một http get request đến Yarp API gateway
 
 80
 00:05:28,420 --> 00:05:29,770
-and catalog microservices.
+và catalog microservices.
 
 81
 00:05:29,770 --> 00:05:33,520
-You can see these interactions from the shopping Web project console logs.
+Bạn có thể thấy những tương tác này từ console logs của dự án Web shopping.
 
 82
 00:05:33,520 --> 00:05:37,450
-Here you can see that we have a sending logs which is the Http request.
+Ở đây bạn có thể thấy rằng chúng tôi có sending logs đó là Http request.
 
 83
 00:05:37,450 --> 00:05:38,680
-Get to do these.
+Thực hiện những điều này.
 
 84
 00:05:38,680 --> 00:05:44,680
-Address this including the localhost 6064 which is the Erb API gateway and catalog.
+Địa chỉ này bao gồm localhost 6064 đó là Erb API gateway và catalog.
 
 85
 00:05:44,680 --> 00:05:49,450
-These services representing this will be redirecting to downstream catalog microservices.
+Những services này đại diện cho điều này sẽ chuyển hướng đến downstream catalog microservices.
 
 86
 00:05:49,450 --> 00:05:54,520
-And this is the endpoint that we are going to retrieve slash products and page size and page number
+Và đây là endpoint mà chúng tôi sẽ truy xuất slash products và page size và page number.
 
 87
 00:05:54,520 --> 00:05:56,710
-including and responding these products.
+bao gồm và phản hồi những products này.
 
 88
 00:05:56,710 --> 00:06:00,610
-So we can follow these interactions from the our project console logs.
+Vì vậy chúng tôi có thể theo dõi những tương tác này từ console logs của dự án của chúng tôi.
 
 89
 00:06:00,610 --> 00:06:03,370
-And now I am going to follow our use cases.
+Và bây giờ tôi sẽ theo dõi các use cases của chúng tôi.
 
 90
 00:06:03,370 --> 00:06:05,890
-Our use cases are listing products and categories.
+Các use cases của chúng tôi là liệt kê sản phẩm và danh mục.
 
 91
 00:06:05,890 --> 00:06:11,230
-So first of all if I list our products and categories you can see that these are the products.
+Vì vậy trước hết nếu tôi liệt kê sản phẩm và danh mục của chúng tôi, bạn có thể thấy đó là những sản phẩm.
 
 92
 00:06:11,230 --> 00:06:16,630
-And if I am going to open the products page, I am also listing the products from the product list page.
+Và nếu tôi sẽ mở trang sản phẩm, tôi cũng đang liệt kê sản phẩm từ trang danh sách sản phẩm.
 
 93
 00:06:16,630 --> 00:06:18,730
-And here you can see the on get async method.
+Và ở đây bạn có thể thấy phương thức on get async.
 
 94
 00:06:18,730 --> 00:06:24,370
-And in here you can see that we again get products from the catalog microservices and populate the category
+Và ở đây bạn có thể thấy rằng chúng tôi lại lấy sản phẩm từ catalog microservices và điền vào danh mục.
 
 95
 00:06:24,370 --> 00:06:24,730
-list.
+danh sách.
 
 96
 00:06:24,730 --> 00:06:27,010
-And if there is a category name we can filter.
+Và nếu có tên danh mục, chúng tôi có thể lọc.
 
 97
 00:06:27,010 --> 00:06:31,180
-If not, we can retrieve the all products and populating the product list object.
+Nếu không, chúng tôi có thể truy xuất tất cả các sản phẩm và điền vào đối tượng danh sách sản phẩm.
 
 98
 00:06:31,180 --> 00:06:35,470
-If I hit F5, you can see the all products coming to our application.
+Nếu tôi nhấn F5, bạn có thể thấy tất cả các sản phẩm đến ứng dụng của chúng tôi.
 
 99
 00:06:35,470 --> 00:06:39,460
-In this page, we basically listing the products on the product list page.
+Trên trang này, chúng tôi cơ bản là liệt kê các sản phẩm trên trang danh sách sản phẩm.
 
 100
 00:06:39,460 --> 00:06:43,600
-You can see and scroll down and see all the products into our application.
+Bạn có thể thấy và cuộn xuống và xem tất cả các sản phẩm trong ứng dụng của chúng tôi.
 
 101
 00:06:43,600 --> 00:06:47,440
-And here you can see the applied pagination with using this element.
+Và ở đây bạn có thể thấy pagination được áp dụng bằng cách sử dụng element này.
 
 102
 00:06:47,440 --> 00:06:53,770
-So if you scroll up I'm going to open one of the product which is the iPhone X, and go to the product
+Vì vậy, nếu bạn cuộn lên, tôi sẽ mở một trong những sản phẩm là iPhone X, và đi đến sản phẩm
 
 103
 00:06:53,770 --> 00:06:56,920
-detail list and listing the one of the single product.
+detail list và liệt kê một trong những sản phẩm đơn lẻ.
 
 104
 00:06:56,920 --> 00:06:59,620
-That means we are going to open product detail.
+Điều đó có nghĩa là chúng tôi sẽ mở product detail.
 
 105
 00:06:59,620 --> 00:07:04,330
-See page, and this will be retrieving the single product with a given product ID.
+Trang này, và nó sẽ truy xuất sản phẩm đơn lẻ với một product ID nhất định.
 
 106
 00:07:04,450 --> 00:07:10,270
-Here you can see that we are retrieving the single product and sending Http get request to catalog microservices
+Ở đây bạn có thể thấy rằng chúng tôi đang truy xuất sản phẩm đơn lẻ và gửi Http get request đến catalog microservices
 
 107
 00:07:10,270 --> 00:07:14,770
-and respond back the single product into our application and the product detail page.
+và phản hồi lại sản phẩm đơn lẻ vào ứng dụng của chúng tôi và trang product detail.
 
 108
 00:07:14,770 --> 00:07:20,590
-Here you can see the product detail page, including the all details about the iPhone X, and we can
+Ở đây bạn có thể thấy trang product detail, bao gồm tất cả các chi tiết về iPhone X, và chúng tôi có thể
 
 109
 00:07:20,590 --> 00:07:24,280
-change the color and add the quantity and add item into cart.
+thay đổi màu sắc và thêm số lượng và thêm mục vào giỏ hàng.
 
 110
 00:07:24,280 --> 00:07:27,040
-So now I am going to add item in the cart.
+Vì vậy bây giờ tôi sẽ thêm mục vào giỏ hàng.
 
 111
 00:07:27,040 --> 00:07:32,080
-For that purpose I am going to click this button and trigger the on post add to cart async method.
+Để làm điều đó, tôi sẽ nhấp vào nút này và kích hoạt phương thức on post add to cart async.
 
 112
 00:07:32,080 --> 00:07:36,400
-So this is the post operation and submit the form in the product detail page.
+Vì vậy, đây là post operation và gửi form trong trang product detail.
 
 113
 00:07:36,400 --> 00:07:41,650
-That's why we will hit the breakpoint in this method, and we will passing the product id as a parameter
+Đó là lý do tại sao chúng tôi sẽ bắt được breakpoint trong phương thức này, và chúng tôi sẽ truyền product id làm tham số
 
 114
 00:07:41,650 --> 00:07:42,460
-of this method.
+của phương thức này.
 
 115
 00:07:42,460 --> 00:07:46,480
-In this method, we basically get the product from the catalog microservices.
+Trong phương thức này, chúng tôi cơ bản lấy sản phẩm từ catalog microservices.
 
 116
 00:07:46,480 --> 00:07:50,800
-And just after that we will load the user basket from the basket microservices.
+Và ngay sau đó chúng tôi sẽ tải user basket từ basket microservices.
 
 117
 00:07:50,800 --> 00:07:53,860
-This will be create new or update existing basket.
+Điều này sẽ tạo mới hoặc cập nhật giỏ hàng hiện có.
 
 118
 00:07:53,860 --> 00:07:59,380
-And just after that we will add items into shopping cart which including the product informations,
+Và ngay sau đó chúng tôi sẽ thêm các mục vào shopping cart, bao gồm các thông tin sản phẩm,
 
 119
 00:07:59,380 --> 00:08:05,230
-product ID, product name, price, quantity and color that will get these information from the client
+product ID, product name, giá, số lượng và màu sắc sẽ nhận được những thông tin này từ ứng dụng client
 
 120
 00:08:05,230 --> 00:08:06,850
-application and our web page.
+và trang web của chúng tôi.
 
 121
 00:08:06,850 --> 00:08:13,420
-And just after that we will send http post request to store basket into the basket microservice database
+Và ngay sau đó chúng tôi sẽ gửi http post request để lưu trữ giỏ hàng vào cơ sở dữ liệu basket microservice
 
 122
 00:08:13,420 --> 00:08:14,560
-and distributed cache.
+và distributed cache.
 
 123
 00:08:14,560 --> 00:08:20,560
-And we will paste Neve store basket request and passing the our newly created basket and items added
+Và chúng tôi sẽ dán Neve store basket request và truyền giỏ hàng mới được tạo và các mục đã thêm
 
 124
 00:08:20,560 --> 00:08:21,730
-into basket.
+vào giỏ hàng.
 
 125
 00:08:21,730 --> 00:08:25,540
-And I am going to send http post request using the basket services.
+Và tôi sẽ gửi http post request bằng cách sử dụng basket services.
 
 126
 00:08:25,540 --> 00:08:28,750
-And just after that redirect to page cart page.
+Và ngay sau đó chuyển hướng đến trang giỏ hàng.
 
 127
 00:08:28,750 --> 00:08:30,250
-So I'm going to hit F5.
+Vì vậy tôi sẽ nhấn F5.
 
 128
 00:08:30,250 --> 00:08:35,710
-And you can see that this time we will go to the cart page just after the adding item into cart.
+Và bạn có thể thấy rằng lần này chúng tôi sẽ đi đến trang giỏ hàng ngay sau khi thêm mục vào giỏ hàng.
 
 129
 00:08:35,710 --> 00:08:41,890
-This is representing all the cart items into our application from the basket microservices that we can
+Đây là đại diện cho tất cả các mục giỏ hàng trong ứng dụng của chúng tôi từ basket microservices mà chúng tôi có thể
 
 130
 00:08:41,890 --> 00:08:45,490
-remove item from the cart and we can continue shopping.
+xóa mục khỏi giỏ hàng và chúng tôi có thể tiếp tục mua sắm.
 
 131
 00:08:45,490 --> 00:08:50,920
-And we can also check out the basket that will convert this basket record to the order record.
+Và chúng tôi cũng có thể thanh toán giỏ hàng sẽ chuyển đổi bản ghi giỏ hàng này thành bản ghi đơn hàng.
 
 132
 00:08:50,920 --> 00:08:54,160
-So before proceeding to checkout, I am going to show orders.
+Vì vậy trước khi tiến hành thanh toán, tôi sẽ hiển thị đơn hàng.
 
 133
 00:08:54,160 --> 00:08:57,100
-If you click the order page, you can see that this will be.
+Nếu bạn nhấp vào trang đơn hàng, bạn có thể thấy rằng điều này sẽ là.
 
 134
 00:08:57,100 --> 00:09:00,070
-Hit the breakpoint on the order list on get async method.
+Nhấn breakpoint trên danh sách đơn hàng trên get async method.
 
 135
 00:09:00,070 --> 00:09:05,320
-This is basically retrieving orders for this customer, and I am going to check the orders for this
+Đây về cơ bản là truy xuất đơn hàng cho khách hàng này, và tôi sẽ kiểm tra các đơn hàng cho khách hàng này
 
 136
 00:09:05,320 --> 00:09:05,830
-customer.
+khách hàng.
 
 137
 00:09:05,830 --> 00:09:12,160
-If I hit F5, this will be getting orders and we have only one order, which is the order one and this
+Nếu tôi nhấn F5, điều này sẽ nhận được các đơn hàng và chúng tôi chỉ có một đơn hàng, đó là đơn hàng một và điều này
 
 138
 00:09:12,160 --> 00:09:15,970
-will be populating when the application start up and seeding the databases.
+sẽ được điền khi ứng dụng khởi động và seeding các cơ sở dữ liệu.
 
 139
 00:09:15,970 --> 00:09:22,120
-So now I am going to continue shopping and we will check out the basket after adding one more item into
+Vì vậy bây giờ tôi sẽ tiếp tục mua sắm và chúng tôi sẽ thanh toán giỏ hàng sau khi thêm một mục nữa vào
 
 140
 00:09:22,120 --> 00:09:22,480
-cart.
+giỏ hàng.
 
 141
 00:09:22,480 --> 00:09:26,440
-First of all, I am going to go back to products and retrieve the all products.
+Trước hết, tôi sẽ quay lại products và lấy tất cả các products.
 
 142
 00:09:26,440 --> 00:09:30,940
-And in here I am going to add new item which is a Samsung ten into cart.
+Và ở đây tôi sẽ thêm một item mới đó là Samsung ten vào cart.
 
 143
 00:09:31,180 --> 00:09:36,490
-As you can see that this time we will hit the product list on post async method because I am going to
+Như bạn có thể thấy rằng lần này chúng ta sẽ gọi product list trên post async method vì tôi sẽ
 
 144
 00:09:36,490 --> 00:09:38,380
-hit this button in the this page.
+nhấp vào button này trên trang này.
 
 145
 00:09:38,380 --> 00:09:43,180
-So this will be perform exactly the same things from the other application.
+Vì vậy điều này sẽ thực hiện chính xác những thứ giống nhau từ application khác.
 
 146
 00:09:43,180 --> 00:09:49,780
-In this method we basically get products for a given product ID, and after that we will load user basket
+Trong method này, chúng ta cơ bản sẽ lấy products cho một product ID cho trước, và sau đó chúng ta sẽ load user basket
 
 147
 00:09:49,780 --> 00:09:53,710
-and we will add item into basket with a newly coming product ID.
+và chúng ta sẽ thêm item vào basket với một product ID mới được đưa vào.
 
 148
 00:09:53,710 --> 00:09:56,530
-And just after that again we will store basket.
+Và ngay sau đó chúng ta lại sẽ store basket.
 
 149
 00:09:56,530 --> 00:09:58,810
-That means we will send http post request.
+Điều đó có nghĩa là chúng ta sẽ gửi http post request.
 
 150
 00:09:59,070 --> 00:09:59,730
-To the basket.
+Tới basket.
 
 151
 00:09:59,730 --> 00:10:00,660
@@ -604,7 +604,7 @@ Microservices.
 
 152
 00:10:00,660 --> 00:10:06,930
-In order to store newly adding item into basket information as a Json format, into database and distributed
+Để store newly adding item vào basket information dưới dạng Json format, vào database và distributed
 
 153
 00:10:06,930 --> 00:10:07,380
@@ -612,107 +612,107 @@ cache.
 
 154
 00:10:07,380 --> 00:10:13,530
-And if I hit F5 and go to and redirecting to page as a cart page, and you can see that this time we
+Và nếu tôi nhấn F5 và đi tới và chuyển hướng tới trang như một cart page, và bạn có thể thấy rằng lần này chúng ta
 
 155
 00:10:13,530 --> 00:10:16,800
-have two items into cart iPhone X and Samsung Tank.
+có hai items trong cart là iPhone X và Samsung Tank.
 
 156
 00:10:16,830 --> 00:10:21,150
-You can also follow sending Http requests from the Project console log.
+Bạn cũng có thể theo dõi việc gửi Http requests từ Project console log.
 
 157
 00:10:21,150 --> 00:10:26,850
-Here you can see that we will sending Http post requests when we are store basket into database.
+Ở đây bạn có thể thấy rằng chúng ta sẽ gửi Http post requests khi chúng ta store basket vào database.
 
 158
 00:10:26,850 --> 00:10:30,030
-So here you can see that this is the Erb API gateway endpoint.
+Vì vậy ở đây bạn có thể thấy rằng đây là Erb API gateway endpoint.
 
 159
 00:10:30,030 --> 00:10:35,130
-And this is the basket endpoint that we are going to post request including the basket Json data.
+Và đây là basket endpoint mà chúng ta sẽ post request bao gồm basket Json data.
 
 160
 00:10:35,130 --> 00:10:40,710
-And we will represent these two items from the Erb API gateway and basket microservices.
+Và chúng ta sẽ đại diện cho hai items này từ Erb API gateway và basket microservices.
 
 161
 00:10:40,710 --> 00:10:43,620
-And after that I am going to continue checkout operation.
+Và sau đó tôi sẽ tiếp tục hoạt động checkout.
 
 162
 00:10:43,620 --> 00:10:48,720
-And this will be processed and start asynchronous communication from the are client application and
+Và điều này sẽ được xử lý và bắt đầu giao tiếp asynchronous từ ứng dụng client và
 
 163
 00:10:48,720 --> 00:10:49,830
-click the checkout page.
+nhấp vào trang checkout.
 
 164
 00:10:49,830 --> 00:10:53,490
-This will be opening the checkout page including the cart information.
+Điều này sẽ mở trang checkout bao gồm thông tin giỏ hàng.
 
 165
 00:10:53,490 --> 00:10:58,470
-Because on the checkout page we are listing the cart and cart details with the total price and returning
+Vì trên trang checkout chúng tôi đang liệt kê giỏ hàng và chi tiết giỏ hàng với tổng giá và trả về
 
 166
 00:10:58,470 --> 00:10:59,040
-the page.
+trang.
 
 167
 00:10:59,040 --> 00:11:03,750
-Here you can see that this is the total price and including the cart information.
+Ở đây bạn có thể thấy đây là tổng giá và bao gồm thông tin giỏ hàng.
 
 168
 00:11:03,750 --> 00:11:07,710
-We have two items and these are the prices and total price is in here.
+Chúng tôi có hai mục và đây là giá cả và tổng giá nằm ở đây.
 
 169
 00:11:07,710 --> 00:11:10,980
-So I am going to filling the billing and shipping address.
+Vì vậy tôi sẽ điền địa chỉ thanh toán và vận chuyển.
 
 170
 00:11:10,980 --> 00:11:16,590
-And if you scroll down you can see that after populating the data we will check out the order and start
+Và nếu bạn cuộn xuống, bạn có thể thấy rằng sau khi điền dữ liệu, chúng tôi sẽ checkout đơn hàng và bắt đầu
 
 171
 00:11:16,590 --> 00:11:22,200
-asynchronous communication to creating basket checkout event to RabbitMQ that will consume from the
+giao tiếp asynchronous để tạo basket checkout event tới RabbitMQ mà sẽ được tiêu thụ từ
 
 172
 00:11:22,200 --> 00:11:25,080
-ordering microservices to create a new order record.
+ordering microservices để tạo một bản ghi đơn hàng mới.
 
 173
 00:11:25,080 --> 00:11:27,630
-So please populate the data in the form.
+Vì vậy vui lòng điền dữ liệu vào biểu mẫu.
 
 174
 00:11:27,630 --> 00:11:36,450
-I'm going to give my name as a form and giving the email as a method Metcom and address giving the random
+Tôi sẽ nhập tên của tôi dưới dạng biểu mẫu và nhập email dưới dạng phương pháp Metcom và địa chỉ nhập ngẫu nhiên
 
 175
 00:11:36,450 --> 00:11:39,570
-address and select the country.
+địa chỉ và chọn quốc gia.
 
 176
 00:11:39,570 --> 00:11:41,610
-Select the state and give the zip code.
+Chọn trạng thái và nhập mã zip.
 
 177
 00:11:43,450 --> 00:11:48,040
-And just after that you can click these links and populate the card information.
+Và ngay sau đó bạn có thể nhấp vào các liên kết này và điền thông tin thẻ.
 
 178
 00:11:48,040 --> 00:11:55,870
-In here you can give random credit card information and give as a expiration and CVV information.
+Ở đây bạn có thể nhập thông tin thẻ tín dụng ngẫu nhiên và nhập thông tin hết hạn và CVV.
 
 179
 00:11:55,870 --> 00:12:00,880
-And just after populating this data you can click the checkout order and this will be triggered on post
+Và ngay sau khi điền dữ liệu này, bạn có thể nhấp vào checkout order và điều này sẽ được kích hoạt trên post
 
 180
 00:12:00,880 --> 00:12:02,110
@@ -720,23 +720,23 @@ checkout async method.
 
 181
 00:12:02,110 --> 00:12:06,970
-And in this method we basically logging incoming information and load user basket.
+Và trong method này chúng ta cơ bản là logging incoming information và load user basket.
 
 182
 00:12:06,970 --> 00:12:09,250
-And just after that check the modal state.
+Và ngay sau đó check modal state.
 
 183
 00:12:09,250 --> 00:12:11,680
-If valid or not, modal state is valid.
+Nếu valid hoặc không, modal state là valid.
 
 184
 00:12:11,680 --> 00:12:16,540
-And just after that, we have an assumption that we are going to create a new order according to this
+Và ngay sau đó, chúng ta có một giả định rằng chúng ta sẽ tạo một new order theo cái này
 
 185
 00:12:16,540 --> 00:12:21,520
-customer ID, and we will set the username and total price for the order, which is the basket checkout
+customer ID, và chúng ta sẽ set username và total price cho order, đó là basket checkout
 
 186
 00:12:21,520 --> 00:12:21,970
@@ -744,97 +744,97 @@ modal.
 
 187
 00:12:21,970 --> 00:12:27,970
-And after preparing this basket checkout modal, we will use basket service dot checkout basket method
+Và sau khi prepare basket checkout modal này, chúng ta sẽ sử dụng basket service dot checkout basket method
 
 188
 00:12:27,970 --> 00:12:33,580
-that will send http post requests with a given Json payload, including the order information which
+mà sẽ gửi http post requests với một given Json payload, bao gồm order information mà
 
 189
 00:12:33,580 --> 00:12:40,930
-is the basket checkout model, and hit the http post request to our API gateway and basket microservices
+là basket checkout model, và hit http post request tới API gateway và basket microservices
 
 190
 00:12:40,930 --> 00:12:45,400
-that will start the event driven communication and publish event to the RabbitMQ.
+mà sẽ bắt đầu event driven communication và publish event tới RabbitMQ.
 
 191
 00:12:45,520 --> 00:12:52,330
-And just after that we will redirect to confirmation page which including the your order submitted successfully.
+Và ngay sau đó chúng ta sẽ redirect tới confirmation page mà bao gồm your order submitted successfully.
 
 192
 00:12:52,330 --> 00:12:54,400
-And now we can check the orders.
+Và bây giờ chúng ta có thể check orders.
 
 193
 00:12:54,400 --> 00:12:56,890
-But before that I'm going to check RabbitMQ.
+Nhưng trước đó tôi sẽ check RabbitMQ.
 
 194
 00:12:56,890 --> 00:12:59,380
-In here you can see the RabbitMQ management dashboard.
+Ở đây bạn có thể thấy RabbitMQ management dashboard.
 
 195
 00:12:59,380 --> 00:13:04,480
-If you log into management dashboard you can see that we are publishing the event, which is a published
+Nếu bạn log vào management dashboard bạn có thể thấy rằng chúng ta đang publishing event, đó là published
 
 196
 00:13:04,480 --> 00:13:08,050
-checkout event that will consume from the ordering microservices.
+checkout event mà sẽ consume từ ordering microservices.
 
 197
 00:13:08,050 --> 00:13:14,200
-You can see queues and streams and see that our event is basket checkout event and that will publish
+Bạn có thể thấy queues và streams và thấy rằng event của chúng ta là basket checkout event và nó sẽ publish
 
 198
 00:13:14,200 --> 00:13:19,720
-from the basket microservices into RabbitMQ that consume from the subscriber microservices, which is
+từ basket microservices vào RabbitMQ mà consume từ subscriber microservices, đó là
 
 199
 00:13:19,720 --> 00:13:21,010
-the ordering microservices.
+ordering microservices.
 
 200
 00:13:21,010 --> 00:13:26,650
-We can confirm the ordering microservices consume this event in order to create a new order record.
+Chúng ta có thể confirm rằng ordering microservices consume event này để tạo một new order record.
 
 201
 00:13:26,650 --> 00:13:32,890
-So if you go back to our client application and click the order page, you can see that we will retrieve
+Vì vậy, nếu bạn quay lại ứng dụng client của chúng tôi và nhấp vào trang order, bạn có thể thấy rằng chúng tôi sẽ retrieve
 
 202
 00:13:32,890 --> 00:13:34,600
-the orders for a given customer.
+các orders cho một customer nhất định.
 
 203
 00:13:34,600 --> 00:13:37,930
-That will include now two orders into database.
+Điều đó sẽ bao gồm bây giờ hai orders trong database.
 
 204
 00:13:37,930 --> 00:13:43,630
-Here you can see the newly ordered record that we have created from the our client application.
+Tại đây bạn có thể thấy newly ordered record mà chúng tôi đã tạo từ ứng dụng client của chúng tôi.
 
 205
 00:13:43,630 --> 00:13:44,170
-Also.
+Cũng vậy.
 
 206
 00:13:44,170 --> 00:13:49,750
-So if you refresh this page more than five times in ten, second rate limiting will work and you will
+Vì vậy, nếu bạn refresh trang này nhiều hơn năm lần trong mười second, rate limiting sẽ hoạt động và bạn sẽ
 
 207
 00:13:49,750 --> 00:13:52,270
-not return data into our application.
+không return data vào ứng dụng của chúng tôi.
 
 208
 00:13:52,270 --> 00:13:56,800
-As you can see that we have performed end to end tests into our shopping web application.
+Như bạn có thể thấy rằng chúng tôi đã thực hiện end to end tests vào shopping web application của chúng tôi.
 
 209
 00:13:56,800 --> 00:14:01,900
-We will listing products at product in the shopping cart and check out the basket and see the asynchronous
+Chúng tôi sẽ listing products tại product trong shopping cart và check out basket và xem asynchronous
 
 210
 00:14:01,900 --> 00:14:03,880
-communication and create any order.
+communication và create bất kỳ order nào.
 
