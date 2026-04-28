@@ -232,5 +232,8 @@
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/017 Seed SQL Server OrderDb using EF Core when Application Startup with Coding.srt": "done",
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/018 Seed Product and Orders in SQL Server OrderDb using EF Core when App Startup.srt": "done",
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/019 Run Order Microservices to Migrate and Seed OrderDb in SQL Server using EF Core.srt": "done",
-  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/020 EF Core Interceptors SaveChangesInterceptor for Auditing Entities.srt": "done"
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/020 EF Core Interceptors SaveChangesInterceptor for Auditing Entities.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/021 Develop SaveChangesInterceptor to Auditing Entities for Order Entities.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/022 Run&Test Order Microservices for Audit with EF Save Changes Interceptor.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/023 Dispatch Domain Events w EF Core SaveChangesInterceptor.srt": "done"
 }

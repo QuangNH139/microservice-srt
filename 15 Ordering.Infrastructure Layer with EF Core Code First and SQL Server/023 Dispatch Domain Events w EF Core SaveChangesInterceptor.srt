@@ -1,6 +1,6 @@
 1
 00:00:00,110 --> 00:00:05,900
-In this video, we are going to learn how to dispatch domain events using the Entity Framework core.
+Trong video này, chúng ta sẽ học cách dispatch domain events bằng Entity Framework Core.
 
 2
 00:00:05,930 --> 00:00:07,850
@@ -8,7 +8,7 @@ Save changes interceptor.
 
 3
 00:00:08,240 --> 00:00:13,610
-It is a crucial step when implementing domain driven design in e-commerce application like ordering
+Đây là một bước quan trọng khi triển khai domain driven design trong ứng dụng e-commerce như ordering microservices.
 
 4
 00:00:13,610 --> 00:00:14,690
@@ -16,11 +16,11 @@ microservices.
 
 5
 00:00:14,900 --> 00:00:19,340
-But before that, let's remember what is domain events in domain driven design?
+Nhưng trước tiên, hãy nhớ lại domain events trong domain driven design là gì?
 
 6
 00:00:19,760 --> 00:00:25,190
-Domain events represent something that happened in the past and the other parts of the same service
+Domain events đại diện cho một cái gì đó đã xảy ra trong quá khứ và các phần khác trong cùng ranh giới service.
 
 7
 00:00:25,190 --> 00:00:25,730
@@ -28,39 +28,39 @@ boundary.
 
 8
 00:00:25,760 --> 00:00:28,730
-Same domain need to react to these changes.
+Cùng domain cần phản ứng lại những thay đổi này.
 
 9
 00:00:29,300 --> 00:00:35,810
-A domain event is a business event that occurs within the domain model, and achieve consistency between
+Một domain event là một sự kiện kinh doanh xảy ra trong domain model, và đạt được tính nhất quán giữa các aggregates trong cùng một domain, và khi bất kỳ đơn hàng nào được đặt, sự kiện order placed có thể được kích hoạt.
 
 10
 00:00:35,810 --> 00:00:42,350
-aggregates in the same domain, and when any order placed the order placed event might be triggered,
+Nó kích hoạt các side effects hoặc thông báo cho các phần khác của hệ thống về những thay đổi trong domain.
 
 11
 00:00:42,470 --> 00:00:48,560
-it triggered the side effects or notify other parts of the system about changes within the domain.
+Và cũng, chúng ta có thể thấy cách sử dụng domain events trong domain driven design.
 
 12
 00:00:48,650 --> 00:00:53,420
-And also we can see how to use domain events in domain driven design.
+Về cơ bản nó đóng gói chi tiết sự kiện và dispatch chúng cho các bên quan tâm và giao tiếp các thay đổi trong domain cho các external handlers, có thể thực hiện các hành động dựa trên những sự kiện này.
 
 13
 00:00:53,420 --> 00:00:59,690
-It is basically encapsulate the event details and dispatch them to the interested parties and communicate
+Và ở đây bạn có thể thấy mỗi sub domain.
 
 14
 00:00:59,690 --> 00:01:05,780
-changes within the domain to external handlers, which may be perform actions based on these events.
+Events trong ordering microservices.
 
 15
 00:01:06,140 --> 00:01:08,000
-And here you can see each sub domain.
+Khi khách hàng đặt hàng, một domain event có tên là order created, domain event được kích hoạt sẽ trigger.
 
 16
 00:01:08,000 --> 00:01:10,040
-Events in ordering microservices.
+Nhiều điều cần phải xảy ra như cập nhật kho hàng, thông báo cho bộ phận vận chuyển và gửi email xác nhận cho khách hàng.
 
 17
 00:01:10,040 --> 00:01:16,970
@@ -80,75 +80,75 @@ an email for confirmation to the customer.
 
 21
 00:01:27,200 --> 00:01:34,130
-So all these actions can be triggered by throwing an order created domain event from the order aggregate.
+Vậy tất cả những hành động này có thể được kích hoạt bằng cách ném một sự kiện domain order created từ order aggregate.
 
 22
 00:01:34,250 --> 00:01:37,400
-So how we can dispatch these domain events.
+Vậy chúng ta có thể dispatch những domain event này như thế nào.
 
 23
 00:01:37,400 --> 00:01:41,540
-How we can raise and dispatching domain events into our application.
+Chúng ta có thể raise và dispatching domain event vào ứng dụng của chúng ta như thế nào.
 
 24
 00:01:41,540 --> 00:01:48,020
-So when we talk about the raising the event within the order aggregate, when order new order placed
+Vậy khi chúng ta nói về việc raise event trong order aggregate, khi một đơn hàng mới được đặt
 
 25
 00:01:48,020 --> 00:01:53,990
-and it adding an order created domain event to the collection of the domain event in the order aggregate.
+và nó thêm một sự kiện domain order created vào danh sách các domain event trong order aggregate.
 
 26
 00:01:54,080 --> 00:01:57,830
-So the question is how to dispatching these domain events.
+Vậy câu hỏi là làm thế nào để dispatch những domain event này.
 
 27
 00:01:57,980 --> 00:02:04,010
-So in order to dispatching this event, this will be typically done in the infrastructure layer and
+Vậy để dispatch sự kiện này, điều này thường được thực hiện trong infrastructure layer và
 
 28
 00:02:04,010 --> 00:02:06,470
-often in the repository or unit of work.
+thường là trong repository hoặc unit of work.
 
 29
 00:02:06,470 --> 00:02:13,190
-That means after saving to do changes into database, the domain events are dispatched to their respective
+Điều đó có nghĩa là sau khi lưu các thay đổi vào database, các domain event sẽ được dispatch tới các
 
 30
 00:02:13,190 --> 00:02:14,000
-handlers.
+handler tương ứng của chúng.
 
 31
 00:02:14,000 --> 00:02:16,880
-You can see that we have started with the entity.
+Bạn có thể thấy rằng chúng ta đã bắt đầu với entity.
 
 32
 00:02:16,880 --> 00:02:21,620
-In our case, this will be the order aggregate that include domain events list.
+Trong trường hợp này, đó sẽ là order aggregate bao gồm danh sách domain event.
 
 33
 00:02:21,620 --> 00:02:27,350
-So whenever any order created this will be triggered order created, domain event and adding this domain
+Vậy bất cứ khi nào có đơn hàng được tạo, điều này sẽ kích hoạt domain event order created và thêm domain event này vào danh sách các domain event trong aggregate.
 
 34
 00:02:27,350 --> 00:02:30,350
-event into list of the domain events into the aggregate.
+event vào danh sách các domain event trong aggregate.
 
 35
 00:02:30,350 --> 00:02:33,350
-And after that there is a separate event dispatcher.
+Và sau đó có một event dispatcher riêng biệt.
 
 36
 00:02:33,350 --> 00:02:39,710
-In our case this will be using Entity Framework code save change interceptor in order to dispatch these
+Trong trường hợp này, chúng ta sẽ sử dụng Entity Framework Core save change interceptor để dispatch những domain event này tới các event consumer.
 
 37
 00:02:39,710 --> 00:02:41,750
-domain events to the event consumers.
+Vậy tại sao chúng ta sử dụng Entity Framework Core Save Change Interceptor cho hành động này?
 
 38
 00:02:41,750 --> 00:02:46,910
-So why we use Entity Framework Core Save Change Interceptor for this action?
+Bởi vì đó là một best practice để sử dụng Entity Framework Core Save Change Interceptor này cho việc dispatching domain event, bởi vì nó cho phép bạn hook vào lifecycle của các hoạt động database, đặc biệt
 
 39
 00:02:46,910 --> 00:02:53,450
@@ -160,11 +160,11 @@ domain events, because it allows you to hook into the lifecycle of database oper
 
 41
 00:02:59,810 --> 00:03:02,570
-after changes have been successfully committed.
+sau khi những thay đổi đã được commit thành công.
 
 42
 00:03:03,170 --> 00:03:09,950
-So after deciding to using these save chains in Susceptor, we can go to the steps when implementing
+Vậy sau khi quyết định sử dụng những save chains này trong Susceptor, chúng ta có thể bước vào các bước khi triển khai
 
 43
 00:03:09,950 --> 00:03:11,360
@@ -172,57 +172,57 @@ dispatching domain events.
 
 44
 00:03:11,390 --> 00:03:14,840
-The first step is create a save change interceptor class.
+Bước đầu tiên là tạo một save change interceptor class.
 
 45
 00:03:14,840 --> 00:03:20,660
-We will implement a class that inherits from the save change interceptor and override methods like saving
+Chúng ta sẽ triển khai một class kế thừa từ save change interceptor và ghi đè các method như saving
 
 46
 00:03:20,660 --> 00:03:22,730
-changes or saving change async.
+changes hay saving change async.
 
 47
 00:03:22,730 --> 00:03:26,270
-And the second step is identify and dispatch domain events.
+Và bước thứ hai là xác định và dispatch domain events.
 
 48
 00:03:26,270 --> 00:03:32,600
-In the override methods, we can check the Dbcontext for entities that have unprocessed domain events,
+Trong các method được ghi đè, chúng ta có thể kiểm tra Dbcontext để tìm những entities có unprocessed domain events,
 
 49
 00:03:32,600 --> 00:03:36,980
-and after that we will dispatch these events using a mechanism like mediator.
+và sau đó chúng ta sẽ dispatch những events này bằng cách sử dụng một cơ chế như mediator.
 
 50
 00:03:36,980 --> 00:03:41,000
-That means we will use mediator library when dispatching these domain events.
+Điều đó có nghĩa là chúng ta sẽ sử dụng thư viện mediator khi dispatching những domain events này.
 
 51
 00:03:41,270 --> 00:03:48,800
-And after that you can see we will use Domain Event Dispatcher interceptor class to perform these operations
+Và sau đó bạn có thể thấy chúng ta sẽ sử dụng Domain Event Dispatcher interceptor class để thực hiện những thao tác này
 
 52
 00:03:48,800 --> 00:03:51,410
-and inherit from the save change interceptor.
+và kế thừa từ save change interceptor.
 
 53
 00:03:51,410 --> 00:03:54,500
-And lastly we will register the interceptor.
+Và cuối cùng chúng ta sẽ đăng ký interceptor.
 
 54
 00:03:54,500 --> 00:03:59,630
-In this step we will register the interceptor in the Dependency Injection class of our infrastructure
+Trong bước này chúng ta sẽ đăng ký interceptor trong Dependency Injection class của infrastructure
 
 55
 00:03:59,630 --> 00:04:00,170
-layer.
+layer của chúng ta.
 
 56
 00:04:00,290 --> 00:04:06,380
-So dispatching domain events using the Entity Framework core Save Change Interceptor is a powerful approach
+Vậy dispatching domain events sử dụng Entity Framework Core Save Change Interceptor là một phương pháp mạnh mẽ
 
 57
 00:04:06,380 --> 00:04:10,400
-to handling business operations that are triggered by the changes in the domain.
+để xử lý các business operations được kích hoạt bởi những thay đổi trong domain.
 
