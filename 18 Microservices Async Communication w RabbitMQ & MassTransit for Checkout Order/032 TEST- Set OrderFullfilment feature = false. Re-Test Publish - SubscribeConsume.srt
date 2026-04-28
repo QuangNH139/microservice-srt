@@ -1,38 +1,38 @@
 1
 00:00:00,140 --> 00:00:06,680
-In this video, we are going to use ASP.Net Feature Management to removing and disabling these order
+Trong video này, chúng ta sẽ sử dụng ASP.Net Feature Management để xóa và vô hiệu hóa các order này
 
 2
 00:00:06,680 --> 00:00:10,070
-created integration event part into our end to end flow.
+tạo phần sự kiện tích hợp vào luồng end to end của chúng ta.
 
 3
 00:00:10,070 --> 00:00:16,340
-So that means we will set the order fulfillment feature as a false and we will expect to behave system
+Điều đó có nghĩa là chúng ta sẽ đặt tính năng order fulfillment thành false và chúng ta sẽ mong đợi hệ thống hoạt động
 
 4
 00:00:16,340 --> 00:00:21,080
-correctly without publishing integration event in the handle of the domain events.
+chính xác mà không xuất bản sự kiện tích hợp trong quá trình xử lý các domain events.
 
 5
 00:00:21,080 --> 00:00:27,470
-Because we don't have any fulfillment subscriber microservices yet and RabbitMQ is not created queue
+Bởi vì chúng ta chưa có bất kỳ microservices subscriber nào cho fulfillment và RabbitMQ chưa tạo queue
 
 6
 00:00:27,470 --> 00:00:30,110
-if there is no subscriber for that purpose.
+nếu không có subscriber cho mục đích đó.
 
 7
 00:00:30,110 --> 00:00:36,560
-Since fulfillment microservices is developed, it is good to set the flag false for the order fulfillment
+Vì fulfillment microservices đã được phát triển, nên tốt hơn là đặt flag thành false cho order fulfillment
 
 8
 00:00:36,560 --> 00:00:39,920
-message in order to avoid unnecessary queue messages.
+để tránh các tin nhắn queue không cần thiết.
 
 9
 00:00:39,920 --> 00:00:46,040
-So please open the Visual Studio and in here please go to the ordering API and go to the Application
+Vậy hãy mở Visual Studio và ở đây hãy truy cập vào ordering API và đi tới Application
 
 10
 00:00:46,040 --> 00:00:47,360
@@ -40,155 +40,155 @@ Settings Json file.
 
 11
 00:00:47,360 --> 00:00:52,580
-As you can see that I have started the application which is started the ordering basket and discount
+Như bạn có thể thấy, tôi đã khởi động ứng dụng mà đã khởi động ordering, basket và discount
 
 12
 00:00:52,580 --> 00:00:57,770
-microservices that I am going to change the configuration on the flight when running the application.
+microservices mà tôi sẽ thay đổi cấu hình khi ứng dụng đang chạy.
 
 13
 00:00:57,770 --> 00:01:01,430
-So this is the power of the ASP.Net feature management.
+Vậy đây là sức mạnh của ASP.Net feature management.
 
 14
 00:01:01,430 --> 00:01:06,230
-I am going to change the feature of the order fulfillment from true to false.
+Tôi sẽ thay đổi tính năng order fulfillment từ true thành false.
 
 15
 00:01:07,010 --> 00:01:08,990
-So save this configuration file.
+Vậy hãy lưu file cấu hình này.
 
 16
 00:01:08,990 --> 00:01:14,480
-And if you open the ordering application event handlers and order created domain event handler, you
+Và nếu bạn mở ordering application event handlers và order created domain event handler, bạn
 
 17
 00:01:14,480 --> 00:01:17,750
-can see that we have a breakpoint that will not be entered.
+có thể thấy rằng chúng ta có một breakpoint sẽ không được nhập vào.
 
 18
 00:01:17,750 --> 00:01:21,380
-The breakpoint due to our order fulfillment feature is false.
+Breakpoint này là do tính năng order fulfillment của chúng ta là false.
 
 19
 00:01:21,380 --> 00:01:27,080
-So now I am not going to skipping any breakpoint and I am going to continue with the F10 and we will
+Vậy bây giờ tôi sẽ không bỏ qua bất kỳ breakpoint nào và tôi sẽ tiếp tục với F10 và chúng ta sẽ
 
 20
 00:01:27,080 --> 00:01:29,840
-see that these if statement will not be entered.
+thấy rằng câu lệnh if này sẽ không được nhập vào.
 
 21
 00:01:29,840 --> 00:01:32,990
-So now I am going to perform the intent use case.
+Vậy bây giờ tôi sẽ thực hiện use case ý định.
 
 22
 00:01:32,990 --> 00:01:39,530
-Please open the postman and go to the basket microservices and send the http post request in order to
+Vui lòng mở Postman và truy cập basket microservice, sau đó gửi HTTP POST request để
 
 23
 00:01:39,530 --> 00:01:40,610
-create any basket.
+tạo bất kỳ giỏ hàng nào.
 
 24
 00:01:40,610 --> 00:01:45,950
-So I am going to hit F5 to pacing these breakpoints when creating a new basket.
+Vậy tôi sẽ nhấn F5 để đi qua các breakpoint khi tạo một giỏ hàng mới.
 
 25
 00:01:47,190 --> 00:01:49,980
-And here you can see that our basket created successfully.
+Và ở đây bạn có thể thấy rằng giỏ hàng của chúng ta đã được tạo thành công.
 
 26
 00:01:49,980 --> 00:01:54,210
-Now I am going to perform asynchronous use case which is the basket checkout.
+Bây giờ tôi sẽ thực hiện use case không đồng bộ, đó là basket checkout.
 
 27
 00:01:54,240 --> 00:01:58,830
-Please go to this http post operation and this endpoint and click the send button.
+Vui lòng truy cập HTTP POST operation này và endpoint này, rồi nhấn nút send.
 
 28
 00:01:58,830 --> 00:02:03,060
-This will be hit the basket checkout operation and I am going to hit F5.
+Điều này sẽ kích hoạt basket checkout operation và tôi sẽ nhấn F5.
 
 29
 00:02:03,060 --> 00:02:06,660
-Since we will consume this basket checkout event from the RabbitMQ.
+Vì chúng ta sẽ tiêu thụ basket checkout event này từ RabbitMQ.
 
 30
 00:02:06,690 --> 00:02:09,090
-Here you can see the consume operation performed.
+Ở đây bạn có thể thấy consume operation đã được thực hiện.
 
 31
 00:02:09,090 --> 00:02:12,240
-This is the ordering microservices consume operation.
+Đây là consume operation của ordering microservice.
 
 32
 00:02:12,240 --> 00:02:17,550
-Again I am hitting the F5 and this is go back to our basket microservices delete operation.
+Tôi lại nhấn F5 và quay lại basket microservice delete operation.
 
 33
 00:02:17,550 --> 00:02:20,640
-This will be continue to consume operation from the basket.
+Điều này sẽ tiếp tục consume operation từ basket.
 
 34
 00:02:20,640 --> 00:02:25,920
-I am hitting the F5 since we are coming to domain event handler part.
+Tôi nhấn F5 vì chúng ta sắp đến phần domain event handler.
 
 35
 00:02:25,920 --> 00:02:30,600
-So this is the order create operation and this is dispatching order create domain event.
+Vậy đây là order create operation và nó đang dispatching order create domain event.
 
 36
 00:02:30,600 --> 00:02:34,050
-And in here we can handle the order created domain event handler.
+Và ở đây chúng ta có thể xử lý order created domain event handler.
 
 37
 00:02:34,050 --> 00:02:36,750
-In here you can see the if statement comes to this point.
+Ở đây bạn có thể thấy if statement đi đến điểm này.
 
 38
 00:02:36,750 --> 00:02:38,220
-And I am going to hit F10.
+Và tôi sẽ nhấn F10.
 
 39
 00:02:38,220 --> 00:02:40,710
-So you can see that the feature is false.
+Vậy bạn có thể thấy rằng feature là false.
 
 40
 00:02:40,710 --> 00:02:46,710
-And we can see that this feature is disabled when we are changing the application settings on the ordering
+Và chúng ta có thể thấy rằng feature này bị vô hiệu hóa khi chúng ta thay đổi application settings trên ordering
 
 41
 00:02:46,710 --> 00:02:52,650
-API, and the application has started before changing the configuration, that means this is powerful
+API, và ứng dụng đã khởi động trước khi thay đổi cấu hình, điều này có nghĩa là đây là một tính năng mạnh mẽ
 
 42
 00:02:52,650 --> 00:02:58,440
-feature from the ASP.Net feature management that we can change the behavior of the application on the
+từ ASP.NET feature management mà chúng ta có thể thay đổi hành vi của ứng dụng trên
 
 43
 00:02:58,440 --> 00:03:00,270
-flight without changing any code.
+flight mà không cần thay đổi bất kỳ code nào.
 
 44
 00:03:00,270 --> 00:03:06,690
-So I am hitting the F5 and you can see the basket checkout Antoine process complete successfully.
+Vậy tôi đang nhấn F5 và bạn có thể thấy quá trình basket checkout Antoine hoàn thành thành công.
 
 45
 00:03:06,690 --> 00:03:10,170
-And you can also check the RabbitMQ management dashboard.
+Và bạn cũng có thể kiểm tra bảng điều khiển quản lý RabbitMQ.
 
 46
 00:03:10,170 --> 00:03:12,480
-And we don't have any integration event.
+Và chúng ta không có bất kỳ integration event nào.
 
 47
 00:03:12,480 --> 00:03:14,490
-This is for the basket checkout event.
+Đây là dành cho sự kiện basket checkout.
 
 48
 00:03:14,490 --> 00:03:18,240
-And we don't see any additional event for the order created.
+Và chúng ta không thấy bất kỳ sự kiện bổ sung nào cho order created.
 
 49
 00:03:18,240 --> 00:03:18,990
