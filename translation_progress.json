@@ -277,5 +277,7 @@
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/015 Test Delete Order Endpoint with CQRS and Clean Architecture Layers in Ordering.srt": "done",
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/016 Cross-Cutting Concerns Custom Exception Handler in Ordering Microservice.srt": "done",
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/017 Health Checks for Ordering Microservices with EF.Core and SQL Server.srt": "done",
-  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/001 Introduction - Microservices Async Communication w RabbitMQ & MassTransit.srt": "done"
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/001 Introduction - Microservices Async Communication w RabbitMQ & MassTransit.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/002 Microservices Asynchronous Communication.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/003 Benefits of Asynchronous Communication.srt": "done"
 }

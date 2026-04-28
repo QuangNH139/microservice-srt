@@ -1,108 +1,108 @@
 1
 00:00:00,110 --> 00:00:05,360
-In this video we are going to learn benefits of asynchronous communication.
+Trong video này chúng ta sẽ học về các lợi ích của giao tiếp bất đồng bộ.
 
 2
 00:00:05,570 --> 00:00:08,930
-The first benefit is adding new subscriber services.
+Lợi ích đầu tiên là thêm các dịch vụ subscriber mới.
 
 3
 00:00:08,930 --> 00:00:12,110
-So adding new subscriber services is very simple.
+Vậy việc thêm các dịch vụ subscriber mới là rất đơn giản.
 
 4
 00:00:12,110 --> 00:00:15,770
-We can easily subscribe to a message that we want to receive.
+Chúng ta có thể dễ dàng subscribe vào một message mà chúng ta muốn nhận.
 
 5
 00:00:16,010 --> 00:00:19,610
-The producer doesn't need to be know about subscribers.
+Producer không cần biết về subscribers.
 
 6
 00:00:19,610 --> 00:00:24,470
-We can remove and add subscribers without affecting producer service.
+Chúng ta có thể xóa và thêm subscribers mà không ảnh hưởng đến producer service.
 
 7
 00:00:25,120 --> 00:00:27,460
-And another benefit is scalability.
+Và một lợi ích khác là khả năng mở rộng.
 
 8
 00:00:28,120 --> 00:00:34,180
-When services communicate with direct sync communications, if the servers get high volume requests,
+Khi các services giao tiếp với giao tiếp đồng bộ trực tiếp, nếu các máy chủ nhận lượng yêu cầu cao,
 
 9
 00:00:34,180 --> 00:00:40,750
-these communication parties should be scaled together and at the same time, so it is hard to maintain
+các bên giao tiếp này phải được mở rộng cùng nhau và cùng lúc, nên rất khó để duy trì
 
 10
 00:00:40,750 --> 00:00:42,400
-high volume peak requests.
+các yêu cầu đỉnh lưu lượng cao.
 
 11
 00:00:43,030 --> 00:00:47,680
-With asynchronous communication, we can easier to manage scalability issues.
+Với giao tiếp bất đồng bộ, chúng ta có thể dễ dàng quản lý các vấn đề về khả năng mở rộng.
 
 12
 00:00:47,680 --> 00:00:54,850
-We can scale producer, consumer and message broker system independently, so we can also scale services
+Chúng ta có thể mở rộng producer, consumer và message broker system một cách độc lập, vì vậy chúng ta cũng có thể mở rộng services
 
 13
 00:00:54,850 --> 00:00:57,940
-according to incoming messages into event based system.
+theo các message đến vào hệ thống dựa trên sự kiện.
 
 14
 00:00:58,570 --> 00:01:03,850
-The message broker can distribute the received message to more than one target services.
+Message broker có thể phân phối message nhận được đến nhiều hơn một target services.
 
 15
 00:01:04,000 --> 00:01:10,780
-If incoming message are increased into message broker system, we can scale consumer services and receive
+Nếu incoming message tăng lên trong message broker system, chúng ta có thể mở rộng consumer services và nhận
 
 16
 00:01:10,780 --> 00:01:13,510
-messages faster in microservices.
+messages nhanh hơn trong microservices.
 
 17
 00:01:13,510 --> 00:01:20,830
-Kubernetes has autoscaler that we can define maximum port number according to CPU and Ram usage into
+Kubernetes có autoscaler mà chúng ta có thể định nghĩa số port tối đa theo CPU và Ram usage vào
 
 18
 00:01:20,830 --> 00:01:22,000
-current instance.
+instance hiện tại.
 
 19
 00:01:22,210 --> 00:01:28,570
-But also there is another good product which is the Keda, which is a Kubernetes event driven application
+Nhưng cũng có một sản phẩm tốt khác là Keda, đó là một Kubernetes event driven application
 
 20
 00:01:28,570 --> 00:01:32,890
-that we can auto scale pods according to message broker system loads.
+mà chúng ta có thể tự động mở rộng pods theo message broker system loads.
 
 21
 00:01:32,980 --> 00:01:40,930
-For example, if our microservice architecture uses Kafka, and if Kafka has more messages that we expected
+Ví dụ, nếu kiến trúc microservice của chúng ta sử dụng Kafka, và nếu Kafka có nhiều message hơn mong đợi
 
 22
 00:01:40,930 --> 00:01:46,900
-with using the Keda, we can auto scale consumer microservices automatically.
+với sử dụng Keda, chúng ta có thể tự động scale các microservice consumer một cách tự động.
 
 23
 00:01:47,050 --> 00:01:53,170
-So asynchronous communication is allowed to be more flexible in terms of the scalability issues.
+Vậy asynchronous communication cho phép chúng ta linh hoạt hơn về mặt vấn đề scalability.
 
 24
 00:01:54,290 --> 00:01:57,410
-And another benefit is event driven microservices.
+Và một lợi ích khác là event driven microservices.
 
 25
 00:01:57,410 --> 00:02:02,900
-With asynchronous communication, we can provide event driven architectures, which is the best way
+Với asynchronous communication, chúng ta có thể cung cấp các kiến trúc event driven, đây là cách tốt nhất
 
 26
 00:02:02,900 --> 00:02:09,229
-to communicate between microservices services, communicates with each other by creating events and
+để communicate giữa các microservices, các dịch vụ communicate với nhau bằng cách tạo events và
 
 27
 00:02:09,229 --> 00:02:14,600
-send events to message broker, event bus system and subscribe events from the microservices.
+gửi events tới message broker, event bus system và subscribe events từ các microservices.
 
