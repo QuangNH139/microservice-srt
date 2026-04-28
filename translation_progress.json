@@ -169,5 +169,6 @@
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/007 Generate Proto Service Class from Discount proto File in Discount Grpc service.srt": "done",
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/008 Develop DiscountService class to Implement Grpc Proto Service Methods.srt": "done",
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/009 Configure DiscountGrpc Service to Request Pipeline in Program.cs and Invoke Grpc.srt": "done",
-  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/010 Entity Framework Core and SQLite Database Connection in Discount Microservices.srt": "done"
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/010 Entity Framework Core and SQLite Database Connection in Discount Microservices.srt": "done",
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/011 Create SQLite Database using Entity Framework Core Tools in Discount service.srt": "done"
 }
