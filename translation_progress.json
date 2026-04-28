@@ -314,5 +314,7 @@
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/035 TEST- Docker-Compose Microservices - PublishSubscribe BasketCheckout Event.srt": "done",
   "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/001 Introduction - API Gateways with Yarp Reverse Proxy.srt": "done",
   "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/002 Gateway Routing Pattern.srt": "done",
-  "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/003 API Gateway Pattern.srt": "done"
+  "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/003 API Gateway Pattern.srt": "done",
+  "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/004 Main features in the API Gateway Pattern.srt": "done",
+  "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/005 BFF Backend for Frontend Pattern.srt": "done"
 }

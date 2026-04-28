@@ -1,140 +1,140 @@
 1
 00:00:00,080 --> 00:00:05,330
-In this video we are going to see main benefits of API gateway pattern.
+Trong video này chúng ta sẽ xem các lợi ích chính của API gateway pattern.
 
 2
 00:00:05,810 --> 00:00:08,840
-So the API gateway pattern provides several benefits.
+Vậy API gateway pattern cung cấp nhiều lợi ích.
 
 3
 00:00:08,840 --> 00:00:15,050
-Since we accommodate the client requests and route the internal microservices, we can handle main useful
+Vì chúng ta tiếp nhận các yêu cầu từ client và định tuyến đến các microservices nội bộ, chúng ta có thể xử lý các tính năng chính hữu ích
 
 4
 00:00:15,050 --> 00:00:16,760
-features into API gateway.
+vào API gateway.
 
 5
 00:00:18,350 --> 00:00:21,980
-The first feature is reverse proxy and gateway routing.
+Tính năng đầu tiên là reverse proxy và gateway routing.
 
 6
 00:00:22,010 --> 00:00:24,290
-This is part of gateway routing pattern.
+Đây là một phần của gateway routing pattern.
 
 7
 00:00:24,290 --> 00:00:24,890
-Features.
+Các tính năng.
 
 8
 00:00:24,890 --> 00:00:31,250
-The API gateway provides reverse proxy to redirect requests to the endpoints of the internal microservices.
+API gateway cung cấp reverse proxy để chuyển hướng các yêu cầu đến các endpoint của các microservices nội bộ.
 
 9
 00:00:31,280 --> 00:00:38,000
-Usually it is using layer seven routing for Http requests for request redirection.
+Thường thì nó sử dụng layer seven routing cho các yêu cầu Http để chuyển hướng yêu cầu.
 
 10
 00:00:38,510 --> 00:00:44,210
-This routing feature provides to decouple client applications from the internal microservices, so it
+Tính năng định tuyến này giúp tách biệt các ứng dụng client từ các microservices nội bộ, do đó nó
 
 11
 00:00:44,210 --> 00:00:47,240
-is separating responsibilities on network layer.
+là tách biệt trách nhiệm ở tầng mạng.
 
 12
 00:00:48,360 --> 00:00:51,720
-Another benefit is obstructing internal operations.
+Một lợi ích khác là che phủ các hoạt động nội bộ.
 
 13
 00:00:51,750 --> 00:00:57,900
-API gateway provides abstraction over the backend microservices, so even there is no change on backend
+API gateway cung cấp abstraction qua các backend microservices, vì vậy ngay cả khi không có thay đổi trên backend
 
 14
 00:00:57,900 --> 00:01:01,350
-microservices, it won't be affect to the client applications.
+microservices, nó cũng không ảnh hưởng đến các ứng dụng client.
 
 15
 00:01:01,350 --> 00:01:06,570
-That means don't need to update client applications when changing backend microservices.
+Điều đó có nghĩa là không cần phải cập nhật các ứng dụng client khi thay đổi backend microservices.
 
 16
 00:01:06,570 --> 00:01:12,570
-Instead, API gateway will only change configuration file to redirect new services.
+Thay vào đó, API gateway sẽ chỉ thay đổi file cấu hình để chuyển hướng đến các dịch vụ mới.
 
 17
 00:01:14,010 --> 00:01:19,410
-And the second main feature is request aggregation and gateway aggregation.
+Và tính năng chính thứ hai là request aggregation và gateway aggregation.
 
 18
 00:01:19,440 --> 00:01:22,260
-This is part of the gateway aggregation pattern.
+Đây là một phần của gateway aggregation pattern.
 
 19
 00:01:22,260 --> 00:01:22,980
-Features.
+Các tính năng.
 
 20
 00:01:23,010 --> 00:01:29,880
-API gateway can aggregate multiple internal microservices into a single client request.
+API gateway có thể tập hợp nhiều microservices nội bộ thành một yêu cầu từ client duy nhất.
 
 21
 00:01:29,970 --> 00:01:35,610
-With this approach, the client application sends a single request to the API gateway.
+Với phương pháp này, ứng dụng client gửi một yêu cầu duy nhất đến API gateway.
 
 22
 00:01:36,000 --> 00:01:42,510
-After that, API gateway dispatches several requests to the internal microservices and then aggregates
+Sau đó, API gateway gửi nhiều yêu cầu đến các microservices nội bộ và sau đó tập hợp
 
 23
 00:01:42,510 --> 00:01:48,300
-the result and sends everything back to the client application in one single response.
+kết quả và gửi mọi thứ lại cho ứng dụng client trong một phản hồi duy nhất.
 
 24
 00:01:49,530 --> 00:01:50,160
-The main.
+Lợi ích chính.
 
 25
 00:01:50,190 --> 00:01:55,800
-The main benefit of this gateway aggregation pattern is to reduce chattiness communication between the
+Lợi ích chính của mẫu gateway aggregation này là giảm bớt liên lạc nhiều lần giữa
 
 26
 00:01:55,800 --> 00:01:58,020
-client and the back end services.
+client và các dịch vụ back end.
 
 27
 00:01:58,820 --> 00:02:02,960
-Another main benefit is cross-cutting concerns and gateway offloading.
+Một lợi ích chính khác là cross-cutting concerns và gateway offloading.
 
 28
 00:02:02,960 --> 00:02:05,840
-This is part of the gateway offloading pattern.
+Đây là một phần của mẫu gateway offloading.
 
 29
 00:02:05,840 --> 00:02:06,470
-Features.
+Tính năng.
 
 30
 00:02:06,470 --> 00:02:13,580
-Since API gateway handles client requests in centralized places, it is best practice to implement cross-cutting
+Vì API gateway xử lý các yêu cầu từ client ở những nơi tập trung, nên đó là best practice để triển khai các tính năng cross-cutting
 
 31
 00:02:13,580 --> 00:02:15,800
-functionality on the API gateways.
+trên các API gateways.
 
 32
 00:02:15,980 --> 00:02:22,520
-The cross-cutting functionalities could be authentication, authorization, service discovery, integration,
+Các tính năng cross-cutting có thể là xác thực, phân quyền, service discovery, tích hợp,
 
 33
 00:02:22,520 --> 00:02:29,360
-response, caching, retry policy, circuit breaker and other operations for resilience, rate limiting,
+caching phản hồi, retry policy, circuit breaker và các thao tác khác để đảm bảo độ tin cậy, rate limiting,
 
 34
 00:02:29,360 --> 00:02:35,420
-throttling, load balancing, logging, tracing, correlation and IP listing, and so on.
+throttling, load balancing, logging, tracing, correlation và IP listing, v.v.
 
 35
 00:02:35,510 --> 00:02:40,550
-You can find the all cross-cutting concerns that can be handled from the API gateway in this list.
+Bạn có thể tìm tất cả các cross-cutting concerns có thể được xử lý từ API gateway trong danh sách này.
 

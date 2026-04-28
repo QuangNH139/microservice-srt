@@ -1,78 +1,78 @@
 1
 00:00:00,110 --> 00:00:04,010
-In this video we are going to learn back end for front end pattern.
+Trong video này chúng ta sẽ học về mẫu backend for frontend.
 
 2
 00:00:05,020 --> 00:00:11,620
-Backend for frontend pattern basically separates API gateways as per the specific frontend application.
+Mẫu backend for frontend về cơ bản là tách biệt các API gateway theo từng ứng dụng frontend cụ thể.
 
 3
 00:00:12,100 --> 00:00:18,070
-In current design we have several backend services which are consumed by the front end applications,
+Trong thiết kế hiện tại, chúng ta có nhiều backend service được sử dụng bởi các ứng dụng frontend.
 
 4
 00:00:18,070 --> 00:00:24,040
-and between them we put API gateway for handling the routing and aggregate operations.
+và giữa chúng chúng ta đặt API gateway để xử lý routing và các hoạt động tổng hợp.
 
 5
 00:00:24,190 --> 00:00:26,950
-But this makes a single point of failure.
+Nhưng điều này tạo ra một điểm lỗi duy nhất.
 
 6
 00:00:27,130 --> 00:00:34,240
-So in order to solve this problem, backend for frontend offers to create several API gateways and grouping
+Vì vậy, để giải quyết vấn đề này, backend for frontend đề xuất tạo nhiều API gateway và nhóm chúng lại
 
 7
 00:00:34,240 --> 00:00:39,550
-them the client applications according to their boundaries and split them different API gateways.
+theo các ứng dụng client theo ranh giới của chúng và chia tách chúng thành các API gateway khác nhau.
 
 8
 00:00:41,220 --> 00:00:47,190
-A single and complex API gateway can be risky and becoming a bottleneck into your architecture.
+Một API gateway duy nhất và phức tạp có thể rủi ro và trở thành nút cổ chai trong kiến trúc của bạn.
 
 9
 00:00:47,550 --> 00:00:55,380
-Larger systems often expose multiple API gateways by grouping client type like mobile, web, and desktop
+Các hệ thống lớn hơn thường để lộ nhiều API gateway bằng cách nhóm loại client như mobile, web và desktop.
 
 10
 00:00:55,380 --> 00:00:56,370
-functionality.
+chức năng.
 
 11
 00:00:56,460 --> 00:01:02,970
-Back end for front end pattern is useful when you want to avoid customizing a single backend for multiple
+Mẫu backend for frontend rất hữu ích khi bạn muốn tránh tùy chỉnh một backend duy nhất cho nhiều giao diện.
 
 12
 00:01:02,970 --> 00:01:03,930
-interfaces.
+Vì vậy chúng ta nên tạo nhiều API gateway theo từng giao diện người dùng.
 
 13
 00:01:04,980 --> 00:01:09,600
-So we should create several API gateways as per user interfaces.
+Các API gateway này cung cấp sự phù hợp tốt nhất với nhu cầu của môi trường frontend, mà không lo lắng về
 
 14
 00:01:09,630 --> 00:01:16,620
-These API gateways provide to best match the needs of the front end environment, without worrying about
+ảnh hưởng đến các ứng dụng frontend khác.
 
 15
 00:01:16,620 --> 00:01:19,020
-the affecting other front end applications.
+Mẫu backend for frontend cung cấp hướng dẫn để triển khai nhiều gateway.
 
 16
 00:01:19,020 --> 00:01:24,270
-The back end for front end pattern provides directions for implementing multiple gateways.
+Mục đích chính của việc sử dụng mẫu backend for frontend là cung cấp cho các ứng dụng client.
 
 17
 00:01:24,870 --> 00:01:30,450
-The main purpose of using back end for front end pattern is to provide client applications.
+Một giao diện tập trung kết nối với các microservice nội bộ.
 
 18
 00:01:30,450 --> 00:01:34,650
-Has a focused interface that connects with the internal microservices.
+Ví dụ, lượng dữ liệu được sử dụng bởi giao diện người dùng di động có thể khác với lượng dữ liệu được sử dụng bởi
 
 19
 00:01:34,650 --> 00:01:41,220
-For example, data consumption by a mobile user interface could be different from data consumption by
+trình duyệt web.
 
 20
 00:01:41,220 --> 00:01:42,240
@@ -80,25 +80,25 @@ a web browser.
 
 21
 00:01:42,510 --> 00:01:49,920
-In that case, for better data representation, two backend for front end pattern can be used one for
+Trong trường hợp đó, để có biểu diễn dữ liệu tốt hơn, có thể sử dụng hai mô hình backend for front end, một cho
 
 22
 00:01:49,920 --> 00:01:51,570
-the web, one for the mobile.
+web, một cho mobile.
 
 23
 00:01:53,420 --> 00:01:59,180
-Let's have a look at the image on the slide with using multiple backend for front end API gateways.
+Hãy xem hình ảnh trên slide về việc sử dụng nhiều API gateways backend for front end.
 
 24
 00:01:59,210 --> 00:02:06,410
-There are three API gateways one for the web, one for the mobile and another for the desktop applications.
+Có ba API gateways, một cho web, một cho mobile và một khác cho các ứng dụng desktop.
 
 25
 00:02:06,410 --> 00:02:12,890
-So with following backend for front end pattern, we have created three API gateways that can provide
+Vậy bằng cách theo dõi mô hình backend for front end, chúng ta đã tạo ra ba API gateways có thể cung cấp
 
 26
 00:02:12,890 --> 00:02:17,000
-a different APIs tailored for each client application type.
+các API khác nhau được tùy chỉnh cho từng loại ứng dụng khách.
 
