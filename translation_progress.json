@@ -279,5 +279,7 @@
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/017 Health Checks for Ordering Microservices with EF.Core and SQL Server.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/001 Introduction - Microservices Async Communication w RabbitMQ & MassTransit.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/002 Microservices Asynchronous Communication.srt": "done",
-  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/003 Benefits of Asynchronous Communication.srt": "done"
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/003 Benefits of Asynchronous Communication.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/004 Challenges of Asynchronous Communication.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/005 Fan-Out PublishSubscribe Messaging Pattern.srt": "done"
 }
