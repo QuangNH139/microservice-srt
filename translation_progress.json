@@ -261,5 +261,8 @@
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/021 Develop Pagination Class for Query GetOrders using CQRS and MediatR.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/022 Develop GetOrders Query apply Pagination using CQRS and MediatR in Ordering.App.srt": "done",
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/001 Develop Ordering.API Layer with Exposing Minimal REST APIs w Carter.srt": "done",
-  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/002 Analysis the Ordering.API layer in Clean Architecture.srt": "done"
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/002 Analysis the Ordering.API layer in Clean Architecture.srt": "done",
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/003 Program.cs and Dependency Injection class in Ordering.API Layer.srt": "done",
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/004 Developing Order Endpoints for REST APIs in Ordering.API Layer.srt": "done",
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/005 Developing CreateOrder Endpoint for REST APIs in Ordering.API Layer.srt": "done"
 }

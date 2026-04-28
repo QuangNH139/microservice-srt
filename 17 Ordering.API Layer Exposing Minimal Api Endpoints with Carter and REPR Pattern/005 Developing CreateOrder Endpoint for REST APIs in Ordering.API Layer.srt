@@ -1,38 +1,38 @@
 1
 00:00:00,140 --> 00:00:04,220
-In this video we are going to develop, create, order and win class.
+Trong video này chúng ta sẽ phát triển, tạo ra lớp order và win.
 
 2
 00:00:04,310 --> 00:00:08,060
-So we will follow the steps that we are going to write in the last video.
+Vậy chúng ta sẽ theo các bước mà chúng ta sẽ viết trong video trước.
 
 3
 00:00:08,060 --> 00:00:11,390
-And we will start with creating Create Order Request Object.
+Và chúng ta sẽ bắt đầu với việc tạo Create Order Request Object.
 
 4
 00:00:11,390 --> 00:00:12,350
-For that purpose.
+Vì mục đích đó.
 
 5
 00:00:12,350 --> 00:00:15,170
-I'm going to go on top of this class definition.
+Tôi sẽ đi lên trên cùng của định nghĩa lớp này.
 
 6
 00:00:15,170 --> 00:00:22,520
-And after that I will create public record, create order request and order DTO as a taking parameter.
+Và sau đó tôi sẽ tạo public record, create order request và order DTO như một tham số nhận vào.
 
 7
 00:00:22,520 --> 00:00:29,000
-So create order request capture the incoming request data and it contains an order DTO object which
+Vậy create order request capture dữ liệu yêu cầu đến và nó chứa một đối tượng order DTO mà
 
 8
 00:00:29,000 --> 00:00:32,030
-represents the order detail submitted by the client.
+đại diện cho chi tiết đơn hàng được gửi bởi client.
 
 9
 00:00:32,030 --> 00:00:37,280
-So where this order data comes from, as you can see the using statement, it comes from the ordering
+Vậy dữ liệu order này đến từ đâu, như bạn có thể thấy trong using statement, nó đến từ ordering
 
 10
 00:00:37,280 --> 00:00:38,810
@@ -40,87 +40,87 @@ application details folder.
 
 11
 00:00:38,810 --> 00:00:44,780
-So if you remember our reference architecture for the clean architecture and dependencies, you can
+Vậy nếu bạn nhớ lại kiến trúc tham chiếu của chúng ta cho clean architecture và dependencies, bạn có thể
 
 12
 00:00:44,780 --> 00:00:47,750
-see that we are in API layer and in API layer.
+thấy rằng chúng ta ở trong API layer và trong API layer.
 
 13
 00:00:47,780 --> 00:00:52,760
-Getting reference from the application and infrastructure and details comes from the application that
+Getting reference từ application và infrastructure và details đến từ application mà
 
 14
 00:00:52,760 --> 00:00:58,910
-you can check from the ordering application details and see that order DTO comes from in here.
+bạn có thể kiểm tra từ ordering application details và thấy rằng order DTO đến từ đây.
 
 15
 00:00:58,910 --> 00:01:05,239
-So since our ordering API getting reference from the application and infrastructure layer, we can access
+Vậy vì ordering API của chúng ta nhận reference từ application và infrastructure layer, chúng ta có thể truy cập
 
 16
 00:01:05,239 --> 00:01:09,530
-the order details with using statement in the Create Order request object.
+chi tiết order với using statement trong Create Order request object.
 
 17
 00:01:09,530 --> 00:01:14,720
-So as the same way, I'm going to create a response object by following the request object.
+Vậy theo cách tương tự, tôi sẽ tạo một response object bằng cách theo dõi request object.
 
 18
 00:01:14,720 --> 00:01:20,360
-Here you can see that we have created public record create order response and get ID as a parameter
+Ở đây bạn có thể thấy rằng chúng ta đã tạo public record create order response và get ID như một tham số
 
 19
 00:01:20,360 --> 00:01:21,350
-of this response.
+của response này.
 
 20
 00:01:21,350 --> 00:01:27,680
-So that means create order response defines the shape of the response data and it contains the ID of
+Vậy điều đó có nghĩa là create order response định nghĩa hình dạng của dữ liệu response và nó chứa ID của
 
 21
 00:01:27,680 --> 00:01:29,240
-the newly created order.
+đơn hàng mới được tạo.
 
 22
 00:01:29,240 --> 00:01:35,270
-So after created request and response object, we can start to implement our actual create order and
+Vậy sau khi tạo request và response object, chúng ta có thể bắt đầu triển khai chức năng tạo đơn hàng thực tế của chúng ta và
 
 23
 00:01:35,270 --> 00:01:35,930
-print class.
+class in print.
 
 24
 00:01:35,930 --> 00:01:40,550
-So the first start I'm going to start with the I Carter module implementation.
+Vậy đầu tiên tôi sẽ bắt đầu với triển khai Carter module interface.
 
 25
 00:01:40,550 --> 00:01:47,930
-And this interface provide to make this create order as a Carter module in order to expose Http methods.
+Và interface này cung cấp để tạo create order như một Carter module nhằm expose các Http methods.
 
 26
 00:01:47,930 --> 00:01:53,390
-You can see the Carter comes from the our ordering API, NuGet packages that we have downloaded in the
+Bạn có thể thấy Carter đến từ NuGet packages của ordering API của chúng ta mà chúng ta đã tải xuống trong
 
 27
 00:01:53,390 --> 00:01:54,050
-last videos.
+các videos trước đó.
 
 28
 00:01:54,050 --> 00:01:59,600
-So now I'm going to implement these interface members which is the add routes that we can adding the
+Vậy bây giờ tôi sẽ triển khai các interface members đó là add routes mà chúng ta có thể thêm các
 
 29
 00:01:59,600 --> 00:02:03,350
-routes into our application with using and implementing this method.
+routes vào ứng dụng của chúng ta bằng cách sử dụng và triển khai method này.
 
 30
 00:02:03,350 --> 00:02:08,660
-So we will implement these add road methods with using the endpoint route builder.
+Chúng ta sẽ triển khai method add routes này bằng cách sử dụng endpoint route builder.
 
 31
 00:02:08,660 --> 00:02:16,040
-When defining a set of routes for handling Http requests for create order, we are going to use http
+Khi định nghĩa một tập hợp các routes để xử lý Http requests cho create order, chúng ta sẽ sử dụng http
 
 32
 00:02:16,040 --> 00:02:17,000
@@ -128,43 +128,43 @@ post operation.
 
 33
 00:02:17,000 --> 00:02:23,600
-For that purpose, I'm going to remove this throw statement and write app dot map post and with writing
+Cho mục đích đó, tôi sẽ xóa throw statement này và viết app dot map post và khi viết
 
 34
 00:02:23,600 --> 00:02:24,410
-the map post.
+map post.
 
 35
 00:02:24,410 --> 00:02:29,390
-Basically we will define http post endpoint at the path of the orders.
+Cơ bản là chúng ta sẽ định nghĩa http post endpoint tại đường dẫn orders.
 
 36
 00:02:29,480 --> 00:02:35,330
-Here you can see the endpoint URL slash orders and this is the implementation of these endpoint URL
+Ở đây bạn có thể thấy endpoint URL slash orders và đây là triển khai của endpoint URL này
 
 37
 00:02:35,330 --> 00:02:38,510
-when incoming requests comes and hit this point.
+khi incoming requests đến và hit điểm này.
 
 38
 00:02:38,510 --> 00:02:44,630
-And as you can see that I'm going to developing our map post operation which is the endpoint.
+Và như bạn có thể thấy rằng tôi sẽ phát triển map post operation của chúng ta đó là endpoint.
 
 39
 00:02:44,630 --> 00:02:47,510
-And this is the implementation of the asynchronous function.
+Và đây là triển khai của hàm asynchronous.
 
 40
 00:02:47,510 --> 00:02:53,390
-So in this function we basically get a request parameters which is the create order request coming from
+Vậy trong hàm này về cơ bản chúng ta nhận được các request parameters đó là create order request đến từ
 
 41
 00:02:53,390 --> 00:02:54,650
-the request parameters.
+các tham số của request.
 
 42
 00:02:54,650 --> 00:03:01,100
-And the second parameter which is the I sender comes from the mediator will be injected into our asynchronous
+Và tham số thứ hai là I sender đến từ mediator sẽ được inject vào phương thức asynchronous của chúng ta
 
 43
 00:03:01,100 --> 00:03:01,700
@@ -172,67 +172,67 @@ method.
 
 44
 00:03:01,700 --> 00:03:07,070
-So we will develop these delegate handler method with following the steps that we are writing in here.
+Vậy chúng ta sẽ phát triển phương thức delegate handler này bằng cách làm theo các bước mà chúng ta viết ở đây.
 
 45
 00:03:07,070 --> 00:03:13,520
-So the first step is we are going to adapting incoming request object to the command object.
+Vậy bước đầu tiên là chúng ta sẽ ánh xạ incoming request object thành command object.
 
 46
 00:03:13,520 --> 00:03:16,640
-As you can see that we will map the request to create order command.
+Như bạn có thể thấy, chúng ta sẽ map request thành create order command.
 
 47
 00:03:16,640 --> 00:03:23,180
-In this line of code we will use requested map method and adapt is comes from the our maps, library
+Trong dòng code này chúng ta sẽ sử dụng requested map method và adapt đến từ thư viện maps của chúng ta
 
 48
 00:03:23,180 --> 00:03:23,810
-and maps.
+và maps.
 
 49
 00:03:23,810 --> 00:03:28,670
-The library comes from the ordering application that is getting reference from the building blocks for
+Thư viện đó đến từ ứng dụng ordering mà được tham chiếu từ building blocks cho các hoạt động chung và các NuGet packages chung, và hoạt động thứ hai là sử dụng mediator để
 
 50
 00:03:28,670 --> 00:03:35,030
-common operations and common NuGet packages, and the second operation is using the mediator in order
+gửi command này tới phương thức handler tương ứng.
 
 51
 00:03:35,030 --> 00:03:38,090
-to send this command to the corresponding handler method.
+Vậy chúng ta đang tạo một create order command object.
 
 52
 00:03:38,090 --> 00:03:41,420
-So we are creating a create order command object.
+Bây giờ chúng ta có thể gửi command object này bằng cách sử dụng mediator để kích hoạt phương thức handler tương ứng.
 
 53
 00:03:41,420 --> 00:03:47,420
-Now we can send this command object using the mediator in order to trigger corresponding handler method.
+Để làm điều đó, tôi sẽ sử dụng await sender dot send method và truyền command object này
 
 54
 00:03:47,420 --> 00:03:53,570
-For that purpose I'm going to use await that sender dot send method and passing this command object
+làm tham số của mediator sender object, và điều này sẽ trả về một result object, đó là
 
 55
 00:03:53,570 --> 00:03:59,060
-as a parameter of the mediator sender object, and this will be return back a result object, which
+create order result object mà chúng ta cũng có thể tiếp tục map result object này thành
 
 56
 00:03:59,060 --> 00:04:05,570
-is the create order result object that we can also continue to mapping this result object to the our
+response object của chúng ta, cái mà bao gồm created order IDs.
 
 57
 00:04:05,570 --> 00:04:08,870
-response object, which is including the created order IDs.
+Vậy sau khi kích hoạt mediator, bước tiếp theo là chúng ta sẽ lại sử dụng mapper để ánh xạ result
 
 58
 00:04:08,870 --> 00:04:16,279
-So after triggering the mediator, the next step is we will be again using the mapper for adopting result
+object thành create order response object.
 
 59
 00:04:16,279 --> 00:04:18,470
-object to the create order response object.
+Bằng dòng code này, chúng ta sẽ trả về response object bằng cách chuyển đổi result object này thành
 
 60
 00:04:18,470 --> 00:04:24,230
@@ -240,145 +240,145 @@ By this line of code, we will return back the response object with converting th
 
 61
 00:04:24,230 --> 00:04:25,760
-the create order response object.
+đối tượng phản hồi create order.
 
 62
 00:04:25,760 --> 00:04:32,030
-And lastly, we will return these response object to the client application with using the return results
+Và cuối cùng, chúng ta sẽ trả về đối tượng phản hồi này cho ứng dụng client bằng cách sử dụng return results
 
 63
 00:04:32,030 --> 00:04:36,830
-that created method, which is basically response back to Http 201.
+phương thức created, về cơ bản là phản hồi lại với Http 201.
 
 64
 00:04:36,830 --> 00:04:43,430
-Created response with passing the parameters of the endpoint URL definition orders dot order id which
+Created response với truyền các tham số của định nghĩa URL endpoint orders dot order id là
 
 65
 00:04:43,460 --> 00:04:49,820
-incoming response.id and return the whole response object as a response of the client application.
+response.id đến và trả về toàn bộ đối tượng phản hồi như một phản hồi của ứng dụng client.
 
 66
 00:04:49,820 --> 00:04:56,000
-So basically with this line of codes, we will perform the mediator and secure life cycles that we have
+Vậy cơ bản với dòng mã này, chúng ta sẽ thực hiện các vòng đời mediator và bảo mật mà chúng ta đã
 
 67
 00:04:56,000 --> 00:04:57,530
-already seen in our slide.
+thấy trong slide của chúng ta.
 
 68
 00:04:57,530 --> 00:04:59,690
-We will accepting the request incoming.
+Chúng ta sẽ chấp nhận yêu cầu đến.
 
 69
 00:04:59,820 --> 00:05:05,460
-Take us into our request object and we will map this request object to the command object and we will
+Dẫn chúng ta vào đối tượng request của chúng ta và chúng ta sẽ ánh xạ đối tượng request này thành đối tượng command và chúng ta sẽ
 
 70
 00:05:05,460 --> 00:05:08,460
-passing this command object to mediator dot send function.
+truyền đối tượng command này vào hàm mediator dot send.
 
 71
 00:05:08,460 --> 00:05:14,310
-This will be triggered the corresponding command handler to performing use cases and returning the result.
+Điều này sẽ kích hoạt command handler tương ứng để thực hiện các use cases và trả về kết quả.
 
 72
 00:05:14,310 --> 00:05:20,040
-And we will also respawning this result object to mapping the response object and return back to the
+Và chúng ta cũng sẽ ánh xạ lại đối tượng kết quả này để ánh xạ thành đối tượng response và trả về cho
 
 73
 00:05:20,040 --> 00:05:21,060
-client application.
+ứng dụng client.
 
 74
 00:05:21,060 --> 00:05:28,680
-So we will perform all these secrets lifecycle in example of the http post operation to the orders endpoint.
+Vậy chúng ta sẽ thực hiện tất cả các vòng đời này trong ví dụ của HTTP POST operation tới endpoint orders.
 
 75
 00:05:28,680 --> 00:05:34,710
-And after that we can configure these Carter endpoint configuration with passing the extension methods
+Và sau đó chúng ta có thể cấu hình Carter endpoint configuration này bằng cách truyền các extension methods
 
 76
 00:05:34,710 --> 00:05:38,640
-including the with name produce with summary description, and so on.
+bao gồm with name produce with summary description, và tiếp tục.
 
 77
 00:05:38,640 --> 00:05:45,180
-We basically use with name for assigning a name to this endpoint for easy reference, and we will produce
+Về cơ bản chúng ta sử dụng with name để gán một tên cho endpoint này để dễ dàng tham chiếu, và chúng ta sẽ produce
 
 78
 00:05:45,180 --> 00:05:49,260
-use a create order response and this code will be 201 created.
+sử dụng create order response và mã này sẽ là 201 created.
 
 79
 00:05:49,260 --> 00:05:52,770
-And if any problem we will return 400 bad request.
+Và nếu có vấn đề gì, chúng ta sẽ trả về 400 bad request.
 
 80
 00:05:52,770 --> 00:05:57,930
-And you can also configure the summary and description which provide a brief summary of the endpoint
+Và bạn cũng có thể cấu hình summary và description để cung cấp một tóm tắt ngắn gọn về endpoint
 
 81
 00:05:57,930 --> 00:05:58,560
-purpose.
+mục đích.
 
 82
 00:05:58,560 --> 00:06:01,920
-So this is the definition of the create order endpoint.
+Vậy đây là định nghĩa của endpoint create order.
 
 83
 00:06:01,920 --> 00:06:07,740
-If you go on top of this class, you can see that we have several using statements for removing these
+Nếu bạn lên trên cùng của class này, bạn có thể thấy rằng chúng ta có nhiều using statements để loại bỏ những điều này
 
 84
 00:06:07,740 --> 00:06:12,750
-using statement I'm going to create a global using under the ordering API project.
+using statement tôi sẽ tạo một global using trong dự án ordering API.
 
 85
 00:06:12,780 --> 00:06:18,300
-And for that purpose come to ordering API and add new item which name is global using CSS.
+Và cho mục đích đó, hãy vào ordering API và thêm item mới có tên là global using CSS.
 
 86
 00:06:18,300 --> 00:06:23,520
-So you can remove all things in this class, because we will be moving these using statement from the
+Vì vậy bạn có thể xóa tất cả những thứ trong class này, vì chúng ta sẽ di chuyển những using statement này từ
 
 87
 00:06:23,520 --> 00:06:25,140
-create order and Point class.
+class create order và Point.
 
 88
 00:06:25,140 --> 00:06:29,850
-If you open this endpoint class, you can see that these are the common using statements that we are
+Nếu bạn mở class endpoint này, bạn có thể thấy rằng đây là những using statements phổ biến mà chúng ta
 
 89
 00:06:29,850 --> 00:06:31,710
-going to use for all endpoints.
+sẽ sử dụng cho tất cả các endpoints.
 
 90
 00:06:31,710 --> 00:06:34,740
-And this is for specifically create order endpoint.
+Và đây là dành riêng cho endpoint create order.
 
 91
 00:06:34,740 --> 00:06:40,620
-That's why I am leaving the last one and moving the rest of the using statements into our global using.
+Đó là lý do tại sao tôi giữ lại cái cuối cùng và di chuyển phần còn lại của những using statements vào global using của chúng ta.
 
 92
 00:06:40,620 --> 00:06:46,770
-So if you go back to global using and paste in here and write the global keywords in the beginning of
+Vậy nếu bạn quay lại global using và paste vào đây và viết từ khóa global ở đầu
 
 93
 00:06:46,770 --> 00:06:47,880
-this using statement.
+của using statement này.
 
 94
 00:06:47,880 --> 00:06:54,330
-And these will be representing the common packages that we can use the whole endpoint class definitions.
+Và những điều này sẽ đại diện cho các packages phổ biến mà chúng ta có thể sử dụng trong toàn bộ các định nghĩa endpoint class.
 
 95
 00:06:54,330 --> 00:06:58,980
-So if you go back to our create order you can see that we have one using statement.
+Vậy nếu bạn quay lại create order của chúng ta, bạn có thể thấy rằng chúng ta có một using statement.
 
 96
 00:06:58,980 --> 00:07:04,830
-And this is the implementation of the create order endpoint class with using the I Carter module implementation.
+Và đây là triển khai của endpoint class create order với việc sử dụng I Carter module implementation.
 

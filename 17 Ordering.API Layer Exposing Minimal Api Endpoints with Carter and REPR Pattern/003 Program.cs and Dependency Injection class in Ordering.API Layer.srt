@@ -1,58 +1,58 @@
 1
 00:00:00,110 --> 00:00:05,689
-In this video we are going to remembering Program.cs and Dependency Injection class in our ordering
+Trong video này chúng ta sẽ ôn lại Program.cs và lớp Dependency Injection trong ordering
 
 2
 00:00:05,689 --> 00:00:08,630
-API layer and we will install required packages.
+API layer và chúng ta sẽ cài đặt các packages cần thiết.
 
 3
 00:00:08,630 --> 00:00:14,360
-So if you go to the ordering folder you can reach the ordering API, which is the presentation layer
+Vậy nếu bạn đi đến folder ordering, bạn có thể tìm thấy ordering API, đó là presentation layer
 
 4
 00:00:14,360 --> 00:00:20,840
-of our clean Architecture and ordering API is a ASP.Net web API project that, including the program,
+của clean Architecture của chúng ta và ordering API là một ASP.Net web API project mà bao gồm program,
 
 5
 00:00:20,840 --> 00:00:26,750
-says if you open the program says, you can see that at this point we will add services into container.
+nói rằng nếu bạn mở program.cs, bạn có thể thấy rằng tại điểm này chúng ta sẽ thêm services vào container.
 
 6
 00:00:26,750 --> 00:00:33,470
-That means we have calling different extension methods for adding services into ASP.Net dependency injection
+Điều đó có nghĩa là chúng ta đang gọi các extension methods khác nhau để thêm services vào ASP.Net dependency injection
 
 7
 00:00:33,470 --> 00:00:35,450
-according to clean architecture layers.
+theo các layers của clean architecture.
 
 8
 00:00:35,450 --> 00:00:42,020
-So the application is configuring services from different layers, including the application infrastructure
+Vậy application đang cấu hình services từ các layers khác nhau, bao gồm application, infrastructure
 
 9
 00:00:42,020 --> 00:00:43,970
-and API specific services.
+và các services cụ thể của API.
 
 10
 00:00:44,330 --> 00:00:48,770
-And after that, at this point we will configure the Http request pipeline.
+Và sau đó, tại điểm này chúng ta sẽ cấu hình Http request pipeline.
 
 11
 00:00:48,770 --> 00:00:55,460
-That means the use API services method configures the middleware specific to the API, such as the routing
+Điều đó có nghĩa là use API services method cấu hình các middleware cụ thể cho API, chẳng hạn như routing
 
 12
 00:00:55,460 --> 00:01:01,490
-and endpoint handling, and after that we are environment specific configurations.
+và endpoint handling, và sau đó chúng ta có các cấu hình dành riêng cho environment.
 
 13
 00:01:01,490 --> 00:01:05,209
-In development environment the application initialize the database.
+Trong development environment, application sẽ khởi tạo database.
 
 14
 00:01:05,209 --> 00:01:08,690
-So these are the configurations into our ordering API.
+Vậy đây là các cấu hình trong ordering API của chúng ta.
 
 15
 00:01:08,690 --> 00:01:09,500
@@ -60,75 +60,75 @@ Program.cs.
 
 16
 00:01:09,500 --> 00:01:13,340
-So now let's focus on the ASP.Net dependency injection.
+Vậy bây giờ hãy tập trung vào ASP.Net dependency injection.
 
 17
 00:01:13,340 --> 00:01:17,750
-If you come here and go to add API services right click go to definition.
+Nếu bạn đến đây và đi đến add API services, click chuột phải và đi đến definition.
 
 18
 00:01:17,750 --> 00:01:21,980
-You can reach the point where we are defining dependency injections.
+Bạn có thể tìm thấy điểm mà chúng ta đang định nghĩa dependency injections.
 
 19
 00:01:21,980 --> 00:01:28,340
-For ordering API we can go to ordering API dependency Injection and you can reach the eight API services
+Đối với ordering API, chúng ta có thể đi đến ordering API dependency Injection và bạn có thể tìm thấy add API services
 
 20
 00:01:28,340 --> 00:01:32,930
-and use API services extension methods that we are using in the Program.cs.
+và use API services extension methods mà chúng ta đang sử dụng trong Program.cs.
 
 21
 00:01:32,930 --> 00:01:39,410
-So if you look at the add API services, this method is adding the Carter and adding potentially other
+Vậy nếu bạn xem xét phương thức add API services, phương thức này đang thêm Carter và có thể thêm những dịch vụ khác liên quan đến API vào dependency injection của dịch vụ ứng dụng.
 
 22
 00:01:39,410 --> 00:01:43,610
-API related services into the application service dependency injection.
+Đó là lý do tại sao đây là extension method trên IServiceCollection.
 
 23
 00:01:43,610 --> 00:01:47,270
-That's why this is the extension method on the eye service collection.
+Và nếu bạn xem xét use API services, điều này sẽ cấu hình ứng dụng để sử dụng Carter và map các tính năng của Carter để xử lý requests và map các endpoints.
 
 24
 00:01:47,270 --> 00:01:53,630
-And if you look at the use API services, this will configure the application to use Carter and map
+Vậy chúng ta nên thêm các NuGet packages liên quan đến API vào class của chúng ta.
 
 25
 00:01:53,630 --> 00:01:57,500
-Carter functionality for handling requests and mapping the endpoints.
+Và ở đây chúng ta cần Carter library.
 
 26
 00:01:57,500 --> 00:02:01,400
-So we should add the API related NuGet packages into our class.
+Cho mục đích đó.
 
 27
 00:02:01,400 --> 00:02:03,800
-And in here we need a Carter library.
+Tôi sẽ right click vào dependencies của ordering API và manage NuGet packages.
 
 28
 00:02:03,800 --> 00:02:04,820
-For that purpose.
+Ở đây tôi sẽ browse để tìm Carter Library và cài đặt Carter Library vào ordering API layer của chúng ta.
 
 29
 00:02:04,820 --> 00:02:09,919
-I'm going to right click the dependencies of the ordering API and manage NuGet packages.
+Carter Library được sử dụng để định nghĩa các Minimal API endpoints, và nó đơn giản hóa việc tạo và bảo trì routing và request handling cho mục đích đó.
 
 30
 00:02:09,919 --> 00:02:16,460
-In here I am going to browse for the Carter Library and install Carter Library into our ordering API
+Sau khi cài đặt hoàn tất trong ordering API, chúng ta có thể xác nhận rằng chúng ta đã cài đặt Carter thành công vào ordering API của chúng ta, và nếu bạn quay lại dependency injection, chúng ta có thể mở những command sections này, đó là việc đăng ký Carter services vào ASP.NET Core Dependency Injection system.
 
 31
 00:02:16,460 --> 00:02:17,030
-layer.
+Tất nhiên, chúng ta cần thêm một using statement cho Carter.
 
 32
 00:02:17,760 --> 00:02:23,700
-Carter Library is used to define minimal API endpoints, and it simplifies the creation and maintenance
+Và sau đó chúng ta có thể đi đến use API services và mở những command sections này, đó là app.MapCarter.
 
 33
 00:02:23,700 --> 00:02:26,970
-of routing and request handling for that purpose.
+Carter, được cấu hình để ứng dụng sử dụng Carter để xử lý requests một cách hiệu quả, mapping đến
 
 34
 00:02:27,000 --> 00:02:33,030
@@ -160,13 +160,13 @@ Carter which is configured the application to use Carter for request handling ef
 
 41
 00:03:01,560 --> 00:03:03,390
-define minimal API endpoints.
+định nghĩa các Minimal API endpoints.
 
 42
 00:03:03,390 --> 00:03:08,370
-We can say the dependency injection and these extension methods using in the Program.cs.
+Chúng ta có thể nói về dependency injection và các extension methods được sử dụng trong Program.cs.
 
 43
 00:03:08,370 --> 00:03:13,800
-In order to activate our endpoints and exposing our Carter minimal API endpoints.
+Để kích hoạt các endpoints của chúng ta và expose các Carter Minimal API endpoints.
 
