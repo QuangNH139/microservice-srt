@@ -1,6 +1,6 @@
 1
 00:00:00,140 --> 00:00:06,110
-In this video, we are going to start developing shopping web client application into our microservice
+Trong video này, chúng ta sẽ bắt đầu phát triển ứng dụng web client mua sắm vào microservice của chúng ta
 
 2
 00:00:06,110 --> 00:00:06,770
@@ -8,43 +8,43 @@ solution.
 
 3
 00:00:06,770 --> 00:00:12,530
-For that purpose, please open the Visual Studio and go to the solution of the microservices.
+Để làm điều đó, vui lòng mở Visual Studio và đi đến solution của các microservices.
 
 4
 00:00:12,530 --> 00:00:19,040
-So first of all, I'm going to create a naive solution folder under the our solution because we are
+Vậy đầu tiên, tôi sẽ tạo một thư mục solution mới dưới solution của chúng ta vì chúng ta sẽ
 
 5
 00:00:19,040 --> 00:00:22,040
-going to develop client application in a separate folder.
+phát triển ứng dụng client trong một thư mục riêng biệt.
 
 6
 00:00:22,040 --> 00:00:28,520
-For that purpose please right click the solution add new solution folder and give the name as a web
+Để làm điều đó, vui lòng click chuột phải vào solution, chọn Add New Solution Folder và đặt tên là Web
 
 7
 00:00:28,520 --> 00:00:29,030
-apps.
+Apps.
 
 8
 00:00:29,540 --> 00:00:35,150
-By this way, we can encapsulate all client applications under the Web Apps folder, but this folder
+Bằng cách này, chúng ta có thể đóng gói tất cả các ứng dụng client dưới thư mục Web Apps, nhưng thư mục này
 
 9
 00:00:35,150 --> 00:00:38,810
-is a solution folder that need to required creating a real folder.
+là một solution folder mà cần phải tạo một thư mục thực.
 
 10
 00:00:38,810 --> 00:00:43,610
-For that purpose, I am going to create a new folder when creating a new client application project.
+Để làm điều đó, tôi sẽ tạo một thư mục mới khi tạo dự án ứng dụng client mới.
 
 11
 00:00:43,610 --> 00:00:45,740
-So now let's create a new project.
+Vậy bây giờ hãy tạo một dự án mới.
 
 12
 00:00:45,740 --> 00:00:52,010
-I'm going to right click this folder Add New Project and this time we will use ASP.Net Core Web app
+Tôi sẽ click chuột phải vào thư mục này, chọn Add New Project và lần này chúng ta sẽ sử dụng ASP.Net Core Web app
 
 13
 00:00:52,010 --> 00:00:52,940
@@ -52,273 +52,273 @@ razor page.
 
 14
 00:00:52,940 --> 00:00:58,850
-Here you can see the template of the R project ASP.Net Core Web Application razor page.
+Tại đây bạn có thể thấy template của dự án R là ASP.Net Core Web Application razor page.
 
 15
 00:00:58,850 --> 00:01:04,400
-If you double click this template, you can see the project name and location configurations.
+Nếu bạn double click vào template này, bạn có thể thấy các cấu hình tên dự án và vị trí.
 
 16
 00:01:04,400 --> 00:01:08,120
-I'm going to give the project name as a shopping dot web.
+Tôi sẽ đặt tên dự án là shopping.web.
 
 17
 00:01:08,120 --> 00:01:12,860
-And location is important because we are going to select the source folder first of all.
+Và vị trí là quan trọng vì chúng ta sẽ chọn thư mục source trước tiên.
 
 18
 00:01:12,860 --> 00:01:19,550
-And after that we are going to add a Web Apps solution folder in order to create a new folder under
+Và sau đó chúng ta sẽ thêm một solution folder Web Apps để tạo một thư mục mới dưới
 
 19
 00:01:19,550 --> 00:01:25,400
-this web apps and under the web apps, we are going to create shopping dot web client application as
+thư mục này, và dưới Web Apps, chúng ta sẽ tạo ứng dụng client shopping.web
 
 20
 00:01:25,400 --> 00:01:27,800
-a ASP.Net core Web Application razor page.
+như một ASP.Net Core Web Application razor page.
 
 21
 00:01:27,800 --> 00:01:31,850
-So please make sure that your project name and location is correct.
+Vậy hãy chắc chắn rằng tên dự án và vị trí của bạn là chính xác.
 
 22
 00:01:31,850 --> 00:01:37,550
-After that, you can click the next button and you can configure our ASP.Net web application.
+Sau đó, bạn có thể nhấp vào nút tiếp theo và có thể cấu hình ứng dụng web ASP.NET của chúng ta.
 
 23
 00:01:37,550 --> 00:01:39,740
-I'm going to set a framework.
+Tôi sẽ đặt một framework.
 
 24
 00:01:39,890 --> 00:01:45,830
-Net eight authentication type none, configure Https, enable Docker and Docker operating system as
+.NET 8 loại xác thực không, cấu hình Https, bật Docker và hệ điều hành Docker là
 
 25
 00:01:45,830 --> 00:01:46,340
-a Linux.
+Linux.
 
 26
 00:01:46,340 --> 00:01:50,240
-So I am leaving as it is for all configurations and click the create button.
+Vậy tôi để nguyên tất cả các cấu hình và nhấp vào nút tạo.
 
 27
 00:01:50,660 --> 00:01:55,400
-And this will be create our first client application which is a soap shopping web application.
+Và điều này sẽ tạo ứng dụng khách đầu tiên của chúng ta, đó là một ứng dụng web mua sắm.
 
 28
 00:01:55,400 --> 00:02:02,630
-So you are going to right click and open File Location and verify that this is created under the source
+Vậy bạn sẽ nhấp chuột phải và mở File Location để xác minh rằng điều này được tạo trong source
 
 29
 00:02:02,630 --> 00:02:06,230
-Web Applications and Shopping Web under source.
+Web Applications và Shopping Web dưới source.
 
 30
 00:02:06,230 --> 00:02:12,050
-We have web application services, building blocks and API gateways as the same with the solution view.
+Chúng ta có web application services, building blocks và API gateways giống như trong solution view.
 
 31
 00:02:12,080 --> 00:02:16,280
-So we have created shopping web client application under the web application folder.
+Vậy chúng ta đã tạo ứng dụng khách shopping web dưới thư mục web application.
 
 32
 00:02:16,280 --> 00:02:21,860
-And now we are going to examine our ASP.Net Core Web Application razor page under the our solution.
+Và bây giờ chúng ta sẽ kiểm tra ứng dụng ASP.NET Core Web Application razor page trong solution của chúng ta.
 
 33
 00:02:21,860 --> 00:02:29,450
-First of all I would like to show you there is a page and WW root folder created due to our template
+Đầu tiên, tôi muốn cho bạn thấy rằng có một page và thư mục WW root được tạo do template
 
 34
 00:02:29,450 --> 00:02:32,420
-project template which is the ASP.Net Core Razor template.
+project template, đó là template ASP.NET Core Razor.
 
 35
 00:02:32,420 --> 00:02:35,570
-And here you can see the pages including the index error.
+Và ở đây bạn có thể thấy các pages bao gồm index và error.
 
 36
 00:02:35,570 --> 00:02:37,010
-And these are the default pages.
+Và đây là các trang mặc định.
 
 37
 00:02:37,010 --> 00:02:43,070
-And under the page we have a subfolder which is a shared that is containing layout and validation script.
+Và dưới pages chúng ta có một thư mục con là shared chứa layout và validation script.
 
 38
 00:02:43,070 --> 00:02:45,260
-Partial says HTML files.
+Các file HTML chia sẻ một phần.
 
 39
 00:02:45,260 --> 00:02:52,550
-So under the root you can find Ccjs and library folders for the client side page.
+Vậy dưới root bạn có thể tìm thấy các thư mục css và library cho trang phía client.
 
 40
 00:02:52,550 --> 00:02:59,090
-And after that you can see that except this file this is typical ASP.Net web application that you can
+Và sau đó bạn có thể thấy rằng ngoại trừ file này, đây là một ứng dụng web ASP.NET điển hình mà bạn có thể
 
 41
 00:02:59,090 --> 00:03:02,870
-see the Program.cs application settings Json file and so on.
+xem tệp Program.cs, application settings Json và những thứ khác.
 
 42
 00:03:02,870 --> 00:03:07,820
-So if you open the program says, you can see that there is a difference comes from the adding the razor
+Vậy nếu bạn mở Program.cs, bạn có thể thấy rằng có sự khác biệt xuất phát từ việc thêm trang Razor
 
 43
 00:03:07,820 --> 00:03:10,970
-page into ASP.Net building dependency injection container.
+vào dependency injection container của ASP.Net.
 
 44
 00:03:10,970 --> 00:03:16,850
-Because we have selected the project template of the razor template, and after building the application,
+Vì chúng ta đã chọn project template của Razor template, và sau khi xây dựng ứng dụng,
 
 45
 00:03:16,850 --> 00:03:24,320
-there is some configured Http request pipelines which including the use http redirections static files,
+có một số Http request pipelines được cấu hình bao gồm sử dụng http redirections, static files,
 
 46
 00:03:24,320 --> 00:03:27,650
-routing authorization and map the razor pages.
+routing, authorization và map các Razor pages.
 
 47
 00:03:27,650 --> 00:03:32,840
-And by this way, this application is become a razor web application and client web application.
+Và bằng cách này, ứng dụng này trở thành một ứng dụng web Razor và ứng dụng web client.
 
 48
 00:03:32,840 --> 00:03:37,610
-If you look at the application settings Json file, this will be the include all configurations for
+Nếu bạn xem tệp application settings Json, điều này sẽ bao gồm tất cả các cấu hình cho
 
 49
 00:03:37,610 --> 00:03:38,810
-the client applications.
+các ứng dụng client.
 
 50
 00:03:38,810 --> 00:03:43,310
-So now I am going to set the port numbers for the shopping web client applications.
+Vậy bây giờ tôi sẽ thiết lập số cổng cho các ứng dụng shopping web client.
 
 51
 00:03:43,310 --> 00:03:46,670
-But before that, let's check the port numbers into our slide.
+Nhưng trước đó, hãy kiểm tra số cổng trong slide của chúng ta.
 
 52
 00:03:46,670 --> 00:03:50,000
-Here you can see that we have created shopping web client application.
+Ở đây bạn có thể thấy rằng chúng ta đã tạo ứng dụng shopping web client.
 
 53
 00:03:50,000 --> 00:03:57,980
-And in the local environment this will be expose 5005 for the Http port and 5055 for the Https port.
+Và trong môi trường local, ứng dụng này sẽ expose cổng 5005 cho HTTP và cổng 5055 cho HTTPS.
 
 54
 00:03:57,980 --> 00:04:05,150
-But in the Docker environment we will expose 6005 for Http 6065 for https ports.
+Nhưng trong môi trường Docker, chúng ta sẽ expose cổng 6005 cho HTTP và 6065 cho cổng HTTPS.
 
 55
 00:04:05,150 --> 00:04:10,160
-So now we are going to set local environment port numbers with these port number values.
+Vậy bây giờ chúng ta sẽ thiết lập số cổng môi trường local với các giá trị số cổng này.
 
 56
 00:04:10,160 --> 00:04:14,330
-Please open the Visual Studio and open the Shopping Web application.
+Vui lòng mở Visual Studio và mở ứng dụng Shopping Web.
 
 57
 00:04:14,330 --> 00:04:20,240
-If you open the properties and open the Launch Settings Json file, you can see the Http and https ports.
+Nếu bạn mở properties và mở tệp Launch Settings Json, bạn có thể thấy cổng HTTP và HTTPS.
 
 58
 00:04:20,240 --> 00:04:24,920
-So now I am going to modify the application URLs for Http.
+Vậy bây giờ tôi sẽ sửa đổi URL ứng dụng cho HTTP.
 
 59
 00:04:24,950 --> 00:04:28,010
-We need to set the 5005.
+Chúng ta cần đặt 5005.
 
 60
 00:04:28,010 --> 00:04:34,670
-And just after that if you go to https profile you can see that we have again http port number which
+Và ngay sau đó, nếu bạn chuyển đến HTTPS profile, bạn có thể thấy rằng chúng ta lại có số cổng HTTP
 
 61
 00:04:34,670 --> 00:04:36,230
-is 5005.
+là 5005.
 
 62
 00:04:36,230 --> 00:04:42,470
-And for https port numbers we need to set 5055 and save this file.
+Và đối với số cổng https, chúng ta cần đặt 5055 và lưu file này.
 
 63
 00:04:42,470 --> 00:04:46,490
-By this way we can run our application into our port mappings.
+Bằng cách này, chúng ta có thể chạy ứng dụng của chúng ta trên các ánh xạ cổng của chúng ta.
 
 64
 00:04:46,490 --> 00:04:49,670
-And this time we will set launch browser as a true.
+Và lần này, chúng ta sẽ đặt launch browser thành true.
 
 65
 00:04:49,670 --> 00:04:54,770
-Since this is the client application, we need to see client application into our browser.
+Vì đây là ứng dụng client, chúng ta cần xem ứng dụng client trong trình duyệt của chúng ta.
 
 66
 00:04:54,770 --> 00:04:59,690
-For that purpose, I'm going to right click the shopping web application set a startup project and.
+Để làm điều đó, tôi sẽ nhấp chuột phải vào shopping web application, đặt nó làm startup project và.
 
 67
 00:04:59,890 --> 00:05:06,640
-After that you can change the the zoning profile docker to https and click this button in order to run
+Sau đó, bạn có thể thay đổi Docker zoning profile thành https và nhấp nút này để chạy
 
 68
 00:05:06,640 --> 00:05:09,820
-https mode or shopping with client application.
+chế độ https hoặc shopping với ứng dụng client.
 
 69
 00:05:09,820 --> 00:05:16,990
-So this will be start our client application and you can verify that this time we will open a browser
+Vậy cách này sẽ khởi động ứng dụng client của chúng ta và bạn có thể xác minh rằng lần này chúng ta sẽ mở một trình duyệt
 
 70
 00:05:16,990 --> 00:05:19,930
-and locating the index page.
+và định vị trang index.
 
 71
 00:05:19,930 --> 00:05:22,810
-Here you can see the localhost 5055.
+Ở đây, bạn có thể thấy localhost 5055.
 
 72
 00:05:22,810 --> 00:05:24,400
-And this is the https port.
+Và đây là cổng https.
 
 73
 00:05:24,400 --> 00:05:29,620
-And here you can see the our index page of the ASP.Net razor web application.
+Và ở đây, bạn có thể thấy trang index của ứng dụng ASP.Net Razor web của chúng ta.
 
 74
 00:05:29,620 --> 00:05:33,280
-You can find these page details under the page and index.
+Bạn có thể tìm thấy chi tiết trang này dưới thư mục Pages và Index.
 
 75
 00:05:33,280 --> 00:05:36,010
-This is our HTML of the first page.
+Đây là HTML của trang đầu tiên của chúng ta.
 
 76
 00:05:36,010 --> 00:05:38,200
-And you can see the first page.
+Và bạn có thể thấy trang đầu tiên.
 
 77
 00:05:38,200 --> 00:05:40,480
-See files under the index page.
+Xem các file dưới trang index.
 
 78
 00:05:40,480 --> 00:05:45,850
-Also, you can check the project console log that is similar with the other microservices, exposing
+Ngoài ra, bạn có thể kiểm tra project console log tương tự với các microservices khác, expose
 
 79
 00:05:45,850 --> 00:05:50,080
-our ASP.Net web application into Http and Https ports.
+ứng dụng ASP.Net web của chúng ta lên các cổng Http và Https.
 
 80
 00:05:50,080 --> 00:05:54,850
-As you can see that we have successfully created and running shopping web client applications under
+Như bạn có thể thấy, chúng ta đã tạo thành công và đang chạy các ứng dụng shopping web client dưới
 
 81
 00:05:54,850 --> 00:05:55,720
-our solution.
+giải pháp của chúng ta.
 
