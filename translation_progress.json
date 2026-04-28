@@ -289,5 +289,7 @@
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/010 Technical Analysis of Async Communication between Basket and Ordering ms.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/011 Steps of Developing Async Communication between Basket and Ordering Microservice.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/012 Create BuildingBlocks.Messaging Shared Class Library for Common Async connection.srt": "done",
-  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/013 Develop BasketCheckout Event in BuildingBlocks.Messaging Shared Class Library.srt": "done"
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/013 Develop BasketCheckout Event in BuildingBlocks.Messaging Shared Class Library.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/014 Develop MassTransit Extention Methods to Register RabbitMQ connection into DI.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/015 Develop MassTransit Extention Methods to Register RabbitMQ connection into DI -2.srt": "done"
 }
