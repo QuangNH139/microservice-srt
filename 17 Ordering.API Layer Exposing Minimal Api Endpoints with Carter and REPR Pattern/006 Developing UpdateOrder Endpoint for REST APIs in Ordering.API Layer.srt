@@ -1,102 +1,102 @@
 1
 00:00:00,140 --> 00:00:05,930
-In this video we are going to develop update order and point class and we will follow the steps.
+Trong video này chúng ta sẽ phát triển lớp update order và point class và chúng ta sẽ làm theo các bước.
 
 2
 00:00:05,930 --> 00:00:10,100
-And here you can see that we will start with creating update Order request.
+Và ở đây bạn có thể thấy rằng chúng ta sẽ bắt đầu bằng cách tạo update Order request.
 
 3
 00:00:10,100 --> 00:00:16,460
-So in here I'm going to create Public Record update order request and taking parameter which is from
+Vậy ở đây tôi sẽ tạo Public Record update order request và nhận tham số từ
 
 4
 00:00:16,460 --> 00:00:18,200
-the order DTO and order.
+order DTO và order.
 
 5
 00:00:18,200 --> 00:00:22,790
-So Update Order request represent the incoming data for the update operation.
+Vậy Update Order request đại diện cho dữ liệu đến cho hoạt động cập nhật.
 
 6
 00:00:22,790 --> 00:00:28,580
-And it contains an order DTO which holds the updated order details with the ID information.
+Và nó chứa một order DTO giữ các chi tiết đơn hàng được cập nhật với thông tin ID.
 
 7
 00:00:28,580 --> 00:00:33,110
-So after that I'm going to also prepare update order response object.
+Vậy sau đó tôi cũng sẽ chuẩn bị đối tượng update order response.
 
 8
 00:00:33,110 --> 00:00:39,980
-And here you can see that we have created public record update order response and Boolean is success
+Và ở đây bạn có thể thấy rằng chúng ta đã tạo public record update order response và Boolean là success
 
 9
 00:00:39,980 --> 00:00:42,140
-as a parameter of this record type.
+như là một tham số của kiểu record này.
 
 10
 00:00:42,140 --> 00:00:48,050
-So basically the update order response define the structure of the response indicating whether the update
+Vậy về cơ bản update order response xác định cấu trúc của response cho biết liệu hoạt động cập nhật
 
 11
 00:00:48,050 --> 00:00:50,330
-operation was successful or not.
+có thành công hay không.
 
 12
 00:00:50,420 --> 00:00:55,880
-After that, we can start to develop our actual class, which is the update order, and I am going to
+Sau đó, chúng ta có thể bắt đầu phát triển lớp thực tế của mình, đó là update order, và tôi sẽ
 
 13
 00:00:55,880 --> 00:01:01,820
-implement from the equator module and implement these interface members, which is the add method.
+triển khai từ equator module và triển khai các member interface này, đó là phương thức add.
 
 14
 00:01:01,820 --> 00:01:08,930
-So basically we have implemented equator module interface and defining the routes for Http request handling.
+Vậy về cơ bản chúng ta đã triển khai interface equator module và xác định các route cho xử lý HTTP request.
 
 15
 00:01:08,930 --> 00:01:15,860
-For performing the update operation, we will utilize map put method in order to define Http put endpoint
+Để thực hiện hoạt động cập nhật, chúng ta sẽ sử dụng phương thức map put để xác định HTTP put endpoint
 
 16
 00:01:15,860 --> 00:01:17,750
-at the path of the slash orders.
+tại đường dẫn /orders.
 
 17
 00:01:17,750 --> 00:01:23,900
-For that purpose, I'm going to remove this throw statement and writing the app dot map put method and
+Vì mục đích đó, tôi sẽ loại bỏ câu lệnh throw này và viết phương thức app dot map put và
 
 18
 00:01:23,900 --> 00:01:27,620
-passing the slash orders endpoint URL as a parameter of the map put.
+truyền URL endpoint /orders như là một tham số của map put.
 
 19
 00:01:27,620 --> 00:01:31,910
-And after that we have asynchronous delegate handler class and method.
+Và sau đó chúng ta có handler class và method delegate không đồng bộ.
 
 20
 00:01:31,910 --> 00:01:37,070
-For this method, we will accommodate the incoming requests and perform the our actual logic.
+Đối với phương thức này, chúng ta sẽ tiếp nhận các request đến và thực hiện logic thực tế của chúng ta.
 
 21
 00:01:37,070 --> 00:01:40,730
-Here you can see that the first parameter is request object, which is.
+Ở đây bạn có thể thấy rằng tham số đầu tiên là request object, đó là.
 
 22
 00:01:40,730 --> 00:01:46,340
-The update order request comes from the incoming request object and the second parameter is I standard
+Update order request đến từ incoming request object và tham số thứ hai là I standard
 
 23
 00:01:46,340 --> 00:01:52,910
-sender object, which is basically injecting mediator I sender interface into our delegate handler method.
+sender object, về cơ bản là injecting mediator I sender interface vào delegate handler method của chúng ta.
 
 24
 00:01:52,910 --> 00:01:56,570
-So after that I'm going to put a implementation of this method.
+Vậy sau đó tôi sẽ đưa ra triển khai của method này.
 
 25
 00:01:56,570 --> 00:02:03,020
-So as the same way we will implement this method with converting incoming request object to the update
+Vậy theo cách tương tự chúng ta sẽ triển khai method này bằng cách chuyển đổi incoming request object thành update
 
 26
 00:02:03,020 --> 00:02:04,190
@@ -104,47 +104,47 @@ command object.
 
 27
 00:02:04,190 --> 00:02:10,400
-And after converting this command object, we basically send this command object to the mediator using
+Và sau khi chuyển đổi command object này, chúng ta về cơ bản sẽ gửi command object này tới mediator sử dụng
 
 28
 00:02:10,400 --> 00:02:12,260
-the standard dot send method.
+phương thức standard dot send.
 
 29
 00:02:12,260 --> 00:02:19,070
-And after that we will converting these responding result object to the our response object, which
+Và sau đó chúng ta sẽ chuyển đổi responding result object này thành response object của chúng ta, đó là
 
 30
 00:02:19,070 --> 00:02:24,680
-is the update or the response object, and return back this response object to the client application.
+update order response object, và trả về response object này cho ứng dụng client.
 
 31
 00:02:24,680 --> 00:02:30,680
-So with this line of code, we basically accept and update all the requests and adapt the request to
+Vậy với dòng code này, chúng ta về cơ bản chấp nhận và cập nhật tất cả các request và điều chỉnh request thành
 
 32
 00:02:30,680 --> 00:02:36,110
-an update order command using the map star and using mediators sender send method.
+update order command sử dụng map star và sử dụng phương thức send của mediators sender.
 
 33
 00:02:36,110 --> 00:02:41,180
-With passing this command object in order to process the command and handle the corresponding handle
+Bằng cách truyền command object này để xử lý command và xử lý corresponding handle
 
 34
 00:02:41,180 --> 00:02:47,030
-method, and also await the result from the command handler and convert the result into our update order
+method, và cũng await kết quả từ command handler và chuyển đổi kết quả thành update order
 
 35
 00:02:47,030 --> 00:02:51,560
-response and return back to that okay response to the client application.
+response của chúng ta và trả về okay response đó cho ứng dụng client.
 
 36
 00:02:51,560 --> 00:02:55,700
-Okay response is returning status 200 okay response.
+Okay response trả về status 200 okay response.
 
 37
 00:02:55,700 --> 00:03:02,210
-And finally we can configure this method using the Carter extension methods, including the with name
+Và cuối cùng chúng ta có thể cấu hình method này sử dụng Carter extension methods, bao gồm with name
 
 38
 00:03:02,210 --> 00:03:02,990
@@ -152,25 +152,25 @@ producers.
 
 39
 00:03:02,990 --> 00:03:05,930
-Producers problem with summary and description.
+Producers problem với summary và description.
 
 40
 00:03:05,930 --> 00:03:09,500
-By this way, we can complete the update order and print class.
+Bằng cách này, chúng ta có thể hoàn thành update order và print class.
 
 41
 00:03:09,500 --> 00:03:13,970
-If you go on top of this page, you can see that we don't have any special using statement.
+Nếu bạn cuộn lên trên cùng trang này, bạn sẽ thấy rằng chúng ta không có bất kỳ using statement đặc biệt nào.
 
 42
 00:03:13,970 --> 00:03:16,850
-This is for the update order command object.
+Đây là cho đối tượng update order command.
 
 43
 00:03:16,850 --> 00:03:23,060
-And here you can see the implementation of the update order endpoint class that we are going to adhering
+Và ở đây bạn có thể thấy triển khai của lớp update order endpoint mà chúng ta sẽ tuân theo
 
 44
 00:03:23,090 --> 00:03:28,280
-to implement wrapper design pattern and implementing Rest API using the Carter.
+để triển khai wrapper design pattern và xây dựng Rest API sử dụng Carter.
 

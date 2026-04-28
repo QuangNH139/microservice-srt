@@ -1,78 +1,78 @@
 1
 00:00:00,110 --> 00:00:04,100
-In this video we are going to develop delayed order endpoint.
+Trong video này chúng ta sẽ phát triển delayed order endpoint.
 
 2
 00:00:04,100 --> 00:00:08,029
-As always, we will follow the steps that we have written in the last video.
+Như mọi khi, chúng ta sẽ tuân theo các bước mà chúng ta đã viết trong video trước.
 
 3
 00:00:08,029 --> 00:00:12,590
-And I'm going to start with creating delayed order request and response object type.
+Và tôi sẽ bắt đầu bằng cách tạo delayed order request và response object type.
 
 4
 00:00:12,590 --> 00:00:16,100
-Here you can see that public record request and response object.
+Ở đây bạn có thể thấy public record request và response object.
 
 5
 00:00:16,100 --> 00:00:22,370
-So in the request object as you can see that we don't require delayed order request record type, since
+Vậy trong request object như bạn có thể thấy rằng chúng ta không cần delayed order request record type, vì
 
 6
 00:00:22,370 --> 00:00:28,730
-the only required information is the ID of the ordered to be deleted, which is obtained directly from
+thông tin bắt buộc duy nhất là ID của đơn hàng cần bị xóa, được lấy trực tiếp từ
 
 7
 00:00:28,730 --> 00:00:30,440
-the request URL parameters.
+các tham số URL của request.
 
 8
 00:00:30,440 --> 00:00:37,010
-That's why we don't define any request object that we get the ID information from the request parameters.
+Đó là lý do tại sao chúng ta không định nghĩa bất kỳ request object nào mà chúng ta lấy thông tin ID từ request parameters.
 
 9
 00:00:37,010 --> 00:00:42,770
-And here you can see the delayed order response object, which is the result of the delete operation
+Và ở đây bạn có thể thấy delayed order response object, đó là kết quả của phép toán delete
 
 10
 00:00:42,770 --> 00:00:44,840
-indicating success or failure.
+cho biết thành công hay thất bại.
 
 11
 00:00:44,900 --> 00:00:50,600
-After that, we can develop our actual class, which is a delayed order implementing Écarter module
+Sau đó, chúng ta có thể phát triển class thực tế, đó là delayed order implementing Carter module
 
 12
 00:00:50,600 --> 00:00:53,930
-and implement the interface members, which is the ID routes.
+và triển khai các interface members, đó là ID routes.
 
 13
 00:00:53,930 --> 00:01:00,770
-So in the add method, we basically uses the map delayed function in order to define a delayed endpoint
+Vậy trong add method, về cơ bản chúng ta sử dụng hàm map delete để định nghĩa một delayed endpoint
 
 14
 00:01:00,770 --> 00:01:04,010
-at the orders slash id and point definition.
+tại orders slash id endpoint definition.
 
 15
 00:01:04,010 --> 00:01:09,470
-So for that purpose I'm going to remove the throw statement and using app dot map delete.
+Vì vậy với mục đích đó tôi sẽ xóa throw statement và sử dụng app dot map delete.
 
 16
 00:01:09,470 --> 00:01:13,310
-And this is the endpoint which is the slash orders slash ID.
+Và đây là endpoint đó là slash orders slash ID.
 
 17
 00:01:13,520 --> 00:01:18,500
-And here you can see the delegate handler function which is accepting two parameters.
+Và ở đây bạn có thể thấy delegate handler function mà đang chấp nhận hai parameters.
 
 18
 00:01:18,500 --> 00:01:23,570
-The first one is with id id comes from the endpoint definition in here.
+Cái đầu tiên là with id, id đến từ endpoint definition ở đây.
 
 19
 00:01:23,570 --> 00:01:30,440
-And the second parameter is I sender sender which is injecting mediator I sender object into our delegate
+Và parameter thứ hai là I sender, sender mà injecting mediator I sender object vào delegate handler function của chúng ta.
 
 20
 00:01:30,470 --> 00:01:31,310
@@ -80,89 +80,89 @@ handler function.
 
 21
 00:01:31,310 --> 00:01:33,680
-So I'm going to implement this function.
+Vậy tôi sẽ triển khai function này.
 
 22
 00:01:33,680 --> 00:01:36,680
-So as you remember that we will follow the same steps.
+Vậy như bạn nhớ rằng chúng ta sẽ làm theo các bước tương tự.
 
 23
 00:01:36,680 --> 00:01:41,990
-The first step is normally we will map the incoming request object to create command object.
+Bước đầu tiên thường là chúng ta sẽ map đối tượng request đến để tạo đối tượng command.
 
 24
 00:01:41,990 --> 00:01:48,950
-But this time I am passing this ID information into command object and directly using the mediator standard
+Nhưng lần này tôi đang truyền thông tin ID này vào đối tượng command và trực tiếp sử dụng mediator standard
 
 25
 00:01:48,950 --> 00:01:54,680
-dot send function and passing the new delete order command object with passing the id information comes
+dot send function và truyền đối tượng delete order command mới với việc truyền thông tin id đến
 
 26
 00:01:54,680 --> 00:01:56,150
-from the request parameters.
+từ các tham số request.
 
 27
 00:01:56,150 --> 00:02:02,990
-So with getting the result object from the delete order command handler, we will adapting the result
+Vậy với việc nhận được đối tượng kết quả từ delete order command handler, chúng ta sẽ adapting đối tượng kết quả
 
 28
 00:02:02,990 --> 00:02:05,660
-object to the delayed order response object.
+thành đối tượng delayed order response.
 
 29
 00:02:05,660 --> 00:02:12,620
-And lastly, we will returning the results that okay function passing the response object to the client
+Và cuối cùng, chúng ta sẽ returning các kết quả rằng okay function truyền đối tượng response cho ứng dụng client
 
 30
 00:02:12,620 --> 00:02:13,520
-application.
+.
 
 31
 00:02:13,640 --> 00:02:17,870
-So this is the implementation of the map delete function.
+Vậy đây là triển khai của function map delete.
 
 32
 00:02:17,870 --> 00:02:24,140
-We basically extract the ID information from the request URL and create a delete order command with
+Chúng ta cơ bản là extract thông tin ID từ URL request và tạo một delete order command với
 
 33
 00:02:24,140 --> 00:02:30,110
-the ID information, and send this command to mediator for processing, handle operation and await the
+thông tin ID, và gửi command này tới mediator để xử lý, xử lý operation và await các
 
 34
 00:02:30,110 --> 00:02:35,540
-results from the command handler and adapted into the delayed order response and returning the client
+kết quả từ command handler và adapted thành delayed order response và returning cho client
 
 35
 00:02:35,540 --> 00:02:37,730
-in a results dot okay function.
+trong một results dot okay function.
 
 36
 00:02:37,730 --> 00:02:45,500
-So after that we can define and configure these http delete endpoint with passing the name summary description
+Vậy sau đó chúng ta có thể define và configure các http delete endpoint với việc truyền name summary description
 
 37
 00:02:45,500 --> 00:02:47,150
-and produces functions.
+và produces functions.
 
 38
 00:02:47,150 --> 00:02:50,270
-And here you can see the implementation of the delete order.
+Và ở đây bạn có thể thấy triển khai của delete order.
 
 39
 00:02:50,270 --> 00:02:53,960
-This is the using statement that comes from the commands delete order.
+Đây là using statement đến từ commands delete order.
 
 40
 00:02:53,960 --> 00:02:56,540
-And these are the delete order requests and response.
+Và đây là delete order requests và response.
 
 41
 00:02:56,540 --> 00:03:00,770
-And this is the delete order actual endpoint class that we are following.
+Và đây là lớp endpoint thực tế delete order mà chúng ta đang theo dõi.
 
 42
 00:03:00,770 --> 00:03:03,830
-The repair design pattern and using the cutter library.
+Mẫu repair design pattern và sử dụng thư viện Carter.
 
