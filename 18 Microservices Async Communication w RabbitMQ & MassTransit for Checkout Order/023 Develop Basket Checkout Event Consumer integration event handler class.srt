@@ -1,14 +1,14 @@
 1
 00:00:00,110 --> 00:00:06,050
-In this video we are going to do the third sub step, which is the Develop the Basket Checkout event
+Trong video này chúng ta sẽ thực hiện bước thứ ba, đó là Phát triển Basket Checkout event consumer integration event handler class để thực hiện các hoạt động checkout và tạo đơn hàng.
 
 2
 00:00:06,050 --> 00:00:11,870
-consumer integration event handler class to perform checkout and order create operations.
+consumer integration event handler class để thực hiện các hoạt động checkout và tạo đơn hàng.
 
 3
 00:00:11,870 --> 00:00:18,980
-So here you can see the ordering application folder structure that we are going to develop orders feature
+Vậy tại đây bạn có thể thấy cấu trúc thư mục ứng dụng ordering mà chúng ta sẽ phát triển orders feature folder.
 
 4
 00:00:18,980 --> 00:00:19,580
@@ -16,39 +16,39 @@ folder.
 
 5
 00:00:19,580 --> 00:00:23,630
-And in this feature folder we have commands queries and event handlers.
+Và trong feature folder này chúng ta có commands queries và event handlers.
 
 6
 00:00:23,630 --> 00:00:27,590
-So in this case we will separate the domain and integration event handling.
+Vậy trong trường hợp này chúng ta sẽ tách biệt domain và integration event handling.
 
 7
 00:00:27,590 --> 00:00:30,260
-And we will develop basket checkout event handler.
+Và chúng ta sẽ phát triển basket checkout event handler.
 
 8
 00:00:30,320 --> 00:00:36,830
-So please open the Visual Studio and go to the ordering API and ordering application layer.
+Vậy hãy mở Visual Studio và đi đến ordering API và ordering application layer.
 
 9
 00:00:36,830 --> 00:00:41,000
-And in this layer we can see that we have a orders feature folder.
+Và trong layer này chúng ta có thể thấy rằng chúng ta có một orders feature folder.
 
 10
 00:00:41,000 --> 00:00:44,870
-And under the event handlers we have two domain event handler.
+Và dưới event handlers chúng ta có hai domain event handler.
 
 11
 00:00:44,870 --> 00:00:48,110
-But this time we will handle the integration events.
+Nhưng lần này chúng ta sẽ xử lý integration events.
 
 12
 00:00:48,110 --> 00:00:53,060
-So we should separate the integration event handler in a separate folder under the orders feature.
+Vậy chúng ta nên tách biệt integration event handler trong một thư mục riêng biệt dưới orders feature.
 
 13
 00:00:53,060 --> 00:00:58,970
-That means we will modify the orders feature folder to include the subfolders for domain and integration
+Điều đó có nghĩa là chúng ta sẽ sửa đổi orders feature folder để bao gồm các thư mục con cho domain và integration
 
 14
 00:00:58,970 --> 00:00:59,750
@@ -56,75 +56,75 @@ event handler.
 
 15
 00:00:59,750 --> 00:01:02,000
-So I'm going to separate the event handlers.
+Vậy tôi sẽ tách biệt event handlers.
 
 16
 00:01:02,000 --> 00:01:08,390
-So first of all we will right click these event handlers and create a new subfolder which is a domain.
+Đầu tiên chúng ta sẽ nhấp chuột phải vào các event handlers này và tạo một thư mục con mới đó là domain.
 
 17
 00:01:08,600 --> 00:01:12,320
-Right click any add new subfolder which is domain.
+Nhấp chuột phải bất kỳ thêm thư mục con mới đó là domain.
 
 18
 00:01:12,320 --> 00:01:19,160
-And also I'm going to right click again event handlers and add new subfolder which name is integration.
+Và cũng tôi sẽ nhấp chuột phải lại event handlers và thêm thư mục con mới có tên là integration.
 
 19
 00:01:19,160 --> 00:01:25,700
-So basically we have created two subfolder under the event handlers of the orders feature folder.
+Vậy về cơ bản chúng ta đã tạo hai thư mục con dưới event handlers của orders feature folder.
 
 20
 00:01:25,700 --> 00:01:29,810
-So that means we will separate the event handlers according to the event types.
+Vậy điều đó có nghĩa là chúng ta sẽ tách biệt event handlers theo các loại event.
 
 21
 00:01:29,810 --> 00:01:34,070
-These are the domain and integration folders in the domain subfolder.
+Đây là các thư mục domain và integration trong thư mục con domain.
 
 22
 00:01:34,070 --> 00:01:40,310
-These will be existing domain event handlers are moved to domain sub folder and in the integration folder
+Các domain event handlers hiện có sẽ được di chuyển đến thư mục con domain và trong thư mục integration
 
 23
 00:01:40,310 --> 00:01:41,120
-this will be.
+đây sẽ là.
 
 24
 00:01:41,120 --> 00:01:46,850
-Any integration folder is created for the handling integration events like basket checkout event.
+Bất kỳ thư mục integration nào được tạo để xử lý các integration events như basket checkout event.
 
 25
 00:01:46,850 --> 00:01:49,790
-So that means we should start with the domain events.
+Vậy điều đó có nghĩa là chúng ta nên bắt đầu với domain events.
 
 26
 00:01:49,790 --> 00:01:53,780
-And we should move existing domain event handlers into domain sub folder.
+Và chúng ta nên di chuyển các domain event handlers hiện có vào thư mục con domain.
 
 27
 00:01:53,780 --> 00:01:56,120
-And we will created a new integration event.
+Và chúng ta sẽ tạo một integration event mới.
 
 28
 00:01:56,120 --> 00:02:00,080
-And we will create a new class which will be the basket checkout integration event.
+Và chúng ta sẽ tạo một class mới sẽ là basket checkout integration event.
 
 29
 00:02:00,080 --> 00:02:03,800
-So let me start with the domain and domain event handlers.
+Vậy hãy để tôi bắt đầu với domain và domain event handlers.
 
 30
 00:02:03,800 --> 00:02:09,530
-Here you can see that I'm going to select these two classes and move to domain sub folder.
+Ở đây bạn có thể thấy rằng tôi sẽ chọn hai class này và di chuyển đến thư mục con domain.
 
 31
 00:02:09,530 --> 00:02:12,680
-This will be representing our domain event handlers.
+Đây sẽ là các domain event handlers của chúng ta.
 
 32
 00:02:12,680 --> 00:02:15,290
-These are the order created and order updated.
+Đây là order created và order updated.
 
 33
 00:02:15,290 --> 00:02:16,160
@@ -132,27 +132,27 @@ Domain handler.
 
 34
 00:02:16,160 --> 00:02:22,700
-Here you can see that these will be automatically updated to namespace according to sub folder structure.
+Ở đây bạn có thể thấy rằng những cái này sẽ tự động được cập nhật namespace theo cấu trúc thư mục con.
 
 35
 00:02:22,700 --> 00:02:26,060
-After that we can create an integration event for our case.
+Sau đó chúng ta có thể tạo một integration event cho trường hợp của chúng ta.
 
 36
 00:02:26,060 --> 00:02:28,370
-Come to the this point and add a new class.
+Đến điểm này và thêm một class mới.
 
 37
 00:02:28,370 --> 00:02:30,950
-Which name is basket checkout event handler.
+Có tên là basket checkout event handler.
 
 38
 00:02:30,950 --> 00:02:34,370
-So this will be representing our integration event handler.
+Vậy đây sẽ là integration event handler của chúng ta.
 
 39
 00:02:34,370 --> 00:02:40,340
-And the handler will be responsible for initiating the order creation process upon receiving the Basket
+Và handler sẽ chịu trách nhiệm khởi tạo quá trình tạo đơn hàng khi nhận được Basket
 
 40
 00:02:40,340 --> 00:02:41,180
@@ -160,43 +160,43 @@ checkout event.
 
 41
 00:02:41,180 --> 00:02:47,900
-And in this class, we will basically implement a consumer Basket checkout event from the Masstransit
+Và trong class này, chúng ta sẽ triển khai một consumer Basket checkout event từ Masstransit
 
 42
 00:02:47,900 --> 00:02:49,400
-in order to handle this event.
+để xử lý event này.
 
 43
 00:02:49,400 --> 00:02:55,040
-So I'm going to start with removing unnecessary using statement and make this class as a public.
+Vậy tôi sẽ bắt đầu bằng cách xóa những using statement không cần thiết và làm cho class này thành public.
 
 44
 00:02:55,040 --> 00:03:00,170
-And in here I'm going to implement this I consumer interface.
+Và ở đây tôi sẽ triển khai interface I consumer này.
 
 45
 00:03:00,170 --> 00:03:04,580
-Here you can see the this interface comes from the Masstransit library.
+Ở đây bạn có thể thấy interface này đến từ thư viện Masstransit.
 
 46
 00:03:04,580 --> 00:03:10,160
-I will choose the generic one and passing the generic argument which is the basket checkout event.
+Tôi sẽ chọn cái generic và truyền tham số generic đó là basket checkout event.
 
 47
 00:03:10,160 --> 00:03:17,270
-This will be representing our event object comes from the Or Building Blocks messaging class library.
+Cái này sẽ đại diện cho event object của chúng ta đến từ lớp thư viện Or Building Blocks messaging.
 
 48
 00:03:17,270 --> 00:03:22,760
-Once we are implementing this interface, you can see that this will be create a new method.
+Khi chúng ta triển khai interface này, bạn có thể thấy nó sẽ tạo một method mới.
 
 49
 00:03:22,760 --> 00:03:24,650
-Which name is consumer method?
+Cái nào tên là consumer method?
 
 50
 00:03:24,650 --> 00:03:30,380
-This consumer method will be handled the basket checkout event consumer operation in the body of this
+Consumer method này sẽ xử lý basket checkout event consumer operation trong body của method này
 
 51
 00:03:30,380 --> 00:03:30,740
@@ -204,19 +204,19 @@ method.
 
 52
 00:03:30,740 --> 00:03:37,520
-And it is taking a parameter which is the consumer context and taking as a basket checkout generic argument
+Và nó nhận một parameter là consumer context và nhận basket checkout làm generic argument
 
 53
 00:03:37,520 --> 00:03:43,100
-into context object and it provides to access to the event data and other message context features.
+vào context object và nó cung cấp quyền truy cập vào event data và các tính năng message context khác.
 
 54
 00:03:43,100 --> 00:03:46,550
-So now we are going to implement this consumer operation.
+Vậy bây giờ chúng ta sẽ triển khai consumer operation này.
 
 55
 00:03:46,550 --> 00:03:52,580
-We will create a new order and start order fulfillment process when we are handling the integration
+Chúng ta sẽ tạo một new order và bắt đầu quá trình order fulfillment khi chúng ta đang xử lý integration
 
 56
 00:03:52,580 --> 00:03:52,940

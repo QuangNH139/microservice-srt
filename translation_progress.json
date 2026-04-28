@@ -298,5 +298,7 @@
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/019 Dual-write Problem and Outbox Pattern.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/020 Ordering Microservices to Subscribe-Consume BasketCheckout event from RabbitMQ.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/021 Register MassTransit RabbitMQ packages into Ordering.Application DI.srt": "done",
-  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/022 OrderCreated Integration Event How Domain Event leads to Integration Event.srt": "done"
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/022 OrderCreated Integration Event How Domain Event leads to Integration Event.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/023 Develop Basket Checkout Event Consumer integration event handler class.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/024 Develop Basket Checkout Event Consumer integration event handler class - 2.srt": "done"
 }
