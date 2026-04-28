@@ -240,5 +240,6 @@
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/025 Run&Test Order Microservices for Dispatch DomainEvents with EF Save Changes.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/001 Develop Ordering.Application Layer with CQRS and MediatR implement the Command.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/002 CQRS (Command Query Responsibility Segregation) Pattern in Ordering microservice.srt": "done",
-  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/003 Event Sourcing Pattern.srt": "done"
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/003 Event Sourcing Pattern.srt": "done",
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/004 CQRS with Event Sourcing Pattern.srt": "done"
 }
