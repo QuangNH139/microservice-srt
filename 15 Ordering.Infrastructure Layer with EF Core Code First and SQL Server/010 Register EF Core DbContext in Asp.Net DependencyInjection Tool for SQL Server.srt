@@ -1,22 +1,22 @@
 1
 00:00:00,140 --> 00:00:07,250
-In this video we are going to do step five which is registering Entity Framework core DB context object
+Trong video này, chúng ta sẽ thực hiện bước năm đó là đăng ký Entity Framework core DB context object
 
 2
 00:00:07,250 --> 00:00:12,890
-into ASP.Net core Dependency Injection container tool for SQL Server Connection.
+vào ASP.Net core Dependency Injection container tool cho kết nối SQL Server.
 
 3
 00:00:13,250 --> 00:00:15,980
-For that purpose, we should go to the Visual Studio.
+Để làm được điều đó, chúng ta nên đi đến Visual Studio.
 
 4
 00:00:15,980 --> 00:00:21,560
-And now where we should register Entity Framework core DB context into Clean Architecture.
+Và bây giờ chúng ta nên đăng ký Entity Framework core DB context vào Clean Architecture ở đâu.
 
 5
 00:00:21,620 --> 00:00:28,670
-Of course we should start with the ordering API Program.cs, where we are registering all objects into
+Tất nhiên chúng ta nên bắt đầu với ordering API Program.cs, nơi chúng ta đang đăng ký tất cả các objects vào
 
 6
 00:00:28,670 --> 00:00:29,690
@@ -24,19 +24,19 @@ ASP.Net core.
 
 7
 00:00:29,690 --> 00:00:35,900
-So you can see that we will register services into Program.cs with using the different layers.
+Vậy bạn có thể thấy rằng chúng ta sẽ đăng ký các services vào Program.cs bằng cách sử dụng các layer khác nhau.
 
 8
 00:00:35,900 --> 00:00:39,740
-For each layer we have separate register operation.
+Cho mỗi layer chúng ta có một separate register operation.
 
 9
 00:00:39,740 --> 00:00:43,670
-That means every layer register its own dependencies.
+Điều đó có nghĩa là mỗi layer đăng ký các dependencies của chính nó.
 
 10
 00:00:43,670 --> 00:00:50,240
-Since we are developing infrastructure layer, we should register Entity Framework core classes into
+Vì chúng ta đang phát triển infrastructure layer, chúng ta nên đăng ký các Entity Framework core classes vào
 
 11
 00:00:50,240 --> 00:00:53,060
@@ -44,87 +44,87 @@ infrastructure layer add infrastructure method.
 
 12
 00:00:53,060 --> 00:00:56,240
-So I'm going to right click and go to definition.
+Vậy tôi sẽ nhấp chuột phải và đi đến definition.
 
 13
 00:00:56,240 --> 00:01:01,700
-You can see that this is located under the ordering the infrastructure layer.
+Bạn có thể thấy rằng cái này được đặt dưới ordering the infrastructure layer.
 
 14
 00:01:01,700 --> 00:01:08,030
-And there is a dependency injection class that we can register all infrastructure related objects in
+Và có một dependency injection class mà chúng ta có thể đăng ký tất cả các infrastructure related objects trong
 
 15
 00:01:08,030 --> 00:01:09,530
-this extension method.
+extension method này.
 
 16
 00:01:09,530 --> 00:01:16,040
-So this class provides to configure and register services specific to infrastructure layer such as the
+Vậy class này cung cấp để configure và đăng ký các services cụ thể của infrastructure layer chẳng hạn như
 
 17
 00:01:16,040 --> 00:01:18,560
-Entity Framework code DB context object.
+Entity Framework core DB context object.
 
 18
 00:01:18,560 --> 00:01:23,060
-So in this class we can see add infrastructure services.
+Vậy trong class này chúng ta có thể thấy add infrastructure services.
 
 19
 00:01:23,060 --> 00:01:29,510
-And this is an extension method for Iservice collection which is used to configure and add services
+Và đây là một extension method cho Iservice collection được sử dụng để configure và add các services
 
 20
 00:01:29,510 --> 00:01:32,570
-to the ASP.Net core dependency injection container.
+vào ASP.Net core dependency injection container.
 
 21
 00:01:32,570 --> 00:01:38,030
-And here you can see that this method is getting a parameter for I configuration.
+Và ở đây bạn có thể thấy rằng phương thức này nhận một tham số cho I configuration.
 
 22
 00:01:38,030 --> 00:01:44,210
-And the parameter allows to access the applications configuration settings such as connection string.
+Và tham số này cho phép truy cập các cài đặt cấu hình của ứng dụng như chuỗi kết nối.
 
 23
 00:01:44,210 --> 00:01:50,570
-So in our case in the beginning of this extension method under the ordering infrastructure we will retrieve
+Vậy trong trường hợp của chúng ta, ở đầu phương thức extension này dưới ordering infrastructure chúng ta sẽ lấy
 
 24
 00:01:50,570 --> 00:01:51,860
-the connection string.
+chuỗi kết nối.
 
 25
 00:01:51,860 --> 00:01:58,160
-And this line fetches the connection string which named database from the application Settings.json
+Và dòng này lấy chuỗi kết nối được đặt tên là database từ file appsettings.json của ứng dụng
 
 26
 00:01:58,160 --> 00:01:58,760
-file.
+.
 
 27
 00:01:58,760 --> 00:02:01,010
-And you can go to Application Settings file.
+Và bạn có thể đi đến file Application Settings.
 
 28
 00:02:01,010 --> 00:02:07,910
-And you can see the database connection settings comes from this place into the order dependency injection
+Và bạn có thể thấy các cài đặt kết nối cơ sở dữ liệu được lấy từ nơi này vào dependency injection
 
 29
 00:02:07,910 --> 00:02:09,530
-of the ordering infrastructure.
+của ordering infrastructure.
 
 30
 00:02:09,530 --> 00:02:16,490
-So after getting the connection settings we can easily register Dbcontext object for that purpose.
+Vậy sau khi lấy cài đặt kết nối, chúng ta có thể dễ dàng đăng ký đối tượng Dbcontext cho mục đích đó.
 
 31
 00:02:16,490 --> 00:02:19,820
-I'm going to uncomment this section of the code.
+Tôi sẽ bỏ comment cho phần mã này.
 
 32
 00:02:19,820 --> 00:02:27,200
-You can come here and see that we basically use services at Dbcontext and adding the application DB
+Bạn có thể đến đây và thấy rằng chúng ta cơ bản sử dụng services add Dbcontext và thêm application DB
 
 33
 00:02:27,200 --> 00:02:27,680
@@ -132,11 +132,11 @@ context.
 
 34
 00:02:27,680 --> 00:02:32,750
-If you come here and you can using the ordering infrastructure data namespace.
+Nếu bạn đến đây và bạn có thể sử dụng namespace ordering infrastructure data.
 
 35
 00:02:32,750 --> 00:02:39,560
-And after that we can come here and options use SQL server and we will using Microsoft Entity Framework
+Và sau đó chúng ta có thể đến đây và options use SQL server và chúng ta sẽ sử dụng Microsoft Entity Framework
 
 36
 00:02:39,560 --> 00:02:39,980
@@ -144,59 +144,59 @@ Core.
 
 37
 00:02:39,980 --> 00:02:47,090
-So after adding these namespaces you can see that we will register application DB context with the dependency
+Vậy sau khi thêm các namespace này, bạn có thể thấy rằng chúng ta sẽ đăng ký application DB context với dependency
 
 38
 00:02:47,090 --> 00:02:53,720
-injection container and configures it to use SQL server with the specified connection string.
+injection container và cấu hình nó để sử dụng SQL server với chuỗi kết nối được chỉ định.
 
 39
 00:02:53,720 --> 00:03:01,580
-So at DB context is an extension method for adding database context services to Entity Framework core.
+Vậy add Dbcontext là một phương thức extension để thêm các dịch vụ database context vào Entity Framework core.
 
 40
 00:03:01,580 --> 00:03:05,060
-You can see that we have lots of using statements for that purpose.
+Bạn có thể thấy rằng chúng ta có rất nhiều using statements cho mục đích đó.
 
 41
 00:03:05,060 --> 00:03:10,100
-I'm going to create a new class under the ordering infrastructure which name is global using.
+Tôi sẽ tạo một class mới trong ordering infrastructure với tên là global using.
 
 42
 00:03:10,100 --> 00:03:17,810
-And I am going to moving these mostly using packages namespaces in the global using statement which
+Và tôi sẽ chuyển các namespace packages using chủ yếu vào global using statement
 
 43
 00:03:17,810 --> 00:03:20,360
-is the ordering infrastructure data.
+là ordering infrastructure data.
 
 44
 00:03:20,360 --> 00:03:26,390
-And also I would like to move in here which is the Microsoft Entity Framework core.
+Và cũng tôi muốn chuyển vào đây Microsoft Entity Framework core.
 
 45
 00:03:26,390 --> 00:03:33,140
-So come here and move these two using statement into the global using save this file.
+Vậy hãy đi vào đây và chuyển hai using statement này vào global using, sau đó lưu file.
 
 46
 00:03:33,140 --> 00:03:38,780
-If you go back to dependency injection I'm going to remove unnecessary using statement including data
+Nếu bạn quay lại dependency injection tôi sẽ xóa unnecessary using statement bao gồm data
 
 47
 00:03:38,780 --> 00:03:39,950
-and infrastructure.
+và infrastructure.
 
 48
 00:03:39,950 --> 00:03:46,820
-So these are the extension namespaces is regarding only these dependency injection class that are not
+Vậy các extension namespace này chỉ liên quan đến dependency injection class mà không
 
 49
 00:03:46,820 --> 00:03:50,960
-using commonly for each operation in the ordering infrastructure.
+được sử dụng phổ biến cho từng operation trong ordering infrastructure.
 
 50
 00:03:50,960 --> 00:03:57,170
-So as you can see that we have successfully registered application DB context into dependency injection
+Vậy như bạn có thể thấy chúng ta đã successfully đăng ký application DB context vào dependency injection
 
 51
 00:03:57,170 --> 00:03:57,710
@@ -204,5 +204,5 @@ class.
 
 52
 00:03:57,710 --> 00:04:03,680
-And we have encapsulated all infrastructure related services into one place.
+Và chúng ta đã encapsulated tất cả infrastructure related services vào một nơi.
 
