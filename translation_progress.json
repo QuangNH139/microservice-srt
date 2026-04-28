@@ -227,5 +227,8 @@
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/012 Create EF Core Migrations for ApplicationDbContext in Ordering.Infrastructure -2.srt": "done",
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/013 Setup SQL Server DB using Docker-compose file for Multi-container Docker Env.srt": "done",
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/014 Run Docker-Compose on Visual Studio to setup SQL Server DB on Docker.srt": "done",
-  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/015 Apply EF Core Migrations to SQL Server DB with Update-Database Command.srt": "done"
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/015 Apply EF Core Migrations to SQL Server DB with Update-Database Command.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/016 Auto Migrate EF Core Entities to SQL Server when Application Startup w Coding.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/017 Seed SQL Server OrderDb using EF Core when Application Startup with Coding.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/018 Seed Product and Orders in SQL Server OrderDb using EF Core when App Startup.srt": "done"
 }

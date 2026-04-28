@@ -1,42 +1,42 @@
 1
 00:00:00,230 --> 00:00:07,490
-In this video we are going to do step seven which is Auto Migrate Entity Framework core entities to
+Trong video này chúng ta sẽ thực hiện bước bảy, đó là Auto Migrate Entity Framework core entities sang
 
 2
 00:00:07,490 --> 00:00:11,420
-SQL server database when application start up with coding.
+SQL server database khi ứng dụng khởi động bằng mã code.
 
 3
 00:00:11,420 --> 00:00:17,810
-So that means we will apply Entity Framework core migrations to the SQL server database using the coding
+Điều đó có nghĩa là chúng ta sẽ áp dụng Entity Framework core migrations sang SQL server database bằng mã code
 
 4
 00:00:17,810 --> 00:00:20,780
-instead of the running update database command.
+thay vì chạy lệnh update database.
 
 5
 00:00:21,200 --> 00:00:27,860
-So if you remember the previous videos, if you go to the step six, you can see that we have running
+Vậy nếu bạn còn nhớ những video trước, nếu bạn xem bước sáu, bạn có thể thấy rằng chúng ta đã chạy
 
 6
 00:00:27,890 --> 00:00:30,950
-two commands when we apply Entity Framework core code.
+hai lệnh khi chúng ta áp dụng Entity Framework core code.
 
 7
 00:00:30,950 --> 00:00:33,260
-First approach to the SQL server database.
+Phương pháp đầu tiên cho SQL server database.
 
 8
 00:00:33,260 --> 00:00:37,430
-These are the add migration command and update database command.
+Đó là lệnh add migration và lệnh update database.
 
 9
 00:00:37,490 --> 00:00:43,490
-In the first command which is created migrations folders and classes, and the second command is.
+Lệnh đầu tiên tạo ra thư mục migrations và các classes, còn lệnh thứ hai là
 
 10
 00:00:43,490 --> 00:00:50,390
-Apply these classes on database by connecting the SQL server with application settings Json file connection
+áp dụng các classes này trên database bằng cách kết nối SQL server với file appsettings.json connection
 
 11
 00:00:50,390 --> 00:00:51,080
@@ -44,59 +44,59 @@ string.
 
 12
 00:00:51,470 --> 00:00:58,100
-But when we deploy all microservices using Docker Compose, we can't run update database command for
+Nhưng khi chúng ta triển khai tất cả các microservices sử dụng Docker Compose, chúng ta không thể chạy lệnh update database cho
 
 13
 00:00:58,100 --> 00:00:59,540
-every deploy operation.
+mỗi lần triển khai.
 
 14
 00:00:59,540 --> 00:01:04,910
-Instead of that, one of the good practice is migrate Entity Framework core classes.
+Thay vào đó, một trong những best practices tốt là migrate các Entity Framework core classes
 
 15
 00:01:04,910 --> 00:01:10,040
-When the application start up using the ASP.Net Core Middleware extensions.
+khi ứng dụng khởi động bằng cách sử dụng ASP.Net Core Middleware extensions.
 
 16
 00:01:10,490 --> 00:01:14,690
-So now we can start to development of these auto migrate operation.
+Vậy bây giờ chúng ta có thể bắt đầu phát triển tính năng auto migrate này.
 
 17
 00:01:14,690 --> 00:01:18,710
-As you can see the example code, we will use application DB context.
+Như bạn có thể thấy trong ví dụ code, chúng ta sẽ sử dụng application DB context.
 
 18
 00:01:18,710 --> 00:01:25,310
-And we will use context database and migrate async command in order to run update database command.
+Và chúng ta sẽ sử dụng context database và lệnh migrate async để chạy lệnh update database.
 
 19
 00:01:25,310 --> 00:01:29,870
-So for that purpose please open the Visual Studio and go to the Program.cs.
+Vì vậy vui lòng mở Visual Studio và đi tới Program.cs.
 
 20
 00:01:29,870 --> 00:01:36,380
-In ordering API, we have program says that we can add the services into ASP.Net container, and we
+Trong Ordering API, chúng ta có program.cs mà chúng ta có thể thêm các services vào ASP.Net container, và chúng ta
 
 21
 00:01:36,380 --> 00:01:39,140
-can also configure the Http request pipelines.
+cũng có thể cấu hình các Http request pipelines.
 
 22
 00:01:39,140 --> 00:01:45,500
-So in here we will add logic in the Program.cs in order to execute database migrations on the startup
+Vậy ở đây chúng ta sẽ thêm logic trong Program.cs để thực thi database migrations khi ứng dụng khởi động
 
 23
 00:01:45,500 --> 00:01:46,700
-of this application.
+của ứng dụng này.
 
 24
 00:01:46,700 --> 00:01:52,130
-And this can be achieved by adding a custom extension method that applies the migration.
+Và điều này có thể đạt được bằng cách thêm một custom extension method để áp dụng migration.
 
 25
 00:01:52,340 --> 00:01:57,080
-If you look at the program says, you can see that we have already developed an extension.
+Nếu bạn xem program, bạn có thể thấy rằng chúng ta đã phát triển một extension.
 
 26
 00:01:57,080 --> 00:01:57,560
@@ -104,35 +104,35 @@ Methods.
 
 27
 00:01:57,560 --> 00:02:03,890
-When registering different layers, including the add application infrastructure and API services.
+Khi đăng ký các layers khác nhau, bao gồm add application infrastructure và API services.
 
 28
 00:02:03,890 --> 00:02:10,280
-And if you go to the add API services, which is located under the dependency injection of the ordering
+Và nếu bạn đi đến add API services, nằm dưới dependency injection của ordering
 
 29
 00:02:10,280 --> 00:02:16,910
-API, you can see that we will add required services into the service collection and for API services.
+API, bạn có thể thấy rằng chúng ta sẽ thêm các required services vào service collection và cho API services.
 
 30
 00:02:16,910 --> 00:02:23,750
-We have also one more method which is the use API services in order to configure the Http request lifecycle.
+Chúng ta cũng có một method khác nữa đó là use API services để cấu hình Http request lifecycle.
 
 31
 00:02:23,750 --> 00:02:28,160
-And this will be adding extension method on the web application object.
+Và điều này sẽ là thêm extension method trên web application object.
 
 32
 00:02:28,160 --> 00:02:35,450
-So I'm going to use these API services in the program says because we will use these app dot use API
+Vậy tôi sẽ sử dụng các API services này trong program vì chúng ta sẽ sử dụng app dot use API
 
 33
 00:02:35,480 --> 00:02:39,350
-services after the following videos.
+services sau các video tiếp theo.
 
 34
 00:02:39,350 --> 00:02:46,460
-And after these using API services, we can configure our application in order to automate and see the
+Và sau khi sử dụng API services này, chúng ta có thể cấu hình ứng dụng của mình để tự động hóa và xem
 
 35
 00:02:46,460 --> 00:02:47,300
@@ -140,179 +140,179 @@ operation.
 
 36
 00:02:47,300 --> 00:02:54,110
-So when configuring the ASP.Net Http request pipeline, it is a good place to database initialization
+Vậy khi cấu hình ASP.Net Http request pipeline, đó là một nơi tốt để database initialization
 
 37
 00:02:54,110 --> 00:02:56,210
-creation and seeding operation.
+creation và seeding operation.
 
 38
 00:02:56,210 --> 00:02:59,120
-And we will perform these operation with extension method.
+Và chúng ta sẽ thực hiện các operation này với extension method.
 
 39
 00:02:59,120 --> 00:03:05,030
-But of course this kind of operation should fall only do development environments for that purpose.
+Nhưng tất nhiên, loại operation này chỉ nên thực hiện trong development environments, vì lý do đó
 
 40
 00:03:05,030 --> 00:03:16,520
-I'm going to put a if statement app dot environment dot is development environment and after confirm
+tôi sẽ đặt một if statement app dot environment dot is development environment và sau khi xác nhận
 
 41
 00:03:16,520 --> 00:03:23,330
-that it is a development environment we can run awaits app dot are custom extension method which will
+rằng đó là một môi trường development mà chúng ta có thể chạy awaits app dot are custom extension method mà chúng ta sắp phát triển.
 
 42
 00:03:23,330 --> 00:03:28,370
-be the initialize database async method that we are going to develop in this video.
+là phương thức initialize database async mà chúng ta sẽ phát triển trong video này.
 
 43
 00:03:28,400 --> 00:03:35,480
-So please also develop these if statement under the these configured Http request pipelines.
+Vì vậy, vui lòng cũng phát triển các if statement dưới những configured Http request pipelines này.
 
 44
 00:03:35,480 --> 00:03:38,900
-And we will put a if statement for its development.
+Và chúng ta sẽ thêm một if statement cho development của nó.
 
 45
 00:03:38,900 --> 00:03:44,780
-And after that we will develop our custom extension method to perform auto migrate and sync operations.
+Và sau đó chúng ta sẽ phát triển custom extension method để thực hiện auto migrate và sync operations.
 
 46
 00:03:44,780 --> 00:03:49,250
-So now it is time to create an extension method for database initialization.
+Vậy bây giờ là lúc tạo một extension method cho database initialization.
 
 47
 00:03:49,250 --> 00:03:54,200
-And I'm going to put this extension method under the ordering infrastructure.
+Và tôi sẽ đặt extension method này dưới ordering infrastructure.
 
 48
 00:03:54,200 --> 00:03:57,920
-For that purpose please go to the Ordering Infrastructure project.
+Để làm điều đó, vui lòng vào project Ordering Infrastructure.
 
 49
 00:03:57,920 --> 00:04:01,280
-And under the data folder I'm going to create a new folder.
+Và dưới thư mục data, tôi sẽ tạo một thư mục mới.
 
 50
 00:04:01,280 --> 00:04:02,840
-Which name is extensions.
+Tên của nó là extensions.
 
 51
 00:04:02,840 --> 00:04:07,460
-If you right click and add new subfolder which name is extensions.
+Nếu bạn right click và add new subfolder tên là extensions.
 
 52
 00:04:07,460 --> 00:04:11,570
-We can create all data related extensions under this folder.
+Chúng ta có thể tạo tất cả data related extensions dưới thư mục này.
 
 53
 00:04:11,570 --> 00:04:16,640
-And I'm going to add a new class which name is Database extensions dot CSS.
+Và tôi sẽ thêm một class mới tên là Database extensions dot CSS.
 
 54
 00:04:16,940 --> 00:04:21,649
-So we will implement these initialized database async method in this place.
+Vì vậy chúng ta sẽ triển khai phương thức initialized database async ở đây.
 
 55
 00:04:21,649 --> 00:04:25,940
-And this method will handle the logic to apply Entity Framework core migrations.
+Và phương thức này sẽ xử lý logic để áp dụng Entity Framework Core migrations.
 
 56
 00:04:25,940 --> 00:04:31,520
-So for that purpose please remove the unnecessary using statement and make this class as a public.
+Vì vậy, để làm điều đó vui lòng xóa unnecessary using statement và đặt class này thành public.
 
 57
 00:04:31,520 --> 00:04:34,010
-And now start for the extension development.
+Và bây giờ bắt đầu phát triển extension.
 
 58
 00:04:34,010 --> 00:04:39,830
-First of all, this class should be a static class in order to create an extension method.
+Đầu tiên, class này phải là một static class để tạo một extension method.
 
 59
 00:04:39,830 --> 00:04:46,700
-And after that we can define our method body which is the public static async, and this will be return
+Và sau đó chúng ta có thể định nghĩa method body của chúng ta, đó là public static async, và nó sẽ return
 
 60
 00:04:46,700 --> 00:04:47,330
-a task.
+một task.
 
 61
 00:04:47,330 --> 00:04:52,340
-And the name of the custom extension method is initialize database async.
+Và tên của custom extension method là initialize database async.
 
 62
 00:04:52,340 --> 00:04:57,200
-And as a parameter we can give these web application and app.
+Và như một parameter chúng ta có thể truyền web application và app.
 
 63
 00:04:57,200 --> 00:04:59,570
-So we will put these extension method.
+Vậy chúng ta sẽ đặt extension method này.
 
 64
 00:04:59,730 --> 00:05:01,620
-On the web application object.
+Trên object web application.
 
 65
 00:05:01,620 --> 00:05:07,380
-So after that we can create a scope which will be getting a service scope for us.
+Vậy sau đó chúng ta có thể tạo một scope để lấy service scope cho chúng ta.
 
 66
 00:05:07,380 --> 00:05:14,610
-And after getting this scope operation we can get required services which is our application DB context.
+Và sau khi có scope này chúng ta có thể lấy các dịch vụ cần thiết đó là application DB context của chúng ta.
 
 67
 00:05:15,120 --> 00:05:20,790
-And in here you can see that we get the application db context using the scope dot service provider
+Và ở đây bạn có thể thấy rằng chúng ta lấy application db context bằng cách sử dụng scope dot service provider
 
 68
 00:05:20,790 --> 00:05:27,330
-dot get required services and we have required application db context in order to run my get async command.
+dot get required services và chúng ta có required application db context để chạy lệnh my get async.
 
 69
 00:05:27,330 --> 00:05:33,810
-And with using this context object, we can run context database and migrate async command.
+Và với sử dụng object context này, chúng ta có thể chạy lệnh context database và migrate async.
 
 70
 00:05:33,810 --> 00:05:37,890
-And this will be perform update command operation.
+Và điều này sẽ thực hiện hoạt động update command.
 
 71
 00:05:37,890 --> 00:05:40,320
-And I'm going to use my get async method.
+Và tôi sẽ sử dụng phương thức my get async của tôi.
 
 72
 00:05:40,320 --> 00:05:46,680
-And after that I would like to use get Awaiter and get result method.
+Và sau đó tôi muốn sử dụng get Awaiter và get result method.
 
 73
 00:05:46,680 --> 00:05:52,260
-So these will be provided to wait until my get operation complete.
+Vậy những điều này sẽ được cung cấp để chờ cho đến khi hoạt động get của tôi hoàn thành.
 
 74
 00:05:52,260 --> 00:05:57,630
-And this will be return task operation when the whole migration is completed.
+Và điều này sẽ trả về task operation khi toàn bộ migration hoàn thành.
 
 75
 00:05:57,630 --> 00:06:02,310
-So basically this calls make update database command operations.
+Vậy về cơ bản những lệnh gọi này thực hiện hoạt động update database command.
 
 76
 00:06:02,310 --> 00:06:06,360
-That means running the SQL scripts on the SQL server database.
+Điều đó có nghĩa là chạy các SQL scripts trên SQL server database.
 
 77
 00:06:06,360 --> 00:06:12,510
-After developing these extension method, it is time to modify the Program.cs to call these initialized
+Sau khi phát triển extension method này, đã đến lúc sửa đổi Program.cs để gọi phương thức initialize
 
 78
 00:06:12,510 --> 00:06:16,860
-database async method during the application startup in development environment.
+database async này trong quá trình khởi động ứng dụng ở development environment.
 
 79
 00:06:16,860 --> 00:06:22,950
-For that purpose, please open the ordering API and Program.cs and come to the displays after the configured
+Vì mục đích đó, vui lòng mở ordering API và Program.cs và đi tới phần displays sau khi configured
 
 80
 00:06:22,950 --> 00:06:24,570
@@ -320,25 +320,25 @@ Http request pipeline.
 
 81
 00:06:24,570 --> 00:06:27,750
-And here you can see that this is getting exception.
+Và ở đây bạn có thể thấy rằng điều này đang gặp exception.
 
 82
 00:06:27,750 --> 00:06:34,320
-In order to do that, I'm going to put a alt enter and adding using statement which is the ordering
+Để làm điều đó, tôi sẽ bấm alt enter và thêm using statement, đó là ordering
 
 83
 00:06:34,320 --> 00:06:36,810
-infrastructure data and extensions.
+infrastructure data và extensions.
 
 84
 00:06:36,810 --> 00:06:44,070
-And after that you can save these Program.cs and these will be provided to our operation in the if statement.
+Và sau đó bạn có thể lưu Program.cs này và những cái này sẽ được cung cấp cho operation của chúng ta trong if statement.
 
 85
 00:06:44,070 --> 00:06:50,370
-Basically these initialize database async method is invoked only if the environment is development,
+Về cơ bản, phương thức initialize database async này được gọi chỉ khi environment là development,
 
 86
 00:06:50,370 --> 00:06:56,640
-and this ensures that the database is updated with the latest migrations upon the application startup.
+và điều này đảm bảo rằng database được cập nhật với những migrations mới nhất khi application khởi động.
 
