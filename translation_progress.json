@@ -213,5 +213,6 @@
   "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/010 Develop DDD Rich-domain model for Order Entities in Order.Domain Layer.srt": "done",
   "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/011 Domain Events in DDD and Domain vs Integration Events.srt": "done",
   "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/012 Develop Order Created and Updated Domain Event in Ordering Microservices.srt": "done",
-  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/001 Develop Ordering.Infrastructure Layer with EF Core Code First Approach.srt": "done"
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/001 Develop Ordering.Infrastructure Layer with EF Core Code First Approach.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/002 EF Core 8 Features, Code First Approach, Migrations and SQL Server Connection.srt": "done"
 }

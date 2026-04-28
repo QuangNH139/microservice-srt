@@ -1,138 +1,138 @@
 1
 00:00:00,230 --> 00:00:06,680
-In this video we are going to learn Entity Framework Core eight features Code First Approach, migrations
+Trong video này, chúng ta sẽ học về các tính năng Entity Framework Core 8, Code First Approach, migrations
 
 2
 00:00:06,680 --> 00:00:08,360
-and SQL Server Connection.
+và SQL Server Connection.
 
 3
 00:00:08,600 --> 00:00:11,810
-So let me start with the what is Entity Framework core.
+Vậy hãy bắt đầu với câu hỏi Entity Framework Core là gì.
 
 4
 00:00:11,960 --> 00:00:18,680
-Entity Framework Core is a lightweight, extensible, open source and cross-platform data access technology.
+Entity Framework Core là một công nghệ truy cập dữ liệu nhẹ, có thể mở rộng, mã nguồn mở và hỗ trợ đa nền tảng.
 
 5
 00:00:19,100 --> 00:00:25,250
-Entity Framework Core can serve as an object relational mapper, which is a ORM tool which enables.
+Entity Framework Core có thể hoạt động như một object relational mapper, là một công cụ ORM giúp
 
 6
 00:00:25,460 --> 00:00:28,430
-Net developers to work with the database using the.
+các lập trình viên .NET làm việc với cơ sở dữ liệu bằng cách sử dụng
 
 7
 00:00:28,580 --> 00:00:34,760
-Net objects, and it eliminates the need for the most of the data access code that typically needs to
+các đối tượng .NET, và nó loại bỏ nhu cầu viết phần lớn các mã truy cập dữ liệu thường phải
 
 8
 00:00:34,760 --> 00:00:39,350
-be written, and Entity Framework Core supports many database engines.
+được viết, và Entity Framework Core hỗ trợ nhiều engine cơ sở dữ liệu.
 
 9
 00:00:39,350 --> 00:00:46,400
-We can see the database providers for details, and here you can see Entity Framework core NuGet packages
+Chúng ta có thể xem các database providers để biết chi tiết, và ở đây bạn có thể thấy các gói NuGet của Entity Framework Core
 
 10
 00:00:46,400 --> 00:00:48,170
-for all DB providers.
+cho tất cả các DB providers.
 
 11
 00:00:48,200 --> 00:00:54,260
-Entity framework Core support different database systems through the use of the database providers,
+Entity Framework Core hỗ trợ các hệ thống cơ sở dữ liệu khác nhau thông qua việc sử dụng các database providers,
 
 12
 00:00:54,260 --> 00:00:59,060
-and each system has its own database provider, which is shipped as a NuGet.
+và mỗi hệ thống có provider cơ sở dữ liệu riêng của nó, được phân phối dưới dạng gói NuGet.
 
 13
 00:00:59,060 --> 00:01:04,569
-Packages An applications should install one or more of these provider packages.
+Các ứng dụng cần cài đặt một hoặc nhiều gói provider này.
 
 14
 00:01:04,569 --> 00:01:08,290
-You can see the common database providers are listed on the slide.
+Bạn có thể thấy các database providers phổ biến được liệt kê trên slide.
 
 15
 00:01:08,290 --> 00:01:11,530
-So these are the SQL server and SQL Azure.
+Vậy đó là SQL Server và SQL Azure.
 
 16
 00:01:11,560 --> 00:01:16,000
-We will use the NuGet package of the Microsoft Entity Framework core SQL server.
+Chúng ta sẽ sử dụng gói NuGet của Microsoft Entity Framework Core SQL Server.
 
 17
 00:01:16,000 --> 00:01:21,460
-And here you can see different databases and different database providers from the Entity Framework
+Và ở đây bạn có thể thấy các cơ sở dữ liệu khác nhau và các database providers khác nhau từ Entity Framework
 
 18
 00:01:21,460 --> 00:01:27,760
-core, including SQLite, cosmos, PostgreSQL, MySQL and in-memory databases.
+Core, bao gồm SQLite, Cosmos, PostgreSQL, MySQL và các cơ sở dữ liệu trong bộ nhớ.
 
 19
 00:01:27,760 --> 00:01:33,760
-And these are the popular high quality open source providers developed and shipped by the community
+Và đó là những providers mã nguồn mở chất lượng cao phổ biến được phát triển và phân phối bởi cộng đồng
 
 20
 00:01:33,760 --> 00:01:35,440
-and the Microsoft itself.
+và chính Microsoft.
 
 21
 00:01:35,770 --> 00:01:42,310
-So now I am going to explain how we can interact this database using the Entity Framework core tooling.
+Vậy bây giờ tôi sẽ giải thích cách chúng ta có thể tương tác với database này bằng cách sử dụng Entity Framework Core tooling.
 
 22
 00:01:42,310 --> 00:01:49,030
-So we can use of tooling for Entity Framework core migrations and reverse engineering scaffolding from
+Vậy chúng ta có thể sử dụng tooling cho Entity Framework Core migrations và reverse engineering scaffolding từ
 
 23
 00:01:49,030 --> 00:01:54,040
-an existing database that require installation of the appropriate tooling package.
+một database hiện có mà yêu cầu cài đặt các gói tooling phù hợp.
 
 24
 00:01:54,040 --> 00:01:57,670
-So we have two ways to use Entity Framework core tooling.
+Vậy chúng ta có hai cách để sử dụng Entity Framework Core tooling.
 
 25
 00:01:57,670 --> 00:02:05,730
-The first way is using dotnet core CLI In this case we can use dotnet EF and Microsoft Entity Framework.
+Cách thứ nhất là sử dụng dotnet core CLI, trong trường hợp này chúng ta có thể sử dụng dotnet EF và Microsoft Entity Framework.
 
 26
 00:02:05,760 --> 00:02:11,130
-Core design NuGet packages for cross platform command line tooling that you can see the commands in
+Core design NuGet packages cho cross platform command line tooling mà bạn có thể thấy các lệnh trong
 
 27
 00:02:11,130 --> 00:02:11,670
-here.
+đây.
 
 28
 00:02:11,670 --> 00:02:15,930
-And the second way is Package Manager Console in Visual Studio.
+Và cách thứ hai là Package Manager Console trong Visual Studio.
 
 29
 00:02:15,960 --> 00:02:22,530
-So in this case we will use Microsoft Entity Framework core tools, NuGet packages for PowerShell tooling
+Vậy trong trường hợp này chúng ta sẽ sử dụng Microsoft Entity Framework Core tools, NuGet packages cho PowerShell tooling
 
 30
 00:02:22,530 --> 00:02:25,830
-that works in the Visual Studio Package Manager console.
+hoạt động trong Package Manager console của Visual Studio.
 
 31
 00:02:25,830 --> 00:02:29,940
-And you can see the package that we are going to use for the Package Manager console.
+Và bạn có thể thấy gói mà chúng ta sẽ sử dụng cho Package Manager console.
 
 32
 00:02:29,940 --> 00:02:34,470
-And please note that tooling packages are different from these two way.
+Và xin lưu ý rằng tooling packages khác nhau từ hai cách này.
 
 33
 00:02:34,500 --> 00:02:35,790
-The first one is the.
+Cách thứ nhất là .
 
 34
 00:02:35,790 --> 00:02:42,720
-Net CLI using the design packages, and the second one is using the Microsoft Entity Framework core
+Net CLI sử dụng design packages, và cách thứ hai là sử dụng Microsoft Entity Framework Core
 
 35
 00:02:42,750 --> 00:02:44,430
@@ -140,15 +140,15 @@ tools NuGet packages.
 
 36
 00:02:44,430 --> 00:02:47,850
-You can also see the installation packages.
+Bạn cũng có thể xem các gói cài đặt.
 
 37
 00:02:47,850 --> 00:02:52,350
-The first one is installing the design package, and the second one is installing the tools package.
+Cách thứ nhất là cài đặt design package, và cách thứ hai là cài đặt tools package.
 
 38
 00:02:52,890 --> 00:02:58,830
-During the course I am going to use these second option, which is the Visual Studio, and using the
+Trong khóa học này tôi sẽ sử dụng tùy chọn thứ hai, đó là Visual Studio, và sử dụng
 
 39
 00:02:58,830 --> 00:03:00,120
@@ -156,5 +156,5 @@ Package Manager console.
 
 40
 00:03:00,120 --> 00:03:06,180
-That's why we will download and install tools packages for Entity Framework Core operations.
+Đó là lý do tại sao chúng ta sẽ tải xuống và cài đặt tools packages cho Entity Framework Core operations.
 
