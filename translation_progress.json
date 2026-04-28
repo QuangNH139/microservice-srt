@@ -254,5 +254,7 @@
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/014 Develop Orders DeleteOrderCommand and Handler using IApplicationDbContext.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/015 Develop MediatR Pipeline Behaviours (Validation, Logging) in Ordering.App.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/016 Develop Domain Event Handlers with MediatR INotificationHandler in Ordering.App.srt": "done",
-  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/017 Develop Domain Event Handlers with MediatR INotificationHandler in Ordering.App.srt": "done"
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/017 Develop Domain Event Handlers with MediatR INotificationHandler in Ordering.App.srt": "done",
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/018 Develop Order Queries with CQRS and MediatR in Ordering.Application Layer.srt": "done",
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/019 Develop Extention method for ProjectToOrderDto use in GetOrders Methods.srt": "done"
 }
