@@ -1,130 +1,130 @@
 1
 00:00:00,170 --> 00:00:06,320
-In this video, we are going to run ordering microservices to automatically migrate and see the order
+Trong video này, chúng ta sẽ chạy ordering microservices để tự động migrate và xem order
 
 2
 00:00:06,320 --> 00:00:09,500
-DB in SQL server using the Entity Framework core.
+DB trong SQL server sử dụng Entity Framework Core.
 
 3
 00:00:09,530 --> 00:00:15,590
-When the application start up for that purpose, make sure that your Docker desktop is up and running.
+Khi ứng dụng khởi động, hãy chắc chắn rằng Docker Desktop của bạn đang chạy.
 
 4
 00:00:15,590 --> 00:00:21,200
-And after that, if you open the Visual Studio and go to Docker Desktop, you can right click and set
+Và sau đó, nếu bạn mở Visual Studio và đi đến Docker Desktop, bạn có thể nhấp chuột phải và đặt
 
 5
 00:00:21,200 --> 00:00:28,610
-a startup project, and you can click run button without debugging in order to activate SQL server database
+một startup project, và bạn có thể nhấp nút run mà không debug để kích hoạt cơ sở dữ liệu SQL server
 
 6
 00:00:28,610 --> 00:00:30,170
-image up and running.
+image đang chạy.
 
 7
 00:00:30,170 --> 00:00:36,380
-So after running this docker compose up command with using Visual Studio, you can confirm from the
+Vậy sau khi chạy lệnh docker compose up này bằng Visual Studio, bạn có thể xác nhận từ
 
 8
 00:00:36,380 --> 00:00:38,510
-Docker compose into Docker Desktop.
+Docker compose trong Docker Desktop.
 
 9
 00:00:38,510 --> 00:00:45,050
-Here you can see that our order db image is up and running now, so that means we can verify the SQL
+Tại đây bạn có thể thấy rằng order db image của chúng ta đang chạy bây giờ, điều đó có nghĩa là chúng ta có thể xác minh SQL
 
 10
 00:00:45,050 --> 00:00:47,960
-server communication from the Visual Studio.
+server communication từ Visual Studio.
 
 11
 00:00:47,960 --> 00:00:55,130
-If you open the SQL Server Object Explorer and connect to localhost under the SQL server, you can connect
+Nếu bạn mở SQL Server Object Explorer và kết nối đến localhost dưới SQL server, bạn có thể kết nối
 
 12
 00:00:55,130 --> 00:00:59,870
-to localhost and under the localhost you can browse the databases.
+đến localhost và dưới localhost bạn có thể duyệt các databases.
 
 13
 00:00:59,870 --> 00:01:06,800
-If you expanding the databases, you can see that we don't have any database under our localhost connection.
+Nếu bạn mở rộng databases, bạn có thể thấy rằng chúng ta không có bất kỳ database nào dưới kết nối localhost của chúng ta.
 
 14
 00:01:06,800 --> 00:01:13,430
-So if there is order db please remove it because we will create with coding one application startup
+Vậy nếu có order db vui lòng xóa nó vì chúng ta sẽ tạo với coding ở một application startup
 
 15
 00:01:13,430 --> 00:01:15,110
-with following the migration folder.
+theo migration folder.
 
 16
 00:01:15,110 --> 00:01:19,940
-But at least we can verify that we have communicated to SQL server database successfully.
+Nhưng ít nhất chúng ta có thể xác minh rằng chúng ta đã kết nối thành công với cơ sở dữ liệu SQL server.
 
 17
 00:01:19,940 --> 00:01:22,100
-And we don't have any databases.
+Và chúng ta không có bất kỳ databases nào.
 
 18
 00:01:22,100 --> 00:01:26,360
-So now I'm going to start ordering API application.
+Vậy bây giờ tôi sẽ bắt đầu ordering API application.
 
 19
 00:01:26,360 --> 00:01:31,820
-And please come here and right click Set Startup Project for ordering API.
+Và vui lòng đến đây và nhấp chuột phải Set Startup Project cho ordering API.
 
 20
 00:01:31,820 --> 00:01:38,420
-And after that before starting this application go to program.cs and put a breakpoint under this if
+Và sau đó trước khi bắt đầu ứng dụng này, hãy đi đến program.cs và đặt một breakpoint dưới if này
 
 21
 00:01:38,420 --> 00:01:39,140
-statement.
+câu lệnh.
 
 22
 00:01:39,140 --> 00:01:41,930
-And this will be running when the application start up.
+Và cái này sẽ chạy khi ứng dụng khởi động.
 
 23
 00:01:41,930 --> 00:01:45,530
-And after that this extension method will be hit the debugger.
+Và sau đó, extension method này sẽ hit vào debugger.
 
 24
 00:01:45,530 --> 00:01:49,640
-Put a breakpoint at the beginning of this initialize database async method.
+Đặt một breakpoint ở đầu của phương thức initialize database async.
 
 25
 00:01:49,640 --> 00:01:50,840
-This will be performed.
+Điều này sẽ được thực hiện.
 
 26
 00:01:50,840 --> 00:01:53,720
-Migrate operation and see the operation at the same method.
+Thao tác Migrate và xem thao tác tại cùng phương thức đó.
 
 27
 00:01:53,720 --> 00:01:57,530
-And you can also put breakpoint in here, which is the seed async method.
+Và bạn cũng có thể đặt breakpoint ở đây, đó là phương thức seed async.
 
 28
 00:01:57,530 --> 00:02:01,700
-So after that we can right click set startup project ordering API.
+Vậy sau đó chúng ta có thể nhấp chuột phải để set startup project thành ordering API.
 
 29
 00:02:01,700 --> 00:02:04,790
-And we are going to run ordering API in https mode.
+Và chúng ta sẽ chạy ordering API ở chế độ https.
 
 30
 00:02:04,790 --> 00:02:11,780
-If you hit the https button this will be start ordering API and this will be trigger our Program.cs.
+Nếu bạn nhấn nút https, điều này sẽ khởi động ordering API và điều này sẽ trigger Program.cs của chúng ta.
 
 31
 00:02:11,780 --> 00:02:17,360
-When the application start up, we are going to check if the environment is development or not.
+Khi ứng dụng khởi động, chúng ta sẽ kiểm tra xem environment có phải là development hay không.
 
 32
 00:02:17,360 --> 00:02:23,270
-We are at development environment and in here we are going to start the initialize database async extension
+Chúng ta đang ở development environment và ở đây chúng ta sẽ khởi động extension initialize database async
 
 33
 00:02:23,270 --> 00:02:23,780
@@ -132,249 +132,249 @@ method.
 
 34
 00:02:23,780 --> 00:02:25,970
-And in this method we will create scope.
+Và trong phương thức này chúng ta sẽ tạo scope.
 
 35
 00:02:25,970 --> 00:02:29,720
-And after that we will get the application db context from this scope.
+Và sau đó chúng ta sẽ lấy application db context từ scope này.
 
 36
 00:02:29,720 --> 00:02:36,380
-And using this context object in order to run migrate commands which are the running the migration folder
+Và sử dụng context object này để chạy các migrate commands, đó là chạy migration folder
 
 37
 00:02:36,380 --> 00:02:40,340
-and create database and create columns for each tables.
+và tạo database và tạo columns cho mỗi bảng.
 
 38
 00:02:40,340 --> 00:02:44,870
-And this will be provide the update command operation with coding.
+Và cái này sẽ cung cấp thao tác update command với coding.
 
 39
 00:02:44,870 --> 00:02:52,010
-And here you can see that these operations take some time in order to create database and tables and
+Và ở đây bạn có thể thấy rằng những thao tác này mất một khoảng thời gian để tạo database, tables và
 
 40
 00:02:52,010 --> 00:02:53,390
-columns and so on.
+columns, v.v.
 
 41
 00:02:53,510 --> 00:02:59,330
-After the schema is created successfully, we will we will continue to our seed operation.
+Sau khi schema được tạo thành công, chúng ta sẽ tiếp tục với thao tác seeding.
 
 42
 00:02:59,330 --> 00:03:03,020
-In here you can see that the migration is completed successfully.
+Tại đây bạn có thể thấy rằng migration đã hoàn thành thành công.
 
 43
 00:03:03,020 --> 00:03:05,780
-And after that it is continuing the seeding operation.
+Và sau đó nó tiếp tục thao tác seeding.
 
 44
 00:03:05,780 --> 00:03:06,980
-As a seeding operation.
+Như một thao tác seeding.
 
 45
 00:03:06,980 --> 00:03:09,320
-We will see the customers product and orders.
+Chúng ta sẽ thấy customers, products và orders.
 
 46
 00:03:09,320 --> 00:03:15,050
-You can go to details and see that if there is no customer, this will be adding range from the our
+Bạn có thể vào chi tiết và xem rằng nếu không có customer, điều này sẽ thêm một phạm vi từ lớp dữ liệu ban đầu của chúng tôi
 
 47
 00:03:15,050 --> 00:03:17,480
-initial data class and save change async.
+và lưu change async.
 
 48
 00:03:17,480 --> 00:03:22,940
-And if you continue with the products, if there is no products, you can see that new product is adding
+Và nếu bạn tiếp tục với products, nếu không có products, bạn có thể thấy rằng product mới được thêm
 
 49
 00:03:22,940 --> 00:03:24,260
-from the initial data.
+từ initial data.
 
 50
 00:03:24,260 --> 00:03:27,110
-We will add four products and save change async.
+Chúng ta sẽ thêm bốn products và lưu change async.
 
 51
 00:03:27,110 --> 00:03:32,780
-That means save the tables on database and we will follow all the same steps for order and order items
+Điều đó có nghĩa là lưu các bảng vào database và chúng ta sẽ làm theo tất cả các bước tương tự cho orders và order items
 
 52
 00:03:32,780 --> 00:03:35,030
-from the database operation.
+từ thao tác database.
 
 53
 00:03:35,030 --> 00:03:40,430
-Here you can see that we got exception, which is the argument out of range exception.
+Tại đây bạn có thể thấy rằng chúng ta gặp một exception, đó là argument out of range exception.
 
 54
 00:03:40,430 --> 00:03:43,370
-So that means we are at the order name record type.
+Vậy điều đó có nghĩa là chúng ta đang ở record type order name.
 
 55
 00:03:43,370 --> 00:03:48,560
-And when we are trying to saving order name with a default length, default length is five.
+Và khi chúng ta đang cố gắng lưu order name với độ dài mặc định, độ dài mặc định là năm.
 
 56
 00:03:48,560 --> 00:03:53,060
-But we are trying to insert new order name which value length is seven.
+Nhưng chúng ta đang cố gắng chèn order name mới có độ dài giá trị là bảy.
 
 57
 00:03:53,060 --> 00:03:59,030
-So I'm going to continue this exception and throwing and accepting exiting these operation.
+Vậy tôi sẽ tiếp tục exception này và throw nó và chấp nhận thoát khỏi thao tác này.
 
 58
 00:03:59,030 --> 00:04:05,150
-So if you go to the initial data you can see that when we are saving the orders as a order name, we
+Vậy nếu bạn vào initial data, bạn có thể thấy rằng khi chúng ta đang lưu orders như một order name, chúng ta
 
 59
 00:04:05,150 --> 00:04:07,310
-are using the order one and order two.
+đang sử dụng order one và order two.
 
 60
 00:04:07,340 --> 00:04:13,700
-But in the order name value object, you can see that we have a business exception about that.
+Nhưng trong order name value object, bạn có thể thấy rằng chúng ta có một business exception về điều đó.
 
 61
 00:04:13,700 --> 00:04:16,730
-The length should not be greater than five.
+Độ dài không được vượt quá năm.
 
 62
 00:04:16,730 --> 00:04:23,600
-For that purpose, I'm going to calculate these names and change the names according to maximum character
+Vì mục đích đó, tôi sẽ tính toán các tên này và thay đổi các tên theo ký tự tối đa.
 
 63
 00:04:23,600 --> 00:04:24,650
-should be five.
+nên là năm.
 
 64
 00:04:24,650 --> 00:04:25,820
-For that purpose.
+Vì mục đích đó.
 
 65
 00:04:25,820 --> 00:04:28,970
-Please change these order names as the order code.
+Vui lòng thay đổi các tên đơn hàng này theo mã đơn hàng.
 
 66
 00:04:28,970 --> 00:04:33,950
-For example order one which is including only five character.
+Ví dụ đơn hàng một chỉ chứa năm ký tự.
 
 67
 00:04:33,950 --> 00:04:37,580
-And in here you can come here or the underscore two.
+Và ở đây bạn có thể đến đây hoặc dấu gạch dưới hai.
 
 68
 00:04:37,610 --> 00:04:39,530
-This will be also five character.
+Cái này cũng sẽ là năm ký tự.
 
 69
 00:04:39,530 --> 00:04:43,910
-And save these initial data and run these application from the scratch.
+Và lưu dữ liệu ban đầu này và chạy ứng dụng này từ đầu.
 
 70
 00:04:43,910 --> 00:04:50,960
-And this will be restart again the ordering API operations and restart for migrate and seeding operation.
+Và cái này sẽ khởi động lại các hoạt động API đơn hàng và khởi động lại để thực hiện migrate và seeding.
 
 71
 00:04:50,960 --> 00:04:52,880
-I'm going to follow the same steps.
+Tôi sẽ thực hiện các bước tương tự.
 
 72
 00:04:52,880 --> 00:04:57,230
-And in here you can see that we will perform the migrate operation.
+Và ở đây bạn có thể thấy rằng chúng ta sẽ thực hiện hoạt động migrate.
 
 73
 00:04:57,230 --> 00:04:59,390
-And after that continue the seeding operation.
+Và sau đó tiếp tục hoạt động seeding.
 
 74
 00:04:59,390 --> 00:04:59,600
-And.
+Và.
 
 75
 00:04:59,740 --> 00:05:04,270
-And this time I'm going to continue and go to the seed orders with items.
+Và lần này tôi sẽ tiếp tục và đi đến seeding orders với items.
 
 76
 00:05:04,270 --> 00:05:09,730
-If there is no order items, we are going to save this order item into database and this time we will
+Nếu không có order items, chúng ta sẽ lưu order item này vào database và lần này chúng ta sẽ
 
 77
 00:05:09,730 --> 00:05:11,800
-perform the saving operation successfully.
+thực hiện hoạt động lưu thành công.
 
 78
 00:05:11,800 --> 00:05:14,770
-Hit F5 and complete the starting operation.
+Bấm F5 và hoàn thành hoạt động khởi động.
 
 79
 00:05:14,770 --> 00:05:17,980
-That means complete the migrate and seeding operation.
+Điều đó có nghĩa là hoàn thành hoạt động migrate và seeding.
 
 80
 00:05:17,980 --> 00:05:23,080
-We can verify database create and seeding operation from the SQL Server Object Explorer.
+Chúng ta có thể xác minh việc tạo database và hoạt động seeding từ SQL Server Object Explorer.
 
 81
 00:05:23,080 --> 00:05:28,210
-If you come here and connect to localhost and refresh this databases, and this time you can see that
+Nếu bạn truy cập localhost và làm mới databases này, lần này bạn có thể thấy rằng
 
 82
 00:05:28,210 --> 00:05:30,460
-we have ordered the DB database.
+chúng ta đã sắp xếp database DB.
 
 83
 00:05:30,460 --> 00:05:36,730
-And if we expand this database and expand the tables, you can see that our tables entity tables are
+Và nếu chúng ta mở rộng database này và mở rộng các tables, bạn có thể thấy rằng các entity tables của chúng ta
 
 84
 00:05:36,730 --> 00:05:37,720
-created successfully.
+đã được tạo thành công.
 
 85
 00:05:37,720 --> 00:05:44,740
-If you right click the orders and view data, we can verify the seeding operations performed successfully
+Nếu bạn nhấp chuột phải vào orders và xem dữ liệu, chúng ta có thể xác minh rằng các hoạt động seeding được thực hiện thành công
 
 86
 00:05:44,740 --> 00:05:46,570
-in the orders table.
+trong bảng orders.
 
 87
 00:05:46,570 --> 00:05:49,240
-And also you can right click products and View data.
+Và cũng có thể bạn nhấp chuột phải vào products và xem dữ liệu.
 
 88
 00:05:49,240 --> 00:05:54,040
-You can see the new orders and products also created successfully.
+Bạn có thể thấy các orders và products mới cũng được tạo thành công.
 
 89
 00:05:54,220 --> 00:06:00,280
-So as you can see that when we are starting the ordering microservices, the SQL server database order
+Vậy như bạn có thể thấy, khi chúng ta khởi động ordering microservices, database SQL server order
 
 90
 00:06:00,280 --> 00:06:06,340
-db is automatically created and the necessary tables are created and seeded with initial data on the
+db được tạo tự động và các tables cần thiết được tạo và được khởi tạo với dữ liệu ban đầu khi
 
 91
 00:06:06,340 --> 00:06:07,540
-application startup.
+ứng dụng khởi động.
 
 92
 00:06:07,540 --> 00:06:13,330
-You can also confirm all these processes in the logs of the ordering microservices.
+Bạn cũng có thể xác nhận tất cả các quy trình này trong logs của ordering microservices.
 
 93
 00:06:13,330 --> 00:06:18,250
-Here you can see that when the application start up, first of all, we will perform the migrate operations
+Ở đây bạn có thể thấy rằng khi ứng dụng khởi động, đầu tiên, chúng ta sẽ thực hiện các hoạt động migrate
 
 94
 00:06:18,250 --> 00:06:20,290
-with running the create database command.
+bằng cách chạy lệnh create database.
 
 95
 00:06:20,290 --> 00:06:25,420
-And after that we will performing the seeding operations with running the insert into commands.
+Và sau đó chúng ta sẽ thực hiện các hoạt động seeding bằng cách chạy các lệnh insert into.
 
