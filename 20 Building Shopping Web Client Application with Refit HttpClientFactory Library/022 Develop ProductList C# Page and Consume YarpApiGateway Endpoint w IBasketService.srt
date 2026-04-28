@@ -1,46 +1,46 @@
 1
 00:00:00,140 --> 00:00:06,380
-In this video, we are going to develop product model page and consume the Erb API gateway and trains
+Trong video này, chúng tôi sẽ phát triển product model page và consume Erb API gateway và trains
 
 2
 00:00:06,380 --> 00:00:09,560
-with using the API catalog and I basket services.
+bằng cách sử dụng API catalog và I basket services.
 
 3
 00:00:09,560 --> 00:00:12,230
-So for that purpose, let me start the development.
+Vì vậy, để đạt được mục đích đó, hãy để tôi bắt đầu phát triển.
 
 4
 00:00:12,230 --> 00:00:18,050
-I am going to remove unnecessary using statement and come to the class definitions in order to add our
+Tôi sẽ xóa các using statement không cần thiết và đi đến class definitions để thêm
 
 5
 00:00:18,050 --> 00:00:22,820
-primary constructors, which will be the catalog service, our basket service.
+primary constructors của chúng tôi, đó sẽ là catalog service, basket service của chúng tôi.
 
 6
 00:00:22,820 --> 00:00:28,310
-And also we need a Ilogger which is logging operations for the product list model.
+Và chúng tôi cũng cần Ilogger để ghi lại các hoạt động cho product list model.
 
 7
 00:00:28,310 --> 00:00:31,700
-I'm going to change the Ilogger operation as a product list model.
+Tôi sẽ thay đổi Ilogger operation thành product list model.
 
 8
 00:00:31,700 --> 00:00:32,479
-Okay.
+Được rồi.
 
 9
 00:00:32,479 --> 00:00:36,170
-Here you can see that we have injected required services.
+Tại đây bạn có thể thấy rằng chúng tôi đã inject các services được yêu cầu.
 
 10
 00:00:36,170 --> 00:00:39,740
-Now we can start to development of the our properties.
+Bây giờ chúng tôi có thể bắt đầu phát triển các properties của chúng tôi.
 
 11
 00:00:39,740 --> 00:00:45,860
-If you come to the beginning of this class definitions I'm going to create I enumerable string category
+Nếu bạn quay lại đầu class definitions này, tôi sẽ tạo I enumerable string category
 
 12
 00:00:45,860 --> 00:00:46,220
@@ -48,91 +48,91 @@ list.
 
 13
 00:00:46,220 --> 00:00:49,370
-And also I enumerable product model product list.
+Và cũng là I enumerable product model product list.
 
 14
 00:00:49,370 --> 00:00:54,890
-And these are the empty lists that we can represent into our product list HTML file.
+Và đây là các danh sách trống mà chúng tôi có thể biểu diễn trong product list HTML file của chúng tôi.
 
 15
 00:00:54,890 --> 00:00:58,610
-And we are iterating these objects into our HTML page.
+Và chúng tôi đang lặp lại các objects này vào trang HTML của chúng tôi.
 
 16
 00:00:58,610 --> 00:01:02,660
-When our listing the categories and listing the our products.
+Khi liệt kê các categories và liệt kê các products của chúng tôi.
 
 17
 00:01:02,750 --> 00:01:03,680
-After that.
+Sau đó.
 
 18
 00:01:03,680 --> 00:01:09,830
-After defining these properties, we can continue our defining to HTML members.
+Sau khi định nghĩa các properties này, chúng tôi có thể tiếp tục định nghĩa các HTML members.
 
 19
 00:01:09,830 --> 00:01:17,210
-One of the important HTML member is the selected category and we are using the razor bind property attribute.
+Một trong những HTML member quan trọng là selected category và chúng tôi đang sử dụng razor bind property attribute.
 
 20
 00:01:17,210 --> 00:01:19,550
-Features and support gets as a true.
+Features và support gets as a true.
 
 21
 00:01:19,580 --> 00:01:25,400
-That means we will set the selected category when the application opens the page.
+Điều đó có nghĩa là chúng ta sẽ đặt danh mục được chọn khi ứng dụng mở trang.
 
 22
 00:01:25,400 --> 00:01:29,060
-And now we can check these HTML object into the HTML.
+Và bây giờ chúng ta có thể kiểm tra các HTML object này vào HTML.
 
 23
 00:01:29,060 --> 00:01:35,510
-If you search for the selected category, you can see that we have a Li object that we can change and
+Nếu bạn tìm kiếm danh mục được chọn, bạn có thể thấy rằng chúng ta có một Li object mà chúng ta có thể thay đổi và
 
 24
 00:01:35,510 --> 00:01:37,070
-set the selected category.
+đặt danh mục được chọn.
 
 25
 00:01:37,070 --> 00:01:39,500
-When opening this product list page.
+Khi mở trang danh sách sản phẩm này.
 
 26
 00:01:39,500 --> 00:01:44,780
-And after defining these objects, I'm going to continue to implement our methods.
+Và sau khi xác định các object này, tôi sẽ tiếp tục triển khai các method của chúng ta.
 
 27
 00:01:45,080 --> 00:01:46,070
-We have two methods.
+Chúng ta có hai method.
 
 28
 00:01:46,070 --> 00:01:50,870
-One is on get async and another is on post add to cart operation.
+Một là on get async và cái khác là on post add to cart operation.
 
 29
 00:01:50,870 --> 00:01:53,720
-First of all, let me implement on get async method.
+Trước hết, hãy để tôi triển khai method on get async.
 
 30
 00:01:53,720 --> 00:01:58,100
-I am going to change the method signature which is the public async task.
+Tôi sẽ thay đổi method signature đó là public async task.
 
 31
 00:01:58,100 --> 00:02:04,370
-I action result and name of the on get async as a parameter, we are taking string category name, so
+I action result và tên của on get async làm parameter, chúng ta đang lấy string category name, vì vậy
 
 32
 00:02:04,370 --> 00:02:07,280
-this category name can be come from the selected category.
+category name này có thể đến từ danh mục được chọn.
 
 33
 00:02:07,280 --> 00:02:12,620
-So in the beginning of this method we are going to get the products with using the catalog service.
+Vì vậy ở đầu method này chúng ta sẽ lấy các sản phẩm bằng cách sử dụng catalog service.
 
 34
 00:02:12,620 --> 00:02:18,260
-Here you can see that I have used Await catalog service, get products and get products into response
+Ở đây bạn có thể thấy rằng tôi đã sử dụng Await catalog service, get products và get products vào response
 
 35
 00:02:18,260 --> 00:02:18,890
@@ -140,23 +140,23 @@ object.
 
 36
 00:02:18,980 --> 00:02:25,670
-And just after that we can populate the category list into our object I enumerable string with using
+Và ngay sau đó chúng ta có thể điền danh sách danh mục vào object I enumerable string của chúng ta bằng cách sử dụng
 
 37
 00:02:25,670 --> 00:02:26,840
-this response object.
+response object này.
 
 38
 00:02:26,840 --> 00:02:32,660
-In here you can see that we have set the category list according to the incoming response object products
+Ở đây bạn có thể thấy rằng chúng ta đã đặt category list theo response object products đến
 
 39
 00:02:32,660 --> 00:02:33,620
-and Selectmany.
+và Selectmany.
 
 40
 00:02:33,620 --> 00:02:39,170
-And we have selected categories under the our products with a distinct method.
+Và chúng ta đã chọn các danh mục dưới các sản phẩm của chúng ta với một method distinct.
 
 41
 00:02:39,170 --> 00:02:44,690
@@ -272,7 +272,7 @@ Và ngay sau đó tôi sẽ lấy products với một product ID nhất định
 
 69
 00:04:51,410 --> 00:04:55,760
-Getproduct và truyền product ID và điền vào response sản phẩm.
+getProduct và truyền product ID và điền vào response sản phẩm.
 
 70
 00:04:55,760 --> 00:04:59,810
@@ -280,7 +280,7 @@ Và ngay sau đó tôi sẽ loading thông tin basket.
 
 71
 00:04:59,960 --> 00:05:06,560
-Sử dụng basket services và lấy thông tin basket từ phương thức await basket services load user basket
+Sử dụng basket service và lấy thông tin basket từ phương thức await basket service loadUserBasket
 
 72
 00:05:06,560 --> 00:05:07,220
@@ -292,7 +292,7 @@ Và sau đó tôi sẽ thêm một item mới bao gồm product response.
 
 74
 00:05:12,470 --> 00:05:18,200
-Tại đây bạn có thể thấy rằng chúng ta sẽ sử dụng phương thức basket items add và truyền shopping cart item model mới
+Tại đây bạn có thể thấy rằng chúng ta sẽ sử dụng phương thức basketItems add và truyền ShoppingCartItem model mới
 
 75
 00:05:18,200 --> 00:05:23,870
@@ -300,7 +300,7 @@ và chúng ta sẽ điền product ID, product name, price, quantity và color v
 
 76
 00:05:23,870 --> 00:05:30,200
-ID parameter và product name đến từ product response của hoạt động Getproduct và lấy
+ID parameter và product name đến từ product response của hoạt động getProduct và lấy
 
 77
 00:05:30,200 --> 00:05:36,110
@@ -308,7 +308,7 @@ price từ product response một lần nữa và đặt quantity là một và 
 
 78
 00:05:36,110 --> 00:05:42,890
-Và ngay sau đó, chúng ta có thể gửi await basket store basket và gửi request store basket mới
+Và ngay sau đó, chúng ta có thể gửi await basket storeBasket và gửi request store basket mới
 
 79
 00:05:42,890 --> 00:05:44,630
@@ -400,45 +400,45 @@ nhưng chúng ta không có bất kỳ bảng danh mục nào và category ID.
 
 101
 00:07:16,250 --> 00:07:21,140
-Đó là lý do tại sao tôi sẽ sửa đổi trang HTML này theo mô hình sản phẩm của chúng ta.
+That's why I will modify this HTML page according to our product model.
 
 102
 00:07:21,140 --> 00:07:26,210
-Vì vậy theo mô hình sản phẩm của chúng ta, danh sách category của chúng ta bao gồm string object.
+So according to our product model, our category list includes string object.
 
 103
 00:07:26,210 --> 00:07:31,970
-Đó là lý do tại sao tôi sắp xóa các ID operation này và truyền category name vào đây.
+That's why I'm about to delete these ID operations and pass the category name in here.
 
 104
 00:07:31,970 --> 00:07:35,570
-Vì vậy sau đó tôi sẽ cuộn xuống và xem các exceptions.
+So then I will scroll down and check the exceptions.
 
 105
 00:07:35,570 --> 00:07:35,780
-Ở đây.
+Here.
 
 106
 00:07:35,780 --> 00:07:41,330
-Bạn có thể thấy rằng chúng ta có một summary nhưng chúng ta không có summary property trong product list của chúng ta.
+You can see that we have a summary but we don't have summary property in our product list.
 
 107
 00:07:41,330 --> 00:07:43,910
-Tôi sẽ thay đổi summary thành description ở đây.
+I will change summary to description here.
 
 108
 00:07:43,910 --> 00:07:47,960
-Và sau đó bạn có thể cuộn xuống và kiểm tra các exceptions.
+And then you can scroll down and check the exceptions.
 
 109
 00:07:47,960 --> 00:07:52,820
-Nếu không có exception nào tôi sẽ rebuild lại và xem có exception nào không.
+If there are no exceptions I will rebuild and see if there are any exceptions.
 
 110
 00:07:52,820 --> 00:07:55,550
-Vâng, không có exception nào cho trang product list của chúng ta.
+Yes, there are no exceptions for our product list page.
 
 111
 00:07:55,550 --> 00:08:01,970
-Và chúng ta đã hoàn thành HTML và cũng C-sharp file để liệt kê các sản phẩm vào client application của chúng ta.
+And we have completed the HTML and also C-sharp file to list the products into our client application.
 

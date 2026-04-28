@@ -80,37 +80,39 @@ Save this file.
 
 21
 00:01:20,320 --> 00:01:22,420
-Ở đây bạn có thể thấy trang HTML của chúng tôi.
+Here are the English subtitles translated to Vietnamese:
+
+Here you can see our HTML page.
 
 22
 00:01:22,420 --> 00:01:28,690
-Nếu chúng ta kiểm tra trang HTML này, bạn có thể thấy rằng đây là một trang sản phẩm đơn điển hình bao gồm
+If we inspect this HTML page, you can see that this is a typical product page that includes
 
 23
 00:01:28,690 --> 00:01:34,270
-tất cả các chi tiết về sản phẩm, bao gồm hình ảnh sản phẩm, tên sản phẩm, giá sản phẩm, màu sắc,
+all the product details, including product image, product name, product price, color,
 
 24
 00:01:34,270 --> 00:01:35,080
-và những thứ khác.
+and other things.
 
 25
 00:01:35,080 --> 00:01:37,330
-Vì vậy ở đây bạn có thể thấy các phần ngoại lệ.
+So here you can see the exception parts.
 
 26
 00:01:37,330 --> 00:01:41,350
-Ở đây chúng tôi sẽ phát triển mô hình sản phẩm vào trang C sharp của chúng tôi.
+Here we will develop the product model into our C sharp page.
 
 27
 00:01:41,350 --> 00:01:47,350
-Và sau đó chúng tôi sẽ sửa tất cả những lỗi này để biểu diễn một sản phẩm duy nhất trong trang chi tiết sản phẩm.
+And then we will fix all these errors to represent a single product in the product details page.
 
 28
 00:01:47,350 --> 00:01:53,080
-Và ngoài ra bạn có thể thấy rằng chúng tôi lại thêm thao tác giỏ hàng và biểu mẫu mà chúng tôi có thể gửi để
+And besides you can see that we again add the shopping cart action and form that we can submit to
 
 29
 00:01:53,080 --> 00:01:57,760
-thêm mục vào giỏ hàng mà chúng tôi sẽ xử lý trong trang chi tiết sản phẩm.
+add items to the shopping cart that we will handle in the product details page.
 
