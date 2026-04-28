@@ -185,5 +185,8 @@
   "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/003 Consuming Discount Grpc Service From Basket API Microservice When Adding Cart -2.srt": "done",
   "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/004 Register Discount Grpc Client and Discount Grpc Service into the Basket.API.srt": "done",
   "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/005 Test and Run Discount Grpc and Basket Microservice.srt": "done",
-  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/006 Add Grpc DiscountUrl Configuration in Basket.API image configuration on Docker.srt": "done"
+  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/006 Add Grpc DiscountUrl Configuration in Basket.API image configuration on Docker.srt": "done",
+  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/007 Test on Docker environment - Basket.API communicate with Discount.Grpc in Docker.srt": "done",
+  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/008 Test on Docker - Basket.API communicate with Discount.Grpc in Docker - Part 2.srt": "done",
+  "/home/user/microservice-srt/13 Ordering Microservices with DDD, CQRS and Clean Architecture/001 Introduction - Ordering Microservices with DDD, CQRS and Clean Architecture.srt": "done"
 }
