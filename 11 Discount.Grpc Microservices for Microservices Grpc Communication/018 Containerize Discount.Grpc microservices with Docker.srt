@@ -1,14 +1,14 @@
 1
 00:00:00,170 --> 00:00:05,600
-In this video we are going to containerize discount gRPC microservices with Docker.
+Trong video này, chúng ta sẽ containerize discount gRPC microservices với Docker.
 
 2
 00:00:05,630 --> 00:00:11,990
-Here you can see that our discount gRPC microservices using the SQLite database as a backing services.
+Ở đây bạn có thể thấy rằng discount gRPC microservices của chúng ta sử dụng SQLite database làm backing services.
 
 3
 00:00:11,990 --> 00:00:18,110
-But SQLite database located inside of our application server and not connecting from the Docker backing
+Nhưng SQLite database nằm bên trong application server của chúng ta và không kết nối từ Docker backing
 
 4
 00:00:18,110 --> 00:00:19,430
@@ -16,55 +16,55 @@ services environment.
 
 5
 00:00:19,460 --> 00:00:25,520
-For that purpose, we will containerize our discount microservices, including to our SQLite database,
+Vì mục đích đó, chúng ta sẽ containerize discount microservices của chúng ta, bao gồm SQLite database,
 
 6
 00:00:25,520 --> 00:00:29,960
-and we will containerize with using Docker and continue with the Docker compose environment.
+và chúng ta sẽ containerize bằng cách sử dụng Docker và tiếp tục với Docker compose environment.
 
 7
 00:00:29,990 --> 00:00:34,250
-The first step is Containerizing application server for that purpose.
+Bước đầu tiên là containerize application server vì mục đích đó.
 
 8
 00:00:34,280 --> 00:00:38,570
-Please open the RV studio and right click the discount gRPC.
+Vui lòng mở Visual Studio và nhấp chuột phải vào discount gRPC.
 
 9
 00:00:38,780 --> 00:00:45,110
-You can click the Add Backer support and target operating system should be Linux.
+Bạn có thể nhấp vào Add Docker support và target operating system nên là Linux.
 
 10
 00:00:45,440 --> 00:00:49,460
-And here you can see the generated Docker file from the Visual Studio.
+Và ở đây bạn có thể thấy Docker file được tạo từ Visual Studio.
 
 11
 00:00:49,460 --> 00:00:55,550
-And as you know that this Docker file including different layers including the the first layer, will
+Và như bạn biết rằng Docker file này bao gồm các layers khác nhau, layer đầu tiên sẽ
 
 12
 00:00:55,550 --> 00:01:01,430
-be retrieving the base image, which is using the ASP.Net runtime image version eight.
+truy xuất base image, sử dụng ASP.NET runtime image phiên bản 8.
 
 13
 00:01:01,430 --> 00:01:05,269
-And this will be exposed 8080 and 8081 ports.
+Và điều này sẽ expose ports 8080 và 8081.
 
 14
 00:01:05,269 --> 00:01:07,880
-And we will set up the building stage.
+Và chúng ta sẽ thiết lập building stage.
 
 15
 00:01:07,880 --> 00:01:15,170
-In here we build the environment using the dotnet SDK image, and we basically create a publish layer
+Ở đây chúng ta build environment bằng cách sử dụng dotnet SDK image, và chúng ta cơ bản tạo ra một publish layer
 
 16
 00:01:15,170 --> 00:01:17,270
-with running the dotnet publish command.
+bằng cách chạy lệnh dotnet publish.
 
 17
 00:01:17,270 --> 00:01:24,680
-And lastly we will creating a final Docker image layer and defining Entrypoint with dotnet discount
+Và cuối cùng chúng ta sẽ tạo một final Docker image layer và định nghĩa Entrypoint với dotnet discount
 
 18
 00:01:24,680 --> 00:01:25,880

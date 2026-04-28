@@ -176,5 +176,8 @@
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/014 Develop DiscountService class to Implement Grpc Proto Service Methods.srt": "done",
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/015 Develop CreateDiscount in DiscountService class to Implement CRUD Grpc Proto.srt": "done",
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/016 Develop UpdateDiscount in DiscountService class to Implement CRUD Grpc Proto.srt": "done",
-  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/017 Develop DeleteDiscount in DiscountService class to Implement CRUD Grpc Proto.srt": "done"
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/017 Develop DeleteDiscount in DiscountService class to Implement CRUD Grpc Proto.srt": "done",
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/018 Containerize Discount.Grpc microservices with Docker.srt": "done",
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/019 Orchestrate Discount.Grpc microservices with Docker-compose file.srt": "done",
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/020 TEST - Docker-compose Discount.Grpc microservices with SQLite.srt": "done"
 }
