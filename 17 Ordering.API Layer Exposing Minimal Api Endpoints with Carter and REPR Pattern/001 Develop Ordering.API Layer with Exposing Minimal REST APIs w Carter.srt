@@ -1,142 +1,142 @@
 1
 00:00:00,140 --> 00:00:07,220
-In this section, we are going to develop ordering API layer for exposing minimal Rest APIs with using
+Trong phần này, chúng ta sẽ phát triển API layer cho ordering để expose minimal Rest APIs bằng cách sử dụng
 
 2
 00:00:07,220 --> 00:00:09,620
-Carter following the clean architecture.
+Carter theo clean architecture.
 
 3
 00:00:10,130 --> 00:00:11,840
-And here you can see the big picture.
+Và ở đây bạn có thể thấy bức tranh toàn cảnh.
 
 4
 00:00:11,840 --> 00:00:17,690
-We are still at the ordering microservices, but this time we will focus on API layer.
+Chúng ta vẫn đang ở ordering microservice, nhưng lần này chúng ta sẽ tập trung vào API layer.
 
 5
 00:00:17,690 --> 00:00:22,010
-And here you can see the internal architecture of the ordering microservices.
+Và ở đây bạn có thể thấy kiến trúc bên trong của ordering microservice.
 
 6
 00:00:22,010 --> 00:00:24,770
-We will develop ordering API layer.
+Chúng ta sẽ phát triển ordering API layer.
 
 7
 00:00:24,770 --> 00:00:30,980
-Here you can see that we have finished domain infrastructure application layer and focus on presentation
+Ở đây bạn có thể thấy rằng chúng ta đã hoàn thành domain, infrastructure, application layer và tập trung vào presentation
 
 8
 00:00:30,980 --> 00:00:33,500
-API layer according to Clean Architecture.
+API layer theo Clean Architecture.
 
 9
 00:00:33,680 --> 00:00:41,270
-So we will develop ordering API layer with exposing minimal Rest API endpoints using the cartel library
+Vậy chúng ta sẽ phát triển ordering API layer bằng cách expose minimal Rest API endpoints sử dụng thư viện Carter
 
 10
 00:00:41,270 --> 00:00:43,100
-and following the clean architecture.
+và tuân theo clean architecture.
 
 11
 00:00:43,100 --> 00:00:49,640
-So we will also implement the wrap pattern, which is the request endpoint and response design pattern
+Vậy chúng ta cũng sẽ triển khai REPR Pattern, đó là request endpoint và response design pattern
 
 12
 00:00:49,640 --> 00:00:52,520
-for secrets and mediator request lifecycle.
+cho Mediator request lifecycle.
 
 13
 00:00:52,520 --> 00:00:57,830
-And we will developing order Crud endpoints for Rest APIs in ordering API layer.
+Và chúng ta sẽ phát triển các order CRUD endpoints cho Rest APIs trong ordering API layer.
 
 14
 00:00:57,830 --> 00:01:01,610
-And we will develop get order endpoints for the Rest API.
+Và chúng ta sẽ phát triển get order endpoints cho Rest API.
 
 15
 00:01:01,610 --> 00:01:07,460
-And also we will perform the cross-cutting concerns for custom exception handling in ordering microservices.
+Và cũng sẽ xử lý các cross-cutting concerns cho custom exception handling trong ordering microservice.
 
 16
 00:01:07,460 --> 00:01:12,860
-And we will perform health checks for the ordering microservices with Entity Framework core and SQL
+Và chúng ta sẽ thực hiện health checks cho ordering microservice với Entity Framework Core và SQL
 
 17
 00:01:12,860 --> 00:01:13,340
-server.
+Server.
 
 18
 00:01:13,340 --> 00:01:18,890
-And we will also test ordering API endpoints with secrets and clean architecture layers.
+Và chúng ta cũng sẽ test các ordering API endpoints với Swagger và clean architecture layers.
 
 19
 00:01:18,890 --> 00:01:26,540
-That means the main target of these API layer is exposing minimal Rest APIs and serving as the entry
+Điều đó có nghĩa là mục tiêu chính của API layer này là expose minimal Rest APIs và đóng vai trò là entry
 
 20
 00:01:26,540 --> 00:01:28,430
-point for the external request.
+point cho các external request.
 
 21
 00:01:28,820 --> 00:01:32,900
-We said that in this section we will implement wrapper design pattern.
+Chúng ta đã nói rằng trong phần này chúng ta sẽ triển khai wrapper design pattern.
 
 22
 00:01:32,900 --> 00:01:35,180
-So what is the wrapper design pattern?
+Vậy wrapper design pattern là gì?
 
 23
 00:01:35,180 --> 00:01:39,530
-The wrapper pattern is a software design pattern for developing API endpoints.
+Wrapper pattern là một software design pattern để phát triển API endpoints.
 
 24
 00:01:39,530 --> 00:01:47,120
-Implementing a simple request endpoint response flow wrapper stands for the request endpoint response
+Triển khai một luồng request endpoint response wrapper đơn giản đứng cho request endpoint response
 
 25
 00:01:47,120 --> 00:01:51,350
-and a pattern simplifying the development of Rest API endpoints.
+và một mẫu đơn giản hóa việc phát triển Rest API endpoints.
 
 26
 00:01:51,860 --> 00:01:56,750
-The wrapper design pattern defines web API endpoints as having three components.
+Wrapper design pattern định nghĩa Web API endpoints có ba thành phần.
 
 27
 00:01:56,750 --> 00:02:00,110
-These are the request, endpoint, and response.
+Đó là request, endpoint, và response.
 
 28
 00:02:00,110 --> 00:02:06,230
-In the request phase, which is the data structure, the endpoints expected and the endpoint is the
+Trong giai đoạn request, đó là cấu trúc dữ liệu, endpoints mong đợi và endpoint là
 
 29
 00:02:06,230 --> 00:02:11,300
-logic the endpoint performs a given a request and response is a data structure.
+logic mà endpoint thực hiện cho một request và response là cấu trúc dữ liệu.
 
 30
 00:02:11,300 --> 00:02:12,680
-The endpoint returns.
+Endpoint trả về.
 
 31
 00:02:12,680 --> 00:02:15,950
-So with providing a simplified concept, which is.
+Vậy với việc cung cấp một khái niệm đơn giản hóa, đó là.
 
 32
 00:02:15,950 --> 00:02:21,710
-Enable the development of the Rest API endpoints and enforcing the single responsibility principle for
+Cho phép phát triển Rest API endpoints và thực thi single responsibility principle cho
 
 33
 00:02:21,710 --> 00:02:27,740
-the endpoints, and the only models that the developers need to care about the request and the response.
+các endpoints, và những mô hình duy nhất mà các nhà phát triển cần quan tâm là request và response.
 
 34
 00:02:27,860 --> 00:02:30,620
-So we will develop authentic microservices.
+Vậy chúng ta sẽ phát triển microservices xác thực.
 
 35
 00:02:30,620 --> 00:02:37,070
-Minimal Rest APIs implementing the wrapper design pattern, especially in sequence and mediated request
+Minimal Rest APIs triển khai wrapper design pattern, đặc biệt là trong sequence và mediated request
 
 36
 00:02:37,070 --> 00:02:38,000
@@ -144,73 +144,73 @@ lifecycle.
 
 37
 00:02:38,000 --> 00:02:42,140
-So let's understand our SQS and mediator request lifecycle.
+Vậy hãy hiểu SQS và mediator request lifecycle của chúng ta.
 
 38
 00:02:42,140 --> 00:02:47,480
-Here you can see an illustration of how API request flows through the system.
+Ở đây bạn có thể thấy minh họa về cách API request chảy qua hệ thống.
 
 39
 00:02:47,480 --> 00:02:49,970
-The request hit the presentation layer.
+Request đến presentation layer.
 
 40
 00:02:49,970 --> 00:02:55,040
-In our case typically a Carter minimal API endpoint exposing from the application.
+Trong trường hợp của chúng ta, thông thường là Carter minimal API endpoint được expose từ application.
 
 41
 00:02:55,040 --> 00:02:58,820
-And this will be received the request and initiate the process.
+Và điều này sẽ nhận yêu cầu và khởi tạo quá trình.
 
 42
 00:02:58,820 --> 00:03:05,300
-That means this will be sent the command in the mediator and mediator handle the process with creating
+Điều đó có nghĩa là điều này sẽ gửi command tới mediator và mediator xử lý quá trình bằng cách tạo
 
 43
 00:03:05,300 --> 00:03:11,270
-command and query and hitting the command handle class in order to interact with database and returning
+command và query và gọi tới lớp command handler để tương tác với database và trả về
 
 44
 00:03:11,270 --> 00:03:13,400
-the result to our response object.
+kết quả cho response object của chúng ta.
 
 45
 00:03:13,400 --> 00:03:19,970
-And finally mediator handle process to command and return the result and the final outcome is prepared
+Và cuối cùng mediator xử lý quá trình command và trả về kết quả, kết quả cuối cùng được chuẩn bị
 
 46
 00:03:19,970 --> 00:03:23,090
-for the client application converting the response object.
+cho ứng dụng client bằng cách chuyển đổi response object.
 
 47
 00:03:23,090 --> 00:03:29,180
-So that means we will create a request when incoming request object, and after that we will convert
+Vậy điều đó có nghĩa là chúng ta sẽ tạo một request khi incoming request object, và sau đó chúng ta sẽ chuyển đổi
 
 48
 00:03:29,180 --> 00:03:31,160
-these requests to the command or query.
+các request này thành command hoặc query.
 
 49
 00:03:31,160 --> 00:03:36,650
-And after processing the command or query, handle this result object again converting the response
+Và sau khi xử lý command hoặc query, xử lý lại result object này bằng cách chuyển đổi response
 
 50
 00:03:36,650 --> 00:03:38,840
-object to sending the client application.
+object để gửi tới ứng dụng client.
 
 51
 00:03:38,840 --> 00:03:44,780
-So according to image, we have completed the internal part of the request which is the mediator internal
+Vậy theo hình ảnh, chúng ta đã hoàn thành phần nội bộ của request đó là mediator nội bộ
 
 52
 00:03:44,780 --> 00:03:46,490
-command and handler classes.
+command và handler classes.
 
 53
 00:03:46,490 --> 00:03:53,450
-And now we will focus on the exposing endpoints with request and response object using the minimal APIs
+Và bây giờ chúng ta sẽ tập trung vào việc expose endpoints với request và response object sử dụng Minimal APIs
 
 54
 00:03:53,450 --> 00:03:54,620
-and Carter library.
+và thư viện Carter.
 
