@@ -1,34 +1,34 @@
 1
 00:00:00,140 --> 00:00:06,800
-In this video, we are going to configure discount gRPC service to our request pipeline in the Program.cs.
+Trong video này, chúng ta sẽ cấu hình discount gRPC service vào request pipeline của chúng ta trong Program.cs.
 
 2
 00:00:06,800 --> 00:00:09,230
-And we will invoke our gRPC call.
+Và chúng ta sẽ gọi gRPC call của chúng ta.
 
 3
 00:00:09,980 --> 00:00:14,060
-So as you can see that under the services we have developed the discount service.
+Vậy như bạn có thể thấy, dưới services chúng ta đã phát triển discount service.
 
 4
 00:00:14,060 --> 00:00:21,380
-And in order to activate these discount servers for exposing gRPC calls, we should map the gRPC service
+Và để kích hoạt các discount servers này để expose gRPC calls, chúng ta nên map the gRPC service
 
 5
 00:00:21,380 --> 00:00:25,640
-in the Program.cs to configure the Http two request pipeline.
+trong Program.cs để cấu hình Http two request pipeline.
 
 6
 00:00:25,670 --> 00:00:27,290
-Please open the Program.cs.
+Vui lòng mở Program.cs.
 
 7
 00:00:27,290 --> 00:00:33,110
-And here you can see that we have already added services into container gRPC services.
+Và ở đây bạn có thể thấy rằng chúng ta đã thêm services vào container gRPC services.
 
 8
 00:00:33,110 --> 00:00:39,320
-And here you can see that we will configure Http request pipeline according to our discount service
+Và ở đây bạn có thể thấy rằng chúng ta sẽ cấu hình Http request pipeline theo discount service của chúng ta
 
 9
 00:00:39,320 --> 00:00:40,700
@@ -36,71 +36,71 @@ gRPC services.
 
 10
 00:00:40,700 --> 00:00:44,930
-So for that purpose I'm going to open this command line.
+Vậy để mục đích đó, tôi sẽ mở command line này.
 
 11
 00:00:44,930 --> 00:00:50,300
-And instead of the greeting service we are going to write in here discount service.
+Và thay vì greeting service, chúng ta sẽ viết discount service ở đây.
 
 12
 00:00:52,440 --> 00:00:59,580
-By this way, we can make ready this application to accommodate incoming gRPC calls, and we will specifically
+Bằng cách này, chúng ta có thể chuẩn bị ứng dụng này để chứa các gRPC calls đến, và chúng ta sẽ cụ thể
 
 13
 00:00:59,580 --> 00:01:04,769
-invoke discount proto methods, RPC methods with gRPC calls.
+gọi các discount proto methods, RPC methods với gRPC calls.
 
 14
 00:01:04,769 --> 00:01:07,260
-And this will be trigger our discount services.
+Và điều này sẽ kích hoạt discount services của chúng ta.
 
 15
 00:01:07,260 --> 00:01:12,690
-Because we have configured our services in the ASP.Net Http request pipeline.
+Vì chúng ta đã cấu hình services của chúng ta trong ASP.Net Http request pipeline.
 
 16
 00:01:12,690 --> 00:01:19,710
-For that purpose, I'm going to come here and put breakpoints into the each method for gRPC calls,
+Để mục đích đó, tôi sẽ đến đây và đặt breakpoints vào mỗi method cho gRPC calls,
 
 17
 00:01:19,710 --> 00:01:26,130
-and we will understand how we can trigger and invoke these methods using the discount gRPC microservices.
+và chúng ta sẽ hiểu được cách chúng ta có thể kích hoạt và gọi các methods này sử dụng discount gRPC microservices.
 
 18
 00:01:26,190 --> 00:01:28,410
-Now we can run our application.
+Bây giờ chúng ta có thể chạy ứng dụng của chúng ta.
 
 19
 00:01:28,410 --> 00:01:34,710
-If you come here and run https mode, this will be start our discount gRPC microservices.
+Nếu bạn đến đây và chạy https mode, điều này sẽ khởi động discount gRPC microservices của chúng ta.
 
 20
 00:01:37,360 --> 00:01:41,110
-You can see that our application has started successfully.
+Bạn có thể thấy rằng ứng dụng của chúng ta đã khởi động thành công.
 
 21
 00:01:41,110 --> 00:01:44,680
-And now listening on the localhost and 5052.
+Và bây giờ lắng nghe trên localhost và cổng 5052.
 
 22
 00:01:44,680 --> 00:01:51,160
-And we will use gRPC protocol in order to send Http two requests with gRPC calls.
+Và chúng ta sẽ sử dụng gRPC protocol để gửi các Http two requests với gRPC calls.
 
 23
 00:01:51,160 --> 00:01:55,840
-So that means now our application ready to accept gRPC calls.
+Vậy có nghĩa là bây giờ ứng dụng của chúng ta đã sẵn sàng để chấp nhận gRPC calls.
 
 24
 00:01:55,870 --> 00:01:59,800
-How can we invoke a gRPC method into our application.
+Chúng ta có thể gọi một gRPC method vào ứng dụng của chúng ta như thế nào.
 
 25
 00:01:59,830 --> 00:02:01,630
-Of course we will use postman.
+Tất nhiên chúng ta sẽ sử dụng postman.
 
 26
 00:02:01,630 --> 00:02:08,770
-Please open the postman in here you can see that we have using the greeter say hello method when invoking
+Vui lòng mở postman, ở đây bạn có thể thấy rằng chúng ta đang sử dụng phương thức greeter say hello khi gọi
 
 27
 00:02:08,770 --> 00:02:09,759
@@ -108,111 +108,111 @@ gRPC method.
 
 28
 00:02:09,759 --> 00:02:13,450
-But now we will invoke our discount service methods.
+Nhưng bây giờ chúng ta sẽ gọi các phương thức discount service của chúng ta.
 
 29
 00:02:13,450 --> 00:02:20,080
-So as you can see that I have created a separate collection because postman is not accepting Http and
+Vậy như bạn có thể thấy, tôi đã tạo một collection riêng biệt vì postman không chấp nhận các Http và
 
 30
 00:02:20,080 --> 00:02:22,660
-gRPC methods at the same collection.
+gRPC methods trong cùng một collection.
 
 31
 00:02:22,660 --> 00:02:27,820
-So I have created new collection and now we are going to create a new method.
+Vậy tôi đã tạo collection mới và bây giờ chúng ta sẽ tạo một phương thức mới.
 
 32
 00:02:27,820 --> 00:02:32,080
-If you right click and duplicate this, say hello.
+Nếu bạn nhấp chuột phải và sao chép say hello này.
 
 33
 00:02:32,080 --> 00:02:37,000
-So now we are going to make that this will be discount service.
+Vậy bây giờ chúng ta sẽ làm cho đây sẽ là discount service.
 
 34
 00:02:37,000 --> 00:02:40,120
-After that we can select the gRPC method.
+Sau đó chúng ta có thể chọn gRPC method.
 
 35
 00:02:40,120 --> 00:02:43,450
-If you come here and you can see that this is say hello.
+Nếu bạn đến đây và bạn có thể thấy rằng đây là say hello.
 
 36
 00:02:43,450 --> 00:02:45,940
-We would like to change the service definition.
+Chúng ta muốn thay đổi service definition.
 
 37
 00:02:45,940 --> 00:02:51,550
-If you click this button you can see that we can use different schema or import a proto file.
+Nếu bạn nhấp vào nút này, bạn có thể thấy rằng chúng ta có thể sử dụng schema khác hoặc import một proto file.
 
 38
 00:02:51,550 --> 00:02:57,310
-I'm going to import a proto file and we can choose a file from the our repository.
+Tôi sẽ import một proto file và chúng ta có thể chọn một tệp từ repository của chúng ta.
 
 39
 00:02:57,310 --> 00:03:00,820
-So if you come to your project file.
+Vậy nếu bạn đến tệp dự án của bạn.
 
 40
 00:03:01,800 --> 00:03:03,150
-Under the repositories.
+Dưới repositories.
 
 41
 00:03:03,150 --> 00:03:11,700
-I'm going to define each of microservices source services discount discount, gRPC protocol and Discount
+Tôi sẽ định nghĩa từng microservice nguồn dịch vụ discount discount, giao thức gRPC và Discount
 
 42
 00:03:11,700 --> 00:03:13,980
-Protocol and click the open button.
+Protocol và bấm nút mở.
 
 43
 00:03:14,010 --> 00:03:17,580
-This will be import our discount gRPC methods.
+Điều này sẽ nhập các phương thức discount gRPC của chúng ta.
 
 44
 00:03:17,580 --> 00:03:19,890
-And after that you can come here.
+Và sau đó bạn có thể đến đây.
 
 45
 00:03:19,890 --> 00:03:26,760
-And if you close this response and scroll down you can see the next button comes in here for the service
+Và nếu bạn đóng phản hồi này và cuộn xuống, bạn có thể thấy nút tiếp theo xuất hiện ở đây cho dịch vụ
 
 46
 00:03:26,760 --> 00:03:27,390
-definition.
+định nghĩa.
 
 47
 00:03:27,390 --> 00:03:28,680
-Click the next button.
+Bấm nút tiếp theo.
 
 48
 00:03:28,680 --> 00:03:31,680
-And this will be import as an API.
+Và điều này sẽ nhập như một API.
 
 49
 00:03:31,680 --> 00:03:38,010
-And we can use that import discount API as a new API and import as API.
+Và chúng ta có thể sử dụng API discount nhập đó như một API mới và nhập dưới dạng API.
 
 50
 00:03:39,030 --> 00:03:43,620
-So now we can come here and select the get discount methods are available now.
+Vậy bây giờ chúng ta có thể đến đây và chọn các phương thức get discount đã có sẵn.
 
 51
 00:03:43,650 --> 00:03:46,950
-So in here for example I'm selected the get discount.
+Vậy ở đây chẳng hạn như tôi đã chọn get discount.
 
 52
 00:03:46,950 --> 00:03:50,190
-And after that we can invoke as a gRPC call.
+Và sau đó chúng ta có thể gọi nó dưới dạng một cuộc gọi gRPC.
 
 53
 00:03:50,190 --> 00:03:53,670
-Please save this gRPC call and click the invoke button.
+Vui lòng lưu cuộc gọi gRPC này và bấm nút invoke.
 
 54
 00:03:53,670 --> 00:03:59,490
-This will be suddenly trigger our discount service get discount method that you can see in here.
+Điều này sẽ đột ngột kích hoạt phương thức get discount dịch vụ discount của chúng ta mà bạn có thể thấy ở đây.
 
 55
 00:03:59,490 --> 00:04:00,000
@@ -220,57 +220,57 @@ Breakpoint.
 
 56
 00:04:00,000 --> 00:04:05,520
-Hit from the gRPC call that we invoke from the postman so you can continue our code.
+Hit từ cuộc gọi gRPC mà chúng ta gọi từ postman để bạn có thể tiếp tục code của chúng ta.
 
 57
 00:04:05,520 --> 00:04:10,500
-And this will be throw an exception because we didn't overwrite yet for that purpose.
+Và điều này sẽ ném ra một ngoại lệ vì chúng ta chưa ghi đè nó cho mục đích đó.
 
 58
 00:04:10,500 --> 00:04:12,060
-This is throwing an exception.
+Điều này đang ném ra một ngoại lệ.
 
 59
 00:04:12,060 --> 00:04:16,050
-And you can see that the status code is 12 unimplemented.
+Và bạn có thể thấy rằng mã trạng thái là 12 unimplemented.
 
 60
 00:04:16,050 --> 00:04:21,930
-So you can test the other methods for the other create discount and other Crud operations.
+Vậy bạn có thể kiểm tra các phương thức khác cho create discount khác và các hoạt động Crud khác.
 
 61
 00:04:21,930 --> 00:04:27,960
-You can see that this is very fast to invoke our discount service, because this time we will use Http
+Bạn có thể thấy rằng nó rất nhanh để gọi discount service của chúng ta, bởi vì lần này chúng ta sẽ sử dụng Http
 
 62
 00:04:27,960 --> 00:04:30,000
-two protocol and gRPC call.
+hai protocol và gRPC call.
 
 63
 00:04:30,000 --> 00:04:33,300
-It is very performant for inter service communication.
+Nó rất hiệu suất cao cho giao tiếp giữa các service.
 
 64
 00:04:33,300 --> 00:04:38,910
-Again, you can see that each method returning unimplemented response that we are going to implement
+Một lần nữa, bạn có thể thấy rằng mỗi method trả về unimplemented response mà chúng ta sẽ triển khai
 
 65
 00:04:38,910 --> 00:04:41,490
-these methods into our discount services.
+các method này vào discount services của chúng ta.
 
 66
 00:04:41,490 --> 00:04:46,980
-So after verifying these invocations, we can save the discount service method on the gRPC.
+Vậy sau khi xác minh những lệnh gọi này, chúng ta có thể lưu method của discount service trên gRPC.
 
 67
 00:04:46,980 --> 00:04:49,980
-And you can create any discount gRPC collection.
+Và bạn có thể tạo bất kỳ discount gRPC collection nào.
 
 68
 00:04:49,980 --> 00:04:56,760
-So now it is time to implement our actual discount service method in override functions in order to
+Vậy bây giờ đã đến lúc triển khai method discount service thực tế trong các hàm override để
 
 69
 00:04:56,760 --> 00:04:59,400
-interact with database using the ORM system.
+tương tác với database bằng cách sử dụng hệ thống ORM.
 
