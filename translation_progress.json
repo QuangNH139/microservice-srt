@@ -305,5 +305,6 @@
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/026 Publish OrderCreated Integration event for Order Fullfiment microservices.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/027 Aspnet Feature Management Develop Feature Flag for OrderCreated Event.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/028 Setup RabbitMQ for Async Communication using Docker-compose file.srt": "done",
-  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/029 Run Docker-Compose on Visual Studio to setup RabbitMQ on Docker.srt": "done"
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/029 Run Docker-Compose on Visual Studio to setup RabbitMQ on Docker.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/030 TEST- Publish BasketCheckout Event in Basket.API Microservices.srt": "done"
 }
