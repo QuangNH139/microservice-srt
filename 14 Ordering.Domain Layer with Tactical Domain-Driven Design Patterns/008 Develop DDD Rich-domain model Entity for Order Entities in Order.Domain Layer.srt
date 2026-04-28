@@ -1,6 +1,6 @@
 1
 00:00:00,140 --> 00:00:06,560
-In this video we are going to develop rich domain modal entity for ordered entities in the order domain
+Trong video này chúng ta sẽ phát triển rich domain model entity cho các ordered entities trong order domain
 
 2
 00:00:06,560 --> 00:00:07,160
@@ -8,23 +8,23 @@ layer.
 
 3
 00:00:07,160 --> 00:00:12,650
-So if you open the order CSS under the modal, you can see that under the order entity.
+Vậy nếu bạn mở order CSS dưới modal, bạn có thể thấy rằng dưới order entity.
 
 4
 00:00:12,650 --> 00:00:17,360
-Now we have only data related properties including the order entity.
+Bây giờ chúng ta chỉ có các properties liên quan đến dữ liệu bao gồm order entity.
 
 5
 00:00:17,450 --> 00:00:19,520
-But we have a set of questions.
+Nhưng chúng ta có một loạt các câu hỏi.
 
 6
 00:00:19,520 --> 00:00:22,310
-The first question is how to create an order.
+Câu hỏi đầu tiên là làm thế nào để tạo một order.
 
 7
 00:00:22,310 --> 00:00:28,280
-We should use naive object.create operation and every domain should responsible with its own create
+Chúng ta nên sử dụng naive object.create operation và mỗi domain nên chịu trách nhiệm với create operation của riêng nó
 
 8
 00:00:28,280 --> 00:00:29,060
@@ -32,175 +32,175 @@ operation.
 
 9
 00:00:29,510 --> 00:00:34,430
-And the question two is how to add or remove new items into order aggregate.
+Và câu hỏi thứ hai là làm thế nào để thêm hoặc xóa các items mới vào order aggregate.
 
 10
 00:00:34,430 --> 00:00:40,610
-So we should not adding and removing collections over the order entity and reaching the order items
+Vậy chúng ta không nên thêm và xóa collections trên order entity và tiếp cận order items
 
 11
 00:00:40,610 --> 00:00:41,870
-with a public manner.
+một cách public.
 
 12
 00:00:42,050 --> 00:00:48,260
-These add and remove operations are domain use cases and should be responsible for the order entity.
+Các add và remove operations này là domain use cases và nên được chịu trách nhiệm bởi order entity.
 
 13
 00:00:48,470 --> 00:00:54,320
-So after defining these responsibilities, domain rules and the domain events, we can start developing
+Vậy sau khi định nghĩa các trách nhiệm này, domain rules và domain events, chúng ta có thể bắt đầu phát triển
 
 14
 00:00:54,320 --> 00:00:55,520
-the domain methods.
+các domain methods.
 
 15
 00:00:55,520 --> 00:01:00,050
-I would like to start with the basic entity, which is the customer case.
+Tôi muốn bắt đầu với basic entity, đó là customer case.
 
 16
 00:01:00,050 --> 00:01:06,530
-If you open the customer case, you can see that we can start by enhancing the customer entity to include
+Nếu bạn mở customer case, bạn có thể thấy rằng chúng ta có thể bắt đầu bằng cách nâng cao customer entity để bao gồm
 
 17
 00:01:06,530 --> 00:01:09,440
-domain specific operations and validations.
+domain specific operations và validations.
 
 18
 00:01:09,440 --> 00:01:15,500
-So customer entity is responsible for creating its own instance and managing its state.
+Vậy customer entity chịu trách nhiệm cho việc tạo instance của riêng nó và quản lý state của nó.
 
 19
 00:01:15,740 --> 00:01:20,810
-Let's add a create static method to encapsulate these create logic.
+Hãy thêm một create static method để đóng gói create logic này.
 
 20
 00:01:20,810 --> 00:01:29,210
-I'm going to come here and write public static and return back a customer and create method including
+Tôi sẽ đến đây và viết public static và return lại một customer và create method bao gồm
 
 21
 00:01:29,210 --> 00:01:32,750
-the parameters customer ID, name and email.
+các tham số customer ID, name và email.
 
 22
 00:01:33,890 --> 00:01:38,030
-And in this method we will basically return back a new customer.
+Và trong phương thức này chúng ta sẽ trả về một customer mới.
 
 23
 00:01:38,030 --> 00:01:41,390
-But before that we can perform some of the validations.
+Nhưng trước đó chúng ta có thể thực hiện một số xác thực.
 
 24
 00:01:41,390 --> 00:01:48,260
-I'm going to use argument exception throw if null or whitespace extension method, checking the name
+Tôi sẽ sử dụng phương thức extension argument exception throw if null or whitespace, kiểm tra giá trị name
 
 25
 00:01:48,260 --> 00:01:51,530
-and email values in the parameters.
+và email trong các tham số.
 
 26
 00:01:51,530 --> 00:01:59,090
-And after that I'm going to create a new customer which including the ID name and email information
+Và sau đó tôi sẽ tạo một customer mới với thông tin ID, name và email
 
 27
 00:01:59,090 --> 00:02:00,530
-passing from the parameters.
+được truyền từ các tham số.
 
 28
 00:02:00,530 --> 00:02:02,930
-And lastly, we can return a customer.
+Và cuối cùng, chúng ta có thể trả về một customer.
 
 29
 00:02:05,330 --> 00:02:11,480
-So the create method is a factory method that encapsulates the creation of customer instance in this
+Vậy phương thức create là một factory method mà nó đóng gói việc tạo customer instance trong
 
 30
 00:02:11,480 --> 00:02:17,480
-create method, and it includes domain validations to ensure the integrity of the customer instance.
+phương thức create này, và nó bao gồm các domain validations để đảm bảo tính toàn vẹn của customer instance.
 
 31
 00:02:17,480 --> 00:02:23,210
-These are the domain validations and after that we have create a new customer using the default constructor
+Đây là các domain validations và sau đó chúng ta đã tạo một customer mới bằng constructor mặc định
 
 32
 00:02:23,210 --> 00:02:25,370
-and return the customer in the create method.
+và trả về customer trong phương thức create.
 
 33
 00:02:25,370 --> 00:02:31,670
-So basically we have created static create method that create customer in the customer entity, but
+Vậy cơ bản chúng ta đã tạo một static create method để tạo customer trong customer entity, nhưng
 
 34
 00:02:31,670 --> 00:02:37,460
-customer entity using strongly typed IDs which is the customer ID value objects.
+customer entity sử dụng strongly typed IDs đó là customer ID value objects.
 
 35
 00:02:37,460 --> 00:02:40,910
-So these objects also need to create its own type.
+Vậy những objects này cũng cần phải tạo kiểu riêng của nó.
 
 36
 00:02:40,910 --> 00:02:43,910
-For that purpose we will create off method.
+Để mục đích đó chúng ta sẽ tạo off method.
 
 37
 00:02:43,910 --> 00:02:50,840
-So that means in order to separate entities and value objects for the create responsibilities, we will
+Vậy điều đó có nghĩa là để phân tách entities và value objects cho các trách nhiệm tạo, chúng ta sẽ
 
 38
 00:02:50,840 --> 00:02:55,670
-develop the static create method for each entities under the model folder.
+phát triển static create method cho mỗi entities trong model folder.
 
 39
 00:02:55,670 --> 00:03:02,570
-And we will also develop the static off method for each value objects under the value object folder.
+Và chúng ta cũng sẽ phát triển static off method cho mỗi value objects trong value object folder.
 
 40
 00:03:02,570 --> 00:03:07,700
-For that purpose, please go to the customer ID value object and this is the value object.
+Để mục đích đó, hãy vào customer ID value object và đây là value object.
 
 41
 00:03:07,700 --> 00:03:13,100
-And this value object also responsible to create its own type with accepting the Guid value.
+Và value object này cũng chịu trách nhiệm tạo kiểu của nó bằng cách chấp nhận giá trị Guid.
 
 42
 00:03:13,100 --> 00:03:19,910
-So we will develop a static off method in order to create instance of customer id for that purpose.
+Vậy chúng ta sẽ phát triển một static off method để tạo instance của customer id cho mục đích đó.
 
 43
 00:03:19,910 --> 00:03:22,670
-I'm going to start with the private constructor.
+Tôi sẽ bắt đầu với private constructor.
 
 44
 00:03:22,790 --> 00:03:29,270
-The value objects are the record type, and I'm going to create a private constructors in order to set
+Value objects là record type, và tôi sẽ tạo private constructors để đặt
 
 45
 00:03:29,270 --> 00:03:30,590
-the value information.
+thông tin value.
 
 46
 00:03:30,590 --> 00:03:34,370
-And after that we will create a static off method.
+Và sau đó chúng ta sẽ tạo một static off method.
 
 47
 00:03:34,370 --> 00:03:41,300
-In order to instantiate this customer ID here you can see the static customer ID off method, and we
+Để khởi tạo customer ID này, bạn có thể thấy static customer ID off method, và chúng ta
 
 48
 00:03:41,300 --> 00:03:47,390
-will use off method for each value objects, and we will use create method for each domain models.
+sẽ sử dụng off method cho mỗi value objects, và chúng ta sẽ sử dụng create method cho mỗi domain models.
 
 49
 00:03:47,390 --> 00:03:54,560
-So in the off method you can see that we will perform the domain validation and after that contain the
+Vậy trong off method bạn có thể thấy rằng chúng ta sẽ thực hiện domain validation và sau đó chứa
 
 50
 00:03:54,560 --> 00:03:57,740
-domain validation and throwing a domain exception.
+domain validation và ném ra domain exception.
 
 51
 00:03:57,740 --> 00:04:03,680
-And after that returning a new customer ID with passing the volume information in the parameter of the
+Và sau đó trả về một customer ID mới với việc truyền thông tin volume trong tham số của
 
 52
 00:04:03,680 --> 00:04:04,370
@@ -208,39 +208,39 @@ off method.
 
 53
 00:04:04,370 --> 00:04:11,000
-And these customer ID is a private constructor located under the customer ID record type.
+Và customer ID này là private constructor nằm dưới customer ID record type.
 
 54
 00:04:11,150 --> 00:04:18,920
-So customer ID is a record type with a single property, which is the value, and this off method provide
+Vậy customer ID là record type với một single property, đó là value, và off method này cung cấp
 
 55
 00:04:18,920 --> 00:04:23,090
-a clear and domain specific way to create customer ID instances.
+một cách rõ ràng và dành riêng cho domain để tạo customer ID instances.
 
 56
 00:04:23,780 --> 00:04:28,280
-This method includes a domain rule that validate the GID is not empty.
+Method này bao gồm một domain rule để validate rằng GID không phải là empty.
 
 57
 00:04:28,520 --> 00:04:35,810
-In here you can see that value cannot be null, and after that we have throwing a domain exception so
+Ở đây bạn có thể thấy value không thể null, và sau đó chúng ta có ném ra domain exception vì vậy
 
 58
 00:04:35,810 --> 00:04:39,710
-we can both use argument exception and custom exception in here.
+chúng ta có thể sử dụng cả argument exception và custom exception ở đây.
 
 59
 00:04:39,710 --> 00:04:41,660
-So domain exception represent.
+Vậy domain exception đại diện.
 
 60
 00:04:41,660 --> 00:04:45,290
-These error happens in the domain layer in the domain logic.
+Những lỗi này xảy ra trong domain layer trong domain logic.
 
 61
 00:04:45,290 --> 00:04:51,980
-So that means we should create custom domain exception class for representing our domain related operations
+Vậy điều đó có nghĩa là chúng ta nên tạo một custom domain exception class để đại diện cho các hoạt động liên quan đến domain của chúng ta
 
 62
 00:04:51,980 --> 00:04:53,510
@@ -248,7 +248,7 @@ under the ordering domain.
 
 63
 00:04:53,510 --> 00:04:59,510
-And in order to handle domain specific exceptions let's create a domain exceptions under the exceptions
+Và để xử lý các exceptions cụ thể của domain, hãy tạo domain exceptions under the exceptions
 
 64
 00:04:59,510 --> 00:04:59,870
@@ -256,43 +256,43 @@ folder.
 
 65
 00:05:00,170 --> 00:05:06,080
-I'm going to right click the ordering domain and add new folder, which name is exceptions.
+Tôi sẽ right click vào ordering domain và add new folder với tên là exceptions.
 
 66
 00:05:06,080 --> 00:05:12,380
-And under this folder I'm going to create a new class which is the domain exceptions.
+Và under this folder tôi sẽ tạo một new class đó là domain exceptions.
 
 67
 00:05:13,010 --> 00:05:15,170
-This is typical to custom exceptions.
+Đây là điển hình của custom exceptions.
 
 68
 00:05:15,170 --> 00:05:22,250
-I'm going to remove unnecessary using statement and make it public and inherit from the exception class.
+Tôi sẽ loại bỏ những using statement không cần thiết và make it public và inherit từ exception class.
 
 69
 00:05:22,250 --> 00:05:28,130
-And as a constructor, we have defined a custom constructor with incoming message, which is a domain
+Và như một constructor, chúng ta đã định nghĩa một custom constructor với incoming message, đó là một domain
 
 70
 00:05:28,130 --> 00:05:31,040
-exception and throwing from the domain layer.
+exception và throwing từ domain layer.
 
 71
 00:05:32,210 --> 00:05:38,210
-Okay, after defining domain exception, you can see that domain exception is a custom exception type
+Được rồi, sau khi định nghĩa domain exception, bạn có thể thấy rằng domain exception là một custom exception type
 
 72
 00:05:38,210 --> 00:05:43,850
-that represents the error that occurred within the domain layer, and it enriched the exception message
+đại diện cho lỗi xảy ra trong domain layer, và nó làm phong phú thêm exception message
 
 73
 00:05:43,850 --> 00:05:45,890
-with the domain specific context.
+với domain specific context.
 
 74
 00:05:46,160 --> 00:05:53,240
-And after defining these domain exception, I'm going to move these namespace into the global using
+Và sau khi định nghĩa domain exception này, tôi sẽ di chuyển namespace này vào global using
 
 75
 00:05:53,240 --> 00:05:53,840
@@ -300,7 +300,7 @@ statement.
 
 76
 00:05:53,840 --> 00:05:59,120
-If you open the global using statement, I'm going to add a new using statement which is the ordering
+Nếu bạn mở global using statement, tôi sẽ add một new using statement đó là ordering
 
 77
 00:05:59,120 --> 00:05:59,570
@@ -312,25 +312,25 @@ Exceptions.
 
 79
 00:06:00,440 --> 00:06:06,470
-And after that, if you go back to customer ID value object, you can see that domain exception introduced
+Và sau đó, nếu bạn quay lại customer ID value object, bạn có thể thấy rằng domain exception được giới thiệu
 
 80
 00:06:06,470 --> 00:06:07,160
-in here.
+ở đây.
 
 81
 00:06:07,370 --> 00:06:11,000
-So we have developed static of method under the customer ID.
+Vậy chúng ta đã phát triển phương thức static của method dưới customer ID.
 
 82
 00:06:11,000 --> 00:06:17,780
-And we have developed static create method under the customer entity by developing customer and customer
+Và chúng ta đã phát triển phương thức static create dưới customer entity bằng cách phát triển customer và customer
 
 83
 00:06:17,780 --> 00:06:24,140
-ID with domain specific methods and validations, we created a rich domain model that encapsulate domain
+ID với các phương thức và validations cụ thể của domain, chúng ta đã tạo ra một rich domain model mà encapsulate domain
 
 84
 00:06:24,140 --> 00:06:25,640
-logic within the entities.
+logic bên trong các entities.
 
