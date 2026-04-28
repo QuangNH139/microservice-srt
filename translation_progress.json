@@ -179,5 +179,8 @@
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/017 Develop DeleteDiscount in DiscountService class to Implement CRUD Grpc Proto.srt": "done",
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/018 Containerize Discount.Grpc microservices with Docker.srt": "done",
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/019 Orchestrate Discount.Grpc microservices with Docker-compose file.srt": "done",
-  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/020 TEST - Docker-compose Discount.Grpc microservices with SQLite.srt": "done"
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/020 TEST - Docker-compose Discount.Grpc microservices with SQLite.srt": "done",
+  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/001 Introduction - Consuming Discount Grpc Service From Basket Microservice.srt": "done",
+  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/002 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item.srt": "done",
+  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/003 Consuming Discount Grpc Service From Basket API Microservice When Adding Cart -2.srt": "done"
 }
