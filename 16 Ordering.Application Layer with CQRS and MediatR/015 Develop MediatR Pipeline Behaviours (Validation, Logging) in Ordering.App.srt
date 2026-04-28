@@ -1,62 +1,62 @@
 1
 00:00:00,110 --> 00:00:06,230
-In this video, we are going to develop mediator pipeline behaviors for validation and logging in our
+Trong video này, chúng ta sẽ phát triển mediator pipeline behaviors cho validation và logging trong
 
 2
 00:00:06,230 --> 00:00:07,760
-ordering application layer.
+application layer của ordering application.
 
 3
 00:00:08,180 --> 00:00:14,630
-Mediator with its mediator pattern enables a clean, decoupled architecture for handling requests and
+Mediator với mẫu mediator của nó cho phép một kiến trúc sạch, decoupled để xử lý requests và
 
 4
 00:00:14,630 --> 00:00:16,970
-responses on pipeline behaviors.
+responses trên pipeline behaviors.
 
 5
 00:00:16,970 --> 00:00:23,180
-Are extension in the request processing pipeline, allowing us to inject cross-cutting concerns like
+Là extension trong request processing pipeline, cho phép chúng ta inject cross-cutting concerns như
 
 6
 00:00:23,180 --> 00:00:24,710
-validation and logging.
+validation và logging.
 
 7
 00:00:24,770 --> 00:00:31,370
-And here you can see the request handling process for the mediator that we can put pre and post-processor
+Và ở đây bạn có thể thấy quá trình request handling cho mediator mà chúng ta có thể đặt pre và post-processor
 
 8
 00:00:31,370 --> 00:00:32,840
-before handling the request.
+trước khi xử lý request.
 
 9
 00:00:32,840 --> 00:00:37,940
-So we can follow the key behaviors for implementing logging and validation.
+Vậy chúng ta có thể tuân theo các key behaviors cho việc triển khai logging và validation.
 
 10
 00:00:37,940 --> 00:00:43,400
-That means we will be adding log behavior and validation behavior into our application.
+Điều đó có nghĩa là chúng ta sẽ thêm log behavior và validation behavior vào application của chúng ta.
 
 11
 00:00:43,400 --> 00:00:48,590
-Log behavior is log details about the handling a request validation behavior.
+Log behavior là log chi tiết về việc xử lý một request, validation behavior
 
 12
 00:00:48,590 --> 00:00:52,370
-Provide the validate incoming requests before they reach the handler.
+cung cấp validate incoming requests trước khi chúng đến handler.
 
 13
 00:00:52,370 --> 00:00:58,130
-So we will add these two behavior into our pipeline behaviors when using the mediator and when we are
+Vậy chúng ta sẽ thêm hai behavior này vào pipeline behaviors của chúng ta khi sử dụng mediator và khi chúng ta
 
 14
 00:00:58,130 --> 00:01:01,880
-implementing pipeline behaviors, we will check the ordering application layer.
+triển khai pipeline behaviors, chúng ta sẽ kiểm tra ordering application layer.
 
 15
 00:01:01,880 --> 00:01:08,870
-And here you can see that we have several use cases including create delete update order into the commands
+Và ở đây bạn có thể thấy rằng chúng ta có nhiều use cases bao gồm create delete update order vào commands
 
 16
 00:01:08,870 --> 00:01:09,590
@@ -64,181 +64,181 @@ folder.
 
 17
 00:01:09,770 --> 00:01:13,580
-So in this folder we will implement command and command handler class.
+Vậy trong folder này chúng ta sẽ triển khai command và command handler class.
 
 18
 00:01:13,580 --> 00:01:17,630
-And we use fluent validation for performing validate operation.
+Và chúng ta sử dụng fluent validation cho việc thực hiện validate operation.
 
 19
 00:01:17,630 --> 00:01:20,480
-But direct validation triggering is absent.
+Nhưng direct validation triggering là absent.
 
 20
 00:01:20,480 --> 00:01:24,410
-And similarly there is no logging mechanism into these classes.
+Và tương tự, không có logging mechanism nào trong những classes này.
 
 21
 00:01:24,410 --> 00:01:28,250
-And logging mechanism aren't explicitly implemented in the handler class.
+Và cơ chế logging không được triển khai một cách rõ ràng trong lớp handler.
 
 22
 00:01:28,250 --> 00:01:32,750
-So if you open the Visual Studio, you can go to the commands folder and create command.
+Vậy nếu bạn mở Visual Studio, bạn có thể đi tới thư mục commands và tạo command.
 
 23
 00:01:32,750 --> 00:01:38,660
-If you open the create order command, you can see that we have a validator class that comes from the
+Nếu bạn mở create order command, bạn có thể thấy rằng chúng ta có một lớp validator đến từ
 
 24
 00:01:38,660 --> 00:01:41,090
-abstract validator from the fluent validation.
+abstract validator từ fluent validation.
 
 25
 00:01:41,090 --> 00:01:44,090
-And this validation is performing manually.
+Và validation này được thực hiện một cách thủ công.
 
 26
 00:01:44,090 --> 00:01:49,460
-In order to do in a pipeline behavior, we should use pipeline behavior for the validations.
+Để làm việc này trong pipeline behavior, chúng ta nên sử dụng pipeline behavior cho các validations.
 
 27
 00:01:49,460 --> 00:01:54,350
-We can see the command class using abstract validator from the full length validation, but we didn't
+Chúng ta có thể thấy lớp command sử dụng abstract validator từ fluent validation, nhưng chúng ta chưa
 
 28
 00:01:54,350 --> 00:01:57,140
-register or call any validate method yet.
+đăng ký hoặc gọi bất kỳ phương thức validate nào.
 
 29
 00:01:57,140 --> 00:02:01,820
-Also, you can see handler class we didn't register in Ilogger interface.
+Ngoài ra, bạn có thể thấy lớp handler mà chúng ta không đăng ký vào interface Ilogger.
 
 30
 00:02:01,820 --> 00:02:08,060
-If you open the handler class, you can see that we don't have any logger operation and we didn't register
+Nếu bạn mở lớp handler, bạn có thể thấy rằng chúng ta không có bất kỳ hoạt động logger nào và chúng ta không đăng ký
 
 31
 00:02:08,060 --> 00:02:13,640
-any Ilogger interface, not injecting and not logging incoming and outgoing handler message.
+bất kỳ interface Ilogger nào, không inject và không logging các handler message đến và đi.
 
 32
 00:02:13,640 --> 00:02:19,760
-In order to do that, we can use mediator pipeline behaviors, and we already did it before when developing
+Để làm điều đó, chúng ta có thể sử dụng mediator pipeline behaviors, và chúng ta đã làm điều này trước đây khi phát triển
 
 33
 00:02:19,760 --> 00:02:21,950
-catalog and basket microservices.
+catalog và basket microservices.
 
 34
 00:02:21,950 --> 00:02:26,720
-If you look at the architecture, you can see that we were leveraging the building blocks in order to
+Nếu bạn xem xét kiến trúc, bạn có thể thấy rằng chúng ta đang sử dụng các building blocks để
 
 35
 00:02:26,720 --> 00:02:32,690
-use pipeline behaviors, because we have developed common logic for behaviors in the building blocks
+sử dụng pipeline behaviors, bởi vì chúng ta đã phát triển logic chung cho behaviors trong building blocks
 
 36
 00:02:32,690 --> 00:02:36,050
-library, which is including sequences and behaviors.
+library, bao gồm sequences và behaviors.
 
 37
 00:02:36,050 --> 00:02:42,260
-Since ordering application, getting reference from the building blocks, we can readily use these behaviors
+Vì ordering application đang tham chiếu từ building blocks, chúng ta có thể sẵn sàng sử dụng các behaviors này
 
 38
 00:02:42,260 --> 00:02:43,970
-with from the building blocks.
+từ building blocks.
 
 39
 00:02:43,970 --> 00:02:50,360
-If you open the Visual Studio and go to building blocks, you can see that we have a sequence class
+Nếu bạn mở Visual Studio và đi tới building blocks, bạn có thể thấy rằng chúng ta có một lớp sequence
 
 40
 00:02:50,360 --> 00:02:53,150
-abstractions, and we have also behaviors folders.
+abstractions, và chúng ta cũng có thư mục behaviors.
 
 41
 00:02:53,150 --> 00:02:55,310
-And here you can see the logging behavior.
+Và ở đây bạn có thể thấy hành vi logging.
 
 42
 00:02:55,310 --> 00:03:00,320
-And also validation behavior is developed in this place for common operations.
+Và cũng hành vi validation được phát triển ở nơi này cho các hoạt động chung.
 
 43
 00:03:00,320 --> 00:03:03,980
-That is already used from the catalog and basket microservices.
+Điều đó đã được sử dụng từ catalog và basket microservices.
 
 44
 00:03:03,980 --> 00:03:08,210
-And we will also use these common behaviors into our ordering microservices.
+Và chúng ta cũng sẽ sử dụng những hành vi chung này vào ordering microservices của chúng ta.
 
 45
 00:03:08,210 --> 00:03:12,140
-So how we can use these behaviors into ordering microservices.
+Vậy chúng ta có thể sử dụng những hành vi này vào ordering microservices như thế nào.
 
 46
 00:03:12,320 --> 00:03:16,850
-Of course we need to register these behavior into our dependency injection.
+Tất nhiên chúng ta cần đăng ký những hành vi này vào dependency injection của chúng ta.
 
 47
 00:03:16,850 --> 00:03:22,760
-So in order to activate these behaviors we need to register these behaviors with the mediators configuration
+Vậy để kích hoạt những hành vi này, chúng ta cần đăng ký những hành vi này với cấu hình mediator
 
 48
 00:03:22,760 --> 00:03:26,450
-in the dependency injection class of the ordering application layer.
+trong lớp dependency injection của ordering application layer.
 
 49
 00:03:26,450 --> 00:03:32,060
-If you go to ordering application and go to Ordering Application Dependency Injection, you can see
+Nếu bạn đi tới ordering application và đi tới Ordering Application Dependency Injection, bạn có thể thấy
 
 50
 00:03:32,060 --> 00:03:34,940
-that we have registered mediator in this place.
+rằng chúng ta đã đăng ký mediator ở nơi này.
 
 51
 00:03:34,940 --> 00:03:40,730
-So in this place we should also register the validation and logging behavior when we are configuring
+Vậy ở nơi này chúng ta cũng nên đăng ký hành vi validation và logging khi chúng ta đang cấu hình
 
 52
 00:03:40,730 --> 00:03:42,650
-these mediator in this place.
+mediator ở nơi này.
 
 53
 00:03:42,650 --> 00:03:47,060
-Here you can see that I'm going to make this more clearly as a config.
+Ở đây bạn có thể thấy rằng tôi sẽ làm cho điều này rõ ràng hơn như một config.
 
 54
 00:03:47,060 --> 00:03:49,220
-And this is the mediator configurations.
+Và đây là cấu hình mediator.
 
 55
 00:03:49,220 --> 00:03:56,840
-And after configuring the assembly information we can also adding open behavior for the validation and
+Và sau khi cấu hình thông tin assembly, chúng ta cũng có thể thêm open behavior cho validation và
 
 56
 00:03:56,840 --> 00:03:57,710
-logging behavior.
+hành vi logging.
 
 57
 00:03:57,710 --> 00:04:01,280
-You can see that I have added two lines of code in here.
+Bạn có thể thấy rằng tôi đã thêm hai dòng code ở đây.
 
 58
 00:04:01,280 --> 00:04:05,480
-In order to register validation and logging behavior with mediator.
+Để đăng ký hành vi validation và logging với mediator.
 
 59
 00:04:05,480 --> 00:04:11,720
-This setup ensures that every request passing through the mediator is automatically validated and logged.
+Thiết lập này đảm bảo rằng mọi request đi qua mediator đều được tự động validate và log.
 
 60
 00:04:11,720 --> 00:04:17,450
-You can right click ordering API and build the ordering microservices that you can verify the build
+Bạn có thể nhấp chuột phải vào ordering API và build ordering microservices để bạn có thể xác minh build
 
 61
 00:04:17,450 --> 00:04:20,480
-operation and verify the validations are added successfully.
+hoạt động và xác minh rằng các validations đã được thêm thành công.
 
