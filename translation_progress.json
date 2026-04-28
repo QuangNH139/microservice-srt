@@ -271,5 +271,8 @@
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/009 Developing GetOrdersByCustomer Endpoint for REST APIs in Ordering.API Layer.srt": "done",
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/010 Developing GetOrders Endpoint w Pagination for REST APIs in Ordering.API Layer.srt": "done",
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/011 Testing Ordering.API Endpoints with CQRS and Clean Architecture Layers.srt": "done",
-  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/012 Test Create Order Endpoint with CQRS and Clean Architecture Layers in Ordering.srt": "done"
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/012 Test Create Order Endpoint with CQRS and Clean Architecture Layers in Ordering.srt": "done",
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/013 Test Update Order Endpoint with CQRS and Clean Architecture Layers in Ordering.srt": "done",
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/014 Test Get Order Endpoints with CQRS and Clean Architecture Layers in Ordering.srt": "done",
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/015 Test Delete Order Endpoint with CQRS and Clean Architecture Layers in Ordering.srt": "done"
 }

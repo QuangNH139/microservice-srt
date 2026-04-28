@@ -1,82 +1,82 @@
 1
 00:00:00,140 --> 00:00:05,810
-In this video we are going to test update order endpoint with queries and clean architecture.
+Trong video này, chúng ta sẽ kiểm tra update order endpoint với queries và clean architecture.
 
 2
 00:00:05,810 --> 00:00:10,490
-That means we will send http put request in the slash orders endpoint.
+Điều đó có nghĩa là chúng ta sẽ gửi HTTP PUT request đến endpoint slash orders.
 
 3
 00:00:10,490 --> 00:00:18,110
-In order to update an existing order, please open the Visual Studio and go to the Update Order case
+Để cập nhật một đơn hàng hiện có, vui lòng mở Visual Studio và đi đến Update Order case
 
 4
 00:00:18,110 --> 00:00:19,670
-under the endpoint folder.
+dưới thư mục endpoint.
 
 5
 00:00:19,670 --> 00:00:25,790
-You can see that under the ordering API, under the endpoint we have update order sales, which will
+Bạn có thể thấy rằng dưới ordering API, dưới endpoint chúng ta có update order sales, cái mà sẽ
 
 6
 00:00:25,790 --> 00:00:30,260
-be accodomate incoming http put request in the delegate handler function.
+tiếp nhận HTTP PUT request trong hàm delegate handler.
 
 7
 00:00:30,260 --> 00:00:35,720
-So put breakpoint in the beginning of this function and returning this function and this function will
+Vậy hãy đặt breakpoint ở đầu hàm này và hàm này sẽ
 
 8
 00:00:35,720 --> 00:00:38,390
-be trigger update order command handler.
+kích hoạt update order command handler.
 
 9
 00:00:38,390 --> 00:00:45,530
-So for that purpose we will go to ordering application and go to the update order folder under the Commands
+Vì vậy với mục đích đó, chúng ta sẽ đi đến ordering application và đi đến thư mục update order dưới Commands
 
 10
 00:00:45,530 --> 00:00:51,500
-and Orders folder and open the update Order handler class and put a breakpoint in the beginning of the
+và thư mục Orders, mở lớp update Order handler và đặt breakpoint ở đầu
 
 11
 00:00:51,500 --> 00:00:52,310
-handle method.
+phương thức handle.
 
 12
 00:00:52,310 --> 00:00:58,220
-So this method will be perform actual use case, which is updating an order from the database.
+Vậy phương thức này sẽ thực hiện use case thực tế, đó là cập nhật một đơn hàng từ database.
 
 13
 00:00:58,220 --> 00:01:04,340
-And if you go to the update order with values, you can see that this will be using order update method.
+Và nếu bạn đi đến update order with values, bạn có thể thấy rằng đây sẽ sử dụng phương thức order update.
 
 14
 00:01:04,340 --> 00:01:06,380
-From the ordering domain layer.
+Từ ordering domain layer.
 
 15
 00:01:06,380 --> 00:01:12,770
-You can verify that under ordering domain we have ordered aggregate and under that we have ordered update
+Bạn có thể xác minh rằng dưới ordering domain chúng ta có ordered aggregate và dưới đó chúng ta có phương thức
 
 16
 00:01:12,770 --> 00:01:13,220
-method.
+ordered update.
 
 17
 00:01:13,220 --> 00:01:16,940
-That means order is responsible for update operation.
+Điều đó có nghĩa là order chịu trách nhiệm cho operation update.
 
 18
 00:01:16,940 --> 00:01:20,420
-So in here also we have a order updated event list.
+Vì vậy ở đây chúng ta cũng có danh sách order updated event.
 
 19
 00:01:20,420 --> 00:01:25,310
-That means we will adding domain event into aggregate which is the order updated event.
+Điều đó có nghĩa là chúng ta sẽ thêm domain event vào aggregate, đó là order updated event.
 
 20
 00:01:25,310 --> 00:01:31,070
-And this domain event will dispatch with using the ordering infrastructure and dispatch domain event
+Và domain event này sẽ được dispatch bằng cách sử dụng ordering infrastructure và dispatch domain event
 
 21
 00:01:31,070 --> 00:01:32,360
@@ -84,191 +84,191 @@ handler interceptor.
 
 22
 00:01:32,360 --> 00:01:38,420
-And this will be trigger to handle method of the ordering application layer, which is the under the
+Và điều này sẽ kích hoạt phương thức handle của ordering application layer, nằm dưới
 
 23
 00:01:38,420 --> 00:01:41,960
-orders event handlers and order updated event handler.
+orders event handlers và order updated event handler.
 
 24
 00:01:41,960 --> 00:01:47,840
-And I am going to put additional breakpoint in order to handle this domain event when updating an order.
+Và tôi sẽ đặt thêm breakpoint để xử lý domain event này khi cập nhật một order.
 
 25
 00:01:47,840 --> 00:01:51,890
-So we have put the end to end breakpoints for the update order use cases.
+Vậy chúng ta đã đặt các breakpoint end to end cho update order use cases.
 
 26
 00:01:51,890 --> 00:01:55,070
-You can also verify the order data in the last video.
+Bạn cũng có thể xác minh dữ liệu order trong video trước.
 
 27
 00:01:55,070 --> 00:01:57,620
-We have added newly created order in here.
+Chúng ta đã thêm order mới được tạo ở đây.
 
 28
 00:01:57,620 --> 00:02:03,860
-So we are going to update these order name and other details for example such as billing address and
+Vậy chúng ta sẽ cập nhật tên order này và các chi tiết khác chẳng hạn như địa chỉ thanh toán và
 
 29
 00:02:03,860 --> 00:02:04,400
-so on.
+v.v.
 
 30
 00:02:04,400 --> 00:02:09,320
-So I'm going to copy this ID information in here and open the postman.
+Vậy tôi sẽ sao chép thông tin ID này ở đây và mở Postman.
 
 31
 00:02:09,560 --> 00:02:15,290
-And if you open the postman you can see that we have additional request which is the Http put.
+Và nếu bạn mở Postman, bạn sẽ thấy rằng chúng ta có request bổ sung đó là HTTP put.
 
 32
 00:02:15,290 --> 00:02:18,860
-And these are the endpoints of these put operation.
+Và đây là các endpoint của HTTP put operation này.
 
 33
 00:02:18,860 --> 00:02:21,380
-This is similar with the http post operation.
+Điều này tương tự với HTTP post operation.
 
 34
 00:02:21,380 --> 00:02:27,230
-I'm going to use 50 port numbers for sending request to our local computer and slash orders.
+Tôi sẽ sử dụng số cổng 50 để gửi request đến máy tính cục bộ của chúng ta và slash orders.
 
 35
 00:02:27,230 --> 00:02:30,110
-But this time our function is http put.
+Nhưng lần này hàm của chúng ta là HTTP put.
 
 36
 00:02:30,110 --> 00:02:36,500
-And if you look at our Json payload you can see that this is similar with the order object.
+Và nếu bạn nhìn vào JSON payload của chúng ta, bạn sẽ thấy rằng đây là tương tự với order object.
 
 37
 00:02:36,500 --> 00:02:41,750
-And this will be sample request payload including the whole order attributes.
+Và đây sẽ là sample request payload bao gồm tất cả các thuộc tính order.
 
 38
 00:02:41,750 --> 00:02:47,810
-And we are updating some of the fields for example order name and shipping and billing information,
+Và chúng ta đang cập nhật một số trường chẳng hạn như order name và shipping và billing information,
 
 39
 00:02:47,810 --> 00:02:49,430
-payment details and so on.
+payment details và v.v.
 
 40
 00:02:49,430 --> 00:02:56,660
-So specifically I have changed the order name and shipping first name and state information, and you
+Vậy cụ thể, tôi đã thay đổi order name và shipping first name và state information, và bạn
 
 41
 00:02:56,660 --> 00:03:02,090
-can also change the billing, first name and state information and change the payment card name.
+bạn cũng có thể thay đổi thông tin thanh toán, tên và địa chỉ, và thay đổi tên thẻ thanh toán.
 
 42
 00:03:02,090 --> 00:03:07,040
-So these are the changed attributes from the our newly created order.
+Vậy đây là những thuộc tính đã thay đổi từ đơn hàng mới tạo của chúng ta.
 
 43
 00:03:07,040 --> 00:03:11,360
-And this time I am going to update the order with sending the whole Json payload.
+Và lần này tôi sẽ cập nhật đơn hàng bằng cách gửi toàn bộ Json payload.
 
 44
 00:03:11,360 --> 00:03:14,840
-But of course, please don't forget the change ID information.
+Nhưng tất nhiên, vui lòng đừng quên thay đổi thông tin ID.
 
 45
 00:03:14,840 --> 00:03:20,990
-You can copy the ID from the database or in this place when we are sending the http post request from
+Bạn có thể sao chép ID từ cơ sở dữ liệu hoặc ở vị trí này khi chúng ta gửi http post request từ
 
 46
 00:03:20,990 --> 00:03:26,570
-the last video, and I am going to change the ID information with a newly created order in the last
+video cuối cùng, và tôi sẽ thay đổi thông tin ID với đơn hàng mới tạo trong
 
 47
 00:03:26,570 --> 00:03:27,050
-video.
+video cuối cùng.
 
 48
 00:03:27,050 --> 00:03:33,890
-So I'm going to change with this with information and remove this note and save this payload and hit
+Vậy tôi sẽ thay đổi cái này bằng thông tin và xóa ghi chú này và lưu payload này và nhấn
 
 49
 00:03:33,890 --> 00:03:37,190
-the send button in order to trigger our breakpoints.
+nút gửi để kích hoạt các breakpoints của chúng ta.
 
 50
 00:03:37,190 --> 00:03:41,300
-And now we can observe our breakpoints, the flow of the request lifecycle.
+Và bây giờ chúng ta có thể quan sát các breakpoints của chúng ta, luồng của vòng đời request.
 
 51
 00:03:41,300 --> 00:03:47,060
-Here you can see that we have hit the update order endpoint with the request of the order details.
+Ở đây bạn có thể thấy rằng chúng ta đã hit update order endpoint với request của chi tiết đơn hàng.
 
 52
 00:03:47,060 --> 00:03:53,060
-You can see that the order is updated with the order name is five and you can see other details.
+Bạn có thể thấy rằng đơn hàng được cập nhật với tên đơn hàng là năm và bạn có thể thấy các chi tiết khác.
 
 53
 00:03:53,060 --> 00:03:55,910
-I have changed the billing address, first name and so on.
+Tôi đã thay đổi địa chỉ thanh toán, tên và những thứ khác.
 
 54
 00:03:55,910 --> 00:04:01,460
-So if I continue debugging, you can see that the first thing we are converting these requests to command
+Vậy nếu tôi tiếp tục debugging, bạn có thể thấy rằng điều đầu tiên chúng ta làm là chuyển đổi những requests này thành command
 
 55
 00:04:01,460 --> 00:04:03,920
-object and we will hit the mediator send button.
+object và chúng ta sẽ hit mediator send button.
 
 56
 00:04:03,920 --> 00:04:08,990
-The command will be triggered our application layer update order handler handle method.
+Command sẽ kích hoạt update order handler handle method của application layer.
 
 57
 00:04:08,990 --> 00:04:11,780
-And in this method we will perform the actual logic.
+Và trong phương thức này chúng ta sẽ thực hiện logic thực tế.
 
 58
 00:04:11,780 --> 00:04:16,070
-First of all we will check this order ID exists or not in the database.
+Đầu tiên chúng ta sẽ kiểm tra xem order ID này có tồn tại trong cơ sở dữ liệu hay không.
 
 59
 00:04:16,070 --> 00:04:19,279
-If not exist we will throw an order not found exception.
+Nếu không tồn tại chúng ta sẽ throw một order not found exception.
 
 60
 00:04:19,279 --> 00:04:25,010
-In our case we can find the order in database and after that we will update orders with the new values
+Trong trường hợp của chúng ta, chúng ta có thể tìm thấy đơn hàng trong database và sau đó chúng ta sẽ cập nhật orders với các giá trị mới
 
 61
 00:04:25,010 --> 00:04:26,000
-in this method.
+trong method này.
 
 62
 00:04:26,000 --> 00:04:32,630
-In here you can see that after preparing our value object, we are hitting the order update method which
+Ở đây bạn có thể thấy rằng sau khi chuẩn bị value object của chúng ta, chúng ta đang gọi phương thức order update nằm
 
 63
 00:04:32,630 --> 00:04:36,140
-is the located or ordered domain layer.
+trong ordered domain layer.
 
 64
 00:04:36,140 --> 00:04:41,540
-And in here we are going to update new order name, which is the order five and shipping address, billing
+Và ở đây chúng ta sẽ cập nhật tên order mới, đó là order năm và shipping address, billing
 
 65
 00:04:41,540 --> 00:04:43,100
-address, payment and status.
+address, payment và status.
 
 66
 00:04:43,100 --> 00:04:48,380
-And after that we will adding domain event which name is order updated event into order aggregate.
+Và sau đó chúng ta sẽ thêm domain event có tên là order updated event vào order aggregate.
 
 67
 00:04:48,380 --> 00:04:54,470
-After updating this operation and after continuing this our handle method in the application layer,
+Sau khi hoàn tất thao tác này và tiếp tục trong handle method của chúng ta ở application layer,
 
 68
 00:04:54,470 --> 00:04:58,970
-we basically update an existing order using the Entity Framework core and when saving.
+về cơ bản chúng ta cập nhật một order hiện có bằng cách sử dụng Entity Framework Core và khi lưu.
 
 69
 00:04:59,340 --> 00:04:59,820
@@ -276,39 +276,39 @@ Async.
 
 70
 00:04:59,820 --> 00:05:04,860
-Here you can see that this will be triggered our interceptor from the infrastructure layer.
+Ở đây bạn có thể thấy rằng đây sẽ kích hoạt interceptor của chúng ta từ infrastructure layer.
 
 71
 00:05:04,860 --> 00:05:07,080
-And after that we will dispatching domain events.
+Và sau đó chúng ta sẽ dispatch domain events.
 
 72
 00:05:07,080 --> 00:05:12,540
-In our case we will dispatch one domain event which is the our update order domain event.
+Trong trường hợp của chúng ta, chúng ta sẽ dispatch một domain event đó là update order domain event.
 
 73
 00:05:12,540 --> 00:05:17,490
-And here you can see that this will be triggered and handled from the ordering application layer.
+Và ở đây bạn có thể thấy rằng đây sẽ được kích hoạt và xử lý từ ordering application layer.
 
 74
 00:05:17,490 --> 00:05:21,540
-Order updated event handler which is implementing a notification handler.
+Order updated event handler đang implement một notification handler.
 
 75
 00:05:21,540 --> 00:05:27,420
-You can confirm that this is the place where the ordering application event handlers located, and in
+Bạn có thể xác nhận rằng đây là nơi các ordering application event handlers được đặt, và trong
 
 76
 00:05:27,420 --> 00:05:31,320
-this case I am only logging the information which incoming domain event.
+trường hợp này tôi chỉ logging thông tin của domain event incoming.
 
 77
 00:05:31,320 --> 00:05:34,950
-But in the next videos we can send integration event in here.
+Nhưng trong các video tiếp theo chúng ta có thể gửi integration event ở đây.
 
 78
 00:05:34,950 --> 00:05:41,160
-So I'm going to hit F5 and go at the end of this endpoint class and return a response to the client
+Vậy tôi sẽ nhấn F5 và đi đến cuối endpoint class này và trả về response cho client
 
 79
 00:05:41,160 --> 00:05:41,880
@@ -316,49 +316,49 @@ application.
 
 80
 00:05:41,880 --> 00:05:45,270
-You can see the response is 200 okay successful.
+Bạn có thể thấy response là 200 okay thành công.
 
 81
 00:05:45,270 --> 00:05:49,410
-And you can see the payload of the response which is the success is true.
+Và bạn có thể thấy payload của response là success là true.
 
 82
 00:05:49,410 --> 00:05:53,130
-So now we can verify these updated records on the database.
+Vậy bây giờ chúng ta có thể xác minh những bản ghi đã cập nhật trên database.
 
 83
 00:05:53,130 --> 00:05:59,250
-If you open the Visual Studio and if you open the SQL Server Object Explorer I have already opened these
+Nếu bạn mở Visual Studio và mở SQL Server Object Explorer thì tôi đã mở những bản ghi này trước khi quay video này.
 
 84
 00:05:59,250 --> 00:06:00,960
-orders before this video.
+orders trước video này.
 
 85
 00:06:00,960 --> 00:06:05,910
-Here you can see that this is the last record that we have inserted in the last video.
+Ở đây bạn có thể thấy đây là bản ghi cuối cùng mà chúng ta đã insert trong video trước.
 
 86
 00:06:05,910 --> 00:06:08,010
-And please check this order name.
+Và vui lòng kiểm tra tên order này.
 
 87
 00:06:08,010 --> 00:06:09,660
-We have updated this order name.
+Chúng ta đã cập nhật tên order này.
 
 88
 00:06:09,660 --> 00:06:15,900
-If I refresh this page, you can see that our order name has changed with the five and the order of
+Nếu tôi refresh trang này, bạn có thể thấy rằng tên order của chúng ta đã thay đổi với số five và thứ tự các giá trị đã thay đổi.
 
 89
 00:06:15,900 --> 00:06:17,190
-the values are changed.
+các giá trị đã thay đổi.
 
 90
 00:06:17,190 --> 00:06:21,600
-If you check the the first name of the billing and shipping address and so on.
+Nếu bạn kiểm tra tên đầu tiên của billing address và shipping address và những thứ tương tự như vậy.
 
 91
 00:06:21,600 --> 00:06:27,390
-That means we have successfully updated an existing record with using the update order endpoint.
+Điều đó có nghĩa là chúng ta đã successfully cập nhật một bản ghi hiện có bằng cách sử dụng update order endpoint.
 
