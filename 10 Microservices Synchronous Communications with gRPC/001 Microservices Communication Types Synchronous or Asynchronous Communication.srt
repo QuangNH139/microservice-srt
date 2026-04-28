@@ -1,70 +1,70 @@
 1
 00:00:00,230 --> 00:00:07,790
-In this video we are going to learn microservice communication types, which are the synchronous and
+Trong video này, chúng ta sẽ học về các loại giao tiếp microservice, đó là giao tiếp đồng bộ và
 
 2
 00:00:07,790 --> 00:00:09,410
-asynchronous communications.
+giao tiếp không đồng bộ.
 
 3
 00:00:09,410 --> 00:00:14,870
-Client and services communicate with each other with many different types of communications.
+Client và các service giao tiếp với nhau thông qua nhiều loại giao tiếp khác nhau.
 
 4
 00:00:14,870 --> 00:00:22,460
-Mainly those types of communications can be classified by two axis synchronous and asynchronous communication.
+Về cơ bản, những loại giao tiếp này có thể được phân loại theo hai trục: giao tiếp đồng bộ và giao tiếp không đồng bộ.
 
 5
 00:00:22,460 --> 00:00:24,740
-What is synchronous communication?
+Giao tiếp đồng bộ là gì?
 
 6
 00:00:24,740 --> 00:00:32,479
-Basically, we can say that synchronous communication is using Http or gRPC protocol for returning synchronous
+Về cơ bản, chúng ta có thể nói rằng giao tiếp đồng bộ là sử dụng protocol Http hoặc gRPC để trả về phản hồi đồng bộ.
 
 7
 00:00:32,479 --> 00:00:33,230
-response.
+phản hồi.
 
 8
 00:00:34,640 --> 00:00:38,810
-The client sent the request and waits for a response from the service.
+Client gửi yêu cầu và chờ phản hồi từ service.
 
 9
 00:00:39,080 --> 00:00:45,260
-So that means the client code blocked their thread until the response reached from the server.
+Điều đó có nghĩa là client code sẽ khóa thread của nó cho đến khi nhận được phản hồi từ server.
 
 10
 00:00:47,240 --> 00:00:52,640
-The synchronous communication protocols can be used Http or Https.
+Các protocol giao tiếp đồng bộ có thể sử dụng Http hoặc Https.
 
 11
 00:00:52,640 --> 00:00:58,970
-In synchronous communication, the client sends a request with using Http protocols and waits for a
+Trong giao tiếp đồng bộ, client gửi yêu cầu bằng cách sử dụng protocol Http và chờ phản hồi từ service.
 
 12
 00:00:58,970 --> 00:01:00,620
-response from the service.
+Điều đó có nghĩa là client gọi server và khóa các hoạt động dữ liệu của client.
 
 13
 00:01:01,160 --> 00:01:07,160
-So that means the client call the server and block client data operations.
+Client code sẽ tiếp tục công việc của nó khi nhận được phản hồi từ Http server.
 
 14
 00:01:07,160 --> 00:01:12,710
-The client code will continue its task when it receives the Http server response.
+Vậy đây là điểm quan trọng - client khóa code của họ khi gọi đồng bộ và sau khi nhận được phản hồi từ Http server, nó tiếp tục công việc của nó.
 
 15
 00:01:12,710 --> 00:01:21,350
-So this is the important topic that client block their code when synchronous to calling and after receiving
+Vậy hoạt động này được gọi là giao tiếp đồng bộ, nó có những ưu điểm và nhược điểm mà chúng ta cần xem xét khi chọn cách này.
 
 16
 00:01:21,350 --> 00:01:24,890
-an Http server response, it continue their task.
+Nhưng bây giờ tôi sẽ tiếp tục nói về giao tiếp không đồng bộ trong microservices.
 
 17
 00:01:24,890 --> 00:01:31,400
-So this operation called synchronous communication, it has advantages and disadvantages that we would
+Một loại giao tiếp khác là giao tiếp không đồng bộ.
 
 18
 00:01:31,400 --> 00:01:33,080
@@ -80,23 +80,23 @@ Another communication type is asynchronous communication.
 
 21
 00:01:41,420 --> 00:01:44,060
-So what is asynchronous communication.
+Vậy asynchronous communication là gì.
 
 22
 00:01:44,060 --> 00:01:50,570
-Basically in asynchronous communication the client send the request but it doesn't wait for a response
+Về cơ bản, trong asynchronous communication, client gửi request nhưng không chờ response
 
 23
 00:01:50,570 --> 00:01:51,680
-from the service.
+từ service.
 
 24
 00:01:53,120 --> 00:01:59,420
-So the key point here is that the client should not have blocked a thread while waiting for a response.
+Vậy điểm chính ở đây là client không nên block một thread trong khi chờ response.
 
 25
 00:01:59,810 --> 00:02:06,680
-The most popular protocol for these asynchronous communication is Amqp, which is the Advanced Messaging
+Giao thức phổ biến nhất cho asynchronous communication này là Amqp, viết tắt của Advanced Messaging
 
 26
 00:02:06,680 --> 00:02:07,790
@@ -104,21 +104,21 @@ Queue protocol.
 
 27
 00:02:08,300 --> 00:02:15,290
-So with using Amqp protocols, the client sent the message with using message broker systems like Kafka
+Vậy khi sử dụng giao thức Amqp, client gửi message bằng cách sử dụng các hệ thống message broker như Kafka
 
 28
 00:02:15,290 --> 00:02:16,550
-and RabbitMQ.
+và RabbitMQ.
 
 29
 00:02:17,600 --> 00:02:20,900
-The message producer usually doesn't wait for a response.
+Message producer thường không chờ response.
 
 30
 00:02:22,240 --> 00:02:28,630
-This message consumed from the subscriber systems in asynchronous way and no one waiting for response
+Message này được consume từ các subscriber systems theo cách asynchronous và không ai chờ response
 
 31
 00:02:28,630 --> 00:02:29,230
-suddenly.
+đột ngột.
 
