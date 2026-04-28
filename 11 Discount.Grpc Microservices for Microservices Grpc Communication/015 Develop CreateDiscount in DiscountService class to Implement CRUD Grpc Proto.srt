@@ -1,290 +1,290 @@
 1
 00:00:00,170 --> 00:00:05,720
-In this video we are going to develop great discount method in our discount service class.
+Trong video này chúng ta sẽ phát triển phương thức discount tuyệt vời trong lớp discount service của chúng ta.
 
 2
 00:00:05,720 --> 00:00:11,390
-So as you can see that the first method is done and now we are going to develop the second method to
+Vậy như bạn có thể thấy phương thức đầu tiên đã hoàn thành và bây giờ chúng ta sẽ phát triển phương thức thứ hai để
 
 3
 00:00:11,390 --> 00:00:12,530
-create discount method.
+tạo phương thức discount.
 
 4
 00:00:12,530 --> 00:00:18,470
-So this will be Academy incoming gRPC request and perform the database operation and return back to
+Vậy cái này sẽ là Academy tiếp nhận gRPC request và thực hiện thao tác cơ sở dữ liệu và trả lại cho
 
 5
 00:00:18,470 --> 00:00:20,720
-the gRPC client with coupon model.
+gRPC client với coupon model.
 
 6
 00:00:20,720 --> 00:00:22,940
-So here you can see the method signature.
+Vậy ở đây bạn có thể thấy chữ ký phương thức.
 
 7
 00:00:22,940 --> 00:00:26,180
-And this signature is aligned with the Our discount profile.
+Và chữ ký này phù hợp với discount profile của chúng ta.
 
 8
 00:00:26,180 --> 00:00:30,500
-If you open the discount profile you can see that this is the RPC create discount.
+Nếu bạn mở discount profile bạn có thể thấy đây là RPC create discount.
 
 9
 00:00:30,500 --> 00:00:32,900
-And this will be get the create Discount request.
+Và cái này sẽ lấy create Discount request.
 
 10
 00:00:32,900 --> 00:00:37,250
-And in this request we are expecting coupon model complex object.
+Và trong request này chúng ta đang mong đợi một complex object là coupon model.
 
 11
 00:00:37,250 --> 00:00:41,900
-And in this complex object we are expecting all members for the coupon object.
+Và trong complex object này chúng ta đang mong đợi tất cả các thành viên của coupon object.
 
 12
 00:00:41,900 --> 00:00:43,850
-And after that this will be returned again.
+Và sau đó cái này sẽ được trả lại.
 
 13
 00:00:43,850 --> 00:00:47,210
-Coupon model with including all Coupon Object members.
+Coupon model với bao gồm tất cả các thành viên của Coupon Object.
 
 14
 00:00:47,210 --> 00:00:52,820
-So for that purpose please go back to Discount Service and locate the Create Discount method and remove
+Vậy cho mục đích đó vui lòng quay lại Discount Service và tìm phương thức Create Discount và xóa
 
 15
 00:00:52,820 --> 00:00:54,140
-the base statement.
+lệnh base.
 
 16
 00:00:54,170 --> 00:00:59,480
-Now the first thing we should do that we should get the incoming request object and reach the coupon
+Bây giờ điều đầu tiên chúng ta nên làm là chúng ta nên lấy incoming request object và lấy coupon
 
 17
 00:00:59,480 --> 00:01:04,160
-object from converting the our coupon to the Request Coupon object.
+object từ việc chuyển đổi coupon của chúng ta thành Request Coupon object.
 
 18
 00:01:04,160 --> 00:01:07,190
-So in the Request coupon, you can see that this is the coupon model.
+Vậy trong Request coupon, bạn có thể thấy đây là coupon model.
 
 19
 00:01:07,190 --> 00:01:13,190
-And we will add up this coupon model into our coupon object in order to save into this our table.
+Và chúng ta sẽ thêm coupon model này vào coupon object của chúng ta để lưu vào bảng của chúng ta.
 
 20
 00:01:13,190 --> 00:01:17,300
-So after that we will check that is this coupon is null or not.
+Vậy sau đó chúng ta sẽ kiểm tra coupon này có null hay không.
 
 21
 00:01:17,300 --> 00:01:20,720
-If two coupon is null, we basically throw an exception.
+Nếu coupon là null, về cơ bản chúng ta sẽ throw một exception.
 
 22
 00:01:20,720 --> 00:01:28,430
-Since we are implementing gRPC method, we will sending throw new RPC exception and providing the status
+Vì chúng ta đang triển khai phương thức gRPC, chúng ta sẽ gửi throw new RPC exception và cung cấp status
 
 23
 00:01:28,430 --> 00:01:33,710
-and status code is a invalid argument and we will pass the message invalid request object.
+và status code là invalid argument và chúng ta sẽ pass message invalid request object.
 
 24
 00:01:33,710 --> 00:01:38,270
-So this is the throwing guard for our method implementation.
+Vậy đây là guard throw cho triển khai phương thức của chúng ta.
 
 25
 00:01:38,270 --> 00:01:44,210
-And after that, if the coupon is not null, we can perform the database insert operation for the create
+Và sau đó, nếu coupon không null, chúng ta có thể thực hiện database insert operation cho phương thức create
 
 26
 00:01:44,210 --> 00:01:45,380
-discount method.
+discount.
 
 27
 00:01:45,380 --> 00:01:46,940
-So this is very easy.
+Vậy đây rất dễ dàng.
 
 28
 00:01:46,940 --> 00:01:53,390
-We will use Dbcontext coupons add method and adding the coupon object into our coupons array.
+Chúng ta sẽ sử dụng phương thức Dbcontext coupons add và thêm đối tượng coupon vào mảng coupons của chúng ta.
 
 29
 00:01:53,390 --> 00:01:57,920
-After that we will perform await Dbcontext save changes async method.
+Sau đó chúng ta sẽ thực hiện await Dbcontext save changes async method.
 
 30
 00:01:57,920 --> 00:02:00,890
-In order to reflect these changes into database.
+Để phản ánh những thay đổi này vào cơ sở dữ liệu.
 
 31
 00:02:00,890 --> 00:02:06,080
-Of course, we should make this method as an async method to use available functions in here.
+Tất nhiên, chúng ta nên đặt phương thức này thành một async method để sử dụng các hàm có sẵn ở đây.
 
 32
 00:02:06,080 --> 00:02:09,560
-So after that we will basically log this operation log.
+Vậy sau đó chúng ta về cơ bản sẽ log hoạt động này với log thông báo.
 
 33
 00:02:09,560 --> 00:02:17,630
-Successful message for completing create discount operation Logger.log information discount is successfully
+Successful message cho hoàn thành create discount operation Logger.log information discount đã được thành công
 
 34
 00:02:17,630 --> 00:02:22,430
-created and we will provide the product name which incoming coupon object as a product name.
+tạo và chúng ta sẽ cung cấp tên product mà coupon object gửi tới làm tên product.
 
 35
 00:02:22,430 --> 00:02:26,510
-And lastly, we will return back to our client with the Coupon Model object.
+Và cuối cùng, chúng ta sẽ trả lại cho client của chúng ta với đối tượng Coupon Model.
 
 36
 00:02:26,510 --> 00:02:32,990
-For that purpose, we need to again adapting changes to our Coupon to coupon model and return back the
+Để mục đích đó, chúng ta cần một lần nữa adapt những thay đổi từ Coupon sang coupon model và trả lại
 
 37
 00:02:32,990 --> 00:02:35,030
-coupon model to the gRPC client.
+coupon model cho gRPC client.
 
 38
 00:02:35,030 --> 00:02:38,360
-And here you can see the implementation of the Create Discount method.
+Và ở đây bạn có thể thấy triển khai của phương thức Create Discount.
 
 39
 00:02:38,360 --> 00:02:44,180
-In this method, we basically use Entity Framework core DB Context object and create new coupon into
+Trong phương thức này, chúng ta về cơ bản sử dụng Entity Framework Core DB Context object và tạo coupon mới vào
 
 40
 00:02:44,180 --> 00:02:47,090
-our discount database, which is the SQLite database.
+cơ sở dữ liệu discount của chúng ta, đó là cơ sở dữ liệu SQLite.
 
 41
 00:02:47,090 --> 00:02:52,430
-Before testing the application, I would like to emphasize one thing which is the logging operation.
+Trước khi kiểm tra ứng dụng, tôi muốn nhấn mạnh một điều đó là logging operation.
 
 42
 00:02:52,430 --> 00:02:56,750
-Here you can see that all methods we are using the logger log information.
+Ở đây bạn có thể thấy rằng tất cả các phương thức mà chúng ta sử dụng logger log information.
 
 43
 00:02:56,750 --> 00:03:00,380
-That means we will logging our methods for information level.
+Điều đó có nghĩa là chúng ta sẽ logging các phương thức của chúng ta ở mức information.
 
 44
 00:03:00,380 --> 00:03:07,370
-But if you open the our application settings of the discount gRPC, you can see that log level is warning
+Nhưng nếu bạn mở application settings của discount gRPC, bạn có thể thấy rằng log level là warning
 
 45
 00:03:07,370 --> 00:03:09,560
-for the ASP.Net core namespaces.
+cho các ASP.NET Core namespaces.
 
 46
 00:03:09,560 --> 00:03:10,820
-Log level is warning.
+Log level là warning.
 
 47
 00:03:10,820 --> 00:03:14,150
-That's why we cannot see logs for our method operations.
+Đó là lý do tại sao chúng ta không thể thấy logs cho các hoạt động phương thức của chúng ta.
 
 48
 00:03:14,150 --> 00:03:20,060
-I'm going to copy the information for default value and changing ASP.Net core log level to Warning to
+Tôi sẽ copy thông tin cho default value và thay đổi ASP.NET Core log level từ Warning sang
 
 49
 00:03:20,060 --> 00:03:23,780
-information and save these application settings Json file.
+Information và lưu tập tin application settings Json này.
 
 50
 00:03:23,780 --> 00:03:29,630
-So now we can ready to test our create discount and see our log information to the Our Project Console
+Vậy bây giờ chúng ta sẵn sàng để kiểm tra create discount của chúng ta và xem thông tin log của chúng ta trong console window của Project
 
 51
 00:03:29,630 --> 00:03:30,260
-window.
+.
 
 52
 00:03:30,260 --> 00:03:34,820
-In order to run this application, please click this button and run the Https mode.
+Để chạy ứng dụng này, vui lòng nhấp vào nút này và chạy ở chế độ Https.
 
 53
 00:03:34,820 --> 00:03:41,060
-And this will be start up our application and Accodomate incoming gRPC call for create discount.
+Và điều này sẽ khởi động ứng dụng của chúng ta và sẵn sàng để tiếp nhận gRPC call cho create discount.
 
 54
 00:03:41,060 --> 00:03:44,840
-And here you can see that our application has started successfully.
+Và ở đây bạn có thể thấy rằng ứng dụng của chúng ta đã khởi động thành công.
 
 55
 00:03:44,840 --> 00:03:48,200
-Now we can open the our postman and in the postman.
+Bây giờ chúng ta có thể mở Postman của chúng ta và trong Postman.
 
 56
 00:03:48,200 --> 00:03:51,380
-This time we are going to use create discount method.
+Lần này chúng ta sẽ sử dụng phương thức create discount.
 
 57
 00:03:51,380 --> 00:03:54,560
-And in this method we have to change this payload.
+Và trong phương thức này chúng ta phải thay đổi payload này.
 
 58
 00:03:54,560 --> 00:04:01,670
-So if you open the our Visual Studio and go to the Discount Proto file, and we can see the our payload
+Vậy nếu bạn mở Visual Studio của chúng ta và đi tới tập tin Discount Proto, và chúng ta có thể thấy payload của chúng ta
 
 59
 00:04:01,670 --> 00:04:04,460
-into create discount which is the create discount request.
+trong create discount đó là create discount request.
 
 60
 00:04:04,490 --> 00:04:07,910
-It is expecting coupon model as a coupon name.
+Nó đang mong đợi coupon model như là một coupon name.
 
 61
 00:04:07,910 --> 00:04:09,620
-The naming is very important.
+Đặt tên rất quan trọng.
 
 62
 00:04:09,620 --> 00:04:13,730
-And in the coupon model we should specify these parameters into our payload.
+Và trong coupon model chúng ta nên xác định các tham số này vào payload của chúng ta.
 
 63
 00:04:13,730 --> 00:04:16,279
-For that purpose, please go back to our postman.
+Để làm điều đó, vui lòng quay lại Postman của chúng ta.
 
 64
 00:04:16,279 --> 00:04:18,829
-And in here I'm going to prepare a payload.
+Và ở đây tôi sẽ chuẩn bị một payload.
 
 65
 00:04:18,829 --> 00:04:22,040
-The coupon name is coupon is the same with the proto file.
+Tên coupon giống với file proto.
 
 66
 00:04:22,040 --> 00:04:26,690
-And inside of this coupon I'm providing product name, description and amount.
+Và bên trong coupon này tôi cung cấp tên sản phẩm, mô tả và số tiền.
 
 67
 00:04:26,690 --> 00:04:30,080
-And the ID will be generated by the SQLite automatically.
+Và ID sẽ được SQLite tạo tự động.
 
 68
 00:04:30,080 --> 00:04:33,500
-And this is the create discount payload.
+Và đây là payload create discount.
 
 69
 00:04:33,500 --> 00:04:38,660
-We are going to invoke this payload and invoke our create discount operation.
+Chúng ta sẽ gọi payload này và gọi thao tác create discount của chúng ta.
 
 70
 00:04:38,660 --> 00:04:42,710
-And inside of the request you can see the request including the coupon object.
+Và bên trong request bạn có thể thấy request bao gồm coupon object.
 
 71
 00:04:42,710 --> 00:04:47,660
-And in the coupon we can specify the amount, product name and description information.
+Và trong coupon chúng ta có thể xác định thông tin về số tiền, tên sản phẩm và mô tả.
 
 72
 00:04:47,660 --> 00:04:55,340
-So with incoming coupon object we basically convert the our coupon object for the Entity Framework Core
+Vì vậy với incoming coupon object chúng ta cơ bản chuyển đổi coupon object của chúng ta thành Entity Framework Core
 
 73
 00:04:55,340 --> 00:04:56,000
@@ -292,57 +292,57 @@ entity.
 
 74
 00:04:56,000 --> 00:04:59,720
-If coupon is not null, we will basically add this coupon into our coupon.
+Nếu coupon không null, chúng ta cơ bản sẽ thêm coupon này vào coupon của chúng ta.
 
 75
 00:05:00,220 --> 00:05:06,340
-Dbcontext and save this change into database, and after that log the information to perform successfully
+Dbcontext và lưu thay đổi này vào database, và sau đó ghi lại thông tin để thực hiện thành công
 
 76
 00:05:06,340 --> 00:05:12,850
-and return back to gRPC client with converting again coupon model and go back to response to our application.
+và trả lại gRPC client bằng cách chuyển đổi lại coupon model và quay lại response cho ứng dụng của chúng ta.
 
 77
 00:05:12,850 --> 00:05:16,510
-Here you can see the response comes to our create discount.
+Ở đây bạn có thể thấy response đến create discount của chúng ta.
 
 78
 00:05:16,510 --> 00:05:19,930
-And this time newly created ID comes as a three.
+Và lần này ID mới tạo là ba.
 
 79
 00:05:20,020 --> 00:05:25,990
-If you open the Project Console window, you can also confirm that this time we can log our operations
+Nếu bạn mở cửa sổ Project Console, bạn cũng có thể xác nhận rằng lần này chúng ta có thể ghi lại các thao tác của mình
 
 80
 00:05:25,990 --> 00:05:26,890
-successfully.
+thành công.
 
 81
 00:05:26,890 --> 00:05:33,100
-Here you can see that the information log comes as a discount is successfully created and the product
+Ở đây bạn có thể thấy thông tin log cho biết một discount đã được tạo thành công và tên sản phẩm
 
 82
 00:05:33,100 --> 00:05:34,930
-name is new iPhone 15.
+là iPhone 15 mới.
 
 83
 00:05:35,140 --> 00:05:35,770
-Also.
+Cũng vậy.
 
 84
 00:05:35,770 --> 00:05:42,580
-Lastly, we can confirm from the database if you select the discount tab and drag and drop to our SQLite
+Cuối cùng, chúng ta có thể xác nhận từ cơ sở dữ liệu nếu bạn chọn tab discount và kéo thả vào trình duyệt SQLite
 
 85
 00:05:42,580 --> 00:05:45,280
-browser, you can see the tables come in here.
+của chúng ta, bạn có thể thấy các bảng xuất hiện ở đây.
 
 86
 00:05:45,280 --> 00:05:48,280
-We can browse the data with selecting the table as a coupons.
+Chúng ta có thể duyệt dữ liệu bằng cách chọn bảng là coupons.
 
 87
 00:05:48,280 --> 00:05:53,500
-And here you can see that newly created coupon item is comes into our database.
+Và ở đây bạn có thể thấy rằng mục coupon mới được tạo đã được đưa vào cơ sở dữ liệu của chúng ta.
 

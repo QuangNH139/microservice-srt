@@ -1,144 +1,144 @@
 1
 00:00:00,200 --> 00:00:04,160
-In this video we are going to develop update discount method.
+Trong video này chúng ta sẽ phát triển phương thức update discount.
 
 2
 00:00:04,160 --> 00:00:06,860
-So this is very similar with the create discount method.
+Vậy điều này rất giống với phương thức create discount.
 
 3
 00:00:06,860 --> 00:00:11,540
-But this time we will expect the ID information when request coming in.
+Nhưng lần này chúng ta sẽ mong đợi thông tin ID khi request đến.
 
 4
 00:00:11,540 --> 00:00:16,910
-Here you can see the update discount and update discount request also accepting the coupon information.
+Ở đây bạn có thể thấy update discount và update discount request cũng đang chấp nhận thông tin coupon.
 
 5
 00:00:16,910 --> 00:00:21,260
-But this time we will expect the ID information in order to update these values.
+Nhưng lần này chúng ta sẽ mong đợi thông tin ID để cập nhật các giá trị này.
 
 6
 00:00:21,260 --> 00:00:27,380
-So if you go back to Discount service, I'm going to copy the whole code from the our create discount
+Vậy nếu bạn quay lại Discount service, tôi sẽ sao chép toàn bộ mã từ phương thức create discount
 
 7
 00:00:27,380 --> 00:00:29,930
-and paste into the update discount method.
+và dán vào phương thức update discount.
 
 8
 00:00:31,040 --> 00:00:34,550
-And in here the first line of codes are similar.
+Và ở đây dòng mã đầu tiên cũng tương tự.
 
 9
 00:00:34,550 --> 00:00:40,970
-We will check the coupon and if coupon is null we will send the exception and the second line of code
+Chúng ta sẽ kiểm tra coupon và nếu coupon là null thì chúng ta sẽ gửi exception, và dòng mã thứ hai
 
 10
 00:00:40,970 --> 00:00:43,400
-we will change when interacting database.
+chúng ta sẽ thay đổi khi tương tác với database.
 
 11
 00:00:43,400 --> 00:00:47,960
-First of all, I'm going to change the coupon add method to the update method.
+Đầu tiên, tôi sẽ thay đổi phương thức coupon add thành phương thức update.
 
 12
 00:00:48,290 --> 00:00:53,630
-So this will be update coupon information with the existing value into database.
+Vậy điều này sẽ cập nhật thông tin coupon với giá trị hiện có vào database.
 
 13
 00:00:53,630 --> 00:00:59,030
-And after that we will make this method as an async method to perform changes to the database.
+Và sau đó chúng ta sẽ làm cho phương thức này trở thành async method để thực hiện các thay đổi đối với database.
 
 14
 00:00:59,030 --> 00:01:05,780
-And when we are logging this information, we will change successfully created to the successfully updated.
+Và khi chúng ta đang ghi lại thông tin này, chúng ta sẽ thay đổi successfully created thành successfully updated.
 
 15
 00:01:07,970 --> 00:01:12,110
-And also the product name passing in the same value from the coupon object.
+Và cũng truyền tên sản phẩm với cùng giá trị từ đối tượng coupon.
 
 16
 00:01:12,110 --> 00:01:16,160
-And lastly, we will respond back with converting to coupon model.
+Và cuối cùng, chúng ta sẽ phản hồi bằng cách chuyển đổi thành coupon model.
 
 17
 00:01:16,160 --> 00:01:22,280
-In this update discount method, we basically use Entity Framework core DB Context Object and update
+Trong phương thức update discount này, chúng ta cơ bản sử dụng Entity Framework Core DB Context Object và update
 
 18
 00:01:22,280 --> 00:01:25,010
-existing coupon into our discount database.
+coupon hiện có vào discount database của chúng ta.
 
 19
 00:01:25,010 --> 00:01:27,860
-So now we can start to test our application.
+Vậy bây giờ chúng ta có thể bắt đầu kiểm tra ứng dụng của chúng ta.
 
 20
 00:01:27,860 --> 00:01:31,010
-Please run the discount gRPC application.
+Vui lòng chạy ứng dụng discount gRPC.
 
 21
 00:01:31,010 --> 00:01:33,890
-And after that we will send with the postman.
+Và sau đó chúng ta sẽ gửi với Postman.
 
 22
 00:01:33,890 --> 00:01:39,740
-So if you open the postman after running the application you can come here and change the method name
+Vậy nếu bạn mở Postman sau khi chạy ứng dụng, bạn có thể đến đây và thay đổi tên method
 
 23
 00:01:39,740 --> 00:01:40,940
-as a update discount.
+là một cập nhật discount.
 
 24
 00:01:40,940 --> 00:01:45,440
-But this time I'm going to paste the ID information in here.
+Nhưng lần này tôi sẽ dán thông tin ID vào đây.
 
 25
 00:01:45,440 --> 00:01:50,870
-I'm going to change the whole payload and adding the ID information and changing the value as a updated
+Tôi sẽ thay đổi toàn bộ payload và thêm thông tin ID cũng như thay đổi giá trị thành một giá trị đã cập nhật
 
 26
 00:01:50,870 --> 00:01:53,420
-value for product name, description and amount.
+cho product name, description và amount.
 
 27
 00:01:53,420 --> 00:01:57,260
-So this is the latest payload for the update discount operation.
+Vậy đây là payload mới nhất cho hoạt động update discount.
 
 28
 00:01:57,260 --> 00:02:01,700
-And if we invoke this operation this will be trigger update discount method.
+Và nếu chúng ta gọi hoạt động này, nó sẽ kích hoạt method update discount.
 
 29
 00:02:01,700 --> 00:02:06,620
-And if we continue the debug we will basically convert to our coupon object.
+Và nếu chúng ta tiếp tục debug, chúng ta về cơ bản sẽ chuyển đổi thành object coupon của chúng ta.
 
 30
 00:02:06,620 --> 00:02:12,920
-And after that update the coupon object using the Dbcontext coupon update method and reflect the change
+Và sau đó cập nhật object coupon bằng cách sử dụng method Dbcontext coupon update và phản ánh những thay đổi
 
 31
 00:02:12,920 --> 00:02:13,820
-to the database.
+vào database.
 
 32
 00:02:13,820 --> 00:02:19,730
-And after that, log the information and return back to the coupon model to the gRPC client application.
+Và sau đó, ghi lại thông tin và trả lại coupon model cho ứng dụng gRPC client.
 
 33
 00:02:19,730 --> 00:02:23,240
-Here you can see the updated values comes into our response.
+Ở đây bạn có thể thấy các giá trị đã cập nhật xuất hiện trong response của chúng ta.
 
 34
 00:02:23,240 --> 00:02:28,430
-In order to verify this, we can open our database and locate the third row.
+Để xác minh điều này, chúng ta có thể mở database của chúng ta và tìm hàng thứ ba.
 
 35
 00:02:28,430 --> 00:02:35,690
-If you refresh this coupons table, you can see that values has changed with the updated values including
+Nếu bạn làm mới bảng coupons này, bạn có thể thấy rằng các giá trị đã thay đổi thành các giá trị đã cập nhật bao gồm
 
 36
 00:02:35,690 --> 00:02:37,340
-product name and description.
+product name và description.
 

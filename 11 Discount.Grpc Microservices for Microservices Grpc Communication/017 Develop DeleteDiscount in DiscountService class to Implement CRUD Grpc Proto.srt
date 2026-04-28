@@ -1,212 +1,212 @@
 1
 00:00:00,140 --> 00:00:03,770
-In this video we are going to develop the late discount method.
+Trong video này chúng ta sẽ phát triển phương thức delete discount.
 
 2
 00:00:03,800 --> 00:00:08,510
-Please go to Delete Discount method and in here you can see the request and response object.
+Vui lòng đi đến phương thức Delete Discount và ở đây bạn có thể thấy request và response object.
 
 3
 00:00:08,510 --> 00:00:14,150
-And if you look at the Discount Proto file we can see the delete discount RPC method accepting delete
+Và nếu bạn nhìn vào Discount Proto file, chúng ta có thể thấy phương thức RPC delete discount chấp nhận
 
 4
 00:00:14,150 --> 00:00:14,960
-discount request.
+delete discount request.
 
 5
 00:00:14,960 --> 00:00:20,180
-And in this method you can see that message only accepting product name.
+Và trong phương thức này bạn có thể thấy rằng message chỉ chấp nhận product name.
 
 6
 00:00:20,180 --> 00:00:23,750
-And the response is only returned a boolean success or not.
+Và response chỉ trả về boolean success hay không.
 
 7
 00:00:23,750 --> 00:00:29,120
-So if you go back to our implementation, we can start to implement our delete discount.
+Vậy nếu bạn quay lại implementation của chúng ta, chúng ta có thể bắt đầu triển khai delete discount.
 
 8
 00:00:29,120 --> 00:00:34,670
-The first thing we should do that we are going to retrieve the coupon information from the database
+Điều đầu tiên chúng ta nên làm là chúng ta sẽ lấy thông tin coupon từ database
 
 9
 00:00:34,670 --> 00:00:36,380
-with a given product name.
+với một product name nhất định.
 
 10
 00:00:36,380 --> 00:00:41,450
-And of course this method should be async and perform the available functions.
+Và tất nhiên phương thức này nên là async và thực hiện các hàm có sẵn.
 
 11
 00:00:41,450 --> 00:00:44,270
-And these available functions is getting the coupons.
+Và các hàm có sẵn này là getting the coupons.
 
 12
 00:00:44,270 --> 00:00:50,330
-And we will get first of all default coupon with a given product name from our delete discount request
+Và chúng ta sẽ lấy đầu tiên default coupon với một product name nhất định từ delete discount request
 
 13
 00:00:50,330 --> 00:00:50,960
-object.
+object của chúng ta.
 
 14
 00:00:50,960 --> 00:00:54,380
-And after that we can check the coupon is null or not.
+Và sau đó chúng ta có thể kiểm tra coupon có null hay không.
 
 15
 00:00:54,380 --> 00:00:59,600
-If the coupon is null, that means there is no any coupon information to the database.
+Nếu coupon là null, điều đó có nghĩa là không có bất kỳ thông tin coupon nào trong database.
 
 16
 00:00:59,600 --> 00:01:05,840
-We will throw an exception which is the RPC exception, and we will pass new status and status code
+Chúng ta sẽ throw một exception đó là RPC exception, và chúng ta sẽ pass new status và status code
 
 17
 00:01:05,840 --> 00:01:10,310
-is not found and the message is discount with product name is not found.
+là not found và message là discount với product name không được tìm thấy.
 
 18
 00:01:10,310 --> 00:01:13,880
-And we will passing the product name with incoming request object.
+Và chúng ta sẽ pass product name từ incoming request object.
 
 19
 00:01:14,060 --> 00:01:19,520
-And after that if coupon is not null, that means is there any coupon in the database.
+Và sau đó nếu coupon không null, điều đó có nghĩa là có bất kỳ coupon nào trong database.
 
 20
 00:01:19,520 --> 00:01:25,790
-We basically perform Dbcontext dot coupons, dot remove and passing the incoming coupon object from
+Chúng ta cơ bản thực hiện Dbcontext dot coupons, dot remove và pass incoming coupon object từ
 
 21
 00:01:25,790 --> 00:01:31,790
-the database, and we will perform delete operation with running the Dbcontext dot save changes async
+cơ sở dữ liệu, và chúng ta sẽ thực hiện thao tác xóa bằng cách chạy Dbcontext dot save changes async
 
 22
 00:01:31,790 --> 00:01:32,390
-method.
+phương thức.
 
 23
 00:01:32,390 --> 00:01:37,640
-And after performing the delete operation we are logging log information.
+Và sau khi thực hiện thao tác xóa, chúng ta sẽ ghi lại thông tin log.
 
 24
 00:01:37,640 --> 00:01:43,640
-That is, the discount is successfully deleted and product name is given product name into the request.
+Tức là, giảm giá được xóa thành công và tên sản phẩm được cấp từ yêu cầu.
 
 25
 00:01:43,640 --> 00:01:51,290
-And lastly, we will return back to the RPC client as a return new delete discount response and passing
+Và cuối cùng, chúng ta sẽ trả về RPC client dưới dạng một delete discount response mới và truyền
 
 26
 00:01:51,290 --> 00:01:53,480
-the success property as a true.
+thuộc tính success thành true.
 
 27
 00:01:53,570 --> 00:01:56,930
-So this is the implementation of the delete discount method.
+Vậy đây là triển khai của phương thức delete discount.
 
 28
 00:01:56,930 --> 00:01:59,870
-In this method we basically use Entity Framework Core.
+Trong phương thức này, chúng ta cơ bản sử dụng Entity Framework Core.
 
 29
 00:01:59,870 --> 00:02:03,680
-First of all, we retrieve existing coupon information.
+Đầu tiên, chúng ta lấy thông tin coupon hiện có.
 
 30
 00:02:03,680 --> 00:02:06,830
-If not exist, we will return an exception.
+Nếu không tồn tại, chúng ta sẽ trả về một ngoại lệ.
 
 31
 00:02:06,830 --> 00:02:13,670
-After that, we use DB context object to remove and delete existing coupon into our discount DB database.
+Sau đó, chúng ta sử dụng đối tượng DB context để loại bỏ và xóa coupon hiện có trong cơ sở dữ liệu discount của chúng ta.
 
 32
 00:02:13,670 --> 00:02:18,200
-So now we can run the application and test these delete discount method.
+Vậy bây giờ chúng ta có thể chạy ứng dụng và kiểm tra phương thức delete discount này.
 
 33
 00:02:18,200 --> 00:02:23,240
-So after running the application you can open the postman and in the postman.
+Vậy sau khi chạy ứng dụng, bạn có thể mở postman và trong postman.
 
 34
 00:02:23,240 --> 00:02:29,120
-This time we will change the method name as a delete discount and as a delete discount method.
+Lần này chúng ta sẽ thay đổi tên phương thức thành delete discount và là một phương thức delete discount.
 
 35
 00:02:29,120 --> 00:02:36,530
-We basically pass the message as a including only the product name, which is the updated new iPhone.
+Chúng ta cơ bản truyền thông báo chỉ bao gồm tên sản phẩm, đó là iPhone mới được cập nhật.
 
 36
 00:02:36,530 --> 00:02:41,270
-I'm going to remove newly added and updated this product name for that purpose.
+Tôi sẽ loại bỏ sản phẩm mới được thêm và cập nhật tên sản phẩm này cho mục đích đó.
 
 37
 00:02:41,270 --> 00:02:43,910
-I have changed the payload as a.
+Tôi đã thay đổi payload như một.
 
 38
 00:02:43,910 --> 00:02:51,350
-Including on the product name with P is lowercase and is uppercase, and the name of the iPhone is exactly
+Bao gồm tên sản phẩm với P là chữ thường và là chữ hoa, và tên của iPhone chính xác
 
 39
 00:02:51,350 --> 00:02:51,860
-same.
+giống nhau.
 
 40
 00:02:51,860 --> 00:02:53,780
-What including in the database.
+Cái gì được bao gồm trong cơ sở dữ liệu.
 
 41
 00:02:53,780 --> 00:02:59,720
-And if you invoke these gRPC requests, this will be trigger or delete discount operation.
+Và nếu bạn gọi các yêu cầu gRPC này, nó sẽ kích hoạt hoặc xóa discount operation.
 
 42
 00:02:59,720 --> 00:03:05,120
-And in here we basically retrieve the incoming product name into database.
+Và ở đây chúng ta cơ bản lấy lại tên sản phẩm đến từ database.
 
 43
 00:03:05,120 --> 00:03:09,380
-Into coupon is found here you can see that we found coupon is successfully.
+Vào coupon được tìm thấy ở đây bạn có thể thấy rằng chúng ta tìm thấy coupon thành công.
 
 44
 00:03:09,380 --> 00:03:10,910
-This is the information.
+Đây là thông tin.
 
 45
 00:03:10,910 --> 00:03:17,210
-And after that we will remove this coupon into coupons array using the DB context and save changes async
+Và sau đó chúng ta sẽ xóa coupon này khỏi mảng coupons bằng cách sử dụng DB context và save changes async
 
 46
 00:03:17,210 --> 00:03:22,550
-method and log the information and return back to delete discount response with a success message,
+method và ghi lại thông tin và trả về delete discount response với một thông báo thành công,
 
 47
 00:03:22,550 --> 00:03:23,630
-which is a true.
+đó là true.
 
 48
 00:03:23,630 --> 00:03:26,780
-If you hit F5, you can see that there is a success.
+Nếu bạn nhấn F5, bạn có thể thấy rằng có một success.
 
 49
 00:03:26,780 --> 00:03:29,630
-True response comes to our gRPC client.
+True response trả về cho gRPC client của chúng ta.
 
 50
 00:03:29,810 --> 00:03:34,790
-If you open the Project console window, you can see that we have successfully log delete operation
+Nếu bạn mở cửa sổ Project console, bạn có thể thấy rằng chúng ta đã ghi lại thành công delete operation
 
 51
 00:03:34,790 --> 00:03:36,290
-with a given product name.
+với tên sản phẩm được cho.
 
 52
 00:03:36,290 --> 00:03:43,880
-And if you open the our database and if you refresh this table, you can see the third row will be disappeared.
+Và nếu bạn mở database của chúng ta và nếu bạn làm tươi lại bảng này, bạn có thể thấy hàng thứ ba sẽ biến mất.
 
 53
 00:03:43,880 --> 00:03:48,620
-And here you can see that we have successfully delete our record into our database.
+Và ở đây bạn có thể thấy rằng chúng ta đã xóa thành công record của chúng ta vào database của chúng ta.
 

@@ -173,5 +173,8 @@
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/011 Create SQLite Database using Entity Framework Core Tools in Discount service.srt": "done",
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/012 Seed and Auto-Migrate SQLite Database using Entity Framework Core in Discount.srt": "done",
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/013 TEST - Seed and Auto-Migrate SQLite Database using Entity Framework Core.srt": "done",
-  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/014 Develop DiscountService class to Implement Grpc Proto Service Methods.srt": "done"
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/014 Develop DiscountService class to Implement Grpc Proto Service Methods.srt": "done",
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/015 Develop CreateDiscount in DiscountService class to Implement CRUD Grpc Proto.srt": "done",
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/016 Develop UpdateDiscount in DiscountService class to Implement CRUD Grpc Proto.srt": "done",
+  "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/017 Develop DeleteDiscount in DiscountService class to Implement CRUD Grpc Proto.srt": "done"
 }
