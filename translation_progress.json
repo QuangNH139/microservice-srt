@@ -199,5 +199,8 @@
   "/home/user/microservice-srt/13 Ordering Microservices with DDD, CQRS and Clean Architecture/009 Clean Architecture with Domain Driven Design(DDD).srt": "done",
   "/home/user/microservice-srt/13 Ordering Microservices with DDD, CQRS and Clean Architecture/010 Code Structure on DDD and Clean Architecture Layers in Ordering Microservices.srt": "done",
   "/home/user/microservice-srt/13 Ordering Microservices with DDD, CQRS and Clean Architecture/011 Create Clean Architecture Layers Domain, Application, Infrastructure and API.srt": "done",
-  "/home/user/microservice-srt/13 Ordering Microservices with DDD, CQRS and Clean Architecture/012 Adding Project References Between Clean Architecture Layers.srt": "done"
+  "/home/user/microservice-srt/13 Ordering Microservices with DDD, CQRS and Clean Architecture/012 Adding Project References Between Clean Architecture Layers.srt": "done",
+  "/home/user/microservice-srt/13 Ordering Microservices with DDD, CQRS and Clean Architecture/013 Adding Dependency Injections Between Clean Architecture Layers.srt": "done",
+  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/001 Tactical Domain-Driven Design Entities, Value Objects, Aggregates, Agg. Roots.srt": "done",
+  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/002 Develop DDD Abstractions (Entity, Aggregate, DomainEvent) in Ordering.Domain.srt": "done"
 }
