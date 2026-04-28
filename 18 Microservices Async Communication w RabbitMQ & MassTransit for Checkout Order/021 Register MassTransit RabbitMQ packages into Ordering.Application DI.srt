@@ -1,150 +1,150 @@
 1
 00:00:00,170 --> 00:00:05,900
-In this video we are going to do the second sub step which is register mass transit.
+Trong video này chúng ta sẽ thực hiện bước phụ thứ hai là đăng ký mass transit.
 
 2
 00:00:05,900 --> 00:00:10,490
-RabbitMQ packages into ordering application dependency injection file.
+RabbitMQ packages vào tệp dependency injection của ứng dụng ordering.
 
 3
 00:00:10,610 --> 00:00:15,260
-Please open the Visual Studio and go to the ordering application layer.
+Vui lòng mở Visual Studio và đi đến lớp ứng dụng ordering.
 
 4
 00:00:15,260 --> 00:00:20,450
-But before that, make sure that you have added the configurations in the ordering API layer.
+Nhưng trước hết, hãy chắc chắn rằng bạn đã thêm các cấu hình trong lớp ordering API.
 
 5
 00:00:20,450 --> 00:00:26,840
-If you open the ordering API and go to the Application Settings Json file, make sure that you have
+Nếu bạn mở ordering API và đi đến tệp Application Settings Json, hãy chắc chắn rằng bạn đã
 
 6
 00:00:26,840 --> 00:00:31,970
-added the Message Broker section, including the host username and password information.
+thêm phần Message Broker, bao gồm thông tin host, username và password.
 
 7
 00:00:31,970 --> 00:00:36,710
-So we will add these RabbitMQ configuration settings in the application settings Json file.
+Vậy chúng ta sẽ thêm các cấu hình RabbitMQ này vào tệp application settings Json.
 
 8
 00:00:36,710 --> 00:00:41,990
-In the previous videos that we are going to use in this video when we are registering in the ordering
+Trong các video trước mà chúng ta sẽ sử dụng trong video này khi chúng ta đăng ký trong lớp ứng dụng
 
 9
 00:00:41,990 --> 00:00:42,980
-application layer.
+ordering.
 
 10
 00:00:42,980 --> 00:00:47,930
-So if you go back to ordering application layer, we can modify the dependency injection file in the
+Vậy nếu bạn quay lại lớp ứng dụng ordering, chúng ta có thể sửa đổi tệp dependency injection trong
 
 11
 00:00:47,930 --> 00:00:49,220
-ordering application layer.
+lớp ứng dụng ordering.
 
 12
 00:00:49,220 --> 00:00:54,800
-If you go to ordering application and go to Dependency injection file, you can see that we will register
+Nếu bạn đi đến ordering application và đi đến tệp Dependency injection, bạn có thể thấy rằng chúng ta sẽ đăng ký
 
 13
 00:00:54,800 --> 00:00:58,220
-the services into the application layer from this location.
+các dịch vụ vào lớp ứng dụng từ vị trí này.
 
 14
 00:00:58,220 --> 00:01:03,380
-So I'm going to implement RabbitMQ and Masstransit configuration in the dependency injection file.
+Vậy tôi sẽ triển khai cấu hình RabbitMQ và Masstransit trong tệp dependency injection.
 
 15
 00:01:03,380 --> 00:01:09,080
-For that purpose I'm going to come here and using the services which comes from the I service collection.
+Với mục đích đó tôi sẽ đến đây và sử dụng services đến từ I service collection.
 
 16
 00:01:09,080 --> 00:01:13,340
-And I'm going to use add message brokers.
+Và tôi sẽ sử dụng add message brokers.
 
 17
 00:01:13,940 --> 00:01:18,890
-So this is the extension method that we have developed in the Building Blocks messaging class library
+Đây là extension method mà chúng ta đã phát triển trong class library Building Blocks messaging
 
 18
 00:01:18,890 --> 00:01:21,920
-that we can check from the Masstransit extensions.
+mà chúng ta có thể kiểm tra từ Masstransit extensions.
 
 19
 00:01:21,920 --> 00:01:25,970
-And here you can see the add message broker extension method and the implementation.
+Và ở đây bạn có thể thấy extension method add message broker và triển khai của nó.
 
 20
 00:01:25,970 --> 00:01:31,700
-So if you go back to our actual dependency injection class, you can see that this extension method
+Vậy nếu bạn quay lại class dependency injection thực tế của chúng ta, bạn có thể thấy rằng extension method này
 
 21
 00:01:31,700 --> 00:01:34,730
-requiring the configuration and assembly information.
+yêu cầu thông tin cấu hình và assembly.
 
 22
 00:01:34,730 --> 00:01:38,960
-So that means we should paste the configuration object into this location.
+Điều đó có nghĩa là chúng ta nên dán đối tượng cấu hình vào vị trí này.
 
 23
 00:01:38,960 --> 00:01:44,600
-But if you look at the Add Application Services extension method, we don't have any configuration parameter
+Nhưng nếu bạn xem xét phương thức mở rộng Add Application Services, chúng ta không có bất kỳ tham số cấu hình nào
 
 24
 00:01:44,600 --> 00:01:48,170
-that we can use into our add message broker extension method.
+mà chúng ta có thể sử dụng trong phương thức mở rộng add message broker của chúng ta.
 
 25
 00:01:48,170 --> 00:01:52,760
-For that purpose we should paste the configuration object from the ordering API layer.
+Vì mục đích đó, chúng ta nên dán đối tượng cấu hình từ lớp ordering API.
 
 26
 00:01:52,760 --> 00:01:58,820
-So if you go to the these method definition and go to the references, you can see that these will be
+Vậy nếu bạn đi tới định nghĩa phương thức này và đi tới các tham chiếu, bạn có thể thấy rằng nó sẽ được
 
 27
 00:01:58,820 --> 00:02:04,640
-using from the ordering API Program.cs that we can paste the configuration from the builder object.
+sử dụng từ Program.cs của ordering API mà chúng ta có thể dán cấu hình từ đối tượng builder.
 
 28
 00:02:04,640 --> 00:02:10,160
-So we will modify the Program.cs in ordering API layer in order to paste the configuration object to
+Vậy chúng ta sẽ sửa đổi Program.cs trong lớp ordering API để dán đối tượng cấu hình vào
 
 29
 00:02:10,160 --> 00:02:15,860
-the Add Application Services extension method, please go to this location and come here and I'm going
+phương thức mở rộng Add Application Services, hãy đi tới vị trí này và đây, tôi sẽ
 
 30
 00:02:15,860 --> 00:02:20,120
-to copy the builder configuration parameter and paste this extension method.
+sao chép tham số cấu hình builder và dán vào phương thức mở rộng này.
 
 31
 00:02:20,120 --> 00:02:22,850
-So we will modify the add Application services.
+Vậy chúng ta sẽ sửa đổi add Application services.
 
 32
 00:02:22,850 --> 00:02:29,600
-So after changing these boolean configurations in the process of the ordering API layer, if you go
+Sau khi thay đổi các cấu hình boolean này trong quá trình lớp ordering API, nếu bạn đi tới
 
 33
 00:02:29,600 --> 00:02:34,520
-to the extension method this time it is time to modify this extension method.
+phương thức mở rộng, lần này là lúc để sửa đổi phương thức mở rộng này.
 
 34
 00:02:34,520 --> 00:02:40,700
-Parameters I am going to add a new parameter which will be the I configuration, and this will be the
+Các tham số, tôi sẽ thêm một tham số mới sẽ là I configuration, và đây sẽ là
 
 35
 00:02:40,700 --> 00:02:43,250
-representing our configuration objects.
+đại diện cho các đối tượng cấu hình của chúng ta.
 
 36
 00:02:44,090 --> 00:02:47,780
-And here you can see the configuration is added into our method.
+Và ở đây bạn có thể thấy configuration được thêm vào phương thức của chúng ta.
 
 37
 00:02:47,780 --> 00:02:54,320
-These are the method definition for the Add Application Services extension method and the configuration
+Đây là định nghĩa phương thức cho phương thức mở rộng Add Application Services và configuration
 
 38
 00:02:54,320 --> 00:02:54,680
@@ -152,51 +152,51 @@ object.
 
 39
 00:02:54,680 --> 00:03:00,500
-From the application settings Json file is passed to add application services method, allowing to access
+Từ tệp application settings Json, cấu hình được truyền tới phương thức add application services, cho phép truy cập
 
 40
 00:03:00,500 --> 00:03:03,590
-RabbitMQ settings into the Add Message broker method.
+các cài đặt RabbitMQ vào phương thức Add Message broker.
 
 41
 00:03:03,590 --> 00:03:05,960
-So I'm going to paste these parameters.
+Vậy tôi sẽ dán các tham số này.
 
 42
 00:03:05,960 --> 00:03:11,930
-Now when we are developing and adding message broker settings, the first parameter is configuration.
+Bây giờ khi chúng ta đang phát triển và thêm cài đặt message broker, tham số đầu tiên là configuration.
 
 43
 00:03:11,930 --> 00:03:17,690
-And here you can see that we have also second configuration parameter which is the assembly information.
+Và ở đây bạn có thể thấy rằng chúng ta cũng có tham số configuration thứ hai, đó là assembly information.
 
 44
 00:03:17,690 --> 00:03:22,670
-And this time we will populate these assembly information from the getting executing assembly.
+Và lần này chúng ta sẽ điền assembly information này từ getting executing assembly.
 
 45
 00:03:22,670 --> 00:03:29,750
-So I'm going to use assembly dot get executing assembly method in order to passing the getting executing
+Vậy tôi sẽ sử dụng assembly dot get executing assembly method để truyền getting executing
 
 46
 00:03:29,750 --> 00:03:32,000
-assembly for the ordering application layer.
+assembly cho ordering application layer.
 
 47
 00:03:32,000 --> 00:03:35,000
-So this is the implementation of the add message broker.
+Vậy đây là cách triển khai add message broker.
 
 48
 00:03:35,000 --> 00:03:41,360
-First of all we have adding and passing the configurations in the parameters of the ordering API layer.
+Đầu tiên chúng ta có thêm và truyền các configurations vào trong tham số của ordering API layer.
 
 49
 00:03:41,360 --> 00:03:46,520
-And after that, in the ordering application layer, we have go to the dependency injection class and
+Và sau đó, trong ordering application layer, chúng ta đi đến dependency injection class và
 
 50
 00:03:46,520 --> 00:03:51,980
-adding this line of code in order to register message brokers with passing the configuration and assembly
+thêm dòng mã này để đăng ký message brokers với truyền configuration và assembly
 
 51
 00:03:51,980 --> 00:03:52,850
@@ -204,27 +204,27 @@ information.
 
 52
 00:03:52,850 --> 00:03:58,550
-And note that we have including the assembly information, which is essential for the registering consumer
+Và lưu ý rằng chúng ta đã bao gồm assembly information, điều này rất cần thiết để đăng ký consumer
 
 53
 00:03:58,550 --> 00:04:00,110
-classes in Masstransit.
+classes trong MassTransit.
 
 54
 00:04:00,110 --> 00:04:05,750
-If you go to the implementation of the Add Message broker from the R class library, you can see that
+Nếu bạn xem cách triển khai Add Message broker từ R class library, bạn có thể thấy rằng
 
 55
 00:04:05,750 --> 00:04:11,210
-we have adding the consumers if the assembly information is not null in this case, in the ordering
+chúng ta đang thêm consumers nếu assembly information không null, trong trường hợp này, trong ordering
 
 56
 00:04:11,210 --> 00:04:14,600
-application layer, our consumers are ordering microservices.
+application layer, consumers của chúng ta là ordering microservices.
 
 57
 00:04:14,600 --> 00:04:19,670
-That's why we are passing the executing assembly from the ordering application dependency injection
+Đó là lý do tại sao chúng ta đang truyền executing assembly từ ordering application dependency injection
 
 58
 00:04:19,670 --> 00:04:20,029
