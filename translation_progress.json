@@ -209,5 +209,8 @@
   "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/006 Develop Strongly typed IDs for Order Entities.srt": "done",
   "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/007 Anemic-domain vs Rich-domain Model Entities Entities in DDD.srt": "done",
   "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/008 Develop DDD Rich-domain model Entity for Order Entities in Order.Domain Layer.srt": "done",
-  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/009 Develop ValueObjects (Address, Payment) DDD Rich-domain model Entity.srt": "done"
+  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/009 Develop ValueObjects (Address, Payment) DDD Rich-domain model Entity.srt": "done",
+  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/010 Develop DDD Rich-domain model for Order Entities in Order.Domain Layer.srt": "done",
+  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/011 Domain Events in DDD and Domain vs Integration Events.srt": "done",
+  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/012 Develop Order Created and Updated Domain Event in Ordering Microservices.srt": "done"
 }

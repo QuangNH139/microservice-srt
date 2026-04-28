@@ -1,198 +1,198 @@
 1
 00:00:00,170 --> 00:00:06,950
-In this video, we are going to develop rich domain model for other entities in the order domain layer.
+Trong video này, chúng ta sẽ phát triển rich domain model cho các entity khác trong order domain layer.
 
 2
 00:00:07,250 --> 00:00:11,930
-For that purpose we will use static create method for each entity.
+Để làm điều đó, chúng ta sẽ sử dụng static create method cho mỗi entity.
 
 3
 00:00:11,960 --> 00:00:14,600
-As you know that in the previous videos we.
+Như bạn biết rồi, trong các video trước chúng ta.
 
 4
 00:00:14,630 --> 00:00:18,650
-When we developing the value objects, we have used all static methods.
+Khi phát triển value objects, chúng ta đã sử dụng tất cả các static methods.
 
 5
 00:00:18,650 --> 00:00:24,440
-But this time we will develop entities and we will develop create static methods for that purpose.
+Nhưng lần này chúng ta sẽ phát triển entities và chúng ta sẽ phát triển create static methods cho mục đích đó.
 
 6
 00:00:24,470 --> 00:00:29,540
-Please open the Visual Studio and go to the modules and go to the customer entity.
+Vui lòng mở Visual Studio và đi tới modules và đi tới customer entity.
 
 7
 00:00:29,570 --> 00:00:36,530
-Customer entity is responsible for creating instance of itself and ensuring that all the necessary validations
+Customer entity chịu trách nhiệm tạo instance của chính nó và đảm bảo rằng tất cả các validations cần thiết
 
 8
 00:00:36,530 --> 00:00:38,360
-are applied during the creation.
+được áp dụng trong quá trình tạo.
 
 9
 00:00:38,390 --> 00:00:44,750
-Here you can see that we have already developed static customer create method, and the create method
+Ở đây bạn có thể thấy rằng chúng ta đã phát triển static customer create method, và create method
 
 10
 00:00:44,750 --> 00:00:50,630
-allows for the instantiation of the customer object, ensuring that all the necessary properties are
+cho phép tạo instance của customer object, đảm bảo rằng tất cả các properties cần thiết
 
 11
 00:00:50,630 --> 00:00:52,070
-provided and valid.
+được cung cấp và hợp lệ.
 
 12
 00:00:52,070 --> 00:00:58,670
-And you can see that we have used argument validation and argument exception used for the validate input
+Và bạn có thể thấy rằng chúng ta đã sử dụng argument validation và argument exception được sử dụng để validate input
 
 13
 00:00:58,670 --> 00:01:06,030
-parameters So we will follow the same steps and we will create a new create method for the rest of the
+parameters. Vì vậy chúng ta sẽ làm theo các bước tương tự và chúng ta sẽ tạo một create method mới cho các
 
 14
 00:01:06,030 --> 00:01:06,690
-entities.
+entities còn lại.
 
 15
 00:01:06,690 --> 00:01:13,470
-I'm going to open the product case and the product entity similarly encapsulate its own create logic.
+Tôi sẽ mở product case và product entity tương tự cũng đóng gói create logic của riêng nó.
 
 16
 00:01:13,470 --> 00:01:21,660
-For that purpose, I'm going to develop a create method which is the public static and product create
+Để làm điều đó, tôi sẽ phát triển một create method, nó là public static và product create
 
 17
 00:01:21,660 --> 00:01:24,540
-method with including the all the parameters.
+method với bao gồm tất cả các parameters.
 
 18
 00:01:24,540 --> 00:01:28,980
-So in here you can see that we have developed the static create method.
+Vì vậy ở đây bạn có thể thấy rằng chúng ta đã phát triển static create method.
 
 19
 00:01:28,980 --> 00:01:34,110
-And in this method the parameters including product id name and price.
+Và trong method này các parameters bao gồm product id, name và price.
 
 20
 00:01:34,140 --> 00:01:41,550
-We get the ID information in the beginning of these create methods to explicitly set the ID information
+Chúng ta lấy thông tin ID ngay ở đầu của các create methods này để explicitly set thông tin ID
 
 21
 00:01:41,550 --> 00:01:48,090
-for each entities, and in the beginning of this static create method, we always perform the validations
+đối với mỗi entity, và ở đầu của static create method này, chúng ta luôn thực hiện các validations
 
 22
 00:01:48,090 --> 00:01:48,990
-and domain rules.
+và domain rules.
 
 23
 00:01:48,990 --> 00:01:53,850
-Here you can see that I'm going to use out-of-the-box argument exception extension method.
+Ở đây bạn có thể thấy rằng tôi sẽ sử dụng out-of-the-box argument exception extension method.
 
 24
 00:01:53,880 --> 00:02:01,950
-Check if null or empty for the name property and check the price is positive and greater than zero.
+Kiểm tra xem name property có null hoặc rỗng không và kiểm tra giá có dương và lớn hơn không.
 
 25
 00:02:01,980 --> 00:02:09,150
-You can see this validation and after that we can use the default constructors to create new product,
+Bạn có thể thấy validation này và sau đó chúng ta có thể sử dụng default constructors để tạo product mới,
 
 26
 00:02:09,180 --> 00:02:12,030
-safely passing the ID name and price.
+an toàn truyền ID, name và price.
 
 27
 00:02:12,030 --> 00:02:17,760
-And lastly, we will return the newly created product to the create static method.
+Và cuối cùng, chúng ta sẽ trả về product mới được tạo từ create static method.
 
 28
 00:02:18,000 --> 00:02:23,940
-So the create method is responsible for constructing product objects, and it validates the name and
+Vậy create method chịu trách nhiệm xây dựng các product objects, và nó validates name và
 
 29
 00:02:23,940 --> 00:02:26,550
-price and ensuring they meet the domain rules.
+price và đảm bảo chúng đáp ứng domain rules.
 
 30
 00:02:26,670 --> 00:02:32,310
-And after that we can go to the next domain model and entity which is the order item.
+Và sau đó chúng ta có thể đi đến domain model và entity tiếp theo đó là order item.
 
 31
 00:02:32,310 --> 00:02:40,110
-If you look at the order item, we don't have any responsibility for this entity because all the responsibilities
+Nếu bạn nhìn vào order item, chúng ta không có bất kỳ responsibility nào cho entity này vì tất cả responsibilities
 
 32
 00:02:40,110 --> 00:02:45,930
-of these order item entity belongs to aggregate which is the order aggregate.
+của order item entity này thuộc về aggregate đó là order aggregate.
 
 33
 00:02:45,960 --> 00:02:52,770
-We can see the constructor access modifier is internal for order item, because order item should only
+Chúng ta có thể thấy rằng constructor access modifier là internal đối với order item, vì order item chỉ nên
 
 34
 00:02:52,770 --> 00:02:55,440
-be created from the aggregate, which is the order.
+được tạo từ aggregate, đó là order.
 
 35
 00:02:55,440 --> 00:03:02,400
-If you open the order, you can understand that all order item related operations should be responsible
+Nếu bạn mở order, bạn có thể hiểu rằng tất cả các hoạt động liên quan đến order item nên chịu trách nhiệm
 
 36
 00:03:02,400 --> 00:03:03,960
-in the order aggregate.
+trong order aggregate.
 
 37
 00:03:03,960 --> 00:03:11,560
-So the order entity is the aggregate root and it is responsible for managing its own state and the state
+Vậy order entity là aggregate root và nó chịu trách nhiệm quản lý trạng thái của nó và trạng thái
 
 38
 00:03:11,560 --> 00:03:14,020
-of its associated order items.
+của các order items liên quan của nó.
 
 39
 00:03:14,050 --> 00:03:22,870
-That means ordered domain model is responsibilities are create and update an order for the existing
+Điều đó có nghĩa là ordered domain model là responsibilities là tạo và cập nhật một order cho entity hiện có,
 
 40
 00:03:22,870 --> 00:03:29,740
-entity, and also add or remove items for the order items related to order aggregate.
+và cũng thêm hoặc xóa items cho các order items liên quan đến order aggregate.
 
 41
 00:03:29,740 --> 00:03:34,780
-So let's implement these functions under the these data related properties.
+Vậy hãy triển khai những hàm này dưới các thuộc tính liên quan đến dữ liệu.
 
 42
 00:03:34,780 --> 00:03:40,780
-If you scroll down and go at the end of these order aggregate class, the first thing we should develop
+Nếu bạn cuộn xuống và đến cuối class aggregate order này, điều đầu tiên chúng ta cần phát triển
 
 43
 00:03:40,780 --> 00:03:42,550
-is static create method.
+là phương thức create tĩnh.
 
 44
 00:03:42,550 --> 00:03:50,080
-So I'm going to write public static order and create method with passing all the members inside of the
+Vậy tôi sẽ viết public static order và create method bằng cách truyền tất cả các thành viên bên trong
 
 45
 00:03:50,080 --> 00:03:51,580
-this class.
+class này.
 
 46
 00:03:51,580 --> 00:03:56,890
-And here you can see that we have created the public static order create.
+Và ở đây bạn có thể thấy rằng chúng ta đã tạo public static order create.
 
 47
 00:03:56,890 --> 00:04:02,740
-And after that this will be include all the information including the order aggregate.
+Và sau đó điều này sẽ bao gồm tất cả các thông tin bao gồm order aggregate.
 
 48
 00:04:02,740 --> 00:04:07,420
-We will start with the ID in order to define this ID explicitly.
+Chúng ta sẽ bắt đầu với ID để định nghĩa ID này một cách rõ ràng.
 
 49
 00:04:07,420 --> 00:04:14,320
-When creating any order and continue with the customer ID order name address, shipping address and
+Khi tạo bất kỳ order và tiếp tục với customer ID, order name, address, shipping address và
 
 50
 00:04:14,320 --> 00:04:15,070
@@ -200,31 +200,31 @@ billing address.
 
 51
 00:04:15,100 --> 00:04:16,690
-Payment and so on.
+Payment và nhiều thứ khác.
 
 52
 00:04:16,690 --> 00:04:23,050
-So this is the body of the arcade operation that we will define when creating a new order.
+Vậy đây là phần body của arcade operation mà chúng ta sẽ định nghĩa khi tạo một order mới.
 
 53
 00:04:23,050 --> 00:04:29,110
-And in the beginning of this code, I'm going to directly create a new order using the default constructor
+Và ở đầu của code này, tôi sẽ trực tiếp tạo một order mới bằng default constructor
 
 54
 00:04:29,110 --> 00:04:35,890
-with passing all these parameters and members for the order entity, and we are passing the status for
+bằng cách truyền tất cả các tham số và thành viên này cho order entity, và chúng ta đang truyền status cho
 
 55
 00:04:35,890 --> 00:04:38,500
-order status pending for the initial status.
+order status pending cho trạng thái ban đầu.
 
 56
 00:04:38,500 --> 00:04:43,540
-And after that I'm going to use order dot Add Domain event.
+Và sau đó tôi sẽ sử dụng order dot Add Domain event.
 
 57
 00:04:43,540 --> 00:04:49,030
-If you come here and write to order, and if you check the method you can see that we have a domain
+Nếu bạn đến đây và viết to order, và nếu bạn kiểm tra method bạn có thể thấy rằng chúng ta có domain
 
 58
 00:04:49,030 --> 00:04:49,480
@@ -232,87 +232,87 @@ events.
 
 59
 00:04:49,480 --> 00:04:54,070
-And these methods comes from the our aggregate base abstract class.
+Và những method này đến từ abstract class aggregate base của chúng ta.
 
 60
 00:04:54,070 --> 00:05:00,550
-In order to adding domain event into our order aggregate, I will explain the domain events in the next
+Để thêm domain event vào order aggregate của chúng ta, tôi sẽ giải thích domain events trong phần tiếp theo
 
 61
 00:05:00,550 --> 00:05:00,910
-videos.
+video.
 
 62
 00:05:00,910 --> 00:05:06,880
-But now I'm going to put this line of code adding new domain event, which is the order created event
+Nhưng bây giờ tôi sẽ thêm dòng mã này, thêm domain event mới, đó là order created event
 
 63
 00:05:06,880 --> 00:05:08,890
-with passing the newly created order.
+với truyền đơn hàng vừa tạo.
 
 64
 00:05:08,890 --> 00:05:11,500
-And after that we can safely return order.
+Và sau đó chúng ta có thể an toàn trả về order.
 
 65
 00:05:13,090 --> 00:05:19,820
-So this is the static create method for responsibility of the creating an order for the order entity,
+Vậy đây là static create method chịu trách nhiệm tạo một order cho order entity,
 
 66
 00:05:19,820 --> 00:05:23,300
-and after that we can continue with the update operation.
+và sau đó chúng ta có thể tiếp tục với update operation.
 
 67
 00:05:23,300 --> 00:05:30,200
-I'm going to follow the same steps, but this time we are going to create update method and this will
+Tôi sẽ làm theo các bước tương tự, nhưng lần này chúng ta sẽ tạo update method và phương pháp này sẽ
 
 68
 00:05:30,200 --> 00:05:32,150
-be using when updating an order.
+được sử dụng khi cập nhật một order.
 
 69
 00:05:32,150 --> 00:05:35,150
-So this is typical public void update method.
+Vậy đây là public void update method điển hình.
 
 70
 00:05:35,150 --> 00:05:41,030
-And we will be passing the order name address shipping address and billing address payment and order
+Và chúng ta sẽ truyền tên order, địa chỉ, địa chỉ vận chuyển, địa chỉ thanh toán, thanh toán và trạng thái
 
 71
 00:05:41,030 --> 00:05:41,660
-status.
+order.
 
 72
 00:05:41,660 --> 00:05:45,530
-So in here we will using the update operations.
+Vậy ở đây chúng ta sẽ sử dụng các update operations.
 
 73
 00:05:45,530 --> 00:05:52,940
-So I'm going to update these incoming parameters with the property values of the current order aggregate
+Tôi sẽ cập nhật những tham số đến này với các giá trị property của order aggregate entity class hiện tại.
 
 74
 00:05:52,940 --> 00:05:53,840
-entity class.
+Và sau đó tôi sẽ sử dụng lại domain event function để throw bất kỳ domain event nào, đó là
 
 75
 00:05:53,840 --> 00:06:01,220
-And after that I'm going to use a domain event function again in order to throw any domain event which
+order updated event với truyền order aggregate entity class này.
 
 76
 00:06:01,220 --> 00:06:06,140
-is the order updated event with passing this order aggregate entity class.
+Vậy đây là các create và update method chịu trách nhiệm cho order entity.
 
 77
 00:06:06,140 --> 00:06:12,140
-So these are the create and update method responsible for the order entity.
+Và như bạn có thể thấy, tôi không sử dụng bất kỳ domain rules và validations nào ở đầu create
 
 78
 00:06:12,140 --> 00:06:18,720
-And as you can see that I'm not using any domain rules and validations in the beginning of the create
+operation.
 
 79
 00:06:18,750 --> 00:06:19,440
-operation.
+Vì nếu bạn kiểm tra các tham số này, tất cả tham số đều là value objects.
 
 80
 00:06:19,440 --> 00:06:24,240
@@ -320,39 +320,39 @@ Because if you check these parameters, all parameters are the value objects.
 
 81
 00:06:24,240 --> 00:06:29,700
-And if you go to the value objects, you can see that we have already applied domain rules in the beginning
+Và nếu bạn xem các value objects, bạn có thể thấy rằng chúng ta đã áp dụng các domain rules ngay từ đầu
 
 82
 00:06:29,700 --> 00:06:30,240
-of the.
+của.
 
 83
 00:06:30,240 --> 00:06:32,730
-These create operation of the value objects.
+Những create operation này của các value objects.
 
 84
 00:06:32,730 --> 00:06:39,390
-And for each value object we have adding enough domain rules and validations that we cannot pass the
+Và cho mỗi value object chúng ta đã thêm đủ domain rules và validations để chúng ta không thể truyền
 
 85
 00:06:39,420 --> 00:06:43,830
-invalid data when creating any order under the order CS file.
+dữ liệu không hợp lệ khi tạo bất kỳ order nào trong tệp order CS.
 
 86
 00:06:44,070 --> 00:06:50,940
-After this method, we can continue with the next responsibility, which is the add or remove item from
+Sau phương thức này, chúng ta có thể tiếp tục với trách nhiệm tiếp theo, đó là thêm hoặc xóa item khỏi
 
 87
 00:06:50,940 --> 00:06:52,470
-the order aggregate.
+order aggregate.
 
 88
 00:06:52,470 --> 00:06:58,200
-And that's why I'm going to create a new method, which is the public void add, and the parameters
+Và đó là lý do tại sao tôi sẽ tạo một phương thức mới, đó là public void add, và các tham số
 
 89
 00:06:58,200 --> 00:07:04,950
-representing required for the new order item operation, which is including product ID, quantity and
+đại diện cho thông tin cần thiết cho phương thức tạo order item mới, bao gồm product ID, quantity và
 
 90
 00:07:04,950 --> 00:07:05,460
@@ -360,83 +360,83 @@ price.
 
 91
 00:07:05,460 --> 00:07:10,170
-So this method is responsible for adding new item into order aggregate.
+Vậy phương thức này chịu trách nhiệm thêm item mới vào order aggregate.
 
 92
 00:07:10,170 --> 00:07:13,020
-That means we will create new order item id.
+Điều đó có nghĩa là chúng ta sẽ tạo order item ID mới.
 
 93
 00:07:13,170 --> 00:07:20,130
-So before starting we will check the domain rules and validations using the argument out of range Outofrange
+Vậy trước khi bắt đầu, chúng ta sẽ kiểm tra các domain rules và validations sử dụng argument out of range OutOfRange
 
 94
 00:07:20,160 --> 00:07:26,670
-exception, I'm going to check quantity and price information with incoming to our add method, and
+exception, tôi sẽ kiểm tra thông tin quantity và price được truyền vào phương thức add của chúng ta, và
 
 95
 00:07:26,670 --> 00:07:33,420
-after that we will create a new Orderitem with passing these values to our Orderitem constructor.
+sau đó chúng ta sẽ tạo một Orderitem mới bằng cách truyền các giá trị này vào constructor của Orderitem.
 
 96
 00:07:33,450 --> 00:07:39,660
-Here you can see that I am using a new Orderitem variable and using new Orderitem constructor, which
+Ở đây bạn có thể thấy rằng tôi đang sử dụng một biến Orderitem mới và sử dụng constructor Orderitem mới, đó là
 
 97
 00:07:39,660 --> 00:07:46,080
-is the internal constructor that we can only reach access in the ordering domain layer, and we will
+constructor internal mà chúng ta chỉ có thể truy cập trong ordering domain layer, và chúng ta sẽ
 
 98
 00:07:46,080 --> 00:07:48,690
-be passing the ID information, which is the order ID.
+truyền thông tin ID, đó là order ID.
 
 99
 00:07:48,840 --> 00:07:57,090
-This ID information the current ID of the entity of the order and passing the product ID, quantity
+Thông tin ID này là ID hiện tại của entity của order và truyền product ID, quantity
 
 100
 00:07:57,090 --> 00:07:57,750
-and price.
+và price.
 
 101
 00:07:57,750 --> 00:08:03,450
-If you right click and go to definition of the Orderitem constructor, you can see that we will be passing
+Nếu bạn chuột phải và chọn "Go to definition" của constructor Orderitem, bạn sẽ thấy rằng chúng ta sẽ truyền
 
 102
 00:08:03,480 --> 00:08:08,880
-order ID in the beginning of the parameters and continue to product ID quantity and price.
+order ID ở đầu các tham số và tiếp tục với product ID, quantity và price.
 
 103
 00:08:08,880 --> 00:08:16,170
-And in the inside of this constructor, we will newly create order item ID and continue to set order
+Và bên trong constructor này, chúng ta sẽ tạo mới order item ID và tiếp tục thiết lập order
 
 104
 00:08:16,170 --> 00:08:18,990
-ID, product ID, quantity and price information.
+ID, product ID, quantity và price.
 
 105
 00:08:18,990 --> 00:08:27,850
-If you go back to our order and locate our add method After defining and new orderitem, we basically
+Nếu bạn quay lại order của chúng ta và tìm phương thức add, sau khi định nghĩa order item mới, về cơ bản chúng ta
 
 106
 00:08:27,880 --> 00:08:34,659
-add these orderitem into the orderitems of the current order aggregate so we can use order underscore
+thêm order item này vào orderitems của aggregate order hiện tại, vì vậy chúng ta có thể sử dụng order underscore
 
 107
 00:08:34,690 --> 00:08:43,390
-Orderitems private readonly list object and click the add button, and we will use add button and placing
+Orderitems private readonly list object và nhấp vào nút add, và chúng ta sẽ sử dụng nút add và đặt
 
 108
 00:08:43,419 --> 00:08:46,270
-the Orderitem inside of the this list.
+Orderitem vào trong list này.
 
 109
 00:08:46,300 --> 00:08:51,340
-By this way we can encapsulate the order items into the order aggregate.
+Bằng cách này chúng ta có thể đóng gói order items vào trong order aggregate.
 
 110
 00:08:51,730 --> 00:08:57,640
-We can see order items and go to the definition of the order items, which is in the beginning of the
+Chúng ta có thể thấy order items và đi tới định nghĩa của order items, nó nằm ở đầu của
 
 111
 00:08:57,640 --> 00:08:58,660
@@ -444,11 +444,11 @@ order aggregate.
 
 112
 00:08:58,690 --> 00:09:05,350
-We basically create new private readonly list order item underscore order items with the new keyword
+Về cơ bản chúng ta tạo private readonly list order item underscore order items với keyword new
 
 113
 00:09:05,350 --> 00:09:11,890
-and when we need to return order item list to the outside of the world, we basically use order items
+và khi chúng ta cần trả về danh sách order item ra bên ngoài, về cơ bản chúng ta sử dụng order items
 
 114
 00:09:11,890 --> 00:09:12,610
@@ -456,65 +456,65 @@ property.
 
 115
 00:09:12,610 --> 00:09:19,090
-And for this property we basically return read only copy of the original list of the order items.
+Và cho property này, về cơ bản chúng ta trả về read only copy của danh sách gốc của order items.
 
 116
 00:09:19,090 --> 00:09:26,860
-So if you go at the end of the this class and continue to our the next method which is the remove items
+Vậy nếu bạn đi tới cuối class này và tiếp tục phương thức tiếp theo, đó là remove items
 
 117
 00:09:26,860 --> 00:09:28,210
-from the order.
+từ order.
 
 118
 00:09:28,210 --> 00:09:34,510
-For that purpose, I'm going to use and create a new method which is the public void remove, including
+Cho mục đích đó, tôi sẽ tạo một phương thức mới là public void remove, bao gồm
 
 119
 00:09:34,540 --> 00:09:40,090
-the product id because we will remove items according to product ID for that purpose.
+product id bởi vì chúng ta sẽ xóa items theo product ID, cho mục đích đó.
 
 120
 00:09:40,090 --> 00:09:47,620
-First of all, we need to find order item regarding to this product ID and we will use order items that
+Đầu tiên, chúng ta cần tìm order item liên quan đến product ID này và chúng ta sẽ sử dụng order items
 
 121
 00:09:47,620 --> 00:09:53,440
-first or default method, and we will passing the product ID inside of this method body.
+phương thức first or default, và chúng ta sẽ truyền product ID vào bên trong phương thức này.
 
 122
 00:09:53,440 --> 00:09:56,140
-And by this way we can reach the order item.
+Và bằng cách này chúng ta có thể truy cập đến order item.
 
 123
 00:09:56,140 --> 00:10:01,990
-And if the order item is not null, we can remove this order item in our current list.
+Và nếu order item không null, chúng ta có thể xóa order item này khỏi danh sách hiện tại của chúng ta.
 
 124
 00:10:02,020 --> 00:10:05,110
-Here you can see that we will check the order item is not null.
+Ở đây bạn có thể thấy rằng chúng ta sẽ kiểm tra order item không null.
 
 125
 00:10:05,110 --> 00:10:10,450
-We can remove order items that remove method and passing the order item in order to remove this item
+Chúng ta có thể xóa order items bằng phương thức remove và truyền order item để xóa item này
 
 126
 00:10:10,450 --> 00:10:11,380
-into our list.
+khỏi danh sách của chúng ta.
 
 127
 00:10:11,380 --> 00:10:18,370
-As you can see that we have completed the order aggregate behavior with developing add, remove, update
+Như bạn có thể thấy, chúng ta đã hoàn thành hành vi order aggregate bằng cách phát triển các phương thức add, remove, update
 
 128
 00:10:18,370 --> 00:10:22,240
-and create methods inside of the order Aggregate class.
+và create bên trong lớp order Aggregate.
 
 129
 00:10:22,240 --> 00:10:28,810
-By this way, each entity is responsible for its own behavior, validating its own state and ensuring
+Bằng cách này, mỗi entity chịu trách nhiệm cho hành vi của chính nó, xác thực trạng thái của chính nó và đảm bảo
 
 130
 00:10:28,840 --> 00:10:29,770
-the consistency.
+tính nhất quán.
 
