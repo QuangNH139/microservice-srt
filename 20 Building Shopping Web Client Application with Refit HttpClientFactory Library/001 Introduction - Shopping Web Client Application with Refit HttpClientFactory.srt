@@ -1,78 +1,78 @@
 1
 00:00:00,110 --> 00:00:06,410
-In this section we are going to develop shopping web application microservices with rapid Http client
+Trong phần này chúng ta sẽ phát triển các microservices ứng dụng web shopping với thư viện Http client factory nhanh chóng.
 
 2
 00:00:06,410 --> 00:00:07,520
-factory library.
+Và ứng dụng này sẽ là ứng dụng client cho kiến trúc ứng dụng tham chiếu của chúng ta.
 
 3
 00:00:07,520 --> 00:00:12,980
-And this application will be the client application for our reference application architecture.
+Ở đây bạn có thể thấy bức tranh toàn cảnh mà chúng ta sẽ phát triển từng bước một.
 
 4
 00:00:12,980 --> 00:00:16,790
-Here you can see the big picture that we are going to develop one by one.
+Như bạn có thể thấy chúng ta ở điểm này và chúng ta sẽ bắt đầu xây dựng shopping, ứng dụng web.
 
 5
 00:00:16,880 --> 00:00:21,890
-As you can see that we are at this point and we will start the building shopping, web application,
+microservices.
 
 6
 00:00:21,890 --> 00:00:22,850
-microservices.
+Và đây sẽ là ASP.Net web application razor page và bootstrap cho Tema.
 
 7
 00:00:22,850 --> 00:00:28,280
-And this will be the ASP.Net web application razor page and the bootstrap for Tema.
+Và ở đây bạn có thể thấy kiến trúc bên trong của ứng dụng shopping web client với Refit.
 
 8
 00:00:28,820 --> 00:00:33,170
-And here you can see the internal architecture of the shopping web client application with refit.
+Về cơ bản ứng dụng này sẽ tương tác với các microservices backend của chúng ta thông qua API gateway IRB.
 
 9
 00:00:33,170 --> 00:00:40,160
-Basically this application will be interact with the our backend microservices through the IRB API gateway
+sử dụng Refit và Http client factory.
 
 10
 00:00:40,160 --> 00:00:43,700
-using the Refit and Http client factory.
+Và chúng ta sẽ đề cập đến ứng dụng web UI shopping microservice.
 
 11
 00:00:43,700 --> 00:00:47,990
-And we are going to cover web UI shopping microservice application.
+Và chúng ta sẽ xây dựng presentation layer.
 
 12
 00:00:47,990 --> 00:00:50,300
-And we will build presentation layer.
+Và đây sẽ là ASP.Net application razor page với implementasi Bootstrap Fatima sử dụng.
 
 13
 00:00:50,300 --> 00:00:56,570
-And this will be the ASP.Net application razor page with the Bootstrap Fatima implementation using the
+repository ASP.Net Run Basics.
 
 14
 00:00:56,570 --> 00:00:58,550
-ASP.Net Run Basics repository.
+Và chúng ta sẽ sử dụng ASP.Net Core Razor tools bao gồm web components, partial weaves, tag helpers,
 
 15
 00:00:58,790 --> 00:01:04,940
-And we will use ASP.Net Core Razor tools including the web components, partial weaves, tag helpers,
+model building, và các công cụ khác.
 
 16
 00:01:04,940 --> 00:01:06,590
-model building, and so on.
+Vậy chúng ta sẽ bắt đầu với việc tạo catalog basket ordering models cho ứng dụng web shopping để.
 
 17
 00:01:06,590 --> 00:01:12,440
-So we will start with creating catalog basket ordering models for shopping web application in order
+sử dụng các endpoint API gateway irb sử dụng thư viện Revit, nó tạo ra Http client factories.
 
 18
 00:01:12,440 --> 00:01:18,830
-to consume irb API gateway endpoints using the Revit library, which generated Http client factories
+và thư viện refit client factory bao gồm rest library được lưu loại tự động và chúng ta có thể tạo các.
 
 19
 00:01:18,830 --> 00:01:25,430
-and refit client factory library includes automatic type saved rest library and we can create generated
+clients được tạo sử dụng thư viện Refit và chúng ta cũng sẽ phát triển catalog service, AI Basket Service và AI
 
 20
 00:01:25,430 --> 00:01:31,370
@@ -80,113 +80,113 @@ clients using the Refit library and we will also develop a catalog service, AI B
 
 21
 00:01:31,370 --> 00:01:37,430
-ordering service interface with the refit library for Http client factory libraries, and we will develop
+ordering service interface với Refit library cho HTTP client factory libraries, và chúng ta sẽ phát triển
 
 22
 00:01:37,430 --> 00:01:45,200
-index card product detail checkout and ordered HTML and see pages to consume IRB, API gateway and trains
+index card product detail checkout và ordered HTML và các trang để tiêu thụ IRB, API gateway và trains
 
 23
 00:01:45,200 --> 00:01:50,570
-with using the AI service interfaces into the IRB page with the ASP.Net application.
+bằng cách sử dụng các AI service interfaces vào trang IRB với ứng dụng ASP.NET.
 
 24
 00:01:50,570 --> 00:01:56,180
-And lastly, we will containerize and orchestrate shopping web application in our Docker compose environment.
+Và cuối cùng, chúng ta sẽ đóng container hóa và điều phối ứng dụng web shopping trong môi trường Docker Compose của chúng ta.
 
 25
 00:01:56,180 --> 00:02:00,860
-So now let me explain the steps of developing shopping web client application.
+Vậy bây giờ hãy để tôi giải thích các bước phát triển ứng dụng web client shopping.
 
 26
 00:02:00,860 --> 00:02:05,000
-The first step is web UI shopping web application microservices.
+Bước đầu tiên là web UI ứng dụng web shopping microservices.
 
 27
 00:02:05,000 --> 00:02:08,660
-And we will create ASP.Net web application using the razor page.
+Và chúng ta sẽ tạo ứng dụng web ASP.NET sử dụng Razor page.
 
 28
 00:02:08,660 --> 00:02:14,150
-And this application will be using the ASP dotnet run basics repository as a starting point.
+Và ứng dụng này sẽ sử dụng repository ASP dotnet run basics như một điểm khởi đầu.
 
 29
 00:02:14,150 --> 00:02:17,600
-And this application styled by using bootstrap four.
+Và ứng dụng này được tạo kiểu bằng cách sử dụng Bootstrap bốn.
 
 30
 00:02:17,600 --> 00:02:23,510
-And also we will utilize ASP.Net core razor tools including the web components, partial waves, tech
+Và cũng chúng ta sẽ tận dụng các công cụ ASP.NET Core Razor bao gồm các web components, partial waves, tech
 
 31
 00:02:23,510 --> 00:02:24,860
-helpers, and so on.
+helpers, và những cái khác.
 
 32
 00:02:24,860 --> 00:02:27,980
-And the second step is creating of the data models.
+Và bước thứ hai là tạo các data models.
 
 33
 00:02:27,980 --> 00:02:33,710
-We will define the models for the catalog basket and ordering that will represent the data structures
+Chúng ta sẽ định nghĩa các models cho catalog basket và ordering mà sẽ đại diện cho các cấu trúc dữ liệu
 
 34
 00:02:33,710 --> 00:02:36,110
-used within the shopping web application.
+được sử dụng trong ứng dụng web shopping.
 
 35
 00:02:36,110 --> 00:02:38,600
-And after that we will consume the ERP API gateway.
+Và sau đó chúng ta sẽ tiêu thụ ERP API gateway.
 
 36
 00:02:38,600 --> 00:02:43,670
-That means these models will be used to interact with the ERP API gateway endpoints.
+Điều đó có nghĩa là những models này sẽ được sử dụng để tương tác với các endpoints của ERP API gateway.
 
 37
 00:02:43,670 --> 00:02:48,230
-And the third step we will implement refit Http client factory library.
+Và bước thứ ba chúng ta sẽ triển khai Refit HTTP client factory library.
 
 38
 00:02:48,230 --> 00:02:54,890
-So we will use refit library which is an automatic type saved rest library in order to create generated
+Vậy chúng ta sẽ sử dụng Refit library, đó là một thư viện REST tự động được lưu loại để tạo các
 
 39
 00:02:54,890 --> 00:02:55,460
-clients.
+clients được tạo.
 
 40
 00:02:55,460 --> 00:03:02,150
-This will simplify the consuming Rest APIs by abstracting Http calls into a simple interface, and we
+Điều này sẽ đơn giản hóa việc tiêu thụ REST APIs bằng cách trừu tượng hóa các HTTP calls thành một interface đơn giản, và chúng ta
 
 41
 00:03:02,150 --> 00:03:07,940
-will generate clients with Refit, developing the catalog service, AI basket service and AI ordering
+sẽ tạo ra các client với Refit, phát triển catalog service, AI basket service và AI ordering
 
 42
 00:03:07,940 --> 00:03:14,630
-service interfaces with Refit, and we will leveraging the Http client factory for efficient Http communications.
+service interfaces với Refit, và chúng ta sẽ tận dụng Http client factory để giao tiếp Http hiệu quả.
 
 43
 00:03:14,630 --> 00:03:20,240
-And in the fourth step, we will develop the razor page and we will create various pages such as the
+Và ở bước thứ tư, chúng ta sẽ phát triển razor page và chúng ta sẽ tạo ra các trang khác nhau như
 
 44
 00:03:20,240 --> 00:03:27,560
-index card, product detail checkout and order HTML page with the C sharp files, and each C sharp page
+index card, product detail, checkout và order HTML page với các file C sharp, và mỗi C sharp page
 
 45
 00:03:27,560 --> 00:03:33,740
-model will consume the ERP API gateway endpoints using the services like catalog service implemented
+model sẽ sử dụng các endpoint của ERP API gateway bằng cách sử dụng các service như catalog service được triển khai
 
 46
 00:03:33,740 --> 00:03:36,170
-with the Refit and Http client factory.
+với Refit và Http client factory.
 
 47
 00:03:36,170 --> 00:03:40,220
-And the last step, we can say that containerization and orchestration.
+Và bước cuối cùng, chúng ta có thể nói đó là containerization và orchestration.
 
 48
 00:03:40,220 --> 00:03:45,770
-We will containerize the shopping web application and orchestrate it within the Docker compose environment.
+Chúng ta sẽ containerize ứng dụng shopping web và orchestrate nó trong môi trường Docker compose.
 
