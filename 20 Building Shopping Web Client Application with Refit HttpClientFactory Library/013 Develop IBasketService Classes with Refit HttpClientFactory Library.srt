@@ -1,10 +1,10 @@
 1
 00:00:00,110 --> 00:00:06,560
-In this video, we are going to develop a basket service interface with using Revit Http client factory.
+Trong video này, chúng ta sẽ phát triển một giao diện basket service bằng cách sử dụng Refit Http client factory.
 
 2
 00:00:06,830 --> 00:00:13,010
-So if you analyzing basket operations from our shopping web client application, we can create basket
+Vậy nếu bạn phân tích các thao tác basket từ ứng dụng shopping web client của chúng ta, chúng ta có thể tạo basket
 
 3
 00:00:13,010 --> 00:00:13,580
@@ -12,43 +12,43 @@ operation.
 
 4
 00:00:13,580 --> 00:00:15,530
-And after that we will check out the basket.
+Và sau đó chúng ta sẽ kiểm tra basket.
 
 5
 00:00:15,530 --> 00:00:18,140
-And of course we will get the basket and the details.
+Và tất nhiên chúng ta sẽ lấy basket và các chi tiết.
 
 6
 00:00:18,140 --> 00:00:23,840
-So for that reason I am going to create these endpoints that we are going to consume from the shopping
+Vì vậy, vì lý do đó, tôi sẽ tạo các endpoint này mà chúng ta sẽ sử dụng từ ứng dụng shopping
 
 7
 00:00:23,840 --> 00:00:25,100
-web client application.
+web client.
 
 8
 00:00:25,100 --> 00:00:32,479
-These are the get basket with a given username, post basket with creating a new basket, delete basket
+Đây là get basket với một username nhất định, post basket với việc tạo một basket mới, delete basket
 
 9
 00:00:32,479 --> 00:00:33,860
-with a given username.
+với một username nhất định.
 
 10
 00:00:33,860 --> 00:00:40,490
-And lastly our asynchronous use case which is the checkout basket operation with sending http post request.
+Và cuối cùng là use case bất đồng bộ của chúng ta, đó là checkout basket operation với việc gửi http post request.
 
 11
 00:00:40,490 --> 00:00:47,360
-So we will consume these APIs over the web API gateway from the Shopping Web client application using
+Vậy chúng ta sẽ sử dụng các API này qua API gateway web từ ứng dụng Shopping Web client bằng cách sử dụng
 
 12
 00:00:47,390 --> 00:00:48,680
-the Revit Client factory.
+Refit Client factory.
 
 13
 00:00:48,680 --> 00:00:56,030
-So for that purpose, please open the Visual Studio and go to the our shopping, Web and Services Catalog
+Vì vậy, vì mục đích đó, hãy mở Visual Studio và đi đến shopping của chúng ta, Web và Services Catalog
 
 14
 00:00:56,030 --> 00:00:56,570
@@ -56,199 +56,199 @@ service.
 
 15
 00:00:56,570 --> 00:01:01,880
-In our case, I am going to create a new interface which is the I basket services.
+Trong trường hợp này, tôi sẽ tạo một giao diện mới đó là I Basket Services.
 
 16
 00:01:02,630 --> 00:01:07,370
-Create new interface under the services folder which name is I Basket Services.
+Tạo giao diện mới trong thư mục services có tên là I Basket Services.
 
 17
 00:01:07,370 --> 00:01:11,570
-So in here we are going to consume our basket related operations.
+Vậy ở đây chúng ta sẽ sử dụng các thao tác liên quan đến basket của chúng ta.
 
 18
 00:01:11,570 --> 00:01:16,790
-You can check the basket related operations from the services basket basket API.
+Bạn có thể kiểm tra các thao tác liên quan đến basket từ services basket basket API.
 
 19
 00:01:16,790 --> 00:01:22,370
-And if you go to the basket feature folder you can see the basket use cases under this folder including
+Và nếu bạn đi đến feature folder basket, bạn có thể thấy các use cases basket trong folder này bao gồm
 
 20
 00:01:22,370 --> 00:01:25,250
-the get store, delete and checkout basket.
+get, store, delete và checkout basket.
 
 21
 00:01:25,250 --> 00:01:31,070
-And you can expand these Get Basket folder and see the endpoint classes in order to understand incoming
+Và bạn có thể mở rộng thư mục Get Basket này và xem các endpoint classes để hiểu incoming
 
 22
 00:01:31,070 --> 00:01:32,720
-request and response object.
+request và response object.
 
 23
 00:01:32,720 --> 00:01:36,590
-And here you can see the store basket operation http post operation.
+Và ở đây bạn có thể thấy operasi store basket http post operation.
 
 24
 00:01:36,590 --> 00:01:40,340
-We will send shopping cart module and get response as a username.
+Chúng ta sẽ gửi shopping cart module và nhận response là một username.
 
 25
 00:01:40,340 --> 00:01:47,810
-And if you look at the checkout basket, we basically send our basket checkout DTO module and response
+Và nếu bạn xem xét checkout basket, chúng ta cơ bản gửi basket checkout DTO module của chúng ta và response
 
 26
 00:01:47,810 --> 00:01:48,020
-back.
+trở lại.
 
 27
 00:01:48,020 --> 00:01:49,610
-The boolean is success.
+Boolean là success.
 
 28
 00:01:49,610 --> 00:01:56,930
-So according to these request and response object, we have already created our DTO and module classes
+Vậy theo những request và response object này, chúng ta đã tạo DTO và module classes
 
 29
 00:01:56,930 --> 00:01:59,690
-under the module class of the Shopping Web Client application.
+dưới module class của ứng dụng Shopping Web Client.
 
 30
 00:01:59,690 --> 00:02:05,510
-If you expand the basket, you can see that we have shopping cart module to academic incoming requests
+Nếu bạn mở rộng basket, bạn có thể thấy rằng chúng ta có shopping cart module để academic incoming requests
 
 31
 00:02:05,510 --> 00:02:10,789
-and perform Crud operations using the shopping cart module and consuming from the basket microservices
+và thực hiện Crud operations sử dụng shopping cart module và consuming từ basket microservices
 
 32
 00:02:10,789 --> 00:02:16,730
-and populate data into these module classes when consuming APIs under shopping web application.
+và populate data vào các module classes này khi consuming APIs dưới shopping web application.
 
 33
 00:02:16,730 --> 00:02:22,010
-And you can find the basket checkout module to performing basket checkout use case with using these
+Và bạn có thể tìm thấy basket checkout module để performing basket checkout use case với sử dụng các
 
 34
 00:02:22,010 --> 00:02:23,030
-wrapper classes.
+wrapper classes này.
 
 35
 00:02:23,030 --> 00:02:29,150
-And we will use these wrapper classes to accommodate incoming requests and consume these requests from
+Và chúng ta sẽ sử dụng các wrapper classes này để accommodate incoming requests và consume các requests này từ
 
 36
 00:02:29,150 --> 00:02:31,820
-our business layer, which is the I basket service.
+business layer của chúng ta, đó là I basket service.
 
 37
 00:02:31,820 --> 00:02:37,490
-For that purpose, I am going to create method bodies into this interface and create annotations.
+Để mục đích đó, tôi sẽ tạo method bodies vào interface này và tạo annotations.
 
 38
 00:02:37,490 --> 00:02:42,200
-Here you can see that we will perform these operations into the I basket service.
+Ở đây bạn có thể thấy rằng chúng ta sẽ perform các operations này vào I basket service.
 
 39
 00:02:42,200 --> 00:02:46,460
-And I am going to add a record using statement for get basket response.
+Và tôi sẽ thêm một record using statement cho get basket response.
 
 40
 00:02:46,460 --> 00:02:50,480
-I'm going to using the shopping web models basket namespace.
+Tôi sẽ sử dụng namespace shopping web models basket.
 
 41
 00:02:50,480 --> 00:02:54,680
-And basically we can move these using statement to our global using.
+Và cơ bản chúng ta có thể di chuyển các using statement này vào global using của chúng ta.
 
 42
 00:02:54,680 --> 00:02:58,160
-So I'm going to go to the global using and paste in here.
+Vậy tôi sẽ đi đến global using và dán vào đây.
 
 43
 00:02:58,160 --> 00:03:00,500
-And we can add a global keyword.
+Và chúng ta có thể thêm một global keyword.
 
 44
 00:03:00,500 --> 00:03:04,940
-And basically this will be representing our shopping web models catalog basket.
+Và cơ bản điều này sẽ đại diện cho shopping web models catalog basket của chúng ta.
 
 45
 00:03:04,940 --> 00:03:10,910
-And also I can add a ordering because in the next video we will adding ordering related operations and
+Và cũng tôi có thể thêm ordering vì trong video tiếp theo chúng ta sẽ thêm các hoạt động liên quan đến ordering và
 
 46
 00:03:10,910 --> 00:03:12,290
-refit and web services.
+refit và web services.
 
 47
 00:03:12,290 --> 00:03:15,710
-So save this file and go back to our I basket service.
+Vậy lưu file này và quay lại I basket service của chúng ta.
 
 48
 00:03:15,710 --> 00:03:18,590
-Here you can see that our classes are activated.
+Tại đây bạn có thể thấy rằng các classes của chúng ta được kích hoạt.
 
 49
 00:03:18,590 --> 00:03:23,090
-And here you can see that we have four methods that we will consume from the basket.
+Và ở đây bạn có thể thấy rằng chúng ta có bốn methods mà chúng ta sẽ sử dụng từ basket.
 
 50
 00:03:23,090 --> 00:03:27,980
-Microservices over the Erb API gateway from our shopping web client application.
+Microservices qua API gateway từ ứng dụng shopping web client của chúng ta.
 
 51
 00:03:27,980 --> 00:03:31,250
-The first one is get basket with a given username.
+Cái đầu tiên là get basket với một username nhất định.
 
 52
 00:03:31,250 --> 00:03:37,640
-And here you can see the annotation get slash basket, service slash basket and username taking from
+Và ở đây bạn có thể thấy annotation get slash basket, service slash basket và username được lấy từ
 
 53
 00:03:37,640 --> 00:03:40,550
-the request parameters which is the get basket method.
+các request parameters đó là get basket method.
 
 54
 00:03:40,550 --> 00:03:46,070
-And as a response we will expecting get basket response which including the shopping cart module from
+Và như một response chúng ta sẽ mong đợi get basket response mà bao gồm shopping cart module từ
 
 55
 00:03:46,070 --> 00:03:46,910
-the R models.
+R models.
 
 56
 00:03:46,910 --> 00:03:52,670
-So the second method and the consume operation is store basket Http post operation.
+Vậy method thứ hai và consume operation là store basket Http post operation.
 
 57
 00:03:52,850 --> 00:03:58,610
-As a request parameter we will send store basket request which name is request and response.
+Như một request parameter chúng ta sẽ gửi store basket request mà tên là request và response.
 
 58
 00:03:58,610 --> 00:04:05,180
-As a store basket response you can see the annotation is post and as a parameter we can see basket,
+Như một store basket response bạn có thể thấy annotation là post và như một parameter chúng ta có thể thấy basket,
 
 59
 00:04:05,180 --> 00:04:09,830
-service, slash, basket and point that we are going to send http post operation.
+service, slash, basket và point mà chúng ta sẽ gửi http post operation.
 
 60
 00:04:09,830 --> 00:04:13,100
-And the third consume operation is delete basket method.
+Và consume operation thứ ba là delete basket method.
 
 61
 00:04:13,100 --> 00:04:16,970
-And in this method we will passing the username as a request parameter.
+Và trong phương thức này, chúng ta sẽ truyền username làm request parameter.
 
 62
 00:04:16,970 --> 00:04:18,860
-Here you can see the delete method.
+Ở đây bạn có thể thấy phương thức delete.
 
 63
 00:04:18,860 --> 00:04:24,410
-And as a parameter you can see the endpoint definition which is the slash basket service slash basket
+Và làm parameter, bạn có thể thấy định nghĩa endpoint là slash basket service slash basket
 
 64
 00:04:24,410 --> 00:04:25,460
@@ -256,97 +256,97 @@ slash username.
 
 65
 00:04:25,460 --> 00:04:30,110
-And the last method and last consume operation is post basket checkout operation.
+Và phương thức cuối cùng và hoạt động consume cuối cùng là post basket checkout operation.
 
 66
 00:04:30,110 --> 00:04:35,360
-Here you can see the checkout basket as a parameter which is taking checkout basket request which is
+Ở đây bạn có thể thấy checkout basket làm parameter, nó nhận checkout basket request, đó là
 
 67
 00:04:35,360 --> 00:04:38,510
-the payload and getting response checkout basket response.
+payload và nhận response checkout basket response.
 
 68
 00:04:38,510 --> 00:04:40,910
-Here you can see the Http post operation.
+Ở đây bạn có thể thấy HTTP post operation.
 
 69
 00:04:40,910 --> 00:04:45,530
-And the endpoint definition is basket service slash basket and slash checkout.
+Và định nghĩa endpoint là basket service slash basket và slash checkout.
 
 70
 00:04:45,740 --> 00:04:50,150
-And of course these endpoint definitions are belonging for the Erb API gateway.
+Và tất nhiên các định nghĩa endpoint này thuộc về API gateway.
 
 71
 00:04:50,150 --> 00:04:54,080
-And we will perform basket operations with this method using the refit.
+Và chúng ta sẽ thực hiện các basket operations bằng phương thức này sử dụng Refit.
 
 72
 00:04:54,410 --> 00:04:58,760
-At this point I would like to explain one of the important considerations.
+Tại thời điểm này, tôi muốn giải thích một trong những cân nhắc quan trọng.
 
 73
 00:04:58,760 --> 00:04:59,810
-For example when.
+Ví dụ, khi
 
 74
 00:05:00,010 --> 00:05:04,060
-We are developing our interface methods and method parameters.
+chúng ta đang phát triển các interface methods và method parameters của mình.
 
 75
 00:05:04,090 --> 00:05:09,550
-These parameter names should be exactly same as the Andpoint class definition.
+Tên các parameter này phải hoàn toàn giống với định nghĩa Endpoint class.
 
 76
 00:05:09,550 --> 00:05:14,620
-Otherwise, Refit won't map the outgoing request object to the consuming API.
+Nếu không, Refit sẽ không mapping được outgoing request object tới consuming API.
 
 77
 00:05:14,620 --> 00:05:19,270
-For example, if you look at the store basket, this is the parameter and this is the parameter name
+Ví dụ, nếu bạn nhìn vào store basket, đây là parameter và đây là tên parameter
 
 78
 00:05:19,270 --> 00:05:20,020
-as a request.
+như một request.
 
 79
 00:05:20,020 --> 00:05:26,260
-So in the basket API, if you go to the store basket and print, these request parameter should be same
+Vậy trong basket API, nếu bạn đi tới store basket và print, các request parameter này phải giống
 
 80
 00:05:26,260 --> 00:05:29,320
-as the this basket definition which is request.
+với định nghĩa basket này, đó là request.
 
 81
 00:05:29,320 --> 00:05:36,640
-Otherwise refit cannot be mapping this request object to the sending payload and sending consuming operation
+Nếu không thì Refit không thể ánh xạ request object này tới sending payload và sending consuming operation
 
 82
 00:05:36,640 --> 00:05:37,900
-and it won't be work.
+và nó sẽ không hoạt động.
 
 83
 00:05:37,900 --> 00:05:39,700
-Please consider this thing.
+Vui lòng xem xét điều này.
 
 84
 00:05:39,700 --> 00:05:40,270
-For example.
+Ví dụ.
 
 85
 00:05:40,270 --> 00:05:46,750
-You can see the delete basket if you go to the delete basket and print, you can see the string username.
+Bạn có thể thấy delete basket nếu bạn vào delete basket và print, bạn có thể thấy string username.
 
 86
 00:05:46,750 --> 00:05:51,040
-And this is the exactly same parameter name into our interface members.
+Và đây chính xác là tên parameter giống nhau trong interface members của chúng ta.
 
 87
 00:05:51,160 --> 00:05:56,260
-As you can see that we have completed the I basket service interface and consume operations.
+Như bạn có thể thấy rằng chúng ta đã hoàn thành I basket service interface và consuming operations.
 
 88
 00:05:56,260 --> 00:05:58,600
-And we will continue with the I ordering service.
+Và chúng ta sẽ tiếp tục với I ordering service.
 

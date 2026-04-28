@@ -342,5 +342,7 @@
   "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/009 Develop Service Classes for consume YarpApiGateway.srt": "done",
   "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/010 Refit HttpClientFactory Library The automatic type-safe REST library.srt": "done",
   "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/011 Install and Configure Refit HttpClientFactory Library in our Shopping.Web ms.srt": "done",
-  "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/012 Develop ICatalogService Classes with Refit HttpClientFactory Library.srt": "done"
+  "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/012 Develop ICatalogService Classes with Refit HttpClientFactory Library.srt": "done",
+  "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/013 Develop IBasketService Classes with Refit HttpClientFactory Library.srt": "done",
+  "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/014 Develop IOrderingService Classes with Refit HttpClientFactory Library.srt": "done"
 }
