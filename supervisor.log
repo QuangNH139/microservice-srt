@@ -1372,3 +1372,10 @@ Remaining       : 106
   -> done
 [5/106] 17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/002 Analysis the Ordering.API layer in Clean Architecture.srt
   Batch 1/2 (20 blocks)...
+  Partial match (16/20 blocks), continuing...
+  Batch 2/2 (10 blocks)...
+  -> done
+Reached --max-files 5, exiting.
+
+Finished in 78s. Errors: 0
+[supervisor 06:29:40] translate.py exited (code=0). 263/349 done.
