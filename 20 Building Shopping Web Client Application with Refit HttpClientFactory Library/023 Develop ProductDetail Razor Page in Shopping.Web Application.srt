@@ -1,22 +1,22 @@
 1
 00:00:00,140 --> 00:00:06,200
-In this video we are going to develop Product Detail Razor page into our client application.
+Trong video này, chúng ta sẽ phát triển trang Product Detail Razor page vào ứng dụng client của chúng ta.
 
 2
 00:00:06,200 --> 00:00:10,520
-So we are at this point and we will develop HTML part for that purpose.
+Vậy chúng ta đang ở điểm này và chúng ta sẽ phát triển phần HTML cho mục đích đó.
 
 3
 00:00:10,520 --> 00:00:15,110
-Please open our Visual Studio and go to the shopping web and page.
+Vui lòng mở Visual Studio của chúng ta và đi đến trang shopping web.
 
 4
 00:00:15,110 --> 00:00:18,170
-Right click the page add new razor page.
+Nhấp chuột phải vào trang, thêm Razor page mới.
 
 5
 00:00:18,170 --> 00:00:25,070
-Select the razor page empty template, click the add button and give the name as a product detail dot
+Chọn mẫu Razor page trống, nhấp nút add và đặt tên là product detail dot
 
 6
 00:00:25,070 --> 00:00:26,330
@@ -24,23 +24,23 @@ css HTML.
 
 7
 00:00:26,330 --> 00:00:27,500
-Click the add button.
+Nhấp nút add.
 
 8
 00:00:27,500 --> 00:00:30,230
-This will be create our product detail model.
+Cái này sẽ tạo model product detail của chúng ta.
 
 9
 00:00:30,230 --> 00:00:35,240
-So when I'm creating this css HTML file, I didn't see product detail as a green.
+Vậy khi tôi tạo file css HTML này, tôi không thấy product detail ở dạng xanh lục.
 
 10
 00:00:35,240 --> 00:00:38,420
-That's why I'm going to recreate from the scratch by deleting.
+Đó là lý do tôi sẽ tạo lại từ đầu bằng cách xóa.
 
 11
 00:00:38,420 --> 00:00:46,490
-So I'm going to right click Add New Razor page, select Empty Template and change the name as a product
+Vậy tôi sẽ nhấp chuột phải Add New Razor page, chọn Empty Template và đổi tên thành product
 
 12
 00:00:46,490 --> 00:00:48,350
@@ -48,31 +48,31 @@ detail dot css HTML.
 
 13
 00:00:48,350 --> 00:00:49,460
-Click the add button.
+Nhấp nút add.
 
 14
 00:00:50,230 --> 00:00:54,400
-And this time we can introduce product detail model into our HTML page.
+Và lần này chúng ta có thể giới thiệu model product detail vào trang HTML của chúng ta.
 
 15
 00:00:54,400 --> 00:00:58,870
-And this is the RC file that we can populate our data from here.
+Và đây là file RC mà chúng ta có thể điền dữ liệu từ đây.
 
 16
 00:00:58,870 --> 00:01:05,110
-So now I am going to focus on the HTML part and copy this product detail from the our ASP.Net basics
+Vậy bây giờ tôi sẽ tập trung vào phần HTML và sao chép product detail từ repository ASP.NET basics của chúng ta.
 
 17
 00:01:05,110 --> 00:01:05,920
-repository.
+Nếu bạn mở repository này, bạn có thể đi đến trang product detail.
 
 18
 00:01:05,920 --> 00:01:09,970
-If you open this repository, you can go to the product detail page.
+Và bạn có thể sao chép từ điểm này và sao chép từ ASP.NET basics rồi đến đây và dán từ đây.
 
 19
 00:01:09,970 --> 00:01:18,460
-And you can copy from at this point and copy from the ASP.Net basics and come here and paste from here.
+Lưu file này.
 
 20
 00:01:19,210 --> 00:01:20,320
@@ -80,37 +80,36 @@ Save this file.
 
 21
 00:01:20,320 --> 00:01:22,420
-Here are the English subtitles translated to Vietnamese:
 
 22
 00:01:22,420 --> 00:01:28,690
-If we inspect this HTML page, you can see that this is a typical product page that includes
+Nếu chúng ta kiểm tra trang HTML này, bạn có thể thấy đây là một trang sản phẩm điển hình bao gồm
 
 23
 00:01:28,690 --> 00:01:34,270
-all the product details, including product image, product name, product price, color,
+tất cả các chi tiết sản phẩm, bao gồm hình ảnh sản phẩm, tên sản phẩm, giá sản phẩm, màu sắc,
 
 24
 00:01:34,270 --> 00:01:35,080
-and other things.
+và những thứ khác.
 
 25
 00:01:35,080 --> 00:01:37,330
-So here you can see the exception parts.
+Vậy ở đây bạn có thể thấy các phần ngoại lệ.
 
 26
 00:01:37,330 --> 00:01:41,350
-Here we will develop the product model into our C sharp page.
+Ở đây chúng ta sẽ phát triển mô hình sản phẩm vào trang C# của chúng ta.
 
 27
 00:01:41,350 --> 00:01:47,350
-And then we will fix all these errors to represent a single product in the product details page.
+Và sau đó chúng ta sẽ sửa tất cả những lỗi này để biểu diễn một sản phẩm duy nhất trong trang chi tiết sản phẩm.
 
 28
 00:01:47,350 --> 00:01:53,080
-And besides you can see that we again add the shopping cart action and form that we can submit to
+Và ngoài ra bạn có thể thấy rằng chúng ta lại thêm hành động giỏ hàng và biểu mẫu mà chúng ta có thể gửi để
 
 29
 00:01:53,080 --> 00:01:57,760
-add items to the shopping cart that we will handle in the product details page.
+thêm các mục vào giỏ hàng mà chúng ta sẽ xử lý trong trang chi tiết sản phẩm.
 
