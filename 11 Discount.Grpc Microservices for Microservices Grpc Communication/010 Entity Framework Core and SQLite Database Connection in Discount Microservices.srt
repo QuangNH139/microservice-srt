@@ -1,6 +1,6 @@
 1
 00:00:00,140 --> 00:00:06,620
-In this video we are going to install Entity Framework core and SQLite database connections in discount
+Trong video này, chúng ta sẽ cài đặt Entity Framework Core và kết nối cơ sở dữ liệu SQLite trong discount
 
 2
 00:00:06,620 --> 00:00:07,700
@@ -8,31 +8,31 @@ microservices.
 
 3
 00:00:08,180 --> 00:00:13,550
-As you know that when we are analyzing underlying data structure of discount microservices, we said
+Như bạn biết, khi chúng ta phân tích cấu trúc dữ liệu cơ bản của discount microservices, chúng ta đã nói
 
 4
 00:00:13,550 --> 00:00:16,760
-that we have one data store which is the SQL database.
+rằng chúng ta có một kho dữ liệu đó là cơ sở dữ liệu SQL.
 
 5
 00:00:16,760 --> 00:00:24,830
-In order to store coupon table in a lite database SQLite database chosen for its simplicity and efficiency,
+Để lưu trữ bảng coupon trong cơ sở dữ liệu nhẹ SQLite được chọn vì tính đơn giản và hiệu quả của nó,
 
 6
 00:00:25,010 --> 00:00:31,700
-especially for small scale data like discounts, and also it is embedded within the application, reducing
+đặc biệt là đối với dữ liệu quy mô nhỏ như các khoản giảm giá, và cũng vì nó được nhúng trong ứng dụng, giảm
 
 7
 00:00:31,700 --> 00:00:37,430
-the need for additional infrastructure to implement SQLite database into our discount.
+nhu cầu cơ sở hạ tầng bổ sung để triển khai SQLite database vào discount
 
 8
 00:00:37,430 --> 00:00:38,330
-Microservices.
+microservices của chúng ta.
 
 9
 00:00:38,330 --> 00:00:44,720
-We should install some of the NuGet packages, including Entity Framework, core, SQLite and Entity
+Chúng ta nên cài đặt một số gói NuGet, bao gồm Entity Framework Core, SQLite và Entity
 
 10
 00:00:44,720 --> 00:00:46,250
@@ -40,213 +40,213 @@ Framework Core tools.
 
 11
 00:00:46,250 --> 00:00:51,920
-So as a ORM system, we will use Entity Framework Core when communicating the SQL database.
+Vậy là một hệ thống ORM, chúng ta sẽ sử dụng Entity Framework Core khi giao tiếp với cơ sở dữ liệu SQL.
 
 12
 00:00:51,920 --> 00:00:58,850
-That's why we should install SQL Lite Data provider for Entity Framework core into our ASP.Net applications.
+Đó là lý do tại sao chúng ta nên cài đặt SQLite Data provider cho Entity Framework Core vào ứng dụng ASP.NET của chúng ta.
 
 13
 00:00:59,180 --> 00:01:05,300
-Please open the Visual Studio and right click the discount gRPC and manage NuGet packages.
+Vui lòng mở Visual Studio và nhấp chuột phải vào discount gRPC và quản lý NuGet packages.
 
 14
 00:01:06,260 --> 00:01:12,530
-And we are going to install Microsoft Entity Framework core dot SQLite database.
+Và chúng ta sẽ cài đặt Microsoft Entity Framework Core dot SQLite database.
 
 15
 00:01:12,530 --> 00:01:20,000
-To communicate with the SQLite, please install this database, click the exit button and install this
+Để giao tiếp với SQLite, vui lòng cài đặt cơ sở dữ liệu này, nhấp nút exit và cài đặt gói
 
 16
 00:01:20,000 --> 00:01:20,540
-package.
+này.
 
 17
 00:01:20,540 --> 00:01:28,190
-You can verify by double click to your project file and see that our SQLite ORM NuGet packages installed
+Bạn có thể xác minh bằng cách double click vào tệp project của bạn và thấy rằng các NuGet packages SQLite ORM của chúng ta đã được cài đặt
 
 18
 00:01:28,190 --> 00:01:28,940
-successfully.
+thành công.
 
 19
 00:01:28,940 --> 00:01:35,240
-We can save this project file, and after that, the next thing we should do that we should create a
+Chúng ta có thể lưu tệp project này, và sau đó, điều tiếp theo chúng ta nên làm là chúng ta nên tạo một
 
 20
 00:01:35,240 --> 00:01:38,990
-data folder in order to encapsulate data related operations.
+thư mục data để đóng gói các hoạt động liên quan đến dữ liệu.
 
 21
 00:01:38,990 --> 00:01:43,580
-In here, if you right click and create a new folder, add new folder.
+Ở đây, nếu bạn nhấp chuột phải và tạo một thư mục mới, hãy thêm thư mục mới.
 
 22
 00:01:43,580 --> 00:01:45,170
-Which name is data.
+Tên của nó là data.
 
 23
 00:01:45,170 --> 00:01:51,200
-This will be represent our data access layer according to our n layer architecture implementation.
+Điều này sẽ đại diện cho data access layer của chúng ta theo n layer architecture implementation.
 
 24
 00:01:51,200 --> 00:01:55,010
-And in this class we are going to create a new context class.
+Và trong lớp này, chúng ta sẽ tạo một lớp context mới.
 
 25
 00:01:55,010 --> 00:02:01,130
-Which name is Discount Context to perform database operation in this context.
+Tên của nó là Discount Context để thực hiện các thao tác cơ sở dữ liệu trong context này.
 
 26
 00:02:01,130 --> 00:02:07,550
-So basically we will create discount context object inherited from the DB context object.
+Vậy cơ bản, chúng ta sẽ tạo discount context object được kế thừa từ DB context object.
 
 27
 00:02:07,550 --> 00:02:12,800
-This comes from the Entity Framework core and this is typical DB context object.
+Cái này đến từ Entity Framework core và đây là một DB context object điển hình.
 
 28
 00:02:12,800 --> 00:02:19,520
-In the Entity Framework core db context classes, we should define the table name as a property.
+Trong Entity Framework core db context classes, chúng ta nên định nghĩa tên bảng như một thuộc tính.
 
 29
 00:02:19,550 --> 00:02:22,430
-So you can see that we have one model as a coupon.
+Vậy bạn có thể thấy rằng chúng ta có một model là coupon.
 
 30
 00:02:22,430 --> 00:02:28,430
-So we should create coupon table as a DB set property under the Discount Context class.
+Vậy chúng ta nên tạo coupon table như một DB set property dưới Discount Context class.
 
 31
 00:02:28,430 --> 00:02:35,540
-For that purpose, I have added the DB set coupon as a coupon table property of the Discount Context
+Để mục đích đó, tôi đã thêm DB set coupon như một thuộc tính coupon table của Discount Context
 
 32
 00:02:35,540 --> 00:02:41,750
-class, and after that, we should also provide the constructor which is inherited from the base constructor.
+class, và sau đó, chúng ta cũng nên cung cấp constructor được kế thừa từ base constructor.
 
 33
 00:02:41,750 --> 00:02:42,890
-Passing the options.
+Truyền các options.
 
 34
 00:02:42,890 --> 00:02:48,800
-In here you can see that we will create a discount context constructor and this will be passing the
+Ở đây bạn có thể thấy rằng chúng ta sẽ tạo một discount context constructor và cái này sẽ truyền
 
 35
 00:02:48,800 --> 00:02:52,070
-Discount context DB context option to the base.
+Discount context DB context option tới base.
 
 36
 00:02:52,070 --> 00:02:55,700
-So this is typical context object from the Entity Framework core.
+Vậy đây là context object điển hình từ Entity Framework core.
 
 37
 00:02:55,700 --> 00:03:02,420
-And this class is a DB context class that maps to our SQLite database and coupon table.
+Và lớp này là một DB context class được ánh xạ tới SQLite database và coupon table của chúng ta.
 
 38
 00:03:02,420 --> 00:03:10,040
-Specifically table represent the coupon entity and after that we can configure these Discount context
+Cụ thể, table đại diện cho coupon entity và sau đó chúng ta có thể cấu hình Discount context
 
 39
 00:03:10,040 --> 00:03:16,070
-object from our Program.cs and application settings to communicate with the SQLite database.
+object này từ Program.cs và application settings để giao tiếp với SQLite database.
 
 40
 00:03:16,280 --> 00:03:20,900
-First of all, let's add connection string to Application settings file.
+Đầu tiên, hãy thêm connection string vào Application settings file.
 
 41
 00:03:20,900 --> 00:03:25,760
-If you open the application settings file, we can add a connection string in here.
+Nếu bạn mở tập tin cài đặt ứng dụng, chúng ta có thể thêm chuỗi kết nối vào đây.
 
 42
 00:03:25,760 --> 00:03:32,990
-Since SQLite is an embedded database, the connection string is simple and typical, just the data source
+Vì SQLite là một cơ sở dữ liệu nhúng, chuỗi kết nối rất đơn giản và điển hình, chỉ là nguồn dữ liệu
 
 43
 00:03:32,990 --> 00:03:34,070
-of the file path.
+của đường dẫn tập tin.
 
 44
 00:03:34,070 --> 00:03:39,710
-For that purpose, I am going to add a connection string in the beginning of this file, and in here
+Để mục đích đó, tôi sẽ thêm một chuỗi kết nối vào đầu tập tin này, và ở đây
 
 45
 00:03:39,710 --> 00:03:41,960
-you can see that connection string.
+bạn có thể thấy chuỗi kết nối đó.
 
 46
 00:03:41,960 --> 00:03:43,550
-And we put database string.
+Và chúng ta đặt chuỗi cơ sở dữ liệu.
 
 47
 00:03:43,550 --> 00:03:47,330
-And this only including data source and database name.
+Và nó chỉ bao gồm nguồn dữ liệu và tên cơ sở dữ liệu.
 
 48
 00:03:47,330 --> 00:03:53,060
-That means SQLite database located inside of our application server.
+Điều đó có nghĩa là cơ sở dữ liệu SQLite nằm bên trong máy chủ ứng dụng của chúng ta.
 
 49
 00:03:53,060 --> 00:04:01,640
-So when we give data source as a discount DB, this discount DB SQLite database will create a new database
+Vậy khi chúng ta đặt nguồn dữ liệu là discount DB, cơ sở dữ liệu SQLite discount DB này sẽ tạo một cơ sở dữ liệu mới
 
 50
 00:04:01,640 --> 00:04:04,550
-into the root directory of our application.
+vào thư mục gốc của ứng dụng chúng ta.
 
 51
 00:04:04,970 --> 00:04:10,310
-And we will see a discount db SQLite database under the discount gRPC project file.
+Và chúng ta sẽ thấy cơ sở dữ liệu SQLite discount db dưới tập tin dự án discount gRPC.
 
 52
 00:04:10,670 --> 00:04:13,580
-After that we can continue configuration part.
+Sau đó chúng ta có thể tiếp tục phần cấu hình.
 
 53
 00:04:13,580 --> 00:04:19,100
-We will configure the application with using the Discount Context object.
+Chúng ta sẽ cấu hình ứng dụng bằng cách sử dụng đối tượng Discount Context.
 
 54
 00:04:19,100 --> 00:04:21,950
-And this will be communicate with SQLite database.
+Và nó sẽ giao tiếp với cơ sở dữ liệu SQLite.
 
 55
 00:04:21,950 --> 00:04:25,190
-And this configuration should be done in the program case.
+Và cấu hình này nên được thực hiện trong Program.cs.
 
 56
 00:04:25,250 --> 00:04:30,230
-Please open the Program.cs and we are going to locate before building the application.
+Vui lòng mở Program.cs và chúng ta sẽ xác định vị trí trước khi xây dựng ứng dụng.
 
 57
 00:04:30,230 --> 00:04:34,400
-And we will add services into dependency injection container.
+Và chúng ta sẽ thêm các dịch vụ vào vùng chứa dependency injection.
 
 58
 00:04:34,400 --> 00:04:41,030
-So in here I'm going to add DB context object which comes from the Entity Framework core with communicating
+Vậy ở đây tôi sẽ thêm đối tượng DB context đến từ Entity Framework Core để giao tiếp
 
 59
 00:04:41,030 --> 00:04:48,200
-with the SQLite database, with passing the options as a use SQLite and giving the connection string
+với cơ sở dữ liệu SQLite, bằng cách truyền các tùy chọn như use SQLite và cung cấp chuỗi kết nối
 
 60
 00:04:48,200 --> 00:04:51,020
-into the parameter of the SQLite extension method.
+vào tham số của phương thức mở rộng SQLite.
 
 61
 00:04:51,020 --> 00:04:58,520
-So in here, first of all, we will use a db context method which is used to register our discount context
+Vậy ở đây, đầu tiên chúng ta sẽ sử dụng một phương thức db context được dùng để đăng ký discount context của chúng ta
 
 62
 00:04:58,520 --> 00:05:04,460
-object with Entity Framework Core, and we will specifying that SQLite database will be the database
+với Entity Framework Core, và chúng ta sẽ chỉ định rằng SQLite database sẽ là nhà cung cấp database
 
 63
 00:05:04,460 --> 00:05:07,400
-provider for our discount gRPC application.
+cho ứng dụng discount gRPC của chúng ta.
 
