@@ -344,5 +344,8 @@
   "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/011 Install and Configure Refit HttpClientFactory Library in our Shopping.Web ms.srt": "done",
   "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/012 Develop ICatalogService Classes with Refit HttpClientFactory Library.srt": "done",
   "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/013 Develop IBasketService Classes with Refit HttpClientFactory Library.srt": "done",
-  "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/014 Develop IOrderingService Classes with Refit HttpClientFactory Library.srt": "done"
+  "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/014 Develop IOrderingService Classes with Refit HttpClientFactory Library.srt": "done",
+  "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/015 Build Presentation Layer Asp.Net Web Application Razor Pages w AspNetRunBasics.srt": "done",
+  "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/016 Develop Index html Pages and cs files with Shared Partial Product pages.srt": "done",
+  "/home/user/microservice-srt/20 Building Shopping Web Client Application with Refit HttpClientFactory Library/017 Develop Index C# Page Consume YarpApiGateway Endpoints with ICatalogService.srt": "done"
 }

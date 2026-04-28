@@ -1,10 +1,10 @@
 1
 00:00:00,140 --> 00:00:03,530
-In this video we are going to build presentation layer.
+Trong video này chúng ta sẽ xây dựng presentation layer.
 
 2
 00:00:03,530 --> 00:00:10,010
-That means we are at the fourth step and we will be develop ASP.Net Web Application Razor page with
+Điều đó có nghĩa là chúng ta đang ở bước thứ tư và chúng ta sẽ phát triển ASP.Net Web Application Razor page với
 
 3
 00:00:10,010 --> 00:00:11,840
@@ -12,11 +12,11 @@ ASP.Net Run Basics repository.
 
 4
 00:00:12,140 --> 00:00:17,930
-Here you can see that we will develop index card, product detail checkout order HTML and see page.
+Ở đây bạn có thể thấy rằng chúng ta sẽ phát triển trang index card, product detail, checkout, order HTML và trang xem.
 
 5
 00:00:17,930 --> 00:00:23,750
-And we will consume the Erb API gateway and prints from the eye service interfaces with using Revit
+Và chúng ta sẽ sử dụng Erb API gateway và in từ các interface của eye service bằng cách sử dụng Refit
 
 6
 00:00:23,750 --> 00:00:25,880
@@ -24,203 +24,203 @@ Http client factory libraries.
 
 7
 00:00:25,880 --> 00:00:28,160
-So please open the Visual Studio.
+Vậy hãy mở Visual Studio.
 
 8
 00:00:28,160 --> 00:00:33,140
-And here you can see the our shopping web client application that you can see that we have developed
+Và ở đây bạn có thể thấy ứng dụng shopping web client của chúng ta, bạn có thể thấy rằng chúng ta đã phát triển
 
 9
 00:00:33,140 --> 00:00:35,570
-our model folder service folder.
+thư mục model và thư mục service của chúng ta.
 
 10
 00:00:35,570 --> 00:00:41,930
-And now we are going to develop our presentation layer which includes the page WW route and so on.
+Và bây giờ chúng ta sẽ phát triển presentation layer của chúng ta, bao gồm page, route và cái khác.
 
 11
 00:00:41,930 --> 00:00:49,190
-If you look at the root folder you can see that this will include Ccjs and leave folders.
+Nếu bạn nhìn vào root folder, bạn có thể thấy rằng nó sẽ bao gồm các thư mục CSS và thư mục lib.
 
 12
 00:00:49,190 --> 00:00:52,670
-And each folder has include the required operations.
+Và mỗi thư mục đều bao gồm các thao tác cần thiết.
 
 13
 00:00:52,670 --> 00:00:56,780
-For example, in the leaf folder we will implement Bootstrap Fatima.
+Ví dụ, trong thư mục lib chúng ta sẽ triển khai Bootstrap Fatima.
 
 14
 00:00:57,020 --> 00:01:03,290
-So this is the front end implementation and all details under the WW root folder.
+Vậy đây là triển khai front end và tất cả chi tiết dưới thư mục WW root.
 
 15
 00:01:03,290 --> 00:01:09,740
-And if we expand the page folder this will be represent our page in the front end application and including
+Và nếu chúng ta mở rộng thư mục page, nó sẽ đại diện cho các trang của chúng ta trong ứng dụng front end và bao gồm
 
 16
 00:01:09,740 --> 00:01:11,960
-the index error and shared folder.
+thư mục index, error và shared.
 
 17
 00:01:11,960 --> 00:01:18,200
-So if you expand the shared folder this will be include shared HTML operations during the implementation
+Vậy nếu bạn mở rộng thư mục shared, nó sẽ bao gồm các thao tác HTML được chia sẻ trong quá trình triển khai
 
 18
 00:01:18,200 --> 00:01:19,370
-of the other pages.
+các trang khác.
 
 19
 00:01:19,370 --> 00:01:22,760
-And you can see the layout and validation scripts partial.
+Và bạn có thể thấy layout, validation scripts và partial.
 
 20
 00:01:22,760 --> 00:01:28,970
-So if you look at the index.html you can see that this is typical HTML page, but also including some
+Vậy nếu bạn nhìn vào index.html, bạn có thể thấy đây là một trang HTML điển hình, nhưng cũng bao gồm một số
 
 21
 00:01:28,970 --> 00:01:35,480
-of the C-sharp models which including the model index model in order to populate data inside of these
+các mô hình C# bao gồm model index model để có thể điền dữ liệu vào các
 
 22
 00:01:35,630 --> 00:01:36,500
-HTML pages.
+trang HTML này.
 
 23
 00:01:36,500 --> 00:01:42,680
-And where these index model comes, this will be comes from the our C sharp file of these HTML file.
+Và index model này sẽ đến từ tệp C# của tệp HTML này.
 
 24
 00:01:42,680 --> 00:01:48,470
-If you click this button, this will be expanding to C sharp file of these index css HTML.
+Nếu bạn nhấp nút này, nó sẽ mở rộng để hiển thị tệp C# của HTML index css.
 
 25
 00:01:48,470 --> 00:01:53,150
-And if you open this class you can see that the class definition comes from in here.
+Và nếu bạn mở class này, bạn có thể thấy định nghĩa class xuất phát từ đây.
 
 26
 00:01:53,150 --> 00:01:55,460
-This is implementation of the page model.
+Đây là triển khai của page model.
 
 27
 00:01:55,460 --> 00:02:01,820
-And the name of the class is index model that we can develop our properties in order to populate data
+Và tên của class là index model mà chúng ta có thể phát triển các properties để điền dữ liệu
 
 28
 00:02:01,820 --> 00:02:03,950
-when consuming the API gateway.
+khi sử dụng API gateway.
 
 29
 00:02:03,950 --> 00:02:08,750
-So in this class we basically inject our I service interfaces.
+Vậy trong class này, chúng ta cơ bản sẽ inject các interface I service.
 
 30
 00:02:08,750 --> 00:02:13,820
-And we will communicate with the Erb API gateway using the Revit Http client factory.
+Và chúng ta sẽ giao tiếp với Erb API gateway bằng cách sử dụng Refit Http client factory.
 
 31
 00:02:13,850 --> 00:02:20,210
-And after that we will populate the data into our HTML page with placing the module inside of the class.
+Và sau đó chúng ta sẽ điền dữ liệu vào trang HTML của chúng ta bằng cách đặt module vào bên trong class.
 
 32
 00:02:20,210 --> 00:02:24,680
-So now we can start to develop our e-commerce microservice client application.
+Vậy bây giờ chúng ta có thể bắt đầu phát triển ứng dụng client cho e-commerce microservice.
 
 33
 00:02:24,680 --> 00:02:33,470
-But as you can see that we need to develop Ccjs lib and also develop all pages HTML files into our application.
+Nhưng như bạn có thể thấy, chúng ta cần phát triển Ccjs lib và cũng phát triển tất cả các tệp HTML pages vào ứng dụng của chúng ta.
 
 34
 00:02:33,470 --> 00:02:37,820
-But I'm not going to develop front end operations in this course.
+Nhưng tôi sẽ không phát triển các hoạt động front end trong khóa học này.
 
 35
 00:02:37,820 --> 00:02:42,980
-Instead of that, we will take these HTML, CSS, js files from the repository.
+Thay vào đó, chúng ta sẽ lấy các tệp HTML, CSS, js từ repository.
 
 36
 00:02:43,010 --> 00:02:44,390
-Which repository?
+Repository nào?
 
 37
 00:02:44,390 --> 00:02:51,050
-I have mentioned that we have run ASP.Net Core Basics repository that include implementation of the
+Tôi đã đề cập rằng chúng ta có repository ASP.NET Core Basics bao gồm triển khai của
 
 38
 00:02:51,050 --> 00:02:55,400
-basic real world e-commerce web application project in one solution.
+một dự án ứng dụng web e-commerce thực tế cơ bản trong một solution.
 
 39
 00:02:55,400 --> 00:03:01,040
-Here you can see the details of the pages of the e-commerce application in this repository that we are
+Ở đây bạn có thể thấy chi tiết các trang của ứng dụng e-commerce trong repository này mà chúng ta
 
 40
 00:03:01,040 --> 00:03:06,080
-going to copy these files from our microservice application client application.
+sẽ sao chép các tệp này từ ứng dụng client microservice của chúng ta.
 
 41
 00:03:06,080 --> 00:03:11,780
-And if you scroll down, you can see that this is only one solution and one web application project,
+Và nếu bạn cuộn xuống, bạn có thể thấy rằng đây chỉ là một giải pháp và một dự án web application,
 
 42
 00:03:11,780 --> 00:03:17,570
-including the ASP.Net Core and Entity Framework Core, and using the ASP.Net core components, which
+bao gồm ASP.NET Core và Entity Framework Core, và sử dụng các thành phần ASP.NET Core, bao gồm
 
 43
 00:03:17,600 --> 00:03:23,000
-including the razor pages, Middlewares, dependency injection configuration and logging.
+razor pages, Middlewares, dependency injection configuration và logging.
 
 44
 00:03:23,000 --> 00:03:29,420
-So we will use this website when developing our client application, especially copy from the HTML,
+Vậy chúng ta sẽ sử dụng website này khi phát triển ứng dụng client của chúng ta, đặc biệt là sao chép từ các tệp HTML,
 
 45
 00:03:29,420 --> 00:03:34,520
-CSS, and JavaScript files in order to build these e-commerce web application.
+CSS, và JavaScript để xây dựng ứng dụng web e-commerce này.
 
 46
 00:03:34,520 --> 00:03:37,880
-So before that, let me explain these repository.
+Vậy trước đó, hãy để tôi giải thích repository này.
 
 47
 00:03:37,880 --> 00:03:43,220
-If you open this folder, you can see the folder structure of these one ASP.Net core solution.
+Nếu bạn mở folder này, bạn có thể thấy cấu trúc folder của giải pháp ASP.NET Core này.
 
 48
 00:03:43,220 --> 00:03:46,160
-And I am going to focus on the WW root and page.
+Và tôi sẽ tập trung vào WW root và page.
 
 49
 00:03:46,160 --> 00:03:50,210
-Here you can see that it is including required CSS and image folder.
+Tại đây bạn có thể thấy rằng nó bao gồm CSS bắt buộc và folder image.
 
 50
 00:03:50,210 --> 00:03:52,490
-We will copy from these website.
+Chúng ta sẽ sao chép từ website này.
 
 51
 00:03:52,490 --> 00:03:58,610
-And also if you go to the page folder you can see that these will be including the index product, cart
+Và cũng nếu bạn chuyển đến folder page, bạn có thể thấy rằng nó sẽ bao gồm index product, cart
 
 52
 00:03:58,610 --> 00:04:01,700
-checkout, confirmation order and so on.
+checkout, confirmation order và những cái khác.
 
 53
 00:04:01,700 --> 00:04:08,510
-So these are the related for the e-commerce and e-shop pages when we are making our e-commerce application.
+Vậy đây là những trang liên quan đến e-commerce và e-shop khi chúng ta đang tạo ứng dụng e-commerce của chúng ta.
 
 54
 00:04:08,510 --> 00:04:15,560
-For example, if you open the index.html, you can see that this is typical HTML page, one representing
+Ví dụ, nếu bạn mở index.html, bạn có thể thấy rằng đây là một trang HTML điển hình, một đại diện
 
 55
 00:04:15,560 --> 00:04:20,089
-in the landing page, including the all products with pagination.
+trên landing page, bao gồm tất cả các sản phẩm với pagination.
 
 56
 00:04:20,089 --> 00:04:24,980
-And these are the are including the partial name and partial operations.
+Và những cái này bao gồm partial name và partial operations.
 
 57
 00:04:24,980 --> 00:04:25,820
@@ -228,223 +228,223 @@ Partial HTML.
 
 58
 00:04:26,090 --> 00:04:31,190
-When populating the products here, you can see that these will be populating the product partial,
+Khi điền các sản phẩm ở đây, bạn có thể thấy rằng nó sẽ điền product partial,
 
 59
 00:04:31,190 --> 00:04:34,550
-which is getting the first order default from the product list.
+mà được lấy mặc định đầu tiên từ danh sách sản phẩm.
 
 60
 00:04:34,550 --> 00:04:40,070
-And if you scroll down here, you can see the for each iteration and listing all products with using
+Và nếu bạn cuộn xuống ở đây, bạn có thể thấy vòng lặp for each và liệt kê tất cả các sản phẩm bằng cách sử dụng
 
 61
 00:04:40,070 --> 00:04:43,850
-the partial again, which is the product item partial.
+partial này là partial mục sản phẩm.
 
 62
 00:04:43,850 --> 00:04:49,490
-So where this partial storing in this application under the page we have a shared folder.
+Vậy partial này được lưu trữ ở đâu trong ứng dụng này, dưới trang chúng ta có một thư mục shared.
 
 63
 00:04:49,490 --> 00:04:55,400
-And under the shared folder you can see that this is the product item partial, representing each product
+Và dưới thư mục shared bạn có thể thấy đây là partial mục sản phẩm, đại diện cho mỗi sản phẩm
 
 64
 00:04:55,400 --> 00:04:59,720
-in a HTML format and populating the product data, for example.
+ở định dạng HTML và điền dữ liệu sản phẩm, ví dụ.
 
 65
 00:05:00,090 --> 00:05:03,300
-Model summary, model, model price and so on.
+Tóm tắt mô hình, mô hình, giá mô hình và những thứ khác.
 
 66
 00:05:03,300 --> 00:05:08,640
-And if you look at the top product partial, again, this is the single product for the top product
+Và nếu bạn nhìn vào partial sản phẩm hàng đầu, lại lần nữa, đây là sản phẩm duy nhất cho sản phẩm hàng đầu
 
 67
 00:05:08,640 --> 00:05:09,660
-in the landing page.
+trên trang landing.
 
 68
 00:05:09,660 --> 00:05:14,730
-So we can use common HTML operations with using the shared folders and partial weaves.
+Vậy chúng ta có thể sử dụng các hoạt động HTML chung bằng cách sử dụng các thư mục shared và partial views.
 
 69
 00:05:14,730 --> 00:05:20,430
-And if you scroll down and go back to index.html, you can see that as a model we will use index model
+Và nếu bạn cuộn xuống và quay lại index.html, bạn có thể thấy rằng làm mô hình chúng ta sẽ sử dụng index model
 
 70
 00:05:20,430 --> 00:05:23,100
-and populate the are products according to index model.
+và điền các sản phẩm theo index model.
 
 71
 00:05:23,100 --> 00:05:28,620
-And if you go to the see page, you can see that in the index model we basically retrieve the products
+Và nếu bạn đi tới trang see, bạn có thể thấy rằng trong index model chúng ta cơ bản là lấy các sản phẩm
 
 72
 00:05:28,620 --> 00:05:34,350
-from the repository, because this is the single application using the Entity Framework code that communicating
+từ repository, bởi vì đây là ứng dụng duy nhất sử dụng Entity Framework code that communicating
 
 73
 00:05:34,350 --> 00:05:36,210
-the database and retrieve the products.
+cơ sở dữ liệu và lấy các sản phẩm.
 
 74
 00:05:36,210 --> 00:05:43,140
-But in our case, we will inject our AI service interfaces in order to consume Erb API gateway endpoints
+Nhưng trong trường hợp của chúng ta, chúng ta sẽ inject các interface dịch vụ AI để tiêu thụ các endpoint Erb API gateway
 
 75
 00:05:43,140 --> 00:05:47,400
-and retrieve the products from the catalog microservices over the Erb API gateway.
+và lấy các sản phẩm từ catalog microservices qua Erb API gateway.
 
 76
 00:05:47,400 --> 00:05:53,160
-So as the same way you can examine the other pages, including the product, product detail, and so
+Vậy theo cách tương tự bạn có thể kiểm tra các trang khác, bao gồm sản phẩm, chi tiết sản phẩm, và những thứ khác
 
 77
 00:05:53,160 --> 00:05:53,490
-on.
+tiếp theo.
 
 78
 00:05:53,490 --> 00:05:59,190
-Here you can see the product HTML page that including the listing all products in here and here you
+Ở đây bạn có thể thấy trang HTML sản phẩm mà bao gồm liệt kê tất cả các sản phẩm ở đây và ở đây bạn
 
 79
 00:05:59,190 --> 00:06:03,060
-can see the see page that retrieving the products from the database.
+có thể thấy trang see mà đang lấy các sản phẩm từ cơ sở dữ liệu.
 
 80
 00:06:03,060 --> 00:06:06,330
-In our case we will retrieve from the Erb API gateway.
+Trong trường hợp của chúng ta chúng ta sẽ lấy từ Erb API gateway.
 
 81
 00:06:06,330 --> 00:06:11,430
-And here you can see the product detail which representing a single product with detail information.
+Và ở đây bạn có thể thấy chi tiết sản phẩm đại diện cho một sản phẩm duy nhất với thông tin chi tiết.
 
 82
 00:06:11,430 --> 00:06:16,830
-And here you can see that we will use razor page and model in order to reach the product name, price
+Và ở đây bạn có thể thấy rằng chúng ta sẽ sử dụng Razor page và model để lấy tên sản phẩm, giá cả
 
 83
 00:06:16,830 --> 00:06:17,610
-and so on.
+và cũng như vậy.
 
 84
 00:06:17,610 --> 00:06:20,430
-And these will be populated from the RC page.
+Và những thứ này sẽ được điền từ trang RC.
 
 85
 00:06:20,430 --> 00:06:23,100
-And as the same way here you can see the order page.
+Và cũng theo cách tương tự, ở đây bạn có thể thấy trang đặt hàng.
 
 86
 00:06:23,100 --> 00:06:25,560
-And also here you can see the shopping cart page.
+Và cũng ở đây bạn có thể thấy trang giỏ hàng.
 
 87
 00:06:25,560 --> 00:06:30,360
-And here you can see the checkout page that we will start with the asynchronous communication.
+Và ở đây bạn có thể thấy trang thanh toán mà chúng ta sẽ bắt đầu với giao tiếp không đồng bộ.
 
 88
 00:06:30,360 --> 00:06:35,010
-So now I'm going to start to copy from the R project.
+Vậy bây giờ tôi sẽ bắt đầu sao chép từ dự án R.
 
 89
 00:06:35,010 --> 00:06:37,650
-And I will start with the root folder.
+Và tôi sẽ bắt đầu với thư mục gốc.
 
 90
 00:06:37,650 --> 00:06:44,910
-In order to perform these front end styling for each page here you can see that we have including the
+Để thực hiện kiểu dáng front end cho mỗi trang, ở đây bạn có thể thấy rằng chúng ta có bao gồm
 
 91
 00:06:44,910 --> 00:06:51,900
-front end styling, CSS and image files that include the bootstrap for and CSS image folder that.
+kiểu dáng front end, các tệp CSS và hình ảnh bao gồm bootstrap cho và thư mục hình ảnh CSS.
 
 92
 00:06:51,900 --> 00:06:57,240
-We are going to copy these folders and paste into our shopping client web application to representing
+Chúng ta sẽ sao chép các thư mục này và dán vào ứng dụng web shopping client của chúng ta để đại diện
 
 93
 00:06:57,240 --> 00:06:58,290
-our shop page.
+cho trang shop của chúng ta.
 
 94
 00:06:58,290 --> 00:07:03,330
-So let's build the presentation layer from this ASP.Net basics repository.
+Vậy hãy xây dựng presentation layer từ repository ASP.Net basics này.
 
 95
 00:07:03,330 --> 00:07:09,540
-For that purpose, I'm going to go to on top of this GitHub repository page I'm going to come here,
+Để làm điều đó, tôi sẽ đi tới phía trên trang repository GitHub này, tôi sẽ đến đây,
 
 96
 00:07:09,540 --> 00:07:13,320
-click the code and copy to clone link of this repository.
+nhấp vào code và sao chép liên kết clone của repository này.
 
 97
 00:07:13,320 --> 00:07:20,400
-And just after that I am going to open Additional Visual Studio and click this clone a repository and
+Và ngay sau đó tôi sẽ mở Visual Studio bổ sung và nhấp vào clone a repository và
 
 98
 00:07:20,400 --> 00:07:21,270
-paste in here.
+dán vào đây.
 
 99
 00:07:21,270 --> 00:07:23,760
-So we are going to create a new repository.
+Vậy chúng ta sẽ tạo một repository mới.
 
 100
 00:07:23,760 --> 00:07:26,430
-But I have already clone this repository before.
+Nhưng tôi đã clone repository này trước đó rồi.
 
 101
 00:07:26,430 --> 00:07:31,710
-For that purpose I have go to that location and open this project solution file.
+Để làm điều đó, tôi phải đi đến vị trí đó và mở tệp giải pháp dự án này.
 
 102
 00:07:31,710 --> 00:07:38,640
-And this will be our ASP.Net run basic repository that we are going to use when we are developing our
+Và đây sẽ là kho lưu trữ cơ bản ASP.Net của chúng ta mà chúng ta sẽ sử dụng khi đang phát triển ứng dụng
 
 103
 00:07:38,640 --> 00:07:39,630
-client application.
+khách hàng.
 
 104
 00:07:39,630 --> 00:07:43,530
-So let me come here and close all the tabs.
+Vậy hãy để tôi đến đây và đóng tất cả các tab.
 
 105
 00:07:43,530 --> 00:07:50,670
-And if you expand this page and close all files, you can see that we will use these root folder.
+Và nếu bạn mở rộng trang này và đóng tất cả các tệp, bạn có thể thấy rằng chúng ta sẽ sử dụng thư mục gốc này.
 
 106
 00:07:50,670 --> 00:07:53,130
-When we are styling our each page.
+Khi chúng ta đang tạo kiểu cho từng trang.
 
 107
 00:07:53,130 --> 00:07:59,310
-For that purpose, we can copy these CSS and image files from the ASP.Net basics repository.
+Để làm điều đó, chúng ta có thể sao chép các tệp CSS và hình ảnh này từ kho lưu trữ cơ bản ASP.Net.
 
 108
 00:07:59,310 --> 00:08:02,220
-Right click and I'm going to copy these files.
+Nhấp chuột phải và tôi sẽ sao chép các tệp này.
 
 109
 00:08:02,220 --> 00:08:07,380
-And after that I'm going to open our actual Icap microservices repository.
+Và sau đó tôi sẽ mở kho lưu trữ microservices Icap thực tế của chúng ta.
 
 110
 00:08:07,380 --> 00:08:12,150
-And this will be include shopping Web client application and go to the root folder.
+Và đây sẽ bao gồm ứng dụng web client Shopping và đi đến thư mục gốc.
 
 111
 00:08:12,150 --> 00:08:16,350
-First of all I'm going to delete these Ccjs and lib folders.
+Đầu tiên, tôi sẽ xóa các thư mục Ccjs và lib này.
 
 112
 00:08:16,350 --> 00:08:23,520
-So right click these folders and delete all these Ccjs and lib folder under the Shopping Web client
+Vậy nhấp chuột phải vào các thư mục này và xóa tất cả các thư mục Ccjs và lib này trong ứng dụng web client Shopping
 
 113
 00:08:23,520 --> 00:08:24,420
@@ -452,117 +452,117 @@ application.
 
 114
 00:08:27,160 --> 00:08:29,140
-Okay, we can't delete leaf folder.
+Được rồi, chúng ta không thể xóa thư mục leaf.
 
 115
 00:08:29,140 --> 00:08:35,200
-It doesn't important for us because we will copy from the styling, including the CSS and image from
+Nó không quan trọng đối với chúng ta vì chúng ta sẽ sao chép kiểu dáng, bao gồm CSS và hình ảnh từ
 
 116
 00:08:35,200 --> 00:08:36,700
-the ASP.Net basics.
+ASP.Net basics.
 
 117
 00:08:36,700 --> 00:08:43,299
-Right click and copy these files and paste into the root into our Shopping Web client application.
+Nhấp chuột phải và sao chép các tệp này và dán vào thư mục gốc của ứng dụng web client Shopping của chúng ta.
 
 118
 00:08:43,299 --> 00:08:44,500
-Right click paste.
+Nhấp chuột phải dán.
 
 119
 00:08:44,500 --> 00:08:50,950
-Here you can see that we have added requiring CSS and image folder for our microservices and client
+Ở đây bạn có thể thấy rằng chúng ta đã thêm thư mục CSS và hình ảnh cần thiết cho microservices và ứng dụng
 
 120
 00:08:50,950 --> 00:08:51,580
-application.
+khách hàng của chúng ta.
 
 121
 00:08:51,580 --> 00:08:55,690
-After that we can continue the copy operation under the page folder.
+Sau đó chúng ta có thể tiếp tục sao chép các tệp trong thư mục page.
 
 122
 00:08:55,690 --> 00:08:58,750
-If you go to page folder and go to subfolder shared.
+Nếu bạn vào thư mục page và vào thư mục con shared.
 
 123
 00:08:58,750 --> 00:09:06,460
-Here you can see the underscore layout HTML page that including all common operation for each page under
+Ở đây bạn có thể thấy trang HTML layout với dấu gạch dưới, bao gồm tất cả các hoạt động chung cho mỗi trang trong
 
 124
 00:09:06,460 --> 00:09:07,360
-the page folder.
+thư mục page.
 
 125
 00:09:07,360 --> 00:09:12,430
-So we are going to copy these layout page from the ASP.Net basics.
+Vậy chúng ta sẽ sao chép trang layout này từ ASP.NET basics.
 
 126
 00:09:12,430 --> 00:09:15,970
-So I'm going to open the page open the shared and go to layout.
+Vậy tôi sẽ mở page, mở shared và đi đến layout.
 
 127
 00:09:15,970 --> 00:09:23,830
-And I'm going to select all copy these layout CSS HTML and go back to our actual repository and delete
+Và tôi sẽ chọn tất cả, sao chép layout CSS HTML này và quay lại repository thực tế của chúng ta, và xóa
 
 128
 00:09:23,830 --> 00:09:27,010
-all file from the our shopping web client application.
+tất cả các tệp từ ứng dụng shopping web client của chúng ta.
 
 129
 00:09:27,010 --> 00:09:29,440
-And paste in here and save this file.
+Và dán vào đây và lưu tệp này.
 
 130
 00:09:29,440 --> 00:09:35,410
-So as you can see that this file is including all required operation for the common operation in the
+Vậy như bạn có thể thấy, tệp này bao gồm tất cả các hoạt động cần thiết cho các hoạt động chung trong
 
 131
 00:09:35,410 --> 00:09:42,730
-page, including the CSS files and arranging the our header, including the our index product card order
+trang, bao gồm các tệp CSS và sắp xếp header của chúng ta, bao gồm các liên kết trang index, product, card, order
 
 132
 00:09:42,730 --> 00:09:45,700
-and contact page links in this file.
+và contact trong tệp này.
 
 133
 00:09:45,700 --> 00:09:51,040
-And here you can see the form for submitting the button for the search operation and so on.
+Và ở đây bạn có thể thấy biểu mẫu để gửi nút cho hoạt động tìm kiếm và những thứ khác.
 
 134
 00:09:51,040 --> 00:09:57,910
-So by changing this layout page, we can access and reach the front end application with using these
+Vậy bằng cách thay đổi trang layout này, chúng ta có thể truy cập và tiếp cận ứng dụng front end bằng cách sử dụng các
 
 135
 00:09:57,910 --> 00:09:59,950
-footer and header operations.
+hoạt động footer và header này.
 
 136
 00:09:59,950 --> 00:10:04,510
-Here you can see the header and footer that we are going to arranging our layout.
+Ở đây bạn có thể thấy header và footer mà chúng ta sẽ sắp xếp layout của mình.
 
 137
 00:10:04,510 --> 00:10:08,920
-And after that we will develop our index product categories and other pages.
+Và sau đó chúng ta sẽ phát triển các trang index, product, categories và các trang khác của mình.
 
 138
 00:10:08,920 --> 00:10:15,610
-And at this point if you run this shopping web application, you can see that our layout prepared successfully.
+Và tại thời điểm này, nếu bạn chạy ứng dụng shopping web này, bạn có thể thấy rằng layout của chúng ta đã được chuẩn bị thành công.
 
 139
 00:10:15,610 --> 00:10:17,830
-And this will be open the Chrome page.
+Và điều này sẽ mở trang Chrome.
 
 140
 00:10:17,830 --> 00:10:22,990
-And here you can see that we have header including the product card order and contact links.
+Và ở đây bạn có thể thấy rằng chúng ta có header bao gồm các liên kết product, card, order và contact.
 
 141
 00:10:22,990 --> 00:10:26,920
-And we have also footer including the about information and other links.
+Và chúng tôi cũng có phần footer bao gồm thông tin about và các liên kết khác.
 
 142
 00:10:26,920 --> 00:10:31,720
-And this is the actual index page that we are going to modify in the next video.
+Và đây là trang index thực tế mà chúng ta sẽ sửa đổi trong video tiếp theo.
 
