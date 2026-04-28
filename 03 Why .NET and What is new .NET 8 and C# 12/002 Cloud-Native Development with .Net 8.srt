@@ -1,166 +1,166 @@
 1
 00:00:00,140 --> 00:00:05,300
-In this video we are going to learn cloud native development With.net eight.
+Trong video này chúng ta sẽ học về cloud native development với .NET Eight.
 
 2
 00:00:05,600 --> 00:00:12,560
-Cloud native is not just a buzzword, it is a robust approach to building applications that leverage
+Cloud native không chỉ là một buzzword, nó là một cách tiếp cận mạnh mẽ để xây dựng các ứng dụng tận dụng
 
 3
 00:00:12,560 --> 00:00:14,510
-the full potential of the cloud.
+toàn bộ tiềm năng của cloud.
 
 4
 00:00:14,540 --> 00:00:20,930
-DotNet eight implements the foundational pillars of the cloud native, which are the observability,
+DotNet Eight thực hiện các trụ cột nền tảng của cloud native, đó là observability,
 
 5
 00:00:20,930 --> 00:00:24,410
-resilience, scalability, and manageability.
+resilience, scalability, và manageability.
 
 6
 00:00:25,790 --> 00:00:32,450
-With the Net eight, we can build services that scale effortlessly with demand and ensures that high
+Với .NET Eight, chúng ta có thể xây dựng các dịch vụ scale một cách dễ dàng theo nhu cầu và đảm bảo các dịch vụ
 
 7
 00:00:32,450 --> 00:00:37,640
-scale and high availability services using dotnet eight within your application.
+quy mô cao và high availability sử dụng dotnet eight trong ứng dụng của bạn.
 
 8
 00:00:37,940 --> 00:00:44,600
-So with dotnet eight there is a built in out of the box services provided under the resilience Health
+Vì vậy với dotnet eight có các dịch vụ built-in out of the box được cung cấp dưới resilience Health
 
 9
 00:00:44,600 --> 00:00:47,690
-Checks, Testing and Fakes and Observability.
+Checks, Testing và Fakes và Observability.
 
 10
 00:00:48,200 --> 00:00:55,340
-So the cloud native stack in dotnet eight is a comprehensive toolkit for creating observable, production
+Vì vậy cloud native stack trong dotnet eight là một toolkit toàn diện để tạo các ứng dụng cloud native observable và
 
 11
 00:00:55,340 --> 00:00:57,200
-ready cloud native applications.
+sẵn sàng cho production.
 
 12
 00:00:57,530 --> 00:01:04,430
-We will cover how DotNet supports the creation of distributed applications that you can monitor, manage
+Chúng ta sẽ tìm hiểu cách DotNet hỗ trợ việc tạo các distributed applications mà bạn có thể monitor, manage
 
 13
 00:01:04,430 --> 00:01:06,020
-and maintain with ease.
+và maintain một cách dễ dàng.
 
 14
 00:01:06,590 --> 00:01:08,870
-So let me start with the resilience.
+Vì vậy hãy bắt đầu với resilience.
 
 15
 00:01:08,870 --> 00:01:16,520
-You can see the resilience package in here dotnet offers to handle resilience like extension resilience
+Bạn có thể thấy resilience package ở đây dotnet cung cấp để xử lý resilience như extension resilience
 
 16
 00:01:16,520 --> 00:01:19,820
-and extensions Http resilience packages.
+và extensions Http resilience packages.
 
 17
 00:01:19,820 --> 00:01:26,030
-They ensure that your applications stay responsive under the load and recover from the setbacks.
+Chúng đảm bảo rằng các ứng dụng của bạn vẫn responsive dưới load và phục hồi từ các setbacks.
 
 18
 00:01:26,420 --> 00:01:30,680
-And after that we can say health checks and observability packages.
+Và sau đó chúng ta có thể nói về health checks và observability packages.
 
 19
 00:01:30,680 --> 00:01:36,470
-You can see that health checks are a crucial part of the maintaining cloud native applications.
+Bạn có thể thấy rằng health checks là một phần quan trọng của việc maintain các ứng dụng cloud native.
 
 20
 00:01:36,470 --> 00:01:43,010
-And DotNet provides extensions that diagnostics that health checks that common packages.
+Và DotNet cung cấp extensions diagnostics là health checks common packages.
 
 21
 00:01:43,010 --> 00:01:48,470
-In order to help you implement these health check features for observability.
+Để giúp bạn triển khai các tính năng health check này cho observability.
 
 22
 00:01:48,500 --> 00:01:48,980
-The.
+Cái.
 
 23
 00:01:48,980 --> 00:01:56,360
-Net provide extensions that telemetry NuGet packages is our go to for insight into our applications,
+Net cung cấp các extensions mà telemetry NuGet packages là lựa chọn hàng đầu của chúng tôi để có cái nhìn sâu sắc vào các ứng dụng của chúng tôi,
 
 24
 00:01:56,360 --> 00:01:58,190
-performance and behaviors.
+hiệu suất và hành vi.
 
 25
 00:01:58,190 --> 00:02:05,450
-Also for testing and fix testing is the mandatory of the cloud native development with dotnet eight
+Ngoài ra, để kiểm tra và fix testing là bắt buộc của phát triển cloud native với dotnet eight
 
 26
 00:02:05,480 --> 00:02:13,160
-ASP.Net core testing NuGet packages that we can use, and we can create reliable test suites that mimic
+ASP.Net core testing NuGet packages mà chúng ta có thể sử dụng, và chúng ta có thể tạo các test suites đáng tin cậy mô phỏng
 
 27
 00:02:13,160 --> 00:02:18,890
-the real world scenarios, helping us to catch the issues before they hit on the production.
+các kịch bản thực tế, giúp chúng ta bắt được các vấn đề trước khi chúng xuất hiện trên production.
 
 28
 00:02:19,610 --> 00:02:22,760
-And also DotNet has open telemetry support.
+Và DotNet cũng có hỗ trợ open telemetry.
 
 29
 00:02:22,760 --> 00:02:29,870
-DotNet eight integrates with the tools like the Prometheus and Grafana, allowing us to create rich
+DotNet eight tích hợp với các công cụ như Prometheus và Grafana, cho phép chúng tôi tạo các dashboards phong phú
 
 30
 00:02:29,870 --> 00:02:33,020
-dashboards and alerts that you can see on the picture.
+và alerts mà bạn có thể thấy trong hình ảnh.
 
 31
 00:02:33,020 --> 00:02:39,320
-This is the typical Grafana page and dashboard that keeps us informed about our application, health
+Đây là trang Grafana điển hình và dashboard giữ cho chúng tôi được cập nhật về sức khỏe
 
 32
 00:02:39,320 --> 00:02:40,490
-and performance.
+và hiệu suất của ứng dụng.
 
 33
 00:02:40,940 --> 00:02:45,860
-So we can say that the Net eight handles foundational pillars of the cloud native.
+Vì vậy, chúng ta có thể nói rằng Net eight xử lý các trụ cột nền tảng của cloud native.
 
 34
 00:02:45,860 --> 00:02:50,660
-These are the observability, resilience, scalability, and manageability.
+Đây là observability, resilience, scalability, và manageability.
 
 35
 00:02:50,780 --> 00:02:56,630
-Under these pillars, the Net eight provides a tremendous of development that you can think that under
+Dưới các trụ cột này, Net eight cung cấp một lượng lớn phát triển mà bạn có thể nghĩ rằng dưới
 
 36
 00:02:56,630 --> 00:03:02,420
-observability, we can use built in metrics with dimensions, dependency injection, integration for
+observability, chúng ta có thể sử dụng built in metrics với dimensions, dependency injection, integration cho
 
 37
 00:03:02,420 --> 00:03:06,260
-metrics and better for logging, enrichment and reductions.
+metrics và better cho logging, enrichment và reductions.
 
 38
 00:03:06,350 --> 00:03:12,890
-Under the resilience, we can use new Polybase resilience packages and SignalR stateful reconnection.
+Dưới resilience, chúng ta có thể sử dụng Polybase resilience packages mới và SignalR stateful reconnection.
 
 39
 00:03:12,890 --> 00:03:19,940
-And under the scalability, we can get benefit from the IoT performance and other container based developments
+Và dưới scalability, chúng ta có thể được hưởng lợi từ hiệu suất IoT và các phát triển dựa trên container khác
 
 40
 00:03:19,940 --> 00:03:21,890
-that we can see in the next videos.
+mà chúng ta có thể thấy trong các video tiếp theo.
 
 41
 00:03:21,890 --> 00:03:27,920
-Vậy điều đó có nghĩa là tất cả những cải tiến này cung cấp cho ứng dụng của chúng ta hoàn toàn cloud native bằng cách sử dụng.
+So that means all of these improvements give our application completely cloud native by using.
 
 42
 00:03:28,130 --> 00:03:28,790

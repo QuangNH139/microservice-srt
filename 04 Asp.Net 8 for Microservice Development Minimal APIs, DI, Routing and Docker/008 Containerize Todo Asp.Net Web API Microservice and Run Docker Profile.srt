@@ -1,230 +1,230 @@
 1
 00:00:00,170 --> 00:00:06,260
-In this video, we are going to containerize to do web API project and run Docker profile.
+Trong video này, chúng ta sẽ containerize dự án web API và chạy Docker profile.
 
 2
 00:00:06,380 --> 00:00:10,490
-You can see the picture on the slide we have developed to do web API.
+Bạn có thể thấy hình ảnh trên slide mà chúng ta đã phát triển để làm web API.
 
 3
 00:00:10,490 --> 00:00:16,370
-And now in this video we will be containerize this web API project using the Docker.
+Và bây giờ trong video này chúng ta sẽ containerize dự án web API này bằng Docker.
 
 4
 00:00:16,370 --> 00:00:20,900
-And after that we will see docker compose operation using the Visual Studio.
+Và sau đó chúng ta sẽ xem hoạt động docker compose bằng Visual Studio.
 
 5
 00:00:21,260 --> 00:00:29,240
-But before that, let me explain the running profiles on ASP.Net in Visual Studio and how we can configure
+Nhưng trước đó, hãy để tôi giải thích các running profiles trên ASP.Net trong Visual Studio và cách chúng ta có thể cấu hình
 
 6
 00:00:29,240 --> 00:00:30,710
-these running profiles.
+những running profiles này.
 
 7
 00:00:30,710 --> 00:00:37,190
-If you open the Visual Studio, you can see that we are running this application in Https.
+Nếu bạn mở Visual Studio, bạn có thể thấy rằng chúng ta đang chạy ứng dụng này trong Https.
 
 8
 00:00:37,190 --> 00:00:39,110
-Here you can see the running profiles.
+Ở đây bạn có thể thấy các running profiles.
 
 9
 00:00:39,110 --> 00:00:46,940
-If you click this drop down you can see different running profiles including Http, https, IIs, Docker,
+Nếu bạn click vào dropdown này, bạn có thể thấy các running profiles khác nhau bao gồm Http, https, IIS, Docker,
 
 10
 00:00:46,940 --> 00:00:48,470
-and VCL.
+và VCL.
 
 11
 00:00:48,470 --> 00:00:52,910
-So these are the running profiles that we can use to run these application.
+Vì vậy đây là những running profiles mà chúng ta có thể sử dụng để chạy ứng dụng này.
 
 12
 00:00:52,910 --> 00:00:58,310
-So how we can define these running profiles for these ASP.Net web API project.
+Vậy chúng ta có thể định nghĩa những running profiles này cho dự án web API ASP.Net này như thế nào.
 
 13
 00:00:58,310 --> 00:01:01,160
-For that purpose we can open the properties.
+Với mục đích đó, chúng ta có thể mở properties.
 
 14
 00:01:01,160 --> 00:01:06,140
-You can come here and open the properties and see the launch Settings.json file.
+Bạn có thể đi vào đây và mở properties và xem tệp launchSettings.json.
 
 15
 00:01:06,140 --> 00:01:10,370
-If you double click, you can see the running properties stored in this Json file.
+Nếu bạn double click, bạn có thể thấy các running properties được lưu trữ trong tệp Json này.
 
 16
 00:01:10,370 --> 00:01:16,280
-So launch Settings.json file is primarily utilized during the development phase of.
+Vì vậy tệp launchSettings.json được sử dụng chủ yếu trong giai đoạn phát triển của
 
 17
 00:01:16,430 --> 00:01:23,540
-Net applications, and it resides under the properties folder and configures the behavior of the development
+các ứng dụng .Net, và nó nằm trong thư mục properties và cấu hình hành vi của development
 
 18
 00:01:23,540 --> 00:01:27,020
-server when running the application using the Visual Studio.
+server khi chạy ứng dụng bằng Visual Studio.
 
 19
 00:01:27,020 --> 00:01:35,450
-So you can see this dropdown list is listed as a profiles under the profile section Http, https, IaaS
+Vì vậy bạn có thể thấy danh sách dropdown này được liệt kê dưới dạng profiles trong phần profile Http, https, IIS
 
 20
 00:01:35,450 --> 00:01:36,320
-and Docker.
+và Docker.
 
 21
 00:01:36,320 --> 00:01:42,230
-So under these profiles you can see some of the attributes that we can define for running profiles.
+Vì vậy, dưới những profiles này, bạn có thể thấy một số attributes mà chúng ta có thể định nghĩa cho running profiles.
 
 22
 00:01:42,230 --> 00:01:49,490
-And we can also set these running profiles with right click and go to properties of the project.
+Và chúng ta cũng có thể thiết lập những running profiles này bằng cách click chuột phải và đi đến properties của project.
 
 23
 00:01:49,490 --> 00:01:56,600
-And if you go to the debug and if you open the debug Launch Settings profile UI, you can see the same
+Và nếu bạn đi đến debug và mở debug Launch Settings profile UI, bạn có thể thấy điều tương tự
 
 24
 00:01:56,600 --> 00:02:00,080
-profiles in here Http, https, and so on.
+profiles ở đây Http, https, và các profiles khác.
 
 25
 00:02:00,080 --> 00:02:05,270
-And if you click one of the profile and scroll down, you can see the environment variables when we
+Và nếu bạn click vào một profile và cuộn xuống, bạn có thể thấy environment variables khi chúng ta
 
 26
 00:02:05,270 --> 00:02:09,440
-choosing these running profile, injecting one application running.
+chọn những running profile này, injecting một application running.
 
 27
 00:02:09,440 --> 00:02:14,840
-And if you scroll down you can see other configuration like setting URL and application URL that we
+Và nếu bạn cuộn xuống, bạn có thể thấy những configuration khác như thiết lập URL và application URL mà chúng ta
 
 28
 00:02:14,840 --> 00:02:15,500
-define.
+định nghĩa.
 
 29
 00:02:15,500 --> 00:02:22,820
-So now let's set some of the application URLs for our web UI application to the application.
+Vì vậy bây giờ chúng ta hãy thiết lập một số application URLs cho ứng dụng web UI của chúng ta.
 
 30
 00:02:22,820 --> 00:02:30,590
-So I am going to set the Http port as a 5000 and https port 5050.
+Vì vậy tôi sẽ thiết lập Http port là 5000 và https port là 5050.
 
 31
 00:02:30,950 --> 00:02:34,190
-Please save this file and close this window.
+Vui lòng lưu file này và đóng cửa sổ này.
 
 32
 00:02:34,190 --> 00:02:41,210
-And if you open the Launch settings Json again you can see that these configuration is changed accordingly
+Và nếu bạn mở Launch settings Json lại, bạn có thể thấy rằng những configuration này đã thay đổi tương ứng
 
 33
 00:02:41,210 --> 00:02:42,920
-that we have changed on the UI.
+với những thay đổi mà chúng ta đã thực hiện trên UI.
 
 34
 00:02:42,920 --> 00:02:50,600
-So basically we will set the Https port numbers in here that we can use when running the application.
+Vì vậy cơ bản chúng ta sẽ thiết lập các số Https port ở đây mà chúng ta có thể sử dụng khi chạy ứng dụng.
 
 35
 00:02:50,660 --> 00:02:54,320
-And also we can right click and go to the same window.
+Và chúng ta cũng có thể click chuột phải và đi đến cửa sổ tương tự.
 
 36
 00:02:54,320 --> 00:02:59,030
-And we can also change the starting URL if you scroll down.
+Và chúng ta cũng có thể thay đổi starting URL nếu bạn cuộn xuống.
 
 37
 00:02:59,030 --> 00:03:04,310
-If you go to URL, this address of the web page will be navigate when the application start up.
+Nếu bạn đi đến URL, địa chỉ của trang web này sẽ được điều hướng khi ứng dụng khởi động.
 
 38
 00:03:04,310 --> 00:03:09,740
-So we would like to go to the slash todo items when the application start up.
+Vì vậy chúng ta muốn đi đến slash todo items khi ứng dụng khởi động.
 
 39
 00:03:09,740 --> 00:03:13,520
-You can see in here we basically write the startup.
+Bạn có thể thấy ở đây chúng ta cơ bản viết startup.
 
 40
 00:03:13,610 --> 00:03:19,160
-This will be go to the todo items when the application start up using these port numbers.
+Điều này sẽ đi đến todo items khi ứng dụng khởi động bằng cách sử dụng những số port này.
 
 41
 00:03:19,160 --> 00:03:20,510
-Lưu file này.
+Save this file.
 
 42
 00:03:20,510 --> 00:03:26,540
-Và nếu bạn quay lại launch settings, bạn có thể xác minh rằng lần này URL launch đang được thiết lập cho todo
+And if you go back to launch settings, you can verify that this time the launch URL is set for todo
 
 43
 00:03:26,540 --> 00:03:33,080
-items, vì vậy bạn có thể chạy Https port và xác minh rằng nó sẽ được chuyển hướng tới items và sử dụng
+items, so you can run the Https port and verify that it will be redirected to items and use
 
 44
 00:03:33,080 --> 00:03:34,520
-port số 5050.
+port number 5050.
 
 45
 00:03:34,520 --> 00:03:39,800
-Hãy xem rằng port số 5050 đang được sử dụng nhưng double slash cũng đang được sử dụng.
+See that port number 5050 is being used but double slash is also being used.
 
 46
 00:03:39,800 --> 00:03:43,280
-Ở đây chúng ta phải xóa một trong số chúng, để làm việc đó.
+Here we have to delete one of them, to make that work.
 
 47
 00:03:43,280 --> 00:03:49,760
-Tôi sẽ xóa slash này và lưu file lại, sau đó chạy Https port.
+I will delete this slash and save the file again, then run the Https port.
 
 48
 00:03:49,760 --> 00:03:53,000
-Và lần này bạn sẽ thấy todo items ở đây.
+And this time you will see todo items here.
 
 49
 00:03:53,000 --> 00:03:58,700
-Vì chúng ta đang sử dụng in-memory database, chúng ta không thấy có items nào khi ứng dụng khởi động
+Since we are using in-memory database, we don't see any items when the application starts up
 
 50
 00:03:58,700 --> 00:04:00,650
-lên, nhưng bạn hiểu ý tưởng.
+but you get the idea.
 
 51
 00:04:00,650 --> 00:04:04,100
-Chúng ta sẽ sử dụng launch settings trong quá trình phát triển microservice.
+We will use launch settings during the microservice development process.
 
 52
 00:04:04,100 --> 00:04:10,910
-Vậy nên nếu bạn quay lại vấn đề chính của chúng ta, đó là containerized todo application, điều
+So if you go back to our main issue, which is containerized todo application, the first thing
 
 53
 00:04:10,910 --> 00:04:13,730
-đầu tiên chúng ta nên làm là tạo Docker file.
+we should do is create a Docker file.
 
 54
 00:04:13,940 --> 00:04:20,630
-Vậy để thêm Docker support vào todo web API của chúng ta, chúng ta nên vào Visual Studio và nhấp chuột phải
+So to add Docker support to our todo web API, we should go to Visual Studio and right-click
 
 55
 00:04:20,630 --> 00:04:21,769
-vào file project.
+on the project file.
 
 56
 00:04:21,950 --> 00:04:24,080
-Và bạn có thể nhấp vào nút add.
+And you can click on the add button.
 
 57
 00:04:24,080 --> 00:04:30,380
-Và ở đây bạn có thể thấy các thao tác liên quan đến container, đó là thêm Docker support hoặc thêm container
+And here you can see the container-related actions, which are add Docker support or add container
 
 58
 00:04:30,380 --> 00:04:31,790
@@ -232,11 +232,11 @@ orchestration support.
 
 59
 00:04:31,790 --> 00:04:37,130
-Vì chúng ta đang containerizing API project của mình, chúng ta nên thêm CR support trước.
+Since we are containerizing our API project, we should add Docker support first.
 
 60
 00:04:37,130 --> 00:04:44,390
-Vậy hãy nhấp vào Docker support này và chọn target operating system là Linux, sau đó nhấp vào
+So let's click on this Docker support and select the target operating system as Linux, then click on
 
 61
 00:04:44,390 --> 00:04:45,410
@@ -320,11 +320,11 @@ Bây giờ chúng ta có thể chạy ứng dụng của chúng ta trong một D
 
 81
 00:05:58,420 --> 00:06:03,220
-Trong Visual Studio, chúng ta có thể chọn các running profiles ở đây.
+In Visual Studio, we can select running profiles here.
 
 82
 00:06:03,220 --> 00:06:10,390
-Vậy nếu bạn mở rộng dropdown này và thấy Docker running profile được liệt kê ở đây, chúng ta có thể chọn
+So if you expand this dropdown and see the Docker running profile listed here, we can select
 
 83
 00:06:10,390 --> 00:06:11,650
@@ -332,107 +332,107 @@ Docker running profile.
 
 84
 00:06:11,650 --> 00:06:15,790
-Và ngay sau đó bạn có thể kiểm tra output window của chúng ta.
+And right after that you can check our output window.
 
 85
 00:06:15,790 --> 00:06:23,080
-Điều này sẽ lấy ASP.NET 8 base image và chuẩn bị ứng dụng của chúng ta cho môi trường Docker.
+This will pull the ASP.NET 8 base image and prepare our application for the Docker environment.
 
 86
 00:06:23,080 --> 00:06:30,070
-Nhưng tất nhiên bạn nên mở và khởi động Docker desktop trên máy tính cục bộ của bạn và đảm bảo rằng
+But of course you should open and start Docker Desktop on your local machine and make sure that
 
 87
 00:06:30,070 --> 00:06:31,630
-hộp xanh lá cây xuất hiện ở đây.
+the green box appears here.
 
 88
 00:06:31,630 --> 00:06:35,890
-Vậy sau đó, đặt running profile này thành Docker.
+So then, set this running profile to Docker.
 
 89
 00:06:35,890 --> 00:06:42,640
-Bằng cách này, video này sẽ build Docker image và chạy một container instance của ứng dụng của chúng ta.
+This way, this video will build the Docker image and run a container instance of our application.
 
 90
 00:06:42,640 --> 00:06:51,880
-Vậy sau khi khởi động Docker và đặt running profile của bạn, bạn có thể nhấp vào nút Run Docker và chờ
+So after starting Docker and setting your running profile, you can click the Run Docker button and wait
 
 91
 00:06:51,880 --> 00:06:58,210
-Visual Studio build Docker image này và chạy một container trong môi trường Docker host.
+Visual Studio builds this Docker image and runs a container in the Docker host environment.
 
 92
 00:06:58,210 --> 00:07:01,660
-Và bạn có thể theo dõi logs trong project window.
+And you can track logs in the project window.
 
 93
 00:07:01,660 --> 00:07:04,840
-Và cũng bạn có thể kiểm tra Docker desktop.
+And also you can check Docker Desktop.
 
 94
 00:07:04,840 --> 00:07:10,420
-Nếu tôi mở Docker desktop, bạn có thể thấy to do API được liệt kê như một containers.
+If I open Docker Desktop, you can see the todo API listed as a containers.
 
 95
 00:07:10,420 --> 00:07:12,760
-Điều đó có nghĩa là nó đang chạy hoàn hảo.
+That means it's running perfectly.
 
 96
 00:07:12,760 --> 00:07:17,440
-Và bạn có thể thấy số cổng bắt đầu với 32.
+And you can see the port number starting with 32.
 
 97
 00:07:17,470 --> 00:07:22,540
-Điều đó có nghĩa là Docker đang gán bất kỳ số cổng nào cho ứng dụng của chúng ta.
+That means Docker is assigning any port number to our application.
 
 98
 00:07:22,540 --> 00:07:27,400
-Vậy đây là cổng 8080 chuyển hướng cho môi trường Docker bên trong.
+So this is port 8080 forwarding to the Docker environment inside.
 
 99
 00:07:27,400 --> 00:07:36,730
-Vậy nếu chúng ta mở rộng này thành todo items, chúng ta có thể truy cập todo items bên trong của chúng ta từ Web API project.
+So if we expand this to todo items, we can access our inside todo items from the Web API project.
 
 100
 00:07:36,730 --> 00:07:41,470
-Vậy điều đó có nghĩa là chúng ta đã thành công gửi http get method cho ứng dụng của chúng ta.
+So that means we have successfully sent http get method to our application.
 
 101
 00:07:41,470 --> 00:07:46,690
-Sau khi chúng ta xác nhận ứng dụng đang chạy chính xác, chúng ta có thể kiểm tra ứng dụng của chúng ta.
+After we confirm that the application is running correctly, we can test our application.
 
 102
 00:07:46,690 --> 00:07:53,920
-Điều đó có nghĩa là chúng ta có thể kiểm tra Web API project này từ bên trong Docker container trong môi trường Docker.
+This means we can test this Web API project from inside a Docker container in the Docker environment.
 
 103
 00:07:53,920 --> 00:08:02,110
-Vậy quá trình này đóng gói to do API microservices vào Docker container và cho phép nó chạy
+So this process packages the todo API microservices into a Docker container and allows it to run
 
 104
 00:08:02,110 --> 00:08:06,670
-ở bất kỳ môi trường nào và tiếp ứng các yêu cầu từ môi trường Docker.
+in any environment and fulfill requests from the Docker environment.
 
 105
 00:08:06,670 --> 00:08:09,760
-Vậy bây giờ chúng ta có thể mở Postman của chúng ta.
+So now we can open our Postman.
 
 106
 00:08:09,760 --> 00:08:14,680
-Như bạn có thể thấy, chúng ta đã chuẩn bị test của chúng ta và số cổng đã thay đổi.
+As you can see, we have prepared our test and the port number has changed.
 
 107
 00:08:14,680 --> 00:08:19,870
-Nếu bạn mở Docker desktop, bạn có thể thấy các số cổng được liệt kê ở đây.
+If you open Docker desktop, you can see the port numbers listed here.
 
 108
 00:08:19,870 --> 00:08:24,880
-Vậy chúng ta sẽ thay đổi số cổng thành 32 768.
+So we will change the port number to 32768.
 
 109
 00:08:24,880 --> 00:08:32,200
-Vậy nếu bạn sao chép số cổng này, bạn có thể đến Postman và thay đổi số cổng và gửi
+So if you copy this port number, you can go to Postman and change the port number and send
 
 110
 00:08:32,200 --> 00:08:33,429
@@ -440,83 +440,83 @@ http get method.
 
 111
 00:08:33,429 --> 00:08:36,070
-Chúng ta không có bất kỳ todo items nào.
+We don't have any todo items.
 
 112
 00:08:36,070 --> 00:08:42,520
-Để thêm todo items mới, chúng ta có thể thay đổi số cổng và gửi http post request.
+To add new todo items, we can change the port number and send http post request.
 
 113
 00:08:42,520 --> 00:08:46,270
-Và ở đây bạn có thể thấy rằng chúng ta đã thêm item đầu tiên.
+And here you can see that we have added the first item.
 
 114
 00:08:46,270 --> 00:08:52,450
-Và nếu bạn quay lại http get method và gửi lại, ở đây bạn có thể thấy rằng Http get và post
+And if you go back to http get method and send again, here you can see that Http get and post
 
 115
 00:08:52,450 --> 00:08:56,320
-methods của chúng ta đang chạy hoàn hảo trong môi trường Docker của chúng ta.
+methods of ours are running perfectly in our Docker environment.
 
 116
 00:08:56,320 --> 00:09:02,650
-Vậy chúng ta đã hoàn thành containerization của Web API project với Docker.
+So we have completed the containerization of the Web API project with Docker.
 
 117
 00:09:02,650 --> 00:09:09,370
-Nhưng phần hay nhất khi sử dụng Visual Studio để Containerizing loại ứng dụng này là debugging.
+But the best part when using Visual Studio to containerize this type of application is debugging.
 
 118
 00:09:09,370 --> 00:09:16,030
-Vậy điều đó có nghĩa là Visual Studio cho phép chúng ta debug một Docker container từ máy tính cục bộ của chúng ta.
+So this means Visual Studio allows us to debug a Docker container from our local computer.
 
 119
 00:09:16,030 --> 00:09:23,020
-Vậy điều đó có nghĩa là khi chúng ta gửi Http request, chúng ta có thể debug các codes này trong môi trường Docker.
+So this means when we send Http request, we can debug these codes in the Docker environment.
 
 120
 00:09:23,020 --> 00:09:25,030
-Vậy hãy thử hoạt động này.
+So let's try this action.
 
 121
 00:09:25,030 --> 00:09:33,790
-Nếu bạn mở Program.cs trong Visual Studio, bạn có thể đi đến HTTP get method
+If you open Program.cs in Visual Studio, you can navigate to the HTTP get method
 
 122
 00:09:33,790 --> 00:09:34,330
-ở đây.
+here.
 
 123
 00:09:34,330 --> 00:09:37,270
-Và chúng ta cũng có thể gửi HTTP post request.
+And we can also send HTTP post request.
 
 124
 00:09:37,270 --> 00:09:45,910
-Vậy bây giờ nếu tôi gửi HTTP post request từ Postman, bạn có thể thấy rằng chúng ta có thể debug các incoming
+So now if I send HTTP post request from Postman, you can see that we can debug the incoming
 
 125
 00:09:45,910 --> 00:09:48,400
-requests từ Docker environment.
+requests from Docker environment.
 
 126
 00:09:48,400 --> 00:09:50,800
-Và điều này sẽ được cho phép từ Visual Studio.
+And this will be allowed from Visual Studio.
 
 127
 00:09:50,800 --> 00:09:53,860
-Và đây là một trong những tính năng mạnh mẽ của Visual Studio.
+And this is one of the powerful features of Visual Studio.
 
 128
 00:09:53,860 --> 00:09:59,770
-Vậy nên trong suốt khóa học này, chúng ta cũng sẽ debug Docker containers cho microservices bằng cách sử dụng
+So throughout this course, we will also debug Docker containers for microservices by using
 
 129
 00:09:59,940 --> 00:10:01,020
-cùng một phương pháp.
+the same method.
 
 130
 00:10:01,020 --> 00:10:07,860
-Như bạn có thể thấy, containerization và Docker rất tự nhiên trong dự án ASP.NET Web API khi sử dụng
+As you can see, containerization and Docker are very natural in ASP.NET Web API project when using
 
 131
 00:10:07,860 --> 00:10:08,670
@@ -524,9 +524,9 @@ Visual Studio.
 
 132
 00:10:08,670 --> 00:10:14,970
-Trong suốt khóa học này, tôi sẽ sử dụng Visual Studio Docker tooling để containerize và orchestrate
+Throughout this course, I will use Visual Studio Docker tooling to containerize and orchestrate
 
 133
 00:10:14,970 --> 00:10:16,050
-các microservices của chúng ta.
+our microservices.
 
