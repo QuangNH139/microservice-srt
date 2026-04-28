@@ -1,216 +1,216 @@
 1
 00:00:00,230 --> 00:00:05,600
-In this video we are going to learn Saga pattern for distributed transactions.
+Trong video này chúng ta sẽ học về Saga pattern cho distributed transactions.
 
 2
 00:00:06,290 --> 00:00:12,710
-The saga pattern is provided to manage data consistency across microservices in distributed transaction
+Saga pattern được cung cấp để quản lý tính nhất quán dữ liệu trên các microservices trong distributed transaction.
 
 3
 00:00:12,710 --> 00:00:13,400
-cases.
+các trường hợp.
 
 4
 00:00:14,300 --> 00:00:21,260
-Basically, Saga pattern offers to create a set of transactions that update microservices sequentially
+Về cơ bản, Saga pattern cung cấp để tạo một tập hợp các transactions cập nhật microservices một cách tuần tự.
 
 5
 00:00:21,260 --> 00:00:25,940
-and publish events to trigger the next transaction for the next microservices.
+và xuất bản events để kích hoạt transaction tiếp theo cho microservices tiếp theo.
 
 6
 00:00:27,590 --> 00:00:33,830
-If one of the step is failed, then Saga pattern trigger to rollback transactions, which is basically
+Nếu một bước bất kỳ thất bại, thì Saga pattern kích hoạt rollback transactions, về cơ bản là.
 
 7
 00:00:33,830 --> 00:00:38,690
-do reverse operations with publishing rollback events to the previous microservices.
+thực hiện các hoạt động ngược lại với việc xuất bản rollback events cho các microservices trước đó.
 
 8
 00:00:39,650 --> 00:00:44,570
-By this way, it is managed distributed transactions across microservices.
+Bằng cách này, nó quản lý distributed transactions trên các microservices.
 
 9
 00:00:44,930 --> 00:00:51,080
-As you know that it is used some principles inside of the saga pattern like publish subscribe pattern
+Như bạn biết, nó sử dụng một số nguyên tắc bên trong Saga pattern như Publish Subscribe pattern.
 
 10
 00:00:51,080 --> 00:00:54,470
-with brokers or API composition patterns.
+với brokers hoặc API composition patterns.
 
 11
 00:00:56,150 --> 00:01:02,090
-The saga pattern is a way to manage long running transactions that involve multiple microservices.
+Saga pattern là một cách để quản lý long running transactions liên quan đến nhiều microservices.
 
 12
 00:01:02,720 --> 00:01:09,650
-It is based on the idea of the saga, which is a series of local transactions that work together to
+Nó dựa trên ý tưởng của saga, đó là một loạt các local transactions hoạt động cùng nhau để.
 
 13
 00:01:09,650 --> 00:01:11,360
-achieve end to end use cases.
+đạt được end to end use cases.
 
 14
 00:01:12,230 --> 00:01:18,890
-The Saga pattern is especially useful in distributed systems where multiple microservices need to coordinate
+Saga pattern đặc biệt hữu ích trong distributed systems nơi nhiều microservices cần phối hợp.
 
 15
 00:01:18,890 --> 00:01:19,880
-their actions.
+các hành động của họ.
 
 16
 00:01:21,350 --> 00:01:23,180
-For distributed transactions.
+Cho distributed transactions.
 
 17
 00:01:23,180 --> 00:01:30,230
-The Saga pattern can help to ensure that the overall transaction is either completed successfully or
+Saga pattern có thể giúp đảm bảo rằng toàn bộ transaction hoàn thành thành công hoặc.
 
 18
 00:01:30,230 --> 00:01:36,260
-is rolled back to its initial state if any individual microservice encounters any error.
+được rollback về trạng thái ban đầu nếu bất kỳ microservice nào gặp lỗi.
 
 19
 00:01:37,260 --> 00:01:43,740
-In order to use Saga patterns in a distributed transactions, we can use a compensating transaction
+Để sử dụng Saga patterns trong distributed transactions, chúng ta có thể sử dụng compensating transaction.
 
 20
 00:01:43,740 --> 00:01:48,540
-to undo the changes made by each microservices in the event of an error.
+để hoàn tác các thay đổi được thực hiện bởi mỗi microservice trong trường hợp có lỗi.
 
 21
 00:01:49,080 --> 00:01:55,800
-By this way, we can ensure that the overall transaction is either completed successfully or roll back
+Bằng cách này, chúng ta có thể đảm bảo rằng toàn bộ transaction hoặc hoàn thành thành công hoặc rollback
 
 22
 00:01:55,800 --> 00:01:57,420
-to its initial state.
+về trạng thái ban đầu của nó.
 
 23
 00:01:59,240 --> 00:02:06,050
-The Saga pattern provides transaction management with using a sequence of local transactions of microservices.
+Saga pattern cung cấp quản lý transaction bằng cách sử dụng một chuỗi các local transactions của microservices.
 
 24
 00:02:06,200 --> 00:02:13,220
-Every microservices has its own database, and it can able to manage local transactions in atomic way
+Mỗi microservices có database riêng của nó, và nó có khả năng quản lý các local transactions theo cách atomic
 
 25
 00:02:13,220 --> 00:02:14,960
-with strong consistency.
+với strong consistency.
 
 26
 00:02:15,560 --> 00:02:23,750
-So Saga pattern grouping these local transactions and sequentially invoking one by one each local transaction
+Vì vậy Saga pattern nhóm các local transactions này và gọi tuần tự từng local transaction một
 
 27
 00:02:23,750 --> 00:02:28,910
-updates the database and publishes an event to the trigger the next local transaction.
+cập nhật database và công bố một event để kích hoạt local transaction tiếp theo.
 
 28
 00:02:29,630 --> 00:02:35,450
-If one of the step is failed, then Saga pattern trigger to rollback transactions that are a set of
+Nếu một trong các bước bị thất bại, thì Saga pattern kích hoạt rollback các transactions là một tập hợp các
 
 29
 00:02:35,450 --> 00:02:42,140
-compensating transaction that rollback the changes on previous microservices and restore the data consistency.
+compensating transactions that rollback các thay đổi trên các microservices trước đó và khôi phục tính nhất quán của dữ liệu.
 
 30
 00:02:43,830 --> 00:02:49,920
-Here you can see the an example of how the Saga pattern could be used in e-commerce application for
+Ở đây bạn có thể thấy một ví dụ về cách Saga pattern có thể được sử dụng trong ứng dụng e-commerce cho
 
 31
 00:02:49,920 --> 00:02:53,340
-order fulfillment process to handle the rollback scenario.
+quy trình fulfillment đơn hàng để xử lý kịch bản rollback.
 
 32
 00:02:54,090 --> 00:03:00,030
-First of all, the customer placed an order on the e-commerce website and provides their payment information.
+Đầu tiên, khách hàng đặt hàng trên trang web e-commerce và cung cấp thông tin thanh toán của họ.
 
 33
 00:03:00,240 --> 00:03:06,150
-The application order fulfillment microservices begins a local transaction and send a request to the
+Microservices fulfillment đơn hàng bắt đầu một local transaction và gửi một yêu cầu đến
 
 34
 00:03:06,150 --> 00:03:12,330
-inventory of microservices, asking it to reserve the item in the customer's order and the inventory.
+inventory microservices, yêu cầu nó dự trữ mục trong đơn hàng của khách hàng và kho hàng.
 
 35
 00:03:12,330 --> 00:03:19,200
-Microservice begins a local transaction and reserves the item in the customer's order and the inventory.
+Microservice bắt đầu một local transaction và dự trữ mục trong đơn hàng của khách hàng và kho hàng.
 
 36
 00:03:19,200 --> 00:03:25,110
-Microservices send a response back to the order fulfillment microservices indicating that the items
+Microservices gửi một phản hồi trở lại order fulfillment microservices cho biết rằng các mục
 
 37
 00:03:25,110 --> 00:03:26,580
-were reserved successfully.
+đã được dự trữ thành công.
 
 38
 00:03:27,180 --> 00:03:28,830
-The order fulfillment process.
+Quy trình order fulfillment.
 
 39
 00:03:28,830 --> 00:03:31,680
-Microservices receives the response from the inventory.
+Microservices nhận phản hồi từ inventory.
 
 40
 00:03:31,680 --> 00:03:38,100
-Microservices and assuming everything went as planned and it charges the customer payment method and
+Microservices và giả sử mọi thứ diễn ra như kế hoạch và nó tính phí phương thức thanh toán của khách hàng và
 
 41
 00:03:38,100 --> 00:03:40,500
-commits its local transaction.
+xác nhận giao dịch cục bộ của nó.
 
 42
 00:03:41,130 --> 00:03:47,520
-However, if an error are encountered along the way, the saga pattern provides a way to roll back to
+Tuy nhiên, nếu gặp lỗi trong quá trình này, saga pattern cung cấp một cách để quay lại
 
 43
 00:03:47,520 --> 00:03:49,980
-changes made by each microservices.
+các thay đổi được thực hiện bởi mỗi microservice.
 
 44
 00:03:50,010 --> 00:03:55,980
-For example, if the inventory microservice encountered any problem while resolving the items in the
+Ví dụ, nếu inventory microservice gặp bất kỳ vấn đề nào khi xử lý các mục trong
 
 45
 00:03:55,980 --> 00:04:00,450
-customer order, it could send a failure response back to the order fulfillment.
+đơn hàng của khách hàng, nó có thể gửi phản hồi lỗi trở lại order fulfillment
 
 46
 00:04:00,450 --> 00:04:01,440
-Microservices.
+microservice.
 
 47
 00:04:01,470 --> 00:04:08,130
-In this case, the order fulfillment microservices would execute a compensating transaction in order
+Trong trường hợp này, order fulfillment microservice sẽ thực thi một compensating transaction để
 
 48
 00:04:08,130 --> 00:04:12,750
-to undo the chart's operation for customer payment method and cancel the order.
+hoàn tác hoạt động thanh toán của khách hàng và hủy đơn hàng.
 
 49
 00:04:12,780 --> 00:04:16,860
-That means it is rolling back to the entire fulfillment process.
+Điều đó có nghĩa là nó sẽ quay lại toàn bộ quy trình fulfillment.
 
 50
 00:04:16,860 --> 00:04:22,500
-As a result, the Saga pattern is useful tool for managing distributed transactions in microservice
+Do đó, Saga pattern là một công cụ hữu ích để quản lý các giao dịch phân tán trong các microservice
 
 51
 00:04:22,500 --> 00:04:23,430
-architectures.
+architecture.
 
 52
 00:04:23,460 --> 00:04:30,180
-It allows us to ensure that the overall transaction is either completed successfully or is rollback
+Nó cho phép chúng ta đảm bảo rằng toàn bộ giao dịch hoặc được hoàn thành thành công hoặc được quay lại
 
 53
 00:04:30,180 --> 00:04:36,750
-to the initial state, so this will provide a resilient and reliable distributed systems when it comes
+trạng thái ban đầu, vì vậy điều này sẽ cung cấp một hệ thống phân tán có khả năng phục hồi và đáng tin cậy khi áp dụng
 
 54
 00:04:36,750 --> 00:04:38,760
-to applying to end to end use cases.
+các trường hợp sử dụng end to end.
 

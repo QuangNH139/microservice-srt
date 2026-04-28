@@ -300,5 +300,8 @@
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/021 Register MassTransit RabbitMQ packages into Ordering.Application DI.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/022 OrderCreated Integration Event How Domain Event leads to Integration Event.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/023 Develop Basket Checkout Event Consumer integration event handler class.srt": "done",
-  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/024 Develop Basket Checkout Event Consumer integration event handler class - 2.srt": "done"
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/024 Develop Basket Checkout Event Consumer integration event handler class - 2.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/025 Saga Pattern for Distributed Transactions.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/026 Publish OrderCreated Integration event for Order Fullfiment microservices.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/027 Aspnet Feature Management Develop Feature Flag for OrderCreated Event.srt": "done"
 }
