@@ -1,46 +1,46 @@
 1
 00:00:00,170 --> 00:00:06,410
-In this video, we are going to set up a SQL server database using docker compose file for multi-container
+Trong video này, chúng ta sẽ thiết lập một cơ sở dữ liệu SQL server bằng docker compose file cho môi trường multi-container.
 
 2
 00:00:06,410 --> 00:00:07,490
-Docker environment.
+Docker.
 
 3
 00:00:07,490 --> 00:00:13,700
-Here you can see that our ordering microservices using SQL server database as a backing services.
+Ở đây bạn có thể thấy rằng ordering microservice của chúng ta sử dụng SQL server database như một backing services.
 
 4
 00:00:13,700 --> 00:00:19,400
-So we should download SQL server Docker image and run this image into our Docker compose environment.
+Vậy chúng ta nên tải xuống SQL server Docker image và chạy image này trong môi trường Docker compose của chúng ta.
 
 5
 00:00:19,640 --> 00:00:23,270
-If we look at our deployment strategy, we are at the deployment.
+Nếu chúng ta xem xét chiến lược triển khai của mình, chúng ta đang ở tại triển khai.
 
 6
 00:00:23,270 --> 00:00:27,830
-One stage we are going to develop ordering microservices with clean architecture.
+Một giai đoạn chúng ta sẽ phát triển ordering microservice với clean architecture.
 
 7
 00:00:27,830 --> 00:00:34,430
-But now we will focus on activating SQL server database as a backing services in Docker compose files.
+Nhưng bây giờ chúng ta sẽ tập trung vào việc kích hoạt SQL server database như một backing services trong Docker compose files.
 
 8
 00:00:34,430 --> 00:00:38,570
-So how to set up the SQL server database in the environment?
+Vậy làm cách nào để thiết lập SQL server database trong môi trường?
 
 9
 00:00:38,570 --> 00:00:43,640
-I'm going to follow an article from the Microsoft documentation, which is the run SQL Server Linux
+Tôi sẽ theo dõi một bài viết từ tài liệu Microsoft, đó là chạy SQL Server Linux.
 
 10
 00:00:43,640 --> 00:00:45,260
-container image with Docker.
+container image với Docker.
 
 11
 00:00:45,260 --> 00:00:51,860
-If you scroll down, you can see that we will use Microsoft SQL server Docker image with running docker
+Nếu bạn cuộn xuống, bạn có thể thấy rằng chúng ta sẽ sử dụng Microsoft SQL server Docker image bằng cách chạy docker.
 
 12
 00:00:51,860 --> 00:00:52,490
@@ -48,145 +48,145 @@ pull command.
 
 13
 00:00:52,490 --> 00:00:57,680
-And here you can see the environment variables and the port numbers that we are going to follow when
+Và ở đây bạn có thể thấy các biến môi trường và các số cổng mà chúng ta sẽ làm theo khi.
 
 14
 00:00:57,680 --> 00:01:00,440
-defining these image into our Docker compose file.
+định nghĩa image này trong Docker compose file của chúng ta.
 
 15
 00:01:00,440 --> 00:01:03,530
-For that purpose, please open the Visual Studio.
+Để làm điều đó, vui lòng mở Visual Studio.
 
 16
 00:01:03,530 --> 00:01:08,660
-And I'm going to use docker compose file in order to activate SQL server.
+Và tôi sẽ sử dụng docker compose file để kích hoạt SQL server.
 
 17
 00:01:08,660 --> 00:01:15,230
-If you close these folders and go to the Docker compose files, you can see that we have docker-compose.yml
+Nếu bạn đóng các thư mục này và đi tới Docker compose files, bạn có thể thấy rằng chúng ta có docker-compose.yml.
 
 18
 00:01:15,230 --> 00:01:17,720
-file and docker compose overwrite yaml file.
+file và docker compose overwrite yaml file.
 
 19
 00:01:18,020 --> 00:01:23,030
-So that means we will update these files in order to include SQL server docker image.
+Điều đó có nghĩa là chúng ta sẽ cập nhật các file này để bao gồm SQL server docker image.
 
 20
 00:01:23,030 --> 00:01:28,940
-And also we will set the environment variables and ports under the docker compose or write file to configure
+Và cũng như vậy chúng ta sẽ thiết lập các biến môi trường và các cổng dưới docker compose hoặc write file để cấu hình.
 
 21
 00:01:28,940 --> 00:01:33,050
-SQL server database with necessary environment variables and so on.
+Cơ sở dữ liệu SQL Server với các biến môi trường cần thiết và những thứ khác.
 
 22
 00:01:33,050 --> 00:01:35,810
-So let me start with the docker-compose.yml file.
+Vậy hãy bắt đầu với tệp docker-compose.yml.
 
 23
 00:01:35,810 --> 00:01:41,330
-As you can see that it is starting with the backing services and continue with to microservices and
+Như bạn có thể thấy, nó bắt đầu với các backing services và tiếp tục với microservices
 
 24
 00:01:41,330 --> 00:01:47,030
-come here after the distributed cache as a backing services I'm going to add a new service which is
+đến đây sau distributed cache như một backing services, tôi sẽ thêm một service mới đó là
 
 25
 00:01:47,030 --> 00:01:51,410
-the order DB, and make sure that you have correct indentation.
+order DB, và hãy chắc chắn rằng bạn có indentation chính xác.
 
 26
 00:01:51,410 --> 00:01:54,650
-This is important to activate these services correctly.
+Điều này rất quan trọng để kích hoạt các services này một cách chính xác.
 
 27
 00:01:54,650 --> 00:01:56,480
-We are providing order db.
+Chúng ta đang cung cấp order db.
 
 28
 00:01:56,480 --> 00:02:00,080
-And as an image I'm going to copy from the Microsoft SQL server.
+Và như một image, tôi sẽ sao chép từ Microsoft SQL Server.
 
 29
 00:02:00,080 --> 00:02:01,670
-The image from the Docker Hub.
+Image từ Docker Hub.
 
 30
 00:02:01,670 --> 00:02:06,680
-So this is the definition of the Docker-compose.yml file that you can save this file.
+Vậy đây là định nghĩa của tệp Docker-compose.yml mà bạn có thể lưu tệp này.
 
 31
 00:02:06,680 --> 00:02:12,440
-And in order to configure these SQL server database, I'm going to open the Docker compose overwrite
+Và để cấu hình cơ sở dữ liệu SQL Server này, tôi sẽ mở tệp Docker compose overwrite
 
 32
 00:02:12,440 --> 00:02:17,210
-file and go to the same location which is the after distributed cache.
+file và đi đến cùng vị trí đó là sau distributed cache.
 
 33
 00:02:17,210 --> 00:02:24,110
-And before starting to microservices, we can specify the configurations about the SQL server.
+Và trước khi bắt đầu microservices, chúng ta có thể chỉ định các cấu hình về SQL Server.
 
 34
 00:02:24,380 --> 00:02:30,050
-SQL server has a environment and port numbers that we should define according to our article.
+SQL Server có các biến môi trường và số cổng mà chúng ta nên định nghĩa theo bài viết của chúng ta.
 
 35
 00:02:30,050 --> 00:02:35,540
-If you come here and put these order db, we can give a container name as a order db.
+Nếu bạn đến đây và đặt order db này, chúng ta có thể cung cấp một container name là order db.
 
 36
 00:02:35,540 --> 00:02:41,240
-And here you can see the environment variables are crucial when implementing the SQL server docker image.
+Và ở đây bạn có thể thấy các biến môi trường rất quan trọng khi triển khai SQL Server docker image.
 
 37
 00:02:41,240 --> 00:02:44,720
-The except error should be y and C.
+Lỗi ngoại lệ phải là Y và C.
 
 38
 00:02:44,720 --> 00:02:49,460
-Password should be the complex password that we can connect for the SQL server.
+Password nên là một mật khẩu phức tạp mà chúng ta có thể kết nối cho SQL Server.
 
 39
 00:02:49,460 --> 00:02:51,740
-Login with the same username and password.
+Đăng nhập với cùng tên người dùng và mật khẩu.
 
 40
 00:02:51,740 --> 00:02:57,710
-In here we can confirm the password from the application settings file that we defined as a and password.
+Ở đây chúng ta có thể xác nhận mật khẩu từ tệp cài đặt ứng dụng mà chúng ta đã định nghĩa là password.
 
 41
 00:02:57,710 --> 00:03:03,800
-In the Application settings connection string, we can follow the same configurations in the docker
+Trong cấu hình kết nối Application settings, chúng ta có thể theo dõi cùng các cấu hình trong docker
 
 42
 00:03:03,800 --> 00:03:09,290
-compose or write file for order db, SQL server, docker image and we will give the port numbers.
+compose hoặc tệp ghi cho order db, SQL Server, docker image và chúng ta sẽ cung cấp các số cổng.
 
 43
 00:03:09,290 --> 00:03:10,220
-Also crucial.
+Cũng rất quan trọng.
 
 44
 00:03:10,220 --> 00:03:11,600
-This is the port number.
+Đây là số cổng.
 
 45
 00:03:11,600 --> 00:03:17,060
-Default port number, which is the one four, three three is exposed and mapped to the host for database
+Số cổng mặc định, đó là 1433 được exposed và ánh xạ tới máy chủ để kết nối cơ sở dữ liệu
 
 46
 00:03:17,060 --> 00:03:17,990
-connectivity.
+được thiết lập.
 
 47
 00:03:18,110 --> 00:03:23,810
-As you can see that we have defined Docker compose, overwrite HTML file and docker compose Yaml file
+Như bạn có thể thấy, chúng ta đã định nghĩa Docker Compose, tệp Docker Compose HTML và Docker Compose Yaml file
 
 48
 00:03:23,810 --> 00:03:29,120
-in order to activate SQL server database as a backing service of authentic microservices.
+để kích hoạt cơ sở dữ liệu SQL Server như một backing service của authentic microservices.
 

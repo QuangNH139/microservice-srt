@@ -223,5 +223,8 @@
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/008 Mapping DDD Objects to EF Entities - Develop Order Entity Configurations.srt": "done",
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/009 EF Core SQL Server Connection String in appsettings.json file.srt": "done",
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/010 Register EF Core DbContext in Asp.Net DependencyInjection Tool for SQL Server.srt": "done",
-  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/011 Create EF Core Migrations for ApplicationDbContext in Ordering.Infrastructure.srt": "done"
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/011 Create EF Core Migrations for ApplicationDbContext in Ordering.Infrastructure.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/012 Create EF Core Migrations for ApplicationDbContext in Ordering.Infrastructure -2.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/013 Setup SQL Server DB using Docker-compose file for Multi-container Docker Env.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/014 Run Docker-Compose on Visual Studio to setup SQL Server DB on Docker.srt": "done"
 }
