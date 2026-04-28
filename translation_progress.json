@@ -157,5 +157,6 @@
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/015 TEST - Docker-compose Basket.API microservices with PostgresDB and Redis.srt": "done",
   "/home/user/microservice-srt/10 Microservices Synchronous Communications with gRPC/001 Microservices Communication Types Synchronous or Asynchronous Communication.srt": "done",
   "/home/user/microservice-srt/10 Microservices Synchronous Communications with gRPC/002 Microservices Synchronous Communications and Best Practices.srt": "done",
-  "/home/user/microservice-srt/10 Microservices Synchronous Communications with gRPC/003 gRPC High Performance Remote Procedure Calls.srt": "done"
+  "/home/user/microservice-srt/10 Microservices Synchronous Communications with gRPC/003 gRPC High Performance Remote Procedure Calls.srt": "done",
+  "/home/user/microservice-srt/10 Microservices Synchronous Communications with gRPC/004 How gRPC works.srt": "done"
 }
