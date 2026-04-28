@@ -1,74 +1,74 @@
 1
 00:00:00,110 --> 00:00:03,650
-In this video we are going to learn dual write problem.
+Trong video này chúng ta sẽ học về dual write problem.
 
 2
 00:00:03,650 --> 00:00:10,910
-Dual write problem occurs when application needs to change data in two different systems, for example
+Dual write problem xảy ra khi ứng dụng cần thay đổi dữ liệu trong hai hệ thống khác nhau, ví dụ
 
 3
 00:00:10,910 --> 00:00:13,040
-a database and a message queue.
+một database và một message queue.
 
 4
 00:00:13,070 --> 00:00:18,350
-If one of the write fails, it can result in inconsistent state.
+Nếu một trong các write thất bại, nó có thể dẫn đến trạng thái không nhất quán.
 
 5
 00:00:19,460 --> 00:00:26,240
-This is the typical case when you use a local transactions with each of the external systems operations.
+Đây là trường hợp điển hình khi bạn sử dụng local transactions với mỗi thao tác hệ thống bên ngoài.
 
 6
 00:00:26,600 --> 00:00:33,740
-For example, when an application needs to persist data in the database and send a message to the Kafka
+Ví dụ, khi một ứng dụng cần lưu dữ liệu vào database và gửi một message đến Kafka
 
 7
 00:00:33,740 --> 00:00:35,570
-for notifying other systems.
+để thông báo cho các hệ thống khác.
 
 8
 00:00:36,680 --> 00:00:43,520
-If one of two these two operations fails, the data will be inconsistent data and these two systems
+Nếu một trong hai thao tác này thất bại, dữ liệu sẽ không nhất quán và hai hệ thống này
 
 9
 00:00:43,520 --> 00:00:45,200
-become inconsistent.
+sẽ trở nên không nhất quán.
 
 10
 00:00:46,060 --> 00:00:47,620
-Here you can see the problems.
+Ở đây bạn có thể thấy các vấn đề.
 
 11
 00:00:47,620 --> 00:00:54,580
-This can lead to problems such as data loss or corruption, and can be difficult to resolve without
+Điều này có thể dẫn đến các vấn đề như mất dữ liệu hoặc hỏng dữ liệu, và có thể khó để giải quyết mà không có
 
 12
 00:00:54,580 --> 00:00:57,850
-proper error handling and recovery mechanism in place.
+cơ chế xử lý lỗi và phục hồi thích hợp.
 
 13
 00:00:57,850 --> 00:01:02,020
-So that means dual right can be hard to detect and fix.
+Vậy đó có nghĩa là dual write có thể khó phát hiện và sửa chữa.
 
 14
 00:01:04,769 --> 00:01:07,410
-Here you can see an example of dual write problem.
+Ở đây bạn có thể thấy một ví dụ về dual write problem.
 
 15
 00:01:07,410 --> 00:01:12,270
-In this example we will illustrate create order use case in microservices.
+Trong ví dụ này chúng ta sẽ minh họa use case tạo đơn hàng trong microservices.
 
 16
 00:01:12,270 --> 00:01:19,620
-That means when create an order request comes, we want to change data in order database with creating
+Có nghĩa là khi một request tạo đơn hàng đến, chúng ta muốn thay đổi dữ liệu trong order database bằng cách tạo
 
 17
 00:01:19,620 --> 00:01:24,420
-a new record and also send an order created event to the event bus.
+một record mới và cũng gửi một order created event tới event bus.
 
 18
 00:01:24,420 --> 00:01:31,380
-Like Apache Kafka, both operation is handled with two different local transaction that causes dual
+Như Apache Kafka, cả hai thao tác được xử lý với hai local transaction khác nhau gây ra dual
 
 19
 00:01:31,380 --> 00:01:32,430
@@ -76,163 +76,163 @@ write problems.
 
 20
 00:01:32,730 --> 00:01:38,070
-As you can see the image we have a order microservices client application send the request which is
+Như bạn có thể thấy trong hình ảnh, chúng ta có một order microservice, client application gửi request mà
 
 21
 00:01:38,070 --> 00:01:43,110
-the create order and in the order microservices we have two main operations.
+trong create order và order microservices, chúng ta có hai hoạt động chính.
 
 22
 00:01:43,110 --> 00:01:49,470
-The first one is write order table which is the create any order item in the order table into the database,
+Cái đầu tiên là write order table, tức là tạo bất kỳ order item nào trong order table vào cơ sở dữ liệu,
 
 23
 00:01:49,470 --> 00:01:56,580
-and after that order microservice is going to publish event to the create order event in order to start
+và sau đó order microservice sẽ publish event tới create order event để bắt đầu
 
 24
 00:01:56,580 --> 00:02:03,870
-order fulfillment process to notify other microservices which subscribing to event from the create order
+quá trình order fulfillment để thông báo cho các microservices khác đang subscribe tới event từ create order
 
 25
 00:02:03,870 --> 00:02:07,950
-event into the event path, which could be the inventory shipment and so on.
+event vào event path, có thể là inventory, shipment và những thứ khác.
 
 26
 00:02:08,400 --> 00:02:10,410
-So this is the dual write problem.
+Vậy đây là dual write problem.
 
 27
 00:02:10,710 --> 00:02:16,170
-So how to avoid dual write problem in microservices transactional outbox pattern.
+Vậy làm thế nào để tránh dual write problem trong microservices, đó là transactional outbox pattern.
 
 28
 00:02:16,290 --> 00:02:19,260
-What is the transactional outbox pattern.
+Transactional outbox pattern là gì.
 
 29
 00:02:19,680 --> 00:02:23,310
-The outbox pattern provides to publish events reliably.
+Outbox pattern cung cấp khả năng publish events một cách đáng tin cậy.
 
 30
 00:02:24,060 --> 00:02:27,960
-The idea of this approach is to have an outbox table.
+Ý tưởng của cách tiếp cận này là có một outbox table.
 
 31
 00:02:27,960 --> 00:02:34,290
-In the microservices databases, we solve dual write problem at the last video.
+Trong microservices databases, chúng ta giải quyết dual write problem ở video trước.
 
 32
 00:02:34,290 --> 00:02:39,480
-That happens when application need to change data in two different systems.
+Điều đó xảy ra khi application cần thay đổi dữ liệu trong hai hệ thống khác nhau.
 
 33
 00:02:40,260 --> 00:02:42,600
-So we transactional outbox pattern.
+Vậy chúng ta dùng transactional outbox pattern.
 
 34
 00:02:42,600 --> 00:02:49,170
-Instead of sending the data to separate locations, we send a single transaction that will store two
+Thay vì gửi dữ liệu tới các vị trí riêng biệt, chúng ta gửi một single transaction sẽ lưu trữ hai
 
 35
 00:02:49,170 --> 00:02:51,900
-separate copies of the data on the database.
+bản sao dữ liệu riêng biệt trong cơ sở dữ liệu.
 
 36
 00:02:52,800 --> 00:02:59,670
-One copy is stored in the relevant database table, and the other copy is stored in an outbox table
+Một bản sao được lưu trữ trong bảng cơ sở dữ liệu liên quan, và bản sao khác được lưu trữ trong một outbox table
 
 37
 00:02:59,670 --> 00:03:03,300
-that will update the other microservices over the event path.
+sẽ cập nhật các microservices khác thông qua event path.
 
 38
 00:03:03,750 --> 00:03:11,040
-For example, we might connect the outbox table from the Kafka or other messaging queue systems.
+Ví dụ, chúng ta có thể kết nối outbox table từ Kafka hoặc các hệ thống message queue khác.
 
 39
 00:03:12,050 --> 00:03:17,810
-That means when your API publishes event messages, it doesn't directly send them.
+Điều đó có nghĩa là khi API của bạn publish event messages, nó không gửi chúng trực tiếp.
 
 40
 00:03:17,810 --> 00:03:21,980
-Instead, the messages are persisted in a database table.
+Thay vào đó, các messages được lưu trữ trong một database table.
 
 41
 00:03:22,760 --> 00:03:28,940
-After that, a job publish events to the message broker systems in the predefined time intervals.
+Sau đó, một job sẽ phát hành các events tới message broker systems trong các khoảng thời gian được xác định trước.
 
 42
 00:03:29,900 --> 00:03:35,180
-So with the outbox pattern, domain events aren't written directly to the event bus.
+Vậy với outbox pattern, domain events không được ghi trực tiếp vào event bus.
 
 43
 00:03:35,210 --> 00:03:41,990
-Instead of that, it is written to a table in the artworks role of the service that stores the events
+Thay vào đó, nó được ghi vào một bảng trong phần artworks role của service mà lưu trữ các events
 
 44
 00:03:41,990 --> 00:03:43,850
-in its own databases.
+trong cơ sở dữ liệu của nó.
 
 45
 00:03:45,350 --> 00:03:51,920
-However, the critical point is here that the transaction performed before the event and the event written
+Tuy nhiên, điểm quan trọng ở đây là transaction được thực hiện trước event và event được ghi
 
 46
 00:03:51,920 --> 00:03:55,190
-to Outbox Table are part of the same transactions.
+vào Outbox Table là một phần của cùng một transaction.
 
 47
 00:03:55,910 --> 00:04:02,900
-For example, when an Eve order is added to the system, the process of the adding order and writing
+Ví dụ, khi một đơn hàng Eve được thêm vào hệ thống, quá trình thêm đơn hàng và ghi
 
 48
 00:04:02,900 --> 00:04:09,650
-the order created event to the outbox table is done in the same transaction, in order to ensure that
+sự kiện order created vào outbox table được thực hiện trong cùng một transaction, để đảm bảo rằng
 
 49
 00:04:09,650 --> 00:04:11,780
-the event is saved to the database.
+event được lưu vào cơ sở dữ liệu.
 
 50
 00:04:12,680 --> 00:04:18,769
-If one of the process is failed, this will rollback the whole operation with following the Acid principles.
+Nếu một trong các quá trình bị thất bại, điều này sẽ rollback toàn bộ hoạt động theo các nguyên tắc Acid.
 
 51
 00:04:19,760 --> 00:04:26,600
-The second step is to receive these events written to the outbox table by an independent service, and
+Bước thứ hai là nhận các events được ghi vào outbox table bởi một service độc lập, và
 
 52
 00:04:26,600 --> 00:04:28,460
-write them into the event bus.
+ghi chúng vào event bus.
 
 53
 00:04:28,970 --> 00:04:31,130
-We can see the image on the slide.
+Chúng ta có thể thấy hình ảnh trên slide.
 
 54
 00:04:31,220 --> 00:04:38,090
-This is an example of creating an order, creating new order record into the order table, and creating
+Đây là một ví dụ về việc tạo một đơn hàng, tạo một bản ghi đơn hàng mới vào bảng order, và tạo
 
 55
 00:04:38,090 --> 00:04:41,480
-a new order created event into the outbox table.
+một sự kiện order created mới vào outbox table.
 
 56
 00:04:42,230 --> 00:04:44,720
-And these are the in the same transaction.
+Và những thứ này đều nằm trong cùng một transaction.
 
 57
 00:04:44,720 --> 00:04:48,320
-And these same operations perform in the same transaction.
+Và những hoạt động tương tự này được thực hiện trong cùng một transaction.
 
 58
 00:04:48,530 --> 00:04:54,620
-If one of the process is fails, this will be rollback the whole transaction with following the Acid
+Nếu một trong các quá trình bị thất bại, toàn bộ transaction sẽ được rollback theo các nguyên tắc Acid.
 
 59
 00:04:54,620 --> 00:04:55,460
-principles.
+Sau đó, một service khác.
 
 60
 00:04:56,120 --> 00:04:58,520
@@ -240,9 +240,9 @@ After that, another service.
 
 61
 00:04:58,520 --> 00:05:04,730
-Listen and post the outbox table records and publish to the into separate process.
+Lắng nghe và đăng các bản ghi trong bảng outbox rồi publish đến một quá trình riêng biệt.
 
 62
 00:05:04,730 --> 00:05:06,560
-Publish the events into the event post.
+Publish các sự kiện vào event post.
 
