@@ -58,7 +58,7 @@ def run_once():
     done_before = count_done()
     log(f"Starting translate.py ({done_before}/{TOTAL} done)...")
     proc = subprocess.Popen(
-        [sys.executable, "-u", str(BASE_DIR / "translate.py")],
+        [sys.executable, "-u", str(BASE_DIR / "translate.py"), "--max-files", "5"],
         cwd=BASE_DIR,
         stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
         text=True, bufsize=1,

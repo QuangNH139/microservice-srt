@@ -304,6 +304,7 @@ def main():
     parser = argparse.ArgumentParser(description="Translate SRT files to Vietnamese")
     parser.add_argument("--reset", action="store_true", help="Reset progress and retranslate all")
     parser.add_argument("--file", type=str, help="Translate a single specific file")
+    parser.add_argument("--max-files", type=int, default=0, help="Stop after translating N files (0=all)")
     args = parser.parse_args()
 
     if args.file:
@@ -323,8 +324,12 @@ def main():
     print(f"Remaining       : {len(pending)}")
     print()
 
+    translated_this_run = 0
     start = time.time()
     for i, srt_path in enumerate(pending, 1):
+        if args.max_files and translated_this_run >= args.max_files:
+            print(f"Reached --max-files {args.max_files}, exiting.")
+            break
         rel = srt_path.relative_to(BASE_DIR)
         print(f"[{i}/{len(pending)}] {rel}")
         try:
@@ -332,6 +337,7 @@ def main():
             if out:
                 progress[str(srt_path)] = "done"
                 save_progress(progress)
+                translated_this_run += 1
                 print(f"  -> done")
             else:
                 print("  Skipped.")
@@ -339,10 +345,6 @@ def main():
             print(f"  ERROR: {e}")
             progress[str(srt_path)] = "ERROR"
             save_progress(progress)
-
-        # Light throttle every 10 files
-        if i % 10 == 0:
-            time.sleep(1)
 
     elapsed = time.time() - start
     errors = [k for k, v in progress.items() if v == "ERROR"]
