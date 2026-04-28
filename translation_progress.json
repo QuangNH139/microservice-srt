@@ -243,5 +243,6 @@
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/003 Event Sourcing Pattern.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/004 CQRS with Event Sourcing Pattern.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/005 Eventual Consistency Principle.srt": "done",
-  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/006 Analysis of Ordering Microservice Application Layer.srt": "done"
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/006 Analysis of Ordering Microservice Application Layer.srt": "done",
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/007 Implement CQRS Command and Command Handler Patterns with MediatR.srt": "done"
 }
