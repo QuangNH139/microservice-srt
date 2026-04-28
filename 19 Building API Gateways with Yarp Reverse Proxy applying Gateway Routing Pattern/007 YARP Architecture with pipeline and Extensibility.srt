@@ -1,184 +1,184 @@
 1
 00:00:00,170 --> 00:00:06,140
-In this video we are going to explain IRB architecture with the pipelines and extensibility.
+Trong video này chúng ta sẽ giải thích kiến trúc IRB với các pipeline và khả năng mở rộng.
 
 2
 00:00:06,260 --> 00:00:10,160
-So here you can see the IRB architecture with pipelines.
+Vậy bạn có thể thấy kiến trúc IRB với các pipeline ở đây.
 
 3
 00:00:10,160 --> 00:00:15,200
-And we will start with the ASP.Net core front end and Http client backends.
+Và chúng ta sẽ bắt đầu với front end ASP.Net core và Http client backends.
 
 4
 00:00:15,380 --> 00:00:18,500
-We are leveraging ASP.Net core for its front end.
+Chúng ta đang tận dụng ASP.Net core cho front end của nó.
 
 5
 00:00:18,530 --> 00:00:23,420
-Handling the incoming requests and Http client for communication with back end services.
+Xử lý các request đến và Http client để giao tiếp với các dịch vụ back end.
 
 6
 00:00:23,450 --> 00:00:29,930
-It integrates seamlessly into ASP.Net core infrastructure, working as a middleware that can be combined
+Nó tích hợp một cách seamless vào cơ sở hạ tầng ASP.Net core, hoạt động như một middleware có thể được kết hợp
 
 7
 00:00:29,930 --> 00:00:32,450
-with other components like API calls.
+với các thành phần khác như API calls.
 
 8
 00:00:32,600 --> 00:00:35,600
-And also it includes configuration and route loadings.
+Và cũng bao gồm configuration và route loadings.
 
 9
 00:00:35,630 --> 00:00:41,900
-Routes are loaded from the configuration sources, with ASP.Net Json file being the default.
+Routes được tải từ các configuration sources, với ASP.Net Json file là mặc định.
 
 10
 00:00:41,930 --> 00:00:48,350
-These routes are then loaded into ASP.Net route table, enabling the IRB to match incoming requests
+Những routes này sau đó được tải vào route table của ASP.Net, cho phép IRB so khớp các request đến
 
 11
 00:00:48,350 --> 00:00:49,880
-to specific routes.
+với các routes cụ thể.
 
 12
 00:00:49,910 --> 00:00:56,030
-And also we can define routes to cluster mapping after receiving a request that match a route.
+Và cũng chúng ta có thể định nghĩa routes để cluster mapping sau khi nhận được một request khớp với một route.
 
 13
 00:00:56,060 --> 00:00:58,430
-Your maps this route to a cluster.
+Bạn map route này đến một cluster.
 
 14
 00:00:58,430 --> 00:01:02,810
-Determining the potential destination or back end services for the request.
+Xác định những destination tiềm năng hoặc các dịch vụ back end cho request.
 
 15
 00:01:02,810 --> 00:01:07,580
-And after that we can say dynamic configuration via config provider model.
+Và sau đó chúng ta có thể nói về dynamic configuration thông qua config provider model.
 
 16
 00:01:07,790 --> 00:01:13,850
-IRB allows for dynamic configuration through a config provider model, enabling runtime changes and
+IRB cho phép dynamic configuration thông qua config provider model, cho phép thay đổi và
 
 17
 00:01:13,850 --> 00:01:19,700
-adjustments based on various factors like back end, server status or application requirements, and
+điều chỉnh tại runtime dựa trên nhiều yếu tố như trạng thái back end server hoặc yêu cầu ứng dụng, và
 
 18
 00:01:19,700 --> 00:01:24,470
-also IRB provide session affinity and load balancing during the proxy process.
+cũng IRB cung cấp session affinity và load balancing trong quá trình proxy.
 
 19
 00:01:24,590 --> 00:01:31,280
-IRB can maintain session affinity cookie sessions, ensuring that requests from a particular client
+IRB có thể duy trì session affinity cookie sessions, đảm bảo rằng các request từ một client cụ thể
 
 20
 00:01:31,280 --> 00:01:35,570
-are consistently routed to the same server for load balancing.
+được định tuyến một cách nhất quán đến cùng một server để load balancing.
 
 21
 00:01:35,600 --> 00:01:41,990
-IRB employs algorithms like power of Two choices, which select two random destinations and chooses
+IRB sử dụng các thuật toán như power of Two choices, thuật toán này chọn hai đích địa chỉ ngẫu nhiên và lựa chọn
 
 22
 00:01:41,990 --> 00:01:43,820
-the least loaded among them.
+máy chủ có tải nhẹ nhất trong số đó.
 
 23
 00:01:44,030 --> 00:01:46,880
-And also this will be providing health checks.
+Và cũng sẽ cung cấp health checks.
 
 24
 00:01:46,910 --> 00:01:49,910
-IRB support both active and passive health checks.
+IRB hỗ trợ cả active và passive health checks.
 
 25
 00:01:49,940 --> 00:01:55,550
-Active health checks regularly ping configured endpoints in back end services to assess their health.
+Active health checks sẽ định kỳ ping các endpoint được cấu hình trong back end services để đánh giá health status của chúng.
 
 26
 00:01:55,550 --> 00:02:01,310
-Passive health checks observed the response codes from the back end services as traffic is forwarded,
+Passive health checks quan sát các response codes từ back end services khi lưu lượng truy cập được chuyển tiếp,
 
 27
 00:02:01,310 --> 00:02:05,390
-marking servers as unhealthy based on certain criterias.
+đánh dấu các máy chủ là không khỏe mạnh dựa trên các tiêu chí nhất định.
 
 28
 00:02:05,570 --> 00:02:09,590
-And also we can say request and response processing during this process.
+Và cũng chúng ta có thể nói về request và response processing trong quá trình này.
 
 29
 00:02:09,620 --> 00:02:14,780
-IRB can transform requests by modifying URLs, headers, and other attributes.
+IRB có thể chuyển đổi requests bằng cách sửa đổi URLs, headers và các thuộc tính khác.
 
 30
 00:02:14,780 --> 00:02:18,770
-It typically avoids modifying the body to maintain performance.
+Nó thường tránh sửa đổi body để duy trì hiệu suất.
 
 31
 00:02:18,770 --> 00:02:22,790
-The transformed request is then forwarded to selected back end server.
+Request đã được chuyển đổi sau đó được chuyển tiếp đến back end server được chọn.
 
 32
 00:02:22,790 --> 00:02:25,220
-And this is the pipeline of the process.
+Và đây là pipeline của quy trình này.
 
 33
 00:02:25,220 --> 00:02:28,940
-And we can also add the pipeline modularization and extensibility.
+Và chúng ta cũng có thể thêm pipeline modularization và extensibility.
 
 34
 00:02:29,120 --> 00:02:33,590
-IRB also is designed as a pipeline, with each step being a module.
+IRB cũng được thiết kế như một pipeline, với mỗi bước là một module.
 
 35
 00:02:33,590 --> 00:02:36,350
-You can see for these steps as a module.
+Bạn có thể xem các bước này như một module.
 
 36
 00:02:36,350 --> 00:02:42,500
-Every module like route matching, load balancing, health checks, request transforms and so on can
+Mỗi module như route matching, load balancing, health checks, request transforms và cái khác có thể
 
 37
 00:02:42,500 --> 00:02:45,590
-be customized or replaced with custom implementation.
+được tùy chỉnh hoặc thay thế bằng custom implementation.
 
 38
 00:02:45,590 --> 00:02:51,770
-So this modular architecture provide immense flexibility to tailored IRB to specific requirements.
+Vậy kiến trúc modular này cung cấp tính linh hoạt to lớn để điều chỉnh IRB theo các yêu cầu cụ thể.
 
 39
 00:02:52,010 --> 00:02:55,100
-And here you can see the extensibility points of the IRB.
+Và ở đây bạn có thể thấy các extensibility points của IRB.
 
 40
 00:02:55,130 --> 00:02:58,310
-IRB is highly extensible using the C sharp.
+IRB rất có tính mở rộng sử dụng C sharp.
 
 41
 00:02:58,310 --> 00:03:03,980
-It allows you to customize almost every aspects of the request processing and forwarding.
+Nó cho phép bạn tùy chỉnh hầu hết mọi khía cạnh của xử lý và chuyển tiếp yêu cầu.
 
 42
 00:03:04,010 --> 00:03:10,490
-Developers can extend or replace components of the IRB pipeline to seat specific requirements, and
+Các nhà phát triển có thể mở rộng hoặc thay thế các thành phần của pipeline IRB để đáp ứng các yêu cầu cụ thể, và
 
 43
 00:03:10,490 --> 00:03:15,620
-we can say that we can develop our custom configurations, and custom configurations can be written
+chúng ta có thể nói rằng chúng ta có thể phát triển các cấu hình tùy chỉnh của riêng mình, và các cấu hình tùy chỉnh có thể được viết
 
 44
 00:03:15,620 --> 00:03:16,280
-in C sharp.
+bằng C sharp.
 
 45
 00:03:16,280 --> 00:03:20,900
-For more complex scenarios where Json based configurations are not sufficient.
+Đối với các tình huống phức tạp hơn khi các cấu hình dựa trên Json không đủ.
 
 46
 00:03:20,900 --> 00:03:26,930
-This provides developers with the flexibility to program complex logic into their proxy behaviors.
+Điều này cung cấp cho các nhà phát triển tính linh hoạt để lập trình các logic phức tạp vào hành vi proxy của họ.
 
