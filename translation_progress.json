@@ -327,5 +327,7 @@
   "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/013 Implement API Gateway using Yarp Reverse Proxy in YarpApiGateway Microservices-2.srt": "done",
   "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/014 TEST - Yarp Reverse Proxy as an API Gateway in YarpApiGateway Microservices.srt": "done",
   "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/015 Rate Limiting to Yarp Reverse Proxy as an API Gateway in YarpApiGateway.srt": "done",
-  "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/016 Move Local Test Configuration to Local appsettings.json file-Yarp Reverse Proxy.srt": "done"
+  "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/016 Move Local Test Configuration to Local appsettings.json file-Yarp Reverse Proxy.srt": "done",
+  "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/017 Develop Yarp appsettings.json file Configurations for Docker Host Network.srt": "done",
+  "/home/user/microservice-srt/19 Building API Gateways with Yarp Reverse Proxy applying Gateway Routing Pattern/018 Containerize and Orchestrate YarpApiGateway Microservices for Reverse Proxy.srt": "done"
 }

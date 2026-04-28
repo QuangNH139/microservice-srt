@@ -1,6 +1,6 @@
 1
 00:00:00,140 --> 00:00:06,290
-In this video we are going to develop IRB application settings Json file configurations for Docker host
+Trong video này chúng ta sẽ phát triển các cấu hình Json file cho IRB application settings cho Docker host
 
 2
 00:00:06,290 --> 00:00:06,890
@@ -8,79 +8,79 @@ network.
 
 3
 00:00:06,890 --> 00:00:11,360
-So that means we will arrange our irb API gateway configurations according to the code.
+Vậy điều đó có nghĩa là chúng ta sẽ sắp xếp các cấu hình IRB API gateway theo mã.
 
 4
 00:00:11,360 --> 00:00:13,940
-Compose all setup for that purpose.
+Compose tất cả các thiết lập cho mục đích đó.
 
 5
 00:00:13,940 --> 00:00:20,510
-Please open the Visual Studio and we will set our configurations into Docker Network and Docker Network.
+Vui lòng mở Visual Studio và chúng ta sẽ đặt cấu hình của mình vào Docker Network và Docker Network.
 
 6
 00:00:20,510 --> 00:00:27,230
-Start our API gateway in the program says that will check the application settings reverse proxy section.
+Khởi động API gateway của chúng ta trong chương trình sẽ kiểm tra phần reverse proxy của application settings.
 
 7
 00:00:27,230 --> 00:00:32,030
-So now we will change this destination address according to our Docker network.
+Vậy bây giờ chúng ta sẽ thay đổi địa chỉ đích này theo network Docker của chúng ta.
 
 8
 00:00:32,030 --> 00:00:38,690
-And in Docker compose environment, each container runs within its own network and can be accessed using
+Và trong môi trường Docker Compose, mỗi container chạy trong mạng riêng của nó và có thể được truy cập bằng
 
 9
 00:00:38,690 --> 00:00:44,210
-the container names rather than the localhost, and we should adjust the IRB configurations to use Docker
+tên container thay vì localhost, và chúng ta nên điều chỉnh các cấu hình IRB để sử dụng Docker
 
 10
 00:00:44,210 --> 00:00:47,630
-container names as the host for the downstream services.
+tên container làm host cho các downstream services.
 
 11
 00:00:47,630 --> 00:00:50,720
-So how can we identify these container names?
+Vậy làm cách nào chúng ta có thể xác định các tên container này?
 
 12
 00:00:50,720 --> 00:00:53,330
-Of course we can check the docker compose Yaml files.
+Tất nhiên chúng ta có thể kiểm tra các Docker Compose Yaml files.
 
 13
 00:00:53,330 --> 00:00:58,760
-If you open docker compose and go to docker compose Yaml file, we can identify the container names
+Nếu bạn mở Docker Compose và đi đến Docker Compose Yaml file, chúng ta có thể xác định tên container
 
 14
 00:00:58,760 --> 00:01:00,350
-for our microservices.
+cho microservices của chúng ta.
 
 15
 00:01:00,350 --> 00:01:06,050
-If you scroll down, you can see the container names as a basket API, catalog API and the ordering
+Nếu bạn cuộn xuống, bạn có thể thấy tên container là basket API, catalog API và ordering
 
 16
 00:01:06,050 --> 00:01:10,280
-API, which are the container names for the Docker name of the microservices.
+API, đây là tên container cho Docker name của các microservices.
 
 17
 00:01:10,280 --> 00:01:14,480
-These container names will be used as a host name in the IRB configuration.
+Các tên container này sẽ được sử dụng làm host name trong cấu hình IRB.
 
 18
 00:01:14,480 --> 00:01:18,650
-So let's configure for example in the catalog microservice configuration.
+Vậy hãy cấu hình ví dụ trong cấu hình catalog microservice.
 
 19
 00:01:18,650 --> 00:01:23,690
-In the application settings Json file, please open the irb API gateway and go to Application Settings
+Trong file Application Settings Json, vui lòng mở IRB API gateway và đi đến Application Settings
 
 20
 00:01:23,690 --> 00:01:27,200
-Json file and go to the destination of the catalog cluster.
+Json file và đi đến destination của catalog cluster.
 
 21
 00:01:27,200 --> 00:01:34,190
-In address, we will change the http localhost to our catalog API container name, which is the catalog
+Trong địa chỉ, chúng ta sẽ thay đổi http localhost thành tên container catalog API của chúng ta, đó là catalog
 
 22
 00:01:34,220 --> 00:01:35,330
@@ -88,117 +88,117 @@ dot API.
 
 23
 00:01:35,330 --> 00:01:38,870
-And as a port number I need to put 8080.
+Và làm số cổng, tôi cần đặt 8080.
 
 24
 00:01:38,960 --> 00:01:43,010
-So why I have put two eight, 80 in the catalog microservices.
+Vậy tại sao tôi đã đặt hai cái 8, 80 trong catalog microservices.
 
 25
 00:01:43,010 --> 00:01:48,260
-If you look at the slide here, you can see the port numbers that we have defined during the course.
+Nếu bạn xem slide ở đây, bạn có thể thấy các số cổng mà chúng ta đã định nghĩa trong suốt khóa học.
 
 26
 00:01:48,260 --> 00:01:52,850
-So these are the Docker inside port numbers for Http and https.
+Vậy đây là các số cổng Docker bên trong cho Http và https.
 
 27
 00:01:52,850 --> 00:01:58,670
-When we are using the container name in Docker network, we need to set http or https port number.
+Khi chúng ta sử dụng tên container trong Docker network, chúng ta cần đặt số cổng http hoặc https.
 
 28
 00:01:58,670 --> 00:02:05,720
-Since I have selected the http, we need to 880 port number for the http port number inside of the docker.
+Vì tôi đã chọn http, chúng ta cần số cổng 8080 cho số cổng http bên trong docker.
 
 29
 00:02:05,750 --> 00:02:12,500
-After defining the our catalog API container name, we have give the 880 port number for accessing the
+Sau khi định nghĩa tên container catalog API của chúng ta, chúng ta đã cho số cổng 8080 để truy cập vào
 
 30
 00:02:12,500 --> 00:02:18,380
-Http address as a destination of the catalog cluster, and we can follow the same configurations for
+địa chỉ Http làm điểm đích của catalog cluster, và chúng ta có thể tuân theo các cấu hình giống nhau cho
 
 31
 00:02:18,380 --> 00:02:20,300
-the basket and ordering microservices.
+basket và ordering microservices.
 
 32
 00:02:20,300 --> 00:02:26,120
-And for the basket cluster, we can set the destination as a Http and the basket container name, which
+Và cho basket cluster, chúng ta có thể đặt điểm đích là Http và tên container basket, đó là
 
 33
 00:02:26,120 --> 00:02:29,180
-is the basket API, and the column is 880.
+basket API, và cổng là 8080.
 
 34
 00:02:29,570 --> 00:02:36,830
-After defining the basket destination, we can define our ordering API container name and the destination
+Sau khi định nghĩa điểm đích basket, chúng ta có thể định nghĩa tên container ordering API của chúng ta và địa chỉ
 
 35
 00:02:36,830 --> 00:02:37,310
-address.
+điểm đích.
 
 36
 00:02:37,310 --> 00:02:40,670
-If you come to this point, ordering cluster address will be.
+Nếu bạn đến điểm này, địa chỉ ordering cluster sẽ là.
 
 37
 00:02:40,670 --> 00:02:47,270
-Start with the Http and the container name will be ordering API, and the column name will be 8080.
+Bắt đầu với Http và tên container sẽ là ordering API, và số cổng sẽ là 8080.
 
 38
 00:02:47,270 --> 00:02:53,840
-So we can remove in the last backslash into our destination address and save this configuration.
+Vậy chúng ta có thể xóa dấu gạch chéo cuối cùng trong địa chỉ điểm đích của chúng ta và lưu cấu hình này.
 
 39
 00:02:53,840 --> 00:02:59,360
-So this is the latest configuration arranging by the Docker desktop and Docker compose environment.
+Vậy đây là cấu hình mới nhất sắp xếp theo môi trường Docker desktop và Docker compose.
 
 40
 00:02:59,360 --> 00:03:05,150
-And these configurations ensures that Earp forward the requests to the right container within the Docker
+Và các cấu hình này đảm bảo rằng YARP chuyển tiếp các yêu cầu đến container chính xác trong Docker
 
 41
 00:03:05,150 --> 00:03:05,870
-network.
+mạng.
 
 42
 00:03:05,870 --> 00:03:12,470
-If you consider that why we are not using the https ports, and instead of we will use http port if
+Nếu bạn xem xét tại sao chúng ta không sử dụng cổng https, thay vào đó chúng ta sẽ sử dụng cổng http nếu
 
 43
 00:03:12,470 --> 00:03:18,020
-the https is required for the internal communication, additional configuration is required to accept
+https được yêu cầu cho giao tiếp nội bộ, cấu hình bổ sung được yêu cầu để chấp nhận
 
 44
 00:03:18,020 --> 00:03:19,310
-any server certificate.
+bất kỳ chứng chỉ máy chủ nào.
 
 45
 00:03:19,310 --> 00:03:26,570
-That means we need to SSL certificate configuration required to use Https when communicating inside
+Điều đó có nghĩa là chúng ta cần cấu hình chứng chỉ SSL để sử dụng Https khi giao tiếp bên trong
 
 46
 00:03:26,570 --> 00:03:27,290
-of the Docker.
+Docker.
 
 47
 00:03:27,290 --> 00:03:35,240
-However, in many internal microservice architectures, Http is sufficient and secure within the isolated
+Tuy nhiên, trong nhiều kiến trúc microservice nội bộ, Http đủ và an toàn trong mạng Docker được cô lập
 
 48
 00:03:35,240 --> 00:03:42,440
-Docker network because the API gateway can handle the Https and authentication at the edge before forwarding
+vì API Gateway có thể xử lý Https và xác thực tại edge trước khi chuyển tiếp
 
 49
 00:03:42,440 --> 00:03:43,880
-the requests internally.
+các yêu cầu nội bộ.
 
 50
 00:03:44,000 --> 00:03:46,160
-So within these configurations.
+Vậy trong những cấu hình này.
 
 51
 00:03:46,160 --> 00:03:52,070
-Now we are ready to deploy and tested our API gateway in Docker environment.
+Bây giờ chúng ta đã sẵn sàng triển khai và kiểm thử API Gateway của chúng ta trong môi trường Docker.
 
