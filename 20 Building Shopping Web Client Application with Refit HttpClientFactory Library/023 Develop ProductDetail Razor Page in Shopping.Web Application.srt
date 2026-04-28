@@ -82,8 +82,6 @@ Save this file.
 00:01:20,320 --> 00:01:22,420
 Here are the English subtitles translated to Vietnamese:
 
-Here you can see our HTML page.
-
 22
 00:01:22,420 --> 00:01:28,690
 If we inspect this HTML page, you can see that this is a typical product page that includes
