@@ -1,18 +1,18 @@
 1
 00:00:00,140 --> 00:00:06,590
-In this video we are going to do last step for the basket microservices which is develop basket checkout
+Trong video này chúng ta sẽ thực hiện bước cuối cùng cho basket microservices đó là phát triển basket checkout
 
 2
 00:00:06,590 --> 00:00:12,200
-100 method in order to publish basket checkout event to the RabbitMQ using the Masstransit library.
+100 method để publish basket checkout event tới RabbitMQ sử dụng thư viện Masstransit.
 
 3
 00:00:12,710 --> 00:00:20,090
-And in the last video we have developing an exposing http post request for the slash basket slash checkout
+Và trong video cuối cùng chúng ta đã phát triển và expose một HTTP post request cho /basket/checkout
 
 4
 00:00:20,090 --> 00:00:26,450
-end point and we will create request and response object in order to perform our secrets and mediator
+endpoint và chúng ta sẽ tạo request và response object để thực hiện secrets và mediator
 
 5
 00:00:26,450 --> 00:00:27,560
@@ -20,151 +20,151 @@ request life cycle.
 
 6
 00:00:27,560 --> 00:00:31,250
-So we will use Carter Library when exposing these endpoint.
+Vậy chúng ta sẽ sử dụng Carter Library khi expose những endpoint này.
 
 7
 00:00:31,250 --> 00:00:37,220
-And now we are going to use mediator and create command and command handler class in order to perform
+Và bây giờ chúng ta sẽ sử dụng mediator và tạo command và command handler class để thực hiện
 
 8
 00:00:37,220 --> 00:00:39,770
-actual business logic and return a result object.
+logic kinh doanh thực tế và trả về một result object.
 
 9
 00:00:39,770 --> 00:00:46,220
-For that purpose, please open the Visual Studio and this time please go to the checkout Basket handler.
+Với mục đích đó, hãy mở Visual Studio và lần này hãy đi đến checkout Basket handler.
 
 10
 00:00:46,220 --> 00:00:50,360
-So I'm going to create firstly command and result object.
+Vậy tôi sẽ tạo đầu tiên command và result object.
 
 11
 00:00:50,360 --> 00:00:53,420
-And after that we will develop our actual handler class.
+Và sau đó chúng ta sẽ phát triển handler class thực tế của chúng ta.
 
 12
 00:00:53,420 --> 00:00:58,070
-So I'm going to start with creating command and result object as a record type.
+Vậy tôi sẽ bắt đầu với việc tạo command và result object như một record type.
 
 13
 00:00:58,070 --> 00:01:01,310
-In here you can see that I have created two record type.
+Ở đây bạn có thể thấy rằng tôi đã tạo hai record type.
 
 14
 00:01:01,310 --> 00:01:04,640
-The first one is public record checkout basket command.
+Cái đầu tiên là public record checkout basket command.
 
 15
 00:01:04,640 --> 00:01:10,400
-And as a parameter it is getting basket checkout DTO and the name of the basket checkout DTO.
+Và như một parameter nó đang lấy basket checkout DTO và tên của basket checkout DTO.
 
 16
 00:01:10,400 --> 00:01:15,200
-And this command object will be implement I command interface which is the I command.
+Và command object này sẽ implement I command interface đó là I command.
 
 17
 00:01:15,200 --> 00:01:18,830
-And as a generic it is accepting checkout basket result.
+Và như một generic nó đang nhận checkout basket result.
 
 18
 00:01:18,830 --> 00:01:24,440
-That means we will run this command and return a result which is name is checkout basket result.
+Điều đó có nghĩa là chúng ta sẽ chạy command này và trả về một result có tên là checkout basket result.
 
 19
 00:01:24,440 --> 00:01:29,360
-So we will indicate this is the I command operation that we are going to hitting the command handler
+Vậy chúng ta sẽ chỉ ra đây là I command operation mà chúng ta sẽ hit command handler
 
 20
 00:01:29,360 --> 00:01:32,150
-object with using this command result record type.
+object bằng cách sử dụng command result record type này.
 
 21
 00:01:32,150 --> 00:01:37,160
-And after that here you can see the second record type which is the public record checkout basket result.
+Và sau đó ở đây bạn có thể thấy loại record thứ hai đó là public record checkout basket result.
 
 22
 00:01:37,160 --> 00:01:44,090
-And as a parameter it is taking Boolean is success property that is indicating the operation is completed
+Và như một tham số, nó nhận Boolean is success property để chỉ ra rằng hoạt động đã được hoàn thành
 
 23
 00:01:44,090 --> 00:01:45,470
-successfully or not.
+thành công hay không.
 
 24
 00:01:45,470 --> 00:01:50,630
-So after defining this command and result object, we can define our validator.
+Vậy sau khi xác định command và result object này, chúng ta có thể xác định validator của chúng ta.
 
 25
 00:01:50,630 --> 00:01:53,570
-But before that we are developing command object.
+Nhưng trước đó chúng ta đang phát triển command object.
 
 26
 00:01:53,570 --> 00:01:59,210
-If you open the checkout basket end point, you can see that the checkout basket command is coming in
+Nếu bạn mở checkout basket end point, bạn có thể thấy rằng checkout basket command đang đi vào
 
 27
 00:01:59,210 --> 00:02:02,000
-here and there is no exception from the our end point class.
+đây và không có exception nào từ end point class của chúng ta.
 
 28
 00:02:02,000 --> 00:02:07,940
-So if you continue our implementation handler class, you can see that I'm going to develop our validator
+Vậy nếu bạn tiếp tục implementation handler class của chúng ta, bạn có thể thấy rằng tôi sẽ phát triển validator
 
 29
 00:02:07,940 --> 00:02:11,600
-class which is the public class checkout basket command validator.
+class của chúng ta, đó là public class checkout basket command validator.
 
 30
 00:02:11,600 --> 00:02:17,480
-And this will be inherit from the abstract validator which comes from the fluent validation and taking
+Và cái này sẽ inherit từ abstract validator, cái mà đến từ fluent validation và nhận
 
 31
 00:02:17,480 --> 00:02:19,940
-generic parameter which is a checkout basket command.
+generic parameter đó là checkout basket command.
 
 32
 00:02:19,940 --> 00:02:26,390
-That means we will validate this command object and DTO object inside of this constructor using the
+Điều đó có nghĩa là chúng ta sẽ validate command object này và DTO object này bên trong constructor sử dụng
 
 33
 00:02:26,390 --> 00:02:29,720
-rule for methods and we will check basket checkout.
+rule for methods và chúng ta sẽ kiểm tra basket checkout.
 
 34
 00:02:29,720 --> 00:02:34,040
-DTO is not null and the username is not empty with a given messages.
+DTO không phải null và username không phải empty với một message được cung cấp.
 
 35
 00:02:34,040 --> 00:02:40,160
-After develop this validator class, we can start to implement actual handler class.
+Sau khi phát triển validator class này, chúng ta có thể bắt đầu triển khai actual handler class.
 
 36
 00:02:40,160 --> 00:02:42,470
-Which name is checkout basket handler?
+Cái mà tên của nó là checkout basket handler?
 
 37
 00:02:42,470 --> 00:02:48,890
-I'm going to make it command handler checkout basket command handler in order to identify this command
+Tôi sẽ tạo nó command handler checkout basket command handler để xác định command
 
 38
 00:02:48,890 --> 00:02:50,420
-or query handler class.
+hoặc query handler class này.
 
 39
 00:02:50,420 --> 00:02:56,510
-And after that we are going to implement an interface which is the I command under this interface,
+Và sau đó chúng ta sẽ triển khai một interface, đó là I command dưới interface này,
 
 40
 00:02:56,510 --> 00:02:59,930
-taking two generic arguments as an input and output.
+nhận hai generic arguments như input và output.
 
 41
 00:02:59,930 --> 00:03:05,870
-The first one is checkout basket command which is indicating incoming command object to handle class,
+Cái đầu tiên là checkout basket command, nó chỉ ra incoming command object cho handle class,
 
 42
 00:03:05,870 --> 00:03:10,880
-and the second one is checkout basket result, which is indicating the response object from the handle
+và cái thứ hai là checkout basket result, nó chỉ ra response object từ handle
 
 43
 00:03:10,880 --> 00:03:11,300
@@ -172,19 +172,19 @@ object.
 
 44
 00:03:11,300 --> 00:03:13,640
-So I am going to implement these interface.
+Vậy tôi sẽ triển khai các interface này.
 
 45
 00:03:13,640 --> 00:03:18,710
-And you can see that this will be create a handle method which basically implement.
+Và bạn có thể thấy rằng điều này sẽ tạo ra một handle method, nó cơ bản triển khai.
 
 46
 00:03:18,710 --> 00:03:22,280
-The handler is responsible for the processing the checkout requests.
+Handler chịu trách nhiệm xử lý các checkout requests.
 
 47
 00:03:22,280 --> 00:03:27,800
-And in this handle method you can see that the first parameter is command object which is the checkout
+Và trong handle method này, bạn có thể thấy rằng tham số đầu tiên là command object, đó là checkout
 
 48
 00:03:27,800 --> 00:03:28,610
@@ -192,95 +192,95 @@ basket command.
 
 49
 00:03:28,610 --> 00:03:32,510
-And I am going to change the parameter name request command.
+Và tôi sẽ thay đổi tên tham số thành request command.
 
 50
 00:03:32,510 --> 00:03:35,870
-And the second parameter is cancellation token.
+Và tham số thứ hai là cancellation token.
 
 51
 00:03:35,870 --> 00:03:38,900
-So now we are going to implement this handle method.
+Vậy bây giờ chúng ta sẽ triển khai handle method này.
 
 52
 00:03:38,900 --> 00:03:41,960
-I'm going to make this method as an asynchronous method.
+Tôi sẽ làm cho method này thành một asynchronous method.
 
 53
 00:03:41,960 --> 00:03:46,070
-And we will perform the handle operations in the middle of this method.
+Và chúng ta sẽ thực hiện các handle operations ở giữa method này.
 
 54
 00:03:46,070 --> 00:03:52,310
-Basically, this method should perform a series of steps including retrieving the basket, publishing
+Cơ bản thì, method này nên thực hiện một loạt các bước bao gồm lấy basket, publishing
 
 55
 00:03:52,340 --> 00:03:55,880
-the basket checkout event, and after that deleting the basket.
+sự kiện checkout basket, và sau đó xóa basket.
 
 56
 00:03:55,880 --> 00:03:58,460
-So let's plan this checkout handle method.
+Vậy hãy lập kế hoạch cho checkout handle method này.
 
 57
 00:03:58,460 --> 00:04:04,340
-I'm going to write a command to do list, which is including the steps that we are going to handle in
+Tôi sẽ viết một command to do list, nó bao gồm các bước mà chúng ta sẽ handle trong
 
 58
 00:04:04,340 --> 00:04:05,210
-the handle method.
+handle method.
 
 59
 00:04:05,210 --> 00:04:09,260
-So now these are the get existing basket with the total price.
+Vậy bây giờ đây là việc lấy existing basket với tổng giá.
 
 60
 00:04:09,260 --> 00:04:12,950
-And after that we will set the total price on Basket Checkout event message.
+Và sau đó chúng ta sẽ set tổng giá trên Basket Checkout event message.
 
 61
 00:04:12,950 --> 00:04:17,240
-And we will send the Basket Checkout event to the RabbitMQ using the Masstransit library.
+Và chúng ta sẽ gửi sự kiện Basket Checkout đến RabbitMQ sử dụng thư viện Masstransit.
 
 62
 00:04:17,420 --> 00:04:19,220
-And lastly we will delete the basket.
+Và cuối cùng chúng ta sẽ xóa giỏ hàng.
 
 63
 00:04:19,220 --> 00:04:22,550
-So now we are going to follow these steps in the handle method.
+Vậy bây giờ chúng ta sẽ làm theo các bước này trong phương thức handle.
 
 64
 00:04:22,550 --> 00:04:27,350
-But before that we should inject the required services to perform these actions.
+Nhưng trước đó, chúng ta nên inject các dịch vụ cần thiết để thực hiện các hành động này.
 
 65
 00:04:27,350 --> 00:04:31,160
-As you can see that we need to interact with the database and RabbitMQ.
+Như bạn có thể thấy, chúng ta cần tương tác với cơ sở dữ liệu và RabbitMQ.
 
 66
 00:04:31,160 --> 00:04:37,310
-For that reason, we need two services to inject our class in order to perform these actions.
+Vì lý do đó, chúng ta cần hai dịch vụ để inject vào lớp của chúng ta để thực hiện các hành động này.
 
 67
 00:04:37,310 --> 00:04:44,360
-For that purpose, I am going to come here and create a primary constructor and I'm going to edit two
+Vì mục đích đó, tôi sẽ tới đây và tạo một primary constructor và tôi sẽ chỉnh sửa hai
 
 68
 00:04:44,360 --> 00:04:45,110
-services.
+dịch vụ.
 
 69
 00:04:45,110 --> 00:04:51,290
-The first one is AI basket Repository and repository object in order to perform database operation.
+Dịch vụ đầu tiên là AI basket Repository và đối tượng repository để thực hiện các hoạt động cơ sở dữ liệu.
 
 70
 00:04:51,290 --> 00:04:58,190
-And the second object is AI publish endpoint class which is interface comes from the mass transit library
+Và đối tượng thứ hai là lớp AI publish endpoint, một interface đến từ thư viện mass transit
 
 71
 00:04:58,190 --> 00:04:59,720
-in order to publish an.
+để publish một.
 
 72
 00:05:00,290 --> 00:05:00,980
@@ -288,27 +288,27 @@ RabbitMQ.
 
 73
 00:05:01,010 --> 00:05:05,000
-So we will inject these two services to perform these tasks.
+Vậy chúng ta sẽ inject hai dịch vụ này để thực hiện các nhiệm vụ này.
 
 74
 00:05:05,030 --> 00:05:11,090
-So after that we can start the first task which is the get existing basket with a given username.
+Vậy sau đó, chúng ta có thể bắt đầu nhiệm vụ đầu tiên, đó là lấy giỏ hàng hiện có với tên người dùng được cung cấp.
 
 75
 00:05:11,090 --> 00:05:17,390
-So I am going to remove this throw statement and perform the first task which is the getting the basket
+Vậy tôi sẽ xóa câu lệnh throw này và thực hiện nhiệm vụ đầu tiên, đó là lấy thông tin giỏ hàng
 
 76
 00:05:17,390 --> 00:05:19,880
-information using the repository object.
+sử dụng đối tượng repository.
 
 77
 00:05:19,880 --> 00:05:24,800
-As you can see that we will use a basket repository and we will use get basket method.
+Như bạn có thể thấy, chúng ta sẽ sử dụng basket repository và chúng ta sẽ sử dụng phương thức get basket.
 
 78
 00:05:24,800 --> 00:05:30,650
-In order to get existing basket with a passing the parameter incoming command object, which is the
+Để lấy giỏ hàng hiện có bằng cách truyền tham số từ đối tượng incoming command, đó là
 
 79
 00:05:30,650 --> 00:05:33,290
@@ -316,19 +316,19 @@ command at basket checkout dot username.
 
 80
 00:05:33,290 --> 00:05:38,030
-And we will pass the cancellation token and we will get back to basket information.
+Và chúng ta sẽ truyền cancellation token và chúng ta sẽ nhận lại thông tin giỏ hàng.
 
 81
 00:05:38,030 --> 00:05:42,230
-And if the basket is null, we will return checkout basket result as a false.
+Và nếu basket là null, chúng ta sẽ trả về checkout basket result là false.
 
 82
 00:05:42,230 --> 00:05:46,070
-That means we cannot perform this checkout operation successfully.
+Điều đó có nghĩa là chúng ta không thể thực hiện thành công thao tác checkout này.
 
 83
 00:05:46,070 --> 00:05:51,380
-And after that we can go to the second step, which is to set the total price on basket checkout event
+Và sau đó chúng ta có thể đi đến bước thứ hai, đó là đặt tổng giá trên basket checkout event
 
 84
 00:05:51,380 --> 00:05:51,860
@@ -336,27 +336,27 @@ message.
 
 85
 00:05:51,860 --> 00:05:56,900
-That means we will create an event message and prepare and calculate the total price.
+Điều đó có nghĩa là chúng ta sẽ tạo một event message và chuẩn bị và tính toán tổng giá.
 
 86
 00:05:56,900 --> 00:06:02,900
-For that purpose, I am going to create a event message in a variable of the event message, and this
+Để mục đích đó, tôi sẽ tạo một event message trong một biến của event message, và cái này
 
 87
 00:06:02,900 --> 00:06:05,450
-will be basically adopting the incoming basket.
+về cơ bản sẽ áp dụng incoming basket.
 
 88
 00:06:05,450 --> 00:06:08,060
-Checkout DTO to the Basket Checkout event.
+Checkout DTO đến Basket Checkout event.
 
 89
 00:06:08,060 --> 00:06:14,150
-So this will be preparing the event message when we are sending to publishing to RabbitMQ.
+Vậy điều này sẽ chuẩn bị event message khi chúng ta gửi để publish tới RabbitMQ.
 
 90
 00:06:14,150 --> 00:06:20,300
-And here you can see that we will calculating and passing the total price from the checkout DTO to checkout
+Và ở đây bạn có thể thấy rằng chúng ta sẽ tính toán và truyền tổng giá từ checkout DTO đến checkout
 
 91
 00:06:20,300 --> 00:06:20,810
@@ -364,15 +364,15 @@ event.
 
 92
 00:06:20,810 --> 00:06:26,510
-So now we are going to come to the point where we are publishing the event message to the RabbitMQ.
+Vậy bây giờ chúng ta sẽ đến điểm mà chúng ta đang publish event message tới RabbitMQ.
 
 93
 00:06:26,510 --> 00:06:33,560
-So here you can see that I am going to using the publish endpoint interface object that we are going
+Vậy ở đây bạn có thể thấy rằng tôi sẽ sử dụng đối tượng publish endpoint interface mà chúng ta sẽ
 
 94
 00:06:33,560 --> 00:06:39,500
-to use publish method from the mass transit and passing the event message as a parameter and cancellation
+sử dụng publish method từ mass transit và truyền event message như một tham số và cancellation
 
 95
 00:06:39,500 --> 00:06:39,980
@@ -380,39 +380,39 @@ token.
 
 96
 00:06:39,980 --> 00:06:46,730
-So this will be basically perform the publishing the event to RabbitMQ using the message transits.
+Vậy điều này về cơ bản sẽ thực hiện publish event tới RabbitMQ sử dụng message transit.
 
 97
 00:06:46,730 --> 00:06:53,450
-I publish endpoint interface and after that we will come to the point where we are delete the basket
+I publish endpoint interface và sau đó chúng ta sẽ đến điểm mà chúng ta đang xóa basket
 
 98
 00:06:53,450 --> 00:06:59,450
-because after publishing the event to the RabbitMQ, we should delete the existing basket into the basket
+vì sau khi publish event tới RabbitMQ, chúng ta nên xóa basket hiện có trong basket
 
 99
 00:06:59,450 --> 00:07:01,100
-database for that purpose.
+database để mục đích đó.
 
 100
 00:07:01,100 --> 00:07:07,670
-Again I am going to use repository object and this time we will use await repository dot delete basket
+Một lần nữa tôi sẽ sử dụng repository object và lần này chúng ta sẽ sử dụng await repository dot delete basket
 
 101
 00:07:07,670 --> 00:07:11,660
-method and passing the username from the incoming command basket.
+phương thức và truyền username từ lệnh basket đến.
 
 102
 00:07:11,660 --> 00:07:13,760
-Checkout DTO username parameter.
+Tham số username của Checkout DTO.
 
 103
 00:07:13,760 --> 00:07:15,650
-With passing the cancellation token.
+Với việc truyền cancellation token.
 
 104
 00:07:15,650 --> 00:07:22,070
-With this line of code, we basically delete the existing basket which is coming from the incoming command
+Với dòng code này, về cơ bản chúng ta xóa basket hiện có đến từ lệnh đến
 
 105
 00:07:22,070 --> 00:07:22,610
@@ -420,55 +420,55 @@ object.
 
 106
 00:07:22,610 --> 00:07:25,070
-And lastly, we will return a result.
+Và cuối cùng, chúng ta sẽ trả về một kết quả.
 
 107
 00:07:25,070 --> 00:07:29,270
-And in our case I'm going to return checkout basket result.
+Và trong trường hợp của chúng ta, tôi sẽ trả về checkout basket result.
 
 108
 00:07:29,270 --> 00:07:31,610
-And this will be taking true.
+Và điều này sẽ lấy true.
 
 109
 00:07:31,640 --> 00:07:36,770
-Which means we will perform the checkout operation successfully as a result of the handle method.
+Điều này có nghĩa là chúng ta sẽ thực hiện thành công hoạt động checkout như một kết quả của phương thức handle.
 
 110
 00:07:36,770 --> 00:07:41,540
-So this is the basket checkout implementation of the basket microservices.
+Vậy đây là việc triển khai basket checkout của basket microservices.
 
 111
 00:07:41,540 --> 00:07:47,390
-This will be start asynchronous communication with publishing event message to the RabbitMQ that will
+Điều này sẽ bắt đầu liên lạc không đồng bộ bằng cách công bố thông báo sự kiện tới RabbitMQ mà sẽ
 
 112
 00:07:47,390 --> 00:07:49,310
-consume from the ordering microservices.
+được tiêu thụ từ ordering microservices.
 
 113
 00:07:49,310 --> 00:07:54,230
-So basically we will create a checkout basket vertical slice feature folder.
+Vậy về cơ bản chúng ta sẽ tạo một feature folder vertical slice checkout basket.
 
 114
 00:07:54,230 --> 00:08:00,560
-And we will create an endpoint class exposing the slash basket slash checkout http post method.
+Và chúng ta sẽ tạo một lớp endpoint công bố phương thức HTTP POST /basket/checkout.
 
 115
 00:08:00,560 --> 00:08:04,760
-And we will accepting the request object with passing the DTO object.
+Và chúng ta sẽ chấp nhận đối tượng yêu cầu với việc truyền đối tượng DTO.
 
 116
 00:08:04,760 --> 00:08:10,520
-And after that handle these operations in the handle method of the checkout basket command handle class.
+Và sau đó xử lý các hoạt động này trong phương thức handle của lớp checkout basket command handle.
 
 117
 00:08:10,520 --> 00:08:14,300
-And we will get existing basket with incoming username.
+Và chúng ta sẽ lấy basket hiện có với username đến.
 
 118
 00:08:14,300 --> 00:08:19,340
-And after that we will create an event message that we are going to publish these event message to the
+Và sau đó chúng ta sẽ tạo một thông báo sự kiện mà chúng ta sẽ công bố thông báo sự kiện này tới
 
 119
 00:08:19,340 --> 00:08:20,180
@@ -476,49 +476,49 @@ RabbitMQ.
 
 120
 00:08:20,210 --> 00:08:23,660
-And lastly we will delete the basket with incoming username.
+Và cuối cùng chúng ta sẽ xóa basket với username đến.
 
 121
 00:08:23,660 --> 00:08:27,590
-And after that we will return a result as a true parameter.
+Và sau đó chúng ta sẽ trả về một kết quả là tham số true.
 
 122
 00:08:27,590 --> 00:08:30,020
-So this is the implementation of the handle method.
+Vậy đây là triển khai của phương thức handle.
 
 123
 00:08:30,020 --> 00:08:35,030
-I'm going to right click the basket API and build the basket microservices that we are going to finish
+Tôi sẽ click chuột phải vào basket API và build basket microservices mà chúng ta sắp hoàn thành
 
 124
 00:08:35,030 --> 00:08:36,440
-our publisher site.
+trang publisher của chúng ta.
 
 125
 00:08:36,440 --> 00:08:43,250
-But I'm going to explain some of the considerations when we are implementing this handle method.
+Nhưng tôi sẽ giải thích một số điểm cần xem xét khi chúng ta triển khai phương thức handle này.
 
 126
 00:08:43,250 --> 00:08:48,170
-In here you can see that we basically publish basket checkout event to RabbitMQ.
+Ở đây bạn có thể thấy rằng chúng ta về cơ bản publish sự kiện basket checkout tới RabbitMQ.
 
 127
 00:08:48,170 --> 00:08:52,580
-And just after that we will delete the basket into our basket database.
+Và ngay sau đó chúng ta sẽ xóa basket khỏi cơ sở dữ liệu basket của chúng ta.
 
 128
 00:08:52,580 --> 00:08:57,920
-So that means we will interacting to different external systems in the handle method.
+Vậy điều đó có nghĩa là chúng ta sẽ tương tác với các hệ thống bên ngoài khác nhau trong phương thức handle.
 
 129
 00:08:57,920 --> 00:09:01,130
-And this will be leading dolerite problem.
+Và điều này sẽ dẫn đến vấn đề consistency.
 
 130
 00:09:01,130 --> 00:09:05,150
-And these dolerite problem can be solved by using the outbox pattern.
+Và những vấn đề consistency này có thể được giải quyết bằng cách sử dụng outbox pattern.
 
 131
 00:09:05,150 --> 00:09:09,800
-So in the next video we are going to learn dolerite problem and the outbox pattern.
+Vậy trong video tiếp theo chúng ta sẽ học về vấn đề consistency và outbox pattern.
 
