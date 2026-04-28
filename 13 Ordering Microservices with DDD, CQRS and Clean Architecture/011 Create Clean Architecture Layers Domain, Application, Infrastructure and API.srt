@@ -1,102 +1,102 @@
 1
 00:00:00,170 --> 00:00:05,900
-In this video we are going to create clean architecture layers for ordering microservices.
+Trong video này chúng ta sẽ tạo clean architecture layers cho ordering microservices.
 
 2
 00:00:05,900 --> 00:00:10,070
-These are the domain application infrastructure and API layer.
+Đó là domain layer, application layer, infrastructure layer và API layer.
 
 3
 00:00:10,100 --> 00:00:13,760
-Please open the Visual Studio and go to the ordering folder.
+Vui lòng mở Visual Studio và đi tới thư mục ordering.
 
 4
 00:00:13,760 --> 00:00:18,110
-And under this folder I'm going to right click and Add New Project.
+Và dưới thư mục này tôi sẽ nhấp chuột phải và chọn Add New Project.
 
 5
 00:00:18,110 --> 00:00:22,280
-This time we will create a class library and click the next button.
+Lần này chúng ta sẽ tạo một class library và nhấp nút next.
 
 6
 00:00:22,280 --> 00:00:25,220
-So Project Name will be ordering dot domain.
+Vậy Project Name sẽ là ordering.domain.
 
 7
 00:00:25,220 --> 00:00:33,560
-And make sure that location could be same as the ordering API if you open this location and go to services.
+Và đảm bảo rằng vị trí có thể giống như ordering API nếu bạn mở vị trí này và đi tới services.
 
 8
 00:00:34,740 --> 00:00:36,720
-Ordering folder.
+Thư mục Ordering.
 
 9
 00:00:36,720 --> 00:00:42,930
-Here you can see that these will be creating ordering domain class library under the ordering folder
+Ở đây bạn có thể thấy rằng chúng ta sẽ tạo class library ordering domain dưới thư mục ordering.
 
 10
 00:00:43,050 --> 00:00:44,460
-and click the next button.
+và nhấp nút next.
 
 11
 00:00:44,460 --> 00:00:48,630
-And the only configuration is framework and leave as it is selecting.
+Và cấu hình duy nhất là framework và để nguyên như đã chọn.
 
 12
 00:00:48,810 --> 00:00:51,060
-Net eight and click the create button.
+.NET 8 và nhấp nút create.
 
 13
 00:00:51,750 --> 00:00:56,940
-Here you can see that the ordering domain class library created successfully, and this layer will include
+Ở đây bạn có thể thấy rằng class library ordering domain đã được tạo thành công, và layer này sẽ bao gồm.
 
 14
 00:00:56,940 --> 00:01:02,970
-domain models, value objects, and domain services that encapsulate the business logic and rules of
+domain models, value objects, và domain services mà đóng gói business logic và rules của.
 
 15
 00:01:02,970 --> 00:01:04,379
-the ordering microservices.
+ordering microservices.
 
 16
 00:01:04,379 --> 00:01:09,480
-You can double click the this class library project and verify that our target framework is.
+Bạn có thể double click class library project này và xác minh rằng target framework của chúng ta là.
 
 17
 00:01:09,660 --> 00:01:10,350
-Net eight.
+.NET 8.
 
 18
 00:01:10,710 --> 00:01:14,850
-After that, we are going to continue with the ordering application class library.
+Sau đó, chúng ta sẽ tiếp tục với ordering application class library.
 
 19
 00:01:14,850 --> 00:01:21,690
-I'm going to right click the ordering folder, Add New Project and select Class Library.
+Tôi sẽ nhấp chuột phải thư mục ordering, Add New Project và chọn Class Library.
 
 20
 00:01:21,690 --> 00:01:28,530
-Click the next button and change the project name as the ordering application and set the location as
+Nhấp nút next và thay đổi tên project thành ordering.application và đặt vị trí là.
 
 21
 00:01:28,530 --> 00:01:33,300
-the same way Source Services ordering and select this folder.
+cùng cách với Source Services Ordering và chọn folder này.
 
 22
 00:01:33,300 --> 00:01:36,240
-And we are going to create Ordering Application class library.
+Và chúng ta sẽ tạo class library Ordering Application.
 
 23
 00:01:36,240 --> 00:01:40,230
-Under the ordering folder, click the next button and click the create button.
+Trong folder Ordering, nhấn nút next và nhấn nút create.
 
 24
 00:01:41,390 --> 00:01:44,780
-So this layer is responsible for application logic.
+Vậy layer này chịu trách nhiệm cho application logic.
 
 25
 00:01:44,780 --> 00:01:51,110
-And it will typically include classes for command and query handling dtos and interface for application
+Và nó sẽ thường bao gồm các class cho command và query handling, dtos và interface cho application
 
 26
 00:01:51,110 --> 00:01:51,980
@@ -104,39 +104,39 @@ services.
 
 27
 00:01:52,130 --> 00:01:59,360
-So we can call these ordering domain and ordering application layers with together as a core layer.
+Vậy chúng ta có thể gọi những layer Ordering Domain và Ordering Application cùng với nhau là core layer.
 
 28
 00:01:59,360 --> 00:02:05,360
-Because these layers will cover line of business requirement without any infrastructure dependency.
+Bởi vì những layer này sẽ cover line of business requirement mà không có bất kỳ infrastructure dependency nào.
 
 29
 00:02:05,810 --> 00:02:08,720
-After that we will create ordering infrastructure.
+Sau đó chúng ta sẽ tạo Ordering Infrastructure.
 
 30
 00:02:08,720 --> 00:02:15,140
-For that purpose I am going to right click the ordering folder, Add New Project and select Class Library
+Để làm điều đó, tôi sẽ right click vào folder Ordering, Add New Project và chọn Class Library
 
 31
 00:02:15,140 --> 00:02:22,700
-and change the name as a ordering infrastructure and change the Location Source Services ordering folder.
+và thay đổi tên thành Ordering Infrastructure và thay đổi vị trí folder Source Services Ordering.
 
 32
 00:02:22,700 --> 00:02:25,760
-This will be create Ordering Infrastructure class library.
+Điều này sẽ tạo class library Ordering Infrastructure.
 
 33
 00:02:25,760 --> 00:02:29,810
-Under the ordering folder, click the next button and click the create button.
+Trong folder Ordering, nhấn nút next và nhấn nút create.
 
 34
 00:02:30,430 --> 00:02:36,280
-So this layer will contain implementation of interfaces defined in the domain layer and application
+Vậy layer này sẽ chứa triển khai của các interface được định nghĩa trong domain layer và application
 
 35
 00:02:36,280 --> 00:02:42,580
-layer, such as repository implementation classes, along with any other code that interacts with external
+layer, chẳng hạn như các repository implementation classes, cùng với bất kỳ code nào khác tương tác với external
 
 36
 00:02:42,580 --> 00:02:43,330
@@ -144,13 +144,13 @@ concerns.
 
 37
 00:02:43,360 --> 00:02:48,520
-Example of the database access file system, email sending and web services.
+Ví dụ như database access, file system, email sending và web services.
 
 38
 00:02:48,550 --> 00:02:52,240
-As you can see that we have successfully created clean architecture layers.
+Như bạn có thể thấy, chúng ta đã successfully tạo các clean architecture layers.
 
 39
 00:02:52,240 --> 00:02:55,870
-These are the three class library and one API project.
+Đây là ba class library và một API project.
 
