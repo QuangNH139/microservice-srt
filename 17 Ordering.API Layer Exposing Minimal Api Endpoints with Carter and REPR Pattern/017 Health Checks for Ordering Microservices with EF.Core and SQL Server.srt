@@ -1,18 +1,18 @@
 1
 00:00:00,110 --> 00:00:05,750
-In this video, we are going to develop health checks for ordering microservices with Entity Framework,
+Trong video này, chúng ta sẽ phát triển health checks cho ordering microservices với Entity Framework,
 
 2
 00:00:05,750 --> 00:00:07,370
-core and SQL server.
+core và SQL server.
 
 3
 00:00:07,640 --> 00:00:11,900
-As you know that ordering microservices relying on the SQL server database.
+Như bạn biết rằng ordering microservices phụ thuộc vào cơ sở dữ liệu SQL server.
 
 4
 00:00:11,900 --> 00:00:17,870
-So we should add a health check into ASP.Net core application using the Entity Framework core and SQL
+Vì vậy chúng ta nên thêm health check vào ứng dụng ASP.Net core sử dụng Entity Framework core và SQL
 
 5
 00:00:17,870 --> 00:00:18,410
@@ -20,11 +20,11 @@ server.
 
 6
 00:00:18,740 --> 00:00:24,650
-ASP.Net core provides middleware and libraries in order to implement health checks, and health checks
+ASP.Net core cung cấp middleware và các thư viện để triển khai health checks, và health checks
 
 7
 00:00:24,650 --> 00:00:27,410
-are exposed by an application as an Http.
+được exposed bởi một ứng dụng như một Http.
 
 8
 00:00:27,410 --> 00:00:28,280
@@ -32,27 +32,27 @@ Endpoints.
 
 9
 00:00:28,310 --> 00:00:32,450
-Health check endpoints can be configured for various real time monitoring scenarios.
+Health check endpoints có thể được cấu hình cho các tình huống giám sát real time khác nhau.
 
 10
 00:00:32,450 --> 00:00:34,010
-Please open the Visual Studio.
+Vui lòng mở Visual Studio.
 
 11
 00:00:34,010 --> 00:00:37,430
-And now we are going to implement health checks in ordering microservices.
+Và bây giờ chúng ta sẽ triển khai health checks trong ordering microservices.
 
 12
 00:00:37,430 --> 00:00:43,070
-If you open the program.cs of the ordering API layer, you can reach the point where we are adding services
+Nếu bạn mở program.cs của ordering API layer, bạn có thể tìm thấy điểm mà chúng ta đang thêm services
 
 13
 00:00:43,070 --> 00:00:44,000
-into container.
+vào container.
 
 14
 00:00:44,000 --> 00:00:50,030
-For ordering API, we are using add API services and this is the dependency injection case under the
+Đối với ordering API, chúng ta đang sử dụng add API services và đây là dependency injection case dưới
 
 15
 00:00:50,030 --> 00:00:51,020
@@ -60,31 +60,31 @@ ordering API.
 
 16
 00:00:51,020 --> 00:00:55,790
-And here you can see that we are adding services into add API extension method.
+Và ở đây bạn có thể thấy rằng chúng ta đang thêm services vào add API extension method.
 
 17
 00:00:55,790 --> 00:01:01,610
-In this method I am going to register the health check services in the application dependency container.
+Trong phương thức này tôi sẽ đăng ký health check services trong application dependency container.
 
 18
 00:01:01,610 --> 00:01:08,660
-So in here I'm going to add a services dot add health checks method to adding health check related objects
+Vì vậy ở đây tôi sẽ thêm services dot add health checks method để thêm các đối tượng liên quan đến health check
 
 19
 00:01:08,660 --> 00:01:10,280
-into dependency injection.
+vào dependency injection.
 
 20
 00:01:10,280 --> 00:01:13,040
-And after that we should set up the middleware.
+Và sau đó chúng ta nên thiết lập middleware.
 
 21
 00:01:13,040 --> 00:01:20,420
-If you scroll down, if you go to the use API services, this is where we are configuring the Http lifecycle.
+Nếu bạn cuộn xuống, nếu bạn đến phần use API services, đây là nơi chúng ta đang cấu hình Http lifecycle.
 
 22
 00:01:20,420 --> 00:01:27,230
-So I'm going to configure the middleware which is the app dot use health checks with exposing the health
+Vậy tôi sẽ cấu hình middleware đó là app dot use health checks với việc expose health
 
 23
 00:01:27,230 --> 00:01:27,830
@@ -92,35 +92,35 @@ endpoint.
 
 24
 00:01:27,830 --> 00:01:31,790
-In here you can see that we have added App.use health checks.
+Trong đây bạn có thể thấy chúng ta đã thêm App.use health checks.
 
 25
 00:01:31,790 --> 00:01:33,680
-And this is the endpoint of the health.
+Và đây là endpoint của health.
 
 26
 00:01:33,680 --> 00:01:38,870
-So with these two line of code we can activate the health checks for ordering microservices.
+Vậy với hai dòng code này chúng ta có thể kích hoạt health checks cho ordering microservice.
 
 27
 00:01:38,870 --> 00:01:42,590
-So now we can run the ordering API in Https mode.
+Vậy bây giờ chúng ta có thể chạy ordering API ở chế độ Https.
 
 28
 00:01:42,590 --> 00:01:47,690
-And after that we will hit the health endpoint and get the response from ordering microservices.
+Và sau đó chúng ta sẽ gọi health endpoint và nhận response từ ordering microservice.
 
 29
 00:01:47,690 --> 00:01:50,420
-After running application you can open the postman.
+Sau khi chạy application bạn có thể mở Postman.
 
 30
 00:01:50,420 --> 00:01:56,420
-And if you go to the ordering microservices postman collection, you can see that I have added get health
+Và nếu bạn đến ordering microservice Postman collection, bạn có thể thấy rằng tôi đã thêm get health
 
 31
 00:01:56,420 --> 00:02:03,350
-endpoint and this is the Http get and ordering URL and slash health that we can configure in the order
+endpoint và đây là Http get và ordering URL và slash health mà chúng ta có thể cấu hình trong order
 
 32
 00:02:03,350 --> 00:02:05,150
@@ -128,51 +128,51 @@ configuration dependency injection.
 
 33
 00:02:05,150 --> 00:02:10,639
-So I am going to hit the send button and hit the health endpoint to our ordering microservices.
+Vậy tôi sẽ nhấp nút send và gọi health endpoint của ordering microservice chúng ta.
 
 34
 00:02:10,639 --> 00:02:12,770
-And it is returning 200 okay.
+Và nó đang trả về 200 okay.
 
 35
 00:02:12,770 --> 00:02:14,150
-And health response.
+Và health response.
 
 36
 00:02:14,150 --> 00:02:17,540
-But this is only returning ordering microservice health check.
+Nhưng đây chỉ trả về health check của ordering microservice.
 
 37
 00:02:17,540 --> 00:02:19,340
-That means ASP.Net project.
+Điều đó có nghĩa là ASP.Net project.
 
 38
 00:02:19,340 --> 00:02:24,740
-But ordering microservices relying on the ordering database which is SQL server.
+Nhưng ordering microservice phụ thuộc vào ordering database đó là SQL Server.
 
 39
 00:02:24,740 --> 00:02:28,430
-That's why we need to add some custom health check for SQL server.
+Đó là lý do tại sao chúng ta cần thêm một số custom health check cho SQL Server.
 
 40
 00:02:28,430 --> 00:02:33,920
-So for that purpose, I'm going to check the SQL server database using the Entity Framework core Health
+Vậy cho mục đích đó, tôi sẽ kiểm tra SQL Server database sử dụng Entity Framework Core Health
 
 41
 00:02:33,920 --> 00:02:34,940
-check libraries.
+kiểm tra các libraries.
 
 42
 00:02:34,940 --> 00:02:36,770
-We can adding the custom health check.
+Chúng ta có thể thêm custom health check.
 
 43
 00:02:36,770 --> 00:02:41,150
-But for SQL server there is already predefined health check libraries.
+Nhưng đối với SQL server, đã có sẵn các health check libraries được định nghĩa trước.
 
 44
 00:02:41,150 --> 00:02:46,910
-If you remember that we have mentioned a GitHub repository that includes every health checks for the
+Nếu bạn còn nhớ, chúng ta đã đề cập đến một GitHub repository bao gồm mọi health checks cho các
 
 45
 00:02:46,910 --> 00:02:47,900
@@ -180,139 +180,139 @@ backing services.
 
 46
 00:02:47,900 --> 00:02:52,640
-Here you can see the name of the ASP.Net Core Diagnostic and Health checks.
+Ở đây bạn có thể thấy tên của ASP.Net Core Diagnostic and Health checks.
 
 47
 00:02:52,640 --> 00:02:57,800
-If you search for the SQL server, you can go to the SQL server implementation of the health check.
+Nếu bạn tìm kiếm SQL server, bạn có thể xem triển khai health check của SQL server.
 
 48
 00:02:57,800 --> 00:03:02,120
-And here you can see the NuGet packages for the SQL server implementation.
+Và ở đây bạn có thể thấy các NuGet packages cho triển khai SQL server.
 
 49
 00:03:02,120 --> 00:03:08,030
-So that's why I'm going to copy these NuGet packages and open the R Visual Studio.
+Vậy nên tôi sẽ sao chép các NuGet packages này và mở Visual Studio.
 
 50
 00:03:08,030 --> 00:03:12,410
-Right click the ordering API dependencies and manage NuGet packages.
+Click chuột phải vào ordering API dependencies và quản lý NuGet packages.
 
 51
 00:03:12,410 --> 00:03:18,530
-Of course we should stop the application, right click manage NuGet packages and browse for the ASP.Net
+Tất nhiên chúng ta nên dừng ứng dụng, click chuột phải quản lý NuGet packages và tìm kiếm ASP.Net
 
 52
 00:03:18,530 --> 00:03:23,210
-Core Health checks and SQL server install these NuGet packages.
+Core Health checks và SQL server, sau đó cài đặt các NuGet packages này.
 
 53
 00:03:23,420 --> 00:03:28,820
-After that, we should also install UI client library in order to getting Json response.
+Sau đó, chúng ta cũng nên cài đặt UI client library để nhận được Json response.
 
 54
 00:03:28,820 --> 00:03:34,730
-For that purpose, I am going to browse ASP.Net Core Health Checks UI client library and install this
+Với mục đích đó, tôi sẽ tìm kiếm ASP.Net Core Health Checks UI client library và cài đặt package
 
 55
 00:03:34,730 --> 00:03:35,360
-package.
+này.
 
 56
 00:03:35,840 --> 00:03:41,120
-So if you double click the ordering API, you can save the ordering API project file, and you can verify
+Vậy nên nếu bạn double click vào ordering API, bạn có thể lưu tệp dự án ordering API, và bạn có thể xác minh
 
 57
 00:03:41,120 --> 00:03:46,940
-that we have installed SQL server and UI client library from the ASP.Net Core Health checks.
+rằng chúng ta đã cài đặt SQL server và UI client library từ ASP.Net Core Health checks.
 
 58
 00:03:46,940 --> 00:03:51,290
-So now we can configure SQL Server Health check in the dependency injection.
+Vậy bây giờ chúng ta có thể cấu hình SQL Server Health check trong dependency injection.
 
 59
 00:03:51,290 --> 00:03:57,140
-If you go to dependency injection of the ordering API and you can locate the services dot add health
+Nếu bạn đi tới dependency injection của ordering API, bạn có thể tìm thấy phương thức services dot add health
 
 60
 00:03:57,140 --> 00:03:57,950
-checks method.
+checks.
 
 61
 00:03:57,950 --> 00:04:03,860
-And I am going to modify this health check operation with adding the SQL server into the health checks.
+Và tôi sẽ sửa đổi hoạt động health check này bằng cách thêm SQL Server vào health checks.
 
 62
 00:04:03,860 --> 00:04:07,610
-Here you can see that we are using services dot add health checks.
+Ở đây bạn có thể thấy chúng ta đang sử dụng services dot add health checks.
 
 63
 00:04:07,610 --> 00:04:14,000
-And also we are using additional extension method which is the add SQL server extension method which
+Và cũng chúng ta đang sử dụng extension method bổ sung đó là add SQL server extension method mà
 
 64
 00:04:14,000 --> 00:04:16,790
-comes from the our newly added library.
+đến từ thư viện mới được thêm vào của chúng ta.
 
 65
 00:04:16,790 --> 00:04:21,200
-And we are passing the connection string as a parameter of this extension method.
+Và chúng ta đang truyền chuỗi kết nối làm tham số của extension method này.
 
 66
 00:04:21,200 --> 00:04:22,550
-That means this.
+Điều đó có nghĩa là.
 
 67
 00:04:22,550 --> 00:04:27,950
-Add a health check specifically for SQL server using the connection string from the configuration.
+Thêm một health check cụ thể cho SQL Server sử dụng chuỗi kết nối từ cấu hình.
 
 68
 00:04:27,950 --> 00:04:32,720
-So that means we need to inject configuration as a parameter of this extension method.
+Vậy điều đó có nghĩa là chúng ta cần inject configuration làm tham số của extension method này.
 
 69
 00:04:32,720 --> 00:04:40,100
-For that purpose, I am going to come here and write I configuration and give the name as a configuration,
+Để mục đích đó, tôi sẽ đến đây và viết I configuration và đặt tên là configuration,
 
 70
 00:04:40,100 --> 00:04:46,100
-and we will use this configuration when adding SQL Server Health check into the health check codes.
+và chúng ta sẽ sử dụng configuration này khi thêm SQL Server Health check vào health check codes.
 
 71
 00:04:46,100 --> 00:04:52,070
-Of course, we should add the configuration parameter into add API services when we are using in the
+Tất nhiên, chúng ta nên thêm tham số configuration vào add API services khi chúng ta đang sử dụng trong
 
 72
 00:04:52,070 --> 00:04:57,200
-program says if you open the program says, you can see that this method is expecting configuration.
+program.cs, nếu bạn mở program.cs, bạn có thể thấy method này đang mong đợi configuration.
 
 73
 00:04:57,200 --> 00:04:59,600
-So I'm going to copy this builder config.
+Vậy tôi sẽ sao chép builder config.
 
 74
 00:05:00,120 --> 00:05:02,880
-And facing these at API service extension method.
+Và đặt những cái này vào API service extension method.
 
 75
 00:05:02,880 --> 00:05:07,890
-By this way, we can pass the configuration that we can access the configuration from the parameter
+Bằng cách này, chúng ta có thể truyền configuration để chúng ta có thể truy cập configuration từ tham số
 
 76
 00:05:07,890 --> 00:05:10,950
-of these eight API services extension method.
+của extension method add API services này.
 
 77
 00:05:10,950 --> 00:05:16,740
-And we will paste these configuration when we are adding a SQL Server health check with facing the database
+Và chúng ta sẽ dán configuration này khi chúng ta đang thêm SQL Server health check bằng cách truyền chuỗi kết nối cơ sở dữ liệu, và sau khi đăng ký SQL Server health check operations, chúng ta có thể cấu hình
 
 78
 00:05:16,740 --> 00:05:22,740
-connection string, and after registering Health check SQL server operations, we can configure the
+health check cho các hoạt động liên quan đến UI.
 
 79
 00:05:22,740 --> 00:05:25,380
-health check for the UI related operations.
+Điều đó có nghĩa là tôi sẽ sửa đổi điều kiện use health checks ở đây.
 
 80
 00:05:25,380 --> 00:05:30,300
@@ -320,15 +320,15 @@ That means I am going to modify the use health checks condition in here.
 
 81
 00:05:30,300 --> 00:05:33,810
-When we are using the health checks we can configure this method.
+Khi chúng ta sử dụng health checks, chúng ta có thể cấu hình phương thức này.
 
 82
 00:05:33,810 --> 00:05:40,350
-So I'm going to come here and modify this configuration with adding the health check options.
+Vậy tôi sẽ đến đây và sửa đổi cấu hình này bằng cách thêm các tùy chọn health check.
 
 83
 00:05:40,350 --> 00:05:46,350
-Here you can see that I have added the new health check options and set the response writer with health
+Ở đây bạn có thể thấy rằng tôi đã thêm các tùy chọn health check mới và đặt response writer với health
 
 84
 00:05:46,350 --> 00:05:47,610
@@ -336,47 +336,47 @@ check UI response.
 
 85
 00:05:47,610 --> 00:05:53,760
-So this will configures the endpoint in order to return detailed health check responses in a readable
+Vậy điều này sẽ cấu hình endpoint để trả về các health check responses chi tiết ở định dạng có thể đọc được
 
 86
 00:05:53,760 --> 00:05:55,650
-format and Json format.
+và định dạng Json.
 
 87
 00:05:55,650 --> 00:06:01,920
-So after configuring these health checks and adding health check related services into ASP.Net Dependency
+Vậy sau khi cấu hình các health checks này và thêm các dịch vụ liên quan đến health check vào ASP.Net Dependency
 
 88
 00:06:01,920 --> 00:06:05,610
-Injection, we can run the application with https mode.
+Injection, chúng ta có thể chạy ứng dụng ở chế độ https.
 
 89
 00:06:05,670 --> 00:06:10,020
-And now I am going to test health check with running order API application.
+Và bây giờ tôi sẽ kiểm tra health check bằng cách chạy ứng dụng order API.
 
 90
 00:06:10,020 --> 00:06:14,100
-And after running the application we can open the our postman.
+Và sau khi chạy ứng dụng, chúng ta có thể mở Postman của chúng ta.
 
 91
 00:06:14,100 --> 00:06:18,360
-And now I am going to send http get method for the health endpoint.
+Và bây giờ tôi sẽ gửi HTTP GET method cho endpoint health.
 
 92
 00:06:18,360 --> 00:06:23,460
-And this time I have expected to return a Json format and including the SQL server.
+Và lần này tôi mong đợi trả về định dạng Json và bao gồm SQL server.
 
 93
 00:06:23,460 --> 00:06:30,120
-Hit the send button and see that we have a Json response indicating that status is healthy and also
+Nhấn nút send và xem rằng chúng ta có một JSON response cho biết trạng thái là healthy và cũng
 
 94
 00:06:30,120 --> 00:06:33,930
-indicating the entities and SQL server is status is healthy.
+cho biết rằng entities và SQL server có trạng thái là healthy.
 
 95
 00:06:33,960 --> 00:06:39,900
-So that means we have successfully configured our health checks, including ordering microservices and
+Vậy điều đó có nghĩa là chúng ta đã cấu hình thành công health checks của chúng ta, bao gồm ordering microservices và
 
 96
 00:06:39,900 --> 00:06:41,010
