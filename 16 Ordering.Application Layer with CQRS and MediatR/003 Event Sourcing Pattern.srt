@@ -1,94 +1,94 @@
 1
 00:00:00,140 --> 00:00:04,250
-In this video we are going to learn event sourcing pattern.
+Trong video này chúng ta sẽ học về event sourcing pattern.
 
 2
 00:00:04,340 --> 00:00:06,530
-What is the event sourcing pattern?
+Event sourcing pattern là gì?
 
 3
 00:00:06,980 --> 00:00:13,250
-As you know that most of the applications saves data into databases with the current state of the entity.
+Như bạn biết rằng hầu hết các ứng dụng lưu dữ liệu vào cơ sở dữ liệu với trạng thái hiện tại của entity.
 
 4
 00:00:13,790 --> 00:00:20,990
-For example, if the user change email address into our application, the user email field updated with
+Ví dụ, nếu người dùng thay đổi địa chỉ email trong ứng dụng của chúng ta, trường email của người dùng được cập nhật với
 
 5
 00:00:20,990 --> 00:00:22,640
-the latest updated one.
+giá trị được cập nhật mới nhất.
 
 6
 00:00:22,970 --> 00:00:28,490
-So email information overwrite the existing field of email in the user table.
+Vậy thông tin email ghi đè lên trường email hiện có trong bảng user.
 
 7
 00:00:28,970 --> 00:00:33,110
-By this way, we always know the latest status of the data.
+Bằng cách này, chúng ta luôn biết trạng thái mới nhất của dữ liệu.
 
 8
 00:00:33,590 --> 00:00:39,110
-This is the traditional model that works fine to overwrite existing field when something changed.
+Đây là mô hình truyền thống hoạt động tốt để ghi đè lên trường hiện có khi có thứ gì đó thay đổi.
 
 9
 00:00:40,410 --> 00:00:47,010
-But in large scale architectures frequently update database operations can negatively impact the database
+Nhưng trong các kiến trúc quy mô lớn, các hoạt động cập nhật cơ sở dữ liệu thường xuyên có thể ảnh hưởng tiêu cực đến hiệu suất cơ sở dữ liệu
 
 10
 00:00:47,010 --> 00:00:50,460
-performance, responsiveness, and limits of scalability.
+khả năng phản hồi và giới hạn khả năng mở rộng.
 
 11
 00:00:51,600 --> 00:00:58,020
-In order to solve this problem, event sourcing pattern offers to persist each action that affects the
+Để giải quyết vấn đề này, event sourcing pattern đề xuất lưu trữ mỗi hành động ảnh hưởng đến
 
 12
 00:00:58,020 --> 00:01:03,330
-data into the event store database and call all these actions as an event.
+dữ liệu vào event store database và gọi tất cả các hành động này là một event.
 
 13
 00:01:04,019 --> 00:01:09,300
-So we can say that instead of saving the latest status of data into databases.
+Vậy chúng ta có thể nói rằng thay vì lưu trạng thái mới nhất của dữ liệu vào cơ sở dữ liệu.
 
 14
 00:01:09,360 --> 00:01:16,230
-Event Sourcing pattern offers to save all events into database with sequential order of data events.
+Event Sourcing pattern đề xuất lưu trữ tất cả các events vào database theo thứ tự tuần tự của các data events.
 
 15
 00:01:16,260 --> 00:01:19,350
-These events database called event store.
+Các database events này được gọi là event store.
 
 16
 00:01:21,240 --> 00:01:28,170
-That means instead of overriding the data into table, it creates a new record for each change to data
+Điều đó có nghĩa là thay vì ghi đè dữ liệu vào bảng, nó tạo một bản ghi mới cho mỗi thay đổi dữ liệu
 
 17
 00:01:28,170 --> 00:01:30,000
-and it becomes sequential.
+và nó trở thành tuần tự.
 
 18
 00:01:30,000 --> 00:01:31,650
-List of the past events.
+Danh sách các sự kiện trong quá khứ.
 
 19
 00:01:32,310 --> 00:01:39,120
-By this way, events store database become the source of truth for the data and these sequential list
+Bằng cách này, event store database trở thành nguồn dữ liệu đáng tin cậy và danh sách tuần tự này
 
 20
 00:01:39,120 --> 00:01:45,540
-using for generating materialized views that represent the final state of the data in order to perform
+được sử dụng để tạo các materialized views đại diện cho trạng thái cuối cùng của dữ liệu để thực hiện
 
 21
 00:01:45,540 --> 00:01:46,260
-queries.
+truy vấn.
 
 22
 00:01:47,250 --> 00:01:53,820
-So that means these events store convert to read database with following the materialized view pattern.
+Điều đó có nghĩa là các sự kiện trong event store được chuyển đổi thành read database theo mẫu materialized view pattern.
 
 23
 00:01:54,510 --> 00:02:00,900
-This convert operation can handle by publish subscribe pattern with publish events with using the message
+Quá trình chuyển đổi này có thể được xử lý bằng Publish Subscribe Pattern với việc phát hành các sự kiện bằng cách sử dụng message.
 
 24
 00:02:00,900 --> 00:02:01,980
@@ -96,9 +96,9 @@ broker systems.
 
 25
 00:02:02,370 --> 00:02:09,840
-Also, these event list gives ability to reply events at given certain timestamp, and by this way it
+Ngoài ra, danh sách sự kiện này cung cấp khả năng phát lại các sự kiện tại một thời điểm cụ thể, và bằng cách này.
 
 26
 00:02:09,840 --> 00:02:13,560
-is able to breathe latest status of data with replying to events.
+nó có thể khôi phục trạng thái mới nhất của dữ liệu bằng cách phát lại các sự kiện.
 
