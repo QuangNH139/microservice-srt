@@ -249,5 +249,7 @@
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/009 Develop Dto Classes for Orders in Ordering.Application Layer.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/010 Develop Orders CreateOrderCommand and Handler in Ordering.Application Layer.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/011 Develop IApplicationDbContext for injection EFCore DB Context object in Ordering.srt": "done",
-  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/012 Develop Orders CreateOrderCommandHandler using IApplicationDbContext in Ordering.srt": "done"
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/012 Develop Orders CreateOrderCommandHandler using IApplicationDbContext in Ordering.srt": "done",
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/013 Develop Orders UpdateOrderCommand and Handler using IApplicationDbContext.srt": "done",
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/014 Develop Orders DeleteOrderCommand and Handler using IApplicationDbContext.srt": "done"
 }
