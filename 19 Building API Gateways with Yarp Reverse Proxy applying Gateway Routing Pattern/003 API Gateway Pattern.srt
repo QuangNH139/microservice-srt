@@ -1,78 +1,78 @@
 1
 00:00:00,110 --> 00:00:04,700
-In this video we are going to learn what is API gateway pattern?
+Trong video này chúng ta sẽ học API gateway pattern là gì?
 
 2
 00:00:05,240 --> 00:00:09,380
-API gateway is a single point of entry to the client applications.
+API gateway là một điểm vào duy nhất cho các ứng dụng client.
 
 3
 00:00:09,800 --> 00:00:13,970
-API gateway sits between the client and multiple back end services.
+API gateway nằm giữa client và nhiều dịch vụ back end.
 
 4
 00:00:15,850 --> 00:00:21,820
-API gateways, manage routing to internal microservices and able to aggregate several microservices
+API gateways quản lý routing đến các microservices nội bộ và có khả năng tổng hợp nhiều microservices
 
 5
 00:00:21,820 --> 00:00:23,560
-requests in one response.
+yêu cầu thành một phản hồi duy nhất.
 
 6
 00:00:23,890 --> 00:00:29,920
-API gateways also can handle cross-cutting concerns like authentication, authorization, protocol,
+API gateways cũng có thể xử lý các mối quan tâm xuyên suốt như authentication, authorization, protocol
 
 7
 00:00:29,920 --> 00:00:33,550
-translation rate limiting, logging, monitoring, load balancing, and so on.
+translation, rate limiting, logging, monitoring, load balancing, và nhiều thứ khác.
 
 8
 00:00:34,510 --> 00:00:40,420
-The API gateway pattern is recommended if you want to design and build complex, large, microservice
+Mẫu API gateway được khuyến nghị nếu bạn muốn thiết kế và xây dựng các ứng dụng microservices phức tạp, lớn
 
 9
 00:00:40,420 --> 00:00:43,840
-based applications with multiple client applications.
+với nhiều ứng dụng client khác nhau.
 
 10
 00:00:44,140 --> 00:00:50,890
-API gateway pattern is similar to facade pattern from the object oriented design, but it is part of
+Mẫu API gateway tương tự như facade pattern từ object oriented design, nhưng nó là một phần của
 
 11
 00:00:50,890 --> 00:00:56,350
-a distributed system reverse proxy or gateway routing for using synchronous communication model.
+một hệ thống phân tán reverse proxy hoặc gateway routing để sử dụng mô hình giao tiếp đồng bộ.
 
 12
 00:00:56,740 --> 00:01:02,800
-We said that it is similar to facade pattern of object oriented design, so it provides a single entry
+Chúng tôi nói rằng nó tương tự như facade pattern của object oriented design, vì vậy nó cung cấp một điểm vào duy nhất
 
 13
 00:01:02,800 --> 00:01:07,090
-point to the APIs with encapsulating the underlying system architecture.
+cho các API với việc đóng gói kiến trúc hệ thống bên dưới.
 
 14
 00:01:09,180 --> 00:01:15,180
-API gateway pattern provides a reverse proxy to redirect or route requests to your internal microservice
+Mẫu API gateway cung cấp một reverse proxy để chuyển hướng hoặc định tuyến yêu cầu đến các endpoint microservice nội bộ của bạn.
 
 15
 00:01:15,180 --> 00:01:15,930
-endpoints.
+API gateway cung cấp một endpoint duy nhất cho ứng dụng client, và nó ánh xạ các yêu cầu nội bộ
 
 16
 00:01:16,830 --> 00:01:22,710
-API gateway provides a single endpoint for the client application, and it internally maps the requests
+đến các microservices nội bộ.
 
 17
 00:01:22,710 --> 00:01:24,630
-to the internal microservices.
+Tóm lại, API gateway nằm giữa ứng dụng client và các microservices nội bộ.
 
 18
 00:01:26,530 --> 00:01:32,140
-In summary, the API gateway located between the client application and the internal microservices.
+Nó hoạt động như một reverse proxy và định tuyến các yêu cầu từ các ứng dụng client đến các dịch vụ back end.
 
 19
 00:01:32,140 --> 00:01:38,500
-It is working as a reverse proxy and routing requests from client applications to the back end services.
+Nó cũng cung cấp các mối quan tâm xuyên suốt.
 
 20
 00:01:38,530 --> 00:01:41,200
@@ -80,59 +80,59 @@ It is also provide cross-cutting concerns.
 
 21
 00:01:41,320 --> 00:01:47,530
-You can see the image on the slide that is, collect the client request in a single entry point and
+Bạn có thể thấy hình ảnh trên slide, đó là thu thập yêu cầu từ client vào một điểm nhập duy nhất và
 
 22
 00:01:47,530 --> 00:01:49,960
-route the request to the internal microservices.
+định tuyến yêu cầu đến các microservices bên trong.
 
 23
 00:01:51,010 --> 00:01:55,960
-So there are several client applications connect to single API gateways in here.
+Vì vậy, có nhiều ứng dụng client kết nối đến các API gateways đơn lẻ tại đây.
 
 24
 00:01:55,960 --> 00:02:02,350
-We should careful about this situation because if we put here a single API gateway, that means it is
+Chúng ta nên cẩn thận với tình huống này vì nếu chúng ta đặt một API gateway duy nhất tại đây, điều đó có nghĩa là
 
 25
 00:02:02,350 --> 00:02:05,140
-possible to single point of failure risk in here.
+có nguy cơ tạo ra một điểm lỗi duy nhất tại đây.
 
 26
 00:02:06,530 --> 00:02:12,350
-If these client applications increase, or adding more logic to business complexity in API gateway,
+Nếu các ứng dụng client này tăng lên, hoặc thêm logic phức tạp hơn vào business trong API gateway,
 
 27
 00:02:12,350 --> 00:02:14,030
-it will be anti-pattern.
+nó sẽ là một anti-pattern.
 
 28
 00:02:14,570 --> 00:02:20,000
-API gateway service can be growing and evolving based on many different requirements from the client
+Dịch vụ API gateway có thể phát triển và tiến hóa dựa trên nhiều yêu cầu khác nhau từ các ứng dụng
 
 29
 00:02:20,000 --> 00:02:20,900
-applications.
+client.
 
 30
 00:02:21,290 --> 00:02:28,460
-That's why the best practice is splitting the API gateway in multiple services or multiple similar API
+Đó là lý do tại sao best practice là chia nhỏ API gateway thành nhiều dịch vụ hoặc nhiều API gateways tương tự.
 
 31
 00:02:28,460 --> 00:02:29,240
-gateways.
+Chúng ta sẽ xem mẫu back end for front end BFF sau.
 
 32
 00:02:29,390 --> 00:02:33,380
-We will see the back end for front end bpph pattern later.
+Tóm lại, chúng ta cần cẩn thận khi sử dụng một API gateway duy nhất.
 
 33
 00:02:33,470 --> 00:02:37,370
-In summary, we need to be careful about using single API gateway.
+Nó nên được phân chia dựa trên các ranh giới business của các ứng dụng client, và không nên là một
 
 34
 00:02:37,400 --> 00:02:43,580
-It should be segregated based on business boundaries of the client applications, and not be a single
+trình tổng hợp duy nhất cho tất cả các microservices bên trong.
 
 35
 00:02:43,580 --> 00:02:46,280

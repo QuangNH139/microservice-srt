@@ -1,168 +1,168 @@
 1
 00:00:00,140 --> 00:00:05,210
-In this section we are going to develop API gateways with ARP reverse proxy.
+Trong phần này chúng ta sẽ phát triển API gateways với YARP reverse proxy.
 
 2
 00:00:05,390 --> 00:00:10,640
-Applying the gateway routing pattern here you can see the big picture that we are going to build one
+Áp dụng mẫu gateway routing pattern ở đây bạn có thể thấy bức tranh toàn cảnh mà chúng ta sẽ xây dựng
 
 3
 00:00:10,640 --> 00:00:11,210
-by one.
+từng cái một.
 
 4
 00:00:11,390 --> 00:00:18,320
-As you can see that we are in here and start building API gateways with ARP reverse proxy and applying
+Như bạn có thể thấy chúng ta đang ở đây và bắt đầu xây dựng API gateways với YARP reverse proxy và áp dụng
 
 5
 00:00:18,350 --> 00:00:19,760
-the gateway routing pattern.
+mẫu gateway routing pattern.
 
 6
 00:00:20,210 --> 00:00:25,430
-And here you can see the internal architecture of the API gateways using the ARP reverse proxy.
+Và ở đây bạn có thể thấy kiến trúc nội bộ của API gateways sử dụng YARP reverse proxy.
 
 7
 00:00:25,430 --> 00:00:31,700
-The API gateway serve as an entry point for all client requests, and it routes these requests to the
+API gateway đóng vai trò là điểm vào cho tất cả các yêu cầu từ client, và nó định tuyến các yêu cầu này đến
 
 8
 00:00:31,700 --> 00:00:36,380
-appropriate microservices and aggregates the result and send back to the client.
+các microservices thích hợp và tập hợp kết quả rồi gửi lại cho client.
 
 9
 00:00:36,380 --> 00:00:38,690
-And the ARP is highly customizable.
+Và YARP có khả năng tùy chỉnh cao.
 
 10
 00:00:38,690 --> 00:00:44,870
-Reverse proxy solution designed to help manage the routing of the requests in microservice architectures.
+Giải pháp reverse proxy được thiết kế để giúp quản lý việc định tuyến các yêu cầu trong kiến trúc microservice.
 
 11
 00:00:45,500 --> 00:00:49,250
-So we are going to cover Erb API gateway microservices.
+Vậy chúng ta sẽ tìm hiểu về YARP API gateway microservices.
 
 12
 00:00:49,250 --> 00:00:55,610
-We will apply gateway routing pattern, which is explains how the API gateway wrote the requests to
+Chúng ta sẽ áp dụng mẫu gateway routing pattern, nó giải thích cách API gateway định tuyến các yêu cầu đến
 
 13
 00:00:55,610 --> 00:00:57,020
-various microservices.
+các microservices khác nhau.
 
 14
 00:00:57,020 --> 00:00:59,690
-And also we will apply API gateway pattern.
+Và chúng ta cũng sẽ áp dụng mẫu API gateway pattern.
 
 15
 00:00:59,690 --> 00:01:04,790
-We will see overview of this pattern and its role of the microservice architectures.
+Chúng ta sẽ xem tổng quan về mẫu này và vai trò của nó trong kiến trúc microservices.
 
 16
 00:01:04,790 --> 00:01:11,390
-And we will learn back end for front end Bpph pattern to understand how to tailor back end responses
+Và chúng ta sẽ tìm hiểu mẫu Backend for Frontend (BFF) để hiểu cách điều chỉnh các phản hồi backend
 
 17
 00:01:11,390 --> 00:01:14,150
-to fit the needs of different front ends.
+phù hợp với nhu cầu của các front end khác nhau.
 
 18
 00:01:14,150 --> 00:01:20,600
-And of course, we will learn Yarp as a reverse proxy and explore Erp's capabilities as a reverse proxy
+Và tất nhiên, chúng ta sẽ tìm hiểu YARP như một reverse proxy và khám phá các khả năng của YARP như một reverse proxy
 
 19
 00:01:20,600 --> 00:01:22,850
-in handling requests and responses.
+trong việc xử lý các yêu cầu và phản hồi.
 
 20
 00:01:22,850 --> 00:01:28,490
-And we will implement API gateways using the ARP step by step guide on the setting up the ARP in a.
+Và chúng ta sẽ triển khai API gateways sử dụng YARP với hướng dẫn từng bước một về cách thiết lập YARP trong một
 
 21
 00:01:28,670 --> 00:01:34,310
-Net project and configuring it as an API gateway, and we will apply rate limiting in Yarp.
+một .NET project và cấu hình nó như một API gateway, và chúng ta sẽ áp dụng rate limiting trong YARP.
 
 22
 00:01:34,310 --> 00:01:40,160
-Implement the rate limiting to manage the number of requests a user can make to the microservices through
+Triển khai rate limiting để quản lý số lượng requests mà một user có thể gửi đến các microservices thông qua
 
 23
 00:01:40,160 --> 00:01:40,700
-the ARP.
+YARP.
 
 24
 00:01:40,700 --> 00:01:46,040
-And lastly, we will containerize and orchestrate the ARP API gateway, and we will learn how to package
+Và cuối cùng, chúng ta sẽ containerize và orchestrate YARP API gateway, và chúng ta sẽ học cách đóng gói
 
 25
 00:01:46,040 --> 00:01:50,810
-the Erb API gateway into a Docker container and manage it using the Docker compose.
+YARP API gateway vào một Docker container và quản lý nó bằng Docker compose.
 
 26
 00:01:50,810 --> 00:01:57,470
-So we will analyze and architect the API gateway using the ARP, understanding how it fits into our
+Vậy chúng ta sẽ phân tích và thiết kế kiến trúc API gateway bằng YARP, hiểu cách nó phù hợp với
 
 27
 00:01:57,470 --> 00:01:59,450
-existing microservice architecture.
+kiến trúc microservice hiện tại của chúng ta.
 
 28
 00:01:59,930 --> 00:02:05,210
-So if you look at the steps of developing your API gateway, we will start by creating a new project
+Vậy nếu bạn xem các bước để phát triển API gateway của mình, chúng ta sẽ bắt đầu bằng cách tạo một project mới
 
 29
 00:02:05,210 --> 00:02:07,400
-as a Erb API gateway microservices.
+như một YARP API gateway microservice.
 
 30
 00:02:07,400 --> 00:02:12,710
-And this will be set up any ASP.Net core web application to serve as our API gateway.
+Và điều này sẽ được thiết lập như một ASP.NET Core web application để hoạt động như API gateway của chúng ta.
 
 31
 00:02:12,710 --> 00:02:18,410
-And after that, in the second step, we will adding Erb reverse proxy into our microservice project.
+Và sau đó, ở bước thứ hai, chúng ta sẽ thêm YARP reverse proxy vào project microservice của chúng ta.
 
 32
 00:02:18,410 --> 00:02:22,340
-We will install and configure the Erb NuGet packages into our project.
+Chúng ta sẽ cài đặt và cấu hình các YARP NuGet packages vào project của chúng ta.
 
 33
 00:02:22,340 --> 00:02:24,320
-And after that we will configure the routes.
+Và sau đó chúng ta sẽ cấu hình các routes.
 
 34
 00:02:24,320 --> 00:02:30,440
-That means we will define the routes in Europe that map incoming requests to the appropriate microservices.
+Nghĩa là chúng ta sẽ định nghĩa các routes trong YARP để ánh xạ các incoming requests đến các microservices thích hợp.
 
 35
 00:02:30,470 --> 00:02:36,560
-And after that, we will testing the gateway and ensure that the requests are correctly routed and responses
+Và sau đó, chúng ta sẽ kiểm tra gateway và đảm bảo rằng các requests được định tuyến chính xác và responses
 
 36
 00:02:36,560 --> 00:02:37,610
-are aggregated.
+được tích hợp.
 
 37
 00:02:37,610 --> 00:02:40,370
-And after that we will apply rate limiting.
+Và sau đó chúng ta sẽ áp dụng rate limiting.
 
 38
 00:02:40,370 --> 00:02:46,310
-That means we will implement and test rate limiting in order to control traffic flow through the gateway.
+Nghĩa là chúng ta sẽ triển khai và kiểm tra rate limiting để kiểm soát lưu lượng traffic thông qua gateway.
 
 39
 00:02:46,310 --> 00:02:48,800
-After that, we will perform the localization.
+Sau đó, chúng ta sẽ thực hiện containerization.
 
 40
 00:02:48,800 --> 00:02:53,900
-That means containerize the API gateway for deployment and orchestration with Docker compose.
+Nghĩa là containerize API gateway để triển khai và orchestration với Docker compose.
 
 41
 00:02:53,900 --> 00:02:58,130
-And in the last step we will follow the docker compose orchestration testing.
+Và ở bước cuối cùng, chúng ta sẽ thực hiện kiểm thử docker compose orchestration.
 
 42
 00:02:58,130 --> 00:03:04,190
-We will test the entire setup, including the API gateway and microservices in a Docker compose environment.
+Chúng ta sẽ kiểm thử toàn bộ setup, bao gồm API Gateway và các microservices trong môi trường Docker Compose.
 
