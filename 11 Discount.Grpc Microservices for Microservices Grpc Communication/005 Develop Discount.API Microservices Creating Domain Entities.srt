@@ -1,48 +1,48 @@
 1
 00:00:00,170 --> 00:00:06,920
-In this video, we are going to start to developing discount gRPC microservices with creating entities.
+Trong video này, chúng ta sẽ bắt đầu phát triển discount gRPC microservice bằng cách tạo các entities.
 
 2
 00:00:06,920 --> 00:00:08,600
-Please open the Visual Studio.
+Vui lòng mở Visual Studio.
 
 3
 00:00:08,600 --> 00:00:14,000
-Right click the discount gRPC, add new folder, which name is modules.
+Chuột phải vào discount gRPC, thêm folder mới, tên là modules.
 
 4
 00:00:14,090 --> 00:00:17,960
-And inside of this folder I'm going to create a new class.
+Và bên trong folder này tôi sẽ tạo một class mới.
 
 5
 00:00:17,960 --> 00:00:22,070
-Which name is coupon and this will be our coupon model.
+Có tên là coupon và đây sẽ là coupon model của chúng ta.
 
 6
 00:00:22,070 --> 00:00:26,900
-And the coupon model represent the primary data structure for discount microservices.
+Và coupon model này đại diện cho cấu trúc dữ liệu chính của discount microservice.
 
 7
 00:00:26,900 --> 00:00:33,080
-For that purpose, I am going to add several attributes under the coupon class.
+Để làm điều đó, tôi sẽ thêm một số attributes dưới class coupon.
 
 8
 00:00:33,080 --> 00:00:37,160
-These are the including ID, product name, description and amount.
+Các attributes này bao gồm ID, product name, description và amount.
 
 9
 00:00:37,160 --> 00:00:41,990
-So ID serve as a primary key in the database and product name.
+Vậy ID đóng vai trò là primary key trong database, và product name.
 
 10
 00:00:41,990 --> 00:00:48,260
-Also act as a identifier for the product associated with the discount and index can be created for the
+Cũng hoạt động như một identifier cho sản phẩm liên kết với discount, và index có thể được tạo để.
 
 11
 00:00:48,260 --> 00:00:55,100
-faster query operations, but we will use product name as a query for coupon table, and you can see
+tăng tốc độ các truy vấn, nhưng chúng ta sẽ sử dụng product name làm query cho bảng coupon, và như bạn có thể thấy.
 
 12
 00:00:55,100 --> 00:00:58,970
-the description and amount is representing the discount amount.
+description và amount đại diện cho mức giảm giá.
 
