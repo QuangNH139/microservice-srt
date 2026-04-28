@@ -1,50 +1,50 @@
 1
 00:00:00,140 --> 00:00:05,270
-In this video we are going to do technical analysis of the asynchronous communication.
+Trong video này, chúng ta sẽ thực hiện phân tích kỹ thuật của asynchronous communication.
 
 2
 00:00:05,300 --> 00:00:10,880
-This will include application architecture, style pattern and principles libraries, NuGet packages
+Điều này sẽ bao gồm kiến trúc ứng dụng, style pattern và các nguyên tắc thư viện, NuGet packages
 
 3
 00:00:10,880 --> 00:00:13,880
-that we are going to use and project folder structure.
+mà chúng ta sẽ sử dụng và cấu trúc folder dự án.
 
 4
 00:00:13,940 --> 00:00:17,120
-So let me start with the application architecture style.
+Vậy hãy bắt đầu với style kiến trúc ứng dụng.
 
 5
 00:00:17,150 --> 00:00:21,830
-As an application architecture style we will use event driven microservice architecture.
+Như một kiến trúc ứng dụng style, chúng ta sẽ sử dụng event driven microservice architecture.
 
 6
 00:00:21,860 --> 00:00:27,770
-This architecture style focuses on events as a primary source of the communication between different
+Kiến trúc style này tập trung vào events như là nguồn giao tiếp chính giữa các
 
 7
 00:00:27,770 --> 00:00:28,880
-microservices.
+microservices khác nhau.
 
 8
 00:00:29,150 --> 00:00:34,790
-The benefits are enhanced decoupling, scalability and responsiveness for implementation.
+Các lợi ích là decoupling nâng cao, khả năng mở rộng và khả năng phản hồi cho việc triển khai.
 
 9
 00:00:34,790 --> 00:00:40,040
-In our case, we will basket an authentic microservices communicate asynchronous through the events.
+Trong trường hợp của chúng ta, basket và authentic microservices sẽ giao tiếp bất đồng bộ thông qua các events.
 
 10
 00:00:40,040 --> 00:00:45,440
-So if you look at the pattern and principles, we can say that we will follow the publish subscribe
+Vậy nếu bạn nhìn vào pattern và principles, chúng ta có thể nói rằng chúng ta sẽ theo publish subscribe
 
 11
 00:00:45,440 --> 00:00:49,850
-design pattern, which is a core pattern enabling event driven architectures.
+design pattern, đó là một core pattern cho phép event driven architectures.
 
 12
 00:00:49,850 --> 00:00:55,640
-One service which is a publisher, send message or events without knowing the receivers which are the
+Một service là publisher, gửi message hoặc events mà không cần biết receivers là những
 
 13
 00:00:55,640 --> 00:00:56,480
@@ -52,7 +52,7 @@ subscribers.
 
 14
 00:00:56,480 --> 00:01:02,540
-So subscribers listen and react to these events and basket service basically publish event which is
+Vậy subscribers lắng nghe và phản ứng lại các events này và basket service về cơ bản publish event là
 
 15
 00:01:02,540 --> 00:01:03,350
@@ -60,127 +60,127 @@ ordering services.
 
 16
 00:01:03,350 --> 00:01:06,200
-Subscribe to this event and process accordingly.
+Subscribe vào event này và xử lý tương ứng.
 
 17
 00:01:06,290 --> 00:01:09,800
-Now we can also check the class library architecture analyzing.
+Bây giờ chúng ta cũng có thể kiểm tra kiến trúc class library phân tích.
 
 18
 00:01:09,800 --> 00:01:14,810
-So if you look at the class libraries we can say that first of all we have a building blocks.
+Vậy nếu bạn nhìn vào class libraries, chúng ta có thể nói rằng đầu tiên chúng ta có building blocks.
 
 19
 00:01:14,840 --> 00:01:21,080
-Building blocks is a shared class library catalog basket and ordering microservices already getting
+Building blocks là một shared class library catalog basket và ordering microservices đã được
 
 20
 00:01:21,080 --> 00:01:27,170
-referenced building blocks, shared class library for common operations and abstractions like securities,
+referenced building blocks, shared class library cho các hoạt động chung và abstractions như securities,
 
 21
 00:01:27,170 --> 00:01:29,390
-cross-cutting concerns and so on.
+các concerns liên quan đến kiến trúc và những thứ khác.
 
 22
 00:01:29,390 --> 00:01:35,090
-Also, we will create a new class library which name is Building Blocks Messaging.
+Ngoài ra, chúng ta sẽ tạo một class library mới có tên là Building Blocks Messaging.
 
 23
 00:01:35,090 --> 00:01:41,390
-So this class library will be dedicated for common asynchronous communication operations and for each
+Vậy class library này sẽ được dành riêng cho các phép toán giao tiếp không đồng bộ chung và cho mỗi
 
 24
 00:01:41,390 --> 00:01:47,210
-microservices that need to asynchronous communication over RabbitMQ and communicate via integration
+microservices mà cần giao tiếp không đồng bộ qua RabbitMQ và giao tiếp thông qua integration
 
 25
 00:01:47,210 --> 00:01:48,620
-events will be used.
+events sẽ được sử dụng.
 
 26
 00:01:48,620 --> 00:01:51,050
-These building blocks messaging class library.
+Class library building blocks messaging này.
 
 27
 00:01:51,500 --> 00:01:53,510
-So please look at the image on the slide.
+Vậy hãy xem hình ảnh trên slide.
 
 28
 00:01:53,510 --> 00:01:58,100
-Here you can see the microservices that using building blocks for common operations.
+Ở đây bạn có thể thấy các microservices đang sử dụng building blocks cho các hoạt động chung.
 
 29
 00:01:58,100 --> 00:02:03,650
-So we have developed building blocks class library which is a shared class library that contains common
+Vậy chúng ta đã phát triển class library building blocks, đó là một class library được chia sẻ chứa các class
 
 30
 00:02:03,650 --> 00:02:06,320
-class and logic shared across microservices.
+và logic chung được chia sẻ trên các microservices.
 
 31
 00:02:06,320 --> 00:02:12,440
-That is using from the catalog basket and ordering reference these building blocks for common sequence
+Được sử dụng từ catalog, basket và ordering tham chiếu đến các building blocks này cho các abstractions
 
 32
 00:02:12,440 --> 00:02:14,810
-abstractions and cross-cutting concerns.
+chung và các cross-cutting concerns.
 
 33
 00:02:14,810 --> 00:02:20,780
-But this time we will also create Building Blocks messaging Class library, which is a dedicated class
+Nhưng lần này chúng ta cũng sẽ tạo Building Blocks Messaging class library, đó là một class
 
 34
 00:02:20,780 --> 00:02:26,390
-library for asynchronous communication over the RabbitMQ and will containing common integration events
+library được dành riêng cho giao tiếp không đồng bộ qua RabbitMQ và sẽ chứa các integration events
 
 35
 00:02:26,390 --> 00:02:28,250
-and mass transit configurations.
+chung và các cấu hình MassTransit.
 
 36
 00:02:28,250 --> 00:02:31,790
-So by this way, only asynchronous communication required.
+Vậy theo cách này, chỉ giao tiếp không đồng bộ là bắt buộc.
 
 37
 00:02:31,790 --> 00:02:34,040
-Microservices will be getting reference.
+Các microservices sẽ được tham chiếu.
 
 38
 00:02:34,040 --> 00:02:40,220
-These building blocks class library in our case basket and ordering microservices will be getting reference
+Class library building blocks này trong trường hợp của chúng ta là basket và ordering microservices sẽ được tham chiếu
 
 39
 00:02:40,220 --> 00:02:44,540
-from the building blocks messaging class library for common event classes.
+từ class library building blocks messaging cho các class events chung.
 
 40
 00:02:44,540 --> 00:02:50,660
-That means we will implement common event objects into these building blocks messaging class library,
+Điều đó có nghĩa là chúng ta sẽ triển khai các object events chung vào class library building blocks messaging này,
 
 41
 00:02:50,660 --> 00:02:56,300
-and these will be getting reference from the basket and ordering in order to perform asynchronous communication.
+và những thứ này sẽ nhận tham chiếu từ basket và ordering để thực hiện giao tiếp bất đồng bộ.
 
 42
 00:02:56,840 --> 00:03:02,600
-So if you continue our analyzing here, you can see the libraries and NuGet packages that we are going
+Vậy nếu bạn tiếp tục phân tích ở đây, bạn có thể thấy các thư viện và NuGet packages mà chúng ta sẽ sử dụng.
 
 43
 00:03:02,600 --> 00:03:03,110
-to use.
+để sử dụng.
 
 44
 00:03:03,110 --> 00:03:09,170
-We will use Mass Transit NuGet packages, Mass Transit, and abstraction over the message broker for.
+Chúng ta sẽ sử dụng NuGet packages Mass Transit, Mass Transit, và một lớp trừu tượng trên message broker cho .NET và đơn giản hóa việc triển khai asynchronous messaging.
 
 45
 00:03:09,350 --> 00:03:13,100
-Net and simplifying the implementation of the asynchronous messaging.
+và đơn giản hóa việc triển khai asynchronous messaging.
 
 46
 00:03:13,100 --> 00:03:20,120
-And we will also use Mass transit RabbitMQ which is specific integration for the RabbitMQ with mass
+Và chúng ta cũng sẽ sử dụng Mass Transit RabbitMQ, đây là tích hợp cụ thể cho RabbitMQ với Mass Transit.
 
 47
 00:03:20,120 --> 00:03:20,690
@@ -188,47 +188,47 @@ transit.
 
 48
 00:03:20,690 --> 00:03:26,870
-It enables the basket microservice to publish the events and the ordering microservices to subscribe
+Nó cho phép basket microservice công bố các sự kiện và các ordering microservices để đăng ký chúng, sử dụng RabbitMQ làm message broker.
 
 49
 00:03:26,870 --> 00:03:29,720
-them, using the RabbitMQ as a message broker.
+Vậy chúng ta sẽ sử dụng RabbitMQ Message Broker và NuGet package Mass Transit cùng thư viện để triển khai Publish Subscribe design pattern và asynchronous communication.
 
 50
 00:03:29,810 --> 00:03:35,780
-So we will use RabbitMQ Message Broker and Mass Transit NuGet package and library for implementing publish,
+subscribe, design pattern và asynchronous communication.
 
 51
 00:03:35,780 --> 00:03:38,570
-subscribe, design pattern and asynchronous communication.
+Vậy cuối cùng chúng ta sẽ kiểm tra cấu trúc thư mục dự án theo cấu trúc thư mục.
 
 52
 00:03:38,900 --> 00:03:43,370
-So lastly we will check project folder structure according to folder structure.
+Đầu tiên, chúng ta sẽ phát triển một class library mới với tên là Building Blocks Messaging.
 
 53
 00:03:43,370 --> 00:03:49,040
-First of all, we will develop a new class library which name is Building Blocks Messaging.
+Đây là shared class library mới được tạo cho asynchronous communication.
 
 54
 00:03:49,040 --> 00:03:52,970
-This is newly created shared class library for asynchronous communication.
+Và nó sẽ bao gồm folder events, đây là các sự kiện chung giữa basket và ordering microservices.
 
 55
 00:03:52,970 --> 00:03:59,150
-And this will be include events folder which is the common events between basket and ordering microservices.
+Và cũng sẽ bao gồm Masstransit extensions và configurations bên trong class library messaging này.
 
 56
 00:03:59,150 --> 00:04:05,060
-And also this will be include Masstransit extensions and configurations inside of these messaging class
+Vậy chúng ta đã giải thích rằng class library này nhận tham chiếu từ các microservices mà được yêu cầu.
 
 57
 00:04:05,060 --> 00:04:05,690
-library.
+để thực hiện asynchronous communication.
 
 58
 00:04:05,720 --> 00:04:11,510
-So we have explained that this class library getting reference from the microservices that required
+Và sau đó chúng ta sẽ phát triển basket API checkout basket feature folder.
 
 59
 00:04:11,510 --> 00:04:13,100
@@ -240,19 +240,19 @@ And after that we will develop basket API checkout basket feature folder.
 
 61
 00:04:18,050 --> 00:04:24,440
-So that means we will add a new feature folder, which name is checkout basket and adding handler and
+Vậy điều đó có nghĩa là chúng ta sẽ thêm một feature folder mới, có tên là checkout basket và thêm handler và
 
 62
 00:04:24,440 --> 00:04:27,740
-endpoint classes in order to handle checkout process.
+các lớp endpoint để xử lý quá trình checkout.
 
 63
 00:04:27,860 --> 00:04:32,540
-And after that we will consume these event from the ordering microservices.
+Và sau đó chúng ta sẽ consume những event này từ ordering microservices.
 
 64
 00:04:32,540 --> 00:04:38,840
-That means in the ordering application layer we are going to create a new event handler which is integration
+Điều đó có nghĩa là trong application layer của ordering chúng ta sẽ tạo một event handler mới, đó là integration
 
 65
 00:04:38,840 --> 00:04:39,500
@@ -260,29 +260,29 @@ event handler.
 
 66
 00:04:39,500 --> 00:04:42,350
-Which name is basket checkout event handler.
+Có tên là basket checkout event handler.
 
 67
 00:04:42,350 --> 00:04:47,780
-So this will be contain these event handling from the integration event handling to consume these event
+Vậy nên nó sẽ chứa event handling này từ integration event handling để consume những event này
 
 68
 00:04:47,780 --> 00:04:51,860
-from the RabbitMQ and handle the events from the basket microservices.
+từ RabbitMQ và xử lý các event từ basket microservices.
 
 69
 00:04:51,860 --> 00:04:55,910
-Lastly, we will analyze the deployment part of the asynchronous communication.
+Cuối cùng, chúng ta sẽ phân tích phần triển khai của asynchronous communication.
 
 70
 00:04:55,910 --> 00:04:59,750
-So basically we will add RabbitMQ image container into.
+Vậy cơ bản là chúng ta sẽ thêm image container RabbitMQ vào.
 
 71
 00:04:59,880 --> 00:05:05,280
-Or multi-container docker compose file, and after that we will implement Docker file and docker compose
+Hoặc multi-container docker compose file, và sau đó chúng ta sẽ triển khai Docker file và docker compose
 
 72
 00:05:05,280 --> 00:05:11,190
-files for running basket and organic microservices with RabbitMQ message broker in a Docker environment.
+files để chạy basket và ordering microservices với RabbitMQ message broker trong môi trường Docker.
 

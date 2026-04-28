@@ -284,5 +284,7 @@
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/005 Fan-Out PublishSubscribe Messaging Pattern.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/006 Event-Driven Microservices Architecture.srt": "done",
   "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/007 What is RabbitMQ and Main Components of RabbitMQ (Producer, Queue, Consumer..).srt": "done",
-  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/008 RabbitMQ Exchange Types Direct, Fanout, Topic, and Headers.srt": "done"
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/008 RabbitMQ Exchange Types Direct, Fanout, Topic, and Headers.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/009 Domain Analysis of Async Communication between Basket and Ordering Microservices.srt": "done",
+  "/home/user/microservice-srt/18 Microservices Async Communication w RabbitMQ & MassTransit for Checkout Order/010 Technical Analysis of Async Communication between Basket and Ordering ms.srt": "done"
 }
