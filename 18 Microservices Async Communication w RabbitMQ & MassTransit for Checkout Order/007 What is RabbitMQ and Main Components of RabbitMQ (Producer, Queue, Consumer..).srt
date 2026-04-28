@@ -1,78 +1,78 @@
 1
 00:00:00,170 --> 00:00:03,920
-In this video we are going to learn what is RabbitMQ?
+Trong video này chúng ta sẽ học RabbitMQ là gì?
 
 2
 00:00:04,550 --> 00:00:10,340
-RabbitMQ is a message broker software that implements the Advanced Messaging Queue protocol, which
+RabbitMQ là một phần mềm message broker triển khai giao thức Advanced Messaging Queue, tức là
 
 3
 00:00:10,340 --> 00:00:12,350
-is the Amqp protocol.
+giao thức Amqp.
 
 4
 00:00:13,010 --> 00:00:18,620
-It allows applications to communicate with each other by sending and receiving messages through the
+Nó cho phép các ứng dụng giao tiếp với nhau bằng cách gửi và nhận tin nhắn thông qua các
 
 5
 00:00:18,620 --> 00:00:19,220
-queues.
+queue.
 
 6
 00:00:19,850 --> 00:00:22,520
-So RabbitMQ is a message queuing system.
+Vậy RabbitMQ là một hệ thống message queuing.
 
 7
 00:00:22,520 --> 00:00:30,980
-Similar ones can be listed as a Apache Kafka, Msmq, Microsoft Azure, Service Bus, kestrel, Activemq
+Các hệ thống tương tự có thể kể đến như Apache Kafka, Msmq, Microsoft Azure Service Bus, Kestrel, ActiveMQ
 
 8
 00:00:30,980 --> 00:00:31,820
-and so on.
+và những cái khác.
 
 9
 00:00:32,659 --> 00:00:39,260
-It is proposed to transmit a message received from any source to another source as soon as it is their
+Nó được đề xuất để truyền một tin nhắn nhận được từ bất kỳ nguồn nào đến một nguồn khác ngay khi đến lượt của chúng.
 
 10
 00:00:39,260 --> 00:00:39,800
-turn.
+Nói cách khác, tất cả các giao dịch có thể được xếp vào một hàng đợi cho đến khi nguồn sẽ truyền phát hoạt động.
 
 11
 00:00:39,800 --> 00:00:46,670
-In other words, all transactions can be listed in a queue until the source to be transmitted gets up.
+Nó cũng cho phép gửi và nhận tin nhắn một cách không đồng bộ.
 
 12
 00:00:47,950 --> 00:00:51,460
-It also allowed to send and receive messages asynchronously.
+Điều này tách rời người gửi và người nhận, cho phép mỗi bên tiếp tục xử lý mà không cần chờ bên kia
 
 13
 00:00:51,490 --> 00:00:58,030
-This decouples the sender and receiver, allowing each to continue processing without waiting for other
+phản hồi.
 
 14
 00:00:58,030 --> 00:00:58,720
-to respond.
+Điều này có thể cải thiện hiệu suất tổng thể và khả năng mở rộng của hệ thống.
 
 15
 00:00:58,750 --> 00:01:02,950
-This can improve the overall performance and scalability of the system.
+RabbitMQ hỗ trợ nhiều hệ điều hành và mã nguồn mở là một trong những lý do được ưa chuộng nhất.
 
 16
 00:01:03,430 --> 00:01:10,090
-RabbitMQ supports for multiple operating systems and open source code in one of the most preferred reasons.
+Các thành phần chính của RabbitMQ là producer, queue, consumer, message exchange, binding và Fifo.
 
 17
 00:01:10,480 --> 00:01:18,610
-The main components of RabbitMQ are producer queue, consumer message exchange, binding and Fifo.
+Vậy tôi sẽ giải thích tất cả những thành phần này trên kiến trúc RabbitMQ mà bạn có thể thấy trong hình.
 
 18
 00:01:18,730 --> 00:01:24,160
-So I will explain all these components on the RabbitMQ architecture that you can see on the picture.
+Vậy hãy bắt đầu với producer.
 
 19
 00:01:24,190 --> 00:01:26,470
-So let me start with the producer.
+Tôi sẽ tiếp tục với producer, queue và consumer.
 
 20
 00:01:26,560 --> 00:01:29,500
@@ -80,105 +80,105 @@ I will continue with the producer queue and consumer.
 
 21
 00:01:29,500 --> 00:01:32,590
-And after that I will explain the exchange and bindings.
+Và sau đó tôi sẽ giải thích về exchange và bindings.
 
 22
 00:01:32,950 --> 00:01:34,120
-So what is producer?
+Vậy producer là gì?
 
 23
 00:01:34,150 --> 00:01:37,450
-Producer is the source of the message for the application.
+Producer là nguồn của message cho ứng dụng.
 
 24
 00:01:37,840 --> 00:01:40,480
-So after that what is Q?
+Vậy sau đó Q là gì?
 
 25
 00:01:40,510 --> 00:01:43,120
-Q is where the messages are stored.
+Q là nơi lưu trữ các messages.
 
 26
 00:01:43,120 --> 00:01:47,170
-The sent messages are put in queue before they are received.
+Các messages được gửi được đặt vào queue trước khi chúng được nhận.
 
 27
 00:01:47,170 --> 00:01:49,870
-All incoming messages are stored in the queue.
+Tất cả các messages đến đều được lưu trữ trong queue.
 
 28
 00:01:49,900 --> 00:01:51,190
-That is the memory.
+Đó là bộ nhớ.
 
 29
 00:01:52,390 --> 00:01:54,370
-And after that we have consumer.
+Và sau đó chúng ta có consumer.
 
 30
 00:01:54,370 --> 00:01:55,450
-It is a server.
+Nó là một server.
 
 31
 00:01:55,450 --> 00:01:57,190
-That means the send message.
+Điều đó có nghĩa là gửi message.
 
 32
 00:01:57,190 --> 00:02:01,240
-It is the application that will receive and process the message on the queue.
+Nó là ứng dụng sẽ nhận và xử lý message trong queue.
 
 33
 00:02:01,780 --> 00:02:03,820
-And also we have a message.
+Và cũng chúng ta có message.
 
 34
 00:02:03,820 --> 00:02:06,910
-Message is the data that we send on the queue.
+Message là dữ liệu mà chúng ta gửi trên queue.
 
 35
 00:02:07,180 --> 00:02:10,449
-So now I can explain exchange and bindings.
+Vậy bây giờ tôi có thể giải thích về exchange và bindings.
 
 36
 00:02:10,449 --> 00:02:12,220
-So what is the exchange.
+Vậy exchange là gì?
 
 37
 00:02:12,610 --> 00:02:16,810
-It is a structure that decides which queue to send the messages.
+Nó là một cơ cấu quyết định queue nào để gửi các messages.
 
 38
 00:02:16,840 --> 00:02:20,350
-It makes the decision according to routing case.
+Nó đưa ra quyết định theo routing case.
 
 39
 00:02:21,230 --> 00:02:22,880
-And also we have bindings.
+Và cũng chúng ta có bindings.
 
 40
 00:02:22,910 --> 00:02:26,420
-Bindings are the link between the exchange and the queues.
+Bindings là liên kết giữa exchange và các queues.
 
 41
 00:02:27,110 --> 00:02:29,390
-And also we can explain the Fifo.
+Và cũng chúng ta có thể giải thích về Fifo.
 
 42
 00:02:29,420 --> 00:02:30,590
-What is the Fifo?
+Fifo là gì?
 
 43
 00:02:30,620 --> 00:02:34,880
-Fifo is the order of processing of outgoing messages in RabbitMQ.
+Fifo là thứ tự xử lý các tin nhắn đi trong RabbitMQ.
 
 44
 00:02:34,910 --> 00:02:35,390
-In.
+Vào.
 
 45
 00:02:35,390 --> 00:02:35,930
-First in.
+Vào trước.
 
 46
 00:02:35,930 --> 00:02:36,650
-First out.
+Ra trước.
 
