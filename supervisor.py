@@ -1,145 +1,113 @@
 #!/usr/bin/env python3
 """
-Supervisor: runs translate.py in a loop, auto-restarts on crash,
-and auto-commits+pushes every COMMIT_EVERY files.
+supervisor.py — chạy translate.py liên tục, tự restart khi crash,
+auto-commit+push mỗi COMMIT_EVERY file xong.
 """
 
-import subprocess
-import sys
-import time
-import json
-import os
+import subprocess, sys, time, json, os, signal
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent
-PROGRESS_FILE = BASE_DIR / "translation_progress.json"
-TOTAL_FILES = 349
-COMMIT_EVERY = 1
-RESTART_DELAY = 5  # seconds before restarting after crash
-BRANCH = "claude/translate-vietnamese-auto-retry-cBckl"
+BASE_DIR   = Path(__file__).parent
+PROGRESS   = BASE_DIR / "translation_progress.json"
+TOTAL      = 349
+COMMIT_EVERY = 3
+DELAY      = 5
+BRANCH     = "claude/translate-vietnamese-auto-retry-cBckl"
 
 
-def log(msg: str) -> None:
+def log(msg):
     print(f"[supervisor {time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def count_done() -> int:
-    if not PROGRESS_FILE.exists():
-        return 0
+def count_done():
     try:
-        d = json.loads(PROGRESS_FILE.read_text())
+        d = json.loads(PROGRESS.read_text())
         return len([v for v in d.values() if v != "ERROR"])
     except Exception:
         return 0
 
 
-def git_commit_push(done: int) -> None:
-    # Stage all modified/new SRT files and progress
-    subprocess.run(["git", "add", "-u"], cwd=BASE_DIR, capture_output=True)
-    subprocess.run(["git", "add", "translation_progress.json"], cwd=BASE_DIR, capture_output=True)
+def git_run(*args):
+    return subprocess.run(["git"] + list(args), cwd=BASE_DIR,
+                          capture_output=True, text=True)
 
-    # Check if there's anything staged
-    result = subprocess.run(
-        ["git", "diff", "--cached", "--name-only"],
-        cwd=BASE_DIR, capture_output=True, text=True
-    )
-    if not result.stdout.strip():
-        log("Nothing to commit.")
+
+def commit_push(done):
+    git_run("add", "-u")
+    git_run("add", "translation_progress.json", "supervisor.log", "run.log")
+    diff = git_run("diff", "--cached", "--name-only")
+    if not diff.stdout.strip():
         return
-
-    msg = (
-        f"Translate SRT files to Vietnamese (progress: {done}/{TOTAL_FILES})\n\n"
-        f"https://claude.ai/code/session_01KrZ5QHyC1i87HuE4MDrwaP"
-    )
-    subprocess.run(["git", "commit", "-m", msg], cwd=BASE_DIR, capture_output=True)
-    log(f"Committed ({done}/{TOTAL_FILES} done). Pushing...")
-
-    # Push with exponential backoff + rebase to handle concurrent commits
-    for attempt in range(1, 5):
-        subprocess.run(["git", "pull", "--rebase", "origin", BRANCH],
-                       cwd=BASE_DIR, capture_output=True)
-        r = subprocess.run(
-            ["git", "push", "-u", "origin", BRANCH],
-            cwd=BASE_DIR, capture_output=True, text=True
-        )
+    msg = (f"Translate SRT files to Vietnamese (progress: {done}/{TOTAL})\n\n"
+           f"https://claude.ai/code/session_01KrZ5QHyC1i87HuE4MDrwaP")
+    git_run("commit", "-m", msg)
+    log(f"Committed ({done}/{TOTAL}). Pushing...")
+    for attempt in range(1, 6):
+        git_run("pull", "--rebase", "origin", BRANCH)
+        r = git_run("push", "-u", "origin", BRANCH)
         if r.returncode == 0:
             log("Pushed OK.")
             return
         wait = 2 ** attempt
-        log(f"Push failed (attempt {attempt}), retrying in {wait}s...")
+        log(f"Push failed attempt {attempt}, retry in {wait}s...")
         time.sleep(wait)
-    log("WARNING: Push failed after 4 attempts.")
+    log("WARNING: push failed after 5 attempts.")
+
+
+def run_once():
+    done_before = count_done()
+    log(f"Starting translate.py ({done_before}/{TOTAL} done)...")
+    proc = subprocess.Popen(
+        [sys.executable, "-u", str(BASE_DIR / "translate.py")],
+        cwd=BASE_DIR,
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        text=True, bufsize=1,
+    )
+    last_commit = done_before
+    for line in proc.stdout:
+        sys.stdout.write(line); sys.stdout.flush()
+        cur = count_done()
+        if cur - last_commit >= COMMIT_EVERY:
+            log(f"Threshold ({cur} done). Committing...")
+            commit_push(cur)
+            last_commit = cur
+    proc.wait()
+    done_after = count_done()
+    log(f"translate.py exited (code={proc.returncode}). {done_after}/{TOTAL} done.")
+    if done_after > last_commit:
+        commit_push(done_after)
+    return proc.returncode, done_after
 
 
 def main():
-    log(f"=== Supervisor started. Target: {TOTAL_FILES} files ===")
+    # Ignore SIGHUP so we survive terminal disconnect
+    try:
+        signal.signal(signal.SIGHUP, signal.SIG_IGN)
+    except (AttributeError, OSError):
+        pass
 
-    last_commit_at = count_done()
-    run_count = 0
-
+    log(f"=== Supervisor started. Target: {TOTAL} ===")
+    run_n = 0
     while True:
-      try:
-        done = count_done()
-        if done >= TOTAL_FILES:
-            log(f"All {TOTAL_FILES} files translated!")
-            git_commit_push(done)
-            log("=== COMPLETE ===")
-            break
-
-        run_count += 1
-        log(f"Run #{run_count}: {done}/{TOTAL_FILES} done, starting translate.py...")
-
-        proc = subprocess.Popen(
-            [sys.executable, "-u", str(BASE_DIR / "translate.py")],
-            cwd=BASE_DIR,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            bufsize=1,
-        )
-
-        # Stream output and watch for commit triggers
-        for line in proc.stdout:
-            sys.stdout.write(line)
-            sys.stdout.flush()
-
-            # Check if we should commit (every COMMIT_EVERY files)
-            current_done = count_done()
-            if current_done - last_commit_at >= COMMIT_EVERY:
-                log(f"Threshold reached ({current_done} done). Committing...")
-                git_commit_push(current_done)
-                last_commit_at = current_done
-
-        proc.wait()
-        exit_code = proc.returncode
-        done_after = count_done()
-
-        log(f"translate.py exited (code={exit_code}). Progress: {done_after}/{TOTAL_FILES}")
-
-        # Commit whatever was done in this run
-        if done_after > last_commit_at:
-            git_commit_push(done_after)
-            last_commit_at = done_after
-
-        if done_after >= TOTAL_FILES:
-            log("=== All files done! ===")
-            break
-
-        if exit_code == 0:
-            log(f"Unexpected normal exit with {done_after} files done. Restarting...")
-            time.sleep(2)
-        else:
-            log(f"Crashed (exit={exit_code}). Restarting in {RESTART_DELAY}s...")
-            time.sleep(RESTART_DELAY)
-
-      except Exception as e:
-          log(f"Supervisor error: {e}. Recovering in {RESTART_DELAY}s...")
-          time.sleep(RESTART_DELAY)
+        try:
+            done = count_done()
+            if done >= TOTAL:
+                log("=== ALL DONE ===")
+                commit_push(done)
+                break
+            run_n += 1
+            log(f"--- Run #{run_n} ---")
+            code, done = run_once()
+            if done >= TOTAL:
+                log("=== ALL DONE ===")
+                break
+            wait = DELAY if code != 0 else 2
+            log(f"Restarting in {wait}s...")
+            time.sleep(wait)
+        except Exception as e:
+            log(f"Supervisor exception: {e}. Recovering in {DELAY}s...")
+            time.sleep(DELAY)
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        log(f"FATAL: {e}")
-        sys.exit(1)
+    main()
