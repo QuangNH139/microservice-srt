@@ -1,46 +1,46 @@
 1
 00:00:00,320 --> 00:00:06,260
-In this section, we are going to develop ordering infrastructure layer with using Entity Framework,
+Trong phần này, chúng ta sẽ phát triển tầng infrastructure của ordering với sử dụng Entity Framework,
 
 2
 00:00:06,260 --> 00:00:08,990
-Core Code, first approach and SQL server.
+Core Code, first approach và SQL server.
 
 3
 00:00:09,500 --> 00:00:12,890
-Here you can see the big picture that we are going to develop one by one.
+Ở đây bạn có thể thấy bức tranh lớn mà chúng ta sẽ phát triển từng cái một.
 
 4
 00:00:12,920 --> 00:00:15,380
-We are still in the ordering microservices.
+Chúng ta vẫn đang ở trong ordering microservices.
 
 5
 00:00:15,380 --> 00:00:20,540
-And if you look at the ordering microservices internal architecture, this time we are going to develop
+Và nếu bạn nhìn vào kiến trúc nội bộ của ordering microservices, lần này chúng ta sẽ phát triển
 
 6
 00:00:20,540 --> 00:00:22,460
-the infrastructure layer.
+tầng infrastructure.
 
 7
 00:00:22,460 --> 00:00:25,220
-We have developed domain layer in the previous lecture.
+Chúng ta đã phát triển domain layer trong bài giảng trước.
 
 8
 00:00:25,220 --> 00:00:30,710
-And now we are going to develop ordering infrastructure in order to communicate with SQL server and
+Và bây giờ chúng ta sẽ phát triển ordering infrastructure để giao tiếp với SQL server và
 
 9
 00:00:30,710 --> 00:00:32,720
-implement the external communications.
+triển khai các giao tiếp bên ngoài.
 
 10
 00:00:33,770 --> 00:00:36,950
-So what we will include these infrastructure layer.
+Vậy cái gì mà chúng ta sẽ bao gồm trong tầng infrastructure này.
 
 11
 00:00:36,980 --> 00:00:43,370
-First of all we will use Entity Framework core eight features code first Approach migrations and SQL
+Đầu tiên chúng ta sẽ sử dụng Entity Framework core eight features code first Approach migrations và SQL
 
 12
 00:00:43,370 --> 00:00:44,540
@@ -48,47 +48,47 @@ server Connection.
 
 13
 00:00:44,840 --> 00:00:51,140
-We will develop Entity Framework core Dbcontext object for storing entities in ordering infrastructure.
+Chúng ta sẽ phát triển Entity Framework core Dbcontext object để lưu trữ các entities trong ordering infrastructure.
 
 14
 00:00:51,140 --> 00:00:56,000
-And we will mapping the domain driven design objects to the Entity Framework core entities.
+Và chúng ta sẽ ánh xạ các objects domain driven design tới Entity Framework core entities.
 
 15
 00:00:56,420 --> 00:01:02,420
-And we will develop order entities configurations with using the model builder and complex types in
+Và chúng ta sẽ phát triển order entities configurations với sử dụng model builder và complex types trong
 
 16
 00:01:02,450 --> 00:01:03,860
-the ordering infrastructure.
+ordering infrastructure.
 
 17
 00:01:04,310 --> 00:01:10,550
-And also we will perform auto migrate and seed operations with Entity Framework core entities to the
+Và cũng chúng ta sẽ thực hiện auto migrate và seed operations với Entity Framework core entities tới
 
 18
 00:01:10,580 --> 00:01:14,300
-SQL server database when the application start up with coding.
+SQL server database khi ứng dụng khởi động với coding.
 
 19
 00:01:14,330 --> 00:01:20,210
-And lastly, we will raise and dispatch domain events with using Entity Framework, Core and Mediator.
+Và cuối cùng, chúng ta sẽ raise và dispatch domain events với sử dụng Entity Framework, Core và Mediator.
 
 20
 00:01:20,570 --> 00:01:27,020
-So we can say that the main target of the ordering infrastructure layer is the mapping the domain objects,
+Vậy chúng ta có thể nói rằng mục tiêu chính của tầng ordering infrastructure là ánh xạ các domain objects,
 
 21
 00:01:27,020 --> 00:01:33,500
-including the aggregate entity value objects to the Entity Framework core entities, and migrate the
+bao gồm aggregate entity và value objects vào các Entity Framework core entities, và migrate
 
 22
 00:01:33,500 --> 00:01:35,780
-tables into SQL server database.
+các bảng vào SQL server database.
 
 23
 00:01:35,810 --> 00:01:41,900
-For example, value objects can be defined as a complex type in the Entity Framework core eight and
+Ví dụ, value objects có thể được định nghĩa như một complex type trong Entity Framework core 8 và
 
 24
 00:01:41,900 --> 00:01:44,360
@@ -96,69 +96,69 @@ Entity Framework Core Aggregate root entities.
 
 25
 00:01:44,360 --> 00:01:48,650
-So we will use complex types as a value objects into the Entity Framework core.
+Vậy chúng ta sẽ sử dụng complex types như value objects trong Entity Framework core.
 
 26
 00:01:49,070 --> 00:01:54,410
-And here you can find the folder structure of ordering infrastructure layer that we are going to develop
+Và ở đây bạn có thể tìm thấy cấu trúc thư mục của ordering infrastructure layer mà chúng ta sẽ phát triển
 
 27
 00:01:54,410 --> 00:01:55,280
-in this section.
+trong phần này.
 
 28
 00:01:55,280 --> 00:01:58,970
-So basically we will have a data folder under the infrastructure.
+Về cơ bản, chúng ta sẽ có một thư mục data dưới infrastructure.
 
 29
 00:01:59,000 --> 00:02:02,210
-Under the data folder we have a configuration sub folder.
+Dưới thư mục data, chúng ta có một thư mục con configuration.
 
 30
 00:02:02,210 --> 00:02:06,830
-This will be include customer order, order item and product configurations.
+Đây sẽ bao gồm các cấu hình cho customer, order, order item và product.
 
 31
 00:02:06,830 --> 00:02:10,669
-In order to configure our entities for Entity Framework Core.
+Để cấu hình các entities của chúng ta cho Entity Framework Core.
 
 32
 00:02:10,699 --> 00:02:13,490
-And after that we have extensions folder.
+Và sau đó chúng ta có thư mục extensions.
 
 33
 00:02:13,490 --> 00:02:20,450
-These including database extensions and initial data for seeding the data and performing migration operations.
+Những cái này bao gồm database extensions và dữ liệu ban đầu để seeding dữ liệu và thực hiện các hoạt động migration.
 
 34
 00:02:20,450 --> 00:02:26,960
-And you can see interceptors listing in here This will be performing auditable entity and dispatched
+Và bạn có thể thấy interceptors được liệt kê ở đây. Cái này sẽ thực hiện auditable entity và dispatched
 
 35
 00:02:26,990 --> 00:02:29,180
-domain events using the interceptors.
+domain events sử dụng các interceptors.
 
 36
 00:02:29,180 --> 00:02:31,340
-And here you can see the migrations folder.
+Và ở đây bạn có thể thấy thư mục migrations.
 
 37
 00:02:31,340 --> 00:02:34,640
-This will be provide to migrations on the Entity Framework core.
+Đây sẽ cung cấp các migrations trên Entity Framework core.
 
 38
 00:02:34,670 --> 00:02:37,700
-And lastly we have a application DB context.
+Và cuối cùng, chúng ta có application DB context.
 
 39
 00:02:37,700 --> 00:02:41,330
-This is the main DB context object for Entity Framework Core.
+Đây là main DB context object cho Entity Framework Core.
 
 40
 00:02:41,360 --> 00:02:46,310
-And we will use global using and dependency injection case with following the other layers.
+Và chúng ta sẽ sử dụng global using và dependency injection case theo các layer khác.
 
 41
 00:02:46,310 --> 00:02:49,670
-So now let's start to develop ordering infrastructure layer.
+Vậy bây giờ hãy bắt đầu phát triển tầng infrastructure của ordering.
 
