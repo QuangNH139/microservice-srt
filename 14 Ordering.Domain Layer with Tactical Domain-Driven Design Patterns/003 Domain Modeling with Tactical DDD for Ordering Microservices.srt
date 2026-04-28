@@ -1,18 +1,18 @@
 1
 00:00:00,200 --> 00:00:06,080
-In this video, we are going to do domain modeling with using tactical domain driven design patterns
+Trong video này, chúng ta sẽ thực hiện domain modeling bằng cách sử dụng tactical domain driven design patterns
 
 2
 00:00:06,080 --> 00:00:08,060
-for ordering microservices.
+cho ordering microservices.
 
 3
 00:00:08,510 --> 00:00:14,660
-Domain driven design provides a framework that lead us to create a set of well designed microservices
+Domain driven design cung cấp một framework hướng dẫn chúng ta tạo ra một bộ microservices được thiết kế tốt
 
 4
 00:00:14,660 --> 00:00:21,590
-and we will define entities, aggregates, value objects, domain services, and domain events for ordering
+và chúng ta sẽ định nghĩa entities, aggregates, value objects, domain services, và domain events cho ordering
 
 5
 00:00:21,590 --> 00:00:22,610
@@ -20,59 +20,59 @@ microservices.
 
 6
 00:00:22,610 --> 00:00:28,820
-That means within the ordering bounded context, we will apply these tactical domain driven design patterns
+Điều đó có nghĩa là trong ordering bounded context, chúng ta sẽ áp dụng các tactical domain driven design patterns
 
 7
 00:00:28,820 --> 00:00:33,620
-in order to define entities, aggregates, domain services and so on.
+để định nghĩa entities, aggregates, domain services và những thứ tương tự.
 
 8
 00:00:33,860 --> 00:00:40,010
-We are going to particularly interested in the entity and aggregate patterns, and applying these patterns
+Chúng ta sẽ đặc biệt quan tâm đến entity và aggregate patterns, và áp dụng các patterns này
 
 9
 00:00:40,010 --> 00:00:45,170
-will help us to identify natural boundaries for the services in our application.
+sẽ giúp chúng ta xác định các ranh giới tự nhiên cho các services trong ứng dụng của mình.
 
 10
 00:00:45,470 --> 00:00:49,880
-Let's remember the application use cases for ordering microservices.
+Hãy nhớ lại các use cases của ứng dụng cho ordering microservices.
 
 11
 00:00:49,880 --> 00:00:56,510
-We said that we have Crud ordering operations including get order with items, create, update, delete,
+Chúng ta đã nói rằng chúng ta có các Crud ordering operations bao gồm get order with items, create, update, delete,
 
 12
 00:00:56,510 --> 00:01:02,780
-order and add and remove item from the order and also we have asynchronous ordering operations including
+order và add và remove item from the order và cũng chúng ta có các asynchronous ordering operations bao gồm
 
 13
 00:01:02,780 --> 00:01:08,990
-basket checkout and order fulfillment to perform fulfillment operations for other microservices.
+basket checkout và order fulfillment để thực hiện các fulfillment operations cho các microservices khác.
 
 14
 00:01:08,990 --> 00:01:15,800
-So that means we will raising order created domain event that leads to integration event to see our
+Vậy điều đó có nghĩa là chúng ta sẽ raising order created domain event dẫn đến integration event để xem các
 
 15
 00:01:15,800 --> 00:01:21,440
-domain events into analyzing the ordering microservices and according to these ordering application
+domain events vào phân tích ordering microservices và theo các ordering application
 
 16
 00:01:21,440 --> 00:01:26,720
-use cases, we can start to perform our domain analyzing into the next slide.
+use cases này, chúng ta có thể bắt đầu thực hiện phân tích domain của mình trong slide tiếp theo.
 
 17
 00:01:26,720 --> 00:01:33,050
-And here you can see the our domain analyzing with applying the tactical domain driven design pattern
+Và tại đây bạn có thể thấy phân tích domain của chúng ta với việc áp dụng tactical domain driven design pattern
 
 18
 00:01:33,050 --> 00:01:34,640
-in ordering microservices.
+trong ordering microservices.
 
 19
 00:01:34,640 --> 00:01:41,270
-So in this diagram we illustrate the relationship between aggregates entities, value objects and domain
+Vậy trong sơ đồ này chúng ta minh họa mối quan hệ giữa aggregates, entities, value objects và domain
 
 20
 00:01:41,270 --> 00:01:41,900
@@ -80,121 +80,121 @@ events.
 
 21
 00:01:41,900 --> 00:01:49,010
-So it shows the how order aggregates encompass the order items, which in turn reference to customer
+Vậy nó cho thấy cách các order aggregate bao gồm các order item, mà chúng lần lượt tham chiếu đến các customer và product entity.
 
 22
 00:01:49,010 --> 00:01:50,510
-and product entities.
+và các thực thể sản phẩm.
 
 23
 00:01:50,510 --> 00:01:53,090
-And let me explain these domain modeling.
+Và để tôi giải thích về domain modeling này.
 
 24
 00:01:53,090 --> 00:01:55,850
-First of all we have a order aggregate.
+Đầu tiên, chúng ta có một order aggregate.
 
 25
 00:01:55,850 --> 00:02:01,850
-This is the central focus of the ordering microservices, which coordinates the entire order process.
+Đây là trọng tâm của ordering microservice, nó điều phối toàn bộ quy trình đặt hàng.
 
 26
 00:02:01,880 --> 00:02:06,710
-And after that we have order item which is the one to end relationship.
+Và sau đó chúng ta có order item, đó là mối quan hệ một-đến-nhiều.
 
 27
 00:02:06,710 --> 00:02:10,220
-And this is represent each product item in an order.
+Và cái này đại diện cho mỗi mục sản phẩm trong một đơn hàng.
 
 28
 00:02:10,220 --> 00:02:15,380
-And we have also customer in here customer entity and order item.
+Và chúng ta cũng có customer ở đây, customer entity và order item.
 
 29
 00:02:15,380 --> 00:02:20,030
-Also entity only order will be aggregate in the customer entity.
+Cũng là entity chỉ order sẽ là aggregate trong customer entity.
 
 30
 00:02:20,030 --> 00:02:22,640
-It represents the customer who placed the order.
+Nó đại diện cho khách hàng đã đặt hàng.
 
 31
 00:02:22,640 --> 00:02:24,830
-And here you can see the product entity.
+Và ở đây bạn có thể thấy product entity.
 
 32
 00:02:24,830 --> 00:02:27,320
-It represents the products being ordered.
+Nó đại diện cho các sản phẩm được đặt hàng.
 
 33
 00:02:27,560 --> 00:02:35,810
-Entities like customer and products might be sharing in other microservices indicating the bounded context.
+Các entity như customer và products có thể được chia sẻ trong các microservice khác, cho thấy bounded context.
 
 34
 00:02:35,810 --> 00:02:40,490
-You can see these are the different bounded contexts from the ordering model context.
+Bạn có thể thấy đây là các bounded context khác nhau từ ordering model context.
 
 35
 00:02:40,850 --> 00:02:44,840
-And now we can defining value object in the order aggregate.
+Và bây giờ chúng ta có thể định nghĩa value object trong order aggregate.
 
 36
 00:02:44,840 --> 00:02:49,340
-For example, address is an value object from the order.
+Ví dụ, address là một value object của order.
 
 37
 00:02:49,340 --> 00:02:51,260
-You can see the order aggregate route.
+Bạn có thể thấy order aggregate root.
 
 38
 00:02:51,260 --> 00:02:53,420
-And these are the attributes and methods.
+Và đây là các thuộc tính và phương thức.
 
 39
 00:02:53,420 --> 00:02:58,370
-In the attributes, we can see some of the value object that we can define in here.
+Trong các thuộc tính, chúng ta có thể thấy một số value object mà chúng ta có thể định nghĩa ở đây.
 
 40
 00:02:58,400 --> 00:03:04,100
-Address is a value object that can represent shipping or billing address in the order aggregate.
+Address là một value object có thể đại diện cho địa chỉ giao hàng hoặc hóa đơn trong order aggregate.
 
 41
 00:03:04,100 --> 00:03:10,670
-And we have also payment aggregate which is also value object that encapsulate payment details for an
+Và chúng ta cũng có payment aggregate, đó cũng là value object mà đóng gói các chi tiết thanh toán cho một
 
 42
 00:03:10,670 --> 00:03:11,870
-order and value.
+order và value.
 
 43
 00:03:11,870 --> 00:03:17,810
-Objects like these are the crucial in reflecting real world scenarios and constraints in our domain.
+Các Objects như thế này rất quan trọng trong việc phản ánh các tình huống và ràng buộc thực tế trong domain của chúng ta.
 
 44
 00:03:17,810 --> 00:03:21,320
-And also we have domain events that we can analyze.
+Và chúng ta cũng có domain events mà chúng ta có thể phân tích.
 
 45
 00:03:21,320 --> 00:03:25,340
-We can see that our domain event is order created event.
+Chúng ta có thể thấy rằng domain event của chúng ta là order created event.
 
 46
 00:03:25,430 --> 00:03:30,380
-It is a domain event that gets triggered when a new order is successfully created.
+Đó là một domain event được kích hoạt khi một order mới được tạo thành công.
 
 47
 00:03:30,380 --> 00:03:37,940
-This event could lead to various integrations like inventory checks or notifications, and this is event
+Event này có thể dẫn đến các tích hợp khác nhau như kiểm tra kho hàng hoặc thông báo, và đây là phương pháp event
 
 48
 00:03:37,940 --> 00:03:38,960
-driven approach.
+driven.
 
 49
 00:03:38,960 --> 00:03:39,380
-Enable.
+Kích hoạt.
 
 50
 00:03:39,380 --> 00:03:44,000
-The reactive and decoupled architectures is especially important in microservices.
+Các kiến trúc reactive và decoupled rất quan trọng trong microservices.
 
