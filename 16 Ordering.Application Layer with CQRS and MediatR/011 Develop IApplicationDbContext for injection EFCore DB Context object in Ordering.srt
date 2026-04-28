@@ -1,78 +1,78 @@
 1
 00:00:00,260 --> 00:00:06,980
-In this video we are going to develop AI application DB context interface for injecting the Entity Framework
+Trong video này, chúng ta sẽ phát triển interface AI application DB context để inject Entity Framework
 
 2
 00:00:06,980 --> 00:00:09,860
-core DB context object in our application layer.
+core DB context object vào application layer của chúng ta.
 
 3
 00:00:10,160 --> 00:00:15,890
-So this approach provides an abstraction over the Entity Framework core DB context object, which is
+Vậy cách tiếp cận này cung cấp một abstraction cho Entity Framework core DB context object, điều này rất
 
 4
 00:00:15,890 --> 00:00:21,710
-vital for the decoupling of the application layer from the specific database provider implementation
+quan trọng để tách biệt application layer khỏi việc triển khai database provider cụ thể
 
 5
 00:00:21,710 --> 00:00:23,270
-from the infrastructure layer.
+từ infrastructure layer.
 
 6
 00:00:23,840 --> 00:00:30,470
-So normally for abstraction we are going to use repository objects and we will create IO parser object.
+Vậy thông thường để abstraction, chúng ta sẽ sử dụng repository objects và chúng ta sẽ tạo IO parser object.
 
 7
 00:00:30,470 --> 00:00:36,590
-But when using the Entity Framework core we don't need extra abstractions like implementing repository
+Nhưng khi sử dụng Entity Framework core, chúng ta không cần abstractions thêm như triển khai repository
 
 8
 00:00:36,590 --> 00:00:43,070
-pattern, entity framework core db context object is already an abstraction of any database provider
+pattern, Entity Framework core DB context object đã là một abstraction của bất kỳ database provider nào
 
 9
 00:00:43,070 --> 00:00:45,560
-that we can use for the application layer.
+mà chúng ta có thể sử dụng cho application layer.
 
 10
 00:00:45,740 --> 00:00:52,550
-For that purpose, we will define an interface which name is AI application db context that uses Entity
+Vì mục đích đó, chúng ta sẽ định nghĩa một interface có tên là AI application DB context sử dụng Entity
 
 11
 00:00:52,550 --> 00:00:59,270
-Framework core NuGet package reference, and this interface will expose Dbset properties for each entity
+Framework core NuGet package reference, và interface này sẽ expose các Dbset properties cho mỗi entity
 
 12
 00:00:59,270 --> 00:01:02,780
-and including a method for saving changes asynchronously.
+và bao gồm một method để lưu các thay đổi một cách asynchronously.
 
 13
 00:01:03,110 --> 00:01:07,820
-So please open the Visual Studio and go to the Create Order folder.
+Vậy hãy mở Visual Studio và đi tới Create Order folder.
 
 14
 00:01:07,820 --> 00:01:11,780
-And in here we can use Save to Database operation.
+Và ở đây chúng ta có thể sử dụng Save to Database operation.
 
 15
 00:01:11,780 --> 00:01:15,980
-For that purpose we will create AI application db context object.
+Vì mục đích đó, chúng ta sẽ tạo AI application DB context object.
 
 16
 00:01:15,980 --> 00:01:20,840
-In order to do that, you can navigate to Ordering Application and go to the data folder.
+Để làm điều đó, bạn có thể đi tới Ordering Application và vào data folder.
 
 17
 00:01:20,840 --> 00:01:24,170
-And in this data folder I'm going to create a new interface.
+Và trong data folder này, tôi sẽ tạo một interface mới.
 
 18
 00:01:24,170 --> 00:01:27,770
-Which name is AI application db context dot CSS.
+Có tên là AI application DB context dot CSS.
 
 19
 00:01:28,370 --> 00:01:35,270
-So this interface will include dbset properties for entities like customer, product, order and order
+Vậy interface này sẽ bao gồm các dbset properties cho các entities như customer, product, order và order
 
 20
 00:01:35,270 --> 00:01:35,750
@@ -80,183 +80,183 @@ item.
 
 21
 00:01:35,750 --> 00:01:39,080
-And we will add a method for saving changes asynchronously.
+Và chúng ta sẽ thêm một phương thức để lưu các thay đổi một cách bất đồng bộ.
 
 22
 00:01:39,080 --> 00:01:40,580
-So let's get started.
+Vậy hãy bắt đầu nào.
 
 23
 00:01:40,580 --> 00:01:46,250
-I'm going to remove unnecessary using statement and make this interface as a public.
+Tôi sẽ xóa các using statement không cần thiết và làm cho interface này thành public.
 
 24
 00:01:46,250 --> 00:01:52,400
-And here you can see that I'm going to define the members of this interface with using the Dbset properties.
+Và ở đây bạn có thể thấy rằng tôi sẽ định nghĩa các thành viên của interface này bằng cách sử dụng các thuộc tính Dbset.
 
 25
 00:01:52,400 --> 00:01:55,610
-And in here I'm going to create a customers entity.
+Và ở đây tôi sẽ tạo một customers entity.
 
 26
 00:01:55,610 --> 00:02:00,830
-And following that I'm going to use product order and order item.
+Và tiếp theo tôi sẽ sử dụng product, order và order item.
 
 27
 00:02:00,830 --> 00:02:04,580
-These will be represent our entities from these interface.
+Những cái này sẽ đại diện cho các entities của chúng ta từ interface này.
 
 28
 00:02:04,580 --> 00:02:12,080
-And lastly I'm going to create a new method which is the task integer save change async method and accepting
+Và cuối cùng tôi sẽ tạo một phương thức mới đó là phương thức task integer save change async và chấp nhận
 
 29
 00:02:12,080 --> 00:02:14,180
-the cancellation token as a parameter.
+cancellation token làm tham số.
 
 30
 00:02:14,180 --> 00:02:16,190
-So this is the interface definition.
+Vậy đây là định nghĩa interface.
 
 31
 00:02:16,190 --> 00:02:18,650
-I'm going to remove unnecessary using statement.
+Tôi sẽ xóa các using statement không cần thiết.
 
 32
 00:02:18,650 --> 00:02:25,220
-And these interface provide a contract for database operations, ensuring that the application layer
+Và interface này cung cấp một hợp đồng cho các hoạt động cơ sở dữ liệu, đảm bảo rằng lớp ứng dụng
 
 33
 00:02:25,220 --> 00:02:33,020
-remains independent of specific database implementation and also not including any infrastructure implementation
+vẫn độc lập với các triển khai cơ sở dữ liệu cụ thể và cũng không bao gồm bất kỳ triển khai infrastructure nào
 
 34
 00:02:33,020 --> 00:02:35,720
-like SQL server, database provider and so on.
+như SQL Server, database provider và những cái tương tự.
 
 35
 00:02:35,720 --> 00:02:41,480
-This will be the main abstractions, but as you can see that even we are using the abstractions.
+Đây sẽ là các abstractions chính, nhưng như bạn có thể thấy rằng ngay cả khi chúng ta đang sử dụng các abstractions.
 
 36
 00:02:41,480 --> 00:02:43,250
-We need a Dbset object.
+Chúng ta cần một đối tượng Dbset.
 
 37
 00:02:43,250 --> 00:02:49,010
-So where these Dbset object comes from, of course this comes from the Entity Framework core package.
+Vậy đối tượng Dbset này đến từ đâu, tất nhiên nó đến từ gói Entity Framework Core.
 
 38
 00:02:49,010 --> 00:02:55,820
-In order to use Dbset in our application Dbcontext interface, we should add the Microsoft Entity Framework
+Để sử dụng Dbset trong ứng dụng Dbcontext interface của chúng ta, chúng ta nên thêm gói NuGet Microsoft Entity Framework
 
 39
 00:02:55,820 --> 00:02:58,700
-Core NuGet package into our ordering application.
+Core vào ứng dụng ordering của chúng ta.
 
 40
 00:02:58,700 --> 00:03:03,260
-So I'm going to right click dependencies and manage NuGet packages.
+Vậy tôi sẽ nhấp chuột phải vào dependencies và quản lý NuGet packages.
 
 41
 00:03:05,150 --> 00:03:11,120
-And in here I'm going to search for the browse for the Microsoft Entity Framework core.
+Và ở đây tôi sẽ tìm kiếm Microsoft Entity Framework core.
 
 42
 00:03:11,240 --> 00:03:16,820
-As you can see that there's lots of Entity Framework core packages, like including the SQL server and
+Như bạn có thể thấy, có rất nhiều gói Entity Framework core, bao gồm cả SQL Server và
 
 43
 00:03:16,820 --> 00:03:18,200
-other data providers.
+các nhà cung cấp dữ liệu khác.
 
 44
 00:03:18,200 --> 00:03:24,530
-And in here we are using the plain Entity Framework core that will represent an abstraction of other
+Và ở đây chúng ta đang sử dụng Entity Framework core thuần túy sẽ đại diện cho một lớp trừu tượng của các
 
 45
 00:03:24,530 --> 00:03:25,700
-database providers.
+nhà cung cấp cơ sở dữ liệu khác.
 
 46
 00:03:25,700 --> 00:03:32,720
-So for application layer, we can install this package safely in order to perform abstractions into
+Vậy đối với application layer, chúng ta có thể cài đặt gói này một cách an toàn để thực hiện lớp trừu tượng vào
 
 47
 00:03:32,720 --> 00:03:33,650
-our interface.
+interface của chúng ta.
 
 48
 00:03:33,650 --> 00:03:38,660
-So please select this Microsoft Entity Framework core and install this package into the application
+Vậy hãy chọn Microsoft Entity Framework core này và cài đặt gói này vào application
 
 49
 00:03:38,660 --> 00:03:40,640
-layer after installation.
+layer sau khi cài đặt.
 
 50
 00:03:40,640 --> 00:03:45,410
-You can confirm this from the Ordering application project file and save this file.
+Bạn có thể xác nhận điều này từ tệp dự án Ordering application và lưu tệp này.
 
 51
 00:03:45,410 --> 00:03:49,850
-And here you can see that we have adding the package Microsoft Entity Framework Core.
+Và ở đây bạn có thể thấy rằng chúng ta đã thêm gói Microsoft Entity Framework Core.
 
 52
 00:03:49,850 --> 00:03:55,760
-And this package will act as an abstraction for Entity Framework core SQL server data related operations
+Và gói này sẽ hoạt động như một lớp trừu tượng cho các hoạt động liên quan đến dữ liệu Entity Framework core SQL Server
 
 53
 00:03:55,760 --> 00:03:59,540
-and data provider which we implement into Infrastructure Layer.
+và nhà cung cấp dữ liệu mà chúng ta triển khai vào Infrastructure Layer.
 
 54
 00:03:59,540 --> 00:04:01,220
-And this will be an abstraction.
+Và điều này sẽ là một lớp trừu tượng.
 
 55
 00:04:01,220 --> 00:04:05,960
-You can think this is an AI repository layer into ordering application.
+Bạn có thể coi đây là một AI repository layer vào ordering application.
 
 56
 00:04:05,960 --> 00:04:11,630
-So after installing an abstraction of the Entity Framework core NuGet packages, we can go back to our
+Vậy sau khi cài đặt lớp trừu tượng của các gói Entity Framework core NuGet, chúng ta có thể quay lại
 
 57
 00:04:11,630 --> 00:04:17,899
-interface and add the using statement for these Dbset objects using Microsoft Entity Framework core
+interface và thêm using statement cho các đối tượng Dbset này sử dụng Microsoft Entity Framework core
 
 58
 00:04:17,899 --> 00:04:19,940
-and save these interface.
+và lưu interface này.
 
 59
 00:04:20,029 --> 00:04:26,120
-And after that we should register Dependency Injection in order to use these interface.
+Và sau đó chúng ta nên đăng ký Dependency Injection để có thể sử dụng interface này.
 
 60
 00:04:26,120 --> 00:04:32,450
-For that purpose, I am going to go to the Dependency injection class on the ordering infrastructure
+Với mục đích đó, tôi sẽ đi đến lớp Dependency injection trên ordering infrastructure
 
 61
 00:04:32,450 --> 00:04:35,930
-where we have installing these application DB context.
+nơi chúng ta có cài đặt DB context của ứng dụng này.
 
 62
 00:04:35,930 --> 00:04:42,110
-For that purpose, open the ordering infrastructure and go to the dependency injection case that we
+Để làm điều đó, hãy mở ordering infrastructure và đi đến dependency injection case mà chúng ta
 
 63
 00:04:42,110 --> 00:04:45,890
-have already registered DB context object in this line of code.
+đã đăng ký DB context object trong dòng code này.
 
 64
 00:04:45,890 --> 00:04:51,920
-So these are the registration and configuration for the Entity Framework core and SQL server data provider.
+Vậy đây là đăng ký và cấu hình cho Entity Framework Core và SQL Server data provider.
 
 65
 00:04:51,920 --> 00:04:59,240
-And in here I'm going to also adding an if scoped services which is the AI application db context and
+Và ở đây tôi cũng sẽ thêm một if scoped services, đó là AI application db context và
 
 66
 00:04:59,240 --> 00:05:00,980
@@ -264,7 +264,7 @@ application db context.
 
 67
 00:05:00,980 --> 00:05:05,300
-So please open these commented code and add a scoped services.
+Vậy hãy mở đoạn code được comment này và thêm một scoped services.
 
 68
 00:05:05,300 --> 00:05:06,860
@@ -272,95 +272,95 @@ I application db context.
 
 69
 00:05:06,860 --> 00:05:13,520
-If you come here you can using the ordering application data because infrastructure layer can easily
+Nếu bạn đến đây bạn có thể sử dụng ordering application data vì infrastructure layer có thể dễ dàng
 
 70
 00:05:13,520 --> 00:05:16,730
-use the application layer according to Clean architecture.
+sử dụng application layer theo clean architecture.
 
 71
 00:05:16,730 --> 00:05:19,250
-That's why I am adding these using statement.
+Đó là lý do tại sao tôi đang thêm using statement này.
 
 72
 00:05:19,520 --> 00:05:24,710
-After that you can see that there is still an exception and you can come here and read the exception.
+Sau đó bạn có thể thấy rằng vẫn còn một exception và bạn có thể đi đến đây và đọc exception.
 
 73
 00:05:24,710 --> 00:05:30,200
-According to the exception, you can see that there is no implicit reference conversion from the application
+Theo exception, bạn có thể thấy rằng không có implicit reference conversion từ application
 
 74
 00:05:30,200 --> 00:05:32,270
-DB context to our interface.
+DB context đến interface của chúng ta.
 
 75
 00:05:32,270 --> 00:05:37,370
-For that purpose, we should implement this interface inside of the application db context.
+Để làm điều đó, chúng ta nên triển khai interface này bên trong application db context.
 
 76
 00:05:37,370 --> 00:05:40,790
-Right click the application db context, go to definition.
+Click chuột phải vào application db context, đi đến definition.
 
 77
 00:05:40,790 --> 00:05:44,150
-And here you can see that we will inherit from the DB context.
+Và ở đây bạn có thể thấy rằng chúng ta sẽ kế thừa từ DB context.
 
 78
 00:05:44,150 --> 00:05:50,570
-And also we will implement the AI application db context inside of the our actual implementation of
+Và cũng chúng ta sẽ triển khai AI application db context bên trong triển khai thực tế của
 
 79
 00:05:50,570 --> 00:05:53,810
-the application DB context under the infrastructure layer.
+application DB context dưới infrastructure layer.
 
 80
 00:05:53,810 --> 00:05:57,350
-So please make sure that you have also adding these interface.
+Vậy hãy chắc chắn rằng bạn cũng đã thêm interface này.
 
 81
 00:05:57,350 --> 00:06:03,260
-Because without adding these interface we cannot resolve these interface to our actual application DB
+Vì nếu không thêm interface này, chúng ta không thể resolve interface này vào application DB thực tế của chúng ta
 
 82
 00:06:03,260 --> 00:06:05,510
-context into the application layer.
+context vào application layer.
 
 83
 00:06:05,630 --> 00:06:11,510
-So if you go back to our dependency injection and save this file and go back to dependency injection,
+Vậy nếu bạn quay lại dependency injection của chúng ta và lưu file này, rồi quay lại dependency injection,
 
 84
 00:06:11,510 --> 00:06:17,240
-you can see that we have added the code for this interface to our actual DB context object.
+bạn có thể thấy rằng chúng ta đã thêm code cho interface này vào application DB context object thực tế.
 
 85
 00:06:17,240 --> 00:06:23,600
-This registration enables the injection of AI application db context interface throughout the application
+Đăng ký này cho phép inject AI application db context interface trên toàn bộ application
 
 86
 00:06:23,600 --> 00:06:29,150
-layer, where we implement actual business logic, which is the create order handler, and you can see
+layer, nơi chúng ta triển khai business logic thực tế, đó là create order handler, và bạn có thể thấy
 
 87
 00:06:29,150 --> 00:06:32,210
-that we can save the database with using this interface.
+rằng chúng ta có thể lưu database bằng cách sử dụng interface này.
 
 88
 00:06:32,210 --> 00:06:37,370
-But before that, let me right click the ordering API and build the ordering microservices.
+Nhưng trước đó, để tôi chuột phải ordering API và build ordering microservices.
 
 89
 00:06:37,370 --> 00:06:40,640
-And let's recap what we have done in this video.
+Và hãy tóm tắt lại những gì chúng ta đã làm trong video này.
 
 90
 00:06:40,880 --> 00:06:43,520
-As you can see that we succeeded in this video.
+Như bạn có thể thấy, chúng ta đã thành công trong video này.
 
 91
 00:06:43,520 --> 00:06:49,760
-We basically start with creating a data folder and AI application db context interface under the ordering
+Về cơ bản chúng ta bắt đầu bằng cách tạo một data folder và AI application db context interface dưới ordering
 
 92
 00:06:49,760 --> 00:06:50,660
@@ -368,29 +368,29 @@ application.
 
 93
 00:06:50,870 --> 00:06:56,960
-And after that we have installed the Entity Framework core based NuGet packages into our ordering application.
+Sau đó, chúng ta đã cài đặt Entity Framework Core based NuGet packages vào ordering application của chúng ta.
 
 94
 00:06:57,080 --> 00:07:02,390
-After that, we have registered our interface under the ordering infrastructure and Dependency injection
+Sau đó, chúng ta đã đăng ký interface của chúng ta dưới ordering infrastructure và Dependency injection
 
 95
 00:07:02,390 --> 00:07:05,900
-with adding scope services to our application DB context.
+bằng cách thêm scope services vào application DB context của chúng ta.
 
 96
 00:07:06,050 --> 00:07:12,680
-And lastly, we adding these interface into our application DB context with implementing these interface
+Và cuối cùng, chúng ta thêm interface này vào application DB context của chúng ta bằng cách triển khai interface này
 
 97
 00:07:12,680 --> 00:07:18,980
-with using the application DB context in order to resolve application db context one dependency injection.
+với sử dụng application DB context để resolve application db context dependency injection.
 
 98
 00:07:18,980 --> 00:07:25,760
-So now we can ready for the inject these AI application db context into our command handler class to
+Vậy bây giờ chúng ta đã sẵn sàng để inject AI application db context vào command handler class của chúng ta để
 
 99
 00:07:25,760 --> 00:07:29,630
-performing Crud operations and performing use cases in the handle method.
+thực hiện Crud operations và triển khai các use cases trong handle method.
 

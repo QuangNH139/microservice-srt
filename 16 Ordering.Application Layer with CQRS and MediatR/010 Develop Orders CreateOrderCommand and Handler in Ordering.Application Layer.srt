@@ -1,30 +1,30 @@
 1
 00:00:00,170 --> 00:00:05,720
-In this video we are going to develop orders, create order command and create order command handler
+Trong video này chúng ta sẽ phát triển orders, tạo order command và tạo order command handler
 
 2
 00:00:05,720 --> 00:00:07,070
-in the application layer.
+trong application layer.
 
 3
 00:00:07,070 --> 00:00:11,840
-So that means we will develop application features into our orders folder.
+Điều đó có nghĩa là chúng ta sẽ phát triển application features vào folder orders của chúng ta.
 
 4
 00:00:11,840 --> 00:00:16,520
-And we will specifically implement the use case of the create order feature.
+Và chúng ta sẽ cụ thể triển khai use case của create order feature.
 
 5
 00:00:16,520 --> 00:00:22,130
-So under the create order we will develop create order command and create order command handler.
+Vậy dưới create order chúng ta sẽ phát triển create order command và create order command handler.
 
 6
 00:00:22,130 --> 00:00:23,780
-So let's get started.
+Vậy hãy bắt đầu.
 
 7
 00:00:23,780 --> 00:00:29,840
-Please open the Visual Studio and go to the ordering application and Orders folder and go to the commands
+Vui lòng mở Visual Studio và đi đến ordering application và Orders folder và đi đến commands
 
 8
 00:00:29,840 --> 00:00:30,500
@@ -32,75 +32,75 @@ folder.
 
 9
 00:00:30,500 --> 00:00:34,040
-I'm going to right click this command folder and add new subfolder.
+Tôi sẽ nhấp chuột phải vào command folder này và thêm subfolder mới.
 
 10
 00:00:34,040 --> 00:00:35,900
-Which name is Create Order.
+Cái tên là Create Order.
 
 11
 00:00:35,900 --> 00:00:39,710
-This will be represent our application use case and feature folder.
+Cái này sẽ đại diện cho application use case và feature folder của chúng ta.
 
 12
 00:00:39,710 --> 00:00:44,720
-And inside of this folder we will create create order command and handler classes.
+Và trong folder này chúng ta sẽ tạo create order command và handler classes.
 
 13
 00:00:44,720 --> 00:00:48,230
-So under this Create Order folder I'm going to add a new class.
+Vậy dưới folder Create Order này tôi sẽ thêm một class mới.
 
 14
 00:00:48,230 --> 00:00:51,200
-Which name is Create Order command Dax.
+Cái tên là Create Order command.cs.
 
 15
 00:00:51,290 --> 00:00:53,990
-So this will be represent our command operation.
+Vậy cái này sẽ đại diện cho command operation của chúng ta.
 
 16
 00:00:53,990 --> 00:01:00,170
-And we will define a record type for the create order command that takes an order DTO as a parameter.
+Và chúng ta sẽ định nghĩa một record type cho create order command mà lấy một order DTO làm parameter.
 
 17
 00:01:00,170 --> 00:01:02,810
-So let's start the implementation.
+Vậy hãy bắt đầu implementation.
 
 18
 00:01:02,810 --> 00:01:04,730
-Remove unnecessary using statement.
+Xóa using statement không cần thiết.
 
 19
 00:01:04,730 --> 00:01:11,840
-And I'm going to remove this internal class definition and start with defining our record type with
+Và tôi sẽ xóa internal class definition này và bắt đầu với việc định nghĩa record type của chúng ta với
 
 20
 00:01:11,840 --> 00:01:13,100
-taking the order DTO.
+lấy order DTO.
 
 21
 00:01:13,100 --> 00:01:19,310
-And this will be inherited from the I command interface which comes from the R abstractions.
+Và cái này sẽ kế thừa từ I command interface mà đến từ R abstractions.
 
 22
 00:01:19,310 --> 00:01:24,800
-So here you can see that we will create public record create order command as a parameter.
+Vậy ở đây bạn có thể thấy rằng chúng ta sẽ tạo public record create order command như một tham số.
 
 23
 00:01:24,800 --> 00:01:27,740
-It is getting order DTO and order.
+Nó nhận order DTO và order.
 
 24
 00:01:27,740 --> 00:01:29,960
-And this will be inherited from the I command.
+Và cái này sẽ kế thừa từ I command.
 
 25
 00:01:29,960 --> 00:01:35,450
-In order to identify this is the I command operation to performing our create order operations.
+Để xác định đây là I command operation để thực hiện create order operations của chúng ta.
 
 26
 00:01:35,810 --> 00:01:41,390
-So this command object basically encapsulates the data needed to create a new order, which is the order
+Vậy command object này về cơ bản sẽ đóng gói dữ liệu cần thiết để tạo một order mới, đó là order
 
 27
 00:01:41,390 --> 00:01:41,840
@@ -108,155 +108,155 @@ DTO.
 
 28
 00:01:42,110 --> 00:01:48,170
-And here you can see that we also need to create order result for the response of this command object.
+Và ở đây bạn có thể thấy rằng chúng ta cũng cần tạo order result cho response của command object này.
 
 29
 00:01:48,170 --> 00:01:54,440
-That's why I'm going to create a create order result record that will define a record type to encapsulate
+Đó là lý do tại sao tôi sẽ tạo một create order result record mà sẽ định nghĩa một record type để đóng gói
 
 30
 00:01:54,440 --> 00:02:00,530
-the result of the command execution, which is basically return a ID of the newly created order.
+kết quả của command execution, về cơ bản là trả về ID của order mới được tạo.
 
 31
 00:02:00,530 --> 00:02:06,680
-For that purpose, I'm going to create a basic record type for the result object, which is the public
+Cho mục đích đó, tôi sẽ tạo một record type cơ bản cho result object, đó là public
 
 32
 00:02:06,680 --> 00:02:13,070
-record create order result, and as a parameter it is response, the gid id, which is the newly created
+record create order result, và như một tham số nó là response, gid id, đó là newly created
 
 33
 00:02:13,070 --> 00:02:15,950
-order id which comes from the command object.
+order id mà đến từ command object.
 
 34
 00:02:16,130 --> 00:02:20,930
-And after that we can define the command validations with full and validation.
+Và sau đó chúng ta có thể định nghĩa command validations với Fluent Validation.
 
 35
 00:02:20,930 --> 00:02:26,600
-So as you remember that when we are developing our catalog and basket microservices in the command classes,
+Vậy như bạn nhớ lại rằng khi chúng ta đang phát triển catalog và basket microservices trong command classes,
 
 36
 00:02:26,600 --> 00:02:30,170
-we will develop command result and validator object.
+chúng ta sẽ phát triển command result và validator object.
 
 37
 00:02:30,170 --> 00:02:33,350
-And these are representing our mediator lifecycle.
+Và những cái này đang đại diện cho mediator lifecycle của chúng ta.
 
 38
 00:02:33,350 --> 00:02:38,060
-Here you can see that when the request comes we will create a command and query object.
+Ở đây bạn có thể thấy rằng khi request đến chúng ta sẽ tạo một command và query object.
 
 39
 00:02:38,060 --> 00:02:43,550
-And this will be also including the result object that we can return the client application.
+Và cái này cũng sẽ bao gồm result object mà chúng ta có thể trả lại cho client application.
 
 40
 00:02:43,550 --> 00:02:48,140
-And when we are developing these command and query we can also develop the validations.
+Và khi chúng ta đang phát triển những command và query này chúng ta cũng có thể phát triển các validations.
 
 41
 00:02:48,140 --> 00:02:53,930
-So for that purpose I'm going to go back to Visual Studio and implement the Create Order command validator
+Vậy nên tôi sẽ quay lại Visual Studio và triển khai bộ xác thực Create Order command
 
 42
 00:02:53,930 --> 00:02:59,540
-using the full length validation in order to ensure that the incoming order data is valid or not.
+sử dụng Fluent Validation để đảm bảo rằng dữ liệu đơn hàng đến là hợp lệ hay không.
 
 43
 00:02:59,540 --> 00:03:06,620
-And in here you can develop these codes which is the public class create order command validator.
+Và ở đây bạn có thể phát triển các mã này đó là public class CreateOrderCommandValidator.
 
 44
 00:03:06,620 --> 00:03:12,440
-And this will be inherit from the abstract validator with including the create order command type.
+Và nó sẽ kế thừa từ AbstractValidator bao gồm kiểu CreateOrderCommand.
 
 45
 00:03:12,650 --> 00:03:17,510
-Abstract validator comes from the full length validation library to performing the validations in the
+AbstractValidator đến từ thư viện Fluent Validation để thực hiện các xác thực trong
 
 46
 00:03:17,510 --> 00:03:18,980
-constructor of this class.
+constructor của lớp này.
 
 47
 00:03:18,980 --> 00:03:24,080
-And here you can see that we have created the constructor, and inside of the constructor we can use
+Và ở đây bạn có thể thấy rằng chúng ta đã tạo constructor, và bên trong constructor chúng ta có thể sử dụng
 
 48
 00:03:24,080 --> 00:03:27,440
-rule for methods comes from the full length validation library.
+các phương thức RuleFor đến từ thư viện Fluent Validation.
 
 49
 00:03:27,440 --> 00:03:33,410
-And we will specify the order attributes with including the order name, customer ID and order items
+Và chúng ta sẽ chỉ định các thuộc tính đơn hàng bao gồm tên đơn hàng, ID khách hàng và các mục đơn hàng
 
 50
 00:03:33,410 --> 00:03:38,360
-not empty and not null with the messages that we define in here.
+không rỗng và không null với các thông báo mà chúng ta định nghĩa ở đây.
 
 51
 00:03:38,360 --> 00:03:41,750
-So this is the rule definition for the create order command.
+Vậy đây là định nghĩa rule cho CreateOrderCommand.
 
 52
 00:03:41,750 --> 00:03:47,930
-And we basically validate the crucial fields like order, name, customer ID and ensure the order items
+Và về cơ bản chúng ta xác thực các trường quan trọng như tên đơn hàng, ID khách hàng và đảm bảo các mục đơn hàng
 
 53
 00:03:47,930 --> 00:03:48,950
-are not empty.
+không rỗng.
 
 54
 00:03:48,980 --> 00:03:54,140
-Validators are vital to prevent invalid data from propagating through the system.
+Các bộ xác thực rất quan trọng để ngăn chặn dữ liệu không hợp lệ lan truyền qua hệ thống.
 
 55
 00:03:54,140 --> 00:03:59,750
-In our case, we will validate the create order, command and order data in order to perform create
+Trong trường hợp của chúng ta, chúng ta sẽ xác thực CreateOrderCommand và dữ liệu đơn hàng để thực hiện
 
 56
 00:03:59,750 --> 00:04:03,800
-operations without getting any error with these validators.
+các hoạt động tạo mà không gặp bất kỳ lỗi nào với các bộ xác thực này.
 
 57
 00:04:03,800 --> 00:04:08,510
-So after that we can start the developing create order command handler.
+Vậy sau đó chúng ta có thể bắt đầu phát triển CreateOrderCommandHandler.
 
 58
 00:04:08,510 --> 00:04:15,770
-If we look at the order mediator pipeline, you can see that after converting the command we will trigger
+Nếu chúng ta nhìn vào mediator pipeline của order, bạn có thể thấy rằng sau khi chuyển đổi command chúng ta sẽ kích hoạt
 
 59
 00:04:15,770 --> 00:04:17,990
-the command handler with using the mediator.
+command handler bằng cách sử dụng mediator.
 
 60
 00:04:17,990 --> 00:04:20,089
-So we should develop the command handler class.
+Vậy nên chúng ta nên phát triển lớp command handler.
 
 61
 00:04:20,089 --> 00:04:23,360
-In our case this will be the create order handler class.
+Trong trường hợp này, đó sẽ là lớp create order handler.
 
 62
 00:04:23,360 --> 00:04:26,480
-For that purpose I'm going to create a new file.
+Để làm điều đó, tôi sẽ tạo một file mới.
 
 63
 00:04:26,480 --> 00:04:31,130
-Which name is create order handler in the same directory of the create order folder.
+Tên là create order handler trong cùng thư mục của thư mục create order.
 
 64
 00:04:31,130 --> 00:04:32,960
-So please create this class.
+Vì vậy vui lòng tạo lớp này.
 
 65
 00:04:32,960 --> 00:04:39,320
-And after that we will implement I command handler for the create order command and returning the result
+Và sau đó chúng ta sẽ triển khai I command handler cho create order command và trả về kết quả
 
 66
 00:04:39,320 --> 00:04:39,920
@@ -264,47 +264,47 @@ object.
 
 67
 00:04:39,920 --> 00:04:45,410
-So I'm going to remove unnecessary using statement and make this class as a public.
+Vì vậy tôi sẽ xóa unnecessary using statement và làm cho lớp này thành public.
 
 68
 00:04:47,480 --> 00:04:51,950
-And we will implement the I command handler for the create order command.
+Và chúng ta sẽ triển khai I command handler cho create order command.
 
 69
 00:04:51,950 --> 00:04:57,860
-And the handlers responsibility is to process the command and interact with the domain model and databases.
+Và trách nhiệm của handler là xử lý command và tương tác với domain model và databases.
 
 70
 00:04:57,860 --> 00:04:59,630
-So I'm going to start with the.
+Vì vậy tôi sẽ bắt đầu với.
 
 71
 00:04:59,790 --> 00:05:05,340
-Implementation of the interface, which is the IE command handler interface, and in this interface
+Triển khai của interface, đó là IE command handler interface, và trong interface này
 
 72
 00:05:05,340 --> 00:05:09,540
-we will passing the types which is the create order command and create order result.
+chúng ta sẽ truyền các types đó là create order command và create order result.
 
 73
 00:05:09,540 --> 00:05:14,700
-And after that I am going to implement these interface members which is the handle method.
+Và sau đó tôi sẽ triển khai các thành viên interface này đó là handle method.
 
 74
 00:05:14,700 --> 00:05:19,140
-So this handle method will be triggered from the mediator handle method.
+Vì vậy handle method này sẽ được kích hoạt từ mediator handle method.
 
 75
 00:05:19,140 --> 00:05:23,760
-Also act as a mediator between the incoming command and the domain model.
+Cũng hoạt động như một mediator giữa incoming command và domain model.
 
 76
 00:05:23,760 --> 00:05:29,400
-So if you look at the method body you can see that the handle method taking parameter from the create
+Vì vậy nếu bạn nhìn vào method body, bạn có thể thấy rằng handle method nhận parameter từ create
 
 77
 00:05:29,400 --> 00:05:35,520
-order command as a request and cancellation token, and this will be respond back to the task create
+order command như một request và cancellation token, và điều này sẽ phản hồi lại với task create
 
 78
 00:05:35,520 --> 00:05:36,720
@@ -312,39 +312,39 @@ order result object.
 
 79
 00:05:36,720 --> 00:05:42,150
-That means in the handle method, we basically encapsulate the business logic in order to create an
+Điều đó có nghĩa là trong handle method, về cơ bản chúng ta đóng gói business logic để tạo một
 
 80
 00:05:42,150 --> 00:05:47,130
-order entity from the command and persist it to the database for that purpose.
+order entity từ command và persist nó vào database cho mục đích đó.
 
 81
 00:05:47,130 --> 00:05:52,110
-Let's implement this handle method with a piece of code in a commented items.
+Hãy triển khai phương thức handle này với một đoạn code trong các items được comment.
 
 82
 00:05:52,110 --> 00:05:56,820
-Here you can see that I'm going to add a commented items for implementing this handle method.
+Ở đây bạn có thể thấy rằng tôi sẽ thêm các commented items để triển khai phương thức handle này.
 
 83
 00:05:56,850 --> 00:06:02,610
-These are the create order entity from the command object that comes from the parameter, and after
+Đây là các create order entity từ command object mà đến từ tham số, và sau đó
 
 84
 00:06:02,610 --> 00:06:07,530
-that we will perform the save to database and return the result, which is the create order result.
+chúng ta sẽ thực hiện lưu vào cơ sở dữ liệu và trả về kết quả, đó là create order result.
 
 85
 00:06:07,530 --> 00:06:14,670
-So implementing these 100 logic will involve the interacting with the application db context and database.
+Vậy triển khai logic này sẽ liên quan đến việc tương tác với application db context và cơ sở dữ liệu.
 
 86
 00:06:14,670 --> 00:06:18,930
-So how can we save order entity in this handle method?
+Vậy làm cách nào chúng ta có thể lưu order entity trong phương thức handle này?
 
 87
 00:06:19,200 --> 00:06:24,570
-Of course we should use application db context object that we developed in the ordering infrastructure
+Tất nhiên chúng ta nên sử dụng application db context object mà chúng ta đã phát triển trong ordering infrastructure
 
 88
 00:06:24,570 --> 00:06:25,110
@@ -352,7 +352,7 @@ layer.
 
 89
 00:06:25,350 --> 00:06:30,930
-But according to clean architecture we should not getting reference application layer from the infrastructure
+Nhưng theo clean architecture chúng ta không nên lấy tham chiếu application layer từ infrastructure
 
 90
 00:06:30,930 --> 00:06:31,590
@@ -360,11 +360,11 @@ layer.
 
 91
 00:06:31,590 --> 00:06:37,440
-If you look at the clean architecture layer and dependencies, you can see that application layer should
+Nếu bạn xem xét clean architecture layer và dependencies, bạn có thể thấy rằng application layer không nên
 
 92
 00:06:37,440 --> 00:06:43,230
-not get dependency from the infrastructure instead of that application layer is using in the infrastructure
+lấy dependency từ infrastructure layer, thay vào đó application layer được sử dụng trong infrastructure
 
 93
 00:06:43,230 --> 00:06:43,740
@@ -372,11 +372,11 @@ layer.
 
 94
 00:06:43,740 --> 00:06:47,940
-So how we can save these operations inside of the application?
+Vậy làm cách nào chúng ta có thể lưu các operations này trong application?
 
 95
 00:06:47,940 --> 00:06:53,820
-The best practice is using the interface abstractions in the application layer for the Entity Framework
+Best practice là sử dụng interface abstractions trong application layer cho Entity Framework
 
 96
 00:06:53,820 --> 00:06:55,500
@@ -384,11 +384,11 @@ core DB context object.
 
 97
 00:06:55,860 --> 00:07:02,250
-That means we will create AI application db context interface to implementing and representing the DB
+Điều đó có nghĩa là chúng ta sẽ tạo một application db context interface để triển khai và đại diện cho các DB
 
 98
 00:07:02,250 --> 00:07:07,440
-context operations, and these will be resolved when the application start up in the dependency injection
+context operations, và những cái này sẽ được resolve khi application khởi động trong dependency injection
 
 99
 00:07:07,440 --> 00:07:08,190
