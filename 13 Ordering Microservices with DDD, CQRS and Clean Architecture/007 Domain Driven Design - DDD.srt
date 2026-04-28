@@ -1,78 +1,78 @@
 1
 00:00:00,340 --> 00:00:04,059
-In this video we are going to learn domain driven design.
+Trong video này, chúng ta sẽ học về domain driven design.
 
 2
 00:00:04,090 --> 00:00:06,250
-So what is domain driven design?
+Vậy domain driven design là gì?
 
 3
 00:00:06,280 --> 00:00:13,300
-Domain driven design has been around since Eric Evans published his book about the subject in 2003.
+Domain driven design đã tồn tại từ khi Eric Evans xuất bản cuốn sách của anh ấy về chủ đề này vào năm 2003.
 
 4
 00:00:13,690 --> 00:00:18,370
-Domain driven design is not an improved technology or specific method.
+Domain driven design không phải là một công nghệ được cải tiến hoặc một phương pháp cụ thể.
 
 5
 00:00:18,430 --> 00:00:20,020
-Domain driven design is.
+Domain driven design là.
 
 6
 00:00:20,020 --> 00:00:26,890
-Solving a complex problem is to break the problem into smaller parts and focus on the smaller problems
+Giải quyết một vấn đề phức tạp là chia vấn đề thành những phần nhỏ hơn và tập trung vào những vấn đề nhỏ hơn
 
 7
 00:00:26,890 --> 00:00:28,990
-that are relatively easy.
+đó tương đối dễ dàng.
 
 8
 00:00:29,590 --> 00:00:36,280
-A complex domain may contain subdomains, and some of the sub domains can combine and grouping with
+Một domain phức tạp có thể chứa nhiều subdomains, và một số subdomains có thể kết hợp và nhóm với
 
 9
 00:00:36,280 --> 00:00:39,550
-each other for common rules and responsibilities.
+nhau theo những quy tắc và trách nhiệm chung.
 
 10
 00:00:40,390 --> 00:00:42,940
-So domain driven design has two types.
+Vậy domain driven design có hai loại.
 
 11
 00:00:42,940 --> 00:00:47,230
-These are the strategic and tactical domain driven design.
+Đó là strategic domain driven design và tactical domain driven design.
 
 12
 00:00:47,620 --> 00:00:52,720
-Strategic domain driven design is about understanding and modeling the business domain.
+Strategic domain driven design là về việc hiểu và mô hình hóa business domain.
 
 13
 00:00:52,720 --> 00:00:58,330
-It involves identifying the different domains, their sub domains, and how they interact with each
+Nó liên quan đến việc xác định các domains khác nhau, các subdomains của chúng, và cách chúng tương tác với nhau.
 
 14
 00:00:58,330 --> 00:00:58,900
-other.
+Tactical domain driven design lại tập trung nhiều hơn vào chi tiết triển khai và cung cấp các design patterns
 
 15
 00:00:59,620 --> 00:01:05,740
-In tactical domain driven design is more about the implementation details and provide design patterns
+bao gồm các patterns như entities, value objects, aggregates, v.v.
 
 16
 00:01:05,740 --> 00:01:10,990
-including the patterns like entities, value objects, aggregates, and so on.
+Trong video này, chúng ta sẽ tập trung vào strategic domain driven design và các khái niệm chính của nó.
 
 17
 00:01:11,110 --> 00:01:16,480
-For this video, we will focus on the strategic domain driven design and its key concepts.
+Để hiểu domain driven design, cần phải nắm vững một số khái niệm cơ bản và đó là
 
 18
 00:01:17,590 --> 00:01:23,710
-In order to understand domain driven design, some basic concepts need to be mastered and these are
+domain, subdomain, ubiquitous language, bounded context và context mapping.
 
 19
 00:01:23,710 --> 00:01:29,710
-the domain subdomain, ubiquitous language, bounded context and context mapping.
+Vậy để tôi bắt đầu với domain.
 
 20
 00:01:29,710 --> 00:01:31,630
@@ -80,75 +80,75 @@ So let me start with the domain.
 
 21
 00:01:31,930 --> 00:01:37,240
-The domain is the sphere of the knowledge and activity around which the application logic revolves.
+Domain là lĩnh vực của kiến thức và hoạt động mà logic ứng dụng của bạn xoay quanh.
 
 22
 00:01:37,240 --> 00:01:44,230
-It represents the problem space and the array of the expertise or business need that the software addresses.
+Nó đại diện cho không gian vấn đề và mảng kiến thức chuyên môn hoặc nhu cầu kinh doanh mà phần mềm giải quyết.
 
 23
 00:01:44,260 --> 00:01:50,350
-An example of the domain in e-commerce application domain might include ordering, inventory management
+Một ví dụ về domain trong ứng dụng e-commerce có thể bao gồm đặt hàng, quản lý hàng tồn kho
 
 24
 00:01:50,350 --> 00:01:52,300
-and customer support, and so on.
+và hỗ trợ khách hàng, v.v.
 
 25
 00:01:52,990 --> 00:01:55,330
-The second concept is sub domain.
+Khái niệm thứ hai là sub domain.
 
 26
 00:01:55,420 --> 00:02:01,270
-A sub domain is a part of the domain and represents a specific area of the expertise within the overall
+Sub domain là một phần của domain và đại diện cho một lĩnh vực kiến thức cụ thể trong domain tổng thể.
 
 27
 00:02:01,270 --> 00:02:01,930
-domain.
+Mỗi sub domain có logic và quy tắc riêng của nó, và một khái niệm khác là ubiquitous language, đó là
 
 28
 00:02:01,960 --> 00:02:08,979
-Each sub domain has its unique logic and rules, and another concept is ubiquitous language, which
+một ngôn ngữ chung được sử dụng bởi các nhà phát triển và các chuyên gia domain để đảm bảo sự rõ ràng và nhất quán.
 
 29
 00:02:08,979 --> 00:02:15,820
-is a common language used by the developers and the domain experts in order to ensure clarity and consistency.
+Rất quan trọng là ngôn ngữ này được sử dụng trong cả các cuộc thảo luận và trong base code.
 
 30
 00:02:15,850 --> 00:02:20,830
-It is crucial for this language to be used in both discussions and in the code base.
+Nó giúp tránh hiểu lầm và đảm bảo rằng tất cả các bên liên quan có một sự hiểu biết chung về các khái niệm domain.
 
 31
 00:02:20,830 --> 00:02:27,010
-It helps to avoid misunderstanding and ensures that all stakeholders have a common understanding of
+Và một khái niệm quan trọng khác là bounded context.
 
 32
 00:02:27,010 --> 00:02:28,180
-the domain concepts.
+Bounded context là sự nhóm các phạm vi liên quan chặt chẽ mà chúng ta có thể nói là các ranh giới logic.
 
 33
 00:02:28,780 --> 00:02:31,990
-And another important concept is bounded context.
+Bounded context là một ranh giới logic đại diện cho những phần vấn đề nhỏ hơn của domain phức tạp
 
 34
 00:02:31,990 --> 00:02:38,200
-Bounded context is the grouping of the closely related scopes that we can say logical boundaries.
+mà tự nhất quán và phụ thuộc lẫn nhau càng ít càng tốt.
 
 35
 00:02:38,200 --> 00:02:44,860
-Bounded context is a logical boundary that represents the smaller problem particles of the complex domain
+Đó là một mẫu trung tâm trong domain driven design, và giúp quản lý độ phức tạp bằng cách chia domain
 
 36
 00:02:44,860 --> 00:02:48,430
-that are self-consistent and as dependent as possible.
+thành các phần có thể quản lý được.
 
 37
 00:02:48,430 --> 00:02:54,910
-It is a central pattern in domain driven design, and help to manage complexity by dividing these domain
+Mỗi bounded context có thể có schema cơ sở dữ liệu riêng của nó.
 
 38
 00:02:54,910 --> 00:02:56,290
-into manageable parts.
+Nó được gọi là modules và có một đội ngũ làm việc trên nó.
 
 39
 00:02:56,320 --> 00:02:59,710
@@ -160,21 +160,21 @@ It is called modules and it is team working on it.
 
 41
 00:03:03,370 --> 00:03:07,360
-And another domain driven concept is context mapping pattern.
+Và một khái niệm domain driven khác là context mapping pattern.
 
 42
 00:03:07,360 --> 00:03:13,300
-In DDT, we can use context mapping pattern for identification of bounded contexts.
+Trong DDT, chúng ta có thể sử dụng context mapping pattern để xác định các bounded contexts.
 
 43
 00:03:13,300 --> 00:03:19,270
-With context mapping pattern, we can identify the whole bounded context in the application and with
+Với context mapping pattern, chúng ta có thể xác định toàn bộ bounded context trong ứng dụng và
 
 44
 00:03:19,270 --> 00:03:20,530
-their logical boundaries.
+các ranh giới logic của chúng.
 
 45
 00:03:20,530 --> 00:03:25,150
-And the context map is a way to define logical boundaries between the domains.
+Và context map là một cách để định nghĩa các ranh giới logic giữa các domains.
 
