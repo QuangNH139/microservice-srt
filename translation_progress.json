@@ -218,5 +218,8 @@
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/003 Steps of EF Core Developments for Ordering.Infrastructure.srt": "done",
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/004 Install EF Core Nuget Packages in Ordering.Infrastructure.srt": "done",
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/005 Develop EF Core DBContext Object for Storing Entities in Ordering.Infrastructure.srt": "done",
-  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/006 Mapping DDD Objects to EF Entities - Develop EF Core Entity Configurations.srt": "done"
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/006 Mapping DDD Objects to EF Entities - Develop EF Core Entity Configurations.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/007 EF Core 8 Relations and DDD ValueObject Mapping with ComplexType and ComplexProp.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/008 Mapping DDD Objects to EF Entities - Develop Order Entity Configurations.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/009 EF Core SQL Server Connection String in appsettings.json file.srt": "done"
 }

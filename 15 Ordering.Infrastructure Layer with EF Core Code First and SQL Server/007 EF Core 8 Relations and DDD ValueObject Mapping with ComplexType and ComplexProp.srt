@@ -1,50 +1,50 @@
 1
 00:00:00,170 --> 00:00:05,960
-In this video we are going to learn Entity Framework, Core Relations and Domain driven Design value
+Trong video này, chúng ta sẽ học về Entity Framework Core Relations và Domain driven Design value
 
 2
 00:00:05,960 --> 00:00:09,500
-object mappings with complex type and complex property method.
+object mappings với complex type và complex property method.
 
 3
 00:00:09,890 --> 00:00:16,040
-Let me start with the Entity Framework core relations with using the has and with patterns.
+Hãy bắt đầu với Entity Framework Core relations bằng cách sử dụng các mẫu has và with.
 
 4
 00:00:16,370 --> 00:00:21,500
-In domain driven design, entities often have relationships with other entities.
+Trong domain driven design, các entities thường có mối quan hệ với các entities khác.
 
 5
 00:00:21,500 --> 00:00:26,930
-These relationships are typically 1 to 1, one to many, or many to many.
+Các mối quan hệ này thường là 1 to 1, one to many, hoặc many to many.
 
 6
 00:00:27,500 --> 00:00:35,210
-Entity Framework Core handles these relationships using the has and with pattern relationships can be
+Entity Framework Core xử lý các mối quan hệ này bằng cách sử dụng mẫu has và with pattern relationships có thể được
 
 7
 00:00:35,210 --> 00:00:42,230
-configured using the has many with one methods for one to many relationships, and has one with many
+cấu hình bằng các phương thức has many with one cho one to many relationships, và has one with many
 
 8
 00:00:42,230 --> 00:00:44,660
-methods for many to one relationships.
+phương thức cho many to one relationships.
 
 9
 00:00:45,860 --> 00:00:48,980
-And here you can see one to many relationship.
+Và ở đây bạn có thể thấy one to many relationship.
 
 10
 00:00:48,980 --> 00:00:49,790
-Example.
+Ví dụ.
 
 11
 00:00:49,790 --> 00:00:55,010
-In our authentic microservices, order and order items have one to many relationship.
+Trong authentic microservices của chúng ta, order và order items có one to many relationship.
 
 12
 00:00:55,010 --> 00:01:01,460
-That means an order can have multiple order items and this can be configured using the Entity Framework
+Điều đó có nghĩa là một order có thể có nhiều order items và điều này có thể được cấu hình bằng Entity Framework
 
 13
 00:01:01,460 --> 00:01:03,110
@@ -52,23 +52,23 @@ Core Fluent API.
 
 14
 00:01:03,110 --> 00:01:08,840
-As you can see in the picture, we can configure with the builder entity order entity, and we will
+Như bạn có thể thấy trong hình ảnh, chúng ta có thể cấu hình với builder entity order entity, và chúng ta sẽ
 
 15
 00:01:08,840 --> 00:01:15,140
-use has many methods and identify the many items which is the order items.
+sử dụng phương thức has many và xác định các many items đó là order items.
 
 16
 00:01:15,140 --> 00:01:20,660
-And we can continue with the Whitman, which is the one to many relationships and specify the foreign
+Và chúng ta có thể tiếp tục với Whitman, đó là one to many relationships và chỉ định foreign
 
 17
 00:01:20,660 --> 00:01:21,890
-key as order ID.
+key là order ID.
 
 18
 00:01:22,490 --> 00:01:29,150
-And this configuration sets up the relationship where each order item references an order through a
+Và cấu hình này thiết lập mối quan hệ nơi mỗi order item tham chiếu đến một order thông qua một
 
 19
 00:01:29,150 --> 00:01:29,720
@@ -76,15 +76,15 @@ foreign key.
 
 20
 00:01:29,720 --> 00:01:31,100
-Which name is order id?
+Cái tên là order id?
 
 21
 00:01:31,490 --> 00:01:38,090
-Now we can explore domain driven design value object mapping with complex type and complex property.
+Bây giờ chúng ta có thể khám phá domain driven design mapping value object với complex type và complex property.
 
 22
 00:01:38,360 --> 00:01:45,140
-So in Entity Framework core eight complex types are introduced to better support value objects in domain
+Vậy trong Entity Framework Core 8, complex types được giới thiệu để hỗ trợ tốt hơn cho value objects trong domain
 
 23
 00:01:45,140 --> 00:01:46,100
@@ -92,27 +92,27 @@ driven design.
 
 24
 00:01:46,490 --> 00:01:53,450
-A complex type is an object that doesn't have a primary key, and it is used to represent a set of properties
+Một complex type là một object không có primary key, và nó được sử dụng để biểu diễn một tập hợp các properties
 
 25
 00:01:53,450 --> 00:01:54,440
-in an entity.
+trong một entity.
 
 26
 00:01:55,240 --> 00:01:59,080
-As an example of the complex type of objects in our ordering.
+Ví dụ về complex type của objects trong ordering
 
 27
 00:01:59,080 --> 00:02:05,650
-Microservices address can be a complex type representing the shipping and billing address for an order.
+Microservices của chúng ta, address có thể là một complex type biểu diễn địa chỉ giao hàng và lập hóa đơn cho một order.
 
 28
 00:02:05,680 --> 00:02:12,790
-Here you can see that address value objects is indicating as a complex type with attribute, and we
+Ở đây bạn có thể thấy rằng address value objects được chỉ định là một complex type với attribute, và chúng ta
 
 29
 00:02:12,790 --> 00:02:17,530
-can also configure address as a complex type on model.
+cũng có thể cấu hình address như một complex type trên model.
 
 30
 00:02:17,530 --> 00:02:18,520
@@ -120,21 +120,21 @@ Creating method.
 
 31
 00:02:18,520 --> 00:02:25,120
-When configuring the order entity, you can see that in order entity, we will use complex property
+Khi cấu hình order entity, bạn có thể thấy rằng trong order entity, chúng ta sẽ sử dụng complex property
 
 32
 00:02:25,120 --> 00:02:30,070
-method in order to identify billing and shipping address as a value object.
+method để xác định billing và shipping address như một value object.
 
 33
 00:02:30,160 --> 00:02:36,160
-So this configuration in our model creating method tells Entity Framework Core that billing and shipping
+Vậy cấu hình này trong model creating method của chúng ta cho Entity Framework Core biết rằng billing và shipping
 
 34
 00:02:36,160 --> 00:02:42,820
-address are complex types, and it will then map these types to the same table as the order entity,
+address là các complex types, và nó sẽ sau đó map các types này vào cùng table với order entity,
 
 35
 00:02:42,820 --> 00:02:47,320
-treating them as a part of the order entity rather than a separate entity.
+coi chúng là một phần của order entity thay vì một entity riêng biệt.
 
