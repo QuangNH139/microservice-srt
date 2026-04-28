@@ -1,42 +1,42 @@
 1
 00:00:00,140 --> 00:00:06,620
-In this video, we are going to apply Entity Framework Core migrations to SQL server database with using
+Trong video này, chúng ta sẽ áp dụng Entity Framework Core migrations vào SQL server database bằng cách sử dụng
 
 2
 00:00:06,650 --> 00:00:08,150
-update database command.
+lệnh update database.
 
 3
 00:00:08,180 --> 00:00:13,970
-So in the previous videos we will apply the migrations and create the migration folder.
+Vậy trong các video trước, chúng ta sẽ áp dụng các migrations và tạo thư mục migration.
 
 4
 00:00:13,970 --> 00:00:20,000
-And remember that before you can run the update database command, you must first generate the migrations
+Và nhớ rằng trước khi bạn có thể chạy lệnh update database, bạn phải tạo migrations trước
 
 5
 00:00:20,000 --> 00:00:22,100
-using the Add Migration command.
+bằng cách sử dụng lệnh Add Migration.
 
 6
 00:00:22,100 --> 00:00:26,180
-If you open the Visual Studio, come to Package Manager Console.
+Nếu bạn mở Visual Studio, hãy đi đến Package Manager Console.
 
 7
 00:00:26,180 --> 00:00:32,630
-Before running the update database, you have to run add migration, initial, create and give these
+Trước khi chạy update database, bạn phải chạy add migration, initial, create và cung cấp những
 
 8
 00:00:32,630 --> 00:00:34,670
-specifications and properties.
+thông số và properties này.
 
 9
 00:00:34,670 --> 00:00:37,310
-When creating these migration folder.
+Khi tạo thư mục migration này.
 
 10
 00:00:37,310 --> 00:00:42,530
-If you open the migration folder, you can see that we have successfully create initial create an op
+Nếu bạn mở thư mục migration, bạn có thể thấy rằng chúng ta đã tạo thành công initial create và op
 
 11
 00:00:42,530 --> 00:00:42,950
@@ -44,117 +44,117 @@ method.
 
 12
 00:00:42,950 --> 00:00:47,390
-This will be create all tables into our SQL server database.
+Điều này sẽ tạo tất cả các bảng vào SQL server database của chúng ta.
 
 13
 00:00:47,390 --> 00:00:54,470
-So that means if you change anything on your DB context and the properties of the entities.
+Vậy điều đó có nghĩa là nếu bạn thay đổi bất cứ điều gì trên DB context của bạn và các properties của các entities.
 
 14
 00:00:54,470 --> 00:01:01,610
-For example, if you change or add new property into product entity, you can delete the whole migration
+Ví dụ, nếu bạn thay đổi hoặc thêm property mới vào product entity, bạn có thể xóa toàn bộ thư mục migration
 
 15
 00:01:01,610 --> 00:01:06,890
-folder and rerun these apply command in the Package Manager console.
+và chạy lại các lệnh này trong Package Manager console.
 
 16
 00:01:06,890 --> 00:01:14,930
-Add migration in order to create new migrations and generate the latest codes into the SQL server database.
+Add migration để tạo migrations mới và tạo mã mới nhất vào SQL server database.
 
 17
 00:01:14,930 --> 00:01:21,020
-For that purpose, we have already generated the migrations and we have already up command, which is
+Cho mục đích đó, chúng ta đã tạo migrations rồi và chúng ta đã có up command, đó là
 
 18
 00:01:21,020 --> 00:01:21,950
-the up to date.
+cập nhật đến ngày.
 
 19
 00:01:21,950 --> 00:01:27,800
-I'm going to open the Package Manager console and run the update database command and make sure that
+Tôi sẽ mở Package Manager console và chạy lệnh update database và đảm bảo rằng
 
 20
 00:01:27,800 --> 00:01:30,260
-your default project is ordering infrastructure.
+dự án mặc định của bạn là ordering infrastructure.
 
 21
 00:01:30,260 --> 00:01:36,320
-And before running this command, also make sure that your ordering API should be set as startup project.
+Và trước khi chạy lệnh này, hãy chắc chắn rằng ordering API của bạn được đặt làm startup project.
 
 22
 00:01:36,320 --> 00:01:43,070
-Right click Set Startup Project for ordering API and open the Package Manager console the default project
+Nhấp chuột phải Set Startup Project cho ordering API và mở Package Manager console với default project là
 
 23
 00:01:43,070 --> 00:01:46,970
-ordering infrastructure and hit the update database command.
+ordering infrastructure, sau đó chạy lệnh update database.
 
 24
 00:01:47,810 --> 00:01:56,270
-This command will be run all migration codes and create database and tables that we have applied these
+Lệnh này sẽ chạy tất cả các migration code và tạo database cùng các bảng mà chúng ta đã áp dụng
 
 25
 00:01:56,270 --> 00:01:58,610
-migrations to the SQL server database.
+các migration này cho SQL Server database.
 
 26
 00:01:58,610 --> 00:02:01,070
-So you can see the logs in here.
+Vậy bạn có thể thấy các logs ở đây.
 
 27
 00:02:01,070 --> 00:02:07,700
-This is running SQL commands onto our database including the create table commands.
+Đây là việc chạy các lệnh SQL trên database của chúng ta, bao gồm các lệnh tạo bảng.
 
 28
 00:02:07,700 --> 00:02:12,170
-For example this is creating order table including these columns.
+Ví dụ, đây là việc tạo bảng order với các cột này.
 
 29
 00:02:12,170 --> 00:02:16,790
-And after that execute DB command which is the create table for order items.
+Và sau đó thực thi lệnh DB để tạo bảng order items.
 
 30
 00:02:16,790 --> 00:02:22,070
-And here you can see that we will create the indexes foreign keys and so on.
+Và ở đây bạn có thể thấy chúng ta sẽ tạo các index, foreign keys, v.v.
 
 31
 00:02:22,070 --> 00:02:26,210
-So we have successfully running the update database command.
+Vậy chúng ta đã thành công trong việc chạy lệnh update database.
 
 32
 00:02:26,210 --> 00:02:31,220
-And this will be run these commands generating from the our migrations folder.
+Và lệnh này sẽ chạy các lệnh được tạo ra từ thư mục migrations của chúng ta.
 
 33
 00:02:31,220 --> 00:02:39,800
-And now I am going to verify migrations execution onto the these SQL Server Object Explorer Object Explorer.
+Và bây giờ tôi sẽ xác minh việc thực thi migrations trên SQL Server Object Explorer.
 
 34
 00:02:39,800 --> 00:02:44,540
-You can see that there is no databases under our local SQL server database.
+Bạn có thể thấy rằng không có databases nào dưới SQL Server cục bộ của chúng ta.
 
 35
 00:02:44,540 --> 00:02:48,740
-If I refresh this page, you can open and open a database.
+Nếu tôi làm mới trang này, bạn có thể mở và xem một database.
 
 36
 00:02:48,740 --> 00:02:54,320
-This time you can see that our order DB is generating and created successfully.
+Lần này bạn có thể thấy rằng order DB của chúng ta đã được tạo ra thành công.
 
 37
 00:02:54,320 --> 00:03:01,280
-And if you expand this order db and expand the tables, we can see that our customers ordered order
+Và nếu bạn mở rộng order DB này và mở rộng các bảng, chúng ta có thể thấy rằng customers, ordered, order
 
 38
 00:03:01,280 --> 00:03:05,690
-items and product table is comes into our order DB database.
+items và product table đã có trong order DB database của chúng ta.
 
 39
 00:03:05,750 --> 00:03:12,110
-That means we have successfully applied Entity Framework core migrations to SQL server database, creating
+Điều đó có nghĩa là chúng ta đã thành công trong việc áp dụng Entity Framework Core migrations vào SQL Server database, tạo ra
 
 40
 00:03:12,110 --> 00:03:14,750
-the necessary schema for the ordering microservices.
+schema cần thiết cho ordering microservice.
 
