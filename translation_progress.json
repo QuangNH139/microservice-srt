@@ -153,5 +153,6 @@
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/011 Connect Redis Cache from local Basket Microservices and send GET request.srt": "done",
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/012 Health Check for Basket Microservices with PostgresDB and Redis Cache.srt": "done",
   "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/013 Containerize Basket.API Microservices with Docker.srt": "done",
-  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/014 Orchestrate Basket.API Microservices with Docker-compose file.srt": "done"
+  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/014 Orchestrate Basket.API Microservices with Docker-compose file.srt": "done",
+  "/home/user/microservice-srt/09 Basket Microservices apply Distributed Caching with Redis/015 TEST - Docker-compose Basket.API microservices with PostgresDB and Redis.srt": "done"
 }
