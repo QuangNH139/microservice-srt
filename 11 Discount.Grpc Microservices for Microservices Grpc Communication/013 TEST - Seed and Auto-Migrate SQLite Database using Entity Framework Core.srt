@@ -1,10 +1,10 @@
 1
 00:00:00,140 --> 00:00:06,680
-In this video we are going to test our seeding and auto migrate operations SQLite database.
+Trong video này, chúng ta sẽ kiểm tra các hoạt động seeding và auto migrate cơ sở dữ liệu SQLite của chúng ta.
 
 2
 00:00:06,680 --> 00:00:13,040
-For that purpose, I'm going to open the Program.cs and put breakpoint in the use migration extension
+Vì mục đích đó, tôi sẽ mở Program.cs và đặt breakpoint trong extension use migration
 
 3
 00:00:13,040 --> 00:00:13,730
@@ -12,187 +12,187 @@ method.
 
 4
 00:00:13,730 --> 00:00:17,420
-Also, we can go inside of this method and put additional breakpoint.
+Ngoài ra, chúng ta có thể đi vào method này và đặt breakpoint bổ sung.
 
 5
 00:00:17,420 --> 00:00:23,660
-And after that I would like to put breakpoint under the data discount context class and put a breakpoint
+Và sau đó, tôi muốn đặt breakpoint dưới lớp data discount context và đặt breakpoint
 
 6
 00:00:23,660 --> 00:00:26,420
-on the on model creating overwrite method.
+trên phương thức overwrite on model creating.
 
 7
 00:00:26,420 --> 00:00:31,250
-And we will see how we can add initial data into our coupon table.
+Và chúng ta sẽ thấy cách chúng ta có thể thêm dữ liệu ban đầu vào bảng coupon của chúng ta.
 
 8
 00:00:31,250 --> 00:00:34,370
-So after that we can run the application.
+Vậy sau đó chúng ta có thể chạy ứng dụng.
 
 9
 00:00:34,370 --> 00:00:38,330
-As you can see that we have created migration folders in the previous video.
+Như bạn có thể thấy, chúng ta đã tạo các thư mục migration trong video trước.
 
 10
 00:00:38,330 --> 00:00:41,930
-And according to migration folders we will run this up method.
+Và theo các thư mục migration, chúng ta sẽ chạy phương thức up này.
 
 11
 00:00:41,930 --> 00:00:48,440
-When the application start up in up method, we basically create a coupon table and also we will insert
+Khi ứng dụng khởi động trong phương thức up, về cơ bản chúng ta tạo một bảng coupon và cũng sẽ insert
 
 12
 00:00:48,440 --> 00:00:49,640
-some initial data.
+một số dữ liệu ban đầu.
 
 13
 00:00:49,640 --> 00:00:58,520
-So please run this application as a https mode and see how we can seeding and auto migrate our database.
+Vậy nên vui lòng chạy ứng dụng này ở chế độ https và xem cách chúng ta có thể seeding và auto migrate cơ sở dữ liệu của chúng ta.
 
 14
 00:00:58,520 --> 00:01:05,510
-You can see that the first thing is comes our use migration extension method before accepting any request
+Bạn có thể thấy rằng điều đầu tiên là phương thức use migration extension đến trước khi chấp nhận bất kỳ yêu cầu nào
 
 15
 00:01:05,510 --> 00:01:07,370
-from the external systems.
+từ các hệ thống bên ngoài.
 
 16
 00:01:07,370 --> 00:01:11,510
-So inside of this method you can see that we will create a scope.
+Vậy nên bên trong phương thức này, bạn có thể thấy rằng chúng ta sẽ tạo một scope.
 
 17
 00:01:11,510 --> 00:01:17,930
-After creating the scope we basically get required services which is the discount context object.
+Sau khi tạo scope, về cơ bản chúng ta lấy các dịch vụ cần thiết, đó là đối tượng discount context.
 
 18
 00:01:17,930 --> 00:01:24,560
-When we reach the DB context object we can run db context database migrate async method in order to
+Khi chúng ta đạt đến đối tượng DB context, chúng ta có thể chạy phương thức db context database migrate async để
 
 19
 00:01:24,560 --> 00:01:31,520
-migrate this folder up method to create new database and create coupon table and insert and seeding
+migrate thư mục này lên phương thức để tạo cơ sở dữ liệu mới và tạo bảng coupon và insert và seeding
 
 20
 00:01:31,520 --> 00:01:33,440
-our newly created records.
+các bản ghi mới được tạo của chúng ta.
 
 21
 00:01:33,440 --> 00:01:39,020
-So when we are running the migrate async method, it is start to run migration up method.
+Vậy khi chúng ta chạy phương thức migrate async, nó sẽ bắt đầu chạy phương thức migration up.
 
 22
 00:01:39,020 --> 00:01:45,110
-And in this up method you can see that we will basically insert initial data and this will be trigger
+Và trong phương thức up này bạn có thể thấy rằng chúng ta sẽ chèn dữ liệu ban đầu và điều này sẽ kích hoạt
 
 23
 00:01:45,110 --> 00:01:49,160
-our discount context overwrite on model creating method.
+phương thức overwrite on model creating của discount context.
 
 24
 00:01:49,160 --> 00:01:54,020
-And in this method we basically adding two items into coupon table.
+Và trong phương thức này chúng ta sẽ thêm hai mục vào bảng coupon.
 
 25
 00:01:54,020 --> 00:02:00,890
-And after that we will continue the Margate operation with creating table and initial insert data.
+Và sau đó chúng ta sẽ tiếp tục hoạt động Migrate bằng cách tạo bảng và chèn dữ liệu ban đầu.
 
 26
 00:02:00,890 --> 00:02:07,580
-And this will be provide additional details and creating our table in a schema format.
+Và điều này sẽ cung cấp các chi tiết bổ sung và tạo bảng của chúng ta ở định dạng schema.
 
 27
 00:02:07,580 --> 00:02:12,260
-If you hit the F5 this will be performed the Margate and Seed operation.
+Nếu bạn nhấn F5 điều này sẽ thực hiện hoạt động Migrate và Seed.
 
 28
 00:02:12,260 --> 00:02:18,170
-If you open the project console window, you can see the logs that we are going to run create table
+Nếu bạn mở cửa sổ package console, bạn có thể thấy các logs mà chúng ta sẽ chạy lệnh create table
 
 29
 00:02:18,170 --> 00:02:20,000
-command on the SQLite database.
+trên cơ sở dữ liệu SQLite.
 
 30
 00:02:20,000 --> 00:02:25,340
-And after that we will insert some predefined and seeding database in here.
+Và sau đó chúng ta sẽ chèn một số dữ liệu được xác định trước và seeding cơ sở dữ liệu ở đây.
 
 31
 00:02:25,340 --> 00:02:28,730
-This is the insert into statement for the first record.
+Đây là câu lệnh insert into cho bản ghi đầu tiên.
 
 32
 00:02:28,730 --> 00:02:31,490
-And this is the second record insert into statement.
+Và đây là câu lệnh insert into cho bản ghi thứ hai.
 
 33
 00:02:31,490 --> 00:02:35,690
-So that means we have successfully created our database.
+Vậy điều đó có nghĩa là chúng ta đã tạo thành công cơ sở dữ liệu của mình.
 
 34
 00:02:35,690 --> 00:02:41,780
-And you can see the discount DB is created successfully under the our project folder.
+Và bạn có thể thấy rằng discount DB được tạo thành công trong thư mục dự án của chúng ta.
 
 35
 00:02:41,780 --> 00:02:47,810
-And after that we can see that our migrate SQL commands is running on that database.
+Và sau đó chúng ta có thể thấy rằng các lệnh migrate SQL của chúng ta đang chạy trên cơ sở dữ liệu đó.
 
 36
 00:02:47,810 --> 00:02:53,090
-So now let's check the database tables and rows on the database window.
+Vậy bây giờ hãy kiểm tra các bảng và hàng cơ sở dữ liệu trên cửa sổ cơ sở dữ liệu.
 
 37
 00:02:53,090 --> 00:02:57,410
-So how can we check this data inside of the SQLite database.
+Vậy làm cách nào chúng ta có thể kiểm tra dữ liệu này bên trong cơ sở dữ liệu SQLite.
 
 38
 00:02:57,410 --> 00:03:00,890
-We should download db browser for SQLite.
+Chúng ta nên tải xuống db browser for SQLite.
 
 39
 00:03:00,890 --> 00:03:03,890
-Here you can see that db browser for SQLite.
+Ở đây bạn có thể thấy db browser for SQLite.
 
 40
 00:03:03,890 --> 00:03:09,590
-If you go to this address, you can see the official home of the DB browser for SQLite.
+Nếu bạn truy cập địa chỉ này, bạn có thể thấy trang chủ chính thức của DB browser for SQLite.
 
 41
 00:03:09,590 --> 00:03:12,740
-So please download this application into your computer.
+Vậy hãy tải ứng dụng này về máy tính của bạn.
 
 42
 00:03:12,740 --> 00:03:18,200
-And after that we will explore the tables and rows and make sure that when you are installing these
+Và sau đó chúng ta sẽ khám phá các bảng và hàng và đảm bảo rằng khi bạn cài đặt những
 
 43
 00:03:18,200 --> 00:03:21,920
-application, adding the shortcut on your desktop or taskbar.
+ứng dụng này, thêm phím tắt trên desktop hoặc taskbar của bạn.
 
 44
 00:03:21,950 --> 00:03:24,410
-Otherwise I can find the application location.
+Nếu không thì tôi có thể tìm vị trí ứng dụng.
 
 45
 00:03:24,410 --> 00:03:26,060
-So this is a quick tip.
+Vậy đây là một mẹo nhanh.
 
 46
 00:03:26,060 --> 00:03:33,320
-And after install the application I have already installed before, you can open the SQLite for DB browser.
+Và sau khi cài đặt ứng dụng mà tôi đã cài đặt trước đó, bạn có thể mở SQLite cho DB browser.
 
 47
 00:03:33,320 --> 00:03:37,790
-And in here I am going to drag and drop for our discount DB.
+Và ở đây tôi sẽ kéo thả discount DB của chúng ta.
 
 48
 00:03:37,790 --> 00:03:44,300
-If you select this discount DB and go to the our browser which is the SQLite browser and put in here.
+Nếu bạn chọn discount DB này và đi đến browser của chúng ta đó là SQLite browser và đặt ở đây.
 
 49
 00:03:44,300 --> 00:03:51,380
-You can see that now we can actually see our tables listed under our SQLite database, which is the
+Bạn có thể thấy rằng bây giờ chúng ta thực sự có thể thấy các bảng của chúng ta được liệt kê dưới database SQLite của chúng ta, đó là
 
 50
 00:03:51,380 --> 00:03:52,280
@@ -200,17 +200,17 @@ discount DB.
 
 51
 00:03:52,310 --> 00:03:55,940
-If you come here and select the discount, you can see the properties.
+Nếu bạn đến đây và chọn discount, bạn có thể thấy các thuộc tính.
 
 52
 00:03:55,940 --> 00:04:00,950
-And in order to browse data you can select the table and click the browse data.
+Và để duyệt dữ liệu, bạn có thể chọn bảng và nhấp vào browse data.
 
 53
 00:04:00,950 --> 00:04:06,710
-And here you can see the two newly created data comes from one the application startup of the discount
+Và ở đây bạn có thể thấy hai dữ liệu mới được tạo từ lúc startup ứng dụng của discount
 
 54
 00:04:06,710 --> 00:04:07,730
-microservices.
+microservice.
 
