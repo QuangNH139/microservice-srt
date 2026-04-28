@@ -182,5 +182,8 @@
   "/home/user/microservice-srt/11 Discount.Grpc Microservices for Microservices Grpc Communication/020 TEST - Docker-compose Discount.Grpc microservices with SQLite.srt": "done",
   "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/001 Introduction - Consuming Discount Grpc Service From Basket Microservice.srt": "done",
   "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/002 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item.srt": "done",
-  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/003 Consuming Discount Grpc Service From Basket API Microservice When Adding Cart -2.srt": "done"
+  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/003 Consuming Discount Grpc Service From Basket API Microservice When Adding Cart -2.srt": "done",
+  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/004 Register Discount Grpc Client and Discount Grpc Service into the Basket.API.srt": "done",
+  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/005 Test and Run Discount Grpc and Basket Microservice.srt": "done",
+  "/home/user/microservice-srt/12 Consuming Discount Grpc Service From Basket Microservice When Adding Cart Item/006 Add Grpc DiscountUrl Configuration in Basket.API image configuration on Docker.srt": "done"
 }

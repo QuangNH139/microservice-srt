@@ -1,10 +1,10 @@
 1
 00:00:00,140 --> 00:00:05,030
-In this video we are going to do the last step, which is the re containerization.
+Trong video này, chúng ta sẽ thực hiện bước cuối cùng, đó là tái container hóa.
 
 2
 00:00:05,060 --> 00:00:11,120
-We will adding gRPC discount URL configuration in the basket API container configurations on docker
+Chúng ta sẽ thêm cấu hình gRPC discount URL vào cấu hình container basket API trên docker
 
 3
 00:00:11,120 --> 00:00:12,080
@@ -12,219 +12,219 @@ compose file.
 
 4
 00:00:12,110 --> 00:00:18,260
-This is important to provide correct configuration into basket API microservices in order to connect
+Điều này rất quan trọng để cung cấp cấu hình đúng cho basket API microservices để có thể kết nối
 
 5
 00:00:18,260 --> 00:00:20,300
-to discount gRPC microservices.
+tới discount gRPC microservices.
 
 6
 00:00:20,300 --> 00:00:22,040
-So let's take an action.
+Vậy hãy hành động ngay.
 
 7
 00:00:22,040 --> 00:00:28,130
-First of all, please open the Visual Studio and let's open the basket API project.
+Đầu tiên, vui lòng mở Visual Studio và hãy mở dự án basket API.
 
 8
 00:00:28,130 --> 00:00:32,689
-If you double click the project file, we can review the changes in the project file.
+Nếu bạn nhấp đôi vào tệp dự án, chúng ta có thể xem lại các thay đổi trong tệp dự án.
 
 9
 00:00:32,689 --> 00:00:39,440
-If you scroll down, you can see the item group and protobuf definition that is gRPC client configuration
+Nếu bạn cuộn xuống, bạn có thể thấy item group và định nghĩa protobuf đó là cấu hình gRPC client
 
 10
 00:00:39,440 --> 00:00:47,300
-in basket API project indicating the discount gRPC profile and this will be performed the client operations
+trong dự án basket API cho biết profile gRPC discount và điều này sẽ thực hiện các hoạt động client
 
 11
 00:00:47,300 --> 00:00:48,590
-in the basket API.
+trong basket API.
 
 12
 00:00:48,590 --> 00:00:55,370
-And after that we have changed Program.cs adding gRPC related services in the dependency injection container
+Và sau đó chúng ta đã thay đổi Program.cs bằng cách thêm các dịch vụ liên quan đến gRPC vào dependency injection container
 
 13
 00:00:55,370 --> 00:00:58,040
-and change the code into store basket handle.
+và thay đổi mã trong store basket handle.
 
 14
 00:00:58,040 --> 00:01:04,129
-So for all these changes, we should re containerize basket API and recreate the Docker image for basket
+Vì vậy, đối với tất cả những thay đổi này, chúng ta nên tái container hóa basket API và tạo lại Docker image cho basket
 
 15
 00:01:04,129 --> 00:01:07,550
-API to incorporate these recent code changes.
+API để kết hợp những thay đổi mã gần đây.
 
 16
 00:01:07,550 --> 00:01:12,230
-And this ensure that the Docker container runs the latest version of the basket API.
+Và điều này đảm bảo rằng Docker container chạy phiên bản mới nhất của basket API.
 
 17
 00:01:12,230 --> 00:01:14,510
-With communicating the discount gRPC.
+Với việc giao tiếp với discount gRPC.
 
 18
 00:01:14,630 --> 00:01:18,050
-For that purpose, please go to basket API project file.
+Với mục đích đó, vui lòng đi tới tệp dự án basket API.
 
 19
 00:01:18,050 --> 00:01:25,130
-Right click Add Docker Support and select the Linux as the operating system and click the okay button.
+Nhấp chuột phải Add Docker Support và chọn Linux làm hệ điều hành và nhấp nút okay.
 
 20
 00:01:25,130 --> 00:01:28,970
-So we have regenerated docker file, but there is no code change.
+Vì vậy chúng ta đã tạo lại docker file, nhưng không có thay đổi mã nào.
 
 21
 00:01:28,970 --> 00:01:35,750
-But basket API image should be recreate from the scratch to adding new codes into our container.
+Nhưng image của basket API nên được tạo lại từ đầu để thêm những code mới vào container của chúng ta.
 
 22
 00:01:35,750 --> 00:01:40,850
-And if you look at the application settings, you can see that we should add an environment variables
+Và nếu bạn xem application settings, bạn có thể thấy rằng chúng ta nên thêm các environment variables
 
 23
 00:01:40,850 --> 00:01:48,380
-for gRPC settings, discount URL and these URL should be changed according to our Docker port and server
+cho các cấu hình gRPC, discount URL và những URL này nên được thay đổi theo Docker port và server
 
 24
 00:01:48,380 --> 00:01:48,830
-name.
+name của chúng ta.
 
 25
 00:01:48,830 --> 00:01:55,010
-That means we should update the docker compose override Yaml file to configure these gRPC settings.
+Điều đó có nghĩa là chúng ta nên update docker compose override Yaml file để cấu hình các cấu hình gRPC này.
 
 26
 00:01:55,010 --> 00:01:57,470
-Discount URL as an environment variable.
+Discount URL như một environment variable.
 
 27
 00:01:57,470 --> 00:02:00,260
-For that purpose, please open the docker compose.
+Để làm điều đó, vui lòng mở docker compose.
 
 28
 00:02:00,260 --> 00:02:04,910
-Overwrite Yaml file and locate the basket API configurations.
+Overwrite Yaml file và tìm các cấu hình basket API.
 
 29
 00:02:04,910 --> 00:02:08,570
-If you scroll down, you can reach the basket API configurations.
+Nếu bạn scroll xuống, bạn có thể đến được các cấu hình basket API.
 
 30
 00:02:08,570 --> 00:02:14,930
-So at this point, the first thing we should do that we should add an environment variable for gRPC
+Vậy tại điểm này, điều đầu tiên chúng ta nên làm là chúng ta nên thêm một environment variable cho các cấu hình gRPC
 
 31
 00:02:14,930 --> 00:02:21,200
-settings and discount URL at the same way with the other connection string and other operations.
+và discount URL theo cách tương tự với các connection string khác và các hoạt động khác.
 
 32
 00:02:21,200 --> 00:02:30,290
-Here you can see that I have added gRPC settings, double underscore discount URL and give the URL https
+Ở đây bạn có thể thấy rằng tôi đã thêm gRPC settings, double underscore discount URL và cung cấp URL https
 
 33
 00:02:30,290 --> 00:02:33,530
-discount, gRPC and 8081.
+discount, gRPC và 8081.
 
 34
 00:02:33,530 --> 00:02:41,840
-So we configure the URL for the discount gRPC service and using the discount gRPC 881 directs to basket
+Vậy chúng ta cấu hình URL cho discount gRPC service và sử dụng discount gRPC 8081 để hướng dẫn basket
 
 35
 00:02:41,840 --> 00:02:50,180
-API to communicate over the Https protocol, with the discount gRPC services running on port 8081 in
+API giao tiếp thông qua giao thức Https, với các dịch vụ discount gRPC chạy trên cổng 8081 trong
 
 36
 00:02:50,180 --> 00:02:51,200
-the Docker network.
+Docker network.
 
 37
 00:02:51,200 --> 00:02:57,200
-Because in Docker network, the discount microservice server name is a discount gRPC.
+Bởi vì trong Docker network, tên server của discount microservice là discount gRPC.
 
 38
 00:02:57,320 --> 00:03:02,960
-If you scroll down, you can see the discount gRPC microservice configuration, and the container name
+Nếu bạn scroll xuống, bạn có thể thấy cấu hình microservice discount gRPC, và tên container
 
 39
 00:03:02,960 --> 00:03:04,370
-as a discount gRPC.
+là discount gRPC.
 
 40
 00:03:04,580 --> 00:03:08,570
-And inside of the discount gRPC you can see the port numbers.
+Và bên trong discount gRPC bạn có thể thấy các số cổng.
 
 41
 00:03:08,570 --> 00:03:14,150
-These are the Docker port numbers, which is the internal port numbers that we can access inside of
+Đây là các số cổng Docker, tức là các số cổng nội bộ mà chúng ta có thể truy cập bên trong Docker.
 
 42
 00:03:14,150 --> 00:03:14,690
-the Docker.
+Đó là lý do tại sao chúng ta sẽ sử dụng 8081 để sử dụng giao thức Https cho discount gRPC microservices từ basket
 
 43
 00:03:14,720 --> 00:03:22,910
-That's why we will use 8081 to using Https protocol for discount gRPC microservices from the basket
+microservices trong môi trường Docker.
 
 44
 00:03:22,910 --> 00:03:25,400
-microservices in Docker environment.
+Vì vậy điều này rất quan trọng vì chúng ta cần chỉ định rõ ràng URL mạng và số cổng để gRPC
 
 45
 00:03:25,400 --> 00:03:32,660
-So this is important because we explicitly give the network URL and the port number for correct gRPC
+có thể giao tiếp chính xác bên trong Docker.
 
 46
 00:03:32,660 --> 00:03:34,850
-communication inside of the docker.
+Vì vậy nếu bạn không đặt URL chính xác cho cấu hình này, bạn sẽ gặp lỗi socket exception và
 
 47
 00:03:34,850 --> 00:03:41,570
-So if you don't set the correct URL for this configuration, you will end up the socket exception and
+bạn sẽ nhận được lỗi connection refused exception từ gRPC communication.
 
 48
 00:03:41,570 --> 00:03:45,860
-you will get connection refused exception from the gRPC communication.
+Vui lòng đừng quên thêm 8081.
 
 49
 00:03:45,860 --> 00:03:48,470
-Please don't forget to adding 8081.
+Nếu bạn muốn sử dụng giao thức Http, bạn thậm chí có thể sử dụng 8080 ở đây.
 
 50
 00:03:48,470 --> 00:03:53,300
-If you want to use Http protocol, you can even use 8080 in here.
+Vì vậy đây là cấu hình quan trọng để giao tiếp giữa basket và discount microservices trong Docker network.
 
 51
 00:03:53,300 --> 00:03:59,480
-So this is the important configuration to communicate basket and discount microservices in Docker network.
+Và sau đó chúng ta cũng có thể thiết lập dependencies option dưới Dependson.
 
 52
 00:03:59,480 --> 00:04:04,190
-And after that we can also set the dependencies option under the Dependson.
+Tôi sẽ thêm một Dependson mới tên là discount gRPC vì depends on provider để đảm bảo rằng
 
 53
 00:04:04,190 --> 00:04:12,200
-I'm going to add a new Dependson which name is discount gRPC because depends on provider to ensure that
+basket API khởi động sau khi discount gRPC service hoạt động và thiết lập thứ tự phụ thuộc
 
 54
 00:04:12,200 --> 00:04:19,310
-basket API starts after the discount gRPC service is up and running and establishing dependency order
+trong môi trường Docker.
 
 55
 00:04:19,310 --> 00:04:20,899
-in the Docker environment.
+Vì vậy như bạn có thể thấy chúng ta đã thêm thành công cài đặt gRPC discount URL và thêm depends on vào
 
 56
 00:04:20,899 --> 00:04:28,610
-So as you can see that we have successfully added gRPC discount URL settings and adding depends on into
+basket API của chúng ta và cấu hình basket API của chúng ta trong môi trường docker compose.
 
 57
 00:04:28,610 --> 00:04:33,560
-our basket API and configure our basket API in the docker compose environment.
+Video tiếp theo chúng ta sẽ kiểm tra tất cả trong môi trường docker compose.
 
 58
 00:04:33,560 --> 00:04:37,310

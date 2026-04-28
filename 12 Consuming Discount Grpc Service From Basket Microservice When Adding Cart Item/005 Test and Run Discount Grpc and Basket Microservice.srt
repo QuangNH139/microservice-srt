@@ -1,74 +1,74 @@
 1
 00:00:00,110 --> 00:00:06,290
-In this video, we are going to test end to end use case for discount and basket microservices.
+Trong video này, chúng ta sẽ test end to end use case cho discount và basket microservices.
 
 2
 00:00:06,290 --> 00:00:09,020
-So we are start with the basket microservices.
+Vậy chúng ta bắt đầu với basket microservices.
 
 3
 00:00:09,020 --> 00:00:11,210
-When adding item into basket.
+Khi thêm item vào basket.
 
 4
 00:00:11,210 --> 00:00:17,030
-This will be integrated with the discount over the gRPC protocol and get discount values and calculate
+Cái này sẽ được tích hợp với discount thông qua gRPC protocol và lấy các giá trị discount rồi tính toán
 
 5
 00:00:17,030 --> 00:00:19,820
-the latest price of the products into the basket.
+giá mới nhất của các sản phẩm trong basket.
 
 6
 00:00:19,820 --> 00:00:27,680
-So when we are sending these payload, we will send the price 500 and we have discount 150 and 100.
+Vậy khi chúng ta gửi payload này, chúng ta sẽ gửi giá 500 và chúng ta có discount 150 và 100.
 
 7
 00:00:27,680 --> 00:00:30,440
-So this will be deduct our product prices.
+Vậy cái này sẽ trừ đi giá sản phẩm của chúng ta.
 
 8
 00:00:30,830 --> 00:00:32,810
-Please open the Visual Studio.
+Hãy mở Visual Studio.
 
 9
 00:00:32,810 --> 00:00:37,340
-And first of all we should make sure that our Docker desktop is running.
+Và đầu tiên chúng ta nên đảm bảo rằng Docker desktop của chúng ta đang chạy.
 
 10
 00:00:37,340 --> 00:00:42,860
-And after that we should start baking services like PostgreSQL, Redis, cache and so on.
+Và sau đó chúng ta nên khởi động các backing services như PostgreSQL, Redis, cache và những cái khác.
 
 11
 00:00:42,860 --> 00:00:47,960
-For that purpose, I'm going to right click the Docker compose and set a startup project.
+Để làm điều đó, tôi sẽ right click Docker compose và set nó làm startup project.
 
 12
 00:00:47,960 --> 00:00:55,490
-And this time I'm going to run without debugging because the idea is that activate and up and running
+Và lần này tôi sẽ chạy không có debugging vì ý tưởng là để kích hoạt và backing services đang chạy,
 
 13
 00:00:55,490 --> 00:01:01,250
-for the backing services, because we will test these basket and discount integration into our local
+vì chúng ta sẽ test sự tích hợp giữa basket và discount vào máy tính local của chúng ta.
 
 14
 00:01:01,250 --> 00:01:02,030
-computer.
+Vui lòng click nút này, start without debugging và đảm bảo rằng backing services của bạn đang chạy.
 
 15
 00:01:02,030 --> 00:01:08,750
-Please click this button, start without debugging and make sure that your backing services is up and
+Đó là local microservices của chúng ta có thể kết nối đến database và cache services.
 
 16
 00:01:08,750 --> 00:01:09,410
-running.
+Vậy cái này sẽ chạy lệnh docker compose up phía sau hậu trường.
 
 17
 00:01:09,410 --> 00:01:15,230
-That our local microservices can connect to database and cache services.
+Và sau đó bạn có thể mở Docker desktop và xác minh rằng backing services của bạn đang chạy.
 
 18
 00:01:15,750 --> 00:01:20,520
-So this will be running the docker compose up command on behind of the scenes.
+Catalog basket và distributed cache.
 
 19
 00:01:20,520 --> 00:01:28,470
@@ -80,107 +80,107 @@ Catalog basket and distributed cache.
 
 21
 00:01:30,960 --> 00:01:37,230
-So after that we will perform and test our discount operation into our local computer.
+Vậy sau đó chúng ta sẽ thực hiện và kiểm tra thao tác giảm giá của chúng ta trên máy tính local.
 
 22
 00:01:37,230 --> 00:01:42,900
-For that purpose, we can put breakpoint under the store basket command handler class and put breakpoint
+Để làm điều đó, chúng ta có thể đặt breakpoint trong lớp store basket command handler và đặt breakpoint
 
 23
 00:01:42,900 --> 00:01:44,820
-into deduct discount method.
+trong phương thức deduct discount.
 
 24
 00:01:44,820 --> 00:01:48,390
-And at the same way we can put a breakpoint under the discount.
+Và theo cách tương tự, chúng ta có thể đặt breakpoint trong discount.
 
 25
 00:01:48,390 --> 00:01:54,090
-And if you go to the services discount services and we will put a breakpoint under the get discount
+Và nếu bạn đi vào services discount services, chúng ta sẽ đặt breakpoint trong phương thức get discount
 
 26
 00:01:54,090 --> 00:01:54,810
-method.
+.
 
 27
 00:01:54,810 --> 00:01:59,730
-So now it is time to run multiple startup project in our local environment.
+Vậy bây giờ đã đến lúc chạy nhiều startup project trong môi trường local của chúng ta.
 
 28
 00:01:59,730 --> 00:02:03,600
-For that purpose I am going to right click the solution file.
+Để làm điều đó, tôi sẽ nhấp chuột phải vào tệp solution.
 
 29
 00:02:03,630 --> 00:02:07,950
-Come here, right click the solution file and select the properties.
+Đến đây, nhấp chuột phải vào tệp solution và chọn properties.
 
 30
 00:02:07,950 --> 00:02:11,100
-And we can select the multiple startup project.
+Và chúng ta có thể chọn multiple startup project.
 
 31
 00:02:11,100 --> 00:02:13,290
-And these are the basket API.
+Và đây là basket API.
 
 32
 00:02:13,560 --> 00:02:17,100
-We can set a start and after that discount gRPC.
+Chúng ta có thể đặt start và sau đó là discount gRPC.
 
 33
 00:02:18,200 --> 00:02:24,380
-Because these will be integrated when performing add item in the shopping cart and apply and okay.
+Vì những thứ này sẽ được tích hợp khi thực hiện add item vào shopping cart và apply và okay.
 
 34
 00:02:24,500 --> 00:02:29,990
-So now we are ready to test our basket and discount gRPC in our local computer.
+Vậy bây giờ chúng ta đã sẵn sàng để kiểm tra basket và discount gRPC trên máy tính local của chúng ta.
 
 35
 00:02:29,990 --> 00:02:36,560
-In here you can see the newly start button comes in here and click this run button and start basket
+Ở đây bạn có thể thấy nút start mới xuất hiện ở đây và nhấp vào nút run này để khởi động basket
 
 36
 00:02:36,560 --> 00:02:39,260
-and discount gRPC into our local computer.
+và discount gRPC trên máy tính local của chúng ta.
 
 37
 00:02:39,320 --> 00:02:43,460
-You can verify the microservices from the Project Console windows.
+Bạn có thể xác minh các microservices từ cửa sổ Project Console.
 
 38
 00:02:43,460 --> 00:02:49,790
-So here you can see that basket microservices is up and running on my local computer and listening to
+Vậy ở đây bạn có thể thấy rằng basket microservices đã hoạt động và chạy trên máy tính local của tôi và đang lắng nghe trên
 
 39
 00:02:49,790 --> 00:02:51,230
-5051 port.
+cổng 5051.
 
 40
 00:02:51,230 --> 00:02:59,420
-And also you can see the discount gRPC services is running on local computer and listening to 5052.
+Và cũng có thể thấy discount gRPC services đang chạy trên máy tính local và đang lắng nghe trên cổng 5052.
 
 41
 00:02:59,450 --> 00:03:05,600
-So if you look at our basket microservices, if you go to application settings, these will be getting
+Vậy nếu bạn xem basket microservices của chúng ta, nếu bạn truy cập application settings, những cài đặt này sẽ nhận
 
 42
 00:03:05,600 --> 00:03:08,060
-5052 port for the discount URL.
+port 5052 cho discount URL.
 
 43
 00:03:08,060 --> 00:03:13,250
-So that means it is ready for the accepting requests to our services.
+Điều đó có nghĩa là nó đã sẵn sàng để chấp nhận các yêu cầu đến các services của chúng ta.
 
 44
 00:03:13,250 --> 00:03:15,050
-Please open the postman.
+Vui lòng mở Postman.
 
 45
 00:03:15,050 --> 00:03:21,530
-And first of all, I would like to verify that our gRPC services is working fine for that purpose.
+Và đầu tiên, tôi muốn xác minh rằng gRPC services của chúng ta hoạt động tốt.
 
 46
 00:03:21,530 --> 00:03:27,410
-Open the discount servers and select the method as a get discount and change the port number localhost
+Mở discount servers và chọn phương thức là get discount và thay đổi số port localhost
 
 47
 00:03:27,410 --> 00:03:29,180
@@ -188,83 +188,83 @@ Open the discount servers and select the method as a get discount and change the
 
 48
 00:03:29,180 --> 00:03:36,080
-And after that I will paste product name as a request parameters and invoke gRPC call.
+Và sau đó tôi sẽ dán tên sản phẩm làm tham số yêu cầu và gọi cuộc gọi gRPC.
 
 49
 00:03:36,080 --> 00:03:44,030
-This will be trigger or get discount method of the gRPC microservices and this will be return us a id
+Cái này sẽ kích hoạt hoặc gọi phương thức get discount của gRPC microservices và nó sẽ trả về cho chúng ta một id
 
 50
 00:03:44,030 --> 00:03:49,580
-one product name and amount as 150 discount information from the coupon table.
+tên sản phẩm và số tiền là 150 thông tin chiết khấu từ bảng coupon.
 
 51
 00:03:49,580 --> 00:03:54,140
-So our discount service is running successfully in our local computer.
+Vậy discount service của chúng ta đang chạy thành công trên máy tính cục bộ của chúng ta.
 
 52
 00:03:54,140 --> 00:03:56,810
-That means we can go to end to end test.
+Điều đó có nghĩa là chúng ta có thể tiến hành kiểm tra end to end.
 
 53
 00:03:56,810 --> 00:04:02,810
-For that purpose, I'm going to open each of microservices postman collection, go to basket folder
+Để làm điều đó, tôi sẽ mở từng postman collection của microservices, đi vào basket folder
 
 54
 00:04:02,810 --> 00:04:05,420
-and go to Post Store Basket operation.
+và đi vào operaton Post Store Basket.
 
 55
 00:04:05,420 --> 00:04:11,570
-And if you open this store basket operation you can see that we have already prepared our endpoint http
+Và nếu bạn mở operaton store basket này, bạn có thể thấy rằng chúng ta đã chuẩn bị sẵn endpoint http
 
 56
 00:04:11,570 --> 00:04:13,190
-post request and the payload.
+post request và payload của chúng ta.
 
 57
 00:04:13,190 --> 00:04:19,670
-In the payload you can see that items has two items and the item price is 500.
+Trong payload, bạn có thể thấy items có hai mục và giá của item là 500.
 
 58
 00:04:19,670 --> 00:04:24,230
-So we have two discount for iPhone X and Samsung ten.
+Vậy chúng ta có hai chiết khấu cho iPhone X và Samsung ten.
 
 59
 00:04:24,230 --> 00:04:28,940
-And this will be price deducting from the coupon amount information.
+Và giá này sẽ được trừ đi từ thông tin coupon amount.
 
 60
 00:04:28,940 --> 00:04:32,720
-And we will calculate the total price in different and deducted way.
+Và chúng ta sẽ tính toán tổng giá theo cách khác nhau và cách trừ đi.
 
 61
 00:04:32,720 --> 00:04:35,720
-So you can check the basket URL in here in basket URL.
+Bạn có thể kiểm tra basket URL ở đây trong basket URL.
 
 62
 00:04:35,720 --> 00:04:37,430
-Now looking for the Docker environment.
+Bây giờ tìm kiếm Docker environment.
 
 63
 00:04:37,430 --> 00:04:40,910
-But we are testing in the local environment.
+Nhưng chúng ta đang testing trong local environment.
 
 64
 00:04:40,910 --> 00:04:44,900
-That's why I change the environment as a localhost and verify the basket.
+Đó là lý do tại sao tôi thay đổi environment thành localhost và xác minh basket.
 
 65
 00:04:44,900 --> 00:04:51,440
-URL comes as a 5051 and send http post request to perform store basket operation.
+URL đến cổng 5051 và gửi HTTP POST request để thực hiện store basket operation.
 
 66
 00:04:51,440 --> 00:04:56,600
-Here you can see that our breakpoint is triggering in the store basket endpoint.
+Ở đây bạn có thể thấy breakpoint của chúng ta được kích hoạt trong store basket endpoint.
 
 67
 00:04:56,600 --> 00:05:02,480
-If you continue to debug operation, you can see that it comes to our store basket command handler handle
+Nếu bạn tiếp tục debug operation, bạn có thể thấy nó đến handler của store basket command handler.
 
 68
 00:05:02,480 --> 00:05:03,050
@@ -272,109 +272,109 @@ method.
 
 69
 00:05:03,350 --> 00:05:06,620
-In this method we basically perform two main operations.
+Trong method này, chúng ta cơ bản thực hiện hai operations chính.
 
 70
 00:05:06,620 --> 00:05:09,560
-These are the deduct discount and store basket.
+Đó là deduct discount và store basket.
 
 71
 00:05:09,560 --> 00:05:14,540
-So if you continue the debugging we will basically paste the shopping cart into deduct discount method.
+Vậy nếu bạn tiếp tục debugging, chúng ta sẽ cơ bản paste shopping cart vào deduct discount method.
 
 72
 00:05:14,540 --> 00:05:19,460
-And in this method we basically iterate for each item in the shopping cart.
+Và trong method này, chúng ta cơ bản lặp lại cho mỗi item trong shopping cart.
 
 73
 00:05:19,460 --> 00:05:25,310
-And after that for each item we will call the discount gRPC services get discount async method.
+Và sau đó cho mỗi item, chúng ta sẽ gọi discount gRPC services get discount async method.
 
 74
 00:05:25,310 --> 00:05:30,770
-Here you can see that we suddenly trigger get discount operation under Discount services.
+Ở đây bạn có thể thấy chúng ta đột nhiên kích hoạt get discount operation dưới Discount services.
 
 75
 00:05:30,770 --> 00:05:37,070
-In order to get the coupon information from the discount gRPC database and return back to the client
+Để lấy thông tin coupon từ discount gRPC database và trả về cho client.
 
 76
 00:05:37,070 --> 00:05:42,290
-for this operation, we can put breakpoint after the item price point in here.
+Cho operation này, chúng ta có thể đặt breakpoint sau item price ở đây.
 
 77
 00:05:42,290 --> 00:05:48,710
-And if I hit the F5, you can see the coupon amount comes 150 and item price is 500.
+Và nếu tôi nhấn F5, bạn có thể thấy coupon amount là 150 và item price là 500.
 
 78
 00:05:48,710 --> 00:05:53,330
-And we will calculate the latest price and set the latest price is at 350.
+Và chúng ta sẽ tính toán latest price và đặt latest price là 350.
 
 79
 00:05:53,330 --> 00:05:58,700
-And for the next item we can call again the discount gRPC get discount async method.
+Và cho item tiếp theo, chúng ta có thể gọi lại discount gRPC get discount async method.
 
 80
 00:05:58,820 --> 00:06:03,410
-At the same way we will retrieve the coupon information and after that calculate the amount.
+Theo cách tương tự, chúng ta sẽ lấy thông tin coupon và sau đó tính toán số tiền.
 
 81
 00:06:03,410 --> 00:06:09,140
-Deducting from the 500 to 100 and latest price is calculated to 400.
+Trừ từ 500 xuống 100 và giá cuối cùng được tính toán là 400.
 
 82
 00:06:09,140 --> 00:06:11,870
-So this is the deduct discount operation.
+Vậy đây là hoạt động giảm giá.
 
 83
 00:06:11,870 --> 00:06:15,770
-And the rest of the operation is similar that we have done before.
+Và phần còn lại của hoạt động tương tự như những gì chúng ta đã làm trước đó.
 
 84
 00:06:15,770 --> 00:06:19,670
-Connected and communicating PostgreSQL database and Redis cache.
+Kết nối và giao tiếp với cơ sở dữ liệu PostgreSQL và Redis cache.
 
 85
 00:06:19,670 --> 00:06:22,820
-I'm going to hit the F5 and complete the operation.
+Tôi sẽ nhấn F5 và hoàn thành hoạt động.
 
 86
 00:06:22,820 --> 00:06:27,860
-And you can see that the client response comes in here as a username as the boolean.
+Và bạn có thể thấy phản hồi từ client xuất hiện ở đây dưới dạng username là một boolean.
 
 87
 00:06:27,860 --> 00:06:33,320
-That means this will be complete this operation successfully 201 created operations.
+Điều đó có nghĩa là hoạt động này sẽ hoàn thành thành công với mã 201 created.
 
 88
 00:06:33,530 --> 00:06:36,140
-You can see the payload of the store basket.
+Bạn có thể thấy payload của store basket.
 
 89
 00:06:36,140 --> 00:06:41,840
-We will send 500 price for each item in the shopping cart for the username as Julian.
+Chúng ta sẽ gửi giá 500 cho mỗi mục trong giỏ hàng cho username là Julian.
 
 90
 00:06:41,840 --> 00:06:49,820
-If we get basket by username and send http get method and I'm hitting F5 to skipping these debugging
+Nếu chúng ta lấy basket theo username và gửi HTTP GET method và tôi nhấn F5 để bỏ qua quá trình debug này
 
 91
 00:06:49,820 --> 00:06:57,320
-operations and focus on the response, you can see that each item deducted from the coupon amount discounted.
+và tập trung vào phản hồi, bạn có thể thấy rằng mỗi mục đã được trừ đi số tiền giảm giá từ coupon.
 
 92
 00:06:57,320 --> 00:07:05,090
-The first item is 350, and the second item comes 400 and the total price comes accordingly for the
+Mục đầu tiên là 350, mục thứ hai là 400 và tổng giá được tính toán tương ứng cho
 
 93
 00:07:05,090 --> 00:07:07,610
-deducting prices into our shopping cart.
+các giá đã trừ trong giỏ hàng của chúng ta.
 
 94
 00:07:07,610 --> 00:07:13,100
-And as you can see that we have successfully called discount gRPC service from the basket microservices
+Và như bạn có thể thấy, chúng ta đã gọi thành công discount gRPC service từ basket microservices
 
 95
 00:07:13,100 --> 00:07:15,890
-when adding and removing item into shopping cart.
+khi thêm và xóa mục khỏi giỏ hàng.
 
