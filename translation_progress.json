@@ -216,5 +216,7 @@
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/001 Develop Ordering.Infrastructure Layer with EF Core Code First Approach.srt": "done",
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/002 EF Core 8 Features, Code First Approach, Migrations and SQL Server Connection.srt": "done",
   "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/003 Steps of EF Core Developments for Ordering.Infrastructure.srt": "done",
-  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/004 Install EF Core Nuget Packages in Ordering.Infrastructure.srt": "done"
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/004 Install EF Core Nuget Packages in Ordering.Infrastructure.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/005 Develop EF Core DBContext Object for Storing Entities in Ordering.Infrastructure.srt": "done",
+  "/home/user/microservice-srt/15 Ordering.Infrastructure Layer with EF Core Code First and SQL Server/006 Mapping DDD Objects to EF Entities - Develop EF Core Entity Configurations.srt": "done"
 }
