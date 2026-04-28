@@ -1,256 +1,256 @@
 1
 00:00:00,200 --> 00:00:06,110
-In this video we are going to create ASP.Net project for ordering API microservices.
+Trong video này chúng ta sẽ tạo một ASP.NET project cho ordering API microservices.
 
 2
 00:00:06,110 --> 00:00:12,470
-Please open the Visual Studio and go to the services folder that include all microservice folder inside
+Vui lòng mở Visual Studio và đi tới thư mục services chứa tất cả các thư mục microservice bên trong.
 
 3
 00:00:12,470 --> 00:00:14,090
-of this services folder.
+của thư mục services này.
 
 4
 00:00:14,090 --> 00:00:16,430
-And we are going to create a new subfolder.
+Và chúng ta sẽ tạo một thư mục con mới.
 
 5
 00:00:16,430 --> 00:00:19,070
-Right click Add New solution folder.
+Nhấp chuột phải và chọn Add New solution folder.
 
 6
 00:00:19,070 --> 00:00:20,840
-Which name is ordering.
+Tên của nó là ordering.
 
 7
 00:00:20,900 --> 00:00:27,770
-In this folder we are going to create ASP.Net web API project for ordering API project and we will use
+Trong thư mục này chúng ta sẽ tạo một ASP.NET web API project cho ordering API project và chúng ta sẽ sử dụng
 
 8
 00:00:27,770 --> 00:00:29,120
-empty project template.
+mẫu empty project.
 
 9
 00:00:29,120 --> 00:00:31,940
-I'm going to right click Add New Project.
+Tôi sẽ nhấp chuột phải và chọn Add New Project.
 
 10
 00:00:31,940 --> 00:00:39,470
-And in here we will select the ASP.Net Core Empty project and click the next button and give the project
+Và ở đây chúng ta sẽ chọn ASP.NET Core Empty project và nhấp nút next, rồi đặt tên project
 
 11
 00:00:39,470 --> 00:00:42,800
-name as a ordering dot API.
+là ordering.API.
 
 12
 00:00:43,310 --> 00:00:46,700
-And after that the location is very important.
+Và sau đó vị trí là rất quan trọng.
 
 13
 00:00:46,700 --> 00:00:50,180
-Please make sure that you have located the same directory.
+Vui lòng chắc chắn rằng bạn đã đặt nó trong cùng thư mục.
 
 14
 00:00:50,180 --> 00:00:55,310
-If you open this directory and go to the source services.
+Nếu bạn mở thư mục này và đi tới source services.
 
 15
 00:00:55,310 --> 00:00:57,650
-And now I'm going to create a new folder.
+Và bây giờ tôi sẽ tạo một thư mục mới.
 
 16
 00:00:57,650 --> 00:01:00,080
-Which name is ordering.
+Tên của nó là ordering.
 
 17
 00:01:00,080 --> 00:01:04,459
-And under the ordering folder we will create ordering API project.
+Và dưới thư mục ordering chúng ta sẽ tạo ordering API project.
 
 18
 00:01:04,459 --> 00:01:08,690
-Make sure that you have following the same structure in your project.
+Hãy chắc chắn rằng bạn theo cùng cấu trúc trong project của bạn.
 
 19
 00:01:08,960 --> 00:01:14,810
-After that we can click the next button and configure ASP.Net Core Empty project.
+Sau đó chúng ta có thể nhấp nút next và cấu hình ASP.NET Core Empty project.
 
 20
 00:01:14,810 --> 00:01:19,100
-The framework should be dotnet eight and we will configure for Https.
+Framework phải là dotnet eight và chúng ta sẽ cấu hình cho Https.
 
 21
 00:01:19,100 --> 00:01:24,290
-Enable Docker and operating system will be Linux and we will use top level statement.
+Bật Docker và hệ điều hành sẽ là Linux và chúng ta sẽ sử dụng top level statement.
 
 22
 00:01:24,290 --> 00:01:27,830
-So leave as it is for the configuration and click the create button.
+Vậy hãy để như vậy cho configuration và nhấp nút create.
 
 23
 00:01:28,280 --> 00:01:32,870
-This will be create ASP.Net web API for ordering API project.
+Điều này sẽ tạo ASP.Net Web API cho dự án Ordering API.
 
 24
 00:01:32,870 --> 00:01:35,870
-And here you can see that this is located under ordering.
+Và ở đây bạn có thể thấy rằng đây nằm dưới Ordering.
 
 25
 00:01:35,870 --> 00:01:43,820
-If we right click and open in the File Explorer, we can verify that this folder is located under the
+Nếu chúng ta nhấp chuột phải và mở trong File Explorer, chúng ta có thể xác nhận rằng thư mục này nằm dưới
 
 26
 00:01:44,150 --> 00:01:47,090
-src services Ordering and Ordering API.
+src services Ordering và Ordering API.
 
 27
 00:01:47,090 --> 00:01:49,670
-So now we will start to examine our project.
+Vậy bây giờ chúng ta sẽ bắt đầu kiểm tra dự án của chúng ta.
 
 28
 00:01:49,670 --> 00:01:53,090
-So the first thing we should do that we should go to the Program.cs.
+Vậy điều đầu tiên chúng ta nên làm là chúng ta nên đi tới Program.cs.
 
 29
 00:01:53,090 --> 00:01:57,200
-And this is the default code from the ASP.Net empty template.
+Và đây là code mặc định từ template ASP.Net empty.
 
 30
 00:01:57,200 --> 00:02:01,610
-So we will refactor these Program.cs according to our requirements.
+Vậy chúng ta sẽ refactor Program.cs này theo yêu cầu của chúng ta.
 
 31
 00:02:01,610 --> 00:02:08,300
-First of all, I am put a command before the building application which is the add services to the container.
+Đầu tiên, tôi đặt một command trước khi building application đó là add services to the container.
 
 32
 00:02:08,300 --> 00:02:12,350
-This is representing ASP.Net built in dependency injection container.
+Đây là đại diện cho ASP.Net built in dependency injection container.
 
 33
 00:02:12,350 --> 00:02:20,630
-And after that we can remove the current map, get operation and put a command again which is configure
+Và sau đó chúng ta có thể xóa map hiện tại, get operation và đặt lại một command nữa đó là configure
 
 34
 00:02:20,630 --> 00:02:23,750
-the Http request pipeline in here.
+Http request pipeline ở đây.
 
 35
 00:02:23,750 --> 00:02:25,940
-And lastly we will run the application.
+Và cuối cùng chúng ta sẽ chạy ứng dụng.
 
 36
 00:02:25,940 --> 00:02:30,170
-So this is the minimum code for the program for each microservices.
+Vậy đây là code tối thiểu cho chương trình cho mỗi microservice.
 
 37
 00:02:30,170 --> 00:02:37,970
-When we start to developing typically we use two main steps before and after building the web application.
+Khi chúng ta bắt đầu phát triển, thông thường chúng ta sử dụng hai bước chính trước và sau khi building web application.
 
 38
 00:02:37,970 --> 00:02:42,680
-Before building the application we use add services methods for dependency injection.
+Trước khi building ứng dụng, chúng ta sử dụng add services method để dependency injection.
 
 39
 00:02:42,680 --> 00:02:50,300
-And after building the application we use use or map function methods for configuring Http request lifecycle.
+Và sau khi building ứng dụng, chúng ta sử dụng các hàm use hoặc map để cấu hình Http request lifecycle.
 
 40
 00:02:50,300 --> 00:02:55,280
-So now we can build the application and continue with our port numbers.
+Vậy bây giờ chúng ta có thể build ứng dụng và tiếp tục với các port numbers của chúng ta.
 
 41
 00:02:55,280 --> 00:03:04,040
-If you go back to our slide you can see that for ordering microservices we will use 5003 and 5053 port
+Nếu bạn quay lại slide của chúng ta, bạn có thể thấy rằng đối với ordering microservice, chúng ta sẽ sử dụng cổng 5003 và 5053
 
 42
 00:03:04,040 --> 00:03:07,910
-numbers for Http and Https in our local environment.
+cho Http và Https trong môi trường local của chúng ta.
 
 43
 00:03:07,910 --> 00:03:11,210
-So we will follow these port number settings.
+Vậy chúng ta sẽ tuân theo các cài đặt số cổng này.
 
 44
 00:03:11,210 --> 00:03:14,000
-In order to do that, please open the Visual Studio.
+Để làm điều đó, vui lòng mở Visual Studio.
 
 45
 00:03:14,000 --> 00:03:19,730
-If you go to the properties and if you expand this properties folder, you can see the Launch settings
+Nếu bạn vào properties và mở rộng folder properties này, bạn có thể thấy file Launch settings
 
 46
 00:03:19,730 --> 00:03:20,600
-Json file.
+Json.
 
 47
 00:03:20,600 --> 00:03:26,480
-So we will set the Http and https running profile and the port numbers for http.
+Vậy chúng ta sẽ thiết lập Http và https running profile và các số cổng cho http.
 
 48
 00:03:26,480 --> 00:03:28,670
-I'm going to change 5003.
+Tôi sẽ thay đổi thành 5003.
 
 49
 00:03:28,850 --> 00:03:30,950
-Here you can see the http url.
+Ở đây bạn có thể thấy url http.
 
 50
 00:03:30,950 --> 00:03:35,630
-And for https we can provide http and https endpoint.
+Và đối với https chúng ta có thể cung cấp endpoint http và https.
 
 51
 00:03:35,630 --> 00:03:38,960
-Again for http I'm using 5003.
+Lại một lần nữa, đối với http tôi sử dụng 5003.
 
 52
 00:03:38,960 --> 00:03:42,560
-For https we should change 5053.
+Đối với https chúng ta nên thay đổi thành 5053.
 
 53
 00:03:42,890 --> 00:03:47,450
-So please make these changes and save these launch settings Json file.
+Vậy vui lòng thực hiện các thay đổi này và lưu file launch settings Json.
 
 54
 00:03:47,450 --> 00:03:50,870
-This will reflect our port numbers in our local environment.
+Điều này sẽ phản ánh các số cổng của chúng ta trong môi trường local.
 
 55
 00:03:50,870 --> 00:03:57,200
-So in order to set up these configuration we can right click the ordering API, set a startup project
+Vậy để thiết lập các configuration này, chúng ta có thể nhấp chuột phải vào ordering API, đặt nó là startup project
 
 56
 00:03:57,200 --> 00:03:59,690
-and we can run the Https profile.
+và chúng ta có thể chạy Https profile.
 
 57
 00:03:59,690 --> 00:04:06,380
-And we can verify that these application will start up and listening on localhost 5053.
+Và chúng ta có thể xác minh rằng ứng dụng này sẽ khởi động và lắng nghe trên localhost 5053.
 
 58
 00:04:07,370 --> 00:04:10,160
-So I'm opening the project console window.
+Vậy tôi đang mở cửa sổ project console.
 
 59
 00:04:10,160 --> 00:04:14,600
-You can see that application is starting localhost 5053.
+Bạn có thể thấy rằng ứng dụng đang khởi động localhost 5053.
 
 60
 00:04:14,600 --> 00:04:20,420
-And also we should remove this browser open property from the launch settings.
+Và cũng chúng ta nên loại bỏ thuộc tính mở trình duyệt này khỏi launch settings.
 
 61
 00:04:20,420 --> 00:04:25,910
-If you come here and if you see this property we can set the launch browser as a false.
+Nếu bạn đến đây và nếu bạn thấy property này, chúng ta có thể đặt launch browser thành false.
 
 62
 00:04:25,910 --> 00:04:32,150
-And also I'm going to set launch browser false for Http and Https learning profiles.
+Và cũng vậy, tôi sẽ đặt launch browser thành false cho các learning profiles Http và Https.
 
 63
 00:04:32,150 --> 00:04:37,370
-As you can see that we have successfully created ordering API project and perform the initial setup
+Như bạn có thể thấy, chúng ta đã tạo thành công dự án ordering API và thực hiện setup ban đầu
 
 64
 00:04:37,370 --> 00:04:39,530
-for developing ordering microservices.
+để phát triển ordering microservices.
 
