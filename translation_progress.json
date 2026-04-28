@@ -266,5 +266,8 @@
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/004 Developing Order Endpoints for REST APIs in Ordering.API Layer.srt": "done",
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/005 Developing CreateOrder Endpoint for REST APIs in Ordering.API Layer.srt": "done",
   "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/006 Developing UpdateOrder Endpoint for REST APIs in Ordering.API Layer.srt": "done",
-  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/007 Developing DeleteOrder Endpoint for REST APIs in Ordering.API Layer.srt": "done"
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/007 Developing DeleteOrder Endpoint for REST APIs in Ordering.API Layer.srt": "done",
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/008 Developing GetOrdersByName Endpoint for REST APIs in Ordering.API Layer.srt": "done",
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/009 Developing GetOrdersByCustomer Endpoint for REST APIs in Ordering.API Layer.srt": "done",
+  "/home/user/microservice-srt/17 Ordering.API Layer Exposing Minimal Api Endpoints with Carter and REPR Pattern/010 Developing GetOrders Endpoint w Pagination for REST APIs in Ordering.API Layer.srt": "done"
 }
