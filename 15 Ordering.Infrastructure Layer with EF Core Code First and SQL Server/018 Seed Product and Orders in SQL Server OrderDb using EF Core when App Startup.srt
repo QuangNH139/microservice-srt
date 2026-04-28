@@ -1,6 +1,6 @@
 1
 00:00:00,200 --> 00:00:06,290
-In this video, we are going to continue seed operations with product and order tables in SQL server
+Trong video này, chúng ta sẽ tiếp tục các hoạt động seed với bảng product và order trong SQL server
 
 2
 00:00:06,290 --> 00:00:07,070
@@ -8,55 +8,55 @@ database.
 
 3
 00:00:07,100 --> 00:00:13,670
-Previously we have developed initialized database async method and after migrate operation we will perform
+Trước đó chúng ta đã phát triển phương thức initialized database async và sau khi thực hiện migrate, chúng ta sẽ thực hiện
 
 4
 00:00:13,670 --> 00:00:14,900
-seed async method.
+phương thức seed async.
 
 5
 00:00:14,900 --> 00:00:20,690
-And in this method you can see that we will implement only seed customer async method to performing
+Và trong phương thức này bạn có thể thấy rằng chúng ta sẽ triển khai chỉ phương thức seed customer async để thực hiện
 
 6
 00:00:20,690 --> 00:00:24,380
-adding range of the customer array into customer's table.
+thêm một dãy các customer vào bảng customer.
 
 7
 00:00:24,380 --> 00:00:29,390
-But now in this video we will focus on seeding product and order and order items.
+Nhưng bây giờ trong video này chúng ta sẽ tập trung vào việc seed product và order và order items.
 
 8
 00:00:29,390 --> 00:00:34,250
-So I'm going to open these command codes and comes here.
+Vậy tôi sẽ mở những đoạn mã lệnh này và đi đến đây.
 
 9
 00:00:34,250 --> 00:00:38,000
-You can see that seed async functions including three functions.
+Bạn có thể thấy rằng hàm seed async bao gồm ba hàm.
 
 10
 00:00:38,000 --> 00:00:42,380
-Now this will be seeding customer product order and order items.
+Bây giờ đây sẽ là seeding customer product order và order items.
 
 11
 00:00:42,380 --> 00:00:47,840
-If you scroll down you can see that we will continue our static async methods for each entity.
+Nếu bạn cuộn xuống, bạn có thể thấy rằng chúng ta sẽ tiếp tục các phương thức static async của chúng ta cho mỗi entity.
 
 12
 00:00:47,840 --> 00:00:50,210
-And this was the customer entity.
+Và đó là customer entity.
 
 13
 00:00:50,210 --> 00:00:54,980
-And I'm going to follow the same steps for product and order and order items.
+Và tôi sẽ thực hiện theo các bước tương tự cho product và order và order items.
 
 14
 00:00:54,980 --> 00:00:56,240
-So come here.
+Vậy đi đến đây.
 
 15
 00:00:56,240 --> 00:01:02,750
-And just after this method you can create any private static async method which name is seed product
+Và ngay sau phương thức này, bạn có thể tạo bất kỳ phương thức private static async nào có tên là seed product
 
 16
 00:01:02,750 --> 00:01:03,320
@@ -64,19 +64,19 @@ async.
 
 17
 00:01:03,320 --> 00:01:07,940
-And this will be also executing context object which is our application db context.
+Và đây cũng sẽ thực thi đối tượng context, đó là application db context của chúng ta.
 
 18
 00:01:07,940 --> 00:01:10,280
-And in here we will follow the same steps.
+Và ở đây chúng ta sẽ thực hiện theo các bước tương tự.
 
 19
 00:01:10,280 --> 00:01:15,140
-First of all we have checked if there is any product into database exists or not.
+Đầu tiên, chúng ta đã kiểm tra xem có bất kỳ product nào tồn tại trong database hay không.
 
 20
 00:01:15,140 --> 00:01:21,290
-If not exist we will apply the add range async method with passing the product array into the products
+Nếu không tồn tại, chúng ta sẽ áp dụng phương thức add range async bằng cách truyền mảng product vào products
 
 21
 00:01:21,500 --> 00:01:22,160
@@ -84,31 +84,31 @@ entity.
 
 22
 00:01:22,160 --> 00:01:27,650
-And after that we will save changes async to reflect these new records into the database.
+Và sau đó chúng ta sẽ lưu các thay đổi async để phản ánh các record mới này vào database.
 
 23
 00:01:27,650 --> 00:01:33,770
-And after seeding the products, we will follow the same steps for seed order and items async method.
+Và sau khi seeding các sản phẩm, chúng ta sẽ làm theo các bước tương tự cho phương thức seed order và items async.
 
 24
 00:01:33,770 --> 00:01:40,370
-So after this method I'm going to create a new method which name is seed orders with items async method.
+Vậy sau phương thức này tôi sẽ tạo một phương thức mới có tên là seed orders with items async method.
 
 25
 00:01:40,370 --> 00:01:45,950
-And this is also private static async method and accepting the application db context.
+Và đây cũng là private static async method và chấp nhận application db context.
 
 26
 00:01:45,950 --> 00:01:47,720
-And we have followed the same steps.
+Và chúng ta đã làm theo các bước tương tự.
 
 27
 00:01:47,720 --> 00:01:51,050
-First of all, we will check if there is any orders in the database.
+Đầu tiên, chúng ta sẽ kiểm tra xem có bất kỳ orders nào trong database hay không.
 
 28
 00:01:51,050 --> 00:01:57,320
-If not, we will use ad range async method in order to add orders array into the orders entity of the
+Nếu không, chúng ta sẽ sử dụng phương thức ad range async để thêm mảng orders vào orders entity của
 
 29
 00:01:57,320 --> 00:01:58,220
@@ -116,35 +116,35 @@ SQL server.
 
 30
 00:01:58,220 --> 00:02:01,460
-So these are the seed product and orders method.
+Vậy đây là các phương thức seed product và orders.
 
 31
 00:02:01,700 --> 00:02:07,520
-As you can see that these methods are expecting initial data properties, which are the static properties
+Như bạn có thể thấy, các phương thức này đang mong đợi các thuộc tính initial data, đó là các thuộc tính static
 
 32
 00:02:07,520 --> 00:02:12,020
-in the initial data class to provide initial data for product and orders.
+trong initial data class để cung cấp initial data cho product và orders.
 
 33
 00:02:12,020 --> 00:02:18,350
-For that purpose, I am going to open the initial database and after defining the customers property,
+Để mục đích đó, tôi sẽ mở initial database và sau khi định nghĩa thuộc tính customers, chúng ta sẽ làm theo các bước tương tự cho products và orders.
 
 34
 00:02:18,350 --> 00:02:21,590
-we will follow the same steps for the products and orders.
+Và ở đây bạn có thể thấy thuộc tính static products đó là public static IEnumerable product, tên thuộc tính là products property.
 
 35
 00:02:21,590 --> 00:02:28,010
-And here you can see the products static property which is the public static IEnumerable product, which
+Và ở đây bạn có thể thấy rằng chúng ta đang trả về một list product mới và điều này sẽ bao gồm các new product
 
 36
 00:02:28,010 --> 00:02:29,570
-name is products property.
+sử dụng phương thức product dot create.
 
 37
 00:02:29,570 --> 00:02:35,150
-And here you can see that we are returning a new list product and this will be including for new product
+Và bên trong phương thức này chúng ta sẽ truyền product id sử dụng product id của strongly type IDs để tạo ra các product với id và sau đó, bạn có thể thấy rằng tôi sẽ thêm new product với
 
 38
 00:02:35,150 --> 00:02:37,490
@@ -160,137 +160,137 @@ generating these with id and following that, you can see that I'm going to add n
 
 41
 00:02:51,380 --> 00:02:52,460
-different prices.
+các giá khác nhau.
 
 42
 00:02:52,460 --> 00:02:58,250
-So you can confirm these product create operation in your initial data class operation.
+Vậy bạn có thể xác nhận các tác vụ tạo sản phẩm này trong lớp dữ liệu khởi tạo của bạn.
 
 43
 00:02:58,250 --> 00:03:03,290
-And just after that I'm going to create orders with items for that purpose.
+Và ngay sau đó, tôi sẽ tạo các đơn hàng với các mục cho mục đích đó.
 
 44
 00:03:03,290 --> 00:03:09,320
-I'm going to create an additional static and IEnumerable order property.
+Tôi sẽ tạo một thuộc tính IEnumerable order static bổ sung.
 
 45
 00:03:09,320 --> 00:03:16,160
-And here you can see that this is long property, which is the public static IEnumerable order order
+Và ở đây bạn có thể thấy đây là thuộc tính long, đó là public static IEnumerable order order
 
 46
 00:03:16,160 --> 00:03:17,240
-with items.
+với các mục.
 
 47
 00:03:17,240 --> 00:03:24,230
-And in the getter of these property, you can see that we have defined two new address and two new payment
+Và trong getter của thuộc tính này, bạn có thể thấy rằng chúng ta đã định nghĩa hai địa chỉ mới và hai payment mới
 
 48
 00:03:24,230 --> 00:03:26,930
-in order to prepare for creating orders.
+để chuẩn bị cho việc tạo các đơn hàng.
 
 49
 00:03:26,930 --> 00:03:32,720
-So these are the address and payment value objects that we defined predefined values.
+Vậy đây là các address và payment value objects mà chúng ta đã định nghĩa với các giá trị được xác định trước.
 
 50
 00:03:32,720 --> 00:03:39,560
-And after that we have create a new order using the order create method and passing the order ID, customer
+Và sau đó, chúng ta đã tạo một đơn hàng mới bằng cách sử dụng phương thức order create và truyền order ID, customer
 
 51
 00:03:39,560 --> 00:03:43,610
-ID, order name, shipping and billing address and payment information.
+ID, tên đơn hàng, địa chỉ giao hàng và tính toán, cùng với thông tin thanh toán.
 
 52
 00:03:43,610 --> 00:03:50,420
-And after created a order one we can adding new products which are the ID information comes from the
+Và sau khi tạo đơn hàng một, chúng ta có thể thêm các sản phẩm mới mà thông tin ID của chúng đến từ
 
 53
 00:03:50,420 --> 00:03:54,680
-above of this property and passing the quantity and price.
+phía trên của thuộc tính này và truyền số lượng và giá.
 
 54
 00:03:54,680 --> 00:04:01,040
-And just after that we have create order to including a different order ID, customer ID, order name,
+Và ngay sau đó, chúng ta đã tạo order hai bao gồm một order ID khác, customer ID, tên đơn hàng,
 
 55
 00:04:01,040 --> 00:04:04,310
-shipping and billing address and payment to the value object.
+địa chỉ giao hàng và tính toán, cùng với payment value object.
 
 56
 00:04:04,310 --> 00:04:07,910
-And we have added different two products into this order.
+Và chúng ta đã thêm hai sản phẩm khác vào đơn hàng này.
 
 57
 00:04:07,910 --> 00:04:14,450
-And we are going to return these order one and order two as a generated predefined seating order tables.
+Và chúng ta sẽ trả về các đơn hàng một và đơn hàng hai này như là các bảng seating được tạo trước.
 
 58
 00:04:14,450 --> 00:04:22,400
-So make sure that and note that we have using the different grid IDs and passing the same IDs when creating
+Vậy hãy chắc chắn rằng và lưu ý rằng chúng ta đang sử dụng các grid IDs khác nhau và truyền cùng các IDs khi tạo
 
 59
 00:04:22,400 --> 00:04:22,850
-order.
+đơn hàng.
 
 60
 00:04:22,850 --> 00:04:29,900
-So this is crucial when making consistency between table rows, including the customer product order
+Vì vậy điều này rất quan trọng khi đảm bảo tính nhất quán giữa các hàng bảng, bao gồm cả customer, product, order
 
 61
 00:04:29,900 --> 00:04:30,860
-with items.
+với các items.
 
 62
 00:04:30,860 --> 00:04:37,370
-So you can copy this code and initial data from the GitHub of our repository in order to seeding our
+Vậy bạn có thể copy code này và initial data từ GitHub của repository của chúng ta để seeding
 
 63
 00:04:37,370 --> 00:04:39,710
-operations in the database extensions.
+các operations trong database extensions.
 
 64
 00:04:39,710 --> 00:04:46,700
-And by this way, we will execute these codes automatically when the application start up into our initial
+Và bằng cách này, chúng ta sẽ execute những codes này automatically khi application startup vào initial
 
 65
 00:04:46,700 --> 00:04:48,110
-database async method.
+database async method của chúng ta.
 
 66
 00:04:48,110 --> 00:04:53,450
-So here you can see that we got an exception which is the seed order and items async method.
+Vậy ở đây bạn có thể thấy rằng chúng ta gặp một exception đó là seed order và items async method.
 
 67
 00:04:53,450 --> 00:04:57,260
-If you scroll down you can see that the method name is different.
+Nếu bạn scroll down bạn có thể thấy rằng method name là khác.
 
 68
 00:04:57,260 --> 00:04:59,840
-You can see that we will use order in here.
+Bạn có thể thấy rằng chúng ta sẽ sử dụng order ở đây.
 
 69
 00:05:00,020 --> 00:05:01,760
-We can use orders in here.
+Chúng ta có thể sử dụng orders ở đây.
 
 70
 00:05:01,760 --> 00:05:07,610
-I'm going to copy this method and make this method seed orders with items in this method.
+Tôi sắp copy method này và tạo method này seed orders with items trong method này.
 
 71
 00:05:07,610 --> 00:05:10,520
-So after that you can come here and right click.
+Vậy sau đó bạn có thể đến đây và right click.
 
 72
 00:05:10,520 --> 00:05:15,470
-And building the ordering API make sure that your codes are building successfully.
+Và building ordering API đảm bảo rằng codes của bạn đang building successfully.
 
 73
 00:05:15,920 --> 00:05:22,670
-This setup provides that SQL server ordered DB database populated with essential data for customers,
+Setup này cung cấp SQL server ordered DB database được populated với essential data cho customers,
 
 74
 00:05:22,670 --> 00:05:25,490
-products and orders when application startup.
+products và orders khi application startup.
 

@@ -1,92 +1,92 @@
 1
 00:00:00,230 --> 00:00:07,010
-In this video, we are going to see an example of gRPC usage in microservice communications.
+Trong video này, chúng ta sẽ xem một ví dụ về cách sử dụng gRPC trong giao tiếp giữa các microservices.
 
 2
 00:00:07,220 --> 00:00:08,420
-Think about that.
+Hãy suy nghĩ về điều đó.
 
 3
 00:00:08,420 --> 00:00:16,460
-We have a shopping cart microservices that expose ad item into shopping cart RESTful http API to the
+Chúng ta có một shopping cart microservices mà expose tính năng thêm item vào shopping cart thông qua RESTful HTTP API cho
 
 4
 00:00:16,460 --> 00:00:17,630
-client application.
+ứng dụng client.
 
 5
 00:00:18,440 --> 00:00:19,400
-This shopping cart.
+Shopping cart này
 
 6
 00:00:19,400 --> 00:00:26,360
-Microservices receives a single request from a client and dispatch it to various microservices.
+Microservices nhận một yêu cầu duy nhất từ client và gửi nó đến các microservices khác nhau.
 
 7
 00:00:26,630 --> 00:00:31,910
-Aggregate the results and send them back to the requesting client application.
+Tập hợp kết quả và gửi chúng trở lại ứng dụng client yêu cầu.
 
 8
 00:00:32,630 --> 00:00:39,140
-Such operations typically require synchronous communication as to produce an immediate response.
+Những hoạt động như vậy thường yêu cầu giao tiếp đồng bộ để tạo ra phản hồi ngay lập tức.
 
 9
 00:00:39,620 --> 00:00:47,060
-In this example, backend calls from the shopping cart microservices are performed using the gRPC.
+Trong ví dụ này, các cuộc gọi backend từ shopping cart microservices được thực hiện bằng cách sử dụng gRPC.
 
 10
 00:00:47,510 --> 00:00:52,100
-gRPC communication requires both client and server components.
+Giao tiếp gRPC yêu cầu cả thành phần client và server.
 
 11
 00:00:52,280 --> 00:00:57,440
-You can see the image that shopping cart microservices implements gRPC client.
+Bạn có thể thấy trong hình ảnh rằng shopping cart microservices triển khai gRPC client.
 
 12
 00:00:58,130 --> 00:01:03,290
-The client makes synchronous gRPC call to the backend microservices.
+Client thực hiện cuộc gọi gRPC đồng bộ đến các backend microservices.
 
 13
 00:01:03,320 --> 00:01:07,820
-This backend microservices are implemented as a gRPC server.
+Các backend microservices này được triển khai dưới dạng gRPC server.
 
 14
 00:01:08,330 --> 00:01:13,820
-In our case, backend microservices are product and discount microservices.
+Trong trường hợp của chúng ta, các backend microservices là product và discount microservices.
 
 15
 00:01:14,090 --> 00:01:21,380
-Shopping cart refers to product detail information and also latest discount information before adding
+Shopping cart tham chiếu thông tin chi tiết sản phẩm và cũng lấy thông tin chiết khấu mới nhất trước khi thêm
 
 16
 00:01:21,380 --> 00:01:22,460
-item into cart.
+item vào cart.
 
 17
 00:01:22,940 --> 00:01:31,160
-As you can see that the gRPC endpoints must be configured for the Http two protocol that is required
+Như bạn có thể thấy rằng các endpoint gRPC phải được cấu hình cho giao thức HTTP/2 mà là bắt buộc
 
 18
 00:01:31,160 --> 00:01:33,050
-for the gRPC communication.
+cho giao tiếp gRPC.
 
 19
 00:01:33,620 --> 00:01:40,160
-In microservices world, most of the communication uses asynchronous communication patterns, but some
+Trong thế giới microservices, hầu hết giao tiếp sử dụng các mẫu giao tiếp không đồng bộ, nhưng một số
 
 20
 00:01:40,160 --> 00:01:44,000
-operations require direct calls for the immediate response.
+hoạt động yêu cầu các cuộc gọi trực tiếp để có phản hồi ngay lập tức.
 
 21
 00:01:44,030 --> 00:01:50,270
-gRPC should be the primary choice for direct synchronous communication between backend microservices.
+gRPC nên là lựa chọn chính cho giao tiếp đồng bộ trực tiếp giữa các backend microservices.
 
 22
 00:01:50,270 --> 00:01:57,470
-It is high performance communication protocol based on Http two, and protocol buffers make it a perfect
+Đó là một giao thức giao tiếp hiệu suất cao dựa trên HTTP/2, và protocol buffers làm cho nó trở thành một lựa chọn hoàn hảo
 
 23
 00:01:57,470 --> 00:01:58,040
-choice.
+.
 

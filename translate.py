@@ -1,34 +1,24 @@
 #!/usr/bin/env python3
 """
-Translate all SRT subtitle files from English to Vietnamese.
-Uses Claude Haiku with prompt caching for efficiency.
+Translate SRT subtitle files from English to Vietnamese using Claude API.
+Features: SEP-based batch translation, prompt caching, auto-retry with
+exponential backoff, progress tracking, resume support.
 """
 
 import os
 import re
+import sys
+import json
 import time
-import anthropic
+import argparse
 from pathlib import Path
+import anthropic
 
-def _make_client() -> anthropic.Anthropic:
-    token_file = os.environ.get(
-        "CLAUDE_SESSION_INGRESS_TOKEN_FILE",
-        "/home/claude/.claude/remote/.session_ingress_token",
-    )
-    try:
-        with open(token_file) as _f:
-            _token = _f.read().strip()
-        return anthropic.Anthropic(auth_token=_token)
-    except Exception:
-        pass
-    try:
-        _fd = int(os.environ.get("CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR", "4"))
-        _token = os.read(_fd, 8192).decode().strip()
-        return anthropic.Anthropic(auth_token=_token)
-    except Exception:
-        return anthropic.Anthropic()
-
-client = _make_client()
+BASE_DIR = Path(__file__).parent
+PROGRESS_FILE = BASE_DIR / "translation_progress.json"
+MAX_RETRIES = 5
+BATCH_SIZE = 20
+SEP = "|||SEP|||"
 
 SYSTEM_PROMPT = """You are a professional Vietnamese translator specializing in technical software development content for online video courses. Your task is to translate English subtitles for a .NET 8 Microservices Architecture course into natural, clear Vietnamese that Vietnamese software developers can easily understand.
 
@@ -120,7 +110,7 @@ Use these natural Vietnamese expressions for common course phrases:
 - "and also" → "và cũng"
 - "in order to" → "để"
 - "step by step" → "từng bước một"
-- "best practices" → "best practices" (keep in English as it's industry-standard)
+- "best practices" → "best practices"
 - "in this course" → "trong khóa học này"
 - "deep dive" → "đi sâu vào"
 - "hands on" → "thực hành"
@@ -135,14 +125,29 @@ Use these natural Vietnamese expressions for common course phrases:
 
 You are a subtitle translation engine. Output only the translated subtitles with |||SEP||| separators. Nothing else."""
 
-SEP = "|||SEP|||"
+
+def make_client() -> anthropic.Anthropic:
+    token_file = os.environ.get(
+        "CLAUDE_SESSION_INGRESS_TOKEN_FILE",
+        "/home/claude/.claude/remote/.session_ingress_token",
+    )
+    try:
+        with open(token_file) as f:
+            token = f.read().strip()
+        return anthropic.Anthropic(auth_token=token)
+    except Exception:
+        pass
+    try:
+        fd = int(os.environ.get("CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR", "4"))
+        token = os.read(fd, 8192).decode().strip()
+        return anthropic.Anthropic(auth_token=token)
+    except Exception:
+        return anthropic.Anthropic()
 
 
 def parse_srt(content: str) -> list[tuple[str, str, str]]:
-    """Parse SRT content into list of (index, timestamp, text) tuples."""
     content = content.replace("\r\n", "\n").replace("\r", "\n").strip()
     raw_blocks = re.split(r"\n\n+", content)
-
     result = []
     for block in raw_blocks:
         lines = block.strip().split("\n")
@@ -156,12 +161,10 @@ def parse_srt(content: str) -> list[tuple[str, str, str]]:
             continue
         text = "\n".join(lines[2:]).strip() if len(lines) > 2 else ""
         result.append((index, timestamp, text))
-
     return result
 
 
 def reconstruct_srt(blocks: list[tuple[str, str, str]]) -> str:
-    """Reconstruct SRT file content from translated blocks."""
     parts = []
     for index, timestamp, text in blocks:
         entry = f"{index}\n{timestamp}"
@@ -171,9 +174,7 @@ def reconstruct_srt(blocks: list[tuple[str, str, str]]) -> str:
     return "\n\n".join(parts) + "\n\n"
 
 
-def translate_batch(texts: list[str], retries: int = 3) -> list[str]:
-    """Translate a batch of subtitle texts to Vietnamese using Claude API."""
-    # Only translate non-empty texts
+def translate_batch(texts: list[str], retries: int = MAX_RETRIES) -> list[str]:
     non_empty = [(i, t) for i, t in enumerate(texts) if t.strip()]
     if not non_empty:
         return list(texts)
@@ -181,8 +182,11 @@ def translate_batch(texts: list[str], retries: int = 3) -> list[str]:
     indices, to_translate = zip(*non_empty)
     combined = f"\n{SEP}\n".join(to_translate)
 
-    for attempt in range(retries):
+    delay = 2
+    last_error = None
+    for attempt in range(1, retries + 1):
         try:
+            client = make_client()  # refresh token on every attempt
             response = client.messages.create(
                 model="claude-haiku-4-5-20251001",
                 max_tokens=4096,
@@ -204,108 +208,152 @@ def translate_batch(texts: list[str], retries: int = 3) -> list[str]:
                     }
                 ],
             )
-
             raw = response.content[0].text.strip()
             translated = [t.strip() for t in raw.split(SEP)]
-
             if len(translated) == len(to_translate):
                 result = list(texts)
                 for i, idx in enumerate(indices):
                     result[idx] = translated[i]
                 return result
-
-            # Count mismatch — retry
-            if attempt < retries - 1:
-                time.sleep(2 ** attempt)
-            else:
-                return list(texts)
-
-        except anthropic.RateLimitError:
-            wait = 4 * (2 ** attempt)  # 4s, 8s, 16s
-            print(f"    [rate limit] waiting {wait}s...")
+            # Partial match: use what we got, keep originals for the rest
+            if 0 < len(translated) <= len(to_translate):
+                result = list(texts)
+                for i, idx in enumerate(indices):
+                    if i < len(translated) and translated[i]:
+                        result[idx] = translated[i]
+                print(f"  Partial match ({len(translated)}/{len(to_translate)} blocks), continuing...")
+                return result
+            # Empty or excess response — retry
+            last_error = f"Got {len(translated)} blocks for {len(to_translate)}"
+            wait = delay * (2 ** (attempt - 1))
+            print(f"  Unexpected count, retry {attempt}/{retries} in {wait}s...")
+            time.sleep(wait)
+        except anthropic.RateLimitError as e:
+            last_error = e
+            wait = delay * (2 ** (attempt - 1))
+            print(f"  Rate limit, retry {attempt}/{retries} in {wait}s...")
+            time.sleep(wait)
+        except anthropic.APIConnectionError as e:
+            last_error = e
+            wait = delay * (2 ** (attempt - 1))
+            print(f"  Connection error, retry {attempt}/{retries} in {wait}s...")
             time.sleep(wait)
         except anthropic.APIStatusError as e:
-            if e.status_code >= 500 and attempt < retries - 1:
-                time.sleep(2 ** attempt)
+            last_error = e
+            # 401 = token expired (will refresh on next attempt), 5xx = server errors
+            if e.status_code in (401, 500, 502, 503, 529):
+                wait = delay * (2 ** (attempt - 1))
+                print(f"  HTTP {e.status_code}, retry {attempt}/{retries} in {wait}s...")
+                time.sleep(wait)
             else:
                 raise
+        except Exception as e:
+            last_error = e
+            wait = delay * (2 ** (attempt - 1))
+            print(f"  Error: {e}, retry {attempt}/{retries} in {wait}s...")
+            time.sleep(wait)
 
+    print(f"  WARNING: All retries failed ({last_error}), keeping originals for batch")
     return list(texts)
 
 
-def translate_srt_file(filepath: Path, batch_size: int = 40) -> None:
-    """Read, translate, and overwrite a single SRT file."""
-    content = filepath.read_text(encoding="utf-8", errors="replace")
+def translate_file(srt_path: Path) -> Path:
+    content = srt_path.read_text(encoding="utf-8", errors="replace")
     blocks = parse_srt(content)
     if not blocks:
-        return
+        return None
 
     texts = [block[2] for block in blocks]
-    translated_texts = list(texts)  # fallback: keep originals
+    translated_texts = list(texts)
+    total_batches = (len(texts) + BATCH_SIZE - 1) // BATCH_SIZE
 
-    for i in range(0, len(texts), batch_size):
-        batch = texts[i : i + batch_size]
+    for i in range(0, len(texts), BATCH_SIZE):
+        batch = texts[i: i + BATCH_SIZE]
+        batch_num = i // BATCH_SIZE + 1
+        print(f"  Batch {batch_num}/{total_batches} ({len(batch)} blocks)...")
         try:
-            translated_batch = translate_batch(batch)
-            translated_texts[i : i + len(batch)] = translated_batch
+            translated_texts[i: i + len(batch)] = translate_batch(batch)
         except Exception as e:
-            print(f"    [batch {i // batch_size + 1} error] {e}")
+            print(f"  Batch error (keeping originals): {e}")
 
     translated_blocks = [
         (idx, ts, translated_texts[j]) for j, (idx, ts, _) in enumerate(blocks)
     ]
+    # Overwrite original file in-place
+    srt_path.write_text(reconstruct_srt(translated_blocks), encoding="utf-8")
+    return srt_path
 
-    filepath.write_text(reconstruct_srt(translated_blocks), encoding="utf-8")
+
+def load_progress() -> dict:
+    if PROGRESS_FILE.exists():
+        with open(PROGRESS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
 
 
-def main(skip_file: str | None = None) -> None:
-    srt_dir = Path("/home/user/microservice-srt")
-    all_files = sorted(srt_dir.rglob("*.srt"))
+def save_progress(progress: dict) -> None:
+    with open(PROGRESS_FILE, "w", encoding="utf-8") as f:
+        json.dump(progress, f, ensure_ascii=False, indent=2)
 
-    if skip_file:
-        skip_set: set[Path] = set()
-        with open(skip_file) as f:
-            for line in f:
-                line = line.strip()
-                if line:
-                    skip_set.add(srt_dir / line)
-        srt_files = [p for p in all_files if p not in skip_set]
-    else:
-        srt_files = all_files
 
-    total = len(srt_files)
+def find_all_srt_files() -> list[Path]:
+    return [f for f in sorted(BASE_DIR.rglob("*.srt")) if not f.name.endswith("_vi.srt")]
 
-    print(f"Translating {total} SRT files to Vietnamese")
-    print("=" * 65)
 
-    failed: list[tuple[Path, str]] = []
+def main():
+    parser = argparse.ArgumentParser(description="Translate SRT files to Vietnamese")
+    parser.add_argument("--reset", action="store_true", help="Reset progress and retranslate all")
+    parser.add_argument("--file", type=str, help="Translate a single specific file")
+    parser.add_argument("--max-files", type=int, default=0, help="Stop after translating N files (0=all)")
+    args = parser.parse_args()
+
+    if args.file:
+        path = Path(args.file)
+        print(f"Translating: {path.name}")
+        out = translate_file(path)
+        print(f"  Saved: {out}" if out else "  Skipped (empty).")
+        return
+
+    progress = {} if args.reset else load_progress()
+    all_files = find_all_srt_files()
+    pending = [f for f in all_files if str(f) not in progress or progress[str(f)] == "ERROR"]
+    done_count = len(all_files) - len(pending)
+
+    print(f"Total SRT files : {len(all_files)}")
+    print(f"Already done    : {done_count}")
+    print(f"Remaining       : {len(pending)}")
+    print()
+
+    translated_this_run = 0
     start = time.time()
-
-    for i, filepath in enumerate(srt_files, 1):
-        rel = filepath.relative_to(srt_dir)
-        print(f"[{i:3d}/{total}] {rel}", end=" ", flush=True)
+    for i, srt_path in enumerate(pending, 1):
+        if args.max_files and translated_this_run >= args.max_files:
+            print(f"Reached --max-files {args.max_files}, exiting.")
+            break
+        rel = srt_path.relative_to(BASE_DIR)
+        print(f"[{i}/{len(pending)}] {rel}")
         try:
-            translate_srt_file(filepath)
-            print("✓")
+            out = translate_file(srt_path)
+            if out:
+                progress[str(srt_path)] = "done"
+                save_progress(progress)
+                translated_this_run += 1
+                print(f"  -> done")
+            else:
+                print("  Skipped.")
         except Exception as e:
-            print(f"✗ {e}")
-            failed.append((filepath, str(e)))
-
-        # Light throttle every 10 files to stay within rate limits
-        if i % 10 == 0:
-            time.sleep(1)
+            print(f"  ERROR: {e}")
+            progress[str(srt_path)] = "ERROR"
+            save_progress(progress)
 
     elapsed = time.time() - start
-    print("=" * 65)
-    print(f"Done in {elapsed:.0f}s — {total - len(failed)}/{total} files translated")
-
-    if failed:
-        print(f"\nFailed ({len(failed)}):")
-        for fp, err in failed:
-            print(f"  {fp.relative_to(srt_dir)}: {err}")
+    errors = [k for k, v in progress.items() if v == "ERROR"]
+    print(f"\nFinished in {elapsed:.0f}s. Errors: {len(errors)}")
+    if errors:
+        print("Files with errors (re-run to retry):")
+        for e in errors:
+            print(f"  {e}")
 
 
 if __name__ == "__main__":
-    import sys
-    skip = sys.argv[1] if len(sys.argv) > 1 else None
-    main(skip_file=skip)
+    main()

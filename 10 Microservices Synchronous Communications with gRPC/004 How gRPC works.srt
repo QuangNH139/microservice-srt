@@ -1,48 +1,48 @@
 1
 00:00:00,110 --> 00:00:03,980
-In this video, we are going to learn how gRPC works.
+Trong video này, chúng ta sẽ học cách gRPC hoạt động.
 
 2
 00:00:04,850 --> 00:00:11,510
-A RPC is a form of client server communication that uses a function called, rather than usual Http
+RPC là một hình thức giao tiếp client-server sử dụng một hàm được gọi, thay vì các cuộc gọi Http thông thường
 
 3
 00:00:11,510 --> 00:00:11,810
-call.
+.
 
 4
 00:00:11,810 --> 00:00:17,990
-So in gRPC, a client application can directly call a method on a server application on a different
+Vậy trong gRPC, một ứng dụng client có thể trực tiếp gọi một phương thức trên ứng dụng server trên một máy khác
 
 5
 00:00:17,990 --> 00:00:24,380
-machine like it is a local object, it making it easy for you to build distributed applications and
+như thể nó là một đối tượng cục bộ, giúp bạn dễ dàng xây dựng các ứng dụng và
 
 6
 00:00:24,380 --> 00:00:25,190
-services.
+dịch vụ phân tán.
 
 7
 00:00:26,460 --> 00:00:33,960
-As with many RPC systems, gRPC is based on the idea of defining a service that specifies methods,
+Như nhiều hệ thống RPC khác, gRPC dựa trên ý tưởng xác định một service có các phương thức,
 
 8
 00:00:33,960 --> 00:00:38,940
-and these can be called remotely with their parameters and return types.
+và những phương thức này có thể được gọi từ xa với các tham số và kiểu trả về của chúng.
 
 9
 00:00:38,940 --> 00:00:45,810
-On the server side, the server implements this interface and runs a gRPC server to handle client calls.
+Ở phía server, server triển khai interface này và chạy một máy chủ gRPC để xử lý các cuộc gọi từ client.
 
 10
 00:00:46,440 --> 00:00:52,110
-On the client side, the client has a setup that provides the same methods as the server.
+Ở phía client, client có một setup cung cấp các phương thức tương tự như server.
 
 11
 00:00:53,490 --> 00:00:59,970
-gRPC client and servers can work and talk to each other in a different of environments, from servers
+gRPC client và servers có thể làm việc và giao tiếp với nhau trong các môi trường khác nhau, từ các máy chủ
 
 12
 00:00:59,970 --> 00:01:06,570
-to your own desktop applications, and that can be written in any language that gRPC supports.
+đến các ứng dụng desktop của riêng bạn, và chúng có thể được viết bằng bất kỳ ngôn ngữ nào mà gRPC hỗ trợ.
 

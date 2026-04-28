@@ -1,22 +1,22 @@
 1
 00:00:00,110 --> 00:00:06,290
-In this video, we are going to add rate limiting into our reverse proxy as an API gateway.
+Trong video này, chúng ta sẽ thêm rate limiting vào reverse proxy của chúng ta như một API gateway.
 
 2
 00:00:06,320 --> 00:00:11,720
-So we are focusing on adding rate limiting into our reverse proxy within the API gateway.
+Vậy chúng ta đang tập trung vào việc thêm rate limiting vào reverse proxy trong API gateway.
 
 3
 00:00:11,750 --> 00:00:17,780
-Microservices and rate limiting is a crucial feature for maintaining the stability and security of our
+Microservices và rate limiting là một tính năng quan trọng để duy trì tính ổn định và bảo mật của các
 
 4
 00:00:17,780 --> 00:00:20,780
-services by controlling the rate of the traffic.
+dịch vụ bằng cách kiểm soát tốc độ giao thông.
 
 5
 00:00:20,810 --> 00:00:26,390
-And here you can see the official documentation of the Yarp reverse proxy and rate limiting and rate
+Và ở đây bạn có thể thấy tài liệu chính thức của Yarp reverse proxy và rate limiting và rate
 
 6
 00:00:26,390 --> 00:00:26,930
@@ -24,55 +24,55 @@ limiting.
 
 7
 00:00:26,930 --> 00:00:33,230
-Its a technique to limit the number of requests to our API in order to improve security and reduce the
+Nó là một kỹ thuật để giới hạn số lượng yêu cầu đến API của chúng ta nhằm cải thiện bảo mật và giảm
 
 8
 00:00:33,230 --> 00:00:34,490
-load on the servers.
+tải trên các máy chủ.
 
 9
 00:00:34,520 --> 00:00:38,750
-An Yarp natively support the rate limiting mechanism introduced from the.
+YARP hỗ trợ natively cơ chế rate limiting được giới thiệu từ .
 
 10
 00:00:38,930 --> 00:00:44,780
-Net seven and here you can see how we can apply rate limiting into our ASP.Net project.
+Net 7 và ở đây bạn có thể thấy cách chúng ta có thể áp dụng rate limiting vào dự án ASP.NET của chúng ta.
 
 11
 00:00:44,810 --> 00:00:49,370
-We basically use add rate limiter extension method and specify the options.
+Về cơ bản chúng ta sử dụng phương thức extension add rate limiter và chỉ định các tùy chọn.
 
 12
 00:00:49,370 --> 00:00:50,660
-And as a configuration.
+Và như một cấu hình.
 
 13
 00:00:50,660 --> 00:00:56,210
-You can see that in the route definition, we can specify the rate limiter policy and give the policy
+Bạn có thể thấy rằng trong định nghĩa route, chúng ta có thể chỉ định policy rate limiter và đặt tên policy.
 
 14
 00:00:56,210 --> 00:00:56,630
-name.
+Khi chúng ta đang đăng ký vào ASP.NET dependency injection.
 
 15
 00:00:56,630 --> 00:00:59,900
-When we are registering into ASP.Net dependency injection.
+Vậy nếu bạn cuộn xuống, bạn có thể thấy cách chúng ta có thể thêm điều này vào.
 
 16
 00:00:59,920 --> 00:01:03,550
-So if you scroll down, you can see that how we can add this into.
+Dependency injection với services dot add rate limiter và đưa ra các tùy chọn.
 
 17
 00:01:03,580 --> 00:01:08,740
-Dependency injection with services dot add rate limiter and giving the options.
+Các tùy chọn bao gồm fixed window limiter và đưa ra permit limit.
 
 18
 00:01:08,770 --> 00:01:12,670
-Options including the fixed window limiter and give the permit limit.
+Windows.
 
 19
 00:01:12,670 --> 00:01:13,390
-Windows.
+Queue element và queue processing order.
 
 20
 00:01:13,420 --> 00:01:15,580
@@ -80,27 +80,27 @@ Queue element and queue processing order.
 
 21
 00:01:15,580 --> 00:01:18,100
-And just after that we need to add.
+Và ngay sau đó chúng ta cần thêm vào.
 
 22
 00:01:18,130 --> 00:01:22,180
-Rate limiter middleware with using the app dot use rate limiter.
+Rate limiter middleware bằng cách sử dụng app dot use rate limiter.
 
 23
 00:01:22,180 --> 00:01:27,760
-And it is important to use this method before using the app dot map reverse proxy.
+Và điều quan trọng là sử dụng phương thức này trước khi sử dụng app dot map reverse proxy.
 
 24
 00:01:27,760 --> 00:01:31,810
-So now let's apply the rate limiting into our API gateway.
+Vậy bây giờ hãy áp dụng rate limiting vào API gateway của chúng ta.
 
 25
 00:01:31,840 --> 00:01:37,060
-Please open the Visual Studio and go to your API gateway project and open the Program.cs.
+Hãy mở Visual Studio và đi tới dự án API gateway của bạn và mở Program.cs.
 
 26
 00:01:37,090 --> 00:01:42,400
-In the Program.cs, we need to add the rate limiter into Dependency Injection and configure the rate
+Trong Program.cs, chúng ta cần thêm rate limiter vào Dependency Injection và cấu hình rate
 
 27
 00:01:42,400 --> 00:01:43,420
@@ -108,43 +108,43 @@ limiter options.
 
 28
 00:01:43,420 --> 00:01:50,350
-Just after adding the reverse proxy, I'm going to come here and adding the builder services add rate
+Ngay sau khi thêm reverse proxy, tôi sẽ đến đây và thêm builder services add rate
 
 29
 00:01:50,350 --> 00:01:53,020
-limiter extension method and save this file.
+limiter extension method và lưu tệp này.
 
 30
 00:01:53,020 --> 00:01:58,720
-Here you can see that we will use add Rate limiter and giving the rate limiter options and into options
+Ở đây bạn có thể thấy rằng chúng ta sẽ sử dụng add Rate limiter và cung cấp rate limiter options và vào options
 
 31
 00:01:58,730 --> 00:02:02,270
-We have add fixed window limiter and give the name as a fixed.
+Chúng ta có add fixed window limiter và đặt tên là fixed.
 
 32
 00:02:02,270 --> 00:02:03,020
-As an option.
+Như một option.
 
 33
 00:02:03,020 --> 00:02:07,370
-We can define Option Window as a timespan from second, ten second and give.
+Chúng ta có thể định nghĩa Option Window là một timespan từ second, mười second và cung cấp.
 
 34
 00:02:07,370 --> 00:02:09,020
-The permit limit is five.
+Permit limit là năm.
 
 35
 00:02:09,020 --> 00:02:14,780
-So that means in the ten second we can send maximum five requests to our microservices.
+Vậy điều đó có nghĩa là trong mười second chúng ta có thể gửi tối đa năm requests tới các microservices của chúng ta.
 
 36
 00:02:14,780 --> 00:02:18,560
-So after that we can configure the HTTP request pipeline.
+Vậy sau đó chúng ta có thể cấu hình HTTP request pipeline.
 
 37
 00:02:18,560 --> 00:02:24,410
-If you come to this point before calling the map reverse proxy, I'm going to come here and call the
+Nếu bạn đến điểm này trước khi gọi map reverse proxy, tôi sẽ đến đây và gọi
 
 38
 00:02:24,440 --> 00:02:26,330
@@ -152,55 +152,55 @@ app dot Use rate limiter.
 
 39
 00:02:26,330 --> 00:02:32,300
-It is important to call use rate limiter functions before calling the map reverse proxy method.
+Điều quan trọng là gọi use rate limiter functions trước khi gọi map reverse proxy method.
 
 40
 00:02:32,300 --> 00:02:38,750
-So that means we will use use rate limiter extension method in order to add rate limiter middleware
+Vậy điều đó có nghĩa là chúng ta sẽ sử dụng use rate limiter extension method để thêm rate limiter middleware
 
 41
 00:02:38,780 --> 00:02:42,200
-to the request pipeline before map reverse proxy.
+vào request pipeline trước khi map reverse proxy.
 
 42
 00:02:42,200 --> 00:02:44,240
-So please add these two lines of code.
+Vậy hãy thêm hai dòng code này.
 
 43
 00:02:44,270 --> 00:02:47,270
-The first one is in here and the second one is in here.
+Dòng đầu tiên ở đây và dòng thứ hai ở đây.
 
 44
 00:02:47,270 --> 00:02:50,450
-So after defining these configurations in the program.cs.
+Vậy sau khi định nghĩa các cấu hình này trong program.cs.
 
 45
 00:02:50,480 --> 00:02:53,660
-It is time to apply rate limiting to a specific route.
+Đã đến lúc áp dụng rate limiting cho một route cụ thể.
 
 46
 00:02:53,660 --> 00:02:59,890
-So for that purpose we should go to the application settings JSON file and in this file we can specify
+Vậy để mục đích đó, chúng ta nên đi đến tệp application settings JSON và trong tệp này chúng ta có thể chỉ định
 
 47
 00:02:59,890 --> 00:03:02,440
-which route should have rate limiting applied.
+route nào nên có rate limiting được áp dụng.
 
 48
 00:03:02,440 --> 00:03:05,260
-For example, we can apply it to ordering route.
+Ví dụ, chúng ta có thể áp dụng nó cho ordering route.
 
 49
 00:03:05,290 --> 00:03:10,690
-If you go to the ordering route in here we can define a rate limiting in the ordering route.
+Nếu bạn đi đến ordering route ở đây, chúng ta có thể định nghĩa rate limiting trong ordering route.
 
 50
 00:03:10,690 --> 00:03:12,250
-I'm going to come here.
+Tôi sẽ đi đến đây.
 
 51
 00:03:12,250 --> 00:03:19,690
-And after defining the cluster ID I'm going to define the rate limiter policy as a fixed into ordering
+Và sau khi định nghĩa cluster ID, tôi sẽ định nghĩa rate limiter policy thành fixed cho ordering
 
 52
 00:03:19,690 --> 00:03:20,140
@@ -208,15 +208,15 @@ route.
 
 53
 00:03:20,140 --> 00:03:25,180
-By this way we can apply rate limiting in the ordering route, which is the fixed window.
+Bằng cách này, chúng ta có thể áp dụng rate limiting trong ordering route, đó là fixed window.
 
 54
 00:03:25,180 --> 00:03:28,630
-And the name comes from the program.cs of the.
+Và tên đến từ program.cs của.
 
 55
 00:03:28,660 --> 00:03:34,480
-When we are giving the At fixed window options here you can see the name of the are fixed as a rate
+Khi chúng ta đang cung cấp fixed window options ở đây, bạn có thể thấy tên của fixed window rate
 
 56
 00:03:34,480 --> 00:03:35,110
@@ -224,125 +224,125 @@ limiter.
 
 57
 00:03:35,110 --> 00:03:40,750
-For that purpose, I'm giving the fixed namespace into our application settings rate Limiter policy
+Vậy để mục đích đó, tôi đang cung cấp fixed namespace vào application settings rate limiter policy
 
 58
 00:03:40,780 --> 00:03:47,230
-as a fixed, and this is the defining ordering route rate limiter into our Yarp API gateway.
+thành fixed, và đây là định nghĩa ordering route rate limiter vào YARP API gateway của chúng ta.
 
 59
 00:03:47,260 --> 00:03:52,960
-Actually, you can apply rate limiting to the desired route using the rate limiter policy section in
+Thực tế, bạn có thể áp dụng rate limiting cho route mong muốn bằng cách sử dụng rate limiter policy section trong
 
 60
 00:03:52,990 --> 00:03:54,400
-the reverse proxy configuration.
+cấu hình reverse proxy.
 
 61
 00:03:54,400 --> 00:03:59,450
-But this time I'm going to use only ordinary cloth and radiometer policy as a fixed.
+Nhưng lần này tôi sẽ chỉ sử dụng cloth thông thường và radiometer policy như một bộ fixed.
 
 62
 00:03:59,810 --> 00:04:03,140
-So now we will test the rate limiting on the order service route.
+Vậy bây giờ chúng ta sẽ kiểm tra rate limiting trên route của order service.
 
 63
 00:04:03,140 --> 00:04:07,730
-But before that I am going to right click the Docker compose and set a startup project and activate
+Nhưng trước đó, tôi sẽ right click vào Docker compose và đặt nó làm startup project và kích hoạt
 
 64
 00:04:07,730 --> 00:04:11,600
-the baking services and downstream microservices on Docker environment.
+các baking services và downstream microservices trên môi trường Docker.
 
 65
 00:04:11,600 --> 00:04:15,110
-And just after that we will start the API gateway.
+Và ngay sau đó chúng ta sẽ khởi động API gateway.
 
 66
 00:04:15,140 --> 00:04:18,470
-Our microservices is up and running on the environment.
+Các microservices của chúng ta đã up và running trên môi trường.
 
 67
 00:04:18,470 --> 00:04:25,670
-And right click the API gateway set as startup project and run with https mode A3.
+Và right click vào API gateway, đặt nó làm startup project và chạy với chế độ https A3.
 
 68
 00:04:28,130 --> 00:04:31,460
-Okay, our API gateway also started successfully.
+Được rồi, API gateway của chúng ta cũng đã khởi động thành công.
 
 69
 00:04:31,490 --> 00:04:37,310
-Now I am going to send ordering route as several requests and understand how we can apply the rate limiting
+Bây giờ tôi sẽ gửi ordering route như một loạt các request và hiểu cách chúng ta có thể áp dụng rate limiting
 
 70
 00:04:37,310 --> 00:04:38,960
-policy for that purpose.
+cho mục đích đó.
 
 71
 00:04:38,960 --> 00:04:44,510
-Please open the postman and go to the Yarp API gateway folder and go to the ordering subfolder.
+Vui lòng mở Postman và đi tới thư mục Yarp API gateway, sau đó đi tới thư mục con ordering.
 
 72
 00:04:44,510 --> 00:04:47,750
-For example, go to the get orders with pagination.
+Ví dụ, đi tới get orders with pagination.
 
 73
 00:04:48,260 --> 00:04:52,760
-So now we are going to make multiple requests within the specified window.
+Vậy bây giờ chúng ta sẽ thực hiện nhiều request trong cửa sổ thời gian được chỉ định.
 
 74
 00:04:52,760 --> 00:04:56,460
-For example, I am going to send five requests in 10s.
+Ví dụ, tôi sẽ gửi năm request trong 10s.
 
 75
 00:04:56,490 --> 00:05:03,750
-And when we exiting the limit, we should see and get the 503 service on any unavailable response,
+Và khi chúng ta vượt quá giới hạn, chúng ta sẽ thấy và nhận được response 503 service unavailable,
 
 76
 00:05:03,750 --> 00:05:09,300
-and we will wait for the window to reset and try again to verify that the rate limiting is working as
+và chúng ta sẽ chờ cho cửa sổ reset và cố gắng lại để xác minh rằng rate limiting đang hoạt động như
 
 77
 00:05:09,330 --> 00:05:10,050
-expected.
+mong đợi.
 
 78
 00:05:10,050 --> 00:05:13,200
-So I'm going to send HTTP get button.
+Vậy tôi sẽ gửi HTTP get button.
 
 79
 00:05:13,200 --> 00:05:15,840
-This is the first time we can get the result.
+Đây là lần đầu tiên chúng ta có thể nhận được kết quả.
 
 80
 00:05:15,870 --> 00:05:20,400
-This is the second time, third time fourth and five time.
+Đây là lần thứ hai, lần thứ ba, lần thứ tư và lần thứ năm.
 
 81
 00:05:20,400 --> 00:05:27,360
-If I click again in ten second, you can see that we got 503 service unavailable exception.
+Nếu tôi click lại trong vòng mười giây, bạn có thể thấy rằng chúng ta nhận được exception 503 service unavailable.
 
 82
 00:05:27,360 --> 00:05:30,780
-And after waiting a certain time I'm going to send again.
+Và sau khi đợi một thời gian nhất định, tôi sẽ gửi lại.
 
 83
 00:05:30,780 --> 00:05:37,200
-And this time the new ten second is started successfully and we can get again the success response by
+Và lần này vòng mười giây mới được bắt đầu thành công và chúng ta có thể lại nhận được phản hồi thành công bằng cách
 
 84
 00:05:37,200 --> 00:05:39,720
-sending the Get request to ordering microservices.
+gửi yêu cầu Get đến ordering microservices.
 
 85
 00:05:39,750 --> 00:05:46,080
-As you can see that we have testing and verifying the rate limiting behavior on the API gateway using
+Như bạn có thể thấy, chúng ta đã kiểm tra và xác minh hành vi rate limiting trên API gateway sử dụng
 
 86
 00:05:46,080 --> 00:05:48,930
-the reverse proxy and ERPs integration with the.
+reverse proxy và tích hợp YARP với
 
 87
 00:05:49,110 --> 00:05:55,320
-Net native rate limiting capabilities make it straightforward to implement rate limiting into our microservices.
+.NET native rate limiting capabilities giúp việc triển khai rate limiting vào microservices của chúng ta trở nên đơn giản.
 

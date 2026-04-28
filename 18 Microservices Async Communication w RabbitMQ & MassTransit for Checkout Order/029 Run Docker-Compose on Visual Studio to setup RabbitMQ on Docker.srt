@@ -1,78 +1,78 @@
 1
 00:00:00,140 --> 00:00:05,780
-In this video, we are going to learn how to run Docker Compose within the Visual Studio in order to
+Trong video này, chúng ta sẽ học cách chạy Docker Compose trong Visual Studio để
 
 2
 00:00:05,780 --> 00:00:10,100
-set up RabbitMQ, which is a crucial component for asynchronous communication.
+thiết lập RabbitMQ, một thành phần quan trọng cho giao tiếp bất đồng bộ.
 
 3
 00:00:10,100 --> 00:00:15,710
-So please open the Visual Studio and let's getting started with Docker Compose in Visual Studio.
+Vậy hãy mở Visual Studio và bắt đầu với Docker Compose trong Visual Studio.
 
 4
 00:00:15,710 --> 00:00:22,340
-So you can see that under the our microservice solution we have a Docker compose file in the root folder.
+Bạn có thể thấy rằng dưới giải pháp microservice của chúng ta có một Docker Compose file trong thư mục gốc.
 
 5
 00:00:22,340 --> 00:00:28,190
-If you right click the docker compose and set a startup project, you can see that the Docker Compose
+Nếu bạn nhấp chuột phải vào Docker Compose và đặt nó làm startup project, bạn có thể thấy rằng Docker Compose
 
 6
 00:00:28,190 --> 00:00:30,590
-learning profile comes into Visual Studio.
+learning profile sẽ xuất hiện trong Visual Studio.
 
 7
 00:00:30,590 --> 00:00:34,940
-So now this will be run the docker compose using the Visual Studio.
+Vậy bây giờ điều này sẽ chạy Docker Compose bằng Visual Studio.
 
 8
 00:00:34,940 --> 00:00:39,020
-But this time I'm going to run Docker compose without debugging.
+Nhưng lần này tôi sẽ chạy Docker Compose mà không debug.
 
 9
 00:00:39,020 --> 00:00:44,150
-Here you can see that next to Docker Compose learning profile you can see the start without debugging
+Ở đây bạn có thể thấy rằng bên cạnh Docker Compose learning profile, bạn có thể thấy tùy chọn start without debugging
 
 10
 00:00:44,150 --> 00:00:45,530
-option in Visual Studio.
+trong Visual Studio.
 
 11
 00:00:45,530 --> 00:00:48,290
-So we will start without debugging in Docker Compose.
+Vậy chúng ta sẽ bắt đầu mà không debug trong Docker Compose.
 
 12
 00:00:48,290 --> 00:00:51,920
-That means this will be run the docker compose project without debugging.
+Điều đó có nghĩa là điều này sẽ chạy Docker Compose project mà không debug.
 
 13
 00:00:51,920 --> 00:00:55,070
-So hitting this button and this will be start to running.
+Vậy hãy nhấp nút này và điều này sẽ bắt đầu chạy.
 
 14
 00:00:55,070 --> 00:01:00,860
-And this process may take a few minutes during the first run as Docker pulls and build the necessary
+Và quá trình này có thể mất vài phút trong lần chạy đầu tiên vì Docker sẽ pull và build các image cần thiết.
 
 15
 00:01:00,860 --> 00:01:01,580
-images.
+Vậy khi chạy lần đầu tiên, sẽ mất một chút thời gian để khởi động các image RabbitMQ.
 
 16
 00:01:01,580 --> 00:01:06,410
-So when the first time running, it takes some time to spin up RabbitMQ images.
+Bởi vì khi chúng ta sử dụng image management cho RabbitMQ, nó không chỉ chứa image RabbitMQ cơ bản mà còn chứa cả
 
 17
 00:01:06,410 --> 00:01:13,490
-Because when we give the management image for RabbitMQ, it does not the base RabbitMQ image and management
+image dashboard management.
 
 18
 00:01:13,490 --> 00:01:15,200
-dashboard image altogether.
+Ở đây bạn có thể thấy Docker Compose Yaml file.
 
 19
 00:01:15,200 --> 00:01:17,840
-Here you can see the docker compose Yaml file.
+Chúng ta đặt tên image là management RabbitMQ, nó bao gồm image cơ bản Erlang và management
 
 20
 00:01:17,840 --> 00:01:23,480
@@ -80,31 +80,31 @@ We give the image name as a management RabbitMQ that includes the base image Erl
 
 21
 00:01:23,510 --> 00:01:24,110
-dashboard.
+bảng điều khiển.
 
 22
 00:01:24,110 --> 00:01:28,190
-So this is the overall HTML file that we have configured in the last time.
+Vậy đây là file HTML tổng thể mà chúng ta đã cấu hình lần trước.
 
 23
 00:01:28,190 --> 00:01:30,980
-So you can see the progress in the output.
+Vậy bạn có thể thấy tiến trình trong output.
 
 24
 00:01:30,980 --> 00:01:36,020
-And also we can confirm the created image from the Docker desktop.
+Và cũng chúng ta có thể xác nhận image đã được tạo từ Docker desktop.
 
 25
 00:01:36,020 --> 00:01:39,470
-Here you can see the Docker compose has started successfully.
+Ở đây bạn có thể thấy Docker compose đã khởi động thành công.
 
 26
 00:01:39,470 --> 00:01:44,450
-And also all microservices started successfully without debugging.
+Và cũng tất cả các microservices đã khởi động thành công mà không cần debugging.
 
 27
 00:01:44,450 --> 00:01:50,300
-And if you scroll down you can see the message broker is started successfully for the RabbitMQ management
+Và nếu bạn cuộn xuống, bạn có thể thấy message broker đã khởi động thành công cho quản lý RabbitMQ
 
 28
 00:01:50,300 --> 00:01:50,750
@@ -112,55 +112,55 @@ image.
 
 29
 00:01:50,750 --> 00:01:53,150
-This is our message broker container.
+Đây là container message broker của chúng ta.
 
 30
 00:01:53,150 --> 00:01:59,690
-If you open the container, you can see the logs are created successfully and that means we are ready
+Nếu bạn mở container, bạn có thể thấy các logs đã được tạo thành công và điều đó có nghĩa là chúng ta đã sẵn sàng
 
 31
 00:01:59,690 --> 00:02:02,930
-to use these message broker as a asynchronous communication.
+để sử dụng message broker này cho giao tiếp bất đồng bộ.
 
 32
 00:02:02,930 --> 00:02:06,200
-So now we can examine the RabbitMQ Docker image.
+Vậy bây giờ chúng ta có thể kiểm tra Docker image RabbitMQ.
 
 33
 00:02:06,200 --> 00:02:12,110
-If you scroll the right hand side you can see that we have exposed the RabbitMQ port numbers in our
+Nếu bạn cuộn sang bên phải, bạn có thể thấy rằng chúng ta đã exposed các port RabbitMQ trên
 
 34
 00:02:12,110 --> 00:02:13,010
-local computer.
+máy tính cục bộ của chúng ta.
 
 35
 00:02:13,010 --> 00:02:20,030
-And RabbitMQ management image has two port numbers, the one for the actual RabbitMQ image and another
+Và RabbitMQ management image có hai port, một cho RabbitMQ image thực tế và cái khác
 
 36
 00:02:20,030 --> 00:02:21,980
-for the RabbitMQ management dashboard.
+cho dashboard quản lý RabbitMQ.
 
 37
 00:02:21,980 --> 00:02:30,680
-So if I hit the 15672 port number, you can see that this will be redirecting to us RabbitMQ management
+Vậy nếu tôi truy cập port 15672, bạn có thể thấy rằng điều này sẽ chuyển hướng chúng ta đến dashboard quản lý RabbitMQ
 
 38
 00:02:30,680 --> 00:02:31,190
-dashboard.
+.
 
 39
 00:02:31,190 --> 00:02:33,260
-Here you can see the username and password.
+Ở đây bạn có thể thấy tên người dùng và mật khẩu.
 
 40
 00:02:33,260 --> 00:02:38,000
-You can give the guest and guest as a username and password and click the login button.
+Bạn có thể nhập guest và guest làm tên người dùng và mật khẩu, rồi nhấp vào nút login.
 
 41
 00:02:38,000 --> 00:02:44,150
-So this is the our RabbitMQ management dashboard that we can log in the credentials with the guest and
+Đây là dashboard quản lý RabbitMQ của chúng ta mà chúng ta có thể đăng nhập bằng thông tin đăng nhập guest và
 
 42
 00:02:44,150 --> 00:02:44,540
@@ -168,73 +168,73 @@ guest.
 
 43
 00:02:44,540 --> 00:02:50,990
-And here you can see the main sections including the connections channels exchange queues and streams
+Và ở đây bạn có thể thấy các phần chính bao gồm connections, channels, exchange, queues và streams
 
 44
 00:02:50,990 --> 00:02:51,950
-and the admin.
+và admin.
 
 45
 00:02:51,950 --> 00:02:59,150
-So exchange are representing the routes messages between the queues and the queues and streams representing
+Vậy exchange đại diện cho các routes để định tuyến tin nhắn giữa các queues và queues và streams đại diện cho
 
 46
 00:02:59,150 --> 00:03:02,180
-the storing messages that are waiting to be processed.
+việc lưu trữ các tin nhắn đang chờ được xử lý.
 
 47
 00:03:02,180 --> 00:03:05,750
-And we have also topics for routing mechanism for messages.
+Và chúng ta cũng có topics để cơ chế định tuyến các tin nhắn.
 
 48
 00:03:05,750 --> 00:03:10,580
-So if you scroll down in the overview page you can see that we have a node section.
+Vậy nếu bạn cuộn xuống trang overview bạn có thể thấy rằng chúng ta có một phần node.
 
 49
 00:03:10,580 --> 00:03:16,520
-And under the node section we will identify the node name as a RabbitMQ message queue.
+Và dưới phần node chúng ta sẽ xác định tên node như một hàng đợi tin nhắn RabbitMQ.
 
 50
 00:03:16,550 --> 00:03:20,180
-Here you can see that this is the rabbit at e-commerce MQ.
+Ở đây bạn có thể thấy rằng đây là rabbit e-commerce MQ.
 
 51
 00:03:20,210 --> 00:03:25,610
-As you remember that e-commerce MQ is our hostname when we are configuring our Docker compose.
+Như bạn nhớ rằng e-commerce MQ là hostname của chúng ta khi chúng ta đang cấu hình Docker Compose.
 
 52
 00:03:25,610 --> 00:03:27,710
-And this is the our node definition.
+Và đây là định nghĩa node của chúng ta.
 
 53
 00:03:27,710 --> 00:03:32,300
-And if you scroll down you can see the listening ports in different protocols.
+Và nếu bạn cuộn xuống bạn có thể thấy các cổng listening trong các giao thức khác nhau.
 
 54
 00:03:32,300 --> 00:03:34,340
-Here you can see the Amqp protocol.
+Ở đây bạn có thể thấy giao thức Amqp.
 
 55
 00:03:34,340 --> 00:03:37,610
-The port number is default port number for the RabbitMQ image.
+Số cổng là cổng mặc định cho image RabbitMQ.
 
 56
 00:03:37,610 --> 00:03:42,650
-And this is the Http protocol that we are going to use for the RabbitMQ management dashboard.
+Và đây là giao thức Http mà chúng ta sẽ sử dụng cho dashboard quản lý RabbitMQ.
 
 57
 00:03:42,650 --> 00:03:44,960
-This is 15672.
+Đây là 15672.
 
 58
 00:03:44,960 --> 00:03:49,400
-And these are the other configurations in the RabbitMQ overview section.
+Và đây là các cấu hình khác trong phần overview của RabbitMQ.
 
 59
 00:03:49,400 --> 00:03:54,740
-So as you can see that we have successfully run the RabbitMQ using the Docker compose in Visual Studio.
+Vậy như bạn có thể thấy rằng chúng ta đã chạy thành công RabbitMQ bằng Docker Compose trong Visual Studio.
 
 60
 00:03:54,740 --> 00:03:59,570
-And we have verified the RabbitMQ setup through the Docker desktop and the management dashboard.
+Và chúng ta đã xác minh thiết lập RabbitMQ thông qua Docker Desktop và dashboard quản lý.
 

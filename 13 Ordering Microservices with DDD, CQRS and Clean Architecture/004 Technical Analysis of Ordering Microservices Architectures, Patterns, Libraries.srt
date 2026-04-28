@@ -1,134 +1,134 @@
 1
 00:00:00,170 --> 00:00:05,060
-In this video we are going to do technical analysis of ordering microservices.
+Trong video này chúng ta sẽ thực hiện phân tích kỹ thuật của ordering microservices.
 
 2
 00:00:05,090 --> 00:00:11,120
-These are the application architecture, style, pattern and principles libraries, NuGet packages and
+Đây là kiến trúc ứng dụng, phong cách, mẫu và nguyên tắc, thư viện, gói NuGet và
 
 3
 00:00:11,120 --> 00:00:12,440
-project folder structure.
+cấu trúc thư mục dự án.
 
 4
 00:00:12,860 --> 00:00:15,620
-Let me start with the application architecture style.
+Hãy bắt đầu với kiến trúc ứng dụng phong cách.
 
 5
 00:00:16,070 --> 00:00:22,130
-As an application architecture style, we will follow domain driven design secure and clean architecture.
+Như một phong cách kiến trúc ứng dụng, chúng ta sẽ tuân theo domain driven design secure và clean architecture.
 
 6
 00:00:22,130 --> 00:00:27,620
-These are the fundamental architecture styles guiding the development of the ordering microservices.
+Đây là những phong cách kiến trúc cơ bản hướng dẫn sự phát triển của ordering microservices.
 
 7
 00:00:27,950 --> 00:00:33,830
-Clean architecture implementation with creating four layers including the class library project that
+Triển khai clean architecture bằng cách tạo bốn lớp bao gồm dự án thư viện lớp mà
 
 8
 00:00:33,830 --> 00:00:35,990
-reference according to the clean architecture.
+tham chiếu theo clean architecture.
 
 9
 00:00:35,990 --> 00:00:42,530
-We will explain all in the next videos, but for now, let me skip the second technical analysis, which
+Chúng ta sẽ giải thích tất cả trong các video tiếp theo, nhưng hiện tại, hãy để tôi bỏ qua phân tích kỹ thuật thứ hai, đó là
 
 10
 00:00:42,530 --> 00:00:44,330
-is the pattern and principles.
+mẫu và nguyên tắc.
 
 11
 00:00:44,330 --> 00:00:50,660
-When developing ordering microservices, we will see and implement lots of pattern and principles,
+Khi phát triển ordering microservices, chúng ta sẽ thấy và triển khai nhiều mẫu và nguyên tắc,
 
 12
 00:00:50,660 --> 00:00:55,190
-and we are grouping these patterns and principles according to clean architecture layers.
+và chúng ta sẽ nhóm các mẫu và nguyên tắc này theo các lớp clean architecture.
 
 13
 00:00:55,190 --> 00:00:59,480
-But before that, let me start the common principles that we are going to follow.
+Nhưng trước tiên, hãy để tôi bắt đầu với những nguyên tắc chung mà chúng ta sẽ tuân theo.
 
 14
 00:00:59,510 --> 00:01:06,890
-These are the solid keys Jagni SoC, the IP principles and dependency injection principles.
+Đây là các khóa SOLID, Jagni SoC, nguyên tắc IP và nguyên tắc dependency injection.
 
 15
 00:01:06,890 --> 00:01:09,230
-These are the foundational principles.
+Đây là những nguyên tắc cơ bản.
 
 16
 00:01:09,680 --> 00:01:14,180
-And after that we can follow the patterns according to clean architecture layer.
+Và sau đó chúng ta có thể tuân theo các mẫu theo các lớp clean architecture.
 
 17
 00:01:14,180 --> 00:01:18,740
-So for the domain layer we will see and implement these patterns.
+Vậy đối với lớp domain chúng ta sẽ thấy và triển khai các mẫu này.
 
 18
 00:01:18,740 --> 00:01:24,980
-These are the designing domain driven design oriented microservices and applying the technical patterns.
+Đây là thiết kế microservices hướng domain driven design và áp dụng các mẫu kỹ thuật.
 
 19
 00:01:24,980 --> 00:01:30,560
-And we will follow domain entity pattern and entity based classes for seed work operations.
+Và chúng ta sẽ tuân theo domain entity pattern và các lớp dựa trên entity cho các hoạt động seed work.
 
 20
 00:01:30,560 --> 00:01:34,490
-And we will use anemic domain model versus rich domain model.
+Và chúng ta sẽ sử dụng anemic domain model versus rich domain model.
 
 21
 00:01:34,490 --> 00:01:41,600
-And we will use value object pattern aggregate pattern aggregate root and root entity pattern, strongly
+Và chúng ta sẽ sử dụng value object pattern, aggregate pattern, aggregate root và root entity pattern, strongly typed IDs pattern, domain events và integration events.
 
 22
 00:01:41,600 --> 00:01:45,350
-typed IDs pattern domain events and integration events.
+Và nếu bạn theo các lớp khác, đây là infrastructure data layers.
 
 23
 00:01:45,950 --> 00:01:50,540
-And if you follow the other layers, these are the infrastructure data layers.
+Trong lớp này chúng ta sẽ theo Repository Pattern, Entity Framework Core ORM với phương pháp Code First, migration và seeding database, value object complex types và Entity Framework Core aggregate root entities.
 
 24
 00:01:50,540 --> 00:01:56,960
-In this layer we will follow repository pattern, entity framework, core ORM code first approach migration
+và entity configurations với model builder, domain driven design để Entity Framework Core Entity objects.
 
 25
 00:01:56,960 --> 00:02:02,900
-and seeding the database value object complex types and entity framework core aggregate root entities
+Và cuối cùng, chúng ta sẽ raise và dispatch domain events với Entity Framework Core và sử dụng thư viện Mediator.
 
 26
 00:02:02,900 --> 00:02:09,620
-and entity configurations with model builder domain driven design to Entity Core Entity objects.
+Và lớp tiếp theo là Application Use Case layer.
 
 27
 00:02:09,620 --> 00:02:14,990
-And lastly, we will raise and dispatch domain events with Entity Framework Core and using Mediator
+Và trong lớp này chúng ta sẽ sử dụng các pattern này bao gồm CQRS pattern, command và command handler pattern, Mediator pattern và mediator pipeline behaviors, fluent validation và logging, cross-cutting concerns.
 
 28
 00:02:14,990 --> 00:02:15,680
-Library.
+Và cuối cùng là presentation layer trong clean architecture.
 
 29
 00:02:16,160 --> 00:02:19,010
-And the next layer is Application Use Case layer.
+Và chúng ta sẽ sử dụng Minimal APIs và ASP.NET Core routing với các tính năng mới nhất của ASP.NET 8.
 
 30
 00:02:19,010 --> 00:02:25,250
-And in this layer we will use these patterns including Singkreis and Kqs pattern command and command
+Và tất cả các pattern và nguyên tắc này mà chúng ta sẽ theo là một section flow.
 
 31
 00:02:25,250 --> 00:02:30,890
-handler pattern, mediator pattern and mediator pipeline behaviors, fluent validation and logging,
+Trong section flow, chúng ta sẽ giải thích tất cả các pattern và nguyên tắc này khi phát triển các lớp clean architecture trong một bài giảng riêng.
 
 32
 00:02:30,890 --> 00:02:32,300
-cross-cutting concerns.
+Vậy nên các section của chúng ta nên được sắp xếp như vậy.
 
 33
 00:02:32,510 --> 00:02:36,410
-And lastly there is a presentation layer in the clean architecture.
+Điều đó có nghĩa là chúng ta sẽ tạo domain, infrastructure, application và presentation section cho mỗi lớp đại diện cho clean architecture.
 
 34
 00:02:36,410 --> 00:02:42,770
@@ -160,81 +160,81 @@ representing the clean architecture.
 
 41
 00:03:07,970 --> 00:03:12,200
-So during this section we will learn all these pattern and principles.
+Vậy trong phần này chúng ta sẽ học tất cả những mẫu thiết kế và nguyên tắc này.
 
 42
 00:03:12,410 --> 00:03:18,500
-If you go to the libraries and NuGet packages, we will also explain explicitly in each layer.
+Nếu bạn xem các thư viện và gói NuGet, chúng ta cũng sẽ giải thích chi tiết trong từng lớp.
 
 43
 00:03:18,500 --> 00:03:21,800
-But I am going to pacing very fast as a domain layer.
+Nhưng tôi sẽ đi nhanh như một domain layer.
 
 44
 00:03:21,800 --> 00:03:24,980
-We don't have any library infrastructure data layer.
+Chúng ta không có bất kỳ thư viện nào cho lớp infrastructure data.
 
 45
 00:03:24,980 --> 00:03:28,070
-We will use Entity Framework core application layer.
+Chúng ta sẽ sử dụng Entity Framework Core cho application layer.
 
 46
 00:03:28,070 --> 00:03:33,200
-We will use mediator fluent Validation and Mapserver as a presentation layer.
+Chúng ta sẽ sử dụng mediator, Fluent Validation và Mapster cho presentation layer.
 
 47
 00:03:33,200 --> 00:03:37,430
-We will use Cutter library for defining API endpoints.
+Chúng ta sẽ sử dụng thư viện Carter để định nghĩa các API endpoints.
 
 48
 00:03:37,430 --> 00:03:40,430
-And lastly we will check project folder structure.
+Và cuối cùng chúng ta sẽ kiểm tra cấu trúc thư mục dự án.
 
 49
 00:03:40,430 --> 00:03:43,280
-And we said that we will follow the clean architecture.
+Và chúng ta đã nói rằng chúng ta sẽ tuân theo clean architecture.
 
 50
 00:03:43,280 --> 00:03:48,290
-That means we will create three class library and one ASP.Net web API.
+Điều đó có nghĩa là chúng ta sẽ tạo ba class library và một ASP.NET web API.
 
 51
 00:03:48,290 --> 00:03:54,500
-And we will use ordering domain for defining domain models and value objects and so on.
+Và chúng ta sẽ sử dụng ordering domain để định nghĩa các domain models và value objects và những thứ tương tự.
 
 52
 00:03:54,500 --> 00:04:00,980
-We will use ordering application layer for implementing skills command and handler classes, and organizing
+Chúng ta sẽ sử dụng ordering application layer để triển khai các command và handler classes, và tổ chức
 
 53
 00:04:00,980 --> 00:04:01,970
-by features.
+theo các features.
 
 54
 00:04:01,970 --> 00:04:07,970
-And we will use ordering infrastructure for implementing database context configurations, migrations
+Và chúng ta sẽ sử dụng ordering infrastructure để triển khai các database context, cấu hình, migrations
 
 55
 00:04:07,970 --> 00:04:08,960
-and so on.
+và những thứ tương tự.
 
 56
 00:04:08,960 --> 00:04:15,470
-And lastly we will implement ordering API to exposing API contracts and endpoint definitions.
+Và cuối cùng chúng ta sẽ triển khai ordering API để exposed các API contracts và định nghĩa endpoints.
 
 57
 00:04:15,470 --> 00:04:20,930
-You can find the folder structure on the slide picture that we are going to explain in the next videos.
+Bạn có thể tìm thấy cấu trúc thư mục trên hình ảnh trong slide mà chúng ta sẽ giải thích trong các video tiếp theo.
 
 58
 00:04:20,930 --> 00:04:26,570
-And finally we can say that we will containerize our ordering microservices with Docker.
+Và cuối cùng chúng ta có thể nói rằng chúng ta sẽ containerize ordering microservices của mình với Docker.
 
 59
 00:04:26,570 --> 00:04:31,970
-That means we will implement Docker file and docker compose file for running ordering microservices
+Điều đó có nghĩa là chúng ta sẽ triển khai Docker file và docker compose file để chạy ordering microservices
 
 60
 00:04:31,970 --> 00:04:34,760
-and SQL server database in docker environment.
+và SQL Server database trong môi trường Docker.
 

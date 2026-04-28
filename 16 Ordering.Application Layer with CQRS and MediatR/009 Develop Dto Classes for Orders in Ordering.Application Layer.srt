@@ -1,18 +1,18 @@
 1
 00:00:00,200 --> 00:00:06,440
-In this video, we are going to develop DTO classes for orders in ordering application layer.
+Trong video này, chúng ta sẽ phát triển các class DTO cho đơn hàng trong tầng ứng dụng ordering.
 
 2
 00:00:06,440 --> 00:00:13,280
-Here you can see that we will develop DTO folder and it is good to use data transfer objects when accepting
+Ở đây bạn có thể thấy rằng chúng ta sẽ phát triển folder DTO và sử dụng data transfer objects là cách tốt khi tiếp nhận
 
 3
 00:00:13,280 --> 00:00:15,410
-the commands from the presentation layer.
+các commands từ presentation layer.
 
 4
 00:00:15,410 --> 00:00:21,500
-And after that we will map these details into our application logic with creating domain order and raising
+Và sau đó chúng ta sẽ ánh xạ những chi tiết này vào logic ứng dụng của chúng ta bằng cách tạo domain order và tạo ra
 
 5
 00:00:21,500 --> 00:00:22,520
@@ -20,175 +20,175 @@ domain events.
 
 6
 00:00:22,520 --> 00:00:26,600
-So now let's setting up the folder structure and create DTO classes.
+Vậy bây giờ hãy thiết lập cấu trúc folder và tạo các class DTO.
 
 7
 00:00:26,600 --> 00:00:31,730
-Please open the Visual Studio and locate the ordering application and go to details folder.
+Vui lòng mở Visual Studio và xác định vị trí ứng dụng ordering và đi đến folder details.
 
 8
 00:00:31,730 --> 00:00:36,410
-And after that we will include all DTO classes inside of this folder.
+Và sau đó chúng ta sẽ đưa tất cả các class DTO vào trong folder này.
 
 9
 00:00:36,410 --> 00:00:40,040
-For that purpose I'm going to start with creating order DTO.
+Để mục đích đó, tôi sẽ bắt đầu bằng cách tạo order DTO.
 
 10
 00:00:40,760 --> 00:00:44,900
-Add a new class under this folder, which name is Order Dukes.
+Thêm một class mới dưới folder này, tên của nó là Order DTO.
 
 11
 00:00:45,290 --> 00:00:50,060
-So we will develop order DTO class in order to represent the order data structure.
+Chúng ta sẽ phát triển class order DTO để biểu diễn cấu trúc dữ liệu đơn hàng.
 
 12
 00:00:50,060 --> 00:00:51,560
-So let's get started.
+Vậy hãy bắt đầu nào.
 
 13
 00:00:51,560 --> 00:00:56,120
-Remove unnecessary using statement and remove the order DTO class definitions.
+Xóa các using statement không cần thiết và xóa các định nghĩa class order DTO.
 
 14
 00:00:56,120 --> 00:01:03,830
-Because I'm going to create a record type for the order DTO record types is very well suited for the
+Bởi vì tôi sẽ tạo một record type cho order DTO, record types rất phù hợp cho
 
 15
 00:01:03,830 --> 00:01:10,670
-DTO classes, because DTO classes provide for the mapping from one type to another type, and record
+các class DTO, vì các class DTO cung cấp khả năng ánh xạ từ một type này sang type khác, và record
 
 16
 00:01:10,700 --> 00:01:14,270
-type is best practice to using this kind of operations.
+type là best practice để sử dụng cho loại hoạt động này.
 
 17
 00:01:14,270 --> 00:01:18,380
-And here you can see that we have created public record order DTO.
+Và ở đây bạn có thể thấy rằng chúng ta đã tạo public record Order DTO.
 
 18
 00:01:18,380 --> 00:01:23,930
-And inside of the record type we have ID, customer ID, order, name, shipping and billing address,
+Và bên trong record type chúng ta có ID, customer ID, tên đơn hàng, địa chỉ giao hàng và hóa đơn,
 
 19
 00:01:23,930 --> 00:01:26,450
-payment status and the order item list.
+trạng thái thanh toán và danh sách order items.
 
 20
 00:01:26,450 --> 00:01:32,570
-So these DTO represent a complete order including customer details, shipping, billing address, payment
+Vậy DTO này biểu diễn một đơn hàng hoàn chỉnh bao gồm chi tiết khách hàng, địa chỉ giao hàng, hóa đơn, thanh toán
 
 21
 00:01:32,570 --> 00:01:35,060
-information and items within the order.
+thông tin và các mục trong đơn hàng.
 
 22
 00:01:35,060 --> 00:01:38,600
-So we will follow the same steps for the rest of the details.
+Vậy chúng ta sẽ làm theo các bước tương tự cho phần còn lại của chi tiết.
 
 23
 00:01:38,600 --> 00:01:43,340
-Here you can see that we use address DTO, payment DTO and order item DTO.
+Tại đây bạn có thể thấy rằng chúng ta sử dụng address DTO, payment DTO và order item DTO.
 
 24
 00:01:43,340 --> 00:01:50,060
-So now let's create a order item DTO inside of the the same folder which is the details folder.
+Vậy bây giờ hãy tạo một order item DTO trong cùng thư mục, đó là thư mục details.
 
 25
 00:01:50,090 --> 00:01:53,240
-Add new class which is the order item detox.
+Thêm lớp mới đó là order item DTO.
 
 26
 00:01:54,190 --> 00:01:54,850
-In here.
+Tại đây.
 
 27
 00:01:54,850 --> 00:02:01,450
-We also create a record type for Orderitem DTO in order to represent individual items in an order.
+Chúng ta cũng tạo một kiểu record cho Orderitem DTO để biểu diễn các mục riêng lẻ trong một đơn hàng.
 
 28
 00:02:01,450 --> 00:02:06,730
-For that purpose, I'm going to remove unnecessary using statement and delete the this class definition
+Với mục đích đó, tôi sẽ xóa câu lệnh using không cần thiết và xóa định nghĩa class này
 
 29
 00:02:06,730 --> 00:02:09,639
-and create a record type for Orderitem DTO.
+và tạo một kiểu record cho Orderitem DTO.
 
 30
 00:02:09,669 --> 00:02:15,820
-Here you can see that we will use public record Orderitem DTO, and these are the members that we are
+Tại đây bạn có thể thấy rằng chúng ta sẽ sử dụng public record Orderitem DTO, và đây là những thành viên mà chúng ta
 
 31
 00:02:15,820 --> 00:02:22,120
-going to use for particular Orderitem, including the order ID, product, ID, quantity and decimal.
+sẽ sử dụng cho Orderitem cụ thể, bao gồm order ID, product ID, quantity và decimal.
 
 32
 00:02:22,120 --> 00:02:28,960
-This DTO represents the essential information of each item in an order such as the product ID, quantity
+DTO này biểu diễn thông tin thiết yếu của từng mục trong một đơn hàng chẳng hạn như product ID, quantity
 
 33
 00:02:28,960 --> 00:02:29,890
-and the price.
+và giá.
 
 34
 00:02:29,890 --> 00:02:33,160
-So I'm going to continue the next DTO.
+Vậy tôi sẽ tiếp tục DTO tiếp theo.
 
 35
 00:02:33,160 --> 00:02:37,870
-If you go to the order DTO, you can see that we will also create address DTO.
+Nếu bạn xem Order DTO, bạn có thể thấy rằng chúng ta cũng sẽ tạo address DTO.
 
 36
 00:02:37,900 --> 00:02:43,930
-I'm going to create address DTO inside of this DTO folder, create a new class under this folder which
+Tôi sẽ tạo address DTO bên trong thư mục DTO này, tạo một lớp mới trong thư mục này có
 
 37
 00:02:43,930 --> 00:02:47,650
-name is Address Detox and follow the same steps.
+tên là Address DTO và làm theo các bước tương tự.
 
 38
 00:02:47,650 --> 00:02:53,290
-I'm going to remove unnecessary using statement and delete the address DTO and this will be represent
+Tôi sẽ xóa câu lệnh using không cần thiết và xóa address DTO và cái này sẽ đại diện
 
 39
 00:02:53,290 --> 00:02:59,260
-an address value object from the domain layer and we will make this record types for the address DTO.
+cho một address value object từ domain layer và chúng ta sẽ tạo kiểu record này cho address DTO.
 
 40
 00:02:59,290 --> 00:03:05,140
-Here you can see that I have created Public Record Address Studio and the members comes from the address
+Tại đây bạn có thể thấy rằng tôi đã tạo Public Record Address DTO và các thành viên đến từ address
 
 41
 00:03:05,140 --> 00:03:10,960
-value object which including the first name, last name, email address, address, line, country state
+value object bao gồm first name, last name, email address, address, line, country state
 
 42
 00:03:10,960 --> 00:03:11,830
-and zip code.
+và zip code.
 
 43
 00:03:11,920 --> 00:03:15,940
-So this is the address DTO definition is the same way.
+Vậy định nghĩa address DTO cũng tương tự như vậy.
 
 44
 00:03:15,940 --> 00:03:17,890
-I'm going to create payment DTO.
+Tôi sẽ tạo payment DTO.
 
 45
 00:03:17,890 --> 00:03:23,200
-If you go back to order DTO, the only payment DTO is required under the details folder.
+Nếu bạn quay lại order DTO, payment DTO duy nhất là bắt buộc trong thư mục details.
 
 46
 00:03:23,200 --> 00:03:30,820
-Create new class which name is payment DTO and follow the same steps and payment DTO also represent
+Tạo class mới có tên là payment DTO và làm theo các bước tương tự, payment DTO cũng đại diện cho
 
 47
 00:03:30,820 --> 00:03:34,270
-payment value object from our domain layer for that purpose.
+payment value object từ domain layer của chúng ta cho mục đích đó.
 
 48
 00:03:34,270 --> 00:03:39,730
-Again, I'm going to remove this definition and create a new record type, which is the public record
+Một lần nữa, tôi sẽ xóa định nghĩa này và tạo một record type mới, đó là public record
 
 49
 00:03:39,730 --> 00:03:40,150
@@ -196,23 +196,23 @@ payment.
 
 50
 00:03:40,150 --> 00:03:46,930
-DTO and the members are card name, card number, expiration, CVV, and payment method and make sure
+DTO và các thành viên là card name, card number, expiration, CVV, và payment method, và hãy chắc chắn
 
 51
 00:03:46,930 --> 00:03:52,510
-that you are setting the CVV as a C, as a uppercase, V as a lowercase.
+rằng bạn đặt CVV là C, là chữ hoa, V là chữ thường.
 
 52
 00:03:52,510 --> 00:03:58,810
-Because maps cannot map for the uppercase properties inside of the record types.
+Vì Mapster không thể map cho các properties viết hoa bên trong các record types.
 
 53
 00:03:59,050 --> 00:04:05,170
-So these are the DTO definitions that encapsulate the details from the domain layers, including the
+Vậy đây là các định nghĩa DTO mà đóng gói chi tiết từ domain layers, bao gồm
 
 54
 00:04:05,170 --> 00:04:06,940
-address payment order and order.
+address, payment, order và order.
 
 55
 00:04:06,940 --> 00:04:07,420
@@ -220,45 +220,45 @@ DTO.
 
 56
 00:04:07,450 --> 00:04:13,930
-You can go to order DTO and see that now we don't have any exception and all order details representing
+Bạn có thể đi tới order DTO và thấy rằng bây giờ chúng ta không có bất kỳ exception nào và tất cả order details đại diện cho
 
 57
 00:04:13,930 --> 00:04:19,269
-a specific order, including default value, object DTO and the list of the order item details.
+một order cụ thể, bao gồm default value, object DTO và danh sách order item details.
 
 58
 00:04:19,269 --> 00:04:23,230
-So why we have developed these Dtos under the application layer?
+Vậy tại sao chúng ta phát triển các DTOs này dưới application layer?
 
 59
 00:04:23,230 --> 00:04:27,610
-Because we will map these D2 objects when moving to presentation layer.
+Vì chúng ta sẽ map các objects này khi chuyển sang presentation layer.
 
 60
 00:04:27,610 --> 00:04:33,700
-So that means when a request comes to the ordering API, we will map these objects to the DTO in order
+Điều đó có nghĩa là khi một request đến ordering API, chúng ta sẽ map các objects này thành DTO để
 
 61
 00:04:33,700 --> 00:04:35,350
-to perform our business logic.
+để thực hiện logic kinh doanh của chúng ta.
 
 62
 00:04:35,350 --> 00:04:37,810
-So for that purpose we need a map store.
+Vì vậy, chúng ta cần một map store cho mục đích đó.
 
 63
 00:04:37,810 --> 00:04:43,810
-So if you double click the ordering application you can see that we don't have maps library, but it
+Vậy nếu bạn double click vào ứng dụng ordering, bạn có thể thấy rằng chúng ta không có thư viện maps, nhưng nó
 
 64
 00:04:43,810 --> 00:04:49,180
-comes from the building blocks because ordering application is getting reference from the building blocks.
+đến từ building blocks vì ứng dụng ordering nhận reference từ building blocks.
 
 65
 00:04:49,180 --> 00:04:54,850
-And if you go to the building blocks that include the common libraries, that is including the master.
+Và nếu bạn đi vào building blocks chứa các common libraries, nó bao gồm Mapster.
 
 66
 00:04:54,850 --> 00:04:59,530
-So we will use DTO objects when mapping with maps in ordering application layer.
+Vì vậy chúng ta sẽ sử dụng các DTO objects khi mapping với Mapster trong lớp ứng dụng ordering.
 

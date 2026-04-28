@@ -1,210 +1,209 @@
 1
 00:00:00,110 --> 00:00:06,050
-In this video we are going to test the ARP API gateway microservices in a Docker compose environment.
+Trong video này chúng ta sẽ kiểm tra YARP API Gateway microservices trong môi trường Docker compose.
 
 2
 00:00:06,050 --> 00:00:10,280
-So that means we will test the ARP API gateway in a full Docker environment.
+Điều đó có nghĩa là chúng ta sẽ kiểm tra YARP API Gateway trong một môi trường Docker đầy đủ.
 
 3
 00:00:10,280 --> 00:00:15,890
-And we will perform the deployment tool, which is the Docker compose, all microservices API gateway
+Và chúng ta sẽ thực hiện công cụ triển khai, đó là Docker compose, tất cả các microservices API gateway
 
 4
 00:00:15,890 --> 00:00:17,300
-and the backing services.
+và các backing services.
 
 5
 00:00:17,300 --> 00:00:19,940
-For that purpose, please open the Visual Studio.
+Để làm điều đó, vui lòng mở Visual Studio.
 
 6
 00:00:19,940 --> 00:00:24,230
-And before we start, make sure that your Docker desktop is up and running.
+Và trước khi chúng ta bắt đầu, hãy đảm bảo rằng Docker desktop của bạn đang chạy.
 
 7
 00:00:24,230 --> 00:00:28,220
-In here you can see that we have configured our Docker Compose Yaml files.
+Ở đây bạn có thể thấy rằng chúng ta đã cấu hình các tệp Docker Compose Yaml.
 
 8
 00:00:28,220 --> 00:00:33,860
-And here you can see the application settings Json file for the reverse proxy settings in order to route
+Và ở đây bạn có thể thấy tệp application settings Json cho các cài đặt reverse proxy để định tuyến
 
 9
 00:00:33,860 --> 00:00:36,590
-incoming requests to the downstream microservices.
+các yêu cầu đến các downstream microservices.
 
 10
 00:00:36,590 --> 00:00:43,160
-And we have used Http ports and the container names for the downstream microservices, including Catholic
+Và chúng ta đã sử dụng các cổng Http và tên container cho các downstream microservices, bao gồm Catalog
 
 11
 00:00:43,160 --> 00:00:45,560
-API, basket API, and ordering API.
+API, Basket API, và Ordering API.
 
 12
 00:00:45,560 --> 00:00:51,590
-We can also use these APIs when we are depends on to the ARP API gateway when we are starting the Docker
+Chúng ta cũng có thể sử dụng những API này khi chúng ta phụ thuộc vào YARP API Gateway khi chúng ta khởi động môi trường Docker
 
 13
 00:00:51,590 --> 00:00:52,790
-compose environment.
+compose.
 
 14
 00:00:52,790 --> 00:00:57,860
-So for that purpose I am going to right click the docker compose and set a startup project.
+Vậy để làm điều đó tôi sẽ nhấp chuột phải vào docker compose và đặt làm startup project.
 
 15
 00:00:57,860 --> 00:01:03,950
-And this time I'm going to use running Docker compose without debugging because we will test reverse
+Và lần này tôi sẽ chạy Docker compose mà không cần debugging vì chúng ta sẽ kiểm tra reverse
 
 16
 00:01:03,950 --> 00:01:05,600
-proxy on the postman.
+proxy trên Postman.
 
 17
 00:01:05,600 --> 00:01:10,790
-I'm going to click this button and start without debugging to hold docker compose environment.
+Tôi sẽ nhấp chuột vào nút này và khởi động mà không cần debugging để chạy môi trường docker compose.
 
 18
 00:01:10,790 --> 00:01:17,240
-And we will expect to running the all microservices in the docker compose, and make sure that all microservices
+Và chúng ta sẽ kỳ vọng chạy tất cả các microservices trong docker compose, và đảm bảo rằng tất cả các microservices
 
 19
 00:01:17,240 --> 00:01:18,620
-are running on Docker compose.
+đang chạy trên Docker compose.
 
 20
 00:01:18,620 --> 00:01:26,660
-And we can check the Catholic API on the 6000 port basket API in 6001, and ordering API will be exposed
+Và chúng ta có thể kiểm tra Catalog API trên cổng 6000, Basket API trên 6001, và Ordering API sẽ được exposed
 
 21
 00:01:26,660 --> 00:01:27,920
-6003.
 
 22
 00:01:27,920 --> 00:01:31,850
-And lastly Erb API gateway will be exposed 6004.
+Và cuối cùng Erb API gateway sẽ được expose trên cổng 6004.
 
 23
 00:01:31,910 --> 00:01:37,190
-So here you can see the our Docker compose and Docker desktop.
+Vậy ở đây bạn có thể thấy Docker compose và Docker desktop của chúng ta.
 
 24
 00:01:37,190 --> 00:01:41,240
-And in Docker desktop we can see that our microservices come in here.
+Và trong Docker desktop chúng ta có thể thấy rằng microservices của chúng ta đã được tạo ra.
 
 25
 00:01:41,240 --> 00:01:47,510
-And now we will also expect Erb API gateway and Erb API gateway also created and running successfully
+Và bây giờ chúng ta cũng sẽ thấy Erb API gateway được tạo và chạy thành công
 
 26
 00:01:47,510 --> 00:01:49,010
-under our Docker compose.
+dưới Docker compose của chúng ta.
 
 27
 00:01:49,010 --> 00:01:52,910
-You can check the Erb API gateway logs by clicking this container.
+Bạn có thể kiểm tra nhật ký của Erb API gateway bằng cách click vào container này.
 
 28
 00:01:52,910 --> 00:01:58,070
-And here you can see that this will be configured with the adding configurations from the application
+Và ở đây bạn có thể thấy rằng nó sẽ được cấu hình bằng cách thêm các cấu hình từ tệp
 
 29
 00:01:58,070 --> 00:02:02,180
-settings Json file and ready to academic the incoming request.
+appsettings.json và sẵn sàng tiếp nhận các yêu cầu đến.
 
 30
 00:02:02,180 --> 00:02:10,130
-And here you can see that we have exposed the Erb API gateway in the 6004 and 6064 for Https, and I
+Và ở đây bạn có thể thấy rằng chúng ta đã expose Erb API gateway trên cổng 6004 và 6064 cho Https, và tôi
 
 31
 00:02:10,130 --> 00:02:12,500
-am going to use this https url.
+sẽ sử dụng URL https này.
 
 32
 00:02:12,500 --> 00:02:18,530
-When we are sending requests to our erb API gateway that will redirect to us downstream microservices
+Khi chúng ta gửi các yêu cầu đến Erb API gateway của chúng ta, nó sẽ chuyển hướng sang các downstream microservices
 
 33
 00:02:18,530 --> 00:02:20,390
-in a Http port numbers.
+trên các cổng HTTP.
 
 34
 00:02:20,390 --> 00:02:23,510
-So now we can start to test our API gateway.
+Vậy bây giờ chúng ta có thể bắt đầu kiểm tra API gateway của chúng ta.
 
 35
 00:02:23,510 --> 00:02:30,110
-Please open the postman and I am going to open the our Icap Microservices Postman collection and go
+Vui lòng mở Postman và tôi sẽ mở bộ sưu tập Postman của Icap Microservices và đi tới
 
 36
 00:02:30,110 --> 00:02:36,260
-to Erb API gateway and open the catalog API and open the first gate endpoint which is the Getproduct.
+Erb API gateway, mở catalog API và mở endpoint đầu tiên đó là GetProduct.
 
 37
 00:02:36,260 --> 00:02:42,650
-Here you can see the our URL and catalog service, which is the our incoming request to identify the
+Ở đây bạn có thể thấy URL của chúng ta và catalog service, đó là yêu cầu đến để xác định
 
 38
 00:02:42,650 --> 00:02:45,050
-incoming requests to downstream microservices.
+các yêu cầu đến downstream microservices.
 
 39
 00:02:45,050 --> 00:02:50,270
-And the rest of the endpoint is belong to our catalog microservices and trained in order to get the
+Và phần còn lại của endpoint là thuộc về catalog microservices của chúng ta và được cấu hình để
 
 40
 00:02:50,270 --> 00:02:51,800
-products with pagination.
+lấy các sản phẩm với phân trang.
 
 41
 00:02:51,800 --> 00:02:53,420
-But this is the important.
+Nhưng đây là điều quan trọng.
 
 42
 00:02:53,420 --> 00:02:59,510
-If you check the URL, you can see the ARP URL is arranging according to localhost environment 5054
+Nếu bạn kiểm tra URL, bạn có thể thấy YARP URL được sắp xếp theo môi trường localhost cổng 5054
 
 43
 00:02:59,510 --> 00:03:01,850
-port in Https format.
+cổng ở định dạng Https.
 
 44
 00:03:01,850 --> 00:03:03,860
-So I'm going to change the environment here.
+Vậy tôi sẽ thay đổi môi trường ở đây.
 
 45
 00:03:03,860 --> 00:03:10,610
-You can see that we can change the environment localhost to docker to get the URL in a 6064 port number
+Bạn có thể thấy rằng chúng ta có thể thay đổi môi trường localhost thành docker để lấy URL ở cổng 6064
 
 46
 00:03:10,610 --> 00:03:12,200
-in a Https endpoint.
+ở một endpoint Https.
 
 47
 00:03:12,200 --> 00:03:14,510
-So this is important to change environment.
+Vậy nên điều này quan trọng để thay đổi môi trường.
 
 48
 00:03:14,510 --> 00:03:19,460
-And this is important to adding the environment variable in a Docker network as a URL.
+Và điều này quan trọng để thêm biến môi trường trong mạng Docker như một URL.
 
 49
 00:03:19,460 --> 00:03:22,520
-Here you can see that we have adding variable for URL.
+Ở đây bạn có thể thấy rằng chúng ta đã thêm biến cho URL.
 
 50
 00:03:22,520 --> 00:03:26,420
-And we are using the localhost https 6064 port number.
+Và chúng ta đang sử dụng cổng localhost https 6064.
 
 51
 00:03:26,420 --> 00:03:32,690
-In order to send http request to our erb API gateway microservices in docker compose network.
+Để gửi HTTP request đến YARP API gateway microservices của chúng ta trong mạng docker compose.
 
 52
 00:03:32,690 --> 00:03:37,490
-So now I am going to hit the send button in order to retrieve products from the catalog.
+Vậy bây giờ tôi sẽ nhấn nút send để lấy sản phẩm từ catalog microservices.
 
 53
 00:03:37,490 --> 00:03:38,480
@@ -212,7 +211,7 @@ Microservices.
 
 54
 00:03:38,480 --> 00:03:43,640
-As you can see that we have successfully get the products from the catalog microservices over the Erb
+Như bạn có thể thấy rằng chúng ta đã thành công lấy sản phẩm từ catalog microservices qua YARP
 
 55
 00:03:43,640 --> 00:03:44,450
@@ -220,23 +219,23 @@ API gateway.
 
 56
 00:03:44,540 --> 00:03:51,890
-If I continue to send other Http get methods, you can see that we can get the specific product into
+Nếu tôi tiếp tục gửi các HTTP GET request khác, bạn có thể thấy rằng chúng ta có thể lấy sản phẩm cụ thể từ
 
 57
 00:03:51,890 --> 00:03:58,430
-the URL catalog microservices over the http api gateway even we can create a new product onto the catalog
+URL catalog microservices qua HTTP API gateway thậm chí chúng ta có thể tạo một sản phẩm mới vào catalog
 
 58
 00:03:58,430 --> 00:04:00,770
-microservices over the Erb API gateway.
+microservices qua YARP API gateway.
 
 59
 00:04:00,770 --> 00:04:05,930
-Using these endpoints with adding the slash catalog, slash service and slash products.
+Sử dụng các endpoint này bằng cách thêm dấu gạch chéo catalog, dấu gạch chéo service và dấu gạch chéo products.
 
 60
 00:04:05,930 --> 00:04:12,050
-So catalog microservices successfully redirecting to internal downstream microservices over the Erb
+Vậy catalog microservices đang chuyển hướng thành công đến internal downstream microservices qua YARP
 
 61
 00:04:12,050 --> 00:04:12,830
@@ -244,39 +243,39 @@ API gateway.
 
 62
 00:04:12,860 --> 00:04:17,120
-Now I am going to perform end to end test which is the basket checkout use case.
+Bây giờ tôi sẽ thực hiện kiểm tra end to end, đó là use case thanh toán giỏ hàng.
 
 63
 00:04:17,120 --> 00:04:22,250
-For that purpose, we will open the basket subfolder under the http api gateway.
+Để làm điều đó, chúng ta sẽ mở thư mục con basket dưới http api gateway.
 
 64
 00:04:22,250 --> 00:04:26,750
-And I'm going to create a new basket with username as a civilian.
+Và tôi sẽ tạo một giỏ hàng mới với username là một civilian.
 
 65
 00:04:26,750 --> 00:04:28,460
-And this is the URL.
+Và đây là URL.
 
 66
 00:04:28,460 --> 00:04:34,250
-Here you can see the endpoint which is including the slash basket dash service and slash basket.
+Ở đây bạn có thể thấy endpoint bao gồm slash basket dash service và slash basket.
 
 67
 00:04:34,250 --> 00:04:39,260
-And hit the send button to sending http post request to our API gateway.
+Và nhấp vào nút send để gửi http post request đến API gateway của chúng ta.
 
 68
 00:04:39,260 --> 00:04:42,680
-This will be create a new basket into our microservices.
+Điều này sẽ tạo một giỏ hàng mới vào microservices của chúng ta.
 
 69
 00:04:42,680 --> 00:04:45,770
-This is created successfully here you can see the response.
+Điều này được tạo thành công, ở đây bạn có thể thấy response.
 
 70
 00:04:45,770 --> 00:04:52,160
-Now just after that I'm going to check out this basket from the basket microservices with Kubernetes
+Bây giờ ngay sau đó, tôi sẽ thanh toán giỏ hàng này từ basket microservices với Kubernetes
 
 71
 00:04:52,160 --> 00:04:52,820
@@ -284,75 +283,75 @@ payload.
 
 72
 00:04:52,820 --> 00:04:59,810
-And I'm going to send http post request to this endpoint URL which is the basket service basket check.
+Và tôi sẽ gửi http post request đến endpoint URL này, đó là basket service basket check.
 
 73
 00:04:59,980 --> 00:05:00,220
-God.
+Tuyệt vời.
 
 74
 00:05:00,220 --> 00:05:06,520
-And with this payload, sending 83 postdocs and starting our asynchronous, event driven communication
+Và với payload này, gửi 83 postdocs và bắt đầu giao tiếp asynchronous, event driven của chúng ta
 
 75
 00:05:06,520 --> 00:05:12,190
-that will publish basket checkout event to the RabbitMQ that is consuming from the organic microservices
+sẽ publish basket checkout event đến RabbitMQ mà đang được consuming từ ordering microservices
 
 76
 00:05:12,190 --> 00:05:15,130
-that we can confirm from the RabbitMQ management dashboard.
+mà chúng ta có thể xác nhận từ RabbitMQ management dashboard.
 
 77
 00:05:15,130 --> 00:05:21,280
-If you go to our management dashboard, you can see that basket checkout queue is created successfully
+Nếu bạn truy cập management dashboard của chúng ta, bạn có thể thấy rằng basket checkout queue được tạo thành công
 
 78
 00:05:21,280 --> 00:05:23,620
-and consumed by the ordering microservices.
+và consumed bởi ordering microservices.
 
 79
 00:05:23,620 --> 00:05:28,990
-You can also check queues and streams and see that basket checkout event handler triggering from the
+Bạn cũng có thể kiểm tra queues và streams và xem basket checkout event handler triggering từ
 
 80
 00:05:28,990 --> 00:05:32,020
-RabbitMQ and consuming from the ordering microservices.
+RabbitMQ và consuming từ ordering microservices.
 
 81
 00:05:32,020 --> 00:05:37,390
-And if you look at the ordering microservice and means if you open the ordering subfolder, we can get
+Và nếu bạn nhìn vào ordering microservice và nếu bạn mở thư mục ordering, chúng ta có thể lấy
 
 82
 00:05:37,390 --> 00:05:38,800
-orders with pagination.
+orders với pagination.
 
 83
 00:05:38,800 --> 00:05:42,640
-And here you can see that I'm going to get the orders with pagination.
+Và ở đây bạn có thể thấy rằng tôi sẽ lấy các orders với pagination.
 
 84
 00:05:42,640 --> 00:05:44,560
-This is first two orders.
+Đây là hai orders đầu tiên.
 
 85
 00:05:44,560 --> 00:05:47,200
-That is seeding one application startup.
+Đó là seeding một application startup.
 
 86
 00:05:47,200 --> 00:05:52,990
-I'm going to change the page index from 0 to 1 in order to retrieve the second page of the orders.
+Tôi sẽ thay đổi page index từ 0 thành 1 để lấy trang thứ hai của các orders.
 
 87
 00:05:52,990 --> 00:05:59,920
-That is newly created order for the asynchronous communication and consuming from the RabbitMQ events
+Đó là newly created order cho asynchronous communication và consuming từ các RabbitMQ events
 
 88
 00:05:59,920 --> 00:06:01,060
-into our ordering.
+vào ordering của chúng ta.
 
 89
 00:06:01,060 --> 00:06:07,390
-Microservices and all these operations are retrieving from the Erb API gateway and over the Erb API
+Microservices và tất cả các operations này đều được lấy từ Erb API gateway và qua Erb API
 
 90
 00:06:07,390 --> 00:06:07,960
@@ -360,67 +359,67 @@ gateway.
 
 91
 00:06:07,960 --> 00:06:13,570
-So as you can see that we have successfully performed and dined use case over the Erb API gateway in
+Vậy như bạn có thể thấy rằng chúng ta đã thực hiện thành công use case đầu tiên qua Erb API gateway trong
 
 92
 00:06:13,570 --> 00:06:15,490
-fully docker compose environment.
+Docker Compose environment đầy đủ.
 
 93
 00:06:15,490 --> 00:06:20,290
-At this point I would like to test rate limiting into our ordering microservices.
+Tại thời điểm này, tôi muốn kiểm tra rate limiting trong ordering microservices của chúng ta.
 
 94
 00:06:20,320 --> 00:06:26,500
-As you remember that we have adding the rate limiting into our configurations into our ordering route.
+Như bạn nhớ lại rằng chúng ta đã thêm rate limiting vào configurations của chúng ta vào ordering route.
 
 95
 00:06:26,500 --> 00:06:30,370
-Here you can see that we have rate limiter policy as a fixed.
+Ở đây bạn có thể thấy rằng chúng ta có rate limiter policy là fixed.
 
 96
 00:06:30,370 --> 00:06:33,010
-So for that purpose please open the postman.
+Vậy cho mục đích đó, vui lòng mở Postman.
 
 97
 00:06:33,010 --> 00:06:39,850
-And I am going to several requests to the same endpoint with Http, get requests to the ordering microservices
+Và tôi sẽ gửi nhiều requests đến cùng một endpoint với HTTP GET requests đến ordering microservices
 
 98
 00:06:39,850 --> 00:06:41,170
-and see what's happened.
+và xem điều gì sẽ xảy ra.
 
 99
 00:06:41,170 --> 00:06:46,240
-This is the first request second, third, fourth and fifth request.
+Đây là request đầu tiên, request thứ hai, thứ ba, thứ tư và request thứ năm.
 
 100
 00:06:46,240 --> 00:06:53,410
-If I send again this time you can see that we will get 503 service unavailable exception which is returning
+Nếu tôi gửi lại lần này, bạn có thể thấy rằng chúng ta sẽ nhận được 503 service unavailable exception mà nó sẽ trả về
 
 101
 00:06:53,410 --> 00:06:54,910
-from the rate limiting.
+từ rate limiting.
 
 102
 00:06:54,910 --> 00:06:58,870
-And we have sending maximum five requests in 10s.
+Và chúng ta có thể gửi tối đa năm yêu cầu trong 10 giây.
 
 103
 00:06:58,870 --> 00:07:05,470
-If I refresh again and wait several times, this 10s start again and we can get successful response
+Nếu tôi refresh lại và chờ một lúc, khoảng thời gian 10 giây này sẽ bắt đầu lại và chúng ta có thể nhận được phản hồi thành công
 
 104
 00:07:05,470 --> 00:07:07,150
-from the ordering microservices.
+từ ordering microservices.
 
 105
 00:07:07,150 --> 00:07:10,030
-So we have also successful test rate limiting.
+Vậy chúng ta cũng đã kiểm thử rate limiting thành công.
 
 106
 00:07:10,030 --> 00:07:15,850
-And we have also successful testing and trend process over the ARP API gateway in fully docker compose
+Và chúng ta cũng đã kiểm thử thành công quá trình trend trên YARP API gateway trong Docker Compose đầy đủ
 
 107
 00:07:15,850 --> 00:07:16,690

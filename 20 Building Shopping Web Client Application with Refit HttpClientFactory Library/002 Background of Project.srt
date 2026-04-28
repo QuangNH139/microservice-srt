@@ -1,144 +1,144 @@
 1
 00:00:00,140 --> 00:00:03,830
-In this video we are going to learn the background of the project.
+Trong video này, chúng ta sẽ tìm hiểu về background của dự án.
 
 2
 00:00:03,830 --> 00:00:10,070
-So we said that we will develop shopping web client application and we will develop this application
+Vậy chúng ta đã nói rằng chúng ta sẽ phát triển shopping web client application và chúng ta sẽ phát triển ứng dụng này
 
 3
 00:00:10,070 --> 00:00:14,120
-as a ASP.Net web application razor page and bootstrap four.
+như một ASP.Net web application với razor page và bootstrap four.
 
 4
 00:00:14,120 --> 00:00:17,330
-And this will be include ASP.Net core razor tools.
+Và điều này sẽ bao gồm các công cụ ASP.Net core razor.
 
 5
 00:00:17,330 --> 00:00:23,660
-And this will be consume job API gateway endpoint using the Revit library into our shopping web client
+Và điều này sẽ consume job API gateway endpoint sử dụng thư viện Refit vào shopping web client
 
 6
 00:00:23,660 --> 00:00:25,370
-microservice application.
+microservice application của chúng ta.
 
 7
 00:00:25,370 --> 00:00:31,430
-And when we are developing this application, we will use base repository of the shopping web application.
+Và khi chúng ta phát triển ứng dụng này, chúng ta sẽ sử dụng base repository của shopping web application.
 
 8
 00:00:31,430 --> 00:00:35,750
-That means we will develop this application based on these GitHub repository.
+Điều đó có nghĩa là chúng ta sẽ phát triển ứng dụng này dựa trên GitHub repository này.
 
 9
 00:00:35,750 --> 00:00:37,550
-Here you can see the GitHub address.
+Ở đây bạn có thể thấy địa chỉ GitHub.
 
 10
 00:00:37,550 --> 00:00:41,720
-And we are going to use these base repository for shopping application.
+Và chúng ta sẽ sử dụng base repository này cho shopping application.
 
 11
 00:00:41,720 --> 00:00:46,700
-And this will be the ASP.Net Run Basics repository that you can find on GitHub.
+Và đây sẽ là ASP.Net Run Basics repository mà bạn có thể tìm thấy trên GitHub.
 
 12
 00:00:46,700 --> 00:00:51,800
-And this application has implemented monolithic architecture with using the ASP.Net Core and Entity
+Và ứng dụng này đã triển khai monolithic architecture sử dụng ASP.Net Core và Entity
 
 13
 00:00:51,830 --> 00:00:52,520
-Framework core.
+Framework Core.
 
 14
 00:00:52,520 --> 00:00:58,670
-So we will convert this application for consuming the Erb API gateway and converting the page consuming
+Vậy chúng ta sẽ chuyển đổi ứng dụng này để consume API gateway ERB và chuyển đổi trang consume
 
 15
 00:00:58,670 --> 00:01:00,440
-according to our ERP API gateway.
+theo API gateway ERB của chúng ta.
 
 16
 00:01:00,440 --> 00:01:02,750
-So let's check this GitHub repository.
+Vậy hãy kiểm tra GitHub repository này.
 
 17
 00:01:02,750 --> 00:01:08,060
-If you open this link, you can reach the point where we have developing ASP.Net run repositories.
+Nếu bạn mở link này, bạn có thể tìm thấy vị trí mà chúng ta đang phát triển ASP.Net Run repositories.
 
 18
 00:01:08,060 --> 00:01:14,270
-If you open the ASP.Net run repositories, you can see that this will be included as several repositories
+Nếu bạn mở ASP.Net Run repositories, bạn sẽ thấy rằng điều này sẽ bao gồm nhiều repositories
 
 19
 00:01:14,270 --> 00:01:20,480
-to leverage your ASP.Net skills, including the microservices, Identity Server, DevOps, gRPC, and
+để nâng cao kỹ năng ASP.Net của bạn, bao gồm microservices, Identity Server, DevOps, gRPC, và
 
 20
 00:01:20,480 --> 00:01:21,050
-so on.
+những thứ khác.
 
 21
 00:01:21,050 --> 00:01:27,440
-So now we will focus on the run ASP.Net Core Basics repository in order to convert this application
+Vậy bây giờ chúng ta sẽ tập trung vào repository ASP.Net Core Basics để chuyển đổi ứng dụng này
 
 22
 00:01:27,440 --> 00:01:29,000
-to our shopping web client.
+thành shopping web client của chúng ta.
 
 23
 00:01:29,000 --> 00:01:30,350
-Microservice application.
+Ứng dụng Microservice.
 
 24
 00:01:30,350 --> 00:01:32,390
-If you open this link, you can scroll down.
+Nếu bạn mở link này, bạn có thể cuộn xuống.
 
 25
 00:01:32,390 --> 00:01:38,390
-You can see the as an example of the these e-commerce application that we are going to use this template
+Bạn có thể thấy đây là một ví dụ về ứng dụng e-commerce mà chúng ta sẽ sử dụng template này
 
 26
 00:01:38,390 --> 00:01:41,750
-which including the bootstrap four and other details.
+bao gồm Bootstrap và các chi tiết khác.
 
 27
 00:01:41,750 --> 00:01:46,760
-And if you scroll down, you can see that this is only one solution that means monolithic application.
+Và nếu bạn cuộn xuống, bạn có thể thấy rằng đây chỉ là một solution, có nghĩa là ứng dụng monolithic.
 
 28
 00:01:46,760 --> 00:01:51,950
-And we are choosing the ASP.Net Core and Entity Framework core and also using the razor page, middle
+Và chúng ta đang chọn ASP.Net Core và Entity Framework Core, đồng thời sử dụng Razor Page, middleware
 
 29
 00:01:51,950 --> 00:01:54,170
-phase dependency injection and so on.
+dependency injection và những thứ khác.
 
 30
 00:01:54,170 --> 00:01:58,250
-So we will convert this application to consume our ERP API gateway.
+Vậy chúng ta sẽ chuyển đổi ứng dụng này để tiêu thụ ERP API gateway của chúng ta.
 
 31
 00:01:58,250 --> 00:02:02,870
-If you open this application folder you can see that these will be including the pages.
+Nếu bạn mở folder ứng dụng này, bạn có thể thấy rằng nó sẽ bao gồm các pages.
 
 32
 00:02:02,870 --> 00:02:08,509
-These are the shopping cart checkout, confirmation error index order and so on.
+Đây là shopping cart, checkout, confirmation, error, index, order và những thứ khác.
 
 33
 00:02:08,509 --> 00:02:15,590
-So I am going to convert these application with consuming from the ERP API gateway instead of using
+Vậy tôi sẽ chuyển đổi ứng dụng này bằng cách tiêu thụ từ ERP API gateway thay vì sử dụng
 
 34
 00:02:15,590 --> 00:02:17,420
-the repositories and databases.
+các repositories và databases.
 
 35
 00:02:17,930 --> 00:02:20,540
-So you can examine the details of this repository.
+Vậy bạn có thể xem xét chi tiết của repository này.
 
 36
 00:02:20,540 --> 00:02:26,660
-We are going to clone this repository and convert these pages to our according to our microservice architectures.
+Chúng ta sẽ clone repository này và chuyển đổi các pages này theo kiến trúc microservice của chúng ta.
 

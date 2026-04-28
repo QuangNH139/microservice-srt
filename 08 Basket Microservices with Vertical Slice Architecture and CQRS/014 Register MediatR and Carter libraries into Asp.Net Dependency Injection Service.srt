@@ -1,134 +1,134 @@
 1
 00:00:00,170 --> 00:00:06,830
-In this video, we are going to register Mediator and Carter libraries into ASP.Net core Dependency
+Trong video này, chúng ta sẽ đăng ký các thư viện Mediator và Carter vào ASP.NET Core Dependency
 
 2
 00:00:06,830 --> 00:00:09,140
-Injection and Request Pipeline tool.
+Injection và Request Pipeline tool.
 
 3
 00:00:09,350 --> 00:00:13,070
-So as you remember that we have implemented these use cases.
+Vậy như bạn nhớ, chúng ta đã triển khai những use case này.
 
 4
 00:00:13,070 --> 00:00:19,490
-And in every use cases, if you open the endpoint classes, you can see that we basically injecting
+Và trong mỗi use case, nếu bạn mở các lớp endpoint, bạn có thể thấy rằng chúng ta cơ bản đang inject
 
 5
 00:00:19,490 --> 00:00:22,160
-is handler object which is the mediator.
+đối tượng handler đó, chính là mediator.
 
 6
 00:00:22,160 --> 00:00:26,990
-And we also using the I Carter module which is comes from the Carter.
+Và chúng ta cũng đang sử dụng I Carter module mà nó đến từ Carter.
 
 7
 00:00:26,990 --> 00:00:31,070
-And we also using the adapt method which comes from the mapper.
+Và chúng ta cũng đang sử dụng phương thức adapt mà nó đến từ mapper.
 
 8
 00:00:31,070 --> 00:00:35,540
-And we didn't configure these libraries into Program.cs.
+Và chúng ta chưa cấu hình những thư viện này trong Program.cs.
 
 9
 00:00:35,540 --> 00:00:42,590
-And without configuring and adding these packages into ASP.Net within dependency injection these use
+Và nếu không cấu hình và thêm những package này vào ASP.NET trong dependency injection thì những use
 
 10
 00:00:42,590 --> 00:00:45,050
-cases cannot be run for that purpose.
+case này không thể chạy được, vì lý do đó.
 
 11
 00:00:45,050 --> 00:00:47,150
-Please open the program case.
+Vui lòng mở Program.cs.
 
 12
 00:00:47,600 --> 00:00:54,860
-Remember that our program case is divided by two, which is before building the application and after
+Nhớ rằng Program.cs của chúng ta được chia thành hai phần, đó là trước khi xây dựng ứng dụng và sau
 
 13
 00:00:54,860 --> 00:00:56,030
-building the application.
+khi xây dựng ứng dụng.
 
 14
 00:00:56,030 --> 00:01:01,340
-So in the before building application we will add services into dependency injection container.
+Vậy trong phần trước khi xây dựng ứng dụng, chúng ta sẽ thêm các services vào dependency injection container.
 
 15
 00:01:01,340 --> 00:01:07,910
-And I'm going to start with registering Carter Library Carter simplifies the creation of our minimal
+Và tôi sẽ bắt đầu bằng cách đăng ký thư viện Carter. Carter đơn giản hóa việc tạo ra các minimal
 
 16
 00:01:07,910 --> 00:01:09,320
-API endpoints.
+API endpoints của chúng ta.
 
 17
 00:01:09,440 --> 00:01:14,420
-So for that purpose I'm going to run builder services add Carter.
+Vậy cho mục đích đó, tôi sẽ chạy builder.services.AddCarter.
 
 18
 00:01:15,860 --> 00:01:20,000
-By this way we can add Carter related classes into our container.
+Bằng cách này, chúng ta có thể thêm các lớp liên quan đến Carter vào container của chúng ta.
 
 19
 00:01:20,000 --> 00:01:25,550
-And after that we should go to the configure Http request pipeline step.
+Và sau đó, chúng ta cần đi đến bước configure HTTP request pipeline.
 
 20
 00:01:25,550 --> 00:01:29,870
-And I'm going to use app dot Map Carter method.
+Và tôi sẽ sử dụng phương thức app.MapCarter.
 
 21
 00:01:30,740 --> 00:01:36,560
-And this will be mapped Carter endpoints into our ASP.Net web API project.
+Và điều này sẽ ánh xạ Carter endpoints vào dự án ASP.NET Web API của chúng ta.
 
 22
 00:01:36,560 --> 00:01:43,010
-So we have successfully inject Carter related classes with using these two line of code.
+Vậy chúng ta đã thành công inject các class liên quan đến Carter bằng cách sử dụng hai dòng code này.
 
 23
 00:01:43,010 --> 00:01:49,580
-By this way Carter will be second eye Carter modal interface implementation and expose minimal APIs.
+Bằng cách này Carter sẽ là chiếc mắt thứ hai, Carter modal interface implementation và expose minimal APIs.
 
 24
 00:01:49,580 --> 00:01:56,090
-For example, if you open the delete basket endpoint, Carter will be scanning this interface for the
+Ví dụ, nếu bạn mở delete basket endpoint, Carter sẽ quét interface này cho
 
 25
 00:01:56,090 --> 00:02:03,560
-current assembly and this will be exposing map operation, including Http, delete, get and post operations.
+assembly hiện tại và điều này sẽ expose operation map, bao gồm Http, delete, get và post operations.
 
 26
 00:02:04,340 --> 00:02:09,050
-So now it is time to register our next library, which is the mediator.
+Vậy bây giờ đã đến lúc chúng ta register thư viện tiếp theo, đó là mediator.
 
 27
 00:02:09,050 --> 00:02:16,340
-So we will integrate mediator for implementing access pattern and redirecting to our command and queries
+Vậy chúng ta sẽ integrate mediator để triển khai access pattern và chuyển hướng đến command và queries của chúng ta
 
 28
 00:02:16,340 --> 00:02:17,660
-into handler class.
+vào handler class.
 
 29
 00:02:17,660 --> 00:02:23,420
-So for that purpose I'm going to add a mediator into built in dependency injection.
+Vậy cho mục đích đó, tôi sẽ add mediator vào built-in dependency injection.
 
 30
 00:02:23,420 --> 00:02:27,860
-So we can use again builder services add mediator.
+Vậy chúng ta có thể sử dụng lại builder services add mediator.
 
 31
 00:02:29,180 --> 00:02:36,020
-And in here we can configure our mediator injection with specifying additional details.
+Và ở đây chúng ta có thể configure mediator injection của mình bằng cách chỉ định các chi tiết bổ sung.
 
 32
 00:02:37,070 --> 00:02:44,000
-So for example I'm going to write config dot register services from assembly.
+Ví dụ, tôi sẽ write config dot register services from assembly.
 
 33
 00:02:44,000 --> 00:02:51,920
-And I'm going to paste this assembly as you remember that we can get the assembly from the type of program
+Và tôi sẽ paste assembly này như bạn nhớ rằng chúng ta có thể lấy assembly từ kiểu program
 
 34
 00:02:51,920 --> 00:02:52,280
@@ -136,43 +136,43 @@ case.
 
 35
 00:02:52,280 --> 00:02:54,500
-And this will be get current assembly.
+Và điều này sẽ get current assembly.
 
 36
 00:02:54,500 --> 00:02:58,040
-I'm going to copy this assembly variable and paste in here.
+Tôi sẽ copy assembly variable này và paste ở đây.
 
 37
 00:02:58,040 --> 00:03:02,120
-By this way we can register our mediator into current assembly.
+Bằng cách này chúng ta có thể register mediator của mình vào assembly hiện tại.
 
 38
 00:03:02,120 --> 00:03:07,580
-For that purpose we can use Mediator library from the Building Blocks class library.
+Cho mục đích đó chúng ta có thể sử dụng thư viện Mediator từ lớp Building Blocks class library.
 
 39
 00:03:07,850 --> 00:03:16,040
-And after that I'm going to add open behavior into configuration of the mediator add open behavior method.
+Và sau đó tôi sẽ add open behavior vào configuration của mediator add open behavior method.
 
 40
 00:03:16,040 --> 00:03:21,830
-Provide to adding validation behavior into our request pipeline into the mediator.
+Để thêm validation behavior vào request pipeline của chúng ta vào mediator.
 
 41
 00:03:21,830 --> 00:03:26,270
-So we can also add additional open behavior which is the logging behavior.
+Vậy chúng ta cũng có thể thêm hành vi mở bổ sung đó là hành vi logging.
 
 42
 00:03:26,270 --> 00:03:30,740
-So by this configuration we have completed the mediator configurations.
+Vậy bằng cấu hình này chúng ta đã hoàn thành các cấu hình mediator.
 
 43
 00:03:30,740 --> 00:03:34,550
-So the first line of code we will activate mediator in the current assembly.
+Vậy dòng code đầu tiên chúng ta sẽ kích hoạt mediator trong assembly hiện tại.
 
 44
 00:03:34,550 --> 00:03:41,060
-And these two lines of code we will add open behaviors and validation and logging behavior in the mediator
+Và hai dòng code này chúng ta sẽ thêm các hành vi mở và hành vi validation và logging trong mediator
 
 45
 00:03:41,060 --> 00:03:42,380
@@ -180,21 +180,21 @@ request lifecycle.
 
 46
 00:03:42,380 --> 00:03:46,940
-If you go on top of these programs you can see that we have using statement.
+Nếu bạn nhìn lên trên các chương trình này, bạn có thể thấy rằng chúng ta có using statement.
 
 47
 00:03:46,940 --> 00:03:50,570
-I'm going to move these using statement into global Usings.
+Tôi sẽ chuyển các using statement này vào global Usings.
 
 48
 00:03:53,510 --> 00:03:57,770
-If you go back to our program says, you can see that our configurations is done.
+Nếu bạn quay lại Program.cs của chúng ta, bạn có thể thấy rằng các cấu hình của chúng ta đã hoàn tất.
 
 49
 00:03:57,770 --> 00:04:04,490
-We have registered these mediator and Carter services, and our micro services is ready to handle incoming
+Chúng ta đã đăng ký các dịch vụ mediator và Carter, và microservice của chúng ta sẵn sàng để xử lý các request đến
 
 50
 00:04:04,490 --> 00:04:05,810
-requests efficiently.
+một cách hiệu quả.
 

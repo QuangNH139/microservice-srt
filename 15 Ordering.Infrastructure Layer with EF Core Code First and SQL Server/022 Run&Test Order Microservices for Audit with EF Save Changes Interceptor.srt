@@ -1,78 +1,78 @@
 1
 00:00:00,140 --> 00:00:06,770
-In this video, we are going to run and test our ordering microservices for testing auditable Entity
+Trong video này, chúng ta sẽ chạy và kiểm tra ordering microservices của chúng ta để kiểm tra auditable Entity
 
 2
 00:00:06,770 --> 00:00:08,840
-interceptor into our application.
+interceptor vào ứng dụng của chúng ta.
 
 3
 00:00:08,840 --> 00:00:14,810
-Before we start, we should start the Docker desktop and make sure that your SQL server Docker image,
+Trước khi bắt đầu, chúng ta nên khởi động Docker desktop và đảm bảo rằng SQL server Docker image của bạn,
 
 4
 00:00:14,810 --> 00:00:17,270
-which is the order DB up and running.
+đó là order DB đang chạy.
 
 5
 00:00:17,270 --> 00:00:23,030
-If not, you can come here and right click the Docker compose, set a startup project and run without
+Nếu không, bạn có thể đến đây và click chuột phải vào Docker compose, đặt nó làm startup project và chạy mà không
 
 6
 00:00:23,030 --> 00:00:25,760
-debugging in order to activate backing services.
+debug để kích hoạt các dịch vụ backing.
 
 7
 00:00:25,760 --> 00:00:30,950
-After activating the order DB, you can connect with using the SQL Server Object Explorer.
+Sau khi kích hoạt order DB, bạn có thể kết nối bằng cách sử dụng SQL Server Object Explorer.
 
 8
 00:00:30,950 --> 00:00:33,380
-If you expand the localhost.
+Nếu bạn mở rộng localhost.
 
 9
 00:00:33,380 --> 00:00:37,250
-If you go to database, you will reach the order DB in here.
+Nếu bạn đi tới database, bạn sẽ tìm thấy order DB tại đây.
 
 10
 00:00:37,250 --> 00:00:43,580
-If you have order db, you can delete this database and after that we will recreate this database with
+Nếu bạn có order db, bạn có thể xóa database này và sau đó chúng ta sẽ tạo lại database này bằng
 
 11
 00:00:43,580 --> 00:00:46,370
-running the application and one application start up.
+cách chạy ứng dụng và khi ứng dụng khởi động.
 
 12
 00:00:46,370 --> 00:00:51,170
-As you remember that we have auto migrate and seeding database with coding.
+Như bạn nhớ lại rằng chúng ta có auto migrate và seeding database bằng code.
 
 13
 00:00:51,170 --> 00:00:53,060
-So we will follow the same steps.
+Vậy chúng ta sẽ làm theo các bước tương tự.
 
 14
 00:00:53,060 --> 00:00:55,610
-If you have ordered DB please delete these order db.
+Nếu bạn có order db vui lòng xóa order db này.
 
 15
 00:00:55,760 --> 00:00:59,330
-And for this video we will test our custom interceptor.
+Và trong video này chúng ta sẽ kiểm tra custom interceptor của chúng ta.
 
 16
 00:00:59,330 --> 00:01:05,930
-Maybe you remember when we are seeding our database, you can see that our tables are populated with
+Có thể bạn nhớ khi chúng ta đang seeding database, bạn có thể thấy rằng các bảng của chúng ta được điền với
 
 17
 00:01:05,930 --> 00:01:13,250
-data but auditable columns which including the last modified by or created at this kind of columns is
+dữ liệu nhưng các cột auditable bao gồm last modified by hoặc created at loại cột này là
 
 18
 00:01:13,250 --> 00:01:17,840
-not populated when we are seeding database, but this time when we are seeding database.
+không được điền khi chúng ta đang seeding database, nhưng lần này khi chúng ta đang seeding database.
 
 19
 00:01:17,840 --> 00:01:24,530
-This will be also populate the auditable columns with using the custom interceptor, which is the auditable
+Điều này cũng sẽ điền các cột auditable bằng cách sử dụng custom interceptor, đó là auditable
 
 20
 00:01:24,530 --> 00:01:25,760
@@ -80,47 +80,47 @@ entity interceptor.
 
 21
 00:01:25,760 --> 00:01:31,490
-For that purpose, please put a breakpoint in the beginning of the saving change and saving Change async
+Để làm điều đó, vui lòng đặt một breakpoint ở đầu phương thức saving change và saving change async
 
 22
 00:01:31,490 --> 00:01:35,300
-method, and after that put a breakpoint into update entities.
+sau đó đặt một breakpoint vào update entities.
 
 23
 00:01:35,300 --> 00:01:42,290
-So now after that, we can set a startup project ordering API and hit the https and run this application.
+Vậy bây giờ sau đó, chúng ta có thể đặt startup project ordering API và nhấn https và chạy ứng dụng này.
 
 24
 00:01:43,360 --> 00:01:48,910
-This will be start our application and when the application start up, we will auto migrate and seeding
+Điều này sẽ khởi động ứng dụng của chúng ta và khi ứng dụng khởi động, chúng ta sẽ tự động migrate và seeding
 
 25
 00:01:48,910 --> 00:01:49,600
-our tables.
+các bảng của chúng ta.
 
 26
 00:01:49,600 --> 00:01:54,220
-And we will use interceptors to populating the auditable columns.
+Và chúng ta sẽ sử dụng interceptors để điền vào các cột auditable.
 
 27
 00:01:54,220 --> 00:02:00,010
-Here you can see the Program.cs and hitting the initialize database async method.
+Tại đây bạn có thể thấy Program.cs và gọi phương thức initialize database async.
 
 28
 00:02:00,010 --> 00:02:06,040
-And this will be basically migrate our tables and create database create tables.
+Và điều này về cơ bản sẽ migrate các bảng của chúng ta và tạo cơ sở dữ liệu tạo các bảng.
 
 29
 00:02:06,100 --> 00:02:09,639
-After perform the migration we can start the seeding operation.
+Sau khi thực hiện migration, chúng ta có thể bắt đầu hoạt động seeding.
 
 30
 00:02:09,639 --> 00:02:13,330
-Here you can see that we will seed customers products and orders.
+Tại đây bạn có thể thấy rằng chúng ta sẽ seed customers products và orders.
 
 31
 00:02:13,330 --> 00:02:17,740
-When we are seeding any entity, we can see that this will be performed.
+Khi chúng ta seeding bất kỳ entity nào, chúng ta có thể thấy rằng điều này sẽ được thực hiện.
 
 32
 00:02:17,740 --> 00:02:20,410
@@ -128,31 +128,31 @@ Context dot save changes async method.
 
 33
 00:02:20,410 --> 00:02:26,530
-And whenever we are hitting these sales sales async method in the context method, this will be automatically
+Và bất cứ khi nào chúng ta gọi phương thức save changes async này trong context method, điều này sẽ tự động
 
 34
 00:02:26,530 --> 00:02:27,310
-triggered.
+được kích hoạt.
 
 35
 00:02:27,400 --> 00:02:33,370
-Our interceptor which is the auditable entity interceptor and it is hitting the saving changes async
+Interceptor của chúng ta, đó là auditable entity interceptor và nó gọi phương thức saving changes async
 
 36
 00:02:33,370 --> 00:02:38,920
-method which is the Overrideable method and interceptor interceptor save operations.
+đây là phương thức Overrideable và interceptor interceptor save operations.
 
 37
 00:02:38,920 --> 00:02:40,390
-And comes to this point.
+Và đến điểm này.
 
 38
 00:02:40,390 --> 00:02:46,300
-And at this point we will perform the update entities with using DB context object and with looking
+Và tại điểm này chúng ta sẽ thực hiện update entities bằng cách sử dụng DB context object và bằng cách nhìn vào
 
 39
 00:02:46,300 --> 00:02:53,140
-to db context object, we are iterating the entities that we are going to perform and setting the auditable
+db context object, chúng ta sẽ lặp lại các entities mà chúng ta sẽ thực hiện và đặt các cột auditable.
 
 40
 00:02:53,140 --> 00:02:53,740
@@ -160,95 +160,95 @@ columns.
 
 41
 00:02:53,740 --> 00:02:59,230
-Here you can see that these entity state is added, which means this is going to creating any record
+Ở đây bạn có thể thấy rằng trạng thái entity này là added, có nghĩa là điều này sẽ tạo ra bất kỳ record nào
 
 42
 00:02:59,230 --> 00:03:00,430
-in the customer entity.
+trong customer entity.
 
 43
 00:03:00,430 --> 00:03:05,530
-That's why we are setting the entity created by and created at columns in here.
+Đó là lý do tại sao chúng ta đang đặt các cột created by và created at trong entity customer.
 
 44
 00:03:05,530 --> 00:03:11,830
-And after that, we can also set the last modified and last modified by columns, because this is also
+Và sau đó, chúng ta cũng có thể đặt các cột last modified và last modified by, vì điều này cũng
 
 45
 00:03:11,830 --> 00:03:14,920
-including the edit entities into that place.
+bao gồm các edit entities vào đó.
 
 46
 00:03:14,920 --> 00:03:19,480
-And after setting these columns we will continue to the next entity operations.
+Và sau khi đặt các cột này, chúng ta sẽ tiếp tục đến các entity operations tiếp theo.
 
 47
 00:03:19,480 --> 00:03:23,710
-In this case we have adding two customer into customer entity.
+Trong trường hợp này, chúng ta có thêm hai customer vào customer entity.
 
 48
 00:03:23,710 --> 00:03:28,030
-That's why we are following the same steps for each row into entity.
+Đó là lý do tại sao chúng ta đang làm theo các bước tương tự cho mỗi hàng trong entity.
 
 49
 00:03:28,030 --> 00:03:32,110
-And after updating entities, it is going to saving changes to the database.
+Và sau khi cập nhật các entities, nó sẽ lưu các thay đổi vào cơ sở dữ liệu.
 
 50
 00:03:32,110 --> 00:03:39,850
-And if I hit F5, this is going to follow the same steps for each entity when we are saving our tables
+Và nếu tôi nhấn F5, điều này sẽ làm theo các bước tương tự cho mỗi entity khi chúng ta đang lưu các bảng của chúng ta
 
 51
 00:03:39,850 --> 00:03:41,260
-into the database.
+vào cơ sở dữ liệu.
 
 52
 00:03:41,260 --> 00:03:46,780
-So after completing this process, you can come here and check the Project console window.
+Vậy sau khi hoàn thành quá trình này, bạn có thể đến đây và kiểm tra cửa sổ Project console.
 
 53
 00:03:46,780 --> 00:03:51,340
-And here you can see that the migration and also seeding operation completed.
+Và ở đây bạn có thể thấy rằng quá trình migration và cũng như seeding operation đã hoàn thành.
 
 54
 00:03:51,340 --> 00:03:54,550
-We can follow with using the SQL statement.
+Chúng ta có thể tiếp tục bằng cách sử dụng SQL statement.
 
 55
 00:03:54,550 --> 00:04:00,220
-In here you can see that we have completed the create database, create index foreign key and so on.
+Ở đây bạn có thể thấy rằng chúng ta đã hoàn thành tạo cơ sở dữ liệu, tạo index, foreign key và vân vân.
 
 56
 00:04:00,220 --> 00:04:04,690
-And in here you can see the insert into command to performing the seeding operations.
+Và ở đây bạn có thể thấy lệnh insert into để thực hiện các seeding operations.
 
 57
 00:04:04,690 --> 00:04:10,570
-So to verify from this database you can come here and open the SQL Server Object Explorer.
+Vậy để xác minh từ cơ sở dữ liệu này, bạn có thể đến đây và mở SQL Server Object Explorer.
 
 58
 00:04:10,570 --> 00:04:16,000
-And if you connect to localhost and SQL server database and refresh the databases this time you can
+Và nếu bạn kết nối đến localhost và SQL Server database và làm mới các databases lần này bạn có thể
 
 59
 00:04:16,000 --> 00:04:18,550
-see that order db is created successfully.
+thấy rằng order db đã được tạo thành công.
 
 60
 00:04:18,550 --> 00:04:23,470
-And if we expand the tables we can see that our tables are created in here.
+Và nếu chúng ta mở rộng các tables, chúng ta có thể thấy rằng các tables của chúng ta đã được tạo ở đây.
 
 61
 00:04:23,470 --> 00:04:26,830
-For example, I am going to right click customers and read data.
+Ví dụ, tôi sẽ nhấp chuột phải vào customers và đọc dữ liệu.
 
 62
 00:04:26,830 --> 00:04:30,430
-In this case this seeding operation performed successfully.
+Trong trường hợp này, hoạt động seeding đã được thực hiện thành công.
 
 63
 00:04:30,430 --> 00:04:36,910
-And also you can see that these auditable columns also populated in this application with using the
+Và cũng bạn có thể thấy rằng những cột auditable này cũng được điền vào ứng dụng này bằng cách sử dụng
 
 64
 00:04:36,910 --> 00:04:38,230

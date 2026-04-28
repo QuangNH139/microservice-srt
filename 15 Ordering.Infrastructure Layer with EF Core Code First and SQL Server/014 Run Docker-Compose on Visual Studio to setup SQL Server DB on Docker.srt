@@ -1,50 +1,50 @@
 1
 00:00:00,140 --> 00:00:06,020
-In this video, we are going to run Docker Compose on Visual Studio in order to activate SQL server
+Trong video này, chúng ta sẽ chạy Docker Compose trên Visual Studio để kích hoạt SQL server
 
 2
 00:00:06,020 --> 00:00:07,910
-database on the environment.
+database trên môi trường.
 
 3
 00:00:08,090 --> 00:00:13,310
-For that purpose, make sure that your Docker desktop is up and running on your computer.
+Để làm điều đó, hãy đảm bảo rằng Docker desktop của bạn đang chạy trên máy tính của bạn.
 
 4
 00:00:13,310 --> 00:00:17,900
-And after that we will run the Docker compose using the Visual Studio.
+Và sau đó chúng ta sẽ chạy Docker compose bằng cách sử dụng Visual Studio.
 
 5
 00:00:17,900 --> 00:00:23,060
-So please open the Visual Studio and we are going to come here as a Docker compose.
+Vậy hãy mở Visual Studio và chúng ta sẽ đi đến đây như một Docker compose.
 
 6
 00:00:23,060 --> 00:00:26,390
-Right click Docker Compose and set a startup project.
+Nhấp chuột phải vào Docker Compose và đặt nó làm startup project.
 
 7
 00:00:26,390 --> 00:00:31,310
-By this way we can run the docker compose Yaml file to activate our backing services.
+Bằng cách này chúng ta có thể chạy tệp Docker compose Yaml để kích hoạt các backing services của chúng ta.
 
 8
 00:00:31,310 --> 00:00:35,660
-So after setting the startup project we can run without debugging.
+Vậy sau khi đặt startup project chúng ta có thể chạy mà không cần debugging.
 
 9
 00:00:35,660 --> 00:00:41,810
-So come here and click this button in order to execute Docker compose project without debugging.
+Vậy hãy đi đến đây và nhấp vào nút này để thực thi Docker compose project mà không cần debugging.
 
 10
 00:00:41,810 --> 00:00:48,380
-And if you click this button this will start building and running the containers defined in our Docker-compose.yml
+Và nếu bạn nhấp vào nút này, nó sẽ bắt đầu xây dựng và chạy các container được định nghĩa trong Docker-compose.yml của chúng ta
 
 11
 00:00:48,380 --> 00:00:51,800
-and overwrite Yaml files without debugging profile.
+và ghi đè lên các tệp Yaml mà không cần debugging profile.
 
 12
 00:00:51,800 --> 00:00:57,800
-And these will be run docker compose up command, and you can verify the SQL server container from the
+Và những cái này sẽ chạy lệnh docker compose up, và bạn có thể xác minh SQL server container từ
 
 13
 00:00:57,800 --> 00:00:58,850
@@ -52,27 +52,27 @@ Docker desktop.
 
 14
 00:00:58,850 --> 00:01:04,489
-If you open the Docker desktop, there is nothing happened yet because this is going to pulling the
+Nếu bạn mở Docker desktop, chưa có gì xảy ra vì nó sẽ kéo Docker image mới nhất ở đây.
 
 15
 00:01:04,489 --> 00:01:06,980
-latest Docker image in here.
+Sau khi chờ một khoảng thời gian nhất định, chúng ta có thể truy cập Docker image SQL Server trên Docker desktop.
 
 16
 00:01:07,010 --> 00:01:13,220
-After waiting a certain time, we can reach the SQL Server Docker image on Docker desktop.
+Nếu bạn mở desktop, bạn có thể thấy rằng Docker compose của chúng ta đang chạy và Oldroyd-b xuất hiện
 
 17
 00:01:13,220 --> 00:01:18,830
-If you open the desktop, you can see that our Docker compose is up and running and Oldroyd-b comes
+trong bức tranh.
 
 18
 00:01:18,830 --> 00:01:19,760
-in the picture.
+Và nếu bạn nhấp vào order db container, bạn có thể thấy các logs.
 
 19
 00:01:19,760 --> 00:01:22,970
-And if you click the order db container, you can see the logs.
+Điều đó có nghĩa là chúng ta đã kích hoạt thành công SQL server database trên môi trường Docker của chúng ta.
 
 20
 00:01:22,970 --> 00:01:28,310
@@ -80,75 +80,75 @@ That means we have successfully activated SQL server database on our Docker envi
 
 21
 00:01:28,310 --> 00:01:36,260
-So now in order to connect these SQL server I'm going to use SQL Server Object Explorer into the Visual
+Vậy bây giờ để kết nối SQL Server này, tôi sẽ sử dụng SQL Server Object Explorer trong Visual Studio.
 
 22
 00:01:36,260 --> 00:01:36,890
-Studio.
+Ở đây bạn có thể thấy tôi sẽ đóng những cửa sổ này.
 
 23
 00:01:36,890 --> 00:01:39,980
-Here you can see that I'm going to close these windows.
+Nếu bạn vào View và mở SQL Server Object Explorer, bạn có thể truy cập cửa sổ SQL Server Object Explorer nằm ở đây.
 
 24
 00:01:39,980 --> 00:01:47,150
-If you come to view and open the SQL Server Object Explorer, you can reach the SQL Server Object Explorer
+Vậy tôi sẽ mở những SQL Server này và tôi sẽ kết nối đến localhost.
 
 25
 00:01:47,150 --> 00:01:48,890
-window located in here.
+Để làm điều đó, chúng ta có thể thêm một server mới vào databases của chúng ta.
 
 26
 00:01:48,890 --> 00:01:54,560
-So I'm going to open these SQL servers and I'm going to connect to localhost.
+Nếu bạn click vào nút add SQL server này, chúng ta có thể xác định tên server, tên server là localhost và
 
 27
 00:01:54,560 --> 00:01:58,700
-For that purpose we can add a new server into our databases.
+xác thực nên là SQL server authentication, tên người dùng phải là SA và mật khẩu phải là
 
 28
 00:01:58,700 --> 00:02:05,480
-If you click this button add SQL server we can define the server name or server name is localhost and
+1 đến 8 mà chúng ta đã định nghĩa.
 
 29
 00:02:05,480 --> 00:02:11,780
-authentication should be SQL server authentication, username should be SA and the password should be
+Mật khẩu phức tạp trong tệp Json cài đặt ứng dụng của chúng ta và cung cấp mật khẩu.
 
 30
 00:02:11,780 --> 00:02:15,260
-the 1 to 8 that we have defined.
+Và sau đó chúng ta có thể tiếp tục với thuộc tính encrypt.
 
 31
 00:02:15,260 --> 00:02:20,570
-Complex password under the our application settings Json file and give the password.
+Điều này nên là false.
 
 32
 00:02:20,570 --> 00:02:24,440
-And after that we can continue to encrypt property.
+Và trust server certificate nên là true.
 
 33
 00:02:24,440 --> 00:02:26,180
-This should be false.
+Điều này là cho mục đích phát triển để chúng ta có thể kết nối database SQL Server của chúng ta trong môi trường Docker.
 
 34
 00:02:26,180 --> 00:02:29,210
-And the trust server certificate should be true.
+Click vào nút connect và điều này sẽ
 
 35
 00:02:29,270 --> 00:02:35,480
-This is for development purpose that we can connect our SQL server database in Docker environment.
+Liên lạc với SQL Server Docker image của chúng ta dưới server localhost này.
 
 36
 00:02:35,480 --> 00:02:38,390
-Click the connect button and this will be.
+Nếu bạn mở rộng server này và làm mới trang databases, bạn có thể thấy rằng không có databases vì
 
 37
 00:02:39,010 --> 00:02:43,480
-Communicate to our SQL server Docker image under this localhost server.
+chúng ta chưa tạo bất kỳ database nào vào SQL Server database server của chúng ta.
 
 38
 00:02:43,480 --> 00:02:50,740
-If you expand this server and refresh this page databases, you can see that there is no databases because
+Vậy nếu bạn mở ordering infrastructure và đi đến data migrations.
 
 39
 00:02:50,740 --> 00:02:55,120
@@ -160,21 +160,21 @@ So if you open the ordering infrastructure and go to data migrations.
 
 41
 00:03:00,130 --> 00:03:05,230
-In the last video, we have generated the migration folders with using the Package Manager console.
+Trong video trước, chúng ta đã tạo các folder migration bằng cách sử dụng Package Manager console.
 
 42
 00:03:05,230 --> 00:03:11,830
-But when we run the update database command, we got the exception about the network related exceptions
+Nhưng khi chúng ta chạy lệnh update database, chúng ta gặp exception về các ngoại lệ liên quan đến network
 
 43
 00:03:11,830 --> 00:03:13,510
-when connecting the SQL server.
+khi kết nối đến SQL server.
 
 44
 00:03:13,510 --> 00:03:19,750
-But now we have activated the SQL server using the Docker compose that we can run this command in order
+Nhưng bây giờ chúng ta đã kích hoạt SQL server bằng cách sử dụng Docker compose mà chúng ta có thể chạy lệnh này để
 
 45
 00:03:19,750 --> 00:03:24,370
-to create our database and tables into our SQL server database.
+tạo database và tables vào SQL server database của chúng ta.
 

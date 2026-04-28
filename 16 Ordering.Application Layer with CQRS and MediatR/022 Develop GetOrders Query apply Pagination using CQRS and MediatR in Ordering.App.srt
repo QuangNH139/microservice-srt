@@ -1,38 +1,38 @@
 1
 00:00:00,170 --> 00:00:05,540
-In this video we are going to develop get orders query apply the pagination.
+Trong video này chúng ta sẽ phát triển get orders query và áp dụng pagination.
 
 2
 00:00:05,540 --> 00:00:11,780
-So that means we will develop the get orders query use case in our ordering application with applying
+Điều đó có nghĩa là chúng ta sẽ phát triển get orders query use case trong ứng dụng ordering của chúng ta với việc áp dụng
 
 3
 00:00:11,780 --> 00:00:15,770
-the pagination and using the Skip and take methods in here.
+pagination và sử dụng các phương thức Skip và take ở đây.
 
 4
 00:00:16,010 --> 00:00:23,390
-So please open the Visual Studio and go to the ordering application and go to orders and go to queries.
+Vậy xin vui lòng mở Visual Studio và vào ứng dụng ordering, vào orders và vào queries.
 
 5
 00:00:23,390 --> 00:00:26,270
-So we are ready to implement get orders.
+Vậy chúng ta đã sẵn sàng để triển khai get orders.
 
 6
 00:00:26,270 --> 00:00:31,130
-Use case with using the paginated classes that we have developed in the last video.
+Use case bằng cách sử dụng các paginated classes mà chúng ta đã phát triển trong video cuối cùng.
 
 7
 00:00:31,130 --> 00:00:37,490
-So for that purpose I'm going to create a new folder under the queries which is the add new folder,
+Vì mục đích đó tôi sẽ tạo một folder mới dưới queries, đó là thêm folder mới,
 
 8
 00:00:37,490 --> 00:00:39,320
-which name is get orders.
+cái tên là get orders.
 
 9
 00:00:39,320 --> 00:00:45,380
-In this folder we will create query and handler class as the same way with the other folder use case
+Trong folder này chúng ta sẽ tạo query và handler class giống như cách làm với các folder use case khác
 
 10
 00:00:45,380 --> 00:00:46,190
@@ -40,119 +40,119 @@ structure.
 
 11
 00:00:46,190 --> 00:00:48,290
-So that's why I'm going to add a new class.
+Vì vậy tôi sẽ thêm một class mới.
 
 12
 00:00:48,290 --> 00:00:50,420
-Which name is get orders query.
+Cái tên là get orders query.
 
 13
 00:00:50,630 --> 00:00:54,950
-And this class represents the query to retrieve paginated orders.
+Và class này đại diện cho query để lấy ra các orders được phân trang.
 
 14
 00:00:54,950 --> 00:00:58,460
-For that purpose I'm going to remove unnecessary using statement.
+Vì mục đích đó tôi sẽ xóa unnecessary using statement.
 
 15
 00:00:58,460 --> 00:01:02,510
-And I'm going to create a record type for the get orders query.
+Và tôi sẽ tạo một record type cho get orders query.
 
 16
 00:01:02,510 --> 00:01:09,020
-Remove this class and create a new record type which is the public record get orders query.
+Xóa class này và tạo một record type mới, đó là public record get orders query.
 
 17
 00:01:09,020 --> 00:01:15,740
-And as a parameter it is taking the pagination request and the name of the parameter is pagination request.
+Và như một parameter nó đang nhận pagination request và tên của parameter là pagination request.
 
 18
 00:01:15,740 --> 00:01:20,840
-And as you remember that we have developing these pagination request in the last video.
+Và như bạn có thể nhớ lại rằng chúng ta đã phát triển pagination request này trong video cuối cùng.
 
 19
 00:01:20,840 --> 00:01:24,260
-And this will be include page index and page size.
+Và điều này sẽ bao gồm page index và page size.
 
 20
 00:01:24,260 --> 00:01:31,490
-And if you go back to our code you can see that we will also implement AI query interface and returning
+Và nếu bạn quay lại code của chúng ta bạn có thể thấy rằng chúng ta cũng sẽ triển khai AI query interface và trả về
 
 21
 00:01:31,490 --> 00:01:33,710
-the get order result from this query.
+kết quả get order từ query này.
 
 22
 00:01:33,710 --> 00:01:38,300
-For that purpose I'm going to create these get order result record type.
+Để làm điều đó, tôi sẽ tạo record type get order result này.
 
 23
 00:01:38,300 --> 00:01:40,280
-After the query definition.
+Sau khi định nghĩa query.
 
 24
 00:01:40,280 --> 00:01:44,270
-Here you can see that we will create public record get order result.
+Ở đây bạn có thể thấy rằng chúng ta sẽ tạo public record get order result.
 
 25
 00:01:44,270 --> 00:01:49,640
-And as a parameter of the result you can see the paginated result including the order DTO.
+Và như một tham số của result, bạn có thể thấy paginated result bao gồm order DTO.
 
 26
 00:01:49,640 --> 00:01:51,980
-And the name of the parameter is orders.
+Và tên của tham số là orders.
 
 27
 00:01:51,980 --> 00:01:58,940
-So that means we will wrap the result in a paginated result containing a collection of the order DTO.
+Vì vậy, điều đó có nghĩa là chúng ta sẽ bao bọc result trong một paginated result chứa một collection của order DTO.
 
 28
 00:01:58,970 --> 00:02:05,180
-You can see the detail for page ended result this including page index, page size count and actual
+Bạn có thể thấy chi tiết của page ended result này bao gồm page index, page size, count và dữ liệu thực tế.
 
 29
 00:02:05,180 --> 00:02:05,810
-data.
+dữ liệu.
 
 30
 00:02:05,810 --> 00:02:12,980
-So if you go back to our get orders query, this is the R query definition under the R get orders folder.
+Vì vậy, nếu bạn quay lại get orders query của chúng ta, đây là định nghĩa R query trong folder R get orders.
 
 31
 00:02:12,980 --> 00:02:16,790
-And now it is time to implement get orders under class.
+Và bây giờ là lúc để triển khai get orders handler class.
 
 32
 00:02:16,790 --> 00:02:19,610
-I'm going to add a new class under the get orders.
+Tôi sẽ thêm một class mới trong get orders.
 
 33
 00:02:19,610 --> 00:02:21,920
-Which name is Get orders handler.
+Tên của nó là Get orders handler.
 
 34
 00:02:21,920 --> 00:02:25,220
-So this will implement the handler for the get orders query.
+Vì vậy, đây sẽ là handler cho get orders query.
 
 35
 00:02:25,220 --> 00:02:30,560
-For that purpose, I'm going to remove unnecessary using statement and make this class as a public.
+Để làm điều đó, tôi sẽ xóa những using statement không cần thiết và đặt class này thành public.
 
 36
 00:02:30,560 --> 00:02:36,620
-After that we will implement these get order handler class from the I query handler interface.
+Sau đó, chúng ta sẽ triển khai Get order handler class từ I query handler interface.
 
 37
 00:02:36,620 --> 00:02:42,260
-And this interface will be getting the type of the get orders query and return type of the get order
+Và interface này sẽ nhận kiểu của get orders query và kiểu return của get order result.
 
 38
 00:02:42,260 --> 00:02:42,770
-result.
+Vì vậy, tôi sẽ triển khai các thành viên interface này, đó là handle method.
 
 39
 00:02:42,770 --> 00:02:46,850
-So I'm going to implement these interface members which is the handle method.
+Và ở đây bạn có thể thấy rằng handle method nhận tham số đầu tiên là get orders query.
 
 40
 00:02:46,850 --> 00:02:52,100
@@ -160,143 +160,143 @@ And here you can see that handle method getting the first parameter which is the
 
 41
 00:02:52,100 --> 00:02:59,480
-I'm going to change these parameter name request to query and also make these method as a async method.
+Tôi sẽ thay đổi tên parameter request thành query và cũng làm cho method này trở thành async method.
 
 42
 00:02:59,480 --> 00:03:02,720
-So now we are ready for the implement this handle method.
+Vậy bây giờ chúng ta đã sẵn sàng để triển khai handle method này.
 
 43
 00:03:02,870 --> 00:03:06,530
-First of all we will start with the planning our handle method.
+Đầu tiên chúng ta sẽ bắt đầu bằng cách lên kế hoạch cho handle method của chúng ta.
 
 44
 00:03:06,530 --> 00:03:09,200
-Here you can see that we will have two items.
+Ở đây bạn có thể thấy rằng chúng ta sẽ có hai items.
 
 45
 00:03:09,200 --> 00:03:13,430
-The first one is get orders with pagination and return the result.
+Cái đầu tiên là get orders với pagination và trả về kết quả.
 
 46
 00:03:13,430 --> 00:03:19,460
-So in order to get orders I'm going to inject I application db context into our class.
+Vậy để lấy orders, tôi sẽ inject I application db context vào class của chúng ta.
 
 47
 00:03:19,460 --> 00:03:25,790
-Please go to class definition and inject I application db context using the primary constructor of the
+Vui lòng đi đến class definition và inject I application db context bằng cách sử dụng primary constructor của
 
 48
 00:03:25,790 --> 00:03:30,650
-get orders handler class and give the name of the DB context as a DB context.
+get orders handler class và đặt tên DB context là DB context.
 
 49
 00:03:30,650 --> 00:03:34,550
-And after that we can start the implementation of the handle method.
+Và sau đó chúng ta có thể bắt đầu triển khai handle method.
 
 50
 00:03:34,700 --> 00:03:37,520
-So we will get the orders with pagination.
+Vậy chúng ta sẽ lấy orders với pagination.
 
 51
 00:03:37,520 --> 00:03:43,820
-And in order to apply pagination, we will use the skip and take method in a link operation.
+Và để áp dụng pagination, chúng ta sẽ sử dụng skip và take method trong một LINQ operation.
 
 52
 00:03:43,820 --> 00:03:47,600
-But this method also required for the page size and page index.
+Nhưng method này cũng cần page size và page index.
 
 53
 00:03:47,600 --> 00:03:53,390
-For that purpose, I am going to get the page size and page index from the incoming query object.
+Với mục đích đó, tôi sẽ lấy page size và page index từ incoming query object.
 
 54
 00:03:53,390 --> 00:03:59,330
-If you call the get Orders query and go to the request of the pagination request, you can see that
+Nếu bạn gọi get Orders query và xem request của pagination request, bạn có thể thấy rằng
 
 55
 00:03:59,330 --> 00:04:04,280
-this will be page index and page size should be sent with the query object.
+đây sẽ là page index và page size phải được gửi với query object.
 
 56
 00:04:04,280 --> 00:04:10,850
-That's why I am going to get the page index and page size in the beginning of the method, and after
+Đó là lý do tại sao tôi sẽ lấy page index và page size ở đầu method, và sau
 
 57
 00:04:10,850 --> 00:04:13,610
-that I am going to prepare the get order result.
+đó tôi sẽ chuẩn bị get order result.
 
 58
 00:04:13,610 --> 00:04:18,589
-If you go to the result, this is expecting paginated result of the order detail list.
+Nếu bạn xem result, đây đang mong đợi paginated result của order detail list.
 
 59
 00:04:18,589 --> 00:04:24,530
-And if you go to page and result, you can see that we need the return page index, page size and also
+Và nếu bạn xem page và result, bạn có thể thấy rằng chúng ta cần trả về page index, page size và cũng
 
 60
 00:04:24,530 --> 00:04:25,700
-count and data.
+count và data.
 
 61
 00:04:25,700 --> 00:04:31,670
-So for that purpose, if you go back to our implementation after getting the page index and page size
+Vậy nên cho mục đích đó, nếu bạn quay lại triển khai của chúng ta sau khi lấy được page index và page size
 
 62
 00:04:31,670 --> 00:04:37,880
-from the query object, I'm going to calculate the count operation with using the DB context orders
+từ query object, tôi sẽ tính toán hoạt động count bằng cách sử dụng DB context orders
 
 63
 00:04:37,880 --> 00:04:39,920
-long count async method.
+phương thức long count async.
 
 64
 00:04:39,920 --> 00:04:46,340
-This will be returned a total count of the our order records on database, and after that we can perform
+Cái này sẽ trả về tổng số count của các order records trên database, và sau đó chúng ta có thể thực hiện
 
 65
 00:04:46,340 --> 00:04:50,720
-the pagination retrieve operation using the skip and take method.
+hoạt động pagination retrieve bằng cách sử dụng phương thức skip và take.
 
 66
 00:04:50,720 --> 00:04:57,500
-Here you can see that we will perform orders with using the DB setup orders and including the order
+Ở đây bạn có thể thấy rằng chúng ta sẽ thực hiện orders bằng cách sử dụng DB setup orders và including các order
 
 67
 00:04:57,500 --> 00:04:59,870
-items into our query and order.
+items vào query và order của chúng ta.
 
 68
 00:04:59,970 --> 00:05:01,890
-Thereby with the old name.
+Từ đó với tên cũ.
 
 69
 00:05:01,890 --> 00:05:08,520
-And after this point you can see that we have used skip and take method in order to perform pagination.
+Và sau điểm này bạn có thể thấy rằng chúng ta đã sử dụng phương thức skip và take để thực hiện pagination.
 
 70
 00:05:08,520 --> 00:05:13,500
-That means we will skip page size and page index multiplexing this value.
+Điều đó có nghĩa là chúng ta sẽ bỏ qua page size và page index nhân với giá trị này.
 
 71
 00:05:13,500 --> 00:05:19,860
-And also we will take the page size of the record types, which is the default value is ten.
+Và cũng chúng ta sẽ lấy page size của các kiểu record, giá trị mặc định là mười.
 
 72
 00:05:19,860 --> 00:05:26,460
-And after that we will run the query in a synchronous way and return the orders entity list.
+Và sau đó chúng ta sẽ chạy query theo cách đồng bộ và trả về danh sách entity orders.
 
 73
 00:05:26,460 --> 00:05:31,680
-So after that we can returning get orders result with populating the values.
+Vậy sau đó chúng ta có thể trả về get orders result với việc điền các giá trị.
 
 74
 00:05:31,680 --> 00:05:38,370
-Here you can see that I'm going to return Neve get order result with passing the new page entity result
+Ở đây bạn có thể thấy rằng tôi sẽ trả về Neve get order result với việc truyền vào new page entity result
 
 75
 00:05:38,370 --> 00:05:45,660
-and including this object we need page index, page size, total count and orders and two order detail
+và bao gồm object này chúng ta cần page index, page size, total count và orders và hai order detail
 
 76
 00:05:45,660 --> 00:05:46,110
@@ -304,7 +304,7 @@ list.
 
 77
 00:05:46,110 --> 00:05:52,650
-As you remember that we have developed an extension method in order to convert orders entity to order
+Như bạn nhớ lại rằng chúng ta đã phát triển một extension method để chuyển đổi orders entity thành order
 
 78
 00:05:52,650 --> 00:05:53,370
@@ -312,29 +312,29 @@ detail list.
 
 79
 00:05:53,370 --> 00:05:57,900
-So we use this extension method in here when wrapping with the pageant result.
+Vậy nên chúng ta sử dụng extension method này ở đây khi wrapping với pageant result.
 
 80
 00:05:57,900 --> 00:06:00,750
-So now I am going to safely remove these throw off statement.
+Vậy bây giờ tôi sẽ an toàn xóa các throw off statement này.
 
 81
 00:06:00,750 --> 00:06:05,520
-And here you can see the implementation of the get orders handler and handle method.
+Và ở đây bạn có thể thấy cách triển khai của get orders handler và phương thức handle.
 
 82
 00:06:05,520 --> 00:06:11,880
-Basically in this handle method retrieves the total count of the orders and applies the pagination using
+Về cơ bản trong phương thức handle này, nó lấy tổng số lượng đơn hàng và áp dụng phân trang bằng cách sử dụng
 
 83
 00:06:11,880 --> 00:06:13,320
-the skip and take methods.
+các phương thức skip và take.
 
 84
 00:06:13,320 --> 00:06:19,350
-Orders are fetched with the related order items and converted into order DTO objects, and the result
+Các đơn hàng được lấy cùng với các mục đơn hàng liên quan và chuyển đổi thành các đối tượng order DTO, và kết quả
 
 85
 00:06:19,350 --> 00:06:24,510
-is a paginated result of order DTO encapsulating the paginated order data.
+là một kết quả phân trang của order DTO đóng gói dữ liệu đơn hàng đã phân trang.
 

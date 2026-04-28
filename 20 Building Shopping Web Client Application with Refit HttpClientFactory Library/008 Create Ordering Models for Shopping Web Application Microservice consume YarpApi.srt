@@ -1,74 +1,74 @@
 1
 00:00:00,140 --> 00:00:05,480
-In this video, we are going to develop ordering domain models for shopping web application.
+Trong video này, chúng ta sẽ phát triển ordering domain models cho ứng dụng web shopping.
 
 2
 00:00:05,480 --> 00:00:11,090
-So here you can see that our domain and domain submodels that we are going to represent and integrate
+Vậy ở đây bạn có thể thấy domain và domain submodels của chúng ta mà chúng ta sẽ đại diện và tích hợp
 
 3
 00:00:11,090 --> 00:00:13,070
-with the ordering microservices.
+với ordering microservices.
 
 4
 00:00:13,070 --> 00:00:19,340
-Please open the Visual Studio and go to the shopping web application and go to the models and right
+Vui lòng mở Visual Studio và đi đến ứng dụng web shopping và đi đến models rồi nhấp chuột phải vào models và thêm subfolder mới có tên là ordering.
 
 5
 00:00:19,340 --> 00:00:23,510
-click the models and add new subfolder which name is ordering.
+Vậy chúng ta sẽ đóng gói các mô hình dữ liệu liên quan đến ordering trong folder này.
 
 6
 00:00:23,510 --> 00:00:27,740
-So we will encapsulate ordering related data models in this folder.
+Trước khi chúng ta bắt đầu, chúng ta có thể kiểm tra các use cases của ordering microservices.
 
 7
 00:00:27,740 --> 00:00:31,640
-Before we start we can check the ordering microservices use cases.
+Với mục đích đó.
 
 8
 00:00:31,640 --> 00:00:32,600
-For that purpose.
+Bạn có thể đi đến services ordering và mở dự án ordering API và đi đến các endpoints mà chúng ta sẽ sử dụng từ ứng dụng Shopping web client.
 
 9
 00:00:32,600 --> 00:00:39,020
-You can go to the services ordering and open the ordering API project and go to the endpoints that we
+Ở đây bạn có thể thấy các endpoints.
 
 10
 00:00:39,020 --> 00:00:42,020
-are going to consume from the our Shopping web client application.
+Tôi sẽ tập trung vào các endpoint get khi chúng ta sử dụng từ ứng dụng client.
 
 11
 00:00:42,020 --> 00:00:43,460
-Here you can see the endpoints.
+Cái đầu tiên là get orders.
 
 12
 00:00:43,460 --> 00:00:48,230
-I am going to focus on the get endpoints when we are consuming from the client application.
+Ở đây bạn có thể thấy get orders yêu cầu request và response object.
 
 13
 00:00:48,230 --> 00:00:50,420
-The first one is get orders.
+Trong response object, chúng ta đang chấp nhận paginated order DTO orders như một tham số.
 
 14
 00:00:50,420 --> 00:00:54,260
-Here you can see the get orders requiring the request and response object.
+Vậy điều đó có nghĩa là tôi cần tạo một order model.
 
 15
 00:00:54,260 --> 00:01:00,140
-In the response object, we are accepting paginated order DTO orders as a parameter.
+Và model này nên được đóng gói với paginated result.
 
 16
 00:01:00,140 --> 00:01:02,930
-So that means I need a create order model.
+Và điều này sẽ được đóng gói với get orders response record type.
 
 17
 00:01:02,930 --> 00:01:06,680
-And this model should be encapsulated with the paginated result.
+Đầu tiên, chúng ta có thể đi đến order DTO mà chúng ta sẽ tạo order model với các tham số giống nhau.
 
 18
 00:01:06,680 --> 00:01:10,700
-And this will be encapsulated with the get orders response record type.
+Và nếu bạn nhìn vào các tham số, bạn có thể thấy rằng điều này sẽ bao gồm một số sub parameters
 
 19
 00:01:10,700 --> 00:01:16,550
@@ -80,11 +80,11 @@ And if you look at the parameters, you can see that this will be include some su
 
 21
 00:01:21,500 --> 00:01:26,120
-is the orders, DTO payment, DTO order status and order item DTO.
+là orders, DTO payment, DTO order status và order item DTO.
 
 22
 00:01:26,120 --> 00:01:31,700
-So all these classes, I am going to convert these as a model classes under the Shopping Web Client
+Vậy tất cả các class này, tôi sẽ chuyển đổi chúng thành model classes dưới Shopping Web Client
 
 23
 00:01:31,700 --> 00:01:32,420
@@ -92,19 +92,19 @@ application.
 
 24
 00:01:32,420 --> 00:01:37,010
-In order to communicate with Http, get methods from the ordering microservices.
+Để giao tiếp với Http, lấy các methods từ ordering microservices.
 
 25
 00:01:37,010 --> 00:01:42,140
-For that purpose, you can go back to our shopping web application and close the ordering and go to
+Với mục đích đó, bạn có thể quay lại ứng dụng shopping web của chúng ta và đóng ordering, sau đó vào
 
 26
 00:01:42,140 --> 00:01:48,170
-the ordering subfolder under the models folder and add new class, which name is order model dot CSS.
+thư mục con ordering dưới folder models và thêm class mới, tên là order model dot CSS.
 
 27
 00:01:48,170 --> 00:01:54,260
-So we will adding a record type as a order model and order item model, and including the address and
+Vậy chúng ta sẽ thêm record type như một order model và order item model, và bao gồm address và
 
 28
 00:01:54,260 --> 00:01:55,070
@@ -112,55 +112,55 @@ payment model.
 
 29
 00:01:55,070 --> 00:01:57,650
-So I'm going to start with the order model.
+Vậy tôi sẽ bắt đầu với order model.
 
 30
 00:01:57,650 --> 00:01:59,030
-Instead of using the class.
+Thay vì sử dụng class.
 
 31
 00:01:59,030 --> 00:02:03,740
-This time I'm going to use record type is the same as the are ordering microservices.
+Lần này tôi sẽ sử dụng record type, giống như ordering microservices.
 
 32
 00:02:03,740 --> 00:02:09,380
-And here you can see the ordering model including the ID, customer ID, order name, shipping and billing
+Và ở đây bạn có thể thấy ordering model bao gồm ID, customer ID, order name, shipping và billing
 
 33
 00:02:09,380 --> 00:02:12,050
-address, payment status and order items.
+address, payment status và order items.
 
 34
 00:02:12,050 --> 00:02:17,900
-So we will continue define these submodules including the address model, payment model, order status
+Vậy chúng ta sẽ tiếp tục định nghĩa các submodules này bao gồm address model, payment model, order status
 
 35
 00:02:17,900 --> 00:02:19,280
-and Order item model.
+và order item model.
 
 36
 00:02:19,280 --> 00:02:23,480
-So just after this record type definition I am going to add these line of codes.
+Vậy ngay sau định nghĩa record type này, tôi sẽ thêm các dòng code này.
 
 37
 00:02:23,480 --> 00:02:29,780
-These are including the public record order item model including the order ID, product ID, quantity
+Các dòng này bao gồm public record order item model bao gồm order ID, product ID, quantity
 
 38
 00:02:29,780 --> 00:02:32,960
-and price as a parameter, and record type members.
+và price như một parameter, và record type members.
 
 39
 00:02:32,960 --> 00:02:38,510
-And if you look at the address model, you can see that we have defined these address model, including
+Và nếu bạn nhìn vào address model, bạn có thể thấy rằng chúng ta đã định nghĩa address model này, bao gồm
 
 40
 00:02:38,540 --> 00:02:45,380
-the all these members copying from the orders DTO from the our ordering microservices that you can copy
+tất cả các members này được sao chép từ orders DTO từ ordering microservices của chúng ta mà bạn có thể sao chép
 
 41
 00:02:45,380 --> 00:02:52,040
-and paste these record types from the order DTO models and change the class names, address DTO to model
+và dán các record types này từ order DTO models và thay đổi tên class, address DTO thành model
 
 42
 00:02:52,040 --> 00:02:55,250
@@ -168,115 +168,115 @@ order item, detailed model, order DTO model.
 
 43
 00:02:55,250 --> 00:03:00,380
-And also you can continue with the payment model including the card name, card number, and so on.
+Và cũng có thể tiếp tục với payment model bao gồm card name, card number, và các thông tin khác.
 
 44
 00:03:00,380 --> 00:03:04,700
-These members comes from the DTO classes, from the ordering microservices.
+Các members này đến từ các DTO classes, từ ordering microservices.
 
 45
 00:03:04,700 --> 00:03:10,040
-And lastly, we have a order status including the all members from the order DTO classes.
+Và cuối cùng, chúng ta có order status bao gồm tất cả các members từ các order DTO classes.
 
 46
 00:03:10,040 --> 00:03:16,340
-So this is the order model definition under the are ordering microservices to accodomate Http get requests
+Vậy đây là định nghĩa order model dưới ordering microservices để chứa các Http get requests
 
 47
 00:03:16,340 --> 00:03:17,960
-into our client application.
+vào ứng dụng client của chúng ta.
 
 48
 00:03:17,960 --> 00:03:23,750
-Just after that we can define the wrapper classes, but before that we can check again our endpoints
+Ngay sau đó, chúng ta có thể định nghĩa các wrapper classes, nhưng trước hết chúng ta có thể kiểm tra lại các endpoints
 
 49
 00:03:23,750 --> 00:03:24,650
-and use cases.
+và use cases của chúng ta.
 
 50
 00:03:24,650 --> 00:03:26,240
-These are the get orders.
+Đây là các get orders.
 
 51
 00:03:26,240 --> 00:03:32,090
-Here you can find the get order response record type that we are going to create from the order models.
+Tại đây bạn có thể tìm thấy get order response record type mà chúng ta sẽ tạo từ các order models.
 
 52
 00:03:32,090 --> 00:03:35,660
-And after that you can see that get orders by customer.
+Và sau đó bạn có thể thấy get orders by customer.
 
 53
 00:03:35,660 --> 00:03:37,430
-Here you can see the record type.
+Tại đây bạn có thể thấy record type.
 
 54
 00:03:37,430 --> 00:03:39,890
-And we will also use get orders by name.
+Và chúng ta cũng sẽ sử dụng get orders by name.
 
 55
 00:03:39,890 --> 00:03:44,360
-And here you can see the order record type that we can define in the shopping web application.
+Và tại đây bạn có thể thấy order record type mà chúng ta có thể định nghĩa trong ứng dụng web shopping.
 
 56
 00:03:44,360 --> 00:03:48,200
-And all these response types requiring the some parameters.
+Và tất cả các response types này đòi hỏi một số parameters.
 
 57
 00:03:48,200 --> 00:03:51,530
-This one is requiring the IEnumerable order model.
+Cái này đòi hỏi IEnumerable order model.
 
 58
 00:03:51,530 --> 00:03:57,680
-And this one is requiring the again enumerable order model and get orders only requiring for the pageant
+Và cái này đòi hỏi lại enumerable order model, và get orders chỉ đòi hỏi pageant
 
 59
 00:03:57,680 --> 00:04:01,820
-result that we are going to create this class into our shopping web client application.
+result mà chúng ta sẽ tạo class này vào ứng dụng web client shopping của chúng ta.
 
 60
 00:04:01,820 --> 00:04:06,770
-So let's focus on our ordering model and go at the end of this class definition.
+Vậy hãy tập trung vào ordering model của chúng ta và đi đến cuối định nghĩa class này.
 
 61
 00:04:06,770 --> 00:04:12,200
-Now I'm going to define our wrapper classes, including our endpoint use cases.
+Bây giờ tôi sẽ định nghĩa các lớp wrapper của chúng ta, bao gồm các use case endpoint.
 
 62
 00:04:12,200 --> 00:04:16,670
-Here you can see that the first one is get orders response record type.
+Tại đây bạn có thể thấy cái đầu tiên là kiểu record get orders response.
 
 63
 00:04:16,670 --> 00:04:17,480
-As a parameter.
+Như một tham số.
 
 64
 00:04:17,480 --> 00:04:21,920
-We can define paginated result order model, generic type and orders.
+Chúng ta có thể định nghĩa kết quả được phân trang của order model, kiểu generic và orders.
 
 65
 00:04:21,920 --> 00:04:26,090
-And the second record type is a get orders by name response as a parameter.
+Và kiểu record thứ hai là get orders by name response như một tham số.
 
 66
 00:04:26,090 --> 00:04:32,780
-It is taking IEnumerable order model orders, and the third one is get orders by customer response and
+Nó nhận IEnumerable order model orders, và cái thứ ba là get orders by customer response và
 
 67
 00:04:32,780 --> 00:04:35,870
-parameter as a enumerable order model orders.
+tham số là một enumerable order model orders.
 
 68
 00:04:35,870 --> 00:04:38,090
-So please define these wrapper classes.
+Vậy hãy định nghĩa các lớp wrapper này.
 
 69
 00:04:38,090 --> 00:04:41,210
-As you can see that this time we need a page entity result.
+Như bạn có thể thấy, lần này chúng ta cần một page entity result.
 
 70
 00:04:41,210 --> 00:04:45,770
-For that purpose, I'm going to create additional class under the ordering which is the page entity
+Để mục đích đó, tôi sẽ tạo một lớp bổ sung dưới ordering, đó là page entity
 
 71
 00:04:45,770 --> 00:04:46,850
@@ -284,49 +284,49 @@ results.
 
 72
 00:04:46,850 --> 00:04:53,120
-This will be represent arpeggiated wrapper to our response of the order data.
+Cái này sẽ đại diện cho một wrapper được phân tích hợp âm cho response của dữ liệu order.
 
 73
 00:04:53,120 --> 00:04:54,170
-With the order model.
+Với order model.
 
 74
 00:04:54,170 --> 00:04:59,630
-Here you can see that I have created page entity result which is the entity generic type and.
+Tại đây bạn có thể thấy rằng tôi đã tạo page entity result, đó là kiểu generic entity và.
 
 75
 00:04:59,890 --> 00:05:06,940
-These are the primary constructor parameters page index, page size, long and data and where t entity
+Đây là các tham số primary constructor page index, page size, long và data và where t entity
 
 76
 00:05:06,940 --> 00:05:07,690
-is a class.
+là một class.
 
 77
 00:05:07,690 --> 00:05:13,540
-So these definitions comes from the our actual page entity result definition from the ordering microservices
+Vậy những định nghĩa này đến từ định nghĩa page entity result thực tế của chúng ta từ ordering microservices
 
 78
 00:05:13,540 --> 00:05:20,200
-that I am going to copy and paste all these members page index, page size count and data so you can
+mà tôi sẽ sao chép và dán tất cả các thành viên này page index, page size, count và data để bạn có thể
 
 79
 00:05:20,200 --> 00:05:22,810
-save this page entity result and go back to order module.
+lưu page entity result này và quay lại order module.
 
 80
 00:05:22,810 --> 00:05:25,480
-And you can see that our exception is disappeared.
+Và bạn có thể thấy rằng exception của chúng ta đã biến mất.
 
 81
 00:05:25,480 --> 00:05:30,070
-As you can see that we have successfully defined our wrapper classes and our order model.
+Như bạn có thể thấy, chúng ta đã định nghĩa thành công các lớp wrapper và model order của mình.
 
 82
 00:05:30,070 --> 00:05:35,050
-From the ordering domain model, you can right click and build the shopping web application and verify
+Từ ordering domain model, bạn có thể nhấp chuột phải và build ứng dụng web shopping để xác minh
 
 83
 00:05:35,050 --> 00:05:37,630
-that our domain models are created successfully.
+rằng các domain model của chúng ta đã được tạo thành công.
 

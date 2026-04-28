@@ -1,78 +1,78 @@
 1
 00:00:00,140 --> 00:00:05,210
-In this video we are going to learn challenges of asynchronous communication.
+Trong video này chúng ta sẽ học về những thách thức của asynchronous communication.
 
 2
 00:00:05,240 --> 00:00:09,860
-The first challenges is single point of failure message brokers.
+Thách thức đầu tiên là single point of failure của message brokers.
 
 3
 00:00:10,430 --> 00:00:17,000
-The message broker becomes a single point of failure if we don't configure the message broker properly.
+Message broker trở thành single point of failure nếu chúng ta không cấu hình message broker một cách thích hợp.
 
 4
 00:00:17,060 --> 00:00:20,090
-It can become a problem for our architecture.
+Nó có thể trở thành vấn đề cho kiến trúc của chúng ta.
 
 5
 00:00:20,660 --> 00:00:25,670
-We shouldn't rely on all communication with a single node of the message brokers.
+Chúng ta không nên dựa vào tất cả communication với một node duy nhất của message brokers.
 
 6
 00:00:25,670 --> 00:00:33,620
-Instead, we should scale it and use hybrid communication with synchronous and asynchronous in our cases.
+Thay vào đó, chúng ta nên mở rộng quy mô nó và sử dụng hybrid communication với synchronous và asynchronous trong các trường hợp của chúng ta.
 
 7
 00:00:35,220 --> 00:00:37,500
-And second challenges is debugging.
+Và thách thức thứ hai là debugging.
 
 8
 00:00:37,530 --> 00:00:44,280
-It is often difficult to debug issues with asynchronous communication, because it can be hard to trace
+Thường rất khó để debug các vấn đề với asynchronous communication, vì có thể khó theo dõi
 
 9
 00:00:44,280 --> 00:00:47,940
-the flow of the single operation across service boundaries.
+luồng của một hoạt động duy nhất qua service boundaries.
 
 10
 00:00:48,060 --> 00:00:55,560
-Since there is no clear data flow now and messages get processed when they arrive to consumer systems,
+Vì bây giờ không có data flow rõ ràng và các messages được xử lý khi chúng đến hệ thống consumer,
 
 11
 00:00:55,560 --> 00:01:01,800
-debugging of the flow and the payload of the events takes so many times and hard to debug at the same
+việc debugging của luồng và payload của events mất rất nhiều thời gian và khó debug cùng lúc.
 
 12
 00:01:01,800 --> 00:01:02,430
-time.
+Đó là lý do tại sao thường là một ý tưởng hay khi tạo một unique ID khi message được nhận, để
 
 13
 00:01:02,640 --> 00:01:09,570
-So this is why it is usually a good idea to generate a unique ID when the message is received, so that
+bạn có thể theo dõi bằng unique ID đó vào các logs.
 
 14
 00:01:09,570 --> 00:01:12,840
-you can track with the unique ID into the logs.
+Ngoài ra, chúng ta có thể gọi đây là correlation ID.
 
 15
 00:01:12,870 --> 00:01:15,450
-Also, we can call this correlation ID.
+Và thách thức khác là at least once delivery và không đảm bảo thứ tự của messages.
 
 16
 00:01:15,750 --> 00:01:22,620
-And another challenges is at least once delivery and not guarantee an order of messages.
+Message broker systems rất phù hợp cho event driven microservice communication, nhưng phần lớn
 
 17
 00:01:23,310 --> 00:01:29,250
-Message broker systems are a very good fit for event driven microservice communication, but mostly
+chúng sử dụng at least once delivery và không đảm bảo thứ tự của messages.
 
 18
 00:01:29,250 --> 00:01:33,630
-they use at least once delivery and not guarantee order of messages.
+Vì vậy chúng ta nên tuân thủ cơ chế delivery này bằng cách áp dụng idempotency consumers và không thiết kế
 
 19
 00:01:33,630 --> 00:01:40,980
-So we should embrace these message delivery mechanism with applying idempotency consumers and not designing
+các trường hợp yêu cầu Fifo.
 
 20
 00:01:40,980 --> 00:01:42,420

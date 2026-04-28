@@ -1,214 +1,214 @@
 1
 00:00:00,200 --> 00:00:06,650
-In this video, we are going to learn the key steps of developing ordering infrastructure layer using
+Trong video này, chúng ta sẽ học các bước chính để phát triển tầng infrastructure của ordering sử dụng
 
 2
 00:00:06,650 --> 00:00:08,119
-the Entity Framework core.
+Entity Framework Core.
 
 3
 00:00:08,690 --> 00:00:13,070
-The first key step is install Entity Framework core NuGet packages.
+Bước chính đầu tiên là cài đặt các NuGet package của Entity Framework Core.
 
 4
 00:00:13,070 --> 00:00:18,710
-We should install the necessary packages for SQL Server and Entity Framework core tools.
+Chúng ta nên cài đặt các package cần thiết cho SQL Server và Entity Framework Core tools.
 
 5
 00:00:18,710 --> 00:00:24,860
-So these are the packages including the Microsoft Entity Framework, core SQL server and the tools NuGet
+Vậy đây là các package bao gồm Microsoft Entity Framework Core, SQL Server và các NuGet
 
 6
 00:00:24,860 --> 00:00:25,580
-packages.
+package tools.
 
 7
 00:00:25,580 --> 00:00:29,540
-So I'm going to use Visual Studio and Package Manager Console.
+Vậy tôi sẽ sử dụng Visual Studio và Package Manager Console.
 
 8
 00:00:29,540 --> 00:00:32,750
-That's why I have installing the tools NuGet packages.
+Đó là lý do tôi đang cài đặt NuGet packages tools.
 
 9
 00:00:32,750 --> 00:00:34,160
-But if you use the.
+Nhưng nếu bạn sử dụng .NET CLI.
 
 10
 00:00:34,160 --> 00:00:39,800
-Net CLI, you can install the design packages instead of the tools to perform an interact Entity Framework
+Bạn có thể cài đặt các package design thay vì tools để thực hiện các hoạt động tooling của Entity Framework
 
 11
 00:00:39,800 --> 00:00:41,390
-core tooling operations.
+Core.
 
 12
 00:00:42,020 --> 00:00:46,490
-And the second key step is developing Dbcontext object.
+Và bước chính thứ hai là phát triển đối tượng DbContext.
 
 13
 00:00:46,520 --> 00:00:51,650
-We will be adding entity objects into the Entity Framework core Dbcontext object.
+Chúng ta sẽ thêm các entity objects vào đối tượng Entity Framework Core DbContext.
 
 14
 00:00:51,650 --> 00:00:57,620
-And that's why we will define a Dbcontext class in the infrastructure layer, which name is application
+Và đó là lý do chúng ta sẽ định nghĩa một lớp DbContext trong tầng infrastructure, tên của nó là
 
 15
 00:00:57,620 --> 00:00:58,580
-Dbcontext.
+ApplicationDbContext.
 
 16
 00:00:58,580 --> 00:01:05,690
-So in this context class we will define entities as a DB set, including the customer product order
+Vậy trong lớp context này chúng ta sẽ định nghĩa các entities như DB sets, bao gồm customer, product, order
 
 17
 00:01:05,690 --> 00:01:08,090
-and order item in order to interact.
+và order item để có thể tương tác.
 
 18
 00:01:08,120 --> 00:01:14,300
-Entity framework core and SQL server database using the entities under the Dbcontext class.
+Entity Framework Core và cơ sở dữ liệu SQL Server sử dụng các entities dưới lớp DbContext.
 
 19
 00:01:15,020 --> 00:01:21,200
-And after that we will configure the domain entities to Entity Framework Core entities for SQL server.
+Và sau đó chúng ta sẽ cấu hình các domain entities thành Entity Framework Core entities cho SQL Server.
 
 20
 00:01:21,230 --> 00:01:26,810
-That means we will mapping domain driven design objects to the Entity Framework core entities.
+Điều đó có nghĩa là chúng ta sẽ mapping các đối tượng domain driven design thành các Entity Framework Core entities.
 
 21
 00:01:26,840 --> 00:01:32,870
-We are going to use Entity Framework Core Module Builder for mapping domain driven design entities to
+Chúng ta sẽ sử dụng Entity Framework Core Module Builder để ánh xạ các entity của domain driven design tới
 
 22
 00:01:32,900 --> 00:01:34,580
-Entity Framework core entities.
+các entity của Entity Framework Core.
 
 23
 00:01:34,610 --> 00:01:40,400
-That means we will map the domain entities to database tables and configure their relationships.
+Điều đó có nghĩa là chúng ta sẽ ánh xạ các domain entity tới các bảng cơ sở dữ liệu và cấu hình các mối quan hệ của chúng.
 
 24
 00:01:40,400 --> 00:01:45,980
-You can see all the configurations and this is inherited from the I entity type configurations.
+Bạn có thể thấy tất cả các cấu hình và đây được kế thừa từ I entity type configurations.
 
 25
 00:01:45,980 --> 00:01:52,790
-In order to configure all the entity members, including the ID and other members inside of these configure
+Để cấu hình tất cả các member của entity, bao gồm ID và các member khác bên trong các phương thức configure.
 
 26
 00:01:52,790 --> 00:01:53,510
-methods.
+này.
 
 27
 00:01:54,320 --> 00:02:00,530
-And the next key step is ASP.Net core setup and configurations, including the application settings
+Và bước tiếp theo quan trọng là ASP.NET Core setup và cấu hình, bao gồm tệp application settings
 
 28
 00:02:00,530 --> 00:02:01,430
-JSON file.
+JSON.
 
 29
 00:02:01,430 --> 00:02:06,680
-That means we should configure the database connection string in application settings JSON file.
+Điều đó có nghĩa là chúng ta nên cấu hình chuỗi kết nối cơ sở dữ liệu trong tệp application settings JSON.
 
 30
 00:02:06,680 --> 00:02:13,430
-You can see the connection string database and this is representing SQL server database connections
+Bạn có thể thấy chuỗi kết nối cơ sở dữ liệu và đây đại diện cho các kết nối cơ sở dữ liệu SQL Server.
 
 31
 00:02:14,000 --> 00:02:20,690
-And after that we should register Entity Framework Core Dbcontext to ASP.Net Dependency Injection,
+Và sau đó chúng ta nên đăng ký Entity Framework Core Dbcontext với ASP.NET Dependency Injection,
 
 32
 00:02:20,690 --> 00:02:25,880
-and we can register the services like application Dbcontext in the Program.cs.
+và chúng ta có thể đăng ký các service như application Dbcontext trong Program.cs.
 
 33
 00:02:25,910 --> 00:02:30,530
-In order to add these Dbcontext into ASP.Net Devtool.
+Để thêm Dbcontext này vào ASP.NET Devtool.
 
 34
 00:02:30,530 --> 00:02:36,800
-Here you can see that we have going to adding Dbcontext, which is our application Dbcontext.
+Ở đây bạn có thể thấy rằng chúng ta sẽ thêm Dbcontext, đây là application Dbcontext của chúng ta.
 
 35
 00:02:36,800 --> 00:02:42,410
-With configuring the interceptors and using the SQL server with a given connection string indicating
+Với việc cấu hình các interceptor và sử dụng SQL Server với chuỗi kết nối được cấp, chỉ định
 
 36
 00:02:42,410 --> 00:02:44,420
-the application settings JSON file.
+tệp application settings JSON.
 
 37
 00:02:45,320 --> 00:02:49,970
-And the next key step is create migrations and create database with commands.
+Và bước tiếp theo quan trọng là tạo migration và tạo cơ sở dữ liệu với các lệnh.
 
 38
 00:02:49,970 --> 00:02:55,610
-We will use Entity Framework Core tools in order to create migrations and update the database.
+Chúng ta sẽ sử dụng Entity Framework Core tools để tạo migration và cập nhật cơ sở dữ liệu.
 
 39
 00:02:55,700 --> 00:02:58,040
-So that means in Visual Studio.
+Vậy điều đó có nghĩa là trong Visual Studio.
 
 40
 00:02:58,070 --> 00:03:00,710
-First of all we will install the tools packages.
+Đầu tiên chúng ta sẽ cài đặt các gói tools.
 
 41
 00:03:00,710 --> 00:03:07,460
-And after that we will run these two command which is the add migration initial create and update database.
+Và sau đó chúng ta sẽ chạy hai lệnh này là add migration initial create và update database.
 
 42
 00:03:07,790 --> 00:03:12,620
-The add migration command scaffolds the migration table and migration folder.
+Lệnh add migration sẽ tạo ra bảng migration và thư mục migration.
 
 43
 00:03:12,620 --> 00:03:18,800
-In order to create the initial set of the tables for the model and update database command creates the
+Để tạo tập hợp ban đầu các bảng cho model và lệnh update database sẽ tạo
 
 44
 00:03:18,800 --> 00:03:24,610
-database and applies to new migrations to the database itself, which is the SQL server that we can
+database và áp dụng các migration mới vào chính database đó, đó là SQL Server mà chúng ta có thể
 
 45
 00:03:24,610 --> 00:03:28,270
-check the SQL server database from the Visual Studio Management console.
+kiểm tra database SQL Server từ Visual Studio Management console.
 
 46
 00:03:29,320 --> 00:03:33,790
-And after that, the next key step is create database with migrate method.
+Và sau đó, bước tiếp theo là tạo database với phương thức migrate.
 
 47
 00:03:33,790 --> 00:03:40,150
-And after creating manually we will also migrate these operations with coding.
+Và sau khi tạo thủ công, chúng ta cũng sẽ migrate các hoạt động này bằng code.
 
 48
 00:03:40,150 --> 00:03:46,120
-And we will update the Program.cs in order to automatically apply migrations at startup.
+Và chúng ta sẽ cập nhật Program.cs để tự động áp dụng các migration khi ứng dụng khởi động.
 
 49
 00:03:46,120 --> 00:03:54,280
-You can see in here we will use context database migrate async method in order to perform all the migrations
+Như bạn có thể thấy, ở đây chúng ta sẽ sử dụng phương thức context database migrate async để thực hiện tất cả các migration
 
 50
 00:03:54,280 --> 00:04:01,900
-from the folder automatically when the application start up, and after that the next key step is seeding
+từ thư mục một cách tự động khi ứng dụng khởi động, và sau đó bước tiếp theo là seeding
 
 51
 00:04:01,930 --> 00:04:02,950
-the database.
+database.
 
 52
 00:04:02,950 --> 00:04:09,940
-We will populate the database with initial data using a seeding method or class, and in this section
+Chúng ta sẽ điền dữ liệu vào database bằng phương thức seeding hoặc class, và trong phần này
 
 53
 00:04:09,940 --> 00:04:15,670
-we will add a code that populates the database with the test data with including the data db initializer
+chúng ta sẽ thêm code để điền database với dữ liệu kiểm tra bao gồm cả dữ liệu từ db initializer
 
 54
 00:04:15,670 --> 00:04:16,149
@@ -216,23 +216,23 @@ class.
 
 55
 00:04:16,149 --> 00:04:19,240
-We will create this class in order seeding database.
+Chúng ta sẽ tạo class này để seeding database.
 
 56
 00:04:19,240 --> 00:04:22,029
-We will check the orders in the application startup.
+Chúng ta sẽ kiểm tra các orders khi ứng dụng khởi động.
 
 57
 00:04:22,029 --> 00:04:29,770
-If there is no orders, we will adding the predefined orders from our initial data class, and the next
+Nếu không có orders, chúng ta sẽ thêm các orders được định nghĩa trước từ class dữ liệu ban đầu của chúng ta, và bước tiếp theo là dispatch các domain events với Entity Framework Core interceptors.
 
 58
 00:04:29,770 --> 00:04:34,990
-step is to dispatch the domain events with Entity Framework core interceptors.
+Chúng ta sẽ triển khai một Savechanges interceptor để dispatch các domain events trước khi lưu các thay đổi
 
 59
 00:04:35,020 --> 00:04:41,530
-We will implement a Savechanges interceptor in order to dispatch domain events before saving the changes
+vào database.
 
 60
 00:04:41,530 --> 00:04:42,490
@@ -240,41 +240,41 @@ to database.
 
 61
 00:04:42,520 --> 00:04:47,470
-You can see an example of the Dispatch Domain events interceptor we have defined.
+Bạn có thể thấy một ví dụ về Dispatch Domain events interceptor mà chúng ta đã định nghĩa.
 
 62
 00:04:47,500 --> 00:04:49,780
-Domain events in the ordering domain layer.
+Domain events trong ordering domain layer.
 
 63
 00:04:49,780 --> 00:04:55,060
-In this layer, we will dispatch these domain events using the Savechanges interceptor.
+Trong layer này, chúng ta sẽ dispatch các domain events này bằng cách sử dụng Savechanges interceptor.
 
 64
 00:04:55,060 --> 00:05:01,510
-And this is one of the powerful features combining Entity Framework core Savechanges interceptor with
+Và đây là một trong những tính năng mạnh mẽ kết hợp Entity Framework core Savechanges interceptor với
 
 65
 00:05:01,510 --> 00:05:07,360
-a mediator mediator library in order to dispatching to domain events in the infrastructure layer.
+một thư viện mediator để dispatch domain events trong infrastructure layer.
 
 66
 00:05:07,630 --> 00:05:13,780
-And the last key step is test all from the local with containerized SQL server in Docker.
+Và bước cuối cùng quan trọng là test tất cả từ local với containerized SQL server trong Docker.
 
 67
 00:05:13,780 --> 00:05:19,330
-So we will set up a docker compose file in order to run SQL server in Docker container, and we will
+Vậy chúng ta sẽ thiết lập một docker compose file để chạy SQL server trong Docker container, và chúng ta sẽ
 
 68
 00:05:19,330 --> 00:05:22,960
-test the application locally with the containerized SQL server.
+test ứng dụng locally với containerized SQL server.
 
 69
 00:05:22,990 --> 00:05:27,670
-And after that we will test the whole application in Docker compose environment.
+Và sau đó chúng ta sẽ test toàn bộ ứng dụng trong Docker compose environment.
 
 70
 00:05:27,670 --> 00:05:33,370
-So now let's follow these steps in order to develop ordering infrastructure layer one by one.
+Vậy bây giờ hãy làm theo các bước này để phát triển ordering infrastructure layer từng bước một.
 

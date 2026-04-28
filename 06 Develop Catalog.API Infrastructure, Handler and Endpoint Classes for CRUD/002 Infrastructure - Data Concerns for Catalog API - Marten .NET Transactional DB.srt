@@ -1,78 +1,78 @@
 1
 00:00:00,260 --> 00:00:06,620
-In this video, we are going to explore the integration of database services with our microservices.
+Trong video này, chúng ta sẽ khám phá sự tích hợp các dịch vụ cơ sở dữ liệu với microservices của chúng ta.
 
 2
 00:00:06,620 --> 00:00:10,970
-And specifically we will focus on our catalog API microservices.
+Và cụ thể chúng ta sẽ tập trung vào catalog API microservices của chúng ta.
 
 3
 00:00:10,970 --> 00:00:15,620
-And it is usage of the PostgreSQL database with using the Martin library.
+Và nó là việc sử dụng cơ sở dữ liệu PostgreSQL với thư viện Marten.
 
 4
 00:00:16,490 --> 00:00:23,240
-Let's start by discussing the backing services in the realm of the microservices backing services for
+Hãy bắt đầu bằng cách thảo luận về các backing services trong lĩnh vực microservices backing services cho
 
 5
 00:00:23,240 --> 00:00:23,780
-the cloud.
+cloud.
 
 6
 00:00:23,780 --> 00:00:30,650
-Native microservices are the external resources or components that microservices, depending on their
+Native microservices là các tài nguyên hoặc thành phần bên ngoài mà các microservices phụ thuộc vào để cung cấp các hoạt động của chúng hỗ trợ cho các chức năng khác nhau như lưu trữ dữ liệu, messaging,
 
 7
 00:00:30,650 --> 00:00:37,670
-operations they provide to support for various functionalities such as the data storage, messaging,
+caching và xác thực trong kiến trúc cloud native.
 
 8
 00:00:37,670 --> 00:00:41,810
-caching and authentication in a cloud native architecture.
+Backing services như databases, messaging systems và caching services được coi là các tài nguyên đính kèm.
 
 9
 00:00:41,810 --> 00:00:49,910
-Backing services like databases, messaging systems and caching services are treated as attached resources.
+Các backing services này được đặt bên ngoài microservices, và chúng có thể được trao đổi hoặc thay thế
 
 10
 00:00:49,910 --> 00:00:57,260
-These backing services are located external to the microservices, and they can be swapped or replaced
+mà không thay đổi logic lõi của microservices.
 
 11
 00:00:57,260 --> 00:01:00,380
-without changing the microservices core logic.
+Trong kiến trúc microservice cloud native, backing services được tách rời từ chính các microservices
 
 12
 00:01:00,380 --> 00:01:06,770
-In a cloud native microservice architecture, backing services are decoupled from the microservice themselves
+và thúc đẩy tính linh hoạt, khả năng mở rộng và dễ bảo trì hơn.
 
 13
 00:01:06,770 --> 00:01:11,420
-and promoting the flexibility, scalability, and easier to maintenance.
+Vậy ở đây bạn có thể thấy hình minh họa hiển thị các backing services khác nhau trong hệ sinh thái cloud native.
 
 14
 00:01:12,590 --> 00:01:18,620
-So here you can see the illustration showing various backing services in a cloud native ecosystem.
+Như bạn có thể thấy rằng các cơ sở dữ liệu này là các cơ sở dữ liệu NoSQL, Newsql và relational databases.
 
 15
 00:01:18,890 --> 00:01:25,040
-As you can see that databases these are the NoSQL Newsql and relational databases.
+Distributed caches, message brokers, event streaming systems, authentication authorization systems,
 
 16
 00:01:25,040 --> 00:01:32,480
-Distributed caches, message brokers, event streaming systems, authentication authorization systems,
+API gateways, service meshes, logging, monitoring, tracing, cross-cutting concerns, và nhiều thứ khác.
 
 17
 00:01:32,480 --> 00:01:38,480
-API gateways, service meshes, logging, monitoring, tracing, cross-cutting concerns, and so on.
+Tất cả các dịch vụ này có thể được tích hợp với microservices và hoạt động như các backing services.
 
 18
 00:01:38,750 --> 00:01:44,510
-All these services can be integrated with microservices and acting as a backing services.
+Chúng có thể được trao đổi hoặc thay thế mà không thay đổi logic lõi của microservice trong suốt khóa học.
 
 19
 00:01:44,510 --> 00:01:50,330
-They can be swapped or replaced without changing the microservice core logic during the course.
+Chúng ta sẽ sử dụng các dịch vụ này như là backing services của các ứng dụng microservice vấn đề.
 
 20
 00:01:50,330 --> 00:01:55,370
@@ -80,69 +80,69 @@ We will use these services as a backing services of issue of microservice applic
 
 21
 00:01:55,370 --> 00:02:02,210
-If you look at our architecture, you can see that our catalog microservices rely on the PostgreSQL
+Nếu bạn xem kiến trúc của chúng ta, bạn có thể thấy rằng catalog microservices của chúng ta dựa vào PostgreSQL
 
 22
 00:02:02,210 --> 00:02:04,760
-database for database operations.
+để thực hiện các hoạt động cơ sở dữ liệu.
 
 23
 00:02:05,060 --> 00:02:10,460
-But catalog microservices is very good match for the NoSQL document databases.
+Nhưng catalog microservices là một lựa chọn rất phù hợp cho các cơ sở dữ liệu tài liệu NoSQL.
 
 24
 00:02:10,460 --> 00:02:17,690
-So why we use PostgreSQL relational database for catalog operations and product operations even they
+Vậy tại sao chúng ta sử dụng cơ sở dữ liệu quan hệ PostgreSQL cho các hoạt động catalog và product mặc dù chúng
 
 25
 00:02:17,690 --> 00:02:20,780
-are more applicable with the NoSQL document database.
+áp dụng tốt hơn với cơ sở dữ liệu tài liệu NoSQL.
 
 26
 00:02:21,080 --> 00:02:24,230
-The answer is lies in the innovative approach.
+Câu trả lời nằm ở phương pháp sáng tạo.
 
 27
 00:02:24,230 --> 00:02:31,220
-In the PostgreSQL database, we use PostgreSQL Json object storage capabilities and transforming it
+Trong cơ sở dữ liệu PostgreSQL, chúng ta sử dụng các khả năng lưu trữ đối tượng Json của PostgreSQL và chuyển đổi nó
 
 28
 00:02:31,220 --> 00:02:39,200
-to the document database while maintaining the strong consistency so it is acting like as a naive SQL
+thành cơ sở dữ liệu tài liệu trong khi duy trì tính nhất quán mạnh mẽ nên nó hoạt động như một cơ sở dữ liệu SQL ngây thơ,
 
 29
 00:02:39,200 --> 00:02:46,700
-database, providing both document database NoSQL features and strong consistency like the relational
+cung cấp cả các tính năng NoSQL cơ sở dữ liệu tài liệu và tính nhất quán mạnh mẽ giống như các
 
 30
 00:02:46,700 --> 00:02:47,600
-databases.
+cơ sở dữ liệu quan hệ.
 
 31
 00:02:47,600 --> 00:02:49,130
-So how we can do that?
+Vậy chúng ta có thể làm điều đó như thế nào?
 
 32
 00:02:49,130 --> 00:02:57,500
-Of course we will use Martin ORM library and we have already know what was the Martin Martin is a object
+Tất nhiên chúng ta sẽ sử dụng thư viện Marten ORM và chúng ta đã biết Marten là gì, Marten là một thư viện
 
 33
 00:02:57,500 --> 00:02:59,450
-relational mapping library.
+ánh xạ quan hệ đối tượng.
 
 34
 00:02:59,450 --> 00:03:03,320
-And this will use the PostgreSQL Json capabilities.
+Và điều này sẽ sử dụng các khả năng Json của PostgreSQL.
 
 35
 00:03:03,410 --> 00:03:10,490
-And Martin is a powerful library that transform the PostgreSQL into dotnet transactional document database.
+Và Marten là một thư viện mạnh mẽ chuyển đổi PostgreSQL thành một cơ sở dữ liệu tài liệu giao dịch dotnet.
 
 36
 00:03:10,490 --> 00:03:16,760
-It combines the flexibility of a document database with the reliability of the relational databases
+Nó kết hợp tính linh hoạt của một cơ sở dữ liệu tài liệu với độ tin cậy của các cơ sở dữ liệu quan hệ
 
 37
 00:03:16,760 --> 00:03:22,550
-and catalog microservices using Martin for PostgreSQL interaction as a document database.
+và catalog microservices sử dụng Marten để tương tác với PostgreSQL như một cơ sở dữ liệu tài liệu.
 

@@ -1,34 +1,34 @@
 1
 00:00:00,140 --> 00:00:05,780
-In this video, we are going to test the late order and paint with scratches and clean architecture.
+Trong video này, chúng ta sẽ test late order và paint with scratches và clean architecture.
 
 2
 00:00:05,780 --> 00:00:12,740
-That means we will send Http delete method in the slash order slash order id in order to delete order
+Điều đó có nghĩa là chúng ta sẽ gửi Http delete method tới /order/{order id} để xóa order
 
 3
 00:00:12,740 --> 00:00:19,070
-with the ID for that purpose, please open the Visual Studio and go to the ordering API and open the
+với ID đó, để làm việc đó, vui lòng mở Visual Studio và đi tới ordering API và mở
 
 4
 00:00:19,070 --> 00:00:24,980
-Delete Order endpoint class and put the breakpoint in the beginning of the delegate handler, and put
+Delete Order endpoint class và đặt breakpoint ở đầu delegate handler, và đặt
 
 5
 00:00:24,980 --> 00:00:28,760
-the breakpoint at the end of the delegate handler, and this will be triggered.
+breakpoint ở cuối delegate handler, và cái này sẽ được trigger.
 
 6
 00:00:28,760 --> 00:00:31,370
-Delete order command handler in the application layer.
+Delete order command handler trong application layer.
 
 7
 00:00:31,370 --> 00:00:34,880
-For that purpose, go to Ordering Application Orders commands.
+Để làm việc đó, đi tới Ordering Application Orders commands.
 
 8
 00:00:34,880 --> 00:00:40,820
-Delete order and open the delete order handler class and put the breakpoint in the beginning of the
+Delete order và mở delete order handler class và đặt breakpoint ở đầu
 
 9
 00:00:40,820 --> 00:00:41,600
@@ -36,113 +36,113 @@ handler method.
 
 10
 00:00:41,600 --> 00:00:47,240
-This will be interactive database and delete existing order from the SQL server database.
+Cái này sẽ tương tác với database và xóa order hiện có từ SQL server database.
 
 11
 00:00:47,360 --> 00:00:51,500
-And now I'm going to test this delete order endpoint from the postman.
+Và bây giờ tôi sẽ test delete order endpoint này từ postman.
 
 12
 00:00:51,500 --> 00:00:56,510
-If you open the postman I have created http delete request in here.
+Nếu bạn mở postman, tôi đã tạo http delete request ở đây.
 
 13
 00:00:56,510 --> 00:01:02,300
-So this is the endpoint of the ordering URL orders and this is the order ID that we are going to delete,
+Vậy đây là endpoint của ordering URL orders và đây là order ID mà chúng ta sẽ xóa,
 
 14
 00:01:02,300 --> 00:01:04,010
-which is the last order id.
+đó là order id cuối cùng.
 
 15
 00:01:04,010 --> 00:01:06,560
-In the last video we have inserted new order.
+Trong video trước chúng ta đã insert một order mới.
 
 16
 00:01:06,560 --> 00:01:14,090
-So you can get this order ID from the http post or http put request in here you can see that last time
+Vậy bạn có thể lấy order ID này từ http post hoặc http put request ở đây bạn có thể thấy rằng lần trước
 
 17
 00:01:14,090 --> 00:01:15,590
-we have updated an order.
+chúng ta đã update một order.
 
 18
 00:01:15,590 --> 00:01:21,620
-So you can copy this order ID and paste into the http delete request parameters.
+Vậy bạn có thể copy order ID này và paste vào http delete request parameters.
 
 19
 00:01:21,620 --> 00:01:26,300
-And after that you can send http delete request to our application.
+Và sau đó bạn có thể gửi http delete request tới ứng dụng của chúng ta.
 
 20
 00:01:26,300 --> 00:01:29,330
-This will be hit the delete order end point class.
+Cái này sẽ hit delete order end point class.
 
 21
 00:01:29,750 --> 00:01:35,150
-As you can see, that order id comes from the request parameters, which is the ID information.
+Như bạn có thể thấy, order id đó đến từ request parameters, đó là thông tin ID.
 
 22
 00:01:35,150 --> 00:01:39,140
-And in here we will send the mediator delete order command.
+Và ở đây chúng ta sẽ gửi mediator delete order command.
 
 23
 00:01:39,140 --> 00:01:41,600
-With passing this ID this will be triggered.
+Bằng cách truyền ID này, nó sẽ được kích hoạt.
 
 24
 00:01:41,600 --> 00:01:45,410
-Delete order 100 class in application layer and in the handle method.
+Delete order 100 class trong application layer và trong handle method.
 
 25
 00:01:45,410 --> 00:01:48,470
-First of all we will check these order exists or not.
+Đầu tiên, chúng ta sẽ kiểm tra order này có tồn tại hay không.
 
 26
 00:01:48,470 --> 00:01:54,020
-If the order is not null, that means if the order is exist on database, we are going to remove this
+Nếu order không phải là null, điều đó có nghĩa là nếu order tồn tại trên database, chúng ta sẽ xóa order này
 
 27
 00:01:54,020 --> 00:01:55,340
-order from the database.
+khỏi database.
 
 28
 00:01:55,340 --> 00:02:01,490
-And if I hit the F5 this will be triggered the dispatch domain events and this will be respond back
+Và nếu tôi nhấn F5, điều này sẽ kích hoạt dispatch domain events và nó sẽ trả về
 
 29
 00:02:01,490 --> 00:02:04,820
-to the Or delete order response to the client application.
+delete order response cho ứng dụng client.
 
 30
 00:02:04,820 --> 00:02:07,730
-Here you can see the response is 200 okay.
+Ở đây bạn có thể thấy response là 200 okay.
 
 31
 00:02:07,730 --> 00:02:10,910
-And it is returning a success as a true response.
+Và nó đang trả về một success là true response.
 
 32
 00:02:10,910 --> 00:02:13,610
-That means operation completed successfully.
+Điều đó có nghĩa là thao tác đã hoàn thành thành công.
 
 33
 00:02:13,610 --> 00:02:18,350
-If we open the Visual Studio and open the SQL Server Object Explorer.
+Nếu chúng ta mở Visual Studio và mở SQL Server Object Explorer.
 
 34
 00:02:18,350 --> 00:02:24,800
-If you go to orders and expand the views order, order data, you can see that we have created an order
+Nếu bạn đi đến orders và expand views order, order data, bạn có thể thấy rằng chúng ta đã tạo một order
 
 35
 00:02:24,800 --> 00:02:26,570
-ID in the last videos.
+ID trong các video trước.
 
 36
 00:02:26,570 --> 00:02:30,470
-And if I refresh this page, you can see that the last order disappeared.
+Và nếu tôi refresh lại trang này, bạn có thể thấy rằng order cuối cùng đã biến mất.
 
 37
 00:02:30,470 --> 00:02:34,760
-That means we have successfully delete our order with a given ID information.
+Điều đó có nghĩa là chúng ta đã xóa order thành công với thông tin ID được cho.
 

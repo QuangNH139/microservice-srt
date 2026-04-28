@@ -1,22 +1,22 @@
 1
 00:00:00,170 --> 00:00:05,420
-In this video we are going to analyze application layer in ordering microservices.
+Trong video này, chúng ta sẽ phân tích application layer trong ordering microservices.
 
 2
 00:00:05,450 --> 00:00:09,410
-Let's remember application use cases of ordering microservices.
+Hãy nhớ lại các use cases của ordering microservices.
 
 3
 00:00:09,440 --> 00:00:16,219
-The first one is Crud ordering operations that including get order with items, create, update, delete,
+Cái đầu tiên là các hoạt động Crud ordering bao gồm lấy order với items, tạo, cập nhật, xóa,
 
 4
 00:00:16,219 --> 00:00:19,400
-order and add and remove order item from the order.
+order và thêm và xóa order item khỏi order.
 
 5
 00:00:19,430 --> 00:00:25,070
-Following that, we will see asynchronous ordering operations that including basket checkout and order
+Tiếp theo đó, chúng ta sẽ thấy các hoạt động ordering không đồng bộ bao gồm basket checkout và order
 
 6
 00:00:25,070 --> 00:00:25,880
@@ -24,71 +24,71 @@ fulfillment.
 
 7
 00:00:26,920 --> 00:00:32,950
-And after that we can remember the technical analysis of ordering microservices, which is pattern and
+Và sau đó chúng ta có thể nhớ lại phân tích kỹ thuật của ordering microservices, đó là các pattern và
 
 8
 00:00:32,950 --> 00:00:36,910
-principles that we are going to use when developing application layer.
+principles mà chúng ta sẽ sử dụng khi phát triển application layer.
 
 9
 00:00:36,940 --> 00:00:41,500
-Here you can see that we will implement six and six design patterns.
+Ở đây bạn có thể thấy rằng chúng ta sẽ triển khai sáu và sáu design patterns.
 
 10
 00:00:41,500 --> 00:00:44,710
-We will develop command and command handler patterns.
+Chúng ta sẽ phát triển command và command handler patterns.
 
 11
 00:00:44,710 --> 00:00:50,740
-And we will use mediator pattern with mediator library to perform mediator pipeline behaviors.
+Và chúng ta sẽ sử dụng mediator pattern với MediatR library để thực hiện mediator pipeline behaviors.
 
 12
 00:00:50,740 --> 00:00:54,880
-And we will also use fluent validation and logging cross-cutting concerns.
+Và chúng ta cũng sẽ sử dụng Fluent Validation và logging cho các cross-cutting concerns.
 
 13
 00:00:55,690 --> 00:01:00,520
-And here you can see the folder structure of the application layer that we are going to develop in this
+Và ở đây bạn có thể thấy cấu trúc folder của application layer mà chúng ta sẽ phát triển trong
 
 14
 00:01:00,520 --> 00:01:01,240
-section.
+phần này.
 
 15
 00:01:01,270 --> 00:01:06,970
-As you can see that we will start with the data folder which is including I application db context.
+Như bạn có thể thấy rằng chúng ta sẽ bắt đầu với folder data bao gồm I application db context.
 
 16
 00:01:07,000 --> 00:01:13,300
-This is the abstraction interface for application db context that we use in infrastructure layer.
+Đây là interface abstraction cho application db context mà chúng ta sử dụng trong infrastructure layer.
 
 17
 00:01:13,300 --> 00:01:18,430
-And after that you can see that the important folder is feature folder which is the orders.
+Và sau đó bạn có thể thấy folder quan trọng là feature folder đó là orders.
 
 18
 00:01:18,430 --> 00:01:24,520
-Orders has commands event handlers and queries sub folders that we are going to follow.
+Orders có các sub folders commands, event handlers và queries mà chúng ta sẽ theo dõi.
 
 19
 00:01:24,520 --> 00:01:25,870
-Sequence design pattern.
+mẫu thiết kế Sequence.
 
 20
 00:01:25,870 --> 00:01:30,160
-We will develop the commands under these commands folder and under commands.
+Chúng ta sẽ phát triển các commands dưới folder commands này và dưới commands.
 
 21
 00:01:30,160 --> 00:01:35,200
-You can see that we have Crud operations including the create, delete and update order.
+Bạn có thể thấy rằng chúng ta có các CRUD operations bao gồm create, delete và update order.
 
 22
 00:01:35,200 --> 00:01:39,670
-And for each folder structure we have command and handler class.
+Và đối với mỗi cấu trúc folder, chúng ta có command và handler class.
 
 23
 00:01:39,670 --> 00:01:44,470
-And if you look at the our queries you can see similar use cases in here.
+Và nếu bạn xem các queries của chúng ta, bạn có thể thấy các use cases tương tự ở đây.
 
 24
 00:01:44,470 --> 00:01:45,370
@@ -100,57 +100,57 @@ Get orders by name.
 
 26
 00:01:46,480 --> 00:01:50,050
-Get orders by customer queries located in this place.
+Get orders by customer queries nằm ở vị trí này.
 
 27
 00:01:50,050 --> 00:01:55,630
-And if you look at the event handlers, you can see that we can handle domain and integration events
+Và nếu bạn xem các event handlers, bạn có thể thấy rằng chúng ta có thể xử lý các domain và integration events
 
 28
 00:01:55,630 --> 00:01:56,830
-into this place.
+ở vị trí này.
 
 29
 00:01:56,830 --> 00:02:01,870
-And we will also have dependency injection and global using to performing ordering application.
+Và chúng ta cũng sẽ có dependency injection và global using để thực hiện ordering application.
 
 30
 00:02:02,170 --> 00:02:08,139
-After that, we can explore the NuGet packages that we are going to use in ordering application layer.
+Sau đó, chúng ta có thể khám phá các NuGet packages mà chúng ta sẽ sử dụng trong ordering application layer.
 
 31
 00:02:08,289 --> 00:02:13,480
-Here you can see that we will be using the libraries from the building blocks, including the mediator
+Ở đây bạn có thể thấy rằng chúng ta sẽ sử dụng các thư viện từ các building blocks, bao gồm mediator
 
 32
 00:02:13,660 --> 00:02:15,070
-and validation and so on.
+và validation và các thứ khác.
 
 33
 00:02:15,490 --> 00:02:20,440
-According to clean architecture, in the application layer, we are getting reference from the building
+Theo clean architecture, trong application layer, chúng ta nhận tham chiếu từ các building
 
 34
 00:02:20,440 --> 00:02:24,790
-blocks in order to get common operations for each microservices.
+blocks để có được các common operations cho mỗi microservices.
 
 35
 00:02:24,790 --> 00:02:30,430
-For that purpose, the building blocks libraries can be referencing in application layer that we can
+Với mục đích đó, các thư viện building blocks có thể được tham chiếu trong application layer để chúng ta có thể
 
 36
 00:02:30,430 --> 00:02:36,850
-use mediator extensions, dependency injection, fluent validation, fluent validation, dependency
+sử dụng mediator extensions, dependency injection, Fluent Validation, Fluent Validation, dependency
 
 37
 00:02:36,850 --> 00:02:40,630
-injection extensions, Mapserver and logging abstractions.
+injection extensions, Mapster và logging abstractions.
 
 38
 00:02:40,630 --> 00:02:45,970
-All these libraries that we are going to use from the building blocks in the application layer in order
+Tất cả các thư viện này mà chúng ta sẽ sử dụng từ các building blocks trong application layer để
 
 39
 00:02:45,970 --> 00:02:49,270
-to perform application use cases of the ordering application.
+thực hiện các application use cases của ordering application.
 

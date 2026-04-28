@@ -1,128 +1,128 @@
 1
 00:00:00,140 --> 00:00:06,080
-In this video, we are going to remember our e-commerce microservice deployment strategy, and we will
+Trong video này, chúng ta sẽ nhớ lại chiến lược triển khai microservice e-commerce của chúng ta, và chúng ta sẽ
 
 2
 00:00:06,080 --> 00:00:10,250
-start to set up Redis as a distributed cache using the Docker compose.
+bắt đầu thiết lập Redis như một distributed cache sử dụng Docker compose.
 
 3
 00:00:10,550 --> 00:00:16,940
-So here you can see that our basket microservices using the Redis distributed cache as a backing services.
+Vậy ở đây bạn có thể thấy rằng basket microservices của chúng ta đang sử dụng Redis distributed cache như một backing services.
 
 4
 00:00:16,940 --> 00:00:22,160
-So we should download Redis Docker image and run this image into our Docker compose environment.
+Vì vậy chúng ta nên tải xuống Redis Docker image và chạy image này trong môi trường Docker compose của chúng ta.
 
 5
 00:00:22,160 --> 00:00:26,630
-By this way we can connect to radius from our local basket microservices.
+Bằng cách này chúng ta có thể kết nối đến Redis từ basket microservices cục bộ của chúng ta.
 
 6
 00:00:26,930 --> 00:00:31,370
-But before that, let's remember our e-commerce microservice deployment strategy.
+Nhưng trước tiên, hãy nhớ lại chiến lược triển khai microservice e-commerce của chúng ta.
 
 7
 00:00:31,370 --> 00:00:34,880
-You can see that we have two options so far.
+Bạn có thể thấy rằng chúng ta có hai lựa chọn cho đến nay.
 
 8
 00:00:34,880 --> 00:00:38,780
-We have build and develop our microservices in local environment.
+Chúng ta đã xây dựng và phát triển microservices của chúng ta trong môi trường cục bộ.
 
 9
 00:00:38,780 --> 00:00:42,230
-But now we need to connect to our Redis cache.
+Nhưng bây giờ chúng ta cần kết nối đến Redis cache của chúng ta.
 
 10
 00:00:42,230 --> 00:00:46,940
-And we need IP and port number that we can connect from our local computer.
+Và chúng ta cần địa chỉ IP và số cổng mà chúng ta có thể kết nối từ máy tính cục bộ của chúng ta.
 
 11
 00:00:46,940 --> 00:00:53,450
-That means we will activate backing services on Docker environment with using Docker compose and expose
+Điều đó có nghĩa là chúng ta sẽ kích hoạt backing services trên môi trường Docker bằng cách sử dụng Docker compose và expose
 
 12
 00:00:53,450 --> 00:00:55,940
-endpoints to our local microservices.
+endpoints cho microservices cục bộ của chúng ta.
 
 13
 00:00:55,940 --> 00:01:02,060
-And the second step, we will orchestrate all microservices and backing services into Docker compose
+Và bước thứ hai, chúng ta sẽ điều phối tất cả các microservices và backing services vào Docker compose
 
 14
 00:01:02,060 --> 00:01:04,640
-and test inside of the full Docker environment.
+và kiểm tra bên trong toàn bộ môi trường Docker.
 
 15
 00:01:04,640 --> 00:01:07,970
-But now we will do the first part of the deployment.
+Nhưng bây giờ chúng ta sẽ thực hiện phần đầu tiên của quá trình triển khai.
 
 16
 00:01:07,970 --> 00:01:12,290
-So we will set up the Redis as a distributed cache using Docker compose.
+Vì vậy chúng ta sẽ thiết lập Redis như một distributed cache sử dụng Docker compose.
 
 17
 00:01:12,290 --> 00:01:13,460
-For that purpose.
+Cho mục đích đó.
 
 18
 00:01:13,460 --> 00:01:18,380
-Let's see how we can download and run Redis image into docker environment.
+Hãy xem cách chúng ta có thể tải xuống và chạy Redis image vào môi trường Docker.
 
 19
 00:01:18,380 --> 00:01:21,680
-Here you can see the Redis image into Docker Hub.
+Ở đây bạn có thể thấy Redis image trên Docker Hub.
 
 20
 00:01:21,680 --> 00:01:24,140
-This is the official image on the crop.
+Đây là image chính thức trên Docker.
 
 21
 00:01:24,140 --> 00:01:28,040
-And if you scroll down we can get more detail about the configurations.
+Và nếu bạn cuộn xuống, chúng ta có thể nhận được thêm chi tiết về các cấu hình.
 
 22
 00:01:28,040 --> 00:01:34,130
-And if you scroll down you can see that how we can start Redis instance on Docker environment with run
+Và nếu bạn cuộn xuống, bạn có thể thấy cách chúng ta khởi động instance Redis trên môi trường Docker với lệnh run
 
 23
 00:01:34,130 --> 00:01:35,510
-the docker run command.
+lệnh docker run.
 
 24
 00:01:35,510 --> 00:01:39,800
-And if you scroll down you can see additional details about the Redis image.
+Và nếu bạn cuộn xuống, bạn có thể thấy các chi tiết bổ sung về image Redis.
 
 25
 00:01:39,800 --> 00:01:46,490
-And if you go to the Redis CLI documentation, you can see that Redis is connecting the localhost and
+Và nếu bạn vào tài liệu Redis CLI, bạn có thể thấy rằng Redis kết nối với localhost và
 
 26
 00:01:46,490 --> 00:01:49,010
-the port number is 6379.
+số port là 6379.
 
 27
 00:01:49,010 --> 00:01:51,470
-This is the default port number for the radius.
+Đây là số port mặc định cho Redis.
 
 28
 00:01:51,470 --> 00:01:56,240
-And now we are going to download this Redis image and run this image.
+Và bây giờ chúng ta sẽ tải xuống image Redis này và chạy image này.
 
 29
 00:01:56,240 --> 00:01:58,490
-There are two ways that we can do that.
+Có hai cách mà chúng ta có thể làm.
 
 30
 00:01:58,490 --> 00:02:01,280
-The first one is running the docker run command.
+Cách thứ nhất là chạy lệnh docker run.
 
 31
 00:02:01,280 --> 00:02:04,220
-And the second one is using the docker compose command.
+Và cách thứ hai là sử dụng lệnh docker compose.
 
 32
 00:02:04,220 --> 00:02:09,800
-So we will follow the docker compose command and add the image into our docker-compose.yml file.
+Vậy chúng ta sẽ theo dõi lệnh docker compose và thêm image vào file docker-compose.yml của chúng ta.
 

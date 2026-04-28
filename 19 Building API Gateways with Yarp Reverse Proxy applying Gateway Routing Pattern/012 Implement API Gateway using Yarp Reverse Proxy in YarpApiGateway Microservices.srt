@@ -1,186 +1,186 @@
 1
 00:00:00,140 --> 00:00:04,970
-In this video we are going to implement API gateway using the reverse proxy.
+Trong video này chúng ta sẽ triển khai API gateway sử dụng reverse proxy.
 
 2
 00:00:05,090 --> 00:00:11,930
-So we will explore how to implement an API gateway using the API to efficiently route requests to internal
+Vậy chúng ta sẽ khám phá cách triển khai một API gateway sử dụng API để định tuyến các yêu cầu một cách hiệu quả đến các
 
 3
 00:00:11,930 --> 00:00:14,630
-microservices in our microservices.
+microservices nội bộ trong kiến trúc microservices của chúng ta.
 
 4
 00:00:14,630 --> 00:00:17,480
-So we can use Yarp to build an API gateway.
+Vậy chúng ta có thể sử dụng YARP để xây dựng một API gateway.
 
 5
 00:00:17,480 --> 00:00:21,650
-By providing the configuration for the services, we want to route the traffic.
+Bằng cách cung cấp cấu hình cho các dịch vụ, chúng ta muốn định tuyến lưu lượng truy cập.
 
 6
 00:00:21,650 --> 00:00:23,540
-And we have three microservices.
+Và chúng ta có ba microservices.
 
 7
 00:00:23,540 --> 00:00:28,940
-These are the catalog basket and ordering that we are going to route the traffic and this will be our
+Đó là catalog, basket và ordering mà chúng ta sẽ định tuyến lưu lượng truy cập và đây sẽ là các
 
 8
 00:00:28,940 --> 00:00:30,800
-downstream microservices.
+downstream microservices của chúng ta.
 
 9
 00:00:30,800 --> 00:00:36,980
-So if you look at the API gateway Rest APIs the API gateway will expose these endpoints.
+Vậy nếu bạn xem API gateway REST APIs thì API gateway sẽ expose các endpoints này.
 
 10
 00:00:36,980 --> 00:00:40,430
-Here you can see the ARP request API and internal microservices.
+Tại đây bạn có thể thấy các YARP request API và microservices nội bộ.
 
 11
 00:00:40,430 --> 00:00:46,430
-This is for the catalog microservices catalog has get product, get product by ID category and Crud
+Đây là cho các microservices catalog có get product, get product by ID, category và các
 
 12
 00:00:46,430 --> 00:00:47,180
-operations.
+hoạt động CRUD.
 
 13
 00:00:47,180 --> 00:00:51,860
-And we can put the catalog microservice name in the beginning of the endpoint.
+Và chúng ta có thể đặt tên microservice catalog ở đầu của endpoint.
 
 14
 00:00:51,860 --> 00:00:57,140
-And after that the rest of the URL can be same with the internal microservice URL.
+Và sau đó phần còn lại của URL có thể giống với URL của microservice nội bộ.
 
 15
 00:00:57,140 --> 00:01:02,900
-So we will follow the same steps for the shopping cart basket and also ordering microservices.
+Vậy chúng ta sẽ làm theo các bước tương tự cho shopping cart, basket và cả ordering microservices.
 
 16
 00:01:02,900 --> 00:01:08,000
-So the idea is that we should put the microservice name in the beginning of the URL and continue with
+Vậy ý tưởng là chúng ta nên đặt tên microservice ở đầu của URL và tiếp tục với
 
 17
 00:01:08,000 --> 00:01:09,770
-the microservices internal URL.
+URL nội bộ của microservices.
 
 18
 00:01:09,770 --> 00:01:16,430
-So if you follow this principle into our architecture, the API gateway will act as an intermediary,
+Vậy nếu bạn áp dụng nguyên tắc này vào kiến trúc của chúng ta, API gateway sẽ hoạt động như một trung gian,
 
 19
 00:01:16,430 --> 00:01:23,060
-routing incoming requests to the appropriate downstream microservices such as catalog, basket and ordering,
+định tuyến các yêu cầu đến các downstream microservices thích hợp như catalog, basket và ordering,
 
 20
 00:01:23,060 --> 00:01:26,120
-and to fully integrate basket ordering services.
+và để tích hợp đầy đủ các dịch vụ basket và ordering.
 
 21
 00:01:26,120 --> 00:01:32,000
-Similar route and cluster configurations need to be added into the application settings Json file into
+Các cấu hình tuyến đường và cụm tương tự cần được thêm vào tệp Json cài đặt ứng dụng
 
 22
 00:01:32,000 --> 00:01:38,120
-your API gateway project, and each microservices specific route are mapped to accordingly to ensure
+trong dự án API gateway của bạn, và mỗi tuyến đường cụ thể cho từng microservice được ánh xạ tương ứng để đảm bảo
 
 23
 00:01:38,120 --> 00:01:40,880
-request Proxied to correct destination.
+các yêu cầu được Proxy đến đúng điểm đến.
 
 24
 00:01:40,880 --> 00:01:44,480
-So now I'm going to explain and show our Visual Studio.
+Vậy bây giờ tôi sẽ giải thích và hướng dẫn cho bạn thấy trong Visual Studio.
 
 25
 00:01:44,480 --> 00:01:49,040
-If you open the Visual Studio, you can see that in the last configuration we have added the reverse
+Nếu bạn mở Visual Studio, bạn có thể thấy rằng ở cấu hình cuối cùng, chúng tôi đã thêm các cấu hình reverse proxy
 
 26
 00:01:49,040 --> 00:01:54,230
-proxy configurations under the Application Settings Json file into your API gateway project.
+vào tệp Json cài đặt ứng dụng trong dự án API gateway của bạn.
 
 27
 00:01:54,230 --> 00:02:00,470
-And according to these configurations, we will map the incoming order requests to the destination of
+Và theo các cấu hình này, chúng tôi sẽ ánh xạ các yêu cầu order đến điểm đến của
 
 28
 00:02:00,470 --> 00:02:06,500
-the catalog microservices, and we will develop API gateway configurations for redirecting each request
+catalog microservice, và chúng tôi sẽ phát triển các cấu hình API gateway để chuyển hướng mỗi yêu cầu
 
 29
 00:02:06,500 --> 00:02:09,650
-to downstream microservices for each microservices.
+đến các downstream microservices cho từng microservice.
 
 30
 00:02:09,650 --> 00:02:13,550
-For that purpose, we are going to define our microservice parameters.
+Để làm được điều đó, chúng ta sẽ định nghĩa các tham số microservice của chúng ta.
 
 31
 00:02:13,550 --> 00:02:16,640
-That means microservice names for the path naming.
+Tức là tên microservice cho việc đặt tên đường dẫn.
 
 32
 00:02:16,640 --> 00:02:21,350
-For the path naming, we can give catalog basket and ordering services.
+Đối với việc đặt tên đường dẫn, chúng ta có thể sử dụng catalog, basket và ordering services.
 
 33
 00:02:21,350 --> 00:02:27,080
-And this is the path naming that we are going to expose the external client requests with separating
+Và đây là việc đặt tên đường dẫn mà chúng ta sẽ expose các yêu cầu từ external client bằng cách phân tách
 
 34
 00:02:27,080 --> 00:02:29,750
-these microservices according to the incoming requests.
+các microservice này theo các yêu cầu đến.
 
 35
 00:02:29,750 --> 00:02:34,760
-So that means if you look at the order architecture, the client application send the requests according
+Vậy nó có nghĩa là nếu bạn xem kiến trúc đã được đặt hàng, ứng dụng client gửi các yêu cầu theo
 
 36
 00:02:34,790 --> 00:02:36,260
-to our path naming.
+việc đặt tên đường dẫn của chúng tôi.
 
 37
 00:02:36,260 --> 00:02:41,750
-For example, if you send the catalog services, we will redirect the request into downstream catalog
+Ví dụ, nếu bạn gửi đến catalog services, chúng tôi sẽ chuyển hướng yêu cầu đến downstream catalog
 
 38
 00:02:41,750 --> 00:02:42,650
-microservices.
+microservice.
 
 39
 00:02:42,650 --> 00:02:47,420
-And if the request comes from the basket service and continue with the basket service endpoints, we
+Và nếu yêu cầu đến từ basket service và tiếp tục với các endpoint của basket service, chúng tôi
 
 40
 00:02:47,420 --> 00:02:50,390
-will redirect to internal basket microservices and so on.
+sẽ chuyển hướng đến internal basket microservice và cứ tiếp tục như vậy.
 
 41
 00:02:50,390 --> 00:02:56,690
-So this is the path naming that we have defined into our route configurations into the Yarp configuration
+Đây là cách đặt tên đường dẫn mà chúng ta đã định nghĩa trong cấu hình tuyến đường của chúng ta trong cấu hình YARP
 
 42
 00:02:56,690 --> 00:02:57,200
-file.
+tệp.
 
 43
 00:02:57,200 --> 00:03:03,710
-And after that we can define the configuration structure that including the route cluster path and destination.
+Và sau đó chúng ta có thể định nghĩa cấu trúc cấu hình bao gồm đường dẫn route cluster và destination.
 
 44
 00:03:03,710 --> 00:03:09,680
-So now if you go back to our Visual Studio, you can see that this reverse proxy settings starting with
+Vậy bây giờ nếu bạn quay lại Visual Studio của chúng ta, bạn có thể thấy rằng các thiết lập reverse proxy này bắt đầu với
 
 45
 00:03:09,680 --> 00:03:10,820
-the route definitions.
+các định nghĩa route.
 
 46
 00:03:10,820 --> 00:03:16,790
-And after that in the route definition, we have a cluster ID that need to define just after the route
+Và sau đó trong định nghĩa route, chúng ta có một cluster ID mà chúng ta cần định nghĩa ngay sau route
 
 47
 00:03:16,790 --> 00:03:17,480
@@ -188,19 +188,19 @@ definition.
 
 48
 00:03:17,480 --> 00:03:23,030
-This is the cluster definition that we need to define cluster one, and using cluster one in the routes
+Đây là định nghĩa cluster mà chúng ta cần định nghĩa cluster một, và sử dụng cluster một trong các routes
 
 49
 00:03:23,030 --> 00:03:24,830
-of the reverse proxy settings.
+của các thiết lập reverse proxy.
 
 50
 00:03:24,830 --> 00:03:28,730
-And after that we can continue with the path definition.
+Và sau đó chúng ta có thể tiếp tục với định nghĩa đường dẫn.
 
 51
 00:03:28,730 --> 00:03:34,070
-If you continue the configuration, you can see that after cluster ID in the routes we will use path
+Nếu bạn tiếp tục cấu hình, bạn có thể thấy rằng sau cluster ID trong các routes chúng ta sẽ sử dụng path
 
 52
 00:03:34,070 --> 00:03:34,820
@@ -208,39 +208,39 @@ definition.
 
 53
 00:03:34,820 --> 00:03:40,670
-That is, indicate that the matching pattern for the path information that we are going to redirect
+Đó là, chỉ ra mẫu khớp cho thông tin đường dẫn mà chúng ta sẽ chuyển hướng
 
 54
 00:03:40,670 --> 00:03:41,780
-to this destination.
+đến destination này.
 
 55
 00:03:41,780 --> 00:03:45,950
-So that means in the last step we have a destination configuration.
+Vậy điều đó có nghĩa là ở bước cuối cùng chúng ta có một cấu hình destination.
 
 56
 00:03:45,950 --> 00:03:50,750
-This will be including a destination address for internal downstream microservices.
+Điều này sẽ bao gồm một địa chỉ destination cho các downstream microservices nội bộ.
 
 57
 00:03:50,750 --> 00:03:57,560
-In our case, we will match the incoming order requests and designate to catalog microservices.
+Trong trường hợp của chúng ta, chúng ta sẽ khớp các request order đến và chỉ định đến catalog microservices.
 
 58
 00:03:57,560 --> 00:04:00,890
-But this time we will define for each microservices.
+Nhưng lần này chúng ta sẽ định nghĩa cho từng microservices.
 
 59
 00:04:00,890 --> 00:04:07,370
-That means we need to create route, cluster, path and destination for each microservices.
+Điều đó có nghĩa là chúng ta cần tạo route, cluster, path và destination cho từng microservices.
 
 60
 00:04:07,370 --> 00:04:13,400
-For example, for catalog microservices, we can use route as a catalog route, cluster as a catalog
+Ví dụ, đối với catalog microservices, chúng ta có thể sử dụng route như là catalog route, cluster như là catalog
 
 61
 00:04:13,400 --> 00:04:19,970
-cluster, path as a slash catalog service, and slash catch all for incoming all requests into catalog
+cluster, path là một slash catalog service, và slash catch all cho tất cả các request đến catalog
 
 62
 00:04:19,970 --> 00:04:21,019
@@ -248,75 +248,75 @@ microservices.
 
 63
 00:04:21,019 --> 00:04:26,990
-As a destination, we can give localhost 6000, which is a Docker address of the catalog microservices.
+Là một destination, chúng ta có thể đặt localhost 6000, đây là địa chỉ Docker của catalog microservices.
 
 64
 00:04:26,990 --> 00:04:30,710
-So that means we need a route naming and structure.
+Điều đó có nghĩa là chúng ta cần một route naming và structure.
 
 65
 00:04:30,710 --> 00:04:33,170
-We define the routes for each microservices.
+Chúng ta định nghĩa các routes cho mỗi microservices.
 
 66
 00:04:33,170 --> 00:04:35,510
-For catalog we need to catalog route.
+Cho catalog chúng ta cần catalog route.
 
 67
 00:04:35,510 --> 00:04:40,040
-For basket we need to basket route for ordering, we need to ordering route.
+Cho basket chúng ta cần basket route, cho ordering chúng ta cần ordering route.
 
 68
 00:04:40,040 --> 00:04:46,280
-And each route is mapped to a corresponding cluster which is then directs to request to designated service.
+Và mỗi route được ánh xạ tới một cluster tương ứng, cluster này sau đó sẽ chuyển request tới service được chỉ định.
 
 69
 00:04:46,280 --> 00:04:50,120
-So in here you can see that we will define three route services.
+Vậy ở đây bạn có thể thấy chúng ta sẽ định nghĩa ba route services.
 
 70
 00:04:50,120 --> 00:04:54,650
-And these will be three destination services for internal microservices.
+Và đây sẽ là ba destination services cho internal microservices.
 
 71
 00:04:54,650 --> 00:04:59,480
-So now let's apply these configurations into our application Settings.json file.
+Vậy bây giờ hãy áp dụng các cấu hình này vào tệp appsettings.json của ứng dụng chúng ta.
 
 72
 00:04:59,480 --> 00:04:59,720
-And.
+Và.
 
 73
 00:04:59,920 --> 00:05:02,650
-For catalog service, I am going to change the configuration.
+Cho catalog service, tôi sẽ thay đổi cấu hình.
 
 74
 00:05:02,650 --> 00:05:08,740
-So first of all, I am going to remove all reverse proxy settings and replace with the catalog microservices.
+Vậy đầu tiên, tôi sẽ xóa tất cả các cài đặt reverse proxy và thay thế bằng catalog microservices.
 
 75
 00:05:08,740 --> 00:05:12,280
-And here you can see the our latest reverse proxy configuration.
+Và ở đây bạn có thể thấy cấu hình reverse proxy mới nhất của chúng ta.
 
 76
 00:05:12,280 --> 00:05:14,770
-And this is only for catalog microservices.
+Và đây chỉ là cho catalog microservices.
 
 77
 00:05:14,770 --> 00:05:20,740
-And according to these configuration you can see that the root is catalog root which is mapped to the
+Và theo các cấu hình này bạn có thể thấy rằng root là catalog root, được ánh xạ tới
 
 78
 00:05:20,740 --> 00:05:22,600
-cluster of the catalog cluster.
+cluster của catalog cluster.
 
 79
 00:05:22,600 --> 00:05:26,200
-And you can see the path starting with the slash catalog service.
+Và bạn có thể thấy path bắt đầu bằng slash catalog service.
 
 80
 00:05:26,200 --> 00:05:32,170
-And catch all that captures all the requests prefixed with the catalog service and route them to the
+Và catch all sẽ bắt tất cả các request được tiền tố bằng catalog service và route chúng tới
 
 81
 00:05:32,170 --> 00:05:32,590
@@ -324,43 +324,43 @@ catalog.
 
 82
 00:05:32,590 --> 00:05:35,980
-Microservices running at the localhost 6000.
+Microservices chạy tại localhost 6000.
 
 83
 00:05:35,980 --> 00:05:42,130
-And the catch all pattern syntax is used to forward the path and query string from the original request
+Và cú pháp catch all pattern được sử dụng để chuyển tiếp đường dẫn và query string từ yêu cầu ban đầu
 
 84
 00:05:42,160 --> 00:05:47,770
-to the destination service, and here you can see the route definition, which name is catalog route,
+đến dịch vụ đích, và ở đây bạn có thể thấy định nghĩa route, có tên là catalog route,
 
 85
 00:05:47,770 --> 00:05:52,810
-and the cluster ID we have defined catalog cluster that is under clusters.
+và cluster ID chúng ta đã định nghĩa catalog cluster nằm dưới clusters.
 
 86
 00:05:52,810 --> 00:05:54,520
-These are catalog cluster.
+Đây là catalog cluster.
 
 87
 00:05:54,520 --> 00:05:58,540
-And we have defined path and transform data and destinations.
+Và chúng ta đã định nghĩa path và transform data và destinations.
 
 88
 00:05:58,540 --> 00:06:01,660
-According to these catalog rod and catalog cluster.
+Theo catalog route và catalog cluster này.
 
 89
 00:06:01,660 --> 00:06:07,630
-And make sure that your destination address should be Http and point for the internal microservices.
+Và hãy đảm bảo rằng địa chỉ destination của bạn phải là Http và trỏ đến các microservices nội bộ.
 
 90
 00:06:07,630 --> 00:06:11,590
-And using the 6000 or 60 related port numbers.
+Và sử dụng các số port 6000 hoặc 60 liên quan.
 
 91
 00:06:11,590 --> 00:06:17,590
-In our case, I am going to use catalog microservice internal docker address, which is the http localhost
+Trong trường hợp của chúng ta, tôi sẽ sử dụng catalog microservice internal docker address, đó là http localhost
 
 92
 00:06:17,590 --> 00:06:18,730
@@ -368,9 +368,9 @@ In our case, I am going to use catalog microservice internal docker address, whi
 
 93
 00:06:18,730 --> 00:06:25,150
-So as you can see that we have defined catalog microservices, reverse proxy rod and cluster definitions.
+Vậy như bạn có thể thấy chúng ta đã định nghĩa catalog microservices, reverse proxy route và cluster definitions.
 
 94
 00:06:25,150 --> 00:06:28,510
-And in the next video we will continue with the other microservices.
+Và trong video tiếp theo chúng ta sẽ tiếp tục với các microservices khác.
 

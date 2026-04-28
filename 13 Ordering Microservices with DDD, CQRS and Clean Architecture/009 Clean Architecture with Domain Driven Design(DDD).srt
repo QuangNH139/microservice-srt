@@ -1,98 +1,98 @@
 1
 00:00:00,200 --> 00:00:06,050
-In this video, we are going to learn how to use clean architecture with domain driven design.
+Trong video này, chúng ta sẽ học cách sử dụng clean architecture với domain driven design.
 
 2
 00:00:06,200 --> 00:00:13,130
-Clean architecture focuses on separating concerns into layers, ensuring that dependencies are directed
+Clean architecture tập trung vào việc tách biệt các mối quan tâm thành các lớp, đảm bảo rằng các phụ thuộc được hướng
 
 3
 00:00:13,160 --> 00:00:15,620
-outwards from the core business logic.
+ra ngoài từ logic nghiệp vụ cốt lõi.
 
 4
 00:00:16,070 --> 00:00:21,770
-On the other hand, domain driven design is centered around the domain model, which represents the
+Mặt khác, domain driven design tập trung vào mô hình miền, đại diện cho
 
 5
 00:00:21,770 --> 00:00:23,510
-business and its rules.
+doanh nghiệp và các quy tắc của nó.
 
 6
 00:00:23,510 --> 00:00:29,540
-It emphasizes understanding the business domain, creating a ubiquitous language, and aligning the
+Nó nhấn mạnh việc hiểu rõ miền kinh doanh, tạo ra ngôn ngữ phổ quát, và căn chỉnh
 
 7
 00:00:29,540 --> 00:00:31,940
-software design closely with the domain.
+thiết kế phần mềm sát sao với miền.
 
 8
 00:00:31,940 --> 00:00:34,640
-You can find the architecture images on the slide.
+Bạn có thể tìm thấy các hình ảnh kiến trúc trên slide.
 
 9
 00:00:34,640 --> 00:00:36,860
-We have different clean architecture images.
+Chúng ta có các hình ảnh clean architecture khác nhau.
 
 10
 00:00:36,860 --> 00:00:42,680
-In here we have concentric circles and each representing different layers of the application.
+Ở đây chúng ta có các vòng tròn đồng tâm và mỗi vòng đại diện cho các lớp khác nhau của ứng dụng.
 
 11
 00:00:42,680 --> 00:00:48,200
-And also you can see clean architecture layers in rectangles with specifying the dependencies.
+Và bạn cũng có thể thấy các lớp clean architecture trong các hình chữ nhật với việc chỉ định các phụ thuộc.
 
 12
 00:00:48,200 --> 00:00:52,310
-And here you can find the domain driven design layers and dependencies.
+Và ở đây bạn có thể tìm thấy các lớp domain driven design và các phụ thuộc.
 
 13
 00:00:52,310 --> 00:00:54,950
-And it is very similar with the clean architecture.
+Và nó rất giống với clean architecture.
 
 14
 00:00:54,950 --> 00:00:58,610
-And this will be an implementation of the domain driven design layers.
+Và đây sẽ là một triển khai của các lớp domain driven design.
 
 15
 00:00:58,610 --> 00:01:04,700
-If we look at the dependency of this architecture, you can see that the dependencies are explaining
+Nếu chúng ta xem xét phụ thuộc của kiến trúc này, bạn có thể thấy rằng các phụ thuộc được giải thích
 
 16
 00:01:04,700 --> 00:01:07,610
-with these arrows for each architecture style.
+bằng các mũi tên này cho từng kiểu kiến trúc.
 
 17
 00:01:07,610 --> 00:01:11,930
-And the main principle of these dependencies is dependency rule.
+Và nguyên tắc chính của các phụ thuộc này là dependency rule.
 
 18
 00:01:11,960 --> 00:01:17,660
-As we already seen in the dependency inversion principle, there is a dependency rule, and this rule
+Như chúng ta đã thấy trong nguyên tắc dependency inversion, có một dependency rule, và quy tắc này
 
 19
 00:01:17,660 --> 00:01:22,100
-says that source code dependencies can only point inwards.
+nói rằng các phụ thuộc của mã nguồn chỉ có thể hướng vào trong.
 
 20
 00:01:22,100 --> 00:01:28,880
-Here you can see that source code dependencies can only point the inwards, and the inner circle can
+Ở đây bạn có thể thấy rằng các phụ thuộc của mã nguồn chỉ có thể hướng vào trong, và vòng tròn bên trong có thể
 
 21
 00:01:28,880 --> 00:01:31,130
-know anything at all about something.
+không biết gì cả về cái gì đó.
 
 22
 00:01:31,130 --> 00:01:37,640
-In outer circle only implementation, those of abstractions will become external outer layers.
+Trong vòng tròn bên ngoài chỉ có implementation, những abstraction sẽ trở thành các lớp bên ngoài.
 
 23
 00:01:38,000 --> 00:01:44,150
-So this is the dependency rule that we can see different implementation and illustration of dependencies.
+Vậy đây là dependency rule mà chúng ta có thể thấy các implementation và minh họa khác nhau của dependencies.
 
 24
 00:01:44,150 --> 00:01:50,600
-And these will be pointing inwards always because domain layers implement the business logic with the
+Và những cái này sẽ luôn chỉ vào trong vì các domain layers triển khai business logic với
 
 25
 00:01:50,600 --> 00:01:51,710
@@ -100,39 +100,39 @@ abstractions.
 
 26
 00:01:51,710 --> 00:01:58,160
-So now let's see how we can integrate domain driven design in clean architecture layers.
+Vậy bây giờ hãy xem chúng ta có thể tích hợp domain driven design vào các lớp clean architecture như thế nào.
 
 27
 00:01:58,160 --> 00:02:03,980
-As you can see the image we have different illustration of the clean architecture again in a circle
+Như bạn có thể thấy trong hình ảnh, chúng ta có các minh họa khác nhau của clean architecture lại trong một giai đoạn hình tròn.
 
 28
 00:02:03,980 --> 00:02:04,400
-phase.
+giai đoạn.
 
 29
 00:02:04,400 --> 00:02:06,170
-And you can see the rectangle phase.
+Và bạn có thể thấy giai đoạn hình chữ nhật.
 
 30
 00:02:06,170 --> 00:02:11,540
-But this time as you can see in the image there is separating two main concepts.
+Nhưng lần này như bạn có thể thấy trong hình ảnh, có sự tách biệt hai khái niệm chính.
 
 31
 00:02:11,540 --> 00:02:14,960
-These are the core layers and peripheral layers.
+Đây là các lớp core và peripheral layers.
 
 32
 00:02:14,960 --> 00:02:20,930
-And core modules include domain and application layers and peripheral layers.
+Và các core modules bao gồm domain và application layers và peripheral layers.
 
 33
 00:02:20,930 --> 00:02:21,590
-These are.
+Đây là.
 
 34
 00:02:21,590 --> 00:02:27,920
-The peripheral modules include all external outer layer which are the persistence infrastructure and
+Các peripheral modules bao gồm tất cả các lớp bên ngoài bên ngoài đó là persistence infrastructure và
 
 35
 00:02:27,920 --> 00:02:29,270
@@ -140,159 +140,159 @@ presentation layers.
 
 36
 00:02:30,170 --> 00:02:31,790
-Of course, all of these layers.
+Tất nhiên, tất cả các lớp này.
 
 37
 00:02:31,790 --> 00:02:38,750
-Using the Dependency Inversion principle inside core layers, we should have pure logic and abstractions
+Sử dụng Dependency Inversion principle bên trong các core layers, chúng ta nên có logic thuần và abstractions
 
 38
 00:02:38,750 --> 00:02:42,650
-and never have any knowledge about the outside of these layers.
+và không bao giờ có bất kỳ kiến thức nào về bên ngoài những lớp này.
 
 39
 00:02:42,650 --> 00:02:48,890
-Implementations and inside layers work with the abstractions that are defined within those layers,
+Implementations và các lớp bên trong làm việc với các abstractions được định nghĩa trong những lớp đó,
 
 40
 00:02:48,890 --> 00:02:52,970
-and the actual implementation logic exists in the outside of the layers.
+và logic implementation thực tế tồn tại bên ngoài các lớp.
 
 41
 00:02:52,970 --> 00:02:58,910
-So dependency inversion principle provide to work with abstractions and implement them outside layers,
+Vậy nguyên lý đảo ngược phụ thuộc cung cấp cho chúng ta cách làm việc với các abstractions và triển khai chúng bên ngoài các layers,
 
 42
 00:02:58,910 --> 00:03:04,880
-but in a concept manner we can distinction between what is essential, which is mean the core layer
+nhưng theo một cách khái niệm, chúng ta có thể phân biệt giữa cái gì là cần thiết, tức là core layer
 
 43
 00:03:04,880 --> 00:03:08,120
-and what is the details, which is the peripheral layers.
+và cái gì là chi tiết, đó là các peripheral layers.
 
 44
 00:03:08,120 --> 00:03:10,910
-So let's talk about the core layers.
+Vậy hãy nói về các core layers.
 
 45
 00:03:10,910 --> 00:03:16,820
-In the core layers we can say that domain and application layer in different illustration.
+Trong các core layers, chúng ta có thể nói rằng domain layer và application layer ở những lớp khác nhau.
 
 46
 00:03:16,820 --> 00:03:22,730
-You can see in here we put two core layers including the domain and application class library.
+Bạn có thể thấy ở đây chúng ta đặt hai core layers bao gồm domain và application class library.
 
 47
 00:03:22,730 --> 00:03:30,140
-And these will be communicate with the peripheral layers to implement actual logic to implementation
+Và chúng sẽ giao tiếp với các peripheral layers để triển khai logic thực tế cho việc thực hiện
 
 48
 00:03:30,140 --> 00:03:34,190
-of these presentation and infrastructure operations in under the peripheral layers.
+các presentation và infrastructure operations trong các peripheral layers.
 
 49
 00:03:34,190 --> 00:03:38,060
-So this is the main two divisions of the clean architecture.
+Vậy đây là hai phân chia chính của clean architecture.
 
 50
 00:03:38,060 --> 00:03:42,800
-But inside of these core and Fairfield layers we have domain and application layer.
+Nhưng bên trong các core và peripheral layers này, chúng ta có domain layer và application layer.
 
 51
 00:03:42,800 --> 00:03:49,550
-So in the domain layer which is development of the domain logic with abstractions, it includes interfaces
+Vậy trong domain layer, đó là phát triển logic domain với các abstractions, nó bao gồm các interfaces
 
 52
 00:03:49,550 --> 00:03:54,020
-and interfaces drives business requirement with the light implementation.
+và interfaces thúc đẩy yêu cầu kinh doanh với việc triển khai nhẹ.
 
 53
 00:03:54,020 --> 00:04:00,500
-The core layer project is a center of the clean architecture design, and all other project dependencies
+Project core layer là trung tâm của thiết kế clean architecture, và tất cả các project dependencies khác
 
 54
 00:04:00,500 --> 00:04:02,390
-should point inwards to it.
+phải chỉ vào nó.
 
 55
 00:04:02,390 --> 00:04:08,960
-So that means dependencies comes from the outside layer, the inverse layer and this layer build out
+Vậy điều đó có nghĩa là các dependencies đến từ các outside layers, các inverse layers, và layer này được xây dựng
 
 56
 00:04:08,960 --> 00:04:15,470
-using the domain driven principles, and nothing in it has any knowledge of anything outside of it.
+sử dụng các nguyên lý domain driven, và không có gì trong nó có bất kỳ kiến thức nào về bất cứ cái gì bên ngoài nó.
 
 57
 00:04:15,470 --> 00:04:19,370
-For the most part, dependency injection is not using in here.
+Phần lớn thời gian, dependency injection không được sử dụng ở đây.
 
 58
 00:04:19,370 --> 00:04:27,140
-So let's check the application layer in application layer for development of the domain logic and implementation.
+Vậy hãy xem application layer, trong application layer để phát triển logic domain và triển khai.
 
 59
 00:04:27,140 --> 00:04:33,710
-So these application layer declares interfaces and other abstractions which stands for the infrastructure
+Vậy application layer này khai báo các interfaces và các abstractions khác đại diện cho các infrastructure
 
 60
 00:04:33,710 --> 00:04:36,230
-persistence and presentation components.
+persistence và presentation components.
 
 61
 00:04:36,230 --> 00:04:43,130
-The actual implementation of these components are not declared in this layer, but they are provided
+Việc triển khai thực tế của các thành phần này không được khai báo trong layer này, nhưng chúng được cung cấp
 
 62
 00:04:43,130 --> 00:04:44,180
-an application.
+một ứng dụng.
 
 63
 00:04:44,180 --> 00:04:50,420
-Components via dependency injection interfaces drives business requirements and implementation in this
+Các thành phần thông qua dependency injection interfaces điều khiển các yêu cầu kinh doanh và triển khai trong
 
 64
 00:04:50,420 --> 00:04:50,990
-layer.
+layer này.
 
 65
 00:04:50,990 --> 00:04:56,750
-So that means application layer basically implements our business logics and use case operations.
+Điều đó có nghĩa là application layer về cơ bản triển khai logic kinh doanh của chúng ta và các hoạt động use case.
 
 66
 00:04:56,750 --> 00:04:59,780
-And here you can see the application layer using the.
+Và ở đây bạn có thể thấy application layer sử dụng
 
 67
 00:04:59,900 --> 00:05:06,920
-Presentation and infrastructure layers as an abstraction with interfaces in the application layer and
+Presentation và infrastructure layers như một abstraction với interfaces trong application layer và
 
 68
 00:05:06,920 --> 00:05:08,420
-performing business logic.
+thực hiện business logic.
 
 69
 00:05:08,870 --> 00:05:11,480
-So now we can go ahead to peripheral layer.
+Vậy bây giờ chúng ta có thể tiếp tục đến peripheral layer.
 
 70
 00:05:11,480 --> 00:05:17,660
-And in here you can see that peripheral layer including presentation persistence and infrastructure.
+Và ở đây bạn có thể thấy peripheral layer bao gồm presentation, persistence và infrastructure.
 
 71
 00:05:17,690 --> 00:05:20,090
-So let me start with the infrastructure layer.
+Vậy hãy bắt đầu với infrastructure layer.
 
 72
 00:05:20,120 --> 00:05:26,090
-This is the implementation of the core interfaces in this project with the Entity Framework core and
+Đây là việc triển khai các core interfaces trong project này với Entity Framework Core và
 
 73
 00:05:26,090 --> 00:05:27,380
-other dependencies.
+các phụ thuộc khác.
 
 74
 00:05:27,410 --> 00:05:33,590
-The infrastructure layer contains implementation for the infrastructure interfaces declared in the application
+Infrastructure layer chứa việc triển khai các infrastructure interfaces được khai báo trong application
 
 75
 00:05:33,590 --> 00:05:34,160
@@ -300,151 +300,151 @@ layer.
 
 76
 00:05:34,160 --> 00:05:41,840
-And most of our applications, dependence on external resources should be implemented in classes defined
+Và trong hầu hết các ứng dụng của chúng ta, sự phụ thuộc vào các tài nguyên bên ngoài nên được triển khai trong các lớp được định nghĩa
 
 77
 00:05:41,840 --> 00:05:43,340
-in the infrastructure project.
+trong infrastructure project.
 
 78
 00:05:43,340 --> 00:05:48,500
-That means this class must implement the interfaces defined in the core layer.
+Điều đó có nghĩa là lớp này phải triển khai các interfaces được định nghĩa trong core layer.
 
 79
 00:05:48,530 --> 00:05:54,650
-Here you can see another illustration infrastructure project must implement the interfaces defined in
+Ở đây bạn có thể thấy một minh họa khác - infrastructure project phải triển khai các interfaces được định nghĩa trong
 
 80
 00:05:54,650 --> 00:05:55,460
-the core layer.
+core layer.
 
 81
 00:05:55,460 --> 00:06:01,280
-And this will be actual implementation code for database connection and external system integration
+Và đây sẽ là code triển khai thực tế cho kết nối cơ sở dữ liệu và tích hợp hệ thống bên ngoài
 
 82
 00:06:01,280 --> 00:06:02,150
-and so on.
+và cứ tiếp tục như vậy.
 
 83
 00:06:02,850 --> 00:06:08,640
-And if you have very large number of the project with many dependencies, it makes sense to have more
+Và nếu bạn có số lượng dự án rất lớn với nhiều dependencies, sẽ hợp lý hơn khi có
 
 84
 00:06:08,640 --> 00:06:15,450
-than one infrastructure project, for example, infrastructure, that data or infrastructure that extension
+nhiều hơn một infrastructure project, ví dụ như infrastructure data hoặc infrastructure extension
 
 85
 00:06:15,450 --> 00:06:17,520
-or external systems and so on.
+hoặc các hệ thống bên ngoài và cứ tiếp tục như vậy.
 
 86
 00:06:17,520 --> 00:06:23,160
-But in most projects, one infrastructure project that contains folder work very well.
+Nhưng trong hầu hết các dự án, một infrastructure project chứa các folder hoạt động rất tốt.
 
 87
 00:06:23,160 --> 00:06:29,550
-And this could be include, for example, email provider, file access, web API client and so on.
+Và điều này có thể bao gồm, ví dụ như email provider, file access, web API client và cứ tiếp tục như vậy.
 
 88
 00:06:29,550 --> 00:06:35,790
-And lastly, we can explain the presentation layer under the Fairfield layer in the presentation layer,
+Và cuối cùng, chúng ta có thể giải thích presentation layer dưới peripheral layer là presentation layer,
 
 89
 00:06:35,790 --> 00:06:41,940
-which is the API layer that brings together all the application layer components and injects them with
+đó là API layer mang lại tất cả các thành phần application layer và inject chúng với
 
 90
 00:06:41,940 --> 00:06:43,530
-a proper implementation.
+một triển khai phù hợp.
 
 91
 00:06:43,530 --> 00:06:50,040
-So this is the development of UI logic with the implementation in here also interfaces drives business
+Vậy đây là phát triển logic UI với triển khai ở đây, cũng là interfaces định hướng yêu cầu kinh doanh
 
 92
 00:06:50,040 --> 00:06:52,620
-requirement and implementation of this layer.
+và triển khai của layer này.
 
 93
 00:06:52,620 --> 00:06:57,750
-And here you can see different illustration presentation layer under the peripheral layer.
+Và ở đây bạn có thể thấy minh họa khác nhau của presentation layer dưới peripheral layer.
 
 94
 00:06:57,750 --> 00:07:04,830
-As you can see that all the arrows is go to presentation layer which is implemented of the UI operations
+Như bạn có thể thấy, tất cả mũi tên đều hướng đến presentation layer, được triển khai của UI operations
 
 95
 00:07:04,830 --> 00:07:08,430
-with using the infrastructure application and core layers.
+bằng cách sử dụng infrastructure, application và core layers.
 
 96
 00:07:08,730 --> 00:07:12,660
-And here you can find different illustration of the clean architecture.
+Và ở đây bạn có thể tìm thấy minh họa khác nhau của clean architecture.
 
 97
 00:07:12,660 --> 00:07:18,360
-According to these architecture we can see domain model layer is sitting in the middle of the architecture,
+Theo architecture này, chúng ta có thể thấy domain model layer nằm ở giữa của architecture,
 
 98
 00:07:18,360 --> 00:07:23,400
-including the domain entities, domain services and other domain driven design objects.
+bao gồm domain entities, domain services và các đối tượng domain driven design khác.
 
 99
 00:07:23,400 --> 00:07:30,300
-And see that domain model layer has no dependency but application and infrastructure layer depending
+Và thấy rằng domain model layer không có dependency nào nhưng application và infrastructure layer phụ thuộc
 
 100
 00:07:30,300 --> 00:07:31,860
-on the domain layers.
+vào domain layers.
 
 101
 00:07:31,860 --> 00:07:37,050
-If you look at these architecture, we can call domain and application layer as a core layers.
+Nếu bạn nhìn vào kiến trúc này, chúng ta có thể gọi domain layer và application layer là các core layer.
 
 102
 00:07:37,050 --> 00:07:40,800
-Here you can see that we can call these layers as a core layer.
+Tại đây bạn có thể thấy rằng chúng ta có thể gọi những layer này là core layer.
 
 103
 00:07:40,800 --> 00:07:47,460
-And in the application layer we will use application services and use cases implementing with abstractions
+Và trong application layer chúng ta sẽ sử dụng application services và use cases được triển khai với các abstraction
 
 104
 00:07:47,460 --> 00:07:49,680
-of the these peripheral layers.
+của những peripheral layer này.
 
 105
 00:07:49,680 --> 00:07:51,810
-So you can see abstractions.
+Vậy bạn có thể thấy các abstraction.
 
 106
 00:07:51,810 --> 00:07:54,270
-And depending for dependency rule.
+Và phụ thuộc vào dependency rule.
 
 107
 00:07:54,270 --> 00:08:00,660
-And in the infrastructure layer you can see implementation of the repositories and actual persistence
+Và trong infrastructure layer bạn có thể thấy triển khai của các repository và actual persistence
 
 108
 00:08:00,660 --> 00:08:04,620
-implementation with communicating with the database and external services.
+triển khai với việc giao tiếp với database và các external service.
 
 109
 00:08:04,620 --> 00:08:06,540
-And this is the infrastructure layer.
+Và đây là infrastructure layer.
 
 110
 00:08:06,540 --> 00:08:13,350
-And these layers will be using all in the presentation layer with getting reference for each layers
+Và những layer này sẽ được sử dụng ở presentation layer với việc lấy tham chiếu cho mỗi layer
 
 111
 00:08:13,350 --> 00:08:20,250
-in order to implement user interface operations, performing the use cases, implementing the infrastructure
+để triển khai các user interface operation, thực hiện các use case, triển khai các infrastructure
 
 112
 00:08:20,250 --> 00:08:26,100
-objects, all in the presentation layer that we call Presentation and Infrastructure layer as a peripheral
+object, tất cả ở presentation layer mà chúng ta gọi Presentation và Infrastructure layer là những peripheral
 
 113
 00:08:26,100 --> 00:08:26,610

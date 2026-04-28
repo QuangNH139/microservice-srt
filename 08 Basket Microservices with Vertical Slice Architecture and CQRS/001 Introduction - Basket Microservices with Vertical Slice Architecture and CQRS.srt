@@ -1,6 +1,6 @@
 1
 00:00:00,140 --> 00:00:06,470
-In this section we are going to develop basket microservices with vertical slice architecture and the
+Trong phần này chúng ta sẽ phát triển basket microservices với vertical slice architecture và
 
 2
 00:00:06,470 --> 00:00:07,880
@@ -8,11 +8,11 @@ securities design pattern.
 
 3
 00:00:08,450 --> 00:00:12,740
-Let's check our big picture and see what we are going to build one by one.
+Hãy xem bức tranh tổng quan và xem chúng ta sẽ xây dựng cái gì từng bước một.
 
 4
 00:00:13,070 --> 00:00:19,910
-As you can see that we are in here and start to developing basket API with PostgreSQL database and Redis
+Như bạn có thể thấy, chúng ta đang ở đây và bắt đầu phát triển basket API với PostgreSQL database và Redis
 
 5
 00:00:19,910 --> 00:00:20,420
@@ -20,59 +20,59 @@ cache.
 
 6
 00:00:20,420 --> 00:00:27,230
-So that means basket microservices has two backing services, one for the PostgreSQL database and one
+Vậy điều đó có nghĩa là basket microservices có hai backing services, một cho PostgreSQL database và một
 
 7
 00:00:27,230 --> 00:00:29,390
-for the Redis distributed cache.
+cho Redis distributed cache.
 
 8
 00:00:30,020 --> 00:00:33,740
-And here you can see the internal basket microservice architecture.
+Và ở đây bạn có thể thấy kiến trúc nội bộ của basket microservice.
 
 9
 00:00:33,740 --> 00:00:39,110
-This is following the similar architecture style with the catalog microservices and using the similar
+Nó theo kiến trúc tương tự với catalog microservices và sử dụng các NuGet packages tương tự.
 
 10
 00:00:39,110 --> 00:00:40,010
-NuGet packages.
+Nhưng trong các phần sắp tới, basket microservices sẽ sử dụng Redis làm distributed cache, gRPC communication
 
 11
 00:00:40,010 --> 00:00:47,600
-But in the upcoming sections, basket microservices will use Redis as a distributed cache, gRPC communication
+và RabbitMQ asynchronous communication và sử dụng các NuGet packages khác nhau trong các phần sắp tới.
 
 12
 00:00:47,600 --> 00:00:53,480
-and RabbitMQ asynchronous communication and using different NuGet packages when the upcoming sections.
+Nhưng cho phần này, chúng ta sẽ tập trung vào triển khai vertical slice architecture tương tự như
 
 13
 00:00:53,480 --> 00:00:59,420
-But for this section, we will focus on implementing vertical slice architecture as similar with the
+catalog microservices.
 
 14
 00:00:59,420 --> 00:01:00,950
-catalog microservices.
+Vậy chúng ta có thể nói rằng trong phần này chúng ta sẽ sử dụng ASP.NET Core minimal APIs để xây dựng HTTP
 
 15
 00:01:00,950 --> 00:01:08,630
-So we can say that in this section we will perform ASP.Net core minimal APIs for building fast Http
+APIs nhanh chóng, các Rest endpoints hoàn chỉnh và các câu lệnh top level program.
 
 16
 00:01:08,630 --> 00:01:13,430
-APIs, fully functioning Rest endpoints, and top level program statements.
+Và sau đó chúng ta sẽ triển khai vertical slice architecture với feature folders và tệp C# đơn lẻ,
 
 17
 00:01:13,430 --> 00:01:19,040
-And after that we will implement vertical slice architecture with feature folders and single C-sharp
+bao gồm các lớp khác nhau trong một tệp.
 
 18
 00:01:19,040 --> 00:01:22,220
-file, including different classes in one file.
+Và chúng ta sẽ triển khai synchronous design pattern sử dụng mediator library.
 
 19
 00:01:22,220 --> 00:01:26,120
-And we will implement synchronous design pattern using the mediator library.
+Và chúng ta cũng sẽ triển khai Marten Library cho dotnet transactional DocumentDB khi giao tiếp với
 
 20
 00:01:26,120 --> 00:01:32,180
@@ -80,29 +80,29 @@ And we will also implement Martin Library for dotnet transactional DocumentDB wh
 
 21
 00:01:32,180 --> 00:01:33,710
-the PostgreSQL database.
+cơ sở dữ liệu PostgreSQL.
 
 22
 00:01:34,130 --> 00:01:40,370
-And also this time we will implement repository pattern over the Martin and Redis cache, because we
+Và lần này chúng ta cũng sẽ triển khai Repository Pattern trên Marten và Redis cache, bởi vì chúng ta
 
 23
 00:01:40,370 --> 00:01:46,430
-will use AI repository and shifting the communication between database or Redis cache.
+sẽ sử dụng AI repository và chuyển đổi giao tiếp giữa database hoặc Redis cache.
 
 24
 00:01:46,790 --> 00:01:50,900
-And we will also implement Carter for minimal API endpoint definition.
+Và chúng ta cũng sẽ triển khai Carter cho định nghĩa Minimal API endpoint.
 
 25
 00:01:50,900 --> 00:01:57,050
-We will implement fluent validation to validate input and outputs one mediator pipeline behaviors.
+Chúng ta sẽ triển khai Fluent Validation để xác thực input và output thông qua mediator pipeline behaviors.
 
 26
 00:01:57,050 --> 00:02:03,230
-And lastly we will follow the Docker file and docker compose file for running basket microservices and
+Và cuối cùng chúng ta sẽ tuân theo Docker file và Docker Compose file để chạy basket microservices và
 
 27
 00:02:03,230 --> 00:02:05,570
-PostgreSQL database in the environment.
+cơ sở dữ liệu PostgreSQL trong môi trường.
 

@@ -1,66 +1,66 @@
 1
 00:00:00,140 --> 00:00:07,220
-In this video we are going to develop index see page to consume irb, API gateway and print using the
+Trong video này, chúng ta sẽ phát triển trang index Razor để consume API gateway của gRPC và in sử dụng
 
 2
 00:00:07,370 --> 00:00:11,450
-catalog service which is implementation of the Http client factory.
+catalog service, đây là triển khai của Http client factory.
 
 3
 00:00:11,570 --> 00:00:17,120
-For that purpose, I am going to start by removing these logging operations, because I am going to
+Để làm được điều đó, tôi sẽ bắt đầu bằng cách xóa những thao tác logging này, vì tôi sẽ
 
 4
 00:00:17,120 --> 00:00:23,930
-inject by primary constructor instead of the normal constructor, and come to this index model class.
+inject bằng primary constructor thay vì constructor bình thường, và đi đến lớp index model này.
 
 5
 00:00:23,930 --> 00:00:26,570
-And I am going to inject these two classes.
+Và tôi sẽ inject hai lớp này.
 
 6
 00:00:26,570 --> 00:00:32,210
-The first one is a catalog service and the second one is Ilogger index model and logger.
+Lớp đầu tiên là catalog service và lớp thứ hai là Ilogger index model và logger.
 
 7
 00:00:32,210 --> 00:00:37,400
-So we will use these two services when implementing of these index model see our page.
+Vậy chúng ta sẽ sử dụng hai service này khi triển khai trang Razor index model.
 
 8
 00:00:37,400 --> 00:00:40,700
-So in here you can see that we have defined product list.
+Vậy ở đây bạn có thể thấy chúng ta đã định nghĩa product list.
 
 9
 00:00:40,700 --> 00:00:45,350
-Now I am going to populate the product list with communicating with the IRB API gateway.
+Bây giờ tôi sẽ điền product list bằng cách communicate với API gateway gRPC.
 
 10
 00:00:45,350 --> 00:00:48,230
-For that purpose I am going to use one get method.
+Để làm điều đó, tôi sẽ sử dụng một phương thức get.
 
 11
 00:00:48,230 --> 00:00:51,320
-But this time I will use one get async method.
+Nhưng lần này tôi sẽ sử dụng một phương thức get async.
 
 12
 00:00:51,320 --> 00:00:54,110
-In order to make this function available.
+Để làm cho hàm này khả dụng.
 
 13
 00:00:54,110 --> 00:00:59,090
-Here you can see that public async and this will be return task.
+Ở đây bạn có thể thấy public async và cái này sẽ trả về task.
 
 14
 00:00:59,090 --> 00:01:05,570
-This time we are going to return task and this will be returning I action result.
+Lần này chúng ta sẽ trả về task và cái này sẽ trả về I action result.
 
 15
 00:01:05,570 --> 00:01:10,490
-Okay, so now we can start the implementation of the one get async method.
+Được rồi, vậy bây giờ chúng ta có thể bắt đầu triển khai phương thức one get async.
 
 16
 00:01:10,490 --> 00:01:17,210
-In this method we will start by logging the information which is the logger log information and index
+Trong phương thức này, chúng ta sẽ bắt đầu bằng cách log thông tin, đó là logger log information và index
 
 17
 00:01:17,210 --> 00:01:18,380
@@ -68,91 +68,91 @@ page visited.
 
 18
 00:01:18,380 --> 00:01:24,890
-And just after that we will use Catalog Service to communicate with the IRB API gateway and send request
+Và ngay sau đó, chúng ta sẽ sử dụng Catalog Service để communicate với API gateway gRPC và gửi request
 
 19
 00:01:24,890 --> 00:01:26,990
-to the catalog downstream microservices.
+đến catalog downstream microservices.
 
 20
 00:01:26,990 --> 00:01:31,940
-So here you can see that I am going to use await catalog service Getproduct method.
+Vậy ở đây bạn có thể thấy rằng tôi sẽ sử dụng await catalog service Getproduct method.
 
 21
 00:01:31,940 --> 00:01:37,400
-If you go to this method, you can see that this method will be generated client with refit in order
+Nếu bạn vào method này, bạn có thể thấy rằng method này sẽ được tạo client với Refit để gửi Http GET request tới endpoint này.
 
 22
 00:01:37,400 --> 00:01:40,070
-to send Http get request to this endpoint.
+để gửi Http GET request tới endpoint này.
 
 23
 00:01:40,070 --> 00:01:43,610
-So if you go back to our index page, we will return back the result.
+Vậy nếu bạn quay lại trang index của chúng ta, chúng ta sẽ trả lại kết quả.
 
 24
 00:01:43,610 --> 00:01:49,850
-And in this result we have a products collection that we can paste this product collection into our
+Và trong kết quả này chúng ta có một products collection mà chúng ta có thể dán products collection này vào
 
 25
 00:01:49,850 --> 00:01:53,270
-product list property under the Index model class.
+thuộc tính product list của chúng ta dưới Index model class.
 
 26
 00:01:53,270 --> 00:01:59,180
-Here you can see that I have assigning the results dot products to the product list, which is the IEnumerable
+Tại đây bạn có thể thấy rằng tôi đang gán results dot products vào product list, đó là IEnumerable
 
 27
 00:01:59,180 --> 00:02:02,660
-product model, and just after that we can return the page.
+product model, và ngay sau đó chúng ta có thể return trang.
 
 28
 00:02:02,660 --> 00:02:07,070
-So this is the implementation of the asynchronous on get async method.
+Vậy đây là triển khai của phương pháp asynchronous on get async.
 
 29
 00:02:07,070 --> 00:02:13,160
-That means this method will be triggered when the index page opening in the browser, and this will
+Điều đó có nghĩa là method này sẽ được kích hoạt khi trang index mở trong trình duyệt, và điều này sẽ
 
 30
 00:02:13,160 --> 00:02:17,390
-be retrieving the products from the API gateway to make it more readable.
+lấy các products từ API gateway để làm cho nó dễ đọc hơn.
 
 31
 00:02:17,390 --> 00:02:20,900
-I am going to move these using statements to the global using class.
+Tôi sắp di chuyển các using statements này sang global using class.
 
 32
 00:02:20,900 --> 00:02:27,890
-So cut here and go to the global using and paste at this point and put the global keywords.
+Vậy cắt tại đây và đi tới global using và dán tại điểm này và đặt từ khóa global.
 
 33
 00:02:28,400 --> 00:02:33,110
-If you go back to index.cshtml you can see that our class is more readable.
+Nếu bạn quay lại index.cshtml bạn có thể thấy rằng class của chúng ta dễ đọc hơn.
 
 34
 00:02:33,380 --> 00:02:37,640
-So now I am going to perform quick test our shopping web client application.
+Vậy bây giờ tôi sắp thực hiện kiểm tra nhanh ứng dụng shopping web client của chúng ta.
 
 35
 00:02:37,640 --> 00:02:42,680
-But as you can see that if you open the application settings Json file, we should activate the our
+Nhưng như bạn có thể thấy rằng nếu bạn mở application settings JSON file, chúng ta nên kích hoạt API gateway của chúng ta trong môi trường Docker.
 
 36
 00:02:42,950 --> 00:02:44,660
-API gateway in Docker environment.
+Với mục đích đó, vui lòng chạy Docker desktop và ngay sau đó bạn có thể nhấp chuột phải vào Docker
 
 37
 00:02:44,660 --> 00:02:50,420
-For that purpose, please run the Docker desktop and just after that you can right click the Docker
+compose và đặt nó làm startup project và bạn có thể chạy mà không cần debug.
 
 38
 00:02:50,420 --> 00:02:54,110
-compose and set a startup project and you can run without debugging.
+Điều này sẽ kích hoạt các backing services bao gồm API gateway.
 
 39
 00:02:54,110 --> 00:02:58,730
-This will be activate baking services including the Erb API gateway.
+Và ngay sau đó chúng ta sẽ chạy ứng dụng shopping Web client của chúng ta để có thể giao tiếp với
 
 40
 00:02:58,730 --> 00:03:04,100
@@ -160,211 +160,211 @@ And just after that we will run the our shopping Web client application in order
 
 41
 00:03:04,100 --> 00:03:09,380
-the Erb API gateway and consume products from the catalog microservices and populate the product data
+Erb API gateway và tiêu thụ các sản phẩm từ catalog microservices và điền dữ liệu sản phẩm
 
 42
 00:03:09,380 --> 00:03:10,520
-in the landing page.
+trên trang đích.
 
 43
 00:03:10,520 --> 00:03:16,790
-Here you can see that our Docker compose is up and running, and Erb API gateway is started successfully
+Ở đây bạn có thể thấy rằng Docker compose của chúng ta đang chạy, và Erb API gateway đã khởi động thành công
 
 44
 00:03:16,790 --> 00:03:19,130
-and we can verify from the postman.
+và chúng ta có thể xác minh từ postman.
 
 45
 00:03:19,130 --> 00:03:25,280
-If you go to your API gateway catalog and get product and select the Docker environment and send Http
+Nếu bạn truy cập vào API gateway catalog của bạn và lấy sản phẩm, chọn môi trường Docker và gửi HTTP
 
 46
 00:03:25,280 --> 00:03:28,850
-get method, you can see that products responding successfully.
+phương thức get, bạn có thể thấy rằng các sản phẩm đang phản hồi thành công.
 
 47
 00:03:28,850 --> 00:03:33,230
-So that means we can also call these API from our client application.
+Điều đó có nghĩa là chúng ta cũng có thể gọi những API này từ ứng dụng khách của chúng ta.
 
 48
 00:03:33,230 --> 00:03:36,140
-For that purpose, please go back to our Visual Studio.
+Để làm như vậy, vui lòng quay lại Visual Studio của chúng ta.
 
 49
 00:03:36,140 --> 00:03:41,720
-And if you go back to our shopping web application, right click and set a startup project.
+Và nếu bạn quay lại ứng dụng web mua sắm của chúng ta, nhấp chuột phải và đặt làm startup project.
 
 50
 00:03:41,720 --> 00:03:44,750
-And I'm going to run and debug this client application.
+Và tôi sẽ chạy và debug ứng dụng khách này.
 
 51
 00:03:44,750 --> 00:03:50,600
-But before that you can put the breakpoints in the program.cs of the Or register operation, which is
+Nhưng trước đó, bạn có thể đặt các breakpoint trong program.cs của hoạt động Or register, đó là
 
 52
 00:03:50,600 --> 00:03:53,120
-the Revit client and a catalog service.
+Revit client và catalog service.
 
 53
 00:03:53,120 --> 00:03:55,340
-You can come here and check the base address.
+Bạn có thể đến đây và kiểm tra base address.
 
 54
 00:03:55,340 --> 00:04:02,360
-And also we can go to the index Cshtml C-sharp page and put the debug point on get async method.
+Và cũng chúng ta có thể vào trang index Cshtml C-sharp và đặt điểm debug trên phương thức get async.
 
 55
 00:04:02,360 --> 00:04:07,730
-So now I'm going to run the or https mode shopping web client application.
+Vậy bây giờ tôi sẽ chạy ứng dụng web shopping client ở chế độ https của or.
 
 56
 00:04:07,730 --> 00:04:13,370
-See how we can consume these erb API gateway from the shopping web client application.
+Xem cách chúng ta có thể tiêu thụ erb API gateway này từ ứng dụng web shopping client.
 
 57
 00:04:13,370 --> 00:04:21,079
-So when the browser is opening, it is going to set a or base address, which is basically our Docker
+Vì vậy, khi trình duyệt đang mở, nó sẽ đặt hoặc base address, về cơ bản là địa chỉ Docker
 
 58
 00:04:21,079 --> 00:04:22,880
-address of the Erb API gateway.
+của Erb API gateway.
 
 59
 00:04:22,880 --> 00:04:28,520
-You can get these configurations from the application, and if I hit the F5 this will be triggered on
+Bạn có thể lấy những cấu hình này từ ứng dụng, và nếu tôi nhấn F5, điều này sẽ được kích hoạt trên
 
 60
 00:04:28,520 --> 00:04:29,570
-get async method.
+phương thức get async.
 
 61
 00:04:29,570 --> 00:04:35,480
-And we are going to retrieve information from the catalog microservices which Revit generated clients.
+Và chúng ta sẽ lấy thông tin từ catalog microservices mà Revit sinh ra các client.
 
 62
 00:04:35,480 --> 00:04:39,200
-If I hit F10, you can see that results come successfully.
+Nếu tôi nhấn F10, bạn có thể thấy kết quả trả về thành công.
 
 63
 00:04:39,200 --> 00:04:41,810
-And here you can see the product count as nine.
+Và ở đây bạn có thể thấy số lượng sản phẩm là chín.
 
 64
 00:04:41,810 --> 00:04:46,250
-So we have set the product list into our product list object and return the page.
+Vậy chúng ta đã đặt danh sách sản phẩm vào đối tượng danh sách sản phẩm của chúng ta và trả về trang.
 
 65
 00:04:46,250 --> 00:04:51,050
-So if you hit the F5 you can see the index page is populated successfully.
+Vậy nếu bạn nhấn F5, bạn có thể thấy trang index được điền đầy đủ thành công.
 
 66
 00:04:51,050 --> 00:04:52,850
-And here you can see the top products.
+Và ở đây bạn có thể thấy các sản phẩm hàng đầu.
 
 67
 00:04:52,850 --> 00:04:54,980
-And here you can see the our last products.
+Và ở đây bạn có thể thấy các sản phẩm gần đây của chúng ta.
 
 68
 00:04:54,980 --> 00:04:58,160
-And if you scroll down here you can see the best products and so on.
+Và nếu bạn cuộn xuống ở đây, bạn có thể thấy các sản phẩm tốt nhất và cứ tiếp tục như vậy.
 
 69
 00:04:58,160 --> 00:04:58,850
-This is.
+Đây là.
 
 70
 00:04:59,030 --> 00:05:05,060
-Arms from the catalog, microservices and matching to our product image into the shopping web client
+Dữ liệu từ catalog microservices và khớp với hình ảnh sản phẩm của chúng ta vào shopping web client
 
 71
 00:05:05,060 --> 00:05:05,780
-application.
+ứng dụng.
 
 72
 00:05:05,780 --> 00:05:11,390
-So this is how we can consume the products from the catalog microservices and representing into our
+Vậy đây là cách chúng ta có thể sử dụng các sản phẩm từ catalog microservices và hiển thị vào
 
 73
 00:05:11,390 --> 00:05:13,880
-index page of the shopping web client application.
+trang index của shopping web client application.
 
 74
 00:05:13,880 --> 00:05:17,810
-But in the product endpoint you can see our postman.
+Nhưng ở product endpoint bạn có thể thấy postman của chúng ta.
 
 75
 00:05:17,810 --> 00:05:21,920
-We have also pagination that we can send page number and page size.
+Chúng ta cũng có pagination mà chúng ta có thể gửi số trang và kích thước trang.
 
 76
 00:05:21,920 --> 00:05:26,420
-But in the index page we don't have pagination object in here.
+Nhưng ở trang index chúng ta không có đối tượng pagination ở đây.
 
 77
 00:05:26,420 --> 00:05:31,760
-And you can put the pagination item in the index HTML page and get the products with pagination.
+Và bạn có thể đặt pagination item vào trang HTML index và lấy các sản phẩm với pagination.
 
 78
 00:05:31,760 --> 00:05:35,060
-Let me give an example how we can implement this pagination.
+Hãy để tôi cho bạn một ví dụ về cách chúng ta có thể triển khai pagination này.
 
 79
 00:05:35,060 --> 00:05:40,490
-After putting these pagination item in here, you can come here and go to the on get async method.
+Sau khi đặt các pagination item vào đây, bạn có thể đến đây và đi tới phương thức on get async.
 
 80
 00:05:40,490 --> 00:05:43,520
-So in here I'm going to comment this line of code.
+Vậy ở đây tôi sẽ comment dòng mã này.
 
 81
 00:05:43,850 --> 00:05:48,500
-And just after that I'm going to send additional request to the get products.
+Và ngay sau đó, tôi sẽ gửi một yêu cầu bổ sung để lấy các sản phẩm.
 
 82
 00:05:48,500 --> 00:05:51,050
-But this time we can pass two and three.
+Nhưng lần này chúng ta có thể truyền hai và ba.
 
 83
 00:05:51,080 --> 00:05:54,140
-Two is a second page three is three item.
+Hai là trang thứ hai, ba là ba mục.
 
 84
 00:05:54,140 --> 00:05:56,240
-You can see the page number and page size.
+Bạn có thể thấy số trang và kích thước trang.
 
 85
 00:05:56,240 --> 00:06:00,800
-So after setting this line of code we can use Hot Reload.
+Vậy sau khi thiết lập dòng mã này, chúng ta có thể sử dụng Hot Reload.
 
 86
 00:06:00,800 --> 00:06:06,380
-Come here and click this Hot Reload and refresh the page to enable the debug point.
+Hãy đến đây và nhấp vào Hot Reload này, sau đó làm mới trang để kích hoạt điểm ngắt debug.
 
 87
 00:06:06,380 --> 00:06:09,620
-Here you can see that debug point comes again in here.
+Tại đây bạn có thể thấy điểm debug lại xuất hiện ở đây.
 
 88
 00:06:09,620 --> 00:06:15,500
-If I hit F5 this time, we will refresh the page in order to get items with pagination.
+Nếu tôi nhấn F5 lần này, chúng ta sẽ làm mới trang để lấy các mục với pagination.
 
 89
 00:06:15,500 --> 00:06:18,680
-You can see that this will be triggered on get async method.
+Bạn có thể thấy rằng điều này sẽ được kích hoạt trong phương thức get async.
 
 90
 00:06:18,680 --> 00:06:21,860
-This time we will retrieve the products according to pagination.
+Lần này chúng ta sẽ lấy các sản phẩm theo pagination.
 
 91
 00:06:21,860 --> 00:06:26,930
-So here you can see that product list comes to three because we are retrieving the second page.
+Vậy tại đây bạn có thể thấy danh sách sản phẩm chỉ có ba cái vì chúng ta đang lấy trang thứ hai.
 
 92
 00:06:26,930 --> 00:06:33,230
-And if I hit F5 this will be comes to second page of the product that including the Xiaomi, HTC and
+Và nếu tôi nhấn F5, điều này sẽ là trang thứ hai của sản phẩm bao gồm Xiaomi, HTC và
 
 93
 00:06:33,230 --> 00:06:33,590
@@ -372,79 +372,79 @@ LG.
 
 94
 00:06:33,830 --> 00:06:39,770
-As you can see that our API is capable to applying the pagination, we need to adding the pagination
+Như bạn có thể thấy rằng API của chúng ta có khả năng áp dụng pagination, chúng ta cần thêm đối tượng pagination
 
 95
 00:06:39,770 --> 00:06:41,690
-object into our HTML page.
+vào trang HTML của chúng ta.
 
 96
 00:06:41,690 --> 00:06:47,720
-But for now, I'm going to skip this pagination from the front end layer and I will rollback the change
+Nhưng hiện tại, tôi sẽ bỏ qua pagination từ lớp front end và tôi sẽ rollback lại thay đổi
 
 97
 00:06:47,720 --> 00:06:49,400
-which comes from the get products.
+mà đến từ get products.
 
 98
 00:06:49,400 --> 00:06:55,550
-I'm going to uncomment this line of code and comment this line of code that you can develop the pagination.
+Tôi sẽ uncomment dòng mã này và comment dòng mã này để bạn có thể phát triển pagination.
 
 99
 00:06:55,550 --> 00:06:56,360
-Okay.
+Được.
 
 100
 00:06:56,360 --> 00:07:02,120
-If you look at our landing page and index page, you can see that we have listing the products, but
+Nếu bạn nhìn vào landing page và index page của chúng ta, bạn có thể thấy rằng chúng ta đang liệt kê các sản phẩm, nhưng
 
 101
 00:07:02,120 --> 00:07:08,630
-we can't go the product details or add the item into shopping cart because these buttons is not working
+chúng ta không thể xem chi tiết sản phẩm hoặc thêm mục vào giỏ hàng vì các nút này không hoạt động
 
 102
 00:07:08,630 --> 00:07:09,110
-yet.
+nữa.
 
 103
 00:07:09,110 --> 00:07:12,770
-But before that we should handle the another operation in index page.
+Nhưng trước đó, chúng ta nên xử lý một thao tác khác trên trang Index.
 
 104
 00:07:12,770 --> 00:07:15,050
-Index page has two actions.
+Trang Index có hai thao tác.
 
 105
 00:07:15,050 --> 00:07:20,060
-The first action is listing the products, and the second action is add item into cart.
+Thao tác đầu tiên là liệt kê các sản phẩm, và thao tác thứ hai là thêm mục vào giỏ hàng.
 
 106
 00:07:20,060 --> 00:07:23,480
-So we should focus on the eight item into shopping cart.
+Vì vậy, chúng ta nên tập trung vào thêm mục vào giỏ hàng.
 
 107
 00:07:23,480 --> 00:07:25,490
-If you go to the HTML page.
+Nếu bạn xem trang HTML.
 
 108
 00:07:25,490 --> 00:07:31,730
-If you go to the page and shared folder, you can see that we have a product item partial, and at this
+Nếu bạn xem trang trong thư mục Shared, bạn có thể thấy rằng chúng ta có một product item partial, và tại điểm này bạn có thể thấy ASP page 100 là add item to cart.
 
 109
 00:07:31,730 --> 00:07:35,900
-point you can see ASP page 100 as add item to cart.
+Và ở đây bạn có thể thấy rằng chúng ta sẽ thực hiện post operation đến trang Index này để thêm mục vào giỏ hàng.
 
 110
 00:07:35,900 --> 00:07:42,530
-And in here you can see that we will post operation into these index page in order to adding item into
+Và chúng ta sẽ truyền model ID, đó là product ID, điều này có nghĩa là trong tệp C# Index, chúng ta có thể
 
 111
 00:07:42,530 --> 00:07:43,100
-shopping cart.
+tạo một phương thức mới đó là on post async để tiếp nhận post operation đến và thêm mục vào giỏ hàng.
 
 112
 00:07:43,100 --> 00:07:49,760
-And we will passing the model ID which is the product ID that means in the index C-sharp file, we can
+vào giỏ hàng.
 
 113
 00:07:49,760 --> 00:07:56,900

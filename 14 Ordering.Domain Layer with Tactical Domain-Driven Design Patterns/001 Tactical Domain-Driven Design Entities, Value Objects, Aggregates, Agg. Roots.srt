@@ -1,34 +1,34 @@
 1
 00:00:00,200 --> 00:00:07,190
-In this section we are going to develop ordering domain layer with tactical domain driven design patterns.
+Trong phần này chúng ta sẽ phát triển ordering domain layer với các mẫu tactical domain driven design.
 
 2
 00:00:08,029 --> 00:00:12,650
-So if you look at our big picture we are still developing ordering microservices.
+Vậy nếu bạn xem lại bức tranh toàn cảnh của chúng ta, chúng ta vẫn đang phát triển ordering microservices.
 
 3
 00:00:12,650 --> 00:00:17,870
-And if you look at the ordering microservices internal architecture that we have implementing clean
+Và nếu bạn xem kiến trúc nội bộ của ordering microservices mà chúng ta đang triển khai clean
 
 4
 00:00:17,870 --> 00:00:23,780
-architecture, we are at the domain layer which is representing the beginning of the Korean architecture
+architecture, chúng ta đang ở tại domain layer đại diện cho điểm bắt đầu của các lớp kiến trúc
 
 5
 00:00:23,780 --> 00:00:24,290
-layers.
+khác.
 
 6
 00:00:24,290 --> 00:00:26,750
-And we will develop ordering domain layer.
+Và chúng ta sẽ phát triển ordering domain layer.
 
 7
 00:00:26,750 --> 00:00:32,540
-So during this section we will learn and develop tactical domain driven design patterns like entities,
+Vậy trong phần này chúng ta sẽ học và phát triển các mẫu tactical domain driven design như entities,
 
 8
 00:00:32,540 --> 00:00:38,690
-value objects, aggregates, aggregate routes, patterns for ordering entities when developing the ordering
+value objects, aggregates, aggregate roots, các mẫu cho ordering entities khi phát triển ordering
 
 9
 00:00:38,690 --> 00:00:39,530
@@ -36,7 +36,7 @@ domain layer.
 
 10
 00:00:40,670 --> 00:00:45,980
-As you know, that domain driven design has divided two types, which are the strategic and tactical
+Như bạn biết, domain driven design được chia thành hai loại, đó là strategic và tactical
 
 11
 00:00:45,980 --> 00:00:47,090
@@ -44,35 +44,35 @@ domain driven design.
 
 12
 00:00:47,090 --> 00:00:52,580
-In strategic domain driven design, we basically understand and modeling the business domain, but in
+Trong strategic domain driven design, chúng ta cơ bản hiểu và mô hình hóa business domain, nhưng trong
 
 13
 00:00:52,580 --> 00:00:57,830
-the tactical domain driven design, we will implementation details and provides the design patterns,
+tactical domain driven design, chúng ta sẽ triển khai chi tiết thực hiện và cung cấp các mẫu thiết kế,
 
 14
 00:00:57,830 --> 00:01:02,540
-including the patterns like entities, value objects, aggregates, and so on.
+bao gồm các mẫu như entities, value objects, aggregates, và các mẫu khác.
 
 15
 00:01:02,780 --> 00:01:06,380
-So let's understand what is the tactical domain driven design?
+Vậy hãy hiểu tactical domain driven design là gì?
 
 16
 00:01:06,380 --> 00:01:12,440
-Tactical domain driven design is a set of pattern and principles that help in modeling complex software
+Tactical domain driven design là một tập hợp các mẫu và nguyên tắc giúp mô hình hóa các hệ thống phần mềm phức tạp.
 
 17
 00:01:12,440 --> 00:01:13,220
-systems.
+Nó tập trung vào domain và domain logic, nhấn mạnh tầm quan trọng của một mô hình phản ánh
 
 18
 00:01:13,220 --> 00:01:19,430
-It focuses on the domain and domain logic, emphasizing the importance of a model that reflects the
+business và các quy tắc, và các mẫu tactical domain driven design bao gồm một tập hợp các mẫu.
 
 19
 00:01:19,430 --> 00:01:24,950
-business and the rules, and tactical domain driven design patterns include a set of the patterns.
+Đó là entities, value objects, aggregates, và aggregate roots.
 
 20
 00:01:24,950 --> 00:01:29,660
@@ -80,99 +80,99 @@ These are the entities, value objects, aggregates, and aggregate rules.
 
 21
 00:01:29,930 --> 00:01:36,440
-So now let's delve into some key tactical domain driven design patterns and see how they can be implemented
+Vậy bây giờ hãy đi sâu vào một số mẫu domain driven design chiến thuật quan trọng và xem cách chúng có thể được triển khai
 
 22
 00:01:36,440 --> 00:01:37,820
-in the ordering domain layer.
+trong lớp ordering domain.
 
 23
 00:01:37,820 --> 00:01:41,540
-In a clean architecture setup, the first one is entities.
+Trong một thiết lập clean architecture, cái đầu tiên là entities.
 
 24
 00:01:41,660 --> 00:01:47,750
-An entity is an object that identified by its identity rather than its attributes.
+Một entity là một đối tượng được xác định bởi danh tính của nó hơn là các thuộc tính của nó.
 
 25
 00:01:47,960 --> 00:01:52,730
-The identity makes each entity unique even if other attributes are the same.
+Danh tính làm cho mỗi entity duy nhất ngay cả khi các thuộc tính khác là giống nhau.
 
 26
 00:01:53,590 --> 00:01:59,380
-Entities are used to represent objects in the system that have a distinct identity and life cycle.
+Entities được sử dụng để đại diện cho các đối tượng trong hệ thống có danh tính và chu kỳ sống riêng biệt.
 
 27
 00:01:59,380 --> 00:02:04,270
-They often correspond to real world objects that need to be tracked or managed.
+Chúng thường tương ứng với các đối tượng thực tế cần được theo dõi hoặc quản lý.
 
 28
 00:02:04,420 --> 00:02:07,330
-As an example, we can give ordering microservices.
+Ví dụ, chúng ta có thể đưa ra ordering microservice.
 
 29
 00:02:07,360 --> 00:02:09,250
-An order can be an entity.
+Một đơn hàng có thể là một entity.
 
 30
 00:02:09,340 --> 00:02:16,630
-It is unique identified by an order ID, even if the other attributes are identical to another order.
+Nó được xác định duy nhất bởi order ID, ngay cả khi các thuộc tính khác giống hệt với đơn hàng khác.
 
 31
 00:02:16,660 --> 00:02:22,420
-Here you can see an example of the order implementation as an entity, and you can see the order ID,
+Ở đây bạn có thể thấy một ví dụ về triển khai order như một entity, và bạn có thể thấy order ID,
 
 32
 00:02:22,420 --> 00:02:25,390
-which makes it each entity as a unique.
+cái này làm cho mỗi entity là duy nhất.
 
 33
 00:02:25,420 --> 00:02:28,360
-So the next item is value objects.
+Vậy item tiếp theo là value objects.
 
 34
 00:02:28,540 --> 00:02:34,600
-A value object is an object that describes some characteristics or attributes, but carries no concept
+Một value object là một đối tượng mô tả một số đặc điểm hoặc thuộc tính, nhưng không mang bất kỳ khái niệm
 
 35
 00:02:34,600 --> 00:02:35,590
-of the identity.
+nào về danh tính.
 
 36
 00:02:36,100 --> 00:02:41,170
-Value objects are used to describe aspects of the domain with no conceptual identity.
+Value objects được sử dụng để mô tả các khía cạnh của domain mà không có danh tính khái niệm.
 
 37
 00:02:41,200 --> 00:02:46,090
-They are immutable and are often used to encapsulate complex attributes.
+Chúng là bất biến và thường được sử dụng để đóng gói các thuộc tính phức tạp.
 
 38
 00:02:46,120 --> 00:02:52,810
-As an example, we can give address used in the order might be a value object, as it is important for
+Ví dụ, chúng ta có thể đưa ra địa chỉ được sử dụng trong đơn hàng có thể là một value object, vì nó rất quan trọng cho
 
 39
 00:02:52,810 --> 00:02:55,780
-the order, but doesn't define the order's identity.
+đơn hàng, nhưng không xác định danh tính của đơn hàng.
 
 40
 00:02:55,810 --> 00:03:01,900
-Here you can see the address value object, including street and city information belongs to the order
+Ở đây bạn có thể thấy value object địa chỉ, bao gồm thông tin đường phố và thành phố thuộc về đơn hàng
 
 41
 00:03:01,900 --> 00:03:05,890
-entity and another item is aggregates.
+entity và một mục khác là aggregates.
 
 42
 00:03:05,980 --> 00:03:12,520
-And aggregate is a cluster of domain objects, which is the entities and value objects that can be treated
+Và aggregate là một cụm các domain objects, đó là các entities và value objects mà có thể được coi
 
 43
 00:03:12,520 --> 00:03:13,750
-as a single unit.
+là một đơn vị duy nhất.
 
 44
 00:03:14,140 --> 00:03:18,400
-An aggregate will have one of its component be aggregate root.
+Một aggregate sẽ có một trong các thành phần của nó là aggregate root.
 
 45
 00:03:19,060 --> 00:03:19,630
@@ -180,85 +180,85 @@ Aggregates.
 
 46
 00:03:19,630 --> 00:03:22,270
-Define a boundary around related objects.
+Xác định một ranh giới xung quanh các đối tượng liên quan.
 
 47
 00:03:22,270 --> 00:03:28,570
-Operations within the boundary should maintain consistency of changes to the data in the aggregate.
+Các hoạt động trong ranh giới này phải duy trì tính nhất quán của các thay đổi dữ liệu trong aggregate.
 
 48
 00:03:28,840 --> 00:03:35,560
-As an example, order can be an aggregate containing the order items, payment details and so on, and
+Ví dụ, đơn hàng có thể là một aggregate chứa các mục đơn hàng, chi tiết thanh toán và những thứ tương tự, và
 
 49
 00:03:35,560 --> 00:03:37,930
-these will be within it of the entity.
+những thứ này sẽ nằm trong entity của nó.
 
 50
 00:03:37,960 --> 00:03:45,280
-The consistency of an order like total price calculation stock validation is maintained within the aggregate
+Tính nhất quán của một đơn hàng như tính toán tổng giá, xác thực kho được duy trì trong các ranh giới aggregate
 
 51
 00:03:45,280 --> 00:03:45,940
-boundaries.
+.
 
 52
 00:03:45,970 --> 00:03:52,840
-Here you can see an example order as an aggregate and order will be managed consistency between the
+Ở đây bạn có thể thấy một ví dụ là đơn hàng như một aggregate và đơn hàng sẽ được quản lý tính nhất quán giữa các
 
 53
 00:03:52,840 --> 00:03:57,190
-items with order items, price calculation, validation and so on.
+mục với các mục đơn hàng, tính toán giá, xác thực và những thứ tương tự.
 
 54
 00:03:57,700 --> 00:04:00,310
-And the last item is aggregate roots.
+Và mục cuối cùng là aggregate roots.
 
 55
 00:04:00,580 --> 00:04:07,030
-Aggregate root is the main entity is an aggregate through which external objects interact with the aggregate.
+Aggregate root là entity chính là một aggregate mà thông qua đó các đối tượng bên ngoài tương tác với aggregate.
 
 56
 00:04:07,390 --> 00:04:14,860
-It provides a gateway to the aggregate, ensuring that the aggregates invariants are enforced and consistency
+Nó cung cấp một cổng vào đến aggregate, đảm bảo rằng các invariants của aggregates được thực thi và tính nhất quán
 
 57
 00:04:14,860 --> 00:04:16,029
-is maintained.
+được duy trì.
 
 58
 00:04:16,420 --> 00:04:18,310
-As an example, we can give order.
+Ví dụ, chúng ta có thể đưa ra đơn hàng.
 
 59
 00:04:18,310 --> 00:04:21,970
-Aggregate order itself can be the aggregate root.
+Aggregate order tự nó có thể là aggregate root.
 
 60
 00:04:21,970 --> 00:04:26,560
-External object would interact with the order to effect change within the aggregate.
+Các đối tượng bên ngoài sẽ tương tác với đơn hàng để thực hiện các thay đổi trong aggregate.
 
 61
 00:04:26,590 --> 00:04:30,490
-We can see example code into aggregate root of the order.
+Chúng ta có thể xem ví dụ code trong aggregate root của order.
 
 62
 00:04:31,530 --> 00:04:34,980
-So we can apply all these concepts in the ordering domain layer.
+Vậy chúng ta có thể áp dụng tất cả những khái niệm này trong ordering domain layer.
 
 63
 00:04:34,980 --> 00:04:40,950
-When developing the ordering domain layer in a clean architecture setup, these concepts help in creating
+Khi phát triển ordering domain layer trong setup clean architecture, những khái niệm này giúp tạo ra
 
 64
 00:04:40,950 --> 00:04:44,670
-a rich domain model that encapsulates business logic and rules.
+một rich domain model mà đóng gói business logic và các quy tắc.
 
 65
 00:04:44,850 --> 00:04:50,520
-Entities and value objects define the nature of the data and their relationships, while aggregates
+Entities và value objects định nghĩa bản chất của dữ liệu và mối quan hệ của chúng, trong khi aggregates
 
 66
 00:04:50,520 --> 00:04:55,440
-and aggregate rules organize the model to ensure integrity and consistency.
+và aggregate rules tổ chức model để đảm bảo tính toàn vẹn và nhất quán.
 

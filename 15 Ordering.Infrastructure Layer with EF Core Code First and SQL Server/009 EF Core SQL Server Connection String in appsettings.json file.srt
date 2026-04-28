@@ -1,128 +1,128 @@
 1
 00:00:00,170 --> 00:00:06,980
-In this video we are going to do step four, which is Entity Framework core SQL server connection string
+Trong video này, chúng ta sẽ thực hiện bước bốn, đó là kết nối Entity Framework Core SQL Server connection string
 
 2
 00:00:06,980 --> 00:00:09,410
-in the Application settings Json file.
+trong file Application Settings Json.
 
 3
 00:00:09,830 --> 00:00:16,160
-In ordering microservices, we will use SQL server database as a backing services, and we will also
+Trong ordering microservices, chúng ta sẽ sử dụng SQL Server database như một backing service, và chúng ta cũng sẽ
 
 4
 00:00:16,160 --> 00:00:18,890
-add SQL server into our Docker compose file.
+thêm SQL Server vào file Docker Compose của chúng ta.
 
 5
 00:00:18,890 --> 00:00:22,580
-But now let's focus on the development part of the Entity Framework core.
+Nhưng bây giờ hãy tập trung vào phần phát triển của Entity Framework Core.
 
 6
 00:00:23,000 --> 00:00:28,010
-For that purpose, please open the Visual Studio and go to the Application Settings.
+Với mục đích đó, vui lòng mở Visual Studio và đi đến Application Settings.
 
 7
 00:00:28,010 --> 00:00:33,020
-In ordering API, we will have application settings in the web project.
+Trong ordering API, chúng ta sẽ có application settings trong web project.
 
 8
 00:00:33,020 --> 00:00:38,240
-If you open the ordering API project, you can go to the Application Settings Json file.
+Nếu bạn mở ordering API project, bạn có thể đi đến file Application Settings Json.
 
 9
 00:00:38,240 --> 00:00:41,480
-And I'm going to define connection settings in here.
+Và tôi sẽ định nghĩa các cài đặt kết nối ở đây.
 
 10
 00:00:41,480 --> 00:00:48,500
-As you know that application settings is typically in ASP.Net core project and storing application settings
+Như bạn biết, application settings thường nằm trong ASP.NET Core project và lưu trữ các cài đặt ứng dụng
 
 11
 00:00:48,500 --> 00:00:50,630
-like database connection strings.
+như chuỗi kết nối cơ sở dữ liệu.
 
 12
 00:00:50,630 --> 00:00:54,020
-And I'm going to put connection strings in this file.
+Và tôi sẽ đặt connection strings trong file này.
 
 13
 00:00:54,020 --> 00:00:59,480
-And if you look at this connection string you can see that we have connection string database.
+Và nếu bạn xem connection string này, bạn có thể thấy rằng chúng ta có connection string database.
 
 14
 00:00:59,480 --> 00:01:04,430
-And as a server I am giving a localhost which is specifies the database server.
+Và như một server, tôi đang chỉ định localhost, là máy chủ cơ sở dữ liệu.
 
 15
 00:01:04,430 --> 00:01:09,200
-Localhost means the database is running on the same machine as the web application.
+Localhost có nghĩa là cơ sở dữ liệu đang chạy trên cùng một máy với ứng dụng web.
 
 16
 00:01:09,200 --> 00:01:14,750
-When we are containerize this application, we will change the server name as a Docker container name,
+Khi chúng ta containerize ứng dụng này, chúng ta sẽ thay đổi tên server thành tên Docker container,
 
 17
 00:01:14,750 --> 00:01:18,590
-and after that you can see the database name as a order db.
+và sau đó bạn có thể thấy tên cơ sở dữ liệu là order db.
 
 18
 00:01:18,620 --> 00:01:22,010
-This is the name of the database to connect to SQL server.
+Đây là tên của cơ sở dữ liệu để kết nối với SQL Server.
 
 19
 00:01:22,010 --> 00:01:24,230
-In this case we will give order db.
+Trong trường hợp này, chúng ta sẽ đặt là order db.
 
 20
 00:01:24,230 --> 00:01:27,080
-And here you can see the user id sa.
+Và ở đây bạn có thể thấy user id là sa.
 
 21
 00:01:27,080 --> 00:01:33,020
-And this is the username for SQL server login SA stands for the System administrator.
+Và đây là tên người dùng cho đăng nhập SQL server SA viết tắt của System administrator.
 
 22
 00:01:33,020 --> 00:01:36,020
-For password I'm giving a complex password.
+Đối với mật khẩu, tôi sẽ cấp một mật khẩu phức tạp.
 
 23
 00:01:36,020 --> 00:01:38,120
-This is for the SQL server login.
+Đây là cho đăng nhập SQL server.
 
 24
 00:01:38,120 --> 00:01:43,940
-And if you continue the connection string you can see the encrypt as a false.
+Và nếu bạn tiếp tục chuỗi kết nối, bạn có thể thấy encrypt là false.
 
 25
 00:01:43,940 --> 00:01:49,850
-This indicates whether the connection should be encrypted or not for development environments.
+Điều này cho biết liệu kết nối có nên được mã hóa hay không cho các môi trường phát triển.
 
 26
 00:01:49,850 --> 00:01:55,940
-Mostly it is using as a false because we don't need the encryption in development environment, and
+Hầu hết nó được sử dụng là false vì chúng ta không cần mã hóa trong môi trường phát triển, và
 
 27
 00:01:55,940 --> 00:02:01,130
-after that we have trusted server certificate configuration as a true.
+sau đó chúng ta có cấu hình trusted server certificate là true.
 
 28
 00:02:01,160 --> 00:02:07,790
-This is often used in development environment where the SSL TLS certificate might not be certificate
+Điều này thường được sử dụng trong môi trường phát triển nơi chứng chỉ SSL TLS có thể không được chứng chỉ
 
 29
 00:02:07,790 --> 00:02:08,870
-or SQL server.
+hoặc SQL server.
 
 30
 00:02:08,870 --> 00:02:09,710
-So that's why.
+Vậy đó là lý do.
 
 31
 00:02:09,710 --> 00:02:12,920
-Please give true for the trust server certificate.
+Vui lòng đặt true cho trust server certificate.
 
 32
 00:02:12,920 --> 00:02:18,830
-And this is the connection settings for communicating SQL server from our ordering API project.
+Và đây là các cài đặt kết nối để giao tiếp với SQL server từ dự án ordering API của chúng ta.
 

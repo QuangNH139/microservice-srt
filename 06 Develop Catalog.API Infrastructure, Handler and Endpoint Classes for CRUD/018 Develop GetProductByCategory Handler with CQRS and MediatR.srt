@@ -1,10 +1,10 @@
 1
 00:00:00,170 --> 00:00:05,450
-In this video we are going to start to develop get product by category feature.
+Trong video này, chúng ta sẽ bắt đầu phát triển tính năng get product by category.
 
 2
 00:00:05,450 --> 00:00:12,200
-So as you can see that under the products we have develop create products, get product by ID and Get
+Vậy như bạn có thể thấy rằng dưới products, chúng ta đã phát triển create products, get product by ID và Get
 
 3
 00:00:12,200 --> 00:00:13,130
@@ -12,135 +12,135 @@ products features.
 
 4
 00:00:13,130 --> 00:00:18,080
-So now we are going to focus on the developing Get products by category feature.
+Vậy bây giờ chúng ta sẽ tập trung vào việc phát triển tính năng Get products by category.
 
 5
 00:00:18,080 --> 00:00:22,880
-For that purpose right click with the products and add a new subfolder.
+Để mục đích đó, hãy nhấp chuột phải vào products và thêm một subfolder mới.
 
 6
 00:00:22,880 --> 00:00:25,520
-Which name is Get Product by category.
+Cái tên là Get Product by category.
 
 7
 00:00:26,630 --> 00:00:32,150
-So under the Get Product by category we will create 100 and endpoint classes.
+Vậy dưới Get Product by category, chúng ta sẽ tạo các class 100 và endpoint.
 
 8
 00:00:32,150 --> 00:00:40,100
-For that purpose I'm going to create a new class which name is Get Product by category under class under
+Để mục đích đó, tôi sẽ tạo một class mới có tên là Get Product by category dưới class này
 
 9
 00:00:40,100 --> 00:00:41,060
-this folder.
+trong folder này.
 
 10
 00:00:41,060 --> 00:00:46,370
-And also I'm going to create an additional class which name is endpoint class.
+Và cũng vậy, tôi sẽ tạo một class bổ sung có tên là endpoint class.
 
 11
 00:00:46,790 --> 00:00:50,000
-So as always we have start with the handle method.
+Vậy như mọi khi, chúng ta sẽ bắt đầu với handle method.
 
 12
 00:00:50,000 --> 00:00:56,750
-So in this handle method this will be responsible for handling the query for fetching products by category.
+Vậy trong handle method này, nó sẽ chịu trách nhiệm xử lý query để lấy products theo category.
 
 13
 00:00:56,870 --> 00:01:00,740
-Let me start with developing query and result object.
+Hãy bắt đầu phát triển query và result object.
 
 14
 00:01:00,740 --> 00:01:03,770
-So we will start with public record.
+Vậy chúng ta sẽ bắt đầu với public record.
 
 15
 00:01:03,770 --> 00:01:07,130
-And the name of the query is get product by category query.
+Và tên của query là get product by category query.
 
 16
 00:01:07,130 --> 00:01:14,180
-And as a parameter we will get a string category information in order to filter by category and inherit
+Và như một parameter, chúng ta sẽ nhận thông tin string category để lọc theo category và kế thừa
 
 17
 00:01:14,180 --> 00:01:15,440
-from the I query.
+từ I query.
 
 18
 00:01:15,440 --> 00:01:22,130
-And this time we will return a result object which name is get product by category result.
+Và lần này chúng ta sẽ trả về một result object có tên là get product by category result.
 
 19
 00:01:22,340 --> 00:01:29,840
-Okay, after this definition, we will again public record and get product by category result and as
+Được, sau định nghĩa này, chúng ta sẽ lại public record và get product by category result, và như
 
 20
 00:01:29,840 --> 00:01:33,110
-a result we expecting I innumerable.
+một kết quả, chúng ta đang mong đợi I innumerable.
 
 21
 00:01:35,150 --> 00:01:37,610
-Product that means product list.
+Sản phẩm có nghĩa là danh sách sản phẩm.
 
 22
 00:01:37,610 --> 00:01:41,990
-So we will give the name as a products okay.
+Vậy chúng ta sẽ đặt tên là products.
 
 23
 00:01:41,990 --> 00:01:45,320
-We have defined the our query and result object.
+Chúng ta đã định nghĩa query và result object của mình.
 
 24
 00:01:45,320 --> 00:01:48,320
-Now we will focus on the actual operation.
+Bây giờ chúng ta sẽ tập trung vào hoạt động thực tế.
 
 25
 00:01:48,320 --> 00:01:54,560
-First of all, we will change the name as a query handler to indicate that this is the query handler
+Đầu tiên, chúng ta sẽ thay đổi tên thành query handler để chỉ ra rằng đây là query handler.
 
 26
 00:01:54,560 --> 00:01:57,080
-class and make it internal.
+class và làm cho nó internal.
 
 27
 00:01:59,520 --> 00:02:06,180
-And after that we will inherit from the AI query handler, which passing the query and result object
+Và sau đó chúng ta sẽ kế thừa từ AI query handler, truyền query và result object vào interface.
 
 28
 00:02:06,180 --> 00:02:07,410
-into the interface.
+Và nếu chúng ta triển khai interface này, bạn có thể thấy handle method ở đây.
 
 29
 00:02:07,410 --> 00:02:11,880
-And if we implement this interface you can see the handle method in here.
+Vậy trong handle method, về cơ bản chúng ta tương tác với database.
 
 30
 00:02:11,880 --> 00:02:15,570
-So in the handle method we basically interact with the database.
+Vì lý do đó, tôi sẽ inject hai item là AI documentation và AI logger vào handler class của chúng ta.
 
 31
 00:02:15,570 --> 00:02:23,100
-For that reason I am going to inject two items which are the AI documentation and AI logger to our handler
+Hãy triển khai handle method này bằng cách sử dụng những object được inject.
 
 32
 00:02:23,100 --> 00:02:23,580
-class.
+Đầu tiên tôi sẽ logging incoming handle object bằng cách truyền query.
 
 33
 00:02:23,580 --> 00:02:29,250
-So let's implement this handle method with using these injecting objects.
+Như bạn có thể thấy, chúng ta cần thay đổi tên thành query trong các tham số của handle method, và điều này sẽ log incoming request và query operation.
 
 34
 00:02:29,250 --> 00:02:35,550
-First of all I'm going to logging the incoming handle object with passing the query.
+Vậy sau hoạt động logging, về cơ bản chúng ta thực hiện logic thực tế đó là lấy products từ database với session dot query method và chúng ta mong đợi product.
 
 35
 00:02:35,670 --> 00:02:42,390
-As you can see that we should change the name as a query in the parameters of the handle method, and
+Và ở đây chúng ta sẽ filter bằng cách sử dụng where statement.
 
 36
 00:02:42,390 --> 00:02:46,410
-this will be log incoming request and query operation.
+Và bên trong where statement, tôi sẽ định nghĩa p dot category.
 
 37
 00:02:46,410 --> 00:02:53,280
@@ -160,29 +160,29 @@ And inside of the where statement I'm going to define p dot category.
 
 41
 00:03:18,460 --> 00:03:24,730
-Dot contains and pacing the incoming query category information.
+Dot chứa và phân trang thông tin danh mục truy vấn đến.
 
 42
 00:03:24,730 --> 00:03:28,210
-And after that we can return to to list async.
+Và sau đó chúng ta có thể quay lại list async.
 
 43
 00:03:28,810 --> 00:03:36,610
-So after getting filtered products we will return new result object with pacing this products.
+Vậy sau khi lấy các sản phẩm đã được lọc, chúng ta sẽ trả về đối tượng result mới với phân trang các sản phẩm này.
 
 44
 00:03:38,380 --> 00:03:45,430
-In this handle method we use I documentation from the Martin in order to query this product document
+Trong phương thức handle này, chúng ta sử dụng I documentation từ Martin để truy vấn document sản phẩm này
 
 45
 00:03:45,430 --> 00:03:47,200
-table by category.
+theo danh mục.
 
 46
 00:03:47,200 --> 00:03:55,210
-So this method handle the asynchronously fetch all matching products with given category information
+Vậy phương thức này xử lý việc lấy không đồng bộ tất cả các sản phẩm phù hợp với thông tin danh mục đã cho
 
 47
 00:03:55,210 --> 00:04:01,630
-and returns them as a part of the our result object in a I enumerable product object.
+và trả về chúng như một phần của đối tượng result của chúng ta trong một đối tượng I enumerable product.
 

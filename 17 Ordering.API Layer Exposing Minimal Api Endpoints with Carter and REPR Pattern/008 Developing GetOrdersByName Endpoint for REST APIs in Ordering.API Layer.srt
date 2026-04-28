@@ -1,70 +1,70 @@
 1
 00:00:00,110 --> 00:00:03,920
-In this video we are going to develop get orders by name.
+Trong video này chúng ta sẽ phát triển get orders by name.
 
 2
 00:00:03,920 --> 00:00:07,160
-We will start by creating request and response object.
+Chúng ta sẽ bắt đầu bằng cách tạo request và response object.
 
 3
 00:00:07,160 --> 00:00:09,410
-Here you can see that request object.
+Ở đây bạn có thể thấy request object.
 
 4
 00:00:09,410 --> 00:00:12,920
-We will use and get name information from the request parameters.
+Chúng ta sẽ sử dụng và lấy thông tin name từ request parameters.
 
 5
 00:00:12,920 --> 00:00:19,550
-And here you can see the record type of the get orders by name response by taking the orders as a ordered
+Và ở đây bạn có thể thấy record type của get orders by name response bằng cách lấy orders như một danh sách được sắp xếp
 
 6
 00:00:19,790 --> 00:00:20,420
-list.
+.
 
 7
 00:00:20,420 --> 00:00:24,080
-So these are the definition of the request and response.
+Vậy đây là định nghĩa của request và response.
 
 8
 00:00:24,080 --> 00:00:31,280
-And after that we will develop actual class which is the get orders by name and inherit from the equator
+Và sau đó chúng ta sẽ phát triển class thực tế, đó là get orders by name và kế thừa từ equator module.
 
 9
 00:00:31,280 --> 00:00:31,880
-module.
+Và nếu chúng ta triển khai các thành viên interface này là địa chỉ mà chúng ta định nghĩa Get orders và http get request của chúng ta.
 
 10
 00:00:31,880 --> 00:00:37,910
-And if we implement the interface members this is the address that we define our Get orders and http
+Vậy trong method này về cơ bản chúng ta đang expose http get method.
 
 11
 00:00:37,910 --> 00:00:38,840
-get request.
+Với mục đích đó tôi sẽ gõ app dot map get method và truyền định nghĩa endpoint là slash orders slash order name.
 
 12
 00:00:38,840 --> 00:00:43,190
-So in this method we basically exposing http get method.
+Và đây là delegate 100 function mà chúng ta đang triển khai để xử lý incoming requests.
 
 13
 00:00:43,190 --> 00:00:49,130
-For that purpose I'm going to type app dot map get method and passing the endpoint definition which
+Parameter đầu tiên là lấy order name từ request parameters.
 
 14
 00:00:49,130 --> 00:00:51,860
-is the slash orders slash order name.
+Và parameter thứ hai là chúng ta đang inject mediator standard interface vào method của chúng ta.
 
 15
 00:00:51,860 --> 00:00:57,800
-And this is the delegate 100 function that we are implementing for accommodating incoming requests.
+Vậy tôi sẽ triển khai method này.
 
 16
 00:00:57,800 --> 00:01:01,640
-The first parameter is getting order name from the request parameters.
+Và chúng ta sẽ làm theo các bước giống nhau mà chúng ta đã triển khai trong các video trước.
 
 17
 00:01:01,640 --> 00:01:07,160
-And the second parameter is we have injecting mediator standard interface into our method.
+Trong dòng code đầu tiên về cơ bản chúng ta trực tiếp sử dụng mediator send function và truyền function này
 
 18
 00:01:07,160 --> 00:01:10,190
@@ -80,73 +80,73 @@ In the first line of code we basically directly use mediator send function and p
 
 21
 00:01:22,070 --> 00:01:28,880
-to the new get orders by name query and passing this query record type as a order name, which comes
+đến query GetOrdersByName mới và truyền loại record query này làm OrderName, được lấy từ
 
 22
 00:01:28,880 --> 00:01:35,390
-from the request parameters, and this is available function and returning a result object that we can
+các tham số request, và đây là hàm available và trả về một object result mà chúng ta có thể
 
 23
 00:01:35,390 --> 00:01:39,470
-converting this result object to the response object for that purpose.
+chuyển đổi object result này thành response object cho mục đích đó.
 
 24
 00:01:39,470 --> 00:01:46,610
-After getting result from the mediator sender function, I'm going to adapting this result object to
+Sau khi nhận được kết quả từ hàm mediator sender, tôi sẽ chuyển đổi object result này thành
 
 25
 00:01:46,610 --> 00:01:48,950
-the get orders by name response object.
+object GetOrdersByNameResponse.
 
 26
 00:01:48,950 --> 00:01:55,580
-And lastly, we will passing this response object to the resulted okay function and client application.
+Và cuối cùng, chúng ta sẽ truyền response object này đến hàm Results Ok và ứng dụng client.
 
 27
 00:01:55,580 --> 00:01:58,940
-Here you can see that we will use return results okay.
+Ở đây bạn có thể thấy chúng ta sẽ sử dụng return Results Ok.
 
 28
 00:01:58,940 --> 00:02:00,590
-And passing the response object.
+Và truyền object response.
 
 29
 00:02:00,590 --> 00:02:04,040
-And this is the implementation of the get orders by name.
+Và đây là implementation của GetOrdersByName.
 
 30
 00:02:04,040 --> 00:02:10,850
-And lastly we can configure these Http get method with passing the some of the extension method including
+Và cuối cùng chúng ta có thể configure phương thức Http Get này bằng cách truyền một số extension method bao gồm
 
 31
 00:02:10,850 --> 00:02:15,230
-the with name produce produce problems with summary and description.
+WithName, Produces, ProducesProblem với Summary và Description.
 
 32
 00:02:15,230 --> 00:02:22,220
-In the produce problems, you can see that it is indicate potential problems with 400 bad requests exception
+Trong ProducesProblem, bạn có thể thấy nó chỉ ra các vấn đề tiềm ẩn với exception 400 Bad Request
 
 33
 00:02:22,220 --> 00:02:25,100
-and also 404 not found exception.
+và cũng có exception 404 Not Found.
 
 34
 00:02:25,100 --> 00:02:28,580
-So this is the implementation of the get orders by name.
+Vậy đây là implementation của GetOrdersByName.
 
 35
 00:02:28,580 --> 00:02:32,540
-Here you can see that we have only one using statement indicating the queries.
+Ở đây bạn có thể thấy chúng ta chỉ có một using statement chỉ định Queries.
 
 36
 00:02:32,540 --> 00:02:33,920
-Get orders by name.
+GetOrdersByName.
 
 37
 00:02:33,920 --> 00:02:36,680
-And this is the request and response record type.
+Và đây là loại record request và response.
 
 38
 00:02:36,680 --> 00:02:39,890
-And this is the implementation of the get orders by name class.
+Và đây là implementation của class GetOrdersByName.
 

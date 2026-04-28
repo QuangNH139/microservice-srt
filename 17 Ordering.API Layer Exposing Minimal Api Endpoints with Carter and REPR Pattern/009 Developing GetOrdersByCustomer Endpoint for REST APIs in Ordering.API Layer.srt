@@ -1,50 +1,50 @@
 1
 00:00:00,080 --> 00:00:05,900
-In this video we are going to develop get orders by customer and we are going to follow exactly the
+Trong video này chúng ta sẽ phát triển get orders by customer và chúng ta sẽ làm theo chính xác
 
 2
 00:00:05,900 --> 00:00:06,590
-same steps.
+những bước tương tự.
 
 3
 00:00:06,590 --> 00:00:08,540
-What we have done in the last video.
+Những gì chúng ta đã làm trong video trước.
 
 4
 00:00:08,540 --> 00:00:13,010
-And I'm going to create by starting Request and response objects.
+Và tôi sẽ tạo bằng cách bắt đầu với các Request và response objects.
 
 5
 00:00:13,010 --> 00:00:18,470
-Here you can see that we will create record type, but in a request object we will accepting customer
+Ở đây bạn có thể thấy rằng chúng ta sẽ tạo record type, nhưng trong request object chúng ta sẽ nhận customer
 
 6
 00:00:18,470 --> 00:00:21,140
-ID from the request URL parameters.
+ID từ các tham số URL của request.
 
 7
 00:00:21,140 --> 00:00:23,930
-That's why I'm commenting this request part.
+Đó là lý do tại sao tôi đang comment phần request này.
 
 8
 00:00:23,930 --> 00:00:29,900
-And here you can see the public record get orders by customer response with taking the orders order
+Và ở đây bạn có thể thấy public record get orders by customer response với việc lấy orders order
 
 9
 00:00:29,900 --> 00:00:33,350
-detail list object as a parameter of this response type.
+detail list object làm tham số của response type này.
 
 10
 00:00:33,350 --> 00:00:39,620
-And after that we can start to implement our actual class, which should be implement Écarter module
+Và sau đó chúng ta có thể bắt đầu triển khai class thực tế của chúng ta, nó phải implement Carter module
 
 11
 00:00:39,620 --> 00:00:41,870
-and implement add routes method.
+và implement method add routes.
 
 12
 00:00:41,960 --> 00:00:49,910
-In this method we basically expose http get method and the URL should be the orders customer and customer
+Trong method này chúng ta về cơ bản expose http get method và URL sẽ là orders customer và customer
 
 13
 00:00:49,910 --> 00:00:50,300
@@ -52,63 +52,63 @@ id.
 
 14
 00:00:50,540 --> 00:00:56,690
-Here you can see that I'm going to use app dot map get method in order to expose http get operation.
+Ở đây bạn có thể thấy rằng tôi sẽ sử dụng app dot map get method để expose http get operation.
 
 15
 00:00:56,690 --> 00:00:57,950
-And this is the URL.
+Và đây là URL.
 
 16
 00:00:57,950 --> 00:01:04,250
-And this time you can see that our endpoint URL include slash customer and slash customer ID.
+Lần này bạn có thể thấy rằng endpoint URL của chúng ta bao gồm slash customer và slash customer ID.
 
 17
 00:01:04,250 --> 00:01:07,280
-And this customer ID is a request parameters.
+Và customer ID này là một request parameters.
 
 18
 00:01:07,280 --> 00:01:11,300
-And we are passing this customer ID into our delegate handler function.
+Và chúng ta đang truyền customer ID này vào hàm delegate handler của chúng ta.
 
 19
 00:01:11,300 --> 00:01:16,970
-In the first parameter you can see that we will taking with customer ID from the request parameters.
+Trong tham số đầu tiên bạn có thể thấy rằng chúng ta sẽ lấy customer ID từ các request parameters.
 
 20
 00:01:16,970 --> 00:01:21,230
-And in the second parameter we will inject I sender mediator object.
+Và trong tham số thứ hai chúng ta sẽ inject I sender mediator object.
 
 21
 00:01:21,230 --> 00:01:25,910
-And after that we can start implementation our delegate handler method.
+Và sau đó chúng ta có thể bắt đầu triển khai phương thức delegate handler của chúng ta.
 
 22
 00:01:26,000 --> 00:01:29,420
-And you can come here and start the implementation of this method.
+Và bạn có thể đến đây và bắt đầu triển khai phương thức này.
 
 23
 00:01:29,420 --> 00:01:36,620
-In this method implementation we basically directly call the mediator standard send function with available
+Trong triển khai phương thức này, chúng ta về cơ bản gọi trực tiếp hàm send tiêu chuẩn của mediator với các hàm có sẵn
 
 24
 00:01:36,620 --> 00:01:43,790
-function and passing the get orders by customer query and passing the customer ID in this query object.
+và truyền truy vấn get orders by customer và truyền customer ID trong đối tượng truy vấn này.
 
 25
 00:01:43,790 --> 00:01:49,730
-So by this way this will be trigger the query handler class and returning a result object.
+Bằng cách này, điều này sẽ kích hoạt lớp query handler và trả về một đối tượng kết quả.
 
 26
 00:01:49,730 --> 00:01:54,800
-And after that we will adapting this result object to the get orders by customer response.
+Và sau đó chúng ta sẽ thích ứng đối tượng kết quả này thành response get orders by customer.
 
 27
 00:01:54,800 --> 00:01:59,780
-And we are passing this response object to the client application with returning results.
+Và chúng ta sẽ truyền đối tượng response này cho ứng dụng client bằng cách trả về các kết quả.
 
 28
 00:01:59,810 --> 00:02:00,170
-Okay.
+Được rồi.
 
 29
 00:02:00,170 --> 00:02:00,770
@@ -116,23 +116,23 @@ Response.
 
 30
 00:02:00,770 --> 00:02:03,470
-This will be returned 200 okay response.
+Điều này sẽ trả về 200 okay response.
 
 31
 00:02:03,470 --> 00:02:07,490
-And after that of course we should configure our Carter endpoint.
+Và sau đó tất nhiên chúng ta nên cấu hình Carter endpoint của chúng ta.
 
 32
 00:02:07,490 --> 00:02:12,920
-And here you can see the extension method that we are going to follow with name summary and description.
+Và ở đây bạn có thể thấy phương thức mở rộng mà chúng ta sẽ theo dõi với tên summary và description.
 
 33
 00:02:12,920 --> 00:02:18,290
-And these are the produce and produce problems that we can configure our Http get operation.
+Và đây là các produce và produce problems mà chúng ta có thể cấu hình cho Http get operation của chúng ta.
 
 34
 00:02:18,290 --> 00:02:24,110
-And in this class we are using one statement which comes from the orders queries from the application
+Và trong lớp này chúng ta đang sử dụng một statement xuất phát từ orders queries từ application
 
 35
 00:02:24,110 --> 00:02:24,650
@@ -140,13 +140,13 @@ layer.
 
 36
 00:02:24,650 --> 00:02:28,220
-And these are the request and response object definition.
+Và đây là định nghĩa đối tượng request và response.
 
 37
 00:02:28,220 --> 00:02:34,040
-And these are the get orders by query implementation with implementing wrapper design pattern and following
+Và đây là triển khai get orders by query với việc triển khai wrapper design pattern và tuân theo
 
 38
 00:02:34,040 --> 00:02:34,940
-the Carter Library.
+thư viện Carter.
 

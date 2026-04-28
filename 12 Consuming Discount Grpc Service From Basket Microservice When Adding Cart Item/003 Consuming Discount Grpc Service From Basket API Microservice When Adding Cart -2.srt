@@ -1,190 +1,190 @@
 1
 00:00:00,140 --> 00:00:06,200
-In this video we are going to modify the store basket handle class in the basket API to dynamically
+Trong video này chúng ta sẽ sửa đổi lớp store basket handler trong basket API để tính toán
 
 2
 00:00:06,200 --> 00:00:08,480
-calculate final price of the products.
+giá cuối cùng của các sản phẩm một cách động.
 
 3
 00:00:08,510 --> 00:00:13,430
-For that purpose, please go to store Basket Command handler and go to the handle method.
+Để làm điều đó, vui lòng đi tới store Basket Command handler và vào phương thức handle.
 
 4
 00:00:13,430 --> 00:00:19,610
-And we are going to perform this todo statement before start implementing these todo statements.
+Và chúng ta sẽ thực hiện câu lệnh todo này trước khi bắt đầu triển khai những câu lệnh todo khác.
 
 5
 00:00:19,640 --> 00:00:24,710
-We should inject discount portal service client object into our constructor.
+Chúng ta nên inject đối tượng discount portal service client vào constructor của chúng ta.
 
 6
 00:00:24,740 --> 00:00:27,920
-This is the first point that we should do in here.
+Đây là điểm đầu tiên mà chúng ta nên làm ở đây.
 
 7
 00:00:28,580 --> 00:00:30,410
-Come to store basket handler class.
+Hãy đi tới lớp store basket handler.
 
 8
 00:00:30,410 --> 00:00:36,470
-And after the repository object I'm going to inject discount proto service.
+Và sau đối tượng repository, tôi sẽ inject discount proto service.
 
 9
 00:00:36,470 --> 00:00:43,250
-And this time we have created the client object and give the name as a discount proto.
+Và lần này chúng ta đã tạo đối tượng client và đặt tên là discount proto.
 
 10
 00:00:44,300 --> 00:00:51,140
-So this is our client object that is generated from the Visual Studio when we link application and connected
+Vậy đây là đối tượng client của chúng ta được tạo ra từ Visual Studio khi chúng ta liên kết ứng dụng và kết nối
 
 11
 00:00:51,140 --> 00:00:51,800
-services.
+các dịch vụ.
 
 12
 00:00:51,800 --> 00:00:56,990
-So we are going to use this discount proto object to performing these two statements.
+Vậy chúng ta sẽ sử dụng đối tượng discount proto này để thực hiện hai câu lệnh này.
 
 13
 00:00:57,020 --> 00:01:02,030
-For that purpose go to this handle method and perform the todo statement.
+Để làm được điều đó, hãy đi tới phương thức handle này và thực hiện câu lệnh todo.
 
 14
 00:01:02,030 --> 00:01:08,390
-Basically, we will iterate for each item into the cart cart coming from the parameters of the command.
+Về cơ bản, chúng ta sẽ lặp lại cho mỗi mục trong giỏ hàng đến từ tham số của lệnh.
 
 15
 00:01:08,390 --> 00:01:11,270
-So I'm going to perform for each statement in here.
+Vậy tôi sẽ thực hiện câu lệnh for each ở đây.
 
 16
 00:01:11,270 --> 00:01:15,020
-So we will iterate the shopping cart items.
+Vậy chúng ta sẽ lặp lại các mục trong giỏ hàng mua sắm.
 
 17
 00:01:15,020 --> 00:01:20,180
-And we will perform and call the gRPC services for each item.
+Và chúng ta sẽ thực hiện và gọi các dịch vụ gRPC cho mỗi mục.
 
 18
 00:01:20,180 --> 00:01:25,790
-For that purpose I'm going to communicate with the discount gRPC proto file.
+Để làm điều đó, tôi sẽ giao tiếp với tệp proto gRPC discount.
 
 19
 00:01:25,820 --> 00:01:32,930
-We basically use discount proto object that we have injected in the class, and we will use get discount
+Về cơ bản chúng ta sử dụng đối tượng discount proto mà chúng ta đã inject vào lớp, và chúng ta sẽ sử dụng phương thức get discount
 
 20
 00:01:32,930 --> 00:01:37,760
-async method in order to get discount operations from the discount microservices.
+async để lấy các hoạt động giảm giá từ discount microservices.
 
 21
 00:01:37,760 --> 00:01:42,440
-And I am going to pass as a parameter Ngif discount request object.
+Và tôi sẽ truyền đối tượng Ngif discount request làm tham số.
 
 22
 00:01:42,440 --> 00:01:49,340
-And in this request object we will perform the product name with incoming item operation item product
+Và trong đối tượng request này chúng ta sẽ thực hiện tên sản phẩm với thao tác item incoming item product.
 
 23
 00:01:49,340 --> 00:01:52,730
-name, and after that passing the cancellation token of this method.
+name, và sau đó truyền cancellation token của phương thức này.
 
 24
 00:01:52,730 --> 00:01:59,240
-So this is the synchronous gRPC call communication handle with this line of code.
+Vậy đây là gRPC call communication đồng bộ được xử lý bằng dòng mã này.
 
 25
 00:01:59,240 --> 00:02:01,550
-And we will return back a coupon object.
+Và chúng ta sẽ trả về một đối tượng coupon.
 
 26
 00:02:01,550 --> 00:02:08,270
-And after getting the coupon object we basically calculate the latest prices with deducting coupon amount
+Và sau khi nhận được đối tượng coupon, về cơ bản chúng ta tính toán giá mới nhất bằng cách trừ đi số tiền coupon.
 
 27
 00:02:08,270 --> 00:02:11,030
-information from the actual price of the item.
+thông tin từ giá thực tế của item.
 
 28
 00:02:11,030 --> 00:02:14,510
-So this is the for each statement that we are going to perform.
+Vậy đây là câu lệnh for each mà chúng ta sẽ thực hiện.
 
 29
 00:02:14,510 --> 00:02:21,890
-For each shopping cart items, call the discount gRPC services using the Get discount async method,
+Với mỗi shopping cart items, gọi discount gRPC services sử dụng phương thức Get discount async,
 
 30
 00:02:21,890 --> 00:02:26,300
-and after that adjust the items price based on the discount amount received.
+và sau đó điều chỉnh giá của items dựa trên số tiền chiết khấu nhận được.
 
 31
 00:02:26,810 --> 00:02:29,570
-So this is the implementation of this Todo statement.
+Vậy đây là triển khai của câu lệnh Todo này.
 
 32
 00:02:29,570 --> 00:02:33,290
-And after that I am performing some of the refactoring in this method.
+Và sau đó tôi đang thực hiện một số refactoring trong phương thức này.
 
 33
 00:02:33,290 --> 00:02:38,570
-So basically we should extract the logic of the discount calculation into separate method.
+Về cơ bản, chúng ta nên trích xuất logic tính toán chiết khấu thành một phương thức riêng biệt.
 
 34
 00:02:38,570 --> 00:02:42,890
-Which name is deduct discount for better readability and maintainability.
+Phương thức được đặt tên là deduct discount để dễ đọc hơn và dễ bảo trì hơn.
 
 35
 00:02:42,890 --> 00:02:49,400
-For that purpose, I'm going to extract this method and make clear our handle method for that purpose.
+Với mục đích đó, tôi sẽ trích xuất phương thức này và làm rõ phương thức handle của chúng ta.
 
 36
 00:02:49,430 --> 00:02:55,370
-Come here and I have creating a new method which name is deduct discount.
+Hãy đến đây và tôi đang tạo một phương thức mới có tên là deduct discount.
 
 37
 00:02:55,370 --> 00:03:01,520
-And this is the method that we have extracting this Todo statement and operation.
+Và đây là phương thức mà chúng ta đã trích xuất câu lệnh Todo này và thao tác.
 
 38
 00:03:01,520 --> 00:03:07,040
-Here you can see that we are getting shopping cart as a parameter of this deduct discount method and
+Ở đây bạn có thể thấy rằng chúng ta đang lấy shopping cart làm tham số của phương thức deduct discount này và
 
 39
 00:03:07,040 --> 00:03:11,090
-performing for each operation for calling discount gRPC.
+thực hiện thao tác for each để gọi discount gRPC.
 
 40
 00:03:11,330 --> 00:03:17,600
-So after developing this deduct discount method, you can copy paste this for each statement and to
+Vậy sau khi phát triển phương thức deduct discount này, bạn có thể copy paste câu lệnh for each này và
 
 41
 00:03:17,600 --> 00:03:18,260
-do statement.
+phát biểu do.
 
 42
 00:03:18,260 --> 00:03:20,210
-And after that you can remove this code.
+Và sau đó bạn có thể xóa đoạn code này.
 
 43
 00:03:20,210 --> 00:03:28,880
-And now we can safely call await deduct discount operation with passing the command dot cart object
+Và bây giờ chúng ta có thể safely gọi await deduct discount operation với passing command dot cart object
 
 44
 00:03:28,880 --> 00:03:30,560
-and cancellation token.
+và cancellation token.
 
 45
 00:03:32,860 --> 00:03:35,590
-By this way, we can use two operations.
+Bằng cách này, chúng ta có thể sử dụng hai operations.
 
 46
 00:03:35,590 --> 00:03:39,640
-The first one is deduct discount and the second one is store basket.
+Cái đầu tiên là deduct discount và cái thứ hai là store basket.
 
 47
 00:03:39,640 --> 00:03:42,430
-And after that return back to the store basket.
+Và sau đó return lại to the store basket.
 
 48
 00:03:42,430 --> 00:03:43,090
@@ -192,9 +192,9 @@ Result.
 
 49
 00:03:43,090 --> 00:03:49,240
-So this is the implementation of the communication with discount gRPC and calculate latest price of
+Vậy đây là implementation của communication với discount gRPC và calculate latest price của
 
 50
 00:03:49,240 --> 00:03:50,830
-the products into shopping cart.
+các products trong shopping cart.
 

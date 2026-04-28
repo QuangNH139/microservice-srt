@@ -1,42 +1,42 @@
 1
 00:00:00,140 --> 00:00:06,950
-In this video we are going to develop add item into shopping cart in the Index.cshtml page with using
+Trong video này chúng ta sẽ phát triển tính năng thêm sản phẩm vào giỏ hàng trong trang Index.cshtml bằng cách sử dụng
 
 2
 00:00:06,950 --> 00:00:08,330
-the I basket service.
+I basket service.
 
 3
 00:00:08,330 --> 00:00:14,810
-So if you open the shared page which is the product item partial shared page, you can see that there
+Vậy nếu bạn mở trang shared page, đó là trang product item partial shared page, bạn có thể thấy rằng có
 
 4
 00:00:14,810 --> 00:00:17,720
-is a form tag and which is the add to cart.
+một form tag và đó là add to cart.
 
 5
 00:00:17,720 --> 00:00:20,030
-And this is the http post operation.
+Và đây là HTTP post operation.
 
 6
 00:00:20,030 --> 00:00:21,140
-And there is a button.
+Và có một nút.
 
 7
 00:00:21,140 --> 00:00:24,380
-And on click we will submit the form which is the index page.
+Và khi click vào, chúng ta sẽ submit form trên trang index.
 
 8
 00:00:24,380 --> 00:00:30,020
-And this is the hidden input type which is passing the model id product id as a parameters.
+Và đây là hidden input type để truyền model id product id như là các parameters.
 
 9
 00:00:30,020 --> 00:00:34,610
-So this button basically submit the form in the index page.
+Vậy nút này cơ bản là submit form trên trang index.
 
 10
 00:00:34,610 --> 00:00:40,700
-In order to handle this method, we should create method in the index page which name is on post add
+Để xử lý method này, chúng ta nên tạo một method trong trang index với tên là on post add
 
 11
 00:00:40,700 --> 00:00:41,630
@@ -44,15 +44,15 @@ to cart async.
 
 12
 00:00:41,630 --> 00:00:48,050
-So if you go back to index C-sharp file, you can see that we have a on get async method.
+Vậy nếu bạn quay lại file index C-sharp, bạn có thể thấy rằng chúng ta có một method on get async.
 
 13
 00:00:48,050 --> 00:00:51,140
-And we are going to create on post add to cart async.
+Và chúng ta sẽ tạo on post add to cart async.
 
 14
 00:00:51,140 --> 00:00:57,170
-And in this method we will use I basket service to communicate with the basket microservices over the
+Và trong method này chúng ta sẽ sử dụng I basket service để giao tiếp với basket microservices qua
 
 15
 00:00:57,350 --> 00:00:58,190
@@ -60,91 +60,91 @@ API gateway.
 
 16
 00:00:58,190 --> 00:01:04,370
-But before that we have to register our basket service into our ASP.Net dependency injection tool.
+Nhưng trước tiên chúng ta phải đăng ký basket service vào ASP.Net dependency injection tool của chúng ta.
 
 17
 00:01:04,370 --> 00:01:10,970
-For that purpose, we have to go to the program case and when we are registering the catalog service,
+Để làm điều đó, chúng ta phải đi đến program.cs và khi chúng ta đang đăng ký catalog service,
 
 18
 00:01:10,970 --> 00:01:13,790
-we should also register the basket services.
+chúng ta cũng nên đăng ký basket services.
 
 19
 00:01:13,970 --> 00:01:19,670
-At this point, I am going to copy the catalog service part and paste in here.
+Lúc này, tôi sẽ copy phần catalog service và paste vào đây.
 
 20
 00:01:19,670 --> 00:01:23,750
-And this time I am going to change my catalog service to I Basket Service.
+Và lần này tôi sẽ thay đổi catalog service của tôi thành I Basket Service.
 
 21
 00:01:24,590 --> 00:01:28,550
-And the base address is the same which is the Erb API gateway.
+Và địa chỉ cơ sở là giống nhau, đó là Erb API gateway.
 
 22
 00:01:28,550 --> 00:01:33,950
-And this time refit will be generate Http client for the I basket services.
+Và lần này Refit sẽ tạo Http client cho I basket services.
 
 23
 00:01:33,950 --> 00:01:38,240
-To perform these get, post, delete and post checkout operations.
+Để thực hiện các thao tác get, post, delete và post checkout.
 
 24
 00:01:38,240 --> 00:01:45,680
-By this way we can use an inject I basket service any page in order to interact with the basket microservices
+Bằng cách này chúng ta có thể inject I basket service vào bất kỳ trang nào để tương tác với basket microservices
 
 25
 00:01:45,680 --> 00:01:47,210
-over the web API gateway.
+thông qua Web API gateway.
 
 26
 00:01:47,450 --> 00:01:53,810
-After adding thrift client for the basket service, save the program case and go back to our index C
+Sau khi thêm Refit client cho basket service, lưu Program.cs và quay lại file index C
 
 27
 00:01:54,080 --> 00:01:54,560
-file.
+của chúng ta.
 
 28
 00:01:54,560 --> 00:02:01,310
-And now I am going to inject and use I basket services to create an add item into product into shopping
+Và bây giờ tôi sẽ inject và sử dụng I basket services để tạo một method thêm sản phẩm vào giỏ hàng.
 
 29
 00:02:01,310 --> 00:02:01,880
-cart.
+Tại thời điểm này, tôi sẽ chuyển sang primary constructor.
 
 30
 00:02:02,000 --> 00:02:04,970
-At this point, I am going to go to the primary constructor.
+Ngay sau khi inject Catalog service, tôi đã inject I basket services.
 
 31
 00:02:04,970 --> 00:02:09,860
-Just after the catalog service injection, I have injected the I basket services.
+Ở đây bạn có thể thấy rằng chúng ta đã inject ba services: I Catalog service, I Basket service và I logger.
 
 32
 00:02:09,860 --> 00:02:16,010
-Here you can see that we have injected three services I Catalog service, I Basket service and I logger.
+Và sau đó chúng ta có thể sử dụng I basket services trong method mới được tạo của chúng ta, nó sẽ tạo
 
 33
 00:02:16,280 --> 00:02:23,630
-And after that we can use I basket services into our newly created method which will be create our own
+post add to cart async method của riêng chúng ta.
 
 34
 00:02:23,630 --> 00:02:25,550
-post add to cart async method.
+Ở đây bạn có thể thấy async method đó sẽ xử lý submit operation từ form của product item partial page, và ở đây khi add to cart operation được submit trong HTML, method này sẽ được trigger.
 
 35
 00:02:25,550 --> 00:02:32,270
-Here you can see the async method that accodomate the submit operation form of the product item partial
+Đó là lý do tại sao chúng ta đã tạo public async task I action result và tên của method là on post add
 
 36
 00:02:32,270 --> 00:02:39,650
-partial page, and in here when add to cart operation submitted in the HTML, this method will be trigger.
+to cart async, và như một parameter chúng ta sẽ truyền product id, nó sẽ lấy product id từ hidden item trong product item partial, mà chúng ta sẽ truyền khi chúng ta add to cart item và submit
 
 37
 00:02:39,650 --> 00:02:46,400
-That's why we have created public async and task I action result and name of the method is on post add
+button này.
 
 38
 00:02:46,400 --> 00:02:52,580
@@ -160,123 +160,123 @@ this button.
 
 41
 00:02:59,690 --> 00:03:04,520
-So if you go back to our index C file, we will implement these method.
+Vậy nếu bạn quay lại tệp index C của chúng ta, chúng ta sẽ triển khai các method này.
 
 42
 00:03:04,520 --> 00:03:09,740
-First of all, I am going to add a log information for adding item into cart.
+Đầu tiên, tôi sẽ thêm log information để thêm item vào cart.
 
 43
 00:03:09,740 --> 00:03:16,910
-And just after that we can basically get the product with a given product ID inside of this parameter.
+Và ngay sau đó, chúng ta có thể lấy product với product ID cho trước trong parameter này.
 
 44
 00:03:16,910 --> 00:03:23,060
-So I'm going to retrieve the product from the catalog services with get product method in order to get
+Vậy tôi sẽ lấy product từ catalog services bằng method get product để có thể lấy
 
 45
 00:03:23,060 --> 00:03:28,880
-single product details when adding item into cart, because we will need some additional information
+chi tiết của một product duy nhất khi thêm item vào cart, vì chúng ta sẽ cần một số thông tin bổ sung
 
 46
 00:03:28,880 --> 00:03:32,030
-about the products like the product name, price and so on.
+về các product như tên product, giá cả và những thứ khác.
 
 47
 00:03:32,030 --> 00:03:36,080
-For that purpose, it is good to retrieve a product from the catalog services.
+Vì mục đích đó, sẽ rất tốt nếu lấy product từ catalog services.
 
 48
 00:03:36,080 --> 00:03:40,460
-And just after that, I am going to get or create a new shopping cart.
+Và ngay sau đó, tôi sẽ lấy hoặc tạo một shopping cart mới.
 
 49
 00:03:40,460 --> 00:03:47,090
-For that purpose, I have created a new method which is the await load user basket and passing the basket
+Vì mục đích đó, tôi đã tạo một method mới đó là await load user basket và truyền basket
 
 50
 00:03:47,090 --> 00:03:49,310
-services and get back the basket.
+services và lấy lại basket.
 
 51
 00:03:49,310 --> 00:03:54,500
-This method will be getting or creating a new basket that we will develop in soon.
+Method này sẽ lấy hoặc tạo một basket mới mà chúng ta sẽ phát triển trong thời gian sắp tới.
 
 52
 00:03:54,500 --> 00:04:01,190
-And after that we can continue our operation, which is the using this basket and adding item into basket.
+Và sau đó chúng ta có thể tiếp tục hoạt động của chúng ta, đó là sử dụng basket này và thêm item vào basket.
 
 53
 00:04:01,190 --> 00:04:07,910
-Using the basket dot items dot add method and passing the new shopping cart item model including and
+Sử dụng phương thức basket dot items dot add và truyền model shopping cart item mới bao gồm và
 
 54
 00:04:07,910 --> 00:04:12,320
-populating the product ID, product name, price, quantity and color.
+điền product ID, product name, price, quantity và color.
 
 55
 00:04:12,320 --> 00:04:15,080
-Product ID comes from the Our Method parameter.
+Product ID đến từ parameter của Method của chúng ta.
 
 56
 00:04:15,080 --> 00:04:21,320
-Product name comes from the R product Response product name, and we get the price from the again product
+Product name đến từ R product Response product name, và chúng ta lấy price từ product
 
 57
 00:04:21,320 --> 00:04:27,140
-response product price and quantity is one color is black for hard coded value.
+response product price và quantity là một, color là black cho giá trị hard coded.
 
 58
 00:04:27,140 --> 00:04:33,350
-So now we can see that we have adding the basket items with using the basket dot items method.
+Vậy bây giờ chúng ta có thể thấy rằng chúng ta đang thêm basket items bằng cách sử dụng phương thức basket dot items.
 
 59
 00:04:33,350 --> 00:04:38,630
-Basket will be our shopping cart model object that we have defined under the models.
+Basket sẽ là shopping cart model object mà chúng ta đã định nghĩa dưới models.
 
 60
 00:04:38,630 --> 00:04:44,810
-And just after the adding item into basket, we basically passing this basket object into the store
+Và ngay sau khi thêm item vào basket, chúng ta cơ bản là truyền basket object này vào store
 
 61
 00:04:44,810 --> 00:04:45,200
-basket.
+giỏ hàng.
 
 62
 00:04:45,200 --> 00:04:50,600
-Request wrapper classes and send to basket service dot store basket method.
+Request wrapper classes và gửi đến phương thức basket service dot store basket.
 
 63
 00:04:50,600 --> 00:04:56,450
-In order to send http post request to the basket microservices and create new basket.
+Để gửi HTTP post request đến basket microservices và tạo giỏ hàng mới.
 
 64
 00:04:56,600 --> 00:04:59,450
-So after created new basket we can.
+Vậy sau khi tạo giỏ hàng mới, chúng ta có thể.
 
 65
 00:04:59,790 --> 00:05:01,560
-Link to the page, which is the card.
+Liên kết đến trang, đó là trang card.
 
 66
 00:05:01,590 --> 00:05:06,030
-That means we will redirect you to page card from index to card page.
+Điều đó có nghĩa là chúng ta sẽ chuyển hướng bạn đến trang card từ index đến trang card.
 
 67
 00:05:06,030 --> 00:05:09,450
-So now we can implement the load user basket method.
+Vậy bây giờ chúng ta có thể triển khai phương thức load user basket.
 
 68
 00:05:09,450 --> 00:05:15,660
-Basically we will get or create a new basket according to if it is exist or not.
+Về cơ bản, chúng ta sẽ lấy hoặc tạo giỏ hàng mới tùy thuộc vào việc nó có tồn tại hay không.
 
 69
 00:05:15,660 --> 00:05:22,560
-In here you can see that I have adding the private static async function which is returning task shopping
+Tại đây bạn có thể thấy rằng tôi đã thêm một private static async function, nó trả về task shopping
 
 70
 00:05:22,560 --> 00:05:28,860
-cart model, and the method name is a load user basket, and as a parameter it is taking I basket service
+cart model, và tên phương thức là load user basket, và như một tham số, nó lấy I basket service
 
 71
 00:05:28,860 --> 00:05:30,000
@@ -284,159 +284,159 @@ basket services.
 
 72
 00:05:30,000 --> 00:05:37,200
-So in this method we basically get or create new basket with default username which is the boolean.
+Vậy trong phương thức này, chúng ta về cơ bản sẽ lấy hoặc tạo giỏ hàng mới với default username, đó là boolean.
 
 73
 00:05:37,200 --> 00:05:44,070
-Since we don't have authentication username for now, we can use default username as the boolean for
+Vì chúng ta không có username xác thực lúc này, chúng ta có thể sử dụng default username như boolean để
 
 74
 00:05:44,070 --> 00:05:47,040
-the workaround in order to get or create new basket.
+làm cách giải quyết tạm thời để lấy hoặc tạo giỏ hàng mới.
 
 75
 00:05:47,040 --> 00:05:49,800
-After that we will add the product into shopping cart.
+Sau đó chúng ta sẽ thêm sản phẩm vào giỏ hàng.
 
 76
 00:05:49,800 --> 00:05:52,140
-Here you can see that we have a try catch block.
+Tại đây bạn có thể thấy rằng chúng ta có một khối try catch.
 
 77
 00:05:52,140 --> 00:05:56,910
-We basically get the basket using the basket service interface.
+Chúng ta về cơ bản sẽ lấy giỏ hàng bằng cách sử dụng basket service interface.
 
 78
 00:05:56,910 --> 00:06:02,220
-And here you can see that we will return the response dot cart object if it is existing.
+Và ở đây bạn có thể thấy rằng chúng ta sẽ trả về response dot cart object nếu nó tồn tại.
 
 79
 00:06:02,220 --> 00:06:08,070
-If not existing, we will creating any basket object with empty items that we can adding new item into
+Nếu không tồn tại, chúng ta sẽ tạo một basket object với các items trống để chúng ta có thể thêm item mới vào
 
 80
 00:06:08,070 --> 00:06:08,910
-shopping cart.
+giỏ hàng.
 
 81
 00:06:08,910 --> 00:06:13,080
-And here you can see the load basket is using into our actual method.
+Và ở đây bạn có thể thấy load basket đang được sử dụng trong phương thức thực tế của chúng ta.
 
 82
 00:06:13,080 --> 00:06:19,620
-And once we get the basket, we will add a new item and we will paste this basket object with adding
+Và một khi chúng ta lấy được basket, chúng ta sẽ thêm một item mới và chúng ta sẽ đưa object basket này vào với việc thêm
 
 83
 00:06:19,620 --> 00:06:21,630
-the new item into the store basket.
+item mới vào store basket.
 
 84
 00:06:21,630 --> 00:06:28,140
-Request variable class and hit the http post request to the Basket Services Store basket endpoint.
+Request variable class và gửi http post request tới Basket Services Store basket endpoint.
 
 85
 00:06:28,530 --> 00:06:30,330
-Now we can refactor our code.
+Bây giờ chúng ta có thể refactor code của mình.
 
 86
 00:06:30,330 --> 00:06:35,850
-If you look at the our method, you can see that we always relying on the load user basket method.
+Nếu bạn nhìn vào phương thức của chúng ta, bạn có thể thấy rằng chúng ta luôn phụ thuộc vào phương thức load user basket.
 
 87
 00:06:35,850 --> 00:06:38,160
-And this method is a private static method.
+Và phương thức này là một phương thức static private.
 
 88
 00:06:38,160 --> 00:06:43,620
-And we are using this method for each page when we are developing and loading the basket.
+Và chúng ta đang sử dụng phương thức này cho mỗi trang khi chúng ta đang phát triển và loading basket.
 
 89
 00:06:43,620 --> 00:06:45,120
-So this is the pain point.
+Vậy đây là vấn đề cần giải quyết.
 
 90
 00:06:45,120 --> 00:06:50,670
-And we should move this function and this method into the I basket service interface.
+Và chúng ta nên chuyển hàm này và phương thức này vào trong I basket service interface.
 
 91
 00:06:50,670 --> 00:06:56,070
-Here you can see that we can move this method into the our I basket service interface.
+Ở đây bạn có thể thấy rằng chúng ta có thể chuyển phương thức này vào I basket service interface của chúng ta.
 
 92
 00:06:56,070 --> 00:07:02,400
-Because C sharp has default interface methods feature that comes with the C sharp eight.
+Vì C# có tính năng default interface methods được cung cấp từ C# 8.
 
 93
 00:07:02,400 --> 00:07:09,480
-Here you can see the article default interface methods that we can explicitly implement interface methods
+Ở đây bạn có thể thấy bài viết về default interface methods mà chúng ta có thể triển khai rõ ràng các phương thức interface
 
 94
 00:07:09,480 --> 00:07:10,170
-in here.
+ở đây.
 
 95
 00:07:10,170 --> 00:07:16,050
-So if you scroll down you can see an example of the implementation of the interface methods that we
+Vậy nếu bạn cuộn xuống bạn có thể thấy một ví dụ về cách triển khai các phương thức interface mà chúng ta
 
 96
 00:07:16,050 --> 00:07:24,060
-can use this feature in here because we will requiring to using the load async method load user basket
+có thể sử dụng tính năng này ở đây vì chúng ta sẽ cần sử dụng phương thức load async, phương thức load user basket
 
 97
 00:07:24,060 --> 00:07:27,000
-method in each clusters and in each pages.
+trong mỗi cluster và trong mỗi trang.
 
 98
 00:07:27,000 --> 00:07:30,870
-For that purpose, it is good to move this method in the eye basket services.
+Vì lý do đó, sẽ tốt nếu chúng ta chuyển phương thức này vào I basket services.
 
 99
 00:07:30,870 --> 00:07:32,880
-So please go to the eye basket service.
+Vậy hãy đi tới I basket service.
 
 100
 00:07:32,880 --> 00:07:39,510
-And at this point I am going to develop our actual method which is the load user basket.
+Và lúc này tôi sẽ phát triển phương thức thực tế của chúng ta, đó là load user basket.
 
 101
 00:07:39,510 --> 00:07:43,020
-Here you can see that I have adding the same method in here.
+Ở đây bạn có thể thấy rằng tôi đã thêm cùng một method vào đây.
 
 102
 00:07:43,020 --> 00:07:49,320
-But this time we will make it public async and return back as a task shopping cart model and method
+Nhưng lần này chúng ta sẽ tạo nó là public async và trả về một task shopping cart model và method.
 
 103
 00:07:49,320 --> 00:07:50,820
-name is a load user basket.
+Tên method là load user basket.
 
 104
 00:07:50,820 --> 00:07:57,660
-We will use worker and username as a boolean, and just after that in the try block we will get basket
+Chúng ta sẽ sử dụng worker và username như một boolean, và ngay sau đó trong khối try chúng ta sẽ lấy basket.
 
 105
 00:07:57,660 --> 00:07:58,860
-with a given username.
+với một username đã cho.
 
 106
 00:07:58,860 --> 00:08:05,160
-Get basket methods comes from the interface and once we are getting the basket response, we will populate
+Get basket method đến từ interface và một khi chúng ta lấy được response basket, chúng ta sẽ điền.
 
 107
 00:08:05,160 --> 00:08:06,960
-the basket and return this basket.
+basket và trả về basket này.
 
 108
 00:08:06,960 --> 00:08:11,190
-But if there is no basket, we will catch the API exception.
+Nhưng nếu không có basket, chúng ta sẽ catch API exception.
 
 109
 00:08:11,190 --> 00:08:15,270
-And also we will check the API exception status as a not found.
+Và cũng kiểm tra API exception status là not found.
 
 110
 00:08:15,300 --> 00:08:18,480
-That means there is no item and basket in the basket.
+Điều đó có nghĩa là không có item và basket trong basket.
 
 111
 00:08:18,480 --> 00:08:19,350
@@ -444,23 +444,23 @@ Microservices.
 
 112
 00:08:19,350 --> 00:08:24,480
-Then we should create a new basket with a new shopping cart model and empty items.
+Khi đó chúng ta nên tạo một basket mới với một shopping cart model mới và items rỗng.
 
 113
 00:08:24,480 --> 00:08:31,620
-And after that, we can return back this basket to this method that we can use this method into all
+Và sau đó, chúng ta có thể trả về basket này cho method này để chúng ta có thể sử dụng method này vào tất cả.
 
 114
 00:08:31,620 --> 00:08:33,960
-operations when we are loading the user basket.
+các operation khi chúng ta đang loading user basket.
 
 115
 00:08:33,960 --> 00:08:41,309
-So if you go back to our index.cshtml file now I am going to delete all these private static method.
+Vậy nếu bạn quay lại file index.cshtml của chúng ta, bây giờ tôi sẽ xóa tất cả những private static method này.
 
 116
 00:08:41,309 --> 00:08:50,250
-And whenever we are using this load user basket this time I am going to use basket service dot load
+Và bất cứ khi nào chúng ta sử dụng load user basket, lần này tôi sẽ sử dụng basket service dot load.
 
 117
 00:08:50,400 --> 00:08:51,360
@@ -468,17 +468,17 @@ basket method.
 
 118
 00:08:51,360 --> 00:08:52,980
-And we don't have any parameter.
+Và chúng ta không có bất kỳ parameter nào.
 
 119
 00:08:52,980 --> 00:08:59,310
-So it is now more readable and more clean to implementation of the our add to cart operation.
+Vậy nó bây giờ dễ đọc hơn và triển khai sạch hơn cho add to cart operation của chúng ta.
 
 120
 00:08:59,310 --> 00:09:04,830
-So as you can see that we have completed the implementation of the Add to cart into our index page.
+Vậy như bạn có thể thấy rằng chúng ta đã hoàn thành triển khai Add to cart vào trang index của chúng ta.
 
 121
 00:09:04,830 --> 00:09:08,040
-In the next video we will continue to developing our cart page.
+Trong video tiếp theo, chúng ta sẽ tiếp tục phát triển trang giỏ hàng của mình.
 

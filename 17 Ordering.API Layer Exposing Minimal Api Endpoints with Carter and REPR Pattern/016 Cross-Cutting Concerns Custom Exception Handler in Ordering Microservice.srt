@@ -1,58 +1,58 @@
 1
 00:00:00,140 --> 00:00:03,320
-In this video we are going to do cross-cutting concerns.
+Trong video này chúng ta sẽ tìm hiểu về cross-cutting concerns.
 
 2
 00:00:03,350 --> 00:00:08,090
-Especially we will develop custom exception handling in microservices.
+Đặc biệt là chúng ta sẽ phát triển custom exception handling trong microservices.
 
 3
 00:00:08,119 --> 00:00:11,450
-In the last video we have tested the late order use case.
+Trong video trước chúng ta đã kiểm tra use case late order.
 
 4
 00:00:11,450 --> 00:00:16,880
-And if you look at the delayed order handler you can see that first of all, we will check that the
+Và nếu bạn nhìn vào delayed order handler bạn có thể thấy rằng đầu tiên, chúng ta sẽ kiểm tra xem
 
 5
 00:00:16,880 --> 00:00:21,110
-incoming order ID is exist or not into order DB database.
+order ID đến có tồn tại hay không trong order database.
 
 6
 00:00:21,110 --> 00:00:24,800
-If not exist this is throwing order not found exception.
+Nếu không tồn tại thì sẽ throw order not found exception.
 
 7
 00:00:25,100 --> 00:00:28,880
-So I have tried these exception cases into our postman.
+Vậy tôi đã thử các trường hợp exception này trong Postman của chúng ta.
 
 8
 00:00:28,880 --> 00:00:34,490
-Here you can see that I have sent http delete method with non-existing ID information.
+Ở đây bạn có thể thấy rằng tôi đã gửi HTTP delete method với thông tin ID không tồn tại.
 
 9
 00:00:34,490 --> 00:00:40,340
-This is the response from the our API which is returning order not found exception.
+Đây là response từ API của chúng ta mà trả về order not found exception.
 
 10
 00:00:40,340 --> 00:00:46,340
-But as you can see that it is not readable exception message and it is not manageable for understanding
+Nhưng như bạn có thể thấy rằng đó không phải là exception message có thể đọc được và nó không dễ quản lý để hiểu
 
 11
 00:00:46,340 --> 00:00:47,240
-the exception.
+exception.
 
 12
 00:00:47,240 --> 00:00:49,280
-And it is also not formatted.
+Và nó cũng không được định dạng.
 
 13
 00:00:49,280 --> 00:00:54,620
-We cannot read which column is getting exception, and we cannot read in a Json format.
+Chúng ta không thể đọc được cột nào đang gặp exception, và chúng ta không thể đọc ở định dạng Json.
 
 14
 00:00:54,620 --> 00:01:00,170
-For that purpose, we should apply cross-cutting concerns and custom exception handling in the ordering
+Để có mục đích đó, chúng ta nên áp dụng cross-cutting concerns và custom exception handling trong ordering
 
 15
 00:01:00,170 --> 00:01:01,310
@@ -60,63 +60,63 @@ microservices.
 
 16
 00:01:01,310 --> 00:01:05,720
-So we have chosen to implement our custom exception handling in the building blocks.
+Vậy chúng ta đã chọn triển khai custom exception handling của chúng ta trong building blocks.
 
 17
 00:01:05,720 --> 00:01:11,180
-As you remember that we are developing building blocks, and in the building blocks we have exception
+Như bạn còn nhớ rằng chúng ta đang phát triển building blocks, và trong building blocks chúng ta có exception
 
 18
 00:01:11,180 --> 00:01:13,850
-folders and we have custom exception handler class.
+folders và chúng ta có custom exception handler class.
 
 19
 00:01:13,850 --> 00:01:19,490
-In order to apply these exception handling for each microservices, if you open the custom exception
+Để áp dụng exception handling này cho mỗi microservices, nếu bạn mở custom exception
 
 20
 00:01:19,490 --> 00:01:25,160
-handling, you can see that this class encapsulate the logic for the handling different type of the
+handling, bạn có thể thấy rằng class này đóng gói logic để xử lý các kiểu exception khác nhau.
 
 21
 00:01:25,160 --> 00:01:28,550
-exceptions that the microservices might encounter.
+các exception mà microservices có thể gặp phải.
 
 22
 00:01:28,550 --> 00:01:35,150
-So it is designed to catch exceptions, log them appropriately, and convert them into standardized
+Vậy nó được thiết kế để bắt các exception, log chúng một cách thích hợp, và chuyển đổi chúng thành
 
 23
 00:01:35,150 --> 00:01:39,410
-response format which is suitable for the API response.
+định dạng response chuẩn hóa phù hợp cho API response.
 
 24
 00:01:39,410 --> 00:01:44,120
-So for that purpose, we will apply these custom exception in the ordering microservices.
+Vậy cho mục đích đó, chúng ta sẽ áp dụng các custom exception này trong ordering microservices.
 
 25
 00:01:44,120 --> 00:01:49,670
-If you go back to our delete order handler, you can see that we will throw order not found exception.
+Nếu bạn quay lại delete order handler của chúng ta, bạn có thể thấy rằng chúng ta sẽ throw order not found exception.
 
 26
 00:01:49,670 --> 00:01:54,650
-And if you go to exception details, you can see that this is inherited from the not found exception.
+Và nếu bạn xem exception details, bạn có thể thấy rằng điều này kế thừa từ not found exception.
 
 27
 00:01:54,650 --> 00:01:58,340
-And these exception is located under the building blocks.
+Và exception này được đặt dưới building blocks.
 
 28
 00:01:58,340 --> 00:01:59,960
-And we can see not found.
+Và chúng ta có thể thấy not found.
 
 29
 00:01:59,960 --> 00:02:02,450
-Exception is located custom exception handler.
+Exception được đặt trong custom exception handler.
 
 30
 00:02:02,450 --> 00:02:07,820
-Here you can see that we will populate the existing message name and status code will be returning.
+Ở đây bạn có thể thấy rằng chúng ta sẽ populate message hiện có và status code sẽ được trả về.
 
 31
 00:02:07,820 --> 00:02:09,530
@@ -124,27 +124,27 @@ Follow one not found.
 
 32
 00:02:09,530 --> 00:02:13,790
-So we will apply these custom exception handling in the ordering API.
+Vậy chúng ta sẽ áp dụng custom exception handling này trong ordering API.
 
 33
 00:02:13,790 --> 00:02:15,290
-So how we can do that?
+Vậy chúng ta có thể làm điều đó như thế nào?
 
 34
 00:02:15,290 --> 00:02:20,270
-Of course we should add the dependency injection services for the custom exception handling.
+Tất nhiên chúng ta nên thêm các dịch vụ dependency injection cho custom exception handling.
 
 35
 00:02:20,270 --> 00:02:24,380
-If you go to Program.cs we can add the dependency injection in here.
+Nếu bạn đi đến Program.cs chúng ta có thể thêm dependency injection ở đây.
 
 36
 00:02:24,380 --> 00:02:28,640
-For the ordering API we will use add API services extension method.
+Cho ordering API chúng ta sẽ sử dụng add API services extension method.
 
 37
 00:02:28,640 --> 00:02:33,860
-If you right click and go to definition, you can see the Dependency injection class under the ordering
+Nếu bạn click chuột phải và đi đến definition, bạn có thể thấy Dependency injection class dưới ordering
 
 38
 00:02:33,860 --> 00:02:34,700
@@ -152,97 +152,97 @@ API layer.
 
 39
 00:02:34,910 --> 00:02:39,560
-In this class we can configure our application for the custom exception handling.
+Trong lớp này chúng ta có thể cấu hình ứng dụng của chúng ta cho custom exception handling.
 
 40
 00:02:39,560 --> 00:02:43,370
-So first of all I'm going to start with the add API services.
+Vậy đầu tiên tôi sẽ bắt đầu với add API services.
 
 41
 00:02:43,550 --> 00:02:49,400
-At this point I am going to add services dot exception handler which is a custom exception handler and
+Lúc này tôi sẽ thêm services dot exception handler, đây là một custom exception handler
 
 42
 00:02:49,400 --> 00:02:53,390
-which comes from the building blocks exception and handler namespace.
+và nó đến từ namespace building blocks exception và handler.
 
 43
 00:02:53,390 --> 00:03:00,770
-So with this line of code we will perform the adding or custom exception handling into dependency injection
+Vậy với dòng code này chúng ta sẽ thực hiện thêm custom exception handling vào dependency injection
 
 44
 00:03:00,770 --> 00:03:05,030
-container and making it available for use throughout the application.
+container và làm cho nó khả dụng trong toàn bộ ứng dụng.
 
 45
 00:03:05,030 --> 00:03:10,250
-And after that I am going to also adding use API services.
+Và sau đó tôi cũng sẽ thêm use API services.
 
 46
 00:03:10,250 --> 00:03:11,390
-After the mapping.
+Sau khi mapping.
 
 47
 00:03:11,390 --> 00:03:17,420
-Carter I am going to add that use exception handling and giving the empty options.
+Carter tôi sẽ thêm use exception handling và đưa vào empty options.
 
 48
 00:03:17,420 --> 00:03:21,830
-And with this line of code we set up the middleware for handling exceptions.
+Và với dòng code này chúng ta thiết lập middleware để xử lý exceptions.
 
 49
 00:03:21,830 --> 00:03:27,260
-It configures the application to use the custom exception handling during the request pipeline.
+Nó cấu hình ứng dụng để sử dụng custom exception handling trong request pipeline.
 
 50
 00:03:27,260 --> 00:03:33,500
-So with adding these two line of code, we are activating custom exception handling for the ordering
+Vậy bằng cách thêm hai dòng code này, chúng ta đang kích hoạt custom exception handling cho ordering
 
 51
 00:03:33,500 --> 00:03:34,490
-microservices.
+microservice.
 
 52
 00:03:34,490 --> 00:03:39,380
-You can go on top of this and remove unnecessary using statement and save this file.
+Bạn có thể đi lên trên đây và xóa các using statement không cần thiết rồi lưu file này.
 
 53
 00:03:39,380 --> 00:03:46,970
-And now I am going to run this ordering API in https mode in order to activate custom exception handling.
+Và bây giờ tôi sẽ chạy ordering API này ở chế độ https để kích hoạt custom exception handling.
 
 54
 00:03:47,000 --> 00:03:53,750
-After running the application, we can send http delete method with a wrong ID information and see.
+Sau khi chạy ứng dụng, chúng ta có thể gửi HTTP delete method với thông tin ID sai và xem thử.
 
 55
 00:03:53,750 --> 00:03:58,490
-This time the exception will be seem more formatted and more manageable way.
+Lần này exception sẽ được hiển thị theo cách được định dạng và dễ quản lý hơn.
 
 56
 00:03:58,490 --> 00:04:03,920
-If I send again, you can see that this will be triggered or delete order endpoint.
+Nếu tôi gửi lại, bạn có thể thấy rằng điều này sẽ kích hoạt delete order endpoint.
 
 57
 00:04:03,920 --> 00:04:10,640
-If I hit F5, you can see that this will be comes to the if statement and enter the if statement and
+Nếu tôi nhấn F5, bạn có thể thấy rằng điều này sẽ đi đến if statement và vào if statement, rồi
 
 58
 00:04:10,640 --> 00:04:12,590
-throwing order not found exception.
+throw order not found exception.
 
 59
 00:04:12,800 --> 00:04:18,980
-And here you can see that this will be trigger our custom exception handling and return back as a Json
+Và ở đây bạn có thể thấy rằng điều này sẽ kích hoạt custom exception handling của chúng ta và trả lại một Json
 
 60
 00:04:18,980 --> 00:04:22,640
-and formatted exception response to our API response.
+và phản hồi exception được định dạng cho API response của chúng ta.
 
 61
 00:04:22,640 --> 00:04:30,260
-We can see that the exception is returning 404 not found exception response to API and this is the title,
+Chúng ta có thể thấy rằng ngoại lệ đang trả về phản hồi ngoại lệ 404 not found cho API, và đây là tiêu đề,
 
 62
 00:04:30,260 --> 00:04:35,870
-status, detail instance and trace ID is located more manageable and more readable.
+status, detail, instance và trace ID nằm ở vị trí dễ quản lý hơn và dễ đọc hơn.
 

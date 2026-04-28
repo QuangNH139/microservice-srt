@@ -1,58 +1,58 @@
 1
 00:00:00,110 --> 00:00:06,650
-In this video we are going to develop Dispatch Domain Events interceptor class in order to trigger domain
+Trong video này, chúng ta sẽ phát triển lớp Dispatch Domain Events interceptor để kích hoạt các domain event handlers bằng cách sử dụng thư viện mediator trong ordering microservices.
 
 2
 00:00:06,650 --> 00:00:11,030
-event handlers with using mediator library in the ordering microservices.
+Vì vậy, vui lòng mở Visual Studio và điều hướng đến thư mục interceptors.
 
 3
 00:00:11,030 --> 00:00:16,010
-So for that purpose, please open the Visual Studio and navigate to interceptors folder.
+Dưới thư mục data, hãy vào interceptors.
 
 4
 00:00:16,010 --> 00:00:18,530
-Under the data folder go to interceptors.
+Và ở đây chúng ta sẽ tạo một interceptor mới có tên là Dispatch Domain Events Interceptor.
 
 5
 00:00:18,530 --> 00:00:25,670
-And in here we are going to create a new interceptor which name is Dispatch Domain Events Interceptor.
+Vậy hãy thêm một lớp mới có tên là Dispatch Domain Events Interceptor và bắt đầu phát triển interceptor mới của chúng ta.
 
 6
 00:00:25,670 --> 00:00:33,620
-So add a new class which name is Dispatch Domain Events Interceptor and start developing our new interceptor.
+Tôi sẽ loại bỏ các lệnh using không cần thiết và làm cho nó trở thành một lớp public.
 
 7
 00:00:33,620 --> 00:00:38,660
-I'm going to remove unnecessary using statement and make this as a public class.
+Và chúng ta sẽ bắt đầu bằng cách thừa kế từ save changes interceptor, nó đến từ Entity Framework Core của chúng ta.
 
 8
 00:00:38,660 --> 00:00:46,130
-And we will start with inheriting from the save changes interceptor which comes from the our Entity
+Đây là bước quan trọng khi chúng ta bắt đầu bất kỳ interceptor nào.
 
 9
 00:00:46,130 --> 00:00:46,910
-Framework core.
+Nó phải thừa kế từ save changes interceptor.
 
 10
 00:00:46,940 --> 00:00:51,020
-This is the important step when we are starting any interceptor.
+Sau đó, điều quan trọng tiếp theo là ghi đè phương thức.
 
 11
 00:00:51,020 --> 00:00:54,560
-It should be inherit from the save changes interceptor.
+Nếu bạn đến đây và viết overwrite, bạn có thể thấy có rất nhiều phương thức mà chúng ta có thể ghi đè khi triển khai interceptor của chúng ta, và ở đây, hãy chắc chắn rằng chúng ta sẽ sử dụng saving changes, không phải saved changes.
 
 12
 00:00:54,560 --> 00:00:57,980
-After that, the next important thing is overriding method.
+Đây là quyết định quan trọng khi bạn triển khai interceptor của mình để gửi domain events, chúng ta sẽ sử dụng phương thức saving changes và saving changes async.
 
 13
 00:00:57,980 --> 00:01:03,530
-If you come here and write the overwrite and you can see that there are lots of methods that we can
+Vì mục đích đó.
 
 14
 00:01:03,530 --> 00:01:09,560
-override when implementing our interceptor, and in here, make sure that we are going to use saving
+Vui lòng ghi đè những phương thức này từng cái một và chuẩn bị các hoạt động phương thức của bạn cho saving change async và saving changes dưới Dispatch Domain Event Interceptor.
 
 15
 00:01:09,560 --> 00:01:11,330
@@ -80,423 +80,423 @@ and saving changes under the dispatch domain Event Interceptor.
 
 21
 00:01:33,410 --> 00:01:37,700
-Now we can start our actual logic which is dispatching domain events.
+Bây giờ chúng ta có thể bắt đầu logic thực tế của mình, đó là dispatching domain events.
 
 22
 00:01:37,700 --> 00:01:41,960
-But before that, let's understand what is domain event in our codes.
+Nhưng trước tiên, hãy hiểu domain event là gì trong code của chúng ta.
 
 23
 00:01:41,960 --> 00:01:47,480
-If you go to the ordering domain and go to abstractions, you can see that we have interface which name
+Nếu bạn vào ordering domain và vào abstractions, bạn có thể thấy rằng chúng ta có một interface có tên
 
 24
 00:01:47,480 --> 00:01:48,560
-is domain event.
+là domain event.
 
 25
 00:01:48,560 --> 00:01:52,400
-And this interface implements I notification from the mediator.
+Và interface này implements I notification từ MediatR.
 
 26
 00:01:52,670 --> 00:01:58,130
-So that means we are looking for the I domain interface when dispatching our domain events.
+Vậy điều đó có nghĩa là chúng ta tìm kiếm I domain interface khi dispatching domain events của chúng ta.
 
 27
 00:01:58,130 --> 00:02:06,140
-So if you look at the abstractions you can see that we have also I aggregate dot CSS and in this interface
+Vậy nếu bạn nhìn vào abstractions, bạn có thể thấy rằng chúng ta cũng có I aggregate dot CSS và trong interface này
 
 28
 00:02:06,140 --> 00:02:14,210
-is implementing I entity and I aggregate interface also including two members which are the domain event
+đang implements I entity và I aggregate interface cũng bao gồm hai members đó là domain event
 
 29
 00:02:14,210 --> 00:02:16,820
-list and the clear domain event method.
+list và phương thức clear domain event.
 
 30
 00:02:16,940 --> 00:02:23,480
-We can also see aggregate abstract class which is implementation of the I aggregate interface.
+Chúng ta cũng có thể thấy aggregate abstract class là implementation của I aggregate interface.
 
 31
 00:02:23,480 --> 00:02:28,190
-And in this base class we can see that we have domain event list.
+Và trong base class này chúng ta có thể thấy rằng chúng ta có domain event list.
 
 32
 00:02:28,190 --> 00:02:32,930
-And we will add and clear domain events into these aggregate class.
+Và chúng ta sẽ thêm và xóa domain events vào aggregate class này.
 
 33
 00:02:32,930 --> 00:02:36,560
-So now we can go back to our dispatch domain event interceptor.
+Vậy bây giờ chúng ta có thể quay lại dispatch domain event interceptor của chúng ta.
 
 34
 00:02:36,560 --> 00:02:42,260
-And we will implement the logic in order to extract domain events from the aggregates and dispatch them.
+Và chúng ta sẽ triển khai logic để extract domain events từ aggregates và dispatch chúng.
 
 35
 00:02:42,260 --> 00:02:48,170
-So in here before saving change operations we are going to dispatching this event.
+Vậy ở đây trước khi thực hiện saving change operations, chúng ta sẽ dispatching event này.
 
 36
 00:02:48,170 --> 00:02:54,890
-For that purpose I am going to create a new method which name is dispatch domain events and this method
+Để mục đích đó, tôi sẽ tạo một method mới có tên là dispatch domain events và method này
 
 37
 00:02:54,890 --> 00:02:57,650
-require for the event Datacontext.
+yêu cầu event Datacontext.
 
 38
 00:02:57,650 --> 00:03:05,030
-That means our DB context object and for saving changes, I'm going to use get Awaiter and Getresult
+Có nghĩa là DB context object của chúng ta và để saving changes, tôi sẽ sử dụng get Awaiter và Getresult
 
 39
 00:03:05,030 --> 00:03:08,540
-method to perform this operation completely.
+method để thực hiện hoàn toàn operation này.
 
 40
 00:03:08,600 --> 00:03:17,570
-And after that I'm going to copy this method and use in here with available function and using the dispatch
+Và sau đó tôi sẽ copy method này và sử dụng ở đây với available function và sử dụng dispatch
 
 41
 00:03:17,570 --> 00:03:18,950
-domain events method.
+phương thức domain events.
 
 42
 00:03:18,950 --> 00:03:24,800
-So that means we are going to develop dispatch domain events methods with async and available.
+Vậy điều đó có nghĩa là chúng ta sẽ phát triển các phương thức dispatch domain events với async và await.
 
 43
 00:03:24,800 --> 00:03:31,910
-And as you can see that since we are making this function async, the return should be also available.
+Và như bạn có thể thấy rằng vì chúng ta đang làm cho hàm này async, return cũng phải là await.
 
 44
 00:03:32,240 --> 00:03:37,970
-And now it is ready to implement our actual method which is the dispatch domain events.
+Và bây giờ chúng ta đã sẵn sàng để triển khai phương thức thực tế của chúng ta, đó là dispatch domain events.
 
 45
 00:03:38,510 --> 00:03:43,310
-After these methods, we can start developing for the dispatch domain events.
+Sau những phương thức này, chúng ta có thể bắt đầu phát triển dispatch domain events.
 
 46
 00:03:43,310 --> 00:03:50,210
-Here you can see that we have created public async task dispatch domain events method, which is parameters
+Tại đây bạn có thể thấy rằng chúng ta đã tạo phương thức public async task dispatch domain events, có các tham số
 
 47
 00:03:50,210 --> 00:03:51,830
-of the DB context object.
+của đối tượng DB context.
 
 48
 00:03:51,830 --> 00:03:56,990
-And in the beginning of the method I'm going to check context is null or empty.
+Và ở đầu phương thức, tôi sẽ kiểm tra xem context có null hay trống không.
 
 49
 00:03:56,990 --> 00:04:03,140
-If the context is null, we can return empty response to dispatch domain event methods and after that
+Nếu context là null, chúng ta có thể trả về phản hồi trống cho các phương thức dispatch domain event, và sau đó
 
 50
 00:04:03,140 --> 00:04:07,070
-we can retrieve from the aggregates from the db context object.
+chúng ta có thể lấy aggregates từ đối tượng db context.
 
 51
 00:04:07,070 --> 00:04:14,030
-Here you can see that we are looking for the DB context entities which implemented the I aggregate interface,
+Tại đây bạn có thể thấy rằng chúng ta đang tìm kiếm các DB context entities đã triển khai interface I aggregate,
 
 52
 00:04:14,030 --> 00:04:17,390
-and that entities is including domain event list.
+và các entities đó bao gồm danh sách domain event.
 
 53
 00:04:17,390 --> 00:04:23,330
-That means we are looking aggregates that including any domain events, and we are adding these aggregates
+Điều đó có nghĩa là chúng ta đang tìm các aggregates bao gồm bất kỳ domain events nào, và chúng ta đang thêm các aggregates này
 
 54
 00:04:23,330 --> 00:04:24,860
-into this variable.
+vào biến này.
 
 55
 00:04:25,100 --> 00:04:29,210
-After that we can retrieve the domain events from this aggregate.
+Sau đó chúng ta có thể lấy các domain events từ aggregate này.
 
 56
 00:04:29,210 --> 00:04:36,020
-And if you come here and write the aggregates, select many with including domain events and convert
+Và nếu bạn đến đây và viết các aggregates, select many với including domain events và convert
 
 57
 00:04:36,020 --> 00:04:40,460
-them to lists in order to get domain events from our aggregate entities.
+chúng thành lists để lấy domain events từ các entity aggregate của chúng ta.
 
 58
 00:04:40,460 --> 00:04:45,770
-And once we get the domain events, we can dispatch these events with using the mediator.
+Và một khi chúng ta có được domain events, chúng ta có thể dispatch các sự kiện này bằng cách sử dụng mediator.
 
 59
 00:04:45,770 --> 00:04:51,890
-But before that, I am going to iterate the aggregate domain events and clear all domain events into
+Nhưng trước tiên, tôi sẽ lặp qua aggregate domain events và xóa tất cả domain events trong
 
 60
 00:04:51,890 --> 00:04:58,280
-each entities and aggregates, because we will dispatching domain events and we would like to avoiding
+mỗi entities và aggregates, vì chúng ta sẽ dispatching domain events và chúng ta muốn tránh
 
 61
 00:04:58,280 --> 00:04:59,390
-duplicate dispatch.
+sự phát hành trùng lặp.
 
 62
 00:05:00,130 --> 00:05:04,030
-That's why I'm going to clear domain events before dispatching these events.
+Đó là lý do tại sao tôi sẽ xóa các domain events trước khi phát hành những sự kiện này.
 
 63
 00:05:04,030 --> 00:05:10,960
-So after clearing these domain events into aggregates, we can use domain event list in order to dispatch
+Vậy sau khi xóa các domain events này khỏi aggregates, chúng ta có thể sử dụng danh sách domain events để phát hành
 
 64
 00:05:10,960 --> 00:05:13,960
-these events and using the mediator publish method.
+những sự kiện này và sử dụng phương thức mediator publish.
 
 65
 00:05:13,960 --> 00:05:17,200
-Here you can see that we have iterated domain event list.
+Ở đây bạn có thể thấy rằng chúng ta đã lặp qua danh sách domain events.
 
 66
 00:05:17,200 --> 00:05:23,110
-And for each domain event we will use mediator dot publish method in order to dispatch these domain
+Và đối với mỗi domain event, chúng ta sẽ sử dụng phương thức mediator dot publish để phát hành các domain
 
 67
 00:05:23,110 --> 00:05:24,850
-event in the consumer side.
+events ở phía consumer.
 
 68
 00:05:24,850 --> 00:05:30,880
-So as you can see that we need mediator package and mediator variable in order to publish these domain
+Vậy như bạn có thể thấy, chúng ta cần gói mediator và biến mediator để phát hành những domain
 
 69
 00:05:30,880 --> 00:05:31,270
-event.
+events này.
 
 70
 00:05:31,270 --> 00:05:35,500
-So how we can inject these mediator into our dispatcher.
+Vậy làm thế nào chúng ta có thể inject mediator vào dispatcher của chúng ta.
 
 71
 00:05:35,500 --> 00:05:42,220
-And if you go on top of this page you can come here and inject AI mediator in the beginning of the class
+Và nếu bạn cuộn lên đầu trang này, bạn có thể đến đây và inject AI mediator vào đầu class
 
 72
 00:05:42,220 --> 00:05:43,900
-with primary constructor.
+với primary constructor.
 
 73
 00:05:43,900 --> 00:05:52,360
-So I am going to open a bracket and using I mediator interface in order to inject mediator into my class.
+Vậy tôi sẽ mở một ngoặc và sử dụng interface I mediator để inject mediator vào class của tôi.
 
 74
 00:05:52,360 --> 00:05:59,380
-And in here, as you can see that we have injected AI mediator into our dispatch domain event interceptor.
+Và ở đây, như bạn có thể thấy, chúng ta đã inject AI mediator vào dispatch domain event interceptor của chúng ta.
 
 75
 00:05:59,380 --> 00:06:06,310
-And this mediator is using when we are dispatching domain events into method of the our main method
+Và mediator này được sử dụng khi chúng ta đang phát hành domain events vào phương thức của phương thức chính
 
 76
 00:06:06,310 --> 00:06:06,790
-in the.
+của chúng ta.
 
 77
 00:06:06,790 --> 00:06:10,960
-For each statement, we are using mediator that injected our interceptor.
+Trong câu lệnh for each, chúng ta đang sử dụng mediator được inject vào interceptor của chúng ta.
 
 78
 00:06:10,960 --> 00:06:16,360
-So as you can see that we have completed our dispatch domain event interceptor class.
+Vậy như bạn có thể thấy, chúng ta đã hoàn thành class dispatch domain event interceptor.
 
 79
 00:06:16,360 --> 00:06:21,970
-Now it is time to register these newly created interceptor into our Dependency Injection.
+Bây giờ là lúc để đăng ký những interceptor mới tạo này vào Dependency Injection của chúng ta.
 
 80
 00:06:21,970 --> 00:06:27,040
-For that purpose you can go to the ordering Infrastructure and Dependency Injection CS.
+Để mục đích đó, bạn có thể đến ordering Infrastructure và Dependency Injection CS.
 
 81
 00:06:27,040 --> 00:06:32,980
-In this class we will basically register interceptors when we are registering the Dbcontext object.
+Trong lớp này, chúng ta sẽ đăng ký các interceptors khi chúng ta đang đăng ký đối tượng Dbcontext.
 
 82
 00:06:32,980 --> 00:06:39,160
-Here you can see that when we are adding Dbcontext object, we have adding the interceptor for naive
+Ở đây bạn có thể thấy rằng khi chúng ta đang thêm đối tượng Dbcontext, chúng ta đã thêm interceptor cho auditable entity
 
 83
 00:06:39,160 --> 00:06:42,250
-auditable entity interceptor in the previous videos.
+auditable entity interceptor trong các video trước đó.
 
 84
 00:06:42,250 --> 00:06:47,560
-Now I am going to add a new interceptor, which is the dispatch domain for that purpose.
+Bây giờ tôi sẽ thêm một interceptor mới, đó là dispatch domain events interceptor.
 
 85
 00:06:47,590 --> 00:06:52,840
-I come here and using the Naive Dispatch Domain Events interceptor.
+Tôi đến đây và sử dụng Naive Dispatch Domain Events interceptor.
 
 86
 00:06:53,770 --> 00:06:58,210
-If we look at the interceptors in here, you can see that we have two interceptor.
+Nếu chúng ta xem các interceptors ở đây, bạn có thể thấy rằng chúng ta có hai interceptors.
 
 87
 00:06:58,210 --> 00:07:02,950
-But if we come here for dispatch domain events, you can see exception.
+Nhưng nếu chúng ta đến đây để dispatch domain events, bạn có thể thấy ngoại lệ.
 
 88
 00:07:02,950 --> 00:07:07,570
-It is accepting mediator in the parameters of the interceptor.
+Nó đang chấp nhận mediator trong các tham số của interceptor.
 
 89
 00:07:07,570 --> 00:07:12,280
-Because we inject mediator in order to dispatch domain events in this class.
+Vì chúng ta inject mediator để dispatch domain events trong lớp này.
 
 90
 00:07:12,280 --> 00:07:17,440
-But to create our dispatch interceptor class it is required to pass mediator.
+Nhưng để tạo lớp dispatch interceptor của chúng ta, nó cần truyền mediator.
 
 91
 00:07:17,440 --> 00:07:20,200
-But we will register mediator in the application layer.
+Nhưng chúng ta sẽ đăng ký mediator trong application layer.
 
 92
 00:07:20,200 --> 00:07:23,770
-And it should be resolved by the ASP.Net Dependency Injection tool.
+Và nó sẽ được phân giải bởi ASP.NET Dependency Injection tool.
 
 93
 00:07:23,770 --> 00:07:26,410
-That means we cannot register by this way.
+Điều đó có nghĩa là chúng ta không thể đăng ký bằng cách này.
 
 94
 00:07:26,410 --> 00:07:33,610
-Instead of that, we will register an adding interceptor with using the Isafe changed interceptor interface,
+Thay vào đó, chúng ta sẽ đăng ký adding interceptor bằng cách sử dụng Isafe Changed Interceptor interface,
 
 95
 00:07:33,610 --> 00:07:38,230
-and we will add scoped services in the beginning of this dependency injection.
+và chúng ta sẽ thêm scoped services vào đầu của dependency injection này.
 
 96
 00:07:38,230 --> 00:07:41,980
-And after that we will register and adding interceptors by this way.
+Và sau đó chúng ta sẽ đăng ký và adding interceptors bằng cách này.
 
 97
 00:07:41,980 --> 00:07:43,120
-So let me develop.
+Vậy hãy để tôi phát triển.
 
 98
 00:07:43,120 --> 00:07:45,040
-And after that I'm going to explain that.
+Và sau đó tôi sẽ giải thích điều đó.
 
 99
 00:07:45,040 --> 00:07:52,360
-So basically when we are adding services in the container I'm going to add scoped services for auditable
+Vậy về cơ bản khi chúng ta đang thêm services vào container, tôi sẽ thêm scoped services cho auditable
 
 100
 00:07:52,360 --> 00:07:55,450
-entity and dispatch domain events interceptors.
+entity và dispatch domain events interceptors.
 
 101
 00:07:55,450 --> 00:08:02,170
-And this will be comes from the I save changes interceptor because for each interceptor you can see
+Và điều này sẽ đến từ interceptor I save changes vì đối với mỗi interceptor bạn có thể thấy
 
 102
 00:08:02,170 --> 00:08:08,140
-that we have inherited from the save changed interceptor that is comes from the I save change interceptor
+rằng chúng ta đã kế thừa từ save changed interceptor mà đến từ interface I save change interceptor
 
 103
 00:08:08,140 --> 00:08:08,830
-interface.
+.
 
 104
 00:08:08,830 --> 00:08:14,440
-That's why before registering any services, we add scoped for each interceptor.
+Đó là lý do tại sao trước khi đăng ký bất kỳ dịch vụ nào, chúng ta thêm scoped cho mỗi interceptor.
 
 105
 00:08:14,440 --> 00:08:21,400
-And after that we can add these interceptors in to do our add interceptor extension method when configuring
+Và sau đó chúng ta có thể thêm những interceptor này vào phương thức add interceptor extension của chúng ta khi cấu hình
 
 106
 00:08:21,400 --> 00:08:22,690
-the Dbcontext object.
+đối tượng Dbcontext.
 
 107
 00:08:22,690 --> 00:08:29,140
-But this time we need service provider in order to get services from the I save changes async interfaces.
+Nhưng lần này chúng ta cần service provider để lấy services từ các interface I save changes async.
 
 108
 00:08:29,140 --> 00:08:36,520
-So come here and get the service provider with the options when configuring our Dbcontext.
+Vậy hãy đến đây và lấy service provider với các options khi cấu hình Dbcontext của chúng ta.
 
 109
 00:08:36,520 --> 00:08:39,820
-And in here I'm going to remove new statements.
+Và ở đây tôi sẽ xóa các câu lệnh new.
 
 110
 00:08:39,820 --> 00:08:45,490
-And we are going to use service Provider for getting services.
+Và chúng ta sẽ sử dụng service Provider để lấy services.
 
 111
 00:08:47,060 --> 00:08:49,460
-And getting services from the.
+Và lấy services từ.
 
 112
 00:08:49,460 --> 00:08:52,970
-I saved Chang's Interceptor with using this way.
+I saved Chang's Interceptor theo cách này.
 
 113
 00:08:53,000 --> 00:08:58,700
-So please make sure that you can add these interceptors using the service provider and getting services
+Vậy hãy chắc chắn rằng bạn có thể thêm những interceptor này sử dụng service provider và lấy services
 
 114
 00:08:58,700 --> 00:08:59,270
-from the.
+từ.
 
 115
 00:08:59,270 --> 00:09:04,310
-I saved Chang's Interceptor interface that we have added scoped in this line of codes.
+I saved Chang's Interceptor interface mà chúng ta đã thêm scoped trong dòng code này.
 
 116
 00:09:04,310 --> 00:09:11,810
-So by this way, these dispatched Domain event interceptor can access to mediator and register the mediator
+Vì vậy, theo cách này, dispatched Domain event interceptor này có thể truy cập vào mediator và đăng ký mediator
 
 117
 00:09:11,810 --> 00:09:16,880
-when creating these interceptor from these primary constructor injection.
+khi tạo những interceptor này từ primary constructor injection này.
 
 118
 00:09:16,880 --> 00:09:22,790
-But how we can get these I mediator and how we can register mediator into our application.
+Nhưng làm thế nào chúng ta có thể lấy I mediator này và làm thế nào chúng ta có thể đăng ký mediator vào ứng dụng của chúng ta.
 
 119
 00:09:22,790 --> 00:09:29,630
-So if you go back to program.cs of the ordering API, you can see that we are accumulating all these
+Vậy nếu bạn quay lại program.cs của ordering API, bạn có thể thấy rằng chúng ta đang tích lũy tất cả những
 
 120
 00:09:29,630 --> 00:09:32,960
-registrations according to clean architecture layers.
+đăng ký này theo các lớp clean architecture.
 
 121
 00:09:32,960 --> 00:09:39,350
-So that means before adding infrastructure services and registering interceptors we should register
+Điều đó có nghĩa là trước khi thêm infrastructure services và đăng ký interceptors, chúng ta nên đăng ký
 
 122
 00:09:39,350 --> 00:09:41,840
-the mediator into application service layers.
+mediator vào application service layers.
 
 123
 00:09:41,840 --> 00:09:47,300
-So I'm going to ensure that mediator is registered before registering the infrastructure services,
+Vì vậy, tôi sẽ đảm bảo rằng mediator được đăng ký trước khi đăng ký infrastructure services,
 
 124
 00:09:47,330 --> 00:09:51,950
-especially interceptors that require mediator interface for that purpose.
+đặc biệt là các interceptors yêu cầu mediator interface cho mục đích đó.
 
 125
 00:09:51,950 --> 00:09:59,090
-Right click this method and go to definition which is coming the ordering application dependency injection
+Click chuột phải vào method này và đi đến definition, nó đến từ ordering application dependency injection
 
 126
 00:09:59,270 --> 00:09:59,840
@@ -504,49 +504,49 @@ case.
 
 127
 00:09:59,840 --> 00:10:05,900
-And in this service registration I am going to adding the mediator into our application.
+Và trong service registration này, tôi sẽ thêm mediator vào ứng dụng của chúng ta.
 
 128
 00:10:05,900 --> 00:10:14,150
-You can see that we will use services dot add mediator method in order to register our I mediator operations
+Bạn có thể thấy rằng chúng ta sẽ sử dụng services dot add mediator method để đăng ký I mediator operations
 
 129
 00:10:14,150 --> 00:10:16,250
-for the whole executing assembly.
+cho toàn bộ executing assembly.
 
 130
 00:10:16,250 --> 00:10:21,380
-And it is requiring for the assembly using statement which comes from the system reflection.
+Và nó yêu cầu assembly using statement, nó đến từ system reflection.
 
 131
 00:10:21,380 --> 00:10:24,770
-And make sure that you have added mediator into your application layer.
+Và hãy chắc chắn rằng bạn đã thêm mediator vào application layer của bạn.
 
 132
 00:10:24,770 --> 00:10:32,360
-By this way ASP.Net resolve the mediator and inject our dispatch domain event interceptors when configuring
+Bằng cách này, ASP.NET sẽ resolve mediator và inject dispatch domain event interceptors của chúng ta khi cấu hình
 
 133
 00:10:32,360 --> 00:10:33,740
-our infrastructure layer.
+infrastructure layer của chúng ta.
 
 134
 00:10:33,740 --> 00:10:37,100
-So now we can build our application from the ordering API.
+Vậy bây giờ chúng ta có thể build ứng dụng từ ordering API.
 
 135
 00:10:37,100 --> 00:10:38,660
-Right click and build.
+Click chuột phải và build.
 
 136
 00:10:38,780 --> 00:10:41,690
-You can see that build completed successfully.
+Bạn có thể thấy rằng build đã hoàn thành thành công.
 
 137
 00:10:41,810 --> 00:10:48,080
-So with using the Mediator and Entity Framework core interceptors we achieve a clean and efficient way
+Vì vậy, bằng cách sử dụng Mediator và Entity Framework Core interceptors, chúng ta đạt được một cách sạch và hiệu quả
 
 138
 00:10:48,080 --> 00:10:49,490
-to handle domain events.
+để xử lý domain events.
 

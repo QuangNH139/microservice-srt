@@ -1,22 +1,22 @@
 1
 00:00:00,200 --> 00:00:07,070
-In this video, we are going to developing vertical slice feature folders with circles and mediator.
+Trong video này, chúng ta sẽ phát triển các feature folder vertical slice với circles và mediator.
 
 2
 00:00:07,460 --> 00:00:14,420
-So we said that in vertical slice architecture we structure our application around the features or functionalities
+Vậy chúng ta đã nói rằng trong vertical slice architecture chúng ta cấu trúc ứng dụng của mình xung quanh các tính năng hoặc chức năng
 
 3
 00:00:14,420 --> 00:00:15,830
-rather than layers.
+thay vì các lớp.
 
 4
 00:00:15,890 --> 00:00:20,120
-So in Catholic microservices we will follow the vertical slice architecture.
+Vậy trong các microservice Catalog chúng ta sẽ tuân theo vertical slice architecture.
 
 5
 00:00:20,120 --> 00:00:26,630
-And each vertical slice cut through all architectural layers such as the UI, business logic and data
+Và mỗi vertical slice cắt xuyên qua tất cả các lớp kiến trúc như UI, business logic và data
 
 6
 00:00:26,630 --> 00:00:27,320
@@ -24,11 +24,11 @@ access.
 
 7
 00:00:27,860 --> 00:00:33,110
-And the project organized with the models, features, data and abstractions that you can see the folder
+Và dự án được tổ chức với các models, features, data và abstractions mà bạn có thể thấy cấu trúc thư mục
 
 8
 00:00:33,110 --> 00:00:34,820
-structure as a feature.
+là một feature.
 
 9
 00:00:34,820 --> 00:00:35,270
@@ -36,63 +36,63 @@ Folders.
 
 10
 00:00:35,270 --> 00:00:41,060
-We will give the name as a products, which will be the our domain entity name, and under the products
+Chúng ta sẽ đặt tên là products, đây sẽ là tên domain entity của chúng ta, và dưới feature folder products
 
 11
 00:00:41,060 --> 00:00:46,550
-feature folder we will add the use case features which is the create product, delete product, get
+chúng ta sẽ thêm các use case features như là create product, delete product, get
 
 12
 00:00:46,550 --> 00:00:47,840
-product and so on.
+product và những cái khác.
 
 13
 00:00:48,020 --> 00:00:54,080
-So now let's get started to implement this kind of folder structure into our application, open the
+Vậy bây giờ hãy bắt đầu triển khai loại cấu trúc folder này vào ứng dụng của chúng ta, hãy mở
 
 14
 00:00:54,080 --> 00:00:57,830
-Visual Studio and go to the catalog API project folder.
+Visual Studio và đi đến thư mục dự án Catalog API.
 
 15
 00:00:57,830 --> 00:01:00,350
-And you can right click Add New Folder.
+Và bạn có thể nhấp chuột phải Add New Folder.
 
 16
 00:01:02,410 --> 00:01:04,599
-The folder name will be the products.
+Tên thư mục sẽ là products.
 
 17
 00:01:04,599 --> 00:01:12,940
-This will be the our feature folder and under the products folder we will create each use case or feature
+Đây sẽ là feature folder của chúng ta và dưới thư mục products chúng ta sẽ tạo mỗi use case hoặc feature
 
 18
 00:01:12,940 --> 00:01:15,040
-as a sub folder in here.
+như một sub folder ở đây.
 
 19
 00:01:15,040 --> 00:01:22,270
-So for example we will create a create product feature and we will create corresponding sub folders
+Vậy chẳng hạn chúng ta sẽ tạo một create product feature và chúng ta sẽ tạo các sub folder tương ứng
 
 20
 00:01:22,270 --> 00:01:24,220
-under the products feature folder.
+dưới feature folder products.
 
 21
 00:01:24,220 --> 00:01:29,620
-Let me right click Add New Sub folder and give the name as a great product.
+Hãy nhấp chuột phải Add New Sub folder và đặt tên là Create product.
 
 22
 00:01:29,620 --> 00:01:35,830
-This helps in organizing our code based functionalities and keeps related components together.
+Điều này giúp chúng ta tổ chức code dựa trên các chức năng và giữ các thành phần liên quan lại với nhau.
 
 23
 00:01:35,830 --> 00:01:40,270
-So we have created a sub folder which name is Create product.
+Vậy chúng ta đã tạo một sub folder có tên là Create product.
 
 24
 00:01:40,270 --> 00:01:47,680
-Under the Create Product sub folder, we can create one class in order to include all codes in a vertical
+Trong sub folder Create Product, chúng ta có thể tạo một class để bao gồm tất cả code theo cách vertical
 
 25
 00:01:47,680 --> 00:01:48,400
@@ -100,55 +100,55 @@ fashion.
 
 26
 00:01:48,400 --> 00:01:54,670
-But since we have already created a separate folder for the vertical slice feature folder, I would
+Nhưng vì chúng ta đã tạo một folder riêng cho vertical slice feature folder, tôi muốn
 
 27
 00:01:54,670 --> 00:01:59,530
-like to separate by two, which are the handles and the endpoints.
+chia thành hai phần, đó là handlers và endpoints.
 
 28
 00:01:59,530 --> 00:02:05,770
-So that means within the create product folder, we will divide our code into two main classes.
+Vậy điều đó có nghĩa là trong create product folder, chúng ta sẽ chia code thành hai classes chính.
 
 29
 00:02:05,770 --> 00:02:08,169
-The first class is create product handler.
+Class đầu tiên là Create product handler.
 
 30
 00:02:08,169 --> 00:02:12,370
-If you right click Add New item, I'm going to create a new class.
+Nếu bạn nhấp chuột phải Add New item, tôi sẽ tạo một class mới.
 
 31
 00:02:12,370 --> 00:02:14,740
-Which name is Create product handler class.
+Tên của nó là Create product handler class.
 
 32
 00:02:14,740 --> 00:02:19,450
-And also I would like to create an additional class under the create product.
+Và tôi cũng muốn tạo một class bổ sung trong create product.
 
 33
 00:02:19,450 --> 00:02:25,690
-Right click Add New Item and give the name as a create product endpoint.
+Nhấp chuột phải Add New Item và đặt tên là create product endpoint.
 
 34
 00:02:26,170 --> 00:02:34,390
-So if I zoom into this folder structure, you can see that we have created a products main feature folder.
+Vậy nếu tôi phóng to cấu trúc folder này, bạn có thể thấy rằng chúng ta đã tạo một products main feature folder.
 
 35
 00:02:34,390 --> 00:02:38,740
-And under the products we have created application use case folder name.
+Và trong products chúng ta đã tạo application use case folder name.
 
 36
 00:02:38,740 --> 00:02:41,410
-This will be the our vertical slice folder.
+Đây sẽ là vertical slice folder của chúng ta.
 
 37
 00:02:41,410 --> 00:02:46,990
-And under these vertical slice I have divided by two which is the handler and endpoint.
+Và trong vertical slice này tôi đã chia thành hai phần đó là handler và endpoint.
 
 38
 00:02:46,990 --> 00:02:52,960
-So that means handler will be our application logic layer endpoints will be represent our presentation
+Vậy điều đó có nghĩa là handler sẽ là application logic layer của chúng ta, endpoints sẽ đại diện cho presentation
 
 39
 00:02:52,960 --> 00:02:53,800
@@ -156,15 +156,15 @@ API layer.
 
 40
 00:02:53,800 --> 00:02:58,630
-So why I have created two classes inside of the feature folder.
+Vậy tại sao tôi lại tạo hai classes trong feature folder.
 
 41
 00:02:58,990 --> 00:03:06,130
-A common approach in vertical slice architecture is to encapsulate all aspects of a feature in one class.
+Một cách tiếp cận phổ biến trong vertical slice architecture là đóng gói tất cả các khía cạnh của một tính năng trong một class.
 
 42
 00:03:06,130 --> 00:03:12,610
-However, this makes the code hard to read, hard to maintain, and hard to locate for actual business
+Tuy nhiên, điều này làm cho code khó đọc, khó bảo trì, và khó tìm được logic kinh doanh thực tế.
 
 43
 00:03:12,610 --> 00:03:13,240
@@ -172,55 +172,55 @@ logic.
 
 44
 00:03:13,510 --> 00:03:15,760
-Instead of that, even we have.
+Thay vì vậy, ngay cả khi chúng ta có.
 
 45
 00:03:15,760 --> 00:03:17,770
-Following the vertical slice architecture.
+Theo vertical slice architecture.
 
 46
 00:03:17,770 --> 00:03:26,170
-Inside the feature folder, I have separated application logic and presentation endpoints into two different
+Bên trong feature folder, tôi đã tách logic ứng dụng và API endpoints trình bày thành hai class khác nhau
 
 47
 00:03:26,170 --> 00:03:30,340
-classes in order to make it more readable and manageable and easy.
+để làm cho nó dễ đọc hơn, dễ quản lý hơn và dễ bảo trì hơn.
 
 48
 00:03:30,340 --> 00:03:31,210
-Maintenance.
+Bảo trì.
 
 49
 00:03:31,210 --> 00:03:37,120
-This separation makes it easier to locate specific parts of the code and manage them effectively.
+Sự tách biệt này làm cho việc tìm các phần cụ thể của code và quản lý chúng trở nên dễ dàng hơn.
 
 50
 00:03:37,120 --> 00:03:42,730
-Especially, we will encapsulate business logics under the handle class, and we will see API related
+Đặc biệt, chúng ta sẽ đóng gói business logic dưới handle class, và chúng ta sẽ thấy các hoạt động liên quan đến API trong endpoint class.
 
 51
 00:03:42,730 --> 00:03:44,710
-operations in endpoint class.
+Và chúng ta đã áp dụng vertical slice architecture ở cấp độ folder.
 
 52
 00:03:44,710 --> 00:03:49,660
-And we already applied the vertical slice architecture in the folder level.
+Chúng ta sẽ áp dụng cùng cách tiếp cận cấu trúc này cho các hoạt động CRUD khác như get product, update product
 
 53
 00:03:50,200 --> 00:03:56,800
-We will apply the same structure approach to other Crud operations like get product, update product
+và Delete product.
 
 54
 00:03:56,800 --> 00:03:57,850
-and Delete product.
+Như bạn có thể thấy ở đây, mỗi tính năng sẽ có folder riêng của nó với handle và endpoint
 
 55
 00:03:57,850 --> 00:04:04,330
-As you can see in here, each feature will have its own dedicated folder with the handle and endpoint
+classes.
 
 56
 00:04:04,330 --> 00:04:05,080
-classes.
+Bây giờ hãy tập trung vào việc phát triển create product handle class này.
 
 57
 00:04:05,080 --> 00:04:09,490

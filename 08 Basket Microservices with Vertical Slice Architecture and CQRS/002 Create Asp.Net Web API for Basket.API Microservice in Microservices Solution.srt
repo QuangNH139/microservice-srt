@@ -1,6 +1,6 @@
 1
 00:00:00,170 --> 00:00:05,300
-In this video we are going to create ASP.Net web API for basket API.
+Trong video này, chúng ta sẽ tạo ASP.Net Web API cho basket API.
 
 2
 00:00:05,300 --> 00:00:06,470
@@ -8,189 +8,189 @@ Microservices.
 
 3
 00:00:06,470 --> 00:00:11,780
-This microservices is crucial for managing shopping cart operations in our application.
+Microservices này rất quan trọng để quản lý các hoạt động giỏ hàng trong ứng dụng của chúng ta.
 
 4
 00:00:11,780 --> 00:00:16,250
-So please open the Visual Studio and go to the services folder.
+Vậy hãy mở Visual Studio và đi đến thư mục services.
 
 5
 00:00:16,250 --> 00:00:21,170
-So as you can see that we have already created Catalog Microservices under the catalog folder.
+Như bạn có thể thấy, chúng ta đã tạo Catalog Microservices trong thư mục catalog.
 
 6
 00:00:21,170 --> 00:00:25,130
-For that purpose, we will start by organizing our solution.
+Để mục đích đó, chúng ta sẽ bắt đầu bằng cách sắp xếp giải pháp của chúng ta.
 
 7
 00:00:25,130 --> 00:00:31,220
-Under the services we will create a subfolder which name is basket and we will include basket API project
+Dưới services, chúng ta sẽ tạo một thư mục con tên là basket và chúng ta sẽ bao gồm dự án basket API
 
 8
 00:00:31,220 --> 00:00:32,360
-under this folder.
+dưới thư mục này.
 
 9
 00:00:32,360 --> 00:00:38,630
-So please right click the services and add new subfolder which name is basket.
+Vậy hãy nhấp chuột phải vào services và thêm thư mục con mới tên là basket.
 
 10
 00:00:39,800 --> 00:00:46,760
-And under the basket we will create a new ASP.Net web API project which name is basket API.
+Và dưới basket, chúng ta sẽ tạo dự án ASP.Net Web API mới tên là basket API.
 
 11
 00:00:46,760 --> 00:00:50,660
-But we should put correct location in this web API project.
+Nhưng chúng ta nên đặt đúng vị trí cho dự án Web API này.
 
 12
 00:00:50,660 --> 00:00:56,510
-And this project will be dotnet eight and include both Http and https support.
+Và dự án này sẽ là dotnet eight và hỗ trợ cả Http và https.
 
 13
 00:00:56,510 --> 00:01:01,490
-So for that purpose please right click the basket and add new project.
+Vậy để mục đích đó, hãy nhấp chuột phải vào basket và thêm dự án mới.
 
 14
 00:01:01,490 --> 00:01:05,390
-So we will follow the ASP.Net Core Empty Project template.
+Chúng ta sẽ theo mẫu ASP.Net Core Empty Project.
 
 15
 00:01:05,390 --> 00:01:10,220
-If you click the next button we can configure our ASP.Net web API project.
+Nếu bạn nhấp nút next, chúng ta có thể cấu hình dự án ASP.Net Web API của mình.
 
 16
 00:01:10,220 --> 00:01:12,980
-The project name should be basket dot API.
+Tên dự án nên là basket.API.
 
 17
 00:01:12,980 --> 00:01:17,960
-And the important thing is we should give the correct location for our API project.
+Và điều quan trọng là chúng ta nên cung cấp vị trí chính xác cho dự án API của chúng ta.
 
 18
 00:01:17,960 --> 00:01:24,620
-For that purpose, you can click this browse button and go to the our main repository which is the microservices,
+Để mục đích đó, bạn có thể nhấp nút browse này và đi đến repository chính của chúng ta, đó là microservices,
 
 19
 00:01:24,620 --> 00:01:26,240
-and go to source folder.
+và đi đến thư mục source.
 
 20
 00:01:26,240 --> 00:01:30,950
-Under the source folder we have services folder including our microservices.
+Dưới thư mục source, chúng ta có thư mục services bao gồm các microservices của chúng ta.
 
 21
 00:01:30,950 --> 00:01:34,520
-Here you can see that we have only catalog microservices yet.
+Ở đây bạn có thể thấy rằng chúng ta chỉ có catalog microservices.
 
 22
 00:01:34,520 --> 00:01:36,650
-But now I'm going to select this folder.
+Nhưng bây giờ tôi sẽ chọn folder này.
 
 23
 00:01:36,650 --> 00:01:39,710
-And after that I'm going to create a basket folder with monolith.
+Và sau đó tôi sẽ tạo một folder basket với monolith.
 
 24
 00:01:39,800 --> 00:01:45,320
-With writing in here you can see that this will be create a new basket folder under the services.
+Khi viết ở đây bạn có thể thấy rằng điều này sẽ tạo một folder basket mới dưới services.
 
 25
 00:01:45,320 --> 00:01:48,980
-And my API project will be located in this path.
+Và API project của tôi sẽ được đặt ở đường dẫn này.
 
 26
 00:01:49,010 --> 00:01:52,370
-So let me zoom into this configurations.
+Vậy hãy zoom vào các cấu hình này.
 
 27
 00:01:52,370 --> 00:01:59,360
-And you can see that project name is basket API and location is following the microservices source services
+Và bạn có thể thấy rằng tên project là basket API và vị trí theo microservices source services
 
 28
 00:01:59,360 --> 00:02:02,150
-and basket will be created newly folder.
+và basket sẽ được tạo thành một folder mới.
 
 29
 00:02:02,150 --> 00:02:06,830
-And this will be the our main location for basket API web API project.
+Và đây sẽ là vị trí chính cho basket API web API project.
 
 30
 00:02:06,830 --> 00:02:13,370
-So after configure this project we can click the next button and we will leave as it is for these configurations.
+Vậy sau khi cấu hình project này chúng ta có thể nhấp nút next và chúng ta sẽ để nguyên các cấu hình này.
 
 31
 00:02:13,370 --> 00:02:15,500
-These are the dotnet eight framework.
+Đây là dotnet eight framework.
 
 32
 00:02:15,500 --> 00:02:19,190
-And we can configure for Https enabled for Docker.
+Và chúng ta có thể cấu hình Https enabled cho Docker.
 
 33
 00:02:19,190 --> 00:02:21,650
-And this Docker operating system will be Linux.
+Và hệ điều hành Docker này sẽ là Linux.
 
 34
 00:02:21,650 --> 00:02:24,440
-And we will follow the top level using statement.
+Và chúng ta sẽ theo dõi top level using statement.
 
 35
 00:02:24,440 --> 00:02:26,990
-That's why this checkbox is not checked.
+Đó là lý do tại sao checkbox này không được chọn.
 
 36
 00:02:26,990 --> 00:02:29,120
-And please click the create button.
+Và vui lòng nhấp nút create.
 
 37
 00:02:29,120 --> 00:02:34,640
-And this will be Create Basket API microservices under our Services Basket folder.
+Và điều này sẽ tạo Basket API microservices dưới folder Services Basket của chúng ta.
 
 38
 00:02:34,640 --> 00:02:37,160
-Here you can see the our basket microservices.
+Ở đây bạn có thể thấy basket microservices của chúng ta.
 
 39
 00:02:37,160 --> 00:02:39,980
-The first thing we should do that go to the program stage.
+Điều đầu tiên chúng ta nên làm là đi đến program stage.
 
 40
 00:02:39,980 --> 00:02:44,210
-And we will refactor Program.cs according to our requirements.
+Và chúng ta sẽ refactor Program.cs theo yêu cầu của chúng ta.
 
 41
 00:02:44,210 --> 00:02:49,970
-So as you remember that we are separating by two before building the application and after building
+Vậy như bạn nhớ lại, chúng ta đang phân tách thành hai phần trước khi xây dựng ứng dụng và sau khi xây dựng
 
 42
 00:02:50,000 --> 00:02:50,750
-the application.
+ứng dụng.
 
 43
 00:02:50,750 --> 00:02:55,910
-So before building the application we will add services to the built in dependency injection container.
+Vậy trước khi xây dựng ứng dụng, chúng ta sẽ thêm các services vào built-in dependency injection container.
 
 44
 00:02:55,910 --> 00:02:58,580
-That's why I'm putting a command in here.
+Đó là lý do tại sao tôi đặt một command ở đây.
 
 45
 00:02:58,580 --> 00:03:04,610
-And after building the web application I'm going to remove these Mapkit operation.
+Và sau khi xây dựng web application, tôi sẽ xóa những Mapkit operation này.
 
 46
 00:03:04,610 --> 00:03:11,390
-And we basically configure the Http request pipeline before running the application and after building
+Và về cơ bản chúng ta configure Http request pipeline trước khi chạy ứng dụng và sau khi xây dựng
 
 47
 00:03:11,390 --> 00:03:14,030
-the application so you can save these programs.
+ứng dụng nên bạn có thể lưu các programs này.
 
 48
 00:03:14,030 --> 00:03:19,130
-Yes, we will follow this structure when configuring our basket API microservices.
+Vâng, chúng ta sẽ tuân theo cấu trúc này khi configure basket API microservices của chúng ta.
 
 49
 00:03:19,220 --> 00:03:24,200
-As you can see that we have finished the initial setup of our basket API microservices.
+Như bạn có thể thấy, chúng ta đã hoàn thành thiết lập ban đầu của basket API microservices.
 

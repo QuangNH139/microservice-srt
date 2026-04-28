@@ -1,98 +1,98 @@
 1
 00:00:00,170 --> 00:00:06,890
-In this video, we are going to implement health checks for basket microservices, ensuring that both
+Trong video này, chúng ta sẽ triển khai health checks cho basket microservices, đảm bảo rằng cả
 
 2
 00:00:06,890 --> 00:00:11,000
-PostgreSQL database and Redis distributed cache are operational.
+PostgreSQL database và Redis distributed cache đều hoạt động bình thường.
 
 3
 00:00:12,110 --> 00:00:18,230
-As you remember that ASP.Net health checks allows us to expose Http endpoints for checking the health
+Như bạn có thể nhớ, ASP.NET health checks cho phép chúng ta expose Http endpoints để kiểm tra tình trạng
 
 4
 00:00:18,230 --> 00:00:23,540
-of the application infrastructure components, and we will add health checks to our basket.
+của các thành phần cơ sở hạ tầng ứng dụng, và chúng ta sẽ thêm health checks vào basket
 
 5
 00:00:23,540 --> 00:00:29,120
-Microservices with checking the health of our PostgreSQL database and Redis distributed cache.
+microservices với việc kiểm tra tình trạng của PostgreSQL database và Redis distributed cache.
 
 6
 00:00:29,600 --> 00:00:32,420
-For that purpose, please open the Visual Studio.
+Để làm điều đó, vui lòng mở Visual Studio.
 
 7
 00:00:32,420 --> 00:00:36,500
-And now I am going to implement health checks in very basic format.
+Và bây giờ tôi sẽ triển khai health checks ở định dạng rất cơ bản.
 
 8
 00:00:36,530 --> 00:00:43,250
-If you go to program.cs of basket API, we have two things that we are going to implement health checks.
+Nếu bạn vào program.cs của basket API, chúng ta có hai điều mà chúng ta sẽ triển khai health checks.
 
 9
 00:00:43,250 --> 00:00:48,410
-The first one is we will register health checks before building the application.
+Điều đầu tiên là chúng ta sẽ đăng ký health checks trước khi xây dựng ứng dụng.
 
 10
 00:00:48,410 --> 00:00:51,170
-And after that we will configure the middleware.
+Và sau đó chúng ta sẽ cấu hình middleware.
 
 11
 00:00:51,170 --> 00:01:00,620
-So let me start with the registering the health checks builder services dot add health check.
+Vậy hãy bắt đầu với việc đăng ký health checks builder services dot add health check.
 
 12
 00:01:00,620 --> 00:01:05,720
-And this is a very basic implementation of the health check registration.
+Và đây là một triển khai rất cơ bản của đăng ký health check.
 
 13
 00:01:05,720 --> 00:01:08,210
-After that we can configure the endpoint.
+Sau đó chúng ta có thể cấu hình endpoint.
 
 14
 00:01:08,210 --> 00:01:14,150
-If you come to after building the application and come after the use exception handler.
+Nếu bạn đến sau khi xây dựng ứng dụng và đến sau use exception handler.
 
 15
 00:01:14,150 --> 00:01:21,830
-Basically we can perform the use health checks extension method and exposing the health endpoint with
+Về cơ bản chúng ta có thể thực hiện phương pháp use health checks extension và expose health endpoint với
 
 16
 00:01:21,830 --> 00:01:22,820
-slash health.
+/health.
 
 17
 00:01:22,820 --> 00:01:27,170
-So by these two lines of code we have exposing health endpoint.
+Vậy với hai dòng code này chúng ta đã expose health endpoint.
 
 18
 00:01:27,170 --> 00:01:30,380
-So let's try with running the https mode.
+Vậy hãy thử chạy ở chế độ https.
 
 19
 00:01:30,500 --> 00:01:31,340
-And.
+Và.
 
 20
 00:01:32,080 --> 00:01:33,640
-Expose the health end point.
+Expose health end point.
 
 21
 00:01:33,640 --> 00:01:36,610
-After running the application, you can open the postman.
+Sau khi chạy ứng dụng, bạn có thể mở Postman.
 
 22
 00:01:36,610 --> 00:01:41,470
-And here you can see that I have created health endpoint for basket microservices.
+Và ở đây bạn có thể thấy rằng tôi đã tạo health endpoint cho basket microservices.
 
 23
 00:01:41,470 --> 00:01:44,530
-This is the basket URL and this is the health end point.
+Đây là URL của basket và đây là health endpoint.
 
 24
 00:01:44,530 --> 00:01:50,140
-If you send http get method, you can see that there is a healthy response returning for basket API
+Nếu bạn gửi HTTP GET method, bạn có thể thấy rằng có một healthy response được trả về cho basket API.
 
 25
 00:01:50,140 --> 00:01:51,070
@@ -100,71 +100,71 @@ microservices.
 
 26
 00:01:51,070 --> 00:01:55,360
-But basket microservices relying on two backing services.
+Nhưng basket microservices phụ thuộc vào hai backing services.
 
 27
 00:01:55,360 --> 00:02:00,310
-And we should also check the health status of the PostgreSQL database and Redis cache.
+Và chúng ta cũng nên kiểm tra health status của cơ sở dữ liệu PostgreSQL và Redis cache.
 
 28
 00:02:00,460 --> 00:02:06,010
-For that purpose, we will use different NuGet packages under this GitHub repository.
+Với mục đích đó, chúng ta sẽ sử dụng các NuGet packages khác nhau từ GitHub repository này.
 
 29
 00:02:06,250 --> 00:02:12,460
-As you remember that, we can see ASP.Net core Diagnostics, health checks GitHub repository including
+Như bạn có thể nhớ, chúng ta có thể thấy ASP.NET Core Diagnostics, health checks GitHub repository bao gồm
 
 30
 00:02:12,460 --> 00:02:15,700
-different health checks for different backing services.
+các health checks khác nhau cho các backing services khác nhau.
 
 31
 00:02:15,700 --> 00:02:20,890
-If you scroll down and go to Readme file, you can see the backing services under the health checks.
+Nếu bạn cuộn xuống và đi tới file Readme, bạn có thể thấy các backing services bên dưới health checks.
 
 32
 00:02:20,890 --> 00:02:22,300
-These are the packages.
+Đây là các packages.
 
 33
 00:02:22,300 --> 00:02:26,770
-Different packages checks, different backing services for microservices.
+Các packages khác nhau kiểm tra các backing services khác nhau cho microservices.
 
 34
 00:02:26,770 --> 00:02:30,280
-So in our case I'm going to check for the PostgreSQL.
+Vậy trong trường hợp của chúng ta, tôi sẽ kiểm tra PostgreSQL.
 
 35
 00:02:30,280 --> 00:02:33,340
-So in this line of code you can go to the NuGet package.
+Vậy trong dòng code này bạn có thể đi tới NuGet package.
 
 36
 00:02:33,340 --> 00:02:36,130
-And also we need to check Redis.
+Và chúng ta cũng cần kiểm tra Redis.
 
 37
 00:02:36,160 --> 00:02:39,340
-Here you can see the Redis NuGet package in here.
+Ở đây bạn có thể thấy Redis NuGet package.
 
 38
 00:02:39,340 --> 00:02:46,480
-So according to this NuGet package we can see that for the PostgreSQL we need to install these NuGet
+Vậy theo NuGet package này, chúng ta có thể thấy rằng đối với PostgreSQL chúng ta cần cài đặt các NuGet
 
 39
 00:02:46,480 --> 00:02:47,140
-packages.
+packages này.
 
 40
 00:02:47,140 --> 00:02:50,410
-And for the radius we need to install these NuGet packages.
+Và đối với Redis chúng ta cần cài đặt các NuGet packages này.
 
 41
 00:02:50,410 --> 00:02:52,540
-So let me install one by one.
+Vậy hãy để tôi cài đặt từng cái một.
 
 42
 00:02:52,540 --> 00:02:59,080
-So let me copy this one and go to the our project and right click the basket API.
+Vậy hãy để tôi copy cái này và đi đến project của chúng ta, sau đó right click vào basket API.
 
 43
 00:02:59,110 --> 00:03:00,760
@@ -172,27 +172,27 @@ Manage NuGet packages.
 
 44
 00:03:00,760 --> 00:03:05,650
-Of course we should stop this project and right click manage NuGet packages.
+Tất nhiên chúng ta nên dừng project này và right click manage NuGet packages.
 
 45
 00:03:05,860 --> 00:03:13,210
-And I'm going to browse ASP.Net Core Health Checks and Pgsql and install this package.
+Và tôi sẽ browse ASP.Net Core Health Checks và Pgsql, rồi cài đặt package này.
 
 46
 00:03:14,790 --> 00:03:15,390
-Okay.
+Được rồi.
 
 47
 00:03:15,390 --> 00:03:23,250
-And after that, come here and copy for the release health check library and browse for the release
+Và sau đó, đến đây và copy cho release health check library, rồi browse cho release
 
 48
 00:03:23,250 --> 00:03:28,470
-and install release health check library from the ASP.Net core health checks.
+và cài đặt release health check library từ ASP.Net core health checks.
 
 49
 00:03:28,470 --> 00:03:34,530
-If you double click the basket API, you can confirm that we have two health checks for PostgreSQL and
+Nếu bạn double click vào basket API, bạn có thể xác nhận rằng chúng ta có hai health checks cho PostgreSQL và
 
 50
 00:03:34,530 --> 00:03:34,950
@@ -200,71 +200,71 @@ Redis.
 
 51
 00:03:34,980 --> 00:03:37,500
-Save this file and go to program.cs.
+Lưu file này và đi đến program.cs.
 
 52
 00:03:37,500 --> 00:03:44,130
-Now we are going to extend our health checks with including PostgreSQL and also Redis.
+Bây giờ chúng ta sẽ mở rộng health checks của chúng ta bằng cách thêm PostgreSQL và cũng Redis.
 
 53
 00:03:44,160 --> 00:03:48,090
-Here you can see that I have added two lines of extension method.
+Ở đây bạn có thể thấy rằng tôi đã thêm hai dòng extension method.
 
 54
 00:03:48,090 --> 00:03:55,230
-The first one is add an Pgsql and providing the connection string for database and add redis extension
+Cái đầu tiên là add một Pgsql và cung cấp connection string cho database, và add redis extension
 
 55
 00:03:55,230 --> 00:03:58,080
-method providing the connection string for Redis.
+method cung cấp connection string cho Redis.
 
 56
 00:03:58,080 --> 00:04:03,840
-So please write these codes and after that you can verify the connection strings from the application
+Vậy hãy viết những đoạn code này và sau đó bạn có thể xác minh các connection strings từ file
 
 57
 00:04:03,840 --> 00:04:06,690
-settings Json file under the connection strings.
+appsettings Json dưới connection strings.
 
 58
 00:04:06,690 --> 00:04:08,820
-This is the PostgreSQL database string.
+Đây là chuỗi database PostgreSQL.
 
 59
 00:04:08,820 --> 00:04:12,660
-And this is the Redis string that we can connect from our health checks.
+Và đây là chuỗi Redis mà chúng ta có thể kết nối từ health checks của chúng ta.
 
 60
 00:04:12,660 --> 00:04:20,430
-So after completing our health checks including our database and cache, now it is time to add UI client
+Vậy sau khi hoàn thành health checks bao gồm database và cache của chúng ta, bây giờ đã đến lúc thêm UI client
 
 61
 00:04:20,430 --> 00:04:21,149
-packages.
+gói.
 
 62
 00:04:21,149 --> 00:04:25,710
-And for that purpose we can install ASP.Net Core Health Checks UI client.
+Và vì vậy chúng ta có thể cài đặt ASP.Net Core Health Checks UI client.
 
 63
 00:04:25,710 --> 00:04:29,550
-So right click the basket API, manage NuGet packages.
+Vậy hãy click chuột phải vào basket API, quản lý NuGet packages.
 
 64
 00:04:29,550 --> 00:04:35,700
-And also I need to install UI client in order to make response more readable.
+Và tôi cũng cần cài đặt UI client để làm cho response dễ đọc hơn.
 
 65
 00:04:35,700 --> 00:04:41,580
-So install this package and double click API and confirm this UI package installed successfully.
+Vậy hãy cài đặt gói này và double click API và xác nhận rằng gói UI này được cài đặt thành công.
 
 66
 00:04:41,580 --> 00:04:45,690
-Save this basket API project file and go back to Program.cs.
+Lưu file project basket API này và quay lại Program.cs.
 
 67
 00:04:46,050 --> 00:04:53,460
-So under these building and configuring our Http request pipeline, we basically configure for custom
+Vậy dưới phần xây dựng và cấu hình Http request pipeline của chúng ta, về cơ bản chúng ta cấu hình cho custom
 
 68
 00:04:53,460 --> 00:04:54,540
@@ -272,97 +272,97 @@ health check response.
 
 69
 00:04:54,540 --> 00:05:00,270
-In here I am going to modify this endpoint and the health check options.
+Ở đây tôi sẽ sửa đổi endpoint này và các tùy chọn health check.
 
 70
 00:05:00,270 --> 00:05:04,020
-As you can see that we have defined endpoint health slash health.
+Như bạn có thể thấy, chúng ta đã định nghĩa endpoint health slash health.
 
 71
 00:05:04,020 --> 00:05:07,080
-But this time we specify health check options.
+Nhưng lần này chúng ta chỉ định các tùy chọn health check.
 
 72
 00:05:07,080 --> 00:05:12,060
-And according to these options we are basically use UI response writer.
+Và theo các tùy chọn này, về cơ bản chúng ta sử dụng UI response writer.
 
 73
 00:05:12,060 --> 00:05:18,690
-And this will be make our health endpoint response as a Json response including all entries.
+Và điều này sẽ làm cho response health endpoint của chúng ta là một JSON response bao gồm tất cả các entries.
 
 74
 00:05:18,690 --> 00:05:23,220
-So please save this file and run this basket API microservices.
+Vậy hãy lưu file này và chạy basket API microservices này.
 
 75
 00:05:23,220 --> 00:05:29,580
-And after running the application successfully you can open the postman.
+Và sau khi chạy ứng dụng thành công, bạn có thể mở Postman.
 
 76
 00:05:29,580 --> 00:05:35,190
-And I'm going to send additional Http get requests to slash health endpoint.
+Và tôi sẽ gửi các Http GET requests bổ sung đến endpoint slash health.
 
 77
 00:05:35,190 --> 00:05:42,360
-And if you send get request you can see that a Json response comes and status is healthy.
+Và nếu bạn gửi GET request, bạn có thể thấy một JSON response trả về và status là healthy.
 
 78
 00:05:42,360 --> 00:05:49,080
-This Json response indicating the health status of PostgreSQL and Redis under the entities.
+JSON response này chỉ ra trạng thái health của PostgreSQL và Redis dưới các entities.
 
 79
 00:05:49,080 --> 00:05:56,100
-If both services are operational working correctly, we should see the status as a healthy.
+Nếu cả hai dịch vụ đang hoạt động chính xác, chúng ta sẽ thấy status là healthy.
 
 80
 00:05:56,100 --> 00:06:02,280
-If any service is down, the status can be changed unhealthy with additional error details.
+Nếu bất kỳ dịch vụ nào ngừng hoạt động, status có thể thay đổi thành unhealthy với các chi tiết lỗi bổ sung.
 
 81
 00:06:02,280 --> 00:06:07,950
-For example, if we stop the Redis or PostgreSQL we will see unhealthy situation.
+Ví dụ, nếu chúng ta dừng Redis hoặc PostgreSQL, chúng ta sẽ thấy tình trạng không lành mạnh.
 
 82
 00:06:07,950 --> 00:06:15,960
-We can simulate this case if you open the Docker desktop and select the distributed cache and stop this
+Chúng ta có thể mô phỏng trường hợp này nếu bạn mở Docker desktop và chọn distributed cache rồi dừng
 
 83
 00:06:15,960 --> 00:06:19,830
-container, you can see that now cache is not working.
+container này, bạn sẽ thấy rằng bây giờ cache không hoạt động.
 
 84
 00:06:19,830 --> 00:06:26,580
-If we send http get request for our health and meet this time, we should see status as an unhealthy
+Nếu chúng ta gửi HTTP GET request cho health check của chúng ta lúc này, chúng ta sẽ thấy status là unhealthy
 
 85
 00:06:26,580 --> 00:06:30,450
-and redis should not be work in under the our entries.
+và redis sẽ không hoạt động trong các mục nhập của chúng ta.
 
 86
 00:06:30,600 --> 00:06:36,900
-As you can see that status comes unhealthy and redis comes with the exception with the timeout exception.
+Như bạn có thể thấy, status trở thành unhealthy và redis gặp exception với timeout exception.
 
 87
 00:06:36,900 --> 00:06:38,640
-Let me fix this problem.
+Để tôi sửa lỗi này.
 
 88
 00:06:38,640 --> 00:06:42,540
-Open Docker desktop, select distributed cache and start again.
+Mở Docker desktop, chọn distributed cache và khởi động lại.
 
 89
 00:06:42,540 --> 00:06:47,700
-And after started we can send http get request and get the status as a healthy.
+Và sau khi khởi động, chúng ta có thể gửi HTTP GET request và nhận status là healthy.
 
 90
 00:06:47,910 --> 00:06:53,490
-The idea is that monitoring backing services are required for ready to basket microservices.
+Ý tưởng là việc giám sát các backing services là bắt buộc để basket microservice sẵn sàng.
 
 91
 00:06:53,490 --> 00:06:59,490
-Accepting requests and the health check endpoint provide real time monitoring of crucial services like
+Để chấp nhận requests và health check endpoint cung cấp real time monitoring của các services quan trọng như
 
 92
 00:06:59,490 --> 00:07:00,990
-databases and caches.
+databases và caches.
 

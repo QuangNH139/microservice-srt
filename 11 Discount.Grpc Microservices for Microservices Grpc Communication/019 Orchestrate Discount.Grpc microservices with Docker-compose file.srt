@@ -1,114 +1,114 @@
 1
 00:00:00,140 --> 00:00:06,140
-In this video, we are going to orchestrate the second gRPC microservices with Docker Compose.
+Trong video này, chúng ta sẽ orchestrate microservice gRPC thứ hai với Docker Compose.
 
 2
 00:00:06,530 --> 00:00:12,590
-That means we will modify the Docker-compose.yml file in order to include the discount gRPC service.
+Điều đó có nghĩa là chúng ta sẽ chỉnh sửa file Docker-compose.yml để bao gồm discount gRPC service.
 
 3
 00:00:12,770 --> 00:00:18,560
-So discount gRPC service is defined similarly to other services with its own Docker file.
+Vậy discount gRPC service được định nghĩa tương tự như các service khác với Docker file riêng của nó.
 
 4
 00:00:18,560 --> 00:00:23,360
-You can open the Visual Studio and you can see that we have created our Docker file.
+Bạn có thể mở Visual Studio và bạn có thể thấy rằng chúng ta đã tạo Docker file của chúng ta.
 
 5
 00:00:23,360 --> 00:00:27,110
-And now we are going to add container orchestrator support.
+Và bây giờ chúng ta sẽ thêm container orchestrator support.
 
 6
 00:00:27,110 --> 00:00:29,210
-Please select the discount gRPC project.
+Vui lòng chọn discount gRPC project.
 
 7
 00:00:29,210 --> 00:00:36,260
-Right click add and this time we will select Container Orchestrator Support and choose Docker Compose
+Click chuột phải, add và lần này chúng ta sẽ chọn Container Orchestrator Support và chọn Docker Compose
 
 8
 00:00:36,260 --> 00:00:37,100
-and Target.
+và Target.
 
 9
 00:00:37,100 --> 00:00:39,080
-Operating system should be Linux.
+Operating system nên là Linux.
 
 10
 00:00:39,080 --> 00:00:46,640
-And after click okay we can go to the Docker compose Yaml file and see that this time discount gRPC
+Và sau khi click okay, chúng ta có thể đi tới file Docker compose Yaml và thấy rằng lần này discount gRPC
 
 11
 00:00:46,640 --> 00:00:49,550
-is generated under the our microservices.
+được tạo dưới microservices của chúng ta.
 
 12
 00:00:49,550 --> 00:00:56,390
-And this is the Docker-compose.yml file and discount gRPC added like other microservices indicating
+Và đây là file Docker-compose.yml và discount gRPC được thêm như các microservice khác chỉ ra
 
 13
 00:00:56,390 --> 00:01:00,350
-the Docker file, which is the discount gRPC docker file.
+file Docker, đó là discount gRPC docker file.
 
 14
 00:01:00,350 --> 00:01:04,970
-After this definition, we should also check the docker compose overwrite Yaml file.
+Sau định nghĩa này, chúng ta cũng nên kiểm tra file docker compose overwrite Yaml.
 
 15
 00:01:04,970 --> 00:01:10,220
-Here you can see the docker compose of retinal file and this file used for the settings environment.
+Ở đây bạn có thể thấy docker compose của file retinal và file này được sử dụng cho cấu hình môi trường.
 
 16
 00:01:10,220 --> 00:01:14,630
-Specific configurations like ports, environment variables, and volume mappings.
+Các cấu hình cụ thể như ports, environment variables, và volume mappings.
 
 17
 00:01:14,630 --> 00:01:21,440
-If you scroll down and go to end of this document, you can see that discount gRPC configurations also
+Nếu bạn cuộn xuống và đi tới cuối document này, bạn có thể thấy rằng discount gRPC configurations cũng
 
 18
 00:01:21,440 --> 00:01:23,990
-generated in Docker compose of HTML file.
+được tạo trong file Docker compose HTML.
 
 19
 00:01:23,990 --> 00:01:28,820
-But we need to modify these configurations with the port numbers and environment variables.
+Nhưng chúng ta cần chỉnh sửa các cấu hình này với port numbers và environment variables.
 
 20
 00:01:28,820 --> 00:01:36,710
-So if you look at our slide you can see that for discount microservices we will follow the 6002 and
+Vậy nếu bạn nhìn vào slide của chúng ta, bạn có thể thấy rằng cho discount microservices chúng ta sẽ theo port 6002 và
 
 21
 00:01:36,710 --> 00:01:39,980
-6062 ports for Docker environment.
+Các cổng 6062 cho môi trường Docker.
 
 22
 00:01:39,980 --> 00:01:45,380
-For that purpose, if you go back to our Visual Studio, we can configure our port numbers according
+Vì mục đích đó, nếu bạn quay lại Visual Studio của chúng ta, chúng ta có thể cấu hình các số cổng của mình theo
 
 23
 00:01:45,410 --> 00:01:46,190
-to our slide.
+slide của chúng ta.
 
 24
 00:01:46,190 --> 00:01:49,010
-And also we should add some environment variables.
+Và chúng ta cũng nên thêm một số biến môi trường.
 
 25
 00:01:49,010 --> 00:01:53,390
-For the environment variables we can check the application settings of the discount gRPC.
+Đối với các biến môi trường, chúng ta có thể kiểm tra cài đặt ứng dụng của discount gRPC.
 
 26
 00:01:53,540 --> 00:01:58,460
-If you double click application settings, you can see that we should overwrite connection settings
+Nếu bạn double click vào application settings, bạn có thể thấy rằng chúng ta nên ghi đè cài đặt kết nối
 
 27
 00:01:58,460 --> 00:02:03,800
-database and these data source operation which is the SQLite discount DB database.
+cơ sở dữ liệu và data source operation đó, đó là cơ sở dữ liệu SQLite discount DB.
 
 28
 00:02:03,800 --> 00:02:10,610
-And we will also add these database connection strings and add the environment variable for discount
+Và chúng ta cũng sẽ thêm các chuỗi kết nối cơ sở dữ liệu này và thêm biến môi trường cho discount
 
 29
 00:02:10,610 --> 00:02:11,180
@@ -116,55 +116,55 @@ gRPC.
 
 30
 00:02:11,480 --> 00:02:17,450
-To perform these configurations, I'm going to add a new environment variable and change the port numbers.
+Để thực hiện các cấu hình này, tôi sẽ thêm một biến môi trường mới và thay đổi các số cổng.
 
 31
 00:02:17,450 --> 00:02:23,600
-Come here and I'm going to paste new configurations including the connection settings in the environment
+Hãy đến đây và tôi sẽ dán các cấu hình mới bao gồm cài đặt kết nối trong các
 
 32
 00:02:23,600 --> 00:02:24,290
-variables.
+biến môi trường.
 
 33
 00:02:24,290 --> 00:02:30,410
-Here you can see that for this country RPC, the SQLite database is configured with the connection string,
+Ở đây bạn có thể thấy rằng đối với country RPC này, cơ sở dữ liệu SQLite được cấu hình với chuỗi kết nối,
 
 34
 00:02:30,410 --> 00:02:33,830
-data source and discount DB which is the SQLite database.
+data source và discount DB, đó là cơ sở dữ liệu SQLite.
 
 35
 00:02:33,830 --> 00:02:37,340
-And this points to SQLite file within the container.
+Và điều này trỏ đến tệp SQLite trong container.
 
 36
 00:02:37,340 --> 00:02:44,450
-That means, unlike the other services using the PostgreSQL and other databases, discount gRPC uses
+Điều đó có nghĩa là, khác với các dịch vụ khác sử dụng PostgreSQL và các cơ sở dữ liệu khác, discount gRPC sử dụng
 
 37
 00:02:44,450 --> 00:02:48,200
-an SQLite database which doesn't require a separate database.
+cơ sở dữ liệu SQLite, không yêu cầu cơ sở dữ liệu riêng biệt.
 
 38
 00:02:48,200 --> 00:02:48,920
-Services.
+Dịch vụ.
 
 39
 00:02:48,920 --> 00:02:53,330
-The database file is managed within the discount gRPC container itself.
+Tệp cơ sở dữ liệu được quản lý trong chính container discount gRPC.
 
 40
 00:02:53,390 --> 00:02:57,830
-After the environment variables, we have set the port numbers according to our slide.
+Sau các biến môi trường, chúng ta đã đặt các số cổng theo slide của chúng ta.
 
 41
 00:02:57,830 --> 00:03:05,150
-So for port numbers we use 6002 for Http and 6062 for Https in Docker environment.
+Vậy đối với các số cổng, chúng ta sử dụng 6002 cho Http và 6062 cho Https trong Docker environment.
 
 42
 00:03:05,150 --> 00:03:12,080
-So within this configuration we can say that the discount gRPC microservices is now part of our Docker
+Vậy trong cấu hình này, chúng ta có thể nói rằng discount gRPC microservices hiện là một phần của Docker
 
 43
 00:03:12,080 --> 00:03:13,670

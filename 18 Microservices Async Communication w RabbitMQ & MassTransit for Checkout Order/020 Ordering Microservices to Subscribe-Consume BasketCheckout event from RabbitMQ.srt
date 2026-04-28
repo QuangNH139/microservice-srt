@@ -1,94 +1,94 @@
 1
 00:00:00,110 --> 00:00:05,270
-In this video, we are going to continue steps of developing a synchronous communication.
+Trong video này, chúng ta sẽ tiếp tục các bước phát triển giao tiếp đồng bộ.
 
 2
 00:00:05,270 --> 00:00:11,510
-And we are at the third step, which is ordering microservices to subscribe and consume basket checkout
+Và chúng ta đang ở bước thứ ba, đó là ordering microservices để subscribe và consume basket checkout
 
 3
 00:00:11,510 --> 00:00:13,250
-event from the RabbitMQ.
+event từ RabbitMQ.
 
 4
 00:00:13,280 --> 00:00:16,970
-In order to perform asynchronous event driven communication.
+Để thực hiện giao tiếp event driven bất đồng bộ.
 
 5
 00:00:16,970 --> 00:00:20,540
-So this time we will add the consumer side.
+Vậy lần này chúng ta sẽ thêm phía consumer.
 
 6
 00:00:20,540 --> 00:00:26,660
-That means subscriber side basket will publish the basket checkout event and RabbitMQ store this event
+Điều đó có nghĩa là subscriber side basket sẽ publish basket checkout event và RabbitMQ lưu trữ event này
 
 7
 00:00:26,660 --> 00:00:29,210
-and after that ordering microservices.
+và sau đó ordering microservices.
 
 8
 00:00:29,210 --> 00:00:36,050
-Subscribe and consume basket checkout event from the RabbitMQ using the Masstransit to perform asynchronous
+Subscribe và consume basket checkout event từ RabbitMQ sử dụng MassTransit để thực hiện giao tiếp
 
 9
 00:00:36,050 --> 00:00:37,610
-event driven communication.
+event driven bất đồng bộ.
 
 10
 00:00:37,760 --> 00:00:40,940
-So now let's check the sub steps of the ordering.
+Vậy bây giờ hãy kiểm tra các bước con của ordering.
 
 11
 00:00:40,940 --> 00:00:44,120
-Subscribe consume operation for the basket checkout event.
+Subscribe consume operation cho basket checkout event.
 
 12
 00:00:44,120 --> 00:00:50,090
-And the first step is getting project reference to building blocks messaging class library in ordering
+Và bước đầu tiên là lấy project reference tới building blocks messaging class library trong ordering
 
 13
 00:00:50,090 --> 00:00:55,250
-application project in order to access shared events and masstransit extensions.
+application project để có thể truy cập shared events và masstransit extensions.
 
 14
 00:00:55,250 --> 00:01:00,710
-That means in ordering application we will add a reference to building blocks, messaging class library.
+Điều đó có nghĩa là trong ordering application chúng ta sẽ thêm reference tới building blocks, messaging class library.
 
 15
 00:01:00,710 --> 00:01:06,770
-This inclusion allows to access shared events and masstransit extensions required for the Consuming
+Sự bao gồm này cho phép truy cập shared events và masstransit extensions cần thiết để Consuming
 
 16
 00:01:06,770 --> 00:01:11,120
-the Basket checkout event, and the second step is register Masstransit.
+Basket checkout event, và bước thứ hai là register Masstransit.
 
 17
 00:01:11,120 --> 00:01:16,730
-RabbitMQ packages into ordering application dependency injection in the dependency injection file.
+RabbitMQ packages vào ordering application dependency injection trong dependency injection file.
 
 18
 00:01:16,730 --> 00:01:23,060
-So in this step we will modify the dependency injection file into ordering application layer in order
+Vậy trong bước này chúng ta sẽ modify dependency injection file trong ordering application layer để
 
 19
 00:01:23,060 --> 00:01:28,370
-to register Masstransit and RabbitMQ packages, and this setup will configure the necessary services
+register Masstransit và RabbitMQ packages, và setup này sẽ configure các services cần thiết
 
 20
 00:01:28,370 --> 00:01:30,350
-for handling the basket checkout event.
+cho việc xử lý basket checkout event.
 
 21
 00:01:30,470 --> 00:01:36,020
-And the third step is we will develop basket checkout event consumer integration event handler class
+Và bước thứ ba là chúng ta sẽ phát triển lớp xử lý sự kiện tích hợp consumer checkout giỏ hàng
 
 22
 00:01:36,020 --> 00:01:38,870
-to perform checkout and order create operations.
+để thực hiện các hoạt động checkout và tạo đơn hàng.
 
 23
 00:01:38,870 --> 00:01:44,270
-So in this step we will implement an integration event handler class within the ordering application
+Vậy trong bước này chúng ta sẽ triển khai một lớp xử lý sự kiện tích hợp trong ứng dụng ordering
 
 24
 00:01:44,270 --> 00:01:44,690
@@ -96,63 +96,63 @@ layer.
 
 25
 00:01:44,690 --> 00:01:50,210
-This class will handle the basket checkout event, creating an order and executing relevant business
+Lớp này sẽ xử lý sự kiện checkout giỏ hàng, tạo một đơn hàng và thực thi các logic kinh doanh liên quan.
 
 26
 00:01:50,210 --> 00:01:50,900
-logic.
+Và bước cuối cùng là chúng ta sẽ có một bước thêm là publish sự kiện tích hợp order created.
 
 27
 00:01:50,930 --> 00:01:56,930
-And the last step is we will have a bonus step which is the publish order created integration event.
+Tùy chọn trong lớp domain event handler cho order created, chúng ta có thể publish một sự kiện tích hợp order created
 
 28
 00:01:56,930 --> 00:02:03,320
-Optionally in the domain event handler class for order created, we can publish an order created integration
+tới RabbitMQ sử dụng Masstransit và bước này là một phần của order fulfillment và triển khai
 
 29
 00:02:03,320 --> 00:02:09,830
-event to RabbitMQ using the Masstransit and this step is part of the order fulfillment and implementing
+mẫu Saga cho các giao dịch kinh doanh phức tạp trải dài trên nhiều dịch vụ.
 
 30
 00:02:09,830 --> 00:02:14,510
-a Saga pattern for complex business transactions spanning multiple services.
+Vậy bây giờ hãy bắt đầu cho bước con đầu tiên, đó là lấy tham chiếu dự án để xây dựng
 
 31
 00:02:14,510 --> 00:02:20,270
-So now let's get started for the first sub step, which is the getting project reference to building
+Blocks messaging trong ordering application layer.
 
 32
 00:02:20,270 --> 00:02:23,030
-Blocks messaging in ordering application layer.
+Cho mục đích đó, vui lòng mở Visual Studio và đi tới thư mục Ordering Microservices.
 
 33
 00:02:23,030 --> 00:02:28,490
-For that purpose, please open the Visual Studio and go to the Ordering Microservices folder.
+Và vui lòng đi tới Ordering Application.
 
 34
 00:02:28,490 --> 00:02:30,740
-And please go to Ordering Application.
+Vậy hãy mở ordering application và nhấp chuột phải vào dependencies.
 
 35
 00:02:30,740 --> 00:02:34,280
-So open the ordering application and right click the dependencies.
+Thêm một tham chiếu dự án.
 
 36
 00:02:34,280 --> 00:02:35,690
-Add a project reference.
+Nếu bạn nhấp chuột phải và thêm một tham chiếu dự án, bạn có thể thấy rằng chúng ta đã thêm ordering domain
 
 37
 00:02:35,690 --> 00:02:41,570
-If you right click and add a project reference, you can see that we have already added ordering domain
+theo Clean Architecture.
 
 38
 00:02:41,570 --> 00:02:42,980
-according to Clean Architecture.
+Và chúng ta cũng đã thêm building blocks bao gồm các abstractions cho stacks và các hoạt động chung.
 
 39
 00:02:42,980 --> 00:02:49,250
-And we have also added building blocks which including the abstractions for the stacks and common operations.
+Và bây giờ tôi sẽ thêm một tham chiếu dự án thư viện lớp mới, đó là building blocks
 
 40
 00:02:49,250 --> 00:02:55,250
@@ -160,27 +160,27 @@ And for now I am going to adding a new class library project reference, which is
 
 41
 00:02:55,250 --> 00:03:00,980
-that messaging and ensure that ordering application has a get referencing from the Building Blocks messaging
+để messaging và đảm bảo rằng ordering application có tham chiếu đến Building Blocks messaging
 
 42
 00:03:00,980 --> 00:03:05,390
-project in order to access shared events and Masstransit extensions.
+project để truy cập các shared events và Masstransit extensions.
 
 43
 00:03:05,390 --> 00:03:10,370
-If you click the okay button and if you double click the ordering application, save this file, you
+Nếu bạn click vào nút okay và nếu bạn double click vào ordering application, lưu file này, bạn
 
 44
 00:03:10,370 --> 00:03:16,160
-can see the project reference comes into the our project file, and we will successfully adding Building
+có thể thấy project reference được thêm vào project file của chúng ta, và chúng ta sẽ thành công trong việc thêm Building
 
 45
 00:03:16,160 --> 00:03:19,430
-Blocks messaging class library into ordering application layer.
+Blocks messaging class library vào ordering application layer.
 
 46
 00:03:19,430 --> 00:03:24,710
-By this way, we can access the shared events and Masstransit extensions from the Building Blocks messaging
+Bằng cách này, chúng ta có thể truy cập các shared events và Masstransit extensions từ Building Blocks messaging
 
 47
 00:03:24,710 --> 00:03:25,220
@@ -188,23 +188,23 @@ library.
 
 48
 00:03:25,580 --> 00:03:31,580
-So the question is why we added building blocks and building blocks messaging class libraries into the
+Vậy câu hỏi là tại sao chúng ta thêm building blocks và building blocks messaging class libraries vào
 
 49
 00:03:31,580 --> 00:03:37,970
-ordering application layer, why we don't adding the API or any other layers, because we were following
+ordering application layer, tại sao chúng ta không thêm API hay bất kỳ layer nào khác, vì chúng ta đang tuân theo
 
 50
 00:03:37,970 --> 00:03:43,430
-the clean architecture in ordering microservices and application layer, representing the application
+clean architecture trong ordering microservices và application layer, đại diện cho application
 
 51
 00:03:43,430 --> 00:03:46,160
-and performing use cases with the abstractions.
+và thực hiện các use cases với các abstractions.
 
 52
 00:03:46,160 --> 00:03:51,860
-So basket checkout, integration, event handling is a use case and it should handle inner application
+Vậy basket checkout, integration, event handling là một use case và nó nên được xử lý trong application
 
 53
 00:03:51,860 --> 00:03:52,340
@@ -212,19 +212,19 @@ layer.
 
 54
 00:03:52,340 --> 00:03:58,430
-That's why we have added in the application layer to perform basket checkout integration, event handling,
+Đó là lý do tại sao chúng ta đã thêm vào application layer để thực hiện basket checkout integration, event handling,
 
 55
 00:03:58,430 --> 00:04:00,620
-use case into order feature folder.
+use case vào order feature folder.
 
 56
 00:04:00,620 --> 00:04:06,710
-If you open the orders feature folder, you can see that we have commands, queries and event handlers.
+Nếu bạn mở orders feature folder, bạn có thể thấy rằng chúng ta có commands, queries và event handlers.
 
 57
 00:04:06,710 --> 00:04:09,020
-In the event handlers, we are going to handle.
+Trong event handlers, chúng ta sẽ xử lý.
 
 58
 00:04:09,020 --> 00:04:09,950

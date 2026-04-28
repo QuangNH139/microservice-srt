@@ -1,42 +1,42 @@
 1
 00:00:00,140 --> 00:00:05,300
-In this video we are going to do technical analysis of shopping web microservices.
+Trong video này, chúng ta sẽ thực hiện phân tích kỹ thuật về shopping web microservices.
 
 2
 00:00:05,300 --> 00:00:11,270
-This will include application architecture, analyzing pattern and principles libraries, NuGet packages
+Điều này sẽ bao gồm kiến trúc ứng dụng, phân tích các mẫu và nguyên tắc thư viện, NuGet packages
 
 3
 00:00:11,270 --> 00:00:12,890
-and project folder structure.
+và cấu trúc thư mục dự án.
 
 4
 00:00:12,890 --> 00:00:16,219
-So let me start with the application architecture style.
+Vậy hãy bắt đầu với kiểu kiến trúc ứng dụng.
 
 5
 00:00:16,370 --> 00:00:21,980
-As an application architecture style, we will use traditional and layered architecture that will include
+Là một kiểu kiến trúc ứng dụng, chúng ta sẽ sử dụng kiến trúc truyền thống và phân lớp bao gồm
 
 6
 00:00:21,980 --> 00:00:27,860
-presentation layer which is the CSS, HTML, razor, web page and business layer which is the services
+presentation layer là CSS, HTML, razor, web page và business layer là các service
 
 7
 00:00:27,860 --> 00:00:34,700
-classes that calls Erb, API gateway and Data layer, which basically Erb API gateway calls to downstream
+classes gọi Erb, API gateway và Data layer, về cơ bản Erb API gateway gọi đến các downstream
 
 8
 00:00:34,700 --> 00:00:37,040
-microservices with using models folder.
+microservices bằng cách sử dụng thư mục models.
 
 9
 00:00:37,550 --> 00:00:42,200
-And just after that, we can examine the pattern and principles that we are going to use.
+Và ngay sau đó, chúng ta có thể kiểm tra các mẫu và nguyên tắc mà chúng ta sẽ sử dụng.
 
 10
 00:00:42,200 --> 00:00:49,430
-We will use Typesafe raised Http client factory Implementation service Proxy pattern, and ASP.Net razor
+Chúng ta sẽ sử dụng Typesafe raised Http client factory Implementation service Proxy pattern, và ASP.Net razor
 
 11
 00:00:49,430 --> 00:00:50,060
@@ -44,11 +44,11 @@ pages.
 
 12
 00:00:50,150 --> 00:00:55,160
-And just after that we can examine libraries and NuGet packages as a NuGet package.
+Và ngay sau đó chúng ta có thể kiểm tra các thư viện và NuGet packages như một NuGet package.
 
 13
 00:00:55,160 --> 00:01:02,540
-We will use refit Http client factory and this will be provide generated clients for efficient Http
+Chúng ta sẽ sử dụng refit Http client factory và điều này sẽ cung cấp các generated clients để efficient Http
 
 14
 00:01:02,540 --> 00:01:03,740
@@ -56,23 +56,23 @@ communications.
 
 15
 00:01:03,770 --> 00:01:06,800
-After that we can examine the project folder structure.
+Sau đó chúng ta có thể kiểm tra cấu trúc thư mục dự án.
 
 16
 00:01:06,800 --> 00:01:12,080
-And here you can see the our project folder structure including the presentation model and services
+Và ở đây bạn có thể thấy cấu trúc thư mục dự án của chúng ta bao gồm các thư mục presentation, model và services.
 
 17
 00:01:12,080 --> 00:01:12,650
-folder.
+Vậy như bạn có thể thấy, trong thư mục presentation chúng ta có thư mục pages và root folder.
 
 18
 00:01:12,650 --> 00:01:18,320
-So as you can see that in the presentation folder we have pages and root folder.
+Bạn có thể thấy ở đây điều này sẽ đại diện cho presentation layer, thư mục page folder và WW root folder.
 
 19
 00:01:18,320 --> 00:01:24,920
-You can see in here this will be representing our presentation layer page folder and WW root folder.
+Và sau đó bạn có thể thấy thư mục models bao gồm các catalog, basket và ordering data models.
 
 20
 00:01:25,040 --> 00:01:30,230
@@ -80,73 +80,73 @@ And after that you can see the models folder including the catalog basket and or
 
 21
 00:01:30,230 --> 00:01:32,750
-These will be staying under the models folder.
+Những cái này sẽ nằm dưới thư mục models.
 
 22
 00:01:32,750 --> 00:01:39,350
-And lastly we have services folder including the catalog basket and I ordering service interfaces to
+Và cuối cùng chúng ta có thư mục services bao gồm các catalog basket và ordering service interfaces
 
 23
 00:01:39,350 --> 00:01:44,240
-communicate and interact with the internal downstream microservices over the AAP API gateway.
+để giao tiếp và tương tác với các downstream microservices nội bộ thông qua API gateway.
 
 24
 00:01:44,240 --> 00:01:47,270
-And this will be located under the services folder.
+Và điều này sẽ được đặt dưới thư mục services.
 
 25
 00:01:47,270 --> 00:01:50,000
-So this is the our shopping page client application.
+Vậy đây là ứng dụng client shopping page của chúng ta.
 
 26
 00:01:50,000 --> 00:01:55,190
-And if you look at these picture you can see the full folder structure with expanded folders.
+Và nếu bạn nhìn vào hình ảnh này, bạn có thể thấy cấu trúc thư mục đầy đủ với các thư mục được mở rộng.
 
 27
 00:01:55,190 --> 00:01:59,900
-According to this picture you can see the shopping web client application and we have modules folder
+Theo hình ảnh này, bạn có thể thấy ứng dụng client web shopping và chúng ta có thư mục modules
 
 28
 00:01:59,900 --> 00:02:04,520
-including the catalog basket and ordering domain models and data models.
+bao gồm các catalog basket và ordering domain models cũng như data models.
 
 29
 00:02:04,520 --> 00:02:11,540
-And we have also pages folder including our cart checkout, confirmation, contact index, order list,
+Và chúng ta cũng có thư mục pages bao gồm các trang cart, checkout, confirmation, contact, index, order list,
 
 30
 00:02:11,540 --> 00:02:17,720
-product detail and product list page that represent our E-shop and e-commerce client application page.
+product detail và product list mà đại diện cho ứng dụng E-shop và e-commerce client của chúng ta.
 
 31
 00:02:17,720 --> 00:02:23,090
-And here you can see the services folder, including the Eye Basket Catalog and Eye Ordering service
+Và ở đây bạn có thể thấy thư mục services, bao gồm các Basket, Catalog và Ordering service
 
 32
 00:02:23,090 --> 00:02:28,790
-folder that represents an interact with the ERP API gateway in order to perform end to end use case
+folder mà đại diện cho việc tương tác với ERP API gateway để thực hiện các use case từ đầu đến cuối
 
 33
 00:02:28,790 --> 00:02:31,280
-and expanding data into our pages.
+và lấy dữ liệu vào các trang của chúng ta.
 
 34
 00:02:31,400 --> 00:02:35,750
-And lastly, we can check the deployment of the shopping web client application.
+Và cuối cùng, chúng ta có thể kiểm tra việc triển khai ứng dụng client web shopping.
 
 35
 00:02:35,750 --> 00:02:41,360
-According to deployment, we can say that we will containerize our servers with Docker and ensuring
+Theo deployment, chúng ta có thể nói rằng chúng ta sẽ containerize các servers của chúng ta với Docker và đảm bảo
 
 36
 00:02:41,360 --> 00:02:44,570
-deployment and integration with the shopping web client application.
+việc triển khai và tích hợp với ứng dụng client web shopping.
 
 37
 00:02:44,570 --> 00:02:49,610
-And we will implement Docker file and docker compose file for running shopping web client application
+Và chúng ta sẽ triển khai Docker file và docker compose file để chạy ứng dụng client web shopping
 
 38
 00:02:49,610 --> 00:02:51,020
-in fully docker environment.
+trong môi trường Docker đầy đủ.
 

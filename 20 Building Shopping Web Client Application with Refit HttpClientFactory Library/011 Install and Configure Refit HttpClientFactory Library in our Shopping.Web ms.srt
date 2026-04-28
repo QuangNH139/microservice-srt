@@ -1,154 +1,154 @@
 1
 00:00:00,140 --> 00:00:06,500
-In this video we are going to install and configure Revit Http client factory library in our shopping
+Trong video này chúng ta sẽ cài đặt và cấu hình thư viện Revit Http client factory trong ứng dụng Shopping
 
 2
 00:00:06,500 --> 00:00:08,930
-Web client application for that purpose.
+Web client của chúng ta cho mục đích này.
 
 3
 00:00:08,960 --> 00:00:12,680
-Please open the Visual Studio and go to the Shopping Web application.
+Vui lòng mở Visual Studio và vào ứng dụng Shopping Web.
 
 4
 00:00:12,680 --> 00:00:18,500
-You can close the catalog microservices and locate the Shopping Web application and right click dependencies
+Bạn có thể đóng catalog microservices và tìm kiếm ứng dụng Shopping Web, sau đó nhấp chuột phải vào dependencies
 
 5
 00:00:18,500 --> 00:00:20,210
-and manage NuGet packages.
+và quản lý NuGet packages.
 
 6
 00:00:20,750 --> 00:00:27,590
-And this time we will browse for the Revit Http client factory and select these NuGet packages and install
+Lần này chúng ta sẽ duyệt tìm Revit Http client factory và chọn các NuGet packages này và cài đặt
 
 7
 00:00:27,590 --> 00:00:29,510
-these packages into our shopping web.
+các packages này vào shopping web của chúng ta.
 
 8
 00:00:29,510 --> 00:00:35,900
-So you can double click the Shopping Web project file, and you can verify that we have installed successfully.
+Vậy bạn có thể nhấp đôi vào tệp dự án Shopping Web, và bạn có thể xác minh rằng chúng ta đã cài đặt thành công.
 
 9
 00:00:36,110 --> 00:00:41,960
-After installing these packages, I am going to go to the Application Settings Json file and adding
+Sau khi cài đặt các packages này, tôi sẽ vào tệp Application Settings Json và thêm
 
 10
 00:00:41,960 --> 00:00:45,380
-a new sections for the API settings and the gateway address.
+một phần mới cho các cài đặt API và địa chỉ gateway.
 
 11
 00:00:45,380 --> 00:00:52,280
-If you come to this point, I am going to add a new section, which name is API settings and including
+Nếu bạn đến điểm này, tôi sẽ thêm một phần mới, tên của nó là API settings và bao gồm
 
 12
 00:00:52,280 --> 00:00:58,670
-this section I have specified gateway address and this is the https localhost 1664.
+phần này tôi đã chỉ định địa chỉ gateway và đây là https localhost 1664.
 
 13
 00:00:58,700 --> 00:01:02,690
-This is erb api gateway docker address and the port number.
+Đây là địa chỉ erb api gateway docker và số cổng.
 
 14
 00:01:02,690 --> 00:01:08,300
-When we run the docker compose all we will consume this URL from the shopping web client application.
+Khi chúng ta chạy docker compose all chúng ta sẽ sử dụng URL này từ ứng dụng shopping web client.
 
 15
 00:01:08,360 --> 00:01:14,210
-And after that we need to register Revit library into our ASP.Net Dependency Injection tool.
+Và sau đó chúng ta cần đăng ký thư viện Revit vào công cụ Dependency Injection ASP.Net của chúng ta.
 
 16
 00:01:14,210 --> 00:01:21,110
-For that purpose, I'm going to go to the Program.cs and locate the our add services to container part.
+Cho mục đích đó, tôi sẽ vào Program.cs và tìm kiếm phần add services to container của chúng ta.
 
 17
 00:01:21,110 --> 00:01:26,030
-And just after the Adding Razor page I am going to add the refit client libraries.
+Và ngay sau khi thêm Razor page tôi sẽ thêm các thư viện refit client.
 
 18
 00:01:26,030 --> 00:01:33,110
-In here you can see that I'm going to type Builder Services add Revit client extension method with passing
+Ở đây bạn có thể thấy rằng tôi sẽ gõ Builder Services add Revit client extension method với việc truyền
 
 19
 00:01:33,110 --> 00:01:35,330
-the URL catalog service as a generic type.
+URL catalog service làm kiểu generic.
 
 20
 00:01:35,330 --> 00:01:41,120
-And this is the extension method for adding Revit client related objects into our ASP.Net project,
+Đây là extension method để thêm các đối tượng liên quan đến Revit client vào dự án ASP.Net của chúng ta,
 
 21
 00:01:41,120 --> 00:01:43,040
-which is the shopping web client application.
+là ứng dụng web client mua sắm.
 
 22
 00:01:43,040 --> 00:01:49,490
-And just after that, I am going to configure these Http client with specifying the base address that
+Và ngay sau đó, tôi sẽ cấu hình Http client này bằng cách chỉ định địa chỉ cơ sở
 
 23
 00:01:49,490 --> 00:01:55,790
-we have defined into our configuration file, which is the builder configuration API settings gateway
+mà chúng ta đã định nghĩa trong tệp cấu hình của mình, đó là cài đặt API gateway trong builder configuration
 
 24
 00:01:55,790 --> 00:01:58,940
-address into our application settings Json file.
+địa chỉ vào tệp Json cài đặt ứng dụng của chúng ta.
 
 25
 00:01:58,940 --> 00:02:05,630
-That means we will create an Http client factory for our catalog service with connecting base address
+Điều đó có nghĩa là chúng ta sẽ tạo một Http client factory cho dịch vụ catalog của mình bằng cách kết nối với địa chỉ cơ sở
 
 26
 00:02:05,630 --> 00:02:07,640
-as a these gateway address.
+là địa chỉ gateway này.
 
 27
 00:02:07,640 --> 00:02:12,830
-This is representing our Erb API gateway worker endpoint and URL.
+Đây là biểu diễn của điểm cuối worker API gateway Erb và URL của chúng ta.
 
 28
 00:02:12,830 --> 00:02:19,070
-So this is the configuration of the our catalog service and Refit client for the shopping web client
+Vậy đây là cấu hình dịch vụ catalog và Refit client của chúng ta cho ứng dụng web client mua sắm
 
 29
 00:02:19,070 --> 00:02:19,670
-application.
+.
 
 30
 00:02:19,670 --> 00:02:26,300
-By this way, Refit will create generated clients for our catalog service interface and consume from
+Bằng cách này, Refit sẽ tạo các generated clients cho interface dịch vụ catalog của chúng ta và tiêu thụ từ
 
 31
 00:02:26,300 --> 00:02:29,720
-these base address which is Yarp API gateway docker URL.
+địa chỉ cơ sở này là URL docker API gateway Yarp.
 
 32
 00:02:29,720 --> 00:02:35,570
-But of course we should define annotations in the Catalog Service interface before proceeding a catalog
+Nhưng tất nhiên chúng ta nên định nghĩa các annotations trong interface Catalog Service trước khi tiến hành các interface dịch vụ catalog.
 
 33
 00:02:35,570 --> 00:02:36,740
-service interfaces.
+Sẽ tốt nếu chúng ta chuyển các using statements này vào global using C# của chúng ta.
 
 34
 00:02:36,740 --> 00:02:40,610
-It is good to move these using statements into our global using CSS.
+Tôi sẽ chuyển các using statements này.
 
 35
 00:02:40,610 --> 00:02:43,040
-I am going to move these using statements.
+Đi đến global using và kết thúc ở điểm này bằng cách thêm từ khóa global.
 
 36
 00:02:43,070 --> 00:02:47,780
-Go to the global using and ending at this point with adding the global keyword.
+Vậy sau khi thêm các global using statements này, chúng ta có thể quay lại Program.cs và đảm bảo rằng code của bạn
 
 37
 00:02:49,460 --> 00:02:55,040
-So after adding these global using statements, we can go back to Program.cs and make sure that your
+đang hoạt động đúng cách.
 
 38
 00:02:55,040 --> 00:02:56,420
-code is working properly.
+Vậy bây giờ chúng ta có thể đi đến interface Catalog Service.
 
 39
 00:02:56,420 --> 00:02:59,510

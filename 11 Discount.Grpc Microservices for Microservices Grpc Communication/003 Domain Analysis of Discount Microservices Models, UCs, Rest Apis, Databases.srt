@@ -1,140 +1,140 @@
 1
 00:00:00,140 --> 00:00:05,450
-In this video we are going to do domain analyzing of the discount microservices.
+Trong video này chúng ta sẽ tiến hành phân tích domain của discount microservices.
 
 2
 00:00:05,450 --> 00:00:07,760
-And we will start with the domain models.
+Và chúng ta sẽ bắt đầu với các domain models.
 
 3
 00:00:08,060 --> 00:00:13,130
-As a domain model, we can say that we have only one domain model which is the coupon.
+Như một domain model, chúng ta có thể nói rằng chúng ta chỉ có một domain model duy nhất đó là coupon.
 
 4
 00:00:13,310 --> 00:00:15,590
-And including the coupon model.
+Và bao gồm coupon model.
 
 5
 00:00:15,590 --> 00:00:20,150
-We have several attributes ID, product name, description and amount.
+Chúng ta có nhiều attributes như ID, product name, description và amount.
 
 6
 00:00:20,150 --> 00:00:25,580
-So the coupon entity represents the discount information linking to the products.
+Vậy coupon entity đại diện cho thông tin discount liên kết đến các products.
 
 7
 00:00:26,240 --> 00:00:29,300
-And after that we can go to the application use cases.
+Và sau đó chúng ta có thể đi tới các application use cases.
 
 8
 00:00:29,510 --> 00:00:36,380
-Our main use cases are Crud operations on discount coupon model including the get discount with product
+Các use cases chính của chúng ta là các Crud operations trên discount coupon model bao gồm get discount với product
 
 9
 00:00:36,380 --> 00:00:39,950
-name and create update delete discount operations.
+name và create update delete discount operations.
 
 10
 00:00:39,950 --> 00:00:44,420
-And these use cases cover all the basic operations for managing discounts.
+Và những use cases này bao gồm tất cả các operations cơ bản để quản lý discounts.
 
 11
 00:00:44,420 --> 00:00:49,550
-And along with this, we should design our gRPC methods according to these use cases.
+Và cùng với điều này, chúng ta nên thiết kế các gRPC methods của chúng ta theo những use cases này.
 
 12
 00:00:49,550 --> 00:00:55,820
-And here you can see the gRPC methods and use cases that we are going to implement as a presentation
+Và ở đây bạn có thể thấy các gRPC methods và use cases mà chúng ta sẽ triển khai như một presentation
 
 13
 00:00:55,820 --> 00:00:57,710
-layer and gRPC API.
+layer và gRPC API.
 
 14
 00:00:57,710 --> 00:01:05,990
-So instead of the exposing traditional Rest APIs, the discount microservices will expose gRPC endpoints.
+Vậy thay vì hiển thị các traditional REST APIs, discount microservices sẽ hiển thị các gRPC endpoints.
 
 15
 00:01:05,990 --> 00:01:13,640
-And in discount microservices as a presentation layer, we use Http two gRPC protocol to expose these
+Và trong discount microservices như một presentation layer, chúng ta sử dụng Http two gRPC protocol để hiển thị những
 
 16
 00:01:13,640 --> 00:01:14,360
-endpoints.
+endpoints này.
 
 17
 00:01:14,360 --> 00:01:19,910
-Here you can see the gRPC methods that we are going to expose from the discount microservices.
+Ở đây bạn có thể thấy các gRPC methods mà chúng ta sẽ hiển thị từ discount microservices.
 
 18
 00:01:19,910 --> 00:01:27,410
-These are the get, create, update and delete discount and performing the Crud use cases from our application.
+Đây là các get, create, update và delete discount và thực hiện các Crud use cases từ application của chúng ta.
 
 19
 00:01:27,410 --> 00:01:29,960
-And here you can see the request URIs.
+Và ở đây bạn có thể thấy các request URIs.
 
 20
 00:01:29,960 --> 00:01:36,470
-That means every gRPC method will accept the request and respond back to the response object that we
+Điều đó có nghĩa là mỗi gRPC method sẽ chấp nhận request và phản hồi lại response object mà chúng ta
 
 21
 00:01:36,470 --> 00:01:38,240
-can define in the protobuf file.
+có thể định nghĩa trong tệp protobuf.
 
 22
 00:01:38,240 --> 00:01:45,200
-So gRPC services are defined using protocol buffers which are more efficient than traditional Rest API,
+Vậy các dịch vụ gRPC được định nghĩa bằng protocol buffers, hiệu quả hơn các REST API truyền thống,
 
 23
 00:01:45,200 --> 00:01:48,140
-particularly for inter service communications.
+đặc biệt là cho các giao tiếp giữa các dịch vụ.
 
 24
 00:01:48,470 --> 00:01:54,710
-So if you look at the infrastructure and underlying data structure of discount microservices, we can
+Vậy nếu bạn xem xét cơ sở hạ tầng và cấu trúc dữ liệu cơ bản của discount microservice, chúng ta có thể
 
 25
 00:01:54,710 --> 00:01:59,570
-say that we have only one data store, which is the SQLite database.
+nói rằng chúng ta chỉ có một kho dữ liệu, đó là cơ sở dữ liệu SQLite.
 
 26
 00:01:59,570 --> 00:02:04,430
-And in this database we will store coupon table in a lite databases.
+Và trong cơ sở dữ liệu này, chúng ta sẽ lưu trữ bảng coupon trong các cơ sở dữ liệu lite.
 
 27
 00:02:04,430 --> 00:02:06,980
-So why we use SQLite database?
+Vậy tại sao chúng ta sử dụng cơ sở dữ liệu SQLite?
 
 28
 00:02:06,980 --> 00:02:14,450
-Because SQLite is a C language library that implements a small, fast and self-contained, high reliability,
+Vì SQLite là một thư viện ngôn ngữ C triển khai một cơ sở dữ liệu SQL nhỏ, nhanh và độc lập, đáng tin cậy cao,
 
 29
 00:02:14,450 --> 00:02:17,120
-full featured SQL database engine.
+với đầy đủ các tính năng của động cơ cơ sở dữ liệu SQL.
 
 30
 00:02:17,450 --> 00:02:25,070
-SQLite is a chosen for its simplicity and efficiency, especially for small scale data like discounts.
+SQLite được chọn vì tính đơn giản và hiệu quả của nó, đặc biệt là với dữ liệu nhỏ như các discount.
 
 31
 00:02:25,070 --> 00:02:30,620
-It is embedded within the application and reducing the need for the additional infrastructure.
+Nó được nhúng trong ứng dụng và giảm bớt nhu cầu về cơ sở hạ tầng bổ sung.
 
 32
 00:02:30,620 --> 00:02:37,190
-And there are lots of advantages of SQLite we can use embedded within the application, providing high
+Và có rất nhiều lợi thế của SQLite mà chúng ta có thể sử dụng được nhúng trong ứng dụng, cung cấp hiệu suất cao
 
 33
 00:02:37,190 --> 00:02:43,610
-performance and suitable for lightweight and straightforward operations, and it simplifies deployment
+và phù hợp cho các hoạt động nhẹ và đơn giản, đồng thời đơn giản hóa việc triển khai
 
 34
 00:02:43,610 --> 00:02:46,520
-without needing a separate database server.
+mà không cần máy chủ cơ sở dữ liệu riêng.
 
 35
 00:02:46,730 --> 00:02:51,590
-So this setup aligned with the need for the high performance in the discount microservices.
+Vậy thiết lập này phù hợp với nhu cầu hiệu suất cao trong discount microservice.
 

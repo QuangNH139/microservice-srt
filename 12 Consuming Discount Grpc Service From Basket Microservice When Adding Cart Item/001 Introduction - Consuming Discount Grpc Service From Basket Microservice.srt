@@ -1,6 +1,6 @@
 1
 00:00:00,230 --> 00:00:05,390
-In this section, we are going to consume discount gRPC service from the basket.
+Trong phần này, chúng ta sẽ tiêu thụ discount gRPC service từ basket.
 
 2
 00:00:05,390 --> 00:00:06,290
@@ -8,51 +8,51 @@ Microservices.
 
 3
 00:00:06,290 --> 00:00:11,060
-When adding cart item into shopping cart in order to calculate the final price.
+Khi thêm mục hàng vào shopping cart để tính toán giá cuối cùng.
 
 4
 00:00:11,060 --> 00:00:16,400
-So we will focus on integrating the discount gRPC service into the basket microservices.
+Vậy chúng ta sẽ tập trung vào việc tích hợp discount gRPC service vào basket microservices.
 
 5
 00:00:17,210 --> 00:00:20,900
-Let's check our big picture and see what we are going to build one by one.
+Hãy xem bức tranh lớn của chúng ta và thấy những gì chúng ta sẽ xây dựng từng bước một.
 
 6
 00:00:20,900 --> 00:00:28,190
-As you can see that we are at this point and we will consume discount gRPC service from the basket microservices
+Như bạn có thể thấy chúng ta đang ở vị trí này và chúng ta sẽ tiêu thụ discount gRPC service từ basket microservices
 
 7
 00:00:28,190 --> 00:00:30,650
-when adding cart item into shopping cart.
+khi thêm mục hàng vào shopping cart.
 
 8
 00:00:30,830 --> 00:00:34,730
-So in the last section we have developed a discount gRPC microservices.
+Vậy ở phần cuối cùng chúng ta đã phát triển một discount gRPC microservices.
 
 9
 00:00:34,730 --> 00:00:39,200
-And we have exposed the gRPC methods to the basket API.
+Và chúng ta đã expose các gRPC methods cho basket API.
 
 10
 00:00:39,200 --> 00:00:45,560
-So in this section, when the client add item into shopping cart basket, microservices will consume
+Vậy trong phần này, khi khách hàng thêm mục hàng vào shopping cart basket, microservices sẽ tiêu thụ
 
 11
 00:00:45,560 --> 00:00:52,250
-discount gRPC service methods in order to calculate and get latest discount and calculate the discount
+discount gRPC service methods để tính toán và lấy discount mới nhất và tính toán discount
 
 12
 00:00:52,250 --> 00:00:54,320
-for the particular product item.
+cho mục sản phẩm cụ thể.
 
 13
 00:00:54,560 --> 00:01:01,430
-In this picture you can see that basket API microservices will be our gRPC client and call the gRPC
+Trong hình ảnh này bạn có thể thấy rằng basket API microservices sẽ là gRPC client của chúng ta và gọi gRPC
 
 14
 00:01:01,430 --> 00:01:07,640
-method to the discount gRPC server, and this will be triggered by the client add item into basket use
+method tới discount gRPC server, và điều này sẽ được kích hoạt bởi khách hàng thêm mục hàng vào basket use
 
 15
 00:01:07,640 --> 00:01:08,300
@@ -60,15 +60,15 @@ cases.
 
 16
 00:01:08,600 --> 00:01:12,320
-So let me explain the main steps of the our application.
+Vậy hãy để tôi giải thích các bước chính của ứng dụng chúng ta.
 
 17
 00:01:12,320 --> 00:01:15,800
-So the first step is integration of gRPC client.
+Vậy bước đầu tiên là tích hợp gRPC client.
 
 18
 00:01:15,800 --> 00:01:22,340
-The basket microservices will act as a gRPC client to consume services exposed by the discount gRPC
+Basket microservices sẽ hoạt động như một gRPC client để tiêu thụ các dịch vụ được expose bởi discount gRPC
 
 19
 00:01:22,340 --> 00:01:23,030
@@ -76,23 +76,23 @@ service.
 
 20
 00:01:23,030 --> 00:01:28,220
-And this involves registering discount gRPC operations into basket microservices.
+Và điều này liên quan đến việc đăng ký các discount gRPC operations vào basket microservices.
 
 21
 00:01:28,220 --> 00:01:31,580
-That means the next step is service registration.
+Điều đó có nghĩa là bước tiếp theo là service registration.
 
 22
 00:01:31,580 --> 00:01:37,400
-Modify the Program.cs in the basket microservices to include the discount gRPC client, and we will
+Sửa đổi Program.cs trong basket microservices để bao gồm discount gRPC client, và chúng ta sẽ
 
 23
 00:01:37,400 --> 00:01:42,050
-configure the client with the necessary endpoint details of the discount gRPC services.
+cấu hình client với các chi tiết endpoint cần thiết của discount gRPC services.
 
 24
 00:01:42,470 --> 00:01:46,850
-And after that we will consume discount services in the relevant part of the basket.
+Và sau đó chúng ta sẽ sử dụng discount services trong phần liên quan của basket.
 
 25
 00:01:46,850 --> 00:01:47,690
@@ -100,25 +100,25 @@ Microservices.
 
 26
 00:01:47,690 --> 00:01:53,990
-That means when adding items into cart, we call the discount gRPC services in order to fetch applicable
+Điều đó có nghĩa là khi thêm items vào giỏ hàng, chúng ta gọi discount gRPC services để lấy các khoảng giảm giá applicable
 
 27
 00:01:53,990 --> 00:01:59,390
-discounts, and we will update the logic to apply these discounts to the cart items and calculate the
+và chúng ta sẽ cập nhật logic để áp dụng những khoảng giảm giá này cho các items trong giỏ hàng và tính toán
 
 28
 00:01:59,390 --> 00:02:01,100
-final price accordingly.
+giá cuối cùng cho phù hợp.
 
 29
 00:02:01,100 --> 00:02:03,980
-And lastly, we will perform re containerization.
+Và cuối cùng, chúng ta sẽ thực hiện re containerization.
 
 30
 00:02:03,980 --> 00:02:09,590
-That means we will update the Docker compose setup to ensure the basket microservices can communicate
+Điều đó có nghĩa là chúng ta sẽ cập nhật Docker Compose setup để đảm bảo basket microservices có thể giao tiếp
 
 31
 00:02:09,590 --> 00:02:13,970
-within the discount gRPC services in the orchestrated environments.
+với discount gRPC services trong các môi trường orchestrated.
 

@@ -1,50 +1,50 @@
 1
 00:00:00,110 --> 00:00:06,350
-In this video we are going to develop domain event handlers with using mediator I notification handler
+Trong video này, chúng ta sẽ phát triển domain event handlers bằng cách sử dụng mediator I notification handler
 
 2
 00:00:06,350 --> 00:00:08,960
-interface in the ordering application layer.
+interface trong application layer của ordering.
 
 3
 00:00:08,960 --> 00:00:15,500
-And this mechanism is key for handling events triggered from the domain layer and potentially publishing
+Và cơ chế này là chìa khóa để xử lý các events được kích hoạt từ domain layer và có khả năng xuất bản
 
 4
 00:00:15,500 --> 00:00:18,050
-integration events to other microservices.
+integration events cho các microservices khác.
 
 5
 00:00:18,590 --> 00:00:23,960
-Now let me show you a folder structure that we are going to develop in the ordering application layer.
+Bây giờ hãy để tôi chỉ cho bạn cấu trúc thư mục mà chúng ta sẽ phát triển trong application layer của ordering.
 
 6
 00:00:23,960 --> 00:00:31,730
-Here you can see that in the orders feature folder we have a commands, queries and event handlers as
+Ở đây bạn có thể thấy rằng trong feature folder của orders, chúng ta có commands, queries và event handlers như
 
 7
 00:00:31,730 --> 00:00:37,130
-you remember that in application layer we implement queries and mediator and separated the command and
+bạn nhớ rằng trong application layer, chúng ta triển khai queries và mediator và tách riêng command và
 
 8
 00:00:37,130 --> 00:00:42,440
-queries in the feature folders in orders feature folder and implement the application use cases.
+queries trong các feature folders của orders feature folder và triển khai các use cases của ứng dụng.
 
 9
 00:00:42,440 --> 00:00:48,800
-So before implementing and developing the queries, we should also implement event handlers which are
+Vậy trước khi triển khai và phát triển các queries, chúng ta cũng nên triển khai event handlers được
 
 10
 00:00:48,800 --> 00:00:52,640
-triggering from the domain layer when creating and updating order.
+kích hoạt từ domain layer khi tạo và cập nhật order.
 
 11
 00:00:52,640 --> 00:00:56,300
-So now let's understand the domain events and event handlers.
+Vậy bây giờ hãy hiểu về domain events và event handlers.
 
 12
 00:00:56,300 --> 00:01:01,820
-Here you can see the picture of the dispatching domain events with using Entity Framework core save
+Ở đây bạn có thể thấy hình ảnh của việc dispatching domain events bằng cách sử dụng Entity Framework Core save
 
 13
 00:01:01,820 --> 00:01:03,200
@@ -52,167 +52,167 @@ change interceptor.
 
 14
 00:01:03,200 --> 00:01:09,980
-So when we are implementing securities design pattern using the mediator library, domain events represent
+Vậy khi chúng ta triển khai securities design pattern bằng cách sử dụng thư viện mediator, domain events đại diện
 
 15
 00:01:09,980 --> 00:01:11,780
-a significant business moments.
+cho các khoảnh khắc kinh doanh quan trọng.
 
 16
 00:01:11,780 --> 00:01:16,100
-Here you can see that order aggregate is raising a domain event.
+Ở đây bạn có thể thấy rằng order aggregate đang raise một domain event.
 
 17
 00:01:16,310 --> 00:01:17,150
-As an example.
+Ví dụ như.
 
 18
 00:01:17,150 --> 00:01:19,100
-This is order created domain event.
+Đây là order created domain event.
 
 19
 00:01:19,100 --> 00:01:25,250
-And we can also raising order updated domain event which are triggered upon creating or updating orders
+Và chúng ta cũng có thể raise order updated domain event được kích hoạt khi tạo hoặc cập nhật orders
 
 20
 00:01:25,250 --> 00:01:26,300
-in the domain layer.
+trong domain layer.
 
 21
 00:01:26,300 --> 00:01:32,030
-So how can we dispatch these domain events when we are developing domain and infrastructure layer?
+Vậy làm thế nào chúng ta có thể dispatch những domain events này khi chúng ta đang phát triển domain và infrastructure layer?
 
 22
 00:01:32,030 --> 00:01:34,340
-We have already implemented these topics.
+Chúng ta đã triển khai những chủ đề này rồi.
 
 23
 00:01:34,340 --> 00:01:40,460
-That means when we are in the domain layer we have aggregates and aggregates have domain event list.
+Điều đó có nghĩa là khi chúng ta ở trong domain layer, chúng ta có aggregates và aggregates có danh sách domain event.
 
 24
 00:01:40,460 --> 00:01:46,700
-And when we are raising an domain event we will add these domain event into aggregate domain event list.
+Và khi chúng ta raising một domain event, chúng ta sẽ thêm những domain event này vào danh sách domain event của aggregate.
 
 25
 00:01:46,700 --> 00:01:53,390
-And after that we will dispatch these domain event using the Entity Framework core save changes interceptor
+Và sau đó chúng ta sẽ dispatch những domain event này bằng cách sử dụng Entity Framework Core save changes interceptor
 
 26
 00:01:53,390 --> 00:01:55,580
-into the ordering infrastructure layer.
+vào ordering infrastructure layer.
 
 27
 00:01:55,580 --> 00:02:00,980
-So this is the best practice to dispatching domain events using the Entity Framework core save change
+Vậy đây là best practice để dispatch domain events bằng cách sử dụng Entity Framework Core save changes
 
 28
 00:02:00,980 --> 00:02:03,650
-interceptor in the ordering infrastructure layer.
+interceptor trong ordering infrastructure layer.
 
 29
 00:02:03,650 --> 00:02:10,039
-And now in this video we will develop the event consumer part which is the handling this domain event
+Và bây giờ trong video này chúng ta sẽ phát triển phần event consumer, đó là handling những domain event này
 
 30
 00:02:10,039 --> 00:02:12,020
-in the ordering application layer.
+trong ordering application layer.
 
 31
 00:02:12,020 --> 00:02:15,260
-Now let me explain these topics into the R code.
+Bây giờ hãy để tôi giải thích những chủ đề này trong code.
 
 32
 00:02:15,260 --> 00:02:19,490
-Please open the Visual Studio and go to the ordering domain layer.
+Vui lòng mở Visual Studio và đi đến ordering domain layer.
 
 33
 00:02:19,490 --> 00:02:24,890
-If you go to the ordering domain layer and go to the models and go to the Order aggregate, you can
+Nếu bạn đi đến ordering domain layer và đi đến models và đi đến Order aggregate, bạn có thể
 
 34
 00:02:24,890 --> 00:02:27,020
-scroll down and see that order.
+cuộn xuống và xem order đó.
 
 35
 00:02:27,020 --> 00:02:31,430
-Aggregate has a rich domain model, including the create and update method.
+Aggregate có một rich domain model, bao gồm các phương thức create và update.
 
 36
 00:02:31,430 --> 00:02:38,030
-In the create method we are creating an order and after that we will add an domain event into the Our
+Trong phương thức create, chúng ta đang tạo một order và sau đó chúng ta sẽ thêm một domain event vào danh sách
 
 37
 00:02:38,030 --> 00:02:40,850
-Domain event list, which is the order created event.
+domain event của chúng ta, đó là order created event.
 
 38
 00:02:40,850 --> 00:02:46,220
-If you go to this method, you can see that there is a domain event list under the aggregates that we
+Nếu bạn đi đến phương thức này, bạn có thể thấy rằng có một danh sách domain event dưới aggregates mà chúng ta
 
 39
 00:02:46,220 --> 00:02:49,760
-can add when a significant change into order aggregate.
+có thể thêm vào khi có một thay đổi quan trọng trong order aggregate.
 
 40
 00:02:49,760 --> 00:02:54,050
-And if you scroll down we have update method and following the same steps.
+Và nếu bạn cuộn xuống, chúng ta có phương thức update và theo dõi các bước tương tự.
 
 41
 00:02:54,050 --> 00:02:58,790
-Adding domain event when updating an order which is the order updated event.
+Thêm domain event khi cập nhật một đơn hàng, đó là sự kiện order updated.
 
 42
 00:02:58,790 --> 00:03:04,970
-So we will paste the order entity in the parameters of this domain event in order to carry the order
+Vậy chúng ta sẽ đặt order entity vào các tham số của domain event này để mang theo thông tin đơn hàng.
 
 43
 00:03:04,970 --> 00:03:05,810
-information.
+thông tin.
 
 44
 00:03:05,810 --> 00:03:12,590
-Also, if we go to details of the domain events, you can see that domain events are implementing I
+Ngoài ra, nếu chúng ta xem chi tiết của domain events, bạn có thể thấy rằng domain events đang triển khai I domain event interface.
 
 45
 00:03:12,590 --> 00:03:13,790
-domain event interface.
+Nếu bạn vào interface này, nó nằm trong abstractions trên domain layer.
 
 46
 00:03:13,790 --> 00:03:18,230
-If you go to this interface, this is located the abstractions on domain layer.
+Và domain event interface này cũng triển khai I notification đến từ mediator.
 
 47
 00:03:18,230 --> 00:03:23,930
-And these domain event interface also implements I notification which comes from the mediator.
+Bằng cách này, chúng ta có thể sử dụng mediator publish method để dispatch các domain events này vào infrastructure layer.
 
 48
 00:03:23,930 --> 00:03:30,410
-By this way we can use mediator publish method in order to dispatch these domain events into infrastructure
+Vậy nếu bạn vào ordering infrastructure layer và vào interceptors, bạn có thể mở dispatch domain event interceptor.
 
 49
 00:03:30,410 --> 00:03:30,950
-layer.
+Và trong class này, chúng ta cơ bản là dispatch domain events trước khi lưu các thay đổi.
 
 50
 00:03:30,950 --> 00:03:37,730
-So if you go to the ordering infrastructure layer and go to the interceptors, you can open the dispatch
+Nếu bạn vào method này và scroll xuống, bạn có thể thấy rằng điều này sẽ lấy ra các aggregates và lấy các domain events từ aggregates, và sau đó lặp qua các domain events và sử dụng mediator publish method để dispatch các domain events này.
 
 51
 00:03:37,730 --> 00:03:39,200
-domain Event interceptor.
+Vậy các domain events này được xử lý khi publishing trên save changes operation.
 
 52
 00:03:39,200 --> 00:03:44,270
-And in this class we basically dispatch domain event before saving the changes.
+Vậy bất cứ khi nào chúng ta publish một domain event, chúng ta cũng nên xử lý domain event này trong ordering application layer.
 
 53
 00:03:44,270 --> 00:03:49,340
-If you go to this method and scroll down, you can see that this will be retrieved the aggregates and
+Vậy điều đó có nghĩa là chúng ta nên xử lý các domain events này trong ordering application layer.
 
 54
 00:03:49,340 --> 00:03:54,830
-retrieved the domain events into the aggregates, and after that iterate the domain events and using
+Cho mục đích đó, chúng ta đã tạo orders commands, queries và event handlers.
 
 55
 00:03:54,830 --> 00:03:58,820
@@ -240,7 +240,7 @@ For that purpose we have created orders, commands, queries and event handlers.
 
 61
 00:04:22,010 --> 00:04:28,010
-So these event handler folder is representing the handling these domain events in the ordering application
+Vậy folder event handler này đang đại diện cho việc xử lý các domain events trong ứng dụng ordering
 
 62
 00:04:28,010 --> 00:04:28,370
@@ -248,15 +248,15 @@ layer.
 
 63
 00:04:28,370 --> 00:04:34,730
-That means we organize our application layer into feature folders and in orders feature folder we have
+Điều đó có nghĩa là chúng ta tổ chức application layer của mình thành các feature folders và trong orders feature folder chúng ta có
 
 64
 00:04:34,730 --> 00:04:37,340
-a commands queries and event handlers.
+commands, queries và event handlers.
 
 65
 00:04:37,340 --> 00:04:43,430
-And in this event handler class I'm going to create two new classes for handling the order created and
+Và trong class event handler này tôi sẽ tạo hai class mới để xử lý order created và
 
 66
 00:04:43,430 --> 00:04:44,960
@@ -264,15 +264,15 @@ order updated event handler.
 
 67
 00:04:44,960 --> 00:04:49,460
-So I'm going to add a new class which name is order created event handler.
+Vậy tôi sẽ thêm một class mới có tên là order created event handler.
 
 68
 00:04:49,610 --> 00:04:54,140
-And also I'm going to add a new class which is the order updated event handler.
+Và cũng thêm một class mới là order updated event handler.
 
 69
 00:04:54,260 --> 00:04:59,840
-This class is representing the handling order created and order updated domain events from the order.
+Class này đang đại diện cho việc xử lý order created và order updated domain events từ order.
 
 70
 00:05:00,100 --> 00:05:00,760
@@ -280,73 +280,73 @@ Domain layer.
 
 71
 00:05:00,760 --> 00:05:05,440
-So what we will do when handling domain events into our ordering application layer.
+Vậy chúng ta sẽ làm gì khi xử lý domain events vào application layer của chúng ta.
 
 72
 00:05:05,440 --> 00:05:07,990
-And these order created event handler class.
+Và class order created event handler này.
 
 73
 00:05:08,260 --> 00:05:10,900
-At this point it is good to see our architecture.
+Tại thời điểm này thật tốt khi xem architecture của chúng ta.
 
 74
 00:05:10,900 --> 00:05:16,630
-Here you can see that we are raising domain events from the are ordered aggregate which is the order
+Ở đây bạn có thể thấy rằng chúng ta đang raise domain events từ order aggregate mà là order
 
 75
 00:05:16,630 --> 00:05:22,270
-created domain event and dispatching this event from the ordering infrastructure layer and handle these
+created domain event và dispatching event này từ ordering infrastructure layer và xử lý event handler này
 
 76
 00:05:22,270 --> 00:05:24,580
-event handler in the ordering application layer.
+trong ordering application layer.
 
 77
 00:05:24,580 --> 00:05:30,310
-That means we are at this point and handling and catching these event into ordering application layer.
+Điều đó có nghĩa là chúng ta đang ở thời điểm này và xử lý và catching event này vào ordering application layer.
 
 78
 00:05:30,310 --> 00:05:36,100
-So what we can do in this handle method, basically we will handle the domain events in this handlers.
+Vậy chúng ta có thể làm gì trong handle method này, về cơ bản chúng ta sẽ xử lý domain events trong các handlers này.
 
 79
 00:05:36,100 --> 00:05:39,310
-And after that domain events leads to integration event.
+Và sau đó domain events dẫn đến integration event.
 
 80
 00:05:39,310 --> 00:05:45,340
-So that means we will handle business logic or intra microservice communication in this handle method.
+Vậy điều đó có nghĩa là chúng ta sẽ xử lý business logic hoặc intra microservice communication trong handle method này.
 
 81
 00:05:45,340 --> 00:05:51,580
-And after that this will be communicate significant change across different microservices or different
+Và sau đó nó sẽ thông báo về những thay đổi quan trọng trong các microservices khác nhau hoặc các
 
 82
 00:05:51,580 --> 00:05:52,690
-bounded contexts.
+bounded contexts khác nhau.
 
 83
 00:05:52,690 --> 00:05:54,730
-And we will use integration events.
+Và chúng ta sẽ sử dụng integration events.
 
 84
 00:05:54,730 --> 00:05:59,590
-That means domain events become and leading and integration event in the handle method.
+Điều đó có nghĩa là domain events trở thành và dẫn đến một integration event trong handle method.
 
 85
 00:05:59,590 --> 00:06:05,920
-So in the upcoming sections we will develop domain event handlers to publishing the integration events
+Vậy trong các phần sắp tới chúng ta sẽ phát triển domain event handlers để xuất bản các integration events
 
 86
 00:06:05,920 --> 00:06:11,320
-to the message broker like the RabbitMQ for cross microservice communications.
+tới message broker như RabbitMQ để giao tiếp giữa các microservices.
 
 87
 00:06:11,320 --> 00:06:15,700
-But now we will handle the domain events which fires from the domain layer.
+Nhưng bây giờ chúng ta sẽ xử lý domain events được kích hoạt từ domain layer.
 
 88
 00:06:15,700 --> 00:06:19,990
-And we are going to logging incoming domain event into our handler class.
+Và chúng ta sẽ logging những incoming domain event vào handler class của chúng ta.
 

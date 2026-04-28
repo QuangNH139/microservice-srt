@@ -1,78 +1,78 @@
 1
 00:00:00,170 --> 00:00:06,800
-In this video, we are going to develop order and order item entity configurations with using hazard
+Trong video này, chúng ta sẽ phát triển các cấu hình thực thể Order và Order Item bằng cách sử dụng mẫu hazard
 
 2
 00:00:06,800 --> 00:00:09,080
-pattern to identify the relationships.
+để xác định các mối quan hệ.
 
 3
 00:00:09,080 --> 00:00:12,200
-And we will also use complex types for the value objects.
+Và chúng ta cũng sẽ sử dụng các complex types cho các value objects.
 
 4
 00:00:12,200 --> 00:00:16,550
-So please open the Visual Studio and go to the Order Item configuration.
+Vậy vui lòng mở Visual Studio và đi đến Order Item configuration.
 
 5
 00:00:16,550 --> 00:00:22,310
-We will start with the order item Entity Configuration and this class configure the order item entity.
+Chúng ta sẽ bắt đầu với Order Item Entity Configuration và class này cấu hình thực thể Order Item.
 
 6
 00:00:22,310 --> 00:00:28,490
-If you go to Order Item Entity, you can see that there is one primary key which is the order item ID
+Nếu bạn nhìn vào Order Item Entity, bạn có thể thấy rằng có một primary key là Order Item ID
 
 7
 00:00:28,490 --> 00:00:31,220
-and also there is two foreign key.
+và cũng có hai foreign key.
 
 8
 00:00:31,250 --> 00:00:34,340
-These are the indicating order id and product ID.
+Đây là các tham chiếu Order ID và Product ID.
 
 9
 00:00:34,520 --> 00:00:40,220
-So these are the one to many relationships that we can define in the order item configuration.
+Vậy đây là các mối quan hệ one to many mà chúng ta có thể định nghĩa trong Order Item configuration.
 
 10
 00:00:40,220 --> 00:00:45,710
-If you go back to order item configuration I'm going to develop these configurations under the configure
+Nếu bạn quay lại Order Item configuration, tôi sẽ phát triển các cấu hình này dưới phương thức Configure.
 
 11
 00:00:45,710 --> 00:00:46,160
-method.
+Vậy cơ bản chúng ta sẽ bắt đầu với cấu hình primary key.
 
 12
 00:00:46,160 --> 00:00:50,480
-So basically we will start with the primary key configuration.
+Tại đây bạn có thể thấy rằng tôi sẽ sử dụng builder dot HasKey để xác định primary key.
 
 13
 00:00:50,480 --> 00:00:56,660
-Here you can see that I'm going to use builder dot hash key to identify the primary key.
+Điều này thiết lập thuộc tính ID của Order Item như một primary key.
 
 14
 00:00:56,690 --> 00:01:00,680
-This set up the id property of order item as a primary key.
+Nhưng nếu bạn nhìn vào thuộc tính ID, bạn có thể thấy rằng đây là Order Item ID, một strongly
 
 15
 00:01:00,770 --> 00:01:07,040
-But if you look at the ID property, you can see that this is the order item ID, which is a strongly
+typed ID mà chúng ta cần chuyển đổi bằng phương thức HasConversion.
 
 16
 00:01:07,040 --> 00:01:11,390
-type ID that we need to conversion using the has conversion method.
+Khi lưu dữ liệu này vào Entity Framework Core và SQL Server.
 
 17
 00:01:11,390 --> 00:01:15,680
-When saving this data into Entity Framework core and SQL server.
+Cho mục đích đó, chúng ta có cấu hình bổ sung bao gồm phương thức HasConversion, và điều này
 
 18
 00:01:15,680 --> 00:01:21,500
-For that purpose, we have additional configuration including the hash conversion method, and this
+cấu hình thuộc tính ID để sử dụng value object Order Item ID và chuyển đổi nó từ một GUID cho
 
 19
 00:01:21,500 --> 00:01:28,910
-configures the ID property to use the order item id value object and converting it to from a guide for
+các hoạt động cơ sở dữ liệu.
 
 20
 00:01:28,910 --> 00:01:30,140
@@ -80,231 +80,231 @@ the database operation.
 
 21
 00:01:30,140 --> 00:01:36,350
-That means when we are saving this ID to database, we will use value as a guide information into SQL
+Điều đó có nghĩa là khi chúng ta lưu ID này vào database, chúng ta sẽ sử dụng giá trị như một thông tin hướng dẫn vào cột SQL
 
 22
 00:01:36,350 --> 00:01:37,190
-server column.
+server.
 
 23
 00:01:37,190 --> 00:01:44,270
-And when we are reading these value from the database, we will convert them order item id with off
+Và khi chúng ta đọc các giá trị này từ database, chúng ta sẽ chuyển đổi chúng order item id với phương pháp off
 
 24
 00:01:44,270 --> 00:01:47,720
-method and converting the strongly type IDs.
+và chuyển đổi các strongly type IDs.
 
 25
 00:01:47,720 --> 00:01:55,400
-And after defining configurations about the primary key, we can go to foreign key configurations including
+Và sau khi định nghĩa các cấu hình về primary key, chúng ta có thể đi đến các cấu hình foreign key bao gồm
 
 26
 00:01:55,400 --> 00:01:57,560
-the product and order.
+product và order.
 
 27
 00:01:57,560 --> 00:02:03,290
-So for the order part I'm going to move this order configuration in the order configuration class.
+Vậy cho phần order, tôi sẽ di chuyển cấu hình order này vào lớp order configuration.
 
 28
 00:02:03,290 --> 00:02:09,770
-And for order item configuration I'm going to put a configuration only the product ID foreign key relationship.
+Và cho order item configuration tôi sẽ đặt một cấu hình chỉ cho mối quan hệ foreign key của product ID.
 
 29
 00:02:09,770 --> 00:02:16,520
-For that purpose I'm going to come here and using the with many and has foreign key methods in order
+Để làm điều đó, tôi sẽ đến đây và sử dụng các phương pháp with many và has foreign key để
 
 30
 00:02:16,520 --> 00:02:18,980
-to identify product ID as a foreign key.
+xác định product ID là một foreign key.
 
 31
 00:02:18,980 --> 00:02:21,380
-So this is the foreign key as product.
+Vậy đây là foreign key như product.
 
 32
 00:02:21,380 --> 00:02:26,870
-And with using this code this will be a subject a relationship with the product entity.
+Và với sử dụng đoạn code này, điều này sẽ là một chủ đề một mối quan hệ với entity product.
 
 33
 00:02:26,870 --> 00:02:29,960
-And each order item relates to one product.
+Và mỗi order item liên quan đến một product.
 
 34
 00:02:29,960 --> 00:02:33,770
-There is a one to many relationship with product and order item.
+Có một mối quan hệ one to many giữa product và order item.
 
 35
 00:02:33,770 --> 00:02:39,560
-We can define these configuration with builder that has one and specify the one item, which is the
+Chúng ta có thể định nghĩa các cấu hình này với builder mà có one và chỉ định one item, đó là
 
 36
 00:02:39,560 --> 00:02:43,040
-product entity, and we can use with many method.
+entity product, và chúng ta có thể sử dụng phương pháp with many.
 
 37
 00:02:43,040 --> 00:02:49,160
-That means one product has many order items, and after that we will specify the foreign key column
+Điều đó có nghĩa là một product có nhiều order items, và sau đó chúng ta sẽ chỉ định cột foreign key
 
 38
 00:02:49,160 --> 00:02:51,800
-which is the order item dot product id.
+đó là order item dot product id.
 
 39
 00:02:52,100 --> 00:02:57,530
-So after that we can configure the quantity and price which is required keywords.
+Vậy sau đó chúng ta có thể cấu hình quantity và price mà là required keywords.
 
 40
 00:02:57,530 --> 00:03:01,730
-Here you can see that we will define quantity and price is required.
+Ở đây bạn có thể thấy rằng chúng ta sẽ định nghĩa quantity và price là required.
 
 41
 00:03:01,730 --> 00:03:08,180
-And these codes make sure that the quantity and price fields are always populated in the database.
+Và các code này đảm bảo rằng các trường quantity và price luôn được điền đầy đủ trong cơ sở dữ liệu.
 
 42
 00:03:08,180 --> 00:03:12,950
-So we have configured the order item and you can see the codes in here.
+Vậy chúng ta đã cấu hình order item và bạn có thể thấy các code ở đây.
 
 43
 00:03:12,950 --> 00:03:18,230
-We didn't configure order item with the order relationship in the order item configuration.
+Chúng ta chưa cấu hình order item với mối quan hệ order trong cấu hình order item.
 
 44
 00:03:18,230 --> 00:03:21,860
-Because I'm going to move this configuration in the order configuration.
+Vì tôi sẽ di chuyển cấu hình này vào cấu hình order.
 
 45
 00:03:21,860 --> 00:03:27,980
-We should not duplicate these communication into configuration in order to avoid duplicate column on
+Chúng ta không nên trùng lặp các communication này vào cấu hình để tránh các cột trùng lặp trong
 
 46
 00:03:27,980 --> 00:03:28,730
-the database.
+cơ sở dữ liệu.
 
 47
 00:03:28,730 --> 00:03:32,420
-So you can write the order item configuration with this configuration.
+Vậy bạn có thể viết cấu hình order item với cấu hình này.
 
 48
 00:03:32,420 --> 00:03:35,360
-And I'm going to move order configuration.
+Và tôi sẽ di chuyển cấu hình order.
 
 49
 00:03:35,360 --> 00:03:40,550
-And the order entity is more complex and include the relationship value objects and enums.
+Và entity order phức tạp hơn và bao gồm các mối quan hệ, value objects và enums.
 
 50
 00:03:40,550 --> 00:03:44,330
-You can right click order and go to definition the Order entity.
+Bạn có thể nhấp chuột phải vào order và đi tới definition của entity Order.
 
 51
 00:03:44,330 --> 00:03:49,760
-You can see the different relationships including the one to many order items.
+Bạn có thể thấy các mối quan hệ khác nhau bao gồm one to many order items.
 
 52
 00:03:49,760 --> 00:03:55,610
-And we have customer ID relationship and we will have value objects including the shipping billing address
+Và chúng ta có mối quan hệ customer ID và chúng ta sẽ có value objects bao gồm shipping address, billing address
 
 53
 00:03:55,610 --> 00:03:56,480
-and payment.
+và payment.
 
 54
 00:03:56,480 --> 00:03:59,090
-And we will have enums for the order status.
+Và chúng ta sẽ có enums cho order status.
 
 55
 00:03:59,090 --> 00:04:03,620
-So we will configure all these columns into our order configuration.
+Vậy chúng ta sẽ cấu hình tất cả các cột này vào cấu hình order của chúng ta.
 
 56
 00:04:03,620 --> 00:04:09,830
-This is one of the most complex entity type for mapping Entity to Entity Framework course entities.
+Đây là một trong những loại entity phức tạp nhất để mapping Entity vào các entity của Entity Framework Core.
 
 57
 00:04:09,830 --> 00:04:16,519
-Please open the order configuration and go to the configure method and start to configure our operations.
+Vui lòng mở cấu hình order và đi tới phương thức configure và bắt đầu cấu hình các operation của chúng ta.
 
 58
 00:04:16,519 --> 00:04:22,040
-Of course I'm going to start the configuring the primary key as the same way we have defined with the
+Tất nhiên tôi sẽ bắt đầu cấu hình primary key theo cách giống như chúng ta đã định nghĩa với
 
 59
 00:04:22,040 --> 00:04:25,460
-hash key method in order to identify the primary key.
+phương thức hash key để xác định primary key.
 
 60
 00:04:25,460 --> 00:04:31,340
-And after that I'm going to use his conversion method in order to convert these value object to the
+Và sau đó tôi sẽ sử dụng phương thức conversion để chuyển đổi value object này thành
 
 61
 00:04:31,340 --> 00:04:31,880
-database.
+cơ sở dữ liệu.
 
 62
 00:04:31,880 --> 00:04:33,590
-Guid value is the same way.
+Giá trị Guid cũng giống như vậy.
 
 63
 00:04:33,590 --> 00:04:39,710
-We will read these gid value as a order id of method, and we will return back the order id strongly
+Chúng ta sẽ đọc giá trị guid này như một order id của phương thức, và chúng ta sẽ trả về order id một cách strongly
 
 64
 00:04:39,710 --> 00:04:42,050
-type ID to our application.
+type ID cho ứng dụng của chúng ta.
 
 65
 00:04:42,230 --> 00:04:47,900
-After that, we can continue with the relationships from the order entity and the first relationship
+Sau đó, chúng ta có thể tiếp tục với các mối quan hệ từ entity order và mối quan hệ đầu tiên
 
 66
 00:04:47,900 --> 00:04:49,280
-is customer ID.
+là customer ID.
 
 67
 00:04:49,280 --> 00:04:54,920
-In order to configure customer ID for N.k, we can use has one with many pattern.
+Để cấu hình customer ID cho N.k, chúng ta có thể sử dụng has one with many pattern.
 
 68
 00:04:54,920 --> 00:04:59,720
-You can see that we will use has one method including the customer entity and after that.
+Bạn có thể thấy rằng chúng ta sẽ sử dụng phương thức has one bao gồm customer entity và sau đó.
 
 69
 00:04:59,850 --> 00:05:02,520
-We will use with many method specify.
+Chúng ta sẽ sử dụng phương thức with many để chỉ định.
 
 70
 00:05:02,520 --> 00:05:08,370
-One customer has many orders and we will specify the has foreign key which is a customer ID and this
+Một customer có nhiều orders và chúng ta sẽ chỉ định has foreign key đó là customer ID và đây
 
 71
 00:05:08,370 --> 00:05:10,590
-is the required column into database.
+là cột bắt buộc trong database.
 
 72
 00:05:10,590 --> 00:05:17,100
-So this will be configured our relationship customer and order with one to many relationship.
+Vậy nên điều này sẽ cấu hình mối quan hệ của chúng ta là customer và order với mối quan hệ one to many.
 
 73
 00:05:17,100 --> 00:05:22,290
-And after that we have also one to many relationships order and order items.
+Và sau đó chúng ta cũng có mối quan hệ one to many giữa order và order items.
 
 74
 00:05:22,290 --> 00:05:26,760
-In order to configure these relationship we can follow the same steps.
+Để cấu hình mối quan hệ này chúng ta có thể làm theo các bước tương tự.
 
 75
 00:05:26,760 --> 00:05:31,500
-So in here you can see that I'm going to use has many Whitman pattern.
+Vậy ở đây bạn có thể thấy rằng tôi sẽ sử dụng has many Whitman pattern.
 
 76
 00:05:31,500 --> 00:05:33,150
-In the has many method.
+Trong phương thức has many.
 
 77
 00:05:33,150 --> 00:05:39,510
-We will specify the main items from the order which is the order items, and we will specify order should
+Chúng ta sẽ chỉ định các order items từ order, đó là order items, và chúng ta sẽ chỉ định order should
 
 78
 00:05:39,510 --> 00:05:40,530
@@ -312,27 +312,27 @@ be with one.
 
 79
 00:05:40,530 --> 00:05:47,970
-And this is the foreign key which is the order item dot order id that will be held one to many relationships
+Và đây là foreign key đó là order item dot order id sẽ giữ mối quan hệ one to many
 
 80
 00:05:47,970 --> 00:05:55,470
-between order and order item, and after completed the relationship configurations, we can continue
+giữa order và order item, và sau khi hoàn thành các cấu hình mối quan hệ, chúng ta có thể tiếp tục
 
 81
 00:05:55,470 --> 00:05:59,340
-to implement configurations for the value objects.
+để triển khai các cấu hình cho các value objects.
 
 82
 00:05:59,340 --> 00:06:06,030
-So as you can see in the order entity, we have lots of value objects including the order name, address,
+Vậy như bạn có thể thấy trong order entity, chúng ta có rất nhiều value objects bao gồm order name, address,
 
 83
 00:06:06,030 --> 00:06:07,260
-payment and so on.
+payment và các thứ khác.
 
 84
 00:06:07,260 --> 00:06:14,070
-So I'm going to start with the configuring the order name we can configure with using the builder Dot
+Vậy tôi sẽ bắt đầu với việc cấu hình order name bằng cách sử dụng builder Dot
 
 85
 00:06:14,070 --> 00:06:15,630
@@ -340,59 +340,59 @@ complex property.
 
 86
 00:06:15,900 --> 00:06:22,770
-Entity Framework Core eight introduces the new complex property method which we use to map domain driven
+Entity Framework Core 8 giới thiệu phương thức complex property mới mà chúng ta sử dụng để ánh xạ domain driven design value objects như address, payment trực tiếp vào các cột Order Entities của chúng ta.
 
 87
 00:06:22,770 --> 00:06:28,920
-design value objects like address payment directly into our Order Entities columns.
+Vậy ở đây bạn có thể thấy rằng chúng ta sẽ sử dụng phương thức complex property khi định nghĩa order name value object.
 
 88
 00:06:28,920 --> 00:06:35,370
-So in here you can see that we will use complex property method when defining order name value object.
+Và bạn có thể chỉ định giá trị cột và tên cột như max length và is required property trong name
 
 89
 00:06:35,370 --> 00:06:42,900
-And you can specify the column value and column name as max length and is required property in the name
+builder complex property method operations.
 
 90
 00:06:42,900 --> 00:06:46,530
-builder complex property method operations.
+Vậy tôi sẽ làm theo các bước tương tự khi định nghĩa shipping và billing address của chúng ta.
 
 91
 00:06:46,530 --> 00:06:52,110
-So I'm going to follow the same steps when defining our shipping and billing address.
+Vậy sau khi định nghĩa order name này như một value object tôi sẽ đến đây và tiếp tục với shipping
 
 92
 00:06:52,110 --> 00:06:59,220
-So after defining these order name as a value object I'm going to come here and continue with the shipping
+address.
 
 93
 00:06:59,220 --> 00:06:59,760
-address.
+Ở đây bạn có thể thấy complex property.
 
 94
 00:06:59,760 --> 00:07:02,520
-Here you can see the complex property.
+Cho shipping address.
 
 95
 00:07:02,520 --> 00:07:03,930
-For the shipping address.
+Chúng ta sẽ chỉ định complex property và truyền shipping address.
 
 96
 00:07:03,930 --> 00:07:08,520
-We will specify the complex property and passing the shipping address.
+Và ở đây bạn có thể thấy address builder.
 
 97
 00:07:08,520 --> 00:07:10,530
-And here you can see the address builder.
+Và trong address builder chúng ta sẽ chỉ định mọi cột dưới value object này bao gồm
 
 98
 00:07:10,530 --> 00:07:16,530
-And in the address builder we will specify every column under this value object which including the
+first name, last name, email address, address line, country, state và zip code.
 
 99
 00:07:16,530 --> 00:07:20,910
-first name, last name, email address, address, line, country, state and zip code.
+Và cho mỗi cột của value object, chúng ta có thể chỉ định max length và is required keywords cho
 
 100
 00:07:20,910 --> 00:07:28,770
@@ -400,11 +400,11 @@ And for each column for the value object, we can specify the max length and is r
 
 101
 00:07:28,770 --> 00:07:31,470
-each of these value object items.
+mỗi item value object này.
 
 102
 00:07:31,470 --> 00:07:37,320
-So this is the definition of the shipping address for mapping Entity Framework core entities from the
+Vậy đây là định nghĩa của shipping address để ánh xạ các Entity Framework core entities từ
 
 103
 00:07:37,320 --> 00:07:39,060
@@ -412,109 +412,109 @@ Domain driven Design Value object.
 
 104
 00:07:39,060 --> 00:07:46,020
-And I'm going to follow the same operation for the billing address as you remember that for order entity
+Và tôi sẽ thực hiện cùng một thao tác cho billing address như bạn nhớ lại rằng cho order entity
 
 105
 00:07:46,020 --> 00:07:48,000
-we have shipping and billing address.
+chúng ta có shipping và billing address.
 
 106
 00:07:48,000 --> 00:07:53,970
-That's why we have using two complex property for the address value object.
+Đó là lý do tại sao chúng ta sử dụng hai complex property cho address value object.
 
 107
 00:07:53,970 --> 00:07:59,130
-This time you can see that we will use billing address and the address builder part is the same.
+Lần này bạn có thể thấy rằng chúng ta sẽ sử dụng billing address và phần address builder là giống nhau.
 
 108
 00:07:59,130 --> 00:08:04,470
-The previous code we have configured all members under the address value object.
+Mã trước đây chúng ta đã cấu hình tất cả các members dưới address value object.
 
 109
 00:08:04,470 --> 00:08:10,020
-So after these definitions we can go to the next value object which is the payment.
+Vậy sau những định nghĩa này chúng ta có thể đi đến value object tiếp theo đó là payment.
 
 110
 00:08:10,020 --> 00:08:16,650
-So here you can see that we will use complex property method in order to configure payment value object
+Vậy ở đây bạn có thể thấy rằng chúng ta sẽ sử dụng complex property method để cấu hình payment value object
 
 111
 00:08:16,650 --> 00:08:18,390
-inside of the order entity.
+bên trong order entity.
 
 112
 00:08:18,390 --> 00:08:21,150
-And the payment builder is following the same steps.
+Và payment builder đang theo dõi các bước giống nhau.
 
 113
 00:08:21,150 --> 00:08:28,170
-We will define each property in the value object as a column of the SQL server database with specifying
+Chúng ta sẽ định nghĩa mỗi property trong value object như một cột của SQL server database với chỉ định
 
 114
 00:08:28,170 --> 00:08:30,360
-max length is required, and so on.
+max length là required, và cứ thế.
 
 115
 00:08:30,360 --> 00:08:38,490
-So after defining these payment information, we have one more operation left, which is the enumeration.
+Vậy sau khi định nghĩa thông tin payment này, chúng ta còn một thao tác nữa, đó là enumeration.
 
 116
 00:08:38,490 --> 00:08:42,059
-As you remember, that order has order status enumeration.
+Như bạn nhớ lại, order có order status enumeration.
 
 117
 00:08:42,059 --> 00:08:46,200
-And we should also configure these enumeration into these method.
+Và chúng ta cũng nên cấu hình enumeration này vào method này.
 
 118
 00:08:46,200 --> 00:08:51,660
-And here you can see that we have defined order status column as a property.
+Và ở đây bạn có thể thấy rằng chúng ta đã định nghĩa order status column như một property.
 
 119
 00:08:51,660 --> 00:08:54,000
-And this will be definition of the enum.
+Và đây sẽ là định nghĩa của enum.
 
 120
 00:08:54,000 --> 00:08:58,020
-And we can give the has default value as a order status draft.
+Và chúng ta có thể cung cấp has default value là order status draft.
 
 121
 00:08:58,020 --> 00:09:00,420
-And we can use has conversion method.
+Và chúng ta có thể sử dụng phương thức has conversion.
 
 122
 00:09:00,420 --> 00:09:06,510
-In order to convert these enumeration to the database table and column, you can see that we will convert
+Để chuyển đổi các enumeration này thành bảng và cột trong cơ sở dữ liệu, bạn có thể thấy rằng chúng ta sẽ chuyển đổi
 
 123
 00:09:06,510 --> 00:09:08,520
-these as a string method.
+những thứ này dưới dạng phương thức string.
 
 124
 00:09:08,520 --> 00:09:13,860
-After that we have convert back the string to the enum value with parsing the enum dot parse method.
+Sau đó chúng ta có chuyển đổi ngược lại string thành giá trị enum bằng cách phân tích cú pháp phương thức enum dot parse.
 
 125
 00:09:13,860 --> 00:09:17,940
-Lastly, we can configure the total price column in the database.
+Cuối cùng, chúng ta có thể cấu hình cột tổng giá trong cơ sở dữ liệu.
 
 126
 00:09:17,940 --> 00:09:23,160
-Here you can see that I'm going to only indicate as a property method, which is a total price.
+Ở đây bạn có thể thấy rằng tôi sẽ chỉ chỉ định nó dưới dạng phương thức property, đó là tổng giá.
 
 127
 00:09:23,160 --> 00:09:29,430
-In order to create a column into SQL server database and store the total price in that database.
+Để tạo một cột trong SQL Server database và lưu trữ tổng giá trong cơ sở dữ liệu đó.
 
 128
 00:09:29,430 --> 00:09:35,490
-So as you can see that we have finished the configurations for the order entity, including the enumerations,
+Vậy như bạn có thể thấy rằng chúng ta đã hoàn thành các cấu hình cho order entity, bao gồm cả enumeration,
 
 129
 00:09:35,490 --> 00:09:38,190
-value objects, relationships, and so on.
+value objects, relationships, và những thứ tương tự.
 
 130
 00:09:38,190 --> 00:09:38,430
-So.
+Vậy.
 

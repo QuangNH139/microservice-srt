@@ -1,138 +1,138 @@
 1
 00:00:00,140 --> 00:00:05,000
-In this video we are going to do technical analysis of discount microservices.
+Trong video này chúng ta sẽ thực hiện phân tích kỹ thuật của discount microservices.
 
 2
 00:00:05,030 --> 00:00:08,390
-Let me start with the application architecture style.
+Hãy bắt đầu với kiến trúc ứng dụng.
 
 3
 00:00:08,420 --> 00:00:14,510
-If you look at the application architecture style of discount microservices, we are going to use traditional
+Nếu bạn xem xét kiến trúc ứng dụng của discount microservices, chúng ta sẽ sử dụng kiến trúc truyền thống
 
 4
 00:00:14,510 --> 00:00:16,040
-and layered architecture.
+và kiến trúc phân lớp.
 
 5
 00:00:16,040 --> 00:00:19,820
-And layered architectures basically consists of three layers.
+Và kiến trúc phân lớp về cơ bản bao gồm ba lớp.
 
 6
 00:00:19,820 --> 00:00:24,140
-These are the data access business layer and presentation layer.
+Đó là lớp truy cập dữ liệu, lớp business và lớp presentation.
 
 7
 00:00:24,680 --> 00:00:31,700
-In data access layer, we will only database operations performed on this layer and this layer perform,
+Trong lớp truy cập dữ liệu, chúng ta sẽ chỉ thực hiện các hoạt động database trên lớp này và lớp này thực hiện,
 
 8
 00:00:31,700 --> 00:00:35,870
-add, delete and update and extract data from the database.
+thêm, xóa và cập nhật cũng như trích xuất dữ liệu từ database.
 
 9
 00:00:36,440 --> 00:00:39,230
-And after that we can implement Business layer.
+Và sau đó chúng ta có thể triển khai lớp Business.
 
 10
 00:00:39,230 --> 00:00:40,490
-In business Layer.
+Trong lớp Business.
 
 11
 00:00:40,490 --> 00:00:43,100
-We will implement business logics on this layer.
+Chúng ta sẽ triển khai business logics trên lớp này.
 
 12
 00:00:43,100 --> 00:00:49,100
-And this layer will process the data taken by the data access and implement the actual logic and actual
+Và lớp này sẽ xử lý dữ liệu được lấy bởi lớp truy cập dữ liệu và triển khai logic thực tế cũng như
 
 13
 00:00:49,100 --> 00:00:50,870
-use cases into our project.
+các use cases thực tế vào dự án của chúng ta.
 
 14
 00:00:51,380 --> 00:00:53,960
-And after that we will implement presentation layer.
+Và sau đó chúng ta sẽ triển khai lớp presentation.
 
 15
 00:00:53,960 --> 00:00:56,480
-This layer includes the user interactions.
+Lớp này bao gồm các tương tác của người dùng.
 
 16
 00:00:56,480 --> 00:01:00,530
-It could be Windows Forms, Web applications or console application.
+Nó có thể là Windows Forms, Web applications hoặc console application.
 
 17
 00:01:00,530 --> 00:01:07,160
-But the main purpose is here to show the data to the user and transmit the data from the user to business
+Nhưng mục đích chính ở đây là hiển thị dữ liệu cho người dùng và truyền dữ liệu từ người dùng đến lớp business
 
 18
 00:01:07,160 --> 00:01:08,750
-layer and data access.
+và lớp truy cập dữ liệu.
 
 19
 00:01:09,580 --> 00:01:13,900
-And after that we can check pattern and principles of discount microservices.
+Và sau đó chúng ta có thể kiểm tra các pattern và nguyên tắc của discount microservices.
 
 20
 00:01:13,930 --> 00:01:20,500
-The first pattern is we will use gRPC protobuf files and endpoints for the inter service communication.
+Pattern đầu tiên là chúng ta sẽ sử dụng gRPC protobuf files và endpoints để giao tiếp giữa các services.
 
 21
 00:01:20,500 --> 00:01:25,930
-And after that we will use Entity Framework Core for all database operations.
+Và sau đó chúng ta sẽ sử dụng Entity Framework Core cho tất cả các hoạt động cơ sở dữ liệu.
 
 22
 00:01:25,930 --> 00:01:32,110
-And we will use SQLite database which is embedded SQL database for efficient data storage.
+Và chúng ta sẽ sử dụng cơ sở dữ liệu SQLite, đó là cơ sở dữ liệu SQL nhúng để lưu trữ dữ liệu hiệu quả.
 
 23
 00:01:32,140 --> 00:01:38,380
-After that, we can check the libraries and NuGet packages that we are going to use for discount microservices.
+Sau đó, chúng ta có thể kiểm tra các thư viện và gói NuGet mà chúng ta sẽ sử dụng cho discount microservices.
 
 24
 00:01:38,410 --> 00:01:45,400
-The first one is generic packages including Master and Fluent validation, and the second one is a gRPC
+Cái đầu tiên là các gói chung bao gồm MediatR và Fluent Validation, và cái thứ hai là gRPC
 
 25
 00:01:45,400 --> 00:01:47,260
-which is ASP.Net core gRPC.
+đó là ASP.NET Core gRPC.
 
 26
 00:01:47,260 --> 00:01:49,420
-NuGet package comes from the template.
+Gói NuGet đến từ template.
 
 27
 00:01:49,420 --> 00:01:55,480
-And for database infrastructure operation we will use Entity Framework core SQLite provider.
+Và để hoạt động cơ sở hạ tầng cơ sở dữ liệu, chúng ta sẽ sử dụng Entity Framework Core SQLite provider.
 
 28
 00:01:55,480 --> 00:02:01,840
-And we will use Entity Framework Core tools to migrate our database with discount operations.
+Và chúng ta sẽ sử dụng Entity Framework Core tools để di chuyển cơ sở dữ liệu của chúng ta với các hoạt động giảm giá.
 
 29
 00:02:02,200 --> 00:02:05,320
-And lastly we can check the project folder structure.
+Và cuối cùng chúng ta có thể kiểm tra cấu trúc thư mục dự án.
 
 30
 00:02:05,350 --> 00:02:07,990
-Here you can see the our project folder structure.
+Ở đây bạn có thể thấy cấu trúc thư mục dự án của chúng ta.
 
 31
 00:02:07,990 --> 00:02:10,479
-And we are planning to create these layers.
+Và chúng ta đang lên kế hoạch tạo các lớp này.
 
 32
 00:02:10,479 --> 00:02:14,710
-First of all we will create models folder including coupon entity.
+Đầu tiên, chúng ta sẽ tạo thư mục models bao gồm coupon entity.
 
 33
 00:02:14,710 --> 00:02:16,750
-This will be the SQL entity.
+Đây sẽ là SQL entity.
 
 34
 00:02:16,840 --> 00:02:22,270
-And after that we will create data folder including Entity Framework, Core Data Context and Migration
+Và sau đó chúng ta sẽ tạo thư mục data bao gồm Entity Framework Core Data Context và Migration
 
 35
 00:02:22,270 --> 00:02:23,140
@@ -140,19 +140,19 @@ Extensions.
 
 36
 00:02:23,140 --> 00:02:30,130
-And after that we will create services folder and these services folder including actual gRPC service
+Và sau đó chúng ta sẽ tạo thư mục services và thư mục services này bao gồm triển khai gRPC service thực tế.
 
 37
 00:02:30,130 --> 00:02:31,150
-implementation.
+Và chúng ta có thư mục Protos và thư mục protos này bao gồm gRPC API được expose trong các tệp proto.
 
 38
 00:02:31,150 --> 00:02:38,350
-And we have Protoc folder and this protos folder including gRPC exposing API in proto files.
+Vậy đây là các lớp mà chúng ta sẽ định nghĩa.
 
 39
 00:02:38,350 --> 00:02:42,010
-So these are the layers that we are going to define.
+Và chúng ta có thể ánh xạ các lớp này vào kiến trúc phân lớp.
 
 40
 00:02:42,010 --> 00:02:45,520
@@ -160,11 +160,11 @@ And we can map these layers into the layered architecture.
 
 41
 00:02:45,520 --> 00:02:51,220
-So that means in models folder we can say this is the domain layer and data folder this is the data
+Vậy điều đó có nghĩa là trong folder models chúng ta có thể nói đây là domain layer và folder data là data
 
 42
 00:02:51,220 --> 00:02:57,280
-access layer and services folder are business layer and proto folder is representing our presentation
+access layer và folder services là business layer và folder proto đại diện cho presentation
 
 43
 00:02:57,280 --> 00:02:57,850
@@ -172,17 +172,17 @@ layer.
 
 44
 00:02:58,850 --> 00:03:02,600
-After that we can check the deployment of the discount microservices.
+Sau đó chúng ta có thể kiểm tra việc triển khai của discount microservices.
 
 45
 00:03:02,600 --> 00:03:07,340
-Basically, we will containerize discount microservices with Docker and Docker file.
+Về cơ bản, chúng ta sẽ containerize discount microservices với Docker và Docker file.
 
 46
 00:03:07,340 --> 00:03:13,760
-And after that implement this Docker file and update our docker compose file for running discount microservices
+Và sau đó triển khai Docker file này và cập nhật docker compose file của chúng ta để chạy discount microservices
 
 47
 00:03:13,760 --> 00:03:16,430
-and SQLite database in a Docker environment.
+và SQLite database trong một Docker environment.
 

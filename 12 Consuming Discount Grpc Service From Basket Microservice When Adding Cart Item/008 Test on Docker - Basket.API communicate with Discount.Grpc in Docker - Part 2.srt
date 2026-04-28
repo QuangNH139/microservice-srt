@@ -1,96 +1,96 @@
 1
 00:00:00,300 --> 00:00:05,430
-In this video, we are going to continue our integration tests on Docker environment.
+Trong video này, chúng ta sẽ tiếp tục các integration tests của chúng ta trên Docker environment.
 
 2
 00:00:05,430 --> 00:00:12,270
-In the last video, we have fixed the SSL certificate exception with newly configuring gRPC services.
+Trong video cuối cùng, chúng ta đã khắc phục ngoại lệ chứng chỉ SSL bằng cách cấu hình lại các dịch vụ gRPC.
 
 3
 00:00:12,270 --> 00:00:16,379
-For that reason we need to re containerize basket API.
+Vì lý do đó, chúng ta cần tái containerize basket API.
 
 4
 00:00:16,379 --> 00:00:23,040
-To do that, please set a startup project for Docker Compose and after that run without debugging.
+Để làm điều đó, vui lòng đặt startup project cho Docker Compose và sau đó chạy mà không cần debugging.
 
 5
 00:00:23,890 --> 00:00:30,850
-This will be run Docker commands on behind of the scenes and the containerized basket API, and after
+Điều này sẽ chạy các lệnh Docker phía sau các cảnh và basket API được containerized, và sau khi
 
 6
 00:00:30,850 --> 00:00:39,520
-completed these operations, the basket API will be configured with SSL certificate avoiding these certificate
+hoàn thành các hoạt động này, basket API sẽ được cấu hình với chứng chỉ SSL để tránh những chứng chỉ này
 
 7
 00:00:39,520 --> 00:00:40,090
-problem.
+vấn đề.
 
 8
 00:00:40,090 --> 00:00:46,300
-So if you open the Docker desktop, you can see that our basket API is created successfully and the
+Vậy nếu bạn mở Docker desktop, bạn có thể thấy rằng basket API của chúng ta đã được tạo thành công và các
 
 9
 00:00:46,300 --> 00:00:50,080
-other microservices and backing services are up and running.
+các microservices khác và backing services khác đang chạy.
 
 10
 00:00:50,080 --> 00:00:53,680
-So now we can continue our entire test in Docker network.
+Vậy bây giờ chúng ta có thể tiếp tục toàn bộ test của chúng ta trong Docker network.
 
 11
 00:00:53,680 --> 00:00:55,480
-So please open the postman.
+Vậy vui lòng mở Postman.
 
 12
 00:00:55,480 --> 00:01:02,710
-Last time we have left in the http post, request to the basket API with a given username and the card
+Lần cuối cùng chúng ta đã dừng lại trong http post, request đến basket API với một username nhất định và chi tiết
 
 13
 00:01:02,710 --> 00:01:08,290
-details, and we got exception about SSL connection and certification is invalid.
+thẻ, và chúng ta đã nhận được ngoại lệ về kết nối SSL và chứng chỉ không hợp lệ.
 
 14
 00:01:08,290 --> 00:01:15,610
-I'm going to send again http post request to the docker environment 6061 port number.
+Tôi sẽ gửi lại http post request đến Docker environment trên cổng 6061.
 
 15
 00:01:15,610 --> 00:01:22,420
-Click the send button and this time we will see that this will be returned to all one created success
+Nhấp vào nút send và lần này chúng ta sẽ thấy rằng điều này sẽ trả về một phản hồi created success all one
 
 16
 00:01:22,420 --> 00:01:24,520
-response and return a username.
+và trả về một username.
 
 17
 00:01:24,520 --> 00:01:31,330
-So that means we have successfully communicate this gRPC and calculate and deduct the price for each
+Vậy điều đó có nghĩa là chúng ta đã giao tiếp thành công gRPC này và tính toán và khấu trừ giá cho mỗi
 
 18
 00:01:31,330 --> 00:01:32,710
-items on the shopping cart.
+mục trên giỏ hàng.
 
 19
 00:01:32,710 --> 00:01:35,830
-To verify that I am going to get the shopping cart.
+Để xác minh điều đó, tôi sẽ lấy giỏ hàng.
 
 20
 00:01:35,830 --> 00:01:43,600
-But before that you see that prices are 500 and if you go back to Http get method and if you send the
+Nhưng trước đó, bạn thấy rằng giá là 500 và nếu bạn quay lại phương thức Http get và nếu bạn gửi
 
 21
 00:01:43,600 --> 00:01:52,420
-http get request to our username, you can see that the prices are deducted with the discount information
+HTTP GET request tới username của chúng ta, bạn có thể thấy rằng các giá được trừ đi với thông tin chiết khấu
 
 22
 00:01:52,420 --> 00:01:56,110
-from the coupon table and total price is reflected successfully.
+từ bảng coupon và tổng giá được phản ánh thành công.
 
 23
 00:01:56,140 --> 00:02:00,670
-As you can see that we have successfully testing and debugging in the Docker environment.
+Như bạn có thể thấy, chúng ta đã thành công trong việc kiểm tra và gỡ lỗi trong môi trường Docker.
 
 24
 00:02:00,670 --> 00:02:05,800
-The basket API microservices correctly communicate with discount gRPC services.
+basket API microservices giao tiếp chính xác với discount gRPC services.
 

@@ -1,6 +1,6 @@
 1
 00:00:00,200 --> 00:00:06,650
-In this video, we are going to do domain analysis of asynchronous communication between basket and
+Trong video này, chúng ta sẽ phân tích domain của communication asynchronous giữa basket và
 
 2
 00:00:06,650 --> 00:00:08,119
@@ -8,23 +8,23 @@ ordering microservices.
 
 3
 00:00:08,150 --> 00:00:14,960
-This will include event model, analyzing application use cases, Rest API endpoints and underlying
+Điều này sẽ bao gồm event model, phân tích các use cases ứng dụng, REST API endpoints và cấu trúc
 
 4
 00:00:14,960 --> 00:00:16,160
-data structures.
+dữ liệu cơ bản.
 
 5
 00:00:16,460 --> 00:00:21,680
-So let's get started and we will start with the event models of the basket checkout event.
+Vậy hãy bắt đầu và chúng ta sẽ bắt đầu với các event models của basket checkout event.
 
 6
 00:00:21,710 --> 00:00:26,150
-That means we have only one event model which is the basket checkout.
+Điều đó có nghĩa là chúng ta chỉ có một event model đó là basket checkout.
 
 7
 00:00:26,210 --> 00:00:32,000
-This is the primary event model used for the asynchronous communication between basket and ordering
+Đây là primary event model được sử dụng cho communication asynchronous giữa basket và ordering
 
 8
 00:00:32,000 --> 00:00:33,050
@@ -32,63 +32,63 @@ microservices.
 
 9
 00:00:33,380 --> 00:00:39,200
-In the Building Blocks shared project, we should add a new class under the events folder, and this
+Trong dự án Building Blocks shared, chúng ta nên thêm một class mới dưới folder events, và cái này
 
 10
 00:00:39,200 --> 00:00:42,410
-should be used from the basket and ordering microservices.
+nên được sử dụng từ basket và ordering microservices.
 
 11
 00:00:42,410 --> 00:00:46,940
-But also we can create a new class library which is a building blocks messaging.
+Nhưng chúng ta cũng có thể tạo một class library mới đó là building blocks messaging.
 
 12
 00:00:46,940 --> 00:00:51,770
-And this will include this kind of common event classes which will be the basket checkout.
+Và cái này sẽ bao gồm những loại event classes chung này sẽ là basket checkout.
 
 13
 00:00:51,800 --> 00:00:57,140
-If you look at the basket checkout class, this will be including user details which is the username,
+Nếu bạn nhìn vào basket checkout class, cái này sẽ bao gồm chi tiết người dùng đó là username,
 
 14
 00:00:57,140 --> 00:01:03,080
-total price and billing address, address, line, country, state and also payment details will be
+tổng giá và địa chỉ thanh toán, address, line, country, state và cũng payment details sẽ
 
 15
 00:01:03,080 --> 00:01:05,750
-including the card name, card number and so on.
+bao gồm card name, card number và nhiều cái khác.
 
 16
 00:01:05,780 --> 00:01:12,560
-This is the event class structure for the basket checkout, and we will also consider the domain events
+Đây là cấu trúc event class cho basket checkout, và chúng ta cũng sẽ xem xét các domain events
 
 17
 00:01:12,560 --> 00:01:15,440
-for the basket checkout and leading to integration event.
+cho basket checkout và dẫn đến integration event.
 
 18
 00:01:15,440 --> 00:01:21,680
-But Basket Checkout event will be our integration event from throwing our basket microservices.
+Nhưng Basket Checkout event sẽ là integration event của chúng ta từ basket microservices.
 
 19
 00:01:21,680 --> 00:01:27,170
-So if you look at the application use cases we should define our application use case analyzing for
+Vậy nếu bạn xem các application use cases chúng ta nên định nghĩa application use case phân tích của chúng ta cho
 
 20
 00:01:27,170 --> 00:01:28,580
-asynchronous communication.
+communication asynchronous.
 
 21
 00:01:28,580 --> 00:01:33,500
-And we can say that our asynchronous use case is basket checkout operation.
+Và chúng ta có thể nói rằng use case bất đồng bộ của chúng ta là basket checkout operation.
 
 22
 00:01:33,500 --> 00:01:38,720
-This is the checkout basket with all information and publish event to the RabbitMQ.
+Đây là checkout basket với tất cả thông tin và publish event đến RabbitMQ.
 
 23
 00:01:39,080 --> 00:01:44,930
-And if you look at the asynchronous use case for ordering microservices we can say that again basket
+Và nếu bạn nhìn vào asynchronous use case cho ordering microservices, chúng ta có thể nói rằng lại là basket
 
 24
 00:01:44,930 --> 00:01:45,320
@@ -96,71 +96,71 @@ checkout.
 
 25
 00:01:45,320 --> 00:01:47,720
-But this time ordering microservices.
+Nhưng lần này là ordering microservices.
 
 26
 00:01:47,720 --> 00:01:52,910
-Consume the basket checkout event from the RabbitMQ using the Masstransit, and after that this will
+Consume basket checkout event từ RabbitMQ sử dụng Masstransit, và sau đó điều này sẽ
 
 27
 00:01:52,910 --> 00:01:59,030
-be start order fulfillment process that perform order fulfillment operation that is notifying billing,
+bắt đầu quá trình order fulfillment thực hiện order fulfillment operation mà thông báo đến billing,
 
 28
 00:01:59,030 --> 00:02:05,060
-shipment and notification of the other microservices and this can be raised order created domain event
+shipment và notification của các microservices khác và điều này có thể raise order created domain event
 
 29
 00:02:05,060 --> 00:02:07,190
-that leads to integration event.
+dẫn đến integration event.
 
 30
 00:02:07,550 --> 00:02:11,450
-So now I'm going to check presentation layer and the Rest APIs.
+Vậy bây giờ tôi sẽ kiểm tra presentation layer và các Rest APIs.
 
 31
 00:02:11,450 --> 00:02:16,400
-Here you can see that we have a one post http API.
+Ở đây bạn có thể thấy rằng chúng ta có một HTTP post API.
 
 32
 00:02:16,400 --> 00:02:22,310
-And we will expose http post method from the basket microservices with this endpoint which is the slash
+Và chúng ta sẽ expose HTTP post method từ basket microservices với endpoint này là slash
 
 33
 00:02:22,310 --> 00:02:25,760
-basket and slash checkout in order to check out the basket.
+basket và slash checkout để checkout basket.
 
 34
 00:02:25,760 --> 00:02:27,410
-And this will be asynchronous.
+Và điều này sẽ là bất đồng bộ.
 
 35
 00:02:27,410 --> 00:02:32,900
-To check out the basket and receive the basket, checkout data in a Json body of the web API.
+Để checkout basket và nhận basket, dữ liệu checkout trong Json body của web API.
 
 36
 00:02:33,020 --> 00:02:40,670
-And after that you can see that ordering microservices will be using Amqp protocol in order to consume
+Và sau đó bạn có thể thấy rằng ordering microservices sẽ sử dụng Amqp protocol để consume
 
 37
 00:02:40,670 --> 00:02:44,150
-basket checkout event from the RabbitMQ using the Masstransit.
+basket checkout event từ RabbitMQ sử dụng Masstransit.
 
 38
 00:02:44,150 --> 00:02:50,510
-So we have two protocols one protocol Http and exposing Http post from the basket microservices.
+Vậy chúng ta có hai giao thức, một giao thức là Http và expose Http post từ basket microservices.
 
 39
 00:02:50,510 --> 00:02:57,080
-And another protocol is Amqp protocol consuming ordering microservices from the RabbitMQ message broker.
+Và giao thức khác là Amqp protocol consume từ ordering microservices của RabbitMQ message broker.
 
 40
 00:02:57,380 --> 00:03:02,810
-And if you look at the underlying data structure of the asynchronous communication, we can say that
+Và nếu bạn nhìn vào underlying data structure của asynchronous communication, chúng ta có thể nói rằng
 
 41
 00:03:02,810 --> 00:03:08,780
-for asynchronous communication between microservices we have one backing services, which is the RabbitMQ
+để giao tiếp bất đồng bộ giữa các microservices, chúng ta có một backing service, đó là RabbitMQ
 
 42
 00:03:08,810 --> 00:03:10,520
@@ -168,29 +168,29 @@ distributed message broker.
 
 43
 00:03:10,520 --> 00:03:17,000
-And as a distributed message broker we will use RabbitMQ and we will see it in the implementation phase.
+và như một distributed message broker, chúng ta sẽ sử dụng RabbitMQ và chúng ta sẽ thấy nó trong giai đoạn triển khai.
 
 44
 00:03:17,000 --> 00:03:23,240
-RabbitMQ allows for the robust, efficient and scalable asynchronous communication, and it facilitates
+RabbitMQ cho phép giao tiếp bất đồng bộ mạnh mẽ, hiệu quả và có khả năng mở rộng, và nó hỗ trợ
 
 45
 00:03:23,240 --> 00:03:26,660
-pub sub messaging between basket and ordering microservices.
+pub sub messaging giữa basket và ordering microservices.
 
 46
 00:03:26,960 --> 00:03:31,700
-And here you can see the our main architecture for the microservices asynchronous communication.
+và ở đây bạn có thể thấy kiến trúc chính của chúng ta cho giao tiếp bất đồng bộ giữa các microservices.
 
 47
 00:03:31,700 --> 00:03:38,420
-Basically basket microservices publish event to the RabbitMQ message broker for asynchronous communication
+về cơ bản, basket microservices xuất bản sự kiện tới RabbitMQ message broker để giao tiếp bất đồng bộ
 
 48
 00:03:38,420 --> 00:03:39,260
-and ordering.
+và ordering.
 
 49
 00:03:39,260 --> 00:03:45,320
-Microservices consume these event from the RabbitMQ in order to perform asynchronous communication.
+Microservices tiêu thụ các sự kiện này từ RabbitMQ để thực hiện giao tiếp bất đồng bộ.
 

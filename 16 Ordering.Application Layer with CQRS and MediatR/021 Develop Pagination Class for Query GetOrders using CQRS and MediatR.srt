@@ -1,54 +1,54 @@
 1
 00:00:00,140 --> 00:00:06,230
-In this video we are going to develop get orders, query using techniques and mediator in the ordering
+Trong video này chúng ta sẽ phát triển get orders, query sử dụng các kỹ thuật và mediator trong application layer.
 
 2
 00:00:06,230 --> 00:00:07,310
-application layer.
+nhưng trước hết, hãy hiểu về pagination bằng cách sử dụng Entity Framework core Entity Framework core hỗ trợ pagination thông qua các phương thức skip và take link.
 
 3
 00:00:07,550 --> 00:00:13,430
-But before that, let's understand pagination with using the Entity Framework core entity Framework
+Các phương thức này cho phép chúng ta lấy ra chỉ một tập con của dữ liệu tương ứng với một trang cụ thể, và trong phương thức skip, chúng ta cơ bản sẽ bỏ qua phần tử đầu tiên và của chuỗi, và trong phương thức take, chúng ta cơ bản sẽ trả về một số lượng chỉ định các phần tử liên tiếp từ đầu của chuỗi.
 
 4
 00:00:13,430 --> 00:00:18,110
-core supports pagination through the skip and take link methods.
+Vậy Entity Framework Core hỗ trợ pagination thông qua sự kết hợp của các phương thức skip và take, là một phần của link, và pagination là một yêu cầu phổ biến trong nhiều ứng dụng, đặc biệt là khi xử lý tập dữ liệu lớn.
 
 5
 00:00:18,110 --> 00:00:25,700
-These methods allow us to retrieve only a subset of the data corresponding to specific page, and in
+Nó liên quan đến việc chia dữ liệu thành các trang và lấy ra chỉ một trang cụ thể tại một thời điểm.
 
 6
 00:00:25,700 --> 00:00:31,970
-the skip method, we basically skip the first and element of the sequence, and in the take method,
+Vậy hãy bắt đầu phát triển các lớp pagination bằng cách sử dụng Entity Framework Core.
 
 7
 00:00:31,970 --> 00:00:38,120
-we basically returns a specified number of the contiguous elements from the start of a sequence.
+Để làm được điều đó, tôi sẽ mở Visual Studio, nhưng lần này tôi sẽ thêm chức năng pagination này vào building blocks vì nó là một thao tác chung có thể được sử dụng bởi các microservices khác nhau.
 
 8
 00:00:38,690 --> 00:00:44,720
-So Entity Framework Core supports pagination through a combination of the skip and take methods, which
+Đó là lý do tại sao tôi sẽ thêm thư mục pagination dưới building blocks.
 
 9
 00:00:44,720 --> 00:00:50,660
-are the part of the link, and pagination is a common requirement in many applications, especially
+Hãy đi tới thư viện lớp Building Blocks.
 
 10
 00:00:50,660 --> 00:00:52,880
-when dealing with large data set.
+Nhấp chuột phải thêm thư mục mới có tên là pagination.
 
 11
 00:00:52,880 --> 00:00:58,790
-It involves dividing data into pages and retrieving only a specific page at the time.
+Vậy trong thư mục này chúng ta cơ bản sẽ thêm các lớp pagination.
 
 12
 00:00:58,910 --> 00:01:03,590
-So let's start with developing pagination classes with using Entity Framework Core.
+Và lớp này sẽ đại diện cho kết quả của truy vấn được phân trang.
 
 13
 00:01:03,590 --> 00:01:09,620
-For that purpose, I am going to open the Visual Studio, but this time I'm going to add this pagination
+Tôi sẽ tạo một lớp mới.
 
 14
 00:01:09,620 --> 00:01:15,980
@@ -80,27 +80,27 @@ I am going to create a new class.
 
 21
 00:01:36,770 --> 00:01:42,500
-Which name is paginated result which is representing a result of the paginated query.
+Tên nào là kết quả được phân trang, đó là đại diện cho một kết quả của truy vấn được phân trang.
 
 22
 00:01:42,500 --> 00:01:48,470
-So in this class I'm going to remove unnecessary using statement and make this class as a public.
+Vậy trong lớp này tôi sẽ loại bỏ using statement không cần thiết và làm cho lớp này là public.
 
 23
 00:01:49,700 --> 00:01:52,310
-After that we will develop the class definition.
+Sau đó chúng ta sẽ phát triển định nghĩa lớp.
 
 24
 00:01:52,310 --> 00:01:58,970
-This class will be a generic type and after that you can see that we will add a generic entity that
+Lớp này sẽ là một generic type và sau đó bạn có thể thấy chúng ta sẽ thêm một generic entity
 
 25
 00:01:58,970 --> 00:02:01,880
-accepting any entity into arpeggiated result.
+chấp nhận bất kỳ entity nào vào paginated result.
 
 26
 00:02:01,880 --> 00:02:08,930
-And here you can see the primary constructor including the page index, page size count and IEnumerable
+Và ở đây bạn có thể thấy primary constructor bao gồm page index, page size, count và IEnumerable
 
 27
 00:02:09,139 --> 00:02:10,070
@@ -108,47 +108,47 @@ entity data.
 
 28
 00:02:10,070 --> 00:02:12,620
-And these two entities should be class.
+Và hai entity này nên là class.
 
 29
 00:02:12,620 --> 00:02:20,180
-So inside of this class definition, we can define the properties and add the these primary constructor
+Vậy bên trong định nghĩa lớp này, chúng ta có thể định nghĩa các properties và thêm các thành viên primary constructor này vào properties.
 
 30
 00:02:20,180 --> 00:02:22,040
-members into the properties.
+Ở đây bạn có thể thấy chúng ta đang thêm property page index, page size, count và data.
 
 31
 00:02:22,040 --> 00:02:28,010
-Here you can see that we have adding the property page index, page size count and data.
+Và chúng ta sẽ gán các tham số này bên trong constructor bằng cách thêm primary constructor này.
 
 32
 00:02:28,010 --> 00:02:34,520
-And we will assign these parameters inside of the constructor with adding these primary constructor.
+Vậy như bạn có thể thấy chúng ta đã phát triển page index, đó là current page index bắt đầu từ zero.
 
 33
 00:02:34,520 --> 00:02:40,610
-So as you can see that we have developed page index which is the current page index starting from the
+Và chúng ta cũng đang thêm property page size, đó là số lượng items trên mỗi trang.
 
 34
 00:02:40,610 --> 00:02:41,120
-zero.
+Và ở đây bạn có thể thấy property count, đó là tổng số items trong data set.
 
 35
 00:02:41,120 --> 00:02:46,910
-And we have also adding property of the page size which is the number of the items per page.
+Và ở đây bạn có thể thấy data, đó là dữ liệu thực tế cho trang hiện tại.
 
 36
 00:02:46,910 --> 00:02:52,040
-And here you can see the count property which is the total number of the items in the data set.
+Vậy đây là paginated result class mà chúng ta có thể sử dụng cho mỗi hoạt động phân trang.
 
 37
 00:02:52,040 --> 00:02:56,090
-And here you can see the data which is the actual data for the current page.
+Khi chúng ta sử dụng Entity Framework Core trong microservices.
 
 38
 00:02:56,090 --> 00:03:01,790
-So this is the paginated result class that we can use for each paginated operation.
+Và theo cách tương tự chúng ta có thể tạo một lớp mới với tên là pagination request.
 
 39
 00:03:01,790 --> 00:03:04,790
@@ -160,49 +160,49 @@ And as the same way we can create a new class which name is pagination request.
 
 41
 00:03:09,590 --> 00:03:12,140
-Here you can see that this is the paginated result.
+Ở đây bạn có thể thấy đây là kết quả được phân trang.
 
 42
 00:03:12,140 --> 00:03:16,820
-And I am going to add an additional class which name is pagination request.
+Và tôi sẽ thêm một lớp bổ sung có tên là pagination request.
 
 43
 00:03:16,820 --> 00:03:22,220
-And in this request we basically represent a request for a paginated query.
+Và trong request này chúng ta cơ bản là biểu diễn một yêu cầu cho một truy vấn được phân trang.
 
 44
 00:03:22,220 --> 00:03:28,700
-I am going to remove unnecessary using statement and make this class as a public and inside of the.
+Tôi sẽ loại bỏ các câu lệnh using không cần thiết và làm cho lớp này là public và bên trong.
 
 45
 00:03:28,700 --> 00:03:31,190
-This class we can develop the record type.
+Lớp này chúng ta có thể phát triển kiểu record.
 
 46
 00:03:31,190 --> 00:03:35,480
-Here you can see that we have developed public record pagination request.
+Ở đây bạn có thể thấy chúng ta đã phát triển public record pagination request.
 
 47
 00:03:35,480 --> 00:03:41,780
-And in this record type we can accept page index and page size as a parameter of this record type.
+Và trong kiểu record này chúng ta có thể chấp nhận page index và page size như là tham số của kiểu record này.
 
 48
 00:03:41,780 --> 00:03:47,960
-So basically the pagination request record holds the page index and page size with the default values
+Vậy cơ bản pagination request record giữ page index và page size với các giá trị mặc định
 
 49
 00:03:47,960 --> 00:03:50,570
-of the zero and ten respectively.
+là không và mười tương ứng.
 
 50
 00:03:50,570 --> 00:03:53,810
-This setup allows for the flexible pagination request.
+Thiết lập này cho phép pagination request linh hoạt.
 
 51
 00:03:53,810 --> 00:04:01,010
-So by implementing the paginated result and paginated request classes under the pagination and building
+Vậy bằng cách triển khai các lớp paginated result và paginated request dưới pagination và building
 
 52
 00:04:01,010 --> 00:04:06,380
-blocks, we have laid the foundation for efficient pagination in our microservices.
+blocks, chúng ta đã đặt nền tảng cho pagination hiệu quả trong microservices của chúng ta.
 

@@ -1,34 +1,34 @@
 1
 00:00:00,140 --> 00:00:04,640
-In this video we are going to learn domain events in domain driven design.
+Trong video này chúng ta sẽ học về domain events trong domain driven design.
 
 2
 00:00:04,640 --> 00:00:07,730
-And we will compare domain versus integration events.
+Và chúng ta sẽ so sánh domain events versus integration events.
 
 3
 00:00:07,730 --> 00:00:10,220
-And we will see in a real world examples.
+Và chúng ta sẽ xem các ví dụ thực tế.
 
 4
 00:00:10,610 --> 00:00:14,150
-So let me start with what is domain event in domain driven design.
+Vậy hãy bắt đầu với domain event trong domain driven design là gì.
 
 5
 00:00:14,690 --> 00:00:20,630
-Domain events represent something happened in the past and the other parts of the same service boundary
+Domain events đại diện cho một điều gì đó đã xảy ra trong quá khứ và các phần khác trong cùng service boundary
 
 6
 00:00:20,630 --> 00:00:23,990
-and same domain need to react to these changes.
+và cùng domain cần phải phản ứng với những thay đổi này.
 
 7
 00:00:24,590 --> 00:00:28,940
-A domain event is a business event that occurs within the domain model.
+Domain event là một sự kiện kinh doanh xảy ra trong domain model.
 
 8
 00:00:29,210 --> 00:00:33,830
-It often represents a side effect or a result of a domain operation.
+Nó thường đại diện cho một tác dụng phụ hoặc kết quả của một domain operation.
 
 9
 00:00:34,190 --> 00:00:34,760
@@ -36,123 +36,123 @@ Aethes.
 
 10
 00:00:34,970 --> 00:00:40,880
-It's a technique that is used to achieve consistency between aggregates in the same domain.
+Đó là một kỹ thuật được sử dụng để đạt được tính nhất quán giữa các aggregates trong cùng domain.
 
 11
 00:00:41,300 --> 00:00:46,430
-For example, when an order is placed, an order placed event might be triggered.
+Ví dụ, khi một đơn hàng được đặt, một sự kiện order placed có thể được kích hoạt.
 
 12
 00:00:47,000 --> 00:00:52,700
-These events are crucial in capturing the intention and outcome of domain actions, and they can be
+Những sự kiện này rất quan trọng trong việc nắm bắt ý định và kết quả của các domain actions, và chúng có thể
 
 13
 00:00:52,700 --> 00:00:58,760
-used to trigger side effects or notify other parts of the system about the changes within the domain.
+được sử dụng để kích hoạt các tác dụng phụ hoặc thông báo cho các phần khác của hệ thống về những thay đổi trong domain.
 
 14
 00:00:59,480 --> 00:01:02,360
-So how to use domain events in domain driven design.
+Vậy làm thế nào để sử dụng domain events trong domain driven design.
 
 15
 00:01:02,390 --> 00:01:08,240
-Domain events are used to encapsulate the event details and dispatch them to the interested parties.
+Domain events được sử dụng để đóng gói các chi tiết sự kiện và gửi chúng đến các bên quan tâm.
 
 16
 00:01:08,270 --> 00:01:14,670
-Typically they are used to communicate changes within the domain to external handlers, which may perform
+Thông thường chúng được sử dụng để giao tiếp những thay đổi trong domain với các external handlers, những handler này có thể thực hiện
 
 17
 00:01:14,670 --> 00:01:16,710
-actions based on these events.
+các hành động dựa trên những sự kiện này.
 
 18
 00:01:17,520 --> 00:01:21,570
-So here you can see the domain events in the ordering microservices.
+Vậy ở đây bạn có thể thấy domain events trong ordering microservices.
 
 19
 00:01:21,570 --> 00:01:25,290
-For example, let's assume that we have e-commerce application.
+Ví dụ, giả sử chúng ta có một ứng dụng e-commerce.
 
 20
 00:01:25,290 --> 00:01:30,270
-And in our ordering microservices we have a customer entity.
+Và trong ordering microservices của chúng ta chúng ta có một customer entity.
 
 21
 00:01:30,300 --> 00:01:34,890
-Whenever an order is created, the related user becomes a customer.
+Bất cứ khi nào một đơn hàng được tạo, người dùng liên quan sẽ trở thành một khách hàng.
 
 22
 00:01:34,890 --> 00:01:41,400
-So we can say that we need two aggregates in the same domain for the ordering microservices order aggregates.
+Vậy chúng ta có thể nói rằng chúng ta cần hai aggregates trong cùng một domain cho ordering microservices order aggregates.
 
 23
 00:01:41,400 --> 00:01:43,950
-And also we can say customer aggregate.
+Và cũng chúng ta có thể nói customer aggregate.
 
 24
 00:01:43,950 --> 00:01:48,540
-So when customer place an order several things happen.
+Vậy khi khách hàng đặt hàng, nhiều điều sẽ xảy ra.
 
 25
 00:01:48,540 --> 00:01:55,110
-That means like updating the inventory, notifying the shipping department, and sending an email confirmation
+Điều đó có nghĩa là như cập nhật kho hàng, thông báo cho bộ phận vận chuyển, và gửi email xác nhận
 
 26
 00:01:55,110 --> 00:01:56,160
-to the customer.
+cho khách hàng.
 
 27
 00:01:56,160 --> 00:02:00,690
-So these actions can be triggered by an order placed domain event.
+Vậy những hành động này có thể được kích hoạt bởi một domain event đặt hàng.
 
 28
 00:02:01,170 --> 00:02:06,030
-And we can raising and dispatching these domain events within the order aggregates.
+Và chúng ta có thể tạo và gửi những domain events này trong order aggregates.
 
 29
 00:02:06,030 --> 00:02:12,210
-You can see order aggregate when the order is placed, it adds a domain event which name is ordered
+Bạn có thể thấy order aggregate khi đơn hàng được đặt, nó thêm một domain event có tên là order placed event và gửi event này.
 
 30
 00:02:12,210 --> 00:02:14,880
-placed event and dispatching this event.
+Điều này thường được thực hiện trong infrastructure layer.
 
 31
 00:02:14,880 --> 00:02:18,660
-This will be typically done in the infrastructure layer.
+Nó thường nằm trong repository hoặc unit of work.
 
 32
 00:02:18,660 --> 00:02:21,560
-It's often in the repository or unit of work.
+Sau khi lưu các thay đổi vào cơ sở dữ liệu, các domain events được gửi đến các handler tương ứng của chúng.
 
 33
 00:02:21,590 --> 00:02:27,740
-After saving changes to the database, the domain events are dispatched to their respective handlers.
+Vậy bây giờ hãy so sánh domain events và integration events.
 
 34
 00:02:28,940 --> 00:02:32,090
-So now let's compare domain versus integration events.
+Về cơ bản, chúng là những điều tương tự, đó là một biểu diễn của một cái gì đó đã xảy ra trong
 
 35
 00:02:32,120 --> 00:02:37,670
-At the core, they are the same thing, which is a representation of something that happened in the
+quá khứ.
 
 36
 00:02:37,670 --> 00:02:38,420
-past.
+Tuy nhiên, các trường hợp sử dụng và chi tiết triển khai của chúng là khác nhau.
 
 37
 00:02:38,510 --> 00:02:43,190
-However, they propose use cases and implementation details are different.
+Vậy hãy để tôi bắt đầu với domain events.
 
 38
 00:02:43,190 --> 00:02:45,260
-So let me start with the domain events.
+Domain events được xuất bản và tiêu thụ trong một single domain.
 
 39
 00:02:45,290 --> 00:02:48,980
-Domain events published and consumed within a single domain.
+Vậy bạn xuất bản và đăng ký event trong cùng một application instance.
 
 40
 00:02:48,980 --> 00:02:53,240
@@ -160,157 +160,157 @@ So you publish and subscribe to the event in the same application instance.
 
 41
 00:02:53,630 --> 00:02:57,950
-They are strictly within the boundary of the microservice or domain context.
+Chúng nằm hoàn toàn trong giới hạn của microservice hoặc domain context.
 
 42
 00:02:58,280 --> 00:03:02,750
-They typically indicate something that has happened within the aggregate domain.
+Chúng thường chỉ ra rằng điều gì đó đã xảy ra trong aggregate domain.
 
 43
 00:03:02,750 --> 00:03:08,420
-Events happen in process or synchronously sent using an in-memory message bus.
+Các sự kiện xảy ra trong process hoặc được gửi đồng bộ bằng cách sử dụng message bus trong bộ nhớ.
 
 44
 00:03:08,450 --> 00:03:11,330
-As an example, we can give order placed event.
+Ví dụ, chúng ta có thể đưa ra sự kiện đơn hàng được đặt.
 
 45
 00:03:11,780 --> 00:03:17,300
-But if you look at the integration events, integration events are used to communicate state changes
+Nhưng nếu bạn nhìn vào integration events, integration events được sử dụng để giao tiếp các thay đổi trạng thái
 
 46
 00:03:17,300 --> 00:03:21,380
-or events between different bounded contexts or different microservices.
+hoặc các sự kiện giữa các bounded contexts khác nhau hoặc các microservices khác nhau.
 
 47
 00:03:21,920 --> 00:03:25,760
-They are more about the overall system's reaction to certain domain events.
+Chúng liên quan nhiều hơn đến phản ứng của toàn bộ hệ thống đối với các domain events nhất định.
 
 48
 00:03:25,760 --> 00:03:30,150
-Integration events should be asynchronously sent with a message broker.
+Integration events nên được gửi không đồng bộ với message broker.
 
 49
 00:03:30,180 --> 00:03:34,680
-Over a few integration events are consumed by other subsystems.
+Một số integration events được tiêu thụ bởi các hệ thống phụ khác.
 
 50
 00:03:34,710 --> 00:03:36,510
-As an example, we can give.
+Ví dụ, chúng ta có thể đưa ra.
 
 51
 00:03:36,540 --> 00:03:42,210
-After handling the order placed, domain event and order placed integration event might be published
+Sau khi xử lý sự kiện đơn hàng được đặt, domain event và integration event đơn hàng được đặt có thể được công bố
 
 52
 00:03:42,240 --> 00:03:47,670
-to a message broker like RabbitMQ, which could then be consumed by other microservices.
+tới message broker như RabbitMQ, sau đó có thể được tiêu thụ bởi các microservices khác.
 
 53
 00:03:47,700 --> 00:03:50,490
-You can find example illustration on the slide.
+Bạn có thể tìm thấy ví dụ minh họa trên slide.
 
 54
 00:03:50,490 --> 00:03:55,200
-We have a bounded context in domain driven design and we have aggregate.
+Chúng ta có bounded context trong domain driven design và chúng ta có aggregate.
 
 55
 00:03:55,200 --> 00:03:58,650
-And in this aggregate we can create a domain event.
+Và trong aggregate này chúng ta có thể tạo domain event.
 
 56
 00:03:58,650 --> 00:04:01,830
-And this domain event can be handled with the handlers.
+Và domain event này có thể được xử lý bằng các handlers.
 
 57
 00:04:01,830 --> 00:04:08,190
-And this might be published a message broker with creating an integration event in order to notify other
+Và điều này có thể được công bố tới message broker bằng cách tạo integration event để thông báo cho các
 
 58
 00:04:08,190 --> 00:04:09,180
-subsystems.
+hệ thống phụ khác.
 
 59
 00:04:10,140 --> 00:04:14,130
-And here you can see the our E-shop domain and integration events.
+Và ở đây bạn có thể thấy E-shop domain và integration events của chúng ta.
 
 60
 00:04:14,160 --> 00:04:17,399
-As you can see that we have a orders bounded context.
+Như bạn có thể thấy rằng chúng ta có orders bounded context.
 
 61
 00:04:17,399 --> 00:04:22,230
-And in this bounded context we have order aggregate and Orderitem entity.
+Và trong bounded context này chúng ta có order aggregate và Orderitem entity.
 
 62
 00:04:22,260 --> 00:04:30,270
-So in order aggregate we will publish order created domain event within the ordering microservices and
+Vậy trong order aggregate chúng ta sẽ publish order created domain event bên trong ordering microservices và
 
 63
 00:04:30,270 --> 00:04:36,690
-this domain event handled by the internal components like updating customer within the same microservices.
+domain event này được xử lý bởi các internal components như cập nhật customer trong cùng một microservices.
 
 64
 00:04:37,470 --> 00:04:40,580
-And after that we can lead the integration event.
+Và sau đó chúng ta có thể dẫn đến integration event.
 
 65
 00:04:40,580 --> 00:04:48,290
-So once the order created domain event is handled in this domain, an order created integration event
+Vậy khi order created domain event được xử lý trong domain này, một order created integration event
 
 66
 00:04:48,290 --> 00:04:49,490
-is published.
+được publish.
 
 67
 00:04:49,880 --> 00:04:55,910
-These publish operations performs by using the message brokers and following the asynchronous communication,
+Các publish operations này được thực hiện bằng cách sử dụng message brokers và tuân theo asynchronous communication,
 
 68
 00:04:55,910 --> 00:04:59,360
-and after that the shipping and inventory microservices.
+và sau đó là shipping và inventory microservices.
 
 69
 00:04:59,360 --> 00:05:05,900
-Subscribe to this event and when it receives the event, it begins the process to shipment and other
+Subscribe vào event này và khi nó nhận được event, nó bắt đầu quá trình shipment và các
 
 70
 00:05:05,900 --> 00:05:09,350
-subsystem operations after consuming this integration event.
+subsystem operations khác sau khi consume integration event này.
 
 71
 00:05:09,830 --> 00:05:14,330
-So we can say that domain events happen in process and synchronously.
+Vậy chúng ta có thể nói rằng domain events xảy ra in process và synchronously.
 
 72
 00:05:14,360 --> 00:05:18,380
-On the other hand, the integration events should be asynchronously.
+Mặt khác, integration events phải là asynchronously.
 
 73
 00:05:18,650 --> 00:05:21,890
-Domain events published and consumed with a single domain.
+Domain events được publish và consume trong một single domain.
 
 74
 00:05:21,890 --> 00:05:25,910
-So you publish and subscribe to the event in the same application instance.
+Vậy bạn publish và subscribe vào event trong cùng một application instance.
 
 75
 00:05:25,940 --> 00:05:30,560
-On the other hand, integration events are consumed by other subsystems.
+Mặt khác, integration events được consume bởi các subsystem khác.
 
 76
 00:05:30,590 --> 00:05:37,280
-Domain events are sent using in-memory message bus using the mediator lifecycles and integration events
+Domain events được gửi sử dụng in-memory message bus sử dụng mediator lifecycles và integration events
 
 77
 00:05:37,280 --> 00:05:39,950
-are sent with a message broker over a queue.
+được gửi với một message broker qua một queue.
 
 78
 00:05:40,460 --> 00:05:46,430
-So understanding the difference between domain and integration event is crucial in designing a system
+Vậy hiểu rõ sự khác biệt giữa domain và integration event là rất quan trọng trong việc thiết kế một hệ thống
 
 79
 00:05:46,430 --> 00:05:48,890
-with a clear boundaries and responsibilities.
+với các clear boundaries và responsibilities.
 

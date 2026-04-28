@@ -1,6 +1,6 @@
 1
 00:00:00,080 --> 00:00:06,410
-In this video, we are going to learn how to centralize logging within your application using the mediators
+Trong video này, chúng ta sẽ học cách tập trung hóa logging trong ứng dụng của bạn bằng cách sử dụng mediators
 
 2
 00:00:06,410 --> 00:00:06,830
@@ -12,111 +12,111 @@ Behavior.
 
 4
 00:00:07,910 --> 00:00:14,300
-Consistent logging is crucial in microservices for debugging and monitoring, and usually logging is
+Logging nhất quán là rất quan trọng trong microservices để debug và monitoring, và thường logging được
 
 5
 00:00:14,300 --> 00:00:19,610
-done within each handler method and it is leading to repeated code and duplicated code.
+thực hiện trong mỗi handler method và nó dẫn đến lặp lại code và duplicate code.
 
 6
 00:00:19,610 --> 00:00:24,350
-So we will see how to optimize this using the mediators pipeline behavior.
+Vậy chúng ta sẽ thấy cách tối ưu hóa điều này bằng cách sử dụng mediators pipeline behavior.
 
 7
 00:00:24,350 --> 00:00:27,530
-But before that, let me show you the our handler classes.
+Nhưng trước tiên, hãy để tôi chỉ cho bạn các lớp handler của chúng ta.
 
 8
 00:00:27,530 --> 00:00:32,509
-If you open the Visual Studio and go to the create product handler method, you can see that in this
+Nếu bạn mở Visual Studio và đi tới phương thức create product handler, bạn có thể thấy rằng trong lớp này
 
 9
 00:00:32,509 --> 00:00:34,280
-class we have injected a logger.
+chúng ta đã inject một logger.
 
 10
 00:00:34,280 --> 00:00:38,690
-And after that we will put a log in the beginning of the handle method.
+Và sau đó chúng ta sẽ thêm một log vào đầu handle method.
 
 11
 00:00:38,690 --> 00:00:40,400
-So this is the log information.
+Vậy đây là log information.
 
 12
 00:00:40,400 --> 00:00:44,960
-And this is typically log the incoming handle method and passing the command object.
+Và đây là log điển hình về incoming handle method và truyền object command.
 
 13
 00:00:44,960 --> 00:00:49,160
-And if you look at the other command object for example delete product handle.
+Và nếu bạn nhìn vào object command khác, ví dụ delete product handle.
 
 14
 00:00:49,160 --> 00:00:52,460
-And this is exactly the same what we are going to do.
+Và đây chính xác là điều tương tự mà chúng ta sẽ làm.
 
 15
 00:00:52,460 --> 00:00:55,910
-Inject the logger and logging the incoming handle method.
+Inject logger và logging incoming handle method.
 
 16
 00:00:55,910 --> 00:01:00,710
-And if we look at the update product handle method, this is exactly same.
+Và nếu chúng ta nhìn vào phương thức update product handle, đây cũng chính xác là giống nhau.
 
 17
 00:01:00,710 --> 00:01:05,239
-We have injected logger and logging the information at the beginning of the handle method.
+Chúng ta đã inject logger và logging information ở đầu handle method.
 
 18
 00:01:05,239 --> 00:01:08,780
-So this is not efficient and leading to repetitive code.
+Vậy nên điều này không hiệu quả và dẫn đến code lặp lại.
 
 19
 00:01:08,780 --> 00:01:13,340
-So how to avoid these log information for each handle method.
+Vậy làm thế nào để tránh những log information này cho mỗi handle method.
 
 20
 00:01:13,340 --> 00:01:16,520
-So the solution is mediator pipeline behavior.
+Vậy giải pháp là mediator pipeline behavior.
 
 21
 00:01:16,640 --> 00:01:22,370
-As you can see the image mediator pipeline behavior allows us to inject logic into the handling of the
+Như bạn có thể thấy, mediator pipeline behavior cho phép chúng ta inject logic vào việc xử lý
 
 22
 00:01:22,370 --> 00:01:26,510
-request and making them ideal for cross-cutting concerns like logging.
+request và làm cho chúng lý tưởng cho các cross-cutting concerns như logging.
 
 23
 00:01:26,510 --> 00:01:34,250
-So we can put our cross-cutting concerns in the preprocessor or post-processor before handle the request
+Vậy chúng ta có thể đặt các cross-cutting concerns của chúng ta trong preprocessor hoặc post-processor trước khi xử lý request
 
 24
 00:01:34,250 --> 00:01:36,350
-with using the mediator pipeline behavior.
+bằng cách sử dụng mediator pipeline behavior.
 
 25
 00:01:36,590 --> 00:01:43,940
-For this video, our approach is creating logging behavior class, and this class will log every request
+Cho video này, cách tiếp cận của chúng ta là tạo lớp logging behavior, và lớp này sẽ log mọi request
 
 26
 00:01:43,940 --> 00:01:45,170
-and its response.
+và response của nó.
 
 27
 00:01:45,170 --> 00:01:48,380
-And it will be applied to all mediator requests.
+Và nó sẽ được áp dụng cho tất cả các mediator request.
 
 28
 00:01:48,500 --> 00:01:51,770
-So for that purpose we are going to create logging behavior.
+Vậy cho mục đích đó chúng ta sẽ tạo logging behavior.
 
 29
 00:01:51,770 --> 00:01:56,030
-And please open the Visual Studio and go to the building blocks.
+Và vui lòng mở Visual Studio và đi tới building blocks.
 
 30
 00:01:56,150 --> 00:02:02,120
-Under the building blocks we have behaviors folder that we are going to add new behavior which is the
+Dưới building blocks chúng ta có behaviors folder mà chúng ta sẽ thêm behavior mới đó là
 
 31
 00:02:02,120 --> 00:02:04,160
@@ -124,225 +124,225 @@ logging behavior C-sharp class.
 
 32
 00:02:04,160 --> 00:02:07,730
-So in this class we basically perform logging operations.
+Vậy trong lớp này chúng ta cơ bản thực hiện các logging operations.
 
 33
 00:02:07,730 --> 00:02:11,810
-So as you can see that I'm going to remove unnecessary using statement.
+Vậy như bạn có thể thấy rằng tôi sẽ xóa bỏ các using statement không cần thiết.
 
 34
 00:02:11,810 --> 00:02:17,390
-And the important thing that we should inherit this class from the eye pipeline behavior.
+Và điều quan trọng là chúng ta nên kế thừa lớp này từ eye pipeline behavior.
 
 35
 00:02:17,390 --> 00:02:19,640
-So this behavior comes from the mediator.
+Vậy behavior này đến từ mediator.
 
 36
 00:02:19,640 --> 00:02:23,570
-And this will be including T rex and t response generics.
+Và điều này sẽ bao gồm T rex và t response generics.
 
 37
 00:02:23,570 --> 00:02:28,970
-For that purpose we will also make us logging behavior as a generics.
+Cho mục đích đó chúng ta cũng sẽ làm cho logging behavior của chúng ta là generics.
 
 38
 00:02:28,970 --> 00:02:33,260
-And after that I'm going to implement these AI pipeline behavior.
+Và sau đó tôi sẽ implement eye pipeline behavior này.
 
 39
 00:02:33,260 --> 00:02:35,690
-And this will be create handle method.
+Và điều này sẽ tạo handle method.
 
 40
 00:02:35,690 --> 00:02:38,810
-So before that we should configure our logging behavior.
+Vậy trước khi đó chúng ta nên cấu hình logging behavior của chúng ta.
 
 41
 00:02:38,810 --> 00:02:40,640
-First of all make it public.
+Đầu tiên hãy làm cho nó public.
 
 42
 00:02:40,640 --> 00:02:44,600
-And after that I'm going to inject logger information.
+Và sau đó tôi sẽ inject thông tin logger.
 
 43
 00:02:44,600 --> 00:02:47,390
-So here you can see that we have injected logger.
+Vậy ở đây bạn có thể thấy rằng chúng ta đã inject logger.
 
 44
 00:02:47,390 --> 00:02:52,190
-And after that we have inherit from implement from the AI pipeline behavior.
+Và sau đó chúng ta kế thừa từ implement từ AI pipeline behavior.
 
 45
 00:02:52,190 --> 00:02:58,010
-And I'm going to put some of the filters about the T rex and t response here.
+Và tôi sẽ đặt một số filters về T rex và t response ở đây.
 
 46
 00:02:58,010 --> 00:03:05,930
-You can see that T rex should not be null and also inherited from I rex t response object and t response
+Bạn có thể thấy rằng T rex không nên null và cũng kế thừa từ I rex t response object và t response
 
 47
 00:03:05,930 --> 00:03:06,920
-should not be null.
+không nên null.
 
 48
 00:03:06,920 --> 00:03:10,580
-So please make sure that the signature of the class should be same.
+Vậy hãy chắc chắn rằng signature của class phải giống nhau.
 
 49
 00:03:10,580 --> 00:03:13,880
-And after that we can develop handle method.
+Và sau đó chúng ta có thể phát triển handle method.
 
 50
 00:03:13,880 --> 00:03:19,220
-In the handle method, you can see that this is accepting the t request as a request parameter.
+Trong handle method, bạn có thể thấy rằng đây là accepting t request làm một request parameter.
 
 51
 00:03:19,220 --> 00:03:25,340
-And here you can see the next parameter which is the request handle delegate in order to call the next
+Và ở đây bạn có thể thấy next parameter đó là request handle delegate để gọi next
 
 52
 00:03:25,340 --> 00:03:27,980
-pipeline or actual handle operation.
+pipeline hoặc actual handle operation.
 
 53
 00:03:27,980 --> 00:03:31,190
-So now I'm going to make this class as a async.
+Vậy bây giờ tôi sẽ làm class này thành async.
 
 54
 00:03:31,190 --> 00:03:38,510
-And in the first line of the code we should always logging the incoming requests for that purpose.
+Và trong dòng đầu tiên của code chúng ta nên luôn logging các incoming requests để có mục đích đó.
 
 55
 00:03:38,510 --> 00:03:45,290
-I'm going to put logging information, and we are putting a start prefix and give some detail about
+Tôi sẽ đặt thông tin logging, và chúng ta đang đặt một start prefix và cung cấp một số chi tiết về
 
 56
 00:03:45,290 --> 00:03:48,440
-the request and response with the incoming object.
+request và response với incoming object.
 
 57
 00:03:48,440 --> 00:03:51,020
-You can see the request data also including.
+Bạn có thể thấy request data cũng bao gồm.
 
 58
 00:03:51,020 --> 00:03:53,600
-So we will paste these information.
+Vậy chúng ta sẽ dán các thông tin này.
 
 59
 00:03:53,600 --> 00:03:57,260
-This is the name of the T request and this is the name of the response.
+Đây là tên của T request và đây là tên của response.
 
 60
 00:03:57,260 --> 00:04:00,050
-And I'm going to paste the whole request object.
+Và tôi sẽ dán toàn bộ request object.
 
 61
 00:04:00,050 --> 00:04:06,320
-After logging the incoming request we can calculate the duration of the request and process time.
+Sau khi ghi lại request đến, chúng ta có thể tính toán thời lượng của request và thời gian xử lý.
 
 62
 00:04:06,320 --> 00:04:09,140
-You can see that we basically add a timer.
+Bạn có thể thấy rằng về cơ bản chúng ta thêm một timer.
 
 63
 00:04:09,140 --> 00:04:16,310
-And in the timer we will get a start and stop and duration of the actual handle operation.
+Và trong timer, chúng ta sẽ lấy thời gian bắt đầu, dừng và khoảng thời gian của thao tác xử lý thực tế.
 
 64
 00:04:16,310 --> 00:04:24,950
-And if the time taken more than 32nd, we are putting warning log and this will be the performance indication
+Và nếu thời gian lấy nhiều hơn 32 giây, chúng ta sẽ ghi lại cảnh báo và đây sẽ là chỉ báo hiệu suất.
 
 65
 00:04:24,950 --> 00:04:27,710
-and performance concern for our application.
+và mối quan tâm về hiệu suất của ứng dụng chúng ta.
 
 66
 00:04:27,710 --> 00:04:33,440
-So this is a very good illustration and logging operation for understanding the long running operations
+Vậy đây là một minh họa rất tốt và thao tác ghi log để hiểu các thao tác chạy lâu
 
 67
 00:04:33,440 --> 00:04:34,700
-in your handle method.
+trong phương thức handle của bạn.
 
 68
 00:04:34,700 --> 00:04:39,080
-And lastly we will logging the end of the handle method.
+Và cuối cùng chúng ta sẽ ghi lại kết thúc của phương thức handle.
 
 69
 00:04:39,080 --> 00:04:44,720
-And we indicate that this handle operation is finished with this request and response.
+Và chúng ta chỉ ra rằng thao tác handle này đã hoàn tất với request và response này.
 
 70
 00:04:44,720 --> 00:04:48,530
-And we are returning the response object to the next operation.
+Và chúng ta đang trả về response object cho thao tác tiếp theo.
 
 71
 00:04:48,530 --> 00:04:51,620
-So we have completed the logging behavior.
+Vậy chúng ta đã hoàn thành hành vi ghi log.
 
 72
 00:04:51,620 --> 00:04:58,010
-And in this logging behavior we basically implement AI pipeline behavior interface.
+Và trong hành vi ghi log này, về cơ bản chúng ta triển khai AI pipeline behavior interface.
 
 73
 00:04:58,010 --> 00:04:59,840
-And it is logging at the start.
+Và nó ghi log ở lúc bắt đầu.
 
 74
 00:05:00,070 --> 00:05:04,030
-And at the end of the each request and measures execution time.
+Và ở cuối mỗi request và đo lường thời gian thực thi.
 
 75
 00:05:04,030 --> 00:05:10,330
-In order to apply this behavior globally, we need to register it in the dependency injection container.
+Để áp dụng hành vi này toàn cầu, chúng ta cần đăng ký nó trong dependency injection container.
 
 76
 00:05:10,330 --> 00:05:14,290
-For that purpose, please go to the Catholic API program case.
+Với mục đích đó, vui lòng đi đến tệp Program.cs của Catalog API.
 
 77
 00:05:14,560 --> 00:05:20,080
-And as you remember that we are adding all the behaviors about the mediator in the configuration of
+Và như bạn nhớ rằng chúng ta đang thêm tất cả các hành vi về mediator trong cấu hình của
 
 78
 00:05:20,080 --> 00:05:21,610
-the mediator block.
+khối mediator.
 
 79
 00:05:21,610 --> 00:05:27,100
-In this block, add mediator block, we can configure add open behavior for the validation behavior.
+Trong khối này, khối add mediator, chúng ta có thể cấu hình add open behavior cho validation behavior.
 
 80
 00:05:27,100 --> 00:05:32,230
-Before now I am going to add a new open behavior which is the logging behavior.
+Trước đây tôi sẽ thêm một open behavior mới, đó là logging behavior.
 
 81
 00:05:32,230 --> 00:05:35,260
-So you can copy paste the logging behavior in here.
+Vậy bạn có thể sao chép và dán hành vi logging ở đây.
 
 82
 00:05:35,260 --> 00:05:39,970
-And you can add a second behavior into our each mediator pipelines.
+Và bạn có thể thêm một hành vi thứ hai vào mỗi mediator pipelines của chúng ta.
 
 83
 00:05:39,970 --> 00:05:45,790
-This configuration provides that our logging behavior is applied to every mediator request.
+Cấu hình này đảm bảo rằng logging behavior của chúng ta được áp dụng cho mọi mediator request.
 
 84
 00:05:45,790 --> 00:05:51,370
-So why we are using logging behavior for the mediator because we have lots of benefits.
+Vậy tại sao chúng ta sử dụng logging behavior cho mediator vì chúng ta có rất nhiều lợi ích.
 
 85
 00:05:51,370 --> 00:05:55,990
-For example now it is a centralized logging for every request and response.
+Ví dụ, bây giờ nó là logging tập trung cho mọi request và response.
 
 86
 00:05:55,990 --> 00:05:58,810
-And it is a consistent format for log entries.
+Và nó là một định dạng nhất quán cho các log entries.
 
 87
 00:05:58,810 --> 00:06:02,110
-And it increases the performance monitoring for each request.
+Và nó tăng performance monitoring cho mỗi request.
 

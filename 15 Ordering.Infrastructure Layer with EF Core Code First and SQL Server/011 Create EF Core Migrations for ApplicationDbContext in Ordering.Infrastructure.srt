@@ -1,78 +1,78 @@
 1
 00:00:00,110 --> 00:00:07,310
-In this video we are going to do step six which is create Entity Framework core migrations for application
+Trong video này, chúng ta sẽ thực hiện bước sáu, đó là tạo Entity Framework Core migrations cho ứng dụng
 
 2
 00:00:07,310 --> 00:00:09,890
-DB context in ordering infrastructure.
+DB context trong ordering infrastructure.
 
 3
 00:00:10,040 --> 00:00:15,230
-But before that, let's understand what is Entity Framework core migrations.
+Nhưng trước tiên, hãy hiểu Entity Framework Core migrations là gì.
 
 4
 00:00:15,770 --> 00:00:22,220
-Entity framework core migrations are a powerful feature for managing database schema changes in an application's
+Entity Framework Core migrations là một tính năng mạnh mẽ để quản lý các thay đổi schema cơ sở dữ liệu trong vòng đời ứng dụng
 
 5
 00:00:22,220 --> 00:00:23,120
-life cycle.
+của ứng dụng.
 
 6
 00:00:23,690 --> 00:00:30,440
-They enable a developer to evolve a database schema in a controlled and consistent way, in line with
+Chúng cho phép nhà phát triển phát triển schema cơ sở dữ liệu một cách có kiểm soát và nhất quán, phù hợp với
 
 7
 00:00:30,440 --> 00:00:31,190
-the domain model.
+domain model.
 
 8
 00:00:31,190 --> 00:00:33,800
-Changes in real world projects.
+Thay đổi trong các dự án thực tế.
 
 9
 00:00:33,800 --> 00:00:35,450
-Data models change.
+Data models thay đổi.
 
 10
 00:00:35,450 --> 00:00:42,680
-As features get implemented, new entities or properties are added and removed, and database schemas
+Khi các tính năng được triển khai, các entities hoặc properties mới được thêm vào và loại bỏ, và database schemas
 
 11
 00:00:42,680 --> 00:00:47,510
-need to be changed accordingly to be kept in sync with the application.
+cần phải thay đổi tương ứng để giữ đồng bộ với ứng dụng.
 
 12
 00:00:48,170 --> 00:00:54,740
-Migrations provide a way to incrementally update the database schema so that it stays in synchronous
+Migrations cung cấp một cách để cập nhật schema cơ sở dữ liệu một cách từng bước để nó luôn đồng bộ
 
 13
 00:00:54,740 --> 00:00:56,780
-with the application's data model.
+với data model của ứng dụng.
 
 14
 00:00:57,500 --> 00:01:03,830
-It is especially useful in team environment and continuous deployment scenarios, where database schema
+Điều này đặc biệt hữu ích trong môi trường làm việc nhóm và các kịch bản triển khai liên tục, nơi mà schema cơ sở dữ liệu
 
 15
 00:01:03,830 --> 00:01:07,490
-changes are frequent and need to be applied systematically.
+thay đổi thường xuyên và cần được áp dụng một cách có hệ thống.
 
 16
 00:01:08,390 --> 00:01:15,860
-So how Entity Framework core migration works when a data model change occurs, developers use Entity
+Vậy Entity Framework Core migration hoạt động như thế nào khi xảy ra thay đổi data model, các nhà phát triển sử dụng Entity
 
 17
 00:01:15,860 --> 00:01:21,740
-Framework core Tools in order to create a corresponding migration folder that describes the necessary
+Framework Core Tools để tạo ra một folder migration tương ứng mô tả các thay đổi cơ sở dữ liệu cần thiết.
 
 18
 00:01:21,740 --> 00:01:22,970
-database updates.
+Entity Framework Core so sánh model hiện tại với một snapshot của model trước đó để
 
 19
 00:01:23,330 --> 00:01:29,240
-Entity Framework Core compares the current model against a snapshot of the previous model in order to
+tìm ra sự khác biệt và tạo ra các file nguồn migration.
 
 20
 00:01:29,240 --> 00:01:32,510
@@ -80,217 +80,217 @@ find differences and generate migration source files.
 
 21
 00:01:32,540 --> 00:01:38,870
-Once any migration has been generated, it can be applied to a database in various ways.
+Sau khi bất kỳ migration nào được tạo ra, nó có thể được áp dụng cho một database theo nhiều cách khác nhau.
 
 22
 00:01:38,900 --> 00:01:45,590
-Entity framework Core records all applied migrations in a special history table, allowing it to know
+Entity Framework Core ghi lại tất cả các migrations đã áp dụng trong một bảng lịch sử đặc biệt, cho phép nó biết
 
 23
 00:01:45,590 --> 00:01:48,890
-which migrations has been applied and which haven't.
+migrations nào đã được áp dụng và migrations nào chưa được áp dụng.
 
 24
 00:01:50,050 --> 00:01:54,940
-So we will use Entity Framework core code first approach in our application.
+Vậy chúng ta sẽ sử dụng phương pháp Entity Framework Core Code First trong ứng dụng của mình.
 
 25
 00:01:54,940 --> 00:02:01,150
-We have already followed the Entity Framework Core Code first approach with creating Dbcontext class,
+Chúng ta đã sử dụng phương pháp Entity Framework Core Code First bằng cách tạo lớp Dbcontext,
 
 26
 00:02:01,150 --> 00:02:06,730
-developing entity class and configure Entity Framework core entities in the configuration files.
+phát triển lớp entity và cấu hình Entity Framework Core entities trong các tệp cấu hình.
 
 27
 00:02:06,730 --> 00:02:09,460
-Now it is time to perform migrations.
+Bây giờ là lúc để thực hiện migrations.
 
 28
 00:02:09,460 --> 00:02:16,210
-In this approach, database creation and schema updates are driven by the entity class and the Dbcontext
+Trong phương pháp này, việc tạo database và cập nhật schema được điều khiển bởi lớp entity và Dbcontext
 
 29
 00:02:16,210 --> 00:02:18,160
-configurations in the application.
+configurations trong ứng dụng.
 
 30
 00:02:18,160 --> 00:02:24,460
-That means, first of all, we should complete the development of the entity class configurations and
+Điều đó có nghĩa là, đầu tiên, chúng ta cần hoàn thành việc phát triển các cấu hình lớp entity và
 
 31
 00:02:24,460 --> 00:02:25,960
-Dbcontext classes.
+các lớp Dbcontext.
 
 32
 00:02:25,960 --> 00:02:29,920
-After that, we can run the Entity Framework core migration commands.
+Sau đó, chúng ta có thể chạy các lệnh Entity Framework Core migration.
 
 33
 00:02:29,920 --> 00:02:34,480
-So we are at this stage of the running Entity Framework core migration commands.
+Vậy chúng ta đang ở giai đoạn chạy các lệnh Entity Framework Core migration.
 
 34
 00:02:34,960 --> 00:02:39,070
-So how we can run these Entity Framework core migration commands.
+Vậy làm thế nào chúng ta có thể chạy các lệnh Entity Framework Core migration này.
 
 35
 00:02:39,070 --> 00:02:43,570
-In order to create database we have two ways to perform this command.
+Để tạo database, chúng ta có hai cách để thực hiện lệnh này.
 
 36
 00:02:43,570 --> 00:02:46,570
-The first one is using the dotnet core CLI.
+Cách thứ nhất là sử dụng dotnet core CLI.
 
 37
 00:02:46,600 --> 00:02:54,220
-We can follow the dotnet f and Microsoft Entity Framework core design packages for cross platform command
+Chúng ta có thể sử dụng dotnet ef và các gói Microsoft Entity Framework Core Design cho công cụ dòng lệnh
 
 38
 00:02:54,220 --> 00:02:57,430
-line tooling, including the dotnet command.
+đa nền tảng, bao gồm lệnh dotnet.
 
 39
 00:02:57,430 --> 00:03:03,250
-First of all, we will install the dotnet f global tool, and after that we will add the package which
+Đầu tiên, chúng ta sẽ cài đặt công cụ dotnet ef global, và sau đó chúng ta sẽ thêm gói có
 
 40
 00:03:03,250 --> 00:03:04,360
-name is design.
+tên là design.
 
 41
 00:03:04,360 --> 00:03:10,360
-And after that we can run the migrations to create migration folder with running dotnet f migrations.
+Và sau đó chúng ta có thể chạy các migrations để tạo thư mục migration bằng cách chạy dotnet f migrations.
 
 42
 00:03:10,360 --> 00:03:16,990
-Add an initial create which is the name of the the first initial migration folder, and after that we
+Thêm một initial create, đó là tên của thư mục migration ban đầu đầu tiên, và sau đó chúng ta
 
 43
 00:03:16,990 --> 00:03:22,690
-can perform these migrations to the database with running dotnet f database update.
+có thể thực hiện các migrations này vào cơ sở dữ liệu bằng cách chạy dotnet f database update.
 
 44
 00:03:23,290 --> 00:03:26,650
-But the second way is using the Package Manager console.
+Nhưng cách thứ hai là sử dụng Package Manager console.
 
 45
 00:03:26,650 --> 00:03:33,730
-In Visual Studio we can use Microsoft Entity Framework core tools, NuGet packages for PowerShell tooling
+Trong Visual Studio chúng ta có thể sử dụng Microsoft Entity Framework Core tools, NuGet packages cho PowerShell tooling
 
 46
 00:03:33,730 --> 00:03:36,790
-that works in the Visual Studio Package Manager console.
+hoạt động trong Visual Studio Package Manager console.
 
 47
 00:03:36,790 --> 00:03:43,810
-So in this case we will install the package which name is tools NuGet package, and after that we can
+Vậy trong trường hợp này chúng ta sẽ cài đặt package có tên là tools NuGet package, và sau đó chúng ta có thể
 
 48
 00:03:43,810 --> 00:03:48,100
-run the Add migrations initial Create and update database command.
+chạy lệnh Add migrations initial Create và update database.
 
 49
 00:03:48,100 --> 00:03:53,230
-In the Package Manager console in order to create migration folder and update the database.
+Trong Package Manager console để tạo thư mục migration và cập nhật cơ sở dữ liệu.
 
 50
 00:03:53,230 --> 00:04:00,220
-So we will use and follow the second way when we are developing our application, I'm using Visual Studio
+Vậy chúng ta sẽ sử dụng và tuân theo cách thứ hai khi chúng ta đang phát triển ứng dụng của mình, tôi đang sử dụng Visual Studio
 
 51
 00:04:00,220 --> 00:04:01,570
-and Package Manager Console.
+và Package Manager Console.
 
 52
 00:04:01,570 --> 00:04:04,510
-That's why we have installed these tools NuGet packages.
+Đó là lý do tại sao chúng ta đã cài đặt các tools NuGet packages này.
 
 53
 00:04:04,510 --> 00:04:08,680
-Now it is time to run these commands under the Package Manager console.
+Bây giờ là lúc để chạy các lệnh này trong Package Manager console.
 
 54
 00:04:08,680 --> 00:04:13,330
-And before that I'm going to show Entity Framework Core migrations.
+Và trước đó tôi sẽ giới thiệu Entity Framework Core migrations.
 
 55
 00:04:13,330 --> 00:04:17,800
-Add migration command parameters that we can define when running our commands.
+Các tham số lệnh Add migration mà chúng ta có thể xác định khi chạy các lệnh của mình.
 
 56
 00:04:17,800 --> 00:04:22,630
-You can see that we can give the name of the migrations, which is the name of the migration.
+Bạn có thể thấy rằng chúng ta có thể đặt tên cho migrations, đó là tên của migration.
 
 57
 00:04:22,630 --> 00:04:28,660
-And here you can see output tier which is the directory where migration files will be created.
+Và ở đây bạn có thể thấy output tier, đó là thư mục nơi các tệp migration sẽ được tạo.
 
 58
 00:04:28,660 --> 00:04:31,030
-And here you can see the namespace.
+Và ở đây bạn có thể thấy namespace.
 
 59
 00:04:31,030 --> 00:04:33,760
-This is the namespace for generated classes.
+Đây là namespace cho các lớp được tạo.
 
 60
 00:04:33,760 --> 00:04:35,770
-And we can specify the context.
+Và chúng ta có thể chỉ định context.
 
 61
 00:04:35,770 --> 00:04:38,680
-This is the context class that we can use.
+Đây là context class mà chúng ta có thể sử dụng.
 
 62
 00:04:38,680 --> 00:04:40,960
-And also we can specify the project.
+Và chúng ta cũng có thể chỉ định project.
 
 63
 00:04:40,960 --> 00:04:43,360
-This is the project containing the context.
+Đây là project chứa context.
 
 64
 00:04:43,360 --> 00:04:46,120
-And we can also specify the startup project.
+Và chúng ta cũng có thể chỉ định startup project.
 
 65
 00:04:46,120 --> 00:04:49,450
-This is the project with the configurations and settings.
+Đây là project có chứa các cấu hình và settings.
 
 66
 00:04:49,840 --> 00:04:54,340
-At this stage we have a special consideration for different assemblies.
+Ở giai đoạn này chúng ta có một cân nhắc đặc biệt cho các assembly khác nhau.
 
 67
 00:04:54,340 --> 00:05:01,630
-Since we are applying the clean architecture or infrastructure layer and Dbcontext class starting on
+Vì chúng ta đang áp dụng clean architecture hay infrastructure layer và Dbcontext class bắt đầu từ
 
 68
 00:05:01,630 --> 00:05:02,920
-the ordering infrastructure.
+ordering infrastructure.
 
 69
 00:05:02,920 --> 00:05:09,490
-But our API layer is different layer, which is the presentation layer that we need to consider the
+Nhưng API layer của chúng ta là một layer khác, đó là presentation layer mà chúng ta cần cân nhắc đến
 
 70
 00:05:09,490 --> 00:05:14,260
-different assemblies when generating the migrations and running the migration commands.
+các assembly khác nhau khi tạo migrations và chạy các lệnh migration.
 
 71
 00:05:14,260 --> 00:05:21,040
-If the Dbcontext class is in different assembly than the startup project, you need to specify both
+Nếu Dbcontext class nằm trong assembly khác với startup project, bạn cần chỉ định cả
 
 72
 00:05:21,040 --> 00:05:26,830
-target and startup project, either in the Package Manager console tools or the dotnet core CLI tools.
+target và startup project, hoặc trong Package Manager console tools hoặc dotnet core CLI tools.
 
 73
 00:05:26,830 --> 00:05:33,310
-So we will use the startup project, and the startup project will be the ordering API.
+Vậy chúng ta sẽ sử dụng startup project, và startup project sẽ là ordering API.
 
 74
 00:05:33,310 --> 00:05:40,030
-And we will use the target project, which is the Dbcontext object for the ordering infrastructure layer.
+Và chúng ta sẽ sử dụng target project, đó là Dbcontext object cho ordering infrastructure layer.
 

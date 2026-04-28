@@ -1,6 +1,6 @@
 1
 00:00:00,170 --> 00:00:06,620
-In this video, we are going to learn ASP.Net Feature Management to develop feature flags for order
+Trong video này, chúng ta sẽ học về ASP.Net Feature Management để phát triển feature flags cho order
 
 2
 00:00:06,620 --> 00:00:08,300
@@ -8,39 +8,39 @@ created integration events.
 
 3
 00:00:08,330 --> 00:00:09,650
-So let me start.
+Vậy hãy bắt đầu.
 
 4
 00:00:09,650 --> 00:00:11,330
-What is feature flags?
+Feature flags là gì?
 
 5
 00:00:11,360 --> 00:00:17,870
-Feature flags are a powerful technique in software development, allowing teams to modify system behavior
+Feature flags là một kỹ thuật mạnh mẽ trong phát triển phần mềm, cho phép các đội thay đổi hành vi của hệ thống
 
 6
 00:00:17,870 --> 00:00:19,580
-without changing the code.
+mà không thay đổi code.
 
 7
 00:00:19,610 --> 00:00:26,540
-They enable functionalities to be turned on or turned off dynamically, providing flexibility in deployment
+Chúng cho phép các chức năng được bật hoặc tắt một cách động, mang lại tính linh hoạt trong triển khai
 
 8
 00:00:26,540 --> 00:00:27,620
-and testing.
+và kiểm thử.
 
 9
 00:00:27,650 --> 00:00:31,190
-So ASP.Net core also providing feature management.
+Vậy ASP.Net core cũng cung cấp feature management.
 
 10
 00:00:31,400 --> 00:00:37,760
-ASP.Net core support feature management integrating seamlessly with the existing configuration system.
+ASP.Net core hỗ trợ feature management tích hợp một cách liền mạch với hệ thống cấu hình hiện có.
 
 11
 00:00:38,180 --> 00:00:44,720
-Microsoft Feature Management ASP.Net is a NuGet package that offers a streamlined approach to implement
+Microsoft Feature Management ASP.Net là một gói NuGet cung cấp một cách tiếp cận được sắp xếp gọn gàng để triển khai
 
 12
 00:00:44,720 --> 00:00:45,650
@@ -48,51 +48,51 @@ feature flags.
 
 13
 00:00:45,980 --> 00:00:50,570
-So why we need to use feature Flag for order fulfillment event.
+Vậy tại sao chúng ta cần sử dụng feature flag cho order fulfillment event.
 
 14
 00:00:51,050 --> 00:00:57,770
-The problem is we have unnecessary event messages in RabbitMQ and premature triggering of order fulfillment
+Vấn đề là chúng ta có các thư điệp event không cần thiết trong RabbitMQ và kích hoạt sớm của
 
 15
 00:00:57,770 --> 00:00:58,610
-process.
+quá trình order fulfillment.
 
 16
 00:00:58,700 --> 00:01:04,250
-And as a solution, we should implement a feature flag for the order fulfillment event, allowing it
+Và như một giải pháp, chúng ta nên triển khai một feature flag cho order fulfillment event, cho phép nó
 
 17
 00:01:04,250 --> 00:01:10,610
-to be enabled or disabled based on the readiness of the other microservices looking for the configurations.
+được bật hoặc tắt dựa trên tính sẵn sàng của các microservices khác theo dõi các cấu hình.
 
 18
 00:01:11,000 --> 00:01:13,610
-So for that purpose, please open the Visual Studio.
+Vậy với mục đích đó, vui lòng mở Visual Studio.
 
 19
 00:01:13,610 --> 00:01:19,040
-And here you can see that we have published an integration event in the order created Domain event.
+Và ở đây bạn có thể thấy rằng chúng ta đã xuất bản một integration event trong order created Domain event.
 
 20
 00:01:19,040 --> 00:01:25,040
-But this is a new feature that should be available when the subscriber order fulfillment microservices
+Nhưng đây là một tính năng mới sẽ có sẵn khi microservices subscriber order fulfillment
 
 21
 00:01:25,040 --> 00:01:25,910
-are developed.
+được phát triển.
 
 22
 00:01:25,910 --> 00:01:30,950
-Since that time it will create unnecessary message event message in the RabbitMQ.
+Kể từ thời điểm đó, nó sẽ tạo ra các sự kiện tin nhắn không cần thiết trong RabbitMQ.
 
 23
 00:01:30,980 --> 00:01:36,440
-In order to avoid that, it is good to manage this feature with ASP.Net feature management.
+Để tránh điều đó, nên quản lý tính năng này với ASP.Net feature management.
 
 24
 00:01:36,440 --> 00:01:42,710
-Also, as you know that when ordering microservice start up, it will migrate and seed the data in the
+Cũng như bạn biết rằng khi ordering microservice khởi động, nó sẽ migrate và seed dữ liệu trong
 
 25
 00:01:42,710 --> 00:01:44,030
@@ -100,35 +100,35 @@ ordering infrastructure layer.
 
 26
 00:01:44,030 --> 00:01:49,070
-We have seen in the database extensions that will create order and publish these messages.
+Chúng ta đã thấy trong database extensions sẽ tạo order và publish các tin nhắn này.
 
 27
 00:01:49,070 --> 00:01:54,350
-So it is good to skip this point for order fulfillment event creation using the feature flags.
+Vậy nên tốt hơn nếu bỏ qua bước này cho việc tạo order fulfillment event bằng cách sử dụng feature flags.
 
 28
 00:01:54,350 --> 00:01:57,770
-So we will put the feature flag for these two line of code.
+Vậy chúng ta sẽ đặt feature flag cho hai dòng code này.
 
 29
 00:01:57,770 --> 00:02:04,370
-So the first thing we must do add a Microsoft Feature management ASP.Net core NuGet packages the feature
+Vậy điều đầu tiên chúng ta phải làm là thêm Microsoft Feature Management ASP.Net core NuGet packages - thư viện Feature Flag Management quản lý vòng đời feature flag ở phía sau.
 
 30
 00:02:04,370 --> 00:02:09,080
-Flag Management library manage the feature flag lifecycle on behind of the scenes.
+quản lý vòng đời feature flag ở phía sau.
 
 31
 00:02:09,080 --> 00:02:15,260
-This gives us the ability to change feature flags at runtime without needing to restart the application,
+Điều này cho phép chúng ta thay đổi feature flags khi ứng dụng đang chạy mà không cần khởi động lại ứng dụng,
 
 32
 00:02:15,260 --> 00:02:17,030
-but where we should install it.
+nhưng chúng ta nên cài đặt nó ở đâu.
 
 33
 00:02:17,030 --> 00:02:22,850
-Since feature management is a generic operation, it is good to install this package into building blocks.
+Vì feature management là một hoạt động chung, nên tốt hơn nếu cài đặt gói này vào building blocks.
 
 34
 00:02:22,850 --> 00:02:23,810
@@ -136,67 +136,67 @@ Class library.
 
 35
 00:02:24,020 --> 00:02:29,570
-Here you can see that we have a building blocks that using from the common operations for each microservices.
+Ở đây bạn có thể thấy chúng ta có building blocks mà sử dụng từ các hoạt động chung cho mỗi microservices.
 
 36
 00:02:29,570 --> 00:02:35,300
-So it is a best practice to using ASP.Net feature management NuGet packages, installing the building
+Vậy nên đó là best practice để sử dụng ASP.Net feature management NuGet packages, cài đặt vào building
 
 37
 00:02:35,300 --> 00:02:38,390
-blocks in order to reflect for each microservices.
+blocks để phản ánh cho mỗi microservices.
 
 38
 00:02:38,390 --> 00:02:44,900
-So I'm going to install NuGet packages, which is Microsoft Feature Management, ASP.Net core.
+Vậy tôi sẽ cài đặt NuGet packages, đó là Microsoft Feature Management, ASP.Net core.
 
 39
 00:02:44,900 --> 00:02:49,280
-For that purpose, I'm going to come here and go to dependencies of the building blocks.
+Để làm điều đó, tôi sẽ đến đây và đi tới dependencies của building blocks.
 
 40
 00:02:49,280 --> 00:02:51,650
-Right click and manage NuGet packages.
+Nhấp chuột phải và quản lý NuGet packages.
 
 41
 00:02:53,640 --> 00:02:58,590
-So we will browse Microsoft that feature management dot ASP.Net core.
+Vậy chúng ta sẽ duyệt Microsoft feature management dot ASP.Net core.
 
 42
 00:02:58,650 --> 00:03:03,450
-So here you can see the package that we are going to install in the building blocks dependencies.
+Vậy ở đây bạn có thể thấy package mà chúng ta sẽ cài đặt trong các building blocks dependencies.
 
 43
 00:03:03,450 --> 00:03:07,350
-And this approach centralizes the feature management for all microservices.
+Và cách tiếp cận này tập trung hóa feature management cho tất cả các microservices.
 
 44
 00:03:07,350 --> 00:03:09,750
-Please install these NuGet packages.
+Vui lòng cài đặt các NuGet packages này.
 
 45
 00:03:12,840 --> 00:03:17,910
-If you double click the building blocks and save this project file, you can see that we have added
+Nếu bạn double click vào building blocks và save project file này, bạn có thể thấy rằng chúng ta đã thêm
 
 46
 00:03:17,910 --> 00:03:21,600
-the Microsoft Feature Management ASP.Net core under the building blocks.
+Microsoft Feature Management ASP.Net core dưới building blocks.
 
 47
 00:03:21,600 --> 00:03:27,660
-So now every microservices can enable feature management using this package from the building blocks.
+Vậy bây giờ mỗi microservices có thể enable feature management sử dụng package này từ building blocks.
 
 48
 00:03:27,660 --> 00:03:32,100
-So now I am going to activate the feature flag for ordering microservices.
+Vậy bây giờ tôi sẽ activate feature flag cho ordering microservices.
 
 49
 00:03:32,100 --> 00:03:35,520
-And we should register feature management in the dependency injection.
+Và chúng ta nên register feature management trong dependency injection.
 
 50
 00:03:35,520 --> 00:03:41,010
-So we will go to ordering Application Dependency injection class to adding services for the add feature
+Vậy chúng ta sẽ đi tới ordering Application Dependency injection class để thêm services cho add feature
 
 51
 00:03:41,010 --> 00:03:41,760
@@ -204,31 +204,31 @@ management.
 
 52
 00:03:41,760 --> 00:03:47,520
-And if you go to ordering application and go to the dependency injection, you can see that we are registering
+Và nếu bạn đi tới ordering application và đi tới dependency injection, bạn có thể thấy rằng chúng ta đang registering
 
 53
 00:03:47,520 --> 00:03:52,710
-the services in this place, and we will adding the feature management that will enable feature management
+services ở chỗ này, và chúng ta sẽ thêm feature management để enable feature management
 
 54
 00:03:52,710 --> 00:03:54,210
-in the ordering microservices.
+trong ordering microservices.
 
 55
 00:03:54,210 --> 00:03:59,730
-If you come to the this point before add message broker, we can again use the services.
+Nếu bạn đi tới điểm này trước khi add message broker, chúng ta có thể lại sử dụng services.
 
 56
 00:03:59,730 --> 00:04:04,560
-And this time I'm going to add a add feature management extension method.
+Và lần này tôi sẽ add một add feature management extension method.
 
 57
 00:04:06,910 --> 00:04:12,940
-By adding this line of code, we will enabling the feature management for the ordering microservices.
+Bằng cách thêm dòng code này, chúng ta sẽ enable feature management cho ordering microservices.
 
 58
 00:04:12,940 --> 00:04:18,010
-And after that we should configure the feature management configuration on the ordering API application
+Và sau đó chúng ta nên configure feature management configuration trên ordering API application
 
 59
 00:04:18,010 --> 00:04:19,420
@@ -236,59 +236,59 @@ settings Json file.
 
 60
 00:04:19,630 --> 00:04:24,700
-After adding this line of code in the Dependency injection class, it is time to define the feature
+Sau khi thêm dòng code này trong Dependency injection class, đã đến lúc để định nghĩa feature
 
 61
 00:04:24,700 --> 00:04:29,380
-flag configuration in the configuration file of the ordering microservices, which is the application
+cấu hình flag trong tệp cấu hình của ordering microservices, đó là tệp application settings Json
 
 62
 00:04:29,380 --> 00:04:31,600
-settings Json file for that purpose.
+cho mục đích đó.
 
 63
 00:04:31,630 --> 00:04:35,710
-Please go to the ordering API and open the application settings Json file.
+Vui lòng đi tới ordering API và mở tệp application settings Json.
 
 64
 00:04:35,710 --> 00:04:42,520
-And just after the adding configurations for the message broker, I am going to add a new configuration.
+Và ngay sau khi thêm cấu hình cho message broker, tôi sẽ thêm một cấu hình mới.
 
 65
 00:04:42,520 --> 00:04:44,740
-Which name is Feature Management?
+Tên của nó là Feature Management?
 
 66
 00:04:44,740 --> 00:04:49,480
-Here you can see that we have added a new section, which name is feature management.
+Ở đây bạn có thể thấy rằng chúng ta đã thêm một section mới, tên là feature management.
 
 67
 00:04:49,480 --> 00:04:53,830
-And under this Json section we have a order fulfillment feature.
+Và dưới section Json này chúng ta có một order fulfillment feature.
 
 68
 00:04:53,830 --> 00:04:55,360
-That value is true.
+Giá trị của nó là true.
 
 69
 00:04:55,360 --> 00:05:01,960
-So we defined order fulfillment flag as a true that we can use it on the fly when running the application.
+Vậy chúng ta đã định nghĩa order fulfillment flag là true để chúng ta có thể sử dụng nó khi ứng dụng đang chạy.
 
 70
 00:05:01,960 --> 00:05:07,480
-So we will use this feature flag in the event handlers for that purpose, we should go to the ordering
+Vậy chúng ta sẽ sử dụng feature flag này trong event handlers, để làm việc đó, chúng ta nên đi tới application layer của ordering
 
 71
 00:05:07,480 --> 00:05:13,240
-application layer and go to the orders event handlers, domain event handlers and order created domain
+và đi tới orders event handlers, domain event handlers và order created domain
 
 72
 00:05:13,240 --> 00:05:18,070
-event handler that we are publishing integration event in this domain event handler.
+event handler mà chúng ta đang publish integration event trong domain event handler này.
 
 73
 00:05:18,070 --> 00:05:23,530
-So we will check the feature flag in the order created event handler before publishing the integration
+Vậy chúng ta sẽ kiểm tra feature flag trong order created event handler trước khi publish integration
 
 74
 00:05:23,530 --> 00:05:23,890
@@ -296,31 +296,31 @@ event.
 
 75
 00:05:23,890 --> 00:05:30,040
-That means we will utilize it feature management interface in order to determine if the feature is enabled
+Điều đó có nghĩa là chúng ta sẽ sử dụng feature management interface để xác định xem feature có được bật
 
 76
 00:05:30,040 --> 00:05:30,670
-or not.
+hay không.
 
 77
 00:05:30,670 --> 00:05:34,000
-So we will develop feature flag into order created event handler.
+Vậy chúng ta sẽ phát triển feature flag vào order created event handler.
 
 78
 00:05:34,000 --> 00:05:40,180
-In our case, we would like to on off dynamically for the order fulfillment event creation feature according
+Trong trường hợp của chúng ta, chúng ta muốn bật tắt một cách động cho feature tạo order fulfillment event theo
 
 79
 00:05:40,210 --> 00:05:41,110
-to feature flag.
+feature flag.
 
 80
 00:05:41,110 --> 00:05:44,500
-For that purpose, I am going to inject a new services.
+Để làm việc đó, tôi sẽ inject một services mới.
 
 81
 00:05:44,500 --> 00:05:51,220
-After the I publish endpoint, I am going to inject AI feature manager interface which name is Feature
+Sau khi tôi publish endpoint, tôi sẽ inject AI feature manager interface có tên là Feature
 
 82
 00:05:51,220 --> 00:05:51,760
@@ -328,83 +328,83 @@ Manager.
 
 83
 00:05:51,760 --> 00:05:58,000
-So please inject AI Feature Manager into the primary constructor of the order created event handler.
+Vậy hãy inject AI Feature Manager vào primary constructor của order created event handler.
 
 84
 00:05:58,000 --> 00:05:59,890
-So now we have three services.
+Vậy bây giờ chúng ta có ba services.
 
 85
 00:05:59,890 --> 00:06:05,800
-The first one is I publish endpoint, the second one I feature manager and third one is Ilogger.
+Cái đầu tiên là I publish endpoint, cái thứ hai là I feature manager và cái thứ ba là Ilogger.
 
 86
 00:06:05,800 --> 00:06:12,220
-So now we are going to use these feature manager when we are publishing the integration event.
+Vậy bây giờ chúng ta sẽ sử dụng feature manager này khi chúng ta đang publishing integration event.
 
 87
 00:06:12,220 --> 00:06:16,630
-Actually we will check the if statement before publishing the integration event.
+Thực tế chúng ta sẽ kiểm tra if statement trước khi publishing integration event.
 
 88
 00:06:16,630 --> 00:06:17,650
-For that purpose.
+Cho mục đích đó.
 
 89
 00:06:17,650 --> 00:06:22,120
-I am going to use an if statement in the beginning of these integration event.
+Tôi sẽ sử dụng một if statement ở đầu integration event này.
 
 90
 00:06:22,120 --> 00:06:25,720
-And in here we can put a inline bracket.
+Và ở đây chúng ta có thể đặt một inline bracket.
 
 91
 00:06:25,720 --> 00:06:29,800
-And in here I'm going to move this code block into this if statement.
+Và ở đây tôi sẽ di chuyển code block này vào if statement này.
 
 92
 00:06:29,800 --> 00:06:35,950
-As you can see that the if statement is including await feature manager is enabled async.
+Như bạn có thể thấy if statement này bao gồm await feature manager is enabled async.
 
 93
 00:06:35,950 --> 00:06:38,290
-And we will passing order fulfillment.
+Và chúng ta sẽ passing order fulfillment.
 
 94
 00:06:38,290 --> 00:06:43,660
-That is exactly the same name in the application settings Json file in the ordering API.
+Đó chính xác là cùng một tên trong file application settings Json trong ordering API.
 
 95
 00:06:43,660 --> 00:06:48,850
-This is our feature flag name, which is the order fulfillment and the value is true.
+Đây là tên feature flag của chúng ta, đó là order fulfillment và giá trị là true.
 
 96
 00:06:48,850 --> 00:06:54,910
-And if you come back to our order created event handler, you can see that if the value is true, then
+Và nếu bạn quay lại order created event handler của chúng ta, bạn có thể thấy rằng nếu giá trị là true, thì
 
 97
 00:06:54,910 --> 00:07:00,100
-we can publish integration event from the our domain event which is the order created event handler.
+chúng ta có thể publish integration event từ domain event của chúng ta đó là order created event handler.
 
 98
 00:07:00,100 --> 00:07:02,500
-This will provide us to flexibility.
+Điều này sẽ cung cấp cho chúng ta tính linh hoạt.
 
 99
 00:07:02,500 --> 00:07:08,950
-That means quickly enable or disable feature without redeploying and it will provide to easy testing.
+Điều đó có nghĩa là nhanh chóng bật hoặc tắt feature mà không cần redeploy và nó sẽ cung cấp testing dễ dàng.
 
 100
 00:07:08,950 --> 00:07:14,920
-We can facilitate AB testing and canary releases, and we can control and manage features, rollout
+Chúng ta có thể tạo điều kiện cho AB testing và canary releases, và chúng ta có thể kiểm soát và quản lý feature rollout
 
 101
 00:07:14,920 --> 00:07:16,300
-and rollback efficiently.
+và rollback hiệu quả.
 
 102
 00:07:16,300 --> 00:07:22,000
-So as you can see that we have implemented a feature flag for the order fulfillment using the ASP.Net
+Vậy như bạn có thể thấy, chúng ta đã triển khai một feature flag cho order fulfillment sử dụng ASP.Net
 
 103
 00:07:22,030 --> 00:07:23,380

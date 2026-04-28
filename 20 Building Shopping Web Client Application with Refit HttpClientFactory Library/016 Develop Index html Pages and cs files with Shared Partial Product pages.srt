@@ -1,218 +1,218 @@
 1
 00:00:00,110 --> 00:00:07,520
-In this video, we are going to develop index HTML and CSS files with shared partial razor pages.
+Trong video này, chúng ta sẽ phát triển các tệp HTML index và CSS với các trang Razor partial được chia sẻ.
 
 2
 00:00:07,520 --> 00:00:12,800
-So here you can see that we have a index page but not implementing and listing the products.
+Vậy bây giờ bạn có thể thấy rằng chúng ta có một trang index nhưng không triển khai và liệt kê các sản phẩm.
 
 3
 00:00:12,800 --> 00:00:17,630
-But in the e-commerce application in the index page we should listing the products.
+Nhưng trong ứng dụng thương mại điện tử, ở trang index chúng ta nên liệt kê các sản phẩm.
 
 4
 00:00:17,630 --> 00:00:18,620
-For that purpose.
+Để làm điều đó.
 
 5
 00:00:18,620 --> 00:00:23,570
-I am going to copy the index page from the ASP.Net Run Basics repository.
+Tôi sẽ sao chép trang index từ kho lưu trữ ASP.Net Run Basics.
 
 6
 00:00:23,750 --> 00:00:31,640
-Here you can see the our repository and I am going to go to the index says HTML and copy all this file
+Ở đây bạn có thể thấy kho lưu trữ của chúng ta và tôi sẽ đi đến trang index HTML và sao chép toàn bộ tệp này
 
 7
 00:00:31,910 --> 00:00:36,020
-and come here and paste in here.
+và quay lại đây và dán vào đây.
 
 8
 00:00:38,330 --> 00:00:39,770
-And save this file.
+Và lưu tệp này.
 
 9
 00:00:39,770 --> 00:00:44,510
-Here you can see that this is the HTML page of the index operations.
+Ở đây bạn có thể thấy đây là trang HTML của các hoạt động index.
 
 10
 00:00:44,510 --> 00:00:46,430
-And we have a div definition.
+Và chúng ta có một định nghĩa div.
 
 11
 00:00:46,430 --> 00:00:52,310
-And in here you can see that we have a partial razor page which is the top product partial and modal.
+Và ở đây bạn có thể thấy rằng chúng ta có một trang Razor partial đó là top product partial và modal.
 
 12
 00:00:52,310 --> 00:00:55,220
-We can give the modal dot product list first or default.
+Chúng ta có thể cung cấp modal dot product list first or default.
 
 13
 00:00:55,220 --> 00:01:00,980
-So here you can see that product list is getting exception that we are going to define in this video.
+Vậy bây giờ bạn có thể thấy rằng product list đang gặp exception mà chúng ta sẽ định nghĩa trong video này.
 
 14
 00:01:00,980 --> 00:01:06,710
-But before that let's focus on this partial razor page that we are going to create as a partial view
+Nhưng trước đó hãy tập trung vào trang Razor partial này mà chúng ta sẽ tạo như một partial view
 
 15
 00:01:06,710 --> 00:01:08,360
-into our shared folder.
+vào thư mục shared của chúng ta.
 
 16
 00:01:08,360 --> 00:01:10,640
-If you scroll down you can see another div.
+Nếu bạn cuộn xuống, bạn có thể thấy một div khác.
 
 17
 00:01:10,640 --> 00:01:13,700
-And here you can see we have iterating the product list.
+Và ở đây bạn có thể thấy chúng ta đang lặp lại danh sách sản phẩm.
 
 18
 00:01:13,700 --> 00:01:19,670
-And each product is representing again as a partial razor page which is the product item partial.
+Và mỗi sản phẩm lại được biểu thị như một trang Razor partial đó là product item partial.
 
 19
 00:01:19,670 --> 00:01:24,920
-And as a modal, we can pass the product information which comes from the modal dot product list.
+Và như một modal, chúng ta có thể truyền thông tin sản phẩm đến từ modal dot product list.
 
 20
 00:01:24,920 --> 00:01:27,590
-So if you scroll down you can see additional div.
+Vậy nếu bạn cuộn xuống bạn có thể thấy thêm một div.
 
 21
 00:01:27,590 --> 00:01:30,440
-And this will be performing the same operations.
+Và cái này sẽ thực hiện các hoạt động giống nhau.
 
 22
 00:01:30,440 --> 00:01:37,040
-So that means first of all we will focus on these partial names which are representing a common HTML
+Vậy điều đó có nghĩa là trước hết chúng ta sẽ tập trung vào các tên partial này, chúng đại diện cho một HTML phổ biến
 
 23
 00:01:37,040 --> 00:01:37,520
-page.
+trang.
 
 24
 00:01:37,520 --> 00:01:38,450
-As a partial.
+Là một partial.
 
 25
 00:01:38,450 --> 00:01:41,480
-So here you can see that this is the product item partial.
+Vậy ở đây bạn có thể thấy đây là partial product item.
 
 26
 00:01:41,480 --> 00:01:44,060
-And we have also the product partial.
+Và chúng ta cũng có partial product.
 
 27
 00:01:44,060 --> 00:01:48,440
-So I'm going to copy this partial base from the ASP.Net Run Basics repository.
+Vậy tôi sẽ sao chép partial base này từ kho lưu trữ ASP.Net Run Basics.
 
 28
 00:01:48,440 --> 00:01:52,580
-If you open this repository you can go to Page Shared subfolder.
+Nếu bạn mở kho lưu trữ này, bạn có thể đi tới thư mục con Page Shared.
 
 29
 00:01:52,580 --> 00:01:56,060
-And here you can see the product item partial and the product partial.
+Và ở đây bạn có thể thấy partial product item và partial product.
 
 30
 00:01:56,060 --> 00:02:02,750
-If you copy these two items, right click and copy and go back to our repository and go to the page
+Nếu bạn sao chép hai mục này, nhấp chuột phải và sao chép, sau đó quay lại kho lưu trữ của chúng ta và đi tới thư mục con
 
 31
 00:02:02,750 --> 00:02:04,310
-shared subfolder.
+page shared.
 
 32
 00:02:04,310 --> 00:02:05,960
-Right click and paste.
+Nhấp chuột phải và dán.
 
 33
 00:02:06,470 --> 00:02:12,290
-So here you can see that we have successfully added product item partial and top product item partial.
+Vậy ở đây bạn có thể thấy rằng chúng ta đã thêm thành công partial product item và partial top product item.
 
 34
 00:02:12,290 --> 00:02:18,680
-So if you look at the product item partial you can see that this is typical a product representation
+Vậy nếu bạn xem partial product item, bạn có thể thấy đây là một biểu diễn sản phẩm điển hình
 
 35
 00:02:18,680 --> 00:02:22,040
-including the product details, summary detail and so on.
+bao gồm các chi tiết sản phẩm, chi tiết tóm tắt, v.v.
 
 36
 00:02:22,040 --> 00:02:27,500
-And at the end of this form we have a add to cart button in order to adding these product item into
+Và ở cuối form này chúng ta có một nút add to cart để thêm mục sản phẩm này vào
 
 37
 00:02:27,500 --> 00:02:28,280
-shopping cart.
+giỏ hàng.
 
 38
 00:02:28,400 --> 00:02:33,890
-And also if you look at the top product partial, it is also again the same structure.
+Và cũng nếu bạn xem partial top product, nó lại có cùng một cấu trúc.
 
 39
 00:02:33,890 --> 00:02:37,730
-We have a single product and we can see product details in here.
+Chúng ta có một sản phẩm duy nhất và chúng ta có thể xem chi tiết sản phẩm ở đây.
 
 40
 00:02:37,730 --> 00:02:42,380
-And we have also redirection page which is the product detail with clicking this product.
+Và chúng ta cũng có trang chuyển hướng, đó là chi tiết sản phẩm khi nhấp vào sản phẩm này.
 
 41
 00:02:42,380 --> 00:02:46,880
-So first of all I'm going to change product item partial model.
+Đầu tiên tất cả, tôi sẽ thay đổi mô hình partial của mục sản phẩm.
 
 42
 00:02:46,880 --> 00:02:49,250
-As you can see that model defined as a product.
+Như bạn có thể thấy, mô hình đó được định nghĩa là một sản phẩm.
 
 43
 00:02:49,250 --> 00:02:53,750
-But we don't have any product class into our shopping web client application.
+Nhưng chúng ta không có bất kỳ lớp product nào trong ứng dụng web client shopping của chúng ta.
 
 44
 00:02:53,750 --> 00:02:59,090
-Instead we are populating the product under the models catalog and product model.
+Thay vào đó, chúng ta đang điền dữ liệu sản phẩm trong models catalog và product model.
 
 45
 00:02:59,090 --> 00:03:00,980
-We can save these partial view.
+Chúng ta có thể lưu partial view này.
 
 46
 00:03:00,980 --> 00:03:03,110
-And you can go to the this location.
+Và bạn có thể đi đến vị trí này.
 
 47
 00:03:03,110 --> 00:03:06,470
-If you go to the models folder and open the catalog models.
+Nếu bạn đi đến thư mục models và mở catalog models.
 
 48
 00:03:06,470 --> 00:03:10,640
-Here you can see that our product model that we can represent product details in here.
+Ở đây bạn có thể thấy mô hình product của chúng ta mà chúng ta có thể thể hiện chi tiết sản phẩm trong đây.
 
 49
 00:03:10,640 --> 00:03:16,010
-When consuming the API gateway for that purpose, I'm going to change the models of these partial waves
+Khi sử dụng API gateway cho mục đích đó, tôi sẽ thay đổi mô hình của những partial waves này.
 
 50
 00:03:16,010 --> 00:03:18,860
-in order to access these model operations.
+để truy cập các thao tác mô hình này.
 
 51
 00:03:18,860 --> 00:03:22,790
-Here you can see the model ID and model summary instead of the summary.
+Ở đây bạn có thể thấy model ID và model summary thay vì summary.
 
 52
 00:03:22,790 --> 00:03:26,360
-I can change the description if I come here and write description.
+Tôi có thể thay đổi description nếu tôi đến đây và viết description.
 
 53
 00:03:26,360 --> 00:03:29,030
-Yes, because we don't have any summary information.
+Có, vì chúng ta không có bất kỳ thông tin summary nào.
 
 54
 00:03:29,030 --> 00:03:34,970
-Instead, you can change the summary property to description anywhere into partial view and index HTML
+Thay vào đó, bạn có thể thay đổi thuộc tính summary thành description ở bất kỳ đâu trong partial view và index HTML.
 
 55
 00:03:34,970 --> 00:03:35,420
@@ -220,55 +220,55 @@ files.
 
 56
 00:03:35,420 --> 00:03:40,520
-So after that you can see that we don't have any exception in this product item partial.
+Vậy sau đó bạn có thể thấy rằng chúng ta không có bất kỳ lỗi nào trong product item partial này.
 
 57
 00:03:40,520 --> 00:03:45,740
-And I'm going to also go to the next partial one which is the top product partial.
+Và tôi cũng sẽ đi đến partial tiếp theo đó là top product partial.
 
 58
 00:03:45,740 --> 00:03:50,300
-Again I'm going to change this model to models catalog and product model.
+Lại một lần nữa tôi sẽ thay đổi mô hình này thành models catalog và product model.
 
 59
 00:03:50,300 --> 00:03:56,780
-And if you look at the model ID and we don't model price and we have model ID and model price and we
+Và nếu bạn nhìn vào model ID và chúng ta không có model price và chúng ta có model ID và model price và chúng ta.
 
 60
 00:03:56,780 --> 00:04:03,560
-don't have model summary in here, you can now navigate to model class item ID members and other ones
+không có model summary ở đây, bây giờ bạn có thể điều hướng đến thành viên lớp model item ID và những cái khác.
 
 61
 00:04:03,560 --> 00:04:07,130
-from the ah HTML page with using the razor page.
+từ trang HTML bằng cách sử dụng Razor page.
 
 62
 00:04:07,130 --> 00:04:13,280
-So we have prepared all partial waves with changing the models and looking the members that we don't
+Vậy chúng ta đã chuẩn bị tất cả các partial views bằng cách thay đổi các models và xem các members mà chúng ta không
 
 63
 00:04:13,280 --> 00:04:18,140
-have any exception which is the top product partial and product item partial, and we don't have any
+có bất kỳ exception nào, đó là top product partial và product item partial, và chúng ta không có bất kỳ
 
 64
 00:04:18,140 --> 00:04:18,740
-exception.
+exception nào.
 
 65
 00:04:18,740 --> 00:04:23,720
-So now we can go back to our index page and we can use these partial views in here.
+Vậy bây giờ chúng ta có thể quay lại trang index của chúng ta và sử dụng các partial views này ở đây.
 
 66
 00:04:23,720 --> 00:04:27,740
-So here you can see that we are using the third product partial at this point.
+Vậy ở đây bạn có thể thấy rằng chúng ta đang sử dụng third product partial tại điểm này.
 
 67
 00:04:27,740 --> 00:04:31,400
-And we are using the product item partials with iterating the products.
+Và chúng ta đang sử dụng product item partials bằng cách lặp qua các products.
 
 68
 00:04:31,400 --> 00:04:37,010
-And in here you can see that when we are iterating the products we are looking for the model dot product
+Và ở đây bạn có thể thấy rằng khi chúng ta lặp qua các products, chúng ta đang tìm kiếm model dot product
 
 69
 00:04:37,010 --> 00:04:37,370
@@ -276,43 +276,43 @@ list.
 
 70
 00:04:37,370 --> 00:04:40,010
-But we don't have any list property yet.
+Nhưng chúng ta chưa có bất kỳ property list nào.
 
 71
 00:04:40,010 --> 00:04:45,740
-So if you go to the model of this class, you can see that model is a index model, which is the C-sharp
+Vậy nếu bạn đi đến model của class này, bạn có thể thấy rằng model là index model, đó là C# file của trang HTML này.
 
 72
 00:04:45,740 --> 00:04:47,900
-file of this HTML page.
+Chúng ta có thể mở rộng file C# này, đi đến đây và mở file C# của trang index này.
 
 73
 00:04:47,900 --> 00:04:53,570
-We can expand this C sharp file, come to here and open the C sharp file of this index page.
+Và tại điểm này tôi sẽ thêm một property mới.
 
 74
 00:04:53,570 --> 00:04:56,150
-And at this point I am going to add a new property.
+Cái tên là product list.
 
 75
 00:04:56,150 --> 00:04:57,740
-Which name is product list.
+Để làm điều đó, tôi sẽ đi đến định nghĩa class.
 
 76
 00:04:57,740 --> 00:05:01,070
-For that purpose I'm going to come to the class definition.
+Và sau phần Ilogger operation, tôi sẽ tạo một property mới đó là public IEnumerable product
 
 77
 00:05:01,070 --> 00:05:08,900
-And after the Ilogger operation I'm going to create a new property which is the public IEnumerable product
+model và tên là Product list, đó là getter và setter.
 
 78
 00:05:08,900 --> 00:05:12,440
-model and name is Product list, which is the getter and setter.
+Tôi sẽ tạo một list product model mới trong class index model.
 
 79
 00:05:12,440 --> 00:05:16,250
-I'm going to create a new list product model in the index model class.
+Vậy ngay sau đó bạn có thể quay lại trang HTML và cuộn xuống.
 
 80
 00:05:16,250 --> 00:05:19,760
@@ -320,13 +320,13 @@ So just after that you can go back to HTML page and scroll down.
 
 81
 00:05:19,760 --> 00:05:24,680
-You can see that now we can access the product list in order to verify that, you can right click the
+Bạn có thể thấy rằng bây giờ chúng ta có thể truy cập danh sách sản phẩm, để xác minh điều đó, bạn có thể nhấp chuột phải vào
 
 82
 00:05:24,680 --> 00:05:29,870
-Shopping Web client application and build the project and see that we don't have any exception when
+ứng dụng Shopping Web client và build project để xem rằng chúng ta không có bất kỳ exception nào khi
 
 83
 00:05:29,870 --> 00:05:31,460
-we are developing our index page.
+chúng ta đang phát triển trang index của mình.
 

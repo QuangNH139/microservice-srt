@@ -1,26 +1,26 @@
 1
 00:00:00,140 --> 00:00:06,740
-In this video we are going to connect to PostgreSQL database from our local catalog microservices,
+Trong video này chúng ta sẽ kết nối đến PostgreSQL database từ catalog microservice cục bộ của chúng ta,
 
 2
 00:00:06,740 --> 00:00:13,790
-and we will send Http post requests in order to create new product in the catalog db PostgreSQL database.
+và chúng ta sẽ gửi Http post requests để tạo product mới trong catalog db PostgreSQL database.
 
 3
 00:00:14,690 --> 00:00:18,950
-So in the last video we have activated our PostgreSQL database.
+Vậy trong video cuối cùng chúng ta đã kích hoạt PostgreSQL database của chúng ta.
 
 4
 00:00:18,950 --> 00:00:22,640
-And you can see the containers under the Docker desktop.
+Và bạn có thể thấy các containers dưới Docker desktop.
 
 5
 00:00:22,640 --> 00:00:29,360
-And if you scroll to the right hand side you can see the port numbers are exposed in here.
+Và nếu bạn cuộn sang phía bên phải bạn có thể thấy các số port được exposed ở đây.
 
 6
 00:00:29,360 --> 00:00:36,500
-So according to our Docker compose override configuration, the catalog db PostgreSQL is exposing in
+Vậy theo cấu hình Docker compose override của chúng ta, PostgreSQL catalog db được exposed tại
 
 7
 00:00:36,500 --> 00:00:39,410
@@ -28,183 +28,183 @@ localhost 5432 ports.
 
 8
 00:00:39,410 --> 00:00:43,430
-So you can verify from the our docker compose or write file.
+Vậy bạn có thể xác minh từ Docker compose hoặc write file của chúng ta.
 
 9
 00:00:43,430 --> 00:00:50,630
-We have already expose this port number, and we can verify these port numbers from the our Docker desktop.
+Chúng ta đã exposed port number này rồi, và chúng ta có thể xác minh các port numbers này từ Docker desktop của chúng ta.
 
 10
 00:00:50,630 --> 00:00:58,100
-And according to this we will check our catalog API microservices and our catalog microservices will
+Và theo điều này chúng ta sẽ kiểm tra catalog API microservice của chúng ta và catalog microservice của chúng ta sẽ
 
 11
 00:00:58,100 --> 00:01:04,400
-connect the PostgreSQL database using the connection string in the application Settings.json file.
+kết nối PostgreSQL database sử dụng connection string trong tệp application Settings.json.
 
 12
 00:01:04,400 --> 00:01:10,010
-If you double click this Json file, you can verify that the server is localhost and port number is
+Nếu bạn double click tệp Json này, bạn có thể xác minh rằng server là localhost và port number là
 
 13
 00:01:10,010 --> 00:01:16,640
-this one, and this will be match our port number and exposing server name into Docker Desktop.
+cái này, và nó sẽ khớp với port number của chúng ta và exposed server name vào Docker Desktop.
 
 14
 00:01:16,640 --> 00:01:18,830
-So we have verified the connection string.
+Vậy chúng ta đã xác minh connection string.
 
 15
 00:01:18,830 --> 00:01:25,940
-Now we will run this catalog API microservices and integrate with the PostgreSQL database.
+Bây giờ chúng ta sẽ chạy catalog API microservice này và tích hợp với PostgreSQL database.
 
 16
 00:01:25,940 --> 00:01:33,650
-Before that make sure that you are putting breakpoints under the create product endpoint and after the
+Trước đó hãy đảm bảo rằng bạn đang đặt breakpoints dưới create product endpoint và sau đó trong
 
 17
 00:01:33,650 --> 00:01:40,460
-create product handler methods, in order to debug the whole end to end process of the create product
+create product handler methods, để debug toàn bộ quy trình end to end của create product
 
 18
 00:01:40,460 --> 00:01:47,720
-http post request and after verify the breakpoints, we can run this application in https mode.
+http post request và sau khi xác minh các breakpoints, chúng ta có thể chạy ứng dụng này ở chế độ https.
 
 19
 00:01:47,720 --> 00:01:54,920
-That means I'm going to right click the catalog API microservice, set a startup project and change
+Điều đó có nghĩa là tôi sẽ right click catalog API microservice, set a startup project và thay đổi
 
 20
 00:01:54,920 --> 00:01:59,150
-the Https running profile and run this application.
+Https running profile và chạy ứng dụng này.
 
 21
 00:02:00,310 --> 00:02:07,630
-So that means we are going to run our catalog microservices in local environment, and we are going
+Vậy điều đó có nghĩa là chúng ta sẽ chạy catalog microservice của mình trong môi trường local, và chúng ta sẽ
 
 22
 00:02:07,630 --> 00:02:13,030
-to connect and communicate PostgreSQL database in the environment as a backing services.
+kết nối và giao tiếp với cơ sở dữ liệu PostgreSQL trong môi trường như một backing service.
 
 23
 00:02:13,720 --> 00:02:19,630
-So if you go back to our Visual Studio, we can verify that our application is successfully started.
+Vậy nếu bạn quay lại Visual Studio của chúng ta, chúng ta có thể xác minh rằng ứng dụng của chúng ta đã khởi động thành công.
 
 24
 00:02:19,630 --> 00:02:22,930
-And you can open the Project console window.
+Và bạn có thể mở cửa sổ Project console.
 
 25
 00:02:22,930 --> 00:02:27,580
-And this is listening on https localhost 5050.
+Và nó đang lắng nghe trên https localhost 5050.
 
 26
 00:02:28,120 --> 00:02:32,380
-So now we can send http post request to create a new product.
+Vậy bây giờ chúng ta có thể gửi HTTP POST request để tạo một sản phẩm mới.
 
 27
 00:02:32,380 --> 00:02:36,490
-We will use postman to send an http post request.
+Chúng ta sẽ sử dụng Postman để gửi HTTP POST request.
 
 28
 00:02:36,490 --> 00:02:38,620
-Please open the postman.
+Vui lòng mở Postman.
 
 29
 00:02:38,620 --> 00:02:42,910
-Set a new request I have already prepared before in the previous videos.
+Thiết lập một request mới mà tôi đã chuẩn bị trước trong những video trước đó.
 
 30
 00:02:42,910 --> 00:02:48,430
-Make sure that you are sending http post request and the URL should be localhost 5050.
+Hãy chắc chắn rằng bạn đang gửi HTTP POST request và URL nên là localhost 5050.
 
 31
 00:02:48,430 --> 00:02:52,150
-And make sure that you have added products in the Uri.
+Và hãy chắc chắn rằng bạn đã thêm products vào Uri.
 
 32
 00:02:52,150 --> 00:02:59,380
-And if you go to the body raw Json file and make sure that you are sending this kind of Json in order
+Và nếu bạn đi đến body raw Json file và hãy chắc chắn rằng bạn đang gửi loại Json này để
 
 33
 00:02:59,380 --> 00:03:04,900
-to create a new product onto PostgreSQL database and click the Http send button.
+tạo một sản phẩm mới vào cơ sở dữ liệu PostgreSQL và nhấp vào nút HTTP send.
 
 34
 00:03:04,990 --> 00:03:08,350
-As you can see that this is hit the breakpoint which is.
+Như bạn có thể thấy rằng nó đã chạm vào breakpoint mà là.
 
 35
 00:03:08,350 --> 00:03:15,400
-The endpoints accommodate the incoming requests, and if you continue this process, mediator will be
+Các endpoint tiếp nhận các incoming request, và nếu bạn tiếp tục quá trình này, mediator sẽ
 
 36
 00:03:15,400 --> 00:03:18,370
-sent to our command into handler class.
+gửi command của chúng ta đến handler class.
 
 37
 00:03:18,370 --> 00:03:24,010
-In the handler class we have created a new product and after that we will use Martin session in order
+Trong handler class chúng ta đã tạo một sản phẩm mới và sau đó chúng ta sẽ sử dụng Marten session để
 
 38
 00:03:24,010 --> 00:03:27,250
-to store product into our PostgreSQL database.
+lưu trữ sản phẩm vào cơ sở dữ liệu PostgreSQL của chúng ta.
 
 39
 00:03:27,250 --> 00:03:29,800
-Martin will be checking the database.
+Marten sẽ kiểm tra cơ sở dữ liệu.
 
 40
 00:03:29,800 --> 00:03:36,130
-If there is no table with regarding the products, this will be create product table and schema and
+Nếu không có bảng nào liên quan đến các sản phẩm, nó sẽ tạo bảng sản phẩm và schema và
 
 41
 00:03:36,130 --> 00:03:39,310
-this will be auto create this process with Martin.
+điều này sẽ tự động tạo quy trình này với Marten.
 
 42
 00:03:39,310 --> 00:03:45,820
-This is powerful feature and we will use this feature when connecting to PostgreSQL database using the
+Đây là một tính năng mạnh mẽ và chúng ta sẽ sử dụng tính năng này khi kết nối với cơ sở dữ liệu PostgreSQL bằng
 
 43
 00:03:45,820 --> 00:03:46,360
-Martin.
+Marten.
 
 44
 00:03:46,360 --> 00:03:54,070
-So if you continue this line of code this will be waiting and creating a new product table on the PostgreSQL.
+Vậy nếu bạn tiếp tục dòng mã này, nó sẽ chờ và tạo một bảng product mới trên PostgreSQL.
 
 45
 00:03:54,070 --> 00:03:59,230
-And after that this will be saved to database and hit the F5 and see the response.
+Và sau đó nó sẽ được lưu vào cơ sở dữ liệu, nhấn F5 và xem phản hồi.
 
 46
 00:03:59,230 --> 00:04:02,980
-So after sending the request you can see the response coming.
+Vậy sau khi gửi yêu cầu, bạn có thể thấy phản hồi đến.
 
 47
 00:04:02,980 --> 00:04:06,790
-In this way you should receive any product ID in return.
+Bằng cách này, bạn sẽ nhận được bất kỳ product ID nào để trả về.
 
 48
 00:04:06,790 --> 00:04:12,730
-This indicates that our microservices has successfully communicate with the PostgreSQL database and
+Điều này cho thấy rằng microservice của chúng ta đã giao tiếp thành công với cơ sở dữ liệu PostgreSQL và
 
 49
 00:04:12,730 --> 00:04:14,320
-create a new product record.
+tạo một bản ghi product mới.
 
 50
 00:04:14,320 --> 00:04:21,190
-Now let's connect the PostgreSQL container and verify the new product entry is created for that purpose.
+Bây giờ hãy kết nối với container PostgreSQL và xác minh rằng mục entry product mới đã được tạo, vì mục đích đó.
 
 51
 00:04:21,190 --> 00:04:23,440
-Open the our command window.
+Mở cửa sổ lệnh của chúng ta.
 
 52
 00:04:23,560 --> 00:04:29,620
-As you remember that we have connected our container, which is the Postgres container, and open a
+Như bạn nhớ lại, chúng ta đã kết nối container của mình, đó là container Postgres, và mở
 
 53
 00:04:29,620 --> 00:04:30,460
@@ -212,89 +212,89 @@ bash script.
 
 54
 00:04:30,460 --> 00:04:36,130
-And after that we run the SQL dash u PostgreSQL in order to reach the database.
+Và sau đó chúng ta chạy SQL dash u PostgreSQL để truy cập cơ sở dữ liệu.
 
 55
 00:04:36,130 --> 00:04:43,210
-And after that we will listing the our databases and see that catalog DB is including.
+Và sau đó chúng ta sẽ liệt kê các cơ sở dữ liệu của chúng ta và thấy rằng catalog DB đã được bao gồm.
 
 56
 00:04:43,210 --> 00:04:49,300
-And you can verify again from the listing databases and see that our catalog DB is created.
+Và bạn có thể xác minh lại từ danh sách các cơ sở dữ liệu và thấy rằng catalog DB của chúng ta đã được tạo.
 
 57
 00:04:49,300 --> 00:04:55,660
-And after that we can now connect to database and see the tables that are created.
+Và sau đó chúng ta có thể kết nối với cơ sở dữ liệu và xem các bảng đã được tạo.
 
 58
 00:04:55,660 --> 00:05:01,900
-And for that purpose I'm going to connect with backslash C and catalog DB.
+Và vì mục đích đó, tôi sẽ kết nối với backslash C và catalog DB.
 
 59
 00:05:01,900 --> 00:05:06,220
-Now I have connected the catalog DB into our PostgreSQL database.
+Bây giờ tôi đã kết nối catalog DB vào cơ sở dữ liệu PostgreSQL của chúng ta.
 
 60
 00:05:06,220 --> 00:05:10,150
-Now we can backslash D listing the tables.
+Bây giờ chúng ta có thể backslash D để liệt kê các bảng.
 
 61
 00:05:10,150 --> 00:05:16,180
-Last time we didn't see any tables, but this time you can see that empty dot product table is created
+Lần trước chúng ta không thấy bất kỳ bảng nào, nhưng lần này bạn có thể thấy bảng dot product rỗng được tạo ra
 
 62
 00:05:16,180 --> 00:05:23,530
-by Martin and it is automatically created when session is adding and storing new item into the database.
+bởi Marten và nó được tạo tự động khi session thêm và lưu trữ mục mới vào cơ sở dữ liệu.
 
 63
 00:05:23,530 --> 00:05:27,130
-So this is very powerful feature from the Martin.
+Vậy đây là một tính năng rất mạnh mẽ từ Marten.
 
 64
 00:05:27,130 --> 00:05:33,580
-And now we can run the select star from this table to see is there any record on this table.
+Và bây giờ chúng ta có thể chạy select star từ bảng này để xem có bất kỳ bản ghi nào trong bảng này không.
 
 65
 00:05:33,580 --> 00:05:37,360
-And please write this command and hit the enter.
+Và vui lòng viết lệnh này và nhấn enter.
 
 66
 00:05:37,360 --> 00:05:43,660
-As you can see that newly created ID and product is listing into our database.
+Như bạn có thể thấy, ID mới được tạo và sản phẩm đang được liệt kê vào cơ sở dữ liệu của chúng ta.
 
 67
 00:05:43,660 --> 00:05:51,040
-You can verify the ID numbers is exactly the same with value, with listing from the database table
+Bạn có thể xác minh rằng số ID hoàn toàn giống với giá trị, với danh sách từ bảng cơ sở dữ liệu
 
 68
 00:05:51,040 --> 00:05:54,100
-and from response to the R postman request.
+và từ phản hồi đến yêu cầu Postman.
 
 69
 00:05:54,100 --> 00:06:00,220
-As you can see that we have verified the newly created product data on PostgreSQL database and we have
+Như bạn có thể thấy, chúng ta đã xác minh dữ liệu sản phẩm mới được tạo trên cơ sở dữ liệu PostgreSQL và chúng ta đã
 
 70
 00:06:00,220 --> 00:06:06,880
-successfully connect, debug and test it our local catalog, microservices and database on Docker environment.
+kết nối, gỡ lỗi và kiểm tra thành công microservices catalog cục bộ của chúng ta và cơ sở dữ liệu trên môi trường Docker.
 
 71
 00:06:06,880 --> 00:06:13,990
-By the way, this is very a hard way to retrieve data and running the SQL commands on the PostgreSQL
+Nhân tiện, đây là một cách rất khó để truy xuất dữ liệu và chạy các lệnh SQL trên PostgreSQL
 
 72
 00:06:13,990 --> 00:06:16,480
-using the command window instead of that.
+sử dụng cửa sổ dòng lệnh thay vì vậy.
 
 73
 00:06:16,480 --> 00:06:20,170
-From now on we will install pgadmin four.
+Từ bây giờ chúng ta sẽ cài đặt pgAdmin 4.
 
 74
 00:06:20,170 --> 00:06:27,910
-Please go to this URL and download pgadmin four according to your operating system, and we will use
+Vui lòng truy cập URL này và tải xuống pgAdmin 4 theo hệ điều hành của bạn, và chúng ta sẽ sử dụng
 
 75
 00:06:27,910 --> 00:06:33,010
-pgadmin four when browsing PostgreSQL database tables and records.
+pgAdmin 4 khi duyệt các bảng cơ sở dữ liệu PostgreSQL và các bản ghi.
 

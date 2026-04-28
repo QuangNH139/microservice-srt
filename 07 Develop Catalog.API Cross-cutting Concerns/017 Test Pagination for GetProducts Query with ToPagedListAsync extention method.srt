@@ -1,34 +1,34 @@
 1
 00:00:00,140 --> 00:00:05,900
-In this video we are going to test pagination for Getproducts query use cases.
+Trong video này chúng ta sẽ test pagination cho các use cases của Getproducts query.
 
 2
 00:00:05,930 --> 00:00:12,530
-For that purpose, make sure that your Docker environment is running and our catalog db PostgreSQL is
+Để làm điều đó, hãy đảm bảo rằng Docker environment của bạn đang chạy và catalog db PostgreSQL của chúng ta
 
 3
 00:00:12,530 --> 00:00:14,600
-up and running on Docker environment.
+đang hoạt động trên Docker environment.
 
 4
 00:00:14,600 --> 00:00:21,890
-And after that you can see in the pgadmin we have seven items under the our product table.
+Và sau đó bạn có thể thấy trong pgadmin chúng ta có bảy items dưới product table của chúng ta.
 
 5
 00:00:21,890 --> 00:00:27,530
-And I am going to test by the pagination with sending only five in a first page.
+Và tôi sẽ test pagination bằng cách gửi chỉ năm items ở trang đầu tiên.
 
 6
 00:00:27,530 --> 00:00:30,350
-And the second page we will see two items.
+Và trang thứ hai chúng ta sẽ thấy hai items.
 
 7
 00:00:30,350 --> 00:00:31,490
-For that purpose.
+Để làm điều đó.
 
 8
 00:00:31,490 --> 00:00:38,330
-Please open the Visual Studio and put breakpoints in the Getproducts endpoint and Getproducts under
+Vui lòng mở Visual Studio và đặt breakpoints trong Getproducts endpoint và Getproducts under
 
 9
 00:00:38,330 --> 00:00:38,900
@@ -36,31 +36,31 @@ method.
 
 10
 00:00:38,900 --> 00:00:44,660
-And after that run this catalog API microservice application in here.
+Và sau đó chạy ứng dụng catalog API microservice này ở đây.
 
 11
 00:00:45,460 --> 00:00:48,280
-And after running this application.
+Và sau khi chạy ứng dụng này.
 
 12
 00:00:48,920 --> 00:00:53,570
-I'm going to remove this breakpoint and remove the breakpoint from the seed operation.
+Tôi sẽ xóa breakpoint này và xóa breakpoint từ seed operation.
 
 13
 00:00:55,600 --> 00:01:00,280
-And yes, the application has started and after that please open the postman.
+Và vâng, ứng dụng đã khởi động và sau đó vui lòng mở Postman.
 
 14
 00:01:00,370 --> 00:01:07,750
-And in this time we will start by testing scenario where we send the first page with the five products.
+Và lần này chúng ta sẽ bắt đầu bằng cách test scenario mà chúng ta gửi trang đầu tiên với năm products.
 
 15
 00:01:07,750 --> 00:01:11,260
-And this is common use case in real world applications.
+Và đây là use case phổ biến trong các ứng dụng thực tế.
 
 16
 00:01:11,260 --> 00:01:19,090
-But before that let me send only products and to see all products listed and responded into our.
+Nhưng trước tiên hãy để tôi gửi chỉ products và để xem tất cả products được liệt kê và trả về cho chúng ta.
 
 17
 00:01:20,450 --> 00:01:21,350
@@ -68,91 +68,91 @@ Product list.
 
 18
 00:01:21,350 --> 00:01:26,660
-Here you can see that these are the all products that including seven products from the database.
+Ở đây bạn có thể thấy rằng đây là tất cả các products bao gồm bảy products từ database.
 
 19
 00:01:26,660 --> 00:01:29,390
-And we don't have any pagination yet.
+Và chúng ta chưa có bất kỳ pagination nào.
 
 20
 00:01:29,420 --> 00:01:35,870
-So before proceeding to pagination, make sure that you have removed the unnecessary breakpoints into
+Vì vậy trước khi tiếp tục với pagination, hãy đảm bảo rằng bạn đã xóa các breakpoints không cần thiết vào
 
 21
 00:01:35,870 --> 00:01:39,170
-your application in order to debug properly.
+ứng dụng của bạn để có thể debug một cách chính xác.
 
 22
 00:01:39,170 --> 00:01:46,970
-So after that, if you open the postman this time, we are going to request maximum five items in one
+Vậy sau đó, nếu bạn mở Postman lần này, chúng ta sẽ request tối đa năm items trong một
 
 23
 00:01:46,970 --> 00:01:50,750
-page and I would like to request the page one for that purpose.
+page và tôi muốn request page một cho mục đích đó.
 
 24
 00:01:50,750 --> 00:01:54,020
-I'm going to put request parameters in here.
+Tôi sẽ đặt request parameters vào đây.
 
 25
 00:01:54,020 --> 00:01:57,710
-The first one is page number, the second one is page size.
+Cái đầu tiên là page number, cái thứ hai là page size.
 
 26
 00:01:57,710 --> 00:02:01,310
-Here you can see the query parameters comes listed on here.
+Ở đây bạn có thể thấy query parameters được liệt kê ở đây.
 
 27
 00:02:01,310 --> 00:02:06,110
-So if you save this Http get method this will be paging anymore.
+Vậy nếu bạn save Http get method này, nó sẽ có paging nữa.
 
 28
 00:02:06,110 --> 00:02:12,530
-And if you send http get request this will be come to the our Getproducts endpoint.
+Và nếu bạn gửi http get request, nó sẽ đến Getproducts endpoint của chúng ta.
 
 29
 00:02:12,530 --> 00:02:18,890
-And if you check the request parameter as a parameter type, you can see the page number and page size
+Và nếu bạn kiểm tra request parameter như một parameter type, bạn có thể thấy page number và page size
 
 30
 00:02:18,890 --> 00:02:21,740
-comes into our Getproduct request object.
+đi vào request object Getproduct của chúng ta.
 
 31
 00:02:21,740 --> 00:02:24,770
-And the first thing we are converting as a query.
+Và điều đầu tiên chúng ta đang convert thành query.
 
 32
 00:02:24,770 --> 00:02:27,590
-And in query we will send query handler.
+Và trong query chúng ta sẽ gửi query handler.
 
 33
 00:02:27,590 --> 00:02:31,220
-And of course before that we will see some logging operation.
+Và tất nhiên trước đó chúng ta sẽ thấy một số logging operation.
 
 34
 00:02:31,220 --> 00:02:34,460
-Now here you can see the actual handle operation.
+Bây giờ ở đây bạn có thể thấy actual handle operation.
 
 35
 00:02:34,460 --> 00:02:38,360
-And in the query object we have page number and page size.
+Và trong query object chúng ta có page number và page size.
 
 36
 00:02:38,360 --> 00:02:44,630
-And this time Martin will be run to page list async extension method with pacing this page number and
+Và lần này Marten sẽ chạy page list async extension method với paging này, page number và
 
 37
 00:02:44,630 --> 00:02:49,520
-page size and return back to product list according to this page number and page size.
+page size, và trả về product list theo page number và page size này.
 
 38
 00:02:49,520 --> 00:02:54,620
-Here you can see the product list comes with the five, which is the our page size.
+Ở đây bạn có thể thấy product list đi kèm với năm, đó là page size của chúng ta.
 
 39
 00:02:54,620 --> 00:03:01,940
-And if you go back to response to the client, you can see that only five products comes for the first
+Và nếu bạn quay lại response cho client, bạn có thể thấy chỉ có năm products đi kèm với first
 
 40
 00:03:01,940 --> 00:03:02,450
@@ -160,41 +160,41 @@ page.
 
 41
 00:03:02,450 --> 00:03:10,370
-So in order to perform the pagination and retrieving the second page, we will send the page number
+Vậy để thực hiện pagination và lấy trang thứ hai, chúng ta sẽ gửi số trang
 
 42
 00:03:10,460 --> 00:03:11,660
-is two.
+là hai.
 
 43
 00:03:11,660 --> 00:03:19,010
-And if we send the page number is two, you can see that this time we will retrieve the next five items
+Và nếu chúng ta gửi số trang là hai, bạn có thể thấy rằng lần này chúng ta sẽ lấy năm mục tiếp theo
 
 44
 00:03:19,010 --> 00:03:20,810
-if available on database.
+nếu có trong database.
 
 45
 00:03:20,810 --> 00:03:24,950
-If we continue these codes and go to the our actual logic.
+Nếu chúng ta tiếp tục các đoạn mã này và đi vào logic thực tế của chúng ta.
 
 46
 00:03:24,950 --> 00:03:28,310
-This time you can see the product count comes with two.
+Lần này bạn có thể thấy số lượng sản phẩm là hai.
 
 47
 00:03:28,340 --> 00:03:34,640
-That means we are retrieved the second two products into our database that is listing in here, which
+Điều đó có nghĩa là chúng ta đã lấy hai sản phẩm thứ hai từ database của chúng ta được liệt kê tại đây, đó là
 
 48
 00:03:34,640 --> 00:03:37,310
-is the LG, G7 and Panasonic Lumix.
+LG G7 và Panasonic Lumix.
 
 49
 00:03:37,310 --> 00:03:45,080
-And you can confirm from the these Pgadmin dashboard, we are retrieving the second page size items
+Và bạn có thể xác nhận từ dashboard Pgadmin này, chúng ta đang lấy các mục trang thứ hai có kích thước tương ứng
 
 50
 00:03:45,080 --> 00:03:46,040
-from the database.
+từ database.
 

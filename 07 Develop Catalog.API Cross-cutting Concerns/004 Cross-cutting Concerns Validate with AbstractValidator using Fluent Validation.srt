@@ -1,14 +1,14 @@
 1
 00:00:00,140 --> 00:00:03,380
-In this video we are going to do cross-cutting concerns.
+Trong video này chúng ta sẽ làm về cross-cutting concerns.
 
 2
 00:00:03,380 --> 00:00:10,070
-So we will apply validation with using abstract validator class using the Fluent Validation library.
+Vậy chúng ta sẽ áp dụng validation bằng cách sử dụng abstract validator class từ thư viện Fluent Validation.
 
 3
 00:00:10,460 --> 00:00:17,720
-So please open the Visual Studio and let's define validation rules for our commands under the catalog
+Vậy vui lòng mở Visual Studio và hãy định nghĩa các validation rules cho các commands của chúng ta dưới catalog
 
 4
 00:00:17,720 --> 00:00:18,590
@@ -16,23 +16,23 @@ microservices.
 
 5
 00:00:18,590 --> 00:00:21,380
-Here you can see the Our products feature folder.
+Ở đây bạn có thể thấy feature folder Our products của chúng ta.
 
 6
 00:00:21,380 --> 00:00:24,020
-And here you can see that our use cases.
+Và ở đây bạn có thể thấy các use cases của chúng ta.
 
 7
 00:00:24,020 --> 00:00:31,460
-So I'm going to choose Create Product Use Case in order to define validation rules for our create product
+Vậy tôi sẽ chọn Create Product Use Case để định nghĩa các validation rules cho create product
 
 8
 00:00:31,460 --> 00:00:32,270
-command.
+command của chúng ta.
 
 9
 00:00:32,270 --> 00:00:38,480
-So we do this by creating a validator class for each command using different validations.
+Vậy chúng ta làm điều này bằng cách tạo một validator class cho mỗi command sử dụng các validations khác nhau.
 
 10
 00:00:38,480 --> 00:00:40,070
@@ -40,63 +40,63 @@ Abstract validator class.
 
 11
 00:00:40,070 --> 00:00:43,910
-So please go to the create product handler class.
+Vậy vui lòng đi tới create product handler class.
 
 12
 00:00:43,910 --> 00:00:50,180
-And in here we are going to put the validation for our create product command that is requiring all
+Và ở đây chúng ta sẽ đặt validation cho create product command của chúng ta mà yêu cầu tất cả
 
 13
 00:00:50,180 --> 00:00:53,750
-these information name category description and so on.
+những thông tin này như name, category, description, và những thứ khác.
 
 14
 00:00:53,750 --> 00:00:56,630
-This will be product model properties.
+Đây sẽ là các product model properties.
 
 15
 00:00:56,630 --> 00:01:02,510
-So we need to validate these properties before passing the command handler.
+Vậy chúng ta cần validate những properties này trước khi truyền cho command handler.
 
 16
 00:01:02,510 --> 00:01:05,510
-That is we should check that this should not be null.
+Tức là chúng ta nên kiểm tra rằng cái này không được là null.
 
 17
 00:01:05,510 --> 00:01:09,110
-So we will create create product command validator.
+Vậy chúng ta sẽ tạo create product command validator.
 
 18
 00:01:09,110 --> 00:01:16,310
-And this will be doing by creating a new class which name is create product command validator under
+Và việc này sẽ được thực hiện bằng cách tạo một class mới có tên là create product command validator dưới
 
 19
 00:01:16,310 --> 00:01:19,400
-the this command and result definition.
+định nghĩa command và result này.
 
 20
 00:01:19,400 --> 00:01:23,780
-And before the handle definition I'm going to create a new class.
+Và trước định nghĩa handle, tôi sẽ tạo một class mới.
 
 21
 00:01:23,780 --> 00:01:29,420
-Which name is public class create product command validator class.
+Tên của public class create product command validator class là gì.
 
 22
 00:01:29,420 --> 00:01:35,240
-And I'm going to inherit this class from the abstract validator.
+Và tôi sẽ kế thừa class này từ abstract validator.
 
 23
 00:01:35,240 --> 00:01:38,780
-And as you can see that it is coming from the validation library.
+Và như bạn có thể thấy, nó đến từ thư viện validation.
 
 24
 00:01:38,780 --> 00:01:46,100
-This is coming from the building blocks library that we can access from the front validation and after
+Nó đến từ thư viện building blocks mà chúng ta có thể truy cập từ front validation và sau đó
 
 25
 00:01:46,100 --> 00:01:53,300
-inherit from the abstract validator it is requiring for the validation object which is the or create
+kế thừa từ abstract validator, nó yêu cầu validation object, đó là create
 
 26
 00:01:53,300 --> 00:01:54,110
@@ -104,103 +104,103 @@ product command.
 
 27
 00:01:54,110 --> 00:02:00,500
-I am pasting the create product command and now we can specify our actual logic inside of this class.
+Tôi dán create product command và bây giờ chúng ta có thể chỉ định logic thực tế bên trong class này.
 
 28
 00:02:00,500 --> 00:02:05,840
-So basically in this class the first thing we should do that I'm going to create a constructor.
+Vậy cơ bản trong class này, điều đầu tiên chúng ta nên làm là tôi sẽ tạo một constructor.
 
 29
 00:02:05,840 --> 00:02:11,450
-And inside of the constructor we can define the rules with using the rule for method.
+Và bên trong constructor, chúng ta có thể định nghĩa các rules bằng cách sử dụng method rule for.
 
 30
 00:02:11,450 --> 00:02:20,150
-So this method define the rules and we will give the expression functions in order to define validations.
+Vậy method này định nghĩa các rules và chúng ta sẽ cung cấp các expression functions để định nghĩa validations.
 
 31
 00:02:20,150 --> 00:02:28,430
-So for example I'm going to write a rule for and if you open bracket you can specify the rule definition.
+Vậy chẳng hạn tôi sẽ viết một rule cho và nếu bạn mở dấu ngoặc, bạn có thể chỉ định định nghĩa rule.
 
 32
 00:02:28,430 --> 00:02:31,520
-And we are going to put a rule on the name.
+Và chúng ta sẽ đặt một rule trên name.
 
 33
 00:02:31,520 --> 00:02:34,460
-And this name should not be empty.
+Và name này không nên để trống.
 
 34
 00:02:34,460 --> 00:02:38,150
-And we can also use with message method.
+Và chúng ta cũng có thể sử dụng method with message.
 
 35
 00:02:38,150 --> 00:02:40,730
-And we can give the error message.
+Và chúng ta có thể cung cấp thông báo lỗi.
 
 36
 00:02:40,730 --> 00:02:44,870
-If name is null, we can say that name is required.
+Nếu name là null, chúng ta có thể nói rằng name là required.
 
 37
 00:02:45,770 --> 00:02:52,760
-And this is the our name validation that we can use before proceeding the handler method.
+Và đây là validation name của chúng ta mà chúng ta có thể sử dụng trước khi tiến hành handler method.
 
 38
 00:02:52,760 --> 00:02:55,850
-And at the same way I am going to add different rules.
+Và theo cách tương tự, tôi sẽ thêm các rules khác.
 
 39
 00:02:55,850 --> 00:03:03,920
-In here you can see that I have put the category not empty rule and image file not empty rule with these
+Ở đây bạn có thể thấy rằng tôi đã đặt category not empty rule và image file not empty rule với những
 
 40
 00:03:03,920 --> 00:03:04,940
-messages.
+messages này.
 
 41
 00:03:04,940 --> 00:03:12,260
-And lastly, we can put the price rule greater than zero and with the message is price must be greater
+Và cuối cùng, chúng ta có thể đặt quy tắc giá lớn hơn không và với thông báo là giá phải lớn hơn
 
 42
 00:03:12,260 --> 00:03:12,950
-than zero.
+không.
 
 43
 00:03:12,950 --> 00:03:18,620
-So in the constructor of the validator that inherits from the abstract validator, we can specify the
+Vậy trong constructor của validator kế thừa từ abstract validator, chúng ta có thể chỉ định các
 
 44
 00:03:18,620 --> 00:03:22,670
-rules that will be automatically validate from the validation.
+quy tắc sẽ tự động xác thực từ quá trình validation.
 
 45
 00:03:22,670 --> 00:03:26,330
-So we have completed our command validator class.
+Vậy chúng ta đã hoàn thành lớp command validator của mình.
 
 46
 00:03:26,330 --> 00:03:30,110
-If you go on top of the class you can see that there is a using statement.
+Nếu bạn cuộn lên đầu lớp, bạn có thể thấy có một using statement.
 
 47
 00:03:30,110 --> 00:03:37,760
-I'm going to cut this statement and go to the global using and adding these global using statement that
+Tôi sẽ xóa statement này và đi tới global using và thêm các global using statement này để
 
 48
 00:03:37,760 --> 00:03:41,570
-we can access from any class to implement validations.
+chúng ta có thể truy cập từ bất kỳ lớp nào để triển khai validations.
 
 49
 00:03:41,570 --> 00:03:44,060
-Yes, the command class is completed.
+Vâng, lớp command đã hoàn thành.
 
 50
 00:03:44,060 --> 00:03:47,120
-So how we can proceed these validations.
+Vậy chúng ta sẽ tiến hành các validations này như thế nào.
 
 51
 00:03:47,270 --> 00:03:53,840
-Of course we need to inject a validator in our command handler class in order to validate incoming command
+Tất nhiên chúng ta cần inject một validator trong lớp command handler của chúng ta để validate incoming command
 
 52
 00:03:53,840 --> 00:03:54,380
@@ -208,87 +208,87 @@ object.
 
 53
 00:03:54,380 --> 00:03:59,450
-So for that purpose scroll down and go to the Create Product Command handler class.
+Vậy cho mục đích đó, cuộn xuống và đi tới lớp Create Product Command handler.
 
 54
 00:03:59,450 --> 00:04:04,880
-And in this class I am going to add a naive injection, which is.
+Và trong lớp này tôi sẽ thêm một naive injection, đó là.
 
 55
 00:04:04,880 --> 00:04:09,110
-The I validator comes from the fluent validation.
+I validator đến từ fluent validation.
 
 56
 00:04:09,110 --> 00:04:15,740
-And in here I'm going to passing the create product command as a generic in here okay.
+Và ở đây tôi sẽ truyền create product command làm generic ở đây được không.
 
 57
 00:04:15,740 --> 00:04:18,620
-This will be our validator object.
+Đây sẽ là validator object của chúng ta.
 
 58
 00:04:19,220 --> 00:04:26,030
-And you can see that now our primary constructor including two objects one for the session to perform
+Và bạn có thể thấy rằng bây giờ primary constructor của chúng ta bao gồm hai objects, một cho session để thực hiện
 
 59
 00:04:26,030 --> 00:04:28,040
-actual logic, one for the validator.
+logic thực tế, một cho validator.
 
 60
 00:04:28,040 --> 00:04:33,560
-And we will use validator at the beginning of the handle method that will perform the validations with
+Và chúng ta sẽ sử dụng validator ở đầu phương thức handle sẽ thực hiện các validations với
 
 61
 00:04:33,560 --> 00:04:36,680
-using the validator dot validate method.
+sử dụng phương thức validator dot validate.
 
 62
 00:04:36,680 --> 00:04:38,930
-So let me write first and explain.
+Vậy để tôi viết trước và giải thích.
 
 63
 00:04:38,930 --> 00:04:48,410
-After that I'm going to get a result from await validator that you can see that we have validate async
+Sau đó tôi sẽ lấy kết quả từ await validator mà bạn có thể thấy rằng chúng ta có validate async
 
 64
 00:04:48,410 --> 00:04:49,010
-method.
+phương thức.
 
 65
 00:04:49,010 --> 00:04:52,850
-And we can pass command object that we are going to validate.
+Và chúng ta có thể truyền command object mà chúng ta sẽ validate.
 
 66
 00:04:52,850 --> 00:04:55,820
-And after that we can pass the cancellation token.
+Và sau đó chúng ta có thể truyền cancellation token.
 
 67
 00:04:59,290 --> 00:05:03,190
-So after validating, we can get the errors from the result.
+Vậy sau khi validate, chúng ta có thể lấy các lỗi từ kết quả.
 
 68
 00:05:03,190 --> 00:05:11,170
-And if you filter the result by errors and select for the error message.
+Và nếu bạn lọc kết quả theo lỗi và chọn error message.
 
 69
 00:05:17,660 --> 00:05:21,680
-We can access the errors from the result if there is an error.
+Chúng ta có thể truy cập các lỗi từ kết quả nếu có lỗi.
 
 70
 00:05:21,680 --> 00:05:30,080
-So if an error we can throw an exception which is the validation exception.
+Vậy nếu có lỗi chúng ta có thể throw một exception là validation exception.
 
 71
 00:05:30,980 --> 00:05:35,240
-And this validation exception also comes from the fluent validation.
+Và validation exception này cũng xuất phát từ fluent validation.
 
 72
 00:05:35,240 --> 00:05:36,680
-And we are passing the.
+Và chúng ta đang truyền cái.
 
 73
 00:05:37,570 --> 00:05:40,720
-Errors and first default for now.
+Errors và first default hiện tại.
 
 74
 00:05:43,110 --> 00:05:43,560
@@ -296,213 +296,213 @@ Okay.
 
 75
 00:05:43,560 --> 00:05:49,500
-As you can see that we basically put a validation block in here, the handle.
+Như bạn có thể thấy, chúng ta cơ bản đã đặt một validation block ở đây, trong handle.
 
 76
 00:05:49,530 --> 00:05:52,860
-Now check the commands against our validation rules.
+Bây giờ kiểm tra các commands so với validation rules của chúng ta.
 
 77
 00:05:52,860 --> 00:05:58,440
-And if there is any errors in the validations we can throw a validation exception.
+Và nếu có bất kỳ lỗi nào trong validations chúng ta có thể throw một validation exception.
 
 78
 00:05:58,440 --> 00:06:01,650
-If not it is going to actual business logic.
+Nếu không thì nó sẽ đi vào business logic thực tế.
 
 79
 00:06:01,770 --> 00:06:05,340
-So you can see that we have created a command validator.
+Vậy bạn có thể thấy rằng chúng ta đã tạo một command validator.
 
 80
 00:06:05,340 --> 00:06:09,540
-And after that we have inject a validator into our command handler.
+Và sau đó chúng ta đã inject một validator vào command handler của chúng ta.
 
 81
 00:06:09,540 --> 00:06:16,410
-And after that we have to register these validators into ASP.Net dependency injection container.
+Và sau đó chúng ta phải đăng ký các validators này vào ASP.NET dependency injection container.
 
 82
 00:06:16,410 --> 00:06:19,290
-To do so I'm going to open the Program.cs.
+Để làm điều đó, tôi sẽ mở Program.cs.
 
 83
 00:06:19,290 --> 00:06:26,070
-And after the mediator I can add a new service in here Builder Services.
+Và sau mediator, tôi có thể thêm một service mới ở đây Builder Services.
 
 84
 00:06:26,070 --> 00:06:30,720
-And in here add validators from the assembly.
+Và ở đây thêm validators từ assembly.
 
 85
 00:06:30,840 --> 00:06:36,780
-And this method comes from the Fluent Validation dependency injection extension that will facilitate
+Và method này đến từ Fluent Validation dependency injection extension sẽ giúp dễ dàng
 
 86
 00:06:36,780 --> 00:06:40,410
-to inject fluent validation for our ASP.Net applications.
+để inject Fluent Validation cho các ứng dụng ASP.NET của chúng ta.
 
 87
 00:06:40,410 --> 00:06:45,150
-So I'm going to paste the assembly as the same way with the our mediator.
+Vậy tôi sẽ paste assembly theo cách tương tự như mediator của chúng ta.
 
 88
 00:06:45,150 --> 00:06:47,280
-And I'm passing the Program.cs assembly.
+Và tôi đang truyền assembly Program.cs.
 
 89
 00:06:47,280 --> 00:06:54,000
-So this will be make it available in validator that we can inject into the create product command handler.
+Vì vậy điều này sẽ làm cho nó khả dụng trong validator mà chúng ta có thể inject vào create product command handler.
 
 90
 00:06:54,000 --> 00:07:00,930
-And this will be validate these command validator with scanning the project with abstract validators.
+Và điều này sẽ xác thực command validator này bằng cách quét project với abstract validators.
 
 91
 00:07:00,930 --> 00:07:07,500
-So that means when we are registering in the program says this code block basically scans the assembly
+Vậy điều đó có nghĩa là khi chúng ta đang đăng ký trong program, khối code này về cơ bản quét assembly
 
 92
 00:07:07,500 --> 00:07:12,000
-for any validators and register them into this ASP.Net project.
+để tìm bất kỳ validators nào và đăng ký chúng vào project ASP.NET này.
 
 93
 00:07:12,000 --> 00:07:18,300
-So now we have defined the validators, and now it is time to test our validation by sending a request
+Vậy bây giờ chúng ta đã định nghĩa các validators, và bây giờ là lúc để test validation của chúng ta bằng cách gửi một request
 
 94
 00:07:18,300 --> 00:07:20,010
-with missing required fields.
+với các trường bắt buộc bị thiếu.
 
 95
 00:07:20,010 --> 00:07:25,950
-So we will use create product endpoint in order to trigger this handle method.
+Vậy chúng ta sẽ sử dụng create product endpoint để trigger method này.
 
 96
 00:07:25,950 --> 00:07:30,180
-For that purpose, let's run this application in https mode.
+Để mục đích đó, hãy chạy ứng dụng này ở chế độ https.
 
 97
 00:07:30,820 --> 00:07:37,030
-And this time we will send a http post request without giving the name information.
+Và lần này chúng ta sẽ gửi một HTTP POST request mà không cung cấp thông tin name.
 
 98
 00:07:37,270 --> 00:07:40,090
-And this will be trigger our command handler.
+Và điều này sẽ trigger command handler của chúng ta.
 
 99
 00:07:40,090 --> 00:07:44,020
-So please put a breakpoint inside of your validations.
+Vậy vui lòng đặt một breakpoint bên trong validations của bạn.
 
 100
 00:07:44,020 --> 00:07:48,760
-You can put a breakpoint inside of the command validator constructor.
+Bạn có thể đặt một breakpoint bên trong command validator constructor.
 
 101
 00:07:48,760 --> 00:07:56,080
-And now if you open the your postman and go to the http post method and we are going to send http post
+Và bây giờ nếu bạn mở Postman và chuyển sang phương thức HTTP POST, chúng ta sẽ gửi HTTP POST
 
 102
 00:07:56,080 --> 00:08:03,580
-request in the local environment slash products, and I'm going to make it empty for the name attribute
+request trong local environment slash products, và tôi sẽ để trống thuộc tính name
 
 103
 00:08:03,580 --> 00:08:05,890
-and hit the http send method.
+và nhấn phương thức HTTP send.
 
 104
 00:08:05,920 --> 00:08:13,750
-This will be trigger or create product endpoint and after that mediator will be triggered our handle
+Điều này sẽ kích hoạt hoặc tạo product endpoint và sau đó mediator sẽ kích hoạt handle
 
 105
 00:08:13,750 --> 00:08:14,590
-operation.
+operation của chúng ta.
 
 106
 00:08:14,590 --> 00:08:22,570
-But this time you can see that when we send the mediator this will be before triggering the handle method.
+Nhưng lần này bạn có thể thấy khi chúng ta gửi mediator, điều này sẽ xảy ra trước khi kích hoạt handle method.
 
 107
 00:08:22,570 --> 00:08:24,880
-This will be trigger the command validator.
+Điều này sẽ kích hoạt command validator.
 
 108
 00:08:24,880 --> 00:08:30,580
-So that means before running the actual logic this will be validate the incoming command object and
+Vậy điều đó có nghĩa là trước khi chạy logic thực tế, điều này sẽ validate incoming command object và
 
 109
 00:08:30,580 --> 00:08:33,100
-in here you can see that the name is empty.
+ở đây bạn có thể thấy rằng name trống rỗng.
 
 110
 00:08:33,100 --> 00:08:37,960
-And this will be collected all the messages from these validations.
+Và điều này sẽ thu thập tất cả các thông báo từ những validations này.
 
 111
 00:08:37,960 --> 00:08:45,700
-And once we go to the handle method we are basically run the validator dot validate async method that
+Và một khi chúng ta đi đến handle method, chúng ta về cơ bản sẽ chạy validator dot validate async method mà
 
 112
 00:08:45,700 --> 00:08:49,090
-will be collect all the messages from these command validators.
+sẽ thu thập tất cả các thông báo từ những command validators này.
 
 113
 00:08:49,090 --> 00:08:52,600
-And you can see the error messages collecting from in here.
+Và bạn có thể thấy các thông báo lỗi được thu thập từ đây.
 
 114
 00:08:52,600 --> 00:08:54,580
-And if any error message.
+Và nếu có bất kỳ thông báo lỗi nào.
 
 115
 00:08:54,580 --> 00:08:57,880
-In our case we have one error message which is the name is required.
+Trong trường hợp của chúng ta, chúng ta có một thông báo lỗi là name là bắt buộc.
 
 116
 00:08:57,880 --> 00:09:03,700
-We can throw an validation exception that will not be continue or actual business logic, which is the
+Chúng ta có thể throw một validation exception mà sẽ không tiếp tục logic business thực tế, đó là
 
 117
 00:09:03,700 --> 00:09:04,840
-creating new order.
+tạo một order mới.
 
 118
 00:09:04,840 --> 00:09:10,540
-And you can see that we are throwing full length validation validation exception and name is required.
+Và bạn có thể thấy rằng chúng ta đang throw validation exception toàn bộ và name là bắt buộc.
 
 119
 00:09:10,540 --> 00:09:14,410
-So we have successfully validate our incoming command object.
+Vậy chúng ta đã thành công validate incoming command object của chúng ta.
 
 120
 00:09:14,410 --> 00:09:17,860
-And we see that we can throw an exception if the name is required.
+Và chúng ta thấy rằng chúng ta có thể throw một exception nếu name là bắt buộc.
 
 121
 00:09:17,860 --> 00:09:23,050
-But this is not a good way to check every command with the validators manually.
+Nhưng đây không phải là một cách tốt để kiểm tra mọi command với các validators một cách thủ công.
 
 122
 00:09:23,050 --> 00:09:30,400
-If you go back to our code, you can see that in every command handler method in the handle method,
+Nếu bạn quay lại code của chúng ta, bạn có thể thấy rằng trong mọi phương thức handler của command trong phương thức handle,
 
 123
 00:09:30,400 --> 00:09:36,220
-we can use these code blocks in order to validate these abstract validator.
+chúng ta có thể sử dụng các code block này để validate các abstract validator.
 
 124
 00:09:36,220 --> 00:09:41,650
-But this is not efficient and we should not duplicate this code for each handle method.
+Nhưng điều này không hiệu quả và chúng ta không nên trùng lặp code này cho mỗi handle method.
 
 125
 00:09:41,650 --> 00:09:42,910
-This is not a good way.
+Đây không phải là một cách tốt.
 
 126
 00:09:42,910 --> 00:09:49,030
-So in the next video we will validate using the validate pipeline behavior in mediator without adding
+Vậy trong video tiếp theo chúng ta sẽ validate bằng cách sử dụng validate pipeline behavior trong mediator mà không thêm
 
 127
 00:09:49,030 --> 00:09:52,450
-any if command and any validation block in the handle method.
+bất kỳ if command và bất kỳ validation block nào trong handle method.
 

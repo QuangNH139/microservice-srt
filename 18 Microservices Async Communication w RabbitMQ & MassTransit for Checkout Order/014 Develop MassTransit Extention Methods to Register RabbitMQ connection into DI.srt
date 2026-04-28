@@ -1,166 +1,166 @@
 1
 00:00:00,170 --> 00:00:03,680
-In this video we are going to develop mass transit folder.
+Trong video này chúng ta sẽ phát triển thư mục mass transit.
 
 2
 00:00:03,680 --> 00:00:09,620
-We are at this point and develop mass transit extension method in order to register RabbitMQ connection
+Chúng ta đang ở điểm này và phát triển mass transit extension method để đăng ký kết nối RabbitMQ
 
 3
 00:00:09,620 --> 00:00:13,040
-into dependency injection of the basket and ordering microservices.
+vào dependency injection của basket và ordering microservices.
 
 4
 00:00:13,040 --> 00:00:16,700
-For that purpose we should install Masstransit NuGet packages.
+Để làm được điều đó chúng ta cần cài đặt các NuGet packages của Masstransit.
 
 5
 00:00:16,700 --> 00:00:23,390
-Masstransit is an open source message broker middleware that abstract the Message Bus APIs and provide
+Masstransit là một message broker middleware mã nguồn mở giúp trừu tượng hóa các Message Bus APIs và cung cấp
 
 6
 00:00:23,390 --> 00:00:27,710
-simple, extensive framework for creating distributed applications.
+một framework đơn giản và mở rộng để tạo các ứng dụng phân tán.
 
 7
 00:00:27,710 --> 00:00:32,870
-So where we should install these Masstransit NuGet packages into our application.
+Vậy chúng ta nên cài đặt các NuGet packages của Masstransit này vào đâu trong ứng dụng của chúng ta.
 
 8
 00:00:32,870 --> 00:00:38,660
-If you look at the class library architecture, we can see that both basket and generic microservices
+Nếu bạn nhìn vào kiến trúc class library, chúng ta có thể thấy rằng cả basket và generic microservices
 
 9
 00:00:38,660 --> 00:00:42,260
-need to install Masstransit RabbitMQ NuGet packages.
+đều cần cài đặt các NuGet packages của Masstransit RabbitMQ.
 
 10
 00:00:42,350 --> 00:00:48,890
-But instead of installing these packages one by one for each microservices, we should install these
+Nhưng thay vì cài đặt các packages này từng cái một cho mỗi microservices, chúng ta nên cài đặt các
 
 11
 00:00:48,890 --> 00:00:53,270
-RabbitMQ NuGet packages into the Building Blocks messaging class library.
+NuGet packages của RabbitMQ vào Building Blocks messaging class library.
 
 12
 00:00:53,270 --> 00:00:59,060
-By this way, we can put the asynchronous communication related packages into this class library that
+Bằng cách này, chúng ta có thể đưa các packages liên quan đến asynchronous communication vào class library này
 
 13
 00:00:59,060 --> 00:01:03,140
-can be getting reference for any microservices that need to be asynchronous.
+mà có thể được tham chiếu bởi bất kỳ microservices nào cần giao tiếp bất đồng bộ.
 
 14
 00:01:03,140 --> 00:01:08,690
-Communication and Masstransit NuGet packages provide to work RabbitMQ as a message broker.
+Communication và các NuGet packages của Masstransit cung cấp khả năng làm việc với RabbitMQ như một message broker.
 
 15
 00:01:08,690 --> 00:01:10,100
-So let's get started.
+Vậy hãy bắt đầu thôi.
 
 16
 00:01:10,100 --> 00:01:17,090
-Please open the Visual Studio and go to the Bullying Blocks messaging class library and go to dependencies.
+Vui lòng mở Visual Studio và đi tới Building Blocks messaging class library và vào dependencies.
 
 17
 00:01:17,090 --> 00:01:25,070
-Right click manage NuGet packages and browse for the Masstransit RabbitMQ and select this package.
+Click chuột phải quản lý NuGet packages và tìm kiếm Masstransit RabbitMQ và chọn package này.
 
 18
 00:01:25,070 --> 00:01:27,740
-And please install this package into our class library.
+Và vui lòng cài đặt package này vào class library của chúng ta.
 
 19
 00:01:27,770 --> 00:01:32,120
-Click the this link and install the packages I accept.
+Click vào link này và cài đặt các packages, tôi đồng ý.
 
 20
 00:01:32,630 --> 00:01:34,130
-Okay installation completed.
+Được rồi, cài đặt hoàn tất.
 
 21
 00:01:34,130 --> 00:01:36,050
-You can verify from the class library.
+Bạn có thể xác minh từ class library.
 
 22
 00:01:36,050 --> 00:01:41,150
-If you double click the project, you can see that we have successfully install Masstransit RabbitMQ
+Nếu bạn double click vào project, bạn có thể thấy rằng chúng ta đã cài đặt thành công Masstransit RabbitMQ
 
 23
 00:01:41,150 --> 00:01:46,670
-NuGet packages and this package enable Masstransit to work with RabbitMQ as a message broker.
+NuGet packages và package này cho phép Masstransit làm việc với RabbitMQ như một message broker.
 
 24
 00:01:46,670 --> 00:01:50,870
-So now we can start the developing for Masstransit configurations.
+Vậy bây giờ chúng ta có thể bắt đầu phát triển các cấu hình Masstransit.
 
 25
 00:01:50,870 --> 00:01:54,800
-Please go to Building Blocks Messaging and remove these class one.
+Vui lòng đi đến Building Blocks Messaging và xóa class này.
 
 26
 00:01:54,800 --> 00:01:56,990
-And I'm going to create a new folder.
+Và tôi sẽ tạo một folder mới.
 
 27
 00:01:56,990 --> 00:01:59,570
-Right click Add new folder.
+Click chuột phải Add new folder.
 
 28
 00:01:59,570 --> 00:02:01,460
-Which name is master Asset.
+Cái tên là MassTransit.
 
 29
 00:02:01,460 --> 00:02:04,550
-And under this folder I'm going to create a new class.
+Và dưới folder này tôi sẽ tạo một class mới.
 
 30
 00:02:04,550 --> 00:02:06,440
-Which name is extensions.
+Cái tên là Extensions.
 
 31
 00:02:06,440 --> 00:02:07,310
-Thanks.
+Cảm ơn.
 
 32
 00:02:07,580 --> 00:02:13,220
-This class will contain extension methods for setting up the Masstransit with RabbitMQ.
+Class này sẽ chứa các extension methods để cấu hình Masstransit với RabbitMQ.
 
 33
 00:02:13,340 --> 00:02:18,140
-Please remove unnecessary using statement and make this class as a public.
+Vui lòng xóa các using statement không cần thiết và đặt class này là public.
 
 34
 00:02:19,100 --> 00:02:22,940
-And also we need to set the keyword in order to create extension methods.
+Và chúng ta cũng cần sử dụng keyword static để tạo extension methods.
 
 35
 00:02:22,940 --> 00:02:29,120
-And inside of this class I'm going to create a new extension method, which name is Add Message Broker.
+Và bên trong class này tôi sẽ tạo một extension method mới, cái tên là AddMessageBroker.
 
 36
 00:02:29,120 --> 00:02:35,480
-Here you can see that we develop public static Iservice collection add message broker.
+Ở đây bạn có thể thấy chúng ta phát triển public static IServiceCollection AddMessageBroker.
 
 37
 00:02:35,480 --> 00:02:39,380
-And this will be an extension method on the I service collection.
+Và đây sẽ là một extension method trên IServiceCollection.
 
 38
 00:02:39,380 --> 00:02:43,100
-That's why we are using this keyword in the first parameter of this method.
+Đó là lý do tại sao chúng ta sử dụng keyword this trong tham số đầu tiên của method này.
 
 39
 00:02:43,100 --> 00:02:48,950
-And you can also see the assembly information as an optional parameter of this extension method.
+Và bạn cũng có thể thấy assembly information như một tham số optional của extension method này.
 
 40
 00:02:48,950 --> 00:02:52,640
-So this is extension method over the I service collection.
+Vậy đây là extension method trên IServiceCollection.
 
 41
 00:02:52,640 --> 00:02:57,980
-In order to register these message broker related configurations when the application start up in the
+Để đăng ký các cấu hình liên quan đến message broker khi ứng dụng khởi động trong
 
 42
 00:02:57,980 --> 00:02:58,730
@@ -168,31 +168,31 @@ Program.cs.
 
 43
 00:02:58,730 --> 00:03:03,350
-So in this method we basically configure Masstransit with RabbitMQ settings.
+Vậy trong phương thức này về cơ bản chúng ta cấu hình MassTransit với các cài đặt RabbitMQ.
 
 44
 00:03:03,350 --> 00:03:09,500
-But for now I'm going to put a comment to this statement and we will come here after defining the RabbitMQ
+Nhưng bây giờ tôi sẽ comment lại câu lệnh này và chúng ta sẽ quay lại đây sau khi định nghĩa các cấu hình RabbitMQ.
 
 45
 00:03:09,500 --> 00:03:10,310
-configurations.
+các cấu hình.
 
 46
 00:03:10,310 --> 00:03:16,460
-That means before developing Masstransit extension method, we should define RabbitMQ configurations.
+Điều đó có nghĩa là trước khi phát triển phương thức extension MassTransit, chúng ta nên định nghĩa các cấu hình RabbitMQ.
 
 47
 00:03:16,460 --> 00:03:21,590
-And it is good to get RabbitMQ settings from the application settings Json file.
+Và tốt nhất là lấy các cài đặt RabbitMQ từ tệp application settings Json.
 
 48
 00:03:21,590 --> 00:03:26,840
-So in the application settings file we can see the basket and ordering microservices.
+Vậy trong tệp application settings, chúng ta có thể thấy basket và ordering microservices.
 
 49
 00:03:26,840 --> 00:03:32,870
-If I open the basket API, we can go to Application settings Json file for both basket and ordering
+Nếu tôi mở basket API, chúng ta có thể đi tới tệp Application settings Json cho cả basket và ordering microservices.
 
 50
 00:03:32,870 --> 00:03:33,740
@@ -200,7 +200,7 @@ microservices.
 
 51
 00:03:33,740 --> 00:03:40,430
-We should add a RabbitMQ settings, and these settings should contain the host username and password
+Chúng ta nên thêm các cài đặt RabbitMQ, và những cài đặt này nên chứa host, username và password để kết nối tới RabbitMQ.
 
 52
 00:03:40,430 --> 00:03:42,080
@@ -208,23 +208,23 @@ for connecting to RabbitMQ.
 
 53
 00:03:42,080 --> 00:03:46,460
-So I'm going to open the basket microservices application settings Json file.
+Vậy tôi sẽ mở tệp application settings Json của basket microservices.
 
 54
 00:03:46,460 --> 00:03:50,870
-And I'm going to add a message broker part after the gRPC settings.
+Và tôi sẽ thêm phần message broker sau các cài đặt gRPC.
 
 55
 00:03:50,870 --> 00:03:57,560
-Here you can see that I have added the Message broker section including the host username and password
+Ở đây bạn có thể thấy rằng tôi đã thêm phần Message broker bao gồm host, username và password, địa chỉ host bao gồm amqp, slash, slash, localhost và số cổng, đó là cổng mặc định cho kết nối RabbitMQ và username và password là guest.
 
 56
 00:03:57,560 --> 00:04:03,620
-host address including amqp, slash, slash, localhost and the port number, which is the default port
+Chúng ta sẽ làm theo các bước tương tự cho ordering microservices.
 
 57
 00:04:03,620 --> 00:04:08,240
-number for the RabbitMQ connection and username and password is a guest.
+Nếu bạn đi tới ordering API và đi tới tệp Application settings Json, bạn có thể đi tới phần Connection settings và dán phần Message Broker tại đây, bao gồm host, username và password.
 
 58
 00:04:08,240 --> 00:04:11,450
@@ -240,25 +240,25 @@ settings part and paste in here Message Broker section, including the host usern
 
 61
 00:04:22,910 --> 00:04:28,460
-And these settings are crucial for establishing a connection to the RabbitMQ server, and we assume
+Và những cài đặt này rất quan trọng để thiết lập kết nối với máy chủ RabbitMQ, và chúng ta giả định
 
 62
 00:04:28,460 --> 00:04:35,870
-that RabbitMQ is running locally on the port of the default port, which is the 5672, and with default
+rằng RabbitMQ đang chạy cục bộ trên cổng mặc định, đó là cổng 5672, và với các cấu hình
 
 63
 00:04:35,870 --> 00:04:37,280
-guest configurations.
+guest mặc định.
 
 64
 00:04:37,280 --> 00:04:42,650
-And this configurations will be used in our extension method that we are developing on the Building
+Và những cài đặt này sẽ được sử dụng trong phương thức mở rộng mà chúng ta đang phát triển trên lớp thư viện
 
 65
 00:04:42,650 --> 00:04:44,330
-Blocks messaging class library.
+Building Blocks messaging.
 
 66
 00:04:44,330 --> 00:04:48,200
-To set up the connection to the RabbitMQ using the Masstransit library.
+Để thiết lập kết nối với RabbitMQ sử dụng thư viện MassTransit.
 

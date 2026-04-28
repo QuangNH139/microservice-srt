@@ -1,90 +1,90 @@
 1
 00:00:00,140 --> 00:00:05,480
-In this video we are going to containerize basket API microservices with Docker.
+Trong video này chúng ta sẽ containerize basket API microservices với Docker.
 
 2
 00:00:05,689 --> 00:00:11,870
-If we look at our deployment strategy, you can see that we have finished the deployment one, which
+Nếu chúng ta xem chiến lược triển khai của mình, bạn có thể thấy rằng chúng ta đã hoàn thành deployment một, đó là
 
 3
 00:00:11,870 --> 00:00:16,640
-is the deploying local and communicated with backing services on Docker.
+triển khai cục bộ và giao tiếp với các backing services trên Docker.
 
 4
 00:00:16,640 --> 00:00:19,100
-And we will shifting to the deployment two.
+Và chúng ta sẽ chuyển sang deployment hai.
 
 5
 00:00:19,130 --> 00:00:25,430
-That means we will Containerize and Docker compose all microservice and backing services together.
+Điều đó có nghĩa là chúng ta sẽ Containerize và Docker compose tất cả các microservice và backing services cùng nhau.
 
 6
 00:00:25,460 --> 00:00:32,390
-The first step for this operation is containerizing your microservices with docker file.
+Bước đầu tiên cho hoạt động này là containerizing microservices của bạn với docker file.
 
 7
 00:00:32,390 --> 00:00:37,760
-For that purpose, please open the Visual Studio and right click the basket API.
+Với mục đích đó, vui lòng mở Visual Studio và click chuột phải vào basket API.
 
 8
 00:00:37,790 --> 00:00:41,360
-You can come here and add Docker support.
+Bạn có thể đến đây và thêm Docker support.
 
 9
 00:00:41,360 --> 00:00:46,160
-So if you click the Docker support you can see the target operating system should be Linux.
+Vì vậy nếu bạn click Docker support bạn có thể thấy target operating system phải là Linux.
 
 10
 00:00:46,160 --> 00:00:47,480
-Click the okay button.
+Click nút okay.
 
 11
 00:00:47,480 --> 00:00:50,420
-This is asking that you have already Docker file.
+Điều này đang hỏi rằng bạn đã có Docker file.
 
 12
 00:00:50,420 --> 00:00:52,220
-Do you want to overwrite this file?
+Bạn có muốn ghi đè file này không?
 
 13
 00:00:52,220 --> 00:00:53,030
-Yes.
+Có.
 
 14
 00:00:53,570 --> 00:00:57,980
-And here you can see the newly generated docker file for Visual Studio.
+Và ở đây bạn có thể thấy docker file mới được tạo từ Visual Studio.
 
 15
 00:00:57,980 --> 00:01:02,150
-Docker file contains a set of instructions to build the docker image.
+Docker file chứa một tập hợp các hướng dẫn để xây dựng docker image.
 
 16
 00:01:02,150 --> 00:01:04,220
-So let's break down its component.
+Vì vậy hãy chia nhỏ các thành phần của nó.
 
 17
 00:01:04,220 --> 00:01:06,410
-The first one is base image.
+Cái đầu tiên là base image.
 
 18
 00:01:06,410 --> 00:01:07,430
-This is using.
+Cái này đang sử dụng.
 
 19
 00:01:07,610 --> 00:01:16,130
-Net eight as a base image and set the working directory slash app and exposing 8080 and 8081 for http
+Net eight làm base image và đặt working directory là /app và expose 8080 và 8081 cho http
 
 20
 00:01:16,130 --> 00:01:17,630
-and Https ports.
+và Https ports.
 
 21
 00:01:17,630 --> 00:01:20,840
-And the second stage is build stage.
+Và giai đoạn thứ hai là giai đoạn build.
 
 22
 00:01:20,870 --> 00:01:26,990
-This is using dotnet SDK image for building the application and restored NuGet packages and builds the
+Đây là sử dụng dotnet SDK image để xây dựng ứng dụng và khôi phục các gói NuGet và xây dựng
 
 23
 00:01:26,990 --> 00:01:27,740
@@ -92,41 +92,41 @@ project.
 
 24
 00:01:27,830 --> 00:01:30,290
-And the third image is publish.
+Và image thứ ba là publish.
 
 25
 00:01:30,350 --> 00:01:37,280
-And at this stage this will be publishes the application to the slash app slash publish directory.
+Và ở giai đoạn này, nó sẽ publish ứng dụng vào thư mục slash app slash publish.
 
 26
 00:01:37,280 --> 00:01:39,290
-You can see this directory in here.
+Bạn có thể thấy thư mục này ở đây.
 
 27
 00:01:39,290 --> 00:01:46,220
-And the last step is final stage is prepares the final image by copying the published application into
+Và bước cuối cùng, giai đoạn cuối cùng là chuẩn bị image cuối cùng bằng cách sao chép ứng dụng đã publish vào
 
 28
 00:01:46,220 --> 00:01:51,620
-the base image, and it sets the Entrypoint in order to start the basket API application.
+base image, và nó thiết lập Entrypoint để khởi động ứng dụng basket API.
 
 29
 00:01:51,620 --> 00:01:52,310
-This is the.
+Đây là
 
 30
 00:01:52,520 --> 00:01:54,170
-Net and DLL application.
+ứng dụng .NET DLL.
 
 31
 00:01:54,170 --> 00:01:59,960
-Also, you can see that how basket API integration with the building blocks the docker file.
+Ngoài ra, bạn có thể thấy cách basket API tích hợp với building blocks trong Docker file.
 
 32
 00:01:59,960 --> 00:02:05,810
-Also handle dependencies with the building blocks project and ensuring all necessary components are
+Cũng xử lý các phụ thuộc với building blocks project và đảm bảo tất cả các thành phần cần thiết được
 
 33
 00:02:05,810 --> 00:02:07,550
-included in the build stage.
+đưa vào giai đoạn build.
 

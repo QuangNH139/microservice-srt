@@ -1,78 +1,78 @@
 1
 00:00:00,140 --> 00:00:07,220
-In this video we are going to do global exception handling with I exception handler interface in ASP.Net
+Trong video này chúng ta sẽ thực hiện global exception handling với interface I exception handler trong ASP.Net
 
 2
 00:00:07,220 --> 00:00:07,670
-core.
+Core.
 
 3
 00:00:08,210 --> 00:00:13,640
-As you remember that when we are examining this article, which is the handle errors in ASP.Net core,
+Như bạn còn nhớ, khi chúng ta xem xét bài viết này, đó là handle errors trong ASP.Net Core,
 
 4
 00:00:13,640 --> 00:00:18,110
-we saw exception handle with Lambda functions in the program case.
+chúng ta đã thấy exception handle với Lambda functions trong program case.
 
 5
 00:00:18,110 --> 00:00:25,910
-But one of the best practice is to handle the global exceptions using the I exception handler interface.
+Nhưng một trong những best practices là xử lý global exceptions bằng cách sử dụng interface I exception handler.
 
 6
 00:00:26,030 --> 00:00:33,860
-So I exception handler interface is provided by ASP.Net core and allows developers to handle exceptions
+Vậy I exception handler interface được cung cấp bởi ASP.Net Core và cho phép các developer xử lý exceptions
 
 7
 00:00:33,860 --> 00:00:34,700
-globally.
+toàn cục.
 
 8
 00:00:34,790 --> 00:00:41,840
-It offers a callback method for managing known exceptions, and it can be registered as a service.
+Nó cung cấp một callback method để quản lý các exceptions đã biết, và nó có thể được đăng ký như một service.
 
 9
 00:00:41,870 --> 00:00:49,280
-So I exception handler instance are singleton and can be registered using the add exception handler
+Vậy các instance I exception handler là singleton và có thể được đăng ký bằng cách sử dụng phương thức add exception handler.
 
 10
 00:00:49,280 --> 00:00:49,730
-method.
+Đây là một trong những tính năng mạnh mẽ mà chúng ta có thể đăng ký bằng cách sử dụng phương thức extension add exception handler
 
 11
 00:00:49,730 --> 00:00:55,280
-This is one of the powerful feature that we can register using these add exception handler extension
+từ service collection và các implementations khác nhau cũng có thể được thêm vào và được thực thi theo
 
 12
 00:00:55,280 --> 00:01:01,880
-method from the service collection and multiple implementations also can be added and are executed in
+thứ tự đăng ký.
 
 13
 00:01:01,880 --> 00:01:03,770
-order of registrations.
+Vậy nếu exception không được xử lý bởi bất kỳ registered nào dưới control, nó sẽ quay lại default behavior
 
 14
 00:01:03,770 --> 00:01:10,070
-So if the exception isn't handled by any registered under the control, falls back to default behavior
+được cấu hình trong middleware.
 
 15
 00:01:10,070 --> 00:01:11,570
-configured in the middleware.
+Vậy nếu bạn cuộn xuống, bạn có thể thấy cách chúng ta có thể thiết lập custom exception handler bằng cách sử dụng
 
 16
 00:01:11,660 --> 00:01:17,450
-So if you scroll down, you can see that how we can setting up the custom exception handler using the
+interface I exception handler.
 
 17
 00:01:17,450 --> 00:01:19,820
-I exception handler interface.
+Và chúng ta cũng sẽ tạo custom exception handler kiểu này.
 
 18
 00:01:19,820 --> 00:01:23,030
-And we will also create this kind of custom exception handler.
+Và chúng ta sẽ đặt tên là custom exception handler.
 
 19
 00:01:23,030 --> 00:01:26,150
-And we will give the name as a custom exception handler.
+Và chúng ta sẽ đặt class này vào trong bullying class để làm cho nó có sẵn cho từng microservices.
 
 20
 00:01:26,150 --> 00:01:33,350
@@ -80,55 +80,55 @@ And we will put this class into our bullying class in order to make it available
 
 21
 00:01:33,350 --> 00:01:37,550
-So we will develop global exception handler into the building blocks.
+Vậy chúng ta sẽ phát triển global exception handler vào building blocks.
 
 22
 00:01:37,550 --> 00:01:44,150
-We will create custom exception handler that can be used for each microservices for handling exceptions
+Chúng ta sẽ tạo custom exception handler có thể được sử dụng cho từng microservices để xử lý exceptions
 
 23
 00:01:44,150 --> 00:01:44,840
-globally.
+một cách toàn cục.
 
 24
 00:01:44,840 --> 00:01:48,860
-For that purpose, please open the Visual Studio and go to the building blocks.
+Để làm điều đó, vui lòng mở Visual Studio và đi tới building blocks.
 
 25
 00:01:48,860 --> 00:01:52,070
-And under the exceptions I am going to create a subfolder.
+Và dưới exceptions, tôi sẽ tạo một subfolder.
 
 26
 00:01:52,070 --> 00:01:56,360
-Which name is handler, add new folder, which name is handler.
+Tên của nó là handler, thêm folder mới, tên là handler.
 
 27
 00:01:56,360 --> 00:01:59,450
-And in the handler class I am going to create a new class.
+Và trong handler class, tôi sẽ tạo một class mới.
 
 28
 00:01:59,450 --> 00:02:02,420
-Which name is custom exception handler.
+Tên của nó là custom exception handler.
 
 29
 00:02:02,420 --> 00:02:09,050
-So you can come here and see that we have created a new folder under exceptions which name is handler
+Vậy bạn có thể xem ở đây rằng chúng ta đã tạo một folder mới dưới exceptions có tên là handler
 
 30
 00:02:09,050 --> 00:02:12,110
-and create new class which is the custom exception handler.
+và tạo class mới là custom exception handler.
 
 31
 00:02:12,110 --> 00:02:20,240
-This class will implement AI exception handler interface and define our custom logic for handling exceptions.
+Class này sẽ implement IExceptionHandler interface và định nghĩa logic tùy chỉnh của chúng ta để xử lý exceptions.
 
 32
 00:02:20,240 --> 00:02:24,080
-So you can see that we have implemented this interface.
+Vậy bạn có thể thấy rằng chúng ta đã implement interface này.
 
 33
 00:02:24,080 --> 00:02:32,300
-But if you try to using and adding these exception handler into our class, we cannot find the AI exception
+Nhưng nếu bạn cố gắng sử dụng và thêm exception handler này vào class của chúng ta, chúng ta không thể tìm thấy IExceptionHandler
 
 34
 00:02:32,300 --> 00:02:32,810
@@ -136,15 +136,15 @@ handler.
 
 35
 00:02:32,810 --> 00:02:36,830
-So where is this class and interface defined in ASP.Net core.
+Vậy class và interface này được định nghĩa ở đâu trong ASP.NET Core.
 
 36
 00:02:36,830 --> 00:02:42,890
-If you open the documentation and click the I exception handler, you can see that AI exception handler
+Nếu bạn mở documentation và nhấp vào IExceptionHandler, bạn có thể thấy rằng IExceptionHandler
 
 37
 00:02:42,890 --> 00:02:47,330
-is located under the Microsoft ASP.Net core diagnostics.
+nằm dưới Microsoft.ASP.NET Core.Diagnostics.
 
 38
 00:02:47,360 --> 00:02:48,680
@@ -152,55 +152,55 @@ Namespaces.
 
 39
 00:02:48,680 --> 00:02:54,320
-In order to use ASP.Net core specific interfaces like I exception handler.
+Để sử dụng ASP.NET Core specific interfaces như IExceptionHandler.
 
 40
 00:02:54,320 --> 00:02:58,460
-In this case we need to reference ASP.Net core packages.
+Trong trường hợp này, chúng ta cần tham chiếu các ASP.NET Core packages.
 
 41
 00:02:58,460 --> 00:03:04,520
-So if you open the Visual Studio, you can see that we cannot find I exception handler in the building
+Vậy nếu bạn mở Visual Studio, bạn có thể thấy rằng chúng ta không thể tìm thấy I exception handler trong building
 
 42
 00:03:04,520 --> 00:03:08,990
-blocks because the building blocks is not ASP.Net web API project.
+blocks vì building blocks không phải là ASP.Net web API project.
 
 43
 00:03:08,990 --> 00:03:12,350
-So this class comes from the ASP.Net core libraries.
+Vậy class này đến từ các thư viện ASP.Net core.
 
 44
 00:03:12,350 --> 00:03:18,590
-Since we are in the class library, we cannot access this interface, but we should use ASP.Net core
+Vì chúng ta đang ở trong class library, chúng ta không thể truy cập interface này, nhưng chúng ta nên sử dụng ASP.Net core
 
 45
 00:03:18,590 --> 00:03:24,920
-APIs in a class library in order to avoid duplication of these cross-cutting concerns like exception
+APIs trong class library để tránh trùng lặp những cross-cutting concerns như exception
 
 46
 00:03:24,920 --> 00:03:26,660
-handling, validation, and so on.
+handling, validation, và các vấn đề khác.
 
 47
 00:03:26,660 --> 00:03:28,610
-So how we can solve this problem?
+Vậy chúng ta có thể giải quyết vấn đề này như thế nào?
 
 48
 00:03:28,610 --> 00:03:31,400
-There is a very good solution that we can use.
+Có một giải pháp rất tốt mà chúng ta có thể sử dụng.
 
 49
 00:03:31,400 --> 00:03:36,290
-We can install fluent validation packages that include ASP.Net libraries.
+Chúng ta có thể cài đặt các gói Fluent Validation bao gồm các thư viện ASP.Net.
 
 50
 00:03:36,290 --> 00:03:39,740
-We will also use fluent validation for all microservices.
+Chúng ta cũng sẽ sử dụng Fluent Validation cho tất cả các microservices.
 
 51
 00:03:39,740 --> 00:03:45,980
-So for that purpose, it is a good way to reaching ASP.Net libraries over the full length validation
+Vậy với mục đích đó, đó là một cách tốt để tiếp cận các thư viện ASP.Net qua toàn bộ full length validation
 
 52
 00:03:45,980 --> 00:03:46,790
@@ -208,83 +208,83 @@ NuGet package.
 
 53
 00:03:46,790 --> 00:03:51,950
-So please come to Building Blocks and right click and manage NuGet packages.
+Vậy hãy đến Building Blocks và click chuột phải rồi quản lý NuGet packages.
 
 54
 00:03:51,950 --> 00:03:57,620
-And I am going to install Fluent Validation packages in here to access ASP.Net libraries.
+Và tôi sẽ cài đặt gói Fluent Validation ở đây để truy cập các thư viện ASP.Net.
 
 55
 00:03:57,620 --> 00:04:00,890
-Here you can see that fluent package has three packages.
+Ở đây bạn có thể thấy rằng gói Fluent có ba packages.
 
 56
 00:04:00,890 --> 00:04:04,610
-We have already installed the dependency Injection extension.
+Chúng ta đã cài đặt rồi phần mở rộng dependency Injection.
 
 57
 00:04:04,610 --> 00:04:09,260
-Now I am going to install Fluent Validation and Fluent Validation dot ASP.Net core.
+Bây giờ tôi sẽ cài đặt Fluent Validation và Fluent Validation dot ASP.Net core.
 
 58
 00:04:09,260 --> 00:04:11,540
-So please install the first one.
+Vậy hãy cài đặt cái đầu tiên.
 
 59
 00:04:13,000 --> 00:04:17,649
-And after that please install the third one, which is related with the ASP.Net core.
+Và sau đó hãy cài đặt cái thứ ba, cái có liên quan đến ASP.Net core.
 
 60
 00:04:18,230 --> 00:04:23,240
-And after that, you can double click the building blocks and verify that you have installed these three
+Và sau đó, bạn có thể nhấp đôi vào building blocks và xác minh rằng bạn đã cài đặt ba gói này
 
 61
 00:04:23,240 --> 00:04:24,620
-Funand validation library.
+Thư viện Fluent Validation.
 
 62
 00:04:24,620 --> 00:04:30,410
-These packages will allow us to access ASP.Net core specific APIs in our class library.
+Các gói này sẽ cho phép chúng ta truy cập các API ASP.Net core cụ thể trong thư viện class của mình.
 
 63
 00:04:30,500 --> 00:04:35,360
-Now please save this file and go to the Custom Exception handler class.
+Bây giờ hãy lưu file này và đi đến lớp Custom Exception handler.
 
 64
 00:04:35,360 --> 00:04:43,100
-And this time if you try to implement this interface, you can see that we will add the using statement
+Và lần này nếu bạn cố gắng triển khai interface này, bạn có thể thấy rằng chúng ta sẽ thêm câu lệnh using.
 
 65
 00:04:43,100 --> 00:04:46,700
-which is the ASP.Net core diagnostics namespace.
+đó là namespace diagnostics của ASP.Net core.
 
 66
 00:04:46,700 --> 00:04:51,320
-Please remove unnecessary using and we are ready to implement AI exception handler.
+Hãy xóa các using không cần thiết và chúng ta đã sẵn sàng triển khai AI exception handler.
 
 67
 00:04:51,320 --> 00:04:57,590
-So now we can implement the interface members into our custom exception logic, which is the try handle
+Vậy bây giờ chúng ta có thể triển khai các thành viên interface vào logic exception custom của mình, đó là phương thức try handle.
 
 68
 00:04:57,590 --> 00:04:58,430
-async method.
+async.
 
 69
 00:04:58,430 --> 00:05:04,280
-In this method, our custom handler class will lock the exceptions and determine the response based
+Trong phương thức này, lớp handler custom của mình sẽ khóa các exceptions và xác định response dựa trên.
 
 70
 00:05:04,280 --> 00:05:08,660
-on the exception type and the format response as a problem details object.
+loại exception và định dạng response dưới dạng một đối tượng problem details.
 
 71
 00:05:08,660 --> 00:05:10,790
-Let's start the implementation.
+Hãy bắt đầu triển khai.
 
 72
 00:05:10,940 --> 00:05:17,510
-Our method is try handle async and it has different parameters including Httpcontext, exception and
+Phương thức của chúng ta là try handle async và nó có các tham số khác nhau bao gồm Httpcontext, exception và.
 
 73
 00:05:17,510 --> 00:05:18,500
@@ -292,187 +292,187 @@ cancellation token.
 
 74
 00:05:18,500 --> 00:05:22,940
-So we will use these parameters when implementing exceptions globally.
+Vậy chúng ta sẽ sử dụng các tham số này khi triển khai exceptions toàn cục.
 
 75
 00:05:22,940 --> 00:05:29,360
-I'm going to change the Httpcontext to context to make it simple for parameter name, and after that
+Tôi sẽ thay đổi Httpcontext thành context để làm cho tên tham số đơn giản hơn, và sau đó.
 
 76
 00:05:29,360 --> 00:05:34,760
-make this function as a async to implement available functions inside of these functions.
+làm cho hàm này là async để triển khai các hàm có sẵn bên trong các hàm này.
 
 77
 00:05:34,760 --> 00:05:41,420
-So now the first step is we are going to log the incoming error from the exception object.
+Vậy bây giờ bước đầu tiên là chúng ta sẽ ghi lại lỗi đến từ đối tượng exception.
 
 78
 00:05:41,420 --> 00:05:43,940
-Here you can see that I'm going to use logger.
+Ở đây bạn có thể thấy rằng tôi sẽ sử dụng logger.
 
 79
 00:05:43,940 --> 00:05:49,370
-So that means I have to inject a logger interface into my class.
+Điều đó có nghĩa là tôi phải inject một logger interface vào lớp của mình.
 
 80
 00:05:49,370 --> 00:05:56,240
-For that purpose I'm going to add a primary constructor and passing the logger object in here.
+Cho mục đích đó, tôi sẽ thêm một primary constructor và truyền đối tượng logger vào đây.
 
 81
 00:05:56,240 --> 00:05:58,760
-So we have injected a logger object.
+Vậy chúng ta đã inject một đối tượng logger.
 
 82
 00:05:58,760 --> 00:06:02,750
-And make sure that your class should be public not internal.
+Và hãy chắc chắn rằng class của bạn phải là public chứ không phải internal.
 
 83
 00:06:02,750 --> 00:06:06,560
-And I'm going to change the access modifier as a public.
+Và tôi sẽ thay đổi access modifier thành public.
 
 84
 00:06:06,560 --> 00:06:11,270
-So now we will continue to implementation our try handle async method.
+Vậy bây giờ chúng ta sẽ tiếp tục triển khai phương thức try handle async của chúng ta.
 
 85
 00:06:11,270 --> 00:06:18,140
-After logging the incoming exception with message, I'm going to use C sharp pattern matching to identify
+Sau khi ghi lại incoming exception với message, tôi sẽ sử dụng C# pattern matching để xác định
 
 86
 00:06:18,140 --> 00:06:19,160
-exception type.
+loại exception.
 
 87
 00:06:19,160 --> 00:06:24,740
-And after that I will populate the details of the these exception values.
+Và sau đó tôi sẽ điền các chi tiết của những giá trị exception này.
 
 88
 00:06:24,740 --> 00:06:26,090
-So let me copy paste.
+Vậy hãy để tôi copy paste.
 
 89
 00:06:26,090 --> 00:06:28,700
-And after that I'm going to explain the code.
+Và sau đó tôi sẽ giải thích code.
 
 90
 00:06:28,700 --> 00:06:34,040
-So here you can see that we are going to use pattern matching which is a C sharp feature.
+Vậy ở đây bạn có thể thấy rằng chúng ta sẽ sử dụng pattern matching, đó là một tính năng của C#.
 
 91
 00:06:34,040 --> 00:06:36,710
-And we will identify incoming exception type.
+Và chúng ta sẽ xác định loại incoming exception.
 
 92
 00:06:36,710 --> 00:06:39,920
-And according to this type we will perform some actions.
+Và theo loại này, chúng ta sẽ thực hiện một số hành động.
 
 93
 00:06:39,920 --> 00:06:47,090
-That means I'm going to create an anonymous object that we will populate these details title and status
+Điều đó có nghĩa là tôi sẽ tạo một anonymous object mà chúng ta sẽ điền các chi tiết title và status
 
 94
 00:06:47,090 --> 00:06:49,490
-code values for each switch statement.
+code values cho mỗi switch statement.
 
 95
 00:06:49,490 --> 00:06:54,980
-So first of all let me implement this validation exception from the fluent validation.
+Vậy đầu tiên hãy để tôi triển khai validation exception này từ fluent validation.
 
 96
 00:06:54,980 --> 00:07:02,210
-And after that we can see that in every exception type we will specify these parameters including the
+Và sau đó chúng ta có thể thấy rằng trong mỗi loại exception, chúng ta sẽ chỉ định những tham số này bao gồm
 
 97
 00:07:02,210 --> 00:07:02,720
-details.
+chi tiết.
 
 98
 00:07:02,720 --> 00:07:09,170
-As an exception message and title will be exception type and status code will be identified according
+Như một exception message và title sẽ là loại exception, và status code sẽ được xác định theo
 
 99
 00:07:09,200 --> 00:07:10,970
-to incoming exception type.
+incoming exception type.
 
 100
 00:07:10,970 --> 00:07:17,990
-If the exception is internal server error, we set the status code as a 500 and if the exception is
+Nếu exception là internal server error, chúng ta đặt status code là 500, và nếu exception là
 
 101
 00:07:17,990 --> 00:07:18,680
-bad request.
+yêu cầu không hợp lệ.
 
 102
 00:07:18,680 --> 00:07:21,770
-For example, we status code 400 bad request.
+Ví dụ, chúng ta có status code 400 bad request.
 
 103
 00:07:21,770 --> 00:07:25,190
-So if you scroll down, you can see that there is a discard character.
+Vậy nếu bạn cuộn xuống, bạn có thể thấy rằng có một ký tự loại bỏ.
 
 104
 00:07:25,190 --> 00:07:31,880
-That means if the exception is not including these types, the rest of the exception types will be available.
+Điều đó có nghĩa là nếu exception không bao gồm những loại này, các loại exception còn lại sẽ khả dụng.
 
 105
 00:07:31,880 --> 00:07:38,840
-With these codes, we will give a detail and title and suffix could be 500 internal server error.
+Với những mã này, chúng ta sẽ cung cấp một detail và title và suffix có thể là 500 internal server error.
 
 106
 00:07:38,840 --> 00:07:47,180
-So after defining these values as a details, we can specify our problem details to identify the whole
+Vậy sau khi định nghĩa những giá trị này làm detail, chúng ta có thể chỉ định problem details của chúng ta để xác định toàn bộ
 
 107
 00:07:47,180 --> 00:07:49,340
-exception as a problem detail.
+exception như một problem detail.
 
 108
 00:07:49,340 --> 00:07:55,940
-You can see that I have created problem detail and give the title detail status from the detail object
+Bạn có thể thấy rằng tôi đã tạo problem detail và cung cấp title detail status từ detail object
 
 109
 00:07:55,940 --> 00:08:02,060
-that we have created in the previous code and instance comes from the context object, which comes from
+mà chúng ta đã tạo trong mã trước đây và instance đến từ context object, nó đến từ
 
 110
 00:08:02,060 --> 00:08:03,830
-the Http context object.
+Http context object.
 
 111
 00:08:03,830 --> 00:08:09,710
-And after identifying and creating problem details, we can add more custom problem details.
+Và sau khi xác định và tạo problem details, chúng ta có thể thêm nhiều problem details tùy chỉnh hơn.
 
 112
 00:08:09,710 --> 00:08:10,610
-As an extension.
+Như một extension.
 
 113
 00:08:10,610 --> 00:08:16,970
-You can see that I'm going to add a extensions dot add method and adding some additional detail into
+Bạn có thể thấy rằng tôi sẽ thêm một extensions dot add method và thêm một số detail bổ sung vào
 
 114
 00:08:16,970 --> 00:08:20,120
-problem details class with adding Tetris DX.
+problem details class bằng cách thêm Tetris DX.
 
 115
 00:08:20,120 --> 00:08:26,210
-And also if the exception is validation exception, we can also add validation errors that will populate
+Và cũng nếu exception là validation exception, chúng ta cũng có thể thêm validation errors sẽ được điền
 
 116
 00:08:26,210 --> 00:08:29,300
-from the validation exception that errors property.
+từ validation exception mà errors property.
 
 117
 00:08:29,360 --> 00:08:36,860
-So after defining all these details, we can use the context response object in order to write these
+Vậy sau khi định nghĩa tất cả những chi tiết này, chúng ta có thể sử dụng context response object để viết những
 
 118
 00:08:36,860 --> 00:08:38,539
-details as a Json format.
+chi tiết này như một định dạng Json.
 
 119
 00:08:38,539 --> 00:08:43,130
-So here you can see that we perform await context response.
+Vậy ở đây bạn có thể thấy rằng chúng ta thực hiện await context response.
 
 120
 00:08:43,130 --> 00:08:45,200
@@ -480,11 +480,11 @@ Write as Json async method.
 
 121
 00:08:45,200 --> 00:08:47,840
-In order to write this response as a problem.
+Để viết phản hồi này dưới dạng một vấn đề.
 
 122
 00:08:47,840 --> 00:08:53,180
-Details and Json format in a more readable and manageable way to the client application and return the
+Chi tiết và định dạng Json theo cách dễ đọc và dễ quản lý hơn cho ứng dụng khách và trả về
 
 123
 00:08:53,180 --> 00:08:53,690
@@ -492,13 +492,13 @@ true.
 
 124
 00:08:54,260 --> 00:09:01,160
-So this is the implementation of custom exception handler, and in this code we handle different type
+Vậy đây là triển khai của custom exception handler, và trong đoạn mã này chúng ta xử lý các kiểu exception khác nhau
 
 125
 00:09:01,160 --> 00:09:07,490
-of the exceptions such as the validation exceptions, bad requests and others, and setting up the appropriate
+như validation exceptions, bad requests và các trường hợp khác, và thiết lập mã trạng thái HTTP phù hợp
 
 126
 00:09:07,490 --> 00:09:13,160
-Http status code and response to problem details to the client application as a Json format.
+và phản hồi problem details cho ứng dụng khách dưới dạng định dạng Json.
 

@@ -1,46 +1,46 @@
 1
 00:00:00,140 --> 00:00:06,980
-In this video, we are going to test the communication between basket API and the discount gRPC microservices
+Trong video này, chúng ta sẽ kiểm tra giao tiếp giữa basket API và discount gRPC microservices
 
 2
 00:00:06,980 --> 00:00:10,250
-within the Docker environment using the Docker compose files.
+trong môi trường Docker sử dụng các Docker compose files.
 
 3
 00:00:10,250 --> 00:00:16,760
-And we will also addressing the SSL certificate exception when we are integrating basket API to discount
+Và chúng ta cũng sẽ giải quyết ngoại lệ SSL certificate khi chúng ta tích hợp basket API với discount
 
 4
 00:00:16,760 --> 00:00:25,370
-gRPC for that purpose, please open the Visual Studio and we will recreate the basket API container
+gRPC, vì vậy hãy mở Visual Studio và chúng ta sẽ tái tạo basket API container
 
 5
 00:00:25,370 --> 00:00:28,430
-in order to reflect new changes in our code.
+để phản ánh các thay đổi mới trong code của chúng ta.
 
 6
 00:00:28,430 --> 00:00:34,040
-For that purpose, I'm going to right click the Docker compose and set a startup project.
+Vì vậy, tôi sẽ nhấp chuột phải vào Docker compose và đặt nó làm startup project.
 
 7
 00:00:34,040 --> 00:00:41,300
-Normally, you can remove all existing containers and recreate from scratch in your Docker desktop.
+Bình thường, bạn có thể xóa tất cả các containers hiện tại và tái tạo từ đầu trong Docker desktop.
 
 8
 00:00:41,300 --> 00:00:45,140
-We should delete the basket API and recreate from the scratch.
+Chúng ta nên xóa basket API và tái tạo từ đầu.
 
 9
 00:00:45,140 --> 00:00:51,170
-But when we use Visual Studio docker compose running profile, it will detect the changes on specific
+Nhưng khi chúng ta sử dụng Visual Studio docker compose running profile, nó sẽ phát hiện những thay đổi trên container cụ thể
 
 10
 00:00:51,170 --> 00:00:55,520
-container, which configurations are changed and recreate the container for us.
+nào mà các cấu hình đã thay đổi và tái tạo container cho chúng ta.
 
 11
 00:00:55,520 --> 00:01:01,700
-For example, in our case we have changed the basket API microservice configuration and the docker compose
+Ví dụ, trong trường hợp của chúng ta, chúng ta đã thay đổi cấu hình basket API microservice và docker compose
 
 12
 00:01:01,700 --> 00:01:02,480
@@ -48,83 +48,83 @@ overwrite file.
 
 13
 00:01:02,480 --> 00:01:06,170
-So it should only recreate basket container.
+Vì vậy nó chỉ nên tái tạo basket container.
 
 14
 00:01:06,170 --> 00:01:09,890
-And we will see this when running docker compose on Visual Studio.
+Và chúng ta sẽ thấy điều này khi chạy docker compose trên Visual Studio.
 
 15
 00:01:09,890 --> 00:01:11,390
-Set a startup project.
+Đặt startup project.
 
 16
 00:01:11,390 --> 00:01:17,780
-And this time I'm going to start without debugging to observe the containers being created or updated
+Và lần này tôi sẽ bắt đầu mà không debug để quan sát các containers đang được tạo hoặc cập nhật
 
 17
 00:01:17,780 --> 00:01:23,540
-in the Docker desktop, click this button to start without debugging, and you can check the container
+trong Docker desktop, nhấp vào nút này để bắt đầu mà không debug, và bạn có thể kiểm tra container
 
 18
 00:01:23,540 --> 00:01:28,850
-logs for basket and discount microservices to ensure they are ready to accept requests.
+logs cho basket và discount microservices để đảm bảo rằng chúng sẵn sàng chấp nhận requests.
 
 19
 00:01:28,850 --> 00:01:36,440
-But here you can see that the basket microservices is removed and recreate from scratch using the Docker
+Nhưng ở đây bạn có thể thấy rằng basket microservices đã bị xóa và tái tạo từ đầu sử dụng Docker
 
 20
 00:01:36,440 --> 00:01:44,420
-compose up commands by Visual Studio and the basket API recreate with the newly adding codes and configurations,
+compose up commands bởi Visual Studio và basket API được tái tạo với các codes và configurations mới được thêm vào
 
 21
 00:01:44,420 --> 00:01:49,430
-and we can confirm the basket API and discount gRPC from the logs.
+và chúng ta có thể xác nhận basket API và discount gRPC từ các logs.
 
 22
 00:01:49,430 --> 00:01:55,670
-If you open the basket API here, you can see the basket API created successfully and discount gRPC
+Nếu bạn mở basket API ở đây, bạn có thể thấy basket API được tạo thành công và discount gRPC
 
 23
 00:01:55,670 --> 00:01:57,320
-also created successfully.
+cũng được tạo thành công.
 
 24
 00:01:57,320 --> 00:02:00,350
-Now we can send the request using the postman.
+Bây giờ chúng ta có thể gửi request bằng postman.
 
 25
 00:02:00,350 --> 00:02:05,780
-Please open the postman and let me start with testing discount gRPC microservices.
+Vui lòng mở postman và hãy để tôi bắt đầu kiểm tra discount gRPC microservices.
 
 26
 00:02:05,780 --> 00:02:08,990
-Select the discount service and select the Get discount method.
+Chọn discount service và chọn phương thức Get discount.
 
 27
 00:02:08,990 --> 00:02:13,910
-Make sure that you have called the Docker IP and port number.
+Hãy chắc chắn rằng bạn đã gọi Docker IP và port number.
 
 28
 00:02:13,910 --> 00:02:21,530
-This is localhost 6062 and get discount method and the method body should be product name iPhone x.
+Đây là localhost 6062 và phương thức get discount và method body nên là product name iPhone x.
 
 29
 00:02:21,530 --> 00:02:28,010
-Click the invoke button in order to run gRPC and get a success response from the discount microservices,
+Nhấp nút invoke để chạy gRPC và nhận response thành công từ discount microservices,
 
 30
 00:02:28,010 --> 00:02:29,360
-which is the environment.
+đó là environment.
 
 31
 00:02:29,360 --> 00:02:32,960
-So we have confirmed that the discount service is up and running.
+Vậy chúng ta đã xác nhận rằng discount service đang chạy.
 
 32
 00:02:32,960 --> 00:02:36,860
-Now we should go to end to end test for the basket API.
+Bây giờ chúng ta nên thực hiện test end to end cho basket API.
 
 33
 00:02:36,860 --> 00:02:38,030
@@ -132,117 +132,117 @@ Microservices.
 
 34
 00:02:38,030 --> 00:02:43,880
-Under a microservices postman collection, you can go to the post store basket request.
+Dưới một microservices postman collection, bạn có thể đi đến post store basket request.
 
 35
 00:02:43,880 --> 00:02:50,600
-And in here we should change the environment localhost to the docker and make sure that the basket URL
+Và ở đây chúng ta nên thay đổi environment localhost sang docker và hãy chắc chắn rằng basket URL
 
 36
 00:02:50,600 --> 00:02:52,640
-is 6061.
+là 6061.
 
 37
 00:02:52,640 --> 00:02:58,580
-And you can see the payload in here we are going to send http post request in order to communicate with
+Và bạn có thể thấy payload ở đây chúng ta sẽ gửi http post request để giao tiếp với
 
 38
 00:02:58,580 --> 00:03:02,450
-the discount gRPC fully Docker environment using the docker compose.
+discount gRPC hoàn toàn trong Docker environment sử dụng docker compose.
 
 39
 00:03:02,450 --> 00:03:05,390
-And I'm going to send http post request.
+Và tôi sẽ gửi http post request.
 
 40
 00:03:05,390 --> 00:03:09,740
-And this time you can see that we got 500 internal server error.
+Và lần này bạn có thể thấy rằng chúng ta nhận được 500 internal server error.
 
 41
 00:03:09,740 --> 00:03:11,660
-And the exception is error.
+Và exception này là error.
 
 42
 00:03:11,660 --> 00:03:13,160
-Starting gRPC call.
+Bắt đầu gRPC call.
 
 43
 00:03:13,160 --> 00:03:16,940
-And this is the SSL connection could not be establishment.
+Và đây là lỗi SSL connection không thể được thiết lập.
 
 44
 00:03:16,940 --> 00:03:20,090
-That means we don't have the remote certification.
+Điều đó có nghĩa là chúng ta không có remote certification.
 
 45
 00:03:20,090 --> 00:03:23,000
-And this is the invalid according to the validation procedure.
+Và đây là invalid theo quy trình validation.
 
 46
 00:03:23,000 --> 00:03:30,500
-This error happens due to ASP.Net core Https development certificate not being trusted by the client.
+Lỗi này xảy ra vì ASP.Net Core Https development certificate không được tin tưởng bởi client.
 
 47
 00:03:30,500 --> 00:03:32,720
-In our case, client is basket API.
+Trong trường hợp của chúng ta, client là basket API.
 
 48
 00:03:32,720 --> 00:03:40,760
-When making call to the gRPC server discount gRPC, the asp.net https development certificate is required.
+Khi thực hiện gRPC call tới discount gRPC server, ASP.NET Https development certificate là bắt buộc.
 
 49
 00:03:40,760 --> 00:03:43,340
-So how we can solve this problem?
+Vậy chúng ta có thể giải quyết vấn đề này như thế nào?
 
 50
 00:03:43,340 --> 00:03:51,110
-We can solve this problem to configure gRPC client in basket API to bypassing SSL certificate validations.
+Chúng ta có thể giải quyết vấn đề này bằng cách cấu hình gRPC client trong basket API để bỏ qua SSL certificate validation.
 
 51
 00:03:51,110 --> 00:03:56,780
-And this is done by modifying the configure primary Http message handler method.
+Điều này được thực hiện bằng cách sửa đổi phương thức configure primary Http message handler.
 
 52
 00:03:56,780 --> 00:04:02,900
-For that purpose, I'm going to open Visual Studio and go to the basket API programs case.
+Để làm điều đó, tôi sẽ mở Visual Studio và đi tới Program.cs của basket API.
 
 53
 00:04:02,900 --> 00:04:09,440
-If you open the Program.cs and go to the configuration of the gRPC services here, you can see that
+Nếu bạn mở Program.cs và đi tới cấu hình của gRPC services ở đây, bạn có thể thấy rằng
 
 54
 00:04:09,440 --> 00:04:14,750
-we would like to bypass the SSL certificate validation for that purpose.
+chúng ta muốn bỏ qua SSL certificate validation, vì mục đích đó.
 
 55
 00:04:14,750 --> 00:04:18,589
-There is very good method extension for the configuration.
+Có một phương thức extension rất tốt để cấu hình.
 
 56
 00:04:18,589 --> 00:04:23,690
-I'm going to edit this configuration after these builder services at gRPC client.
+Tôi sẽ chỉnh sửa cấu hình này sau builder services at gRPC client.
 
 57
 00:04:23,690 --> 00:04:31,160
-In here I'm going to add this line of code which is the configure primary Http message handler method,
+Ở đây tôi sẽ thêm dòng code này đó là phương thức configure primary Http message handler,
 
 58
 00:04:31,160 --> 00:04:38,090
-and specifying the Http client handler, and say that you can bypass the server certificate, custom
+và chỉ định Http client handler, và nói rằng bạn có thể bỏ qua server certificate, custom
 
 59
 00:04:38,090 --> 00:04:44,780
-validation callback and accept any server certificate validators in our gRPC settings.
+validation callback và chấp nhận bất kỳ server certificate validators nào trong gRPC settings của chúng ta.
 
 60
 00:04:44,780 --> 00:04:51,380
-But this setup is typically used for the development purpose and you should not be used in production
+Nhưng setup này thường được sử dụng cho mục đích development và không nên được sử dụng trong production
 
 61
 00:04:51,380 --> 00:04:53,540
-environment due to security risks.
+môi trường do các rủi ro bảo mật.
 
 62
 00:04:54,350 --> 00:05:00,380
-So with this configuration we have fixed the SSL certification exception and we will continue our test.
+Vậy với cấu hình này, chúng ta đã khắc phục ngoại lệ chứng chỉ SSL và chúng ta sẽ tiếp tục kiểm tra của mình.
 

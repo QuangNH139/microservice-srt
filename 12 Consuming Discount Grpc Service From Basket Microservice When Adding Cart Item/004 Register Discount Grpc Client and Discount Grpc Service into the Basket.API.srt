@@ -1,6 +1,6 @@
 1
 00:00:00,170 --> 00:00:06,770
-In this video, we are going to register discount gRPC client object into the ASP.Net Dependency Injection
+Trong video này, chúng ta sẽ đăng ký đối tượng gRPC client giảm giá vào ASP.Net Dependency Injection
 
 2
 00:00:06,770 --> 00:00:07,550
@@ -8,191 +8,191 @@ container.
 
 3
 00:00:07,730 --> 00:00:14,510
-Here you can see that we have injected discount proto service client object and we use this object when
+Ở đây bạn có thể thấy rằng chúng ta đã inject đối tượng discount proto service client và chúng ta sử dụng đối tượng này khi
 
 4
 00:00:14,510 --> 00:00:17,840
-performing deduct discount actual operation.
+thực hiện thao tác giảm giá thực tế.
 
 5
 00:00:17,990 --> 00:00:23,480
-So we inject this operation into the our store basket command handler class.
+Vậy chúng ta inject thao tác này vào lớp store basket command handler của chúng ta.
 
 6
 00:00:23,480 --> 00:00:30,260
-So when we inject any services we should not forget to register ASP.Net dependency injection container.
+Vậy khi chúng ta inject bất kỳ services nào, chúng ta không nên quên đăng ký ASP.Net dependency injection container.
 
 7
 00:00:30,410 --> 00:00:35,120
-So let's take an action for that purpose please go to basket API and Program.cs.
+Vậy hãy thực hiện hành động cho mục đích đó, vui lòng đi đến basket API và Program.cs.
 
 8
 00:00:35,150 --> 00:00:40,730
-In here we are going to register all services into the edge services to container part.
+Ở đây chúng ta sẽ đăng ký tất cả các services vào phần edge services to container.
 
 9
 00:00:40,730 --> 00:00:47,690
-But before that I'm going to organize Program.cs by configuring various type of services application
+Nhưng trước đó, tôi sẽ tổ chức Program.cs bằng cách cấu hình các loại services khác nhau như application
 
 10
 00:00:47,690 --> 00:00:50,270
-data, gRPC and cross coding services.
+data, gRPC và cross coding services.
 
 11
 00:00:50,270 --> 00:00:55,040
-These will be increased the readability and maintainability of the program says.
+Điều này sẽ tăng khả năng đọc và dễ bảo trì của Program.cs.
 
 12
 00:00:55,040 --> 00:00:55,460
-So.
+Vậy.
 
 13
 00:00:55,460 --> 00:00:58,550
-Let me start with the application services in here.
+Hãy bắt đầu với application services ở đây.
 
 14
 00:00:58,550 --> 00:01:01,520
-The first line of codes are application services.
+Dòng mã đầu tiên là application services.
 
 15
 00:01:01,520 --> 00:01:05,960
-So these are the application services including Carter and Mediator Library.
+Vậy đây là các application services bao gồm Carter và Mediator Library.
 
 16
 00:01:05,960 --> 00:01:09,320
-And after that we will inject the data services.
+Và sau đó chúng ta sẽ inject các data services.
 
 17
 00:01:09,320 --> 00:01:11,060
-These are the Martin.
+Đó là Marten.
 
 18
 00:01:11,060 --> 00:01:17,870
-So here you can see that I have put a command for the data services that is representing repository
+Vậy ở đây bạn có thể thấy rằng tôi đã đặt một command cho data services đó là đại diện cho các repository
 
 19
 00:01:17,870 --> 00:01:19,790
-objects and Martin objects.
+objects và Marten objects.
 
 20
 00:01:19,790 --> 00:01:23,960
-And also we can add in here as a Redis cache operation.
+Và cũng có thể chúng ta có thể thêm vào đây như một thao tác Redis cache.
 
 21
 00:01:23,960 --> 00:01:30,290
-So these are the data related services that adding to ASP.Net built in dependency injection container.
+Vậy đây là các dịch vụ liên quan đến dữ liệu mà chúng ta thêm vào vùng chứa dependency injection built-in của ASP.Net.
 
 22
 00:01:30,290 --> 00:01:33,920
-And after that I am going to add a gRPC services.
+Và sau đó tôi sẽ thêm các dịch vụ gRPC.
 
 23
 00:01:33,920 --> 00:01:36,410
-For now I am putting a command in here.
+Hiện tại tôi đang đặt một command ở đây.
 
 24
 00:01:36,410 --> 00:01:39,710
-We will add gRPC related services in this line of code.
+Chúng ta sẽ thêm các dịch vụ liên quan đến gRPC trong dòng code này.
 
 25
 00:01:39,710 --> 00:01:47,120
-So after that we can see that the rest of the codes are registering crosscutting services.
+Vậy sau đó chúng ta có thể thấy rằng phần còn lại của các code đang đăng ký các dịch vụ crosscutting.
 
 26
 00:01:47,120 --> 00:01:51,320
-These are the exception handling health checks and so on.
+Đó là xử lý ngoại lệ, health checks và những thứ tương tự.
 
 27
 00:01:51,320 --> 00:01:59,450
-So these are the grouping the main methodology of the our services application data gRPC and crosscutting
+Vậy đây là cách nhóm các phương pháp chính của ứng dụng dịch vụ của chúng ta bao gồm dữ liệu, gRPC và crosscutting.
 
 28
 00:01:59,450 --> 00:02:00,980
-for the basket API.
+cho basket API.
 
 29
 00:02:00,980 --> 00:02:05,120
-Now we can focus on the gRPC services and registration.
+Bây giờ chúng ta có thể tập trung vào các dịch vụ gRPC và đăng ký.
 
 30
 00:02:05,390 --> 00:02:08,810
-In here we can start to register gRPC client.
+Ở đây chúng ta có thể bắt đầu đăng ký gRPC client.
 
 31
 00:02:08,810 --> 00:02:14,780
-So I'm going to write builder services add gRPC client extension method.
+Vậy tôi sẽ viết phương thức mở rộng builder services add gRPC client.
 
 32
 00:02:14,780 --> 00:02:20,870
-And inside of this method we will pass discount proto service dot discount proto service client.
+Và bên trong phương thức này chúng ta sẽ truyền discount proto service dot discount proto service client.
 
 33
 00:02:20,870 --> 00:02:24,770
-So I'm going to using discount gRPC namespace.
+Vậy tôi sẽ sử dụng namespace discount gRPC.
 
 34
 00:02:24,770 --> 00:02:29,720
-And in here we can register discount Proto service client object.
+Và ở đây chúng ta có thể đăng ký đối tượng discount Proto service client.
 
 35
 00:02:29,720 --> 00:02:38,720
-And of course we should provide the options in here as options I am going to provide discount gRPC endpoint.
+Và tất nhiên chúng ta nên cung cấp các tùy chọn ở đây, tôi sẽ cung cấp discount gRPC endpoint.
 
 36
 00:02:38,990 --> 00:02:42,440
-As you can see that we will specify the options at this way.
+Như bạn có thể thấy, chúng ta sẽ chỉ định các tùy chọn theo cách này.
 
 37
 00:02:42,440 --> 00:02:44,570
-In the options you can see that.
+Trong các tùy chọn bạn có thể thấy rằng.
 
 38
 00:02:44,570 --> 00:02:45,920
-Let me check the options.
+Để tôi kiểm tra các tùy chọn.
 
 39
 00:02:45,920 --> 00:02:51,530
-We can specify the address information that we can give the new Uri.
+Chúng ta có thể chỉ định thông tin địa chỉ mà chúng ta có thể cung cấp Uri mới.
 
 40
 00:02:51,560 --> 00:02:58,610
-So I'm going to provide the new Uri which is the gRPC discount URL.
+Vậy tôi sẽ cung cấp Uri mới đó là URL gRPC discount.
 
 41
 00:02:58,610 --> 00:03:00,860
-And I am passing this line of code here.
+Và tôi đang truyền dòng code này ở đây.
 
 42
 00:03:00,860 --> 00:03:06,710
-You can see that we will paste the Uri with incoming configuration from the application settings under
+Bạn có thể thấy rằng chúng ta sẽ dán Uri với cấu hình đến từ application settings dưới
 
 43
 00:03:06,710 --> 00:03:09,470
-the gRPC settings discount URL.
+gRPC settings discount URL.
 
 44
 00:03:09,470 --> 00:03:13,820
-So we will provide these configuration application settings very soon.
+Vậy chúng ta sẽ cung cấp các cấu hình application settings này rất sớm.
 
 45
 00:03:13,820 --> 00:03:21,260
-But before that make sure that you have registered discount proto service client with a giving configuration
+Nhưng trước đó hãy chắc chắn rằng bạn đã đăng ký discount proto service client với cấu hình được cung cấp
 
 46
 00:03:21,260 --> 00:03:23,120
-including the address information.
+bao gồm thông tin địa chỉ.
 
 47
 00:03:23,120 --> 00:03:29,450
-For client connection, we should define discount URL configuration into application settings Json file.
+Để kết nối client, chúng ta nên định nghĩa cấu hình discount URL vào tệp application settings Json.
 
 48
 00:03:29,450 --> 00:03:33,950
-For that purpose, please go to application Settings.json for the basket API.
+Với mục đích đó, vui lòng truy cập application Settings.json cho basket API.
 
 49
 00:03:33,950 --> 00:03:40,970
-And after that under the connection string, we can define the gRPC settings as we are using in the
+Và sau đó dưới connection string, chúng ta có thể định nghĩa gRPC settings như chúng ta đang sử dụng trong
 
 50
 00:03:40,970 --> 00:03:41,810
@@ -200,7 +200,7 @@ Program.cs.
 
 51
 00:03:41,810 --> 00:03:47,870
-Here you can see that I have added gRPC settings and specifying the discount URL and indicating the
+Ở đây bạn có thể thấy rằng tôi đã thêm gRPC settings và chỉ định discount URL và chỉ định
 
 52
 00:03:47,870 --> 00:03:49,700
@@ -208,17 +208,17 @@ localhost 5052.
 
 53
 00:03:49,820 --> 00:03:56,360
-As you suggested, this port number is indicating discount gRPC microservices that we can connect in
+Như bạn gợi ý, con số port này chỉ định discount gRPC microservices mà chúng ta có thể kết nối để
 
 54
 00:03:56,360 --> 00:03:58,220
-order to call gRPC methods.
+gọi các phương thức gRPC.
 
 55
 00:03:58,220 --> 00:04:04,940
-So with adding these configuration into application settings, Json file and also adding registration
+Vậy với việc thêm các cấu hình này vào tệp application settings Json và cũng thêm đăng ký
 
 56
 00:04:04,940 --> 00:04:11,090
-operation in the program says we have completed the basket API configurations as a gRPC client.
+operation trong program.cs, chúng ta đã hoàn thành cấu hình basket API như một gRPC client.
 

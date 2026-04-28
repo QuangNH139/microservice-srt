@@ -1,58 +1,58 @@
 1
 00:00:00,170 --> 00:00:07,520
-In this video, we are going to develop service classes for consuming API gateway with using Revit Http
+Trong video này, chúng ta sẽ phát triển các lớp dịch vụ để sử dụng API gateway với thư viện Refit Http client factory.
 
 2
 00:00:07,520 --> 00:00:08,870
-client factory library.
+Điều đó có nghĩa là chúng ta đang ở bước thứ ba, và chúng ta sẽ sử dụng Refit Http client factory để phát triển một catalog service.
 
 3
 00:00:08,870 --> 00:00:15,560
-So that means we are at the third step, and we will use Revit Http client factory to developing a catalog
+I basket service và I ordering services để giao tiếp với ERP API gateway.
 
 4
 00:00:15,560 --> 00:00:16,010
-service.
+Ở đây bạn có thể thấy rằng chúng ta đang sử dụng kiến trúc tuyến tính truyền thống vào ứng dụng khách của chúng ta.
 
 5
 00:00:16,010 --> 00:00:20,870
-I basket service and I ordering services to communicate with ERP API gateway.
+Điều đó có nghĩa là bây giờ chúng ta sẽ triển khai các lớp dịch vụ như logic kinh doanh và sử dụng các endpoints của ERP API gateway.
 
 6
 00:00:21,800 --> 00:00:27,050
-Here you can see that we have using the traditional linear architecture into our client application.
+Để làm điều đó, vui lòng mở Visual Studio và đi đến ứng dụng Shopping Web để tạo một Business layer.
 
 7
 00:00:27,050 --> 00:00:33,110
-That means now we will implement the service classes as a business logic and consume the ERP API gateway
+Tôi sẽ nhấp chuột phải vào shopping web và thêm một folder mới.
 
 8
 00:00:33,110 --> 00:00:33,860
-endpoints.
+Tên của nó là services.
 
 9
 00:00:33,860 --> 00:00:40,190
-For that purpose, please open the Visual Studio and go to the Shopping Web application to Creating
+Cái này sẽ đại diện cho logic kinh doanh của chúng ta và tôi sẽ thêm một interface mới dưới services có tên là ICatalogService.
 
 10
 00:00:40,190 --> 00:00:40,970
-a Business layer.
+Và interface này sẽ chịu trách nhiệm giao tiếp với ERP API gateway bằng cách sử dụng thư viện Refit.
 
 11
 00:00:40,970 --> 00:00:44,390
-I am going to right click the shopping web and add a new folder.
+Nhưng trước tiên, hãy phân tích xem chúng ta cần sử dụng những phương thức nào từ ERP API gateway.
 
 12
 00:00:44,390 --> 00:00:46,220
-Which name is services?
+Để làm điều đó, tôi sẽ mở catalog microservice dưới services.
 
 13
 00:00:46,220 --> 00:00:51,860
-This will be represent our business logic and I am going to add a new interface under services which
+Và nếu bạn mở catalog API và mở feature folder của products, bạn có thể thấy đây là những use cases mà chúng ta có thể sử dụng cho ICatalogService.
 
 14
 00:00:51,860 --> 00:00:53,420
-name is AI Catalog Service.
+Vì chúng ta sử dụng catalog operations để đọc dữ liệu và hiển thị trang index của shopping web, chúng ta chỉ cần
 
 15
 00:00:53,420 --> 00:00:59,210
@@ -80,23 +80,23 @@ Since we used catalog operations for reading data and representing shopping web 
 
 21
 00:01:26,900 --> 00:01:33,290
-use get methods into our shopping web client application because we will only get the products and representing
+sử dụng các phương thức get trong ứng dụng web client shopping của chúng ta vì chúng ta chỉ sẽ lấy các sản phẩm và hiển thị
 
 22
 00:01:33,290 --> 00:01:37,280
-on the shopping web client, application index page, product page and so on.
+trên shopping web client, trang index của ứng dụng, trang sản phẩm và những trang khác.
 
 23
 00:01:37,460 --> 00:01:43,670
-So now we should create these methods into our AI catalog service interface and consume these endpoints
+Vậy bây giờ chúng ta nên tạo các phương thức này trong interface catalog service của chúng ta và tiêu thụ các endpoints này
 
 24
 00:01:43,670 --> 00:01:47,240
-from the ARP API gateway using the Revit generated clients.
+từ YARP API gateway sử dụng các clients được sinh ra từ Refit.
 
 25
 00:01:47,240 --> 00:01:53,420
-So if you open, for example, Getproducts endpoint, you can see that these will be the R request and
+Vậy nếu bạn mở, ví dụ, endpoint Getproducts, bạn có thể thấy rằng đây sẽ là request R và
 
 26
 00:01:53,420 --> 00:01:54,050
@@ -104,27 +104,27 @@ response.
 
 27
 00:01:54,050 --> 00:02:00,830
-And we will create these kind of methods to getting incoming request object with page number and page
+Và chúng ta sẽ tạo những phương thức này để nhận incoming request object với page number và page
 
 28
 00:02:00,830 --> 00:02:04,550
-size and return back a IEnumerable product response.
+size và trả lại một IEnumerable product response.
 
 29
 00:02:04,550 --> 00:02:11,240
-So if you open the get product by ID, you can see that we have sending a Guid, ID and returning with
+Vậy nếu bạn mở get product by ID, bạn có thể thấy rằng chúng ta đang gửi một Guid, ID và trả về
 
 30
 00:02:11,240 --> 00:02:12,680
-a single product model.
+một single product model.
 
 31
 00:02:12,680 --> 00:02:15,380
-And here you can see the get products by category and paint.
+Và ở đây bạn có thể thấy get products by category và paint.
 
 32
 00:02:15,380 --> 00:02:22,370
-We will use a category information as a string category and respond back the IEnumerable product model
+Chúng ta sẽ sử dụng thông tin category như một string category và trả về IEnumerable product model
 
 33
 00:02:22,370 --> 00:02:23,030
@@ -132,133 +132,133 @@ products.
 
 34
 00:02:23,030 --> 00:02:29,960
-So we will arrange these kind of operations under the R service layer as a catalog service that I am
+Vậy chúng ta sẽ sắp xếp những hoạt động này dưới R service layer như một catalog service mà tôi sẽ
 
 35
 00:02:29,960 --> 00:02:32,510
-going to create these method bodies in here.
+tạo các phần thân phương thức ở đây.
 
 36
 00:02:32,510 --> 00:02:35,450
-So you can come here and develop the R methods.
+Vậy bạn có thể đến đây và phát triển các phương thức R.
 
 37
 00:02:35,450 --> 00:02:41,840
-These are the task get products methods, get product by ID and get product by category.
+Đây là task get products methods, get product by ID và get product by category.
 
 38
 00:02:41,840 --> 00:02:48,050
-So the first one is task and return back the get products response and the method name as a get products
+Vậy phương thức đầu tiên là task và trả lại get products response và tên phương thức là get products
 
 39
 00:02:48,050 --> 00:02:51,890
-and as a parameter it is taking page number and page size.
+và như một tham số nó đang nhận page number và page size.
 
 40
 00:02:51,890 --> 00:02:57,560
-And the second method is returning get product by id response and which method name as a get product
+Và phương thức thứ hai là trả về get product by id response và tên phương thức là get product
 
 41
 00:02:57,560 --> 00:02:59,900
-and taking grid id as a parameter.
+và nhận grid id làm tham số.
 
 42
 00:02:59,900 --> 00:03:03,860
-And the third method name is get products by category response.
+Và phương thức thứ ba có tên là get products by category response.
 
 43
 00:03:03,860 --> 00:03:09,500
-Returning this response and the method name is a get products by category and taking string category.
+Trả về response này và tên phương thức là get products by category và nhận string category.
 
 44
 00:03:09,500 --> 00:03:15,260
-As a parameter of this method, you can go to these response object and see the including the product
+Là tham số của phương thức này, bạn có thể đi đến các response object này và xem bao gồm product
 
 45
 00:03:15,260 --> 00:03:21,110
-model and IEnumerable product models in the wrapper classes that we have developed in the last videos.
+model và IEnumerable product models trong các wrapper classes mà chúng ta đã phát triển trong các video trước.
 
 46
 00:03:21,110 --> 00:03:24,080
-So this is the implementation of the AI catalog services.
+Vậy đây là triển khai của AI catalog services.
 
 47
 00:03:24,080 --> 00:03:30,200
-And we have created our AI catalog service methods in order to consume Erb API gateway endpoints from
+Và chúng ta đã tạo các phương thức AI catalog service để có thể tiêu thụ các endpoint Erb API gateway từ
 
 48
 00:03:30,200 --> 00:03:31,490
-our service layer.
+service layer của chúng ta.
 
 49
 00:03:31,490 --> 00:03:33,800
-Also, we can enhance the code readability.
+Ngoài ra, chúng ta có thể tăng cường khả năng đọc của code.
 
 50
 00:03:33,800 --> 00:03:37,130
-I am going to move these using statement under the global using.
+Tôi sẽ di chuyển các using statement này dưới global using.
 
 51
 00:03:37,130 --> 00:03:43,010
-Come here and add new class at the top of the shopping web client application and adding the class name
+Đến đây và thêm class mới ở đầu ứng dụng shopping web client và thêm tên class
 
 52
 00:03:43,010 --> 00:03:44,120
-as a global Usings.
+là global Usings.
 
 53
 00:03:44,120 --> 00:03:50,120
-So at this point, I am going to remove all the codes and go back to our AI catalog services and moving
+Vậy tại thời điểm này, tôi sẽ xóa tất cả các code và quay lại AI catalog services của chúng ta và di chuyển
 
 54
 00:03:50,120 --> 00:03:55,850
-these using statement under the R global Usings and put the global keyword save this file.
+các using statement này dưới R global Usings và đặt từ khóa global lưu file này.
 
 55
 00:03:55,850 --> 00:04:02,030
-Go back to our main class and this time we can remove these using statements into our AI catalog interfaces.
+Quay lại class main của chúng ta và lần này chúng ta có thể xóa các using statements này vào AI catalog interfaces của chúng ta.
 
 56
 00:04:02,030 --> 00:04:09,740
-So now how can we send a Http get request to consume these Erb API gateways into a catalog service methods.
+Vậy bây giờ làm thế nào chúng ta có thể gửi một Http get request để tiêu thụ các Erb API gateways này vào catalog service methods.
 
 57
 00:04:09,740 --> 00:04:12,230
-So there is very effective way to handle this.
+Vậy có một cách rất hiệu quả để xử lý điều này.
 
 58
 00:04:12,230 --> 00:04:14,780
-Without implementing these interface members.
+Mà không cần triển khai các interface members này.
 
 59
 00:04:14,780 --> 00:04:18,620
-We will use Refit for consuming Erb, API gateway and twins.
+Chúng ta sẽ sử dụng Refit để tiêu thụ Erb, API gateway và twins.
 
 60
 00:04:18,620 --> 00:04:25,400
-If you look at the method body of these catalog services and these method body structure same as the
+Nếu bạn xem xét phần body của phương thức này trong catalog services và cấu trúc method body này giống như
 
 61
 00:04:25,400 --> 00:04:31,190
-microservice endpoint definition, it is taking request parameters and return back a response.
+định nghĩa microservice endpoint, nó nhận các tham số request và trả về một response.
 
 62
 00:04:31,190 --> 00:04:36,650
-So how this could consume API's with using only interface method bodies.
+Vậy làm thế nào chúng ta có thể consume API's chỉ bằng cách sử dụng các thân phương thức interface.
 
 63
 00:04:36,650 --> 00:04:38,720
-The answer is using the Refit.
+Câu trả lời là sử dụng Refit.
 
 64
 00:04:38,720 --> 00:04:44,990
-Refit is mapping the request and response objects of the Erb API gateway endpoint using the generated
+Refit đang ánh xạ các đối tượng request và response của Erb API gateway endpoint bằng cách sử dụng các
 
 65
 00:04:44,990 --> 00:04:48,470
-client endpoints, without implementing actual these methods.
+client endpoint được tạo ra, mà không cần triển khai thực tế các phương thức này.
 
 66
 00:04:48,470 --> 00:04:50,600
-So now let's learn the refit.
+Vậy bây giờ hãy học về Refit.
 

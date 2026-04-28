@@ -1,50 +1,50 @@
 1
 00:00:00,140 --> 00:00:07,220
-In this video we are going to test docker compose all with basket microservices and the backing services
+Trong video này chúng ta sẽ test Docker Compose với tất cả basket microservices và các backing services
 
 2
 00:00:07,220 --> 00:00:11,870
-including the PostgreSQL database and Redis for that purpose.
+bao gồm PostgreSQL database và Redis cho mục đích đó.
 
 3
 00:00:11,900 --> 00:00:15,800
-Please open the Visual Studio and go to Docker Compose.
+Vui lòng mở Visual Studio và đi đến Docker Compose.
 
 4
 00:00:15,830 --> 00:00:21,290
-We are going to run Docker Compose profile, but before that we can configure Launch settings, right
+Chúng ta sẽ chạy Docker Compose profile, nhưng trước đó chúng ta có thể cấu hình Launch settings, phải không
 
 5
 00:00:21,290 --> 00:00:24,290
-click properties and go to launch.
+click properties và đi đến launch.
 
 6
 00:00:24,290 --> 00:00:27,110
-Action is do nothing for Catholic API.
+Action là do nothing cho Catalog API.
 
 7
 00:00:27,110 --> 00:00:33,410
-If you change the basket API and basket API should be also do nothing for launch action.
+Nếu bạn thay đổi basket API và basket API cũng nên là do nothing cho launch action.
 
 8
 00:00:33,410 --> 00:00:38,750
-Apply and okay and right click the Docker compose set as startup project.
+Apply và okay và right click Docker compose set as startup project.
 
 9
 00:00:39,430 --> 00:00:45,760
-Now I'm going to run the compose profile from the Visual Studio in order to debug full Docker environment
+Bây giờ tôi sẽ chạy compose profile từ Visual Studio để debug toàn bộ Docker environment
 
 10
 00:00:45,760 --> 00:00:49,090
-basket microservices, and it is backing services.
+basket microservices và các backing services của nó.
 
 11
 00:00:49,120 --> 00:00:53,380
-Click this button and start docker compose on behind of the scenes.
+Click nút này và start docker compose phía sau.
 
 12
 00:00:53,380 --> 00:01:00,880
-This will be run docker compose up command and building newly added basket API container into docker
+Cái này sẽ chạy docker compose up command và building basket API container mới vào docker
 
 13
 00:01:00,880 --> 00:01:02,440
@@ -52,15 +52,15 @@ compose network.
 
 14
 00:01:02,440 --> 00:01:10,030
-And here you can see that our microservices and backing services listed under Docker Compose Network.
+Và ở đây bạn có thể thấy rằng microservices và backing services của chúng ta được liệt kê dưới Docker Compose Network.
 
 15
 00:01:10,030 --> 00:01:15,280
-You can check the logs for newly added microservices, which is the basket API.
+Bạn có thể kiểm tra logs cho microservices mới được thêm, đó là basket API.
 
 16
 00:01:15,280 --> 00:01:21,610
-And here you can see the environments, labels, ports and logs, which is the incoming from the Docker
+Và ở đây bạn có thể thấy environments, labels, ports và logs, đó là những gì đến từ Docker
 
 17
 00:01:21,610 --> 00:01:22,240
@@ -68,119 +68,119 @@ network.
 
 18
 00:01:22,240 --> 00:01:30,040
-Let me open the Docker desktop and you can also see basket API is listing our newly added Docker compose.
+Hãy để tôi mở Docker desktop và bạn cũng có thể thấy basket API được liệt kê trong Docker compose mới được thêm của chúng ta.
 
 19
 00:01:30,040 --> 00:01:32,620
-And here you can see the basket API logs.
+Và ở đây bạn có thể thấy basket API logs.
 
 20
 00:01:32,620 --> 00:01:40,750
-So now we are ready for the sending Http request basket API which is integrating basket db and distributed
+Vậy bây giờ chúng ta đã sẵn sàng để gửi Http request đến basket API, nó tích hợp basket db và distributed
 
 21
 00:01:40,750 --> 00:01:43,120
-cache on fully docker environment.
+cache trên môi trường Docker hoàn toàn.
 
 22
 00:01:43,120 --> 00:01:50,470
-For that purpose, please open the postman and we will start with sending Http get requests to health
+Để làm điều đó, vui lòng mở Postman và chúng ta sẽ bắt đầu bằng cách gửi các HTTP GET request đến health
 
 23
 00:01:50,470 --> 00:01:54,400
-endpoint to understand our health is ready or not.
+endpoint để hiểu rằng dịch vụ của chúng ta có sẵn sàng hay không.
 
 24
 00:01:54,400 --> 00:01:59,770
-Before sending Http get request to health and we should check the our basket URL.
+Trước khi gửi HTTP GET request đến health, chúng ta nên kiểm tra URL basket của chúng ta.
 
 25
 00:01:59,770 --> 00:02:03,460
-Here you can see the basket URL is localhost 5051.
+Ở đây bạn có thể thấy URL basket là localhost 5051.
 
 26
 00:02:03,460 --> 00:02:10,210
-This is indicating our local environment, but this time we have deployed the basket to the Docker environment.
+Điều này chỉ ra môi trường cục bộ của chúng ta, nhưng lần này chúng ta đã triển khai basket đến môi trường Docker.
 
 27
 00:02:10,210 --> 00:02:11,140
-For that purpose.
+Để làm điều đó.
 
 28
 00:02:11,140 --> 00:02:14,380
-I'm going to come here and change the environment as a docker.
+Tôi sẽ đi vào đây và thay đổi môi trường thành docker.
 
 29
 00:02:14,380 --> 00:02:18,910
-And after that you can see the basket URL change 6061.
+Và sau đó bạn có thể thấy URL basket thay đổi thành 6061.
 
 30
 00:02:18,910 --> 00:02:22,990
-So now we can ready to send http get request.
+Vậy bây giờ chúng ta có thể sẵn sàng gửi HTTP GET request.
 
 31
 00:02:22,990 --> 00:02:30,760
-And if you send a http get request you can see that status is healthy and entities including NPG, SQL,
+Và nếu bạn gửi một HTTP GET request, bạn có thể thấy rằng trạng thái là healthy và các thực thể bao gồm NPG, SQL,
 
 32
 00:02:30,760 --> 00:02:34,630
-PostgreSQL is healthy and Redis is also healthy.
+PostgreSQL là healthy và Redis cũng healthy.
 
 33
 00:02:34,690 --> 00:02:42,430
-So that means basket microservices ready to accommodate incoming Http requests with integrating PostgreSQL
+Vậy điều đó có nghĩa là basket microservice sẵn sàng để nhận các HTTP request đến với việc tích hợp PostgreSQL
 
 34
 00:02:42,430 --> 00:02:43,210
-and Redis.
+và Redis.
 
 35
 00:02:43,210 --> 00:02:49,630
-And we will start with sending Http post requests in order to store the basket with including these
+Và chúng ta sẽ bắt đầu bằng cách gửi HTTP POST request để lưu trữ basket với bao gồm những
 
 36
 00:02:49,630 --> 00:02:50,680
-cart payload.
+cart payload này.
 
 37
 00:02:50,680 --> 00:02:52,570
-This is the username is boolean.
+Đây là username là boolean.
 
 38
 00:02:52,570 --> 00:02:55,180
-And we have added two items in this shopping cart.
+Và chúng ta đã thêm hai items trong giỏ hàng này.
 
 39
 00:02:55,180 --> 00:02:58,630
-So you can check the basket URL endpoint slash basket.
+Vậy bạn có thể kiểm tra endpoint URL basket slash basket.
 
 40
 00:02:58,630 --> 00:03:02,980
-And we will send http post request with sending to our application.
+Và chúng ta sẽ gửi HTTP POST request đến ứng dụng của chúng ta.
 
 41
 00:03:02,980 --> 00:03:05,500
-So this is the fully Docker environment.
+Vậy đây là môi trường Docker hoàn chỉnh.
 
 42
 00:03:05,500 --> 00:03:09,880
-And Visual Studio allow us to debug inside of the Docker container.
+Và Visual Studio cho phép chúng ta debug bên trong Docker container.
 
 43
 00:03:09,880 --> 00:03:14,410
-Here you can see that this breakpoint hit under the store basket endpoint class.
+Ở đây bạn có thể thấy breakpoint này được hit trong store basket endpoint class.
 
 44
 00:03:14,410 --> 00:03:16,180
-And we will continue the debugging.
+Và chúng ta sẽ tiếp tục debug.
 
 45
 00:03:16,180 --> 00:03:18,520
-And this will be trigger handler class.
+Và điều này sẽ trigger handler class.
 
 46
 00:03:18,520 --> 00:03:24,550
-In the handler class we will perform repository store basket and this will be trigger our cache basket
+Trong handler class chúng ta sẽ thực hiện repository store basket và điều này sẽ trigger cache basket
 
 47
 00:03:24,550 --> 00:03:26,500
@@ -188,75 +188,75 @@ repository store basket method.
 
 48
 00:03:26,500 --> 00:03:30,280
-And in this method we will perform storing basket into database.
+Và trong method này chúng ta sẽ thực hiện lưu trữ basket vào database.
 
 49
 00:03:30,280 --> 00:03:32,980
-And after that we will set string async method.
+Và sau đó chúng ta sẽ gọi set string async method.
 
 50
 00:03:32,980 --> 00:03:36,880
-That means put this basket into the Redis distributed cache.
+Điều đó có nghĩa là đưa basket này vào Redis distributed cache.
 
 51
 00:03:36,880 --> 00:03:44,230
-And now first of all store the shopping cart into PostgreSQL database using the document session object
+Và bây giờ đầu tiên lưu trữ shopping cart vào PostgreSQL database sử dụng document session object
 
 52
 00:03:44,230 --> 00:03:50,560
-from the Martin library and we will save change async and after that we will set setting async method.
+từ thư viện Marten và chúng ta sẽ save change async và sau đó chúng ta sẽ gọi set string async method.
 
 53
 00:03:50,560 --> 00:03:57,130
-This will be write to shopping cart into our Redis distributed cache with the key name as a username.
+Điều này sẽ ghi shopping cart vào Redis distributed cache của chúng ta với tên key là username.
 
 54
 00:03:57,130 --> 00:04:01,120
-And after that we will return back to the client application with username.
+Và sau đó chúng ta sẽ trả về client application với username.
 
 55
 00:04:01,120 --> 00:04:06,580
-So that means this respond 201 created and username is stolen.
+Vậy điều đó có nghĩa là response này là 201 created và username đã được lưu trữ.
 
 56
 00:04:06,580 --> 00:04:13,600
-This is confirmed that the database is including this shopping cart and also cache including this shopping
+Điều này xác nhận rằng database chứa shopping cart này và cache cũng chứa shopping
 
 57
 00:04:13,600 --> 00:04:14,050
-cart.
+cart này.
 
 58
 00:04:14,170 --> 00:04:22,210
-In order to verify this, we can open the Docker desktop and also open the distributed cache, and you
+Để xác minh điều này, chúng ta có thể mở Docker Desktop và cũng mở distributed cache, và bạn
 
 59
 00:04:22,210 --> 00:04:28,720
-can open the interactive terminal with the exact statement of this distributed container in the Docker
+có thể mở interactive terminal với câu lệnh chính xác của distributed container này trong Docker
 
 60
 00:04:28,720 --> 00:04:29,410
-desktop.
+Desktop.
 
 61
 00:04:29,410 --> 00:04:31,420
-And now I'm going to write Redis CLI.
+Và bây giờ tôi sẽ viết Redis CLI.
 
 62
 00:04:31,450 --> 00:04:37,360
-To run this Redis commands in here I'm going to run that keystore.
+Để chạy các lệnh Redis ở đây, tôi sẽ chạy keystore đó.
 
 63
 00:04:38,200 --> 00:04:44,980
-And as you can see that newly added shopping cart is located under distributed cache, which name is
+Và như bạn có thể thấy, giỏ hàng mới được thêm vào nằm dưới distributed cache, có tên là
 
 64
 00:04:45,040 --> 00:04:47,110
-serving as a shopping cart.
+phục vụ như một giỏ hàng.
 
 65
 00:04:47,110 --> 00:04:54,250
-So now we can send the http get request in order to retrieve these shopping cart from the Redis distributed
+Vậy bây giờ chúng ta có thể gửi HTTP get request để lấy giỏ hàng này từ Redis distributed
 
 66
 00:04:54,250 --> 00:04:54,730
@@ -264,39 +264,39 @@ cache.
 
 67
 00:04:54,730 --> 00:05:03,160
-And if you open the get endpoint, which is the basket URL slash basket, and serve as a shopping cart
+Và nếu bạn mở endpoint get, đó là basket URL slash basket, và phục vụ như một giỏ hàng
 
 68
 00:05:03,160 --> 00:05:07,450
-username, and we will send http get request to this endpoint.
+username, và chúng ta sẽ gửi HTTP get request tới endpoint này.
 
 69
 00:05:07,450 --> 00:05:12,430
-And this time this will be triggered get basket endpoint inside of the Docker container.
+Và lần này điều này sẽ kích hoạt get basket endpoint bên trong Docker container.
 
 70
 00:05:12,430 --> 00:05:15,610
-And this will be trigger our get basket query handler.
+Và điều này sẽ kích hoạt get basket query handler của chúng ta.
 
 71
 00:05:15,610 --> 00:05:18,280
-And this will be used repository dot get basket.
+Và điều này sẽ sử dụng repository dot get basket.
 
 72
 00:05:18,280 --> 00:05:22,510
-And it comes from the cached basket repository get basket method.
+Và nó đến từ cached basket repository get basket method.
 
 73
 00:05:22,510 --> 00:05:29,050
-And in this method we will check the username is exist or not into the distributed cache.
+Và trong method này chúng ta sẽ kiểm tra xem username có tồn tại hay không trong distributed cache.
 
 74
 00:05:29,050 --> 00:05:36,370
-If username key is existing as a cache basket, we can see the response of the cache.
+Nếu username key tồn tại như một cache basket, chúng ta có thể thấy phản hồi từ cache.
 
 75
 00:05:36,370 --> 00:05:38,950
-This is the whole shopping cart Json.
+Đây là toàn bộ shopping cart Json.
 
 76
 00:05:39,140 --> 00:05:39,710
@@ -304,47 +304,47 @@ Object.
 
 77
 00:05:39,710 --> 00:05:43,130
-We can basically check the if null or empty.
+Chúng ta cơ bản có thể kiểm tra if null hoặc empty.
 
 78
 00:05:43,130 --> 00:05:49,340
-If not null, we will deserialize these incoming string to the shopping cart object and return back
+Nếu không null, chúng ta sẽ deserialize chuỗi đến từ shopping cart object và trả lại
 
 79
 00:05:49,340 --> 00:05:55,850
-to the method, and this method will be respond back to the client application which including all information
+cho method, và method này sẽ phản hồi lại ứng dụng client mà bao gồm tất cả thông tin
 
 80
 00:05:55,850 --> 00:05:59,270
-about the cart, username, items, and so on.
+về giỏ hàng, username, items, và những thứ khác.
 
 81
 00:05:59,270 --> 00:06:05,120
-So that means we have successfully retrieved these shopping cart from the distributed cache without
+Điều đó có nghĩa là chúng ta đã thành công trong việc lấy shopping cart từ distributed cache mà không
 
 82
 00:06:05,120 --> 00:06:08,180
-calling the database into our application.
+gọi đến database trong ứng dụng của chúng ta.
 
 83
 00:06:08,180 --> 00:06:14,960
-At this point, you can open the Docker desktop and go to the logs of the basket API and understand
+Tại thời điểm này, bạn có thể mở Docker desktop và xem logs của basket API để hiểu
 
 84
 00:06:14,960 --> 00:06:19,940
-what we are going to do and which use cases we have performing in the basket API.
+những gì chúng ta sẽ làm và những use case nào chúng ta đang thực hiện trong basket API.
 
 85
 00:06:19,940 --> 00:06:27,050
-First of all, we will store basket and after that we will get basket from the Redis distributed cache.
+Đầu tiên, chúng ta sẽ store basket và sau đó chúng ta sẽ lấy basket từ Redis distributed cache.
 
 86
 00:06:27,290 --> 00:06:31,070
-So now the last use case is delete basket by username.
+Vậy bây giờ use case cuối cùng là delete basket by username.
 
 87
 00:06:31,070 --> 00:06:38,540
-If you open this delete basket Http endpoint and send the request, this will be trigger or delete basket
+Nếu bạn mở delete basket Http endpoint này và gửi request, nó sẽ trigger hoặc delete basket
 
 88
 00:06:38,540 --> 00:06:39,260
@@ -352,37 +352,37 @@ endpoint.
 
 89
 00:06:39,260 --> 00:06:45,800
-And if I hit F5 and go to the our delete basket method, this will be delete basket from the database.
+Và nếu tôi nhấn F5 và đi đến phương thức delete basket của chúng ta, nó sẽ xóa basket từ database.
 
 90
 00:06:45,800 --> 00:06:51,800
-And after that remove basket cache information to the Redis distributed cache.
+Và sau đó xóa thông tin cache basket từ Redis distributed cache.
 
 91
 00:06:51,800 --> 00:06:55,820
-And if we hit F5 it success response comes.
+Và nếu chúng ta nhấn F5 thì success response sẽ xuất hiện.
 
 92
 00:06:55,820 --> 00:07:01,550
-That means we have successfully removed the cache from the database and distributed cache that we can
+Điều đó có nghĩa là chúng ta đã thành công trong việc xóa cache từ database và distributed cache mà chúng ta có thể
 
 93
 00:07:01,550 --> 00:07:06,740
-confirm again from the distributed cache interactive terminal.
+xác nhận lại từ interactive terminal của distributed cache.
 
 94
 00:07:06,740 --> 00:07:12,830
-If you open the distributed cache and go to exec and run the same command, you can see that this time
+Nếu bạn mở distributed cache và đi đến exec và chạy lệnh tương tự, bạn có thể thấy lần này
 
 95
 00:07:12,830 --> 00:07:15,860
-as the boolean key information removed from the cache.
+boolean key information đã bị xóa khỏi cache.
 
 96
 00:07:15,860 --> 00:07:21,770
-As you can see that we have completed the docker compose test for basket API microservices integrated
+Như bạn có thể thấy, chúng ta đã hoàn thành docker compose test cho basket API microservices tích hợp
 
 97
 00:07:21,770 --> 00:07:24,170
-with PostgreSQL and Redis distributed cache.
+với PostgreSQL và Redis distributed cache.
 

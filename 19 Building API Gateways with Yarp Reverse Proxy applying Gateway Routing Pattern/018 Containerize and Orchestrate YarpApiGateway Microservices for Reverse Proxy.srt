@@ -1,62 +1,62 @@
 1
 00:00:00,110 --> 00:00:06,170
-In this video, we are going to containerize an orchestrate irb API gateway microservices for reverse
+Trong video này, chúng ta sẽ đóng gói và điều phối irb API gateway microservices cho reverse
 
 2
 00:00:06,170 --> 00:00:09,110
-proxy as an API gateway into Docker Compose.
+proxy như một API gateway vào Docker Compose.
 
 3
 00:00:09,110 --> 00:00:15,410
-So we will focus on Containerizing and orchestrating these API gateway microservices into Docker Compose.
+Vậy chúng ta sẽ tập trung vào việc đóng gói và điều phối những API gateway microservices này vào Docker Compose.
 
 4
 00:00:15,410 --> 00:00:18,800
-Here you can see our e-commerce microservice deployment strategy.
+Tại đây bạn có thể thấy chiến lược triển khai e-commerce microservice của chúng ta.
 
 5
 00:00:18,800 --> 00:00:22,190
-We are at this point and performing the deployment tool.
+Chúng ta đang ở điểm này và thực hiện công cụ triển khai.
 
 6
 00:00:22,220 --> 00:00:28,370
-That means in Docker compose environment, each container operates within its own network and identified
+Điều đó có nghĩa là trong môi trường Docker compose, mỗi container hoạt động trong mạng riêng của nó và được xác định
 
 7
 00:00:28,370 --> 00:00:31,070
-by the container names instead of the localhost.
+bằng tên container thay vì localhost.
 
 8
 00:00:31,070 --> 00:00:37,490
-And our goal is to configure irb API gateway to communicate with other microservices using these container
+Và mục tiêu của chúng ta là cấu hình irb API gateway để giao tiếp với các microservices khác bằng cách sử dụng những tên container
 
 9
 00:00:37,490 --> 00:00:38,180
-names.
+này.
 
 10
 00:00:38,180 --> 00:00:42,530
-So now let me start with Containerizing irb API gateway microservices.
+Vậy bây giờ hãy để tôi bắt đầu với việc đóng gói irb API gateway microservices.
 
 11
 00:00:42,530 --> 00:00:46,520
-Please open the Visual Studio and go to the irb API gateway project.
+Vui lòng mở Visual Studio và đi tới dự án irb API gateway.
 
 12
 00:00:46,520 --> 00:00:49,580
-You can right click and click the add button.
+Bạn có thể nhấp chuột phải và bấm nút add.
 
 13
 00:00:49,580 --> 00:00:51,500
-And you can click the Docker support.
+Và bạn có thể bấm vào Docker support.
 
 14
 00:00:51,590 --> 00:00:56,510
-So you can click the target operating system as a Linux and click the okay button.
+Vậy bạn có thể chọn target operating system là Linux và bấm nút okay.
 
 15
 00:00:56,990 --> 00:01:02,870
-And here you can see the our Docker file which is basically building the Docker image for the irb API
+Và tại đây bạn có thể thấy Docker file của chúng ta, về cơ bản là xây dựng Docker image cho irb API
 
 16
 00:01:02,870 --> 00:01:03,380
@@ -64,51 +64,51 @@ gateway.
 
 17
 00:01:03,380 --> 00:01:08,690
-That means Docker file includes the steps for creating a Docker image for the irb API gateway.
+Điều đó có nghĩa là Docker file bao gồm các bước để tạo Docker image cho irb API gateway.
 
 18
 00:01:08,690 --> 00:01:14,630
-It will start with using the dotnet base image for building and running the application, and after
+Nó sẽ bắt đầu bằng cách sử dụng dotnet base image để xây dựng và chạy ứng dụng, và sau
 
 19
 00:01:14,630 --> 00:01:15,230
-that it is.
+đó nó là.
 
 20
 00:01:15,230 --> 00:01:21,380
-Continue with the copying the project files and restoring the dependencies, and after that it is building
+Tiếp tục với việc sao chép các tệp dự án và khôi phục các phụ thuộc, và sau đó nó đang xây dựng
 
 21
 00:01:21,380 --> 00:01:22,790
-and publishing the application.
+và xuất bản ứng dụng.
 
 22
 00:01:22,790 --> 00:01:27,440
-And lastly, it is setting the entry point in order to run the IRB API gateway.
+Và cuối cùng, nó đang đặt điểm entry để chạy IRB API gateway.
 
 23
 00:01:27,440 --> 00:01:33,170
-After creating Docker file and containerizing our irb API gateway, we can go to next step, which is
+Sau khi tạo Docker file và containerizing IRB API gateway của chúng ta, chúng ta có thể chuyển sang bước tiếp theo, đó là
 
 24
 00:01:33,170 --> 00:01:36,050
-the orchestrate irb API gateway microservices.
+orchestrate IRB API gateway microservices.
 
 25
 00:01:36,050 --> 00:01:40,970
-So when we are talking about orchestration, we should talk about the docker compose Yaml files.
+Vậy khi chúng ta nói về orchestration, chúng ta nên nói về các tập tin Docker compose Yaml.
 
 26
 00:01:40,970 --> 00:01:46,850
-Docker compose and docker compose overwrite HTML files in order to include irb api gateway into docker
+Docker compose và Docker compose overwrite HTML files để bao gồm IRB API gateway vào Docker
 
 27
 00:01:46,850 --> 00:01:50,510
-compose Yaml files, we should add the container orchestration support.
+compose Yaml files, chúng ta nên thêm container orchestration support.
 
 28
 00:01:50,510 --> 00:01:56,210
-For that purpose, I am going to right click the irb API gateway project add container orchestrator
+Với mục đích đó, tôi sẽ right click vào IRB API gateway project thêm container orchestrator
 
 29
 00:01:56,210 --> 00:01:56,930
@@ -116,141 +116,141 @@ support.
 
 30
 00:01:57,050 --> 00:02:02,300
-After that you can select the or container orchestrator as a docker compose and click the okay button
+Sau đó bạn có thể chọn container orchestrator là Docker compose và click nút okay
 
 31
 00:02:02,300 --> 00:02:06,050
-and select the target operating system as a Linux and click the okay button.
+và chọn target operating system là Linux và click nút okay.
 
 32
 00:02:06,050 --> 00:02:11,030
-So this will be create two items in Docker Compose and docker compose or write Yaml file.
+Vậy điều này sẽ tạo ra hai items trong Docker Compose và Docker compose overwrite Yaml file.
 
 33
 00:02:11,030 --> 00:02:13,820
-If you open the docker compose file and go to.
+Nếu bạn mở Docker compose file và đi đến.
 
 34
 00:02:13,820 --> 00:02:18,710
-At the end of this file, you can see that irb api gateway added successfully.
+Ở cuối tập tin này, bạn có thể thấy rằng IRB API gateway được thêm vào thành công.
 
 35
 00:02:18,710 --> 00:02:20,750
-So that means this process.
+Vậy điều đó có nghĩa là quá trình này.
 
 36
 00:02:20,750 --> 00:02:26,540
-Adding the entries for the irb API gateway in both docker compose and docker compose overwriting file.
+Thêm các entries cho IRB API gateway vào cả Docker compose và Docker compose overwrite file.
 
 37
 00:02:26,540 --> 00:02:29,030
-So you can go to the compose file.
+Vậy bạn có thể đi đến compose file.
 
 38
 00:02:29,030 --> 00:02:35,510
-And if you scroll down and go to at the end of this file, you can see that we have also irb API gateway
+Và nếu bạn cuộn xuống và đi đến cuối tập tin này, bạn có thể thấy rằng chúng ta cũng có IRB API gateway
 
 39
 00:02:35,510 --> 00:02:38,870
-configurations listing in the docker compose of HTML file.
+configurations listing trong Docker compose HTML file.
 
 40
 00:02:38,870 --> 00:02:45,110
-But we need to configure additional configuration and adjustments in the irb API gateway, because we
+Nhưng chúng ta cần cấu hình thêm các configuration và adjustments trong IRB API gateway, vì chúng ta
 
 41
 00:02:45,110 --> 00:02:50,630
-should change these configurations and need to exposing the port numbers, adding the environment variables,
+nên thay đổi các cấu hình này và cần expose các số port, thêm các biến môi trường,
 
 42
 00:02:50,630 --> 00:02:51,470
-and so on.
+và những thứ khác.
 
 43
 00:02:51,470 --> 00:02:55,070
-So now let's configure it for our microservice endpoints.
+Vậy bây giờ hãy cấu hình nó cho các endpoint microservice của chúng ta.
 
 44
 00:02:55,070 --> 00:03:00,620
-If you look at the port numbers for the ARP API gateway, we can say that we will expose the ARP API
+Nếu bạn xem các số port cho API gateway YARP, chúng ta có thể nói rằng chúng ta sẽ expose YARP API
 
 45
 00:03:00,620 --> 00:03:07,550
-gateway in the 5004 and 5054, in the local environment, but this time we will exposing Docker environment.
+gateway ở port 5004 và 5054, trong môi trường local, nhưng lần này chúng ta sẽ expose trong môi trường Docker.
 
 46
 00:03:07,550 --> 00:03:14,810
-For that purpose, we will expose the port numbers 6004 for Http and 6064 for Https.
+Với mục đích đó, chúng ta sẽ expose các số port 6004 cho Http và 6064 cho Https.
 
 47
 00:03:14,810 --> 00:03:20,780
-So now we will go back to our docker compose, overwrite HTML file and arrange the port numbers and
+Vậy bây giờ chúng ta sẽ quay lại Docker Compose, ghi đè tệp HTML và sắp xếp các số port và
 
 48
 00:03:20,780 --> 00:03:24,080
-adding the depends on section into our configurations.
+thêm phần depends on vào cấu hình của chúng ta.
 
 49
 00:03:24,080 --> 00:03:29,810
-In here you can see that I have added the Dependson and the port numbers according to Http, which is
+Ở đây bạn có thể thấy rằng tôi đã thêm Depends On và các số port theo Http, đó là
 
 50
 00:03:29,810 --> 00:03:33,320
-the 6004 Https for the 6064.
+port 6004 Https cho port 6064.
 
 51
 00:03:33,320 --> 00:03:39,290
-So please make these configurations in your computer and let me explain these configuration and adjustments.
+Vậy hãy thực hiện các cấu hình này trên máy tính của bạn và để tôi giải thích các cấu hình và điều chỉnh này.
 
 52
 00:03:39,290 --> 00:03:43,100
-Basically we have only adjustments for the port and dependencies.
+Về cơ bản chúng ta chỉ có điều chỉnh cho port và dependencies.
 
 53
 00:03:43,100 --> 00:03:45,110
-But let me explain from the scratch.
+Nhưng hãy để tôi giải thích từ đầu.
 
 54
 00:03:45,110 --> 00:03:50,240
-Here you can see the irb api gateway overridable configurations in the docker compose overwrite yaml
+Ở đây bạn có thể thấy cấu hình có thể ghi đè của YARP API gateway trong tệp Docker Compose overwrite yaml
 
 55
 00:03:50,240 --> 00:03:53,780
-file, and we set the environment variables for ASP.Net core.
+và chúng ta đặt các biến môi trường cho ASP.NET Core.
 
 56
 00:03:53,810 --> 00:04:00,590
-I don't have any additional environment variables from the irb API gateway, and just after that we
+Tôi không có bất kỳ biến môi trường bổ sung nào từ YARP API gateway, và ngay sau đó chúng ta
 
 57
 00:04:00,590 --> 00:04:07,370
-have basically defined the port numbers and port mapping in order to expose these irb API gateway externally.
+về cơ bản đã xác định các số port và port mapping để expose YARP API gateway này bên ngoài.
 
 58
 00:04:07,490 --> 00:04:11,420
-And after that you can see that we have a volume definitions.
+Và sau đó bạn có thể thấy rằng chúng ta có định nghĩa volume.
 
 59
 00:04:11,420 --> 00:04:17,360
-And we can use volume to map the user secrets and Https settings for development purposes.
+Và chúng ta có thể sử dụng volume để map user secrets và cấu hình Https cho mục đích phát triển.
 
 60
 00:04:17,360 --> 00:04:19,700
-And also we have depends on section.
+Và cũng có phần depends on.
 
 61
 00:04:19,700 --> 00:04:26,570
-We can specify the dependencies in order to ensure irb API gateway starts after other microservices,
+Chúng ta có thể chỉ định các dependencies để đảm bảo irb API gateway khởi động sau các microservice khác,
 
 62
 00:04:26,570 --> 00:04:32,000
-which is the downstream microservices including catalog basket and ordering API started.
+đó là các downstream microservices bao gồm catalog, basket và ordering API đã khởi động.
 
 63
 00:04:32,000 --> 00:04:37,400
-As you can see that we have containerized and orchestrate irb API gateway into our application.
+Như bạn có thể thấy, chúng ta đã containerized và orchestrate irb API gateway vào ứng dụng của chúng ta.
 
 64
 00:04:37,400 --> 00:04:43,490
-And by this way irb API gateway route to request to the downstream microservices within the Docker network.
+Và bằng cách này, irb API gateway định tuyến các request đến các downstream microservices trong Docker network.
 

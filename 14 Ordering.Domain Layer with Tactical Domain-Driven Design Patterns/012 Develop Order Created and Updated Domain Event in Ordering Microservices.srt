@@ -1,58 +1,58 @@
 1
 00:00:00,140 --> 00:00:07,640
-In this video we are going to develop order created and order updated domain event in organic microservices
+Trong video này, chúng ta sẽ phát triển order created và order updated domain event trong microservices
 
 2
 00:00:07,640 --> 00:00:13,580
-and these events are crucial in domain driven design approach as they help to communicating significant
+và các event này rất quan trọng trong phương pháp domain driven design vì chúng giúp giao tiếp các thay đổi đáng kể
 
 3
 00:00:13,580 --> 00:00:15,050
-changes within the domain.
+trong domain.
 
 4
 00:00:15,680 --> 00:00:21,530
-Please open the Visual Studio and go to the Order Aggregate class and if you scroll down, you can see
+Vui lòng mở Visual Studio và đi tới Order Aggregate class, và nếu bạn cuộn xuống, bạn có thể thấy
 
 5
 00:00:21,530 --> 00:00:25,820
-that in the Create and Update method, we use Add Domain Event method.
+rằng trong Create và Update method, chúng ta sử dụng phương thức Add Domain Event.
 
 6
 00:00:25,820 --> 00:00:31,760
-And if you right click and go to definition, you can see that this method comes from the aggregate
+Và nếu bạn click chuột phải và đi tới definition, bạn có thể thấy rằng phương thức này đến từ aggregate
 
 7
 00:00:31,790 --> 00:00:35,660
-abstract base class that we can use for order aggregate.
+abstract base class mà chúng ta có thể sử dụng cho order aggregate.
 
 8
 00:00:36,140 --> 00:00:40,730
-So now I am going to start to developing order created event in here.
+Vậy bây giờ tôi sẽ bắt đầu phát triển order created event ở đây.
 
 9
 00:00:40,730 --> 00:00:47,750
-In the order case you can see that we are triggering order created event to defining and developing
+Trong trường hợp order, bạn có thể thấy rằng chúng ta đang kích hoạt order created event để định nghĩa và phát triển
 
 10
 00:00:47,750 --> 00:00:49,490
-these order created domain event.
+các order created domain event.
 
 11
 00:00:49,520 --> 00:00:54,770
-I am going to right click the order domain and add a new folder.
+Tôi sẽ click chuột phải vào order domain và thêm một folder mới.
 
 12
 00:00:54,770 --> 00:00:56,540
-Which name is events.
+Tên là events.
 
 13
 00:00:58,010 --> 00:01:04,370
-So under this folder I'm going to create a order created domain event so you can add a new class.
+Vậy dưới folder này, tôi sẽ tạo một order created domain event nên bạn có thể thêm một class mới.
 
 14
 00:01:04,370 --> 00:01:05,450
-Which name is order?
+Tên là order
 
 15
 00:01:05,480 --> 00:01:07,280
@@ -60,135 +60,135 @@ Created events.
 
 16
 00:01:07,280 --> 00:01:13,010
-And for defining these domain events I am going to use a record type.
+Và để định nghĩa các domain event này, tôi sẽ sử dụng record type.
 
 17
 00:01:13,040 --> 00:01:16,790
-But before that let me remove unnecessary using statement.
+Nhưng trước đó, hãy để tôi xóa unnecessary using statement.
 
 18
 00:01:16,790 --> 00:01:25,940
-And in here I'm going to use public record and give the name of this domain event, which is the order
+Và ở đây, tôi sẽ sử dụng public record và đặt tên cho domain event này, đó là order
 
 19
 00:01:25,940 --> 00:01:31,640
-created event and passing the order as a parameter and inherit from the I domain event.
+created event và truyền order như một parameter và kế thừa từ I domain event.
 
 20
 00:01:31,790 --> 00:01:38,300
-So this event class inherit from the I domain event, which is a marker interface that can be used by
+Vậy class event này kế thừa từ I domain event, đó là một marker interface có thể được sử dụng bởi
 
 21
 00:01:38,300 --> 00:01:41,630
-infrastructure services to identify the domain events.
+các dịch vụ infrastructure để xác định các domain events.
 
 22
 00:01:41,660 --> 00:01:49,220
-So if you right click and go to definition, you can see that domain event is developed under the abstractions
+Vậy nếu bạn click chuột phải và đi đến definition, bạn có thể thấy rằng domain event được phát triển dưới phần abstractions
 
 23
 00:01:49,220 --> 00:01:50,540
-in the ordering domain.
+trong ordering domain.
 
 24
 00:01:50,600 --> 00:01:53,090
-So we can inherit by domain event.
+Vậy chúng ta có thể kế thừa từ domain event.
 
 25
 00:01:53,120 --> 00:01:59,270
-To identify the domain events in here you can go back to events order created event.
+Để xác định các domain events trong đây bạn có thể quay lại Order Created Event.
 
 26
 00:01:59,300 --> 00:02:04,810
-We can mark these order created event as a domain event with inheriting a domain event.
+Chúng ta có thể đánh dấu Order Created Event này là một domain event bằng cách kế thừa từ Domain Event.
 
 27
 00:02:04,840 --> 00:02:11,590
-The order created event also carrying the order data as a parameter of the domain event, and this can
+Order Created Event cũng mang theo dữ liệu order như một tham số của domain event, và điều này có thể
 
 28
 00:02:11,590 --> 00:02:15,100
-include all the details of the order that was just created.
+bao gồm tất cả các chi tiết của order vừa được tạo.
 
 29
 00:02:15,700 --> 00:02:19,960
-And after that we can start to develop the other domain event.
+Và sau đó chúng ta có thể bắt đầu phát triển các domain event khác.
 
 30
 00:02:19,990 --> 00:02:26,110
-If you save this file, go back to order CS and if you scroll down you can see that we need one more
+Nếu bạn lưu file này, quay lại Order.cs và kéo xuống bạn có thể thấy rằng chúng ta cần thêm một
 
 31
 00:02:26,110 --> 00:02:32,320
-domain event when updating the order, which name is order updated event, I am going to copy the name
+domain event khi cập nhật order, tên của nó là Order Updated Event, tôi sẽ copy tên này
 
 32
 00:02:32,320 --> 00:02:38,170
-and create a new class under the events folder which name is Order Updated Events.
+và tạo một class mới dưới folder events có tên là Order Updated Event.
 
 33
 00:02:38,170 --> 00:02:41,050
-So we will following the same steps again.
+Vậy chúng ta sẽ làm theo các bước tương tự lần nữa.
 
 34
 00:02:41,080 --> 00:02:43,000
-This will be the record type.
+Đây sẽ là record type.
 
 35
 00:02:43,870 --> 00:02:50,320
-I am going to develop public record and order updated event.
+Tôi sẽ phát triển public record Order Updated Event.
 
 36
 00:02:50,350 --> 00:02:52,900
-Here you can see that order updated event.
+Ở đây bạn có thể thấy Order Updated Event.
 
 37
 00:02:52,900 --> 00:02:56,620
-Also taking the order and inherit from the I domain event.
+Cũng nhận order và kế thừa từ I Domain Event.
 
 38
 00:02:56,650 --> 00:03:02,570
-That means it is similar to order created event and this event signifies that an existing order has
+Điều đó có nghĩa là nó tương tự như Order Created Event và event này biểu thị rằng một order hiện có đã
 
 39
 00:03:02,570 --> 00:03:03,530
-been updated.
+được cập nhật.
 
 40
 00:03:03,560 --> 00:03:08,330
-It also carries the order entity in order to provide context to event handler.
+Nó cũng mang theo entity order để cung cấp context cho event handler.
 
 41
 00:03:08,330 --> 00:03:10,160
-So save also this file.
+Vậy hãy lưu file này.
 
 42
 00:03:10,160 --> 00:03:12,500
-And now I'm going to add a global using.
+Và bây giờ tôi sẽ thêm một global using.
 
 43
 00:03:12,500 --> 00:03:15,170
-You can see that we have created a new namespace.
+Bạn có thể thấy rằng chúng ta đã tạo một namespace mới.
 
 44
 00:03:15,170 --> 00:03:22,430
-In order to add this namespace available for each module, I am going to add a global using Go Global
+Để làm cho namespace này có sẵn cho mỗi module, tôi sẽ thêm một global using Go Global
 
 45
 00:03:22,430 --> 00:03:26,960
-using and add new line of code, which is the ordering domain events.
+using và thêm dòng code mới, đó là ordering domain events.
 
 46
 00:03:26,960 --> 00:03:33,590
-And if you go back to order CSS, you can see that we will activate Order Created and order updated
+Và nếu bạn quay lại order CSS, bạn có thể thấy rằng chúng ta sẽ kích hoạt Order Created và order updated
 
 47
 00:03:33,590 --> 00:03:36,590
-event when updating and creating a new order.
+event khi cập nhật và tạo một order mới.
 
 48
 00:03:36,590 --> 00:03:43,790
-So if you right click and build the ordering domain, you can see that we can build succeeded for our
+Vậy nếu bạn nhấp chuột phải và build ordering domain, bạn có thể thấy rằng chúng ta có thể build thành công cho
 
 49
 00:03:43,820 --> 00:03:44,780
@@ -196,11 +196,11 @@ domain layer.
 
 50
 00:03:44,810 --> 00:03:51,110
-As you can see that when a new order is created or updating an existing order, the respective domain
+Như bạn có thể thấy rằng khi một order mới được tạo hoặc cập nhật một order hiện tại, domain events tương ứng
 
 51
 00:03:51,110 --> 00:03:57,530
-events is raised and we will dispatch these events into infrastructure layer with using Entity Framework
+sẽ được phát hành và chúng ta sẽ dispatch những events này vào infrastructure layer bằng cách sử dụng Entity Framework
 
 52
 00:03:57,530 --> 00:03:58,010
@@ -208,7 +208,7 @@ Core.
 
 53
 00:03:58,010 --> 00:04:03,260
-So that means we have finished the ordering domain layer and we will continue to develop ordering infrastructure
+Vậy điều đó có nghĩa là chúng ta đã hoàn thành ordering domain layer và chúng ta sẽ tiếp tục phát triển ordering infrastructure
 
 54
 00:04:03,260 --> 00:04:03,830

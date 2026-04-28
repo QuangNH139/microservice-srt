@@ -1,170 +1,170 @@
 1
 00:00:00,170 --> 00:00:06,350
-In this video, we are going to generate proto service class from the discount proto file that we have
+Trong video này, chúng ta sẽ tạo ra proto service class từ discount proto file mà chúng ta đã
 
 2
 00:00:06,350 --> 00:00:08,870
-developed in the last video for that purpose.
+phát triển trong video trước cho mục đích đó.
 
 3
 00:00:08,900 --> 00:00:13,730
-First of all, let me check the proto file properties and we will set the actions.
+Đầu tiên, hãy để tôi kiểm tra các thuộc tính của proto file và chúng ta sẽ thiết lập các hành động.
 
 4
 00:00:13,730 --> 00:00:19,460
-If you come here and right click the Discount Proto file and click the properties, you can see the
+Nếu bạn đến đây và nhấp chuột phải vào tệp Discount Proto và nhấp vào properties, bạn có thể thấy
 
 5
 00:00:19,460 --> 00:00:23,270
-advanced properties that we are going to set the actions in here.
+các advanced properties mà chúng ta sẽ thiết lập các hành động ở đây.
 
 6
 00:00:23,270 --> 00:00:26,330
-The first advanced property is Build action.
+Advanced property đầu tiên là Build action.
 
 7
 00:00:26,570 --> 00:00:30,530
-As a build action I am going to select Protobuf Compiler.
+Làm một build action, tôi sẽ chọn Protobuf Compiler.
 
 8
 00:00:34,050 --> 00:00:34,620
-Okay.
+Được.
 
 9
 00:00:34,620 --> 00:00:40,140
-After selected the protobuf compiler, we can see that there is any attribute comes here, which is
+Sau khi chọn protobuf compiler, chúng ta có thể thấy có một thuộc tính xuất hiện ở đây, đó là
 
 10
 00:00:40,140 --> 00:00:42,270
-the gRPC stub classes.
+gRPC stub classes.
 
 11
 00:00:42,270 --> 00:00:47,910
-So for this count microservices I'm going to select the stub classes as a server.
+Vậy nên đối với microservices này, tôi sẽ chọn stub classes như một server.
 
 12
 00:00:50,260 --> 00:00:50,680
-Okay.
+Được.
 
 13
 00:00:50,680 --> 00:00:56,500
-Discount microservices will be served only to expose gRPC methods into discount proto file.
+Discount microservice sẽ chỉ phục vụ để tiếp xúc gRPC methods vào tệp discount proto.
 
 14
 00:00:56,680 --> 00:01:03,010
-After setting these properties, we should add these proto file into our project file item groups in
+Sau khi thiết lập các thuộc tính này, chúng ta nên thêm tệp proto này vào item groups của tệp dự án
 
 15
 00:01:03,010 --> 00:01:06,160
-order to attach and generate proto file C code.
+để gắn kết và tạo ra proto file C code.
 
 16
 00:01:06,160 --> 00:01:11,980
-For that purpose, please go to the discount gRPC project file and double click this project file.
+Cho mục đích đó, vui lòng đi đến tệp dự án discount gRPC và nhấp đôi vào tệp dự án này.
 
 17
 00:01:12,010 --> 00:01:18,250
-Here you can see that we have several item groups, but when we are setting the properties for discount
+Ở đây bạn có thể thấy rằng chúng ta có nhiều item groups, nhưng khi chúng ta đang thiết lập các thuộc tính cho tệp
 
 18
 00:01:18,250 --> 00:01:25,030
-proto file, new item group comes in here including the proto path and include these folder structure
+discount proto, item group mới sẽ xuất hiện ở đây bao gồm đường dẫn proto và bao gồm các cấu trúc thư mục này
 
 19
 00:01:25,030 --> 00:01:29,500
-which is the discount proto file and gRPC services is server only.
+đó là tệp discount proto và gRPC services chỉ là server.
 
 20
 00:01:29,500 --> 00:01:34,120
-So this will provide to generate C sharp proto class when building the application.
+Vì vậy điều này sẽ cung cấp để tạo ra C sharp proto class khi xây dựng ứng dụng.
 
 21
 00:01:34,120 --> 00:01:38,290
-So now we can build the project if you right click and build the project.
+Vậy bây giờ chúng ta có thể build project bằng cách click chuột phải và build project.
 
 22
 00:01:39,400 --> 00:01:40,600
-When we built the project.
+Khi chúng ta build project.
 
 23
 00:01:40,600 --> 00:01:47,380
-It compiles the proto file and it will generate the C sharp proto class and build complete successfully.
+Nó sẽ compile file proto và sẽ tạo ra C# proto class và build thành công.
 
 24
 00:01:47,380 --> 00:01:50,110
-Now we can check the our generated class.
+Bây giờ chúng ta có thể kiểm tra class được tạo ra của chúng ta.
 
 25
 00:01:50,110 --> 00:01:55,840
-So if you select this gRPC project file and click the this button which is the show all files, you
+Vậy nếu bạn chọn file gRPC project này và click button này là show all files, bạn
 
 26
 00:01:55,840 --> 00:01:58,570
-can see that we have seen object folder.
+có thể thấy rằng chúng ta đã thấy folder object.
 
 27
 00:01:58,570 --> 00:02:01,810
-And under the object folder we can go to the debug.
+Và dưới folder object chúng ta có thể đi đến debug.
 
 28
 00:02:02,020 --> 00:02:07,660
-Net eight Protoss and you can see newly generated class for our application.
+Net 8 Protoss và bạn có thể thấy class được tạo ra mới cho ứng dụng của chúng ta.
 
 29
 00:02:07,660 --> 00:02:11,770
-This is the discount gRPC generated from the R protobuf file.
+Đây là discount gRPC được tạo từ file protobuf.
 
 30
 00:02:11,770 --> 00:02:20,140
-And by this file we can use gRPC methods into our service classes in order to invoke gRPC methods and
+Và thông qua file này chúng ta có thể sử dụng gRPC methods vào trong class service của chúng ta để gọi gRPC methods và
 
 31
 00:02:20,140 --> 00:02:23,740
-exposing these methods using these discount gRPC class.
+expose những methods này bằng cách sử dụng discount gRPC class này.
 
 32
 00:02:23,740 --> 00:02:31,360
-For example, if you open the discount class generated class and expand the messages, you can see that
+Ví dụ, nếu bạn mở class discount được tạo ra và expand messages, bạn có thể thấy rằng
 
 33
 00:02:31,360 --> 00:02:34,480
-get discount messages are listing in here.
+get discount messages được liệt kê ở đây.
 
 34
 00:02:34,480 --> 00:02:40,870
-And also you can check the class names that you can see Crud operations request and response object
+Và cũng bạn có thể kiểm tra các tên class mà bạn có thể thấy Crud operations request và response object
 
 35
 00:02:40,870 --> 00:02:43,390
-is generated from the Visual Studio.
+được tạo ra từ Visual Studio.
 
 36
 00:02:43,810 --> 00:02:50,500
-We can go back to our Visual Studio solution and select the gRPC and show all files again to remove
+Chúng ta có thể quay lại solution Visual Studio của chúng ta và chọn gRPC và show all files lại để xóa
 
 37
 00:02:50,500 --> 00:02:51,220
-these files.
+những file này.
 
 38
 00:02:51,220 --> 00:02:57,400
-So what we have done for this video we basically create discount proto file and right click properties
+Vậy những gì chúng ta đã làm trong video này, về cơ bản là tạo file discount proto và click chuột phải properties
 
 39
 00:02:57,400 --> 00:03:04,450
-and edit the properties for build action as a protobuf compiler and gRPC subclass should be served only
+và edit properties cho build action như là protobuf compiler và gRPC subclass nên được phục vụ chỉ
 
 40
 00:03:04,540 --> 00:03:11,320
-after that, we can see that if you double click the project file, we can see our item group edit successfully
+sau đó, chúng ta có thể thấy rằng nếu bạn double click file project, chúng ta có thể thấy item group của chúng ta được edit thành công
 
 41
 00:03:11,320 --> 00:03:12,460
-as the same way.
+theo cách tương tự.
 
 42
 00:03:12,460 --> 00:03:18,760
-And after that we build the project and see that all generated classes listing under the Our object
+Và sau đó chúng ta build project và xem tất cả các class được tạo ra trong thư mục Our object
 
 43
 00:03:18,760 --> 00:03:19,390
@@ -172,9 +172,9 @@ folder.
 
 44
 00:03:19,720 --> 00:03:25,420
-As you can see, that discount proto service class generated by Visual Studio and it will provide to
+Như bạn có thể thấy, class discount proto service được tạo ra bởi Visual Studio và nó sẽ cung cấp để
 
 45
 00:03:25,420 --> 00:03:28,000
-connect gRPC services as a server role.
+kết nối các gRPC services ở vai trò server.
 

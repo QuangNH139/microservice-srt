@@ -1,158 +1,158 @@
 1
 00:00:00,140 --> 00:00:05,870
-In this video we are going to do domain analysis for the API gateway microservices.
+Trong video này, chúng ta sẽ thực hiện phân tích domain cho API gateway microservices.
 
 2
 00:00:05,900 --> 00:00:11,900
-As always, we will check domain models, application use cases, Rest API endpoints and underlying
+Như mọi khi, chúng ta sẽ kiểm tra domain models, application use cases, Rest API endpoints và cấu trúc
 
 3
 00:00:11,900 --> 00:00:15,380
-data structures for your API gateway microservices.
+dữ liệu cơ bản cho API gateway microservices của bạn.
 
 4
 00:00:15,590 --> 00:00:17,810
-So let's get started with domain models.
+Vậy hãy bắt đầu với domain models.
 
 5
 00:00:17,990 --> 00:00:23,810
-Your API gateway doesn't have traditional domain models or entities like other microservices.
+API gateway của bạn không có domain models hoặc entities truyền thống như các microservices khác.
 
 6
 00:00:23,810 --> 00:00:29,570
-Instead, it primarily deals with the configurations for routing and reverse proxy settings.
+Thay vào đó, nó chủ yếu xử lý các cấu hình cho routing và cài đặt reverse proxy.
 
 7
 00:00:29,570 --> 00:00:35,060
-That means we don't have any domain model in your API gateway, and we will only develop a configuration
+Điều đó có nghĩa là chúng ta không có bất kỳ domain model nào trong API gateway của bạn, và chúng ta sẽ chỉ phát triển một configuration
 
 8
 00:00:35,060 --> 00:00:37,130
-file for reverse proxy settings.
+file cho cài đặt reverse proxy.
 
 9
 00:00:37,160 --> 00:00:41,300
-After that, we can check the application use cases for your API gateway.
+Sau đó, chúng ta có thể kiểm tra application use cases cho API gateway của bạn.
 
 10
 00:00:41,300 --> 00:00:44,180
-So we should define your API gateway use case.
+Vậy chúng ta nên định nghĩa use case của API gateway.
 
 11
 00:00:44,180 --> 00:00:44,930
-Analyzing.
+Phân tích.
 
 12
 00:00:44,930 --> 00:00:49,700
-Overall, we can say that these use cases are e-commerce microservice use cases.
+Nói chung, chúng ta có thể nói rằng những use cases này là e-commerce microservice use cases.
 
 13
 00:00:49,700 --> 00:00:52,880
-And we can start with the catalog microservice use cases.
+Và chúng ta có thể bắt đầu với catalog microservice use cases.
 
 14
 00:00:52,880 --> 00:00:59,000
-It is including get all products and categories with product ID and category and create, update, delete
+Nó bao gồm lấy tất cả sản phẩm và danh mục với product ID và category, và tạo, cập nhật, xóa
 
 15
 00:00:59,000 --> 00:01:05,540
-product and following that we can start and continue Crud operations on basket microservices that including
+sản phẩm và sau đó chúng ta có thể bắt đầu và tiếp tục các hoạt động Crud trên basket microservices bao gồm
 
 16
 00:01:05,540 --> 00:01:10,520
-get shopping cart with items, store shopping cart with items and delete shopping cart with items.
+lấy giỏ hàng với các items, lưu trữ giỏ hàng với các items và xóa giỏ hàng với các items.
 
 17
 00:01:10,520 --> 00:01:16,370
-And just after that we can go to the ordering microservices Crud operations including the get orders
+Và ngay sau đó chúng ta có thể đi đến các hoạt động Crud ordering microservices bao gồm lấy orders
 
 18
 00:01:16,370 --> 00:01:21,110
-with items, create, update and delete order and add and remove item from the order.
+với items, tạo, cập nhật và xóa order, và thêm và xóa item từ order.
 
 19
 00:01:21,110 --> 00:01:27,140
-And after that we can say asynchronous ordering operations that include basket checkout, which is the
+Và sau đó chúng ta có thể nói về các hoạt động ordering không đồng bộ bao gồm basket checkout, đó là
 
 20
 00:01:27,140 --> 00:01:30,470
-consume basket checkout event from the RabbitMQ using mass transit.
+tiêu thụ basket checkout event từ RabbitMQ sử dụng mass transit.
 
 21
 00:01:30,470 --> 00:01:36,470
-And another one is order fulfillment that perform order fulfillment operation to notify other microservices,
+Và một cái khác là order fulfillment thực hiện các hoạt động fulfillment đơn hàng để thông báo cho các microservices khác,
 
 22
 00:01:36,470 --> 00:01:38,750
-including the billing, shipment and notification.
+bao gồm billing, shipment và notification.
 
 23
 00:01:38,750 --> 00:01:44,660
-So these are the application use cases for your API gateway microservices that we are going to expose
+Vậy đây là các use cases ứng dụng cho API gateway microservices mà chúng ta sẽ expose
 
 24
 00:01:44,660 --> 00:01:47,660
-services to implement these kind of use cases.
+các services để triển khai những loại use cases này.
 
 25
 00:01:47,660 --> 00:01:51,950
-So here you can see the rest API endpoint of internal microservices.
+Vậy ở đây bạn có thể thấy REST API endpoint của các internal microservices.
 
 26
 00:01:51,950 --> 00:01:58,460
-You can see that we have already exposed these microservices when developing our microservices for product
+Bạn có thể thấy rằng chúng ta đã expose những microservices này khi phát triển microservices của chúng ta cho product
 
 27
 00:01:58,460 --> 00:02:04,010
-catalog microservices basket and ordering microservices, you can see that the endpoints are listing
+catalog microservices, basket và ordering microservices, bạn có thể thấy các endpoints được
 
 28
 00:02:04,010 --> 00:02:04,430
-in here.
+liệt kê ở đây.
 
 29
 00:02:04,430 --> 00:02:05,930
-And use case explanations.
+Và các giải thích use case.
 
 30
 00:02:05,930 --> 00:02:10,490
-Come to the next column and we will follow and implement these endpoints.
+Chuyển sang cột tiếp theo và chúng ta sẽ theo dõi và triển khai các endpoints này.
 
 31
 00:02:10,490 --> 00:02:16,610
-And we will expose these endpoints from the API gateway to the client application in order to redirect
+Và chúng ta sẽ expose các endpoints này từ API gateway tới ứng dụng client để chuyển hướng
 
 32
 00:02:16,610 --> 00:02:19,280
-incoming requests to internal microservices.
+các incoming requests tới internal microservices.
 
 33
 00:02:19,280 --> 00:02:24,050
-And here you can see the Rest API endpoints for the Erb API gateway microservices.
+Và ở đây bạn có thể thấy các REST API endpoints cho API gateway microservices Erb.
 
 34
 00:02:24,050 --> 00:02:31,010
-Basically, Erb API gateway will expose with microservices, putting microservice name as a prefix of
+Về cơ bản, API gateway Erb sẽ expose các microservices, sử dụng tên microservice làm tiền tố của
 
 35
 00:02:31,010 --> 00:02:32,030
-the internal URL.
+internal URL.
 
 36
 00:02:32,030 --> 00:02:36,740
-So here you can see that we will put the microservice name as a prefix of the internal URL.
+Vậy ở đây bạn có thể thấy rằng chúng ta sẽ sử dụng tên microservice làm tiền tố của internal URL.
 
 37
 00:02:36,740 --> 00:02:43,190
-And this is an example of the implementation of the endpoint microservice name slash microservice internal
+Và đây là một ví dụ về triển khai endpoint tên microservice slash internal URL microservice.
 
 38
 00:02:43,190 --> 00:02:43,640
-URL.
+Vậy là ví dụ, bạn có thể thấy lấy products với slash products từ catalog microservices.
 
 39
 00:02:43,640 --> 00:02:49,820
-So as an example you can see the for example getting products with slash products from the catalog microservices.
+Và khi chúng ta expose service này vào API gateway Erb, chúng ta sẽ sử dụng tên microservice làm tiền tố
 
 40
 00:02:49,820 --> 00:02:55,940
@@ -160,117 +160,117 @@ And when we are exposing this service into Erb API gateway, we will put the micr
 
 41
 00:02:55,940 --> 00:02:56,810
-slash catalog.
+/catalog.
 
 42
 00:02:56,810 --> 00:03:00,920
-And after that the rest of the endpoint comes from the internal microservice URL.
+Và sau đó phần còn lại của endpoint đến từ URL microservice nội bộ.
 
 43
 00:03:00,920 --> 00:03:04,700
-So you can follow the other endpoints following the same principles.
+Vậy bạn có thể làm theo các endpoint khác theo các nguyên tắc tương tự.
 
 44
 00:03:04,700 --> 00:03:09,020
-We will put the microservice name in the beginning of the endpoint from the Erb API gateway.
+Chúng ta sẽ đặt tên microservice ở đầu endpoint từ Erb API gateway.
 
 45
 00:03:09,020 --> 00:03:14,420
-And continue of these operations comes from the internal microservice request API to performing these
+Và tiếp tục các hoạt động này đến từ API request microservice nội bộ để thực hiện các
 
 46
 00:03:14,420 --> 00:03:21,260
-use cases, get products by ID category and Crud operations on catalog and following the same structure
+use case này, lấy sản phẩm theo ID danh mục và các hoạt động Crud trên catalog và theo cùng cấu trúc
 
 47
 00:03:21,260 --> 00:03:22,670
-in basket microservices.
+trong basket microservices.
 
 48
 00:03:22,670 --> 00:03:28,610
-Here you can see the basket microservices internal exposing endpoints when performing the get, post
+Ở đây bạn có thể thấy basket microservices đang expose các endpoint khi thực hiện các hoạt động get, post
 
 49
 00:03:28,610 --> 00:03:32,300
-and delete operations on basket microservices and basket operation.
+và delete trên basket microservices và basket operation.
 
 50
 00:03:32,300 --> 00:03:37,790
-And we will expose these endpoints in the Erb API gateway with putting the slash shopping cart in the
+Và chúng ta sẽ expose các endpoint này trong Erb API gateway bằng cách đặt /shopping-cart ở
 
 51
 00:03:37,790 --> 00:03:39,020
-beginning of the endpoints.
+đầu các endpoint.
 
 52
 00:03:39,020 --> 00:03:44,330
-By this way, we can separate the catalog and shopping cart microservices with incoming requests on
+Bằng cách này, chúng ta có thể tách biệt catalog và shopping cart microservices với các yêu cầu incoming trên
 
 53
 00:03:44,330 --> 00:03:45,590
-the Erb API gateway.
+Erb API gateway.
 
 54
 00:03:45,590 --> 00:03:51,410
-And following that, here you can see the ordering microservices that perform from the Erb API gateway.
+Và theo sau đó, ở đây bạn có thể thấy ordering microservices được thực hiện từ Erb API gateway.
 
 55
 00:03:51,410 --> 00:03:57,110
-We will put slash ordering microservice name, and after that we will continue the orders collection
+Chúng ta sẽ đặt /ordering microservice name, và sau đó chúng ta sẽ tiếp tục collection orders
 
 56
 00:03:57,110 --> 00:04:00,410
-and endpoints to implement order related use cases.
+và các endpoint để triển khai các use case liên quan đến order.
 
 57
 00:04:00,410 --> 00:04:05,570
-So these are the exposing services that we are going to expose from the Erb API gateway.
+Vậy đây là những dịch vụ mà chúng ta sẽ expose từ Erb API gateway.
 
 58
 00:04:05,900 --> 00:04:13,010
-Here you can find all services that exposing from the Erb API gateway listing in three tables for catalog
+Ở đây bạn có thể tìm thấy tất cả các dịch vụ được expose từ Erb API gateway được liệt kê trong ba bảng cho catalog
 
 59
 00:04:13,010 --> 00:04:15,020
-basket and ordering microservices.
+basket và ordering microservices.
 
 60
 00:04:15,050 --> 00:04:20,329
-After that, we will analyze the underlying data structure of the Erb microservices.
+Sau đó, chúng ta sẽ phân tích cấu trúc dữ liệu cơ bản của các Erb microservices.
 
 61
 00:04:20,329 --> 00:04:24,590
-Basically Erb API gateway microservices has no database.
+Về cơ bản, Erb API gateway microservices không có database.
 
 62
 00:04:24,590 --> 00:04:31,340
-So for your API gateway, the infrastructure focus is more on the routing and configuration rather than
+Vậy đối với API gateway của bạn, trọng tâm về infrastructure là hơn tất cả việc định tuyến và cấu hình chứ không phải
 
 63
 00:04:31,340 --> 00:04:32,390
-data structures.
+các cấu trúc dữ liệu.
 
 64
 00:04:32,390 --> 00:04:38,630
-It doesn't interact with databases or manage state directly, but ensures efficient and correct routing
+Nó không tương tác với databases hay quản lý trạng thái trực tiếp, nhưng đảm bảo việc định tuyến hiệu quả và chính xác
 
 65
 00:04:38,630 --> 00:04:41,690
-of requests to the services that handle the data.
+các yêu cầu đến các dịch vụ xử lý dữ liệu.
 
 66
 00:04:41,690 --> 00:04:47,960
-So we can say that Erb API gateway is a critical component in microservice architecture, and handling
+Vì vậy chúng ta có thể nói rằng Erb API gateway là một thành phần quan trọng trong microservice architecture, và xử lý
 
 67
 00:04:47,960 --> 00:04:51,530
-the routing of the requests to various backend services efficiently.
+việc định tuyến các yêu cầu tới các backend services khác nhau một cách hiệu quả.
 
 68
 00:04:51,530 --> 00:04:56,960
-It abstracts the complexity of the underlying services from the client and providing a single point
+Nó che giấu sự phức tạp của các dịch vụ cơ bản khỏi client và cung cấp một điểm
 
 69
 00:04:56,960 --> 00:04:57,560
-of entry.
+vào duy nhất.
 

@@ -1,6 +1,6 @@
 1
 00:00:00,110 --> 00:00:06,650
-In this video, we are going to explore how to centralize exception handling in microservices using
+Trong video này, chúng ta sẽ tìm hiểu cách tập trung xử lý exception trong microservices bằng cách sử dụng
 
 2
 00:00:06,650 --> 00:00:07,370
@@ -8,135 +8,135 @@ building blocks.
 
 3
 00:00:07,370 --> 00:00:14,450
-Approach building blocks is a concept used to encapsulate all common functionalities across microservices,
+Approach building blocks là một khái niệm được sử dụng để đóng gói tất cả các chức năng chung trên các microservices,
 
 4
 00:00:14,450 --> 00:00:16,460
-such as exception handling.
+chẳng hạn như xử lý exception.
 
 5
 00:00:16,460 --> 00:00:21,650
-It helps in maintaining a consistent approach and reducing the code duplication.
+Nó giúp duy trì một cách tiếp cận nhất quán và giảm bớt sự trùng lặp code.
 
 6
 00:00:21,980 --> 00:00:28,520
-So we will start by creating generic exception classes within our building Blocks project, and this
+Vậy chúng ta sẽ bắt đầu bằng cách tạo các lớp exception chung trong dự án building blocks của chúng ta, và các
 
 7
 00:00:28,520 --> 00:00:34,220
-class will be represented our common types of the exceptions like not found exception, internal server
+lớp này sẽ đại diện cho các kiểu exception chung như not found exception, internal server
 
 8
 00:00:34,220 --> 00:00:36,890
-error and bad request exceptions.
+error và bad request exceptions.
 
 9
 00:00:37,160 --> 00:00:41,690
-So please open the Visual Studio and locate the building blocks.
+Vậy hãy mở Visual Studio và định vị building blocks.
 
 10
 00:00:41,690 --> 00:00:44,960
-So we will develop our common exceptions in here.
+Chúng ta sẽ phát triển các exception chung của chúng ta ở đây.
 
 11
 00:00:44,960 --> 00:00:51,080
-And we will create generic exception classes that we use inside of the each microservices.
+Và chúng ta sẽ tạo các lớp exception chung mà chúng ta sử dụng bên trong mỗi microservices.
 
 12
 00:00:51,080 --> 00:00:57,410
-For that purpose I'm going to right click and create exception folder under the building blocks add
+Để làm được điều đó, tôi sẽ nhấp chuột phải và tạo folder exception dưới building blocks, thêm
 
 13
 00:00:57,410 --> 00:01:00,440
-new folder which name is exceptions.
+folder mới có tên là exceptions.
 
 14
 00:01:00,440 --> 00:01:05,180
-Under the exceptions folder I have created three common exception classes.
+Dưới folder exceptions, tôi đã tạo ba lớp exception chung.
 
 15
 00:01:05,750 --> 00:01:12,470
-The first one is not found exception, and in the not found exception, I'm going to make it public
+Cái đầu tiên là not found exception, và trong not found exception, tôi sẽ làm cho nó public
 
 16
 00:01:12,470 --> 00:01:16,250
-and inherit from the system exception class.
+và kế thừa từ lớp system exception.
 
 17
 00:01:16,250 --> 00:01:23,570
-And in here we will define two different constructors in order to handle not found exception.
+Và ở đây chúng ta sẽ định nghĩa hai constructor khác nhau để xử lý not found exception.
 
 18
 00:01:23,570 --> 00:01:30,530
-The first one is passing the exception message and the second one we can name, and getting the key
+Cái đầu tiên là truyền vào message exception và cái thứ hai chúng ta có thể đặt tên, và lấy thông tin key
 
 19
 00:01:30,530 --> 00:01:36,620
-information as a parameter that we can write the custom exception message, which is the entity name,
+làm parameter để chúng ta có thể viết custom exception message, đó là entity name,
 
 20
 00:01:36,620 --> 00:01:38,360
-and the key was not found.
+và key không được tìm thấy.
 
 21
 00:01:38,390 --> 00:01:40,280
-This is the customized exception.
+Đây là ngoại lệ tùy chỉnh.
 
 22
 00:01:40,280 --> 00:01:42,950
-I'm going to remove unnecessary using statement.
+Tôi sẽ xóa các using statement không cần thiết.
 
 23
 00:01:42,950 --> 00:01:46,310
-And here you can see the not found generic exception.
+Và ở đây bạn có thể thấy ngoại lệ generic not found.
 
 24
 00:01:46,310 --> 00:01:51,860
-And after that I'm going to create another exception which is the invalid server exception.
+Và sau đó tôi sẽ tạo một ngoại lệ khác, đó là invalid server exception.
 
 25
 00:01:51,860 --> 00:01:53,780
-So we will follow the same steps.
+Vậy chúng ta sẽ tuân theo các bước tương tự.
 
 26
 00:01:53,780 --> 00:02:03,380
-Make it public, inherit from the exceptions and inside of the exception class we can this time get
+Làm cho nó public, kế thừa từ exceptions và bên trong lớp exception chúng ta có thể lần này lấy
 
 27
 00:02:03,380 --> 00:02:04,100
-some details.
+một số chi tiết.
 
 28
 00:02:04,100 --> 00:02:08,690
-Here you can see that I am putting a details property that we can define.
+Ở đây bạn có thể thấy tôi đang đặt một thuộc tính details mà chúng ta có thể xác định.
 
 29
 00:02:08,690 --> 00:02:12,140
-And this is the typical message based implementation.
+Và đây là triển khai điển hình dựa trên message.
 
 30
 00:02:12,140 --> 00:02:16,730
-And in here we can passing the details about the internal server error details.
+Và ở đây chúng ta có thể truyền các chi tiết về internal server error details.
 
 31
 00:02:16,730 --> 00:02:19,580
-So we can remove the unnecessary using statement.
+Vậy chúng ta có thể xóa các using statement không cần thiết.
 
 32
 00:02:19,580 --> 00:02:27,080
-And after that we can create our last exception which is the bad request exception, and making the
+Và sau đó chúng ta có thể tạo ngoại lệ cuối cùng của chúng ta, đó là bad request exception, và thực hiện
 
 33
 00:02:27,080 --> 00:02:32,300
-same things as similar and remove unnecessary using statement.
+những điều tương tự và xóa các using statement không cần thiết.
 
 34
 00:02:32,300 --> 00:02:37,160
-And in here we will follow the same codes with the internal server error.
+Và ở đây chúng ta sẽ tuân theo cùng các mã với internal server error.
 
 35
 00:02:37,160 --> 00:02:42,500
-I'm putting the details, information and able to paste details information in a constructor of the
+Tôi đang đặt các details, information và có thể dán thông tin details vào constructor của
 
 36
 00:02:42,500 --> 00:02:43,880
@@ -144,149 +144,149 @@ bad request exception.
 
 37
 00:02:44,630 --> 00:02:51,800
-So each of these classes extended from the system exception and adds specific context informations.
+Vậy mỗi một trong những lớp này đều kế thừa từ system exception và thêm các thông tin context cụ thể.
 
 38
 00:02:51,830 --> 00:02:55,970
-Next we will apply these generic exceptions in our microservices.
+Tiếp theo chúng ta sẽ áp dụng các generic exceptions này trong microservices của chúng ta.
 
 39
 00:02:55,970 --> 00:03:03,410
-For example, we have defined the not found exception and in our catalog microservices we use Notfoundexception
+Ví dụ, chúng ta đã xác định not found exception và trong catalog microservices của chúng ta chúng ta sử dụng NotFoundException
 
 40
 00:03:03,410 --> 00:03:05,900
-to handle the product not found cases.
+để xử lý các trường hợp product not found.
 
 41
 00:03:05,900 --> 00:03:12,590
-If you go to the catalog API microservice and see that there is an exception folder, and if you open
+Nếu bạn đi đến catalog API microservice và thấy rằng có một exception folder, và nếu bạn mở nó
 
 42
 00:03:12,590 --> 00:03:14,240
-the product not found exception.
+thì product not found exception.
 
 43
 00:03:14,240 --> 00:03:16,220
-This is using in two places.
+Cái này được sử dụng ở hai nơi.
 
 44
 00:03:16,220 --> 00:03:19,970
-So we will also inherit from the standard exception.
+Vậy chúng ta cũng sẽ kế thừa từ exception tiêu chuẩn.
 
 45
 00:03:19,970 --> 00:03:26,900
-But we can inherit from the not found exception because this time we have more generic exception that
+Nhưng chúng ta có thể kế thừa từ not found exception vì lần này chúng ta có một exception chung chung hơn mà
 
 46
 00:03:26,900 --> 00:03:31,580
-we can use in here, not found exception.
+chúng ta có thể sử dụng ở đây, đó là not found exception.
 
 47
 00:03:31,610 --> 00:03:39,080
-And when we are inherited from the not found expression, we can also convert this as a with information
+Và khi chúng ta kế thừa từ not found exception, chúng ta cũng có thể chuyển đổi cái này như là một thông tin với
 
 48
 00:03:39,080 --> 00:03:42,110
-we can paste the with ID information.
+chúng ta có thể dán thông tin with ID.
 
 49
 00:03:42,110 --> 00:03:51,590
-And I'm going to convert this base constructor which will be using the our second constructor I'm going
+Và tôi sẽ chuyển đổi base constructor này mà sẽ được sử dụng bởi constructor thứ hai của chúng ta, tôi sẽ
 
 50
 00:03:51,590 --> 00:03:54,650
-to passing the are object name which is the product.
+truyền tên đối tượng của chúng ta, đó là product.
 
 51
 00:03:55,940 --> 00:03:59,060
-And after that passing the key information which is the ID.
+Và sau đó truyền thông tin key, đó là ID.
 
 52
 00:04:00,290 --> 00:04:07,310
-In this class we basically extends from the not found exception comes from the building blocks exceptions
+Trong class này chúng ta về cơ bản sẽ mở rộng từ not found exception đến từ building blocks exceptions
 
 53
 00:04:07,310 --> 00:04:14,720
-which including our generic exceptions and providing a more specific context for product related errors.
+bao gồm các generic exceptions của chúng ta và cung cấp một context cụ thể hơn cho các lỗi liên quan đến product.
 
 54
 00:04:14,720 --> 00:04:21,200
-For that purpose, we will refactor our existing usage of the product Notfoundexception, so we will
+Vì mục đích đó, chúng ta sẽ refactor việc sử dụng hiện tại product not found exception, vậy chúng ta sẽ
 
 55
 00:04:21,200 --> 00:04:26,060
-refactor our handles to use these new exception constructor.
+refactor các handler của chúng ta để sử dụng exception constructor mới này.
 
 56
 00:04:26,090 --> 00:04:32,690
-If you open the these two references, you can see that we have two references get product by id handler
+Nếu bạn mở hai reference này, bạn có thể thấy rằng chúng ta có hai reference là get product by id handler
 
 57
 00:04:32,690 --> 00:04:35,480
-and also update product handler.
+và cũng là update product handler.
 
 58
 00:04:35,480 --> 00:04:42,050
-So let me go to the first one and see that we are throwing product not found exception when we can't
+Vậy hãy tôi đi tới cái đầu tiên và xem rằng chúng ta đang throw product not found exception khi chúng ta không thể
 
 59
 00:04:42,050 --> 00:04:43,040
-find a product.
+tìm thấy một product.
 
 60
 00:04:43,040 --> 00:04:48,230
-So in this case we will passing the ID information that we can't find this ID.
+Vậy trong trường hợp này chúng ta sẽ truyền thông tin ID mà chúng ta không thể tìm thấy ID này.
 
 61
 00:04:48,230 --> 00:04:51,500
-So copy this query.id and paste in here.
+Vậy hãy copy query.id này và paste vào đây.
 
 62
 00:04:51,500 --> 00:04:56,990
-And after that if you go to the product not found exception and go to the second reference which is
+Và sau đó nếu bạn vào product not found exception và vào reference thứ hai
 
 63
 00:04:56,990 --> 00:04:59,120
-including the update product.
+bao gồm cả update product.
 
 64
 00:04:59,410 --> 00:05:03,430
-Another class and this is also retrieving the product information.
+Một class khác và đây cũng là lấy thông tin product.
 
 65
 00:05:03,430 --> 00:05:06,760
-If product is null, we will throw product not found exception.
+Nếu product là null, chúng ta sẽ throw product not found exception.
 
 66
 00:05:06,760 --> 00:05:13,060
-So we will paste the ID information in the constructor of the product, not found exception and we will
+Vậy chúng ta sẽ paste thông tin ID vào constructor của product not found exception và chúng ta sẽ
 
 67
 00:05:13,060 --> 00:05:14,650
-make it correct for now.
+làm cho nó đúng bây giờ.
 
 68
 00:05:14,650 --> 00:05:21,340
-So after implementing these changes, we will with the solution to ensure everything integrates seamlessly.
+Vậy sau khi triển khai những thay đổi này, chúng ta sẽ build solution để đảm bảo mọi thứ tích hợp liền mạch.
 
 69
 00:05:21,340 --> 00:05:28,150
-Right click and build the solution and see that there is no any exception and get the success response
+Right click và build solution và xem là không có exception nào cả và nhận được success response
 
 70
 00:05:28,150 --> 00:05:29,560
-in the build operation.
+trong quá trình build.
 
 71
 00:05:29,560 --> 00:05:34,810
-So this approach basically simplifies the exception management across microservices.
+Vậy cách tiếp cận này cơ bản đơn giản hóa exception management trên các microservices.
 
 72
 00:05:34,810 --> 00:05:40,900
-We put all common exceptions under the building blocks, and we will specify some customized exception
+Chúng ta đặt tất cả các common exceptions dưới building blocks, và chúng ta sẽ chỉ định một số customized exception
 
 73
 00:05:40,900 --> 00:05:46,750
-for each microservices and inherit from the actual and generic exceptions from the building blocks.
+cho mỗi microservices và inherit từ các generic exceptions thực tế từ building blocks.
 

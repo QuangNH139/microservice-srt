@@ -1,6 +1,6 @@
 1
 00:00:00,170 --> 00:00:06,650
-In this video we are going to learn anemic domain model and rich domain model entities in domain driven
+Trong video này, chúng ta sẽ học về anemic domain model và rich domain model entities trong domain driven
 
 2
 00:00:06,650 --> 00:00:07,280
@@ -8,67 +8,67 @@ design.
 
 3
 00:00:07,580 --> 00:00:14,210
-In domain driven design, the concepts of the anemic domain model and rich domain model are crucial
+Trong domain driven design, các khái niệm về anemic domain model và rich domain model là rất quan trọng
 
 4
 00:00:14,210 --> 00:00:18,770
-in understanding how domain logic is encapsulated in your entities.
+để hiểu cách logic domain được đóng gói trong các entities của bạn.
 
 5
 00:00:19,040 --> 00:00:23,000
-Before starting, I would like to ask questions for order entity.
+Trước khi bắt đầu, tôi muốn đặt câu hỏi về order entity.
 
 6
 00:00:23,030 --> 00:00:29,420
-If you open the order entity, you can see that we have encapsulated order items is a private read only
+Nếu bạn mở order entity, bạn có thể thấy rằng chúng ta đã đóng gói order items như một biến private read only.
 
 7
 00:00:29,420 --> 00:00:30,500
-variable.
+Và bây giờ làm thế nào chúng ta có thể thêm hoặc xóa các items mới vào order aggregate?
 
 8
 00:00:30,500 --> 00:00:35,930
-And now how can we add or remove new items into order aggregate?
+Chúng ta biết rằng order item có quan hệ one to many với order aggregate, nhưng chúng ta nên thêm và xóa
 
 9
 00:00:36,290 --> 00:00:42,950
-We know that order item is one to end relation with the order aggregate, but we should add and remove
+items trong order item cho order cụ thể đó.
 
 10
 00:00:42,950 --> 00:00:46,130
-items in the order item for the specific order.
+Vậy chúng ta sẽ làm điều đó như thế nào?
 
 11
 00:00:46,130 --> 00:00:47,750
-So how can we do that?
+Nếu bạn làm order items thành public?
 
 12
 00:00:47,750 --> 00:00:50,450
-If you make the order items as a public?
+Ai cũng có thể thêm và xóa items trong list này, vì vậy chúng ta không nên làm public cho order items.
 
 13
 00:00:50,540 --> 00:00:57,320
-Everyone can add and remove items in this list, so we should not make the public for the order items.
+Mọi người để chỉnh sửa order items mà không cần tiếp cận order.
 
 14
 00:00:57,320 --> 00:01:01,340
-Everyone to edit the order items with reaching the order.
+Vì vậy chúng ta phải đóng gói các thao tác thêm và xóa items này trong order itself.
 
 15
 00:01:01,340 --> 00:01:06,350
-So we have to encapsulate these add and remove item operations in the order itself.
+Bởi vì các thao tác thêm và xóa items này thuộc về order domain aggregates.
 
 16
 00:01:06,350 --> 00:01:11,510
-Because these add and remove item operations belongs to order domain aggregates.
+Để hiểu rõ hơn về các thao tác này, tôi sẽ quay lại slide và giải thích anemic domain model entity là gì.
 
 17
 00:01:11,900 --> 00:01:18,320
-To understand these operations well, I'm going to come back to slide and explain what is anemic domain
+Một anemic domain model được đặc trưng bởi các entities có rất ít hoặc không có business logic.
 
 18
 00:01:18,320 --> 00:01:19,310
-model entity.
+Điều đó có nghĩa là nó không có domain logic.
 
 19
 00:01:19,340 --> 00:01:25,580
@@ -80,11 +80,11 @@ That means that has no domain logic.
 
 21
 00:01:27,920 --> 00:01:33,590
-And these entities are essentially data structures with getters and setter methods.
+Và các entity này về cơ bản là các cấu trúc dữ liệu với các phương thức getter và setter.
 
 22
 00:01:33,590 --> 00:01:39,950
-But the business rules and the behaviors are typically implemented outside the entity, often in service
+Nhưng các quy tắc kinh doanh và các hành vi thường được triển khai bên ngoài entity, thường là trong service
 
 23
 00:01:39,950 --> 00:01:40,550
@@ -92,63 +92,63 @@ layer.
 
 24
 00:01:41,410 --> 00:01:42,850
-Here you can see the example.
+Ở đây bạn có thể thấy ví dụ.
 
 25
 00:01:42,850 --> 00:01:50,260
-In this example, the order class is anemic because it only contains data and lacks of any domain logic
+Trong ví dụ này, lớp order là anemic vì nó chỉ chứa dữ liệu và thiếu bất kỳ domain logic
 
 26
 00:01:50,260 --> 00:01:51,190
-or behavior.
+hoặc hành vi nào.
 
 27
 00:01:52,180 --> 00:01:53,260
-So what is rich?
+Vậy rich là gì?
 
 28
 00:01:53,260 --> 00:01:59,560
-Domain model entity A rich domain model entity is an approach where the entity is encapsulated both
+Domain model entity Một rich domain model entity là một cách tiếp cận mà entity được đóng gói với cả
 
 29
 00:01:59,560 --> 00:02:01,150
-data and behavior.
+dữ liệu và hành vi.
 
 30
 00:02:01,240 --> 00:02:07,240
-This model enriched entities with methods that embody business rules and domain logic.
+Mô hình này làm phong phú các entity bằng các phương thức thể hiện quy tắc kinh doanh và domain logic.
 
 31
 00:02:07,600 --> 00:02:11,830
-Here you can see an example of the rich domain model with the order.
+Ở đây bạn có thể thấy một ví dụ về rich domain model với order.
 
 32
 00:02:11,830 --> 00:02:19,180
-Entity order is a rich domain model as it include methods add order item and remove order item, which
+Entity order là một rich domain model vì nó bao gồm các phương thức add order item và remove order item, các phương thức này
 
 33
 00:02:19,180 --> 00:02:22,600
-encapsulate the business logic for manipulating the order items.
+đóng gói logic kinh doanh để thao tác các order item.
 
 34
 00:02:23,290 --> 00:02:29,560
-So if you compare with the anemic versus rich domain model, you can see the image at y axis.
+Vậy nếu bạn so sánh anemic versus rich domain model, bạn có thể thấy hình ảnh ở trục y.
 
 35
 00:02:29,560 --> 00:02:36,280
-We can see workers and complexity and x axis we can see time and sadness.
+Chúng ta có thể thấy workers và complexity trên trục x chúng ta có thể thấy time và sadness.
 
 36
 00:02:36,490 --> 00:02:42,340
-As you can see the image, you can see that anemic model starting very less efforts if you compare with
+Như bạn có thể thấy trong hình ảnh, bạn có thể thấy rằng anemic model bắt đầu với rất ít nỗ lực nếu so sánh với
 
 37
 00:02:42,340 --> 00:02:43,510
-the rich domain model.
+rich domain model.
 
 38
 00:02:43,510 --> 00:02:50,320
-But when the time goes anemic model is going to more complex and spanning more workers and leading to
+Nhưng khi thời gian trôi đi, anemic model sẽ trở nên phức tạp hơn và yêu cầu nhiều workers hơn, dẫn đến
 
 39
 00:02:50,320 --> 00:02:50,980
@@ -156,47 +156,47 @@ sadness.
 
 40
 00:02:51,430 --> 00:02:56,560
-So if you compare with the anemic and rich domain model, we can start with the anemic domain model.
+Vậy nếu bạn so sánh anemic và rich domain model, chúng ta có thể bắt đầu với anemic domain model.
 
 41
 00:02:56,560 --> 00:03:01,240
-Business logic is scattered across the application, often in services.
+Lôgic kinh doanh bị phân tán khắp ứng dụng, thường nằm trong các service.
 
 42
 00:03:01,240 --> 00:03:08,290
-Entities are simple data containers and easier to understand initially, but it can lead to issues with
+Các entity là những container dữ liệu đơn giản và dễ hiểu lúc đầu, nhưng nó có thể dẫn đến các vấn đề với
 
 43
 00:03:08,290 --> 00:03:11,680
-maintainability and understanding the business logic by time.
+khả năng bảo trì và hiểu biết về lôgic kinh doanh theo thời gian.
 
 44
 00:03:12,130 --> 00:03:18,310
-And if you look at the rich domain model, it encapsulates the business logic within the entities more
+Và nếu bạn nhìn vào rich domain model, nó đóng gói lôgic kinh doanh bên trong các entity một cách chặt chẽ hơn,
 
 45
 00:03:18,310 --> 00:03:24,190
-closely, represent the real world business domain, and it can be more complex to design, but leads
+đại diện cho miền kinh doanh thực tế, và nó có thể phức tạp hơn để thiết kế, nhưng dẫn đến
 
 46
 00:03:24,190 --> 00:03:26,890
-to a more maintainable and cohesive model.
+một mô hình dễ bảo trì và gắn kết hơn.
 
 47
 00:03:27,160 --> 00:03:32,710
-So for our ordered domain aggregate, the goal should be to create a rich domain model.
+Vậy đối với order domain aggregate của chúng ta, mục tiêu nên là tạo một rich domain model.
 
 48
 00:03:32,710 --> 00:03:38,620
-This involves encapsulating the logic for adding or removing orderitem objects within the order class
+Điều này liên quan đến việc đóng gói lôgic để thêm hoặc xóa các đối tượng orderitem bên trong lớp order
 
 49
 00:03:38,620 --> 00:03:39,370
-itself.
+chính nó.
 
 50
 00:03:39,370 --> 00:03:44,800
-This encapsulation ensures that the operation follow the business rules and invariants of the order
+Sự đóng gói này đảm bảo rằng các hoạt động tuân theo các quy tắc kinh doanh và bất biến của order
 
 51
 00:03:44,800 --> 00:03:45,490
@@ -204,13 +204,13 @@ aggregate.
 
 52
 00:03:45,520 --> 00:03:51,070
-Here you can see that we can add the two methods, including the add Order item and remove order item
+Ở đây bạn có thể thấy rằng chúng ta có thể thêm hai method, bao gồm add Order item và remove order item
 
 53
 00:03:51,070 --> 00:03:56,530
-to perform the order item, related operations and business logic inside of these functions under the
+để thực hiện các hoạt động liên quan đến order item và lôgic kinh doanh bên trong các function này dưới lớp
 
 54
 00:03:56,530 --> 00:03:58,240
-order aggregate entity class.
+order aggregate entity.
 

@@ -1,22 +1,22 @@
 1
 00:00:00,170 --> 00:00:06,650
-In this video, we are going to learn what is Refit library and how we can create generated clients
+Trong video này, chúng ta sẽ học Refit library là gì và cách chúng ta có thể tạo generated clients
 
 2
 00:00:06,650 --> 00:00:08,210
-using the Refit library.
+sử dụng Refit library.
 
 3
 00:00:08,690 --> 00:00:10,850
-So let me start with the what is refit?
+Vậy hãy bắt đầu với câu hỏi Refit là gì?
 
 4
 00:00:10,880 --> 00:00:16,250
-Refit is the automatic type safe rest library for the dotnet core and Xamarin.
+Refit là automatic type safe rest library cho dotnet core và Xamarin.
 
 5
 00:00:16,250 --> 00:00:22,880
-And it is type Safe rest Http client factory implementation that we can use when we are consuming our
+Và nó là một type safe rest HTTP client factory implementation mà chúng ta có thể sử dụng khi chúng ta consuming APIs.
 
 6
 00:00:22,880 --> 00:00:23,540
@@ -24,7 +24,7 @@ APIs.
 
 7
 00:00:23,540 --> 00:00:29,720
-So now we will implement our service layer classes for business logic and consume the Erb API gateway
+Vậy bây giờ chúng ta sẽ triển khai các service layer classes cho business logic và consuming các Erb API gateway endpoints.
 
 8
 00:00:29,720 --> 00:00:30,350
@@ -32,39 +32,39 @@ endpoints.
 
 9
 00:00:30,350 --> 00:00:34,760
-And we will use Refit for consuming Erb API gateway endpoints.
+Và chúng ta sẽ sử dụng Refit để consuming Erb API gateway endpoints.
 
 10
 00:00:34,760 --> 00:00:37,730
-So how can we use Refit with dotnet?
+Vậy chúng ta có thể sử dụng Refit với dotnet như thế nào?
 
 11
 00:00:37,760 --> 00:00:41,570
-DotNet has several options when we are consuming an API.
+DotNet có nhiều tùy chọn khi chúng ta consuming một API.
 
 12
 00:00:41,570 --> 00:00:47,180
-If you look at this article, you can see that we can implement I http client factory with dotnet in
+Nếu bạn xem bài viết này, bạn có thể thấy rằng chúng ta có thể triển khai I HTTP client factory với dotnet theo nhiều cách.
 
 13
 00:00:47,180 --> 00:00:48,050
-a several ways.
+Nếu bạn cuộn xuống, bạn có thể thấy rằng có một loại I HTTP client factory và chúng ta có nhiều consumption patterns.
 
 14
 00:00:48,050 --> 00:00:55,070
-If you scroll down, you can see that there is a I http client factory type and we have several consumption
+Điều này bao gồm basic usage, named clients, type clients và generated clients.
 
 15
 00:00:55,070 --> 00:00:55,670
-patterns.
+Vậy trong khóa học này chúng ta sẽ sử dụng generated clients.
 
 16
 00:00:55,670 --> 00:01:01,370
-This was including basic usage, named clients, type clients and generated clients.
+Nếu bạn nhấn vào liên kết này, bạn có thể thấy rằng chúng ta có thể sử dụng I HTTP client factory kết hợp với các third party libraries.
 
 17
 00:01:01,370 --> 00:01:04,760
-So during the course we will use generated clients.
+Trong trường hợp của chúng ta, chúng ta sẽ sử dụng Refit.
 
 18
 00:01:04,760 --> 00:01:10,730
@@ -80,39 +80,39 @@ In our case we will use refit.
 
 21
 00:01:13,700 --> 00:01:20,150
-Refit is a Rest based library for DotNet and it allows for declarative Rest API definitions mapping
+Refit là một thư viện dựa trên Rest cho DotNet và nó cho phép định nghĩa Rest API theo cách khai báo
 
 22
 00:01:20,150 --> 00:01:22,280
-the interface methods to the endpoints.
+ánh xạ các phương thức interface tới các endpoint.
 
 23
 00:01:22,280 --> 00:01:26,990
-So here you can see an implementation of the to do list consuming to to do API.
+Vậy ở đây bạn có thể thấy một cách triển khai của to do list sử dụng to do API.
 
 24
 00:01:27,020 --> 00:01:29,390
-This is the to do domain model.
+Đây là to do domain model.
 
 25
 00:01:29,390 --> 00:01:34,250
-And if you scroll down we can rely on the refit Http client factory NuGet packages.
+Và nếu bạn cuộn xuống, chúng ta có thể dựa vào các NuGet packages refit Http client factory.
 
 26
 00:01:34,250 --> 00:01:38,300
-And this will be basically create an interface which is the I to do service.
+Và điều này sẽ tạo ra một interface, đó là I to do service.
 
 27
 00:01:38,300 --> 00:01:41,180
-And this is the method with the request and response object.
+Và đây là phương thức với request và response object.
 
 28
 00:01:41,180 --> 00:01:46,520
-And there is annotation that will specify the consuming endpoint which is a slice todos.
+Và có một annotation sẽ chỉ định endpoint được sử dụng là slice todos.
 
 29
 00:01:46,520 --> 00:01:52,490
-And we can specify request parameters as a user id which comes from the parameter of this Getuser todo
+Và chúng ta có thể chỉ định các request parameters như một user id, đó là tham số của method Getuser todo này
 
 30
 00:01:52,520 --> 00:01:53,090
@@ -120,15 +120,15 @@ method.
 
 31
 00:01:53,090 --> 00:01:58,400
-And this method will be provided to consume to do service without implementing this action method,
+Và phương thức này sẽ được cung cấp để sử dụng to do service mà không cần triển khai action method này,
 
 32
 00:01:58,400 --> 00:02:02,450
-and this will be generated client using the refit Http client factory.
+và điều này sẽ được generated client bằng cách sử dụng refit Http client factory.
 
 33
 00:02:02,450 --> 00:02:07,970
-And if you look at the NuGet packages, you can see that we need to install refit dot http client factory
+Và nếu bạn xem các NuGet packages, bạn có thể thấy rằng chúng ta cần cài đặt refit dot http client factory
 
 34
 00:02:07,970 --> 00:02:08,630
@@ -136,23 +136,23 @@ packages.
 
 35
 00:02:08,630 --> 00:02:16,010
-And just after that, you can see as an example of the implementation to consuming GitHub API for specific
+Và ngay sau đó, bạn có thể thấy một ví dụ về cách triển khai để sử dụng GitHub API cho một user cụ thể.
 
 36
 00:02:16,010 --> 00:02:16,490
-user.
+Ở đây bạn có thể thấy rằng chúng ta đã định nghĩa một GitHub API interface, và phương thức là getuser với một username được cho trước
 
 37
 00:02:16,490 --> 00:02:22,130
-Here you can see that we have defined a GitHub API interface, and the method is getuser with a given
+và trả về một user cụ thể của GitHub user.
 
 38
 00:02:22,130 --> 00:02:25,880
-username and returning a specific user for the GitHub user.
+Vậy đây là annotation mà chúng ta có thể chỉ định endpoint là slash user slash username.
 
 39
 00:02:25,880 --> 00:02:31,220
-So this is the annotation that we can specify the endpoint which is a slash user slash username.
+Vậy nếu bạn cuộn xuống, bạn có thể thấy rằng chúng ta có thể thêm các services bằng cách sử dụng Add Refit client với
 
 40
 00:02:31,220 --> 00:02:36,860
@@ -160,25 +160,25 @@ So if you scroll down you can see that we can add the services with using the Ad
 
 41
 00:02:36,860 --> 00:02:40,460
-passing the GitHub API as a generics to this extension method.
+truyền GitHub API như một generics vào phương thức extension này.
 
 42
 00:02:40,460 --> 00:02:46,130
-And just after that we can configure the Http client with base address and additional configurations.
+Và ngay sau đó chúng ta có thể cấu hình Http client với địa chỉ cơ sở và các cấu hình bổ sung.
 
 43
 00:02:46,130 --> 00:02:53,900
-By this way, we can call this GitHub API with sending the GitHub API dot get user and get back to this
+Bằng cách này, chúng ta có thể gọi GitHub API này bằng cách gửi GitHub API dot get user và lấy lại thông tin
 
 44
 00:02:53,900 --> 00:02:56,390
-username information into the R variable.
+username vào biến R.
 
 45
 00:02:56,390 --> 00:02:59,180
-So this is the simple implementation of the refit into.
+Vậy đây là cách triển khai đơn giản của refit vào.
 
 46
 00:02:59,330 --> 00:03:05,390
-Net and we will use refit when we are consuming our API gateway and internal e-commerce microservices.
+.NET và chúng ta sẽ sử dụng refit khi chúng ta đang sử dụng API gateway và các internal e-commerce microservices của chúng ta.
 

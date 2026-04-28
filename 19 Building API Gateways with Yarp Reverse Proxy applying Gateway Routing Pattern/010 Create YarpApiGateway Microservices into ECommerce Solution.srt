@@ -1,74 +1,74 @@
 1
 00:00:00,110 --> 00:00:06,740
-In this video we are going to create Erb API gateway microservices into our microservice solution.
+Trong video này, chúng ta sẽ tạo Erb API gateway microservices vào giải pháp microservice của chúng ta.
 
 2
 00:00:06,770 --> 00:00:10,070
-Here you can see the our folder structure that we are going to develop.
+Ở đây bạn có thể thấy cấu trúc thư mục mà chúng ta sẽ phát triển.
 
 3
 00:00:10,070 --> 00:00:14,750
-During this video I'm going to start with setting up the solution structure.
+Trong video này, tôi sẽ bắt đầu với việc thiết lập cấu trúc giải pháp.
 
 4
 00:00:14,750 --> 00:00:19,520
-Please open the Visual Studio and go to the Recap Microservices solution.
+Vui lòng mở Visual Studio và đi đến giải pháp Recap Microservices.
 
 5
 00:00:19,520 --> 00:00:24,710
-I am going to create a new solution folder like building blocks services and so on.
+Tôi sẽ tạo một thư mục giải pháp mới như building blocks services và những thứ tương tự.
 
 6
 00:00:24,710 --> 00:00:28,850
-So we will create a new solution folder which name is API gateways.
+Vậy chúng ta sẽ tạo một thư mục giải pháp mới có tên là API gateways.
 
 7
 00:00:29,450 --> 00:00:35,870
-Right click the solution add new solution folder and give the name as a API gateways.
+Nhấp chuột phải vào giải pháp, thêm thư mục giải pháp mới và đặt tên là API gateways.
 
 8
 00:00:36,200 --> 00:00:40,100
-And this folder will encapsulate all API gateway related projects.
+Và thư mục này sẽ bao gồm tất cả các dự án liên quan đến API gateway.
 
 9
 00:00:40,100 --> 00:00:44,810
-After that, we will add a new project under this API gateway solution folder.
+Sau đó, chúng ta sẽ thêm một dự án mới trong thư mục giải pháp API gateway này.
 
 10
 00:00:44,810 --> 00:00:52,040
-That means we will create an ASP.Net core empty solution, which name Erb API gateway under this API
+Điều đó có nghĩa là chúng ta sẽ tạo một giải pháp trống ASP.NET Core, có tên Erb API gateway trong thư mục API này
 
 11
 00:00:52,040 --> 00:00:53,330
-gateway solution folder.
+gateway giải pháp.
 
 12
 00:00:53,330 --> 00:00:54,770
-So let's get started.
+Vậy hãy bắt đầu.
 
 13
 00:00:54,770 --> 00:01:00,650
-Right click this solution, add new project and select the ASP.Net core empty project.
+Nhấp chuột phải vào giải pháp này, thêm dự án mới và chọn dự án trống ASP.NET Core.
 
 14
 00:01:00,650 --> 00:01:06,230
-Double click this project template and give the project name as a Erb API gateway and select the correct
+Nhấp đôi vào mẫu dự án này và đặt tên dự án là Erb API gateway, sau đó chọn vị trí chính xác.
 
 15
 00:01:06,230 --> 00:01:06,860
-location.
+Với mục đích đó.
 
 16
 00:01:06,860 --> 00:01:07,820
-For that purpose.
+Chúng ta có thể nhấp vào nút này và chọn thư mục source, và trong thư mục source, chúng ta sẽ tạo thư mục mới.
 
 17
 00:01:07,820 --> 00:01:13,430
-We can click this button and select the source folder, and under the source folder we are going to
+Có tên là API gateways.
 
 18
 00:01:13,430 --> 00:01:14,330
-create new folder.
+Đầu tiên, tôi sẽ chọn thư mục này, đó là thư mục source.
 
 19
 00:01:14,330 --> 00:01:15,920
@@ -80,35 +80,35 @@ First of all I'm going to select this folder which is the source folder.
 
 21
 00:01:19,310 --> 00:01:23,360
-And also I am adding API gateways solution folder in here.
+Và tôi cũng đang thêm thư mục giải pháp API gateways ở đây.
 
 22
 00:01:23,360 --> 00:01:27,560
-That means we have created API gateway solution folder under our solution.
+Điều đó có nghĩa là chúng ta đã tạo thư mục giải pháp API gateway dưới giải pháp của chúng ta.
 
 23
 00:01:27,560 --> 00:01:33,020
-And we will create physical folder with following the source backslash API gateways that we are going
+Và chúng ta sẽ tạo thư mục vật lý theo sau đường dẫn nguồn backslash API gateways mà chúng ta sẽ
 
 24
 00:01:33,020 --> 00:01:34,700
-to create Erb API gateway.
+tạo Erb API gateway.
 
 25
 00:01:34,700 --> 00:01:36,380
-Under this folder structure.
+Dưới cấu trúc thư mục này.
 
 26
 00:01:36,410 --> 00:01:41,870
-Please also create the correct structure of your Erb API gateway, and make sure that this will be the
+Vui lòng cũng tạo cấu trúc chính xác cho Erb API gateway của bạn, và hãy chắc chắn rằng đây sẽ là
 
 27
 00:01:41,870 --> 00:01:44,240
-correct folder path for your API gateway.
+đường dẫn thư mục chính xác cho API gateway của bạn.
 
 28
 00:01:44,270 --> 00:01:48,650
-And after that, I am going to click the next button and selected framework as a.
+Và sau đó, tôi sẽ nhấp vào nút next và chọn framework là a.
 
 29
 00:01:48,770 --> 00:01:49,310
@@ -116,169 +116,169 @@ Net eight.
 
 30
 00:01:49,460 --> 00:01:51,170
-Configure the Https.
+Cấu hình Https.
 
 31
 00:01:51,170 --> 00:01:55,640
-And also we will enable the Docker and Docker operating system should be Linux.
+Và cũng chúng ta sẽ bật Docker và hệ điều hành Docker phải là Linux.
 
 32
 00:01:55,640 --> 00:02:01,010
-And I am not checking these top level statement because we will follow the top level statement in Program.cs.
+Và tôi không kiểm tra các câu lệnh cấp cao nhất vì chúng ta sẽ tuân theo câu lệnh cấp cao nhất trong Program.cs.
 
 33
 00:02:01,010 --> 00:02:05,210
-Yes, please make these configurations like this way and click the create button.
+Vâng, vui lòng thực hiện các cấu hình theo cách này và nhấp vào nút create.
 
 34
 00:02:05,210 --> 00:02:12,890
-This will be create our Erb API gateway ASP.Net m2 project inside of the our microservices solution.
+Điều này sẽ tạo ra project ASP.Net 8 Erb API gateway của chúng ta bên trong giải pháp microservices của chúng ta.
 
 35
 00:02:12,890 --> 00:02:15,860
-Here you can see the microservices created successfully.
+Ở đây bạn có thể thấy microservices được tạo thành công.
 
 36
 00:02:15,860 --> 00:02:20,780
-And if you go to Program.cs, this will be the entry point of our ASP.Net project.
+Và nếu bạn go to Program.cs, đây sẽ là entry point của project ASP.Net của chúng ta.
 
 37
 00:02:20,780 --> 00:02:24,230
-We can arrange our project according to our minimal setup.
+Chúng ta có thể sắp xếp project của chúng ta theo setup tối thiểu của chúng ta.
 
 38
 00:02:24,230 --> 00:02:29,210
-First of all, before building the application, we can put a command and section for adding services
+Đầu tiên, trước khi xây dựng ứng dụng, chúng ta có thể đặt một command và section để thêm services
 
 39
 00:02:29,210 --> 00:02:32,210
-into ASP.Net built in dependency injection container.
+vào ASP.Net built-in dependency injection container.
 
 40
 00:02:32,210 --> 00:02:38,780
-And after building the application, we can again put a command for configuring Http request pipeline
+Và sau khi xây dựng ứng dụng, chúng ta lại có thể đặt một command để cấu hình Http request pipeline
 
 41
 00:02:38,780 --> 00:02:41,360
-with removing these Mapkit operation.
+bằng cách loại bỏ những hoạt động Mapkit này.
 
 42
 00:02:41,360 --> 00:02:47,630
-And this is the minimal configuration for any ASP.Net microservice application for our solution.
+Và đây là cấu hình tối thiểu cho bất kỳ ứng dụng microservice ASP.Net nào cho giải pháp của chúng ta.
 
 43
 00:02:47,630 --> 00:02:54,110
-That means this code sets up a minimal ASP.Net core application and services, and Middlewares configuration
+Điều đó có nghĩa là mã này thiết lập một ứng dụng ASP.Net core tối thiểu và cấu hình các services, Middlewares
 
 44
 00:02:54,110 --> 00:02:57,110
-specific to your will be added in the next videos.
+cụ thể theo ý muốn của bạn sẽ được thêm vào trong các video tiếp theo.
 
 45
 00:02:57,110 --> 00:03:02,510
-But before that, if you look at the port numbers for your API gateway, microservices, we can see
+Nhưng trước đó, nếu bạn xem các số cổng cho API gateway và microservices của bạn, chúng ta có thể thấy
 
 46
 00:03:02,510 --> 00:03:10,040
-that we will expose the Erb API gateway in development and local environment for 5004 and 5054, and
+rằng chúng ta sẽ hiển thị Erb API gateway trong môi trường phát triển và cục bộ cho cổng 5004 và 5054, và
 
 47
 00:03:10,040 --> 00:03:16,190
-we will expose 6004 and 6064 for the code environment in the Erb API gateway.
+chúng ta sẽ hiển thị 6004 và 6064 cho môi trường code trong Erb API gateway.
 
 48
 00:03:16,190 --> 00:03:21,650
-So I am going to set these local environment port numbers into our ASP.Net empty project.
+Vậy tôi sẽ đặt những số cổng môi trường cục bộ này vào dự án ASP.Net trống của chúng ta.
 
 49
 00:03:21,650 --> 00:03:27,650
-In our solution, if you go back to Visual Studio, you can right click the Erb API gateway and go to
+Trong giải pháp của chúng ta, nếu bạn quay lại Visual Studio, bạn có thể nhấp chuột phải vào Erb API gateway và vào
 
 50
 00:03:27,650 --> 00:03:28,400
-the properties.
+thuộc tính.
 
 51
 00:03:28,400 --> 00:03:32,780
-Or you can open the properties and go to the Launch Settings Json file.
+Hoặc bạn có thể mở thuộc tính và vào tệp Launch Settings Json.
 
 52
 00:03:32,780 --> 00:03:38,630
-In here I am going to edit our API gateway http and https port numbers.
+Ở đây tôi sẽ chỉnh sửa các số cổng http và https của API gateway của chúng ta.
 
 53
 00:03:38,630 --> 00:03:40,160
-Here you can see the http.
+Ở đây bạn có thể thấy http.
 
 54
 00:03:40,160 --> 00:03:43,520
-I'm going to change this port number to 5004.
+Tôi sẽ thay đổi số cổng này thành 5004.
 
 55
 00:03:43,520 --> 00:03:45,380
-And again under the https.
+Và lại dưới https.
 
 56
 00:03:45,380 --> 00:03:50,420
-I am going to select the http one and change http port number as a 5004.
+Tôi sẽ chọn cái http và thay đổi số cổng http thành 5004.
 
 57
 00:03:50,420 --> 00:03:55,430
-And just after that for https port, I am going to change 5054.
+Và ngay sau đó cho cổng https, tôi sẽ thay đổi thành 5054.
 
 58
 00:03:55,430 --> 00:04:03,350
-So please set the port numbers according to our slide with 5004 for the Http and 5054 for the Https
+Vậy hãy đặt các số cổng theo slide của chúng ta với 5004 cho Http và 5054 cho Https
 
 59
 00:04:03,350 --> 00:04:05,840
-in the Erb API gateway project.
+trong dự án Erb API gateway.
 
 60
 00:04:05,840 --> 00:04:08,060
-And finally we can run the application.
+Và cuối cùng chúng ta có thể chạy ứng dụng.
 
 61
 00:04:08,060 --> 00:04:12,080
-I am going to right click the http api gateway and set a startup project.
+Tôi sẽ click chuột phải vào http api gateway và đặt nó làm startup project.
 
 62
 00:04:13,260 --> 00:04:15,750
-After that, we can go to the running profile.
+Sau đó, chúng ta có thể đi đến running profile.
 
 63
 00:04:15,750 --> 00:04:21,570
-If you change the running profile from Docker to Https, we will run our application in the https mode.
+Nếu bạn thay đổi running profile từ Docker sang Https, chúng ta sẽ chạy ứng dụng của mình ở chế độ https.
 
 64
 00:04:21,570 --> 00:04:27,480
-And if you click this button, this will be run your API gateway project in Https mode locally.
+Và nếu bạn click vào nút này, nó sẽ chạy API gateway project của bạn ở chế độ Https cục bộ.
 
 65
 00:04:27,480 --> 00:04:31,830
-And this will be exposing our services in 5054.
+Và cái này sẽ expose services của chúng ta ở cổng 5054.
 
 66
 00:04:31,830 --> 00:04:37,620
-And you can verify the starting and exposing services from the project console window that you can see
+Và bạn có thể xác minh việc khởi động và expose services từ cửa sổ console của project mà bạn có thể thấy
 
 67
 00:04:37,620 --> 00:04:43,110
-that we have successfully started our API gateway under our issue of microservices solution.
+rằng chúng ta đã thành công khởi động API gateway của chúng ta dưới microservices solution.
 
 68
 00:04:43,110 --> 00:04:49,680
-Also, we can change the launch browser from the true to false in order to avoid to see our browser
+Ngoài ra, chúng ta có thể thay đổi launch browser từ true sang false để tránh mở browser
 
 69
 00:04:49,680 --> 00:04:51,600
-when we are starting to our application.
+khi chúng ta bắt đầu ứng dụng của mình.
 
 70
 00:04:51,600 --> 00:04:57,930
-So that means we have completed the creating our API gateway project and ready to implement the reverse
+Vậy điều đó có nghĩa là chúng ta đã hoàn thành việc tạo API gateway project và sẵn sàng để triển khai reverse
 
 71
 00:04:57,930 --> 00:05:00,300
-proxy into our ASP.Net application.
+proxy vào ứng dụng ASP.NET của chúng ta.
 

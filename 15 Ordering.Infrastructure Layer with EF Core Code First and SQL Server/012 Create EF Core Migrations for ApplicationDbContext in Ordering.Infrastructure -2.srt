@@ -1,6 +1,6 @@
 1
 00:00:00,110 --> 00:00:06,320
-In this video we are going to create Entity Framework core migrations for application DB context in
+Trong video này, chúng ta sẽ tạo Entity Framework Core migrations cho DB context của ứng dụng trong
 
 2
 00:00:06,320 --> 00:00:07,640
@@ -8,71 +8,71 @@ ordering infrastructure.
 
 3
 00:00:07,820 --> 00:00:15,050
-So that means after setting up the Entity Framework Core Context object and configure these entities
+Điều đó có nghĩa là sau khi thiết lập Entity Framework Core Context object và cấu hình các entities
 
 4
 00:00:15,050 --> 00:00:21,710
-into our configuration classes, the next step is generate and apply migrations in order to create or
+trong các lớp configuration của chúng ta, bước tiếp theo là tạo và áp dụng migrations để tạo hoặc
 
 5
 00:00:21,710 --> 00:00:24,680
-update the database schema on our SQL server.
+cập nhật schema của database trên SQL server.
 
 6
 00:00:25,100 --> 00:00:31,130
-So to perform the migrations, there are several steps to generate and apply these migrations.
+Vậy để thực hiện migrations, có nhiều bước để tạo và áp dụng các migrations này.
 
 7
 00:00:31,130 --> 00:00:36,470
-Please follow me carefully, because this is the crucial step that we are going to create migrations
+Hãy theo dõi tôi cẩn thận, vì đây là bước quan trọng mà chúng ta sẽ tạo migrations
 
 8
 00:00:36,470 --> 00:00:38,060
-and run these migrations.
+và chạy các migrations này.
 
 9
 00:00:38,060 --> 00:00:42,140
-So the first step is we should ensure the correct startup project.
+Vậy bước đầu tiên là chúng ta nên đảm bảo đúng startup project.
 
 10
 00:00:42,140 --> 00:00:47,660
-So if you look at the our ordering microservices, we will follow the clean architecture.
+Vì nếu bạn nhìn vào ordering microservices của chúng ta, chúng ta sẽ theo ordering clean architecture.
 
 11
 00:00:47,660 --> 00:00:51,200
-And you should set a startup project for ordering API.
+Và bạn nên đặt startup project cho ordering API.
 
 12
 00:00:51,200 --> 00:00:54,590
-I'm going to right click and set a startup project.
+Tôi sẽ click chuột phải và đặt startup project.
 
 13
 00:00:55,500 --> 00:00:58,950
-And make sure that ordering API is set as startup project.
+Và đảm bảo rằng ordering API được đặt làm startup project.
 
 14
 00:00:58,980 --> 00:01:05,250
-This is necessary because Entity Framework core tools will look for the database related configurations
+Điều này là cần thiết vì Entity Framework Core tools sẽ tìm kiếm các cấu hình liên quan đến database
 
 15
 00:01:05,250 --> 00:01:07,890
-like connection string in the startup project.
+như connection string trong startup project.
 
 16
 00:01:07,890 --> 00:01:14,220
-That's why the application settings storing the database connection string and these API project should
+Đó là lý do tại sao application settings lưu trữ database connection string và API project này nên
 
 17
 00:01:14,220 --> 00:01:16,230
-be set as startup project.
+được đặt làm startup project.
 
 18
 00:01:16,230 --> 00:01:21,600
-And the second step is we should specify the target and startup project in the command.
+Và bước thứ hai là chúng ta nên chỉ định target và startup project trong command.
 
 19
 00:01:21,600 --> 00:01:27,690
-So when running the migration command, we should explicitly specify both the target and the startup
+Vậy khi chạy migration command, chúng ta nên rõ ràng chỉ định cả target và startup
 
 20
 00:01:27,690 --> 00:01:28,320
@@ -80,47 +80,47 @@ project.
 
 21
 00:01:28,320 --> 00:01:35,670
-This is important if your DB context object is in different project, in our case our db context object
+Điều này rất quan trọng nếu DB context object của bạn nằm trong một project khác, trong trường hợp của chúng ta, DB context object của chúng ta
 
 22
 00:01:35,670 --> 00:01:40,170
-storing under the ordering infrastructure and application db context.
+được lưu trữ dưới ordering infrastructure và application db context.
 
 23
 00:01:40,170 --> 00:01:47,490
-So we should explicitly specify the target and startup project in the Package Manager console tool or
+Vì vậy, chúng ta nên chỉ định rõ ràng target project và startup project trong công cụ Package Manager console hoặc
 
 24
 00:01:47,490 --> 00:01:49,170
-the dotnet core CLI tool.
+công cụ dotnet core CLI.
 
 25
 00:01:49,170 --> 00:01:55,380
-Since I'm going to use Visual Studio, I'm going to use Package Manager Console for that purpose, you
+Vì tôi sẽ sử dụng Visual Studio, tôi sẽ sử dụng Package Manager Console cho mục đích này, bạn
 
 26
 00:01:55,380 --> 00:02:01,500
-can go to Visual Studio Vive, and in the Vive window you can go to the other windows.
+có thể đi tới Visual Studio View, và trong cửa sổ View bạn có thể truy cập Other Windows.
 
 27
 00:02:01,500 --> 00:02:04,800
-And if you come here you can see the Package Manager console.
+Và nếu bạn đến đây, bạn có thể thấy Package Manager console.
 
 28
 00:02:04,800 --> 00:02:09,330
-Click this Package Manager console and open your Package Manager console.
+Nhấp vào Package Manager console này và mở Package Manager console của bạn.
 
 29
 00:02:09,330 --> 00:02:14,520
-And as you can see, that Package Manager console, including the package source and the default project
+Và như bạn có thể thấy, Package Manager console này, bao gồm package source và default project
 
 30
 00:02:14,670 --> 00:02:21,120
-in this window, I'm going to change the default project name from ordering API to ordering infrastructure,
+trong cửa sổ này, tôi sẽ thay đổi tên default project từ ordering API thành ordering infrastructure,
 
 31
 00:02:21,120 --> 00:02:27,390
-because we will run the migration command where the application DB context is stored, which is the
+vì chúng ta sẽ chạy lệnh migration nơi application DB context được lưu trữ, đó là
 
 32
 00:02:27,390 --> 00:02:28,740
@@ -128,63 +128,63 @@ ordering infrastructure.
 
 33
 00:02:28,740 --> 00:02:34,110
-After changing the default project, we can run the add migration command, which is including the add
+Sau khi thay đổi default project, chúng ta có thể chạy lệnh add migration, bao gồm add
 
 34
 00:02:34,110 --> 00:02:39,690
-migration initial create, which is the name of the migration, and we can specify the properties like
+migration initial create, đó là tên của migration, và chúng ta có thể chỉ định các properties như
 
 35
 00:02:39,690 --> 00:02:42,660
-output tier which is the data migration folder.
+output folder là data migration folder.
 
 36
 00:02:42,660 --> 00:02:47,310
-And I'm going to specify the project which is the default project ordering infrastructure.
+Và tôi sẽ chỉ định project đó là default project ordering infrastructure.
 
 37
 00:02:47,310 --> 00:02:51,390
-And we have to specify the startup project which is the ordering API.
+Và chúng ta phải chỉ định startup project đó là ordering API.
 
 38
 00:02:51,420 --> 00:02:57,990
-This is important to running this add migration command with giving these properties, specifying the
+Điều này rất quan trọng khi chạy lệnh add migration này với các properties này, chỉ định rõ ràng
 
 39
 00:02:57,990 --> 00:03:00,540
-target and startup project explicitly.
+target project và startup project.
 
 40
 00:03:00,540 --> 00:03:01,710
-If you are using the.
+Nếu bạn đang sử dụng.
 
 41
 00:03:01,890 --> 00:03:09,060
-Net CLI, you can run dotnet f migrations command with passing these parameters dash or dash p and dash
+Net CLI, bạn có thể chạy lệnh dotnet f migrations với các tham số dash hoặc dash p và dash
 
 42
 00:03:09,060 --> 00:03:10,890
-s commands in here.
+s commands ở đây.
 
 43
 00:03:10,890 --> 00:03:15,210
-So I'm going to follow the Visual Studio and Package Manager console.
+Vậy tôi sẽ làm theo Visual Studio và Package Manager console.
 
 44
 00:03:15,210 --> 00:03:19,620
-And after writing this command I'm hitting the enter and see what's going on.
+Và sau khi viết lệnh này, tôi nhấn enter và xem chuyện gì đang xảy ra.
 
 45
 00:03:19,620 --> 00:03:22,410
-So this will be start to build our application.
+Vậy điều này sẽ bắt đầu build ứng dụng của chúng ta.
 
 46
 00:03:27,100 --> 00:03:30,970
-And after that we can see that we got exception.
+Và sau đó chúng ta có thể thấy rằng chúng ta gặp một exception.
 
 47
 00:03:30,970 --> 00:03:33,280
-Which name is your startup project?
+Tên startup project của bạn là gì?
 
 48
 00:03:33,280 --> 00:03:33,760
@@ -192,35 +192,35 @@ Ordering?
 
 49
 00:03:33,760 --> 00:03:40,150
-API doesn't reference Microsoft Entity Framework Core Design package, and this package required for
+API không tham chiếu đến gói Microsoft Entity Framework Core Design, và gói này được yêu cầu để
 
 50
 00:03:40,150 --> 00:03:42,310
-the Entity Framework core tools to work.
+các công cụ Entity Framework Core hoạt động.
 
 51
 00:03:42,310 --> 00:03:45,280
-So we should ensure our startup project is correct.
+Vậy chúng ta nên đảm bảo startup project của chúng ta là chính xác.
 
 52
 00:03:45,280 --> 00:03:47,530
-Install the package and we will try again.
+Cài đặt gói và chúng ta sẽ thử lại.
 
 53
 00:03:47,530 --> 00:03:54,370
-That means the startup project, which is the ordering API requiring to install design packages in order
+Điều đó có nghĩa là startup project, tức là ordering API cần cài đặt design packages để
 
 54
 00:03:54,370 --> 00:04:00,460
-to understand the whole application and reach the connection strings of our application, which is including
+hiểu toàn bộ ứng dụng và truy cập các connection strings của ứng dụng chúng ta, bao gồm
 
 55
 00:04:00,460 --> 00:04:01,690
-the application setting.
+application settings.
 
 56
 00:04:01,690 --> 00:04:08,350
-So as a solution, I am going to go to the ordering API and right click the dependencies and manage
+Vậy như một giải pháp, tôi sẽ đi đến ordering API và click chuột phải vào dependencies và manage
 
 57
 00:04:08,350 --> 00:04:09,400
@@ -228,87 +228,87 @@ NuGet packages.
 
 58
 00:04:11,370 --> 00:04:12,060
-In here.
+Ở đây.
 
 59
 00:04:12,060 --> 00:04:19,740
-I'm going to install Microsoft Entity Framework Core Design package into ordering API in order to access
+Tôi sẽ cài đặt gói Microsoft Entity Framework Core Design vào ordering API để truy cập
 
 60
 00:04:19,740 --> 00:04:22,710
-application settings, connection settings, and so on.
+application settings, connection settings, và những thứ khác.
 
 61
 00:04:22,710 --> 00:04:28,440
-So this is required for the clean architecture setup because in a clean architecture setup, it is a
+Vậy đây là điều cần thiết cho thiết lập clean architecture vì trong một thiết lập clean architecture, mục tiêu chung là đóng gói tất cả các vấn đề liên quan đến dữ liệu, bao gồm các phụ thuộc Entity Framework core
 
 62
 00:04:28,440 --> 00:04:34,350
-common goal to encapsulate all data related concerns, including Entity Framework core dependencies
+trong lớp infrastructure.
 
 63
 00:04:34,350 --> 00:04:36,120
-within the infrastructure layer.
+Tuy nhiên, các công cụ Entity Framework core, đặc biệt là các migration, thường cần một số thông tin bổ sung
 
 64
 00:04:36,150 --> 00:04:43,080
-However, the Entity Framework core tools, particularly for migrations, often need some more information
+từ dự án khởi động, trong trường hợp của chúng ta, là ordering API.
 
 65
 00:04:43,080 --> 00:04:46,830
-from the start up project, which is in our case, ordering API.
+Đó là lý do tại sao các công cụ Entity Framework core tìm kiếm các gói design trong dự án khởi động
 
 66
 00:04:46,830 --> 00:04:52,500
-That's why the Entity Framework core tools are looking for the design packages in the startup project
+mà chúng ta phải cài đặt gói design vào ordering API.
 
 67
 00:04:52,500 --> 00:04:56,070
-that we have to install design package into ordering API.
+Vậy hãy chọn gói design và cài đặt vào ordering API.
 
 68
 00:04:56,070 --> 00:04:59,760
-So select the design package and install into ordering API.
+Và việc cài đặt đã hoàn tất.
 
 69
 00:05:00,540 --> 00:05:02,280
-And installation is completed.
+Bạn có thể xác minh từ tệp dự án ordering API.
 
 70
 00:05:02,280 --> 00:05:05,820
-You can verify from the ordering API project file.
+Gói design được đặt ở đây.
 
 71
 00:05:05,820 --> 00:05:07,710
-The design package is located in here.
+Vậy nếu bạn quay lại package manager console của chúng ta và chạy lệnh tương tự với việc đặt dự án mặc định
 
 72
 00:05:07,710 --> 00:05:14,130
-So if you go back to our package manager console and running the same command with setting the default
+ordering infrastructure, và bạn có thể nhấn enter lần này, điều này sẽ tạo ra thư mục migration của chúng ta
 
 73
 00:05:14,130 --> 00:05:20,490
-project ordering infrastructure, and you can hit the enter this time, this will be create our migration
+trong dự án Infrastructure của chúng ta.
 
 74
 00:05:20,490 --> 00:05:23,940
-folder under the Our Infrastructure project.
+Bạn có thể thấy rằng migration đã hoàn tất thành công.
 
 75
 00:05:23,940 --> 00:05:27,000
-You can see that the migration completed successfully.
+Và ở đây bạn có thể thấy chi tiết trong nhật ký.
 
 76
 00:05:27,000 --> 00:05:29,220
-And here you can see the details as a log.
+Vậy nếu bạn quay lại dự án infrastructure của chúng ta, bạn có thể thấy các cấu hình dữ liệu.
 
 77
 00:05:29,220 --> 00:05:34,260
-So if you go back to our infrastructure project you can see the data configurations.
+Và bây giờ chúng ta đã tạo thư mục migration.
 
 78
 00:05:34,260 --> 00:05:36,750
-And now we have created migration folder.
+Và dưới thư mục mã migration, chúng ta có hai lớp cho biết migration đầu tiên create của chúng ta.
 
 79
 00:05:36,750 --> 00:05:42,990
@@ -320,75 +320,75 @@ migration.
 
 81
 00:05:43,710 --> 00:05:48,870
-If you go to the our initial create class you can examine our up and down method.
+Nếu bạn xem lớp initial create ban đầu, bạn có thể kiểm tra phương thức up và down của chúng tôi.
 
 82
 00:05:48,870 --> 00:05:52,260
-You can see that we have two methods for up and down.
+Bạn có thể thấy rằng chúng ta có hai phương thức cho up và down.
 
 83
 00:05:52,260 --> 00:05:59,340
-Up for the creating a migrations in the database and down for the rollback the changes from the database.
+Up để tạo migrations trong cơ sở dữ liệu và down để rollback các thay đổi từ cơ sở dữ liệu.
 
 84
 00:05:59,340 --> 00:06:05,730
-So in the up method you can see that we basically create a table which name is customers products orders
+Vậy trong phương thức up, bạn có thể thấy rằng chúng tôi về cơ bản tạo một bảng có tên là customers, products, orders.
 
 85
 00:06:05,730 --> 00:06:11,730
-with a given and specifying configurations that we have defined the value object as a complex type in
+với các cấu hình được chỉ định mà chúng ta đã định nghĩa value object là một complex type trong.
 
 86
 00:06:11,730 --> 00:06:16,980
-here you can see that comes in here billing address and address line country and so on.
+ở đây bạn có thể thấy có billing address và address line, country và những thứ khác.
 
 87
 00:06:16,980 --> 00:06:24,030
-And these are the value object definitions and relationships and enumerations are configuring according
+Và đây là các định nghĩa value object, các mối quan hệ và enumerations được cấu hình theo.
 
 88
 00:06:24,060 --> 00:06:25,950
-to our configuration classes.
+các lớp cấu hình của chúng tôi.
 
 89
 00:06:25,950 --> 00:06:33,150
-That is generating the migration folder that is going to create our update the database table on SQL
+Điều đó tạo ra thư mục migration sẽ tạo hoặc cập nhật bảng cơ sở dữ liệu trên SQL Server.
 
 90
 00:06:33,150 --> 00:06:33,660
-server.
+Trong phương thức down, điều này sẽ xóa hai bảng.
 
 91
 00:06:33,660 --> 00:06:36,330
-In the down method this will be dropped two tables.
+Và vì đây là migration đầu tiên mà chúng ta sẽ áp dụng cho việc tạo ban đầu các bảng ordering.
 
 92
 00:06:36,330 --> 00:06:42,300
-And because this is the first migration that we are going to apply for the initial create of the ordering
+ví dụ, chúng ta cũng có thể kiểm tra các mối quan hệ.
 
 93
 00:06:42,330 --> 00:06:45,540
-tables, for example, we can also check the relationships.
+Nếu bạn cuộn xuống và xem bảng Order và Order item.
 
 94
 00:06:45,540 --> 00:06:49,980
-If you scroll down and go to the Order and Order item table.
+Ví dụ, trong bảng Order Item, bạn có thể thấy rằng chúng ta có hai foreign key, một cho order ID.
 
 95
 00:06:49,980 --> 00:06:55,320
-For example, in order Item table, you can see that we have two foreign key, one for the order ID
+và một khác cho product ID, những cột này sẽ được tạo bằng cách sử dụng thư mục migration này.
 
 96
 00:06:55,320 --> 00:07:00,690
-and another for the product ID these columns will be generated with using these migration folder.
+Vậy sau khi tạo lớp migration này, chúng ta nên chạy lệnh bổ sung đó là update database.
 
 97
 00:07:00,690 --> 00:07:07,080
-So after generating these migration class we should run additional command which is the update database.
+Tôi sẽ mở Package Manager Console và chạy lệnh thứ hai, đó là lệnh update database.
 
 98
 00:07:07,080 --> 00:07:12,390
-I'm going to open the Package manager console and run the second command, which is the update database
+Để phản ánh các lớp này vào cơ sở dữ liệu SQL Server của chúng ta, lệnh này sẽ áp dụng những lệnh này.
 
 99
 00:07:12,390 --> 00:07:12,840
@@ -400,27 +400,27 @@ In order to reflect these class to do our SQL server database, this command is g
 
 101
 00:07:19,110 --> 00:07:20,970
-migrations to the SQL server.
+migrations tới SQL server.
 
 102
 00:07:20,970 --> 00:07:24,870
-And I'm going to hit the enter and see what's going on.
+Và tôi sẽ nhấn enter để xem chuyện gì sẽ xảy ra.
 
 103
 00:07:24,990 --> 00:07:31,770
-This will be try to connect SQL server with ordering API application settings in order to affect these
+Điều này sẽ cố gắng kết nối SQL server với cài đặt ứng dụng của ordering API để áp dụng các
 
 104
 00:07:31,770 --> 00:07:33,390
-changes to the database.
+thay đổi này vào database.
 
 105
 00:07:33,390 --> 00:07:40,140
-But we didn't create a SQL server database as a backing services in docker compose file yet, so we
+Nhưng chúng ta chưa tạo một SQL server database như một backing service trong Docker Compose file, vì vậy chúng ta
 
 106
 00:07:40,140 --> 00:07:47,160
-have expecting a network related or instance specific error occurred when connecting communicating to
+sẽ gặp một lỗi liên quan tới network hoặc một lỗi cụ thể cho instance khi kết nối tới
 
 107
 00:07:47,160 --> 00:07:47,730
@@ -428,17 +428,17 @@ SQL server.
 
 108
 00:07:47,730 --> 00:07:55,080
-Yes, you can see that the exception comes as a network related and instance specific error when connecting
+Đúng vậy, bạn có thể thấy rằng exception xuất hiện như một lỗi liên quan tới network và instance cụ thể khi kết nối
 
 109
 00:07:55,080 --> 00:07:56,040
-to SQL server.
+tới SQL server.
 
 110
 00:07:56,040 --> 00:08:02,820
-Because we didn't create a SQL server image in our Docker environment, yet that means we should set
+Bởi vì chúng ta chưa tạo một SQL server image trong môi trường Docker của chúng ta, điều đó có nghĩa là chúng ta nên thiết lập
 
 111
 00:08:02,820 --> 00:08:07,710
-up the SQL server database using the docker compose file for multi-container Docker environment.
+SQL server database bằng cách sử dụng Docker Compose file cho môi trường Docker multi-container.
 

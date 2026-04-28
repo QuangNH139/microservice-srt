@@ -1,66 +1,66 @@
 1
 00:00:00,170 --> 00:00:06,410
-In this video we are going to analyze ordering API layer in a clean architecture and application use
+Trong video này, chúng ta sẽ phân tích lớp API ordering trong clean architecture và các use cases của ứng dụng.
 
 2
 00:00:06,410 --> 00:00:06,890
-cases.
+Chúng ta có thể nhớ lại rằng chúng ta có các Crud operations, và chúng ta cũng có các hoạt động bất đồng bộ cho basket checkout và order fulfillment.
 
 3
 00:00:06,890 --> 00:00:12,290
-We can remember that we have a Crud operations, and we have also asynchronous operations for basket
+Vậy nếu bạn xem các REST API endpoints cho ordering microservices, chúng ta sẽ expose các endpoints này
 
 4
 00:00:12,290 --> 00:00:13,820
-checkout and order fulfillment.
+dưới dạng một Minimal REST API sử dụng Carter theo wrapper pattern trong clean architecture.
 
 5
 00:00:14,330 --> 00:00:20,060
-So if you look at the rest API endpoints for ordering microservices, we will expose these endpoints
+Và đây là get orders.
 
 6
 00:00:20,060 --> 00:00:25,340
-as a minimal Rest API using Carter following the wrapper pattern in a clean architecture.
+Get orders với order name.
 
 7
 00:00:25,340 --> 00:00:27,380
-And these are the get orders.
+Get orders theo customer, post orders để tạo bất kỳ order nào.
 
 8
 00:00:27,380 --> 00:00:29,480
-Get orders with order name.
+Put orders để cập nhật một order hiện có và delete order với ID, vì vậy chúng ta sẽ expose các endpoints này
 
 9
 00:00:29,480 --> 00:00:33,590
-Get orders by customer post orders for creating any order.
+khi phát triển lớp API ordering của chúng ta.
 
 10
 00:00:33,590 --> 00:00:40,400
-Put orders for updating an existing order and delete order with ID, so we will expose these endpoints
+Và nếu bạn xem các mẫu và nguyên tắc trong lớp API ordering, chúng ta sẽ sử dụng các Minimal APIs
 
 11
 00:00:40,400 --> 00:00:42,590
-when developing our ordering API layer.
+để sắp xếp hợp lý việc expose endpoint và triển khai wrapper design pattern và tận dụng ASP.NET Core dependency injection và routing features.
 
 12
 00:00:42,590 --> 00:00:47,900
-And if you look at the pattern and principles in ordering API layer, we will utilize the minimal APIs
+Vậy nếu bạn xem cấu trúc thư mục, bạn có thể thấy rằng trong lớp API ordering chúng ta sẽ tạo thư mục endpoints.
 
 13
 00:00:47,900 --> 00:00:53,720
-for streamline the end point exposure and implement the wrapper design pattern and leverage the ASP.Net
+Và trong thư mục này chúng ta sẽ expose mỗi REST API bao gồm create, update, delete order và cũng
 
 14
 00:00:53,720 --> 00:00:56,420
-core dependency injection and routing features.
+get orders theo customer và name.
 
 15
 00:00:56,420 --> 00:01:02,690
-So if you look at the folder structure, you can see that in ordering API layer we will create endpoints
+Những cái này sẽ đại diện cho việc expose Minimal APIs dưới dạng các lớp riêng biệt trong thư mục endpoints.
 
 16
 00:01:02,690 --> 00:01:03,140
-folder.
+Và cũng có dependency injection để cấu hình các services và dependencies cho lớp API.
 
 17
 00:01:03,140 --> 00:01:10,520
@@ -80,41 +80,41 @@ And also we have dependency injection which configures services and dependencies
 
 21
 00:01:24,680 --> 00:01:28,850
-And we have also global using for centralized command using directives.
+Và chúng ta cũng có global using cho centralized command using directives.
 
 22
 00:01:29,090 --> 00:01:35,540
-And if you look at the ordering NuGet packages in API layer, we will use different NuGet packages.
+Và nếu bạn xem các NuGet packages được sắp xếp trong API layer, chúng ta sẽ sử dụng các NuGet packages khác nhau.
 
 23
 00:01:35,540 --> 00:01:40,250
-These are the ASP.Net core libraries Carter for defining minimal APIs.
+Đây là các thư viện ASP.Net core Carter để định nghĩa các Minimal APIs.
 
 24
 00:01:40,250 --> 00:01:44,060
-And we will also use building blocks comes from the application layer.
+Và chúng ta cũng sẽ sử dụng building blocks từ application layer.
 
 25
 00:01:44,060 --> 00:01:49,700
-Here you can see the clean architecture getting reference application layer into our API layer that
+Ở đây bạn có thể thấy clean architecture tham chiếu application layer vào API layer của chúng ta
 
 26
 00:01:49,700 --> 00:01:55,700
-we can use from the application layers, building blocks, libraries like mediator maps and other common
+mà chúng ta có thể sử dụng từ application layers, building blocks, các thư viện như mediator maps và các
 
 27
 00:01:55,700 --> 00:01:56,450
-libraries.
+thư viện chung khác.
 
 28
 00:01:56,450 --> 00:02:02,870
-As a result, we can say that we will expose the endpoints from the API presentation layer, and after
+Kết quả là, chúng ta có thể nói rằng chúng ta sẽ expose các endpoints từ API presentation layer, và sau đó
 
 29
 00:02:02,870 --> 00:02:09,050
-that we will call the application layer six command query handler classes in order to perform our actual
+chúng ta sẽ gọi application layer six command query handler classes để thực hiện các use cases
 
 30
 00:02:09,050 --> 00:02:09,650
-use cases.
+của chúng ta.
 

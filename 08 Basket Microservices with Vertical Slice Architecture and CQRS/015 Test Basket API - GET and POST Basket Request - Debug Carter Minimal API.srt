@@ -1,94 +1,94 @@
 1
 00:00:00,200 --> 00:00:07,340
-In this video we are going to test our basket APIs, get post and delete requests using the postman,
+Trong video này, chúng ta sẽ kiểm tra các basket API, các yêu cầu get post và delete bằng postman,
 
 2
 00:00:07,340 --> 00:00:14,810
-and debug our application because we will follow and understand the secrets and mediator request lifecycle,
+và debug ứng dụng của chúng ta bởi vì chúng ta sẽ theo dõi và hiểu rõ các bí mật và vòng đời mediator request,
 
 3
 00:00:14,810 --> 00:00:19,430
-we will send Http request from the client and we will perform that.
+chúng ta sẽ gửi Http request từ client và chúng ta sẽ thực hiện điều đó.
 
 4
 00:00:19,430 --> 00:00:22,940
-The request comes from the mediator and mediator trigger.
+Request đến từ mediator và mediator kích hoạt.
 
 5
 00:00:22,940 --> 00:00:27,680
-The handler and handle will be perform actual operation and return response.
+Handler và handle sẽ thực hiện hoạt động thực tế và trả về response.
 
 6
 00:00:27,680 --> 00:00:31,310
-So we will validate this flow into our application.
+Vậy chúng ta sẽ xác thực luồng này trong ứng dụng của chúng ta.
 
 7
 00:00:31,310 --> 00:00:38,900
-For that purpose, please open the Visual Studio Set startup project of basket API and run https mode.
+Với mục đích đó, vui lòng mở Visual Studio đặt startup project của basket API và chạy chế độ https.
 
 8
 00:00:40,550 --> 00:00:47,390
-After running the application, we are going to place debug points into our endpoint and handler class.
+Sau khi chạy ứng dụng, chúng ta sẽ đặt các điểm debug vào endpoint và handler class của chúng ta.
 
 9
 00:00:47,420 --> 00:00:54,380
-Our application is running successfully, so now I am going to open the get basket endpoint and put
+Ứng dụng của chúng ta đang chạy thành công, vậy bây giờ tôi sẽ mở endpoint get basket và đặt
 
 10
 00:00:54,380 --> 00:00:58,700
-a breakpoint inside of the delegate handler and go to handler class.
+một breakpoint bên trong delegate handler và đi tới handler class.
 
 11
 00:00:58,700 --> 00:01:05,330
-Put a breakpoint in the beginning of the handler method and following the same steps for different Http
+Đặt một breakpoint ở đầu phương thức handler và thực hiện các bước tương tự cho các Http khác nhau
 
 12
 00:01:05,330 --> 00:01:14,360
-delete operations, and after that http post operation, which is the store basket use cases.
+delete operations, và sau đó là http post operation, đó là store basket use cases.
 
 13
 00:01:15,230 --> 00:01:21,020
-Okay, our breakpoints are ready and we have already run our application and our basket API.
+Được rồi, các breakpoints của chúng ta đã sẵn sàng và chúng ta đã chạy ứng dụng và basket API của chúng ta.
 
 14
 00:01:21,020 --> 00:01:26,660
-Microservices is listening on https localhost 5051 port.
+Microservices đang lắng nghe trên https localhost cổng 5051.
 
 15
 00:01:26,660 --> 00:01:33,350
-So if you open the postman you can see that we have separate folder for basket microservices.
+Vậy nếu bạn mở postman, bạn có thể thấy rằng chúng ta có thư mục riêng biệt cho basket microservices.
 
 16
 00:01:33,350 --> 00:01:38,900
-And I have created http, get post and delete endpoints inside of this folder.
+Và tôi đã tạo các endpoint http, get post và delete bên trong thư mục này.
 
 17
 00:01:38,900 --> 00:01:46,340
-So if you open the get basket by username you can see that basket URL variable comes from the localhost
+Vậy nếu bạn mở get basket by username, bạn có thể thấy rằng biến URL basket đến từ localhost
 
 18
 00:01:46,340 --> 00:01:49,100
-environment and the value is 5051.
+environment và giá trị là 5051.
 
 19
 00:01:49,100 --> 00:01:51,050
-We can change the environment in here.
+Chúng ta có thể thay đổi environment ở đây.
 
 20
 00:01:51,050 --> 00:01:54,350
-And now we are on the localhost deployment strategy.
+Và bây giờ chúng ta đang sử dụng chiến lược triển khai localhost.
 
 21
 00:01:54,350 --> 00:01:57,560
-So you can see the endpoint continue with the basket.
+Như bạn có thể thấy, endpoint tiếp tục với basket.
 
 22
 00:01:57,560 --> 00:02:01,280
-And we can specify the username as a request parameters.
+Và chúng ta có thể chỉ định username như một request parameters.
 
 23
 00:02:01,280 --> 00:02:08,419
-So now if I click the Http send method this will be triggered our application and comes from the get
+Vậy bây giờ nếu tôi nhấp vào Http send method, điều này sẽ kích hoạt ứng dụng của chúng ta và đến từ get
 
 24
 00:02:08,419 --> 00:02:09,500
@@ -96,23 +96,23 @@ basket endpoint.
 
 25
 00:02:09,500 --> 00:02:15,620
-And if we continue with the step over we will send mediator to the get basket query information with
+Và nếu chúng ta tiếp tục với step over, chúng ta sẽ gửi mediator đến Get Basket query information với
 
 26
 00:02:15,620 --> 00:02:16,730
-incoming username.
+username đến.
 
 27
 00:02:16,730 --> 00:02:20,870
-And this will be triggered our Get Basket query handler class.
+Và điều này sẽ kích hoạt lớp Get Basket query handler của chúng ta.
 
 28
 00:02:20,870 --> 00:02:24,410
-And this is the handle operation which is the actual business operation.
+Và đây là handle operation, đó là business operation thực tế.
 
 29
 00:02:24,410 --> 00:02:31,250
-For now we will mocking these operation and returning an empty shopping cart with the username as a
+Hiện tại chúng ta sẽ mock những operation này và trả về một shopping cart trống với username là một
 
 30
 00:02:31,490 --> 00:02:32,210
@@ -120,111 +120,111 @@ boolean.
 
 31
 00:02:32,210 --> 00:02:37,130
-Here you can see that if we hit F5, this will be returning to us.
+Ở đây bạn có thể thấy rằng nếu chúng ta nhấn F5, điều này sẽ trả về cho chúng ta.
 
 32
 00:02:37,550 --> 00:02:40,790
-A random and empty cart object.
+Một đối tượng cart ngẫu nhiên và trống.
 
 33
 00:02:40,790 --> 00:02:44,630
-The username is S1 and there is no items for this cart.
+Username là S1 và không có items nào cho cart này.
 
 34
 00:02:44,630 --> 00:02:52,310
-So we have confirmed that the http get operation is successfully triggered the Carter endpoint and successfully
+Vậy chúng ta đã xác nhận rằng http get operation đã thành công kích hoạt Carter endpoint và thành công
 
 35
 00:02:52,310 --> 00:02:55,010
-triggered the mediator handler class.
+kích hoạt lớp mediator handler.
 
 36
 00:02:55,010 --> 00:03:02,960
-And at the same way, we can send http post requests in order to store new basket into our database.
+Và theo cách tương tự, chúng ta có thể gửi http post requests để lưu trữ basket mới vào database của chúng ta.
 
 37
 00:03:02,960 --> 00:03:08,750
-So here you can see that I have created http post operation and our endpoint is basket URL.
+Vậy ở đây bạn có thể thấy rằng tôi đã tạo http post operation và endpoint của chúng ta là basket URL.
 
 38
 00:03:08,750 --> 00:03:11,750
-This is the 5051 port and slash basket.
+Đây là port 5051 và slash basket.
 
 39
 00:03:11,750 --> 00:03:13,790
-And this is the http post operation.
+Và đây là http post operation.
 
 40
 00:03:13,790 --> 00:03:18,440
-That's why you can see that body row of Json format is in here.
+Đó là lý do tại sao bạn có thể thấy rằng body row của định dạng Json nằm ở đây.
 
 41
 00:03:18,440 --> 00:03:21,800
-This is starting and empty Json body.
+Đây là phần bắt đầu với một JSON body trống.
 
 42
 00:03:21,800 --> 00:03:24,260
-And here you can see the cart object.
+Và ở đây bạn có thể thấy đối tượng cart.
 
 43
 00:03:24,260 --> 00:03:29,570
-The cart name is very critical in here if you open the Visual Studio, if you go to the store basket
+Tên của cart rất quan trọng ở đây, nếu bạn mở Visual Studio, nếu bạn đi đến store basket
 
 44
 00:03:29,570 --> 00:03:35,930
-and print, you can see that our store basket request includes the parameter of the shopping cart and
+và in ra, bạn có thể thấy rằng store basket request của chúng ta bao gồm parameter của shopping cart và
 
 45
 00:03:35,930 --> 00:03:38,060
-the shopping cart variable name as a cart.
+tên biến shopping cart là cart.
 
 46
 00:03:38,060 --> 00:03:44,360
-So that's why we should give the exact same name of this parameter name into our postman.
+Vì vậy, đó là lý do tại sao chúng ta nên đặt tên parameter chính xác như vậy vào Postman của chúng ta.
 
 47
 00:03:44,360 --> 00:03:46,130
-And that's why this is the cart.
+Và đó là lý do tại sao đây là cart.
 
 48
 00:03:46,130 --> 00:03:51,830
-And opening a new object inside of the new object, you can see the members of the shopping cart, and
+Và mở một object mới bên trong object mới, bạn có thể thấy các members của shopping cart, và
 
 49
 00:03:51,830 --> 00:03:56,030
-this is the items that we have added two items into our shopping cart.
+đây là các items mà chúng ta đã thêm hai items vào shopping cart của chúng ta.
 
 50
 00:03:56,030 --> 00:04:01,730
-So let's send http post request and see the request pipeline life cycle.
+Vậy hãy gửi HTTP post request và xem request pipeline life cycle.
 
 51
 00:04:01,730 --> 00:04:05,720
-So send button and this will be triggered store basket endpoint.
+Vậy nhấn nút send và điều này sẽ kích hoạt store basket endpoint.
 
 52
 00:04:05,720 --> 00:04:10,850
-And the first step is we are converting to command object and inside of the command object.
+Và bước đầu tiên là chúng ta đang chuyển đổi thành command object và bên trong command object.
 
 53
 00:04:10,850 --> 00:04:18,110
-If you expand this one you can see that cart object is populating and comes from the our incoming http
+Nếu bạn mở rộng cái này, bạn có thể thấy rằng cart object đang được điền và đến từ HTTP post operation đến của chúng ta.
 
 54
 00:04:18,110 --> 00:04:19,579
-post operation.
+Và nếu bạn tiếp tục debug, bạn có thể thấy rằng mediator sẽ gửi command này đến command handler.
 
 55
 00:04:19,579 --> 00:04:24,800
-And if you continue to debug, you can see that mediator will be sent this command to the command handler.
+Và điều này sẽ kích hoạt operation thực tế của chúng ta.
 
 56
 00:04:24,800 --> 00:04:27,650
-And this will be triggered our actual operation.
+Tôi sẽ xóa các breakpoint này từ validation behavior để bạn có thể thấy rằng validations của chúng ta cũng được kích hoạt.
 
 57
 00:04:27,650 --> 00:04:32,750
-I'm going to remove these breakpoint from the validation behavior that you can see that our validations
+Và ở đây bạn có thể thấy store basket command handle method để thực hiện operation thực tế store basket trong database và cập nhật cache.
 
 58
 00:04:32,750 --> 00:04:33,620
@@ -240,99 +240,99 @@ in database and update the cache.
 
 61
 00:04:41,030 --> 00:04:46,850
-For now we are going to return mocking response and we can continue our debug that.
+Hiện tại chúng ta sẽ trả về một mocking response và chúng ta có thể tiếp tục debug điều đó.
 
 62
 00:04:46,850 --> 00:04:52,760
-You can see that this will be continue and converting our result object to the response, and return
+Bạn có thể thấy rằng điều này sẽ tiếp tục và chuyển đổi đối tượng kết quả của chúng ta thành response, và trả về
 
 63
 00:04:52,760 --> 00:04:55,400
-back to the created response to the client.
+lại response đã tạo cho client.
 
 64
 00:04:55,970 --> 00:05:02,360
-So we have confirmed that also our post store basket operation is working perfectly.
+Vậy chúng ta đã xác nhận rằng hoạt động POST store basket của chúng ta cũng đang hoạt động hoàn hảo.
 
 65
 00:05:02,360 --> 00:05:09,770
-But the important thing is in here, when we are sending http post request, we should create Json structure
+Nhưng điều quan trọng là ở đây, khi chúng ta gửi HTTP POST request, chúng ta phải tạo cấu trúc JSON
 
 66
 00:05:09,770 --> 00:05:11,630
-same as the request class.
+giống như request class.
 
 67
 00:05:11,630 --> 00:05:16,820
-So request class is inside of the our store basket endpoint.
+Vậy request class nằm bên trong store basket endpoint của chúng ta.
 
 68
 00:05:16,820 --> 00:05:18,440
-And you can see the request class.
+Và bạn có thể thấy request class.
 
 69
 00:05:18,440 --> 00:05:20,600
-So it is accepting shopping cart.
+Vậy nó chấp nhận shopping cart.
 
 70
 00:05:20,600 --> 00:05:27,200
-And this cart variable name is crucial when sending the request to the http post operation.
+Và tên biến cart này rất quan trọng khi gửi request đến HTTP POST operation.
 
 71
 00:05:27,200 --> 00:05:31,760
-If you change this variable name, your Json will not be accepted.
+Nếu bạn thay đổi tên biến này, JSON của bạn sẽ không được chấp nhận.
 
 72
 00:05:31,760 --> 00:05:35,540
-If you, for example, change the name as a cart two or shopping cart.
+Nếu bạn, ví dụ, thay đổi tên thành cart two hoặc shopping cart.
 
 73
 00:05:35,540 --> 00:05:40,010
-And if you go back to http post operation, your Json would not be work and.
+Và nếu bạn quay lại HTTP POST operation, JSON của bạn sẽ không hoạt động và
 
 74
 00:05:40,470 --> 00:05:44,520
-Jason is expecting the exact same name parameter into in here.
+JSON đang mong đợi tên tham số chính xác giống như ở đây.
 
 75
 00:05:44,520 --> 00:05:48,930
-So the Json is very important and the naming is also very important.
+Vậy JSON rất quan trọng và việc đặt tên cũng rất quan trọng.
 
 76
 00:05:48,930 --> 00:05:52,320
-And finally we can go to the Http delete operation.
+Và cuối cùng chúng ta có thể đi đến HTTP DELETE operation.
 
 77
 00:05:52,320 --> 00:05:55,530
-In here I have created http delete basket url.
+Ở đây tôi đã tạo HTTP DELETE basket URL.
 
 78
 00:05:55,530 --> 00:06:00,480
-This is the endpoint and this username comes from the URL request parameter.
+Đây là endpoint và username này đến từ URL request parameter.
 
 79
 00:06:00,480 --> 00:06:04,830
-I'm going to hit the send button and this will be triggered our get basket endpoint.
+Tôi sẽ nhấn nút send và điều này sẽ kích hoạt delete basket endpoint của chúng ta.
 
 80
 00:06:04,860 --> 00:06:12,480
-If I continue I can see that this will be trigger get basket delete basket command handler class successfully
+Nếu tôi tiếp tục, tôi có thể thấy rằng điều này sẽ kích hoạt delete basket command handler class thành công
 
 81
 00:06:12,480 --> 00:06:14,490
-and return a mock response.
+và trả về một mock response.
 
 82
 00:06:14,490 --> 00:06:19,980
-And if I hit five, I can verify that delete operation performs successfully.
+Và nếu tôi hit năm, tôi có thể xác minh rằng operaton delete thực hiện thành công.
 
 83
 00:06:20,160 --> 00:06:26,370
-As you can see that we have confirmed securities and mediator request lifecycle by sending Http, get,
+Như bạn có thể thấy rằng chúng ta đã xác nhận securities và mediator request lifecycle bằng cách gửi Http, get,
 
 84
 00:06:26,370 --> 00:06:28,740
-post and delete request to our basket.
+post và delete request đến basket chúng ta.
 
 85
 00:06:28,740 --> 00:06:29,640

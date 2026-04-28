@@ -1,30 +1,30 @@
 1
 00:00:00,200 --> 00:00:06,740
-In this video, we are going to test update product and point connecting to Docker PostgreSQL container.
+Trong video này, chúng ta sẽ test update product và kết nối tới Docker PostgreSQL container.
 
 2
 00:00:06,770 --> 00:00:13,250
-So the first step is ensure that your PostgreSQL database is up and running on your Docker environment.
+Vậy bước đầu tiên là đảm bảo rằng PostgreSQL database của bạn đang chạy trên Docker environment.
 
 3
 00:00:13,250 --> 00:00:19,010
-Open the desktop and make sure that your Docker compose is running and PostgreSQL up and running on
+Mở desktop và đảm bảo rằng Docker compose của bạn đang chạy và PostgreSQL đang chạy trên
 
 4
 00:00:19,010 --> 00:00:19,730
-that port.
+cổng đó.
 
 5
 00:00:19,940 --> 00:00:26,180
-And the second thing is we will put the breakpoints under the update product endpoint in the beginning
+Và điều thứ hai là chúng ta sẽ đặt breakpoints ở update product endpoint ngay ở đầu
 
 6
 00:00:26,180 --> 00:00:28,460
-of the put method delegate handler.
+của put method delegate handler.
 
 7
 00:00:28,460 --> 00:00:34,670
-And if you go to the handler method, you can put breakpoint in the handle method of the update product
+Và nếu bạn vào handler method, bạn có thể đặt breakpoint trong handle method của update product
 
 8
 00:00:34,670 --> 00:00:35,750
@@ -32,165 +32,165 @@ command handler.
 
 9
 00:00:35,780 --> 00:00:41,150
-And after that right click set as Startup project for Catholic API and run https mode.
+Và sau đó nhấp chuột phải set as Startup project cho Catholic API và chạy ở https mode.
 
 10
 00:00:44,480 --> 00:00:51,110
-So after running the application, we will use postman to send http put requests in order to update
+Vậy sau khi chạy application, chúng ta sẽ sử dụng Postman để gửi http put requests để update
 
 11
 00:00:51,110 --> 00:00:52,100
-product details.
+chi tiết sản phẩm.
 
 12
 00:00:52,100 --> 00:00:59,300
-So for that purpose please open the postman and please create an Http put request in postman.
+Vậy cho mục đích đó vui lòng mở Postman và tạo một Http put request trong Postman.
 
 13
 00:00:59,300 --> 00:01:06,620
-You can see in here I have created http post and put request and in the post request you can see that
+Bạn có thể thấy ở đây tôi đã tạo http post và put request, và trong post request bạn có thể thấy rằng
 
 14
 00:01:06,620 --> 00:01:12,530
-I have specified these kind of Json body requests and an http put request.
+tôi đã chỉ định các loại Json body requests và một http put request.
 
 15
 00:01:12,530 --> 00:01:18,290
-We will additionally add ID information into the updated product details.
+Chúng ta sẽ thêm ID information vào chi tiết sản phẩm được cập nhật.
 
 16
 00:01:18,290 --> 00:01:21,080
-So where can I find this ID information?
+Vậy tôi có thể tìm ID information này ở đâu?
 
 17
 00:01:21,080 --> 00:01:28,310
-If you go to the Get product and get product id http get request, you can copy and paste the ID information
+Nếu bạn vào Get product và get product id http get request, bạn có thể copy và paste ID information
 
 18
 00:01:28,310 --> 00:01:29,300
-from in here.
+từ đây.
 
 19
 00:01:29,300 --> 00:01:36,860
-The response of this kind of Http get response and put the ID into this ID information and update the
+Response của Http get response này và đặt ID vào ID information này và cập nhật
 
 20
 00:01:36,860 --> 00:01:44,690
-rest of the attributes like we have updated the name information, new product, a updated and new category
+các attributes khác giống như cách chúng ta đã cập nhật name information, new product, updated và new category
 
 21
 00:01:44,690 --> 00:01:45,410
-is added.
+được thêm vào.
 
 22
 00:01:45,410 --> 00:01:48,020
-Description and image file has changed.
+Description và image file đã thay đổi.
 
 23
 00:01:48,020 --> 00:01:54,020
-So now we are going to test these http put request and see how the system affected.
+Vậy bây giờ chúng ta sẽ test HTTP PUT request này và xem hệ thống bị ảnh hưởng như thế nào.
 
 24
 00:01:54,020 --> 00:02:01,760
-Click the Http send button and you will see that these will be trigger or update product endpoint class.
+Nhấp nút Http send và bạn sẽ thấy rằng nó sẽ trigger hoặc gọi update product endpoint class.
 
 25
 00:02:01,760 --> 00:02:05,660
-And these will be get the first line of the our delegate handler.
+Và điều này sẽ lấy dòng đầu tiên của delegate handler của chúng ta.
 
 26
 00:02:05,660 --> 00:02:10,940
-In the first line of delegate handler, we will basically get the request object and convert these request
+Trong dòng đầu tiên của delegate handler, chúng ta sẽ cơ bản lấy request object và chuyển đổi request này
 
 27
 00:02:10,940 --> 00:02:15,680
-object as a command object, because this command will be sent to mediator.
+thành command object, bởi vì command này sẽ được gửi đến mediator.
 
 28
 00:02:15,680 --> 00:02:20,420
-And mediator will be send this command corresponding command handler class.
+Và mediator sẽ gửi command này đến corresponding command handler class.
 
 29
 00:02:20,420 --> 00:02:25,550
-If you put F10, you can see that our handle class is triggered.
+Nếu bạn ấn F10, bạn có thể thấy rằng handler class của chúng ta đã được trigger.
 
 30
 00:02:25,550 --> 00:02:28,040
-And the first line we will log the information.
+Và dòng đầu tiên chúng ta sẽ log thông tin.
 
 31
 00:02:28,040 --> 00:02:33,830
-And the second line we will retrieve the product which is select product in the database.
+Và dòng thứ hai chúng ta sẽ lấy sản phẩm mà chúng ta chọn trong database.
 
 32
 00:02:33,830 --> 00:02:39,350
-And you can see that if the product is null, we should throw an exception.
+Và bạn có thể thấy rằng nếu product là null, chúng ta nên throw một exception.
 
 33
 00:02:39,350 --> 00:02:42,980
-But we have already comes product from the database.
+Nhưng chúng ta đã lấy product từ database rồi.
 
 34
 00:02:42,980 --> 00:02:49,880
-And after that we will update all the attributes in the product and we will update product intersection,
+Và sau đó chúng ta sẽ update tất cả các attributes trong product và chúng ta sẽ update product intersection,
 
 35
 00:02:49,880 --> 00:02:53,060
-which is the ID documentation from the Martins library.
+đó là ID documentation từ thư viện Marten.
 
 36
 00:02:53,060 --> 00:02:59,630
-And with saving change these updated product, we will reflect the update and return back the command
+Và với việc saving change những product đã được update, chúng ta sẽ phản ánh update này và return command
 
 37
 00:02:59,630 --> 00:03:06,200
-response result to do our endpoint class, and these result object will be converted to response object
+response result trở lại endpoint class của chúng ta, và response object này sẽ được chuyển đổi thành response object
 
 38
 00:03:06,200 --> 00:03:07,760
-and return back to the client.
+và return trở lại client.
 
 39
 00:03:07,760 --> 00:03:12,110
-You can see that our response is comes from the postman.
+Bạn có thể thấy rằng response của chúng ta đến từ postman.
 
 40
 00:03:12,110 --> 00:03:15,290
-And this response is is success is true.
+Và response này có success là true.
 
 41
 00:03:15,290 --> 00:03:21,830
-And this is indicating that success of this operation and this confirms that our endpoint is correctly
+Và điều này cho thấy hoạt động thành công và điều này xác nhận rằng endpoint của chúng ta đang hoạt động đúng
 
 42
 00:03:21,830 --> 00:03:23,360
-processing this update.
+xử lý cập nhật này.
 
 43
 00:03:23,510 --> 00:03:25,910
-We can verify this update operation.
+Chúng ta có thể xác minh hoạt động cập nhật này.
 
 44
 00:03:25,910 --> 00:03:32,840
-So in order to ensure the product was updated, we can send an http get request to retrieve the product
+Vậy để đảm bảo sản phẩm đã được cập nhật, chúng ta có thể gửi một HTTP GET request để lấy sản phẩm
 
 45
 00:03:32,840 --> 00:03:35,750
-by ID and observe the updated details.
+theo ID và quan sát các chi tiết đã được cập nhật.
 
 46
 00:03:35,750 --> 00:03:42,560
-If you click the get product by ID and if you retrieve again the same ID information, this will be
+Nếu bạn nhấp vào get product by ID và nếu bạn lấy lại thông tin cùng ID đó, điều này sẽ
 
 47
 00:03:42,560 --> 00:03:46,670
-also hit the our breakpoints and I'm passing this breakpoint with F5.
+cũng kích hoạt breakpoint của chúng ta và tôi sẽ vượt qua breakpoint này bằng F5.
 
 48
 00:03:46,670 --> 00:03:53,060
-And here you can see that these attributes are coming with the updated values that we have confirmed
+Và ở đây bạn có thể thấy những thuộc tính này đang đến với các giá trị đã được cập nhật mà chúng ta đã xác nhận
 
 49
 00:03:53,060 --> 00:03:55,790
-and verified the update operation into our database.
+và xác minh hoạt động cập nhật vào cơ dữ liệu của chúng ta.
 

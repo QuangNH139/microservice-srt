@@ -1,42 +1,42 @@
 1
 00:00:00,170 --> 00:00:05,060
-In this video we are going to test publish checkout event in the basket microservices.
+Trong video này chúng ta sẽ test publish checkout event trong basket microservices.
 
 2
 00:00:05,060 --> 00:00:11,600
-So we will understand how to publish basket checkout microservices to the RabbitMQ and using RabbitMQ
+Vậy chúng ta sẽ hiểu cách publish basket checkout microservices tới RabbitMQ và sử dụng RabbitMQ
 
 3
 00:00:11,600 --> 00:00:13,970
-for asynchronous event driven communication.
+để giao tiếp event driven bất đồng bộ.
 
 4
 00:00:13,970 --> 00:00:19,220
-And we will focus on the interaction between basket microservices and RabbitMQ message broker and the
+Và chúng ta sẽ tập trung vào sự tương tác giữa basket microservices và RabbitMQ message broker cũng như
 
 5
 00:00:19,220 --> 00:00:20,990
-underlying infrastructure setup.
+cơ sở hạ tầng cơ bản.
 
 6
 00:00:21,140 --> 00:00:27,260
-As you remember, our e-commerce microservice deployment strategy or microservices will be in localhost
+Như bạn nhớ, chiến lược triển khai microservice e-commerce hoặc microservices của chúng ta sẽ ở localhost
 
 7
 00:00:27,260 --> 00:00:29,150
-and developing in local environment.
+và phát triển trong môi trường địa phương.
 
 8
 00:00:29,150 --> 00:00:35,630
-And our RabbitMQ message broker will be on Docker environment and up and running as a backing services
+Và RabbitMQ message broker của chúng ta sẽ ở môi trường Docker và đang chạy dưới dạng backing services
 
 9
 00:00:35,630 --> 00:00:36,620
-on Docker environment.
+trong môi trường Docker.
 
 10
 00:00:36,620 --> 00:00:42,140
-So that means we will connect the basket microservices from local environment to docker environment.
+Điều đó có nghĩa là chúng ta sẽ kết nối basket microservices từ môi trường địa phương tới môi trường docker.
 
 11
 00:00:42,140 --> 00:00:43,790
@@ -44,35 +44,35 @@ RabbitMQ message broker.
 
 12
 00:00:43,940 --> 00:00:48,290
-Please open the Visual Studio and open the docker compose files.
+Vui lòng mở Visual Studio và mở docker compose files.
 
 13
 00:00:48,290 --> 00:00:52,850
-Here you can see the our configurations on Docker environment for the RabbitMQ configurations.
+Ở đây bạn có thể thấy cấu hình của chúng ta trong môi trường Docker cho cấu hình RabbitMQ.
 
 14
 00:00:52,850 --> 00:00:56,330
-And now we are going to open the basket microservices.
+Và bây giờ chúng ta sẽ mở basket microservices.
 
 15
 00:00:56,330 --> 00:01:00,680
-And we will connect these RabbitMQ from our local basket microservices.
+Và chúng ta sẽ kết nối RabbitMQ từ basket microservices địa phương của chúng ta.
 
 16
 00:01:00,680 --> 00:01:07,070
-And if you open the program yes you can see that if you scroll down we are going to adding required
+Và nếu bạn mở program thì bạn có thể thấy rằng nếu bạn cuộn xuống chúng ta sẽ thêm các dịch vụ cần thiết
 
 17
 00:01:07,070 --> 00:01:11,570
-services in this line of code with using the Add Message Broker extension method.
+trong dòng code này sử dụng phương thức Add Message Broker extension.
 
 18
 00:01:11,570 --> 00:01:16,250
-So if we go to this method here, you can see that we will passing the configuration from the builder
+Vậy nếu chúng ta đi tới phương thức này, bạn có thể thấy rằng chúng ta sẽ truyền cấu hình từ object builder.
 
 19
 00:01:16,250 --> 00:01:16,760
-object.
+Và nếu bạn đi tới implementation của phương thức extension này, bạn có thể thấy rằng chúng ta sẽ sử dụng cấu hình này
 
 20
 00:01:16,760 --> 00:01:22,550
@@ -80,159 +80,159 @@ And if you go to the implementation of this extension method, you can see that w
 
 21
 00:01:22,550 --> 00:01:27,950
-when getting the host username and password from the application settings Json file and adding required
+khi lấy tên người dùng và mật khẩu host từ tệp application settings Json và thêm các yêu cầu
 
 22
 00:01:27,950 --> 00:01:32,660
-Masstransit packages in order to connect RabbitMQ from our basket microservices.
+các package Masstransit để kết nối RabbitMQ từ basket microservices của chúng ta.
 
 23
 00:01:32,660 --> 00:01:37,850
-And you can check these configurations in the application settings Json file under the basket API and
+Và bạn có thể kiểm tra các cấu hình này trong tệp application settings Json dưới basket API và
 
 24
 00:01:37,850 --> 00:01:39,230
-we have message broker section.
+chúng ta có phần message broker.
 
 25
 00:01:39,230 --> 00:01:44,900
-So that means we are ready to communicate with RabbitMQ from our local basket microservices.
+Điều đó có nghĩa là chúng ta đã sẵn sàng để giao tiếp với RabbitMQ từ basket microservices cục bộ của chúng ta.
 
 26
 00:01:44,900 --> 00:01:47,600
-So before we start we should verify the RabbitMQ.
+Vậy trước khi bắt đầu, chúng ta nên xác minh RabbitMQ.
 
 27
 00:01:47,630 --> 00:01:52,880
-If you open the Docker desktop, please ensure that the RabbitMQ Docker container is up and running,
+Nếu bạn mở Docker desktop, vui lòng đảm bảo rằng Docker container RabbitMQ đang chạy,
 
 28
 00:01:52,880 --> 00:01:54,230
-which is a message broker.
+đó là một message broker.
 
 29
 00:01:54,230 --> 00:01:59,840
-And in here we have up and running and you can check the port numbers also exposing correctly.
+Và ở đây chúng ta có nó chạy và bạn cũng có thể kiểm tra các số cổng đang được expose chính xác.
 
 30
 00:01:59,840 --> 00:02:05,750
-So after that we can go back to our basket microservices and we can start to run our application.
+Vậy sau đó chúng ta có thể quay lại basket microservices của chúng ta và chúng ta có thể bắt đầu chạy ứng dụng của chúng ta.
 
 31
 00:02:05,750 --> 00:02:10,100
-But we should run the basket API with the discount gRPC microservices.
+Nhưng chúng ta nên chạy basket API cùng với discount gRPC microservices.
 
 32
 00:02:10,100 --> 00:02:13,970
-Because these services connecting when adding item in the basket.
+Vì các dịch vụ này kết nối khi thêm mục vào giỏ hàng.
 
 33
 00:02:13,970 --> 00:02:20,810
-So that means basket microservices and discount microservices need to run simultaneously because basket
+Điều đó có nghĩa là basket microservices và discount microservices cần phải chạy đồng thời vì basket
 
 34
 00:02:20,810 --> 00:02:27,320
-API depends on the discount gRPC microservices for calculating discounts during the basket create operations.
+API phụ thuộc vào discount gRPC microservices để tính toán giảm giá trong các thao tác tạo giỏ hàng.
 
 35
 00:02:27,320 --> 00:02:34,310
-For that purpose, I am going to right click the solution and if you go to properties I'm going to select
+Cho mục đích đó, tôi sẽ nhấp chuột phải vào solution và nếu bạn vào properties, tôi sẽ chọn
 
 36
 00:02:34,310 --> 00:02:35,300
-the startup project.
+dự án khởi động.
 
 37
 00:02:35,300 --> 00:02:39,920
-And this time we will select the multiple startup project and this will be basket API.
+Và lần này chúng ta sẽ chọn multiple startup projects và đây sẽ là basket API.
 
 38
 00:02:39,920 --> 00:02:41,810
-Come here and select the start.
+Vào đây và chọn start.
 
 39
 00:02:41,810 --> 00:02:44,420
-And also you can go to the discount gRPC.
+Và cũng có thể bạn có thể vào discount gRPC.
 
 40
 00:02:44,420 --> 00:02:47,330
-Come here and click the start and click the apply.
+Vào đây và nhấp vào start rồi nhấp vào apply.
 
 41
 00:02:47,330 --> 00:02:51,650
-And okay after that you can see that our running profile has changed.
+Và được rồi, sau đó bạn có thể thấy rằng running profile của chúng ta đã thay đổi.
 
 42
 00:02:51,650 --> 00:02:52,280
-To start.
+Để bắt đầu.
 
 43
 00:02:52,280 --> 00:02:58,670
-That means we will start the application from the Visual Studio by running two microservices simultaneously.
+Điều đó có nghĩa là chúng ta sẽ khởi động ứng dụng từ Visual Studio bằng cách chạy hai microservices cùng một lúc.
 
 44
 00:02:58,760 --> 00:03:04,190
-And we will arrange basket and discount microservices will be run together in order to perform our use
+Và chúng ta sẽ sắp xếp basket và discount microservices sẽ chạy cùng nhau để thực hiện use case của chúng ta
 
 45
 00:03:04,190 --> 00:03:04,730
-cases.
+.
 
 46
 00:03:04,730 --> 00:03:07,430
-So our use case is we should create a basket.
+Vậy use case của chúng ta là chúng ta nên tạo một basket.
 
 47
 00:03:07,430 --> 00:03:11,420
-First of all, it calls the discount gRPC to calculate the discounts.
+Đầu tiên, nó gọi discount gRPC để tính toán các chiết khấu.
 
 48
 00:03:11,420 --> 00:03:16,250
-And after created the basket we will check out the basket to perform asynchronous communication.
+Và sau khi tạo basket, chúng ta sẽ checkout basket để thực hiện asynchronous communication.
 
 49
 00:03:16,250 --> 00:03:19,760
-So before running the application I am going to put the required breakpoints.
+Vậy trước khi chạy ứng dụng, tôi sẽ đặt các breakpoint cần thiết.
 
 50
 00:03:19,760 --> 00:03:25,400
-So if you go to basket API and open the programs case you can go to breakpoint in the beginning of the
+Vậy nếu bạn đi tới basket API và mở Programs.cs, bạn có thể đặt breakpoint ở đầu của add message worker.
 
 51
 00:03:25,400 --> 00:03:26,300
-add message worker.
+.
 
 52
 00:03:26,300 --> 00:03:31,520
-To understand how we can register Masstransit communications with using the RabbitMQ.
+Để hiểu cách chúng ta có thể đăng ký MassTransit communications bằng cách sử dụng RabbitMQ.
 
 53
 00:03:31,520 --> 00:03:38,090
-And after that, it is crucial to adding breakpoint for the important areas, which is the basket feature
+Và sau đó, điều quan trọng là thêm breakpoint cho các khu vực quan trọng, đó là basket feature folder.
 
 54
 00:03:38,090 --> 00:03:38,600
-folder.
+.
 
 55
 00:03:38,600 --> 00:03:43,520
-And if you expand this folder, you can see that we will test our use case, which is the basket checkout.
+Và nếu bạn mở rộng folder này, bạn có thể thấy rằng chúng ta sẽ kiểm tra use case của chúng ta, đó là basket checkout.
 
 56
 00:03:43,520 --> 00:03:48,020
-If you expand this folder, you can see that we have Endpoint and handler class.
+Nếu bạn mở rộng folder này, bạn có thể thấy rằng chúng ta có Endpoint và handler class.
 
 57
 00:03:48,020 --> 00:03:50,030
-I'm going to open the endpoint first.
+Tôi sẽ mở endpoint trước.
 
 58
 00:03:50,030 --> 00:03:55,760
-And I'm going to put a breakpoint in the beginning of the map post delegate handler function, which
+Và tôi sẽ đặt một breakpoint ở đầu của map post delegate handler function, về cơ bản nó được tạo để tiếp nhận incoming HTTP POST request tới endpoint này mà chúng ta sẽ gửi trong video này.
 
 59
 00:03:55,760 --> 00:04:01,730
-is basically accodomate incoming http post request to this endpoint that we will send during this video.
+Và sau đó chúng ta có thể đặt thêm breakpoint khi rời khỏi method này.
 
 60
 00:04:01,730 --> 00:04:05,840
@@ -240,27 +240,27 @@ And after that we can put additional breakpoint when leaving this method.
 
 61
 00:04:06,230 --> 00:04:09,110
-After that, we can put a breakpoint in the handler class.
+Sau đó, chúng ta có thể đặt một điểm dừng trong lớp handler.
 
 62
 00:04:09,110 --> 00:04:14,600
-If you open the checkout basket handler class and scroll down, you can put a breakpoint in the beginning
+Nếu bạn mở lớp checkout basket handler và cuộn xuống, bạn có thể đặt một điểm dừng ở đầu
 
 63
 00:04:14,600 --> 00:04:20,029
-of the handler method, which is performing actual operation for publishing basket checkout event and
+của phương thức handler, phương thức này thực hiện hoạt động thực tế để xuất bản sự kiện basket checkout và
 
 64
 00:04:20,029 --> 00:04:21,110
-deleting the basket.
+xóa giỏ hàng.
 
 65
 00:04:21,110 --> 00:04:26,990
-So after that, we can put additional breakpoint in the store basket in order to create a new basket
+Vậy sau đó, chúng ta có thể đặt thêm điểm dừng trong store basket để tạo một giỏ hàng mới
 
 66
 00:04:26,990 --> 00:04:28,280
-into our basket.
+vào microservices giỏ hàng của chúng ta.
 
 67
 00:04:28,280 --> 00:04:29,240
@@ -268,131 +268,131 @@ Microservices.
 
 68
 00:04:29,240 --> 00:04:33,110
-Here you can see that we have already breakpoints in this location.
+Ở đây bạn có thể thấy rằng chúng ta đã có điểm dừng ở vị trí này.
 
 69
 00:04:33,110 --> 00:04:39,320
-So now we can run the application that will start with the basket API and discount gRPC simultaneously.
+Vậy bây giờ chúng ta có thể chạy ứng dụng sẽ khởi động với basket API và discount gRPC cùng lúc.
 
 70
 00:04:39,320 --> 00:04:44,840
-I am going to hit the start button and this will be starting our microservices locally.
+Tôi sẽ nhấn nút bắt đầu và điều này sẽ khởi động các microservices của chúng ta cục bộ.
 
 71
 00:04:44,840 --> 00:04:49,730
-And this will be communicate with the RabbitMQ to perform asynchronous communication.
+Và điều này sẽ giao tiếp với RabbitMQ để thực hiện giao tiếp không đồng bộ.
 
 72
 00:04:49,730 --> 00:04:55,220
-Here you can see that the first point is our breakpoint hitting the add message broker extension method.
+Ở đây bạn có thể thấy rằng điểm đầu tiên là điểm dừng của chúng ta kích hoạt phương thức mở rộng add message broker.
 
 73
 00:04:55,220 --> 00:04:59,720
-This comes from the our program.cs of the basket microservices that we.
+Điều này đến từ program.cs của basket microservices mà chúng ta.
 
 74
 00:04:59,870 --> 00:05:01,160
-Can see in this location.
+Có thể thấy ở vị trí này.
 
 75
 00:05:01,160 --> 00:05:06,530
-So if you go to the extension method and debugging this extension method, you can see that we will
+Vậy nếu bạn vào phương thức mở rộng và gỡ lỗi phương thức này, bạn có thể thấy rằng chúng ta sẽ
 
 76
 00:05:06,530 --> 00:05:10,550
-adding mass transit into dependency injection of the basket microservices.
+thêm mass transit vào dependency injection của basket microservices.
 
 77
 00:05:10,550 --> 00:05:13,370
-And I am going to continue this debug operation.
+Và tôi sẽ tiếp tục hoạt động gỡ lỗi này.
 
 78
 00:05:13,370 --> 00:05:18,710
-And here you can see that we will adding and configuring the RabbitMQ configuration, getting configurations
+Và ở đây bạn có thể thấy rằng chúng ta sẽ thêm và cấu hình cấu hình RabbitMQ, lấy cấu hình
 
 79
 00:05:18,710 --> 00:05:20,570
-from the application settings Json file.
+từ tệp appsettings Json.
 
 80
 00:05:20,570 --> 00:05:25,520
-And this will be returned services and continue adding other services to basket microservices.
+Và điều này sẽ trả về các dịch vụ và tiếp tục thêm các dịch vụ khác vào basket microservices.
 
 81
 00:05:26,570 --> 00:05:28,070
-After completed starting.
+Sau khi hoàn thành khởi động.
 
 82
 00:05:28,070 --> 00:05:30,650
-You can verify from the project consoles.
+Bạn có thể xác minh từ các console dự án.
 
 83
 00:05:30,650 --> 00:05:37,040
-Here you can see the basket API ready to communicate and ready to accepting the Http requests.
+Tại đây bạn có thể thấy basket API sẵn sàng để giao tiếp và sẵn sàng chấp nhận các Http requests.
 
 84
 00:05:37,040 --> 00:05:41,480
-And here you can see that mass transit bus has started in this location.
+Và tại đây bạn có thể thấy rằng mass transit bus đã khởi động ở vị trí này.
 
 85
 00:05:41,480 --> 00:05:48,260
-And also if we check for the other project console, which is the discount gRPC, that will hit the
+Và cũng nếu chúng ta kiểm tra console dự án khác, đó là discount gRPC, nó sẽ gọi đến
 
 86
 00:05:48,260 --> 00:05:52,760
-discount gRPC from the basket microservices when adding item in the basket.
+discount gRPC từ basket microservices khi thêm item trong giỏ hàng.
 
 87
 00:05:52,760 --> 00:05:55,850
-So now we can start our end to end use case.
+Vậy bây giờ chúng ta có thể bắt đầu use case end to end của mình.
 
 88
 00:05:55,850 --> 00:05:59,450
-If you remember the end to end use case we will check out the basket.
+Nếu bạn nhớ use case end to end, chúng ta sẽ kiểm tra giỏ hàng.
 
 89
 00:05:59,450 --> 00:06:01,580
-But first of all, we need a basket.
+Nhưng đầu tiên, chúng ta cần một giỏ hàng.
 
 90
 00:06:01,580 --> 00:06:05,030
-That means we need to create basket into basket microservices.
+Điều đó có nghĩa là chúng ta cần tạo basket vào basket microservices.
 
 91
 00:06:05,030 --> 00:06:10,910
-And the first step involves making Http post requests to basket API to create a new basket.
+Và bước đầu tiên liên quan đến việc thực hiện Http post requests tới basket API để tạo một giỏ hàng mới.
 
 92
 00:06:10,910 --> 00:06:16,610
-For that purpose, please open the postman and if you open the postman, you can see the Our Postman
+Với mục đích đó, vui lòng mở postman và nếu bạn mở postman, bạn có thể thấy bộ sưu tập Postman của chúng ta
 
 93
 00:06:16,610 --> 00:06:18,890
-collection which is the Icap microservices.
+đó là Icap microservices.
 
 94
 00:06:18,890 --> 00:06:24,680
-And if you open the basket microservices, which is a subfolder, here you can see the our Http get,
+Và nếu bạn mở basket microservices, đó là một thư mục con, tại đây bạn có thể thấy Http get, post, delete và post request của chúng ta để checkout basket.
 
 95
 00:06:24,680 --> 00:06:27,710
-post, delete and post request for the checkout basket.
+Đầu tiên, tôi sẽ tạo một giỏ hàng mới bằng cách sử dụng http post request, nó chỉ ra http post
 
 96
 00:06:27,710 --> 00:06:33,920
-First of all, I am going to create a new basket with using http post request which is indicating the
+và URL này là cho localhost.
 
 97
 00:06:33,920 --> 00:06:37,550
-http post and this URL is for the localhost.
+Và tôi sẽ thay đổi environment thành docker để localhost, vì basket microservices đang expose
 
 98
 00:06:37,550 --> 00:06:44,180
-And I'm going to change the environment as a docker to localhost, because basket microservices exposing
+services trong môi trường local.
 
 99
 00:06:44,180 --> 00:06:45,800
-services in the local environment.
+Và chúng ta đã chạy basket và discount trong môi trường local của chúng ta.
 
 100
 00:06:45,800 --> 00:06:49,310
@@ -400,63 +400,63 @@ And we have run the basket and discard in our local environment.
 
 101
 00:06:49,310 --> 00:06:55,580
-After changing the environment to localhost, you can see the basket URL comes with 50 port numbers.
+Sau khi thay đổi environment thành localhost, bạn có thể thấy basket URL đi kèm với số port 50.
 
 102
 00:06:55,580 --> 00:07:02,030
-So that means this is indicating our local environment and slash basket which is the our endpoint in
+Điều đó có nghĩa là nó chỉ ra môi trường local của chúng ta và slash basket, đó là endpoint của chúng ta
 
 103
 00:07:02,030 --> 00:07:03,470
-order to create any basket.
+để tạo bất kỳ basket nào.
 
 104
 00:07:03,470 --> 00:07:07,910
-So here you can see the URL payload that we have created in the previous videos.
+Vậy ở đây bạn có thể thấy URL payload mà chúng ta đã tạo trong các video trước.
 
 105
 00:07:07,910 --> 00:07:12,050
-This will include cart information including username and items.
+Nó sẽ bao gồm thông tin giỏ hàng bao gồm username và các items.
 
 106
 00:07:12,050 --> 00:07:17,060
-We have two items in the basket that we are going to create iPhone X and Samsung ten.
+Chúng ta có hai items trong basket mà chúng ta sẽ tạo là iPhone X và Samsung ten.
 
 107
 00:07:17,060 --> 00:07:21,080
-So I'm going to hit the send button in order to send http post requests.
+Vậy tôi sẽ nhấn nút send để gửi http post requests.
 
 108
 00:07:21,080 --> 00:07:25,100
-And this will be comes to our store basket endpoint class.
+Và nó sẽ đến endpoint store basket class của chúng ta.
 
 109
 00:07:25,100 --> 00:07:29,390
-And this will be hitting our endpoint class under the store basket folder.
+Và nó sẽ hit endpoint class trong thư mục store basket.
 
 110
 00:07:29,390 --> 00:07:34,730
-If you contain debugging you can see that first of all, we will adapting incoming requests to command.
+Nếu bạn chứa debugging, bạn có thể thấy rằng đầu tiên, chúng ta sẽ adapting incoming requests thành command.
 
 111
 00:07:34,730 --> 00:07:40,130
-And we will send this command to the mediator in order to trigger our command handler class.
+Và chúng ta sẽ gửi command này tới mediator để trigger command handler class của chúng ta.
 
 112
 00:07:40,130 --> 00:07:42,440
-Here you can see the handle method comes in here.
+Ở đây bạn có thể thấy handle method xuất hiện ở đây.
 
 113
 00:07:42,440 --> 00:07:46,580
-So the first step we are going to deduct the discount from the discount to our PC.
+Vậy bước đầu tiên, chúng ta sẽ trừ discount từ discount tới PC của chúng ta.
 
 114
 00:07:46,580 --> 00:07:52,340
-And this will be hit or discount gRPC microservices for each item in the shopping cart.
+Và nó sẽ hit discount gRPC microservices cho mỗi item trong shopping cart.
 
 115
 00:07:52,340 --> 00:07:58,460
-So here you can see that we will call gRPC method which comes to get discount method of the discount
+Vậy ở đây bạn có thể thấy rằng chúng ta sẽ gọi gRPC method, nó đến phương thức get discount của discount
 
 116
 00:07:58,460 --> 00:07:59,870
@@ -464,63 +464,63 @@ gRPC microservices.
 
 117
 00:07:59,870 --> 00:08:03,050
-And we will check the coupon information with a given product name.
+Và chúng ta sẽ kiểm tra thông tin coupon với tên sản phẩm đã cho.
 
 118
 00:08:03,050 --> 00:08:07,820
-And if there is a deduct information we can deducting the coupon information.
+Và nếu có thông tin deduct, chúng ta có thể deducting thông tin coupon.
 
 119
 00:08:07,820 --> 00:08:13,940
-But if not exist we will continue to our empty coupon information and log the information and return
+Nhưng nếu không tồn tại, chúng ta sẽ tiếp tục với empty coupon information và ghi lại thông tin và trả lại
 
 120
 00:08:13,940 --> 00:08:15,020
-back the coupon model.
+coupon model.
 
 121
 00:08:15,020 --> 00:08:19,130
-If I hit the F5, this will be come to the point where the deduct operation.
+Nếu tôi nhấn F5, điều này sẽ đi đến điểm mà hoạt động khấu trừ xảy ra.
 
 122
 00:08:19,130 --> 00:08:22,340
-Completing the coupon amount is 150.
+Hoàn thành số tiền coupon là 150.
 
 123
 00:08:22,370 --> 00:08:27,710
-We have a coupon information and we will deducting this information from the iPhone X price and if you
+Chúng ta có thông tin coupon và chúng ta sẽ khấu trừ thông tin này từ giá iPhone X và nếu bạn
 
 124
 00:08:27,710 --> 00:08:32,720
-continue the next item, you can see that the second item also goes to the our discount gRPC.
+tiếp tục mục tiếp theo, bạn có thể thấy rằng mục thứ hai cũng đi đến discount gRPC của chúng ta.
 
 125
 00:08:32,840 --> 00:08:36,740
-And looking for the coupon information which is existing the coupon information.
+Và tìm kiếm thông tin coupon mà tồn tại thông tin coupon.
 
 126
 00:08:36,740 --> 00:08:41,960
-That means there is a discount that we are going to return our basket microservices and deducting this
+Điều đó có nghĩa là có một khoảng giảm giá mà chúng ta sẽ trả lại basket microservices của chúng ta và khấu trừ điều này
 
 127
 00:08:41,960 --> 00:08:45,410
-amount 100 discount from the actual price of the 500.
+số tiền giảm giá 100 từ giá thực của 500.
 
 128
 00:08:45,410 --> 00:08:50,000
-So these are completing the creating basket and deducting discount operation.
+Vậy đây là hoàn thành việc tạo basket và hoạt động khấu trừ discount.
 
 129
 00:08:50,000 --> 00:08:55,520
-And this time with this line of code, we will insert a new item into basket database which sending
+Và lần này với dòng code này, chúng ta sẽ chèn một mục mới vào cơ sở dữ liệu basket mà gửi
 
 130
 00:08:55,520 --> 00:08:56,990
-the command that cart operation.
+lệnh mà là hoạt động cart.
 
 131
 00:08:56,990 --> 00:09:02,120
-So if you continue this code you can see that this will be hitting the store basket under the case basket
+Vậy nếu bạn tiếp tục code này, bạn có thể thấy rằng điều này sẽ nhấn vào store basket dưới trường hợp basket
 
 132
 00:09:02,120 --> 00:09:02,750
@@ -528,19 +528,19 @@ repository.
 
 133
 00:09:02,750 --> 00:09:08,870
-Because in basket microservices we will also use distributed cache as a caching operation.
+Bởi vì trong basket microservices chúng ta cũng sẽ sử dụng distributed cache như là một hoạt động caching.
 
 134
 00:09:08,870 --> 00:09:13,790
-And in here you can see that first of all we will store the basket in database using the Martin.
+Và ở đây bạn có thể thấy rằng đầu tiên chúng ta sẽ lưu trữ basket trong cơ sở dữ liệu bằng cách sử dụng Marten.
 
 135
 00:09:13,790 --> 00:09:20,450
-And after that this will also saving into distributed cache which is the redis in our case.
+Và sau đó điều này cũng sẽ lưu vào distributed cache mà là redis trong trường hợp của chúng ta.
 
 136
 00:09:20,450 --> 00:09:27,110
-And if I hit F5 and continue this operation, you can see that we have got the 201 created successful
+Và nếu tôi nhấn F5 và tiếp tục hoạt động này, bạn có thể thấy rằng chúng ta đã nhận được 201 created successful
 
 137
 00:09:27,110 --> 00:09:27,680
@@ -548,35 +548,35 @@ response.
 
 138
 00:09:27,680 --> 00:09:32,600
-That means we have created successfully as the villain username into our basket microservices.
+Điều đó có nghĩa là chúng ta đã tạo thành công như tên người dùng villain vào basket microservices của chúng ta.
 
 139
 00:09:32,600 --> 00:09:37,070
-So this was the first step of our basket checkout and 20 use case.
+Vậy đây là bước đầu tiên của use case basket checkout và 20 của chúng ta.
 
 140
 00:09:37,070 --> 00:09:40,910
-And after that we will check out the basket for checkout the basket.
+Và sau đó chúng ta sẽ kiểm tra basket để checkout basket.
 
 141
 00:09:40,910 --> 00:09:44,900
-I have created a new http post request under the basket folder.
+Tôi đã tạo một yêu cầu HTTP POST mới dưới thư mục basket.
 
 142
 00:09:44,900 --> 00:09:50,930
-Here you can see that this time this is again http post request, but the endpoint is changed a little
+Ở đây bạn có thể thấy rằng lần này đây lại là một yêu cầu HTTP POST, nhưng endpoint đã thay đổi một chút.
 
 143
 00:09:50,930 --> 00:09:51,260
-bit.
+một chút.
 
 144
 00:09:51,260 --> 00:09:54,500
-This is the basket URL slash basket and slash checkout.
+Đây là URL basket slash basket và slash checkout.
 
 145
 00:09:54,500 --> 00:09:58,700
-So this will be the our actual checkout operation for the basket.
+Vậy đây sẽ là hoạt động checkout thực tế của basket.
 
 146
 00:09:58,700 --> 00:09:59,600
@@ -584,167 +584,167 @@ Microservices.
 
 147
 00:09:59,600 --> 00:10:05,270
-And this operation involves publishing a basket checkout event to RabbitMQ and then deleting the basket
+Và hoạt động này liên quan đến việc công bố một sự kiện basket checkout tới RabbitMQ và sau đó xóa basket
 
 148
 00:10:05,270 --> 00:10:06,560
-from the basket API.
+từ basket API.
 
 149
 00:10:06,560 --> 00:10:10,220
-So here you can see the payload including the basket checkout DTO object.
+Vậy ở đây bạn có thể thấy payload bao gồm đối tượng basket checkout DTO.
 
 150
 00:10:10,220 --> 00:10:15,320
-This including the username, customer ID, total price, first name, last name, and so on.
+Điều này bao gồm tên người dùng, ID khách hàng, tổng giá, tên, họ, v.v.
 
 151
 00:10:15,320 --> 00:10:21,050
-These are the required parameters that we populate from the payload in the Our postman collection.
+Đây là những tham số bắt buộc mà chúng ta điền từ payload trong bộ sưu tập Postman của chúng ta.
 
 152
 00:10:21,050 --> 00:10:25,970
-Now I am going to hit the send button in order to trigger http post request for the checkout.
+Bây giờ tôi sẽ nhấn nút send để kích hoạt yêu cầu HTTP POST cho checkout.
 
 153
 00:10:26,310 --> 00:10:26,910
-Andpoint.
+Endpoint.
 
 154
 00:10:26,910 --> 00:10:31,500
-Here you can see that this comes or breakpoint in the checkout basket endpoint.
+Ở đây bạn có thể thấy rằng điều này đi tới breakpoint trong endpoint checkout basket.
 
 155
 00:10:31,500 --> 00:10:33,750
-And this will be accodomate incoming requests.
+Và đây sẽ là nơi tiếp nhận các yêu cầu đến.
 
 156
 00:10:33,750 --> 00:10:37,110
-And in this request we have a basket checkout DTO.
+Và trong yêu cầu này chúng ta có một basket checkout DTO.
 
 157
 00:10:37,110 --> 00:10:42,030
-And at the first step we will convert these basket checkout requests to the command object.
+Và ở bước đầu tiên chúng ta sẽ chuyển đổi những yêu cầu basket checkout này thành đối tượng command.
 
 158
 00:10:42,030 --> 00:10:47,520
-And we will send this command object to the mediator in order to trigger our store basket handler class.
+Và chúng ta sẽ gửi đối tượng command này tới mediator để kích hoạt lớp store basket handler của chúng ta.
 
 159
 00:10:47,520 --> 00:10:53,550
-And in this class, first of all, we will get existing basket from the database with passing the username,
+Và trong lớp này, trước hết, chúng ta sẽ lấy basket hiện có từ database bằng cách truyền username,
 
 160
 00:10:53,550 --> 00:10:59,910
-and if the database is getting basket information from the basket data here you can see that first of
+và nếu database đang lấy thông tin basket từ dữ liệu basket ở đây bạn có thể thấy rằng đầu tiên
 
 161
 00:10:59,910 --> 00:11:04,050
-all this will be checked to distributed cache and the cache information.
+tất cả điều này sẽ được kiểm tra với distributed cache và thông tin cache.
 
 162
 00:11:04,050 --> 00:11:05,550
-Returning a basket data.
+Trả về dữ liệu giỏ hàng.
 
 163
 00:11:05,550 --> 00:11:11,130
-And we can returning the De basket data from the cache which is the distributed Redis cache.
+Và chúng ta có thể trả về dữ liệu giỏ hàng từ cache, đó là distributed Redis cache.
 
 164
 00:11:11,130 --> 00:11:17,010
-And after getting the basket information we will go to the second step which is the publish event message
+Và sau khi lấy thông tin giỏ hàng, chúng ta sẽ đi tới bước thứ hai, đó là publish event message
 
 165
 00:11:17,010 --> 00:11:17,940
-to the RabbitMQ.
+tới RabbitMQ.
 
 166
 00:11:17,970 --> 00:11:21,960
-In here we will communicate to RabbitMQ using the publish endpoint.
+Ở đây chúng ta sẽ giao tiếp với RabbitMQ bằng cách sử dụng publish endpoint.
 
 167
 00:11:21,960 --> 00:11:27,120
-But before that we will calculate the total price in here and set the event message total price.
+Nhưng trước đó, chúng ta sẽ tính toán tổng giá ở đây và đặt tổng giá của event message.
 
 168
 00:11:27,120 --> 00:11:32,730
-And this is the our event message payload that we are going to publish using the publish endpoint and
+Và đây là payload event message của chúng ta mà chúng ta sẽ publish bằng cách sử dụng publish endpoint và
 
 169
 00:11:32,730 --> 00:11:34,500
-masstransit to the RabbitMQ.
+MassTransit tới RabbitMQ.
 
 170
 00:11:34,530 --> 00:11:39,210
-With this line of code, I am going to publish the basket checkout event to the RabbitMQ Message broker
+Với dòng code này, tôi sẽ publish basket checkout event tới RabbitMQ Message broker
 
 171
 00:11:39,210 --> 00:11:42,060
-and the publish operation complete successfully.
+và hoạt động publish hoàn tất thành công.
 
 172
 00:11:42,060 --> 00:11:47,910
-Just after that we will delete the basket from the basket microservices and this will be involving deleting
+Ngay sau đó, chúng ta sẽ xóa giỏ hàng từ basket microservices và điều này sẽ liên quan tới việc xóa
 
 173
 00:11:47,910 --> 00:11:51,390
-from database and deleting from the Redis distributed cache.
+từ database và xóa từ Redis distributed cache.
 
 174
 00:11:51,390 --> 00:11:55,290
-And this will be return back the response to the our client application.
+Và cái này sẽ trả lại response tới ứng dụng client của chúng ta.
 
 175
 00:11:55,290 --> 00:11:57,810
-And the response comes from the 200 okay.
+Và response đến từ 200 okay.
 
 176
 00:11:57,810 --> 00:11:59,160
-And it is responding.
+Và nó đang respond.
 
 177
 00:11:59,160 --> 00:12:03,330
-Is success true that indicating the whole operation completed successfully?
+Success true cho biết toàn bộ hoạt động đã hoàn tất thành công?
 
 178
 00:12:03,330 --> 00:12:08,730
-If you look at our architecture, we can say that our end to end process has started from the client
+Nếu bạn nhìn vào kiến trúc của chúng ta, chúng ta có thể nói rằng quy trình end to end của chúng ta bắt đầu từ ứng dụng client
 
 179
 00:12:08,730 --> 00:12:14,460
-application with sending http post request to the basket microservices and basket microservices.
+bằng cách gửi HTTP POST request tới basket microservices và basket microservices.
 
 180
 00:12:14,460 --> 00:12:17,760
-Publish the basket checkout event to the RabbitMQ message broker.
+Publish basket checkout event tới RabbitMQ message broker.
 
 181
 00:12:17,790 --> 00:12:21,180
-That means we should see our event in the message broker.
+Điều đó có nghĩa là chúng ta sẽ thấy sự kiện của mình trong message broker.
 
 182
 00:12:21,180 --> 00:12:24,360
-How we can see our events into message broker.
+Cách chúng ta có thể xem các sự kiện của mình trong message broker.
 
 183
 00:12:24,360 --> 00:12:27,240
-Of course we should check the RabbitMQ management dashboard.
+Tất nhiên chúng ta nên kiểm tra bảng điều khiển quản lý RabbitMQ.
 
 184
 00:12:27,240 --> 00:12:33,240
-If you go to localhost, the port number 15672 and login as a guest and guest.
+Nếu bạn truy cập localhost, cổng 15672 và đăng nhập với tên người dùng guest và mật khẩu guest.
 
 185
 00:12:33,240 --> 00:12:39,180
-You can see that we can get the information about the RabbitMQ queues and messages.
+Bạn có thể thấy rằng chúng ta có thể lấy thông tin về các queue và message của RabbitMQ.
 
 186
 00:12:39,180 --> 00:12:44,040
-So in the overview you can see the we have get the message from the in here.
+Vậy trong phần overview bạn có thể thấy chúng ta đã nhận được message từ đây.
 
 187
 00:12:44,040 --> 00:12:50,340
-And if you look at the connections you can see the basket API connected to successfully into our RabbitMQ
+Và nếu bạn xem phần connections, bạn có thể thấy basket API đã kết nối thành công tới RabbitMQ của chúng ta.
 
 188
 00:12:50,340 --> 00:12:51,150
@@ -752,51 +752,51 @@ message broker.
 
 189
 00:12:51,150 --> 00:12:55,080
-This is indicating the successful connections from the basket API.
+Điều này cho thấy các kết nối thành công từ basket API.
 
 190
 00:12:55,080 --> 00:13:01,260
-And after that we can go to channels and we can see the channels from the basket API created.
+Và sau đó chúng ta có thể đi tới channels và có thể thấy các channels được tạo từ basket API.
 
 191
 00:13:01,260 --> 00:13:02,970
-But there is no consumer yet.
+Nhưng chưa có consumer nào cả.
 
 192
 00:13:02,970 --> 00:13:07,110
-And we have open the channel from the RabbitMQ and basket microservices.
+Và chúng ta đã mở channel từ RabbitMQ và các basket microservices.
 
 193
 00:13:07,110 --> 00:13:11,700
-If you open the exchange we can see that exchange type created successfully.
+Nếu bạn mở exchange, bạn có thể thấy rằng loại exchange đã được tạo thành công.
 
 194
 00:13:11,700 --> 00:13:15,360
-In here we have created basket checkout event and integration event.
+Ở đây chúng ta đã tạo basket checkout event và integration event.
 
 195
 00:13:15,360 --> 00:13:16,860
-These are the exchange type.
+Đây là các loại exchange.
 
 196
 00:13:16,860 --> 00:13:20,910
-When we are publishing these event to RabbitMQ from the basket microservices.
+Khi chúng ta đang publish các sự kiện này tới RabbitMQ từ basket microservices.
 
 197
 00:13:20,910 --> 00:13:26,130
-But there is no any queue because we have no binding from the any subscriber yet.
+Nhưng không có queue nào vì chúng ta chưa có binding từ bất kỳ subscriber nào.
 
 198
 00:13:26,130 --> 00:13:29,280
-This is not consuming from the ordering microservice yet.
+Điều này vẫn chưa được consumed từ ordering microservice.
 
 199
 00:13:29,280 --> 00:13:34,260
-But the important thing that we will publish the basket checkout event that we can check the connections
+Nhưng điều quan trọng là chúng ta sẽ publish basket checkout event để chúng ta có thể kiểm tra các kết nối
 
 200
 00:13:34,260 --> 00:13:41,160
-from the basket API, and we can see the our channels and our messages that created into RabbitMQ message
+từ basket API, và chúng ta có thể thấy channels và messages của mình được tạo trong RabbitMQ message
 
 201
 00:13:41,160 --> 00:13:41,730
@@ -804,13 +804,13 @@ broker.
 
 202
 00:13:41,730 --> 00:13:47,130
-So as you can see that we have successfully test basket checkout event in basket microservices.
+Vậy như bạn có thể thấy, chúng ta đã thành công trong việc test basket checkout event trong basket microservices.
 
 203
 00:13:47,130 --> 00:13:53,490
-And in the next step we will focus on how to consume from these event from the ordering microservices
+Và trong bước tiếp theo, chúng ta sẽ tập trung vào cách consume event này từ ordering microservices
 
 204
 00:13:53,490 --> 00:13:56,850
-and process the basket checkout event in the ordering microservices.
+và xử lý basket checkout event trong ordering microservices.
 

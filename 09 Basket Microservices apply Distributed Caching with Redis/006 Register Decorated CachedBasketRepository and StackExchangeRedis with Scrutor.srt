@@ -1,70 +1,70 @@
 1
 00:00:00,140 --> 00:00:07,010
-In this video we are going to register Decorated Cash Basket Repository class using the security library.
+Trong video này, chúng ta sẽ đăng ký lớp Decorated Cash Basket Repository sử dụng thư viện bảo mật.
 
 2
 00:00:07,010 --> 00:00:08,690
-And also we will register.
+Và cũng sẽ đăng ký.
 
 3
 00:00:08,690 --> 00:00:15,050
-I distributed Cash and stack exchange radius to activate register operations into our application.
+Tôi phân phối Cash và stack exchange radius để kích hoạt các hoạt động đăng ký trong ứng dụng của chúng ta.
 
 4
 00:00:15,530 --> 00:00:20,780
-Please open the Program.cs and go to the location of this line of code.
+Vui lòng mở Program.cs và đi tới vị trí của dòng mã này.
 
 5
 00:00:20,780 --> 00:00:26,690
-In here you can see that we have already registered basket repository from the I basket repository.
+Ở đây bạn có thể thấy rằng chúng ta đã đăng ký basket repository từ I basket repository.
 
 6
 00:00:27,050 --> 00:00:33,170
-So directly registering multiple implementation of I basket repository is not feasible.
+Vì vậy, đăng ký trực tiếp nhiều triển khai của I basket repository không khả thi.
 
 7
 00:00:33,170 --> 00:00:37,160
-And it makes problem with direct dependency injection.
+Và nó gây ra vấn đề với dependency injection trực tiếp.
 
 8
 00:00:37,160 --> 00:00:39,140
-What I am talking about in here.
+Những gì tôi đang nói về ở đây.
 
 9
 00:00:39,140 --> 00:00:46,880
-If you come here and register for the cash basket repository, you can see that we have injected two
+Nếu bạn đến đây và đăng ký cash basket repository, bạn có thể thấy rằng chúng ta đã đưa vào hai loại repository từ I basket repository và cái này không hoạt động.
 
 10
 00:00:46,880 --> 00:00:51,620
-repository types from the I basket repository and this is not working.
+Nó sẽ lấy đăng ký cuối cùng và bỏ qua đăng ký đầu tiên.
 
 11
 00:00:51,620 --> 00:00:56,990
-This will be taking the last registration and avoiding from the first registration.
+Vậy làm sao chúng ta có thể xử lý loại hoạt động này.
 
 12
 00:00:56,990 --> 00:01:00,140
-So how we can handle this kind of operations.
+Giải pháp đầu tiên có thể là chúng ta có thể trang trí cash basket repository một cách thủ công.
 
 13
 00:01:00,140 --> 00:01:05,600
-The first solution could be we can decorate cash basket repository manually.
+Vì vậy, thông thường chúng ta có thể đưa lớp được trang trí một cách thủ công.
 
 14
 00:01:05,600 --> 00:01:09,380
-So normally we can inject decorated class with manually.
+Thay vì sử dụng câu lệnh này, chúng ta có thể thực hiện điều đó và đăng ký basket repository.
 
 15
 00:01:09,380 --> 00:01:16,460
-Instead of using this statement we can perform that and register basket repository.
+Với dòng mã này, bạn có thể thấy rằng tôi đang thêm scope như một I basket repository, và trong cấu hình provider, chúng ta có thể lấy các dịch vụ cần thiết, nhưng case repository, đó là triển khai thực tế.
 
 16
 00:01:16,580 --> 00:01:23,060
-With this line of code you can see that I am adding scope as a I basket repository, and in the provider
+Sau đó, chúng ta có thể dán các based basket repository này vào decorated cash basket repository của chúng ta trong constructor.
 
 17
 00:01:23,060 --> 00:01:28,610
-configuration we can get required services, but case repository which is the actual implementation.
+Và chúng ta có thể tạo thủ công cash basket repository cung cấp basket repository này.
 
 18
 00:01:28,610 --> 00:01:34,580
@@ -80,91 +80,91 @@ And we can manually create cash basket repository providing these basket reposit
 
 21
 00:01:41,240 --> 00:01:42,920
-And I distributed cash.
+Và tôi đã phân phối cash.
 
 22
 00:01:43,280 --> 00:01:46,640
-But as you suggested this line of code is.
+Nhưng như bạn gợi ý, dòng code này là.
 
 23
 00:01:46,640 --> 00:01:53,540
-And manually decorating these cash basket repository can be cumbersome and not scalable and it is not
+Và trang trí thủ công cash basket repository có thể rất phiền phức và không có khả năng mở rộng, và nó không
 
 24
 00:01:53,540 --> 00:01:54,380
-manageable.
+dễ quản lý.
 
 25
 00:01:54,380 --> 00:01:57,530
-Instead of that we should use security library.
+Thay vào đó, chúng ta nên sử dụng Scrutor library.
 
 26
 00:01:57,530 --> 00:02:04,550
-So creator library simplifies the process of registering decorators in the dependency injection container.
+Vậy Scrutor library đơn giản hóa quá trình đăng ký decorators trong dependency injection container.
 
 27
 00:02:04,550 --> 00:02:10,850
-So if you go to the GitHub project you can see that security library is very popular in.
+Vậy nếu bạn truy cập vào GitHub project, bạn có thể thấy rằng Scrutor library rất phổ biến trong.
 
 28
 00:02:11,000 --> 00:02:12,080
-Net ecosystem.
+.NET ecosystem.
 
 29
 00:02:12,080 --> 00:02:16,790
-And we can install these package with using the install package command.
+Và chúng ta có thể cài đặt package này bằng cách sử dụng lệnh install package.
 
 30
 00:02:16,790 --> 00:02:20,750
-Or we can use security library from the package manager console.
+Hoặc chúng ta có thể sử dụng Scrutor library từ package manager console.
 
 31
 00:02:20,750 --> 00:02:26,960
-And here you can see the usage this library adding two extension method into the I service collection.
+Và ở đây bạn có thể thấy cách sử dụng library này, thêm hai extension method vào IServiceCollection.
 
 32
 00:02:26,960 --> 00:02:28,850
-These are the second and decorate.
+Đó là Scan và Decorate.
 
 33
 00:02:28,850 --> 00:02:35,480
-So we will use decorate extension method for using the decorate already registered services.
+Vậy chúng ta sẽ sử dụng extension method Decorate để trang trí các services đã được đăng ký.
 
 34
 00:02:35,480 --> 00:02:39,350
-That means we will decorate cash basket repository using this method.
+Điều đó có nghĩa là chúng ta sẽ trang trí cash basket repository bằng cách sử dụng phương pháp này.
 
 35
 00:02:39,350 --> 00:02:44,360
-And here you can see the example of the scanning and decoration in this line of code.
+Và ở đây bạn có thể thấy ví dụ về scanning và decoration trong dòng code này.
 
 36
 00:02:44,360 --> 00:02:51,260
-Now we can go back to our Visual Studio, right click the basket API, manage NuGet packages and search
+Bây giờ chúng ta có thể quay lại Visual Studio, nhấp chuột phải vào basket API, quản lý NuGet packages và tìm kiếm
 
 37
 00:02:51,260 --> 00:02:57,380
-for the security library and install Security Library into basket API project.
+Scrutor library và cài đặt Scrutor Library vào dự án basket API.
 
 38
 00:02:57,800 --> 00:03:02,930
-So if you double click the basket API, you can verify that security library installed successfully.
+Vậy nếu bạn double click vào basket API, bạn có thể xác minh rằng Scrutor library đã được cài đặt thành công.
 
 39
 00:03:02,930 --> 00:03:05,990
-Save this file and go back to Program.cs.
+Lưu file này và quay lại Program.cs.
 
 40
 00:03:06,290 --> 00:03:12,140
-Instead of the manually decorating our cash basket repository, we can comment these codes.
+Thay vì trang trí thủ công cash basket repository của chúng ta, chúng ta có thể comment lại những đoạn code này.
 
 41
 00:03:12,140 --> 00:03:17,390
-And now I'm going to decorate by using the security library.
+Và bây giờ tôi sẽ decorate bằng cách sử dụng security library.
 
 42
 00:03:17,390 --> 00:03:23,000
-Here you can see that this time we will decorate our basket repository using the decorate extension
+Ở đây bạn có thể thấy rằng lần này chúng ta sẽ decorate basket repository của chúng ta bằng cách sử dụng decorate extension
 
 43
 00:03:23,000 --> 00:03:23,420
@@ -172,7 +172,7 @@ method.
 
 44
 00:03:23,420 --> 00:03:29,450
-If I write decorate in here you can see that these decorate extension method comes from the security
+Nếu tôi viết decorate ở đây, bạn có thể thấy rằng decorate extension method này đến từ security
 
 45
 00:03:29,480 --> 00:03:30,170
@@ -180,105 +180,105 @@ library.
 
 46
 00:03:30,170 --> 00:03:36,710
-And by this way, we can easily decorate our cash basket repository using the I basket repository.
+Và bằng cách này, chúng ta có thể dễ dàng decorate cash basket repository của chúng ta bằng cách sử dụng I basket repository.
 
 47
 00:03:36,710 --> 00:03:39,650
-And we am going to removing these unnecessary code.
+Và chúng ta sẽ xóa bỏ những code không cần thiết này.
 
 48
 00:03:39,650 --> 00:03:44,660
-And here you can see our registration operation complete for the cash basket repository.
+Và ở đây bạn có thể thấy registration operation hoàn tất của chúng ta cho cash basket repository.
 
 49
 00:03:44,810 --> 00:03:51,350
-By this way, Secretus decorate method elegantly changes the repository object and its decorated version
+Bằng cách này, Secretus decorate method thay đổi một cách thanh lịch repository object và phiên bản decorated của nó
 
 50
 00:03:51,350 --> 00:03:53,210
-in the Cash Basket Repository class.
+trong Cache Basket Repository class.
 
 51
 00:03:53,780 --> 00:03:59,690
-So if you go to the cash basket repository, we have also injected I distributed cash, which comes
+Vậy nếu bạn đi tới cache basket repository, chúng ta cũng đã inject I distributed cache, đến từ
 
 52
 00:03:59,690 --> 00:04:07,430
-from the Stack Exchange and we should also register this stack exchange radius into our Program.cs.
+Stack Exchange và chúng ta cũng nên register Stack Exchange Redis này vào Program.cs của chúng ta.
 
 53
 00:04:07,430 --> 00:04:10,220
-For that purpose, please open the Program.cs.
+Với mục đích đó, vui lòng mở Program.cs.
 
 54
 00:04:10,220 --> 00:04:19,100
-In here we can register by writing builder services, add stack exchange register cash and we can provide
+Ở đây chúng ta có thể register bằng cách viết builder services, add stack exchange register cache và chúng ta có thể cung cấp
 
 55
 00:04:19,100 --> 00:04:22,370
-options inside of the parameter.
+options bên trong tham số.
 
 56
 00:04:22,370 --> 00:04:27,980
-And as you can see that I have provided options when we are registering a radius cash.
+Và như bạn có thể thấy, tôi đã cung cấp options khi chúng ta đang register Redis cache.
 
 57
 00:04:27,980 --> 00:04:33,950
-And in the configuration we can provide the connection strings from the application Settings.json.
+Và trong configuration chúng ta có thể cung cấp connection strings từ application Settings.json.
 
 58
 00:04:33,950 --> 00:04:40,880
-And if you want, you can also give the instance name and populate the other properties from the options.
+Và nếu bạn muốn, bạn cũng có thể cung cấp instance name và điền các properties khác từ options.
 
 59
 00:04:40,880 --> 00:04:45,560
-Now I am going to leave as it is and I am focusing on the register operations.
+Bây giờ tôi sẽ để nó như vậy và tôi tập trung vào các register operations.
 
 60
 00:04:45,560 --> 00:04:49,280
-As you can see that we have configured Radius as a distributed cache.
+Như bạn có thể thấy, chúng ta đã cấu hình Redis như một distributed cache.
 
 61
 00:04:49,280 --> 00:04:51,560
-With providing this connection string.
+Bằng cách cung cấp connection string này.
 
 62
 00:04:51,560 --> 00:04:57,740
-For that purpose, we should define connection string for radius and please go to application Settings.json
+Để làm điều đó, chúng ta nên định nghĩa connection string cho Redis và hãy vào appsettings.json.
 
 63
 00:04:57,740 --> 00:04:59,750
-file and under the connection string.
+tập tin và dưới phần connection string.
 
 64
 00:05:00,090 --> 00:05:01,500
-And database string.
+Và chuỗi kết nối cơ sở dữ liệu.
 
 65
 00:05:01,530 --> 00:05:04,320
-I'm going to add a new string, which is the radius.
+Tôi sẽ thêm một chuỗi mới, đó là Redis.
 
 66
 00:05:04,320 --> 00:05:08,910
-And here you can see the radius connection string, including the server name as a localhost.
+Và ở đây bạn có thể thấy Redis connection string, bao gồm tên máy chủ là localhost.
 
 67
 00:05:08,910 --> 00:05:11,190
-And the port number is a default port number.
+Và số cổng là số cổng mặc định.
 
 68
 00:05:11,190 --> 00:05:17,160
-By this way radius is configured to connect to the local instance on default port, which is the six,
+Bằng cách này Redis được cấu hình để kết nối đến instance cục bộ trên cổng mặc định, đó là 6,
 
 69
 00:05:17,160 --> 00:05:22,830
-three, seven nine, and this configuration aligned with the standard radius setup and ensure seamless
+3, 7, 9, và cấu hình này phù hợp với Redis setup tiêu chuẩn và đảm bảo tích hợp
 
 70
 00:05:22,830 --> 00:05:28,710
-integration with the application by providing registration in the Program.cs and indicating this connection
+liền mạch với ứng dụng bằng cách cung cấp đăng ký trong Program.cs và chỉ định connection
 
 71
 00:05:28,710 --> 00:05:29,340
-string.
+string này.
 

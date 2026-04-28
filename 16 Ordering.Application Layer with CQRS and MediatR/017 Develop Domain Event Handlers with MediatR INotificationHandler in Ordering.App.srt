@@ -1,6 +1,6 @@
 1
 00:00:00,170 --> 00:00:06,320
-In this video, we are going to develop domain event handlers with using mediator in notification handler
+Trong video này, chúng ta sẽ phát triển các domain event handler bằng cách sử dụng mediator trong notification handler
 
 2
 00:00:06,320 --> 00:00:07,130
@@ -8,71 +8,71 @@ interface.
 
 3
 00:00:07,400 --> 00:00:13,100
-So the implementation of the domain handlers in the ordinary application layer is crucial for handling
+Vậy việc triển khai các domain handler trong application layer thông thường là rất quan trọng để xử lý
 
 4
 00:00:13,100 --> 00:00:14,690
-internal business events.
+các internal business event.
 
 5
 00:00:14,690 --> 00:00:20,300
-So in here you can see that we will develop order created event handler which is triggered from the
+Vậy ở đây bạn có thể thấy rằng chúng ta sẽ phát triển order created event handler mà được kích hoạt từ
 
 6
 00:00:20,300 --> 00:00:23,600
-order is successfully created from the ordering domain layer.
+order được tạo thành công từ ordering domain layer.
 
 7
 00:00:23,600 --> 00:00:28,580
-And here you can see the ordering domain layer is raising order created domain event.
+Và ở đây bạn có thể thấy rằng ordering domain layer đang raise order created domain event.
 
 8
 00:00:28,580 --> 00:00:33,290
-And if you go to this domain event you can see that this will be implemented by domain event.
+Và nếu bạn vào domain event này, bạn có thể thấy rằng điều này sẽ được triển khai bởi domain event.
 
 9
 00:00:33,290 --> 00:00:38,120
-And I domain event is implement I notification which comes from the mediator.
+Và I domain event triển khai I notification mà đến từ mediator.
 
 10
 00:00:38,120 --> 00:00:45,410
-That means we will handle these notification with using I notification handler interface from the mediator
+Điều đó có nghĩa là chúng ta sẽ xử lý các notification này bằng cách sử dụng I notification handler interface từ mediator
 
 11
 00:00:45,410 --> 00:00:47,330
-into our handle class.
+vào class handle của chúng ta.
 
 12
 00:00:47,330 --> 00:00:53,600
-For that purpose, I am going to open the Or order created domain event and remove unnecessary using
+Cho mục đích đó, tôi sắp mở Order created domain event và loại bỏ các using statement không cần thiết và làm cho class này là public.
 
 13
 00:00:53,600 --> 00:00:56,420
-statement and make this class as a public.
+Và bây giờ bước đầu tiên là chúng ta sẽ triển khai I notification handler để xử lý mediator I notification.
 
 14
 00:00:57,800 --> 00:01:05,330
-And now the first step is we will implement I notification handler in order to handle mediator I notification.
+Ở đây bạn có thể thấy rằng tôi sẽ triển khai I notification handler từ mediator và truyền
 
 15
 00:01:05,330 --> 00:01:10,700
-Here you can see that I'm going to implement I notification handler from the mediator and passing the
+order created domain event.
 
 16
 00:01:10,700 --> 00:01:12,200
-order created domain event.
+Và interface này triển khai các member của handle method.
 
 17
 00:01:12,200 --> 00:01:17,750
-And these interface implementing the members of the handle method.
+Vậy chúng ta sẽ triển khai handle method này.
 
 18
 00:01:17,750 --> 00:01:19,940
-So we will implement this handle method.
+Điều này sẽ được kích hoạt khi mediator publishing notification từ infrastructure layer.
 
 19
 00:01:19,940 --> 00:01:25,850
-This will be trigger one mediator publishing the notification from the infrastructure layer.
+Nếu bạn mở Dispatch Domain Interceptor class, bạn có thể thấy rằng chúng ta sẽ publish các domain event
 
 20
 00:01:25,850 --> 00:01:32,090
@@ -80,31 +80,31 @@ If you open the Dispatch Domain Interceptor class, you can see that we will publ
 
 21
 00:01:32,090 --> 00:01:36,050
-when saving the changes and one mediator publish the domain event.
+khi lưu các thay đổi và một mediator sẽ phát hành domain event.
 
 22
 00:01:36,050 --> 00:01:42,170
-This will be triggered by notification and this will be comes to our I notification handler and which
+Điều này sẽ được kích hoạt bởi notification và nó sẽ đi tới I notification handler của chúng ta và
 
 23
 00:01:42,170 --> 00:01:44,270
-will be the order created event handler.
+sẽ là order created event handler.
 
 24
 00:01:44,270 --> 00:01:46,280
-And this will be trigger the handle method.
+Và điều này sẽ kích hoạt phương thức handle.
 
 25
 00:01:46,280 --> 00:01:49,970
-If you look at the handle method, you can see that as a parameter.
+Nếu bạn nhìn vào phương thức handle, bạn có thể thấy rằng nó là một parameter.
 
 26
 00:01:49,970 --> 00:01:54,260
-It is taking order created event and the parameter name is notification.
+Nó đang nhận order created event và tên parameter là notification.
 
 27
 00:01:54,260 --> 00:02:00,080
-So we will be getting these notification and we will implement internal business cases in the handle
+Vậy chúng ta sẽ nhận được notification này và chúng ta sẽ triển khai các business case nội bộ trong phương thức handle.
 
 28
 00:02:00,080 --> 00:02:00,620
@@ -112,47 +112,47 @@ method.
 
 29
 00:02:00,620 --> 00:02:06,230
-But for now I am only doing the logging operation which is the logger that log information.
+Nhưng hiện tại tôi chỉ thực hiện thao tác logging, đó là logger sẽ log thông tin.
 
 30
 00:02:06,230 --> 00:02:10,669
-That means I need inject a logger into our primary constructor.
+Điều đó có nghĩa là tôi cần inject một logger vào primary constructor của chúng ta.
 
 31
 00:02:10,669 --> 00:02:15,410
-For that purpose, please go to the class definition and adding a logger.
+Để làm việc đó, vui lòng đi tới định nghĩa class và thêm một logger.
 
 32
 00:02:15,410 --> 00:02:22,400
-Injecting the logger for the order created event handler class and we will use these logger object when
+Injecting logger cho class order created event handler và chúng ta sẽ sử dụng logger object này khi
 
 33
 00:02:22,400 --> 00:02:28,220
-we are running the log information, which is a domain event handle is successfully hitting with these
+chúng ta chạy log information, đó là domain event handle đã successfully hit với event này và tên type của nó.
 
 34
 00:02:28,220 --> 00:02:30,140
-event and the type of the name.
+Vậy đây là thao tác log.
 
 35
 00:02:30,140 --> 00:02:32,060
-So this is the log operation.
+Chúng ta sẽ log incoming operation, điều này cho thấy order created event đã được xử lý và logger
 
 36
 00:02:32,060 --> 00:02:38,180
-We will log the incoming operation which indicating the order created event has been handled and the
+sẽ capture event type cho các mục đích monitoring và debugging.
 
 37
 00:02:38,180 --> 00:02:42,020
-logger captures the event type for monitoring and debugging purpose.
+Hiện tại, điều này đã đủ cho việc triển khai các internal business operations, đó là logging.
 
 38
 00:02:42,020 --> 00:02:47,240
-For now it is enough for the implementing internal business operations, which is the logging.
+Nhưng trong các phần sắp tới, chúng ta có thể phát hành integration event ở vị trí này.
 
 39
 00:02:47,240 --> 00:02:51,920
-But in the upcoming sections we can publish integration event in this place.
+Vậy tôi sẽ di chuyển các using statement này vào global using cho ordering application layer.
 
 40
 00:02:51,920 --> 00:02:58,400
@@ -160,59 +160,59 @@ So I'm going to moving these using statements into our global using for the orde
 
 41
 00:02:58,400 --> 00:03:05,420
-If you come here and paste your using statements and put the keyword as a global, and you can see that
+Nếu bạn đến đây và dán các using statements của bạn và đặt keyword là global, bạn có thể thấy
 
 42
 00:03:05,420 --> 00:03:08,660
-we have added these operation in the global listing.
+chúng ta đã thêm các operation này vào global listing.
 
 43
 00:03:08,660 --> 00:03:14,510
-And if I go back to our order created event handler, I'm going to remove these using statements after
+Và nếu tôi quay lại order created event handler của chúng ta, tôi sẽ xóa các using statements này sau
 
 44
 00:03:14,510 --> 00:03:17,750
-adding the global using statement and save these changes.
+khi thêm global using statement và lưu các thay đổi này.
 
 45
 00:03:17,750 --> 00:03:20,060
-And this is the order created event handler.
+Và đây là order created event handler.
 
 46
 00:03:20,060 --> 00:03:25,070
-And at the same way I'm going to follow the same step for the order updated event handler.
+Và theo cách tương tự tôi sẽ làm theo cùng một bước cho order updated event handler.
 
 47
 00:03:25,070 --> 00:03:30,830
-If you open this class, remove unnecessary using statement and make this class as a public.
+Nếu bạn mở class này, xóa unnecessary using statement và làm cho class này thành public.
 
 48
 00:03:30,830 --> 00:03:38,300
-And also we are going to implement from the I notification handler which is in this case order updated
+Và cũng chúng ta sẽ triển khai từ I notification handler, trong trường hợp này là order updated
 
 49
 00:03:38,300 --> 00:03:44,090
-event and implement the interface members, which is the handle method, and this will be getting notification
+event và triển khai interface members, đó là handle method, và nó sẽ nhận notification
 
 50
 00:03:44,090 --> 00:03:45,950
-from the order updated event.
+từ order updated event.
 
 51
 00:03:45,950 --> 00:03:51,830
-So as you remember that in the notification object, we are passing the our orders that we can access
+Vậy như bạn nhớ rằng trong notification object, chúng ta đang truyền orders của chúng ta mà chúng ta có thể truy cập
 
 52
 00:03:51,830 --> 00:03:56,030
-to order and get the order members with using the notification order.
+đến order và lấy order members bằng cách sử dụng notification order.
 
 53
 00:03:56,030 --> 00:04:03,200
-But for our case, in our business case, we can only logging the information with the incoming event,
+Nhưng đối với trường hợp của chúng ta, trong use case kinh doanh của chúng ta, chúng ta chỉ có thể logging thông tin với incoming event,
 
 54
 00:04:03,200 --> 00:04:09,350
-which is the domain event and we are notifying this domain event is triggering and we will use logger
+đó là domain event và chúng ta đang thông báo rằng domain event này được kích hoạt và chúng ta sẽ sử dụng logger
 
 55
 00:04:09,350 --> 00:04:09,800
@@ -220,15 +220,15 @@ object.
 
 56
 00:04:09,800 --> 00:04:15,680
-That means I'm going to inject the I logger in the beginning of the class definition with the primary
+Điều đó có nghĩa là tôi sẽ inject I logger vào đầu định nghĩa class với primary
 
 57
 00:04:15,680 --> 00:04:21,800
-constructor that we can use Logger.log information, and in this case we will log the order updated
+constructor để chúng ta có thể sử dụng Logger.log information, và trong trường hợp này chúng ta sẽ log order updated
 
 58
 00:04:21,800 --> 00:04:28,220
-event and giving the notification type in the handle method so you can safely remove unnecessary using
+event và cung cấp notification type trong handle method để bạn có thể an toàn xóa unnecessary using
 
 59
 00:04:28,220 --> 00:04:28,850
@@ -236,15 +236,15 @@ statement.
 
 60
 00:04:28,850 --> 00:04:31,940
-And this was the implementation of the order.
+Và đây là triển khai của order.
 
 61
 00:04:31,940 --> 00:04:35,630
-Updated event handler and order created event handler that we have.
+Đã cập nhật event handler và order created event handler mà chúng ta có.
 
 62
 00:04:35,630 --> 00:04:39,500
-Understanding the role of the domain event handlers with using mediator I.
+Hiểu vai trò của domain event handlers bằng cách sử dụng mediator I.
 
 63
 00:04:39,500 --> 00:04:41,120

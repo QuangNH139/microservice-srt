@@ -1,126 +1,126 @@
 1
 00:00:00,260 --> 00:00:07,370
-In this video, we are going to test the Getproducts endpoint of our catalog microservices, which is
+Trong video này, chúng ta sẽ test endpoint Getproducts của catalog microservice của chúng ta, cái mà
 
 2
 00:00:07,370 --> 00:00:12,050
-connected to a PostgreSQL database running in a Docker container.
+được kết nối với một database PostgreSQL đang chạy trong một Docker container.
 
 3
 00:00:12,050 --> 00:00:16,250
-So we are in here and we will test these http get method.
+Vậy chúng ta ở đây và chúng ta sẽ test http get method này.
 
 4
 00:00:16,250 --> 00:00:24,500
-If you remember the our microservice deployment strategy, our deployment strategy is involving testing
+Nếu bạn nhớ lại chiến lược triển khai microservice của chúng ta, chiến lược triển khai của chúng ta liên quan đến việc test
 
 5
 00:00:24,500 --> 00:00:28,610
-local microservices with the containerized database on Docker.
+local microservices với database được đóng vào container trên Docker.
 
 6
 00:00:28,610 --> 00:00:34,670
-So we will follow the first strategy when testing our Getproducts in this video.
+Vậy chúng ta sẽ tuân theo chiến lược đầu tiên khi test Getproducts trong video này.
 
 7
 00:00:34,670 --> 00:00:40,220
-So first of all we need to ensure our PostgreSQL database is running within the Docker.
+Vậy đầu tiên chúng ta cần đảm bảo rằng database PostgreSQL của chúng ta đang chạy trong Docker.
 
 8
 00:00:40,220 --> 00:00:46,700
-So if we open the our Visual Studio you can remember that we will develop the Docker compose yml file.
+Vậy nếu chúng ta mở Visual Studio bạn có thể nhớ lại rằng chúng ta sẽ develop Docker compose yml file.
 
 9
 00:00:46,700 --> 00:00:50,210
-Adding the PostgreSQL image and docker compose override file.
+Thêm PostgreSQL image và docker compose override file.
 
 10
 00:00:50,210 --> 00:00:52,430
-We will specify the configurations.
+Chúng ta sẽ chỉ định các cấu hình.
 
 11
 00:00:52,430 --> 00:00:57,530
-Now we will ensure that our PostgreSQL database is running within Docker.
+Bây giờ chúng ta sẽ đảm bảo rằng database PostgreSQL của chúng ta đang chạy trong Docker.
 
 12
 00:00:57,530 --> 00:00:59,180
-So how we can do that.
+Vậy chúng ta có thể làm điều đó như thế nào.
 
 13
 00:00:59,180 --> 00:01:03,320
-This will be achieved by running the Docker compose from the Visual Studio.
+Điều này sẽ được thực hiện bằng cách chạy Docker compose từ Visual Studio.
 
 14
 00:01:03,320 --> 00:01:07,580
-And we will spin up catalog microservice databases.
+Và chúng ta sẽ khởi động catalog microservice databases.
 
 15
 00:01:07,970 --> 00:01:14,810
-Before we start, make sure that your Docker desktop is up and running and you will see this green box.
+Trước khi chúng ta bắt đầu, hãy đảm bảo rằng Docker desktop của bạn đang chạy và bạn sẽ thấy hộp màu xanh này.
 
 16
 00:01:14,810 --> 00:01:20,420
-And after that we will activate and running this catalog DB container.
+Và sau đó chúng ta sẽ kích hoạt và chạy catalog DB container này.
 
 17
 00:01:20,420 --> 00:01:26,000
-For that purpose, I'm going to right click the Docker compose and set a start up project.
+Để làm điều đó, tôi sẽ right click Docker compose và set a start up project.
 
 18
 00:01:26,060 --> 00:01:32,600
-This means that we will run the docker compose up command using the Visual Studio two link in order
+Điều này có nghĩa là chúng ta sẽ chạy docker compose up command sử dụng Visual Studio two link để
 
 19
 00:01:32,600 --> 00:01:34,640
-to activate our database.
+kích hoạt database của chúng ta.
 
 20
 00:01:34,640 --> 00:01:37,910
-So here you can see that our running profile has changed.
+Vậy ở đây bạn có thể thấy rằng running profile của chúng ta đã thay đổi.
 
 21
 00:01:37,910 --> 00:01:42,380
-And please run this project in a Docker compose profile.
+Và vui lòng chạy dự án này trong một Docker compose profile.
 
 22
 00:01:42,380 --> 00:01:49,310
-And this will be running the PostgreSQL container in our Docker environment.
+Và điều này sẽ chạy container PostgreSQL trong môi trường Docker của chúng ta.
 
 23
 00:01:49,550 --> 00:01:56,630
-And on behind of the scenes this will be running the docker compose up command specifying this override
+Và đằng sau hậu trường, điều này sẽ chạy lệnh docker compose up với override này
 
 24
 00:01:56,630 --> 00:01:57,800
-and this file.
+và tệp này.
 
 25
 00:01:57,800 --> 00:02:03,290
-So after running this docker compose you can open the.
+Vậy sau khi chạy docker compose này, bạn có thể mở
 
 26
 00:02:04,330 --> 00:02:08,380
-Look at desktop and verify that Docker compose is running.
+Hãy xem desktop và xác minh rằng Docker compose đang chạy.
 
 27
 00:02:08,380 --> 00:02:16,900
-And under this docker compose we have started the PostgreSQL database into the port number is 5432.
+Và dưới docker compose này, chúng ta đã khởi động cơ sở dữ liệu PostgreSQL vào cổng số 5432.
 
 28
 00:02:16,900 --> 00:02:24,460
-So we have verified that our backing services are working perfectly now and the port numbers is in here.
+Vậy chúng ta đã xác minh rằng các dịch vụ backend của chúng ta hoạt động hoàn hảo và các số cổng ở đây.
 
 29
 00:02:24,460 --> 00:02:31,840
-So if you open the application settings Json file, we can verify that our connection string is correct.
+Vậy nếu bạn mở tệp application settings Json, chúng ta có thể xác minh rằng connection string của chúng ta là chính xác.
 
 30
 00:02:31,840 --> 00:02:39,280
-And we are going to communicate with the PostgreSQL catalog DB database in order to getting the products
+Và chúng ta sẽ giao tiếp với cơ sở dữ liệu PostgreSQL catalog DB để lấy các sản phẩm
 
 31
 00:02:39,280 --> 00:02:41,860
-from the database using the catalog API.
+từ cơ sở dữ liệu bằng cách sử dụng catalog API.
 
 32
 00:02:41,860 --> 00:02:42,850
@@ -128,63 +128,63 @@ Microservices.
 
 33
 00:02:42,850 --> 00:02:49,810
-Now we can start our test which is the Catholic API microservices http get method for that purpose.
+Bây giờ chúng ta có thể bắt đầu bài kiểm tra của mình, đó là phương thức HTTP GET của catalog API microservices cho mục đích đó.
 
 34
 00:02:49,810 --> 00:02:54,640
-Now I am going to right click the catalog API and set a startup project.
+Bây giờ tôi sẽ nhấp chuột phải vào catalog API và đặt nó làm startup project.
 
 35
 00:02:54,640 --> 00:02:59,320
-And I'm going to run this catalog API project in an Https mode.
+Và tôi sẽ chạy dự án catalog API này ở chế độ Https.
 
 36
 00:02:59,320 --> 00:03:05,920
-Before running the our microservices, make sure that you put the breakpoints in the Getproducts endpoint,
+Trước khi chạy microservices của chúng ta, hãy chắc chắn rằng bạn đặt các breakpoints trong endpoint Getproducts,
 
 37
 00:03:05,920 --> 00:03:12,850
-which is the starting point, incoming request and also Getproducts handle method which is the handle
+đó là điểm bắt đầu của yêu cầu đến và cũng là phương thức handle Getproducts, đó là phương thức
 
 38
 00:03:12,850 --> 00:03:14,830
-method and communicate with database.
+handle và giao tiếp với cơ sở dữ liệu.
 
 39
 00:03:14,830 --> 00:03:19,600
-So now we are ready for the running these catalog API in a https mode.
+Vậy bây giờ chúng ta đã sẵn sàng để chạy catalog API này ở chế độ https.
 
 40
 00:03:19,600 --> 00:03:26,860
-And after that you can see that our project and microservice started in localhost 5050.
+Và sau đó bạn có thể thấy rằng dự án và microservice của chúng ta đã khởi động ở localhost 5050.
 
 41
 00:03:26,860 --> 00:03:31,960
-And you can verify from the project console and listening on 5050.
+Và bạn có thể xác minh từ console của dự án và lắng nghe trên cổng 5050.
 
 42
 00:03:31,990 --> 00:03:36,790
-That means it is ready for the according request from the our postman.
+Điều đó có nghĩa là nó đã sẵn sàng cho các yêu cầu tương ứng từ Postman của chúng ta.
 
 43
 00:03:36,790 --> 00:03:41,950
-So in order to send http get method, I'm going to use postman.
+Vậy để gửi HTTP GET method, tôi sẽ sử dụng Postman.
 
 44
 00:03:41,950 --> 00:03:44,860
-Last time we will use http post request.
+Lần trước chúng ta sẽ sử dụng HTTP POST request.
 
 45
 00:03:44,890 --> 00:03:53,710
-Now I am going to change this http get method and the url is https localhost 5050 and products.
+Bây giờ tôi sẽ thay đổi HTTP GET method này và URL là https localhost 5050 và products.
 
 46
 00:03:53,710 --> 00:04:01,300
-If you hit the send button, you can see that our breakpoint is comes to our get products endpoint requests.
+Nếu bạn nhấn nút send, bạn có thể thấy rằng điểm dừng của chúng ta đã đi đến yêu cầu endpoint get products của chúng ta.
 
 47
 00:04:01,300 --> 00:04:09,040
-And if we put to F10 and continue the debug operations, the first row is we are sending the get products
+Và nếu chúng ta nhấn F10 và tiếp tục các hoạt động debug, hàng đầu tiên là chúng ta đang gửi get products
 
 48
 00:04:09,040 --> 00:04:09,640
@@ -192,31 +192,31 @@ query.
 
 49
 00:04:09,640 --> 00:04:15,610
-And this mediator will be triggered to our handler class with this query object.
+Và mediator này sẽ được kích hoạt tới lớp handler của chúng ta với đối tượng query này.
 
 50
 00:04:15,610 --> 00:04:18,610
-Here you can see that our handle method is triggered.
+Ở đây bạn có thể thấy rằng phương thức handle của chúng ta đã được kích hoạt.
 
 51
 00:04:18,610 --> 00:04:25,300
-The first row we have logging the information and the second row is communicating this database PostgreSQL
+Hàng đầu tiên chúng ta ghi lại thông tin và hàng thứ hai là giao tiếp với cơ sở dữ liệu PostgreSQL
 
 52
 00:04:25,300 --> 00:04:31,090
-database and listing all products into our document database which is the catalog DB.
+database và liệt kê tất cả các sản phẩm vào cơ sở dữ liệu document của chúng ta đó là catalog DB.
 
 53
 00:04:31,390 --> 00:04:37,660
-And here you can see the products is comes and you can see the product count is one.
+Và ở đây bạn có thể thấy các sản phẩm đã xuất hiện và bạn có thể thấy số lượng sản phẩm là một.
 
 54
 00:04:37,660 --> 00:04:44,200
-Because we have already created one product before when we are developing our Http post request.
+Bởi vì chúng ta đã tạo một sản phẩm trước đó khi chúng ta đang phát triển HTTP POST request của chúng ta.
 
 55
 00:04:44,200 --> 00:04:50,560
-And if you continue debugging, you can see that we have adapting the result object to the response
+Và nếu bạn tiếp tục debug, bạn có thể thấy rằng chúng ta đã thích ứng đối tượng kết quả thành đối tượng response
 
 56
 00:04:50,560 --> 00:04:51,130
@@ -224,21 +224,21 @@ object.
 
 57
 00:04:51,130 --> 00:04:54,070
-And after that we will send this response to the client.
+Và sau đó chúng ta sẽ gửi response này tới client.
 
 58
 00:04:54,070 --> 00:04:58,390
-So hit the F5 and see the response in the our postman.
+Vậy nhấn F5 và xem response trong Postman của chúng ta.
 
 59
 00:04:58,390 --> 00:05:04,120
-And you can see that our products are listed in the response of Http get method.
+Và bạn có thể thấy rằng các sản phẩm của chúng ta được liệt kê trong response của HTTP GET method.
 
 60
 00:05:04,120 --> 00:05:11,410
-So by testing our catalog API with a Dockerized PostgreSQL database, we have validated the connectivity
+Vậy bằng cách kiểm tra catalog API của chúng ta với cơ sở dữ liệu PostgreSQL được Dockerize, chúng ta đã xác thực kết nối
 
 61
 00:05:11,410 --> 00:05:13,750
-and functionality of our microservices.
+và chức năng của microservices của chúng ta.
 

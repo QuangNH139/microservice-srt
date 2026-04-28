@@ -1,54 +1,54 @@
 1
 00:00:00,170 --> 00:00:05,930
-In this video we are going to test, create, order and print with Sequence and Kirin architecture.
+Trong video này chúng ta sẽ thực hiện test, tạo, đặt hàng và in kết quả với kiến trúc Sequence và Kirin.
 
 2
 00:00:05,930 --> 00:00:12,890
-That means we will send http post requests in the slash orders endpoint in order to create a new order,
+Điều đó có nghĩa là chúng ta sẽ gửi các HTTP post requests đến endpoint /orders để tạo một đơn hàng mới,
 
 3
 00:00:12,890 --> 00:00:16,700
-and we will conduct end to end test for the create order endpoint.
+và chúng ta sẽ thực hiện end to end test cho endpoint create order.
 
 4
 00:00:16,700 --> 00:00:23,180
-That means we will perform queries and mediator request life cycle for incoming Http post requests.
+Điều đó có nghĩa là chúng ta sẽ thực hiện các query và mediator request life cycle cho các HTTP post requests đến.
 
 5
 00:00:23,180 --> 00:00:26,630
-This will be create order request and we will convert these.
+Đây sẽ là create order request và chúng ta sẽ chuyển đổi những cái này.
 
 6
 00:00:26,630 --> 00:00:30,860
-Create order command and mediator will be trigger create order command handler.
+Create order command và mediator sẽ trigger create order command handler.
 
 7
 00:00:30,860 --> 00:00:34,700
-In order to create a new item into database and returning result.
+Để tạo một item mới vào database và trả về kết quả.
 
 8
 00:00:34,700 --> 00:00:38,540
-And this will be converting response and response back to client application.
+Và đây sẽ là chuyển đổi response và response trở lại cho ứng dụng client.
 
 9
 00:00:38,870 --> 00:00:44,990
-For that purpose, please open the Visual Studio and go to the ordering API endpoint and create order.
+Cho mục đích đó, vui lòng mở Visual Studio và đi tới endpoint ordering API và create order.
 
 10
 00:00:44,990 --> 00:00:50,330
-This class is academic incoming http post Cqrs in the delegate handler function.
+Class này là academic incoming HTTP post CQRS trong delegate handler function.
 
 11
 00:00:50,330 --> 00:00:56,210
-So in here I am going to put a breakpoint which is the map post operation and this will be Accodomate
+Vậy ở đây tôi sẽ đặt một breakpoint đó là map post operation và đây sẽ là accommodate
 
 12
 00:00:56,210 --> 00:01:01,940
-incoming create order requests and performing actual logic and after that I am going to put additional
+incoming create order requests và thực hiện logic thực tế, sau đó tôi sẽ đặt thêm
 
 13
 00:01:01,940 --> 00:01:07,940
-breakpoint in the end of this function in order to understand how we can respond back to our client
+breakpoint ở cuối function này để hiểu cách chúng ta có thể respond trở lại cho client
 
 14
 00:01:07,940 --> 00:01:08,630
@@ -56,95 +56,95 @@ application.
 
 15
 00:01:08,630 --> 00:01:15,350
-So in the body of this method you can see that we will basically using mediator send function with sending
+Vậy trong body của method này bạn có thể thấy rằng chúng ta sẽ cơ bản sử dụng mediator send function với việc gửi
 
 16
 00:01:15,350 --> 00:01:15,950
-this command.
+command này.
 
 17
 00:01:15,950 --> 00:01:18,650
-And this will be trigger our application layer.
+Và điều này sẽ trigger application layer của chúng ta.
 
 18
 00:01:18,740 --> 00:01:21,440
-Since we are sending the create order command.
+Vì chúng ta đang gửi create order command.
 
 19
 00:01:21,440 --> 00:01:25,310
-And this will be trigger the create order command handler in the application layer.
+Và điều này sẽ trigger create order command handler trong application layer.
 
 20
 00:01:25,310 --> 00:01:27,650
-For that purpose go to Ordering application.
+Cho mục đích đó hãy đi tới Ordering application.
 
 21
 00:01:27,650 --> 00:01:33,470
-Go to orders commands, create order use case folder and open the create order handler.
+Đi tới orders commands, tạo create order use case folder và mở create order handler.
 
 22
 00:01:33,470 --> 00:01:35,660
-So this will be our actual handler.
+Vậy đây sẽ là handler thực tế của chúng ta.
 
 23
 00:01:35,660 --> 00:01:36,950
-For the create order command.
+Cho create order command.
 
 24
 00:01:36,950 --> 00:01:42,800
-You can safely remove unnecessary using statement and save this create order command under class.
+Bạn có thể xóa các using statement không cần thiết một cách an toàn và lưu create order command dưới class này.
 
 25
 00:01:42,800 --> 00:01:45,860
-So in this class you can see that we have handle method.
+Vậy trong class này bạn có thể thấy chúng ta có handle method.
 
 26
 00:01:45,860 --> 00:01:51,920
-And in this handle method we will perform actual use case which is the interacting database and inserting
+Và trong handle method này chúng ta sẽ thực hiện use case thực tế đó là tương tác với database và chèn
 
 27
 00:01:51,920 --> 00:01:52,610
-any record.
+bất kỳ record nào.
 
 28
 00:01:52,610 --> 00:01:56,060
-So I am going to put a breakpoint in the beginning of the handle method.
+Vậy tôi sẽ đặt một breakpoint ở đầu của handle method.
 
 29
 00:01:56,060 --> 00:02:01,370
-And also if you go to create new order I am going to put additional breakpoint in the create new order.
+Và cũng nếu bạn đi tới create new order tôi sẽ đặt breakpoint bổ sung trong create new order.
 
 30
 00:02:01,370 --> 00:02:06,080
-So if you look at this logic you can see that in here we are creating order entity.
+Vậy nếu bạn xem logic này bạn có thể thấy rằng ở đây chúng ta đang tạo order entity.
 
 31
 00:02:06,080 --> 00:02:12,170
-And after that adding orders into Entity Framework core orders collection and save change async with
+Và sau đó thêm orders vào Entity Framework Core orders collection và save change async với
 
 32
 00:02:12,170 --> 00:02:13,730
-using Entity Framework Core.
+sử dụng Entity Framework Core.
 
 33
 00:02:13,730 --> 00:02:20,030
-So in here you can see that when we are creating a new order entity, we will use order dot create function
+Vậy ở đây bạn có thể thấy rằng khi chúng ta đang tạo một order entity mới, chúng ta sẽ sử dụng order dot create function
 
 34
 00:02:20,030 --> 00:02:25,910
-which is inside of the order entity order is responsible for creating its own entity.
+nằm bên trong order entity, order là entity chịu trách nhiệm tạo entity của chính nó.
 
 35
 00:02:25,910 --> 00:02:30,650
-And here you can see that we have additional breakpoint in the order create operation.
+Và ở đây bạn có thể thấy rằng chúng ta có breakpoint bổ sung trong order create operation.
 
 36
 00:02:30,650 --> 00:02:33,950
-And this is happening in the ordering domain layer.
+Và điều này đang xảy ra trong ordering domain layer.
 
 37
 00:02:33,950 --> 00:02:39,170
-And the model under the models we have ordered aggregate and we will put breakpoint under the order
+Và model dưới models chúng ta có ordered aggregate và chúng ta sẽ đặt breakpoint dưới order
 
 38
 00:02:39,170 --> 00:02:40,130
@@ -152,43 +152,43 @@ create function.
 
 39
 00:02:40,130 --> 00:02:45,080
-And in this function you can see that we have created domain event which is the order created domain
+Và trong function này bạn có thể thấy rằng chúng ta đã tạo domain event đó là order created domain
 
 40
 00:02:45,080 --> 00:02:47,840
-event and how we can dispatch this domain event.
+event và làm cách nào chúng ta có thể dispatch domain event này.
 
 41
 00:02:47,840 --> 00:02:50,600
-Of course it is happening in the ordering infrastructure.
+Tất nhiên điều đó đang xảy ra trong ordering infrastructure.
 
 42
 00:02:50,600 --> 00:02:55,460
-If you go to ordering infrastructure, go to interceptors and open the dispatch domain event.
+Nếu bạn vào ordering infrastructure, vào interceptors và mở dispatch domain event.
 
 43
 00:02:55,460 --> 00:03:00,860
-You can put breakpoints when we are dispatching this domain event and when we are dispatching this domain
+Bạn có thể đặt breakpoints khi chúng ta dispatching domain event này và khi chúng ta dispatching domain
 
 44
 00:03:00,860 --> 00:03:04,220
-event, this will be handled in the ordering application layer.
+event này, nó sẽ được xử lý trong ordering application layer.
 
 45
 00:03:04,220 --> 00:03:06,590
-If you go back to ordering application layer.
+Nếu bạn quay lại ordering application layer.
 
 46
 00:03:06,590 --> 00:03:13,100
-And if you go to the event handlers, if you open the order created event handler, you can see that
+Và nếu bạn vào event handlers, nếu bạn mở order created event handler, bạn có thể thấy rằng
 
 47
 00:03:13,100 --> 00:03:19,160
-in this code, we will handle and catch these domain events in order to perform our use case for that
+trong đoạn code này, chúng ta sẽ handle và catch những domain events này để thực hiện use case của chúng ta cho
 
 48
 00:03:19,160 --> 00:03:24,560
-purpose, put additional breakpoint in the handle of the order created event handler in the application
+mục đích đó, đặt breakpoint bổ sung trong handle của order created event handler trong application
 
 49
 00:03:24,560 --> 00:03:24,920
@@ -196,63 +196,63 @@ layer.
 
 50
 00:03:24,920 --> 00:03:31,460
-So we have successfully put breakpoints for the end to end perspective of the create order use cases.
+Vậy chúng ta đã thành công trong việc đặt breakpoints cho end to end perspective của create order use cases.
 
 51
 00:03:31,460 --> 00:03:35,480
-So after that, let's remember our deployment strategy.
+Vậy sau đó, hãy nhớ lại chiến lược triển khai của chúng ta.
 
 52
 00:03:35,480 --> 00:03:41,720
-If you open the deployment strategy we are at the first stage which is the deployment want and deploying
+Nếu bạn mở chiến lược triển khai, chúng ta đang ở giai đoạn đầu tiên là deployment một và triển khai
 
 53
 00:03:41,720 --> 00:03:43,040
-from the local machine.
+từ máy local.
 
 54
 00:03:43,040 --> 00:03:48,020
-So we have completed the development of the ordering microservices in our local environment.
+Vậy chúng ta đã hoàn thành phát triển ordering microservices trong môi trường local của chúng ta.
 
 55
 00:03:48,020 --> 00:03:51,890
-And we will connect the backing services, which is the SQL server database.
+Và chúng ta sẽ kết nối backing services, đó là SQL Server database.
 
 56
 00:03:51,890 --> 00:03:57,350
-And we have activating the SQL server in order to communicate from our local ordering microservices.
+Và chúng ta đã kích hoạt SQL Server để có thể giao tiếp từ ordering microservices local của chúng ta.
 
 57
 00:03:57,350 --> 00:04:03,020
-So that means now we will perform these deployment one and performing the testing from deployment one
+Vậy điều đó có nghĩa là bây giờ chúng ta sẽ thực hiện deployment này và thực hiện testing từ deployment một
 
 58
 00:04:03,020 --> 00:04:05,660
-and from local machine of the ordering microservices.
+và từ máy local của ordering microservices.
 
 59
 00:04:05,660 --> 00:04:11,840
-For that purpose, I am going to open the Visual Studio and go to the ordering API and right click the
+Cho mục đích đó, tôi sẽ mở Visual Studio và vào ordering API và nhấp chuột phải vào
 
 60
 00:04:11,840 --> 00:04:14,420
-ordering API and set a startup project.
+ordering API và đặt nó làm startup project.
 
 61
 00:04:14,420 --> 00:04:18,170
-This will be academic incoming requests from our local computer.
+Đây sẽ là các request đến từ local computer của chúng ta.
 
 62
 00:04:18,170 --> 00:04:24,290
-For that purpose, we will start from the ordering API for ordering microservices, and I am going to
+Để mục đích đó, chúng ta sẽ bắt đầu từ ordering API cho ordering microservices, và tôi sẽ
 
 63
 00:04:24,290 --> 00:04:29,600
-hit the Https button in order to run ordering microservices in Https mode.
+nhấn nút Https để chạy ordering microservices ở chế độ Https.
 
 64
 00:04:30,360 --> 00:04:36,210
-So when the application start up, as you remember that these applications will be migrate and seed
+Vậy khi application khởi động, như bạn còn nhớ rằng những application này sẽ migrate và seed
 
 65
 00:04:36,270 --> 00:04:37,440
@@ -260,27 +260,27 @@ SQL server database.
 
 66
 00:04:37,440 --> 00:04:42,720
-When the application start up, it is a development environment and it is going to initialize database.
+Khi application khởi động, đó là development environment và nó sẽ khởi tạo database.
 
 67
 00:04:42,720 --> 00:04:46,980
-And I am going to hit F5 in order to migrate and see database.
+Và tôi sẽ nhấn F5 để migrate và seed database.
 
 68
 00:04:46,980 --> 00:04:50,700
-That means we will create order db in our SQL server database.
+Điều đó có nghĩa là chúng ta sẽ tạo order db trong SQL server database của chúng ta.
 
 69
 00:04:50,700 --> 00:04:57,060
-And after that we will populate some data including customer product orders and items with asynchronous
+Và sau đó chúng ta sẽ điền một số dữ liệu bao gồm customer, product, orders và items theo cách asynchronous.
 
 70
 00:04:57,060 --> 00:04:57,510
-way.
+cách.
 
 71
 00:04:57,510 --> 00:05:04,200
-Here you can see that migrated completed and the seeding operation also completed with sending and dispatching
+Ở đây bạn có thể thấy rằng migration đã hoàn thành và thao tác seeding cũng đã hoàn thành với việc gửi và dispatching
 
 72
 00:05:04,200 --> 00:05:04,890
@@ -288,7 +288,7 @@ domain elements.
 
 73
 00:05:04,890 --> 00:05:10,830
-Because in this case when we are seeding order, we will create a new order and these order will be
+Bởi vì trong trường hợp này khi chúng ta đang seed order, chúng ta sẽ tạo một order mới và order này sẽ
 
 74
 00:05:10,830 --> 00:05:12,840
@@ -296,99 +296,99 @@ dispatching order created domain event.
 
 75
 00:05:12,840 --> 00:05:17,610
-And that's why it is going to hitting the dispatch domain events from the infrastructure layer.
+Và đó là lý do tại sao nó sẽ hitting dispatch domain events từ infrastructure layer.
 
 76
 00:05:17,610 --> 00:05:24,240
-And when I hit the F5 this time, we can see that when the order created, this will be catching from
+Và khi tôi nhấn F5 lần này, chúng ta có thể thấy rằng khi order được tạo, điều này sẽ được catching từ
 
 77
 00:05:24,240 --> 00:05:25,410
-the replication layer.
+replication layer.
 
 78
 00:05:25,410 --> 00:05:31,410
-After dispatching all of the things here, you can see that this time when we are dispatching domain
+Sau khi dispatching tất cả những thứ ở đây, bạn có thể thấy rằng lần này khi chúng ta đang dispatching domain
 
 79
 00:05:31,410 --> 00:05:36,570
-events which using the I notification from the mediator, this will be handled from the order created
+events mà sử dụng I notification từ mediator, điều này sẽ được handled từ order created
 
 80
 00:05:36,570 --> 00:05:40,590
-domain event which is located in our ordering application layer.
+domain event mà được đặt tại ordering application layer của chúng ta.
 
 81
 00:05:40,590 --> 00:05:44,160
-And this will be implement I notification handler interface.
+Và điều này sẽ triển khai INotificationHandler interface.
 
 82
 00:05:44,160 --> 00:05:49,590
-And in the handle method we can perform log information and return the task completed.
+Và trong phương thức handle chúng ta có thể thực hiện logging thông tin và trả về task đã hoàn thành.
 
 83
 00:05:49,590 --> 00:05:53,730
-And I'm going to hit F5 and pacing this operation for now.
+Và tôi sẽ nhấn F5 và chạy thử nghiệm hoạt động này.
 
 84
 00:05:53,730 --> 00:05:58,800
-And I would like to up and running my ordering API microservices.
+Và tôi muốn khởi chạy ordering API microservice của mình.
 
 85
 00:05:58,800 --> 00:06:01,620
-Here you can see the log statement is completed.
+Ở đây bạn có thể thấy log statement đã hoàn thành.
 
 86
 00:06:01,620 --> 00:06:06,630
-Now that means our authentic microservices is ready for Academy incoming requests.
+Bây giờ điều đó có nghĩa là authentic microservice của chúng ta sẵn sàng để nhận các yêu cầu từ Academy.
 
 87
 00:06:06,630 --> 00:06:08,070
-But you can see the logs.
+Nhưng bạn có thể xem các logs.
 
 88
 00:06:08,070 --> 00:06:10,890
-This will be create a new database and tables.
+Điều này sẽ tạo một cơ sở dữ liệu mới và các bảng.
 
 89
 00:06:10,890 --> 00:06:13,380
-And after that this will be inserting any record.
+Và sau đó điều này sẽ chèn bất kỳ bản ghi nào.
 
 90
 00:06:13,380 --> 00:06:20,070
-In order to seeding our databases to verify SQL server database setup, you can open the SQL Server
+Để seeding cơ sở dữ liệu của chúng ta nhằm xác minh SQL Server database setup, bạn có thể mở SQL Server Object Explorer trong Visual Studio, và bạn có thể làm mới SQL Server Object Explorer này và kết nối tới localhost.
 
 91
 00:06:20,070 --> 00:06:25,950
-Object Explorer in the Visual Studio, and you can refresh these SQL Server Object Explorer and connect
+Và nếu bạn xem cơ sở dữ liệu, bạn có thể thấy rằng order db đã được tạo thành công.
 
 92
 00:06:25,950 --> 00:06:26,730
-the localhost.
+Và nếu bạn mở rộng các bảng, bạn có thể thấy customers, orders và order items đã được tạo thành công.
 
 93
 00:06:26,730 --> 00:06:31,410
-And if you go to the database, you can see that order db is created successfully.
+Nếu bạn nhấp chuột phải vào orders và xem dữ liệu, bạn có thể thấy rằng seeding operations cũng đã hoàn thành thành công.
 
 94
 00:06:31,410 --> 00:06:37,590
-And if you expand the tables, you can see customers orders and order items are created successfully.
+Và chúng ta chỉ có hai đơn hàng trong ứng dụng của mình cho đến nay.
 
 95
 00:06:37,590 --> 00:06:44,250
-If you right click the orders and view data, you can see that seeding operations also completed successfully.
+Vậy bây giờ tôi sẽ tạo một đơn hàng mới bằng cách gửi HTTP POST request.
 
 96
 00:06:44,250 --> 00:06:47,910
-And we have only two orders in our application yet.
+Để làm điều đó, vui lòng mở Postman.
 
 97
 00:06:47,910 --> 00:06:52,290
-So now I'm going to create a new order with sending http post request.
+Và trong Postman chúng ta có một Postman collection đó là Icap microservices.
 
 98
 00:06:52,290 --> 00:06:55,020
-For that purpose, please open the postman.
+Và bên dưới ordering microservices tôi đã tạo post order operation.
 
 99
 00:06:55,020 --> 00:07:00,120
@@ -400,27 +400,27 @@ And under the ordering microservices I have created post order operation.
 
 101
 00:07:05,280 --> 00:07:09,600
-So please create http post request for the ordering microservices.
+Vậy hãy tạo HTTP POST request cho ordering microservices.
 
 102
 00:07:09,600 --> 00:07:14,790
-Here you can see the http post operation and if you look at the endpoint, you can see that we will
+Ở đây bạn có thể thấy HTTP POST operation và nếu bạn xem endpoint, bạn sẽ thấy rằng chúng ta sẽ
 
 103
 00:07:14,790 --> 00:07:17,490
-use ordering URL and slash orders endpoint.
+sử dụng ordering URL và slash orders endpoint.
 
 104
 00:07:17,490 --> 00:07:23,970
-If you look at the ordering URL, you can see that we will set 5053 which is indicating our localhost
+Nếu bạn xem ordering URL, bạn có thể thấy rằng chúng ta sẽ đặt 5053 để chỉ ra localhost
 
 105
 00:07:23,970 --> 00:07:24,660
-environment.
+environment của chúng ta.
 
 106
 00:07:24,660 --> 00:07:31,200
-If you open the environments, you can see that we have a local environment and Docker environment for
+Nếu bạn mở environments, bạn có thể thấy rằng chúng ta có một local environment và Docker environment cho
 
 107
 00:07:31,200 --> 00:07:31,980
@@ -428,79 +428,79 @@ local environment.
 
 108
 00:07:31,980 --> 00:07:35,550
-You can see the port numbers is starting with the 50.
+Bạn có thể thấy các port numbers bắt đầu với 50.
 
 109
 00:07:35,550 --> 00:07:41,100
-And if you change these localhost to Docker, you can see that the environment will be changed accordingly.
+Và nếu bạn thay đổi localhost này thành Docker, bạn sẽ thấy rằng environment sẽ thay đổi tương ứng.
 
 110
 00:07:41,100 --> 00:07:43,230
-With the 60 port numbers.
+Với các port numbers 60.
 
 111
 00:07:43,230 --> 00:07:44,460
-Here you can see that.
+Ở đây bạn có thể thấy điều đó.
 
 112
 00:07:44,460 --> 00:07:49,230
-So now we are going to test from our local computer and local ordering resources.
+Vậy bây giờ chúng ta sẽ test từ máy tính local của chúng ta và local ordering resources.
 
 113
 00:07:49,230 --> 00:07:52,080
-For that purpose I'm going to change the environment as a localhost.
+Với mục đích đó, tôi sẽ thay đổi environment thành localhost.
 
 114
 00:07:52,080 --> 00:07:55,530
-And after that verify the ordering URL is starting with 50.
+Và sau đó xác minh rằng ordering URL bắt đầu với 50.
 
 115
 00:07:55,530 --> 00:08:00,630
-After that we are ready to send http post requests for the create order endpoint.
+Sau đó chúng ta đã sẵn sàng để gửi HTTP POST requests cho create order endpoint.
 
 116
 00:08:00,630 --> 00:08:07,560
-But before that, please check the our Json body request which is including the whole order object.
+Nhưng trước đó, vui lòng kiểm tra Json body request của chúng ta, nó bao gồm toàn bộ order object.
 
 117
 00:08:07,560 --> 00:08:13,950
-And this is an example Json body with including customer details, shipping, billing, address, payment
+Và đây là một ví dụ Json body với bao gồm chi tiết khách hàng, shipping, billing, address, payment
 
 118
 00:08:13,950 --> 00:08:18,180
-information and order items according to newly created order.
+information và order items theo thứ tự mới được tạo.
 
 119
 00:08:18,180 --> 00:08:23,850
-Here you can see that we will have two order items in this order and the order status will be two.
+Ở đây bạn có thể thấy rằng chúng ta sẽ có hai order items trong đơn hàng này và order status sẽ là hai.
 
 120
 00:08:23,850 --> 00:08:26,700
-And these are the payment address definitions.
+Và đây là các định nghĩa payment address.
 
 121
 00:08:26,700 --> 00:08:29,130
-And the order name will be order for.
+Và tên đơn hàng sẽ là order for.
 
 122
 00:08:29,130 --> 00:08:35,909
-And this is the order body structure that we are going to send as a Json body when sending http post
+Và đây là cấu trúc thân của đơn hàng mà chúng ta sẽ gửi dưới dạng JSON body khi gửi HTTP post
 
 123
 00:08:35,909 --> 00:08:37,440
-request to this endpoint.
+request tới endpoint này.
 
 124
 00:08:37,440 --> 00:08:44,280
-So after preparing this Post request, I'm going to hit the send button in order to observe the flow
+Vậy sau khi chuẩn bị request Post này, tôi sẽ nhấn nút send để quan sát luồng
 
 125
 00:08:44,280 --> 00:08:46,260
-of execution through the breakpoints.
+thực thi qua các breakpoints.
 
 126
 00:08:46,260 --> 00:08:51,990
-So hit the send button and see that this will be triggered our ordering API and which is the create
+Vậy nhấn nút send và thấy rằng điều này sẽ kích hoạt ordering API của chúng ta và đó là create
 
 127
 00:08:51,990 --> 00:08:53,040
@@ -508,31 +508,31 @@ order endpoint.
 
 128
 00:08:53,040 --> 00:08:58,320
-So this is the first point when Academy request and populating the incoming create order request.
+Vậy đây là điểm đầu tiên khi Academy request và điền vào incoming create order request.
 
 129
 00:08:58,320 --> 00:09:04,980
-If you open the request you can see that this will be include the whole order Json object and this order
+Nếu bạn mở request, bạn có thể thấy rằng nó sẽ bao gồm toàn bộ order Json object và order này
 
 130
 00:09:04,980 --> 00:09:10,770
-including billing, customer ID, ID, order items, order name, payment, shipping address status,
+bao gồm billing, customer ID, ID, order items, order name, payment, shipping address, status,
 
 131
 00:09:10,770 --> 00:09:11,670
-and so on.
+và nhiều thứ khác.
 
 132
 00:09:11,670 --> 00:09:16,740
-And after that this will be converting these order and requests to the command object.
+Và sau đó điều này sẽ chuyển đổi những order và requests này thành command object.
 
 133
 00:09:16,740 --> 00:09:20,730
-And this will be sent to mediator in order to trigger our command handler.
+Và điều này sẽ được gửi tới mediator để kích hoạt command handler của chúng ta.
 
 134
 00:09:20,730 --> 00:09:26,460
-Here you can see that this will be triggered or create order handler class which is located under the
+Tại đây bạn có thể thấy rằng điều này sẽ kích hoạt lớp create order handler được đặt trong
 
 135
 00:09:26,460 --> 00:09:27,960
@@ -540,75 +540,75 @@ ordering application layer.
 
 136
 00:09:27,960 --> 00:09:29,970
-And in this handle method this will be.
+Và trong phương thức handle này sẽ
 
 137
 00:09:30,110 --> 00:09:35,030
-Basically create a new order, and after that save the database using the Entity Framework core.
+về cơ bản tạo một đơn hàng mới, và sau đó lưu database bằng Entity Framework core.
 
 138
 00:09:35,030 --> 00:09:41,450
-But before that it is preparing the new order and this will be using order dot create operation and
+Nhưng trước đó nó đang chuẩn bị đơn hàng mới và điều này sẽ sử dụng order dot create operation và
 
 139
 00:09:41,450 --> 00:09:43,910
-which is hitting the order create function.
+đó là gọi hàm order create.
 
 140
 00:09:43,910 --> 00:09:47,480
-And this is locating in the our ordering domain layer.
+Và điều này nằm trong ordering domain layer của chúng ta.
 
 141
 00:09:47,480 --> 00:09:50,060
-You can verify the folder structure.
+Bạn có thể kiểm tra cấu trúc thư mục.
 
 142
 00:09:50,060 --> 00:09:53,450
-This will be hitting the order when creating any order item.
+Điều này sẽ tác động đến đơn hàng khi tạo bất kỳ mục đơn hàng nào.
 
 143
 00:09:53,450 --> 00:09:59,960
-And this will be creating a new order entity and adding domain events into the ordered aggregate and
+Và điều này sẽ tạo một entity đơn hàng mới và thêm domain events vào ordered aggregate.
 
 144
 00:09:59,960 --> 00:10:01,160
-returning a new order.
+và trả về một đơn hàng mới.
 
 145
 00:10:01,160 --> 00:10:07,430
-And this will be also adding order items into this order and returning any order entity.
+Và điều này cũng sẽ thêm các mục đơn hàng vào đơn hàng này và trả về bất kỳ entity đơn hàng nào.
 
 146
 00:10:07,430 --> 00:10:11,120
-And after that, this order is ready for the saving database.
+Và sau đó, đơn hàng này sẽ sẵn sàng để lưu vào database.
 
 147
 00:10:11,120 --> 00:10:17,060
-So if you continue our debugging, this will be adding orders into DB context and save change async.
+Vậy nếu chúng ta tiếp tục debug, điều này sẽ thêm các đơn hàng vào DB context và save change async.
 
 148
 00:10:17,060 --> 00:10:22,220
-When we are saving changes with using Entity Framework Core, this will be hitting the interceptor which
+Khi chúng ta lưu các thay đổi bằng Entity Framework Core, điều này sẽ tác động đến interceptor mà
 
 149
 00:10:22,220 --> 00:10:27,620
-is the Dispatch domain event interceptor, and this will be dispatching domain events regarding trees
+là Dispatch domain event interceptor, và điều này sẽ dispatching domain events liên quan đến trees
 
 150
 00:10:27,620 --> 00:10:32,690
-or aggregate, which is the order aggregate and we have one domain event and we will publish this domain
+hay aggregate, đó là order aggregate và chúng ta có một domain event và chúng ta sẽ publish domain
 
 151
 00:10:32,690 --> 00:10:35,000
-event using the mediator publish function.
+event này bằng cách sử dụng hàm mediator publish.
 
 152
 00:10:35,000 --> 00:10:38,330
-And after that this will be dispatching this domain event.
+Và sau đó điều này sẽ dispatching domain event này.
 
 153
 00:10:38,330 --> 00:10:43,820
-And this will be catching and handling in the ordering application layer which is the order created
+Và điều này sẽ được catch và handle trong application layer của ordering, đó là order created
 
 154
 00:10:43,820 --> 00:10:44,570
@@ -616,35 +616,35 @@ event handler.
 
 155
 00:10:44,570 --> 00:10:47,540
-And this will be implement from the identification handle.
+Và điều này sẽ implement từ identification handle.
 
 156
 00:10:47,540 --> 00:10:53,720
-And in this handle method we basically handle the incoming notification which is the our order created
+Và trong phương pháp handle này, chúng ta cơ bản là handle incoming notification, đó là order created
 
 157
 00:10:53,720 --> 00:10:55,670
-notification event and domain event.
+notification event và domain event của chúng ta.
 
 158
 00:10:55,670 --> 00:10:59,360
-Here you can see the details of this domain event and the order details.
+Ở đây bạn có thể thấy chi tiết của domain event này và thông tin chi tiết của đơn hàng.
 
 159
 00:10:59,360 --> 00:11:03,890
-And in this place I am going to only logging the information with incoming domain event.
+Và ở chỗ này tôi sẽ chỉ logging thông tin với incoming domain event.
 
 160
 00:11:03,890 --> 00:11:08,210
-But in the next videos we are going to leading the integration event.
+Nhưng trong các video tiếp theo, chúng ta sẽ leading integration event.
 
 161
 00:11:08,210 --> 00:11:14,690
-That means we will be converting this domain one to integration in and in order to notify other microservices.
+Điều đó có nghĩa là chúng ta sẽ chuyển đổi domain này thành integration event để thông báo cho các microservices khác.
 
 162
 00:11:14,690 --> 00:11:20,180
-But for now at least we can see that how we can handle these domain event in the ordering application
+Nhưng hiện tại ít nhất chúng ta có thể thấy cách xử lý các domain event này trong ứng dụng ordering.
 
 163
 00:11:20,180 --> 00:11:20,720
@@ -652,11 +652,11 @@ layer.
 
 164
 00:11:20,720 --> 00:11:26,030
-And if I continue to our debug operation, you can see that our saving operation is completed.
+Và nếu tôi tiếp tục debug operation, bạn có thể thấy rằng saving operation của chúng ta đã hoàn thành.
 
 165
 00:11:26,030 --> 00:11:33,380
-And if I hit F5 this will be hitting the at the end of the our create order endpoint which is our ordering
+Và nếu tôi nhấn F5, điều này sẽ đến cuối create order endpoint của chúng ta, đó là ứng dụng ordering.
 
 166
 00:11:33,380 --> 00:11:34,100
@@ -664,49 +664,49 @@ application.
 
 167
 00:11:34,100 --> 00:11:40,700
-That means we are end of the our request life cycle and converting these create order response from
+Điều đó có nghĩa là chúng ta đã kết thúc vòng đời request của chúng ta và chuyển đổi response create order này từ
 
 168
 00:11:40,700 --> 00:11:46,040
-the result object and which we are returning this response object to the our client application, which
+result object và chúng ta sẽ trả về response object này cho ứng dụng client của chúng ta, response này
 
 169
 00:11:46,040 --> 00:11:50,810
-only including newly created order ID, and this will be returning results that created.
+chỉ bao gồm newly created order ID, và điều này sẽ trả về kết quả đã được tạo.
 
 170
 00:11:50,810 --> 00:11:54,350
-And I am going to hit F5 and see the our postman.
+Và tôi sẽ nhấn F5 để xem postman của chúng ta.
 
 171
 00:11:54,350 --> 00:11:57,080
-And in here you can see the postman response.
+Và ở đây bạn có thể thấy postman response.
 
 172
 00:11:57,080 --> 00:12:02,990
-This will be responding to all one created success response, and this is the newly created order ID
+Điều này sẽ trả về tất cả một 201 created success response, và đây là newly created order ID
 
 173
 00:12:02,990 --> 00:12:05,390
-that we are going to verify from the database.
+mà chúng ta sẽ xác minh từ database.
 
 174
 00:12:05,390 --> 00:12:12,020
-So now let's verify this newly created order from the Visual Studio and SQL Server Object Explorer.
+Vậy bây giờ hãy xác minh newly created order này từ Visual Studio và SQL Server Object Explorer.
 
 175
 00:12:12,110 --> 00:12:18,020
-As you remember that we have orders data and we have only two data when starting the application.
+Như bạn nhớ, chúng ta có dữ liệu orders và chúng ta chỉ có hai dữ liệu khi khởi động ứng dụng.
 
 176
 00:12:18,020 --> 00:12:23,750
-If I refresh this order data, you can see that this time we have newly created order comes from the
+Nếu tôi làm mới dữ liệu order này, bạn có thể thấy lần này chúng ta có newly created order đến từ
 
 177
 00:12:23,750 --> 00:12:28,070
-database which is created from the our http post request.
+database mà được tạo từ HTTP POST request của chúng ta.
 
 178
 00:12:28,070 --> 00:12:33,800
-That means we will perform end to end use case for the create order endpoint in the ordering microservices.
+Điều đó có nghĩa là chúng ta sẽ thực hiện use case end to end cho create order endpoint trong ordering microservices.
 

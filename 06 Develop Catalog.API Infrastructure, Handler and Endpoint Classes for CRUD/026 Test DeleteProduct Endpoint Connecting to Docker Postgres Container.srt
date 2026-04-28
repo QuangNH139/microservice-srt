@@ -1,10 +1,10 @@
 1
 00:00:00,170 --> 00:00:07,310
-In this video we are going to test delete product end to end connecting to Docker PostgreSQL container.
+Trong video này, chúng ta sẽ kiểm tra xóa sản phẩm end to end bằng cách kết nối tới Docker PostgreSQL container.
 
 2
 00:00:07,310 --> 00:00:13,790
-So the first thing we should do that open the Docker desktop and activate and set up the PostgreSQL
+Vậy điều đầu tiên chúng ta nên làm là mở Docker desktop và kích hoạt cũng như thiết lập PostgreSQL
 
 3
 00:00:13,790 --> 00:00:14,630
@@ -12,119 +12,119 @@ database.
 
 4
 00:00:14,630 --> 00:00:20,240
-If you can see that I have opened the Docker desktop is running, but there is no running containers
+Nếu bạn có thể thấy rằng tôi đã mở Docker desktop đang chạy, nhưng không có containers nào đang chạy
 
 5
 00:00:20,240 --> 00:00:22,070
-for PostgreSQL database.
+cho PostgreSQL database.
 
 6
 00:00:22,070 --> 00:00:23,030
-For that purpose.
+Vì mục đích đó.
 
 7
 00:00:23,030 --> 00:00:29,930
-I'm going to open the Visual Studio and right click the Docker compose, set a startup project and run
+Tôi sẽ mở Visual Studio và nhấp chuột phải vào Docker compose, đặt nó làm startup project và chạy
 
 8
 00:00:29,930 --> 00:00:31,940
-without debugging this docker compose.
+mà không debug docker compose này.
 
 9
 00:00:31,970 --> 00:00:36,620
-This will be running this docker compose on behind of the scenes.
+Cái này sẽ chạy docker compose ở phía sau.
 
 10
 00:00:36,800 --> 00:00:43,460
-And if you open the Docker desktop, you will see that our Docker compose is running and catalog db
+Và nếu bạn mở Docker desktop, bạn sẽ thấy rằng Docker compose của chúng ta đang chạy và catalog db
 
 11
 00:00:43,460 --> 00:00:48,020
-is activated and see that ports are exposing in this URL.
+đã được kích hoạt và thấy rằng các cổng đang expose ở URL này.
 
 12
 00:00:48,020 --> 00:00:51,320
-So basically we are ready to run our catalog API.
+Vậy về cơ bản chúng ta đã sẵn sàng để chạy catalog API của chúng ta.
 
 13
 00:00:51,320 --> 00:00:56,510
-If you go back to our testing operation this was the delete product.
+Nếu bạn quay lại thao tác kiểm tra của chúng ta, đây là xóa sản phẩm.
 
 14
 00:00:56,510 --> 00:01:03,350
-That's why we will put two breakpoints under the endpoint class and inside of the map delete operation.
+Đó là lý do tại sao chúng ta sẽ đặt hai breakpoints dưới endpoint class và bên trong map delete operation.
 
 15
 00:01:03,350 --> 00:01:08,210
-And if you go to the handler class you can put the breakpoint in the handle method.
+Và nếu bạn đi tới handler class, bạn có thể đặt breakpoint trong handle method.
 
 16
 00:01:08,210 --> 00:01:13,310
-So now after that we are going to right click the catalog API and set a startup project.
+Vậy bây giờ sau đó, chúng ta sẽ nhấp chuột phải vào catalog API và đặt nó làm startup project.
 
 17
 00:01:13,310 --> 00:01:20,210
-This will be running microservices on our local computer that we will connect to Docker container environment
+Cái này sẽ chạy microservices trên máy tính cục bộ của chúng ta mà chúng ta sẽ kết nối tới Docker container environment
 
 18
 00:01:20,210 --> 00:01:22,790
-as a backing services PostgreSQL database.
+như một backing services PostgreSQL database.
 
 19
 00:01:22,790 --> 00:01:28,670
-And we have already arranged application settings before we proceeding this video and we are ready for
+Và chúng ta đã sắp xếp application settings trước khi tiếp tục video này và chúng ta đã sẵn sàng cho
 
 20
 00:01:28,670 --> 00:01:29,150
-the test.
+bài kiểm tra.
 
 21
 00:01:29,150 --> 00:01:35,540
-Our actual operation, which is the delete product endpoint, run this application as an Https mode,
+Hoạt động thực tế của chúng ta, đó là endpoint xóa sản phẩm, chạy ứng dụng này ở chế độ Https,
 
 22
 00:01:35,540 --> 00:01:41,360
-and after that we will send http delete requests to our application.
+và sau đó chúng ta sẽ gửi các HTTP delete requests đến ứng dụng của chúng ta.
 
 23
 00:01:41,360 --> 00:01:49,220
-Okay, application is running correctly and if I open the postman you can see that first of all let's
+Okay, ứng dụng đang chạy bình thường và nếu tôi mở postman bạn có thể thấy rằng đầu tiên hãy
 
 24
 00:01:49,220 --> 00:01:52,010
-get products inside of the our database.
+lấy các sản phẩm bên trong cơ sở dữ liệu của chúng ta.
 
 25
 00:01:52,010 --> 00:01:54,230
-And after that we will delete this product.
+Và sau đó chúng ta sẽ xóa sản phẩm này.
 
 26
 00:01:54,230 --> 00:01:56,600
-I'm going to send http get method.
+Tôi sẽ gửi HTTP get method.
 
 27
 00:01:56,600 --> 00:01:59,180
-This is also get breakpoints.
+Đây cũng là get breakpoints.
 
 28
 00:01:59,180 --> 00:02:03,380
-And now I would like to get a response of the products.
+Và bây giờ tôi muốn nhận được response của các sản phẩm.
 
 29
 00:02:03,410 --> 00:02:05,780
-See that we have one product in here.
+Xem rằng chúng ta có một sản phẩm ở đây.
 
 30
 00:02:05,780 --> 00:02:08,389
-Which id is this ID number.
+Cái nào có ID này.
 
 31
 00:02:08,389 --> 00:02:09,680
-Copy this ID number.
+Sao chép ID này.
 
 32
 00:02:09,680 --> 00:02:16,970
-And I have created Http delete operation under our catalog microservices from our issue of microservices
+Và tôi đã tạo Http delete operation dưới catalog microservices của chúng ta từ issue của microservices
 
 33
 00:02:16,970 --> 00:02:18,620
@@ -132,129 +132,129 @@ route postman collection.
 
 34
 00:02:18,620 --> 00:02:26,900
-And please create any Http delete endpoint in here and copy and paste these ID information into this
+Và vui lòng tạo bất kỳ Http delete endpoint nào ở đây và sao chép và dán thông tin ID này vào
 
 35
 00:02:26,900 --> 00:02:29,540
-URL which is the products slash ID.
+URL này là products slash ID.
 
 36
 00:02:29,540 --> 00:02:35,630
-And as you remember that catalog URL comes from the our environment which is localhost 5050.
+Và như bạn nhớ rằng catalog URL đến từ environment của chúng ta là localhost 5050.
 
 37
 00:02:35,750 --> 00:02:43,010
-And now I can send Http delete method with clicking this send button and see that the breakpoint is
+Và bây giờ tôi có thể gửi Http delete method bằng cách nhấp vào nút send này và thấy rằng breakpoint đã
 
 38
 00:02:43,010 --> 00:02:45,530
-hitting our delete product endpoint class.
+hit endpoint xóa sản phẩm của chúng ta.
 
 39
 00:02:45,530 --> 00:02:52,250
-If you continue to debugging, step over the this line of code and this will be mediator center.
+Nếu bạn tiếp tục debugging, step over dòng code này và đây sẽ là mediator center.
 
 40
 00:02:52,250 --> 00:02:54,650
-Delete product command with ID information.
+Delete product command với thông tin ID.
 
 41
 00:02:54,650 --> 00:02:57,470
-Here you can see the ID comes from the request parameter.
+Ở đây bạn có thể thấy ID đến từ tham số request.
 
 42
 00:02:57,470 --> 00:03:03,800
-And just after that this will be trigger our handle method in the handle method we will log the information.
+Và ngay sau đó, điều này sẽ kích hoạt phương thức handle của chúng ta, trong phương thức handle chúng ta sẽ ghi lại thông tin.
 
 43
 00:03:03,800 --> 00:03:09,050
-After that we will delete these commands with incoming ID information and save the changes from the
+Sau đó, chúng ta sẽ xóa các lệnh này với thông tin ID đến và lưu các thay đổi từ
 
 44
 00:03:09,050 --> 00:03:14,180
-database and return the delete product response result as a true.
+cơ sở dữ liệu và trả về kết quả response xóa sản phẩm là true.
 
 45
 00:03:14,180 --> 00:03:19,730
-And after that this result object converting to response and we will return to client this response
+Và sau đó, đối tượng result này sẽ được chuyển đổi thành response và chúng ta sẽ trả về cho client response
 
 46
 00:03:19,730 --> 00:03:21,320
-object hit the F5.
+object này, nhấn F5.
 
 47
 00:03:22,290 --> 00:03:29,430
-So you can see that postman is received a response indicating the success of the operation is true.
+Vậy bạn có thể thấy rằng postman đã nhận được một response cho biết thao tác thành công là true.
 
 48
 00:03:29,460 --> 00:03:34,650
-This response confirms that our and been correctly processed product delete operations.
+Response này xác nhận rằng các hoạt động xóa sản phẩm của chúng ta đã được xử lý đúng.
 
 49
 00:03:34,650 --> 00:03:41,370
-So in order to ensure the product was indeed deleted, we can send an http get request again to retrieve
+Vậy để đảm bảo rằng sản phẩm đã được xóa, chúng ta có thể gửi một HTTP GET request lại để lấy lại
 
 50
 00:03:41,370 --> 00:03:42,870
-all products in here.
+tất cả các sản phẩm ở đây.
 
 51
 00:03:42,870 --> 00:03:46,650
-So we have one product and we should delete this product.
+Vậy chúng ta có một sản phẩm và chúng ta nên xóa sản phẩm này.
 
 52
 00:03:46,650 --> 00:03:54,060
-And if we send again this http get method and hit the F5 facing these breakpoints, you can see that
+Và nếu chúng ta gửi lại phương thức HTTP GET này và nhấn F5 đối mặt với các breakpoint này, bạn có thể thấy rằng
 
 53
 00:03:54,060 --> 00:03:58,050
-there is no products is listing from our PostgreSQL database.
+không có sản phẩm nào được liệt kê từ cơ sở dữ liệu PostgreSQL của chúng ta.
 
 54
 00:03:58,050 --> 00:04:00,570
-So we have verified these operation.
+Vậy chúng ta đã xác minh thao tác này.
 
 55
 00:04:00,570 --> 00:04:02,850
-We don't have any products in here.
+Chúng ta không có bất kỳ sản phẩm nào ở đây.
 
 56
 00:04:02,850 --> 00:04:09,090
-Also we can use the get product by ID to retrieving the product which deleted IDs.
+Chúng ta cũng có thể sử dụng get product by ID để lấy sản phẩm có ID đã bị xóa.
 
 57
 00:04:09,090 --> 00:04:12,240
-You can see that this ID comes from the deleted ID.
+Bạn có thể thấy rằng ID này đến từ ID đã xóa.
 
 58
 00:04:12,240 --> 00:04:15,330
-And this time I'm going to use get product by ID.
+Và lần này tôi sẽ sử dụng get product by ID.
 
 59
 00:04:15,360 --> 00:04:18,029
-Hit the enter and see that what will happen.
+Nhấn Enter và xem điều gì sẽ xảy ra.
 
 60
 00:04:18,029 --> 00:04:23,040
-This will be also triggered our breakpoint and hit the F5 and hit F5 again.
+Điều này cũng sẽ kích hoạt breakpoint của chúng ta và nhấn F5 và nhấn F5 lần nữa.
 
 61
 00:04:23,400 --> 00:04:31,650
-And see that this time it is returning a response, but this is very unreadable and not manageable response.
+Và bạn sẽ thấy rằng lần này nó đang trả về một phản hồi, nhưng đây là một phản hồi rất khó đọc và không thể quản lý được.
 
 62
 00:04:31,650 --> 00:04:35,370
-It is returning is a product not found exception.
+Nó đang trả về một ngoại lệ product not found.
 
 63
 00:04:35,370 --> 00:04:42,480
-But we see a lot of class names and this will be not acceptable as a response to see from the client.
+Nhưng chúng ta thấy rất nhiều tên class và điều này sẽ không thể chấp nhận được khi client nhận được phản hồi này.
 
 64
 00:04:42,480 --> 00:04:49,440
-So that means we should enhance our API to handle the product, not found exception scenarios more gracefully,
+Vì vậy, điều đó có nghĩa là chúng ta cần cải thiện API của mình để xử lý các tình huống ngoại lệ product not found một cách nhẹ nhàng hơn,
 
 65
 00:04:49,440 --> 00:04:53,490
-and we should provide a clear and informative response to the client.
+và chúng ta cần cung cấp một phản hồi rõ ràng và mang tính thông tin cho client.
 

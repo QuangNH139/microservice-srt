@@ -1,54 +1,54 @@
 1
 00:00:00,170 --> 00:00:06,860
-In this section, we are going to develop ordering application layer with actors and mediator and implement
+Trong phần này, chúng ta sẽ phát triển tầng application của ordering application với actors và mediator và triển khai
 
 2
 00:00:06,860 --> 00:00:09,020
-the command and command handler patterns.
+các mẫu command và command handler.
 
 3
 00:00:09,470 --> 00:00:13,160
-Here you can find the big picture that we are going to develop during the course.
+Ở đây bạn có thể tìm thấy bức tranh toàn cảnh mà chúng ta sẽ phát triển trong suốt khóa học.
 
 4
 00:00:13,160 --> 00:00:19,040
-We are still at the ordering microservices, but this time we will develop ordering application layer.
+Chúng ta vẫn đang ở ordering microservices, nhưng lần này chúng ta sẽ phát triển tầng application của ordering.
 
 5
 00:00:19,790 --> 00:00:25,400
-And here you can find the ordering microservices internal architecture that we are going to implement
+Và ở đây bạn có thể tìm thấy kiến trúc nội bộ của ordering microservices mà chúng ta sẽ triển khai
 
 6
 00:00:25,400 --> 00:00:29,570
-clean architecture, domain driven design and security design pattern.
+clean architecture, domain driven design và security design pattern.
 
 7
 00:00:29,570 --> 00:00:32,840
-So that means we are at the application stage.
+Điều đó có nghĩa là chúng ta đang ở giai đoạn application.
 
 8
 00:00:32,840 --> 00:00:37,400
-We complete the domain and infrastructure layer and we are going to develop application layer.
+Chúng ta hoàn thành tầng domain và infrastructure, và chúng ta sẽ phát triển tầng application.
 
 9
 00:00:37,400 --> 00:00:42,200
-And application layer is storing our core layers according to Clean architecture.
+Và tầng application đang lưu trữ các tầng cốt lõi của chúng ta theo Clean architecture.
 
 10
 00:00:42,200 --> 00:00:48,650
-So in this application layer we will apply the domain driven design skills and clean architecture patterns.
+Vậy trong tầng application này chúng ta sẽ áp dụng các kỹ năng domain driven design và clean architecture patterns.
 
 11
 00:00:48,650 --> 00:00:52,400
-We will develop Crud order command and handle methods.
+Chúng ta sẽ phát triển các Crud order command và xử lý các phương thức.
 
 12
 00:00:52,400 --> 00:00:58,130
-And we will implement the command process pipeline with a mediator pattern using the mediator library.
+Và chúng ta sẽ triển khai command process pipeline với mediator pattern sử dụng mediator library.
 
 13
 00:00:58,130 --> 00:01:04,580
-And we will develop AI application DB context object for injection Entity Framework core DB context
+Và chúng ta sẽ phát triển AI application DB context object để injection Entity Framework core DB context
 
 14
 00:01:04,580 --> 00:01:05,239
@@ -56,7 +56,7 @@ object.
 
 15
 00:01:05,239 --> 00:01:10,820
-And we will develop mediator pipeline behaviors for validation and logging to perform cross-cutting
+Và chúng ta sẽ phát triển mediator pipeline behaviors cho validation và logging để thực hiện cross-cutting
 
 16
 00:01:10,820 --> 00:01:11,540
@@ -64,37 +64,37 @@ concerns.
 
 17
 00:01:11,540 --> 00:01:17,000
-And we will develop domain event handlers with mediator AI notification handler interface.
+Và chúng ta sẽ phát triển domain event handlers với mediator AI notification handler interface.
 
 18
 00:01:17,000 --> 00:01:20,930
-And we will develop order queries with queries and mediator.
+Và chúng ta sẽ phát triển order queries với queries và mediator.
 
 19
 00:01:21,650 --> 00:01:28,610
-And we can say that the main objective is implementing the application logic and use cases with securities
+Và chúng ta có thể nói rằng mục tiêu chính là triển khai application logic và use cases với securities
 
 20
 00:01:28,610 --> 00:01:31,340
-and mediator pattern in these application layer.
+và mediator pattern trong tầng application này.
 
 21
 00:01:31,940 --> 00:01:36,260
-So before that we should understand the fundamental patterns of application layer.
+Vậy trước tiên chúng ta nên hiểu các mẫu cơ bản của application layer.
 
 22
 00:01:36,260 --> 00:01:42,770
-We will learn what is securities pattern event sourcing pattern, securities with event sourcing pattern
+Chúng ta sẽ học về securities pattern, event sourcing pattern, securities với event sourcing pattern
 
 23
 00:01:42,770 --> 00:01:45,080
-and eventual consistency principle.
+và eventual consistency principle.
 
 24
 00:01:45,200 --> 00:01:50,720
-And after that we will design ordering, microservices, application layer and the web layer to implement
+Và sau đó chúng ta sẽ thiết kế ordering microservices, application layer và web layer để triển khai
 
 25
 00:01:50,720 --> 00:01:53,990
-the command and command handler patterns with using mediator.
+các mẫu command và command handler bằng cách sử dụng mediator.
 

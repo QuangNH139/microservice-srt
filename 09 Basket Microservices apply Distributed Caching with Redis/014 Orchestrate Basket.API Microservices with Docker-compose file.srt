@@ -1,34 +1,34 @@
 1
 00:00:00,140 --> 00:00:07,490
-In this video we are going to orchestrating basket API microservices with Docker Compose and involving
+Trong video này chúng ta sẽ orchestrating basket API microservices với Docker Compose và liên quan đến
 
 2
 00:00:07,490 --> 00:00:13,730
-setting up a Multi-container environment where each microservices and its dependencies, for example,
+thiết lập một Multi-container environment nơi mỗi microservices và các dependencies của nó, ví dụ như
 
 3
 00:00:13,730 --> 00:00:20,540
-databases and cache run in a separate container, but they can communicate with each other in the network.
+databases và cache chạy trong một container riêng biệt, nhưng chúng có thể giao tiếp với nhau trong network.
 
 4
 00:00:20,930 --> 00:00:27,080
-For that purpose, please open the Visual Studio and open the Docker-compose.yml file.
+Để làm điều đó, vui lòng mở Visual Studio và mở file Docker-compose.yml.
 
 5
 00:00:27,080 --> 00:00:33,530
-This file defines services, network, and volume definitions that make up your application, but as
+File này định nghĩa các services, network, và volume definitions tạo nên ứng dụng của bạn, nhưng như
 
 6
 00:00:33,530 --> 00:00:37,520
-you can see that these are the backing services and these are the microservices.
+bạn có thể thấy đây là các backing services và đây là các microservices.
 
 7
 00:00:37,520 --> 00:00:41,270
-We have only one microservices which is a Catholic microservices.
+Chúng ta chỉ có một microservices đó là Catholic microservices.
 
 8
 00:00:41,270 --> 00:00:47,900
-But this time we will put basket API microservices inside of the Docker network which using the Docker
+Nhưng lần này chúng ta sẽ đặt basket API microservices bên trong Docker network được tạo bằng Docker
 
 9
 00:00:47,900 --> 00:00:48,650
@@ -36,147 +36,147 @@ compose.
 
 10
 00:00:48,650 --> 00:00:52,970
-And in here I'm going to add basket API manually.
+Và ở đây tôi sẽ thêm basket API một cách thủ công.
 
 11
 00:00:52,970 --> 00:00:55,910
-Or we can generate from the Visual Studio.
+Hoặc chúng ta có thể tạo từ Visual Studio.
 
 12
 00:00:55,940 --> 00:00:59,540
-I would like to follow with generating using the Visual Studio.
+Tôi muốn theo dõi bằng cách tạo sử dụng Visual Studio.
 
 13
 00:00:59,540 --> 00:01:03,230
-If you right click the basket API and click the add button.
+Nếu bạn nhấp chuột phải vào basket API và nhấn nút add.
 
 14
 00:01:03,230 --> 00:01:07,460
-And this time you can see that we have container orchestrator support.
+Và lần này bạn có thể thấy rằng chúng ta có container orchestrator support.
 
 15
 00:01:07,460 --> 00:01:13,190
-If you click the Container Orchestrator, you can select the orchestrator as a docker compose and click
+Nếu bạn nhấn Container Orchestrator, bạn có thể chọn orchestrator là docker compose và nhấn
 
 16
 00:01:13,190 --> 00:01:14,330
-the okay button.
+nút okay.
 
 17
 00:01:14,330 --> 00:01:17,840
-And operating system will be Linux and click the okay button.
+Và hệ điều hành sẽ là Linux và nhấn nút okay.
 
 18
 00:01:17,840 --> 00:01:25,010
-You can see that basket API comes after the Catholic API, and this is indicating the image file from
+Bạn có thể thấy rằng basket API xuất hiện sau Catholic API, và điều này chỉ ra image file từ
 
 19
 00:01:25,010 --> 00:01:26,990
-the basket API project.
+basket API project.
 
 20
 00:01:26,990 --> 00:01:33,800
-And in the build context, docker file is following the docker file inside of the basket API project.
+Và trong build context, docker file theo sau docker file bên trong basket API project.
 
 21
 00:01:33,800 --> 00:01:39,890
-So that means we have added the basket API microservices into docker compose environment.
+Vậy điều đó có nghĩa là chúng ta đã thêm basket API microservices vào môi trường docker compose.
 
 22
 00:01:39,890 --> 00:01:47,270
-After defining basket API in the docker-compose.yml file, it is time to define and give configurations
+Sau khi định nghĩa basket API trong tệp docker-compose.yml, đã đến lúc định nghĩa và cấu hình
 
 23
 00:01:47,270 --> 00:01:49,580
-in the docker compose overwrite yaml file.
+trong tệp yaml ghi đè docker compose.
 
 24
 00:01:49,580 --> 00:01:51,290
-And as you can see that in.
+Và như bạn có thể thấy rằng.
 
 25
 00:01:51,290 --> 00:01:56,600
-Here we have configured the backing services on top of this page, and after the backing services it
+Ở đây chúng ta đã cấu hình các backing services ở phía trên của trang này, và sau các backing services thì
 
 26
 00:01:56,600 --> 00:01:59,210
-is listing the microservice configurations.
+liệt kê các cấu hình microservices.
 
 27
 00:01:59,210 --> 00:02:04,820
-This is the catalog microservice configurations, including environment variables, depends on ports
+Đây là các cấu hình catalog microservice, bao gồm biến môi trường, phụ thuộc vào cổng
 
 28
 00:02:04,820 --> 00:02:05,600
-and volumes.
+và volumes.
 
 29
 00:02:05,600 --> 00:02:12,740
-And in here now we will configure basket API microservices with exposing correct endpoints port numbers
+Và ở đây bây giờ chúng ta sẽ cấu hình basket API microservices với các endpoint và cổng chính xác
 
 30
 00:02:12,740 --> 00:02:14,090
-and volume definitions.
+và định nghĩa volume.
 
 31
 00:02:14,330 --> 00:02:20,450
-So that means we need to modify these configurations according to our project port numbers and environment
+Vậy điều đó có nghĩa là chúng ta cần sửa đổi các cấu hình này theo các cổng và môi trường của dự án
 
 32
 00:02:20,450 --> 00:02:21,110
-variables.
+biến.
 
 33
 00:02:21,110 --> 00:02:24,260
-So we will configure basket API like Catholic API.
+Vậy chúng ta sẽ cấu hình basket API giống như Catalog API.
 
 34
 00:02:24,260 --> 00:02:27,590
-And the first configuration is environment variables.
+Và cấu hình đầu tiên là biến môi trường.
 
 35
 00:02:27,590 --> 00:02:31,130
-Here you can see the environment variables including connection string.
+Ở đây bạn có thể thấy các biến môi trường bao gồm chuỗi kết nối.
 
 36
 00:02:31,130 --> 00:02:35,450
-So for basket API we will also populate the environment variables.
+Vậy đối với basket API chúng ta cũng sẽ điền đầy đủ các biến môi trường.
 
 37
 00:02:35,450 --> 00:02:40,310
-And for the environment variables we should check the application settings of the basket API.
+Và đối với các biến môi trường, chúng ta nên kiểm tra cài đặt ứng dụng của basket API.
 
 38
 00:02:40,310 --> 00:02:46,580
-And here you can see that we have two connection strings that we have to override in the docker compose
+Và ở đây bạn có thể thấy rằng chúng ta có hai chuỗi kết nối mà chúng ta phải ghi đè trong tệp docker compose
 
 39
 00:02:46,580 --> 00:02:47,720
-overwrite Yaml file.
+ghi đè Yaml.
 
 40
 00:02:47,720 --> 00:02:53,960
-In order to overwrite these configurations, please open the docker compose overwriting file and locate
+Để ghi đè các cấu hình này, vui lòng mở tệp docker compose ghi đè và xác định vị trí
 
 41
 00:02:53,960 --> 00:02:54,890
-the environment.
+môi trường.
 
 42
 00:02:54,890 --> 00:02:59,480
-So now I'm going to define two environment variables in here.
+Vậy bây giờ tôi sẽ định nghĩa hai biến môi trường ở đây.
 
 43
 00:02:59,480 --> 00:03:04,010
-So the first one is this one which is the connection string database.
+Biến đầu tiên là cái này, đó là connection string của database.
 
 44
 00:03:04,010 --> 00:03:10,940
-Here you can see that we use two underscore character in order to overwrite these application settings.
+Ở đây bạn có thể thấy chúng ta sử dụng hai ký tự underscore để ghi đè các application settings.
 
 45
 00:03:10,940 --> 00:03:16,550
-And as a server we can give basket db which is the container name of the backing services in Docker
+Và là một server chúng ta có thể cung cấp basket db, đó là tên container của các backing services trong Docker
 
 46
 00:03:16,550 --> 00:03:17,180
@@ -184,135 +184,135 @@ network.
 
 47
 00:03:17,180 --> 00:03:19,520
-In Docker network we can give container names.
+Trong Docker network chúng ta có thể cung cấp tên container.
 
 48
 00:03:19,520 --> 00:03:26,090
-You can scroll up and see that basket database is container name basket db in Docker network.
+Bạn có thể cuộn lên và thấy rằng basket database là tên container basket db trong Docker network.
 
 49
 00:03:26,090 --> 00:03:30,560
-That's why we can give as a server name basket db inside of the basket.
+Đó là lý do tại sao chúng ta có thể cung cấp basket db là tên server bên trong basket.
 
 50
 00:03:30,560 --> 00:03:37,280
-Microservices and port number is 5432, which is the default port number for PostgreSQL database.
+Microservices và số port là 5432, đó là số port mặc định cho database PostgreSQL.
 
 51
 00:03:37,280 --> 00:03:44,210
-Since we can give the basket db as a container name, we can use internal port name in docker network.
+Vì chúng ta có thể cung cấp basket db là tên container, chúng ta có thể sử dụng tên port nội bộ trong docker network.
 
 52
 00:03:44,210 --> 00:03:50,240
-We don't need to change port number inside of the docker, because the server names are differentiated
+Chúng ta không cần phải thay đổi số port bên trong docker, vì tên server được phân biệt
 
 53
 00:03:50,240 --> 00:03:52,310
-in the docker compose network.
+trong docker compose network.
 
 54
 00:03:52,340 --> 00:03:58,910
-The first one is catalog db for catalog microservices, and the second one is basket db for basket microservices
+Cái đầu tiên là catalog db cho catalog microservices, và cái thứ hai là basket db cho basket microservices
 
 55
 00:03:58,910 --> 00:04:03,380
-and database name, and the rest of the connection strings are same.
+và tên database, phần còn lại của các connection strings đều giống nhau.
 
 56
 00:04:03,380 --> 00:04:08,300
-And the next overriding thing is connection string and Redis.
+Và điều ghi đè tiếp theo là connection string và Redis.
 
 57
 00:04:08,330 --> 00:04:12,140
-Again, we use double underscore to overwrite application settings.
+Một lần nữa, chúng ta sử dụng double underscore để ghi đè application settings.
 
 58
 00:04:12,140 --> 00:04:19,399
-And in here instead of using localhost we use distributed cache which is the container name Docker container
+Và ở đây thay vì sử dụng localhost chúng ta sử dụng distributed cache, đó là tên container Docker container
 
 59
 00:04:19,399 --> 00:04:21,680
-name inside of the docker compose.
+tên bên trong docker compose.
 
 60
 00:04:21,680 --> 00:04:23,630
-That's why we can give that name.
+Đó là lý do tại sao chúng ta có thể cung cấp tên đó.
 
 61
 00:04:23,630 --> 00:04:28,520
-And we use the default port number of the distributed cache which is the radius.
+Và chúng ta sử dụng số cổng mặc định của distributed cache, đó là Redis.
 
 62
 00:04:28,520 --> 00:04:31,760
-So we have completed the environment variables.
+Vậy chúng ta đã hoàn thành các biến môi trường.
 
 63
 00:04:31,760 --> 00:04:35,540
-And now after that we can configure the dependson.
+Và bây giờ sau đó chúng ta có thể cấu hình phần depends_on.
 
 64
 00:04:35,540 --> 00:04:39,950
-Here you can see that I am going to copy from the Catholic API and comes in here.
+Ở đây bạn có thể thấy tôi sắp sao chép từ Catalog API và dán vào đây.
 
 65
 00:04:39,950 --> 00:04:42,560
-So according to Dependson.
+Vậy theo phần depends_on.
 
 66
 00:04:42,560 --> 00:04:50,240
-And make sure that you have indentation correctly as it depends on we can say that basket API microservices
+Và hãy chắc chắn rằng bạn có thụt lề chính xác vì nó phụ thuộc vào, chúng ta có thể nói rằng basket API microservices
 
 67
 00:04:50,240 --> 00:04:52,580
-depending on two backing services.
+phụ thuộc vào hai dịch vụ hỗ trợ.
 
 68
 00:04:52,580 --> 00:04:57,980
-The first one is basket db and the second one is distributed cache.
+Cái đầu tiên là basket db và cái thứ hai là distributed cache.
 
 69
 00:04:57,980 --> 00:04:59,840
-And please make sure that.
+Và xin hãy chắc chắn rằng.
 
 70
 00:04:59,990 --> 00:05:05,990
-You have put correct indentation and it depends on part also finished.
+Bạn đã đặt thụt lề chính xác và phần depends_on cũng đã hoàn thành.
 
 71
 00:05:05,990 --> 00:05:08,960
-And the last part is port definitions.
+Và phần cuối cùng là định nghĩa cổng.
 
 72
 00:05:08,960 --> 00:05:14,570
-At this stage we can check our port definitions for basket API microservices.
+Ở giai đoạn này chúng ta có thể kiểm tra các định nghĩa cổng cho basket API microservices.
 
 73
 00:05:14,570 --> 00:05:23,480
-Here you can see the basket microservices exposing 5001 and 5051 for local environment Http and Https.
+Ở đây bạn có thể thấy rằng basket microservices hiển thị cổng 5001 và 5051 cho môi trường cục bộ HTTP và HTTPS.
 
 74
 00:05:23,480 --> 00:05:33,050
-But in docker environment we will expose these services 6001 and 6061 for http and https endpoint in
+Nhưng trong môi trường Docker chúng ta sẽ hiển thị các dịch vụ này trên cổng 6001 và 6061 cho endpoint HTTP và HTTPS trong
 
 75
 00:05:33,050 --> 00:05:35,210
-Docker environment for that purpose.
+môi trường Docker cho mục đích đó.
 
 76
 00:05:35,210 --> 00:05:41,240
-If you go back to our Visual Studio, we are going to replace these port numbers according to our port
+Nếu bạn quay lại Visual Studio của chúng ta, chúng ta sẽ thay thế các số cổng này theo bảng ánh xạ cổng của chúng ta.
 
 77
 00:05:41,240 --> 00:05:43,190
-number mapping table.
+Và ở đây bạn có thể thấy rằng đây là endpoint HTTP mạng Docker nội bộ được hiển thị tới cổng 6001.
 
 78
 00:05:43,190 --> 00:05:51,110
-And here you can see that this is the internal Docker network Http endpoint that is exposing to 6001.
+Và ở đây bạn có thể thấy endpoint HTTPS nội bộ được hiển thị tới cổng 6061.
 
 79
 00:05:51,110 --> 00:05:56,930
-And here you can see the internal Https endpoint exposing to 6061.
+Và chúng ta đã hoàn thành các cấu hình cho basket API.
 
 80
 00:05:56,930 --> 00:06:00,710
@@ -320,11 +320,11 @@ And we have completed the configurations for basket API.
 
 81
 00:06:00,710 --> 00:06:06,440
-Please save this override HTML file by using docker compose and docker compose overwrite HTML files.
+Vui lòng lưu tệp override HTML này bằng cách sử dụng docker compose và các tệp override HTML của docker compose.
 
 82
 00:06:06,440 --> 00:06:10,970
-We can efficiently manage and orchestrate all components for the basket API.
+Chúng ta có thể hiệu quả quản lý và điều phối tất cả các thành phần cho basket API.
 
 83
 00:06:10,970 --> 00:06:11,720

@@ -1,34 +1,34 @@
 1
 00:00:00,170 --> 00:00:06,950
-In this video, we are going to run Docker Compose on Visual Studio in order to set up PostgreSQL database
+Trong video này, chúng ta sẽ chạy Docker Compose trên Visual Studio để thiết lập database PostgreSQL
 
 2
 00:00:06,950 --> 00:00:08,210
-on the environment.
+trong môi trường.
 
 3
 00:00:08,930 --> 00:00:15,350
-So first of all, please open the Visual Studio and also open the Docker desktop and make sure that
+Vậy đầu tiên, vui lòng mở Visual Studio và cũng mở Docker desktop và đảm bảo rằng
 
 4
 00:00:15,350 --> 00:00:17,090
-your Docker desktop is running.
+Docker desktop của bạn đang chạy.
 
 5
 00:00:17,090 --> 00:00:23,270
-And after that you can come to Visual Studio and right click the Docker Compose as a startup project.
+Và sau đó bạn có thể vào Visual Studio và click chuột phải vào Docker Compose như một startup project.
 
 6
 00:00:24,040 --> 00:00:27,490
-And run the Docker compose profile from the Visual Studio.
+Và chạy Docker compose profile từ Visual Studio.
 
 7
 00:00:28,150 --> 00:00:33,580
-This action will bring up our PostgreSQL database as defined in the Docker compose files.
+Hành động này sẽ khởi động database PostgreSQL của chúng ta như được định nghĩa trong Docker compose files.
 
 8
 00:00:35,590 --> 00:00:37,720
-Okay if you open the.
+Được rồi, nếu bạn mở.
 
 9
 00:00:38,410 --> 00:00:39,580
@@ -36,123 +36,123 @@ Docker desktop.
 
 10
 00:00:39,580 --> 00:00:45,160
-You can see that this time we have two PostgreSQL database on Docker desktop.
+Bạn có thể thấy rằng lần này chúng ta có hai database PostgreSQL trên Docker desktop.
 
 11
 00:00:45,160 --> 00:00:51,400
-So after running the Docker compose, we have verified that we have two PostgreSQL instance running
+Vậy sau khi chạy Docker compose, chúng ta đã xác minh rằng chúng ta có hai instance PostgreSQL đang chạy
 
 12
 00:00:51,400 --> 00:00:53,410
-one for the catalog db.
+một cho catalog db.
 
 13
 00:00:53,410 --> 00:00:59,920
-And if you look at the catalog db port numbers, you can see that this is exposing the default port
+Và nếu bạn nhìn vào các port numbers của catalog db, bạn có thể thấy rằng cái này đang expose port mặc định
 
 14
 00:00:59,920 --> 00:01:02,920
-number and another for the basket db.
+và một cái khác cho basket db.
 
 15
 00:01:02,920 --> 00:01:10,690
-Exposing the PostgreSQL database 5433 that we have exposed to our local computer, and the internal
+Expose database PostgreSQL 5433 mà chúng ta đã expose cho máy tính cục bộ của mình, và các port numbers bên trong
 
 16
 00:01:10,690 --> 00:01:12,220
-port numbers are the same.
+là giống nhau.
 
 17
 00:01:12,220 --> 00:01:14,140
-These are the five, four, three, two.
+Đây là năm, bốn, ba, hai.
 
 18
 00:01:14,170 --> 00:01:19,390
-These are the internal port numbers, that is the actual PostgreSQL default port number.
+Đây là các port numbers bên trong, đó là port mặc định PostgreSQL thực tế.
 
 19
 00:01:19,630 --> 00:01:25,840
-So now we have successfully run two database into our computer and docker compose environment.
+Vậy bây giờ chúng ta đã thành công chạy hai database vào máy tính của chúng ta và môi trường docker compose.
 
 20
 00:01:25,840 --> 00:01:32,080
-Now it is time to browse the databases and see the database and tables into the basket database.
+Bây giờ là lúc để duyệt các databases và xem database và tables trong basket database.
 
 21
 00:01:32,080 --> 00:01:38,800
-I recommended to using Pgadmin for more user friendly interface and managing our databases for that
+Tôi khuyên bạn nên sử dụng Pgadmin để có giao diện thân thiện hơn và quản lý cơ sở dữ liệu của chúng ta
 
 22
 00:01:38,800 --> 00:01:41,140
-purpose, please open the Pgadmin.
+cho mục đích đó, vui lòng mở Pgadmin.
 
 23
 00:01:41,140 --> 00:01:44,770
-You can download Pgadmin from their official website.
+Bạn có thể tải Pgadmin từ trang web chính thức của họ.
 
 24
 00:01:44,860 --> 00:01:49,780
-After opening the PGA admin, you can register servers for Catalog and basket DB.
+Sau khi mở Pgadmin, bạn có thể đăng ký máy chủ cho Catalog và Basket DB.
 
 25
 00:01:49,810 --> 00:01:56,020
-You can come here and right click and register a new server and give the server name as a local server
+Bạn có thể đến đây và nhấp chuột phải để đăng ký một máy chủ mới và đặt tên máy chủ là máy chủ cục bộ
 
 26
 00:01:56,020 --> 00:01:58,000
-name as a catalog or basket DB.
+đặt tên là catalog hoặc basket DB.
 
 27
 00:01:58,000 --> 00:02:04,330
-For example, you can give basket db and after that in the connection tab, you can give the server
+Ví dụ, bạn có thể đặt tên là basket db và sau đó trong tab kết nối, bạn có thể đặt tên máy chủ
 
 28
 00:02:04,330 --> 00:02:11,290
-name as a localhost, and this time basket db will be hosting as a five, four, three and three in
+là localhost, và lần này basket db sẽ chạy trên cổng năm, bốn, ba, ba để
 
 29
 00:02:11,290 --> 00:02:14,080
-order to access basket db in different port.
+truy cập basket db trên cổng khác.
 
 30
 00:02:14,080 --> 00:02:16,780
-So you can create this kind of server registration.
+Vì vậy bạn có thể tạo kiểu đăng ký máy chủ này.
 
 31
 00:02:16,780 --> 00:02:22,210
-And after that you can come here and listing your servers for catalog and basket DB.
+Và sau đó bạn có thể đến đây và liệt kê các máy chủ của bạn cho catalog và basket DB.
 
 32
 00:02:22,240 --> 00:02:24,670
-Here you can see that I have created basket DB.
+Ở đây bạn có thể thấy rằng tôi đã tạo basket DB.
 
 33
 00:02:24,670 --> 00:02:28,960
-And you can see the empty doc products table is created successfully.
+Và bạn có thể thấy rằng bảng products rỗng đã được tạo thành công.
 
 34
 00:02:28,960 --> 00:02:35,290
-And if you open the basket DB you can see that basket DB also connected in different port from our local
+Và nếu bạn mở basket DB bạn có thể thấy rằng basket DB cũng kết nối trên cổng khác từ máy tính cục bộ của chúng ta.
 
 35
 00:02:35,290 --> 00:02:35,980
-computer.
+Và nếu bạn đi tới các bảng, chúng ta có thể nhấp chuột phải và làm mới trang này.
 
 36
 00:02:35,980 --> 00:02:40,420
-And if you go to the tables, we can right click and refresh this page.
+Chưa có bảng nào được tạo vì hiện tại chúng ta đang xem cơ sở dữ liệu basket DB.
 
 37
 00:02:40,420 --> 00:02:45,970
-There is no table is created yet because we are looking for the basket DB database now.
+Và chúng ta chưa khởi động ứng dụng basket DB hoặc chưa gửi bất kỳ yêu cầu nào.
 
 38
 00:02:45,970 --> 00:02:50,680
-And we didn't start our basket DB application or we didn't send any request.
+Đó là lý do tại sao Marten chỉ tạo cơ sở dữ liệu cho chúng ta.
 
 39
 00:02:50,680 --> 00:02:53,980
-That's why Martin is only create database for us.
+Vì vậy như bạn có thể thấy rằng chúng ta đã kết nối hai cơ sở dữ liệu khác nhau với máy tính cục bộ của chúng ta và chúng ta đã sẵn sàng
 
 40
 00:02:53,980 --> 00:03:00,940
@@ -160,5 +160,5 @@ So as you can see that we have connected two different database into our local c
 
 41
 00:03:00,940 --> 00:03:07,090
-to implement actual business operations which are the basket get, delete and store basket operations.
+để triển khai các hoạt động kinh doanh thực tế đó là các hoạt động get, delete và store basket.
 

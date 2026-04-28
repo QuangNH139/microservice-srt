@@ -1,30 +1,30 @@
 1
 00:00:00,170 --> 00:00:06,590
-In this video we are going to develop Basket Checkout feature folder to expose post and point and publish
+Trong video này, chúng ta sẽ phát triển feature folder Basket Checkout để expose post endpoint và publish
 
 2
 00:00:06,590 --> 00:00:07,760
-event to RabbitMQ.
+event đến RabbitMQ.
 
 3
 00:00:07,760 --> 00:00:11,180
-So that means we are at the third and fourth step.
+Điều đó có nghĩa là chúng ta đang ở bước thứ ba và thứ tư.
 
 4
 00:00:11,180 --> 00:00:15,470
-And we will start with the third step for exposing Http post method.
+Và chúng ta sẽ bắt đầu với bước thứ ba để expose Http post method.
 
 5
 00:00:15,470 --> 00:00:18,530
-For that purpose, we will create a new feature folder.
+Để làm được điều đó, chúng ta sẽ tạo một feature folder mới.
 
 6
 00:00:18,530 --> 00:00:22,910
-If you open the Visual Studio and go to basket API and go to Basket Folder.
+Nếu bạn mở Visual Studio và vào basket API rồi vào Basket Folder.
 
 7
 00:00:22,910 --> 00:00:28,730
-If you expand this folder, you can see the feature folders including delete Gate and Store basket.
+Nếu bạn mở rộng folder này, bạn có thể thấy các feature folders bao gồm Delete Basket và Store Basket.
 
 8
 00:00:28,730 --> 00:00:29,450
@@ -32,139 +32,139 @@ Basket.
 
 9
 00:00:29,450 --> 00:00:34,460
-Microservices is designed with a vertical slice architecture that use slices.
+Microservices được thiết kế với vertical slice architecture sử dụng các vertical slices.
 
 10
 00:00:34,460 --> 00:00:38,570
-Include both end point and implementation class into handle classes.
+Bao gồm cả endpoint và implementation class trong các handler classes.
 
 11
 00:00:38,570 --> 00:00:44,300
-If you open the one of the use case, you can see that these are including end point and handle classes.
+Nếu bạn mở một trong các use cases, bạn có thể thấy rằng chúng bao gồm endpoint và handler classes.
 
 12
 00:00:44,300 --> 00:00:47,930
-So now we are going to create a new feature folder.
+Vậy bây giờ chúng ta sẽ tạo một feature folder mới.
 
 13
 00:00:47,930 --> 00:00:51,230
-Which name is Checkout Basket in the basket API project.
+Được đặt tên là Checkout Basket trong basket API project.
 
 14
 00:00:51,230 --> 00:00:54,770
-So I'm going to right click Add new subfolder.
+Vậy tôi sẽ right click Add new subfolder.
 
 15
 00:00:54,770 --> 00:00:57,020
-Which name is checkout basket.
+Được đặt tên là checkout basket.
 
 16
 00:00:57,020 --> 00:01:02,810
-And this align with the vertical slice architecture where each use case includes both end points and
+Và điều này phù hợp với vertical slice architecture nơi mỗi use case bao gồm cả endpoints và
 
 17
 00:01:02,810 --> 00:01:04,879
-implementation in the handle classes.
+implementation trong handler classes.
 
 18
 00:01:04,879 --> 00:01:10,820
-So that means we will develop two main class under this folder, which is the checkout basket end point
+Vậy điều đó có nghĩa là chúng ta sẽ phát triển hai main classes dưới folder này, đó là checkout basket endpoint
 
 19
 00:01:10,820 --> 00:01:12,800
-and the checkout basket handle classes.
+và checkout basket handler classes.
 
 20
 00:01:12,800 --> 00:01:16,100
-So now I'm going to add a new two classes.
+Vậy bây giờ tôi sẽ add hai classes mới.
 
 21
 00:01:16,100 --> 00:01:20,390
-The first one is for the checkout basket and point six.
+Cái đầu tiên là cho checkout basket và point sáu.
 
 22
 00:01:20,390 --> 00:01:26,030
-And the second class will be the checkout basket handle class.
+Và lớp thứ hai sẽ là lớp checkout basket handle.
 
 23
 00:01:26,420 --> 00:01:32,120
-So these two classes will be aligned with the vertical slice architecture and exposing endpoints in
+Vậy hai lớp này sẽ phù hợp với vertical slice architecture và expose các endpoint trong
 
 24
 00:01:32,120 --> 00:01:35,780
-the endpoint class and implementing actual logic in the handle class.
+lớp endpoint và triển khai logic thực tế trong lớp handle.
 
 25
 00:01:35,780 --> 00:01:39,440
-So now we are going to develop checkout basket and point class.
+Vậy bây giờ chúng ta sẽ phát triển lớp checkout basket và point.
 
 26
 00:01:39,440 --> 00:01:44,240
-And this class is responsible for exposing APIs from the basket microservices.
+Và lớp này chịu trách nhiệm expose các API từ basket microservice.
 
 27
 00:01:44,240 --> 00:01:49,880
-So that means we will implement http post method at the end point of the basket slash checkout.
+Điều đó có nghĩa là chúng ta sẽ triển khai phương thức HTTP POST tại endpoint của basket slash checkout.
 
 28
 00:01:49,880 --> 00:01:54,170
-So now we are going to start with the developing request and response object.
+Vậy bây giờ chúng ta sẽ bắt đầu với việc phát triển request và response object.
 
 29
 00:01:54,170 --> 00:02:00,260
-So I'm going to come here and create a two record type for the request and response object.
+Vậy tôi sẽ tạo một kiểu record cho request và response object.
 
 30
 00:02:00,260 --> 00:02:03,500
-Here you can see that I have created request and response object.
+Ở đây bạn có thể thấy tôi đã tạo request và response object.
 
 31
 00:02:03,500 --> 00:02:07,670
-This is for the request which is the public record checkout basket request.
+Đây là cho request, đó là public record checkout basket request.
 
 32
 00:02:07,670 --> 00:02:13,010
-And as a parameter it is taking basket checkout DTO and the name of the basket checkout DTO.
+Và như một tham số nó đang nhận basket checkout DTO và tên của basket checkout DTO.
 
 33
 00:02:13,040 --> 00:02:19,460
-That means this will be accepting basket checkout DTO object in a Json payload of these http post operation
+Điều đó có nghĩa là cái này sẽ chấp nhận basket checkout DTO object trong JSON payload của HTTP POST operation này
 
 34
 00:02:19,460 --> 00:02:25,250
-and as a response this will be returned public record checkout basket response and parameter should
+và như một response cái này sẽ trả về public record checkout basket response và tham số nên
 
 35
 00:02:25,250 --> 00:02:30,170
-be boolean is success that indicating the operation is successfully complete or not.
+là boolean is success, cho biết operation đã hoàn thành thành công hay không.
 
 36
 00:02:30,170 --> 00:02:33,920
-So after that we will define our actual checkout basket.
+Vậy sau đó chúng ta sẽ định nghĩa checkout basket thực tế của chúng ta.
 
 37
 00:02:33,920 --> 00:02:35,060
-Endpoint classes.
+Các lớp Endpoint.
 
 38
 00:02:35,060 --> 00:02:41,720
-This class should implement Ikatan module in order to expose http post method in a minimal API way.
+Lớp này nên triển khai Ikatan module để expose phương thức HTTP POST theo cách Minimal API.
 
 39
 00:02:41,720 --> 00:02:46,160
-So that's why I'm going to implement this interface, which is the Ikatan module.
+Đó là lý do tại sao tôi sẽ triển khai interface này, đó là Ikatan module.
 
 40
 00:02:46,160 --> 00:02:51,050
-And when we are implementing interface members, this will be adding routes into this method.
+Và khi chúng ta đang triển khai các member của interface, cái này sẽ thêm các routes vào phương thức này.
 
 41
 00:02:51,050 --> 00:02:56,240
-So we will use Endpoint Route Builder when exposing APIs with using the Carter.
+Vậy chúng ta sẽ sử dụng Endpoint Route Builder khi expose APIs bằng Carter.
 
 42
 00:02:56,240 --> 00:03:01,340
-But before developing this method, it is good to define our DTO object, which is the basket checkout
+Nhưng trước khi phát triển phương thức này, nên định nghĩa DTO object của chúng ta, đó là basket checkout
 
 43
 00:03:01,340 --> 00:03:01,940
@@ -172,67 +172,67 @@ DTO.
 
 44
 00:03:01,940 --> 00:03:07,160
-So I'm going to right click the basket API and create new folder, which name is DTO.
+Vậy tôi sẽ nhấp chuột phải vào basket API và tạo folder mới, tên là DTO.
 
 45
 00:03:07,490 --> 00:03:12,050
-And in this details folder I'm going to create basket checkout DTO.
+Và trong folder details này, tôi sẽ tạo basket checkout DTO.
 
 46
 00:03:12,050 --> 00:03:18,710
-In order to accept these Json object into from the client application, please add a new class.
+Để chấp nhận Json object này từ ứng dụng client, vui lòng thêm class mới.
 
 47
 00:03:18,710 --> 00:03:22,100
-Which name is basket checkout DTO under the DTO folder.
+Tên là basket checkout DTO dưới folder DTO.
 
 48
 00:03:22,310 --> 00:03:26,930
-So after that we can start the implementation of the basket checkout DTO class.
+Vậy sau đó chúng ta có thể bắt đầu triển khai basket checkout DTO class.
 
 49
 00:03:26,930 --> 00:03:29,870
-This is typical basket checkout event class.
+Đây là class basket checkout event điển hình.
 
 50
 00:03:29,870 --> 00:03:35,240
-I'm going to copy these members from the Basket Checkout event and paste in here including the username,
+Tôi sẽ sao chép các members này từ Basket Checkout event và dán vào đây, bao gồm username,
 
 51
 00:03:35,240 --> 00:03:40,790
-customer ID, total price, billing and shipping address and payment information so you can get these
+customer ID, total price, billing và shipping address và payment information, để bạn có thể lấy các
 
 52
 00:03:40,790 --> 00:03:44,810
-properties from the Basket Checkout event under the Building Blocks messaging.
+properties này từ Basket Checkout event dưới Building Blocks messaging.
 
 53
 00:03:44,810 --> 00:03:47,690
-Copy from this side and paste into the D2 object.
+Sao chép từ phía này và dán vào D2 object.
 
 54
 00:03:47,690 --> 00:03:54,500
-The idea is that we can getting these DTO variables from the client application as a Json format and
+Ý tưởng là chúng ta có thể nhận các DTO variables này từ ứng dụng client dưới dạng Json format và
 
 55
 00:03:54,500 --> 00:03:56,750
-passing these informations to the event object.
+truyền các thông tin này tới event object.
 
 56
 00:03:56,750 --> 00:04:00,320
-So please develop these DTO objects, including these members.
+Vậy vui lòng phát triển các DTO objects này, bao gồm các members này.
 
 57
 00:04:00,320 --> 00:04:07,100
-And after that we can go back to our Checkout Basket endpoint class and start to implement our add method
+Và sau đó chúng ta có thể quay lại Checkout Basket endpoint class và bắt đầu triển khai add method của chúng ta
 
 58
 00:04:07,100 --> 00:04:10,310
-in order to expose these Http post method.
+để expose HTTP post method này.
 
 59
 00:04:10,310 --> 00:04:16,519
-But before that, of course we should add a using statement into our basket API DTO into our checkout
+Nhưng trước đó, tất nhiên chúng ta nên thêm using statement vào basket API DTO của chúng ta vào Checkout
 
 60
 00:04:16,519 --> 00:04:17,450
@@ -240,59 +240,59 @@ endpoint class.
 
 61
 00:04:17,450 --> 00:04:21,740
-By the way, we can move these using statement to the our global Usings.
+Nhân tiện, chúng ta có thể di chuyển những using statement này vào global Usings.
 
 62
 00:04:21,740 --> 00:04:28,430
-I'm going to cut in here and go to global Usings into basket API and adhere with adding the global keyword.
+Tôi sẽ cắt vào đây và đi tới global Usings trong basket API và thêm từ khóa global.
 
 63
 00:04:28,430 --> 00:04:33,650
-By this way, we can develop checkout basket end point class without adding the using statement.
+Bằng cách này, chúng ta có thể phát triển checkout basket endpoint class mà không cần thêm using statement.
 
 64
 00:04:33,650 --> 00:04:35,960
-So go back to our checkout basket endpoint.
+Vậy hãy quay lại checkout basket endpoint của chúng ta.
 
 65
 00:04:35,960 --> 00:04:39,170
-And now it is time to exposing http post request.
+Và bây giờ là lúc để expose HTTP POST request.
 
 66
 00:04:39,170 --> 00:04:45,620
-So we are going to use app dot map post operation in order to exposing our checkout basket.
+Vậy chúng ta sẽ sử dụng app dot map post operation để expose checkout basket của chúng ta.
 
 67
 00:04:45,620 --> 00:04:46,760
-So let me develop.
+Vậy để tôi phát triển.
 
 68
 00:04:46,760 --> 00:04:51,830
-And after that I will explain one by one I'm going to using app dot map post operation.
+Và sau đó tôi sẽ giải thích từng cái một. Tôi sẽ sử dụng app dot map post operation.
 
 69
 00:04:51,830 --> 00:04:55,280
-And after that we will exposing basket checkout end point.
+Và sau đó chúng ta sẽ expose basket checkout endpoint.
 
 70
 00:04:55,280 --> 00:04:59,540
-And this will be representing our minimal API definition using the.
+Và đây sẽ là biểu diễn định nghĩa Minimal API của chúng ta sử dụng.
 
 71
 00:04:59,750 --> 00:05:00,980
-Or Carter Library.
+Hoặc thư viện Carter.
 
 72
 00:05:00,980 --> 00:05:05,000
-So these are the extension methods that we can configure these endpoint.
+Vậy đây là những extension methods mà chúng ta có thể cấu hình các endpoint này.
 
 73
 00:05:05,000 --> 00:05:10,130
-So here you can see the implementation of the expose checkout operation.
+Vậy ở đây bạn có thể thấy cách triển khai checkout operation.
 
 74
 00:05:10,130 --> 00:05:16,130
-So we are going to start with the app dot map post method to define Http post endpoint for the basket
+Vậy chúng ta sẽ bắt đầu với phương thức app dot map post để định nghĩa Http POST endpoint cho basket
 
 75
 00:05:16,130 --> 00:05:16,730
@@ -300,83 +300,83 @@ checkout.
 
 76
 00:05:16,730 --> 00:05:23,030
-And it is adopting incoming requests in to do our checkout basket request that we have defined in this
+Và nó chuyển đổi incoming requests thành checkout basket request mà chúng ta đã định nghĩa trong class
 
 77
 00:05:23,030 --> 00:05:23,510
-class.
+này.
 
 78
 00:05:23,510 --> 00:05:26,870
-And this will be accodomate the incoming requests in this object.
+Và điều này sẽ tiếp nhận incoming requests vào object này.
 
 79
 00:05:26,870 --> 00:05:32,690
-And after that you can see that we will inject Isander center object, which is the mediator Isander
+Và sau đó bạn có thể thấy rằng chúng ta sẽ inject Isander center object, đó là mediator Isander
 
 80
 00:05:32,690 --> 00:05:36,080
-object, into our asynchronous delegate handler class.
+object, vào lớp async delegate handler của chúng ta.
 
 81
 00:05:36,080 --> 00:05:40,190
-When we are calling the http post request for this endpoint.
+Khi chúng ta gọi HTTP POST request cho endpoint này.
 
 82
 00:05:40,190 --> 00:05:47,030
-So this will be delegate handler using the sender method in order to send this command to the mediator.
+Vậy đây sẽ là delegate handler sử dụng phương thức sender để gửi command này tới mediator.
 
 83
 00:05:47,030 --> 00:05:52,010
-Here you can see that in the first row of code, we will basically adopting incoming requests to the
+Ở đây bạn có thể thấy ở hàng code đầu tiên, chúng ta sẽ cơ bản là ánh xạ incoming requests tới
 
 84
 00:05:52,010 --> 00:05:55,490
-checkout basket command object that we will develop in the next video.
+checkout basket command object mà chúng ta sẽ phát triển trong video tiếp theo.
 
 85
 00:05:55,490 --> 00:05:58,670
-And after that we will passing this command object to the mediator.
+Và sau đó chúng ta sẽ truyền command object này tới mediator.
 
 86
 00:05:58,670 --> 00:06:01,580
-This will be trigger handler class and returning a result.
+Điều này sẽ kích hoạt handler class và trả về một result.
 
 87
 00:06:01,580 --> 00:06:07,520
-And lastly we will converting this result object to our response which is the checkout basket response.
+Và cuối cùng chúng ta sẽ chuyển đổi result object này thành response của chúng ta, đó là checkout basket response.
 
 88
 00:06:07,520 --> 00:06:09,530
-And this will be returned back to the client.
+Và điều này sẽ được trả lại cho client.
 
 89
 00:06:09,530 --> 00:06:13,310
-This response object which is using the results method.
+Response object này được sử dụng phương thức Results.
 
 90
 00:06:13,310 --> 00:06:18,410
-And after that we will configure this method with using different extension method from the Carter,
+Và sau đó chúng ta sẽ cấu hình phương thức này bằng cách sử dụng các extension method khác nhau từ Carter,
 
 91
 00:06:18,410 --> 00:06:22,760
-including the with name, summary and description and producers methods.
+bao gồm các phương thức WithName, Summary, Description và Produces.
 
 92
 00:06:22,760 --> 00:06:27,020
-So this is our typical implementation for the secrets and mediator.
+Vậy đây là triển khai điển hình của chúng ta cho Secrets và Mediator.
 
 93
 00:06:27,020 --> 00:06:33,350
-And using the Carter library which is for accepting map post operation with the URL of the slash basket
+Và sử dụng thư viện Carter, được dùng để chấp nhận map POST operation với URL là /basket
 
 94
 00:06:33,350 --> 00:06:37,880
-and slash checkout and implementation using the mediator and secrets lifecycle.
+và /checkout và triển khai sử dụng mediator và secrets lifecycle.
 
 95
 00:06:37,880 --> 00:06:43,040
-So in the next video we are going to develop actual command and command handler class with using the
+Vậy trong video tiếp theo chúng ta sẽ phát triển actual command và command handler class bằng cách sử dụng
 
 96
 00:06:43,040 --> 00:06:43,550

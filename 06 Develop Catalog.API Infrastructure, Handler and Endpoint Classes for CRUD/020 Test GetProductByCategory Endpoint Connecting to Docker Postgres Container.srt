@@ -1,6 +1,6 @@
 1
 00:00:00,200 --> 00:00:07,100
-In this video we are going to test Getproduct by category endpoint with connecting to Docker PostgreSQL
+Trong video này chúng ta sẽ test endpoint Getproduct by category với kết nối đến Docker PostgreSQL
 
 2
 00:00:07,100 --> 00:00:07,939
@@ -8,7 +8,7 @@ container.
 
 3
 00:00:08,090 --> 00:00:14,540
-So that means our first step is make sure that PostgreSQL database is set up and running inside of the
+Điều đó có nghĩa là bước đầu tiên của chúng ta là đảm bảo rằng cơ sở dữ liệu PostgreSQL được thiết lập và chạy bên trong
 
 4
 00:00:14,540 --> 00:00:15,050
@@ -16,109 +16,109 @@ Docker.
 
 5
 00:00:15,440 --> 00:00:22,100
-Open the Docker desktop and make sure that your Docker compose is running and PostgreSQL container is
+Mở Docker desktop và đảm bảo rằng Docker compose của bạn đang chạy và PostgreSQL container đang
 
 6
 00:00:22,100 --> 00:00:23,330
-exposing to ports.
+expose ra các ports.
 
 7
 00:00:23,540 --> 00:00:29,060
-If you didn't start yet, you can come here and right click the Docker compose, set a startup project
+Nếu bạn chưa khởi động, bạn có thể đến đây và click chuột phải vào Docker compose, set startup project
 
 8
 00:00:29,060 --> 00:00:31,280
-and run the Docker compose profile.
+và chạy Docker compose profile.
 
 9
 00:00:31,280 --> 00:00:35,510
-And after that we will continue to our catalog microservices.
+Và sau đó chúng ta sẽ tiếp tục đến catalog microservices của chúng ta.
 
 10
 00:00:35,510 --> 00:00:38,300
-We will test the catalog API microservice.
+Chúng ta sẽ test catalog API microservice.
 
 11
 00:00:38,300 --> 00:00:41,060
-You can right click and set a startup project.
+Bạn có thể click chuột phải và set startup project.
 
 12
 00:00:41,060 --> 00:00:46,310
-But before that make sure that you should put the breakpoints in the beginning of the endpoint class.
+Nhưng trước tiên hãy đảm bảo rằng bạn nên đặt các breakpoints ở đầu của endpoint class.
 
 13
 00:00:46,550 --> 00:00:51,530
-And after that, if you go to the handle method, put a breakpoint handle method.
+Và sau đó, nếu bạn vào handle method, đặt một breakpoint trong handle method.
 
 14
 00:00:51,530 --> 00:01:00,230
-So after setting up the breakpoints, you can run the https mode and we will send http get method for
+Vậy sau khi thiết lập các breakpoints, bạn có thể chạy https mode và chúng ta sẽ gửi http get method để
 
 15
 00:01:00,230 --> 00:01:02,870
-get products by category information.
+lấy get products by category information.
 
 16
 00:01:02,870 --> 00:01:03,620
-Okay.
+Được rồi.
 
 17
 00:01:03,620 --> 00:01:11,150
-If you open the R postman, I'm going to duplicate the get product by ID and create a new http get method.
+Nếu bạn mở Postman, tôi sẽ duplicate get product by ID và tạo một http get method mới.
 
 18
 00:01:11,150 --> 00:01:18,020
-And this time you can see that the endpoint URL including the products category and category information
+Và lần này bạn có thể thấy rằng endpoint URL bao gồm products category và category information
 
 19
 00:01:18,020 --> 00:01:18,710
-in here.
+ở đây.
 
 20
 00:01:18,710 --> 00:01:25,190
-So basically I'm going to send a C5 as a category five and click the send button.
+Vậy về cơ bản tôi sẽ gửi C5 như là category 5 và click nút send.
 
 21
 00:01:25,190 --> 00:01:27,770
-And this will be hit the R endpoint class.
+Và điều này sẽ hit vào R endpoint class.
 
 22
 00:01:27,770 --> 00:01:31,880
-And this will be redirect to mediator trigger to handle method.
+Và điều này sẽ redirect đến mediator trigger để xử lý phương thức handle.
 
 23
 00:01:31,880 --> 00:01:38,300
-And in the handle method we basically query inside of the product document table and see the products
+Và trong handle method, chúng ta cơ bản là query bên trong product document table và xem các products
 
 24
 00:01:38,600 --> 00:01:40,040
-regarding to C5.
+liên quan đến C5.
 
 25
 00:01:40,040 --> 00:01:44,960
-So as you can see that there is no product because C5 category is not existing.
+Vậy như bạn có thể thấy rằng không có product nào vì category C5 không tồn tại.
 
 26
 00:01:44,960 --> 00:01:51,170
-If you go to the get product by ID response, you can see that we have two categories C1 and C2.
+Nếu bạn đi đến get product by ID response, bạn có thể thấy rằng chúng ta có hai categories C1 và C2.
 
 27
 00:01:51,170 --> 00:01:53,780
-So I'm going to change as a C2.
+Vậy tôi sẽ thay đổi thành C2.
 
 28
 00:01:53,810 --> 00:02:00,350
-Save this request and send again http get request and hit the F5 and EF5.
+Lưu request này và gửi lại HTTP GET request và hit F5 và EF5.
 
 29
 00:02:00,350 --> 00:02:07,160
-This time you can see that we have get successful response including products filter by categories which
+Lần này bạn có thể thấy rằng chúng ta nhận được successful response bao gồm products được filter theo categories mà
 
 30
 00:02:07,160 --> 00:02:08,360
-name is C2.
+tên là C2.
 
 31
 00:02:08,360 --> 00:02:13,970
-And that confirms that our endpoint is correctly querying data from the PostgreSQL database.
+Và điều đó xác nhận rằng endpoint của chúng ta đang query dữ liệu từ PostgreSQL database một cách chính xác.
 

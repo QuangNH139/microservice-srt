@@ -1,18 +1,18 @@
 1
 00:00:00,140 --> 00:00:07,100
-In this video we are going to develop Get Basket feature handler class with using SQS and mediator patterns
+Trong video này, chúng ta sẽ phát triển lớp Get Basket feature handler bằng cách sử dụng mẫu SQS và mediator
 
 2
 00:00:07,100 --> 00:00:08,750
-in basket microservices.
+trong basket microservices.
 
 3
 00:00:08,750 --> 00:00:15,530
-And we will start with creating our query and result record objects into the Get Basket feature class.
+Và chúng ta sẽ bắt đầu bằng cách tạo các đối tượng query và result record vào lớp Get Basket feature.
 
 4
 00:00:15,530 --> 00:00:22,070
-For that purpose, please open Visual Studio and go to the Get Basket Handler class under the Get Basket
+Với mục đích đó, vui lòng mở Visual Studio và đi đến lớp Get Basket Handler dưới thư mục Get Basket
 
 5
 00:00:22,070 --> 00:00:22,610
@@ -20,103 +20,103 @@ folder.
 
 6
 00:00:22,610 --> 00:00:30,230
-So now I am going to write Public Record and defining Get Basket Query object.
+Vậy bây giờ tôi sẽ viết Public Record và định nghĩa đối tượng Get Basket Query.
 
 7
 00:00:30,230 --> 00:00:34,730
-And this time we will get string username as a parameter.
+Và lần này chúng ta sẽ nhận string username làm một tham số.
 
 8
 00:00:34,730 --> 00:00:39,020
-And this will be implements I query interface.
+Và nó sẽ triển khai giao diện I query.
 
 9
 00:00:39,680 --> 00:00:48,260
-After that we can define our result object public record and get basket result as a parameter of including
+Sau đó chúng ta có thể định nghĩa đối tượng result của chúng ta là public record và get basket result như một tham số bao gồm
 
 10
 00:00:48,260 --> 00:00:49,850
-the whole shopping cart object.
+toàn bộ đối tượng shopping cart.
 
 11
 00:00:50,840 --> 00:00:56,810
-These records represent our query and it is expected result to get basket query.
+Những records này đại diện cho query của chúng ta và đó là kết quả mong đợi của get basket query.
 
 12
 00:00:56,810 --> 00:01:03,950
-Include the username as a parameter and get basket result will return the user's shopping cart object.
+Bao gồm username làm một tham số và get basket result sẽ trả về đối tượng shopping cart của người dùng.
 
 13
 00:01:03,950 --> 00:01:07,280
-That's why it is a property of get basket result.
+Đó là lý do tại sao nó là một thuộc tính của get basket result.
 
 14
 00:01:07,670 --> 00:01:11,180
-So as you can see that we need I query object in here.
+Vậy như bạn có thể thấy rằng chúng ta cần I query object ở đây.
 
 15
 00:01:11,180 --> 00:01:16,490
-So if you come here and try to implement this interface there is no package comes in here.
+Vậy nếu bạn đến đây và cố gắng triển khai giao diện này thì không có package nào xuất hiện ở đây.
 
 16
 00:01:16,490 --> 00:01:18,440
-So that is not included.
+Vậy điều đó không được bao gồm.
 
 17
 00:01:18,440 --> 00:01:23,210
-Our basket API microservices yet how we can include these query object.
+Basket API microservices của chúng ta chưa có cách nào chúng ta có thể bao gồm những query object này.
 
 18
 00:01:23,210 --> 00:01:28,580
-Basically we will implement SQS and mediator pattern using the mediator library.
+Về cơ bản, chúng ta sẽ triển khai mẫu SQS và mediator bằng cách sử dụng thư viện mediator.
 
 19
 00:01:28,580 --> 00:01:33,290
-So we should install mediator library into the basket API microservices.
+Vậy chúng ta nên cài đặt thư viện mediator vào basket API microservices.
 
 20
 00:01:33,290 --> 00:01:40,130
-But instead of that in the last section when we are developing our catalog microservices, we have developed
+Nhưng thay vì vậy, trong phần trước khi chúng ta đang phát triển catalog microservices của chúng ta, chúng ta đã phát triển
 
 21
 00:01:40,130 --> 00:01:45,650
-the Building Blocks class library that includes all common classes for our application layer.
+thư viện class Building Blocks bao gồm tất cả các class chung cho lớp application của chúng ta.
 
 22
 00:01:45,650 --> 00:01:51,200
-So if you double click the class library, you can see that these are the common NuGet packages that
+Vậy nếu bạn double click vào thư viện class, bạn có thể thấy rằng đây là các NuGet packages phổ biến
 
 23
 00:01:51,200 --> 00:01:53,420
-we can use for each microservices.
+mà chúng ta có thể sử dụng cho từng microservices.
 
 24
 00:01:53,420 --> 00:02:00,170
-For that purpose, instead of the manually installing all these packages into basket API microservices,
+Vì mục đích đó, thay vì cài đặt thủ công tất cả các packages này vào basket API microservices,
 
 25
 00:02:00,170 --> 00:02:06,680
-we should only add project reference building blocks to the basket API microservices in order to get
+chúng ta chỉ nên thêm project reference building blocks vào basket API microservices để có thể
 
 26
 00:02:06,680 --> 00:02:09,680
-all securities and mediator related capabilities.
+tất cả các khả năng liên quan đến securities và mediator.
 
 27
 00:02:09,680 --> 00:02:14,600
-So now I am going to right click the basket API and click the add button.
+Vậy bây giờ tôi sẽ right click vào basket API và click nút add.
 
 28
 00:02:14,600 --> 00:02:17,300
-And we are going to add Project reference.
+Và chúng ta sẽ thêm Project reference.
 
 29
 00:02:18,010 --> 00:02:23,530
-In here, I'm going to add a building blocks as a project reference and click the okay button.
+Ở đây, tôi sẽ thêm building blocks như một project reference và click nút okay.
 
 30
 00:02:23,950 --> 00:02:29,080
-If you double click the basket API, you can see that our project reference comes into the R project
+Nếu bạn double click vào basket API, bạn có thể thấy rằng project reference của chúng ta xuất hiện trong file R project.
 
 31
 00:02:29,080 --> 00:02:29,590
@@ -124,35 +124,35 @@ file.
 
 32
 00:02:29,830 --> 00:02:36,880
-So that means we can use building blocks for introducing securities and mediator related packages into
+Vậy điều đó có nghĩa là chúng ta có thể sử dụng building blocks để giới thiệu các packages liên quan đến securities và mediator vào microservices basket của chúng ta vì mục đích đó.
 
 33
 00:02:36,880 --> 00:02:39,430
-our basket microservices for that purpose.
+Nếu bạn đi đến get basket handler lần này, nếu tôi cố gắng triển khai query này, bạn có thể thấy rằng
 
 34
 00:02:39,430 --> 00:02:45,490
-If you go to the get basket handler this time, if I try to implement this query, you can see that
+tôi sẽ thêm using statement cho boolean blocks và six.
 
 35
 00:02:45,490 --> 00:02:49,750
-I'm going to add using statement for boolean blocks and six.
+Sau khi triển khai securities và mediator packages, chúng ta đã sẵn sàng để phát triển class Get Basket
 
 36
 00:02:50,020 --> 00:02:56,290
-After implementing securities and mediator packages, we can ready for the developing actual Get Basket
+100 thực tế.
 
 37
 00:02:56,320 --> 00:02:57,130
-100 class.
+Điều đầu tiên tôi sẽ thay đổi tên của class này, đó là get basket query handler
 
 38
 00:02:57,130 --> 00:03:03,070
-The first thing I'm going to change the name of the this class, which is the get basket query handler
+để chỉ định query or command handler.
 
 39
 00:03:03,070 --> 00:03:05,710
-to specify query or command handler.
+Và sau đó chúng ta triển khai I query handler interface và chúng ta sẽ paste query và result object
 
 40
 00:03:05,710 --> 00:03:14,980
@@ -160,113 +160,113 @@ And after that we are implement I query handler interface and we will paste the 
 
 41
 00:03:14,980 --> 00:03:15,490
-in here.
+ở đây.
 
 42
 00:03:15,490 --> 00:03:20,980
-So we are query object get basket query and result object is get basket result.
+Vậy chúng ta có query object là get basket query và result object là get basket result.
 
 43
 00:03:21,190 --> 00:03:25,990
-If I implement this interface into class it is generated handle method.
+Nếu tôi triển khai interface này vào class thì nó sẽ tạo ra handle method.
 
 44
 00:03:25,990 --> 00:03:30,340
-And in this handle method, as you can see that it is getting the first parameter.
+Và trong handle method này, như bạn có thể thấy nó đang lấy tham số đầu tiên.
 
 45
 00:03:30,340 --> 00:03:37,270
-Get basket query and change the name of the first parameter name and the second parameter is Cancellationtoken.
+Get basket query và thay đổi tên của tham số đầu tiên và tham số thứ hai là Cancellationtoken.
 
 46
 00:03:37,270 --> 00:03:41,290
-So now I'm going to make this method as an async.
+Vậy bây giờ tôi sẽ biến method này thành async.
 
 47
 00:03:41,290 --> 00:03:43,570
-And after that we will start the implementation.
+Và sau đó chúng ta sẽ bắt đầu triển khai.
 
 48
 00:03:43,570 --> 00:03:46,270
-So what is the main logic of this handle class.
+Vậy logic chính của handle class này là gì.
 
 49
 00:03:46,270 --> 00:03:48,970
-This will be get basket from the database.
+Cái này sẽ lấy basket từ database.
 
 50
 00:03:48,970 --> 00:03:56,530
-Since we don't have any database related injection in here I'm going to I'm going to put a command documentation
+Vì chúng ta không có bất kỳ database related injection nào ở đây, tôi sẽ để một command documentation
 
 51
 00:03:56,530 --> 00:03:58,660
-in here which is the to do statement.
+ở đây đó là to do statement.
 
 52
 00:03:58,660 --> 00:04:04,960
-So that means we will get basket from database and we will use repository object that we didn't develop
+Vậy có nghĩa là chúng ta sẽ lấy basket từ database và chúng ta sẽ sử dụng repository object mà chúng ta chưa phát triển
 
 53
 00:04:04,960 --> 00:04:05,290
-yet.
+được.
 
 54
 00:04:05,290 --> 00:04:08,290
-So that's why I'm going to this to do statement.
+Vì vậy đó là lý do tại sao tôi sẽ để to do statement này.
 
 55
 00:04:08,290 --> 00:04:14,590
-And we will come back here and implement actual logic later when we are developing the repository classes.
+Và chúng ta sẽ quay lại đây và triển khai logic thực tế sau này khi chúng ta đang phát triển các repository classes.
 
 56
 00:04:14,590 --> 00:04:21,700
-But now I'm going to return naive get basket result object with mocked information, which means that
+Nhưng bây giờ tôi sẽ trả về naive get basket result object với thông tin được mock, có nghĩa là
 
 57
 00:04:21,700 --> 00:04:27,280
-I'm going to create manually new shopping cart and give the username as a swan.
+tôi sẽ tạo thủ công một shopping cart mới và đặt username là swan.
 
 58
 00:04:28,480 --> 00:04:30,790
-So we have completed the handle method.
+Vậy chúng ta đã hoàn thành handle method.
 
 59
 00:04:30,790 --> 00:04:35,140
-So if you look at the R class you can see that we have using statements.
+Vậy nếu bạn nhìn vào R class bạn có thể thấy rằng chúng ta có using statements.
 
 60
 00:04:35,140 --> 00:04:38,740
-One of the best practice is creating a global using class.
+Một trong những best practices là tạo một global using class.
 
 61
 00:04:38,740 --> 00:04:45,070
-For that purpose I'm going to create a new class which name is global using under the basket API, and
+Để làm điều đó, tôi sẽ tạo một class mới có tên là global using trong basket API, và
 
 62
 00:04:45,070 --> 00:04:49,090
-moving all these using statements in this class.
+chuyển tất cả các using statement này vào class đó.
 
 63
 00:04:49,090 --> 00:04:55,300
-For that purpose, I'm going to copy, paste and put the global keyword in the beginning of this using
+Để làm điều đó, tôi sẽ copy, paste và đặt từ khóa global ở đầu using statement này
 
 64
 00:04:55,300 --> 00:04:56,980
-statement and save this file.
+và lưu file này.
 
 65
 00:04:56,980 --> 00:04:59,860
-If you go back to our actual class, you can see that.
+Nếu bạn quay lại class thực tế của chúng ta, bạn có thể thấy điều đó.
 
 66
 00:04:59,860 --> 00:05:01,960
-Now we can remove these using statement.
+Bây giờ chúng ta có thể xóa các using statement này.
 
 67
 00:05:01,960 --> 00:05:03,400
-And this is more clear now.
+Và bây giờ nó rõ ràng hơn.
 
 68
 00:05:03,400 --> 00:05:07,870
-So after developing the handler class we will focus on the endpoint class.
+Vậy sau khi phát triển class handler, chúng ta sẽ tập trung vào class endpoint.
 

@@ -1,22 +1,22 @@
 1
 00:00:00,140 --> 00:00:05,630
-In this video we are going to consume discount gRPC service from the basket microservices.
+Trong video này, chúng ta sẽ consume discount gRPC service từ basket microservices.
 
 2
 00:00:05,630 --> 00:00:11,750
-So we are going to establishment to connection between basket and discount gRPC microservices.
+Vậy chúng ta sẽ thiết lập kết nối giữa basket và discount gRPC microservices.
 
 3
 00:00:11,750 --> 00:00:13,700
-Please open the Visual Studio.
+Vui lòng mở Visual Studio.
 
 4
 00:00:13,700 --> 00:00:19,700
-And the first point is we should identify the trigger point from the basket API microservices.
+Và điểm đầu tiên là chúng ta cần xác định trigger point từ basket API microservices.
 
 5
 00:00:19,700 --> 00:00:26,060
-For that purpose, please open the basket API and go to Basket Vertical Slice folder and go to the store
+Để làm điều đó, vui lòng mở basket API và đi tới Basket Vertical Slice folder và mở Store
 
 6
 00:00:26,060 --> 00:00:27,260
@@ -24,103 +24,103 @@ Basket use case.
 
 7
 00:00:27,260 --> 00:00:32,630
-And if you open the store basket end point, you can see that this is the end point.
+Và nếu bạn mở store basket endpoint, bạn có thể thấy đây là endpoint.
 
 8
 00:00:32,630 --> 00:00:36,050
-When triggering add or remove item into shopping cart.
+Khi kích hoạt thêm hoặc xóa item vào shopping cart.
 
 9
 00:00:36,050 --> 00:00:43,070
-And in the shopping cart is a Json object that we can store the whole Json as an object into this shopping
+Và trong shopping cart là một JSON object mà chúng ta có thể lưu trữ toàn bộ JSON dưới dạng object vào shopping
 
 10
 00:00:43,070 --> 00:00:43,430
-cart.
+cart này.
 
 11
 00:00:43,430 --> 00:00:50,000
-You can see the shopping cart model in here, and we will send and receive shopping cart Json request
+Bạn có thể thấy shopping cart model ở đây, và chúng ta sẽ gửi và nhận shopping cart JSON request
 
 12
 00:00:50,000 --> 00:00:57,950
-and response with using this slash basket http post endpoint in order to store baskets and this class
+và response bằng cách sử dụng slash basket HTTP POST endpoint này để lưu trữ baskets và class này
 
 13
 00:00:57,950 --> 00:01:03,470
-trigger mediator store basket command and execute the handler method.
+kích hoạt mediator store basket command và thực thi handler method.
 
 14
 00:01:03,470 --> 00:01:04,610
-In this line of code.
+Ở dòng code này.
 
 15
 00:01:04,610 --> 00:01:05,510
-This will be.
+Đây sẽ là.
 
 16
 00:01:05,510 --> 00:01:08,720
-Send this command to the our handled class.
+Gửi command này tới class handler của chúng ta.
 
 17
 00:01:08,720 --> 00:01:15,200
-And if you open the store basket handle class in here, you can see that this is the handle method that
+Và nếu bạn mở store basket handle class ở đây, bạn có thể thấy đây là handle method mà
 
 18
 00:01:15,200 --> 00:01:19,280
-we will trigger when we are add or remove item into shopping cart.
+chúng ta sẽ kích hoạt khi chúng ta thêm hoặc xóa item vào shopping cart.
 
 19
 00:01:19,280 --> 00:01:26,210
-So this is the point where we are communicate and integrate with the discount gRPC and call gRPC methods
+Vậy đây là điểm mà chúng ta sẽ giao tiếp và tích hợp với discount gRPC và gọi các gRPC methods
 
 20
 00:01:26,210 --> 00:01:27,890
-from the basket microservices.
+từ basket microservices.
 
 21
 00:01:27,890 --> 00:01:33,500
-For that purpose, I am going to put a command in the beginning of the handle method, and this is the
+Với mục đích đó, tôi sẽ đặt một command vào đầu của phương thức handle, và đây là
 
 22
 00:01:33,500 --> 00:01:39,320
-communicate with discount gRPC and calculate latest prices of products into basket.
+giao tiếp với discount gRPC và tính toán giá mới nhất của các sản phẩm trong giỏ hàng.
 
 23
 00:01:39,320 --> 00:01:44,060
-And this is the 2D statement that we are going to perform in the beginning of the handle method.
+Và đây là câu lệnh 2D mà chúng ta sẽ thực hiện ở đầu của phương thức handle.
 
 24
 00:01:44,060 --> 00:01:48,080
-And after that I am going to refactor this handle method.
+Và sau đó tôi sẽ refactor phương thức handle này.
 
 25
 00:01:48,260 --> 00:01:51,860
-For example, this cart variable is not using anywhere.
+Ví dụ, biến cart này không được sử dụng ở bất kỳ đâu.
 
 26
 00:01:51,860 --> 00:01:53,990
-So I'm going to remove this statement.
+Vậy tôi sẽ xóa câu lệnh này.
 
 27
 00:01:53,990 --> 00:02:00,140
-And after that I'm going to combine these statements which is basically we have already performed this
+Và sau đó tôi sẽ kết hợp các câu lệnh này, về cơ bản chúng ta đã thực hiện điều này
 
 28
 00:02:00,140 --> 00:02:01,010
-todo statements.
+các câu lệnh todo.
 
 29
 00:02:01,010 --> 00:02:06,710
-And I'm going to put a command about what we have done in the previous videos.
+Và tôi sẽ đặt một comment về những gì chúng ta đã làm trong các video trước.
 
 30
 00:02:06,710 --> 00:02:11,390
-We basically store basket in database using Martin and Redis cache.
+Về cơ bản chúng ta lưu basket trong database sử dụng Marten và Redis cache.
 
 31
 00:02:11,450 --> 00:02:17,960
-Now we can focus on our todo statement which is communicate and integrate discount gRPC from the basket
+Bây giờ chúng ta có thể tập trung vào câu lệnh todo của chúng ta, đó là giao tiếp và tích hợp discount gRPC từ basket
 
 32
 00:02:17,960 --> 00:02:19,010
@@ -128,123 +128,123 @@ microservices.
 
 33
 00:02:19,100 --> 00:02:21,260
-So how we can do that?
+Vậy chúng ta có thể làm điều đó như thế nào?
 
 34
 00:02:21,260 --> 00:02:24,590
-The first thing we should do that we will set up the gRPC client.
+Điều đầu tiên chúng ta nên làm đó là chúng ta sẽ thiết lập gRPC client.
 
 35
 00:02:24,590 --> 00:02:31,940
-That means in order to consume our discount gRPC microservices, we should set up the basket API as
+Điều đó có nghĩa là để có thể sử dụng discount gRPC microservices của chúng ta, chúng ta nên thiết lập basket API như
 
 36
 00:02:31,940 --> 00:02:34,880
-a gRPC client in the basket API project.
+một gRPC client trong dự án basket API.
 
 37
 00:02:34,880 --> 00:02:38,540
-So how we can do basket API to the gRPC client?
+Vậy chúng ta có thể làm cho basket API trở thành gRPC client như thế nào?
 
 38
 00:02:38,540 --> 00:02:43,010
-We should use the Connected Services feature in Visual Studio for this purpose.
+Chúng ta nên sử dụng tính năng Connected Services trong Visual Studio cho mục đích này.
 
 39
 00:02:43,010 --> 00:02:45,650
-So I'm going to open the Visual Studio.
+Vậy tôi sẽ mở Visual Studio.
 
 40
 00:02:45,710 --> 00:02:52,250
-If you go to the basket API project you can see that under the basket API we have connected services.
+Nếu bạn đi tới dự án basket API, bạn có thể thấy rằng dưới basket API chúng ta có connected services.
 
 41
 00:02:52,250 --> 00:02:58,820
-So we will use connected services for creating client for the discount gRPC into basket API.
+Vậy chúng ta sẽ sử dụng connected services để tạo client cho discount gRPC vào basket API.
 
 42
 00:02:58,820 --> 00:03:03,050
-For that purpose I'm going to right click and manage Connected Services.
+Để làm điều đó, tôi sẽ nhấp chuột phải và quản lý Connected Services.
 
 43
 00:03:03,050 --> 00:03:09,170
-And in this window you can see that there is a service reference that we can define OpenAPI, gRPC,
+Và trong cửa sổ này bạn có thể thấy có một service reference mà chúng ta có thể định nghĩa OpenAPI, gRPC,
 
 44
 00:03:09,170 --> 00:03:10,490
-VRF and so on.
+VRF và những cái khác.
 
 45
 00:03:10,490 --> 00:03:13,340
-So at this point I'm going to click this button.
+Vậy bây giờ tôi sẽ nhấp vào nút này.
 
 46
 00:03:13,340 --> 00:03:19,700
-And after that I'm going to add a service reference for gRPC to consume these web services.
+Và sau đó tôi sẽ thêm một service reference cho gRPC để sử dụng các web services này.
 
 47
 00:03:19,700 --> 00:03:21,230
-And click the next button.
+Và nhấp nút next.
 
 48
 00:03:21,230 --> 00:03:26,300
-And this will required a file definition which will be the R protobuf files.
+Và điều này sẽ yêu cầu một file definition đó là các file protobuf.
 
 49
 00:03:26,300 --> 00:03:32,450
-In the file definition we should provide the discount gRPC proto file which is the discount proto.
+Trong file definition chúng ta nên cung cấp file proto gRPC discount đó là discount proto.
 
 50
 00:03:32,450 --> 00:03:40,070
-So I'm going to browse this file and go back to services and go to Discount discount gRPC protocol folder
+Vậy tôi sẽ duyệt file này và quay lại services, đi tới Discount discount gRPC protocol folder
 
 51
 00:03:40,070 --> 00:03:42,350
-and select the Discount Proto file.
+và chọn file Discount Proto.
 
 52
 00:03:42,560 --> 00:03:47,870
-And after that we should select the type of the generated class as a client object.
+Và sau đó chúng ta nên chọn loại class được tạo ra dưới dạng client object.
 
 53
 00:03:47,870 --> 00:03:53,960
-Because basket microservices will be client of the discount gRPC and call the gRPC methods.
+Vì basket microservices sẽ là client của discount gRPC và gọi các gRPC methods.
 
 54
 00:03:53,960 --> 00:03:59,630
-So make sure that you have selected the type of the class as a client and click the finish button.
+Vậy hãy đảm bảo rằng bạn đã chọn loại class là client và nhấp nút finish.
 
 55
 00:04:00,880 --> 00:04:04,510
-And this will automatically perform client requirements for us.
+Và điều này sẽ tự động thực hiện các yêu cầu client cho chúng ta.
 
 56
 00:04:04,510 --> 00:04:08,860
-This will add required NuGet packages and create reference to proto file.
+Điều này sẽ thêm các NuGet packages cần thiết và tạo tham chiếu đến file proto.
 
 57
 00:04:08,860 --> 00:04:13,780
-In the client application, you can see that our service is added successfully.
+Trong ứng dụng client, bạn có thể thấy rằng service của chúng ta đã được thêm thành công.
 
 58
 00:04:13,780 --> 00:04:15,430
-We can close this window.
+Chúng ta có thể đóng cửa sổ này.
 
 59
 00:04:15,430 --> 00:04:20,410
-So in order to verify this operation you can double click the basket API.
+Vậy để xác minh hoạt động này bạn có thể nhấp đôi vào basket API.
 
 60
 00:04:20,410 --> 00:04:25,600
-And we will check the basket API project for the correct configuration under the item group.
+Và chúng ta sẽ kiểm tra basket API project để có cấu hình đúng dưới item group.
 
 61
 00:04:25,600 --> 00:04:29,350
-If you scroll down, you can see the packages added in here.
+Nếu bạn cuộn xuống, bạn có thể thấy các packages được thêm vào đây.
 
 62
 00:04:29,350 --> 00:04:36,490
-In here you can see that the gRPC dot ASP.Net core package is added successfully when adding the connected
+Ở đây bạn có thể thấy rằng gRPC dot ASP.Net core package được thêm thành công khi thêm connected
 
 63
 00:04:36,490 --> 00:04:37,240
@@ -252,15 +252,15 @@ services.
 
 64
 00:04:37,240 --> 00:04:42,550
-And if you scroll down, you can see that there is new item group added in here.
+Và nếu bạn cuộn xuống, bạn có thể thấy có một item group mới được thêm vào đây.
 
 65
 00:04:42,550 --> 00:04:48,940
-According to this item group, we will define a protobuf file including the address of the discount
+Theo item group này, chúng ta sẽ định nghĩa một protobuf file bao gồm địa chỉ của discount
 
 66
 00:04:48,940 --> 00:04:54,580
-proto file, which is the discount gRPC address, and we will link this discount proto file into the
+proto file, đó là discount gRPC address, và chúng ta sẽ liên kết discount proto file này vào
 
 67
 00:04:54,580 --> 00:04:55,840
@@ -268,65 +268,65 @@ basket API project.
 
 68
 00:04:55,840 --> 00:04:59,680
-You can see that naively proto folder created under our project.
+Bạn có thể thấy rằng proto folder được tạo một cách đơn giản dưới project của chúng ta.
 
 69
 00:04:59,680 --> 00:05:05,710
-If you open this folder and come to discount proto, if you right click this discount proto file and
+Nếu bạn mở folder này và đi tới discount proto, nếu bạn nhấp chuột phải vào discount proto file này và
 
 70
 00:05:05,710 --> 00:05:11,110
-see the properties, you can see that this is the gRPC stub classes client only.
+xem properties, bạn có thể thấy rằng đây là gRPC stub classes client only.
 
 71
 00:05:11,110 --> 00:05:17,650
-That means basket API microservices will be our gRPC client and this will be protobuf compiler.
+Điều đó có nghĩa là basket API microservices sẽ là gRPC client của chúng ta và đây sẽ là protobuf compiler.
 
 72
 00:05:17,650 --> 00:05:22,210
-And this will be create a client class in order to communicate with the discount gRPC.
+Và điều này sẽ tạo ra một client class để giao tiếp với discount gRPC.
 
 73
 00:05:22,540 --> 00:05:26,080
-For that purpose, I am going to build the basket API project.
+Cho mục đích đó, tôi sẽ build basket API project.
 
 74
 00:05:26,080 --> 00:05:32,350
-If you right click and build the basket API, this project will be build and ensure the gRPC client
+Nếu bạn nhấp chuột phải và build basket API, project này sẽ được build và đảm bảo rằng gRPC client
 
 75
 00:05:32,350 --> 00:05:36,010
-code is generated correctly and we will confirm this.
+code được generate một cách chính xác và chúng ta sẽ xác nhận điều này.
 
 76
 00:05:36,010 --> 00:05:40,780
-Create operation of the Discount Proto Service client class in the object folder.
+Create operation của Discount Proto Service client class trong object folder.
 
 77
 00:05:40,780 --> 00:05:43,810
-Here you can see that Will is completed successfully.
+Ở đây bạn có thể thấy rằng nó đã hoàn thành thành công.
 
 78
 00:05:43,810 --> 00:05:50,950
-If you select the basket API and show all files, you can see that the hidden object folder is comes
+Nếu bạn chọn basket API và show all files, bạn có thể thấy rằng hidden object folder xuất hiện
 
 79
 00:05:50,950 --> 00:05:51,970
-in the picture.
+trong hình.
 
 80
 00:05:51,970 --> 00:05:57,070
-And if you open the object and if you open the debug net eight.
+Và nếu bạn mở object và nếu bạn mở debug net eight.
 
 81
 00:05:57,070 --> 00:06:03,580
-And if you scroll down a bit, you can see that the discount and discount gRPC client object is generated
+Và nếu bạn cuộn xuống một chút, bạn có thể thấy discount và discount gRPC client object được tạo ra
 
 82
 00:06:03,580 --> 00:06:08,350
-from the Visual Studio as a client of the RPC services.
+từ Visual Studio như một client của các RPC services.
 
 83
 00:06:08,350 --> 00:06:14,590
-So we will use these classes when communicating between discount gRPC and call the gRPC methods.
+Vậy chúng ta sẽ sử dụng các class này khi giao tiếp giữa discount gRPC và gọi các gRPC methods.
 

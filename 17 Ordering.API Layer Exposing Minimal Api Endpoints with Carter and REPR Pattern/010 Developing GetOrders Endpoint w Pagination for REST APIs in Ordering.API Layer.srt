@@ -1,38 +1,38 @@
 1
 00:00:00,110 --> 00:00:05,270
-In this video we are going to develop get orders endpoint with pagination.
+Trong video này chúng ta sẽ phát triển endpoint get orders với pagination.
 
 2
 00:00:05,630 --> 00:00:10,490
-As you remember that in the last section when we are developing ordering application, we can go to
+Như bạn có thể nhớ lại rằng trong phần trước khi chúng ta phát triển ứng dụng ordering, chúng ta có thể đi tới
 
 3
 00:00:10,490 --> 00:00:12,680
-orders and you can go to queries folder.
+orders và bạn có thể đi tới folder queries.
 
 4
 00:00:12,680 --> 00:00:19,040
-And if you open the get orders you can see that in the Get Orders query, we will expecting the pagination
+Và nếu bạn mở get orders, bạn có thể thấy rằng trong Get Orders query, chúng ta sẽ mong đợi pagination
 
 5
 00:00:19,040 --> 00:00:21,980
-request and return back the page entity result.
+request và trả về page entity result.
 
 6
 00:00:21,980 --> 00:00:27,620
-And these pagination classes are developed on the building blocks in the pageant request.
+Và những lớp pagination này được phát triển trên building blocks trong pageant request.
 
 7
 00:00:27,620 --> 00:00:34,190
-It is expecting page index and page size and it is returned back to paginated result that including
+Nó mong đợi page index và page size và nó trả về paginated result bao gồm
 
 8
 00:00:34,190 --> 00:00:36,770
-page index, size, count and data.
+page index, size, count và data.
 
 9
 00:00:36,770 --> 00:00:42,350
-So if you scroll down and if you look at the get orders handler, you can see that this is the incoming
+Vậy nếu bạn cuộn xuống và nếu bạn nhìn vào get orders handler, bạn có thể thấy rằng đây là incoming
 
 10
 00:00:42,350 --> 00:00:42,830
@@ -40,51 +40,51 @@ query.
 
 11
 00:00:42,830 --> 00:00:48,800
-And in the handle method we will perform the pagination with incoming query and taking the page size
+Và trong handle method chúng ta sẽ thực hiện pagination với incoming query và lấy page size
 
 12
 00:00:48,800 --> 00:00:55,190
-and page index and return back to get all the results inside of the page entity result and return back
+và page index và trả về để lấy tất cả các kết quả bên trong page entity result và trả về
 
 13
 00:00:55,190 --> 00:00:58,700
-to order detail list in the data of this page.
+order detail list trong data của page này.
 
 14
 00:00:58,700 --> 00:01:03,440
-Entity result and this result also include page index, page size and total count.
+Entity result và kết quả này cũng bao gồm page index, page size và total count.
 
 15
 00:01:03,440 --> 00:01:09,380
-So we will implement these pagination in the presentation layer, which is the ordering API when developing
+Vậy chúng ta sẽ triển khai pagination này trong presentation layer, đó là ordering API khi phát triển
 
 16
 00:01:09,380 --> 00:01:11,420
-or get orders and point class.
+get orders endpoint class.
 
 17
 00:01:11,420 --> 00:01:16,640
-So I'm going to start with implementing Request and response object as a request.
+Vậy tôi sẽ bắt đầu bằng cách triển khai Request và response object như một request.
 
 18
 00:01:16,640 --> 00:01:22,910
-I'm going to put a commented request object, which means that we will get the pagination request as
+Tôi sẽ đặt một commented request object, có nghĩa là chúng ta sẽ lấy pagination request như
 
 19
 00:01:22,910 --> 00:01:25,760
-a request parameters of the get orders endpoint.
+request parameters của get orders endpoint.
 
 20
 00:01:25,760 --> 00:01:32,390
-And here you can see the public record get orders response and taking the orders paginated result as
+Và ở đây bạn có thể thấy public record get orders response và lấy orders paginated result như
 
 21
 00:01:32,390 --> 00:01:33,860
-a type of the order DTO.
+một kiểu của order DTO.
 
 22
 00:01:33,860 --> 00:01:40,430
-So that means if you go to page end result, the type will be the order actual data, which is the IEnumerable
+Vậy có nghĩa là nếu bạn đi tới page end result, kiểu sẽ là order actual data, đó là IEnumerable
 
 23
 00:01:40,430 --> 00:01:40,940
@@ -92,7 +92,7 @@ data.
 
 24
 00:01:40,940 --> 00:01:48,650
-In our case, we will expecting IEnumerable order DTO as a data into page entity result into get orders
+Trong trường hợp của chúng ta, chúng ta sẽ mong đợi IEnumerable order DTO là data trong page entity result vào get orders
 
 25
 00:01:48,650 --> 00:01:50,060
@@ -100,161 +100,161 @@ response record type.
 
 26
 00:01:50,060 --> 00:01:56,900
-So now I'm going to implement get orders actual class which is implementing Écarter model.
+Vậy bây giờ tôi sẽ triển khai get orders actual class mà cài đặt Carter model.
 
 27
 00:01:56,900 --> 00:02:01,730
-And if you implement this interface members, we will be developing add routes method.
+Và nếu bạn triển khai các member của interface này, chúng ta sẽ phát triển add routes method.
 
 28
 00:02:01,790 --> 00:02:08,840
-In the add method we are going to expose Http get method which is a slash orders and retrieving the
+Trong phương thức add này, chúng ta sẽ expose Http get method đó là slash orders và truy xuất
 
 29
 00:02:08,840 --> 00:02:10,729
-whole orders with pagination.
+tất cả các orders với pagination.
 
 30
 00:02:10,729 --> 00:02:16,880
-So I'm going to develop app dot map get function and passing the slash orders as endpoint.
+Vậy tôi sẽ phát triển app dot map get function và truyền slash orders là endpoint.
 
 31
 00:02:16,880 --> 00:02:21,170
-And here you can see the delegate handler which accodomate the incoming request.
+Và ở đây bạn có thể thấy delegate handler mà xử lý incoming request.
 
 32
 00:02:21,170 --> 00:02:26,330
-And this endpoint is handle the Http get request with pagination details.
+Và endpoint này xử lý Http get request với chi tiết pagination.
 
 33
 00:02:26,330 --> 00:02:32,960
-It facilitating the efficient data fetching from a potential large data set, and in the handler function,
+Nó tạo điều kiện cho việc lấy dữ liệu hiệu quả từ một tập dữ liệu có thể lớn, và trong hàm handler,
 
 34
 00:02:32,960 --> 00:02:36,170
-which takes a paginated request object as a input.
+mà nhận một pagination request object làm đầu vào.
 
 35
 00:02:36,170 --> 00:02:42,710
-Here you can see the first parameter is a pagination request object as input, and here you can see
+Ở đây bạn có thể thấy tham số đầu tiên là một pagination request object làm đầu vào, và ở đây bạn có thể thấy
 
 36
 00:02:42,710 --> 00:02:45,320
-as parameters attribute in the route handler.
+là parameters attribute trong route handler.
 
 37
 00:02:45,320 --> 00:02:51,320
-So that ensures query parameters are correctly bound into the pagination request object.
+Vậy điều đó đảm bảo query parameters được bound chính xác vào pagination request object.
 
 38
 00:02:51,320 --> 00:02:57,470
-So the pagination request object include page index and page size essential for the pagination.
+Vậy pagination request object bao gồm page index và page size cần thiết cho pagination.
 
 39
 00:02:57,560 --> 00:03:01,970
-So after that the second parameter is isander which is injected.
+Vậy sau đó tham số thứ hai là mediator được inject.
 
 40
 00:03:01,970 --> 00:03:05,090
-Mediator is enter into our request delegator.
+Mediator được inject vào request delegator của chúng ta.
 
 41
 00:03:05,090 --> 00:03:08,570
-So I'm going to implement this function.
+Vậy tôi sẽ triển khai hàm này.
 
 42
 00:03:08,810 --> 00:03:12,050
-So inside of this function we will follow the same steps.
+Vậy bên trong hàm này chúng ta sẽ theo cùng các bước.
 
 43
 00:03:12,050 --> 00:03:18,110
-What we have done in the last videos we basically perform sequence and mediator request lifecycle.
+Những gì chúng ta đã làm trong các video trước, về cơ bản chúng ta thực hiện vòng đời yêu cầu sequence và mediator.
 
 44
 00:03:18,320 --> 00:03:22,910
-Here you can see the implementation in the first row of these hundred class.
+Ở đây bạn có thể thấy triển khai ở dòng đầu tiên của lớp này.
 
 45
 00:03:22,910 --> 00:03:29,750
-You can see that we will use await mediator Sanderson function and passing the get orders query and
+Bạn có thể thấy rằng chúng ta sẽ sử dụng await mediator Send function và truyền get orders query và
 
 46
 00:03:29,750 --> 00:03:31,010
-passing the request object.
+truyền đối tượng request.
 
 47
 00:03:31,010 --> 00:03:37,220
-So these get orders query containing the pagination information which is sent to mediator for processing
+Vậy get orders query này chứa thông tin phân trang được gửi tới mediator để xử lý
 
 48
 00:03:37,220 --> 00:03:38,720
-query handler functions.
+các hàm query handler.
 
 49
 00:03:38,720 --> 00:03:46,250
-Once query is executed, the result which comes from the paginated list of the ordered DTO is adapted
+Khi query được thực thi, kết quả đến từ danh sách có phân trang của ordered DTO được điều chỉnh
 
 50
 00:03:46,250 --> 00:03:52,430
-to get ordered response as a result object, and we will use result of adapt method with passing this
+thành get ordered response như một đối tượng kết quả, và chúng ta sẽ sử dụng kết quả của phương thức adapt bằng cách truyền đối tượng này
 
 51
 00:03:52,460 --> 00:03:55,100
-object and converting to the response object.
+và chuyển đổi thành đối tượng response.
 
 52
 00:03:55,100 --> 00:03:59,330
-And finally, we can paste this response object to the result that okay function.
+Và cuối cùng, chúng ta có thể truyền đối tượng response này tới hàm result okay.
 
 53
 00:03:59,330 --> 00:04:04,490
-In order to retrieve Http 200 okay response to the client application.
+Để truy xuất phản hồi Http 200 okay cho ứng dụng client.
 
 54
 00:04:04,490 --> 00:04:11,180
-And finally we can configure these Carter function with passing these extension method including name
+Và cuối cùng chúng ta có thể cấu hình hàm Carter này bằng cách truyền phương thức extension này bao gồm name,
 
 55
 00:04:11,180 --> 00:04:12,560
-summary and description.
+summary và description.
 
 56
 00:04:12,560 --> 00:04:17,690
-And these are the produce and produce problems for returning these Http get method.
+Và đây là produce và produce problems để trả về phương thức Http get.
 
 57
 00:04:17,690 --> 00:04:23,630
-So if you go on top of this class you can see that we are using two statement which comes from the pagination
+Vậy nếu bạn đi lên phía trên lớp này, bạn có thể thấy rằng chúng ta đang sử dụng hai statement đến từ pagination
 
 58
 00:04:23,630 --> 00:04:24,950
-from the building blocks.
+từ building blocks.
 
 59
 00:04:24,950 --> 00:04:28,880
-And these are the comes from the orders queries from the application layer.
+Và đây là đến từ orders queries từ application layer.
 
 60
 00:04:28,880 --> 00:04:32,870
-And here you can see that we will create request and response record type.
+Và ở đây bạn có thể thấy rằng chúng ta sẽ tạo kiểu record request và response.
 
 61
 00:04:32,870 --> 00:04:38,720
-And this is the actual implementation of the get orders endpoint class with following the wrapper design
+Và đây là triển khai thực tế của lớp endpoint get orders với việc theo dõi wrapper design
 
 62
 00:04:38,720 --> 00:04:40,970
-pattern and using the Carter library.
+pattern và sử dụng thư viện Carter.
 
 63
 00:04:40,970 --> 00:04:43,130
-So we have completed the ordering API.
+Vậy chúng ta đã hoàn thành ordering API.
 
 64
 00:04:43,130 --> 00:04:48,500
-I'm going to right click and build the whole clean architecture layers for ordering microservices.
+Tôi sẽ nhấp chuột phải và build toàn bộ các clean architecture layers cho ordering microservices.
 
 65
 00:04:48,500 --> 00:04:54,110
-And you can confirm that your application will successfully and you are ready for the test our application.
+Và bạn có thể xác nhận rằng ứng dụng của bạn sẽ chạy thành công và bạn đã sẵn sàng để test ứng dụng của chúng ta.
 

@@ -1,66 +1,66 @@
 1
 00:00:00,140 --> 00:00:06,320
-In this video, we are going to develop order endpoints for Rest APIs in ordering API layer.
+Trong video này, chúng ta sẽ phát triển các order endpoints cho Rest APIs trong lớp ordering API.
 
 2
 00:00:06,320 --> 00:00:10,160
-So you can see the folder structure of the ordering API project.
+Vậy bạn có thể thấy cấu trúc thư mục của dự án ordering API.
 
 3
 00:00:10,160 --> 00:00:13,640
-We will be focused on developing endpoints folder.
+Chúng ta sẽ tập trung vào phát triển thư mục endpoints.
 
 4
 00:00:13,640 --> 00:00:17,210
-We will implement several endpoints to manage the orders.
+Chúng ta sẽ triển khai nhiều endpoints để quản lý các đơn hàng.
 
 5
 00:00:17,210 --> 00:00:22,640
-Following the principle of the clean architecture and utilizing the Carter for minimal API setup.
+Tuân theo nguyên tắc của clean architecture và sử dụng Carter cho thiết lập Minimal API.
 
 6
 00:00:22,640 --> 00:00:24,290
-So let's get started.
+Vậy hãy bắt đầu.
 
 7
 00:00:24,290 --> 00:00:29,720
-Please open the Visual Studio and I'm going to start with right click the ordering API.
+Vui lòng mở Visual Studio và tôi sẽ bắt đầu bằng cách nhấp chuột phải vào ordering API.
 
 8
 00:00:29,720 --> 00:00:30,980
-Create new folder.
+Tạo thư mục mới.
 
 9
 00:00:30,980 --> 00:00:32,240
-Add new folder.
+Thêm thư mục mới.
 
 10
 00:00:32,240 --> 00:00:33,980
-Which name is endpoints.
+Tên là endpoints.
 
 11
 00:00:34,340 --> 00:00:38,870
-This folder will contain classes representing each API endpoint.
+Thư mục này sẽ chứa các lớp đại diện cho mỗi API endpoint.
 
 12
 00:00:38,870 --> 00:00:45,830
-By having separate classes for each API method, we make it clear and explicit what our API is capable
+Bằng cách có các lớp riêng biệt cho mỗi phương thức API, chúng ta làm cho nó rõ ràng và rõ ràng những gì API của chúng ta có khả năng
 
 13
 00:00:45,830 --> 00:00:49,790
-of, and this approach enhances maintainability and readability.
+làm, và cách tiếp cận này nâng cao tính bảo trì và khả năng đọc.
 
 14
 00:00:49,790 --> 00:00:55,400
-For that purpose, I'm going to start with creating create order case under the endpoint.
+Vì mục đích đó, tôi sẽ bắt đầu bằng cách tạo trường hợp create order dưới endpoint.
 
 15
 00:00:55,400 --> 00:00:58,730
-Here you can see that we will create our first endpoint.
+Ở đây bạn có thể thấy rằng chúng ta sẽ tạo endpoint đầu tiên của chúng ta.
 
 16
 00:00:58,730 --> 00:01:05,420
-It is good to see explicitly which API method we have exposed in ordering API project by looking the
+Thật tốt khi thấy rõ ràng API method nào chúng ta đã expose trong dự án ordering API bằng cách xem
 
 17
 00:01:05,420 --> 00:01:06,080
@@ -68,71 +68,71 @@ endpoints.
 
 18
 00:01:06,080 --> 00:01:09,020
-That's why we have given the class names accordingly.
+Đó là lý do tại sao chúng ta đã đặt tên các lớp tương ứng.
 
 19
 00:01:09,050 --> 00:01:14,780
-After that, I'm going to create the second endpoint class, which is the delete order and continue
+Sau đó, tôi sẽ tạo lớp endpoint thứ hai, đó là delete order và tiếp tục
 
 20
 00:01:14,780 --> 00:01:16,460
-with the update order.
+với update order.
 
 21
 00:01:18,480 --> 00:01:19,830
-Get orders.
+Lấy các đơn hàng.
 
 22
 00:01:21,760 --> 00:01:23,440
-Get orders by name.
+Lấy các đơn hàng theo tên.
 
 23
 00:01:25,120 --> 00:01:27,610
-And lastly, get orders by customer.
+Và cuối cùng, lấy các đơn hàng theo khách hàng.
 
 24
 00:01:28,150 --> 00:01:34,780
-So you can see that we will explicitly see which methods we are exposing from the ordering API by looking
+Vậy bạn có thể thấy rằng chúng ta sẽ rõ ràng nhìn thấy những phương thức nào chúng ta đang công khai từ ordering API bằng cách xem
 
 25
 00:01:34,780 --> 00:01:36,010
-at the endpoint folder.
+vào folder endpoint.
 
 26
 00:01:36,010 --> 00:01:37,780
-So let me explain one by one.
+Vậy hãy để tôi giải thích từng cái một.
 
 27
 00:01:37,780 --> 00:01:39,610
-The first one is create order.
+Cái đầu tiên là tạo đơn hàng.
 
 28
 00:01:39,610 --> 00:01:43,000
-Create order endpoint class provides to create new order.
+Create order endpoint class cung cấp để tạo đơn hàng mới.
 
 29
 00:01:43,000 --> 00:01:48,820
-So I am going to put a command for each endpoint class to understand what we are going to do and how
+Vậy tôi sẽ đặt một command cho mỗi endpoint class để hiểu những gì chúng ta sẽ làm và cách
 
 30
 00:01:48,820 --> 00:01:50,290
-we can develop these classes.
+chúng ta có thể phát triển những class này.
 
 31
 00:01:50,290 --> 00:01:58,000
-So here you can see that I'm going to come here and put comments sections that will be provide our operations.
+Vậy ở đây bạn có thể thấy rằng tôi sẽ đến đây và đặt các phần comment sẽ cung cấp các hoạt động của chúng ta.
 
 32
 00:01:58,000 --> 00:02:02,890
-First of all I'm going to accept create order request object into Create Order endpoint class.
+Đầu tiên, tôi sẽ chấp nhận đối tượng create order request vào Create Order endpoint class.
 
 33
 00:02:02,890 --> 00:02:06,640
-And after that we will make the request to a create order command.
+Và sau đó chúng ta sẽ tạo yêu cầu tới một create order command.
 
 34
 00:02:06,640 --> 00:02:12,010
-And this command will be used mediator and send this command to corresponding handler which is the create
+Và command này sẽ sử dụng mediator và gửi command này tới handler tương ứng, đó là create
 
 35
 00:02:12,010 --> 00:02:13,150
@@ -140,189 +140,189 @@ order command handler.
 
 36
 00:02:13,150 --> 00:02:16,360
-And we will return a response with a created order IDs.
+Và chúng ta sẽ trả về một response với các IDs của đơn hàng được tạo.
 
 37
 00:02:16,360 --> 00:02:20,680
-So this is the process that we are going to develop in the create order endpoint class.
+Vậy đây là quy trình mà chúng ta sẽ phát triển trong Create Order endpoint class.
 
 38
 00:02:20,680 --> 00:02:25,960
-So if you continue with the delete order I'm going to follow the same steps to delete order and point
+Vậy nếu bạn tiếp tục với delete order, tôi sẽ thực hiện các bước tương tự để xóa đơn hàng và delete order endpoint
 
 39
 00:02:25,960 --> 00:02:28,750
-class provide to delete an existing order.
+class cung cấp để xóa một đơn hàng hiện có.
 
 40
 00:02:28,750 --> 00:02:36,280
-So we will follow the same steps that we are going to create a SQL code, which is the or actual operations.
+Vậy chúng ta sẽ thực hiện các bước tương tự mà chúng ta sẽ tạo một SQL code, đó là các hoạt động thực tế.
 
 41
 00:02:36,280 --> 00:02:42,310
-We will accept the order ID as a parameter in the delete order endpoint class, and after that we will
+Chúng ta sẽ chấp nhận ID đơn hàng như một tham số trong lớp endpoint xóa đơn hàng, và sau đó chúng ta sẽ
 
 42
 00:02:42,310 --> 00:02:48,010
-create a delete order command object and we will send these command object using the mediator and trigger
+tạo một đối tượng delete order command và chúng ta sẽ gửi đối tượng command này bằng cách sử dụng mediator và kích hoạt
 
 43
 00:02:48,010 --> 00:02:49,510
-the our command handler class.
+lớp command handler của chúng ta.
 
 44
 00:02:49,510 --> 00:02:55,930
-And lastly, we will return a success or not found response to our delete order endpoint response.
+Và cuối cùng, chúng ta sẽ trả về một phản hồi thành công hoặc không tìm thấy đơn hàng.
 
 45
 00:02:55,930 --> 00:03:01,780
-So I'm going to follow the same steps for the update order, update order and Point provide to update
+Vậy tôi sẽ làm theo các bước tương tự cho update order, update order và Point provide để cập nhật
 
 46
 00:03:01,780 --> 00:03:02,950
-an existing order.
+một đơn hàng hiện có.
 
 47
 00:03:02,950 --> 00:03:07,750
-And in this class we will follow the same steps for the securities implementation.
+Và trong lớp này chúng ta sẽ làm theo các bước tương tự cho triển khai CQRS.
 
 48
 00:03:07,750 --> 00:03:13,750
-Here you can see that I'm going to accept the update order request which is the incoming request.
+Ở đây bạn có thể thấy rằng tôi sẽ chấp nhận update order request đó là yêu cầu đến.
 
 49
 00:03:13,750 --> 00:03:15,490
-So here you can see the steps.
+Vậy ở đây bạn có thể thấy các bước.
 
 50
 00:03:15,490 --> 00:03:20,050
-So we will accept update order request and make the request to update Order command.
+Vậy chúng ta sẽ chấp nhận update order request và tạo yêu cầu để cập nhật Order command.
 
 51
 00:03:20,050 --> 00:03:25,840
-And we will send this command for processing update order command handler and return a success or error
+Và chúng ta sẽ gửi command này để xử lý update order command handler và trả về thành công hoặc lỗi
 
 52
 00:03:25,840 --> 00:03:27,520
-response based on the outcome.
+phản hồi dựa trên kết quả.
 
 53
 00:03:27,520 --> 00:03:33,250
-So you can remember that we are following the securities and mediator request lifecycle in here.
+Vậy bạn có thể nhớ rằng chúng ta đang tuân theo vòng đời yêu cầu CQRS và mediator ở đây.
 
 54
 00:03:33,250 --> 00:03:36,670
-So we will send the request from the client application.
+Vậy chúng ta sẽ gửi yêu cầu từ ứng dụng client.
 
 55
 00:03:36,670 --> 00:03:39,100
-And we will accept into the request object.
+Và chúng ta sẽ chấp nhận vào đối tượng yêu cầu.
 
 56
 00:03:39,100 --> 00:03:42,490
-And we will convert this request object to the command and query object.
+Và chúng ta sẽ chuyển đổi đối tượng yêu cầu này thành command và query object.
 
 57
 00:03:42,490 --> 00:03:44,320
-And this object will be triggered.
+Và đối tượng này sẽ được kích hoạt.
 
 58
 00:03:44,320 --> 00:03:48,100
-The handler class using the mediator send command and handle operation.
+Lớp handler sử dụng lệnh send command mediator và xử lý hoạt động.
 
 59
 00:03:48,100 --> 00:03:53,410
-Perform the business case and returning the result and this result convert into response object and
+Thực hiện trường hợp kinh doanh và trả về kết quả, và kết quả này được chuyển đổi thành response object và
 
 60
 00:03:53,410 --> 00:03:54,940
-return back to the client application.
+trả về cho ứng dụng client.
 
 61
 00:03:54,940 --> 00:04:00,130
-So all this process is the similar what we are developing in the endpoints ordering API.
+Vậy toàn bộ quá trình này tương tự như những gì chúng ta đang phát triển trong các endpoints của ordering API.
 
 62
 00:04:00,130 --> 00:04:05,980
-So I'm going to following the next step which is the get orders endpoint get orders endpoint provide
+Vậy tôi sẽ theo dõi bước tiếp theo đó là endpoint get orders, endpoint get orders cung cấp
 
 63
 00:04:05,980 --> 00:04:09,580
-to retrieve a list of the orders possible paginated orders.
+để lấy danh sách các orders có thể được phân trang.
 
 64
 00:04:09,580 --> 00:04:16,120
-So if you follow the same steps you can come here and see that we will accept the pagination parameters
+Vậy nếu bạn làm theo các bước tương tự, bạn có thể đến đây và thấy rằng chúng ta sẽ chấp nhận các tham số phân trang
 
 65
 00:04:16,120 --> 00:04:22,120
-and construct a get orders query object with these parameters and retrieve the data and return it a
+và xây dựng một đối tượng get orders query với các tham số này và truy xuất dữ liệu và trả về nó ở dạng
 
 66
 00:04:22,120 --> 00:04:23,290
-paginated format.
+phân trang.
 
 67
 00:04:23,290 --> 00:04:25,330
-This is the get orders endpoint.
+Đây là endpoint get orders.
 
 68
 00:04:25,330 --> 00:04:31,360
-And if you continue to get orders by name, these get orders by name and print provide to find orders
+Và nếu bạn tiếp tục với get orders by name, những endpoint get orders by name này cung cấp để tìm orders
 
 69
 00:04:31,360 --> 00:04:32,950
-by a specific name.
+theo một tên cụ thể.
 
 70
 00:04:32,950 --> 00:04:38,830
-And in this class we will follow the similar step which is the accepts a name of the parameter, which
+Và trong lớp này chúng ta sẽ làm theo các bước tương tự, đó là chấp nhận tham số name, đó là
 
 71
 00:04:38,830 --> 00:04:45,400
-is the or order name, and construct a get orders by name query, and we will retrieve and return matching
+order name, và xây dựng một get orders by name query, và chúng ta sẽ truy xuất và trả về các
 
 72
 00:04:45,400 --> 00:04:48,340
-orders by sending this query to the query handler class.
+orders khớp bằng cách gửi query này tới lớp query handler.
 
 73
 00:04:48,340 --> 00:04:52,180
-So lastly we have a get orders by customer class.
+Vậy cuối cùng chúng ta có lớp get orders by customer.
 
 74
 00:04:52,180 --> 00:04:57,520
-Get orders by customer endpoint provide to retrieve orders for a specific customer.
+Endpoint get orders by customer cung cấp để truy xuất orders cho một khách hàng cụ thể.
 
 75
 00:04:57,520 --> 00:05:01,900
-So I'm going to follow the same steps and I'm going to come here.
+Vậy tôi sẽ làm theo các bước tương tự và tôi sẽ đến đây.
 
 76
 00:05:01,900 --> 00:05:05,830
-And these are the accepting customer ID as a parameter.
+Và đây là những endpoint đang chấp nhận customer ID làm tham số.
 
 77
 00:05:05,830 --> 00:05:12,160
-And we will using get orders by customer query in order to fetch the orders and return the list of the
+Và chúng ta sẽ sử dụng get orders by customer query để lấy các orders và trả về danh sách các
 
 78
 00:05:12,160 --> 00:05:13,780
-orders for that customer.
+orders cho khách hàng đó.
 
 79
 00:05:13,780 --> 00:05:20,740
-So as you can see that we have created a code for each endpoint class, and each endpoint can be tested
+Vậy như bạn có thể thấy, chúng ta đã tạo code cho từng lớp endpoint, và mỗi endpoint có thể được kiểm tra
 
 80
 00:05:20,740 --> 00:05:26,470
-individually by setting up the appreciate request in the tools like the postman, and by developing
+riêng lẻ bằng cách thiết lập các request thích hợp trong các công cụ như postman, và bằng cách phát triển
 
 81
 00:05:26,470 --> 00:05:32,140
-distinct endpoints for each Crud operation and query in the ordering API layer, we can achieve the
+các endpoint riêng biệt cho từng Crud operation và query trong lớp ordering API, chúng ta có thể đạt được
 
 82
 00:05:32,140 --> 00:05:34,450
-clear and structured API developments.
+phát triển API rõ ràng và có cấu trúc tốt.
 

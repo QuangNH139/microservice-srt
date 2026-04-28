@@ -1,90 +1,90 @@
 1
 00:00:00,140 --> 00:00:05,120
-In this video we are going to learn, fan out, publish, subscribe pattern.
+Trong video này chúng ta sẽ học về mẫu fan out, publish, subscribe.
 
 2
 00:00:05,630 --> 00:00:08,300
-Let me start with the what is fan out?
+Hãy bắt đầu với câu hỏi fan out là gì?
 
 3
 00:00:08,930 --> 00:00:16,610
-Fan out is a messaging pattern where piece of message is distributed or fanned out to multiple destinations
+Fan out là một mẫu messaging trong đó một tin nhắn được phân phối hoặc fan out tới nhiều đích đến
 
 4
 00:00:16,610 --> 00:00:17,480
-in parallel.
+song song.
 
 5
 00:00:18,800 --> 00:00:24,470
-The main idea is each of destination can work and process these messages in parallel.
+Ý tưởng chính là mỗi đích đến có thể làm việc và xử lý các tin nhắn này song song.
 
 6
 00:00:24,980 --> 00:00:31,430
-One way to implement these messaging pattern is to use publisher, subscriber or pub sub model.
+Một cách để triển khai mẫu messaging này là sử dụng mô hình publisher, subscriber hay pub sub.
 
 7
 00:00:31,910 --> 00:00:37,700
-In the pub sub model, we define a topic which is a logical access point to enabling message communication
+Trong mô hình pub sub, chúng ta định nghĩa một topic là một điểm truy cập logic để cho phép giao tiếp tin nhắn
 
 8
 00:00:37,700 --> 00:00:38,690
-with asynchronously.
+một cách bất đồng bộ.
 
 9
 00:00:40,570 --> 00:00:46,690
-A publisher simply sent the message to the topic, and after that, this message is immediately fanned
+Publisher đơn giản chỉ gửi tin nhắn tới topic, và sau đó, tin nhắn này ngay lập tức được fan out
 
 10
 00:00:46,690 --> 00:00:49,060
-out to all subscribers of this topic.
+tới tất cả các subscriber của topic này.
 
 11
 00:00:49,090 --> 00:00:53,350
-This message communication is completely decoupled and asynchronously.
+Giao tiếp tin nhắn này hoàn toàn bị tách rời và bất đồng bộ.
 
 12
 00:00:54,970 --> 00:01:01,510
-Each service can operate and scale independently and individually without having any dependency of other
+Mỗi service có thể hoạt động và mở rộng quy mô một cách độc lập mà không có bất kỳ phụ thuộc nào từ các
 
 13
 00:01:01,510 --> 00:01:02,290
-services.
+service khác.
 
 14
 00:01:03,040 --> 00:01:08,800
-The publisher doesn't need to know who is consuming this message that is broadcasting, and also the
+Publisher không cần biết ai đang tiêu thụ tin nhắn này được phát sóng, và cũng vậy
 
 15
 00:01:08,800 --> 00:01:12,040
-subscriber does not need to know where the message comes from.
+subscriber không cần biết tin nhắn đến từ đâu.
 
 16
 00:01:13,470 --> 00:01:19,350
-So these architectural challenges requirements by using messaging patterns and it resulting in loosely
+Vậy những yêu cầu thách thức kiến trúc này được giải quyết bằng cách sử dụng mẫu messaging và kết quả là giao tiếp
 
 17
 00:01:19,350 --> 00:01:25,410
-coupled communication between highly cohesive components to manage complexity in microservice architectures.
+lỏng lẻo giữa các thành phần kết dính cao để quản lý độ phức tạp trong kiến trúc microservice.
 
 18
 00:01:25,710 --> 00:01:31,710
-And a common approach when one component wish to deliver the same message to multiple receivers is to
+Và một cách tiếp cận phổ biến khi một thành phần muốn gửi cùng một tin nhắn tới nhiều người nhận là
 
 19
 00:01:31,710 --> 00:01:34,500
-use Fanout publish subscribe messaging pattern.
+sử dụng mẫu Fanout publish subscribe messaging.
 
 20
 00:01:35,370 --> 00:01:39,030
-So now let's focus on the publish subscribe messaging pattern.
+Vậy bây giờ hãy tập trung vào mẫu publish subscribe messaging.
 
 21
 00:01:39,060 --> 00:01:41,370
-So what is pub sub messaging?
+Vậy pub sub messaging là gì?
 
 22
 00:01:41,400 --> 00:01:47,160
-Publish subscribe messaging is a form of asynchronous service to service communication used in microservice
+Publish subscribe messaging là một hình thức giao tiếp không đồng bộ giữa các service được sử dụng trong các kiến trúc microservice
 
 23
 00:01:47,160 --> 00:01:48,000
@@ -92,45 +92,45 @@ architectures.
 
 24
 00:01:48,270 --> 00:01:55,080
-In publish subscribe model, any message published to the topic is immediately received by all of the
+Trong mô hình publish subscribe, bất kỳ message nào được công bố cho topic đều được ngay lập tức nhận bởi tất cả các
 
 25
 00:01:55,080 --> 00:01:56,550
-subscriber of the topic.
+subscriber của topic đó.
 
 26
 00:01:57,120 --> 00:02:02,910
-So a pub sub messaging can be used to enable event driven architectures and to decouple applications
+Vậy pub sub messaging có thể được sử dụng để kích hoạt các kiến trúc event driven và để tách rời các ứng dụng
 
 27
 00:02:02,910 --> 00:02:08,850
-in order to increase performance, reliability and scalability in modern cloud architectures.
+để tăng hiệu suất, độ tin cậy và khả năng mở rộng trong các kiến trúc cloud hiện đại.
 
 28
 00:02:08,970 --> 00:02:15,180
-The applications are decoupled into smaller, independent building blocks that are easier to develop,
+Các ứng dụng được tách rời thành các khối xây dựng nhỏ hơn, độc lập mà dễ dàng phát triển,
 
 29
 00:02:15,180 --> 00:02:16,620
-deploy, and maintain.
+triển khai và bảo trì.
 
 30
 00:02:17,370 --> 00:02:24,000
-Publish subscribe messaging provides instant event notification for these distributed applications.
+Publish subscribe messaging cung cấp thông báo sự kiện tức thời cho các ứng dụng phân tán này.
 
 31
 00:02:25,250 --> 00:02:31,520
-The public subscriber model allows message to be broadcast to different parts of the system asynchronously.
+Mô hình public subscriber cho phép message được phát sóng tới các phần khác nhau của hệ thống một cách không đồng bộ.
 
 32
 00:02:31,940 --> 00:02:37,850
-A message topic provides a lightweight mechanism to broadcast asynchronous event notification, and
+Một topic message cung cấp một cơ chế nhẹ để phát sóng thông báo sự kiện không đồng bộ, và
 
 33
 00:02:37,850 --> 00:02:43,670
-the endpoints that allow software components to connect to the topic in order to send and receive those
+các endpoint cho phép các thành phần phần mềm kết nối với topic để gửi và nhận những
 
 34
 00:02:43,670 --> 00:02:44,270
-messages.
+message đó.
 

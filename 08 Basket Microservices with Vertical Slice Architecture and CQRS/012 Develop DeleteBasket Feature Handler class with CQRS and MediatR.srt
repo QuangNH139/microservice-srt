@@ -1,6 +1,6 @@
 1
 00:00:00,110 --> 00:00:05,990
-In this video, we are going to develop the rate Basket feature hundred class with using circles and
+Trong video này, chúng ta sẽ phát triển tính năng Basket rate, lớp hundred với sử dụng circles và
 
 2
 00:00:05,990 --> 00:00:06,740
@@ -8,27 +8,27 @@ mediator.
 
 3
 00:00:06,740 --> 00:00:10,580
-So we are at this point and implement delete basket with username.
+Vậy bây giờ chúng ta sẽ triển khai delete basket với username.
 
 4
 00:00:11,060 --> 00:00:14,210
-Please open the Visual Studio and go to the delete basket.
+Vui lòng mở Visual Studio và đi đến delete basket.
 
 5
 00:00:14,210 --> 00:00:17,780
-Use case folder and go to the Delete basket handle class.
+Use case folder và đi đến lớp Delete basket handler.
 
 6
 00:00:17,810 --> 00:00:21,980
-As always, we will start with the defining command and result object.
+Như thường lệ, chúng ta sẽ bắt đầu với việc định nghĩa command và result object.
 
 7
 00:00:22,010 --> 00:00:25,310
-Here you can see the delete basket command object.
+Ở đây bạn có thể thấy delete basket command object.
 
 8
 00:00:25,340 --> 00:00:32,240
-Taking the username as a parameter and implement I command interface which is the including delete basket
+Lấy username như một tham số và triển khai interface I command, cái mà bao gồm delete basket
 
 9
 00:00:32,240 --> 00:00:33,260
@@ -36,7 +36,7 @@ result generics.
 
 10
 00:00:33,260 --> 00:00:39,950
-And here you can see the result object, including the Issuccess boolean flag in the parameters of the
+Và ở đây bạn có thể thấy result object, bao gồm cờ boolean Issuccess trong các tham số của
 
 11
 00:00:39,950 --> 00:00:40,610
@@ -44,105 +44,105 @@ result.
 
 12
 00:00:41,030 --> 00:00:46,970
-And after that we will define our command validators for the delete operation.
+Và sau đó chúng ta sẽ định nghĩa command validators của chúng ta cho operationdelete.
 
 13
 00:00:46,970 --> 00:00:54,080
-For that purpose, I am going to define a new class which name is delete basket command validator and
+Với mục đích đó, tôi sẽ định nghĩa một lớp mới có tên là delete basket command validator và
 
 14
 00:00:54,080 --> 00:01:00,110
-implement abstract class, which is the abstract validator with validating delete basket command.
+triển khai abstract class, đó là abstract validator với việc validate delete basket command.
 
 15
 00:01:00,140 --> 00:01:06,740
-In the constructor of this class, we basically define only one rule, which is the username is required,
+Trong constructor của lớp này, chúng ta cơ bản chỉ định nghĩa một rule, đó là username là bắt buộc,
 
 16
 00:01:06,740 --> 00:01:10,640
-and this validation will be run by the validation pipeline behavior.
+và validation này sẽ được chạy bởi validation pipeline behavior.
 
 17
 00:01:11,090 --> 00:01:15,950
-And after that we will develop handler class which include our business logic.
+Và sau đó chúng ta sẽ phát triển lớp handler mà bao gồm business logic của chúng ta.
 
 18
 00:01:15,980 --> 00:01:21,110
-The first thing we should do that renaming the class name as a delete basket command handler.
+Điều đầu tiên chúng ta nên làm là đổi tên lớp thành delete basket command handler.
 
 19
 00:01:21,110 --> 00:01:29,780
-And after that we will implement this interface from the I command under interface and implement the
+Và sau đó chúng ta sẽ triển khai interface này từ I command interface và triển khai các
 
 20
 00:01:29,780 --> 00:01:30,410
-members.
+thành viên.
 
 21
 00:01:30,410 --> 00:01:37,850
-So after that I'm going to change the first parameter name as a command and make this handle function
+Vậy sau đó tôi sẽ thay đổi tên tham số đầu tiên thành command và làm cho hàm handle này
 
 22
 00:01:37,850 --> 00:01:38,840
-as an async.
+trở thành async.
 
 23
 00:01:38,840 --> 00:01:41,810
-And in here we will perform actual business logic.
+Và ở đây chúng ta sẽ thực hiện logic kinh doanh thực tế.
 
 24
 00:01:41,840 --> 00:01:45,410
-What is the business logic for delete basket command under.
+Logic kinh doanh cho delete basket command là gì?
 
 25
 00:01:45,410 --> 00:01:50,030
-So we will basically delete the basket from database and cache for that purpose.
+Vậy về cơ bản chúng ta sẽ xóa basket từ database và cache.
 
 26
 00:01:50,030 --> 00:01:56,810
-I'm going to put a commented todo statement in here that we will perform this operation after this section
+Tôi sẽ đặt một lệnh todo được bình luận ở đây mà chúng ta sẽ thực hiện hoạt động này sau phần này
 
 27
 00:01:56,810 --> 00:02:01,670
-when injecting related database and cache operations into our command handler.
+khi tiêm các hoạt động database và cache liên quan vào command handler của chúng ta.
 
 28
 00:02:01,670 --> 00:02:07,070
-But for now, I am going to see keeping actual implementation and mocking the return operation which
+Nhưng hiện tại, tôi sẽ giữ nguyên triển khai thực tế và giả lập hoạt động trả về
 
 29
 00:02:07,070 --> 00:02:09,380
-is returning to delete basket result.
+là trả về delete basket result.
 
 30
 00:02:09,380 --> 00:02:12,620
-And I am passing the true as a success.
+Và tôi đang truyền true như là một thành công.
 
 31
 00:02:12,620 --> 00:02:13,760
-And that's all.
+Và đó là tất cả.
 
 32
 00:02:13,760 --> 00:02:17,330
-So if you go on top of this page, we don't have any using statement.
+Vậy nếu bạn đi lên đầu trang này, chúng ta không có bất kỳ using statement nào.
 
 33
 00:02:17,330 --> 00:02:24,290
-So basically we will define command and result object including the username and issuccess parameters.
+Vì vậy về cơ bản chúng ta sẽ định nghĩa command và result object bao gồm username và issuccess parameters.
 
 34
 00:02:24,290 --> 00:02:30,290
-And after that we will define command validator class with one rule which is the username is required.
+Và sau đó chúng ta sẽ định nghĩa command validator class với một quy tắc là username là bắt buộc.
 
 35
 00:02:30,290 --> 00:02:33,830
-And in the command handler class we perform actual logic.
+Và trong command handler class chúng ta thực hiện logic thực tế.
 
 36
 00:02:33,830 --> 00:02:39,320
-But for now we will put commands and return mocking response, and we will revisit this handler with
+Nhưng hiện tại chúng ta sẽ đặt commands và trả về mocking response, và chúng ta sẽ quay lại handler này với
 
 37
 00:02:39,320 --> 00:02:43,640
-interacting with our database and cache operations to delete this basket.
+tương tác với các hoạt động database và cache của chúng ta để xóa basket này.
 

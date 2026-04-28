@@ -1,18 +1,18 @@
 1
 00:00:00,140 --> 00:00:06,650
-In this video we are going to develop discount service class to implement gRPC proto service methods.
+Trong video này, chúng ta sẽ phát triển lớp discount service để triển khai các phương thức gRPC proto service.
 
 2
 00:00:07,010 --> 00:00:13,700
-So far we have exposed gRPC services with developing the protobuf files and we will generate C sharp
+Cho đến nay, chúng ta đã exposed gRPC services bằng cách phát triển các protobuf files và chúng ta sẽ generate C# class
 
 3
 00:00:13,700 --> 00:00:17,120
-class to accommodate incoming requests into our application.
+để tiếp nhận các yêu cầu đến ứng dụng của chúng ta.
 
 4
 00:00:17,510 --> 00:00:23,930
-And also we have set up our SQLite database and Entity Framework core ORM tool to communicate with the
+Và cũng chúng ta đã thiết lập SQLite database và Entity Framework Core ORM tool để giao tiếp với
 
 5
 00:00:23,960 --> 00:00:24,710
@@ -20,51 +20,51 @@ SQLite.
 
 6
 00:00:24,710 --> 00:00:27,680
-And we have created Discount Context class.
+Và chúng ta đã tạo lớp Discount Context.
 
 7
 00:00:28,130 --> 00:00:33,170
-And now we will implement the actual logic which is the Crud operations on the discount service class
+Và bây giờ chúng ta sẽ triển khai logic thực tế đó là các hoạt động CRUD trên lớp discount service
 
 8
 00:00:33,170 --> 00:00:36,140
-with communicating Entity Framework, core and SQLite.
+bằng cách giao tiếp với Entity Framework Core và SQLite.
 
 9
 00:00:36,140 --> 00:00:41,900
-And we will inject the Discount Context Entity Framework Core Object into service class in order to
+Và chúng ta sẽ inject đối tượng Discount Context Entity Framework Core vào service class để
 
 10
 00:00:41,900 --> 00:00:44,600
-interact and perform Crud operations with database.
+tương tác và thực hiện các hoạt động CRUD với database.
 
 11
 00:00:44,720 --> 00:00:49,550
-Of course, this will be automatically incoming gRPC request and perform database operations.
+Tất nhiên, điều này sẽ tự động xử lý các yêu cầu gRPC đến và thực hiện các hoạt động database.
 
 12
 00:00:49,880 --> 00:00:56,690
-Open the Visual Studio and go to the discount gRPC services folder and open the Discount Service class.
+Mở Visual Studio và đi đến thư mục discount gRPC services và mở lớp Discount Service.
 
 13
 00:00:57,380 --> 00:01:02,870
-In this class, we basically inherit from the Or generated C sharp class from the protobuf file.
+Trong lớp này, về cơ bản chúng ta kế thừa từ lớp C# được tạo ra từ protobuf file.
 
 14
 00:01:02,900 --> 00:01:06,890
-And also in this class we are going to inject two services.
+Và cũng trong lớp này chúng ta sẽ inject hai services.
 
 15
 00:01:06,890 --> 00:01:12,650
-These are the discount context which is the db context object and ilogger classes.
+Đó là discount context, đó là db context object, và lớp ILogger.
 
 16
 00:01:12,650 --> 00:01:18,320
-So that means we will inject discount db context object to performing database operation.
+Điều đó có nghĩa là chúng ta sẽ inject discount db context object để thực hiện các hoạt động database.
 
 17
 00:01:18,320 --> 00:01:21,980
-And we have injected Ilogger used for the logging purpose.
+Và chúng ta đã inject ILogger được sử dụng cho mục đích logging.
 
 18
 00:01:22,250 --> 00:01:22,640
@@ -72,115 +72,115 @@ Okay.
 
 19
 00:01:22,640 --> 00:01:27,410
-Now we can start to implement our main methods of discount proto contract file.
+Bây giờ chúng ta có thể bắt đầu triển khai các phương thức chính của discount proto contract file.
 
 20
 00:01:27,410 --> 00:01:33,110
-Here you can see that the first method is get discount and this is Overrideable method comes from the
+Ở đây bạn có thể thấy phương thức đầu tiên là get discount và đây là phương thức Overrideable xuất phát từ
 
 21
 00:01:33,110 --> 00:01:37,280
-R base class which is generated from the discount protobuf file.
+Lớp R cơ sở được tạo từ tệp protobuf discount.
 
 22
 00:01:37,280 --> 00:01:43,970
-And we have overriding all the functions in this class to implement an academy incoming requests and
+Và chúng ta đã ghi đè tất cả các hàm trong lớp này để triển khai các yêu cầu đến academy và
 
 23
 00:01:43,970 --> 00:01:46,970
-communicate with database and perform these Crud operations.
+giao tiếp với cơ sở dữ liệu và thực hiện các hoạt động Crud này.
 
 24
 00:01:46,970 --> 00:01:50,450
-So for that purpose, let me start with the get discount operation.
+Vậy để làm điều đó, hãy bắt đầu với hoạt động get discount.
 
 25
 00:01:50,450 --> 00:01:53,990
-And first of all I am going to create a coupon object.
+Và đầu tiên tôi sẽ tạo một đối tượng coupon.
 
 26
 00:01:53,990 --> 00:02:01,190
-And we will retrieve this coupon object from the database using the DB context object and DB context
+Và chúng ta sẽ truy xuất đối tượng coupon này từ cơ sở dữ liệu bằng cách sử dụng đối tượng DB context và DB context
 
 27
 00:02:01,190 --> 00:02:02,930
-is our discount context.
+là discount context của chúng ta.
 
 28
 00:02:02,930 --> 00:02:05,180
-That is the Entity Framework core ORM tool.
+Đó là công cụ ORM Entity Framework Core.
 
 29
 00:02:05,180 --> 00:02:07,220
-And now I am going to reach the coupons.
+Và bây giờ tôi sẽ truy cập các coupons.
 
 30
 00:02:07,220 --> 00:02:14,060
-And after that, after reaching the coupons, we can use first or default async method in order to get
+Và sau đó, sau khi truy cập các coupons, chúng ta có thể sử dụng phương thức first or default async để có được
 
 31
 00:02:14,060 --> 00:02:16,220
-coupons with a given product name.
+các coupons với tên sản phẩm cho trước.
 
 32
 00:02:16,220 --> 00:02:18,680
-Here you can see the R filter operation.
+Ở đây bạn có thể thấy hoạt động lọc R.
 
 33
 00:02:18,680 --> 00:02:22,940
-We will basically check the product name from the incoming request object.
+Về cơ bản chúng ta sẽ kiểm tra tên sản phẩm từ đối tượng yêu cầu đến.
 
 34
 00:02:22,940 --> 00:02:28,190
-Here you can see the incoming request object, including the product name that we have confirmed from
+Ở đây bạn có thể thấy đối tượng yêu cầu đến, bao gồm tên sản phẩm mà chúng ta đã xác nhận từ
 
 35
 00:02:28,190 --> 00:02:29,360
-the Discount Proto file.
+tệp Discount Proto.
 
 36
 00:02:29,360 --> 00:02:34,160
-If you open this Discount proto file, you can see the get discount method, getting the get Discount
+Nếu bạn mở tệp Discount proto này, bạn có thể thấy phương thức get discount, nhận đối tượng get Discount
 
 37
 00:02:34,160 --> 00:02:35,060
-request object.
+request.
 
 38
 00:02:35,060 --> 00:02:37,670
-And in this object we can reach the product name.
+Và trong đối tượng này chúng ta có thể truy cập tên sản phẩm.
 
 39
 00:02:37,670 --> 00:02:41,390
-So by this way we can test the product name in here.
+Vậy theo cách này chúng ta có thể kiểm tra tên sản phẩm ở đây.
 
 40
 00:02:41,390 --> 00:02:44,480
-And we will filtering the coupons as per the product name.
+Và chúng ta sẽ lọc các coupons theo tên sản phẩm.
 
 41
 00:02:44,480 --> 00:02:47,900
-And after that we will check the coupon is null or not.
+Và sau đó chúng ta sẽ kiểm tra coupon có null hay không.
 
 42
 00:02:47,900 --> 00:02:53,030
-If coupon is null that means there is no discount to our SQLite database.
+Nếu coupon là null, điều đó có nghĩa là không có discount trong SQLite database của chúng ta.
 
 43
 00:02:53,030 --> 00:03:00,500
-We will create any fake or dummy coupon object because instead of throwing an exception, we would like
+Chúng ta sẽ tạo một coupon object giả hoặc dummy vì thay vì ném ra một exception, chúng ta muốn
 
 44
 00:03:00,500 --> 00:03:04,070
-to continue to use case of the add item in the shopping cart.
+tiếp tục sử dụng use case của việc thêm item vào shopping cart.
 
 45
 00:03:04,070 --> 00:03:09,890
-For that purpose, we have created new coupon with a given property product name as a no discount.
+Với mục đích đó, chúng ta đã tạo coupon mới với property product name được đặt là no discount.
 
 46
 00:03:09,890 --> 00:03:14,600
-And the important property is amount is zero and description is no discount.
+Và property quan trọng là amount bằng zero và description là no discount.
 
 47
 00:03:14,600 --> 00:03:15,410
@@ -188,251 +188,251 @@ Description.
 
 48
 00:03:15,830 --> 00:03:18,200
-So this is for null case.
+Vậy đây là cho trường hợp null.
 
 49
 00:03:18,200 --> 00:03:25,700
-If there is no any coupon and discount into our SQLite database and if not null, we will basically
+Nếu không có bất kỳ coupon nào và discount trong SQLite database của chúng ta và nếu không null, chúng ta sẽ
 
 50
 00:03:25,700 --> 00:03:27,260
-return our coupon object.
+trả về coupon object của chúng ta.
 
 51
 00:03:27,260 --> 00:03:29,690
-But how we can return this coupon object?
+Nhưng làm cách nào chúng ta có thể trả về coupon object này?
 
 52
 00:03:29,690 --> 00:03:33,260
-We have to convert this coupon object as a coupon model.
+Chúng ta phải convert coupon object này thành coupon model.
 
 53
 00:03:33,260 --> 00:03:37,520
-Because again the get discount method return back to coupon model.
+Vì get discount method trả về coupon model.
 
 54
 00:03:37,520 --> 00:03:40,160
-We can confirm from the Discount Proto file.
+Chúng ta có thể xác nhận từ Discount Proto file.
 
 55
 00:03:40,160 --> 00:03:45,500
-And this is returning the coupon model and including the all information of the coupon object.
+Và nó trả về coupon model và bao gồm tất cả thông tin của coupon object.
 
 56
 00:03:45,500 --> 00:03:51,410
-For that purpose, we will go back and convert to our coupon object, which comes from the Entity Framework
+Với mục đích đó, chúng ta sẽ quay lại và convert coupon object của chúng ta, đến từ Entity Framework
 
 57
 00:03:51,410 --> 00:03:55,220
-Core Entity object that need to convert to our coupon model.
+Core Entity object mà cần convert thành coupon model của chúng ta.
 
 58
 00:03:55,220 --> 00:04:00,800
-If you right click and go to definition, you can see that this is the generated C stub class from the
+Nếu bạn right click và go to definition, bạn có thể thấy rằng đây là generated C stub class từ
 
 59
 00:04:00,800 --> 00:04:05,150
-R protobuf file that we should return this coupon model from our methods.
+R protobuf file mà chúng ta nên trả về coupon model này từ các method của chúng ta.
 
 60
 00:04:05,150 --> 00:04:12,320
-So if you go back to our discount service now I am going to using the adapt method which changing our
+Vậy nếu bạn quay lại discount service của chúng ta, bây giờ tôi sẽ sử dụng adapt method mà thay đổi
 
 61
 00:04:12,320 --> 00:04:15,710
-coupon to the coupon model and return back to the coupon model.
+mã giảm giá cho mô hình coupon và trả lại mô hình coupon.
 
 62
 00:04:16,459 --> 00:04:21,829
-And after that of course we forgot the logging operation with using the logger.
+Và sau đó, tất nhiên chúng ta quên hoạt động logging bằng cách sử dụng logger.
 
 63
 00:04:21,829 --> 00:04:28,640
-So before return back to our coupon model, I basically logging with log information with including
+Vậy trước khi trả lại mô hình coupon của chúng ta, tôi cơ bản là logging với thông tin log bao gồm
 
 64
 00:04:28,640 --> 00:04:34,280
-the discount is retrieved for product name and passing the product name and amount with the incoming
+discount được truy xuất cho tên sản phẩm và truyền tên sản phẩm và số lượng với incoming
 
 65
 00:04:34,280 --> 00:04:38,000
-coupon, product name and amount from the SQLite database.
+coupon, tên sản phẩm và số lượng từ SQLite database.
 
 66
 00:04:38,540 --> 00:04:42,170
-So as you can see that we have implemented the get discount method.
+Vậy như bạn có thể thấy, chúng ta đã triển khai phương thức get discount.
 
 67
 00:04:42,170 --> 00:04:46,340
-And this method basically queries the coupon table for a matching product name.
+Và phương thức này cơ bản là truy vấn bảng coupon để tìm tên sản phẩm phù hợp.
 
 68
 00:04:46,340 --> 00:04:52,340
-If no coupon is found, it returns a default coupon model indicating no discount with zero amount value.
+Nếu không tìm thấy coupon nào, nó sẽ trả lại mô hình coupon mặc định chỉ ra không có discount với giá trị amount bằng không.
 
 69
 00:04:52,340 --> 00:04:57,980
-If we found any value, we will return this coupon object with converting the coupon model.
+Nếu chúng ta tìm thấy bất kỳ giá trị nào, chúng ta sẽ trả lại đối tượng coupon này bằng cách chuyển đổi mô hình coupon.
 
 70
 00:04:57,980 --> 00:04:59,690
-And if you look at this line of code.
+Và nếu bạn nhìn vào dòng code này.
 
 71
 00:04:59,860 --> 00:05:06,610
-You can see that we forgot to install one of the package, which is the Napster, when adapting our
+Bạn có thể thấy rằng chúng ta quên cài đặt một trong các package, đó là Mapster, khi chuyển đổi coupon của chúng ta
 
 72
 00:05:06,610 --> 00:05:07,810
-coupon to coupon model.
+sang mô hình coupon.
 
 73
 00:05:07,810 --> 00:05:13,720
-So we should install the Napster NuGet package to simplify this mapping operation and using the adapt
+Vậy chúng ta nên cài đặt package Mapster NuGet để đơn giản hóa hoạt động mapping này và sử dụng phương thức adapt
 
 74
 00:05:13,720 --> 00:05:15,580
-method for our classes.
+cho các lớp của chúng ta.
 
 75
 00:05:15,610 --> 00:05:18,340
-How can we install maps to NuGet packages?
+Làm thế nào chúng ta có thể cài đặt Mapster NuGet package?
 
 76
 00:05:18,370 --> 00:05:24,010
-Normally, when we are developing any microservices, we will get reference from the building blocks
+Bình thường, khi chúng ta đang phát triển bất kỳ microservices nào, chúng ta sẽ nhận tham chiếu từ các building blocks
 
 77
 00:05:24,010 --> 00:05:27,700
-that include all common NuGet packages, including the map sir.
+bao gồm tất cả các NuGet package phổ biến, bao gồm cả Mapster.
 
 78
 00:05:27,700 --> 00:05:31,000
-But discount gRPC is not a typical microservices.
+Nhưng discount gRPC không phải là một microservices điển hình.
 
 79
 00:05:31,000 --> 00:05:34,600
-For that reason, we shouldn't inherit from the building blocks.
+Vì lý do đó, chúng ta không nên thừa kế từ các building blocks.
 
 80
 00:05:34,600 --> 00:05:37,390
-Instead of that discount, focus on the performance.
+Thay vào đó, discount tập trung vào hiệu suất.
 
 81
 00:05:37,390 --> 00:05:43,630
-That's why we have to install maps in here and avoiding some unnecessary packages into discount gRPC.
+Đó là lý do tại sao chúng ta phải cài đặt Mapster ở đây và tránh các package không cần thiết vào discount gRPC.
 
 82
 00:05:43,780 --> 00:05:51,550
-Right click and manage NuGet packages and browse for the maps there and install maps package into our
+Nhấp chuột phải và quản lý NuGet packages, tìm kiếm Mapster ở đó và cài đặt package Mapster vào
 
 83
 00:05:51,550 --> 00:05:53,440
-discount gRPC by manually.
+discount gRPC một cách thủ công.
 
 84
 00:05:54,490 --> 00:05:59,080
-And if you double click, you can verify that our mapper comes in here and save this file.
+Và nếu bạn nhấp đúp chuột, bạn có thể xác minh rằng mapper của chúng ta đã được cài đặt ở đây và lưu file này.
 
 85
 00:05:59,080 --> 00:06:05,110
-And if you go back to Discount services you can now add a using statement for the map store operation.
+Và nếu bạn quay lại Discount services, bây giờ bạn có thể thêm một using statement cho map store operation.
 
 86
 00:06:05,650 --> 00:06:08,740
-Now we have finished the get discount method implementation.
+Bây giờ chúng ta đã hoàn thành triển khai phương thức get discount.
 
 87
 00:06:08,740 --> 00:06:12,160
-And we can test this method with sending the gRPC call.
+Và chúng ta có thể kiểm tra phương thức này bằng cách gửi một gRPC call.
 
 88
 00:06:12,160 --> 00:06:16,510
-For that purpose, I'm going to run discount gRPC as a https mode.
+Để làm điều đó, tôi sẽ chạy discount gRPC ở chế độ https.
 
 89
 00:06:16,510 --> 00:06:21,760
-And after that we will send get discount gRPC call and we will debug this operation.
+Và sau đó chúng ta sẽ gửi get discount gRPC call và chúng ta sẽ debug operation này.
 
 90
 00:06:21,760 --> 00:06:27,280
-Our application has started successfully with running the migrations before starting the application.
+Ứng dụng của chúng ta đã khởi động thành công với việc chạy migrations trước khi khởi động ứng dụng.
 
 91
 00:06:27,280 --> 00:06:30,460
-And now this will be ready for the exact gRPC calls.
+Và bây giờ nó sẽ sẵn sàng cho các gRPC calls chính xác.
 
 92
 00:06:30,460 --> 00:06:37,570
-For that reason, please open the postman and open the discount gRPC collection and go to Discount Service.
+Vì lý do đó, vui lòng mở Postman và mở collection discount gRPC và đi đến Discount Service.
 
 93
 00:06:37,570 --> 00:06:43,000
-Here you can see the are connected discount service and we will hit the create Discount gRPC call.
+Ở đây bạn có thể thấy rằng discount service đã được kết nối và chúng ta sẽ gọi create Discount gRPC call.
 
 94
 00:06:43,000 --> 00:06:48,190
-Before invoking this method, we should arrange the message according to our request object.
+Trước khi gọi phương thức này, chúng ta nên sắp xếp message theo đối tượng request của chúng ta.
 
 95
 00:06:48,190 --> 00:06:54,700
-If you look at our discount proto file for the get discount operation, it is expecting get discount
+Nếu bạn nhìn vào discount proto file của chúng ta cho operation get discount, nó đang mong đợi get discount
 
 96
 00:06:54,700 --> 00:07:00,340
-request for that purpose, we should send the product name into the Get Discount Request object when
+request, vì vậy chúng ta nên gửi product name vào Get Discount Request object khi
 
 97
 00:07:00,340 --> 00:07:02,650
-calling the get Discount RPC method.
+gọi phương thức get Discount RPC.
 
 98
 00:07:02,650 --> 00:07:09,190
-And in here, it is important to send product name as the same format because this message should be
+Và ở đây, điều quan trọng là gửi product name với cùng định dạng vì message này cần phải
 
 99
 00:07:09,190 --> 00:07:09,580
-match.
+khớp.
 
 100
 00:07:09,580 --> 00:07:10,330
-Exactly.
+Chính xác.
 
 101
 00:07:10,330 --> 00:07:15,070
-That means this is the case sensitive and we will send the product name as the same format.
+Điều đó có nghĩa là nó phân biệt chữ hoa chữ thường và chúng ta sẽ gửi tên sản phẩm với cùng định dạng.
 
 102
 00:07:15,280 --> 00:07:21,220
-Please open the postman and we will send get discount method for that purpose.
+Vui lòng mở Postman và chúng ta sẽ gửi phương thức get discount cho mục đích đó.
 
 103
 00:07:21,220 --> 00:07:26,890
-Select the method name as a get discount and after that change the payload with the product name.
+Chọn tên phương thức là get discount và sau đó thay đổi payload với tên sản phẩm.
 
 104
 00:07:26,890 --> 00:07:29,290
-P is lowercase and is uppercase.
+P là chữ thường và là chữ hoa.
 
 105
 00:07:29,290 --> 00:07:35,290
-And our product name is iPhone X, and we will retrieve these iPhone X coupon from the SQLite database.
+Và tên sản phẩm của chúng ta là iPhone X, và chúng ta sẽ lấy iPhone X coupon từ cơ sở dữ liệu SQLite.
 
 106
 00:07:35,290 --> 00:07:39,220
-And please click the invoke in order to invoke our gRPC method.
+Và vui lòng nhấp vào invoke để gọi phương thức gRPC của chúng ta.
 
 107
 00:07:39,220 --> 00:07:44,410
-Here you can see the get discount method is triggered, and if you come to the request object, you
+Tại đây bạn có thể thấy phương thức get discount đã được kích hoạt, và nếu bạn xem đối tượng request, bạn
 
 108
 00:07:44,410 --> 00:07:47,170
-can see the product name comes as a iPhone X.
+có thể thấy tên sản phẩm đến dưới dạng iPhone X.
 
 109
 00:07:47,170 --> 00:07:52,480
-And the first thing we should do that we will retrieve this product into our database using the Dbcontext
+Và điều đầu tiên chúng ta nên làm là chúng ta sẽ lấy sản phẩm này vào cơ sở dữ liệu của chúng ta bằng cách sử dụng đối tượng Dbcontext.
 
 110
 00:07:52,480 --> 00:07:53,110
@@ -440,29 +440,29 @@ object.
 
 111
 00:07:53,110 --> 00:07:55,240
-Here you can see the coupon is not null.
+Tại đây bạn có thể thấy coupon không phải là null.
 
 112
 00:07:55,240 --> 00:08:00,220
-That means we found a coupon and discount information and the amount is 150.
+Điều đó có nghĩa là chúng ta đã tìm thấy coupon và thông tin chiết khấu, và số tiền là 150.
 
 113
 00:08:00,220 --> 00:08:02,410
-And after that we will log the information.
+Và sau đó chúng ta sẽ ghi lại thông tin.
 
 114
 00:08:02,410 --> 00:08:06,550
-And in here we will convert our coupon object from the coupon model.
+Và ở đây chúng ta sẽ chuyển đổi đối tượng coupon từ mô hình coupon.
 
 115
 00:08:06,550 --> 00:08:10,600
-And after that we will return back the coupon model our gRPC client.
+Và sau đó chúng ta sẽ trả lại mô hình coupon cho gRPC client của chúng ta.
 
 116
 00:08:10,870 --> 00:08:17,230
-Here you can see that we can successfully get the response from the gRPC method retrieving this information
+Tại đây bạn có thể thấy rằng chúng ta có thể thành công lấy response từ phương thức gRPC lấy thông tin này
 
 117
 00:08:17,230 --> 00:08:18,760
-from the SQLite database.
+từ cơ sở dữ liệu SQLite.
 
