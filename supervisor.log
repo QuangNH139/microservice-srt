@@ -2277,3 +2277,6 @@ Reached --max-files 5, exiting.
 
 Finished in 138s. Errors: 0
 [supervisor 07:55:36] translate.py exited (code=0). 351/349 done.
+[supervisor 07:55:36] Committed (351/349). Pushing...
+[supervisor 07:55:38] Pushed OK.
+[supervisor 07:55:38] === ALL DONE ===
