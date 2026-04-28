@@ -256,5 +256,6 @@
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/016 Develop Domain Event Handlers with MediatR INotificationHandler in Ordering.App.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/017 Develop Domain Event Handlers with MediatR INotificationHandler in Ordering.App.srt": "done",
   "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/018 Develop Order Queries with CQRS and MediatR in Ordering.Application Layer.srt": "done",
-  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/019 Develop Extention method for ProjectToOrderDto use in GetOrders Methods.srt": "done"
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/019 Develop Extention method for ProjectToOrderDto use in GetOrders Methods.srt": "done",
+  "/home/user/microservice-srt/16 Ordering.Application Layer with CQRS and MediatR/020 Develop GetOrdersByCustomer Queries w CQRS and MediatR in Ordering.Application.srt": "done"
 }
