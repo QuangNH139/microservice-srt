@@ -203,5 +203,8 @@
   "/home/user/microservice-srt/13 Ordering Microservices with DDD, CQRS and Clean Architecture/013 Adding Dependency Injections Between Clean Architecture Layers.srt": "done",
   "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/001 Tactical Domain-Driven Design Entities, Value Objects, Aggregates, Agg. Roots.srt": "done",
   "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/002 Develop DDD Abstractions (Entity, Aggregate, DomainEvent) in Ordering.Domain.srt": "done",
-  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/003 Domain Modeling with Tactical DDD for Ordering Microservices.srt": "done"
+  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/003 Domain Modeling with Tactical DDD for Ordering Microservices.srt": "done",
+  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/004 Develop Domain Modeling with DDD for Ordering Microservices.srt": "done",
+  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/005 Primitive Obsession and Strongly typed IDs in DDD.srt": "done",
+  "/home/user/microservice-srt/14 Ordering.Domain Layer with Tactical Domain-Driven Design Patterns/006 Develop Strongly typed IDs for Order Entities.srt": "done"
 }

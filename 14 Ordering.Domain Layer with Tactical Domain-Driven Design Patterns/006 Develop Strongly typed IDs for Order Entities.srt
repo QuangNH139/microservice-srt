@@ -1,78 +1,78 @@
 1
 00:00:00,260 --> 00:00:06,350
-In this video, we are going to develop strongly typed IDs for ordering entities.
+Trong video này, chúng ta sẽ phát triển strongly typed IDs cho các order entities.
 
 2
 00:00:06,350 --> 00:00:11,690
-So we will start by changing primitive types to strongly type IDs in order CSS.
+Vậy chúng ta sẽ bắt đầu bằng cách thay đổi primitive types thành strongly typed IDs trong Order.cs.
 
 3
 00:00:11,690 --> 00:00:19,100
-If you open the order CSS, you can see the primitive types are with string enlisting into the order.
+Nếu bạn mở Order.cs, bạn có thể thấy các primitive types với string được liệt kê trong order.
 
 4
 00:00:19,100 --> 00:00:27,290
-So I'm going to change the customer id primitive type gid to customer ID you can change in here.
+Vậy tôi sẽ thay đổi customer id primitive type guid thành customer ID, bạn có thể thay đổi ở đây.
 
 5
 00:00:27,290 --> 00:00:33,350
-And also I am going to change order name string primitive type to the order name concrete type.
+Và cũng tôi sẽ thay đổi order name string primitive type thành order name concrete type.
 
 6
 00:00:33,350 --> 00:00:38,930
-So here you can see that the customer id and order name is become concrete types.
+Vậy ở đây bạn có thể thấy rằng customer id và order name trở thành concrete types.
 
 7
 00:00:38,930 --> 00:00:44,450
-And we will create these concrete types as a value object record types classes in very soon.
+Và chúng ta sẽ tạo các concrete types này dưới dạng value object record type classes rất sớm.
 
 8
 00:00:44,450 --> 00:00:50,420
-And these are the are strongly type IDs under the order aggregate.
+Và đây là những strongly typed IDs dưới order aggregate.
 
 9
 00:00:50,420 --> 00:00:56,150
-And except these files we don't have any primitive types under the order aggregate.
+Và ngoại trừ các file này, chúng ta không có bất kỳ primitive types nào dưới order aggregate.
 
 10
 00:00:56,150 --> 00:01:02,810
-And now the step two is creating value object for these new strongly type IDs.
+Và bây giờ bước hai là tạo value object cho những strongly typed IDs mới này.
 
 11
 00:01:02,930 --> 00:01:06,950
-I'm going to define customer ID and order name as a value object.
+Tôi sẽ định nghĩa customer ID và order name như một value object.
 
 12
 00:01:06,950 --> 00:01:10,670
-For that purpose I'm going to go to the value objects.
+Để đạt được mục đích đó, tôi sẽ vào value objects.
 
 13
 00:01:10,670 --> 00:01:16,640
-And in here we can add new class under the Value object folder which name is customer ID.
+Và ở đây chúng ta có thể thêm class mới dưới thư mục Value object có tên là customer ID.
 
 14
 00:01:16,640 --> 00:01:24,170
-And this will be the record type as a customer ID and include value information as a guide value.
+Và đây sẽ là record type là customer ID và bao gồm thông tin value như một guid value.
 
 15
 00:01:24,260 --> 00:01:27,320
-So we can remove the unnecessary using statement.
+Vậy chúng ta có thể xóa các using statement không cần thiết.
 
 16
 00:01:27,320 --> 00:01:30,590
-And you can define the customer ID record type.
+Và bạn có thể định nghĩa customer ID record type.
 
 17
 00:01:30,590 --> 00:01:37,370
-This is the value object and these will be the are strongly type ID, including the value primitive
+Đây là value object và đây sẽ là strongly typed ID, bao gồm primitive value object bên trong customer ID concrete type.
 
 18
 00:01:37,370 --> 00:01:44,150
-object inside of the customer ID concrete type, and is the same way we can follow the order name as
+Và cùng cách đó chúng ta có thể thực hiện order name như một value object.
 
 19
 00:01:44,150 --> 00:01:44,960
-a value object.
+Đến value object.
 
 20
 00:01:44,960 --> 00:01:46,370
@@ -80,71 +80,71 @@ Come to value object.
 
 21
 00:01:46,370 --> 00:01:49,370
-Create new class which is the order name dot css.
+Tạo một class mới có tên là order name dot css.
 
 22
 00:01:49,370 --> 00:01:53,420
-And I'm going to create order name record type.
+Và tôi sẽ tạo một order name record type.
 
 23
 00:01:53,420 --> 00:01:59,960
-And if you remove the unnecessary using statement come here and create order name record type.
+Và nếu bạn xóa using statement không cần thiết, hãy đến đây và tạo order name record type.
 
 24
 00:01:59,960 --> 00:02:06,740
-And you can also give the value this time value should be string as a primitive type and we can create
+Và bạn cũng có thể gán giá trị lần này, giá trị này phải là string như một primitive type, và chúng ta có thể tạo
 
 25
 00:02:06,740 --> 00:02:12,170
-order name value object which will be the strong type in the order order aggregate class.
+order name value object sẽ là strong type trong order aggregate class.
 
 26
 00:02:12,170 --> 00:02:19,010
-So these value objects encapsulate the id and name values and providing clear and domain specific type
+Vậy những value objects này đóng gói ID và name values, cung cấp clear và domain specific type
 
 27
 00:02:19,010 --> 00:02:20,810
-for each operation.
+cho mỗi operation.
 
 28
 00:02:20,810 --> 00:02:27,410
-You can see that these will be encapsulate customer ID and these will be encapsulate order name including
+Bạn có thể thấy những object này sẽ đóng gói customer ID và những object này sẽ đóng gói order name bao gồm
 
 29
 00:02:27,410 --> 00:02:29,030
-the value properties.
+các value properties.
 
 30
 00:02:29,180 --> 00:02:37,550
-If we open the order aggregate, you can see that our strongly typed value objects comes in here successfully.
+Nếu chúng ta mở order aggregate, bạn có thể thấy rằng strongly typed value objects của chúng ta đã đi vào đây thành công.
 
 31
 00:02:37,730 --> 00:02:40,970
-So the next object we can check order item class.
+Vậy object tiếp theo chúng ta có thể kiểm tra là order item class.
 
 32
 00:02:40,970 --> 00:02:46,970
-If you open the order item class we are going to convert these order ID and product ID as a strongly
+Nếu bạn mở order item class, chúng ta sẽ chuyển đổi những order ID và product ID này thành strongly
 
 33
 00:02:46,970 --> 00:02:53,810
-typed ID for that purpose, I'm going to change these great value to order ID and change the product
+typed ID, để làm điều đó, tôi sẽ thay đổi những great value này thành order ID và thay đổi product
 
 34
 00:02:53,810 --> 00:03:01,760
-ID with value to product ID, so we will follow the same steps for the properties change order ID,
+ID với value thành product ID, vậy chúng ta sẽ làm theo các bước tương tự cho properties, thay đổi order ID,
 
 35
 00:03:01,760 --> 00:03:06,380
-guide to order ID and change product ID to product ID.
+guide thành order ID và thay đổi product ID thành product ID.
 
 36
 00:03:06,950 --> 00:03:11,900
-Also, at this point I'm going to add an order item ID in here.
+Cũng lúc này, tôi sẽ thêm một order item ID ở đây.
 
 37
 00:03:11,900 --> 00:03:19,370
-You can see that when we are creating order item, we also add and set ID information which is representing
+Bạn có thể thấy rằng khi chúng ta đang tạo order item, chúng ta cũng thêm vào và đặt thông tin ID, thông tin này đại diện cho
 
 38
 00:03:19,370 --> 00:03:21,020
@@ -152,87 +152,87 @@ order item ID.
 
 39
 00:03:21,020 --> 00:03:28,040
-So I'm going to make it strongly type ID and here you can see that we will also use order item ID.
+Vậy tôi sẽ làm nó thành strongly type ID, và ở đây bạn có thể thấy rằng chúng ta cũng sẽ sử dụng order item ID.
 
 40
 00:03:28,160 --> 00:03:31,580
-And I will explain the off method in the next videos.
+Và tôi sẽ giải thích phương thức off trong các video tiếp theo.
 
 41
 00:03:31,580 --> 00:03:38,690
-And we will passing the newly created guide in here to generating new ID when creating order item under
+Và chúng ta sẽ truyền guide mới được tạo vào đây để tạo ID mới khi tạo order item trong
 
 42
 00:03:38,690 --> 00:03:39,740
-the order entity.
+order entity.
 
 43
 00:03:40,160 --> 00:03:47,900
-So as you can see that we have successfully set the order item ID, order ID and product id now using
+Vậy như bạn có thể thấy, chúng ta đã thiết lập thành công order item ID, order ID và product ID bây giờ sử dụng
 
 44
 00:03:47,900 --> 00:03:49,910
-strongly type IDs and this.
+strongly type IDs và cách này.
 
 45
 00:03:49,910 --> 00:03:56,060
-Ensure that the correct type of the ID is used and prevents mixing of different types of IDs.
+Đảm bảo rằng loại ID đúng được sử dụng và ngăn chặn việc trộn lẫn các loại ID khác nhau.
 
 46
 00:03:56,060 --> 00:04:01,400
-So the next step we can define these ID types as a value objects.
+Vậy bước tiếp theo chúng ta có thể định nghĩa các loại ID này dưới dạng value objects.
 
 47
 00:04:01,400 --> 00:04:02,480
-For that purpose.
+Vì mục đích đó.
 
 48
 00:04:02,480 --> 00:04:06,200
-I'm going to start with the order id and create order id value object.
+Tôi sẽ bắt đầu với order id và tạo order id value object.
 
 49
 00:04:06,200 --> 00:04:12,800
-Under the Value object folder, create new class order id x and add under the value objects.
+Dưới thư mục Value object, tạo class order id mới và thêm vào value objects.
 
 50
 00:04:12,800 --> 00:04:19,790
-In here I'm going to remove the unnecessary using statement and define order id as a record type and
+Ở đây tôi sẽ loại bỏ using statement không cần thiết và định nghĩa order id dưới dạng record type và
 
 51
 00:04:19,790 --> 00:04:26,060
-put a great value inside of this record type, and this will be represent our order id strongly typed
+đặt một Guid value vào trong record type này, và cái này sẽ biểu thị strongly typed order id value của chúng ta,
 
 52
 00:04:26,060 --> 00:04:33,020
-value, and after that, following the order id, we are going to create product ID I'm going to create
+và sau đó, tiếp theo order id, chúng ta sẽ tạo product ID. Tôi sẽ tạo product ID dot CSS dưới value objects
 
 53
 00:04:33,020 --> 00:04:38,660
-product ID dot CSS under the value objects and remove the unnecessary using statements.
+và loại bỏ các using statements không cần thiết.
 
 54
 00:04:38,660 --> 00:04:42,890
-And we are going to create product ID record type.
+Và chúng ta sẽ tạo product ID record type.
 
 55
 00:04:42,890 --> 00:04:50,240
-And inside of it we will put great value and we will represent the strongly typed product ID with these
+Và bên trong nó chúng ta sẽ đặt Guid value và chúng ta sẽ biểu thị strongly typed product ID bằng value object này.
 
 56
 00:04:50,240 --> 00:04:51,350
-value object.
+Và cuối cùng tôi sẽ tạo order item ID.
 
 57
 00:04:51,350 --> 00:04:54,350
-And lastly I'm going to create order item ID.
+Nếu bạn thêm một class mới order item id dot CSS và.
 
 58
 00:04:54,530 --> 00:04:59,090
-If you add a new class order item id dot CSS and.
+Loại bỏ using statement.
 
 59
 00:04:59,280 --> 00:05:00,810
-Remove the using statement.
+Chúng ta sẽ làm theo các bước tương tự.
 
 60
 00:05:01,020 --> 00:05:02,880
@@ -240,19 +240,19 @@ We will follow the same steps.
 
 61
 00:05:02,880 --> 00:05:09,720
-I'm going to remove this code and create order item ID, record type and the value with object inside
+Tôi sẽ xóa mã này và tạo order item ID, record type và giá trị với object bên trong
 
 62
 00:05:09,720 --> 00:05:10,200
-of it.
+nó.
 
 63
 00:05:10,200 --> 00:05:17,400
-So as you can see that we have created order item ID, product ID and customer ID that we can define
+Vậy như bạn có thể thấy, chúng ta đã tạo order item ID, product ID và customer ID mà chúng ta có thể xác định
 
 64
 00:05:17,400 --> 00:05:24,060
-for each type of ID clearly defined as a separate value object, and it will enhancing clarity and type
+cho từng loại ID được xác định rõ ràng như một value object riêng biệt, và điều này sẽ tăng cường sự rõ ràng và type
 
 65
 00:05:24,060 --> 00:05:24,720
@@ -260,27 +260,27 @@ safety.
 
 66
 00:05:25,050 --> 00:05:32,040
-So if you go to the models and look at the models order, order, item, product and customer, you
+Vậy nếu bạn đi tới models và xem các models order, order, item, product và customer, bạn
 
 67
 00:05:32,040 --> 00:05:35,730
-can see that these are the inherited from the aggregate and entities.
+có thể thấy rằng chúng kế thừa từ aggregate và entities.
 
 68
 00:05:35,730 --> 00:05:44,130
-And inside of these aggregate and entities, it is taking the type object as a ID type information.
+Và bên trong những aggregate và entities này, nó đang lấy type object làm thông tin ID type.
 
 69
 00:05:44,130 --> 00:05:52,680
-So you can see that these classes using target as an entity type ID information for the product customer
+Vậy bạn có thể thấy rằng các classes này sử dụng target làm thông tin entity type ID cho product, customer
 
 70
 00:05:52,680 --> 00:05:53,550
-and so on.
+và như vậy.
 
 71
 00:05:53,550 --> 00:06:01,320
-So we should remove these good information and update the entity base class types for the strongly type
+Vậy chúng ta nên xóa những thông tin tốt này và cập nhật các types entity base class cho strongly type
 
 72
 00:06:01,320 --> 00:06:01,980
@@ -288,61 +288,61 @@ IDs.
 
 73
 00:06:01,980 --> 00:06:08,310
-If you go to the order CSS, you can see that it is inheritance from the aggregate GID.
+Nếu bạn đi tới order CSS, bạn có thể thấy rằng nó kế thừa từ aggregate GID.
 
 74
 00:06:08,310 --> 00:06:16,020
-And I am going to change it to order ID, because now we will use order id as the ID of the order entity,
+Và tôi sẽ thay đổi nó thành order ID, vì bây giờ chúng ta sẽ sử dụng order id làm ID của order entity,
 
 75
 00:06:16,020 --> 00:06:22,230
-and this will be represent all the type of the order id strongly typed value.
+và điều này sẽ đại diện cho tất cả các loại order id được strongly typed value.
 
 76
 00:06:22,230 --> 00:06:24,450
-And I'm going to change these aggregate.
+Và tôi sẽ thay đổi aggregate này.
 
 77
 00:06:24,450 --> 00:06:30,420
-And I'm going to follow the same step for the order item inside of the order item, you can see that
+Và tôi sẽ theo dõi các bước tương tự cho order item, bên trong order item, bạn có thể thấy rằng
 
 78
 00:06:30,420 --> 00:06:32,310
-it is inherited from the entity.
+nó kế thừa từ entity.
 
 79
 00:06:32,310 --> 00:06:40,230
-And we have created a order item ID as the ID of this class, and change the guy to order item ID in
+Và chúng ta đã tạo một order item ID làm ID của class này, và thay đổi guy thành order item ID trong
 
 80
 00:06:40,230 --> 00:06:42,390
-the signature of the class definition.
+signature của định nghĩa class.
 
 81
 00:06:42,390 --> 00:06:48,330
-And if you go to the product and customer in the customer CSS, you can remove the unnecessary using
+Và nếu bạn đi đến product và customer trong customer CSS, bạn có thể xóa using statement không cần thiết
 
 82
 00:06:48,330 --> 00:06:55,680
-statement and come to the entity place and we will change the guy to customer ID for the customer entity
+và đi đến entity place và chúng ta sẽ thay đổi guy thành customer ID cho customer entity
 
 83
 00:06:55,680 --> 00:06:58,800
-and follow the same steps for the product entity.
+và làm theo các bước tương tự cho product entity.
 
 84
 00:06:58,800 --> 00:07:05,390
-Remove the using statement and change to go to product ID for product entity.
+Xóa using statement và thay đổi thành product ID cho product entity.
 
 85
 00:07:05,600 --> 00:07:13,580
-By this way, each entity explicitly specifies the type of the IDs which must have strongly type IDs.
+Bằng cách này, mỗi entity explicitly chỉ định loại của IDs mà phải có strongly type IDs.
 
 86
 00:07:13,580 --> 00:07:19,880
-This approach reduces the risk of the errors and misunderstandings in the code, making it more maintainable
+Cách tiếp cận này giảm nguy hiểm của các lỗi và hiểu lầm trong code, làm cho nó dễ bảo trì hơn
 
 87
 00:07:19,880 --> 00:07:20,840
-and understandable.
+và dễ hiểu hơn.
 

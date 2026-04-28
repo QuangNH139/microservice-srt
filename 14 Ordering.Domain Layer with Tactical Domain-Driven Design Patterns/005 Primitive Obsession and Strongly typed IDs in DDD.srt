@@ -1,74 +1,74 @@
 1
 00:00:00,260 --> 00:00:07,400
-In this video we are going to learn primitive obsession and strongly typed IDs in domain driven design.
+Trong video này, chúng ta sẽ học về primitive obsession và strongly typed IDs trong domain driven design.
 
 2
 00:00:07,520 --> 00:00:11,480
-So let me start with the what is primitive obsession?
+Vậy hãy bắt đầu với câu hỏi primitive obsession là gì?
 
 3
 00:00:11,840 --> 00:00:18,980
-Primitive obsession is a code smell where primitives like string, integer, grid are used for the domain
+Primitive obsession là một code smell trong đó các primitive như string, integer, guid được sử dụng cho các domain
 
 4
 00:00:18,980 --> 00:00:22,520
-concepts, leading to ambiguity and errors.
+concepts, dẫn đến sự mơ hồ và lỗi.
 
 5
 00:00:22,880 --> 00:00:30,320
-For instance, using a grid or string for an order ID, customer ID, or product ID makes it easy to
+Ví dụ, sử dụng guid hoặc string cho order ID, customer ID, hoặc product ID khiến dễ dàng
 
 6
 00:00:30,320 --> 00:00:35,330
-mix these identifiers up as they are all of the same type.
+lẫn những định danh này với nhau vì chúng đều cùng một kiểu.
 
 7
 00:00:35,330 --> 00:00:39,230
-So how can we solve these primitive obsession?
+Vậy chúng ta có thể giải quyết primitive obsession như thế nào?
 
 8
 00:00:39,860 --> 00:00:43,070
-The solution is using strongly typed IDs.
+Giải pháp là sử dụng strongly typed IDs.
 
 9
 00:00:43,460 --> 00:00:46,190
-So now let me answer these questions.
+Vậy bây giờ hãy để tôi trả lời những câu hỏi này.
 
 10
 00:00:46,190 --> 00:00:49,070
-What is strongly typed IDs pattern?
+Strongly typed IDs pattern là gì?
 
 11
 00:00:49,070 --> 00:00:55,490
-Strongly typed IDs involves creating distinct types for each kind of ID in your domain.
+Strongly typed IDs liên quan đến việc tạo ra các kiểu riêng biệt cho mỗi loại ID trong domain của bạn.
 
 12
 00:00:55,730 --> 00:00:59,450
-This makes your code more expressive and less error prone.
+Điều này làm cho code của bạn có ý nghĩa hơn và ít dễ bị lỗi hơn.
 
 13
 00:01:00,020 --> 00:01:07,670
-It clarifies which type of ID is expected and prevents accidentally using one type of ID where another
+Nó làm rõ loại ID nào được mong đợi và ngăn chặn việc sử dụng nhầm lẫn một loại ID thay cho loại khác
 
 14
 00:01:07,670 --> 00:01:09,620
-type of ID is intended.
+type của ID.
 
 15
 00:01:09,650 --> 00:01:15,980
-So now let me show you how can we use strongly type ID pattern into the orderitem?
+Vậy bây giờ hãy để tôi chỉ cho bạn cách sử dụng strongly typed ID pattern trong Orderitem?
 
 16
 00:01:15,980 --> 00:01:20,660
-Please open the Visual Studio and go to the models and Orderitem.
+Hãy mở Visual Studio và đi đến models và Orderitem.
 
 17
 00:01:20,660 --> 00:01:26,990
-If you go to Orderitem and go to the constructor of the Orderitem, you can see the first two parameters
+Nếu bạn đi đến Orderitem và đi đến constructor của Orderitem, bạn có thể thấy hai parameter đầu tiên
 
 18
 00:01:26,990 --> 00:01:34,550
-are order id and product ID and when we are creating Orderitem, it is very easy to pass wrong IDs into
+là order id và product ID và khi chúng ta tạo Orderitem, rất dễ để truyền những ID sai vào
 
 19
 00:01:34,550 --> 00:01:35,570
@@ -76,73 +76,73 @@ constructors.
 
 20
 00:01:35,570 --> 00:01:42,110
-That means you can create Orderitem with the wrong order ID and product ID, you can simply replace
+Điều đó có nghĩa là bạn có thể tạo Orderitem với order ID và product ID sai, bạn chỉ cần thay thế
 
 21
 00:01:42,110 --> 00:01:44,750
-wrong ids them into the parameter.
+nhầm lẫn các id vào tham số.
 
 22
 00:01:44,750 --> 00:01:50,300
-Instead of sending order ID, you can send product ID in here and send order ID in here.
+Thay vì gửi order ID, bạn có thể gửi product ID ở đây và gửi order ID ở đây.
 
 23
 00:01:50,300 --> 00:01:51,200
-So we call.
+Vậy chúng ta gọi.
 
 24
 00:01:51,200 --> 00:01:53,510
-This problem is a primitive obsession.
+Vấn đề này là primitive obsession.
 
 25
 00:01:53,510 --> 00:01:58,580
-And in order to solve this problem we can define strongly type IDs.
+Và để giải quyết vấn đề này, chúng ta có thể định nghĩa các strongly type IDs.
 
 26
 00:01:58,580 --> 00:02:07,250
-That means instead of using the grid for order id, I can create an order id type and we can pass the
+Điều đó có nghĩa là thay vì sử dụng grid cho order id, tôi có thể tạo một loại order id và chúng ta có thể truyền
 
 27
 00:02:07,250 --> 00:02:10,520
-order id parameter into Orderitem constructor.
+tham số order id vào constructor Orderitem.
 
 28
 00:02:10,520 --> 00:02:15,740
-And at the same way we can create product id type for product id definition.
+Và theo cách tương tự, chúng ta có thể tạo loại product id cho định nghĩa product id.
 
 29
 00:02:15,740 --> 00:02:20,210
-By this way we can avoid the setting value by mistake.
+Bằng cách này, chúng ta có thể tránh việc đặt giá trị nhầm lẫn.
 
 30
 00:02:20,390 --> 00:02:24,710
-So using the strong type IDs giving lots of benefits.
+Vậy sử dụng các strong type IDs mang lại rất nhiều lợi ích.
 
 31
 00:02:24,710 --> 00:02:27,320
-The first benefit is type safety.
+Lợi ích đầu tiên là type safety.
 
 32
 00:02:27,320 --> 00:02:34,940
-Mistakenly passing a product ID where an order ID is expected is now a compile time error, and we cannot
+Nhầm lẫn truyền một product ID khi order ID được mong đợi giờ đây là một lỗi thời biên dịch, và chúng ta không thể
 
 33
 00:02:34,940 --> 00:02:40,040
-pass the order ID instead of the product id with a type saved values.
+truyền order ID thay vì product id với các giá trị được bảo vệ bởi type.
 
 34
 00:02:40,040 --> 00:02:42,530
-And the second benefit is readability.
+Và lợi ích thứ hai là readability.
 
 35
 00:02:42,530 --> 00:02:47,300
-The constructor clearly indicates that what type of id is required.
+Constructor rõ ràng cho biết loại id nào được yêu cầu.
 
 36
 00:02:47,300 --> 00:02:54,470
-And lastly, we can say that it is also beneficial for refactoring support IDs can easily distinguish
+Và cuối cùng, chúng ta có thể nói rằng nó cũng có lợi ích cho hỗ trợ refactoring, các IDs có thể dễ dàng phân biệt
 
 37
 00:02:54,470 --> 00:02:58,730
-between these types and adding in refactoring and navigation very easily.
+giữa các loại này và thêm trong refactoring và navigation rất dễ dàng.
 

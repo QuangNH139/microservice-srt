@@ -1,78 +1,78 @@
 1
 00:00:00,140 --> 00:00:05,510
-In this video, we are going to developing the domain model for ordering microservices.
+Trong video này, chúng ta sẽ phát triển domain model cho ordering microservices.
 
 2
 00:00:05,510 --> 00:00:11,990
-That means we will create ordered domain entities, aggregates and value objects that represent our
+Điều đó có nghĩa là chúng ta sẽ tạo ordered domain entities, aggregates và value objects để đại diện cho
 
 3
 00:00:11,990 --> 00:00:13,760
-business logic and requirements.
+logic và yêu cầu kinh doanh của chúng ta.
 
 4
 00:00:13,760 --> 00:00:19,130
-For that purpose, please open the Visual Studio and go to the ordering domain.
+Để làm điều đó, vui lòng mở Visual Studio và đi tới ordering domain.
 
 5
 00:00:19,130 --> 00:00:22,010
-And this time we are going to create a new folder.
+Và lần này chúng ta sẽ tạo một folder mới.
 
 6
 00:00:22,010 --> 00:00:24,530
-Right click Add New folder.
+Nhấp chuột phải và thêm folder mới.
 
 7
 00:00:24,530 --> 00:00:26,360
-Which name is models.
+Tên của nó là models.
 
 8
 00:00:26,360 --> 00:00:28,850
-This will be represent our domain models.
+Điều này sẽ đại diện cho domain models của chúng ta.
 
 9
 00:00:28,850 --> 00:00:31,940
-And the first domain model is Order Aggregate.
+Và domain model đầu tiên là Order Aggregate.
 
 10
 00:00:31,940 --> 00:00:37,610
-I am going to add a new class which name is order dot css and this will be our aggregate.
+Tôi sẽ thêm một class mới tên là order dot cs và đây sẽ là aggregate của chúng ta.
 
 11
 00:00:37,610 --> 00:00:42,590
-For that purpose I am going to remove using statement and make it public.
+Để làm điều đó, tôi sẽ xóa using statement và làm nó public.
 
 12
 00:00:42,590 --> 00:00:49,010
-And the important thing is we are going to inherit from the aggregate class, which is the our base
+Và điều quan trọng là chúng ta sẽ kế thừa từ lớp aggregate, đó là lớp abstract base class của chúng ta từ abstractions.
 
 13
 00:00:49,010 --> 00:00:51,440
-abstract class from the abstractions.
+Và tôi sẽ định nghĩa t id là một Guid.
 
 14
 00:00:51,440 --> 00:00:54,830
-And I am going to define the t id as a grid.
+Điều đó có nghĩa là order entities, kiểu id là Guid.
 
 15
 00:00:54,860 --> 00:00:59,150
-That means order entities, id type as a grid.
+Vì vậy bạn có thể nhấp chuột phải vào aggregate, đi tới definition và thấy rằng aggregate kế thừa từ entity.
 
 16
 00:00:59,150 --> 00:01:05,630
-So you can right click the aggregate, go to definition and see that aggregate inherits from the entity.
+Và nếu bạn nhấp chuột phải và đi tới definition của entity, bạn có thể thấy rằng có một t id property
 
 17
 00:01:05,630 --> 00:01:12,110
-And if you go to right click and go to definition of the entity, you can see that there is a t id property
+đại diện cho Guid cho order model của chúng ta.
 
 18
 00:01:12,110 --> 00:01:15,680
-which represents grid for our order model.
+Vì vậy vui lòng quay lại order model definition và tiếp tục với các properties của domain model kinh doanh.
 
 19
 00:01:15,680 --> 00:01:22,730
-So please go back to the order model definition and continue to our business domain model properties.
+Và property đầu tiên là order items.
 
 20
 00:01:22,730 --> 00:01:25,310
@@ -80,31 +80,31 @@ And the first property is order items.
 
 21
 00:01:25,310 --> 00:01:31,250
-If you go back to our architecture and you can see domain modeling, analyzing order has one to end
+Nếu bạn quay lại kiến trúc của chúng ta, bạn có thể thấy domain modeling, phân tích order có một mối quan hệ one-to-many
 
 22
 00:01:31,250 --> 00:01:33,110
-relationship with the order items.
+với các order items.
 
 23
 00:01:33,110 --> 00:01:38,060
-That means I am going to create a order item list into the order aggregate.
+Điều đó có nghĩa là tôi sẽ tạo một danh sách order item vào order aggregate.
 
 24
 00:01:38,060 --> 00:01:44,420
-If you go back to our code, you can come here and we are going to create a list which is including
+Nếu bạn quay lại code của chúng ta, bạn có thể đến đây và chúng ta sẽ tạo một list chứa
 
 25
 00:01:44,420 --> 00:01:50,180
-the order item, which is the private read only list, and this is the order item list that we are going
+order item, đó là một private read only list, và đây là danh sách order items mà chúng ta sẽ
 
 26
 00:01:50,180 --> 00:01:52,790
-to create newly in the order class.
+tạo mới trong lớp order.
 
 27
 00:01:52,790 --> 00:01:59,540
-And I am going to return back the Order items property with returning this private order items as a
+Và tôi sẽ trả lại thuộc tính Order items bằng cách trả về private order items này dưới dạng
 
 28
 00:01:59,540 --> 00:02:00,020
@@ -112,127 +112,127 @@ read only.
 
 29
 00:02:00,200 --> 00:02:06,350
-This is one of the important thing that returning read only list when reaching these order items from
+Đây là một điều quan trọng - trả về read only list khi truy cập những order items từ
 
 30
 00:02:06,350 --> 00:02:10,490
-the outside of the world, and this is the definition of the one to end relationships.
+bên ngoài, và đây chính là định nghĩa của mối quan hệ one-to-many.
 
 31
 00:02:10,490 --> 00:02:12,830
-So please ignore these order items.
+Vậy hãy bỏ qua những order items này.
 
 32
 00:02:12,830 --> 00:02:18,830
-Exceptions that we are going to develop a few minutes later, but continue the implementation of order.
+Exceptions mà chúng ta sẽ phát triển trong vài phút nữa, nhưng hãy tiếp tục triển khai order.
 
 33
 00:02:18,830 --> 00:02:25,160
-Entity order has customer order, name, shipping address, billing address, payment, and so on.
+Entity order có customer ID, order name, shipping address, billing address, payment, và những thứ khác.
 
 34
 00:02:25,160 --> 00:02:28,010
-So let me define these attributes one by one.
+Vậy hãy để tôi định nghĩa những thuộc tính này từng cái một.
 
 35
 00:02:28,010 --> 00:02:30,110
-The first one is customer ID.
+Cái đầu tiên là customer ID.
 
 36
 00:02:30,260 --> 00:02:37,340
-As you can see that we will define with customer ID in order to access the customer ID information from
+Như bạn có thể thấy, chúng ta sẽ định nghĩa customer ID để có thể truy cập thông tin customer ID từ
 
 37
 00:02:37,340 --> 00:02:38,930
-the customer bounded context.
+customer bounded context.
 
 38
 00:02:38,930 --> 00:02:43,280
-And after that, the second thing is we can define the order name.
+Và sau đó, điều thứ hai là chúng ta có thể định nghĩa order name.
 
 39
 00:02:43,280 --> 00:02:46,220
-This is the public string order name property.
+Đây là thuộc tính public string order name property.
 
 40
 00:02:46,220 --> 00:02:52,970
-And I am using the get and private set because this property cannot be settable from outside of the
+Và tôi đang sử dụng get và private set vì thuộc tính này không thể được đặt từ bên ngoài
 
 41
 00:02:52,970 --> 00:02:53,540
-world.
+thế giới.
 
 42
 00:02:53,540 --> 00:02:58,040
-And after the order name we can define two address information.
+Và sau tên đơn hàng, chúng ta có thể định nghĩa hai thông tin địa chỉ.
 
 43
 00:02:58,040 --> 00:03:00,680
-These are the shipping address and billing address.
+Đây là địa chỉ giao hàng và địa chỉ thanh toán.
 
 44
 00:03:00,680 --> 00:03:06,350
-And these address informations should be value object of the address that we will define after this
+Và những thông tin địa chỉ này nên là value object của address mà chúng ta sẽ định nghĩa sau.
 
 45
 00:03:06,350 --> 00:03:07,100
-definition.
+định nghĩa.
 
 46
 00:03:07,100 --> 00:03:12,860
-So please make sure that you have added the two address, one for the shipping and one for the billing
+Vậy hãy đảm bảo rằng bạn đã thêm hai địa chỉ, một cho giao hàng và một cho thanh toán.
 
 47
 00:03:12,860 --> 00:03:13,370
-address.
+địa chỉ.
 
 48
 00:03:13,370 --> 00:03:17,480
-And this will be the representing our value objects in order aggregate.
+Và điều này sẽ đại diện cho value objects của chúng ta trong order aggregate.
 
 49
 00:03:17,480 --> 00:03:21,320
-And after that we have one more value object which is the payment.
+Và sau đó chúng ta có thêm một value object nữa đó là payment.
 
 50
 00:03:21,320 --> 00:03:25,910
-And we will define payment property from the payment value object.
+Và chúng ta sẽ định nghĩa thuộc tính payment từ payment value object.
 
 51
 00:03:25,910 --> 00:03:30,740
-And lastly we will define order status which is the enum.
+Và cuối cùng chúng ta sẽ định nghĩa order status, đó là một enum.
 
 52
 00:03:30,740 --> 00:03:35,240
-And in here you can see that order status should be our enumeration.
+Và ở đây bạn có thể thấy rằng order status nên là enumeration của chúng ta.
 
 53
 00:03:35,240 --> 00:03:37,460
-And the property name should be status.
+Và tên thuộc tính nên là status.
 
 54
 00:03:37,460 --> 00:03:41,990
-And the default value should be order status dot panning for order aggregate.
+Và giá trị mặc định nên là order status dot pending cho order aggregate.
 
 55
 00:03:41,990 --> 00:03:49,640
-And finally I am going to create a total price decimal property, which will be calculate the order
+Và cuối cùng tôi sẽ tạo một thuộc tính total price kiểu decimal, nó sẽ tính toán các order items bằng cách lặp qua order items sử dụng hàm sum.
 
 56
 00:03:49,640 --> 00:03:54,350
-items and iterating the order items with using the sum function.
+Price và quantity.
 
 57
 00:03:54,350 --> 00:03:55,700
-Price and quantity.
+Nhân giá và số lượng với nhau.
 
 58
 00:03:55,700 --> 00:03:58,190
-Multiplexing the price and quantity information.
+Vậy đây là cách tính tổng giá trong thuộc tính của order aggregate.
 
 59
 00:03:58,190 --> 00:04:04,040
-So this is calculating of the total price into the property of the order aggregate.
+Vậy đây là những định nghĩa order aggregate mà chúng ta sẽ xây dựng từng cái một.
 
 60
 00:04:04,040 --> 00:04:10,850
@@ -240,239 +240,239 @@ So these are the order aggregate definitions that we are going to build one by o
 
 61
 00:04:10,880 --> 00:04:13,340
-You can find the whole class in here.
+Bạn có thể tìm thấy toàn bộ lớp ở đây.
 
 62
 00:04:13,340 --> 00:04:18,709
-Basically order is the aggregate root including all related entities and value objects.
+Về cơ bản order là aggregate root bao gồm tất cả các entity liên quan và value objects.
 
 63
 00:04:18,709 --> 00:04:25,550
-Order item is a list of the order item entities and order aggregate include customer shipping, billing
+Order item là một danh sách các entity order item và order aggregate bao gồm customer, shipping, billing
 
 64
 00:04:25,550 --> 00:04:30,050
-and payment details, and total price is computed from the order items.
+và chi tiết payment, và tổng giá được tính từ các order items.
 
 65
 00:04:30,320 --> 00:04:34,910
-After that, we will continue with the next entity, which is the order item.
+Sau đó, chúng ta sẽ tiếp tục với entity tiếp theo, đó là order item.
 
 66
 00:04:34,910 --> 00:04:40,790
-I'm going to create a new class under the models folder, which name is order item dot CSS and this
+Tôi sẽ tạo một lớp mới trong thư mục models, có tên là order item dot css và đây
 
 67
 00:04:40,790 --> 00:04:44,120
-will be entity from the our order aggregate.
+sẽ là entity từ order aggregate của chúng ta.
 
 68
 00:04:44,120 --> 00:04:49,280
-I'm going to remove unnecessary using statement and make this class as a public.
+Tôi sẽ xóa các using statement không cần thiết và làm cho lớp này là public.
 
 69
 00:04:50,060 --> 00:04:58,520
-And after that I'm going to inherit from the entity abstract class and specify the ID information as
+Và sau đó tôi sẽ kế thừa từ lớp abstract entity và chỉ định thông tin ID là
 
 70
 00:04:58,520 --> 00:04:59,180
-a grid.
+một guid.
 
 71
 00:04:59,880 --> 00:05:02,880
-Here you can see the definition of the Orderitem entity.
+Ở đây bạn có thể thấy định nghĩa của entity Orderitem.
 
 72
 00:05:02,880 --> 00:05:09,390
-And in this orderitem entity we basically have some of the attributes including the order ID, product
+Và trong entity orderitem này chúng ta cơ bản có một số thuộc tính bao gồm order ID, product
 
 73
 00:05:09,390 --> 00:05:11,340
-id, quantity and price.
+id, quantity và price.
 
 74
 00:05:11,340 --> 00:05:16,140
-So I'm going to add these properties under the Orderitem entity class.
+Vậy tôi sẽ thêm các properties này vào trong lớp entity Orderitem.
 
 75
 00:05:16,140 --> 00:05:20,040
-Here you can see the order ID which is the great value.
+Ở đây bạn có thể thấy order ID là một guid value.
 
 76
 00:05:20,040 --> 00:05:26,760
-And product ID is also great value and quantity integer and decimal price.
+Và product ID cũng là guid value và quantity là integer và decimal price.
 
 77
 00:05:26,760 --> 00:05:34,680
-So also I would like to add an internal constructor to create a new Orderitem with a given properties
+Vậy tôi cũng muốn thêm một internal constructor để tạo một Orderitem mới với các properties được cho trước
 
 78
 00:05:34,680 --> 00:05:36,480
-as a parameter of the constructor.
+như là các parameter của constructor.
 
 79
 00:05:36,480 --> 00:05:43,050
-Here you can see that we have an internal constructor in the Orderitem accepting the order id, product
+Ở đây bạn có thể thấy rằng chúng ta có một internal constructor trong Orderitem chấp nhận order id, product
 
 80
 00:05:43,050 --> 00:05:50,340
-id quantity and price as a parameters of the Orderitem that we will create new Orderitem.
+id, quantity và price như là các parameter của Orderitem mà chúng ta sẽ tạo Orderitem mới.
 
 81
 00:05:50,340 --> 00:05:57,540
-So Orderitem represents individual items within an order, and it contains product information and quantity
+Vậy Orderitem đại diện cho các mục riêng lẻ trong một đơn hàng, và nó chứa thông tin sản phẩm và số lượng
 
 82
 00:05:57,540 --> 00:05:59,160
-information, and so on.
+thông tin, và cứ thế.
 
 83
 00:05:59,160 --> 00:06:01,410
-The next entity is customer.
+Entity tiếp theo là customer.
 
 84
 00:06:01,410 --> 00:06:10,530
-So I'm going to create a new file under the models which is the customer X and customer also be entity.
+Vậy tôi sẽ tạo một file mới dưới models, đó là customer X và customer cũng sẽ là entity.
 
 85
 00:06:10,530 --> 00:06:20,250
-I'm going to change the public class customer and inherit from the entity and the ID value also with.
+Tôi sẽ thay đổi public class customer và kế thừa từ entity và giá trị ID cũng như vậy.
 
 86
 00:06:20,730 --> 00:06:27,450
-So in here we can define customer related attributes that I'm going to add only name and email as a
+Vậy ở đây chúng ta có thể định nghĩa các thuộc tính liên quan đến customer mà tôi sẽ chỉ thêm name và email như một
 
 87
 00:06:27,450 --> 00:06:29,910
-string value of these properties.
+giá trị string của những properties này.
 
 88
 00:06:29,910 --> 00:06:33,510
-Please make sure that also you have defined customer entity.
+Hãy chắc chắn rằng bạn cũng đã định nghĩa customer entity.
 
 89
 00:06:33,510 --> 00:06:36,810
-And after that we can define product entity.
+Và sau đó chúng ta có thể định nghĩa product entity.
 
 90
 00:06:36,810 --> 00:06:37,830
-Under the models.
+Dưới models.
 
 91
 00:06:37,830 --> 00:06:41,310
-I'm going to add a new class which name is product X.
+Tôi sẽ thêm một class mới với tên là product X.
 
 92
 00:06:41,310 --> 00:06:51,330
-And in this class I'm going to follow the same steps, make it public and inherit from the entity with
+Và trong class này tôi sẽ làm theo các bước tương tự, làm cho nó public và kế thừa từ entity với
 
 93
 00:06:51,510 --> 00:06:52,290
-value.
+giá trị.
 
 94
 00:06:52,290 --> 00:06:57,000
-In the product class we have two attributes, which is the name and price.
+Trong product class chúng ta có hai thuộc tính, đó là name và price.
 
 95
 00:06:57,000 --> 00:07:03,360
-These are the string name and decimal price attributes defined in the product class as an entity.
+Đây là thuộc tính string name và decimal price được định nghĩa trong product class như một entity.
 
 96
 00:07:03,360 --> 00:07:10,230
-So you can see that we have completed domain modeling, including the order Orderitem customer and product.
+Vậy bạn có thể thấy rằng chúng ta đã hoàn thành domain modeling, bao gồm order, Orderitem, customer và product.
 
 97
 00:07:10,230 --> 00:07:13,560
-And you can see that even it is the ordering microservices.
+Và bạn có thể thấy rằng nó là ordering microservices.
 
 98
 00:07:13,560 --> 00:07:15,840
-We have customer and product entity.
+Chúng ta có customer và product entity.
 
 99
 00:07:16,080 --> 00:07:19,680
-Why we should use customer and product entity in the ordering.
+Tại sao chúng ta nên sử dụng customer và product entity trong ordering
 
 100
 00:07:19,680 --> 00:07:20,670
-Microservices.
+microservices.
 
 101
 00:07:20,670 --> 00:07:28,080
-Microservices can duplicate data like product from the catalog microservices in order to reduce interservice
+Microservices có thể sao chép dữ liệu như product từ catalog microservices để giảm thiểu giao tiếp giữa các microservices.
 
 102
 00:07:28,080 --> 00:07:28,980
-communication.
+Nhưng khi bạn sao chép dữ liệu microservice từ các microservices khác, lần này nó cần phải được cập nhật
 
 103
 00:07:28,980 --> 00:07:35,520
-But when you duplicate the microservice data from other microservices, this time it needs to be updated
+theo cách eventual consistency.
 
 104
 00:07:35,520 --> 00:07:37,650
-in eventual consistency way.
+Chúng ta sẽ học nó trong các video sắp tới.
 
 105
 00:07:37,650 --> 00:07:40,020
-We will learn it in in coming videos.
+Vậy bây giờ chúng ta sẽ tiếp tục với domain modeling.
 
 106
 00:07:40,020 --> 00:07:43,410
-So for now we will continue to our domain modeling.
+Chúng ta đã hoàn thành các models và lần này tôi sẽ tạo value objects.
 
 107
 00:07:43,410 --> 00:07:47,610
-We have finished the models and this time I am going to create value objects.
+Vậy hãy click chuột phải vào order domain và thêm folder mới.
 
 108
 00:07:47,610 --> 00:07:50,520
-So right click the order domain add new folder.
+Với tên là value objects.
 
 109
 00:07:50,520 --> 00:07:52,530
-Which name is value objects.
+Chúng ta sẽ thêm value objects vào trong folder này.
 
 110
 00:07:52,530 --> 00:07:56,190
-We will adding value objects inside of this folder.
+Tôi sẽ bắt đầu với address dot cs.
 
 111
 00:07:56,190 --> 00:07:58,980
-I'm going to start with the address dot CSS.
+Tạo một class mới với định nghĩa address.
 
 112
 00:07:58,980 --> 00:08:01,860
-Create a new class with the address definition.
+Và tôi sẽ xóa bỏ using statement không cần thiết.
 
 113
 00:08:01,860 --> 00:08:05,400
-And I'm going to remove the unnecessary using statement.
+Và tôi sẽ thay đổi thành public.
 
 114
 00:08:05,400 --> 00:08:08,160
-And I'm going to change the public.
+Và lần này thay vì sử dụng class, chúng ta sẽ sử dụng record type.
 
 115
 00:08:08,160 --> 00:08:12,810
-And this time instead of using the class we are going to use record type.
+Vì record types rất tốt cho việc định nghĩa value objects về mặt so sánh và xóa bỏ
 
 116
 00:08:12,810 --> 00:08:20,040
-Because record types is very good for defining value objects in terms of the comparing and removing
+các ID operations.
 
 117
 00:08:20,040 --> 00:08:21,210
-the ID operations.
+Vì vậy đó là lý do chúng ta sẽ sử dụng address như một value object.
 
 118
 00:08:21,210 --> 00:08:24,720
-So that's why we are going to use address as a value object.
+Và đây là một điều rất mạnh mẽ của C# mà chúng ta có thể định nghĩa domain driven design value object như một
 
 119
 00:08:24,720 --> 00:08:31,110
-And this is very powerful for the C sharp that we can define domain driven design value object as a
+record type.
 
 120
 00:08:31,110 --> 00:08:31,860
@@ -480,165 +480,165 @@ record type.
 
 121
 00:08:31,860 --> 00:08:38,490
-And in the address I'm going to define lots of the attributes and properties including the first name,
+Và trong địa chỉ, tôi sẽ định nghĩa nhiều attributes và properties bao gồm first name,
 
 122
 00:08:38,490 --> 00:08:42,750
-last name, email address, address, line, country, state, and zip code.
+last name, email address, địa chỉ, line, country, state, và zip code.
 
 123
 00:08:42,750 --> 00:08:48,660
-All of these attributes are string properties under the address value object record type.
+Tất cả các attributes này là các string properties dưới kiểu record của value object địa chỉ.
 
 124
 00:08:48,660 --> 00:08:55,560
-So basically we will define an address as a value object and utilize the C sharp record type for immutability.
+Vậy cơ bản chúng ta sẽ định nghĩa địa chỉ như một value object và sử dụng kiểu record C# để immutability.
 
 125
 00:08:56,130 --> 00:08:59,040
-After that we can define the payment value object.
+Sau đó chúng ta có thể định nghĩa payment value object.
 
 126
 00:08:59,040 --> 00:09:04,740
-I'm going to add a new class which is the payment dot CSS, and following the same steps as the value
+Tôi sẽ thêm một class mới là payment.cs, và làm theo các bước tương tự như value
 
 127
 00:09:04,740 --> 00:09:14,580
-object, make it public and record type and after that define the attributes including the card name,
+object, làm cho nó public và kiểu record, sau đó định nghĩa các attributes bao gồm card name,
 
 128
 00:09:14,580 --> 00:09:18,900
-card number, expiration, CVV, and payment method.
+card number, expiration, CVV, và payment method.
 
 129
 00:09:18,900 --> 00:09:23,100
-Payment value object basically encapsulates the payment details.
+Payment value object về cơ bản đóng gói các chi tiết thanh toán.
 
 130
 00:09:23,490 --> 00:09:26,190
-After that we can define the enumerations.
+Sau đó chúng ta có thể định nghĩa các enumerations.
 
 131
 00:09:26,190 --> 00:09:27,150
-For that purpose.
+Với mục đích đó.
 
 132
 00:09:27,150 --> 00:09:32,550
-I'm going to right click the order domain and add new folder, which name is enums.
+Tôi sẽ click chuột phải vào order domain và thêm folder mới, tên là enums.
 
 133
 00:09:33,030 --> 00:09:37,470
-And in this folder I'm going to create our enum which is the order status.
+Và trong folder này tôi sẽ tạo enum của chúng ta là order status.
 
 134
 00:09:37,470 --> 00:09:41,940
-So create a new class which is the order statistics.
+Vậy tạo một class mới là order status.
 
 135
 00:09:41,940 --> 00:09:47,310
-And I'm going to remove the unnecessary using statement and make it public.
+Và tôi sẽ xoá bỏ các using statement không cần thiết và làm cho nó public.
 
 136
 00:09:48,450 --> 00:09:57,210
-And this time we will define enum for order status and as an enumeration order status we have several
+Và lần này chúng ta sẽ định nghĩa enum cho order status và như một enumeration order status chúng ta có nhiều
 
 137
 00:09:57,210 --> 00:09:57,750
-values.
+giá trị.
 
 138
 00:09:57,750 --> 00:09:58,920
-These are the.
+Đó là các.
 
 139
 00:09:59,710 --> 00:10:02,470
-Planning completed and cancelled.
+Planning, completed và cancelled.
 
 140
 00:10:02,680 --> 00:10:07,240
-So these are the possible states for ordered as an ordered status.
+Vậy đây là các trạng thái có thể có cho order như một order status.
 
 141
 00:10:07,660 --> 00:10:12,280
-And finally we can go back to order domain aggregate.
+Và cuối cùng chúng ta có thể quay lại order domain aggregate.
 
 142
 00:10:12,280 --> 00:10:15,880
-You can go to the models and go to the ordered aggregate.
+Bạn có thể vào models và vào ordered aggregate.
 
 143
 00:10:15,880 --> 00:10:23,110
-Here you can see that we can define these address payment and order status as a complex type.
+Ở đây bạn có thể thấy rằng chúng ta có thể định nghĩa address, payment và order status này là complex type.
 
 144
 00:10:23,110 --> 00:10:30,070
-If you come here and using the value objects address and payment comes into our order aggregate.
+Nếu bạn vào đây và sử dụng các value objects address và payment đi vào order aggregate của chúng ta.
 
 145
 00:10:30,070 --> 00:10:36,700
-And if you come here and using the ordered domain enums, you can see that our order aggregate is now
+Và nếu bạn vào đây và sử dụng ordered domain enums, bạn có thể thấy rằng order aggregate của chúng ta bây giờ
 
 146
 00:10:36,700 --> 00:10:37,390
-ready.
+đã sẵn sàng.
 
 147
 00:10:37,390 --> 00:10:44,080
-But as you can see that we have three using statements that we can remove these unnecessary using statements
+Nhưng như bạn có thể thấy rằng chúng ta có ba câu lệnh using mà chúng ta có thể loại bỏ các câu lệnh using không cần thiết này
 
 148
 00:10:44,080 --> 00:10:46,360
-to the global using CSS.
+sang global using CSS.
 
 149
 00:10:46,420 --> 00:10:53,560
-For that purpose, go to ordering domain level and add new class which name is global using dot CSS.
+Cho mục đích đó, hãy vào ordering domain level và thêm class mới có tên là global using dot CSS.
 
 150
 00:10:53,620 --> 00:10:58,150
-And in here we are going to write global using statement directly.
+Và ở đây chúng ta sẽ viết global using statement trực tiếp.
 
 151
 00:10:58,150 --> 00:11:03,880
-And I'm going to copy paste these global using statements including abstractions, models, value objects
+Và tôi sẽ copy paste các global using statements này bao gồm abstractions, models, value objects
 
 152
 00:11:03,880 --> 00:11:05,230
-and enums folder.
+và thư mục enums.
 
 153
 00:11:05,230 --> 00:11:11,050
-If you go back to our order model now, we can safely remove these using statements.
+Nếu bạn quay lại order model của chúng ta bây giờ, chúng ta có thể an toàn loại bỏ các using statements này.
 
 154
 00:11:11,680 --> 00:11:12,850
-Save these orders.
+Lưu các orders này.
 
 155
 00:11:12,850 --> 00:11:13,360
-Yes.
+Vâng.
 
 156
 00:11:13,360 --> 00:11:20,950
-And if you go to order item we can also remove these ordering domain abstraction using statement.
+Và nếu bạn vào order item chúng ta cũng có thể loại bỏ câu lệnh using ordering domain abstraction này.
 
 157
 00:11:20,950 --> 00:11:26,020
-Save this item and go to product and also check the customer.
+Lưu item này và vào product và cũng kiểm tra customer.
 
 158
 00:11:26,020 --> 00:11:32,110
-So as you can see that we have cleared unnecessary using statement and we have finished to our domain
+Vậy như bạn có thể thấy rằng chúng ta đã xóa bỏ các using statement không cần thiết và chúng ta đã hoàn thành domain
 
 159
 00:11:32,110 --> 00:11:35,170
-modeling into the ordering domain project.
+modeling vào ordering domain project.
 
 160
 00:11:35,170 --> 00:11:40,990
-If you right click and build this class library, you can see that we have successfully finished the
+Nếu bạn right click và build class library này, bạn có thể thấy rằng chúng ta đã hoàn thành thành công
 
 161
 00:11:40,990 --> 00:11:43,390
-definition of the ordering domain model.
+định nghĩa của ordering domain model.
 
