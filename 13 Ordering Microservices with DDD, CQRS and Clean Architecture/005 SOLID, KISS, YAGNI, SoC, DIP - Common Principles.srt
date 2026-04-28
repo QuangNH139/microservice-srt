@@ -1,30 +1,30 @@
 1
 00:00:00,140 --> 00:00:06,470
-In this video, we are going to start to explain common pattern and principles that we will use when
+Trong video này, chúng ta sẽ bắt đầu giải thích các mẫu và nguyên tắc chung mà chúng ta sẽ sử dụng khi
 
 2
 00:00:06,470 --> 00:00:08,480
-developing organic market services.
+phát triển các organic market services.
 
 3
 00:00:09,250 --> 00:00:15,010
-We will start with the solid principles that include five different principles Single responsibility,
+Chúng ta sẽ bắt đầu với các SOLID principles bao gồm năm nguyên tắc khác nhau: Single responsibility,
 
 4
 00:00:15,010 --> 00:00:20,620
-open closed, Liskov substitution, interface segregation, and dependency inversion.
+Open Closed, Liskov substitution, Interface segregation, và Dependency inversion.
 
 5
 00:00:21,070 --> 00:00:24,430
-So the first one is single responsibility principle.
+Vậy cái đầu tiên là Single responsibility principle.
 
 6
 00:00:24,430 --> 00:00:29,260
-Each of our components or modules should responsible only one functionality.
+Mỗi component hoặc module của chúng ta chỉ nên chịu trách nhiệm cho một chức năng duy nhất.
 
 7
 00:00:29,530 --> 00:00:31,030
-And the second one is open.
+Và cái thứ hai là Open
 
 8
 00:00:31,030 --> 00:00:32,259
@@ -32,123 +32,123 @@ Closed principle.
 
 9
 00:00:32,320 --> 00:00:38,500
-When we design the system, it should be able to extend without changing existing architecture.
+Khi chúng ta thiết kế hệ thống, nó sẽ có thể mở rộng mà không cần thay đổi kiến trúc hiện có.
 
 10
 00:00:38,500 --> 00:00:43,660
-That means it should be open for extensions, closed for the modifications.
+Điều đó có nghĩa là nó sẽ mở để mở rộng, đóng lại cho những sửa đổi.
 
 11
 00:00:44,110 --> 00:00:50,830
-And the next one is Liskov substitution principle system can be substituted each other easily.
+Và cái tiếp theo là Liskov substitution principle, hệ thống có thể thay thế cho nhau một cách dễ dàng.
 
 12
 00:00:50,830 --> 00:00:55,630
-In our case we can use plugin services that we can shift them easily.
+Trong trường hợp của chúng ta, chúng ta có thể sử dụng các plugin services mà chúng ta có thể chuyển đổi chúng một cách dễ dàng.
 
 13
 00:00:56,050 --> 00:00:59,560
-And the other one is interface segregation principle.
+Và cái khác là Interface segregation principle.
 
 14
 00:00:59,560 --> 00:01:04,599
-It states that no code should be forced to depend on method it doesn't use.
+Nó nói rằng không có code nào nên bị buộc phải phụ thuộc vào phương thức mà nó không sử dụng.
 
 15
 00:01:04,629 --> 00:01:07,720
-And the last one is dependency inversion principle.
+Và cái cuối cùng là Dependency inversion principle.
 
 16
 00:01:07,720 --> 00:01:13,300
-It states that high level modules should not depend on low level modules, but should depend on the
+Nó nói rằng các module cấp cao không nên phụ thuộc vào các module cấp thấp, mà thay vào đó nên phụ thuộc vào
 
 17
 00:01:13,300 --> 00:01:14,170
-abstractions.
+các abstraction.
 
 18
 00:01:14,170 --> 00:01:17,980
-So now let me expand these dependency inversion principle.
+Vậy bây giờ hãy để tôi mở rộng Dependency inversion principle này.
 
 19
 00:01:17,980 --> 00:01:24,250
-Basically, in dependency inversion principle we provide to block dependency of classes by inverting
+Về cơ bản, trong Dependency inversion principle chúng ta cung cấp cách để chặn dependency của các class bằng cách đảo ngược
 
 20
 00:01:24,250 --> 00:01:28,450
-dependencies and inject the dependent classes via constructor.
+dependencies và inject các class phụ thuộc thông qua constructor.
 
 21
 00:01:28,840 --> 00:01:35,740
-That means we can say that upper level class and lower level class must not be dependent on the modules.
+Điều đó có nghĩa là chúng ta có thể nói rằng class ở mức cao hơn và class ở mức thấp hơn không được phụ thuộc vào các module.
 
 22
 00:01:35,740 --> 00:01:42,340
-Lower level modules must be dependent on the higher level modules with using the interface or abstractions.
+Lower level modules phải phụ thuộc vào higher level modules bằng cách sử dụng interface hoặc abstraction.
 
 23
 00:01:42,400 --> 00:01:48,280
-Here you can find the illustration of the dependency inversion and without dependency inversion according
+Ở đây bạn có thể tìm thấy minh họa về dependency inversion và không có dependency inversion theo
 
 24
 00:01:48,280 --> 00:01:53,860
-to without dependency inversion, you can see that our business layer directly access to our data access
+không có dependency inversion, bạn có thể thấy rằng business layer của chúng ta trực tiếp truy cập vào data access layer của chúng ta
 
 25
 00:01:53,860 --> 00:01:56,470
-layer and using the SQL database classes.
+và sử dụng các class SQL database.
 
 26
 00:01:56,470 --> 00:02:02,170
-In the business logic, this is not acceptable and not following the dependency inversion principle.
+Trong business logic, điều này là không chấp nhận được và không tuân theo nguyên tắc dependency inversion.
 
 27
 00:02:02,170 --> 00:02:06,400
-Instead of these coupling, we can use dependency inversion.
+Thay vì coupling này, chúng ta có thể sử dụng dependency inversion.
 
 28
 00:02:06,400 --> 00:02:13,210
-That means lower level class, which is a data access, can be dependent to higher level modules using
+Điều đó có nghĩa là lower level class, đó là data access, có thể phụ thuộc vào higher level modules bằng cách sử dụng
 
 29
 00:02:13,210 --> 00:02:15,010
-the interface and abstraction.
+interface và abstraction.
 
 30
 00:02:15,010 --> 00:02:21,550
-In our case, we will use AI repository in the business logic to perform data access operations into
+Trong trường hợp của chúng ta, chúng ta sẽ sử dụng repository pattern trong business logic để thực hiện các hoạt động data access vào
 
 31
 00:02:21,550 --> 00:02:23,050
-the SQL database.
+SQL database.
 
 32
 00:02:23,050 --> 00:02:30,880
-We have already used this kind of abstractions and injecting dependencies into our ASP.Net microservices.
+Chúng ta đã sử dụng loại abstraction này và injecting dependencies vào các ASP.NET microservices của chúng ta.
 
 33
 00:02:31,360 --> 00:02:38,200
-So the next thing we should check the design principles of the separation of concerns according to separation
+Vậy điều tiếp theo chúng ta nên kiểm tra là design principles của separation of concerns, theo separation of concerns,
 
 34
 00:02:38,200 --> 00:02:44,050
-of concerns, which is the one of the core software design principle, we can separate the computer
+đó là một trong những core software design principle, chúng ta có thể tách computer program thành các phần riêng biệt.
 
 35
 00:02:44,050 --> 00:02:46,120
-program into distinct sections.
+Điều đó có nghĩa là chúng ta có thể tách isolate software application thành các phần riêng biệt, quản lý độ phức tạp bằng cách phân chia
 
 36
 00:02:46,120 --> 00:02:53,080
-That means we can isolate the software application into separate sections, manage complexities by partitioning
+software system.
 
 37
 00:02:53,080 --> 00:02:54,310
-the software system.
+Nó phân biệt giữa các khái niệm của layer và tier với các trách nhiệm nhất định, và về cơ bản các IT elements của software nên là duy nhất và hạn chế việc phân bổ trách nhiệm, coupling thấp
 
 38
 00:02:54,310 --> 00:03:01,150
-It distinguish between the concepts of the layer and tiers with certain responsibilities, and basically
+và high cohesion.
 
 39
 00:03:01,150 --> 00:03:07,030
@@ -160,13 +160,13 @@ and high cohesion.
 
 41
 00:03:08,080 --> 00:03:14,050
-You can see an example of the separation concerns in here we can separate our web application, writing
+Bạn có thể thấy một ví dụ về nguyên tắc separation of concerns ở đây, chúng ta có thể tách biệt ứng dụng web của mình, viết
 
 42
 00:03:14,050 --> 00:03:17,530
-the HTML, CSS and JavaScript file in different layers.
+các tệp HTML, CSS và JavaScript trong các lớp khác nhau.
 
 43
 00:03:17,530 --> 00:03:22,150
-And here you can see the separation of concerns about the HTML elements.
+Và ở đây bạn có thể thấy nguyên tắc separation of concerns về các phần tử HTML.
 
