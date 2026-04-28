@@ -80,103 +80,103 @@ And now with dotnet eight and C-sharp 12, we can define the collections with onl
 
 21
 00:01:32,020 --> 00:01:33,580
-bên trong các dấu ngoặc.
+inside the brackets.
 
 22
 00:01:35,260 --> 00:01:38,470
-Một tính năng mới khác là inline arrays.
+Another new feature is inline arrays.
 
 23
 00:01:38,500 --> 00:01:45,250
-Inline arrays nâng cao hiệu suất bằng cách cho phép các nhà phát triển tạo các mảng có kích thước cố định trong struct.
+Inline arrays improve performance by allowing developers to create fixed-size arrays within structs.
 
 24
 00:01:45,250 --> 00:01:45,850
-các loại.
+types.
 
 25
 00:01:46,180 --> 00:01:52,240
-Tính năng này hữu ích để tối ưu hóa bố cục bộ nhớ và cải thiện hiệu suất runtime.
+This feature is useful for optimizing memory layout and improving runtime performance.
 
 26
 00:01:52,240 --> 00:01:57,520
-Bạn có thể thấy một ví dụ ở đây, chúng ta có một buffer struct và sử dụng inline arrays.
+You can see an example here, where we have a buffer struct and use inline arrays.
 
 27
 00:01:58,090 --> 00:02:02,500
-Một tính năng mới khác là optional parameters trong lambda expressions.
+Another new feature is optional parameters in lambda expressions.
 
 28
 00:02:02,560 --> 00:02:09,190
-C-sharp 12 giới thiệu khả năng xác định các giá trị mặc định cho các tham số trong lambda expressions.
+C# 12 introduces the ability to define default values for parameters in lambda expressions.
 
 29
 00:02:09,190 --> 00:02:14,290
-Điều này phản ánh cú pháp và quy tắc để thêm các giá trị mặc định mới trong các methods.
+This mirrors the syntax and rules for adding new default values in methods.
 
 30
 00:02:14,290 --> 00:02:17,200
-Làm cho lambda expression linh hoạt hơn.
+Making lambda expressions more flexible.
 
 31
 00:02:17,200 --> 00:02:22,600
-Bạn có thể thấy một ví dụ ở đây với việc xác định optional parameters trong lambda expressions.
+You can see an example here with defining optional parameters in lambda expressions.
 
 32
 00:02:23,580 --> 00:02:26,940
-Một tính năng mới khác là ref read-only parameters.
+Another new feature is ref read-only parameters.
 
 33
 00:02:26,940 --> 00:02:33,360
-Việc bổ sung ref read-only parameters nâng cao cách các tham chiếu read-only được truyền trong C sharp.
+The addition of ref read-only parameters enhances how read-only references are passed in C#.
 
 34
 00:02:33,360 --> 00:02:40,020
-Tính năng này là một cải tiến đáng kể để tối ưu hóa sử dụng bộ nhớ và hiệu suất trong các kịch bản liên quan đến
+This feature is a significant improvement for optimizing memory usage and performance in scenarios involving
 
 35
 00:02:40,020 --> 00:02:41,490
-các cấu trúc dữ liệu lớn.
+large data structures.
 
 36
 00:02:41,490 --> 00:02:42,450
-Bạn có thể thấy trong.
+You can see in.
 
 37
 00:02:42,450 --> 00:02:50,340
-Ở đây chúng ta đang sử dụng dữ liệu lớn và bao gồm và xử lý dữ liệu mà không có nguy hiểm sửa đổi.
+Here we are using large data and include and process data without the danger of modification.
 
 38
 00:02:50,340 --> 00:02:52,980
-Và một tính năng mới khác là alias.
+And another new feature is alias.
 
 39
 00:02:52,980 --> 00:03:00,270
-Any type C 12 mở rộng using alias directive để bao gồm bất kỳ loại nào, không chỉ là named types.
+Any type C# 12 extends the using alias directive to include any type, not just named types.
 
 40
 00:03:00,270 --> 00:03:07,110
-Điều này cho phép tạo alias ngữ nghĩa cho các loại phức tạp như tuples, arrays và pointers.
+This allows creating semantic aliases for complex types such as tuples, arrays, and pointers.
 
 41
 00:03:07,110 --> 00:03:07,620
-data types.
+các kiểu dữ liệu.
 
 42
 00:03:07,620 --> 00:03:09,090
-You can see an example.
+Bạn có thể xem một ví dụ.
 
 43
 00:03:09,090 --> 00:03:16,650
-We can use coordinate alias for tuple, and we will use coordinate to define location parameter.
+Chúng ta có thể sử dụng coordinate alias cho tuple, và chúng ta sẽ sử dụng coordinate để định nghĩa location parameter.
 
 44
 00:03:17,070 --> 00:03:22,470
-So we will use some new features of C# 12 in our microservice applications.
+Vì vậy chúng ta sẽ sử dụng một số tính năng mới của C# 12 trong các ứng dụng microservice của chúng ta.
 
 45
 00:03:22,470 --> 00:03:28,620
-But especially we will use primary constructs, collection expression, inline arrays and default lambda
+Nhưng đặc biệt chúng ta sẽ sử dụng primary constructs, collection expression, inline arrays và default lambda
 
 46
 00:03:28,620 --> 00:03:29,460
