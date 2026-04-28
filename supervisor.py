@@ -54,8 +54,10 @@ def git_commit_push(done: int) -> None:
     subprocess.run(["git", "commit", "-m", msg], cwd=BASE_DIR, capture_output=True)
     log(f"Committed ({done}/{TOTAL_FILES} done). Pushing...")
 
-    # Push with exponential backoff
+    # Push with exponential backoff + rebase to handle concurrent commits
     for attempt in range(1, 5):
+        subprocess.run(["git", "pull", "--rebase", "origin", BRANCH],
+                       cwd=BASE_DIR, capture_output=True)
         r = subprocess.run(
             ["git", "push", "-u", "origin", BRANCH],
             cwd=BASE_DIR, capture_output=True, text=True
